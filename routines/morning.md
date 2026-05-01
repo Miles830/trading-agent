@@ -22,6 +22,8 @@ DECISIONS:
 - Maximum 3 MOO orders per day
 - Never exceed position size or sector guardrails
 - "First run", "initialization", or "still building context" are NOT acceptable reasons to remain in cash above the 10% floor
+- Every MOO order placed here MUST be paired with a follow-up stop-loss order placed by the Market Open routine once fills are confirmed. Log the intended stop price (entry × (1 − stop_pct)) in trades.md so the Open routine knows what to set. See CLAUDE.md "Stop-Loss Placement (MANDATORY)".
+- Every entry decision logged to trades.md MUST use the YAML header format from CLAUDE.md "Trade Log Entry Template" with a `setup:` tag from the taxonomy. No raw prose entries — they break the weekly review tally.
 
 OUTPUT FORMAT:
 Start with full portfolio state, then:

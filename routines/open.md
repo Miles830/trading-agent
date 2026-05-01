@@ -14,9 +14,10 @@ RESEARCH:
 - Review watchlist from morning.md — are setups still valid?
 
 DECISIONS:
+- STOP-LOSS BACKFILL (FIRST ACTION): Query `GET /v2/orders?status=open` and `GET /v2/positions`. For every open position confirm there is a matching open stop order. For any MOO that filled this morning, place its stop-loss IMMEDIATELY using the realized fill price × (1 − stop_pct), per CLAUDE.md "Stop-Loss Placement (MANDATORY)". Do this BEFORE researching new entries — a position without a resting stop is a guardrail violation.
 - Confirm or cancel any pending orders based on opening price action
-- Place new limit orders for any watchlist names showing strong opens
-- Set stop-losses on all new positions immediately after entry
+- For new limit-order entries, use bracket orders (`order_class: "bracket"` with `stop_loss` and `take_profit` legs) so the stop is attached at submission. Curl example in CLAUDE.md "Stop-Loss Placement".
+- Every entry decision logged to trades.md MUST use the YAML header format from CLAUDE.md "Trade Log Entry Template" with a `setup:` tag.
 - If market opens down more than 1.5% — reduce new position sizes by 50%
 - If market opens up more than 2% — be cautious of chasing, wait for pullbacks
 

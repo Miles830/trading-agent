@@ -14,6 +14,7 @@ RESEARCH:
 - Check crypto prices — any significant moves since open?
 
 DECISIONS:
+- STOP-LOSS AUDIT (FIRST ACTION): Query `GET /v2/orders?status=open` and `GET /v2/positions`. Every open position MUST have a corresponding resting stop order. If any position lacks one, place it immediately at the appropriate stop_pct from current avg cost (12% long-term / 5% active / 18% crypto). A naked position is a guardrail violation. See CLAUDE.md "Stop-Loss Placement (MANDATORY)".
 - Close any positions that have hit stop-loss or price target
 - Trail stop-losses up on any positions showing strong gains (never trail down)
 - Identify any new setups developing that were not on morning watchlist

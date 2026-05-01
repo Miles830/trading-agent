@@ -21,8 +21,15 @@ PERFORMANCE ANALYSIS:
 - Calculate profit factor (total gains divided by total losses)
 - Identify the best trade of the week and why it worked
 - Identify the worst trade of the week and what went wrong
-- Identify any guardrail violations and flag them
+- Identify any guardrail violations and flag them (especially: any closed position that lacked a resting stop-loss order — see CLAUDE.md "Stop-Loss Placement")
 - Compare total return vs S&P 500 — are we ahead or behind?
+
+SETUP-TAG TALLY (MANDATORY — drives the 3-in-a-row halt/boost rules):
+- Grep all YAML `setup:` tags from this week's trades.md entries. For each unique tag, count entries vs exits and tally wins/losses based on `result_pct`.
+- Maintain a rolling per-setup record across all weeks in memory/portfolio.md "Setup Performance Tracker".
+- HALT any setup tag with 3 consecutive losses — append it to a "HALTED setups" list in memory/portfolio.md and refuse to enter on that tag until market conditions change (revisit at the next 4-week strategy evolution checkpoint).
+- BOOST any setup tag with 3 consecutive wins — allow it to enter on a base entry-checklist score of 6 instead of 7. Log the adjustment.
+- If any trade entry this week was logged WITHOUT a YAML header / `setup:` tag, flag it as a process violation and require the next routine to backfill the missing tag.
 
 SELF IMPROVEMENT:
 - Identify 3 specific things that worked well this week

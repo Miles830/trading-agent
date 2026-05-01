@@ -141,6 +141,72 @@ Routines run on trading days only. No routines on weekends or market holidays. E
 - Reduce position size by 50% for extended hours trades due to lower liquidity
 - Never place market orders during extended hours
 
+### Stop-Loss Placement (MANDATORY — broker-placed, not just documented)
+Every entry must result in a stop-loss order resting at Alpaca by the end of the routine that placed it. Stop-loss INTENT in trades.md does NOT count — if the order is not on Alpaca, the position has no protection between routines.
+
+**Two valid patterns:**
+
+1. **Bracket order (preferred for limit and MOC entries):** entry + stop_loss + take_profit submitted as one order using `order_class: "bracket"`. The stop and target are activated automatically once the parent fills.
+
+   ```bash
+   # Long-term limit-buy with bracket: entry $123.45, stop -12% ($108.64), take_profit +24% ($153.08)
+   curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+     "symbol":"NVDA","qty":5,"side":"buy","type":"limit","limit_price":"123.45",
+     "time_in_force":"day","order_class":"bracket",
+     "stop_loss":{"stop_price":"108.64"},
+     "take_profit":{"limit_price":"153.08"}
+   }'
+   ```
+
+2. **MOO entry + follow-up stop (Pre-Market workflow):** MOO orders cannot use bracket order_class because the entry price is unknown until the open. The Pre-Market routine places the MOO; the **Market Open routine (9:45 AM ET) MUST**, immediately after confirming the MOO fill, post a separate stop-loss order using the realized fill price:
+
+   ```bash
+   # After MOO fills at $X, place stop at X * (1 - stop_pct)
+   curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+     "symbol":"TSM","qty":10,"side":"sell","type":"stop","stop_price":"108.64","time_in_force":"gtc"
+   }'
+   ```
+
+**Stop-loss percentages (from Hard Guardrails):**
+- Long-term: 12% below entry
+- Active trades: 5% below entry
+- Crypto: 18% below entry
+
+**Rule:** A position without a resting stop-loss order at Alpaca is a guardrail violation. The Mid-Morning routine MUST verify every open position has a corresponding open stop order via `GET /v2/orders?status=open` and fill any gaps before doing anything else. If a stop order is missing, place it before researching new opportunities.
+
+## Trade Log Entry Template (setup-type tagging — MANDATORY)
+Every trade decision logged to `logs/trades.md` must include a one-line YAML header so the weekly review can tally setup performance and trigger the "halt setups failing 3-in-a-row" rule. Without tags, the Self-Improvement Protocol cannot run.
+
+**Format for every entry/exit/skip decision:**
+
+```yaml
+---
+ts: 2026-05-04T13:32:00Z
+action: entry|exit|stop_hit|target_hit|skip
+symbol: TSM
+bucket: long-term|active|crypto
+setup: <one tag from the taxonomy below>
+score: 8
+thesis: <one sentence>
+size_pct: 3.0
+stop: 108.64
+target: 153.08
+result_pct: <fill on exit only>
+---
+```
+
+**Setup taxonomy (use these tags exactly so grep tallies work):**
+- `ai-momentum-pullback` — AI capex theme name pulling back into support
+- `earnings-reaction-fade` — fading post-earnings overreaction
+- `earnings-reaction-follow` — going with post-earnings continuation
+- `breakout-volume` — clean technical breakout on >2x volume
+- `mean-reversion-oversold` — RSI/MACD oversold reversal
+- `macro-hedge` — gold/energy/defensive position driven by macro thesis
+- `sector-rotation` — entering a sector showing fresh leadership
+- `crypto-flush-rebound` — BTC/ETH after capitulation flush
+- `candlestick-reversal` — day-trade entry driven by pattern (per Day Trading Method)
+- `other` — must include a free-text reason; flag for taxonomy update
+
 ## Self-Improvement Protocol
 
 ### After Every Routine
@@ -149,12 +215,13 @@ Routines run on trading days only. No routines on weekends or market holidays. E
 
 ### During Every Weekly Review
 - Read all entries in logs/trades.md from the past week
-- Identify which trade setups produced wins and which produced losses
+- **Tally setup performance:** for each `setup:` tag in the YAML headers, count wins and losses based on `result_pct`. Update the "Setup Performance Tracker" table in memory/portfolio.md.
+- **Apply the 3-in-a-row rules:**
+  - If any setup tag has lost 3 trades in a row (regardless of when), append it to a HALTED list in memory/portfolio.md and skip it until market conditions change.
+  - If any setup tag has won 3 trades in a row, increase conviction weighting (e.g., allow base score of 6 instead of 7 for that setup) — log the adjustment.
 - Identify patterns in mistakes — was it bad timing, wrong sector, weak catalyst?
 - Update memory/portfolio.md with lessons learned this week
 - Adjust position sizing preferences based on recent performance
-- If a particular setup type has failed 3 times in a row, stop using it until market conditions change
-- If a particular setup type has succeeded 3 times in a row, increase conviction weighting for it
 
 ### Performance Tracking
 - Track win rate, average win size, average loss size, and profit factor weekly
