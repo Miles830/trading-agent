@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Opus Trader — Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none'><circle cx='20' cy='20' r='18' stroke='%23d4af37' stroke-width='1.5' opacity='0.5'/><line x1='12' y1='20' x2='12' y2='22' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/><rect x='10' y='22' width='4' height='7' fill='%23d4af37' rx='0.6'/><line x1='12' y1='29' x2='12' y2='30.5' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/><line x1='20' y1='13' x2='20' y2='16' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/><rect x='18' y='16' width='4' height='11' fill='%23d4af37' rx='0.6'/><line x1='20' y1='27' x2='20' y2='28.5' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/><line x1='28' y1='7' x2='28' y2='10' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/><rect x='26' y='10' width='4' height='15' fill='%23d4af37' rx='0.6'/><line x1='28' y1='25' x2='28' y2='26.5' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/></svg>" />
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
   /* =====================================================================
@@ -179,11 +180,28 @@
     border-bottom: 1px solid var(--border-soft);
     margin-bottom: 14px;
   }
+  .brand-mark {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand-logo {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    color: var(--accent);
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s;
+  }
+  .brand-logo:hover {
+    transform: rotate(-8deg) scale(1.05);
+    filter: drop-shadow(0 0 16px var(--accent-glow));
+  }
+  .brand-logo svg { width: 100%; height: 100%; display: block; }
+  .brand-text { display: flex; flex-direction: column; min-width: 0; }
   .brand-title {
     font-family: "Cambria", "Iowan Old Style", "Palatino", Georgia, serif;
-    font-size: 22px; font-weight: 600; letter-spacing: 0.4px;
+    font-size: 20px; font-weight: 600; letter-spacing: 0.4px;
     color: var(--accent);
     text-shadow: 0 0 24px var(--accent-glow);
+    line-height: 1.1;
   }
   .brand-sub {
     font-size: 10px; color: var(--text-faint);
@@ -791,8 +809,31 @@
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <div class="brand-title">Opus Trader</div>
-      <div class="brand-sub">Autonomous AI · Paper</div>
+      <div class="brand-mark">
+        <div class="brand-logo" aria-hidden="true">
+          <!-- Three White Soldiers — a bullish reversal pattern from the strategy -->
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+            <circle cx="20" cy="20" r="14.5" stroke="currentColor" stroke-width="0.6" opacity="0.18"/>
+            <!-- candle 1 (left, lowest) -->
+            <line x1="12" y1="20" x2="12" y2="22" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            <rect x="10" y="22" width="4" height="7" fill="currentColor" rx="0.6"/>
+            <line x1="12" y1="29" x2="12" y2="30.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            <!-- candle 2 (center, middle) -->
+            <line x1="20" y1="13" x2="20" y2="16" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            <rect x="18" y="16" width="4" height="11" fill="currentColor" rx="0.6"/>
+            <line x1="20" y1="27" x2="20" y2="28.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            <!-- candle 3 (right, highest) -->
+            <line x1="28" y1="7" x2="28" y2="10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            <rect x="26" y="10" width="4" height="15" fill="currentColor" rx="0.6"/>
+            <line x1="28" y1="25" x2="28" y2="26.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Opus Trader</div>
+          <div class="brand-sub">Autonomous AI · Paper</div>
+        </div>
+      </div>
       <div class="brand-theme" id="brand-theme"></div>
     </div>
     <div class="nav-item active" data-target="overview">
