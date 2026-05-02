@@ -6,306 +6,782 @@
 <title>Opus Trader — Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
-  :root {
+  /* =====================================================================
+     THEME SYSTEM — four palettes auto-applied by local time of day.
+       night  22:00 – 05:59   deep navy, cool blue ambient
+       dawn   06:00 – 09:59   warm plum, rose-amber ambient
+       day    10:00 – 16:59   crisp slate, neutral
+       dusk   17:00 – 21:59   burnished amber, sunset ambient
+     Variables shift; structure does not. The accent stays in the gold
+     family across all themes for brand continuity.
+     ================================================================== */
+
+  :root,
+  html[data-theme="day"] {
     --bg-0: #0a0d12;
     --bg-1: #11151c;
     --bg-2: #181d26;
     --bg-3: #222934;
+    --bg-elev: #161b24;
     --border: #2a3140;
+    --border-soft: #1e2430;
     --text: #e6e8ee;
     --text-dim: #8b94a6;
-    --gold: #d4af37;
-    --gold-dim: #8a7426;
+    --text-faint: #5d6577;
+    --accent: #d4af37;
+    --accent-soft: #b89530;
+    --accent-dim: #6b5a1e;
+    --accent-glow: rgba(212,175,55,0.18);
     --green: #2ecc71;
-    --red: #ff5d5d;
-    --blue: #4ea0ff;
-    --purple: #b388ff;
+    --red:   #ff5d5d;
+    --blue:  #4ea0ff;
+    --purple:#b388ff;
+    --pulse: var(--green);
+    --ambient: radial-gradient(ellipse 1200px 700px at 80% -10%, rgba(78,160,255,0.06), transparent 60%),
+               radial-gradient(ellipse 800px 500px at 0% 100%, rgba(212,175,55,0.04), transparent 60%);
+    --theme-label: "Day Session";
   }
+
+  html[data-theme="night"] {
+    --bg-0: #060810;
+    --bg-1: #0c111c;
+    --bg-2: #141a28;
+    --bg-3: #1c2436;
+    --bg-elev: #111726;
+    --border: #232c42;
+    --border-soft: #161d2c;
+    --text: #e8ecf5;
+    --text-dim: #8590a8;
+    --text-faint: #555f74;
+    --accent: #e9c66b;
+    --accent-soft: #c9a953;
+    --accent-dim: #6e5f30;
+    --accent-glow: rgba(233,198,107,0.18);
+    --green: #3fd685;
+    --red:   #ff6b6b;
+    --blue:  #6cb0ff;
+    --purple:#c39dff;
+    --pulse: #6cb0ff;
+    --ambient: radial-gradient(ellipse 1400px 800px at 85% -5%, rgba(108,176,255,0.09), transparent 60%),
+               radial-gradient(ellipse 900px 600px at -5% 100%, rgba(78,90,160,0.06), transparent 60%);
+    --theme-label: "Overnight";
+  }
+
+  html[data-theme="dawn"] {
+    --bg-0: #0d0a10;
+    --bg-1: #14101a;
+    --bg-2: #1d1925;
+    --bg-3: #271f30;
+    --bg-elev: #1a1522;
+    --border: #2e2538;
+    --border-soft: #211a2a;
+    --text: #f1eaf0;
+    --text-dim: #9a8fa1;
+    --text-faint: #696075;
+    --accent: #f0b674;
+    --accent-soft: #d29c5e;
+    --accent-dim: #7a5934;
+    --accent-glow: rgba(240,182,116,0.20);
+    --green: #4dd699;
+    --red:   #ff7077;
+    --blue:  #7fb3ff;
+    --purple:#cba0ff;
+    --pulse: #f0b674;
+    --ambient: radial-gradient(ellipse 1300px 750px at 80% -10%, rgba(240,140,100,0.10), transparent 60%),
+               radial-gradient(ellipse 900px 550px at 10% 100%, rgba(180,100,160,0.06), transparent 60%);
+    --theme-label: "Pre-Market";
+  }
+
+  html[data-theme="dusk"] {
+    --bg-0: #0c0a08;
+    --bg-1: #14110d;
+    --bg-2: #1d1813;
+    --bg-3: #28211a;
+    --bg-elev: #1a1611;
+    --border: #322920;
+    --border-soft: #221c15;
+    --text: #ede5d8;
+    --text-dim: #9a8d76;
+    --text-faint: #6a6051;
+    --accent: #e8b855;
+    --accent-soft: #c79c41;
+    --accent-dim: #735624;
+    --accent-glow: rgba(232,184,85,0.20);
+    --green: #4cd485;
+    --red:   #ff6e60;
+    --blue:  #6eb0ff;
+    --purple:#c89cff;
+    --pulse: #e8954c;
+    --ambient: radial-gradient(ellipse 1400px 800px at 85% -10%, rgba(232,140,64,0.11), transparent 60%),
+               radial-gradient(ellipse 900px 600px at 0% 100%, rgba(180,80,40,0.06), transparent 60%);
+    --theme-label: "After-Hours";
+  }
+
+  /* =====================================================================
+     BASE
+     ================================================================== */
   * { box-sizing: border-box; }
+
   html, body {
     margin: 0; padding: 0;
     background: var(--bg-0);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     font-size: 14px;
+    font-feature-settings: "ss01", "cv11", "tnum";
+    font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.6s ease;
   }
-  a { color: var(--gold); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  code, pre { font-family: "SF Mono", Menlo, Consolas, monospace; }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background: var(--ambient);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.8s ease;
+  }
+  body > * { position: relative; z-index: 1; }
 
-  /* ---------- LAYOUT ---------- */
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--accent); }
+  code, pre {
+    font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    font-feature-settings: "tnum";
+  }
+
+  /* Numeric tabular-nums everywhere financial data appears */
+  .stat-value, .agent-score, td, th { font-variant-numeric: tabular-nums; }
+
+  /* =====================================================================
+     LAYOUT
+     ================================================================== */
   .app {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 248px 1fr;
     min-height: 100vh;
   }
+
   .sidebar {
-    background: var(--bg-1);
-    border-right: 1px solid var(--border);
-    padding: 24px 0;
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+    border-right: 1px solid var(--border-soft);
+    padding: 28px 0 16px;
     position: sticky; top: 0; height: 100vh;
     overflow-y: auto;
+    backdrop-filter: blur(8px);
   }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
   .brand {
-    padding: 0 24px 20px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 12px;
+    padding: 0 26px 22px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 14px;
   }
   .brand-title {
-    font-size: 18px; font-weight: 700; letter-spacing: 0.5px;
-    color: var(--gold);
+    font-family: "Cambria", "Iowan Old Style", "Palatino", Georgia, serif;
+    font-size: 22px; font-weight: 600; letter-spacing: 0.4px;
+    color: var(--accent);
+    text-shadow: 0 0 24px var(--accent-glow);
   }
   .brand-sub {
-    font-size: 11px; color: var(--text-dim);
-    margin-top: 4px; letter-spacing: 0.5px; text-transform: uppercase;
+    font-size: 10px; color: var(--text-faint);
+    margin-top: 6px; letter-spacing: 1.6px; text-transform: uppercase;
+    font-weight: 500;
   }
-  .nav-item {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 24px;
+  .brand-theme {
+    margin-top: 12px;
+    font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase;
     color: var(--text-dim);
-    cursor: pointer;
-    border-left: 3px solid transparent;
-    font-size: 13px;
-    transition: all 0.15s;
-    user-select: none;
-  }
-  .nav-item:hover { color: var(--text); background: var(--bg-2); }
-  .nav-item.active {
-    color: var(--gold);
-    background: var(--bg-2);
-    border-left-color: var(--gold);
-    font-weight: 600;
-  }
-  .nav-icon { width: 18px; text-align: center; opacity: 0.7; }
-
-  .main { padding: 28px 36px 60px; max-width: 1400px; }
-  .topbar {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 28px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
-  }
-  .page-title { font-size: 22px; font-weight: 700; color: var(--text); margin: 0; }
-  .last-updated {
-    font-size: 12px; color: var(--text-dim);
     display: flex; align-items: center; gap: 8px;
   }
-  .pulse {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--green); display: inline-block;
-    box-shadow: 0 0 8px var(--green);
-    animation: pulse 2s infinite;
+  .brand-theme::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
   }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 26px;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    font-size: 13px;
+    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    user-select: none;
+  }
+  .nav-item:hover {
+    color: var(--text);
+    background: linear-gradient(90deg, var(--bg-2), transparent);
+  }
+  .nav-item.active {
+    color: var(--accent);
+    background: linear-gradient(90deg, var(--accent-glow), transparent 70%);
+    border-left-color: var(--accent);
+    font-weight: 500;
+  }
+  .nav-icon {
+    width: 18px; text-align: center; opacity: 0.6;
+    font-size: 14px;
+  }
+  .nav-item.active .nav-icon { opacity: 1; }
+
+  .main {
+    padding: 32px 44px 80px;
+    max-width: 1480px;
+  }
+
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    position: sticky; top: 0;
+    background: linear-gradient(180deg, var(--bg-0) 70%, transparent 100%);
+    backdrop-filter: blur(12px);
+    z-index: 50;
+    padding-top: 4px;
+  }
+  .page-title {
+    font-family: "Cambria", "Iowan Old Style", Georgia, serif;
+    font-size: 24px; font-weight: 500; color: var(--text);
+    margin: 0; letter-spacing: 0.2px;
+  }
+  .last-updated {
+    font-size: 11px; color: var(--text-dim);
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--pulse); display: inline-block;
+    box-shadow: 0 0 10px var(--pulse), 0 0 2px var(--pulse);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.85); }
+  }
 
   .hamburger {
     display: none;
     background: var(--bg-2); border: 1px solid var(--border);
-    color: var(--gold); padding: 6px 12px;
-    border-radius: 4px; cursor: pointer; font-size: 18px;
+    color: var(--accent); padding: 6px 12px;
+    border-radius: 6px; cursor: pointer; font-size: 18px;
   }
 
-  /* ---------- CARDS ---------- */
+  /* =====================================================================
+     CARDS
+     ================================================================== */
   .card {
-    background: var(--bg-1);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+    background: linear-gradient(180deg, var(--bg-1), var(--bg-elev));
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.02) inset,
+      0 4px 20px rgba(0,0,0,0.25);
   }
   .card-title {
-    font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
-    color: var(--text-dim); margin: 0 0 14px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.6px;
+    color: var(--text-dim); margin: 0 0 18px;
     font-weight: 600;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .card-title::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
   }
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
   }
   .stat {
-    background: var(--bg-1);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 6px;
-    padding: 16px 18px;
+    background: linear-gradient(180deg, var(--bg-1), var(--bg-elev));
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .stat::before {
+    content: ""; position: absolute;
+    left: 0; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-dim));
+    opacity: 0.7;
+  }
+  .stat:hover {
+    border-color: var(--border);
+    transform: translateY(-1px);
   }
   .stat-label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
-    color: var(--text-dim); margin-bottom: 6px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--text-dim); margin-bottom: 8px;
+    font-weight: 600;
   }
-  .stat-value { font-size: 24px; font-weight: 700; color: var(--text); }
-  .stat-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .stat-value {
+    font-size: 26px; font-weight: 600; color: var(--text);
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+  }
+  .stat-sub {
+    font-size: 11px; color: var(--text-dim);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
   .pos { color: var(--green) !important; }
   .neg { color: var(--red) !important; }
 
-  /* ---------- TABLES ---------- */
-  .table-wrap { overflow-x: auto; }
+  /* =====================================================================
+     TABLES
+     ================================================================== */
+  .table-wrap { overflow-x: auto; border-radius: 6px; }
   table {
     width: 100%; border-collapse: collapse;
     font-size: 13px;
   }
   th, td {
-    text-align: left; padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
+    text-align: left; padding: 11px 14px;
+    border-bottom: 1px solid var(--border-soft);
     white-space: nowrap;
   }
   th {
     color: var(--text-dim);
     font-weight: 600;
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.2px;
     background: var(--bg-2);
     position: sticky; top: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr {
+    transition: background 0.12s ease;
   }
   tbody tr:hover { background: var(--bg-2); }
+  tbody tr:last-child td { border-bottom: none; }
+
   .badge {
     display: inline-block;
-    padding: 2px 8px; border-radius: 3px;
-    font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+    padding: 3px 9px; border-radius: 4px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.6px;
     text-transform: uppercase;
+    border: 1px solid transparent;
   }
-  .badge-long { background: rgba(78,160,255,0.15); color: var(--blue); }
-  .badge-active { background: rgba(212,175,55,0.15); color: var(--gold); }
-  .badge-crypto { background: rgba(179,136,255,0.15); color: var(--purple); }
-  .badge-cash { background: rgba(139,148,166,0.15); color: var(--text-dim); }
-  .badge-ok { background: rgba(46,204,113,0.15); color: var(--green); }
-  .badge-warn { background: rgba(212,175,55,0.15); color: var(--gold); }
-  .badge-fail { background: rgba(255,93,93,0.15); color: var(--red); }
+  .badge-long   { background: rgba(78,160,255,0.10);  color: var(--blue);    border-color: rgba(78,160,255,0.25); }
+  .badge-active { background: var(--accent-glow);     color: var(--accent);  border-color: rgba(212,175,55,0.30); }
+  .badge-crypto { background: rgba(179,136,255,0.10); color: var(--purple);  border-color: rgba(179,136,255,0.25); }
+  .badge-cash   { background: rgba(139,148,166,0.10); color: var(--text-dim);border-color: rgba(139,148,166,0.20); }
+  .badge-ok     { background: rgba(46,204,113,0.10);  color: var(--green);   border-color: rgba(46,204,113,0.25); }
+  .badge-warn   { background: var(--accent-glow);     color: var(--accent);  border-color: rgba(212,175,55,0.30); }
+  .badge-fail   { background: rgba(255,93,93,0.10);   color: var(--red);     border-color: rgba(255,93,93,0.25); }
 
-  /* ---------- DONUT ---------- */
+  /* =====================================================================
+     DONUT
+     ================================================================== */
   .donut-wrap {
-    display: flex; align-items: center; gap: 32px;
+    display: flex; align-items: center; gap: 40px;
     flex-wrap: wrap;
   }
-  .donut-svg { width: 200px; height: 200px; flex-shrink: 0; }
-  .legend { flex: 1; min-width: 200px; }
+  .donut-svg { width: 220px; height: 220px; flex-shrink: 0; }
+  .legend { flex: 1; min-width: 220px; }
   .legend-item {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
     font-size: 13px;
   }
+  .legend-item:last-child { border-bottom: none; }
   .legend-swatch {
-    width: 12px; height: 12px; border-radius: 2px;
-    display: inline-block; margin-right: 10px;
+    width: 10px; height: 10px; border-radius: 2px;
+    display: inline-block; margin-right: 12px;
+    box-shadow: 0 0 6px currentColor;
   }
 
-  /* ---------- AGENT SCORE BARS ---------- */
+  /* =====================================================================
+     AGENT SCORE BARS
+     ================================================================== */
   .agent-row {
     display: grid;
-    grid-template-columns: 140px 1fr 60px;
+    grid-template-columns: 150px 1fr 60px;
     align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-soft);
   }
-  .agent-name { font-weight: 600; color: var(--text); }
+  .agent-row:last-child { border-bottom: none; }
+  .agent-name {
+    font-weight: 500; color: var(--text);
+    font-size: 13px;
+  }
   .agent-bar {
-    height: 8px; background: var(--bg-3); border-radius: 4px;
+    height: 6px; background: var(--bg-3); border-radius: 3px;
     overflow: hidden; position: relative;
   }
   .agent-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-    border-radius: 4px;
-    transition: width 0.4s;
+    background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+    border-radius: 3px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px var(--accent-glow);
   }
   .agent-score {
-    text-align: right; font-weight: 700; color: var(--gold);
+    text-align: right; font-weight: 600; color: var(--accent);
     font-variant-numeric: tabular-nums;
+    font-size: 14px;
   }
 
-  /* ---------- FILTERS ---------- */
+  /* =====================================================================
+     FILTERS
+     ================================================================== */
   .filter-bar {
     display: flex; gap: 10px; flex-wrap: wrap;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .filter-bar input, .filter-bar select {
     background: var(--bg-2);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-soft);
     color: var(--text);
-    padding: 8px 12px; border-radius: 4px;
-    font-size: 13px;
+    padding: 8px 12px; border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
+  .filter-bar input::placeholder { color: var(--text-faint); }
   .filter-bar input:focus, .filter-bar select:focus {
-    outline: none; border-color: var(--gold);
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
   }
 
-  /* ---------- MARKDOWN ---------- */
+  /* =====================================================================
+     MARKDOWN
+     ================================================================== */
   .md {
-    font-size: 13px; line-height: 1.6;
+    font-size: 13px; line-height: 1.65;
     color: var(--text);
   }
-  .md h1, .md h2, .md h3 { color: var(--gold); margin-top: 1.4em; }
-  .md h1 { font-size: 20px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
-  .md h2 { font-size: 16px; }
-  .md h3 { font-size: 14px; }
-  .md table { margin: 12px 0; }
+  .md h1, .md h2, .md h3 {
+    font-family: "Cambria", "Iowan Old Style", Georgia, serif;
+    color: var(--accent);
+    margin-top: 1.5em;
+    font-weight: 500;
+  }
+  .md h1 {
+    font-size: 20px;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 8px;
+  }
+  .md h2 { font-size: 17px; }
+  .md h3 { font-size: 14px; letter-spacing: 0.3px; }
+  .md table { margin: 14px 0; }
   .md code {
     background: var(--bg-2);
-    padding: 2px 6px; border-radius: 3px;
-    color: var(--gold);
+    padding: 2px 7px; border-radius: 4px;
+    color: var(--accent);
     font-size: 12px;
+    border: 1px solid var(--border-soft);
   }
   .md pre {
     background: var(--bg-2);
-    padding: 12px; border-radius: 4px;
+    padding: 14px; border-radius: 8px;
     overflow-x: auto;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-soft);
   }
-  .md pre code { background: none; color: var(--text); padding: 0; }
+  .md pre code { background: none; color: var(--text); padding: 0; border: none; }
   .md blockquote {
-    border-left: 3px solid var(--gold);
-    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    padding: 8px 14px;
     color: var(--text-dim);
-    margin: 12px 0;
+    margin: 14px 0;
+    background: linear-gradient(90deg, var(--accent-glow), transparent 60%);
+    border-radius: 0 6px 6px 0;
   }
 
   .section { display: none; }
-  .section.active { display: block; }
+  .section.active { display: block; animation: fadeIn 0.35s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+  }
 
   .empty {
-    padding: 40px; text-align: center;
-    color: var(--text-dim);
+    padding: 48px 20px; text-align: center;
+    color: var(--text-faint);
     font-style: italic;
+    font-size: 13px;
   }
   .error {
-    background: rgba(255,93,93,0.1);
-    border: 1px solid var(--red);
+    background: rgba(255,93,93,0.06);
+    border: 1px solid rgba(255,93,93,0.4);
     color: var(--red);
-    padding: 12px 16px; border-radius: 4px;
+    padding: 12px 16px; border-radius: 8px;
     margin-bottom: 16px;
     font-size: 13px;
   }
 
-  /* ---------- MOBILE ---------- */
+  /* =====================================================================
+     SETTINGS PANEL
+     ================================================================== */
+  .icon-btn {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--text-dim);
+    width: 34px; height: 34px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.2s;
+  }
+  .icon-btn:hover {
+    color: var(--accent);
+    border-color: var(--border);
+    background: var(--bg-2);
+    transform: rotate(30deg);
+  }
+
+  .settings-panel {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 360px; max-width: 92vw;
+    background: linear-gradient(180deg, var(--bg-1), var(--bg-elev) 60%, var(--bg-0));
+    border-left: 1px solid var(--border);
+    box-shadow: -12px 0 40px rgba(0,0,0,0.55);
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .settings-panel.open { transform: translateX(0); }
+  .settings-header {
+    padding: 22px 24px 16px;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(180deg, var(--bg-1), transparent);
+  }
+  .settings-header h2 {
+    font-family: "Cambria", "Iowan Old Style", Georgia, serif;
+    font-size: 19px; font-weight: 500; margin: 0;
+    color: var(--text); letter-spacing: 0.2px;
+  }
+  .settings-header .close-btn {
+    background: transparent; border: 1px solid var(--border-soft);
+    color: var(--text-dim);
+    width: 30px; height: 30px;
+    border-radius: 6px; cursor: pointer;
+    font-size: 18px; line-height: 1;
+    transition: all 0.15s;
+  }
+  .settings-header .close-btn:hover {
+    color: var(--accent); border-color: var(--border);
+  }
+  .settings-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 24px 28px;
+  }
+  .settings-body::-webkit-scrollbar { width: 6px; }
+  .settings-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .settings-group { margin-bottom: 26px; }
+  .settings-group > label {
+    display: block;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--text-dim); font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .settings-group .hint {
+    font-size: 11px; color: var(--text-faint);
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+
+  .seg {
+    display: flex;
+    background: var(--bg-2);
+    border: 1px solid var(--border-soft);
+    border-radius: 7px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .seg button {
+    flex: 1;
+    background: transparent; border: none;
+    color: var(--text-dim);
+    padding: 7px 6px;
+    font-size: 11px;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    letter-spacing: 0.3px;
+    transition: color 0.15s, background 0.15s;
+  }
+  .seg button:hover:not(.active) { color: var(--text); }
+  .seg button.active {
+    background: var(--accent-glow);
+    color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-glow) inset;
+  }
+
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 2px var(--bg-1);
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+  }
+  .swatch:hover { transform: scale(1.1); }
+  .swatch.active {
+    box-shadow: 0 0 0 2px var(--bg-1), 0 0 0 4px currentColor;
+  }
+  .swatch-name {
+    margin-top: 8px;
+    font-size: 11px; color: var(--text-dim);
+    letter-spacing: 0.3px;
+  }
+
+  .toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 13px; color: var(--text);
+    cursor: pointer;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-weight: 400 !important;
+  }
+  .toggle:last-child { border-bottom: none; }
+  .toggle input { display: none; }
+  .toggle .switch {
+    position: relative;
+    width: 36px; height: 20px;
+    background: var(--bg-3);
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .toggle .switch::after {
+    content: "";
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 16px; height: 16px;
+    background: var(--text-dim);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .toggle input:checked + .switch {
+    background: var(--accent-glow);
+  }
+  .toggle input:checked + .switch::after {
+    transform: translateX(16px);
+    background: var(--accent);
+  }
+
+  .settings-select {
+    width: 100%;
+    background: var(--bg-2);
+    border: 1px solid var(--border-soft);
+    color: var(--text);
+    padding: 9px 12px; border-radius: 7px;
+    font-size: 13px; font-family: inherit;
+  }
+  .settings-select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .reset-btn {
+    margin-top: 8px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 12px; font-family: inherit;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .reset-btn:hover {
+    color: var(--red);
+    border-color: var(--red);
+    background: rgba(255,93,93,0.05);
+  }
+
+  .panel-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    z-index: 199;
+  }
+  .panel-backdrop.open { display: block; }
+
+  /* Density: compact */
+  html[data-density="compact"] .stat { padding: 12px 16px; }
+  html[data-density="compact"] .stat-value { font-size: 22px; }
+  html[data-density="compact"] .card { padding: 16px 18px; margin-bottom: 14px; }
+  html[data-density="compact"] th,
+  html[data-density="compact"] td { padding: 7px 10px; font-size: 12px; }
+  html[data-density="compact"] .nav-item { padding: 8px 26px; font-size: 12px; }
+  html[data-density="compact"] .stats-grid { gap: 10px; margin-bottom: 14px; }
+  html[data-density="compact"] .agent-row { padding: 8px 0; }
+  html[data-density="compact"] .main { padding: 24px 32px 60px; }
+
+  /* Motion: reduced */
+  html[data-motion="reduced"] *,
+  html[data-motion="reduced"] *::before,
+  html[data-motion="reduced"] *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+  html[data-motion="reduced"] .pulse { animation: none; opacity: 1; }
+
+  /* Ambient: off */
+  html[data-ambient="off"] body::before { display: none; }
+
+  /* =====================================================================
+     MOBILE
+     ================================================================== */
   @media (max-width: 900px) {
     .app { grid-template-columns: 1fr; }
     .sidebar {
       position: fixed; left: 0; top: 0;
-      width: 240px; z-index: 100;
+      width: 248px; z-index: 100;
       transform: translateX(-100%);
-      transition: transform 0.25s;
-      box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 4px 0 32px rgba(0,0,0,0.6);
     }
     .sidebar.open { transform: translateX(0); }
-    .main { padding: 20px 16px 40px; }
+    .main { padding: 22px 18px 60px; }
     .hamburger { display: inline-block; }
-    .page-title { font-size: 18px; }
-    .stat-value { font-size: 20px; }
+    .page-title { font-size: 20px; }
+    .stat-value { font-size: 22px; }
     .donut-wrap { flex-direction: column; align-items: flex-start; }
     .agent-row { grid-template-columns: 110px 1fr 50px; gap: 8px; }
-    th, td { padding: 8px 10px; }
+    th, td { padding: 9px 11px; }
   }
   .backdrop {
     display: none;
     position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(2px);
     z-index: 99;
   }
   .backdrop.open { display: block; }
@@ -315,8 +791,9 @@
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <div class="brand-title">OPUS TRADER</div>
+      <div class="brand-title">Opus Trader</div>
       <div class="brand-sub">Autonomous AI · Paper</div>
+      <div class="brand-theme" id="brand-theme"></div>
     </div>
     <div class="nav-item active" data-target="overview">
       <span class="nav-icon">◆</span> Portfolio Overview
@@ -341,6 +818,67 @@
     </div>
   </aside>
   <div class="backdrop" id="backdrop"></div>
+  <div class="panel-backdrop" id="panel-backdrop"></div>
+
+  <aside class="settings-panel" id="settings-panel" aria-label="Settings">
+    <div class="settings-header">
+      <h2>Customize</h2>
+      <button class="close-btn" id="settings-close" aria-label="Close settings">×</button>
+    </div>
+    <div class="settings-body">
+      <div class="settings-group">
+        <label>Theme</label>
+        <div class="seg" id="theme-seg">
+          <button data-theme-pref="auto">Auto</button>
+          <button data-theme-pref="night">Night</button>
+          <button data-theme-pref="dawn">Dawn</button>
+          <button data-theme-pref="day">Day</button>
+          <button data-theme-pref="dusk">Dusk</button>
+        </div>
+        <p class="hint">Auto follows your local time of day.</p>
+      </div>
+
+      <div class="settings-group">
+        <label>Accent color</label>
+        <div class="swatches" id="accent-swatches"></div>
+        <p class="hint" id="accent-name"></p>
+      </div>
+
+      <div class="settings-group">
+        <label>Density</label>
+        <div class="seg" id="density-seg">
+          <button data-density-pref="comfortable">Comfortable</button>
+          <button data-density-pref="compact">Compact</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <label>Display</label>
+        <label class="toggle">
+          <span>Ambient glow</span>
+          <input type="checkbox" id="opt-ambient" />
+          <span class="switch"></span>
+        </label>
+        <label class="toggle">
+          <span>Reduce motion</span>
+          <input type="checkbox" id="opt-motion" />
+          <span class="switch"></span>
+        </label>
+      </div>
+
+      <div class="settings-group">
+        <label>Auto-refresh data</label>
+        <select class="settings-select" id="opt-refresh">
+          <option value="60000">Every minute</option>
+          <option value="300000">Every 5 minutes</option>
+          <option value="900000">Every 15 minutes</option>
+          <option value="0">Off (manual)</option>
+        </select>
+      </div>
+
+      <button class="reset-btn" id="settings-reset">Reset to defaults</button>
+    </div>
+  </aside>
 
   <main class="main">
     <div class="topbar">
@@ -348,9 +886,17 @@
         <button class="hamburger" id="hamburger">☰</button>
         <h1 class="page-title" id="page-title">Portfolio Overview</h1>
       </div>
-      <div class="last-updated">
-        <span class="pulse"></span>
-        <span id="last-updated-text">—</span>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="last-updated">
+          <span class="pulse"></span>
+          <span id="last-updated-text">—</span>
+        </div>
+        <button class="icon-btn" id="settings-btn" title="Customize dashboard" aria-label="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
       </div>
     </div>
 
@@ -525,14 +1071,20 @@
 </div>
 
 <script>
-const REFRESH_MS = 5 * 60 * 1000;
 const DATA_URL = "./dashboard-data.json";
-const BUCKET_COLORS = {
-  "long-term": "#4ea0ff",
-  "active":    "#d4af37",
-  "crypto":    "#b388ff",
-  "cash":      "#8b94a6"
-};
+
+// Bucket colors are theme-aware: read from CSS custom props at render time
+function bucketColor(key) {
+  const cs = getComputedStyle(document.documentElement);
+  const map = {
+    "long-term": cs.getPropertyValue("--blue").trim()    || "#4ea0ff",
+    "active":    cs.getPropertyValue("--accent").trim()  || "#d4af37",
+    "crypto":    cs.getPropertyValue("--purple").trim()  || "#b388ff",
+    "cash":      cs.getPropertyValue("--text-dim").trim()|| "#8b94a6"
+  };
+  return map[key] || "#888";
+}
+
 const AGENT_KEYS = ["fundamentals","technical","sentiment","macro","risk","tech_analyst"];
 const AGENT_LABELS = {
   fundamentals: "Fundamentals",
@@ -545,7 +1097,204 @@ const AGENT_LABELS = {
 
 let DATA = null;
 
-// ---------- NAV ----------
+// =========================================================================
+// SETTINGS — persisted to localStorage, applied on load, editable via panel.
+// Theme: "auto" follows local hour; otherwise locked to the named palette.
+// Accent: overrides the theme's gold family with a chosen accent palette.
+// Density / motion / ambient / refresh are independent toggles.
+// =========================================================================
+const SETTINGS_KEY = "opus-dashboard-settings";
+const DEFAULT_SETTINGS = {
+  theme: "auto",
+  accent: "match",
+  density: "comfortable",
+  ambient: true,
+  reduceMotion: false,
+  refreshMs: 5 * 60 * 1000
+};
+
+// "match" is a sentinel — it clears inline overrides so each theme's natural
+// accent (gold for day, warm amber for night/dusk, rose-gold for dawn) shows
+// through. The named presets below force a fixed accent across all themes.
+const ACCENT_PRESETS = {
+  match:    { name: "Match theme", match: true },
+  gold:     { name: "Gold",     accent: "#d4af37", soft: "#b89530", dim: "#6b5a1e", glow: "rgba(212,175,55,0.18)" },
+  amber:    { name: "Amber",    accent: "#f0a830", soft: "#c98821", dim: "#6e4d12", glow: "rgba(240,168,48,0.20)" },
+  sapphire: { name: "Sapphire", accent: "#5aa3ff", soft: "#3d83df", dim: "#1f4374", glow: "rgba(90,163,255,0.22)" },
+  emerald:  { name: "Emerald",  accent: "#4ad295", soft: "#38a474", dim: "#1a5740", glow: "rgba(74,210,149,0.20)" },
+  rose:     { name: "Rose",     accent: "#f07896", soft: "#d05a78", dim: "#6e2c3c", glow: "rgba(240,120,150,0.22)" },
+  violet:   { name: "Violet",   accent: "#b388ff", soft: "#9469db", dim: "#4f3870", glow: "rgba(179,136,255,0.22)" }
+};
+
+let SETTINGS = loadSettings();
+let refreshTimer = null;
+
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    if (!raw) return { ...DEFAULT_SETTINGS };
+    return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+  } catch { return { ...DEFAULT_SETTINGS }; }
+}
+function saveSettings() {
+  try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS)); } catch {}
+}
+
+function pickThemeForHour(h) {
+  if (h >= 22 || h < 6) return "night";
+  if (h < 10)            return "dawn";
+  if (h < 17)            return "day";
+  return "dusk";
+}
+function resolvedTheme() {
+  return SETTINGS.theme === "auto" ? pickThemeForHour(new Date().getHours()) : SETTINGS.theme;
+}
+function applyTheme() {
+  const theme = resolvedTheme();
+  document.documentElement.setAttribute("data-theme", theme);
+  const label = SETTINGS.theme === "auto"
+    ? getComputedStyle(document.documentElement)
+        .getPropertyValue("--theme-label").trim().replace(/^"|"$/g, "")
+    : theme[0].toUpperCase() + theme.slice(1) + " (locked)";
+  const el = document.getElementById("brand-theme");
+  if (el) el.textContent = label || theme;
+}
+function applyAccent() {
+  const a = ACCENT_PRESETS[SETTINGS.accent] || ACCENT_PRESETS.match;
+  const root = document.documentElement.style;
+  if (a.match) {
+    root.removeProperty("--accent");
+    root.removeProperty("--accent-soft");
+    root.removeProperty("--accent-dim");
+    root.removeProperty("--accent-glow");
+    return;
+  }
+  root.setProperty("--accent",       a.accent);
+  root.setProperty("--accent-soft",  a.soft);
+  root.setProperty("--accent-dim",   a.dim);
+  root.setProperty("--accent-glow",  a.glow);
+}
+function applyDensity() {
+  document.documentElement.setAttribute("data-density", SETTINGS.density);
+}
+function applyAmbient() {
+  document.documentElement.setAttribute("data-ambient", SETTINGS.ambient ? "on" : "off");
+}
+function applyMotion() {
+  document.documentElement.setAttribute("data-motion", SETTINGS.reduceMotion ? "reduced" : "normal");
+}
+function applyRefresh() {
+  if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; }
+  if (SETTINGS.refreshMs > 0) refreshTimer = setInterval(load, SETTINGS.refreshMs);
+}
+function applyAll() {
+  applyTheme(); applyAccent(); applyDensity(); applyAmbient(); applyMotion();
+  // Re-render donut so swatches pick up the new accent palette.
+  if (DATA) renderOverview(DATA);
+}
+
+applyAll();
+applyRefresh();
+// Re-check auto theme every minute so a boundary crossing (e.g. 16:59 → 17:00) updates live.
+setInterval(() => { if (SETTINGS.theme === "auto") applyTheme(); }, 60 * 1000);
+
+// =========================================================================
+// SETTINGS PANEL UI
+// =========================================================================
+function buildAccentSwatches() {
+  const wrap = document.getElementById("accent-swatches");
+  wrap.innerHTML = Object.entries(ACCENT_PRESETS).map(([key, a]) => {
+    const bg = a.match
+      ? "conic-gradient(from 0deg, #d4af37, #f07896, #b388ff, #5aa3ff, #4ad295, #f0a830, #d4af37)"
+      : a.accent;
+    const border = a.match ? "#d4af37" : a.accent;
+    return `<div class="swatch ${key === SETTINGS.accent ? "active" : ""}"
+         data-accent="${key}"
+         title="${a.name}"
+         style="background:${bg};color:${border}"></div>`;
+  }).join("");
+  document.getElementById("accent-name").textContent =
+    (ACCENT_PRESETS[SETTINGS.accent] || ACCENT_PRESETS.match).name;
+  wrap.querySelectorAll(".swatch").forEach(s => {
+    s.addEventListener("click", () => {
+      SETTINGS.accent = s.dataset.accent;
+      saveSettings();
+      buildAccentSwatches();
+      applyAccent();
+      if (DATA) renderOverview(DATA);
+    });
+  });
+}
+function syncSettingsUI() {
+  document.querySelectorAll("#theme-seg button").forEach(b =>
+    b.classList.toggle("active", b.dataset.themePref === SETTINGS.theme));
+  document.querySelectorAll("#density-seg button").forEach(b =>
+    b.classList.toggle("active", b.dataset.densityPref === SETTINGS.density));
+  document.getElementById("opt-ambient").checked = !!SETTINGS.ambient;
+  document.getElementById("opt-motion").checked = !!SETTINGS.reduceMotion;
+  document.getElementById("opt-refresh").value = String(SETTINGS.refreshMs);
+  buildAccentSwatches();
+}
+
+document.getElementById("settings-btn").addEventListener("click", () => {
+  syncSettingsUI();
+  document.getElementById("settings-panel").classList.add("open");
+  document.getElementById("panel-backdrop").classList.add("open");
+});
+function closeSettings() {
+  document.getElementById("settings-panel").classList.remove("open");
+  document.getElementById("panel-backdrop").classList.remove("open");
+}
+document.getElementById("settings-close").addEventListener("click", closeSettings);
+document.getElementById("panel-backdrop").addEventListener("click", closeSettings);
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeSettings();
+});
+
+document.querySelectorAll("#theme-seg button").forEach(b => {
+  b.addEventListener("click", () => {
+    SETTINGS.theme = b.dataset.themePref;
+    saveSettings();
+    syncSettingsUI();
+    applyTheme();
+    if (DATA) renderOverview(DATA);
+  });
+});
+document.querySelectorAll("#density-seg button").forEach(b => {
+  b.addEventListener("click", () => {
+    SETTINGS.density = b.dataset.densityPref;
+    saveSettings();
+    syncSettingsUI();
+    applyDensity();
+  });
+});
+document.getElementById("opt-ambient").addEventListener("change", e => {
+  SETTINGS.ambient = e.target.checked;
+  saveSettings(); applyAmbient();
+});
+document.getElementById("opt-motion").addEventListener("change", e => {
+  SETTINGS.reduceMotion = e.target.checked;
+  saveSettings(); applyMotion();
+});
+document.getElementById("opt-refresh").addEventListener("change", e => {
+  SETTINGS.refreshMs = parseInt(e.target.value, 10) || 0;
+  saveSettings(); applyRefresh();
+});
+document.getElementById("settings-reset").addEventListener("click", () => {
+  SETTINGS = { ...DEFAULT_SETTINGS };
+  saveSettings();
+  // Clear any inline overrides set by previous accent presets so the theme's
+  // natural accent shows through. applyAccent will then no-op for "match".
+  const root = document.documentElement.style;
+  ["--accent", "--accent-soft", "--accent-dim", "--accent-glow"].forEach(p => root.removeProperty(p));
+  syncSettingsUI();
+  applyAll();
+  applyRefresh();
+});
+
+// =========================================================================
+// NAV
+// =========================================================================
 document.querySelectorAll(".nav-item").forEach(el => {
   el.addEventListener("click", () => {
     const t = el.dataset.target;
@@ -566,7 +1315,9 @@ document.getElementById("backdrop").addEventListener("click", () => {
   document.getElementById("backdrop").classList.remove("open");
 });
 
-// ---------- HELPERS ----------
+// =========================================================================
+// HELPERS
+// =========================================================================
 const fmtMoney = (n) => {
   if (n === null || n === undefined || isNaN(n)) return "—";
   const sign = n < 0 ? "-" : "";
@@ -594,7 +1345,9 @@ const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({
   "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
 }[c]));
 
-// ---------- RENDER: OVERVIEW ----------
+// =========================================================================
+// RENDER: OVERVIEW
+// =========================================================================
 function renderOverview(d) {
   const p = d.portfolio || {};
   document.getElementById("ov-equity").textContent = fmtMoney(p.total_equity);
@@ -618,7 +1371,11 @@ function renderOverview(d) {
   document.getElementById("ov-spx-sub").textContent = p.benchmark_gap_pct != null
     ? (p.benchmark_gap_pct >= 0 ? "ahead of SPX" : "behind SPX") : "";
 
-  // Donut
+  // Donut — colors pulled from current theme so it harmonizes after a shift.
+  const cs = getComputedStyle(document.documentElement);
+  const textCol  = cs.getPropertyValue("--text").trim()   || "#e6e8ee";
+  const accentCol = cs.getPropertyValue("--accent").trim() || "#d4af37";
+
   const buckets = p.buckets || [];
   const total = buckets.reduce((s,b) => s + (b.value || 0), 0) || 1;
   let svg = "";
@@ -627,25 +1384,27 @@ function renderOverview(d) {
   const radius = 15.91549430918954;
   buckets.forEach(b => {
     const pct = (b.value || 0) / total * 100;
-    const color = BUCKET_COLORS[b.key] || "#888";
+    const color = bucketColor(b.key);
     svg += `<circle cx="21" cy="21" r="${radius}"
-      fill="transparent" stroke="${color}" stroke-width="6"
+      fill="transparent" stroke="${color}" stroke-width="5"
       stroke-dasharray="${pct} ${100-pct}"
       stroke-dashoffset="${100 - cumulative + 25}"
       transform="rotate(-90 21 21)"></circle>`;
     cumulative += pct;
     legend += `<div class="legend-item">
-      <span><span class="legend-swatch" style="background:${color}"></span>${escapeHtml(b.label)}</span>
+      <span><span class="legend-swatch" style="background:${color};color:${color}"></span>${escapeHtml(b.label)}</span>
       <span><strong>${pct.toFixed(1)}%</strong> &nbsp; <span style="color:var(--text-dim)">${fmtMoney(b.value)}</span></span>
     </div>`;
   });
   document.getElementById("donut").innerHTML = svg
-    + `<text x="21" y="21" text-anchor="middle" fill="${"#e6e8ee"}" font-size="6" dy="0">Total</text>
-       <text x="21" y="21" text-anchor="middle" fill="${"#d4af37"}" font-size="5" dy="6" font-weight="700">${(total/1000).toFixed(1)}K</text>`;
+    + `<text x="21" y="20" text-anchor="middle" fill="${textCol}" font-size="3.2" letter-spacing="0.4" style="text-transform:uppercase;font-weight:600;opacity:0.55">Total</text>
+       <text x="21" y="25" text-anchor="middle" fill="${accentCol}" font-size="5.2" font-weight="600">$${(total/1000).toFixed(1)}K</text>`;
   document.getElementById("donut-legend").innerHTML = legend || `<div class="empty" style="padding:0">No bucket data.</div>`;
 }
 
-// ---------- RENDER: POSITIONS ----------
+// =========================================================================
+// RENDER: POSITIONS
+// =========================================================================
 function renderPositions(d) {
   const rows = d.positions || [];
   const tbody = document.querySelector("#positions-table tbody");
@@ -665,12 +1424,14 @@ function renderPositions(d) {
       <td class="${cls}">${fmtPct(pnlPct, true)}</td>
       <td>${fmtMoney(r.stop_loss)}</td>
       <td><span style="color:var(--text-dim);font-size:11px">${escapeHtml(r.setup || "—")}</span></td>
-      <td><strong style="color:var(--gold)">${fmtNum(r.agent_average, 1)}</strong></td>
+      <td><strong style="color:var(--accent)">${fmtNum(r.agent_average, 1)}</strong></td>
     </tr>`;
   }).join("");
 }
 
-// ---------- RENDER: TRADES ----------
+// =========================================================================
+// RENDER: TRADES
+// =========================================================================
 function renderTrades(d) {
   const all = d.trades || [];
   const stats = d.trade_stats || {};
@@ -718,7 +1479,7 @@ function renderTrades(d) {
         <td>${fmtNum(a.macro, 0)}</td>
         <td>${fmtNum(a.risk, 0)}</td>
         <td>${fmtNum(a.tech_analyst, 0)}</td>
-        <td><strong style="color:var(--gold)">${fmtNum(t.agent_average, 1)}</strong></td>
+        <td><strong style="color:var(--accent)">${fmtNum(t.agent_average, 1)}</strong></td>
         <td class="${colorClass(result)}">${result != null ? fmtPct(result, true) : "—"}</td>
         <td><span class="badge ${decBadge}">${escapeHtml(decision)}</span></td>
       </tr>`;
@@ -732,7 +1493,9 @@ function renderTrades(d) {
   draw();
 }
 
-// ---------- RENDER: ROUTINES ----------
+// =========================================================================
+// RENDER: ROUTINES
+// =========================================================================
 function renderRoutines(d) {
   const rows = d.routines || [];
   const tbody = document.querySelector("#routines-table tbody");
@@ -753,7 +1516,9 @@ function renderRoutines(d) {
   }).join("");
 }
 
-// ---------- RENDER: AGENTS ----------
+// =========================================================================
+// RENDER: AGENTS
+// =========================================================================
 function renderAgents(d) {
   const a = d.agent_scorecard || {};
   document.getElementById("ag-accurate").textContent = a.most_accurate || "—";
@@ -789,7 +1554,9 @@ function renderAgents(d) {
   }).join("");
 }
 
-// ---------- RENDER: MEMORY ----------
+// =========================================================================
+// RENDER: MEMORY
+// =========================================================================
 function renderMemory(d) {
   const m = d.memory || {};
   document.getElementById("mem-recent").innerHTML = m.recent_lessons_md
@@ -803,7 +1570,9 @@ function renderMemory(d) {
     : `<div class="empty" style="padding:0">CLAUDE.md not loaded.</div>`;
 }
 
-// ---------- RENDER: MARKET ----------
+// =========================================================================
+// RENDER: MARKET
+// =========================================================================
 function renderMarket(d) {
   const m = d.market || {};
   document.getElementById("mk-mode").textContent = m.mode || "—";
@@ -822,7 +1591,7 @@ function renderMarket(d) {
   document.querySelector("#watchlist-table tbody").innerHTML = wl.map(w => `<tr>
     <td><strong>${escapeHtml(w.symbol)}</strong></td>
     <td>${bucketBadge(w.bucket)}</td>
-    <td><strong style="color:var(--gold)">${fmtNum(w.score, 0)}</strong></td>
+    <td><strong style="color:var(--accent)">${fmtNum(w.score, 0)}</strong></td>
     <td>${escapeHtml(w.action || "—")}</td>
     <td style="white-space:normal;color:var(--text-dim);font-size:12px;max-width:360px">${escapeHtml(w.notes || "")}</td>
   </tr>`).join("") || `<tr><td colspan="5" class="empty" style="padding:16px">No watchlist.</td></tr>`;
@@ -832,7 +1601,9 @@ function renderMarket(d) {
     : `<div class="empty" style="padding:0">No macro notes.</div>`;
 }
 
-// ---------- LOAD ----------
+// =========================================================================
+// LOAD
+// =========================================================================
 async function fetchText(url) {
   try {
     const r = await fetch(url + "?t=" + Date.now(), { cache: "no-store" });
@@ -875,7 +1646,7 @@ async function load() {
 }
 
 load();
-setInterval(load, REFRESH_MS);
+// Refresh interval is governed by SETTINGS.refreshMs via applyRefresh().
 </script>
 </body>
 </html>
