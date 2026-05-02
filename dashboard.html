@@ -283,6 +283,69 @@
     font-size: 24px; font-weight: 500; color: var(--text);
     margin: 0; letter-spacing: 0.2px;
   }
+  .topbar-search {
+    position: relative;
+    width: 340px; max-width: 50vw;
+  }
+  .topbar-search input {
+    width: 100%;
+    background: var(--bg-2);
+    border: 1px solid var(--border-soft);
+    color: var(--text);
+    padding: 8px 44px 8px 34px;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  }
+  .topbar-search input:focus {
+    border-color: var(--accent);
+    background: var(--bg-1);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .topbar-search .search-icon {
+    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+    color: var(--text-dim); pointer-events: none;
+    width: 14px; height: 14px;
+  }
+  .topbar-search .search-kbd {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    font-size: 10px; color: var(--text-dim);
+    border: 1px solid var(--border-soft); border-radius: 4px;
+    padding: 1px 6px;
+    pointer-events: none;
+    font-family: "SF Mono", "Menlo", monospace;
+    letter-spacing: 0.5px;
+  }
+  .search-results {
+    display: none;
+    position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.45);
+    z-index: 60; overflow: hidden;
+    max-height: 360px; overflow-y: auto;
+  }
+  .search-results.open { display: block; }
+  .search-result {
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; border-bottom: 1px solid var(--border-soft);
+    font-size: 13px;
+    color: var(--text);
+  }
+  .search-result:last-child { border-bottom: none; }
+  .search-result:hover, .search-result.active {
+    background: var(--bg-2);
+    color: var(--accent);
+  }
+  .search-result-icon { width: 18px; opacity: 0.6; text-align: center; flex-shrink: 0; }
+  .search-result.active .search-result-icon { opacity: 1; }
+  .search-result-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .search-result-hint { font-size: 11px; color: var(--text-dim); flex-shrink: 0; }
+  .search-empty {
+    padding: 18px; text-align: center; color: var(--text-dim); font-size: 12px;
+  }
   .last-updated {
     font-size: 11px; color: var(--text-dim);
     display: flex; align-items: center; gap: 10px;
@@ -806,6 +869,9 @@
     .main { padding: 22px 18px 60px; }
     .hamburger { display: inline-block; }
     .page-title { font-size: 20px; }
+    .topbar-search { width: 200px; }
+    .topbar-search .search-kbd { display: none; }
+    .topbar-search input { padding-right: 12px; }
     .stat-value { font-size: 22px; }
     .donut-wrap { flex-direction: column; align-items: flex-start; }
     .agent-row { grid-template-columns: 110px 1fr 50px; gap: 8px; }
@@ -1098,6 +1164,15 @@
       <div style="display:flex;align-items:center;gap:14px;">
         <button class="hamburger" id="hamburger">☰</button>
         <h1 class="page-title" id="page-title">Portfolio Overview</h1>
+      </div>
+      <div class="topbar-search" id="topbar-search">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search sections, tickers..." autocomplete="off" spellcheck="false" aria-label="Search dashboard"/>
+        <span class="search-kbd" id="search-kbd">⌘K</span>
+        <div class="search-results" id="search-results" role="listbox"></div>
       </div>
     </div>
 
@@ -1609,6 +1684,145 @@ document.getElementById("backdrop").addEventListener("click", () => {
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("backdrop").classList.remove("open");
 });
+
+// =========================================================================
+// TOPBAR SEARCH — section nav + ticker deep-jumps. ⌘K / Ctrl+K to focus.
+// =========================================================================
+const SEARCH_SECTIONS = [
+  { target: "overview",  icon: "◆", label: "Portfolio Overview", hint: "equity, cash, allocation" },
+  { target: "positions", icon: "▤", label: "Open Positions",     hint: "holdings + stops" },
+  { target: "trades",    icon: "≡", label: "Trade Log",          hint: "entries, exits, agent scores" },
+  { target: "routines",  icon: "◴", label: "Routine Status",     hint: "pre-market, open, close..." },
+  { target: "agents",    icon: "◎", label: "Agent Scorecard",    hint: "6-agent calibration" },
+  { target: "memory",    icon: "▣", label: "Memory & Strategy",  hint: "lessons + portfolio.md" },
+  { target: "market",    icon: "◈", label: "Market Overview",    hint: "SPX, BTC, sectors" },
+  { target: "suggest",   icon: "✎", label: "Submit Suggestion",  hint: "open a GitHub issue" },
+];
+let SEARCH_HITS = [];
+
+function buildSearchHits(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return SEARCH_SECTIONS.slice();
+  const hits = SEARCH_SECTIONS.filter(s =>
+    s.label.toLowerCase().includes(q) || s.hint.toLowerCase().includes(q));
+  if (/^[a-z]{1,5}$/i.test(q)) {
+    const sym = q.toUpperCase();
+    const hasPos = (DATA?.positions || []).some(p => p.symbol === sym);
+    const hasTrade = (DATA?.trades || []).some(t => (t.symbol || "").toUpperCase() === sym);
+    if (hasPos) hits.push({ target: "positions", icon: "▤", label: `Position: ${sym}`, hint: "open holding", focusSymbol: sym });
+    if (hasTrade) hits.push({ target: "trades", icon: "≡", label: `Trade Log: ${sym}`, hint: "filter trades", focusSymbol: sym });
+    if (!hasPos && !hasTrade) hits.push({ target: "trades", icon: "≡", label: `Search trades for ${sym}`, hint: "no current match", focusSymbol: sym });
+  }
+  return hits;
+}
+
+function renderSearchResults() {
+  const list = document.getElementById("search-results");
+  const hits = buildSearchHits(document.getElementById("search-input").value);
+  SEARCH_HITS = hits;
+  if (hits.length === 0) {
+    list.innerHTML = '<div class="search-empty">No matches</div>';
+  } else {
+    list.innerHTML = hits.map((h, i) =>
+      `<div class="search-result${i === 0 ? ' active' : ''}" data-idx="${i}" role="option">
+        <span class="search-result-icon">${h.icon}</span>
+        <span class="search-result-label">${escapeHtml(h.label)}</span>
+        <span class="search-result-hint">${escapeHtml(h.hint || '')}</span>
+      </div>`).join('');
+  }
+  list.classList.add('open');
+}
+
+function navigateToHit(hit) {
+  if (!hit) return;
+  const navItem = document.querySelector(`.nav-item[data-target="${hit.target}"]`);
+  if (navItem) navItem.click();
+  if (hit.focusSymbol) {
+    if (hit.target === 'trades') {
+      const f = document.getElementById('filter-symbol');
+      if (f) { f.value = hit.focusSymbol; f.dispatchEvent(new Event('input', { bubbles: true })); f.dispatchEvent(new Event('change', { bubbles: true })); }
+    } else if (hit.target === 'positions') {
+      setTimeout(() => {
+        const tr = [...document.querySelectorAll('#positions-table tbody tr')]
+          .find(r => r.firstElementChild && r.firstElementChild.textContent.trim() === hit.focusSymbol);
+        if (tr) {
+          tr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          tr.style.transition = 'background 0.4s';
+          const orig = tr.style.background;
+          tr.style.background = 'var(--accent-glow)';
+          setTimeout(() => { tr.style.background = orig; }, 1400);
+        }
+      }, 80);
+    }
+  }
+  closeSearch();
+}
+
+function closeSearch() {
+  const input = document.getElementById('search-input');
+  const list  = document.getElementById('search-results');
+  list.classList.remove('open');
+  input.blur();
+  input.value = '';
+}
+
+(function initSearch() {
+  const input = document.getElementById('search-input');
+  const list  = document.getElementById('search-results');
+  if (!input) return;
+
+  // Platform-aware kbd hint
+  const isMac = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || "");
+  const kbd = document.getElementById('search-kbd');
+  if (kbd) kbd.textContent = isMac ? "⌘K" : "Ctrl K";
+
+  input.addEventListener('focus', renderSearchResults);
+  input.addEventListener('input', renderSearchResults);
+  input.addEventListener('keydown', (e) => {
+    const items = [...list.querySelectorAll('.search-result')];
+    let idx = items.findIndex(el => el.classList.contains('active'));
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      idx = items.length ? Math.min(items.length - 1, idx + 1) : -1;
+      items.forEach((el, i) => el.classList.toggle('active', i === idx));
+      items[idx]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      idx = items.length ? Math.max(0, idx - 1) : -1;
+      items.forEach((el, i) => el.classList.toggle('active', i === idx));
+      items[idx]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      navigateToHit(SEARCH_HITS[idx >= 0 ? idx : 0]);
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closeSearch();
+    }
+  });
+
+  list.addEventListener('mousemove', (e) => {
+    const row = e.target.closest('.search-result');
+    if (!row) return;
+    list.querySelectorAll('.search-result').forEach(r => r.classList.toggle('active', r === row));
+  });
+  list.addEventListener('click', (e) => {
+    const row = e.target.closest('.search-result');
+    if (!row) return;
+    navigateToHit(SEARCH_HITS[parseInt(row.dataset.idx, 10)]);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#topbar-search')) list.classList.remove('open');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
+  });
+})();
 
 // =========================================================================
 // SUGGESTION FORM — opens prefilled GitHub Issue. The repo's routines
