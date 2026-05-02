@@ -504,6 +504,67 @@
   }
 
   /* =====================================================================
+     PERFORMANCE CHARTS
+     ================================================================== */
+  .perf-chart {
+    height: 280px;
+    width: 100%;
+    color: var(--text);
+  }
+  .perf-chart svg { width: 100%; height: 100%; display: block; }
+  .perf-chart-legend {
+    display: flex; flex-wrap: wrap; gap: 22px; align-items: center;
+    margin-top: 14px; font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.4px;
+  }
+  .perf-legend-item { display: flex; align-items: center; gap: 8px; }
+  .perf-legend-swatch {
+    width: 12px; height: 3px; border-radius: 2px;
+    display: inline-block;
+  }
+  .perf-current {
+    font-family: "Cambria", "Iowan Old Style", Georgia, serif;
+    font-weight: 600; color: var(--text);
+    font-size: 14px; letter-spacing: 0;
+    text-transform: none;
+    margin-left: 4px;
+  }
+  .perf-empty {
+    padding: 90px 20px; text-align: center; color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  .spark-card {
+    display: grid; grid-template-columns: 200px 1fr;
+    align-items: center; gap: 32px;
+  }
+  .spark-meta { min-width: 0; }
+  .spark-label {
+    font-size: 11px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.6px;
+    margin-bottom: 6px;
+  }
+  .spark-num {
+    font-family: "Cambria", "Iowan Old Style", Georgia, serif;
+    font-size: 30px; font-weight: 600;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .spark-hint {
+    font-size: 11px; color: var(--text-dim);
+    margin-top: 6px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .spark-svg-wrap { width: 100%; height: 80px; color: var(--text); }
+  .spark-svg-wrap svg { width: 100%; height: 100%; display: block; }
+
+  @media (max-width: 720px) {
+    .spark-card { grid-template-columns: 1fr; gap: 14px; }
+    .perf-chart { height: 220px; }
+  }
+
+  /* =====================================================================
      AGENT SCORE BARS
      ================================================================== */
   .agent-row {
@@ -1187,9 +1248,23 @@
         <div class="stat"><div class="stat-label">Total Equity</div><div class="stat-value" id="ov-equity">—</div><div class="stat-sub" id="ov-equity-sub"></div></div>
         <div class="stat"><div class="stat-label">Cash</div><div class="stat-value" id="ov-cash">—</div><div class="stat-sub" id="ov-cash-sub"></div></div>
         <div class="stat"><div class="stat-label">Buying Power</div><div class="stat-value" id="ov-bp">—</div></div>
-        <div class="stat"><div class="stat-label">Daily P&amp;L</div><div class="stat-value" id="ov-dpl">—</div><div class="stat-sub" id="ov-dpl-sub"></div></div>
-        <div class="stat"><div class="stat-label">Total Return</div><div class="stat-value" id="ov-tret">—</div><div class="stat-sub" id="ov-tret-sub"></div></div>
-        <div class="stat"><div class="stat-label">vs S&amp;P 500</div><div class="stat-value" id="ov-spx">—</div><div class="stat-sub" id="ov-spx-sub"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Performance vs S&amp;P 500</div>
+        <div class="perf-chart" id="perf-chart"></div>
+        <div class="perf-chart-legend" id="perf-chart-legend"></div>
+      </div>
+
+      <div class="card spark-card">
+        <div class="spark-meta">
+          <div class="spark-label">Daily P&amp;L</div>
+          <div class="spark-num" id="spark-num">—</div>
+          <div class="spark-hint">Last 30 trading days</div>
+        </div>
+        <div class="spark-svg-wrap">
+          <svg id="spark-svg" preserveAspectRatio="none" viewBox="0 0 300 80"></svg>
+        </div>
       </div>
 
       <div class="card">
@@ -2075,6 +2150,106 @@ const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({
 // =========================================================================
 // RENDER: OVERVIEW
 // =========================================================================
+function renderPerformanceChart(d) {
+  const wrap = document.getElementById("perf-chart");
+  const legend = document.getElementById("perf-chart-legend");
+  if (!wrap) return;
+  const hist = (d.history || []).slice(-90);
+  if (hist.length < 2) {
+    wrap.innerHTML = `<div class="perf-empty">Performance history not yet collected — first daily snapshot lands at the next Market Close routine.</div>`;
+    legend.innerHTML = "";
+    return;
+  }
+  const W = 800, H = 280;
+  const PAD = { top: 16, right: 18, bottom: 28, left: 48 };
+  const innerW = W - PAD.left - PAD.right;
+  const innerH = H - PAD.top - PAD.bottom;
+  const ports = hist.map(h => Number(h.portfolio_return_pct ?? 0));
+  const spxs  = hist.map(h => Number(h.spx_return_pct ?? 0));
+  const all   = ports.concat(spxs);
+  let yMin = Math.min(0, ...all);
+  let yMax = Math.max(0, ...all);
+  const yPad = ((yMax - yMin) || 2) * 0.12;
+  yMin -= yPad; yMax += yPad;
+  const x = (i) => PAD.left + innerW * (hist.length === 1 ? 0.5 : i / (hist.length - 1));
+  const y = (v) => PAD.top + innerH - ((v - yMin) / (yMax - yMin)) * innerH;
+  const pathFor = (arr) =>
+    arr.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(2)} ${y(v).toFixed(2)}`).join(" ");
+
+  const grid = [];
+  for (let g = 0; g <= 4; g++) {
+    const yv = yMin + (yMax - yMin) * (g / 4);
+    const yp = y(yv);
+    grid.push(`<line x1="${PAD.left}" x2="${W - PAD.right}" y1="${yp.toFixed(2)}" y2="${yp.toFixed(2)}" stroke="currentColor" stroke-width="0.5" opacity="0.12"/>`);
+    grid.push(`<text x="${PAD.left - 8}" y="${(yp + 3).toFixed(2)}" text-anchor="end" fill="currentColor" opacity="0.5" font-size="10">${yv.toFixed(1)}%</text>`);
+  }
+  if (yMin < 0 && yMax > 0) {
+    const y0 = y(0);
+    grid.push(`<line x1="${PAD.left}" x2="${W - PAD.right}" y1="${y0.toFixed(2)}" y2="${y0.toFixed(2)}" stroke="currentColor" stroke-width="1" opacity="0.35" stroke-dasharray="4 3"/>`);
+  }
+
+  const labelIdx = hist.length <= 3
+    ? hist.map((_, i) => i)
+    : [0, Math.floor(hist.length / 2), hist.length - 1];
+  const xLabels = labelIdx.map(i =>
+    `<text x="${x(i).toFixed(2)}" y="${(H - PAD.bottom + 18).toFixed(2)}" text-anchor="middle" fill="currentColor" opacity="0.5" font-size="10">${escapeHtml(hist[i].date || "")}</text>`
+  ).join("");
+
+  const lastP = ports[ports.length - 1];
+  const lastS = spxs[spxs.length - 1];
+  const lastX = x(hist.length - 1);
+
+  wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    ${grid.join("")}
+    ${xLabels}
+    <path d="${pathFor(spxs)}" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.55"/>
+    <path d="${pathFor(ports)}" fill="none" stroke="var(--accent)" stroke-width="2.2"/>
+    <circle cx="${lastX.toFixed(2)}" cy="${y(lastS).toFixed(2)}" r="3" fill="currentColor" opacity="0.55"/>
+    <circle cx="${lastX.toFixed(2)}" cy="${y(lastP).toFixed(2)}" r="3.5" fill="var(--accent)"/>
+  </svg>`;
+
+  const gap = lastP - lastS;
+  legend.innerHTML = `
+    <div class="perf-legend-item"><span class="perf-legend-swatch" style="background:var(--accent)"></span>Portfolio<span class="perf-current ${colorClass(lastP)}">${fmtPct(lastP, true)}</span></div>
+    <div class="perf-legend-item"><span class="perf-legend-swatch" style="background:currentColor;opacity:0.55"></span>S&amp;P 500<span class="perf-current ${colorClass(lastS)}">${fmtPct(lastS, true)}</span></div>
+    <div class="perf-legend-item">Gap<span class="perf-current ${colorClass(gap)}">${fmtPct(gap, true)}</span></div>
+  `;
+}
+
+function renderDailySpark(d) {
+  const num = document.getElementById("spark-num");
+  const svgEl = document.getElementById("spark-svg");
+  if (!num || !svgEl) return;
+  const p = d.portfolio || {};
+  num.textContent = p.daily_pnl_pct != null ? fmtPct(p.daily_pnl_pct, true) : "—";
+  num.className = "spark-num " + colorClass(p.daily_pnl_pct);
+
+  const hist = (d.history || []).slice(-30);
+  if (hist.length < 2) {
+    svgEl.innerHTML = `<text x="150" y="44" text-anchor="middle" fill="currentColor" opacity="0.4" font-size="11">No history yet — collecting from next Market Close.</text>`;
+    return;
+  }
+  const W = 300, H = 80;
+  const PAD = 6;
+  const vals = hist.map(h => Number(h.daily_pnl_pct ?? 0));
+  let yMin = Math.min(0, ...vals);
+  let yMax = Math.max(0, ...vals);
+  const yPad = ((yMax - yMin) || 2) * 0.18;
+  yMin -= yPad; yMax += yPad;
+  const x = (i) => PAD + (W - 2 * PAD) * (vals.length === 1 ? 0.5 : i / (vals.length - 1));
+  const y = (v) => PAD + (H - 2 * PAD) - ((v - yMin) / (yMax - yMin)) * (H - 2 * PAD);
+  const line = vals.map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(2)} ${y(v).toFixed(2)}`).join(" ");
+  const zeroY = (yMin < 0 && yMax > 0) ? y(0) : H - PAD;
+  const fill = `M ${x(0).toFixed(2)} ${zeroY.toFixed(2)} ${vals.map((v, i) => `L ${x(i).toFixed(2)} ${y(v).toFixed(2)}`).join(" ")} L ${x(vals.length - 1).toFixed(2)} ${zeroY.toFixed(2)} Z`;
+  const last = vals[vals.length - 1];
+  svgEl.innerHTML = `
+    <path d="${fill}" fill="var(--accent)" opacity="0.14"/>
+    <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    ${(yMin < 0 && yMax > 0) ? `<line x1="0" x2="${W}" y1="${zeroY.toFixed(2)}" y2="${zeroY.toFixed(2)}" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.3"/>` : ""}
+    <circle cx="${x(vals.length - 1).toFixed(2)}" cy="${y(last).toFixed(2)}" r="2.5" fill="var(--accent)"/>
+  `;
+}
+
 function renderOverview(d) {
   const p = d.portfolio || {};
   document.getElementById("ov-equity").textContent = fmtMoney(p.total_equity);
@@ -2082,21 +2257,8 @@ function renderOverview(d) {
   document.getElementById("ov-cash-sub").textContent = p.cash_pct != null ? fmtPct(p.cash_pct) + " of equity" : "";
   document.getElementById("ov-bp").textContent = fmtMoney(p.buying_power);
 
-  const dpl = document.getElementById("ov-dpl");
-  dpl.textContent = fmtMoney(p.daily_pnl);
-  dpl.className = "stat-value " + colorClass(p.daily_pnl);
-  document.getElementById("ov-dpl-sub").textContent = p.daily_pnl_pct != null ? fmtPct(p.daily_pnl_pct, true) : "";
-
-  const tret = document.getElementById("ov-tret");
-  tret.textContent = fmtPct(p.total_return_pct, true);
-  tret.className = "stat-value " + colorClass(p.total_return_pct);
-  document.getElementById("ov-tret-sub").textContent = p.starting_equity ? "from " + fmtMoney(p.starting_equity) : "";
-
-  const spx = document.getElementById("ov-spx");
-  spx.textContent = fmtPct(p.benchmark_gap_pct, true);
-  spx.className = "stat-value " + colorClass(p.benchmark_gap_pct);
-  document.getElementById("ov-spx-sub").textContent = p.benchmark_gap_pct != null
-    ? (p.benchmark_gap_pct >= 0 ? "ahead of SPX" : "behind SPX") : "";
+  renderPerformanceChart(d);
+  renderDailySpark(d);
 
   // Donut — colors pulled from current theme so it harmonizes after a shift.
   const cs = getComputedStyle(document.documentElement);
