@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /workspaces/trading-agent || exit 0; PUSHED=0; if ! git diff --quiet HEAD -- dashboard.html dashboard-data.json; then git add -- dashboard.html dashboard-data.json >/dev/null 2>&1; if git commit -m 'Auto-deploy dashboard updates' -- dashboard.html dashboard-data.json >/dev/null 2>&1; then PUSHED=1; fi; fi; if [ \"$PUSHED\" = \"1\" ]; then if git push >/dev/null 2>&1; then printf '{\"systemMessage\":\"Auto-pushed dashboard updates to GitHub Pages.\"}'; else printf '{\"systemMessage\":\"Dashboard committed locally — push failed (network?). Will retry on next turn.\"}'; fi; fi; exit 0",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
