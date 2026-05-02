@@ -171,9 +171,25 @@
     position: sticky; top: 0; height: 100vh;
     overflow-y: auto;
     backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
   }
   .sidebar::-webkit-scrollbar { width: 6px; }
   .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 14px 22px 4px;
+    border-top: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px;
+  }
+  .sidebar-footer .last-updated {
+    flex: 1; min-width: 0;
+  }
+  .sidebar-footer .last-updated #last-updated-text {
+    display: block;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
 
   .brand {
     padding: 0 26px 22px;
@@ -1001,6 +1017,18 @@
     <div class="nav-item" data-target="suggest">
       <span class="nav-icon">✎</span> Submit Suggestion
     </div>
+    <div class="sidebar-footer">
+      <div class="last-updated">
+        <span class="pulse"></span>
+        <span id="last-updated-text">—</span>
+      </div>
+      <button class="icon-btn" id="settings-btn" title="Customize dashboard" aria-label="Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+    </div>
   </aside>
   <div class="backdrop" id="backdrop"></div>
   <div class="panel-backdrop" id="panel-backdrop"></div>
@@ -1070,18 +1098,6 @@
       <div style="display:flex;align-items:center;gap:14px;">
         <button class="hamburger" id="hamburger">☰</button>
         <h1 class="page-title" id="page-title">Portfolio Overview</h1>
-      </div>
-      <div style="display:flex;align-items:center;gap:14px;">
-        <div class="last-updated">
-          <span class="pulse"></span>
-          <span id="last-updated-text">—</span>
-        </div>
-        <button class="icon-btn" id="settings-btn" title="Customize dashboard" aria-label="Settings">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-          </svg>
-        </button>
       </div>
     </div>
 
