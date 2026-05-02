@@ -803,9 +803,89 @@
     z-index: 99;
   }
   .backdrop.open { display: block; }
+
+  /* ===== Passcode gate ===== */
+  html.locked body > .app { display: none !important; }
+  html.locked body { overflow: hidden; }
+  #opus-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    display: none;
+    align-items: center; justify-content: center;
+    background: var(--bg-0, #0a0d12);
+    background-image: var(--ambient, none);
+  }
+  html.locked #opus-gate { display: flex; }
+  #opus-gate .gate-card {
+    width: min(420px, 92vw);
+    padding: 32px 28px;
+    background: var(--bg-elev, #161b24);
+    border: 1px solid var(--border, #2a3140);
+    border-radius: 14px;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6);
+    color: var(--text, #e6e8ee);
+  }
+  #opus-gate h2 { margin: 0 0 6px; font-size: 18px; letter-spacing: 0.02em; }
+  #opus-gate .gate-sub { color: var(--text-dim, #8b94a6); font-size: 13px; margin-bottom: 22px; }
+  #opus-gate input[type="password"] {
+    width: 100%; box-sizing: border-box;
+    padding: 12px 14px; font-size: 15px;
+    background: var(--bg-2, #181d26);
+    border: 1px solid var(--border, #2a3140);
+    border-radius: 8px;
+    color: var(--text, #e6e8ee);
+    outline: none;
+  }
+  #opus-gate input[type="password"]:focus { border-color: var(--accent, #d4af37); }
+  #opus-gate button {
+    margin-top: 14px;
+    width: 100%; padding: 11px 14px; font-size: 14px;
+    background: var(--accent, #d4af37); color: #1a1408;
+    border: none; border-radius: 8px; cursor: pointer;
+    font-weight: 600; letter-spacing: 0.02em;
+  }
+  #opus-gate button:hover { filter: brightness(1.05); }
+  #opus-gate .gate-err {
+    margin-top: 12px; font-size: 12px; min-height: 16px;
+    color: var(--red, #ff5d5d);
+  }
+  #opus-gate .gate-setup {
+    margin-top: 22px; padding-top: 18px;
+    border-top: 1px solid var(--border-soft, #1e2430);
+    font-size: 12px; color: var(--text-dim, #8b94a6);
+    line-height: 1.5;
+  }
+  #opus-gate code {
+    display: block; margin-top: 8px; padding: 10px;
+    background: var(--bg-0, #0a0d12);
+    border: 1px solid var(--border-soft, #1e2430);
+    border-radius: 6px;
+    font-size: 11px; word-break: break-all;
+    color: var(--text, #e6e8ee);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
 </style>
+<script>
+  // Lock immediately so the dashboard never flashes before the gate paints.
+  // gate.js below removes this class on successful unlock.
+  document.documentElement.classList.add('locked');
+</script>
 </head>
 <body>
+<div id="opus-gate" role="dialog" aria-label="Dashboard passcode">
+  <form class="gate-card" id="opus-gate-form" autocomplete="off">
+    <h2>Opus Trader</h2>
+    <div class="gate-sub">Enter passcode to view dashboard.</div>
+    <input type="password" id="opus-gate-input" placeholder="Passcode" autofocus />
+    <button type="submit">Unlock</button>
+    <div class="gate-err" id="opus-gate-err"></div>
+    <div class="gate-setup" id="opus-gate-setup" hidden>
+      <strong>Passcode not yet configured.</strong> Compute the SHA-256 of your chosen password and paste it into the <code style="display:inline;padding:1px 4px">EXPECTED_HASH</code> constant in <code style="display:inline;padding:1px 4px">dashboard.html</code>.
+      <code>echo -n 'your-password' | shasum -a 256</code>
+      or in any browser console:
+      <code>crypto.subtle.digest('SHA-256', new TextEncoder().encode('your-password')).then(b =&gt; console.log([...new Uint8Array(b)].map(x=&gt;x.toString(16).padStart(2,'0')).join('')))</code>
+    </div>
+  </form>
+</div>
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="brand">
@@ -1686,7 +1766,60 @@ async function load() {
   }
 }
 
-load();
+// ===== Passcode gate =====
+// SHA-256 hex of the chosen passcode. Replace REPLACE_ME after running:
+//   echo -n 'your-password' | shasum -a 256
+// This is obscurity (browser-side check, hash visible in source), not real
+// security — it keeps the GitHub Pages site out of casual view, nothing more.
+const EXPECTED_HASH = "REPLACE_ME_WITH_SHA256_OF_YOUR_PASSCODE";
+const GATE_STORAGE_KEY = "opus-trader-unlocked";
+
+async function sha256Hex(text) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function unlockDashboard() {
+  document.documentElement.classList.remove("locked");
+  const gate = document.getElementById("opus-gate");
+  if (gate) gate.remove();
+  load();
+}
+
+(function initGate() {
+  const isConfigured = !EXPECTED_HASH.startsWith("REPLACE_ME");
+  let alreadyUnlocked = false;
+  try {
+    alreadyUnlocked = isConfigured && localStorage.getItem(GATE_STORAGE_KEY) === EXPECTED_HASH;
+  } catch (e) {}
+  if (alreadyUnlocked) { unlockDashboard(); return; }
+
+  if (!isConfigured) {
+    document.getElementById("opus-gate-setup").hidden = false;
+  }
+
+  const form = document.getElementById("opus-gate-form");
+  const input = document.getElementById("opus-gate-input");
+  const err = document.getElementById("opus-gate-err");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    err.textContent = "";
+    if (!isConfigured) {
+      err.textContent = "Passcode not configured — see instructions below.";
+      return;
+    }
+    const hex = await sha256Hex(input.value);
+    if (hex === EXPECTED_HASH) {
+      try { localStorage.setItem(GATE_STORAGE_KEY, EXPECTED_HASH); } catch (e) {}
+      unlockDashboard();
+    } else {
+      err.textContent = "Incorrect passcode.";
+      input.value = "";
+      input.focus();
+    }
+  });
+})();
 // Refresh interval is governed by SETTINGS.refreshMs via applyRefresh().
 </script>
 </body>
