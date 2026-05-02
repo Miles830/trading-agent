@@ -863,6 +863,67 @@
     color: var(--text, #e6e8ee);
     font-family: ui-monospace, "SF Mono", Menlo, monospace;
   }
+
+  /* =====================================================================
+     SUGGESTION FORM — user-submitted trade ideas, routed to GitHub Issues.
+     ================================================================== */
+  .suggest-intro { color: var(--text-dim); font-size: 13px; line-height: 1.6; margin: 0 0 14px; }
+  .suggest-warn  { color: var(--text-faint); font-size: 12px; margin: 0 0 22px; }
+  .suggest-form { display: flex; flex-direction: column; gap: 18px; }
+  .suggest-row label.field-label {
+    display: block; color: var(--text); font-size: 13px;
+    font-weight: 500; margin-bottom: 6px;
+  }
+  .suggest-row .req { color: var(--red); }
+  .suggest-form input[type="text"],
+  .suggest-form select,
+  .suggest-form textarea {
+    width: 100%; box-sizing: border-box;
+    padding: 10px 12px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    transition: border-color .12s, box-shadow .12s;
+  }
+  .suggest-form textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+  .suggest-form input:focus,
+  .suggest-form select:focus,
+  .suggest-form textarea:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .suggest-radios { display: flex; flex-wrap: wrap; gap: 14px 18px; padding: 4px 0; }
+  .suggest-radios label {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--text-dim); font-size: 13px; font-weight: 400;
+    cursor: pointer;
+  }
+  .suggest-radios input[type="radio"] { accent-color: var(--accent); }
+  .suggest-actions {
+    display: flex; align-items: center; gap: 14px;
+    flex-wrap: wrap; padding-top: 6px;
+  }
+  .suggest-submit {
+    background: var(--accent); color: var(--bg-0);
+    border: none; border-radius: 6px;
+    padding: 10px 18px; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: filter .12s;
+    letter-spacing: 0.01em;
+  }
+  .suggest-submit:hover { filter: brightness(1.08); }
+  .suggest-submit:disabled { opacity: .5; cursor: not-allowed; }
+  .suggest-status { color: var(--text-dim); font-size: 12px; }
+  .suggest-howto { color: var(--text-dim); font-size: 13px; line-height: 1.7; margin: 0; padding-left: 20px; }
+  .suggest-howto li { margin-bottom: 4px; }
+  .badge-issue {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .badge-issue.open   { background: rgba(46,204,113,0.14); color: var(--green); border: 1px solid rgba(46,204,113,0.32); }
+  .badge-issue.closed { background: rgba(139,148,166,0.12); color: var(--text-dim); border: 1px solid var(--border); }
 </style>
 <script>
   // Lock immediately so the dashboard never flashes before the gate paints.
@@ -936,6 +997,9 @@
     </div>
     <div class="nav-item" data-target="market">
       <span class="nav-icon">◈</span> Market Overview
+    </div>
+    <div class="nav-item" data-target="suggest">
+      <span class="nav-icon">✎</span> Submit Suggestion
     </div>
   </aside>
   <div class="backdrop" id="backdrop"></div>
@@ -1188,6 +1252,100 @@
       </div>
     </section>
 
+    <!-- 8. SUBMIT SUGGESTION -->
+    <section class="section" id="suggest">
+      <div class="card">
+        <div class="card-title">Submit a Trade Suggestion</div>
+        <p class="suggest-intro">
+          Share a ticker, theme, or trade idea. Submitting opens a prefilled GitHub Issue tagged
+          <code style="display:inline;padding:1px 5px">user-suggestion</code> on the
+          <code style="display:inline;padding:1px 5px">Miles830/trading-agent</code> repo. Each Pre-Market
+          routine reads open suggestion issues, scores them through the 6-agent framework, and
+          either acts (within guardrails) or replies with reasoning, then closes the issue.
+          Time-sensitive suggestions also get picked up by the Mid-Morning routine.
+        </p>
+        <p class="suggest-warn">
+          ⚠ Suggestions become public on the GitHub repo. Don't include anything you wouldn't share publicly.
+          You'll need to be signed in to GitHub to post — the form opens a prefilled issue page.
+        </p>
+
+        <form id="suggest-form" class="suggest-form" autocomplete="off">
+          <div class="suggest-row">
+            <label class="field-label" for="sg-symbol">Ticker / Symbol <span class="req">*</span></label>
+            <input type="text" id="sg-symbol" required maxlength="12" placeholder="e.g. TSLA, BTC, XLE" />
+          </div>
+
+          <div class="suggest-row">
+            <label class="field-label">What are you suggesting? <span class="req">*</span></label>
+            <div class="suggest-radios">
+              <label><input type="radio" name="sg-action" value="Buy / Open position" checked /> Buy / Open</label>
+              <label><input type="radio" name="sg-action" value="Sell / Trim / Close" /> Sell / Trim / Close</label>
+              <label><input type="radio" name="sg-action" value="Add to watchlist" /> Watchlist</label>
+              <label><input type="radio" name="sg-action" value="Avoid / Remove from watchlist" /> Avoid</label>
+            </div>
+          </div>
+
+          <div class="suggest-row">
+            <label class="field-label" for="sg-bucket">Bucket preference</label>
+            <select id="sg-bucket">
+              <option value="No preference">No preference — agent decides</option>
+              <option value="long-term">Long-term (target 55%)</option>
+              <option value="active">Active trading (target 30%)</option>
+              <option value="crypto">Crypto (target 5%)</option>
+            </select>
+          </div>
+
+          <div class="suggest-row">
+            <label class="field-label" for="sg-thesis">Why now? Catalyst, thesis, or reason <span class="req">*</span></label>
+            <textarea id="sg-thesis" required rows="5"
+              placeholder="What's the catalyst? News, earnings, technical setup, macro view, gut feel — whatever you've got. The agent will run its own scoring; this is your input to consider."></textarea>
+          </div>
+
+          <div class="suggest-row">
+            <label class="field-label">Urgency</label>
+            <div class="suggest-radios">
+              <label><input type="radio" name="sg-urgency" value="Whenever — no rush" checked /> Whenever</label>
+              <label><input type="radio" name="sg-urgency" value="This week" /> This week</label>
+              <label><input type="radio" name="sg-urgency" value="Today / time-sensitive" /> Today (time-sensitive)</label>
+            </div>
+          </div>
+
+          <div class="suggest-actions">
+            <button type="submit" class="suggest-submit">Open prefilled GitHub issue →</button>
+            <span id="sg-status" class="suggest-status"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Recent Suggestions</div>
+        <div class="table-wrap">
+          <table id="suggestions-table">
+            <thead><tr><th style="width:64px">#</th><th>Title</th><th style="width:90px">State</th><th style="width:120px">Submitted</th></tr></thead>
+            <tbody><tr><td colspan="4" class="empty" style="padding:16px">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">How it works</div>
+        <ol class="suggest-howto">
+          <li>Click <strong>Open prefilled GitHub issue</strong> — a new tab opens with the issue body filled in.</li>
+          <li>If not signed in, GitHub will prompt you. Then click <strong>Submit new issue</strong> to post.</li>
+          <li>The next <strong>Pre-Market routine</strong> (8:00 AM ET, weekdays) reads all open <code style="display:inline;padding:1px 5px">user-suggestion</code> issues, scores each through the 6-agent framework, and decides:
+            <ul style="margin:6px 0 6px 0;padding-left:20px">
+              <li><span style="color:var(--green)">APPROVED</span> — passes Master gate; MOO order placed within guardrails.</li>
+              <li><span style="color:var(--accent)">DEFERRED</span> — partial pass or guardrail conflict; reasoning posted.</li>
+              <li><span style="color:var(--red)">REJECTED</span> — fails gate decisively; blocking agents named.</li>
+            </ul>
+          </li>
+          <li>The agent comments on the issue with the decision and closes it. You'll get a GitHub email.</li>
+          <li>If urgency is "Today", the <strong>Mid-Morning routine</strong> (11:00 AM ET) does a same-day check.</li>
+          <li>Suggestions count toward the 3 MOO/day cap and all guardrails. They don't get a special pass — your thesis is one input among the 6 agents.</li>
+        </ol>
+      </div>
+    </section>
+
   </main>
 </div>
 
@@ -1434,6 +1592,81 @@ document.getElementById("hamburger").addEventListener("click", () => {
 document.getElementById("backdrop").addEventListener("click", () => {
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("backdrop").classList.remove("open");
+});
+
+// =========================================================================
+// SUGGESTION FORM — opens prefilled GitHub Issue. The repo's routines
+// (Pre-Market + Mid-Morning) read these issues, score them, act/reject,
+// comment, and close. No backend; the dashboard is a static page.
+// =========================================================================
+const REPO_SLUG = "Miles830/trading-agent";
+
+document.getElementById("suggest-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const sym     = document.getElementById("sg-symbol").value.trim().toUpperCase();
+  const action  = document.querySelector('input[name="sg-action"]:checked').value;
+  const bucket  = document.getElementById("sg-bucket").value;
+  const thesis  = document.getElementById("sg-thesis").value.trim();
+  const urgency = document.querySelector('input[name="sg-urgency"]:checked').value;
+  if (!sym || !thesis) return;
+
+  // Title format e.g. "Suggestion: Buy TSLA"
+  const verb = action.split(" ")[0];
+  const title = `Suggestion: ${verb} ${sym}`;
+  const body = [
+    `**Ticker:** ${sym}`,
+    `**Action:** ${action}`,
+    `**Bucket:** ${bucket}`,
+    `**Urgency:** ${urgency}`,
+    ``,
+    `**Why now / thesis:**`,
+    thesis,
+    ``,
+    `---`,
+    `_Submitted from the Opus Trader dashboard. The next Pre-Market routine will score this through the 6-agent framework (Fundamentals, Technical, Sentiment, Macro, Risk, Tech Analyst) and reply._`
+  ].join("\n");
+
+  const url =
+    `https://github.com/${REPO_SLUG}/issues/new` +
+    `?labels=user-suggestion` +
+    `&title=${encodeURIComponent(title)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  window.open(url, "_blank", "noopener,noreferrer");
+
+  const status = document.getElementById("sg-status");
+  status.textContent = "Opened in new tab — click 'Submit new issue' on GitHub to post.";
+  setTimeout(() => loadSuggestions(), 2500);
+});
+
+async function loadSuggestions() {
+  const tbody = document.querySelector("#suggestions-table tbody");
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${REPO_SLUG}/issues?labels=user-suggestion&state=all&per_page=20`,
+      { headers: { Accept: "application/vnd.github+json" } }
+    );
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const issues = (await r.json()).filter(i => !i.pull_request);
+    if (!issues.length) {
+      tbody.innerHTML = `<tr><td colspan="4" class="empty" style="padding:16px">No suggestions yet — submit your first above.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = issues.map(i => `<tr>
+      <td><strong>#${i.number}</strong></td>
+      <td><a href="${i.html_url}" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none">${escapeHtml(i.title)}</a></td>
+      <td><span class="badge-issue ${i.state}">${i.state}</span></td>
+      <td style="color:var(--text-dim);font-size:12px">${new Date(i.created_at).toLocaleDateString()}</td>
+    </tr>`).join("");
+  } catch (e) {
+    tbody.innerHTML = `<tr><td colspan="4" class="empty" style="padding:16px">Could not load suggestions: ${escapeHtml(e.message)}. (Public-repo API; rate-limited at 60/hr/IP.)</td></tr>`;
+  }
+}
+
+// Lazy-load the suggestion list the first time the user opens the section.
+let _suggestionsLoaded = false;
+document.querySelector('.nav-item[data-target="suggest"]').addEventListener("click", () => {
+  if (!_suggestionsLoaded) { _suggestionsLoaded = true; loadSuggestions(); }
 });
 
 // =========================================================================

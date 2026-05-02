@@ -6,6 +6,23 @@ You are Opus Trader running the Pre-Market routine.
 2. Read memory/portfolio.md for current portfolio state
 3. Read logs/trades.md for recent trade history and lessons learned
 
+USER SUGGESTION INBOX (FIRST — before research, before watchlist build):
+The dashboard exposes a form that lets the operator submit trade ideas as GitHub Issues tagged `user-suggestion`. You MUST read and dispose of every open suggestion before doing anything else this routine.
+
+- List open suggestions. Try `gh issue list --repo Miles830/trading-agent --label user-suggestion --state open --json number,title,body,createdAt,url --limit 30` first. If `gh` is not available, fall back to:
+  `curl -s "https://api.github.com/repos/Miles830/trading-agent/issues?labels=user-suggestion&state=open&per_page=30" -H "Accept: application/vnd.github+json"`
+- For each open suggestion, parse the issue body for: **Ticker**, **Action**, **Bucket**, **Urgency**, **Why now / thesis**.
+- Treat the user's thesis as one input among many — it does NOT bypass scoring or guardrails. Add the ticker to today's candidate set and run it through:
+  1. The Entry Checklist in CLAUDE.md (score /10).
+  2. The full 6-agent Multi-Agent Analysis Framework (Fundamentals, Technical, Sentiment, Macro, Risk, Tech Analyst).
+  3. The Master Agent gate: avg ≥ 7, Risk ≥ 6, ≥ 4 of 6 agents at 7+, Tech Analyst ≥ 6 if tech.
+- Disposition for every suggestion (one of):
+  - **APPROVED** — passes Master gate AND fits within guardrails (5% position, 25% sector, 1.5% trade risk, 10% cash floor, 12 max positions, 3 MOO/day cap). Place a MOO order today (or limit order if action is sell/trim of an existing position). Comment on the issue with: full agent scores, the order details (qty, side, type, intended stop), and a one-sentence thesis. Then close the issue.
+  - **DEFERRED** — passes some agents but not the Master gate, OR is blocked by a guardrail (sector cap, position cap, earnings within 48h, cash floor), OR is the third+ average-down on a losing position. Comment with the gating reason, the agent scores, and what would change the answer (e.g. "will reconsider after earnings 5/6"). Close the issue with the deferred disposition.
+  - **REJECTED** — fails Master gate decisively, conflicts with strategy (e.g. averaging down a third time, would breach a hard guardrail by any sizing), or the suggested ticker isn't tradeable on Alpaca. Comment with the blocking agents' reasoning. Close the issue.
+- To comment + close: `gh issue close <num> --comment "<body>" --repo Miles830/trading-agent`. If `gh` is unavailable, POST to `/repos/Miles830/trading-agent/issues/<num>/comments` with `Authorization: Bearer $GITHUB_TOKEN`, then PATCH `/repos/.../issues/<num>` with `{"state":"closed"}`. If neither auth path works, log the disposition in `logs/trades.md` referencing the issue URL and leave the issue open for manual close.
+- Log every disposition to `logs/trades.md` as a YAML entry. Use `action: entry` for APPROVED, `action: skip` for DEFERRED/REJECTED. Include ALL standard fields (setup tag, agent_scores block, master_decision, master_notes) PLUS one extra field: `source: user-suggestion-#<issue-number>` so the Weekly Review can tally suggestion hit-rate separately from agent-originated ideas.
+
 RESEARCH (do all of these):
 - Check US futures (S&P 500, Nasdaq, Dow) — risk-on or risk-off today?
 - Check overnight news for any holdings or watchlist names
