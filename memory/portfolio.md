@@ -17,9 +17,9 @@
 ## Bucket State
 | Bucket | Target | Current $ | Current % | Positions |
 |---|---|---|---|---|
-| Long-term | 50% ($50K) | $0 | 0% | 0 |
+| Long-term | 55% ($55K) | $0 | 0% | 0 |
 | Active Trading | 30% ($30K) | $0 | 0% | 0 |
-| Crypto | 10% ($10K) | $0 | 0% | 0 |
+| Crypto | 5% ($5K) | $0 | 0% | 0 |
 | Cash Reserve | 10% ($10K floor) | $100K | 100% | — |
 
 ## Open Positions

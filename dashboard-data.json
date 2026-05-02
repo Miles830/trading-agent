@@ -1,0 +1,88 @@
+{
+  "last_updated": "2026-05-01T20:30:00Z",
+  "updated_by": "bootstrap",
+  "portfolio": {
+    "total_equity": 100000.00,
+    "starting_equity": 100000.00,
+    "cash": 100000.00,
+    "cash_pct": 100.0,
+    "buying_power": 200000.00,
+    "long_market_value": 0.00,
+    "short_market_value": 0.00,
+    "daily_pnl": 0.00,
+    "daily_pnl_pct": 0.00,
+    "total_return_pct": 0.00,
+    "spx_return_pct": 0.00,
+    "benchmark_gap_pct": 0.00,
+    "open_positions_count": 0,
+    "buckets": [
+      { "key": "long-term", "label": "Long-term (target 55%)", "value": 0.00 },
+      { "key": "active",    "label": "Active Trading (target 30%)", "value": 0.00 },
+      { "key": "crypto",    "label": "Crypto (target 5%)", "value": 0.00 },
+      { "key": "cash",      "label": "Cash (10% floor)", "value": 100000.00 }
+    ]
+  },
+  "positions": [],
+  "trades": [],
+  "trade_stats": {
+    "total": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate_pct": null,
+    "profit_factor": null,
+    "avg_win_pct": null,
+    "avg_loss_pct": null
+  },
+  "routines": [
+    { "name": "Pre-Market",   "schedule": "08:00 ET daily",       "status": "pending", "last_run": "—", "next_run": "2026-05-04 08:00 ET", "last_summary": "Not yet run since dashboard bootstrap." },
+    { "name": "Market Open",  "schedule": "09:45 ET daily",       "status": "pending", "last_run": "—", "next_run": "2026-05-04 09:45 ET", "last_summary": "Not yet run since dashboard bootstrap." },
+    { "name": "Mid-Morning",  "schedule": "11:00 ET daily",       "status": "pending", "last_run": "—", "next_run": "2026-05-04 11:00 ET", "last_summary": "Not yet run since dashboard bootstrap." },
+    { "name": "Midday",       "schedule": "12:30 ET daily",       "status": "pending", "last_run": "—", "next_run": "2026-05-04 12:30 ET", "last_summary": "Not yet run since dashboard bootstrap." },
+    { "name": "Afternoon",    "schedule": "14:00 ET daily",       "status": "pending", "last_run": "—", "next_run": "2026-05-04 14:00 ET", "last_summary": "Not yet run since dashboard bootstrap." },
+    { "name": "Market Close", "schedule": "15:30 ET daily",       "status": "pending", "last_run": "—", "next_run": "2026-05-04 15:30 ET", "last_summary": "Not yet run since dashboard bootstrap." },
+    { "name": "Weekly Review","schedule": "Friday 16:30 ET",      "status": "completed","last_run": "2026-05-01 16:30 ET", "next_run": "2026-05-08 16:30 ET", "last_summary": "Initialization run. 0 trades. Watchlist of 10 names built for week of 5/4. Macro: Fed dovish skew, AI capex broadening, Hormuz energy bid, BTC ETF outflows." }
+  ],
+  "agent_scorecard": {
+    "trades_scored": 0,
+    "most_accurate": "—",
+    "most_accurate_note": "Awaiting first scored trade.",
+    "most_conservative": "—",
+    "most_conservative_note": "Awaiting first scored trade.",
+    "per_agent": {
+      "fundamentals":  { "avg_score": null, "calls_above_7": 0, "wins_on_above_7": 0, "hit_rate_pct": null, "note": "" },
+      "technical":     { "avg_score": null, "calls_above_7": 0, "wins_on_above_7": 0, "hit_rate_pct": null, "note": "" },
+      "sentiment":     { "avg_score": null, "calls_above_7": 0, "wins_on_above_7": 0, "hit_rate_pct": null, "note": "" },
+      "macro":         { "avg_score": null, "calls_above_7": 0, "wins_on_above_7": 0, "hit_rate_pct": null, "note": "" },
+      "risk":          { "avg_score": null, "calls_above_7": 0, "wins_on_above_7": 0, "hit_rate_pct": null, "note": "Veto agent — auto-rejects when score < 6." },
+      "tech_analyst":  { "avg_score": null, "calls_above_7": 0, "wins_on_above_7": 0, "hit_rate_pct": null, "note": "Auto-7 for non-tech positions; only scores tech stocks/ETFs/crypto." }
+    }
+  },
+  "memory": {
+    "recent_lessons_md": "### 2026-05-01 — Operator-mandated bias correction\n\n- Week 1 sat in 100% cash through Mon–Fri despite the account being funded 2026-04-27 and a fully scored watchlist of 5 names ≥ 7 existing by Friday.\n- The \"disciplined dry-run\" framing was a rationalization for inaction.\n- **Going forward:** score ≥ 7 = enter at the next routine, period. The Monday plan from the most recent weekly review is the floor of action, not the ceiling.\n- Only acceptable reasons to skip a ≥ 7 entry: (1) hard guardrail breach, (2) binary event within 48h, (3) 3% daily-loss circuit breaker tripped.\n\n### 2026-05-02 — Strategy update\n\n- Added **Sub-Agent 6 — Tech Analyst** to the Multi-Agent Analysis Framework. Master Agent now requires 6 scores, ≥ 4 of 6 agents at 7+, and a Tech Analyst score ≥ 6 for any tech stock/ETF/crypto."
+  },
+  "market": {
+    "mode": "Risk-on (cautious)",
+    "fear_greed": null,
+    "fear_greed_label": "Awaiting next routine refresh.",
+    "spx": "~7,160 (near record highs)",
+    "btc": "~$76K",
+    "sectors": [
+      { "name": "Technology (AI capex broadening)", "change_pct": null },
+      { "name": "Energy (Hormuz bid)",              "change_pct": null },
+      { "name": "Financials (steeper curve)",       "change_pct": null }
+    ],
+    "macro_notes_md": "- **Fed (April 29 FOMC):** Held funds rate at 3.75% with 4 dissenters → dovish skew. Market pricing 50bps of cuts in 2026.\n- **Geopolitics:** US–Iran peace talks stalled. Strait of Hormuz extended closure → energy supply premium, crypto risk-off.\n- **S&P 500:** Near record highs ~7,160. AI capex theme broadening into financials/healthcare/utilities. 8 of 11 sectors with 2026 EPS growth > 2025.\n- **Crypto:** BTC ~$76K, ETH ~$2,250. Three straight days of spot BTC ETF outflows (-$137.77M on 4/29). May historically strongest month for ETH.\n- **Earnings cluster (week of 5/4):** PLTR 5/4 AMC · AMD 5/5 AMC · DIS 5/6 BMO · ARM 5/6 AMC."
+  },
+  "watchlist": [
+    { "symbol": "TSM",  "bucket": "long-term", "score": 8, "action": "Enter Mon Pre-Market", "notes": "AI picks-and-shovels; 3% equity tranche; preferred over crowded software." },
+    { "symbol": "GLD",  "bucket": "long-term", "score": 8, "action": "Enter Mon Pre-Market", "notes": "Geopolitical hedge; Hormuz tail risk; 3% equity." },
+    { "symbol": "XLE",  "bucket": "active",    "score": 8, "action": "Tuesday entry if Hormuz persists", "notes": "Energy supply premium; 2.5% equity tactical." },
+    { "symbol": "NVDA", "bucket": "long-term", "score": 7, "action": "Enter Mon Pre-Market on pullback", "notes": "AI capex anchor; 3% equity." },
+    { "symbol": "AVGO", "bucket": "long-term", "score": 7, "action": "Enter Mon Pre-Market", "notes": "AI infrastructure / custom silicon; 3% equity." },
+    { "symbol": "JPM",  "bucket": "long-term", "score": 7, "action": "Enter Mon Pre-Market", "notes": "Steeper curve / financials tailwind; 3% equity." },
+    { "symbol": "BTC",  "bucket": "crypto",    "score": 7, "action": "Tactical entry on ETF outflow abatement", "notes": "Watch for spot BTC ETF flows to flip; 2-3% equity." },
+    { "symbol": "ARM",  "bucket": "active",    "score": 7, "action": "Re-evaluate Thursday post-print", "notes": "Earnings 5/6 AMC — DO NOT pre-position." },
+    { "symbol": "AMD",  "bucket": "active",    "score": 6, "action": "Re-score Wed post-print", "notes": "Earnings 5/5 AMC — DO NOT pre-position." },
+    { "symbol": "ETH",  "bucket": "crypto",    "score": 6, "action": "Watchlist only", "notes": "Await BTC stabilization first; May historically strongest month for ETH." }
+  ]
+}

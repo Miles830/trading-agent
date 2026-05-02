@@ -18,8 +18,9 @@ DECISIONS:
 - Close any positions that have hit stop-loss or price target
 - Trail stop-losses up on any positions showing strong gains (never trail down)
 - Identify any new setups developing that were not on morning watchlist
-- Score any new opportunities — only enter if score is 7 or higher
-- Place limit orders for any new high conviction setups
+- Score any new opportunities — only enter if score is 7 or higher AND the **Multi-Agent Analysis Framework** Master Agent gate passes (avg ≥ 7, Risk ≥ 6, ≥ 3 agents at 7+). See CLAUDE.md.
+- Place limit orders for any new high conviction setups (use bracket order_class so the stop is attached at submission)
+- Every entry decision logged to trades.md MUST use the YAML header format from CLAUDE.md "Trade Log Entry Template" with a `setup:` tag AND the full `agent_scores` block.
 - If daily loss is approaching 3% of total equity, stop all new entries
 
 OUTPUT FORMAT:
@@ -31,3 +32,10 @@ Start with full portfolio state, then:
 - New positions opened if any
 - Update memory/portfolio.md with current state
 - Log all decisions to logs/trades.md
+
+DASHBOARD UPDATE (MANDATORY — write to /workspaces/trading-agent/dashboard-data.json):
+- Set `last_updated` and `updated_by="mid-morning"`.
+- Refresh `portfolio` and `positions` from Alpaca (include trailed stop_loss values).
+- Append any new YAML trade entries from logs/trades.md to `trades`.
+- Update the "Mid-Morning" row in `routines`: status, last_run, next_run, last_summary (stops audited, any naked positions backfilled, new entries).
+- Refresh `market.sectors` (top sectors today by % change) if rotation is notable.

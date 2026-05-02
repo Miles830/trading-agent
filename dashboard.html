@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Opus Trader — Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  :root {
+    --bg-0: #0a0d12;
+    --bg-1: #11151c;
+    --bg-2: #181d26;
+    --bg-3: #222934;
+    --border: #2a3140;
+    --text: #e6e8ee;
+    --text-dim: #8b94a6;
+    --gold: #d4af37;
+    --gold-dim: #8a7426;
+    --green: #2ecc71;
+    --red: #ff5d5d;
+    --blue: #4ea0ff;
+    --purple: #b388ff;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code, pre { font-family: "SF Mono", Menlo, Consolas, monospace; }
+
+  /* ---------- LAYOUT ---------- */
+  .app {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+  .sidebar {
+    background: var(--bg-1);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    position: sticky; top: 0; height: 100vh;
+    overflow-y: auto;
+  }
+  .brand {
+    padding: 0 24px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .brand-title {
+    font-size: 18px; font-weight: 700; letter-spacing: 0.5px;
+    color: var(--gold);
+  }
+  .brand-sub {
+    font-size: 11px; color: var(--text-dim);
+    margin-top: 4px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 24px;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    font-size: 13px;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .nav-item:hover { color: var(--text); background: var(--bg-2); }
+  .nav-item.active {
+    color: var(--gold);
+    background: var(--bg-2);
+    border-left-color: var(--gold);
+    font-weight: 600;
+  }
+  .nav-icon { width: 18px; text-align: center; opacity: 0.7; }
+
+  .main { padding: 28px 36px 60px; max-width: 1400px; }
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-title { font-size: 22px; font-weight: 700; color: var(--text); margin: 0; }
+  .last-updated {
+    font-size: 12px; color: var(--text-dim);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green); display: inline-block;
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .hamburger {
+    display: none;
+    background: var(--bg-2); border: 1px solid var(--border);
+    color: var(--gold); padding: 6px 12px;
+    border-radius: 4px; cursor: pointer; font-size: 18px;
+  }
+
+  /* ---------- CARDS ---------- */
+  .card {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); margin: 0 0 14px;
+    font-weight: 600;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .stat {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .stat-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); margin-bottom: 6px;
+  }
+  .stat-value { font-size: 24px; font-weight: 700; color: var(--text); }
+  .stat-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .pos { color: var(--green) !important; }
+  .neg { color: var(--red) !important; }
+
+  /* ---------- TABLES ---------- */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left; padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th {
+    color: var(--text-dim);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: var(--bg-2);
+    position: sticky; top: 0;
+  }
+  tbody tr:hover { background: var(--bg-2); }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px; border-radius: 3px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .badge-long { background: rgba(78,160,255,0.15); color: var(--blue); }
+  .badge-active { background: rgba(212,175,55,0.15); color: var(--gold); }
+  .badge-crypto { background: rgba(179,136,255,0.15); color: var(--purple); }
+  .badge-cash { background: rgba(139,148,166,0.15); color: var(--text-dim); }
+  .badge-ok { background: rgba(46,204,113,0.15); color: var(--green); }
+  .badge-warn { background: rgba(212,175,55,0.15); color: var(--gold); }
+  .badge-fail { background: rgba(255,93,93,0.15); color: var(--red); }
+
+  /* ---------- DONUT ---------- */
+  .donut-wrap {
+    display: flex; align-items: center; gap: 32px;
+    flex-wrap: wrap;
+  }
+  .donut-svg { width: 200px; height: 200px; flex-shrink: 0; }
+  .legend { flex: 1; min-width: 200px; }
+  .legend-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .legend-swatch {
+    width: 12px; height: 12px; border-radius: 2px;
+    display: inline-block; margin-right: 10px;
+  }
+
+  /* ---------- AGENT SCORE BARS ---------- */
+  .agent-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 60px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .agent-name { font-weight: 600; color: var(--text); }
+  .agent-bar {
+    height: 8px; background: var(--bg-3); border-radius: 4px;
+    overflow: hidden; position: relative;
+  }
+  .agent-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    border-radius: 4px;
+    transition: width 0.4s;
+  }
+  .agent-score {
+    text-align: right; font-weight: 700; color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- FILTERS ---------- */
+  .filter-bar {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .filter-bar input, .filter-bar select {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px; border-radius: 4px;
+    font-size: 13px;
+  }
+  .filter-bar input:focus, .filter-bar select:focus {
+    outline: none; border-color: var(--gold);
+  }
+
+  /* ---------- MARKDOWN ---------- */
+  .md {
+    font-size: 13px; line-height: 1.6;
+    color: var(--text);
+  }
+  .md h1, .md h2, .md h3 { color: var(--gold); margin-top: 1.4em; }
+  .md h1 { font-size: 20px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .md h2 { font-size: 16px; }
+  .md h3 { font-size: 14px; }
+  .md table { margin: 12px 0; }
+  .md code {
+    background: var(--bg-2);
+    padding: 2px 6px; border-radius: 3px;
+    color: var(--gold);
+    font-size: 12px;
+  }
+  .md pre {
+    background: var(--bg-2);
+    padding: 12px; border-radius: 4px;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+  }
+  .md pre code { background: none; color: var(--text); padding: 0; }
+  .md blockquote {
+    border-left: 3px solid var(--gold);
+    padding-left: 12px;
+    color: var(--text-dim);
+    margin: 12px 0;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .empty {
+    padding: 40px; text-align: center;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .error {
+    background: rgba(255,93,93,0.1);
+    border: 1px solid var(--red);
+    color: var(--red);
+    padding: 12px 16px; border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar {
+      position: fixed; left: 0; top: 0;
+      width: 240px; z-index: 100;
+      transform: translateX(-100%);
+      transition: transform 0.25s;
+      box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { padding: 20px 16px 40px; }
+    .hamburger { display: inline-block; }
+    .page-title { font-size: 18px; }
+    .stat-value { font-size: 20px; }
+    .donut-wrap { flex-direction: column; align-items: flex-start; }
+    .agent-row { grid-template-columns: 110px 1fr 50px; gap: 8px; }
+    th, td { padding: 8px 10px; }
+  }
+  .backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+  }
+  .backdrop.open { display: block; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-title">OPUS TRADER</div>
+      <div class="brand-sub">Autonomous AI · Paper</div>
+    </div>
+    <div class="nav-item active" data-target="overview">
+      <span class="nav-icon">◆</span> Portfolio Overview
+    </div>
+    <div class="nav-item" data-target="positions">
+      <span class="nav-icon">▤</span> Open Positions
+    </div>
+    <div class="nav-item" data-target="trades">
+      <span class="nav-icon">≡</span> Trade Log
+    </div>
+    <div class="nav-item" data-target="routines">
+      <span class="nav-icon">◴</span> Routine Status
+    </div>
+    <div class="nav-item" data-target="agents">
+      <span class="nav-icon">◎</span> Agent Scorecard
+    </div>
+    <div class="nav-item" data-target="memory">
+      <span class="nav-icon">▣</span> Memory & Strategy
+    </div>
+    <div class="nav-item" data-target="market">
+      <span class="nav-icon">◈</span> Market Overview
+    </div>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
+
+  <main class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button class="hamburger" id="hamburger">☰</button>
+        <h1 class="page-title" id="page-title">Portfolio Overview</h1>
+      </div>
+      <div class="last-updated">
+        <span class="pulse"></span>
+        <span id="last-updated-text">—</span>
+      </div>
+    </div>
+
+    <div id="error-bar"></div>
+
+    <!-- 1. PORTFOLIO OVERVIEW -->
+    <section class="section active" id="overview">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-label">Total Equity</div><div class="stat-value" id="ov-equity">—</div><div class="stat-sub" id="ov-equity-sub"></div></div>
+        <div class="stat"><div class="stat-label">Cash</div><div class="stat-value" id="ov-cash">—</div><div class="stat-sub" id="ov-cash-sub"></div></div>
+        <div class="stat"><div class="stat-label">Buying Power</div><div class="stat-value" id="ov-bp">—</div></div>
+        <div class="stat"><div class="stat-label">Daily P&amp;L</div><div class="stat-value" id="ov-dpl">—</div><div class="stat-sub" id="ov-dpl-sub"></div></div>
+        <div class="stat"><div class="stat-label">Total Return</div><div class="stat-value" id="ov-tret">—</div><div class="stat-sub" id="ov-tret-sub"></div></div>
+        <div class="stat"><div class="stat-label">vs S&amp;P 500</div><div class="stat-value" id="ov-spx">—</div><div class="stat-sub" id="ov-spx-sub"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Allocation by Bucket</div>
+        <div class="donut-wrap">
+          <svg class="donut-svg" id="donut" viewBox="0 0 42 42"></svg>
+          <div class="legend" id="donut-legend"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. OPEN POSITIONS -->
+    <section class="section" id="positions">
+      <div class="card">
+        <div class="card-title">Open Positions</div>
+        <div class="table-wrap">
+          <table id="positions-table">
+            <thead><tr>
+              <th>Symbol</th><th>Type</th><th>Qty</th><th>Entry</th><th>Current</th><th>P&amp;L</th><th>P&amp;L %</th><th>Stop</th><th>Setup</th><th>Agent Avg</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+          <div class="empty" id="positions-empty">No open positions.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TRADE LOG -->
+    <section class="section" id="trades">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-label">Total Trades</div><div class="stat-value" id="tl-total">—</div></div>
+        <div class="stat"><div class="stat-label">Wins / Losses</div><div class="stat-value" id="tl-wl">—</div></div>
+        <div class="stat"><div class="stat-label">Win Rate</div><div class="stat-value" id="tl-wr">—</div></div>
+        <div class="stat"><div class="stat-label">Profit Factor</div><div class="stat-value" id="tl-pf">—</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Trade Log</div>
+        <div class="filter-bar">
+          <input type="text" id="filter-symbol" placeholder="Filter symbol..." />
+          <select id="filter-action">
+            <option value="">All actions</option>
+            <option value="entry">Entry</option>
+            <option value="exit">Exit</option>
+            <option value="stop_hit">Stop hit</option>
+            <option value="target_hit">Target hit</option>
+            <option value="skip">Skip</option>
+          </select>
+          <select id="filter-bucket">
+            <option value="">All buckets</option>
+            <option value="long-term">Long-term</option>
+            <option value="active">Active</option>
+            <option value="crypto">Crypto</option>
+          </select>
+          <input type="date" id="filter-from" title="From date" />
+          <input type="date" id="filter-to" title="To date" />
+        </div>
+        <div class="table-wrap">
+          <table id="trades-table">
+            <thead><tr>
+              <th>Date</th><th>Symbol</th><th>Action</th><th>Bucket</th><th>Setup</th><th>Score</th>
+              <th>Fund</th><th>Tech</th><th>Sent</th><th>Macro</th><th>Risk</th><th>TechAna</th>
+              <th>Avg</th><th>Result %</th><th>Decision</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+          <div class="empty" id="trades-empty">No trades logged yet.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ROUTINE STATUS -->
+    <section class="section" id="routines">
+      <div class="card">
+        <div class="card-title">Routine Status (7 daily + weekly)</div>
+        <div class="table-wrap">
+          <table id="routines-table">
+            <thead><tr>
+              <th>Routine</th><th>Schedule (ET)</th><th>Status</th><th>Last Run</th><th>Next Run</th><th>Last Summary</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. AGENT SCORECARD -->
+    <section class="section" id="agents">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-label">Most Accurate</div><div class="stat-value" id="ag-accurate">—</div><div class="stat-sub" id="ag-accurate-sub"></div></div>
+        <div class="stat"><div class="stat-label">Most Conservative</div><div class="stat-value" id="ag-conservative">—</div><div class="stat-sub" id="ag-conservative-sub"></div></div>
+        <div class="stat"><div class="stat-label">Trades Scored</div><div class="stat-value" id="ag-count">—</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Average Agent Scores (all-time)</div>
+        <div id="agents-bars"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Per-Agent Hit Rate (≥7 calls that became wins)</div>
+        <div class="table-wrap">
+          <table id="agents-table">
+            <thead><tr><th>Agent</th><th>Avg Score</th><th>≥7 Calls</th><th>Wins on ≥7</th><th>Hit Rate</th><th>Notes</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. MEMORY & STRATEGY -->
+    <section class="section" id="memory">
+      <div class="card">
+        <div class="card-title">Recent Lessons & Strategy Updates</div>
+        <div class="md" id="mem-recent"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">memory/portfolio.md</div>
+        <div class="md" id="mem-portfolio"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">CLAUDE.md (Master Strategy)</div>
+        <div class="md" id="mem-claude"></div>
+      </div>
+    </section>
+
+    <!-- 7. MARKET OVERVIEW -->
+    <section class="section" id="market">
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-label">Market Mode</div><div class="stat-value" id="mk-mode">—</div></div>
+        <div class="stat"><div class="stat-label">Fear &amp; Greed</div><div class="stat-value" id="mk-fg">—</div><div class="stat-sub" id="mk-fg-sub"></div></div>
+        <div class="stat"><div class="stat-label">SPX</div><div class="stat-value" id="mk-spx">—</div></div>
+        <div class="stat"><div class="stat-label">BTC</div><div class="stat-value" id="mk-btc">—</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Top Performing Sectors Today</div>
+        <div class="table-wrap">
+          <table id="sectors-table">
+            <thead><tr><th>Sector</th><th>Change %</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Watchlist for Next Session</div>
+        <div class="table-wrap">
+          <table id="watchlist-table">
+            <thead><tr><th>Symbol</th><th>Bucket</th><th>Score</th><th>Action</th><th>Notes</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Macro Notes</div>
+        <div class="md" id="macro-notes"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+const REFRESH_MS = 5 * 60 * 1000;
+const DATA_URL = "./dashboard-data.json";
+const BUCKET_COLORS = {
+  "long-term": "#4ea0ff",
+  "active":    "#d4af37",
+  "crypto":    "#b388ff",
+  "cash":      "#8b94a6"
+};
+const AGENT_KEYS = ["fundamentals","technical","sentiment","macro","risk","tech_analyst"];
+const AGENT_LABELS = {
+  fundamentals: "Fundamentals",
+  technical: "Technical",
+  sentiment: "Sentiment",
+  macro: "Macro",
+  risk: "Risk",
+  tech_analyst: "Tech Analyst"
+};
+
+let DATA = null;
+
+// ---------- NAV ----------
+document.querySelectorAll(".nav-item").forEach(el => {
+  el.addEventListener("click", () => {
+    const t = el.dataset.target;
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.toggle("active", n === el));
+    document.querySelectorAll(".section").forEach(s => s.classList.toggle("active", s.id === t));
+    document.getElementById("page-title").textContent = el.textContent.trim();
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("backdrop").classList.remove("open");
+    window.scrollTo(0,0);
+  });
+});
+document.getElementById("hamburger").addEventListener("click", () => {
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("backdrop").classList.toggle("open");
+});
+document.getElementById("backdrop").addEventListener("click", () => {
+  document.getElementById("sidebar").classList.remove("open");
+  document.getElementById("backdrop").classList.remove("open");
+});
+
+// ---------- HELPERS ----------
+const fmtMoney = (n) => {
+  if (n === null || n === undefined || isNaN(n)) return "—";
+  const sign = n < 0 ? "-" : "";
+  const abs = Math.abs(n);
+  return sign + "$" + abs.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+const fmtPct = (n, withSign=false) => {
+  if (n === null || n === undefined || isNaN(n)) return "—";
+  const sign = withSign && n > 0 ? "+" : "";
+  return sign + n.toFixed(2) + "%";
+};
+const fmtNum = (n, d=2) => {
+  if (n === null || n === undefined || isNaN(n)) return "—";
+  return Number(n).toFixed(d);
+};
+const colorClass = (n) => n > 0 ? "pos" : n < 0 ? "neg" : "";
+const bucketBadge = (b) => {
+  const cls = b === "long-term" ? "badge-long"
+    : b === "active" ? "badge-active"
+    : b === "crypto" ? "badge-crypto"
+    : "badge-cash";
+  return `<span class="badge ${cls}">${b || "—"}</span>`;
+};
+const escapeHtml = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+
+// ---------- RENDER: OVERVIEW ----------
+function renderOverview(d) {
+  const p = d.portfolio || {};
+  document.getElementById("ov-equity").textContent = fmtMoney(p.total_equity);
+  document.getElementById("ov-cash").textContent = fmtMoney(p.cash);
+  document.getElementById("ov-cash-sub").textContent = p.cash_pct != null ? fmtPct(p.cash_pct) + " of equity" : "";
+  document.getElementById("ov-bp").textContent = fmtMoney(p.buying_power);
+
+  const dpl = document.getElementById("ov-dpl");
+  dpl.textContent = fmtMoney(p.daily_pnl);
+  dpl.className = "stat-value " + colorClass(p.daily_pnl);
+  document.getElementById("ov-dpl-sub").textContent = p.daily_pnl_pct != null ? fmtPct(p.daily_pnl_pct, true) : "";
+
+  const tret = document.getElementById("ov-tret");
+  tret.textContent = fmtPct(p.total_return_pct, true);
+  tret.className = "stat-value " + colorClass(p.total_return_pct);
+  document.getElementById("ov-tret-sub").textContent = p.starting_equity ? "from " + fmtMoney(p.starting_equity) : "";
+
+  const spx = document.getElementById("ov-spx");
+  spx.textContent = fmtPct(p.benchmark_gap_pct, true);
+  spx.className = "stat-value " + colorClass(p.benchmark_gap_pct);
+  document.getElementById("ov-spx-sub").textContent = p.benchmark_gap_pct != null
+    ? (p.benchmark_gap_pct >= 0 ? "ahead of SPX" : "behind SPX") : "";
+
+  // Donut
+  const buckets = p.buckets || [];
+  const total = buckets.reduce((s,b) => s + (b.value || 0), 0) || 1;
+  let svg = "";
+  let legend = "";
+  let cumulative = 0;
+  const radius = 15.91549430918954;
+  buckets.forEach(b => {
+    const pct = (b.value || 0) / total * 100;
+    const color = BUCKET_COLORS[b.key] || "#888";
+    svg += `<circle cx="21" cy="21" r="${radius}"
+      fill="transparent" stroke="${color}" stroke-width="6"
+      stroke-dasharray="${pct} ${100-pct}"
+      stroke-dashoffset="${100 - cumulative + 25}"
+      transform="rotate(-90 21 21)"></circle>`;
+    cumulative += pct;
+    legend += `<div class="legend-item">
+      <span><span class="legend-swatch" style="background:${color}"></span>${escapeHtml(b.label)}</span>
+      <span><strong>${pct.toFixed(1)}%</strong> &nbsp; <span style="color:var(--text-dim)">${fmtMoney(b.value)}</span></span>
+    </div>`;
+  });
+  document.getElementById("donut").innerHTML = svg
+    + `<text x="21" y="21" text-anchor="middle" fill="${"#e6e8ee"}" font-size="6" dy="0">Total</text>
+       <text x="21" y="21" text-anchor="middle" fill="${"#d4af37"}" font-size="5" dy="6" font-weight="700">${(total/1000).toFixed(1)}K</text>`;
+  document.getElementById("donut-legend").innerHTML = legend || `<div class="empty" style="padding:0">No bucket data.</div>`;
+}
+
+// ---------- RENDER: POSITIONS ----------
+function renderPositions(d) {
+  const rows = d.positions || [];
+  const tbody = document.querySelector("#positions-table tbody");
+  document.getElementById("positions-empty").style.display = rows.length ? "none" : "block";
+  document.querySelector("#positions-table").style.display = rows.length ? "" : "none";
+  tbody.innerHTML = rows.map(r => {
+    const pnl = r.pnl;
+    const pnlPct = r.pnl_pct;
+    const cls = colorClass(pnl);
+    return `<tr>
+      <td><strong>${escapeHtml(r.symbol)}</strong></td>
+      <td>${bucketBadge(r.bucket)}</td>
+      <td>${fmtNum(r.qty, 4)}</td>
+      <td>${fmtMoney(r.entry_price)}</td>
+      <td>${fmtMoney(r.current_price)}</td>
+      <td class="${cls}">${fmtMoney(pnl)}</td>
+      <td class="${cls}">${fmtPct(pnlPct, true)}</td>
+      <td>${fmtMoney(r.stop_loss)}</td>
+      <td><span style="color:var(--text-dim);font-size:11px">${escapeHtml(r.setup || "—")}</span></td>
+      <td><strong style="color:var(--gold)">${fmtNum(r.agent_average, 1)}</strong></td>
+    </tr>`;
+  }).join("");
+}
+
+// ---------- RENDER: TRADES ----------
+function renderTrades(d) {
+  const all = d.trades || [];
+  const stats = d.trade_stats || {};
+  document.getElementById("tl-total").textContent = stats.total ?? all.length;
+  document.getElementById("tl-wl").textContent = (stats.wins ?? 0) + " / " + (stats.losses ?? 0);
+  document.getElementById("tl-wr").textContent = stats.win_rate_pct != null ? fmtPct(stats.win_rate_pct) : "—";
+  document.getElementById("tl-pf").textContent = stats.profit_factor != null ? fmtNum(stats.profit_factor, 2) : "—";
+
+  const draw = () => {
+    const sym = document.getElementById("filter-symbol").value.trim().toUpperCase();
+    const act = document.getElementById("filter-action").value;
+    const bk  = document.getElementById("filter-bucket").value;
+    const from = document.getElementById("filter-from").value;
+    const to = document.getElementById("filter-to").value;
+
+    const filtered = all.filter(t => {
+      if (sym && !(t.symbol || "").toUpperCase().includes(sym)) return false;
+      if (act && t.action !== act) return false;
+      if (bk && t.bucket !== bk) return false;
+      if (from && t.ts && t.ts.slice(0,10) < from) return false;
+      if (to && t.ts && t.ts.slice(0,10) > to) return false;
+      return true;
+    });
+
+    const tbody = document.querySelector("#trades-table tbody");
+    document.getElementById("trades-empty").style.display = filtered.length ? "none" : "block";
+    document.querySelector("#trades-table").style.display = filtered.length ? "" : "none";
+
+    tbody.innerHTML = filtered.map(t => {
+      const a = t.agent_scores || {};
+      const result = t.result_pct;
+      const decision = t.master_decision || "—";
+      const decBadge = decision === "approved" ? "badge-ok"
+        : decision === "rejected" ? "badge-fail" : "badge-warn";
+      return `<tr>
+        <td>${escapeHtml((t.ts || "").slice(0,16).replace("T"," "))}</td>
+        <td><strong>${escapeHtml(t.symbol || "—")}</strong></td>
+        <td><span class="badge ${t.action === "entry" ? "badge-ok" : t.action === "stop_hit" ? "badge-fail" : "badge-warn"}">${escapeHtml(t.action || "—")}</span></td>
+        <td>${bucketBadge(t.bucket)}</td>
+        <td><span style="color:var(--text-dim);font-size:11px">${escapeHtml(t.setup || "—")}</span></td>
+        <td>${fmtNum(t.score, 1)}</td>
+        <td>${fmtNum(a.fundamentals, 0)}</td>
+        <td>${fmtNum(a.technical, 0)}</td>
+        <td>${fmtNum(a.sentiment, 0)}</td>
+        <td>${fmtNum(a.macro, 0)}</td>
+        <td>${fmtNum(a.risk, 0)}</td>
+        <td>${fmtNum(a.tech_analyst, 0)}</td>
+        <td><strong style="color:var(--gold)">${fmtNum(t.agent_average, 1)}</strong></td>
+        <td class="${colorClass(result)}">${result != null ? fmtPct(result, true) : "—"}</td>
+        <td><span class="badge ${decBadge}">${escapeHtml(decision)}</span></td>
+      </tr>`;
+    }).join("");
+  };
+
+  ["filter-symbol","filter-action","filter-bucket","filter-from","filter-to"].forEach(id => {
+    const el = document.getElementById(id);
+    el.oninput = draw; el.onchange = draw;
+  });
+  draw();
+}
+
+// ---------- RENDER: ROUTINES ----------
+function renderRoutines(d) {
+  const rows = d.routines || [];
+  const tbody = document.querySelector("#routines-table tbody");
+  tbody.innerHTML = rows.map(r => {
+    const status = (r.status || "pending").toLowerCase();
+    const cls = status === "completed" ? "badge-ok"
+      : status === "running" ? "badge-warn"
+      : status === "failed" ? "badge-fail"
+      : "badge-cash";
+    return `<tr>
+      <td><strong>${escapeHtml(r.name)}</strong></td>
+      <td><span style="color:var(--text-dim);font-size:12px">${escapeHtml(r.schedule || "—")}</span></td>
+      <td><span class="badge ${cls}">${escapeHtml(status)}</span></td>
+      <td>${escapeHtml(r.last_run || "—")}</td>
+      <td>${escapeHtml(r.next_run || "—")}</td>
+      <td style="white-space:normal;max-width:480px;color:var(--text-dim)">${escapeHtml(r.last_summary || "—")}</td>
+    </tr>`;
+  }).join("");
+}
+
+// ---------- RENDER: AGENTS ----------
+function renderAgents(d) {
+  const a = d.agent_scorecard || {};
+  document.getElementById("ag-accurate").textContent = a.most_accurate || "—";
+  document.getElementById("ag-accurate-sub").textContent = a.most_accurate_note || "";
+  document.getElementById("ag-conservative").textContent = a.most_conservative || "—";
+  document.getElementById("ag-conservative-sub").textContent = a.most_conservative_note || "";
+  document.getElementById("ag-count").textContent = a.trades_scored ?? "—";
+
+  const stats = a.per_agent || {};
+  const bars = AGENT_KEYS.map(k => {
+    const s = stats[k] || {};
+    const avg = s.avg_score;
+    const w = avg != null ? Math.max(0, Math.min(100, avg * 10)) : 0;
+    return `<div class="agent-row">
+      <div class="agent-name">${AGENT_LABELS[k]}</div>
+      <div class="agent-bar"><div class="agent-bar-fill" style="width:${w}%"></div></div>
+      <div class="agent-score">${avg != null ? fmtNum(avg, 1) : "—"}</div>
+    </div>`;
+  }).join("");
+  document.getElementById("agents-bars").innerHTML = bars;
+
+  const tbody = document.querySelector("#agents-table tbody");
+  tbody.innerHTML = AGENT_KEYS.map(k => {
+    const s = stats[k] || {};
+    return `<tr>
+      <td><strong>${AGENT_LABELS[k]}</strong></td>
+      <td>${fmtNum(s.avg_score, 2)}</td>
+      <td>${s.calls_above_7 ?? "—"}</td>
+      <td>${s.wins_on_above_7 ?? "—"}</td>
+      <td>${s.hit_rate_pct != null ? fmtPct(s.hit_rate_pct) : "—"}</td>
+      <td style="white-space:normal;color:var(--text-dim);font-size:12px">${escapeHtml(s.note || "")}</td>
+    </tr>`;
+  }).join("");
+}
+
+// ---------- RENDER: MEMORY ----------
+function renderMemory(d) {
+  const m = d.memory || {};
+  document.getElementById("mem-recent").innerHTML = m.recent_lessons_md
+    ? marked.parse(m.recent_lessons_md)
+    : `<div class="empty" style="padding:0">No recent lessons captured.</div>`;
+  document.getElementById("mem-portfolio").innerHTML = m.portfolio_md
+    ? marked.parse(m.portfolio_md)
+    : `<div class="empty" style="padding:0">memory/portfolio.md not loaded.</div>`;
+  document.getElementById("mem-claude").innerHTML = m.claude_md
+    ? marked.parse(m.claude_md)
+    : `<div class="empty" style="padding:0">CLAUDE.md not loaded.</div>`;
+}
+
+// ---------- RENDER: MARKET ----------
+function renderMarket(d) {
+  const m = d.market || {};
+  document.getElementById("mk-mode").textContent = m.mode || "—";
+  document.getElementById("mk-fg").textContent = m.fear_greed != null ? m.fear_greed : "—";
+  document.getElementById("mk-fg-sub").textContent = m.fear_greed_label || "";
+  document.getElementById("mk-spx").textContent = m.spx ? m.spx : "—";
+  document.getElementById("mk-btc").textContent = m.btc ? m.btc : "—";
+
+  const sectors = m.sectors || [];
+  document.querySelector("#sectors-table tbody").innerHTML = sectors.map(s => `<tr>
+    <td><strong>${escapeHtml(s.name)}</strong></td>
+    <td class="${colorClass(s.change_pct)}">${fmtPct(s.change_pct, true)}</td>
+  </tr>`).join("") || `<tr><td colspan="2" class="empty" style="padding:16px">No sector data.</td></tr>`;
+
+  const wl = d.watchlist || [];
+  document.querySelector("#watchlist-table tbody").innerHTML = wl.map(w => `<tr>
+    <td><strong>${escapeHtml(w.symbol)}</strong></td>
+    <td>${bucketBadge(w.bucket)}</td>
+    <td><strong style="color:var(--gold)">${fmtNum(w.score, 0)}</strong></td>
+    <td>${escapeHtml(w.action || "—")}</td>
+    <td style="white-space:normal;color:var(--text-dim);font-size:12px;max-width:360px">${escapeHtml(w.notes || "")}</td>
+  </tr>`).join("") || `<tr><td colspan="5" class="empty" style="padding:16px">No watchlist.</td></tr>`;
+
+  document.getElementById("macro-notes").innerHTML = m.macro_notes_md
+    ? marked.parse(m.macro_notes_md)
+    : `<div class="empty" style="padding:0">No macro notes.</div>`;
+}
+
+// ---------- LOAD ----------
+async function fetchText(url) {
+  try {
+    const r = await fetch(url + "?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) return null;
+    return await r.text();
+  } catch { return null; }
+}
+async function load() {
+  try {
+    const res = await fetch(DATA_URL + "?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    DATA = await res.json();
+    document.getElementById("error-bar").innerHTML = "";
+
+    // Pull CLAUDE.md and memory/portfolio.md straight from the repo so the
+    // Memory & Strategy section is always the live source of truth.
+    DATA.memory = DATA.memory || {};
+    const [claudeMd, portfolioMd] = await Promise.all([
+      fetchText("./CLAUDE.md"),
+      fetchText("./memory/portfolio.md")
+    ]);
+    if (claudeMd) DATA.memory.claude_md = claudeMd;
+    if (portfolioMd) DATA.memory.portfolio_md = portfolioMd;
+
+    renderOverview(DATA);
+    renderPositions(DATA);
+    renderTrades(DATA);
+    renderRoutines(DATA);
+    renderAgents(DATA);
+    renderMemory(DATA);
+    renderMarket(DATA);
+    const ts = DATA.last_updated || new Date().toISOString();
+    document.getElementById("last-updated-text").textContent =
+      "Updated " + ts.replace("T", " ").slice(0,19) + " UTC";
+  } catch (e) {
+    document.getElementById("error-bar").innerHTML =
+      `<div class="error">Could not load dashboard-data.json — ${escapeHtml(e.message)}. Routines write this file; until the first run completes, sections may be empty.</div>`;
+    document.getElementById("last-updated-text").textContent = "Load failed";
+  }
+}
+
+load();
+setInterval(load, REFRESH_MS);
+</script>
+</body>
+</html>

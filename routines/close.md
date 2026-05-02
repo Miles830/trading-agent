@@ -17,6 +17,7 @@ RESEARCH:
 DECISIONS:
 - Close all remaining day trades immediately — no exceptions
 - Place MOC orders for any day trades not yet closed
+- For any MOC swing entry placed at the close, run the full **Multi-Agent Analysis Framework** (CLAUDE.md) first (avg ≥ 7, Risk ≥ 6, ≥ 3 agents at 7+) and log the full `agent_scores` block
 - Confirm all swing and long-term positions have valid stop-losses set
 - Adjust stop-losses on any positions that moved significantly today
 - Cancel any unfilled limit orders that are no longer valid
@@ -32,3 +33,12 @@ Start with full portfolio state, then:
 - Key things to watch tomorrow
 - Update memory/portfolio.md with final end of day state
 - Log all decisions and final P&L to logs/trades.md
+
+DASHBOARD UPDATE (MANDATORY — write to /workspaces/trading-agent/dashboard-data.json):
+- Set `last_updated` and `updated_by="market-close"`.
+- Refresh `portfolio` block (final daily_pnl, total_return_pct, spx_return_pct, benchmark_gap_pct).
+- Refresh `positions` (only overnight holds remaining, with confirmed stops).
+- Append every YAML trade closed today to `trades`.
+- Update the "Market Close" row in `routines`: status="completed", last_run, next_run (tomorrow 15:30 ET), last_summary (closes, today's P&L, vs SPX gap).
+- Refresh `market.spx`, `market.btc`, `market.fear_greed` (and label) from EOD reads.
+- Refresh `watchlist` with tomorrow's confirmed names if changed since Afternoon.
