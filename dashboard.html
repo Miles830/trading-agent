@@ -1077,6 +1077,9 @@
     <div class="nav-item" data-target="memory">
       <span class="nav-icon">▣</span> Memory & Strategy
     </div>
+    <div class="nav-item" data-target="strategy">
+      <span class="nav-icon">⌬</span> Strategy Playbook
+    </div>
     <div class="nav-item" data-target="market">
       <span class="nav-icon">◈</span> Market Overview
     </div>
@@ -1308,6 +1311,145 @@
       <div class="card">
         <div class="card-title">CLAUDE.md (Master Strategy)</div>
         <div class="md" id="mem-claude"></div>
+      </div>
+    </section>
+
+    <!-- 6b. STRATEGY PLAYBOOK -->
+    <section class="section" id="strategy">
+      <div class="card">
+        <div class="card-title">Portfolio Allocation</div>
+        <div class="md">
+          <ul>
+            <li><strong>55% — Long-term Investing.</strong> High-conviction individual stocks held 2 months to 1.5 years.</li>
+            <li><strong>30% — Active Trading.</strong> Short-term trades on momentum and catalysts.</li>
+            <li><strong>5% — Crypto.</strong> BTC, ETH, and high-conviction altcoins.</li>
+            <li><strong>10% — Cash Reserve.</strong> Floor — never deployed below this level.</li>
+          </ul>
+          <p>Default state is invested up to bucket targets with cash held at the 10% floor — not above. Action is the default; inaction requires a specific named reason.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Entry Checklist (score / 10, minimum 7 to enter)</div>
+        <div class="md">
+          <ul>
+            <li><strong>Strong fundamental story</strong> — 0 to 2 pts</li>
+            <li><strong>Clear technical setup</strong> — 0 to 2 pts</li>
+            <li><strong>Identifiable catalyst</strong> — 0 to 2 pts</li>
+            <li><strong>Macro / sector tailwind</strong> — 0 to 2 pts</li>
+            <li><strong>Favorable risk / reward (min 2:1)</strong> — 0 to 2 pts</li>
+          </ul>
+          <blockquote>A confirmed candlestick pattern can add up to 2 bonus points (capped together with "technical setup" at 2 pts total). With a strong candle signal, a base score of 5 can qualify — see Candlestick Patterns below.</blockquote>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Candlestick Patterns — Day Trading Method</div>
+        <div class="md">
+          <h3>Bullish entry signals (look to buy)</h3>
+          <ul>
+            <li><strong>Hammer</strong> — small body at top, long lower wick; reversal from downtrend.</li>
+            <li><strong>Bullish Engulfing</strong> — large green candle fully engulfs prior red; strong reversal.</li>
+            <li><strong>Morning Star</strong> — three-candle (red, doji, green); strong bottom reversal.</li>
+            <li><strong>Dragonfly Doji</strong> — open and close at top, long lower wick; buyer strength.</li>
+            <li><strong>Three White Soldiers</strong> — three green candles with higher closes; uptrend confirmation.</li>
+          </ul>
+          <h3>Bearish exit signals (look to sell or close)</h3>
+          <ul>
+            <li><strong>Shooting Star</strong> — small body at bottom, long upper wick; reversal from uptrend.</li>
+            <li><strong>Bearish Engulfing</strong> — large red candle fully engulfs prior green; strong reversal.</li>
+            <li><strong>Evening Star</strong> — three-candle (green, doji, red); strong top reversal.</li>
+            <li><strong>Gravestone Doji</strong> — open and close at bottom, long upper wick; seller strength.</li>
+            <li><strong>Three Black Crows</strong> — three red candles with lower closes; downtrend confirmation.</li>
+          </ul>
+          <h3>Confirmation rules</h3>
+          <ul>
+            <li>Never trade a candlestick pattern in isolation.</li>
+            <li>Always confirm with at least one of: volume spike, RSI divergence, or MACD crossover.</li>
+            <li>5-minute chart for entry timing; 1-hour chart for trend direction.</li>
+            <li>Only trade patterns aligned with the overall daily trend; skip if signal conflicts with macro.</li>
+          </ul>
+          <h3>Scoring</h3>
+          <p>Up to <strong>+2 bonus points</strong> on the entry checklist for a confirmed candlestick pattern. <strong>No double-counting</strong>: combined contribution from "Clear technical setup" and the candlestick bonus is capped at 2 pts. Bonus rescues a weak technical score; it does not stack on top of a strong one.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Setup Taxonomy (trade-log tags)</div>
+        <div class="md">
+          <p>Every entry / exit / skip in <code>logs/trades.md</code> carries a <code>setup:</code> tag. The Weekly Review tallies wins and losses per tag and applies the 3-in-a-row halt / boost rules.</p>
+          <ul>
+            <li><code>ai-momentum-pullback</code> — AI capex theme name pulling back into support.</li>
+            <li><code>earnings-reaction-fade</code> — fading post-earnings overreaction.</li>
+            <li><code>earnings-reaction-follow</code> — going with post-earnings continuation.</li>
+            <li><code>breakout-volume</code> — clean technical breakout on &gt;2x volume.</li>
+            <li><code>mean-reversion-oversold</code> — RSI / MACD oversold reversal.</li>
+            <li><code>macro-hedge</code> — gold / energy / defensive position driven by macro thesis.</li>
+            <li><code>sector-rotation</code> — entering a sector showing fresh leadership.</li>
+            <li><code>crypto-flush-rebound</code> — BTC / ETH after capitulation flush.</li>
+            <li><code>candlestick-reversal</code> — day-trade entry driven by pattern.</li>
+            <li><code>other</code> — must include a free-text reason; flag for taxonomy update.</li>
+          </ul>
+          <blockquote><strong>3-in-a-row halt:</strong> any tag with 3 consecutive losses is paused until conditions change. <strong>3-in-a-row boost:</strong> any tag with 3 consecutive wins gets entry threshold lowered to 6.</blockquote>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Multi-Agent Analysis Framework</div>
+        <div class="md">
+          <p>Every trade is scored by 6 specialist sub-agents. The Master Agent aggregates and decides.</p>
+          <ul>
+            <li><strong>Fundamentals</strong> — earnings beat / miss, revenue growth, margins, P/E vs sector, analyst consensus.</li>
+            <li><strong>Technical</strong> — trend, support / resistance, RSI, MACD, volume, candlestick patterns.</li>
+            <li><strong>Sentiment</strong> — news (last 48h), Fear &amp; Greed, short interest, options flow, <strong>X (Twitter) sentiment via xAI Grok</strong> (modifier −2 to +2 inside the score).</li>
+            <li><strong>Macro</strong> — risk-on / risk-off, sector vs market, Fed / data calendar, dollar, geopolitics.</li>
+            <li><strong>Risk</strong> — guardrail compliance, max loss, sector / position caps, R/R ratio. <strong>Score &lt; 6 is automatic veto.</strong></li>
+            <li><strong>Tech Analyst</strong> — defensible tech, IP / patents, R&amp;D intensity, AI / ML use, developer signal, technical moats. Auto-7 for non-tech.</li>
+          </ul>
+          <h3>Master Agent gate (all four must pass)</h3>
+          <ul>
+            <li>Average score ≥ 7</li>
+            <li>Risk Agent ≥ 6 (no veto)</li>
+            <li>≥ 4 of 6 agents at 7 or higher</li>
+            <li>For tech names: Tech Analyst ≥ 6</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Order Types &amp; Stop-Loss Discipline</div>
+        <div class="md">
+          <h3>Order types</h3>
+          <ul>
+            <li><strong>MOO (Market on Open)</strong> — Pre-Market routine only; placed before 9:25 AM ET; max 3 / day.</li>
+            <li><strong>MOC (Market on Close)</strong> — Market Close routine; placed before 3:50 PM ET; closes day trades or opens swing positions.</li>
+            <li><strong>Limit</strong> — all other routines; ≤ 0.5% above ask for buys, ≤ 0.5% below bid for sells.</li>
+            <li><strong>Extended hours</strong> — 4:00–9:30 AM and 4:00–8:00 PM ET; <strong>limit only</strong>; size cut by 50%.</li>
+          </ul>
+          <h3>Stop-loss percentages (mandatory, broker-placed)</h3>
+          <ul>
+            <li><strong>Long-term:</strong> 12% below entry</li>
+            <li><strong>Active trades:</strong> 5% below entry</li>
+            <li><strong>Crypto:</strong> 18% below entry</li>
+          </ul>
+          <blockquote>A position without a resting stop-loss order at Alpaca is a guardrail violation. Mid-Morning routine audits this first thing every day.</blockquote>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Hard Guardrails (never violated)</div>
+        <div class="md">
+          <ul>
+            <li>Maximum <strong>5%</strong> of portfolio per individual position.</li>
+            <li>Maximum <strong>25%</strong> of portfolio in any single sector.</li>
+            <li>Never risk more than <strong>1.5%</strong> of total equity on a single trade.</li>
+            <li>Every position has a hard stop-loss set at entry.</li>
+            <li>Cash floor: <strong>10%</strong> of total equity, always.</li>
+            <li>Maximum <strong>12</strong> open positions at any time.</li>
+            <li>Daily-loss circuit breaker: portfolio down <strong>3%</strong> in a day → all new entries paused.</li>
+            <li>Never average down into a losing position more than once.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -1695,6 +1837,7 @@ const SEARCH_SECTIONS = [
   { target: "routines",  icon: "◴", label: "Routine Status",     hint: "pre-market, open, close..." },
   { target: "agents",    icon: "◎", label: "Agent Scorecard",    hint: "6-agent calibration" },
   { target: "memory",    icon: "▣", label: "Memory & Strategy",  hint: "lessons + portfolio.md" },
+  { target: "strategy",  icon: "⌬", label: "Strategy Playbook",  hint: "checklist, candlesticks, setups, agents" },
   { target: "market",    icon: "◈", label: "Market Overview",    hint: "SPX, BTC, sectors" },
   { target: "suggest",   icon: "✎", label: "Submit Suggestion",  hint: "open a GitHub issue" },
 ];
