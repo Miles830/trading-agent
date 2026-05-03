@@ -1882,12 +1882,20 @@ document.getElementById("settings-reset").addEventListener("click", () => {
 // =========================================================================
 // NAV
 // =========================================================================
+function navItemLabel(el) {
+  // Read the nav label without the leading icon glyph from the .nav-icon span.
+  return [...el.childNodes]
+    .filter(n => n.nodeType === Node.TEXT_NODE)
+    .map(n => n.textContent)
+    .join("")
+    .trim();
+}
 document.querySelectorAll(".nav-item").forEach(el => {
   el.addEventListener("click", () => {
     const t = el.dataset.target;
     document.querySelectorAll(".nav-item").forEach(n => n.classList.toggle("active", n === el));
     document.querySelectorAll(".section").forEach(s => s.classList.toggle("active", s.id === t));
-    document.getElementById("page-title").textContent = el.textContent.trim();
+    document.getElementById("page-title").textContent = navItemLabel(el);
     document.getElementById("sidebar").classList.remove("open");
     document.getElementById("backdrop").classList.remove("open");
     window.scrollTo(0,0);
@@ -1976,12 +1984,12 @@ function navigateToHit(hit) {
   closeSearch();
 }
 
-function closeSearch() {
+function closeSearch({ clearInput = true } = {}) {
   const input = document.getElementById('search-input');
   const list  = document.getElementById('search-results');
   list.classList.remove('open');
   input.blur();
-  input.value = '';
+  if (clearInput) input.value = '';
 }
 
 (function initSearch() {
@@ -2014,7 +2022,12 @@ function closeSearch() {
       navigateToHit(SEARCH_HITS[idx >= 0 ? idx : 0]);
     } else if (e.key === 'Escape') {
       e.preventDefault();
-      closeSearch();
+      // First Escape just closes the dropdown; a second clears the field.
+      if (list.classList.contains('open')) {
+        closeSearch({ clearInput: false });
+      } else {
+        closeSearch();
+      }
     }
   });
 
@@ -2349,16 +2362,26 @@ function renderTrades(d) {
     document.getElementById("trades-empty").style.display = filtered.length ? "none" : "block";
     document.querySelector("#trades-table").style.display = filtered.length ? "" : "none";
 
+    const actionBadgeMap = {
+      entry: "badge-ok",
+      target_hit: "badge-ok",
+      stop_hit: "badge-fail",
+      exit: "badge-warn",
+      skip: "badge-cash"
+    };
     tbody.innerHTML = filtered.map(t => {
       const a = t.agent_scores || {};
       const result = t.result_pct;
       const decision = t.master_decision || "—";
       const decBadge = decision === "approved" ? "badge-ok"
-        : decision === "rejected" ? "badge-fail" : "badge-warn";
+        : decision === "rejected" ? "badge-fail"
+        : decision === "—" ? "badge-cash"
+        : "badge-warn";
+      const actBadge = actionBadgeMap[t.action] || "badge-warn";
       return `<tr>
         <td>${escapeHtml((t.ts || "").slice(0,16).replace("T"," "))}</td>
         <td><strong>${escapeHtml(t.symbol || "—")}</strong></td>
-        <td><span class="badge ${t.action === "entry" ? "badge-ok" : t.action === "stop_hit" ? "badge-fail" : "badge-warn"}">${escapeHtml(t.action || "—")}</span></td>
+        <td><span class="badge ${actBadge}">${escapeHtml(t.action || "—")}</span></td>
         <td>${bucketBadge(t.bucket)}</td>
         <td><span style="color:var(--text-dim);font-size:11px">${escapeHtml(t.setup || "—")}</span></td>
         <td>${fmtNum(t.score, 1)}</td>
