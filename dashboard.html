@@ -1231,6 +1231,82 @@
     100% { transform: scale(2.6); opacity: 0; }
   }
 
+  /* --- Animated background: drifting orbs + slow grid pan ------------ */
+  .bg-fx {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;             /* beats body > * { z-index:1 } via class specificity */
+  }
+  .bg-grid {
+    position: absolute;
+    inset: -10%;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.05;
+    animation: gridPan 60s linear infinite;
+    will-change: transform;
+  }
+  @keyframes gridPan {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(64px, 64px); }
+  }
+
+  .bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.42;
+    mix-blend-mode: screen;
+    will-change: transform;
+  }
+  .bg-orb-1 {
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    top: -12%; left: -10%;
+    animation: orbDrift1 28s ease-in-out infinite;
+  }
+  .bg-orb-2 {
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+    top: 10%; left: 55%;
+    animation: orbDrift2 36s ease-in-out infinite;
+  }
+  .bg-orb-3 {
+    width: 540px; height: 540px;
+    background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+    top: 55%; left: 5%;
+    animation: orbDrift3 42s ease-in-out infinite;
+  }
+  .bg-orb-4 {
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, var(--pulse) 0%, transparent 70%);
+    bottom: -15%; right: -10%;
+    animation: orbDrift4 32s ease-in-out infinite;
+    opacity: 0.32;
+  }
+  @keyframes orbDrift1 {
+    0%, 100% { transform: translate(0, 0)            scale(1); }
+    33%      { transform: translate(40vw, 25vh)      scale(1.18); }
+    66%      { transform: translate(15vw, 55vh)      scale(0.9); }
+  }
+  @keyframes orbDrift2 {
+    0%, 100% { transform: translate(0, 0)            scale(1); }
+    50%      { transform: translate(-45vw, 30vh)     scale(1.22); }
+  }
+  @keyframes orbDrift3 {
+    0%, 100% { transform: translate(0, 0)            scale(1); }
+    40%      { transform: translate(50vw, -25vh)     scale(1.1); }
+    70%      { transform: translate(70vw, -45vh)     scale(0.92); }
+  }
+  @keyframes orbDrift4 {
+    0%, 100% { transform: translate(0, 0)            scale(1); }
+    50%      { transform: translate(-55vw, -40vh)    scale(1.15); }
+  }
+
   /* --- Reduced-motion overrides — short-circuit every new animation -- */
   html[data-motion="reduced"] .brand-title {
     animation: none;
@@ -1252,12 +1328,16 @@
   html[data-motion="reduced"] .spark-svg-wrap svg path,
   html[data-motion="reduced"] .spark-svg-wrap svg circle,
   html[data-motion="reduced"] .stat-value.flash,
-  html[data-motion="reduced"] .pulse::after { animation: none; }
+  html[data-motion="reduced"] .pulse::after,
+  html[data-motion="reduced"] .bg-grid,
+  html[data-motion="reduced"] .bg-orb { animation: none; }
   html[data-motion="reduced"] .perf-chart svg path,
   html[data-motion="reduced"] .spark-svg-wrap svg path {
     stroke-dasharray: none;
     stroke-dashoffset: 0;
   }
+  /* Ambient: off — also turn off the animated background orbs/grid */
+  html[data-ambient="off"] .bg-fx { display: none; }
 </style>
 <script>
   // Lock immediately so the dashboard never flashes before the gate paints.
@@ -1266,6 +1346,16 @@
 </script>
 </head>
 <body>
+<!-- Animated background — large blurred orbs drift across a faintly panning grid.
+     Lives behind every other body child via the .bg-fx { z-index:0 } rule that
+     overrides the global "body > * { z-index:1 }" default. -->
+<div class="bg-fx" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-orb bg-orb-4"></div>
+</div>
 <div id="opus-gate" role="dialog" aria-label="Dashboard passcode">
   <form class="gate-card" id="opus-gate-form" autocomplete="off">
     <h2>Opus Trader</h2>
