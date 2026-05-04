@@ -207,6 +207,56 @@ master_notes: NOT a strict CLAUDE.md exemption. Same handling as NVDA skip.
 - **Diagnose remote-routine failure:** Need to inspect run history at claude.ai/code/routines for trig_014T4XMggPEmNTfaaTRuhXVp (Pre-Market) and trig_0131GpFbVasP2LaKbzy369Da (Market Open) to find why neither produced a commit despite firing on schedule. Possible causes: git push auth failure swallowed silently, agent exited early on a tool error, or model produced response but skipped the order/commit phase.
 - **X (Twitter) sentiment integration:** Local edits adding xAI Grok API to all 7 routines + CLAUDE.md are uncommitted at time of this trade. Will be committed in same operator session and applied starting at next routine.
 
+### PM update — Sector sub-cap compliance & 3-position stop-loss audit fix (operator, ~7:21 PM ET, after-hours)
+
+**Context:** New CLAUDE.md sector sub-allocation rule (LT bucket: tech 30-60%, precious metals max 10%) puts GLD's 51.7%-of-LT-bucket position out of compliance. Operator chose options (1)+(2): reclassify GLD from long-term → active, AND trim. Stop-loss audit during execution revealed all 3 morning brackets had child legs (stop + target) **canceled/expired** — likely because the bracket parent was placed `time_in_force: day` and the day-end timer killed both child legs at 4 PM ET. **All 3 positions had been NAKED since session close** — clear `Stop-Loss Placement (MANDATORY)` guardrail breach that the Mid-Morning stop audit should have caught but the routine never executed today.
+
+```yaml
+---
+ts: 2026-05-04T23:20:56Z
+action: bucket-reclassify
+symbol: GLD
+old_bucket: long-term
+new_bucket: active
+setup: macro-hedge
+reason: New CLAUDE.md sector sub-allocation rule caps precious metals at 10% of LT bucket. GLD as long-term, sized 2.93% of total = 51.7% of LT bucket = 5x breach. Reclassifying to active where the global 25% sector cap applies (GLD at 2.93% well under), and the macro-hedge setup tag aligns naturally with active-bucket discipline. Stop-loss tightened from -12% to -5% per active-bucket rules.
+---
+```
+
+```yaml
+---
+ts: 2026-05-04T23:20:56Z
+action: trim
+symbol: GLD
+bucket: active
+setup: macro-hedge
+qty_pre: 7
+qty_sold: 6
+qty_post: 1
+order_id: 8c1fb8c9-56b9-49b3-aee9-3edcc9561bd6
+order_type: market
+time_in_force: opg
+expected_fill_window: 2026-05-05 09:30 ET (next regular open)
+reason: Right-size GLD to active-bucket convention after reclassify. Residual 1 share = ~$415 = 0.41% of total — retained as small tactical hedge against ongoing Hormuz / dovish-Fed thesis. Cash freed ~$2,490 redeploys into LT-bucket tech entries per the new 30% tech floor (NVDA/AVGO/JPM all ≥7 score on the existing watchlist).
+---
+```
+
+**Stop-loss restoration — 3 GTC stops placed:**
+
+| Symbol | Bucket | Qty | Stop $ | Stop % | Order ID | TIF |
+|---|---|---|---|---|---|---|
+| TSM | long-term | 7 | $353.76 | -12% from $401.47 entry | be2a94ab-7c50-4de3-95c6-fa2c0145b3b6 | gtc |
+| GLD (residual) | active | 1 | $397.92 | -5% from $418.86 entry | 26defbfa-0319-4f37-adfc-d414fc3c9f53 | gtc |
+| XLE | active | 50 | $56.15 | -5% from ~$59.10 entry | b6aec282-8925-4021-a562-21b72a65ace6 | gtc |
+
+The 6 GLD shares being sold via MOO tomorrow are intentionally not protected by an explicit stop — they'll close at the next open regardless. Stops only become live during regular hours (9:30 AM ET tomorrow); overnight-gap exposure is unavoidable given the after-hours window.
+
+### Lessons & next-routine notes (PM update)
+- **Bracket OCO with `time_in_force: day` is brittle** — when the trading session ends, bracket child legs (both stop and target) auto-cancel and the position goes naked overnight. Going forward, all entry brackets should use `time_in_force: gtc` on the parent so children inherit GTC, OR back the bracket with separate GTC stops placed at entry time as belt-and-suspenders. Worth proposing a CLAUDE.md "Order Types → Stop-Loss Placement" amendment.
+- **Tomorrow's Market Open (9:45 ET) MUST audit:** verify GLD MOO sell-6 filled cleanly; confirm the 1-share GLD stop and 7-share TSM stop are still valid post-fill (no orphaned-qty issues); confirm XLE stop is intact.
+- **LT-bucket tech buildout:** with $91.3k cash + ~$2.5k freed from GLD trim ≈ $94k available, the LT bucket needs to grow into the new 30% tech floor. Watchlist names NVDA/AVGO/JPM (all ≥7) are pre-cleared and were already flagged as "deferred" earlier today. Pre-Market routine tomorrow should place MOO buys.
+- **Mid-Morning routine reliability:** today's Mid-Morning never executed (no commit, no orders, no skip-log). The CLAUDE.md mandatory stop-audit at the start of Mid-Morning would have caught all 3 naked positions ~6 hours ago. This is the second consecutive day of remote-routine silent failure — diagnostic at claude.ai/code/routines is overdue.
+
 ---
 
 ## 2026-05-01 — Weekly Review (FIRST RUN — initialization)
