@@ -31,7 +31,7 @@ All long-term entries — anchor, startup, or earnings-anticipation — still mu
 
 ## Hard Guardrails
 - Maximum 5% of total portfolio per individual position
-- Maximum 25% of portfolio in any single sector
+- Maximum 25% of portfolio in any single sector (see "Sector Sub-Allocation" below for the long-term bucket override on tech)
 - Never risk more than 1.5% of total equity on any single trade
 - Every position must have a hard stop-loss set at entry
 - Long-term positions: stop-loss at 12% below entry
@@ -40,6 +40,17 @@ All long-term entries — anchor, startup, or earnings-anticipation — still mu
 - If portfolio drops 3% in a single day, pause all new entries
 - Maximum 12 open positions at any time
 - Never average down into a losing position more than once
+
+### Sector Sub-Allocation (Long-Term Investing Bucket Only)
+Within the long-term investing bucket (target 55% of total portfolio), the following sector sub-allocations apply IN ADDITION TO the global 25% sector cap. Trades tagged `bucket: active` or `bucket: crypto` are NOT subject to these sub-caps — the active bucket continues to use the standard 25%-of-total-portfolio sector cap unchanged.
+
+- **Technology sector: 30% min, 60% max of the long-term bucket.** This explicitly OVERRIDES the global 25%-of-total-portfolio sector cap for the tech sector. At the LT-bucket target of 55%, the 60% sub-cap = 33% of total portfolio (above the global 25% cap, intentionally).
+  - The **30% floor** is a target, not a stop-trading violation: new long-term entries should bias toward tech until the tech share of the long-term bucket reaches 30%. If the LT bucket has too little capital deployed for the floor to be meaningful (e.g., < $20k deployed), the floor is informational only — keep selecting on the entry checklist.
+  - The **60% ceiling** IS a hard cap: a new tech entry that would push tech above 60% of the long-term bucket must be skipped (logged with the standard skip YAML, citing this guardrail).
+- **Precious Metals sector: 10% max of the long-term bucket.** Includes gold ETFs (GLD, IAU), silver ETFs (SLV), and precious-metals miners (GDX, NEM, etc.). At the LT-bucket target of 55%, the 10% sub-cap = 5.5% of total portfolio. This is a hard cap with no override on the global 25% cap (the 10% sub-cap is the binding constraint).
+- **All other sectors:** continue to use the global 25%-of-total-portfolio sector cap.
+
+A precious-metals position carried in the **active-trading bucket** as a tactical macro hedge does NOT count against the long-term bucket's 10% precious-metals sub-cap. Bucket assignment is set at entry and recorded in the `bucket:` field of the trade-log YAML — to move a position between buckets, log a `bucket-reclassify` action with the rationale.
 
 ## Deployment Bias
 The mission is aggressive growth. Capital sitting in cash earns nothing toward beating the S&P 500. The default state is invested up to the bucket targets, with cash held at its 10% floor — not above. Action is the default; inaction requires a specific, named reason.
