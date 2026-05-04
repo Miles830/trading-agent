@@ -13,6 +13,7 @@ RESEARCH:
 - Check crypto markets — BTC and ETH midday movement
 - Check sector rotation — which sectors are leading and lagging?
 - Check options market sentiment for any major holdings
+- **Check X (Twitter) sentiment** via the xAI Grok API (`XAI_API_KEY` from `.env`) for any midday setup being scored AND for any holding where momentum has clearly shifted since open. Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts from prominent traders, capture trending cashtags. Feed the read into the Sentiment Agent's score (modifier −2 to +2) and record in `master_notes`.
 
 DECISIONS:
 - Close any underperforming day trades that are unlikely to recover

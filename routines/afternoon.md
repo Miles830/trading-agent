@@ -13,6 +13,7 @@ RESEARCH:
 - Check if any day trades need to be closed before market close
 - Check crypto markets for afternoon movement
 - Check after-hours earnings calendar for today and tomorrow
+- **Check X (Twitter) sentiment** via the xAI Grok API (`XAI_API_KEY` from `.env`) for tomorrow's preliminary watchlist names AND any swing/long-term holding where chatter has picked up this afternoon. Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts and CEO/executive posts that could move the stock overnight. Pre-score the X read so the Pre-Market routine only re-scores deltas. Record in `master_notes`.
 
 DECISIONS:
 - Begin closing day trades that are not showing strong momentum

@@ -20,6 +20,7 @@ RESEARCH:
 - Check for any new news or analyst updates on holdings
 - Check sector performance — any sectors showing unusual strength or weakness?
 - Check crypto prices — any significant moves since open?
+- **Check X (Twitter) sentiment** via the xAI Grok API (`XAI_API_KEY` from `.env`) for any new mid-morning setup being scored AND for any holding showing unusual price action since open. Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts and mention-volume spikes that may signal breaking news ahead of the wires. Feed the read into the Sentiment Agent's score (modifier −2 to +2) and record in `master_notes`.
 
 DECISIONS:
 - STOP-LOSS AUDIT (FIRST ACTION): Query `GET /v2/orders?status=open` and `GET /v2/positions`. Every open position MUST have a corresponding resting stop order. If any position lacks one, place it immediately at the appropriate stop_pct from current avg cost (12% long-term / 5% active / 18% crypto). A naked position is a guardrail violation. See CLAUDE.md "Stop-Loss Placement (MANDATORY)".

@@ -14,6 +14,8 @@ RESEARCH:
 - Research top performing stocks and ETFs this week
 - Research crypto market performance this week
 - Check upcoming week's economic calendar and major earnings
+- **Check X (Twitter) sentiment** via the xAI Grok API (`XAI_API_KEY` from `.env`) for every name on next week's top-10 watchlist AND every current holding heading into the weekend. Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts and trending hashtags from the week, capture any CEO/executive posts that could shape Monday's open. Pre-score so Monday's Pre-Market only re-scores deltas. Record in `master_notes`.
+- **Calibrate the X-sentiment signal:** for each closed trade this week, pull the X classification recorded in `master_notes` at entry and pair it with the realized `result_pct`. Tally whether bullish-X reads correlated with winners and bearish-X reads correlated with losers. Maintain a rolling "X Sentiment Calibration" sub-section under "Agent Calibration Tracker" in memory/portfolio.md so we can tell if the X modifier is adding signal or noise.
 
 PERFORMANCE ANALYSIS:
 - Calculate win rate this week (wins divided by total trades)

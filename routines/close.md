@@ -13,6 +13,7 @@ RESEARCH:
 - Check crypto end of day prices
 - Check tomorrow's economic calendar and earnings releases
 - Review all trades made today — were guardrails followed?
+- **Check X (Twitter) sentiment** via the xAI Grok API (`XAI_API_KEY` from `.env`) for any MOC swing entry being considered, any after-hours mover that's a current holding, and any name on tomorrow's watchlist. Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts, capture executive posts and trending cashtags overnight. Feed the read into the Sentiment Agent's score (modifier −2 to +2) and record in `master_notes`.
 
 DECISIONS:
 - Close all remaining day trades immediately — no exceptions
@@ -42,3 +43,4 @@ DASHBOARD UPDATE (MANDATORY — write to /workspaces/trading-agent/dashboard-dat
 - Update the "Market Close" row in `routines`: status="completed", last_run, next_run (tomorrow 15:30 ET), last_summary (closes, today's P&L, vs SPX gap).
 - Refresh `market.spx`, `market.btc`, `market.fear_greed` (and label) from EOD reads.
 - Refresh `watchlist` with tomorrow's confirmed names if changed since Afternoon.
+- **Append today's snapshot to `history`** (the Performance vs S&P 500 chart and Daily P&L sparkline read from this array). The `history` field is an array of `{date, portfolio_return_pct, spx_return_pct, daily_pnl_pct}` objects, latest last. Append only one entry per trading day — if today's date already exists, overwrite that entry instead of appending a duplicate. Truncate to the most recent 180 entries to keep file size bounded. `date` format: `YYYY-MM-DD` (ET trading date). Only the Market Close routine writes to `history`; other routines must NOT touch this field.

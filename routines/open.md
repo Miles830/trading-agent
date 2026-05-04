@@ -12,6 +12,7 @@ RESEARCH:
 - Check volume on any holdings — unusual volume is a signal
 - Check any breaking news since Pre-Market routine
 - Review watchlist from morning.md — are setups still valid?
+- **Check X (Twitter) sentiment** via the xAI Grok API (`XAI_API_KEY` from `.env`) for any new limit-order candidate considered this routine, and for any holding that gapped at the open. Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts from verified financial accounts, look for executive posts that could explain the gap. Feed the read into the Sentiment Agent's score (modifier −2 to +2) and record in `master_notes`.
 
 DECISIONS:
 - STOP-LOSS BACKFILL (FIRST ACTION): Query `GET /v2/orders?status=open` and `GET /v2/positions`. For every open position confirm there is a matching open stop order. For any MOO that filled this morning, place its stop-loss IMMEDIATELY using the realized fill price × (1 − stop_pct), per CLAUDE.md "Stop-Loss Placement (MANDATORY)". Do this BEFORE researching new entries — a position without a resting stop is a guardrail violation.

@@ -30,6 +30,7 @@ RESEARCH (do all of these):
 - Check economic calendar — any major data releases today?
 - Check earnings releases — any companies reporting today or tomorrow?
 - Check crypto prices — BTC and ETH overnight movement
+- **Check X (Twitter) sentiment** for every watchlist candidate AND every open holding using the xAI Grok API (`XAI_API_KEY` from `.env`, endpoint `https://api.x.ai/v1/chat/completions` with `search_parameters` enabling X search). Per CLAUDE.md "Sub-Agent 3 — Sentiment Agent": classify bullish/bearish/neutral, flag viral posts from verified financial accounts, detect mention-volume spikes vs. 7-day baseline, capture CEO/executive posts. Feed the read into the Sentiment Agent's score (modifier −2 to +2) and record the summary in each trade's `master_notes`.
 
 DECISIONS:
 - DEPLOYMENT BIAS: read CLAUDE.md "Deployment Bias" section. The default action is to place orders, not to defer. If the most recent weekly review or prior routine produced a watchlist with ≥ 3 names at score ≥ 7, you MUST place MOO orders today on the top-scoring names (up to 3 MOO/day cap, subject to guardrails). Skipping a ≥ 7 entry without one of the three named exemptions (guardrail breach, 48h binary event, 3% circuit breaker tripped) is a guardrail violation and must be logged as such.
@@ -60,3 +61,4 @@ DASHBOARD UPDATE (MANDATORY — write to /workspaces/trading-agent/dashboard-dat
 - Update the "Pre-Market" row in `routines`: status="completed", last_run=ET timestamp, next_run=tomorrow 08:00 ET (or next trading day), last_summary = 1-2 sentence recap (futures direction, MOO orders placed, key risk).
 - Refresh `market.mode`, `market.spx`, `market.btc`, `market.macro_notes_md` with this morning's read.
 - Replace `watchlist` with today's scored watchlist (5–10 names with bucket, score, action, notes).
+- Do NOT modify the `history` array — that is owned exclusively by the Market Close routine. Preserve it as-is during this routine's write.

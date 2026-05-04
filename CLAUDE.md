@@ -113,6 +113,27 @@ Analyze:
 - Short interest — is this heavily shorted?
 - Options market — are puts or calls more active?
 
+**X (Twitter) sentiment via xAI Grok API (MANDATORY for every scored ticker):**
+For every trade being analyzed, the Sentiment Agent MUST query the xAI Grok API using the `XAI_API_KEY` value from `.env` (endpoint: `https://api.x.ai/v1/chat/completions`, model: `grok-4-latest` or current default — Grok has native X search via `search_parameters: {"mode": "on", "sources": [{"type": "x"}]}`). The agent must:
+- Search recent X posts about the stock symbol in the last 24 hours
+- Identify whether sentiment on X is bullish, bearish, or neutral (with a one-line justification)
+- Flag any viral posts from verified financial accounts or notable investors (cite handle + post URL)
+- Detect any unusual spike in mentions vs. the 7-day baseline — a spike could indicate breaking news the news feeds haven't caught yet
+- Check what prominent traders and investors on X are saying about the stock (e.g. @jimcramer, @CathieDWood, @chamath, @elonmusk for relevant tickers)
+- Look for any CEO or executive posts that could move the stock (especially CEOs known to post material info)
+- Identify any trending hashtags related to the company (`$TICKER` cashtag plus name-based tags)
+
+**X sentiment scoring (modifier applied INSIDE the Sentiment Agent's 1–10 score, not on top of it):**
+- Strongly bullish X sentiment: **+2** points to sentiment score
+- Mildly bullish X sentiment: **+1** point to sentiment score
+- Neutral X sentiment: **0** points
+- Mildly bearish X sentiment: **−1** point to sentiment score
+- Strongly bearish X sentiment: **−2** points to sentiment score
+
+The Sentiment Agent computes a base 1–10 from news/Fear-Greed/short-interest/options, then applies the X modifier, then clamps the final score to [1, 10]. The X read (call summary, classification, any viral posts cited) MUST be recorded in the trade-log entry's `master_notes` so the Weekly Review can calibrate whether X sentiment is a leading or lagging signal for this portfolio.
+
+If the xAI API call fails (timeout, auth error, rate limit), the Sentiment Agent must (a) note the failure in `master_notes`, (b) score using only the non-X inputs, and (c) NOT block the trade on missing X data — degrade gracefully.
+
 Score the opportunity 1-10 from a sentiment perspective
 
 ### Sub-Agent 4 — Macro Agent
