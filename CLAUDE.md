@@ -315,6 +315,8 @@ Every entry must result in a stop-loss order resting at Alpaca by the end of the
 ## Trade Log Entry Template (setup-type tagging — MANDATORY)
 Every trade decision logged to `logs/trades.md` must include a YAML frontmatter header so the daily review can tally setup performance and trigger the "halt setups failing 3-in-a-row" rule. Without tags, the Self-Improvement Protocol cannot run.
 
+**Ordering — newest first (PREPEND, do NOT append):** `logs/trades.md` is reverse-chronological. The most recent trading date sits at the TOP, immediately under the file header. New routine entries MUST be prepended directly below the header (and above the prior most-recent date section), separated by a `---` rule. Within a single trading day's section, individual YAML decision blocks may be added in chronological order as the day progresses (since they share the same date heading). Never append a new date section to the bottom of the file — that breaks the operator's at-a-glance read of "what happened most recently."
+
 **Format for every entry/exit/skip decision:**
 
 ```yaml
