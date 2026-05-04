@@ -1302,17 +1302,21 @@
     100% { background-position: -120% 0; }
   }
   .brand-title {
+    /* Tiled gradient that's mostly gold with one bright band; `repeat`
+       ensures gold always sits under the text (no invisibility frames),
+       while the moving background-position still scrolls the highlight
+       band across the letters periodically. */
     background-image: linear-gradient(
       100deg,
       var(--accent)  0%,
-      var(--accent) 38%,
+      var(--accent) 42%,
       #fff4cc       50%,
-      var(--accent) 62%,
+      var(--accent) 58%,
       var(--accent) 100%
     );
     background-size: 250% 100%;
     background-position: 220% 0;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
