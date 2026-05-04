@@ -297,11 +297,13 @@ Every entry must result in a stop-loss order resting at Alpaca by the end of the
 
 1. **Bracket order (preferred for limit and MOC entries):** entry + stop_loss + take_profit submitted as one order using `order_class: "bracket"`. The stop and target are activated automatically once the parent fills.
 
+   **MANDATORY: bracket parents MUST use `time_in_force: "gtc"`.** Day-only brackets (`time_in_force: "day"`) are **forbidden** — when the trading session ends, both child legs (stop and target) auto-cancel and the position goes naked overnight. This was the root cause of the 2026-05-04 TSM/GLD/XLE naked-overnight incident. With `gtc`, the parent (and inherited children) live until filled or canceled.
+
    ```bash
    # Long-term limit-buy with bracket: entry $123.45, stop -12% ($108.64), take_profit +24% ($153.08)
    curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
      "symbol":"NVDA","qty":5,"side":"buy","type":"limit","limit_price":"123.45",
-     "time_in_force":"day","order_class":"bracket",
+     "time_in_force":"gtc","order_class":"bracket",
      "stop_loss":{"stop_price":"108.64"},
      "take_profit":{"limit_price":"153.08"}
    }'
@@ -321,7 +323,7 @@ Every entry must result in a stop-loss order resting at Alpaca by the end of the
 - Active trades: 5% below entry
 - Crypto: 18% below entry
 
-**Rule:** A position without a resting stop-loss order at Alpaca is a guardrail violation. The Mid-Morning routine MUST verify every open position has a corresponding open stop order via `GET /v2/orders?status=open` and fill any gaps before doing anything else. If a stop order is missing, place it before researching new opportunities.
+**Rule:** A position without a resting stop-loss order at Alpaca is a guardrail violation. **EVERY routine** (Pre-Market, Market Open, Mid-Morning, Midday, Afternoon, Market Close, Daily Review) MUST verify every open position has a corresponding open stop order via `GET /v2/orders?status=open` as its FIRST ACTION, and fill any gaps before doing anything else. If a stop order is missing, place a standalone GTC stop before researching new opportunities or placing new entries. The audit cadence shrinks the naked-position exposure window to roughly 90 minutes worst-case (between consecutive routines) instead of relying on Mid-Morning alone.
 
 ## Trade Log Entry Template (setup-type tagging — MANDATORY)
 Every trade decision logged to `logs/trades.md` must include a YAML frontmatter header so the daily review can tally setup performance and trigger the "halt setups failing 3-in-a-row" rule. Without tags, the Self-Improvement Protocol cannot run.
