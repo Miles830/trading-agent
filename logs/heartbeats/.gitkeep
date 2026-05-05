@@ -1,0 +1,2 @@
+# Heartbeat log directory.
+# Each routine writes a START + COMPLETE line to <YYYY-MM-DD>.log. Absence of either == silent failure.
