@@ -6,6 +6,23 @@ You are Opus Trader running the Mid-Morning routine.
 2. Read memory/portfolio.md for current portfolio state
 3. Read logs/trades.md for recent trade history and lessons learned
 
+PREDECESSOR HEARTBEAT CHECK (FIRST — run AFTER the trigger-prompt STEP 0 heartbeat START commit lands, BEFORE the stop-loss audit):
+- Today's predecessors: Pre-Market and Market Open. Check both heartbeats today:
+  - `grep "STARTED Pre-Market" logs/heartbeats/$(date -u +%Y-%m-%d).log`
+  - `grep "STARTED Market-Open" logs/heartbeats/$(date -u +%Y-%m-%d).log`
+- For each MISSING predecessor: prepend a YAML `action: violation` entry to logs/trades.md (`setup: silent-failure`, `master_notes: <NAME> did not heartbeat today — running catch-up from Mid-Morning`).
+- Run catch-ups in chronological order (Pre-Market first if missing, then Market-Open if missing) BEFORE your normal Mid-Morning work.
+
+WATCHLIST EXECUTION CATCH-UP (used if Pre-Market AND/OR Market Open silently failed, OR if any ≥7 watchlist name is still unfilled and unjustified):
+- Read memory/portfolio.md most recent watchlist.
+- For each watchlist name with score ≥ 7:
+  - Skip if already a position OR has a today-dated `action: skip` entry citing a valid CLAUDE.md exemption.
+  - Otherwise: run the full 6-agent gate. If Master Agent approves: place a LIMIT BRACKET (`tif: gtc`, `order_class: bracket`) at limit_price = current_ask × 1.005, with bucket-appropriate stop_loss and 2:1 take_profit.
+- Cap at 3 catch-up entries this routine. Log each with `master_notes: catch-up for <missing-routine> silent failure`.
+
+MARKET-OPEN CATCH-UP (additional steps if Market Open missed):
+- Pull `GET /v2/orders?status=filled&after=<today_open_UTC>` and find any `time_in_force: opg` MOO that filled this morning. For each, place its stop-loss IMMEDIATELY using `realized_fill × (1 − stop_pct)`, tif=gtc. (Market Open's normal first action — if it didn't run, you must.)
+
 USER SUGGESTION INBOX — SAME-DAY CHECK (light, scoped to time-sensitive only):
 - After the stop-loss audit (next step), re-list open `user-suggestion` issues that were created AFTER this morning's Pre-Market run.
   `gh issue list --repo Miles830/trading-agent --label user-suggestion --state open --json number,title,body,createdAt,url --limit 30` (or fall back to the GitHub API as in the Pre-Market playbook).

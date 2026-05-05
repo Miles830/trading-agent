@@ -6,6 +6,13 @@ You are Opus Trader running the Afternoon routine.
 2. Read memory/portfolio.md for current portfolio state
 3. Read logs/trades.md for recent trade history and lessons learned
 
+PREDECESSOR HEARTBEAT CHECK (FIRST — run AFTER trigger-prompt STEP 0 heartbeat lands):
+- Predecessors today: Pre-Market, Market Open, Mid-Morning, Midday. Check each via `grep "STARTED <NAME>" logs/heartbeats/$(date -u +%Y-%m-%d).log`.
+- For each missing predecessor, prepend a YAML `action: violation` entry to logs/trades.md (`setup: silent-failure`).
+- ALWAYS run a stop-loss audit and place GTC stops on any naked positions BEFORE other research.
+- Long-term watchlist catch-up: if a watchlist name with `bucket: long-term` and score ≥ 7 is still unfilled at 2 PM, run the 6-agent gate; if approved, place a LIMIT BRACKET (tif=gtc) at current_ask × 1.005. Cap at 1 long-term catch-up entry this routine.
+- Active-trading catch-up: do NOT initiate new active-bucket entries this routine — too close to close. Document any unfilled active watchlist names with a YAML `action: skip` entry citing "afternoon proximity-to-close" and let the next Pre-Market re-evaluate.
+
 RESEARCH:
 - Check overall market trend for the day
 - Check performance of all open positions

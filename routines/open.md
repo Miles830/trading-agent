@@ -6,6 +6,22 @@ You are Opus Trader running the Market Open routine.
 2. Read memory/portfolio.md for current portfolio state
 3. Read logs/trades.md for recent trade history and lessons learned
 
+PREDECESSOR HEARTBEAT CHECK (FIRST — run AFTER the trigger-prompt STEP 0 heartbeat START commit lands, BEFORE the stop-loss backfill):
+- Today's predecessor: Pre-Market.
+- Check: `grep "STARTED Pre-Market" logs/heartbeats/$(date -u +%Y-%m-%d).log` returns ≥ 1 line?
+- If MISSING (Pre-Market silently failed):
+  1. Prepend a YAML entry to logs/trades.md with `action: violation`, `setup: silent-failure`, `master_notes: Pre-Market did not heartbeat today — running catch-up from Market Open`.
+  2. Run PRE-MARKET CATCH-UP (see WATCHLIST EXECUTION below — it covers exactly this case) before any other Market-Open-specific work. Do NOT skip catch-up to "save time" — if Pre-Market silently failed, the watchlist commitment is your responsibility.
+
+WATCHLIST EXECUTION (run AFTER the predecessor check, BEFORE the stop-loss backfill if catching up — otherwise immediately AFTER stop-loss backfill):
+- Read memory/portfolio.md "Tomorrow's Plan" or "Watchlist" section (most recent — usually from yesterday's Daily Review or this morning's Pre-Market).
+- For each watchlist name with entry score ≥ 7:
+  - Already an open position? skip.
+  - Has a YAML `action: skip` entry in today's logs/trades.md naming a valid exemption (CLAUDE.md "Deployment Bias")? skip.
+  - Otherwise: outstanding ≥7 entry. Run the full 6-agent gate (CLAUDE.md "Multi-Agent Analysis Framework"). If Master Agent approves (avg ≥ 7, Risk ≥ 6, ≥ 4 of 6 at 7+, Tech Analyst ≥ 6 if tech): place a LIMIT BRACKET order with `time_in_force: gtc`, `order_class: bracket`, limit_price = current_ask × 1.005, stop at bucket-appropriate % below entry (12% long-term / 5% active / 18% crypto), take_profit at 2:1 R/R above entry.
+- Cap at 3 outstanding entries this routine (mirrors Pre-Market's 3-MOO cap, prevents overcommit).
+- For each entry, log a YAML block per CLAUDE.md "Trade Log Entry Template" with full `agent_scores`, and (if catching up) `master_notes: catch-up for Pre-Market silent failure`.
+
 RESEARCH:
 - Check how MOO orders from Pre-Market routine executed
 - Check opening price action — is the market following futures direction?
