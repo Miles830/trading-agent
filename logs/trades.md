@@ -4,6 +4,117 @@
 
 ---
 
+## 2026-05-05 — Silent-failure REPEAT + manual catch-up (operator-driven, ~10:40 AM ET)
+
+**Context:** Pre-Market (12:00 UTC) and Market Open (13:45 UTC) cron triggers BOTH fired today (`next_run_at` advanced to 2026-05-06) but produced ZERO heartbeat START commits and ZERO `logs/heartbeats/2026-05-05.log` file. This is the SECOND consecutive trading day (after 2026-05-04) that both morning routines silently failed — and the FIRST failure since the heartbeat-forcing infra was deployed at 04:30 UTC today (commits `47d3c71`, `ca3f79f`). The "STEP 0 first-tool-call" mandate did not save us. Per the post-fix silent-failure signature: cron fired, no heartbeat START commit, no heartbeat log line → the run never reached its first Bash call. Heartbeat infra is necessary but **not sufficient** to fix the underlying issue, whatever it is.
+
+**What still worked:** Yesterday's pre-queued bracket BUYs (NVDA / AVGO / JPM, commit `db9e55a`) were the safety net. NVDA filled at open; JPM filled 3 minutes after open; AVGO is still resting at limit $418.59 (current $422.02, above limit). Without that pre-queue, today would have been another 100%-cash day through the morning windows.
+
+**Pre-trade snapshot (10:40 AM ET):** Equity $99,995.99 · Cash $85,550.02 · 5 positions (TSM, GLD, NVDA, JPM, XLE) · 1 unfilled bracket (AVGO) · daytrade_count 0.
+
+### Stop-coverage audit (FIRST ACTION per CLAUDE.md)
+
+| Symbol | Qty | Bucket | Stop @ | Stop Qty | Notes |
+|--------|-----|--------|--------|----------|-------|
+| TSM | 7 | long-term | 353.76 (-12%) | 7 | ✓ standalone GTC |
+| GLD | 7 | active (reclassified 2026-05-04) | 397.92 (-5%) | 1 + **6 added today** | ⚠ Yesterday's 6-share trim sell expired without filling, leaving 6 shares NAKED. Added second 6-sh stop @ 397.92 GTC — order id `f0fd18ca`. Combined coverage now 7/7. |
+| NVDA | 15 | long-term | 175.60 (-12%) | 15 | ✓ bracket OCO child (status=held, OCO-active) |
+| JPM | 9 | long-term | 272.14 (-12%) | 9 | ✓ bracket OCO child (status=held, OCO-active) |
+| XLE | 50 | active | 56.15 (-5%) | 50 | ✓ standalone GTC |
+
+All 5 positions now have stop coverage. AVGO bracket children sit `held` waiting for parent to fill.
+
+### Today's entries (from yesterday's pre-queued brackets)
+
+```yaml
+---
+ts: 2026-05-05T13:30:44Z
+action: entry
+symbol: NVDA
+bucket: long-term
+setup: ai-momentum-pullback
+score: 7
+thesis: Pre-queued bracket from 2026-05-04 PM session (commit db9e55a) filled at open. NVDA AI capex play, post-pullback re-entry. Original entry score and 6-agent gate carried over from 2026-05-04 deferral block (see entry at logs/trades.md line ~227).
+size_pct: 2.98
+entry_fill: 198.83
+stop: 175.60
+target: 247.44
+master_notes: Bracket parent id bbabca5a; take-profit child eb8e17ac (status=new); stop-loss child 51080305 (status=held = OCO active). Filled $0.72 below limit price ($199.55). No new agent scoring this run — entry decision was made and logged 2026-05-04 evening.
+---
+```
+
+```yaml
+---
+ts: 2026-05-05T13:33:24Z
+action: entry
+symbol: JPM
+bucket: long-term
+setup: sector-rotation
+score: 7
+thesis: Pre-queued bracket from 2026-05-04 PM session (commit db9e55a) filled at open. JPM steeper-curve / financials tailwind. Original entry score and 6-agent gate carried over from 2026-05-04 deferral block (see entry at logs/trades.md line ~287).
+size_pct: 2.77
+entry_fill: 308.302222
+stop: 272.14
+target: 383.47
+master_notes: Bracket parent id 5c8968ec; take-profit child 139e1d8d (status=new); stop-loss child eebf41b5 (status=held = OCO active). Filled $0.95 below limit price ($309.25). No new agent scoring this run.
+---
+```
+
+```yaml
+---
+ts: 2026-05-05T14:39:46Z
+action: stop_repair
+symbol: GLD
+bucket: active
+qty: 6
+stop: 397.92
+order_id: f0fd18ca-f13b-4139-9a74-2c35c3c1ea04
+master_notes: Yesterday's 6-share market sell (intended to complete the long-term→active reclassify trim) expired at 2026-05-05T08:00:44Z without filling. Position remained 7 shares but only 1 share was covered by the active-bucket stop @ 397.92. Operator placed second standalone 6-sh stop at the same level as immediate-fix per CLAUDE.md "Stop-Loss Placement (MANDATORY)". Original trim intent NOT executed — 6 shares of GLD remain in the position. To complete the trim later: cancel both GLD stops, sell 6 shares at market, place fresh 1-sh stop. Deferred for operator decision (small position, +0.43% from entry, low urgency).
+---
+```
+
+```yaml
+---
+ts: 2026-05-05T12:00:00Z
+action: violation
+type: silent_failure
+routine: Pre-Market
+master_notes: Cron fired (next_run_at advanced to 2026-05-06T12:05:18Z), but no heartbeat START commit landed on main and no logs/heartbeats/2026-05-05.log was created. The model never reached its first Bash call despite the STEP 0 forcing function deployed 04:30 UTC today. Second consecutive failure of this routine.
+---
+```
+
+```yaml
+---
+ts: 2026-05-05T13:45:00Z
+action: violation
+type: silent_failure
+routine: Market-Open
+master_notes: Cron fired (next_run_at advanced to 2026-05-06T13:45:00Z), but no heartbeat START commit and no log line. Same signature as Pre-Market. Saved by yesterday's pre-queued NVDA/JPM brackets — both filled at open without routine intervention. AVGO bracket still resting at $418.59 limit (current $422.02 above limit, won't fill at this level).
+---
+```
+
+### Diagnostic next steps for the operator
+
+1. **Inspect run history at https://claude.ai/code/routines** for both Pre-Market `trig_014T4XMggPEmNTfaaTRuhXVp` and Market Open `trig_0131GpFbVasP2LaKbzy369Da` — look for whether the model session even started, and what the failure trace shows. The post-fix signature (no heartbeat anywhere) suggests the run is failing BEFORE the first user-message-driven tool call.
+2. **Hypotheses to consider:**
+   - The Google Drive MCP connector auto-attached on every run is failing to initialize and aborting the session before tool calls begin.
+   - The `claude-sonnet-4-6` model on the routine env is hitting a context-load issue with the very long trigger prompt.
+   - The `git pull --rebase` step in heartbeat-START is failing silently and the model exits.
+   - The session is timing out before reaching the heartbeat START because the prompt parsing alone is too slow.
+3. **Mitigations to try:**
+   - Strip the Google Drive MCP connector from each trigger via `RemoteTrigger update` (MCP connections list).
+   - Pre-create the heartbeat dir + a placeholder line via cron-side hook so heartbeat START becomes append-only (no `mkdir -p` in the model's first call).
+   - Switch the model to `claude-opus-4-7` for trading routines — slower but with broader tool-use reliability.
+4. **Until diagnosed, keep pre-queueing**: end every Daily Review with a pre-queued bracket BUY for the highest-conviction watchlist name with `tif=gtc`, so a single silent failure can't take a trading day to zero.
+
+### Watchlist status going forward
+
+- **AVGO** still pending at limit $418.59 (current $422.02). Bracket is GTC, will sit. No action needed.
+- **No new entries** this catch-up — Pre-Market window closed (MOO impossible) and the deferred ≥7 names are already either filled (NVDA, JPM) or queued (AVGO). No fresh ≥7 names from the 2026-05-04 weekly watchlist remain unaddressed.
+- **Mid-Morning routine** scheduled to fire at 15:00 UTC (~30 min from now). It should encounter a clean state with no naked positions; cross-routine catch-up logic can no-op.
+
+---
+
 ## 2026-05-04 — Manual Pre-Market/Open Equivalent (operator-driven)
 
 **Context:** Both scheduled remote routines fired (Pre-Market 12:00 UTC, Market Open 13:45 UTC) per `next_run_at` advancing to 2026-05-05, but neither pushed any commit, log entry, or order to Alpaca. Account was at 100% cash with 6 watchlist names ≥7 — same failure mode as Week 1. Operator instructed manual execution from main session at ~10:55 AM ET. Market is open; MOO window closed. Used bracket limit orders within 0.5% of last trade. Remote-routine root cause is not yet diagnosed — needs claude.ai/code/routines run-history inspection.
