@@ -4,6 +4,197 @@
 
 ---
 
+## 2026-05-06 — Pre-Market routine (LATE RUN — 22:59 UTC / 6:59 PM ET; market already closed)
+
+**Context:** Pre-Market routine DID fire a heartbeat START at 22:59:46Z (commit `d8d0552`) — marking progress vs. prior silent failures. However, the routine ran at 22:59 UTC (6:59 PM ET) instead of 12:00 UTC (8:00 AM ET), meaning the market had already closed. MOO orders cannot be placed; GTC bracket limit orders were attempted instead as pre-queue for May 7 open. All three Alpaca API calls failed with "Host not in allowlist" — outbound egress to paper-api.alpaca.markets is blocked in the sandbox runner. Orders are documented below as **attempted entries**; operator must either restore API access or manually place the brackets in Alpaca before 9:25 AM ET on May 7.
+
+**Market context today (May 6, 2026):**
+- S&P 500: new record high, ~+0.9% on the session
+- Nasdaq: +2.02%, new record (25,838.94)
+- Russell 2000: +1.82%
+- Catalyst: (1) US nearing Iran peace deal including nuclear moratorium, (2) AMD Q1 massive beat (+18.6%)
+- AMD closed $421.39 (+18.61%); NVDA +4% ($206.46); TSM +3.5% ($415.52); JPM +2% ($314.38)
+- XLE -3.89% ($57.14) — energy sold off on Iran deal (supply-premium fading)
+- GLD +3.07% ($430.43) — gold UP despite risk-on (Iran deal not yet finalized, macro hedge bids intact)
+- BTC: $82,320 (+5.4% 5-day), highest since January; ETH: $2,412
+- Binary events AMC tonight: ARM, SNAP, APP, IONQ, FTNT — 48-hour exclusion applies
+
+**Pre-trade snapshot (estimated from last-known + today's close prices):**
+- Equity: ~$100,255 (+$259 vs yesterday's $99,995.99)
+- Cash: $85,550.02 (85.3%) — unchanged (no fills today)
+- Long-term positions: TSM (+3.5%), NVDA (+3.8%), JPM (+2.0%)
+- Active positions: GLD (+2.8%), XLE (-3.2%) — XLE approaching stop at $56.15
+- AVGO bracket: still resting at $418.59 limit (AVGO ~$440+, won't fill until pullback)
+
+### USER SUGGESTION — Issue #1: Buy INTC (Miles830, submitted 2026-05-02)
+
+Operator thesis: "INTC catching up with the AI revolution." Ticker: INTC. Action: Buy. Bucket: long-term. Urgency: This week.
+
+**Research findings:** INTC up 190% YTD, up 114% in April alone, up 13% on May 5 on Apple chip manufacturing talks report (new all-time high). Q1 2026: Revenue $13.6B (+7% YoY) vs $12.36B expected; EPS $0.29 adjusted vs $0.01 expected — strong beat. Data center +22% to $5.1B. However, 31 analyst consensus = Hold, avg price target $79.19 (~27% BELOW current ~$108). High PT $118 = only +9% upside. Stock at all-time high with consensus calling for significant downside.
+
+```yaml
+---
+ts: 2026-05-06T22:59:00Z
+action: skip
+symbol: INTC
+bucket: long-term
+setup: ai-momentum-pullback
+score: 5.5
+thesis: INTC at all-time high ~$108 after +190% YTD run; analyst consensus PT $79.19 (-27% from here); R:R < 2:1; Risk agent veto.
+source: user-suggestion-#1
+agent_scores:
+  fundamentals: 6
+  technical: 5
+  sentiment: 5
+  macro: 7
+  risk: 4
+  tech_analyst: 6
+agent_average: 5.5
+agents_above_7: 1
+master_decision: rejected
+master_notes: "REJECTED — Risk agent automatic veto (score 4/10 < 6 minimum). Avg score 5.5 < 7.0 threshold. Only 1/6 agents at 7+ (Macro). Technical: stock hit all-time high yesterday after +114% April rally; RSI extremely overbought; entering at top with thin air above and analyst consensus 27% below. Risk: consensus PT $79.19 is below any reasonable 12% stop target; 2:1 R:R cannot be constructed because PT consensus is lower than entry; the only bull case is momentum continuation well above analyst consensus. Sentiment: Mixed — Apple chip talks are bullish news but temporary; consensus Hold rating. Fundamentals improving (Q1 beat strong) but price far outran fundamentals. Disposition: REJECTED. Operator suggestion appreciated — INTC earnings thesis is valid but the entry point timing is wrong; revisit after 15-20% pullback. Will comment and close GitHub issue #1."
+---
+```
+
+**GitHub Issue #1 disposition:** REJECTED. Comment posted via API below (if accessible); issue closed. Failure response if API blocked logged in master_notes.
+
+### Stop-coverage audit (FIRST ACTION per CLAUDE.md)
+
+Cannot verify via Alpaca API (blocked). Based on last-known state from portfolio.md:
+
+| Symbol | Qty | Bucket | Stop @ | Est. Current | Distance from Stop | Status |
+|--------|-----|--------|--------|-------------|-------------------|--------|
+| TSM | 7 | long-term | $353.76 | $415.52 | +17.5% above stop | ✓ Safe (bracket OCO or standalone GTC) |
+| GLD | 7 | active | $397.92 | $430.43 | +8.2% above stop | ✓ Two GTC stops cover all 7 shares |
+| NVDA | 15 | long-term | $175.60 | $206.46 | +17.6% above stop | ✓ Bracket OCO child (status=held) |
+| JPM | 9 | long-term | $272.14 | $314.38 | +15.5% above stop | ✓ Bracket OCO child (status=held) |
+| XLE | 50 | active | $56.15 | $57.14 | +1.7% above stop | ⚠ CLOSE — Iran deal continuation could trigger tomorrow |
+
+**XLE risk flag:** XLE closed at $57.14 (-3.89%) vs stop at $56.15. Only $0.99 / 1.7% cushion. If Iran peace deal is confirmed tomorrow, XLE could gap down through stop. Stop remains in place; acceptable per CLAUDE.md ("every position must have a hard stop-loss set at entry"). Stop will execute if triggered.
+
+### Candidate Scoring — May 7 Watchlist
+
+#### AMD — earnings-reaction-follow (active bucket)
+
+Q1 2026: Revenue $10.25B (+38% YoY), EPS $1.37 (+7% vs $1.28 est), Data Center +57%, Q2 guide $11.2B vs $10.52B consensus. Closed $421.39 (+18.61%). Morgan Stanley raised PT. Volume 86.95M (1.75x avg 49.72M). ARM reports AMC tonight (indirect read-through risk noted).
+
+```yaml
+---
+ts: 2026-05-06T22:59:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: AMD Q1 blowout — revenue +38% YoY, EPS beat, Data Center +57%, Q2 guide beat. Post-earnings continuation into AI capex validation. GTC bracket attempted for May 7 fill.
+size_pct: 4.62
+stop: 400.32
+target: 463.53
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 8
+  risk: 6
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 4/6 agents ≥7, Risk=6 meets minimum). ORDER ATTEMPTED AND FAILED — Alpaca API blocked: 'Host not in allowlist'. Intended bracket: symbol=AMD, qty=11, side=buy, type=limit, limit_price=423.50, tif=gtc, order_class=bracket, stop_loss.stop_price=400.32, take_profit.limit_price=463.53. Guardrails check PASS: size $4,635.29 = 4.62% <5% ✓; semis sector after add = 10.6% <25% ✓; trade risk 11×$23.18=$254.98 <1.5% ✓; cash after = $70.9K >10% ✓. Technical score 5 (only concern — entering after +18.6% single-day gap, RSI overbought). ARM binary event AMC tonight creates indirect read-through risk for AMD tomorrow — not a direct 48h exclusion (AMD already reported) but noted. Operator must place bracket manually or restore API access before 9:25 AM ET May 7. If ARM beats tonight, AMD may gap up further; if ARM misses, AMD may give back gains — adjust limit accordingly."
+---
+```
+
+#### PLTR — post-earnings pullback (ai-momentum-pullback, long-term bucket)
+
+PLTR Q1 2026 (reported May 4 AMC): EPS $0.33 vs $0.27 expected (+22% beat), Revenue $1.63B vs $1.54B (+85% YoY — highest-ever growth rate). Full-year guidance raised significantly above prior consensus. Despite the massive beat, stock sold off -7% on May 5 (sell-the-news). Today at $134.32 vs pre-earnings ~$144. Binary event already over (reported May 4). Next earnings: August 3, 2026.
+
+```yaml
+---
+ts: 2026-05-06T22:59:00Z
+action: entry
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 7.0
+thesis: PLTR Q1 blowout (revenue +85% YoY, EPS +22% beat) followed by -7% sell-the-news pullback. Binary event over May 4. AI platform AIP accelerating. Entry at support ~$134. LT bucket underfilled (8.81% vs 55% target).
+size_pct: 4.96
+stop: 118.20
+target: 166.56
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED (7.0 avg, 4/6 agents ≥7, Risk=7). ORDER ATTEMPTED AND FAILED — Alpaca API blocked: 'Host not in allowlist'. Intended bracket: symbol=PLTR, qty=37, side=buy, type=limit, limit_price=135.00, tif=gtc, order_class=bracket, stop_loss.stop_price=118.20, take_profit.limit_price=166.56. Guardrails check PASS: size $4,969.84 = 4.96% <5% ✓; tech sector (PLTR alone) 4.96% <25% ✓; trade risk 37×$16.80=$621.60 <1.5% ✓; cash after AMD+PLTR = $75.9K >10% ✓. LT bucket tech sub-allocation after PLTR: (TSM+NVDA+PLTR)/(TSM+NVDA+JPM+PLTR) = $10,975/$13,805 = 79.5% — above 60% LT-tech ceiling BUT LT bucket total ($13.8K) is below $20K threshold so ceiling is informational per CLAUDE.md. Tech: scored 6 due to post-earnings sell-off; stock underperformed the +2% Nasdaq today (flat/down). Sentiment: 6, mixed — massive beat but market is skeptical of $134 valuation (P/S very high). Operator must place bracket manually before market open May 7."
+---
+```
+
+#### BTC/USD — breakout-volume (crypto bucket)
+
+BTC at $82,320 on May 6 (highest since January, +5.4% 5-day, +0.6% today). ETH $2,412 (+5.61% 5-day). Crypto bucket 0% deployed vs 5% target ($5,012 needed). Risk-on macro environment, Iran peace deal, equities at record highs.
+
+```yaml
+---
+ts: 2026-05-06T22:59:00Z
+action: entry
+symbol: BTC/USD
+bucket: crypto
+setup: breakout-volume
+score: 7.17
+thesis: BTC breaking to highest level since January on risk-on macro (Iran deal, record equities). Crypto bucket 0% deployed vs 5% target. GTC limit bracket attempted.
+size_pct: 4.93
+stop: 67502
+target: 111955
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED (7.17 avg, 6/6 agents ≥7, Risk=7). ORDER ATTEMPTED AND FAILED — Alpaca API blocked: 'Host not in allowlist'. Intended order: symbol=BTC/USD, qty=0.06, side=buy, type=limit, limit_price=82732, tif=gtc. (Crypto does not use bracket order_class on Alpaca; stop must be placed separately after fill.) Guardrails check PASS: size $4,939.20 = 4.93% <5% ✓; crypto bucket target 5% ✓; trade risk 0.06×$14,818=$889 <1.5% ✓; cash after AMD+PLTR+BTC = $70.9K >10% ✓; total positions after = 8 <12 max ✓. 18% crypto stop at $67,502. Target $111,955 (approx prior BTC ATH range). Crypto trades 24/7; no timing restriction. Operator must place this order manually or restore API access. After fill, a separate GTC stop at $67,502 must be placed immediately per stop-loss placement rule."
+---
+```
+
+#### Skipped candidates (binary events tonight — 48h exclusion)
+
+ARM, SNAP, APP, IONQ, FTNT all report AMC tonight May 6. Per CLAUDE.md exemption (2): cannot enter any of these within 48 hours of their binary event. No scoring required.
+
+#### DIS — noted but no action
+
+DIS reported Q2 FY2026 BMO today: Revenue $25.17B vs $24.78B, adj EPS $1.57 vs $1.49. Stock +7% on the day. Already made its post-earnings move; binary event complete. No position taken — DIS not on current watchlist and +7% gap means risk/reward for follow-through is reduced. Will add to May 7 watchlist for reassessment.
+
+### Watchlist for May 7, 2026
+
+| Sym | Score | Setup | Bucket | Action Required |
+|-----|-------|-------|--------|-----------------|
+| AMD | 7.33 | earnings-reaction-follow | active | OPERATOR: place bracket (11sh, limit $423.50, stop $400.32, target $463.53) before 9:25 AM |
+| PLTR | 7.0 | ai-momentum-pullback | long-term | OPERATOR: place bracket (37sh, limit $135.00, stop $118.20, target $166.56) before 9:25 AM |
+| BTC/USD | 7.17 | breakout-volume | crypto | OPERATOR: place limit buy (0.06 BTC at $82,732 GTC) + stop at $67,502 |
+| XLE | — | watch | active | Monitor — stop at $56.15 exposed to Iran deal confirmation |
+| AVGO | — | GTC bracket sitting | long-term | Consider updating from $418.59 to current levels (~$440) if pullback seems unlikely |
+
+### API Constraint — Critical Note for Operator
+
+**All Alpaca API calls fail with "Host not in allowlist."** This is a sandbox egress restriction blocking outbound connections to paper-api.alpaca.markets. This is a DIFFERENT failure mode from the prior silent-failure incidents:
+- Prior failures: model never reached first tool call (no heartbeat START)
+- Today's issue: model IS running (heartbeat START committed at 22:59:46Z) but Alpaca API is blocked
+
+**Required operator actions before market open May 7:**
+1. Manually place all three approved orders (AMD, PLTR, BTC/USD) in Alpaca paper account
+2. Investigate and unblock paper-api.alpaca.markets egress in sandbox runner
+3. Note: the AVGO bracket at $418.59 is stale — AVGO trading ~$440+; consider cancel/replace
+
+---
+
 ## 2026-05-05 — Silent-failure REPEAT + manual catch-up (operator-driven, ~10:40 AM ET)
 
 **Context:** Pre-Market (12:00 UTC) and Market Open (13:45 UTC) cron triggers BOTH fired today (`next_run_at` advanced to 2026-05-06) but produced ZERO heartbeat START commits and ZERO `logs/heartbeats/2026-05-05.log` file. This is the SECOND consecutive trading day (after 2026-05-04) that both morning routines silently failed — and the FIRST failure since the heartbeat-forcing infra was deployed at 04:30 UTC today (commits `47d3c71`, `ca3f79f`). The "STEP 0 first-tool-call" mandate did not save us. Per the post-fix silent-failure signature: cron fired, no heartbeat START commit, no heartbeat log line → the run never reached its first Bash call. Heartbeat infra is necessary but **not sufficient** to fix the underlying issue, whatever it is.
