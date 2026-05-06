@@ -22,8 +22,19 @@ All 7 trigger prompts were patched via `RemoteTrigger update` to make git operat
 
 ## Permanent fix paths (require user action — assistant cannot provision tokens)
 1. **PAT in prompt** — fine-grained GitHub PAT scoped to `Miles830/trading-agent` Contents:R/W, embedded in each trigger's push URL: `git push https://x-access-token:$PAT@github.com/Miles830/trading-agent.git main`. Fast, same risk model as the embedded Alpaca paper keys.
-2. **PAT as env var** — set `GH_TOKEN` in environment `env_01QmmJnoeGXZm713BBF7BZ18` via https://claude.ai/code → Environments. Prompts then reference `$GH_TOKEN`. Cleaner than option 1, requires web UI.
+2. **PAT as env var (RECOMMENDED — wired up 2026-05-06)** — set `GH_TOKEN` in environment `env_01QmmJnoeGXZm713BBF7BZ18` via https://claude.ai/code → Environments. The new SessionStart hook (`.claude/hooks/session-start.sh`) automatically promotes `GH_TOKEN` / `GITHUB_TOKEN` into the session env AND, when the remote URL is a bare `https://github.com/...`, configures `credential.helper store` so `git push` picks the PAT up without rewriting `remote.origin.url`. No prompt edits required. When the remote is the platform's `local_proxy` URL, the hook leaves git auth alone (the proxy authenticates itself).
 3. **GitHub App** — install on the repo if claude.ai/code platform exposes a GitHub App integration for routines.
+
+## SessionStart hook deployed 2026-05-06
+`.claude/hooks/session-start.sh` (registered in `.claude/settings.json`) runs at session start and:
+- bridges `/workspaces/trading-agent` → actual repo root via symlink (fixes hardcoded paths in routines and the dashboard Stop hook regardless of where the repo is checked out);
+- sources `.env` if present, then promotes `APCA_API_KEY_ID`, `APCA_API_SECRET_KEY`, `APCA_API_BASE_URL`, `XAI_API_KEY`, `GH_TOKEN`, `GITHUB_TOKEN` into `$CLAUDE_ENV_FILE` so they survive into agent tool calls;
+- defaults `APCA_API_BASE_URL` to `https://paper-api.alpaca.markets` if unset;
+- configures `credential.helper` only when a PAT is present AND the remote URL is bare `https://github.com/...`;
+- pre-creates `logs/heartbeats/<today>.log` so the model's STEP 0 heartbeat-START Bash call cannot fail on a missing dir — addresses the post-fix silent-failure signature where the model never reaches its first tool call;
+- prints a status banner (key-presence yes/NO without echoing values) so the agent and operator can see at a glance what's wired up.
+
+The hook is idempotent and gates remote-only behavior on `CLAUDE_CODE_REMOTE=true`.
 
 ## Triage when "routines aren't running"
 1. `curl -s "https://paper-api.alpaca.markets/v2/orders?status=all&after=$(date -u +%Y-%m-%dT00:00:00Z)" -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..."` — if non-empty, routines ARE trading even if git is silent.
