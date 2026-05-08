@@ -1,31 +1,31 @@
 {
-  "last_updated": "2026-05-06T22:59:00Z",
+  "last_updated": "2026-05-08T12:19:32Z",
   "updated_by": "pre-market",
   "portfolio": {
-    "total_equity": 100255.00,
+    "total_equity": 100152.53,
     "starting_equity": 100000.00,
-    "cash": 85550.02,
-    "cash_pct": 85.3,
-    "buying_power": 171100.04,
-    "long_market_value": 14704.97,
+    "cash": 80945.53,
+    "cash_pct": 80.8,
+    "buying_power": 161891.06,
+    "long_market_value": 19207.00,
     "short_market_value": 0.00,
-    "daily_pnl": 259.01,
-    "daily_pnl_pct": 0.26,
-    "total_return_pct": 0.255,
-    "spx_return_pct": 0.9,
-    "benchmark_gap_pct": -0.645,
-    "open_positions_count": 5,
-    "note": "Prices estimated from web research — Alpaca API blocked (Host not in allowlist)",
+    "daily_pnl": -102.47,
+    "daily_pnl_pct": -0.10,
+    "total_return_pct": 0.15,
+    "spx_return_pct": -0.38,
+    "benchmark_gap_pct": 0.53,
+    "open_positions_count": 6,
+    "note": "Prices estimated from web research — Alpaca API blocked (HTTP 403 / host_not_allowed). AVGO bracket at $418.59 included as probable fill (intraday range $406–$427). AMD+PLTR MOO orders attempted and blocked.",
     "buckets": [
       {
         "key": "long-term",
         "label": "Long-term (target 55%)",
-        "value": 8834.96
+        "value": 13417.00
       },
       {
         "key": "active",
         "label": "Active Trading (target 30%)",
-        "value": 5870.01
+        "value": 5790.00
       },
       {
         "key": "crypto",
@@ -35,7 +35,7 @@
       {
         "key": "cash",
         "label": "Cash (10% floor)",
-        "value": 85550.02
+        "value": 80945.53
       }
     ]
   },
@@ -45,9 +45,9 @@
       "bucket": "long-term",
       "qty": 7,
       "entry_price": 401.47,
-      "current_price": 415.52,
-      "pnl": 98.35,
-      "pnl_pct": 3.5,
+      "current_price": 414.00,
+      "pnl": 87.71,
+      "pnl_pct": 3.12,
       "stop_loss": 353.76,
       "take_profit": 498.48,
       "setup": "ai-momentum-pullback",
@@ -58,35 +58,37 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 430.43,
-      "pnl": 80.99,
-      "pnl_pct": 2.76,
+      "current_price": 420.00,
+      "pnl": 7.98,
+      "pnl_pct": 0.27,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
-      "agent_average": 7.7
+      "agent_average": 7.7,
+      "note": "Down from $430 high; Iran deal still unresolved. JPM year-end gold target $6,300/oz."
     },
     {
       "symbol": "NVDA",
       "bucket": "long-term",
       "qty": 15,
       "entry_price": 198.83,
-      "current_price": 206.46,
-      "pnl": 114.45,
-      "pnl_pct": 3.84,
+      "current_price": 205.00,
+      "pnl": 92.55,
+      "pnl_pct": 3.10,
       "stop_loss": 175.60,
       "take_profit": 247.44,
       "setup": "ai-momentum-pullback",
-      "agent_average": 7.5
+      "agent_average": 7.5,
+      "note": "Down ~3% pre-market May 8 from $211.50 May 7 close. Still +3% from entry."
     },
     {
       "symbol": "JPM",
       "bucket": "long-term",
       "qty": 9,
       "entry_price": 308.30,
-      "current_price": 314.38,
-      "pnl": 54.72,
-      "pnl_pct": 1.97,
+      "current_price": 315.00,
+      "pnl": 60.30,
+      "pnl_pct": 2.17,
       "stop_loss": 272.14,
       "take_profit": 383.47,
       "setup": "sector-rotation",
@@ -97,17 +99,91 @@
       "bucket": "active",
       "qty": 50,
       "entry_price": 59.01,
-      "current_price": 57.14,
-      "pnl": -93.50,
-      "pnl_pct": -3.17,
+      "current_price": 57.00,
+      "pnl": -100.50,
+      "pnl_pct": -3.41,
       "stop_loss": 56.15,
       "take_profit": 65.01,
       "setup": "macro-hedge",
       "agent_average": 7.5,
-      "risk_flag": "Stop at $56.15 — only $0.99/1.7% cushion. Iran deal confirmation could trigger tomorrow."
+      "risk_flag": "CRITICAL — Stop at $56.15, only $0.85/1.5% cushion. Iran deal weekend risk. GTC stop in place; may gap-fill on Monday if deal confirmed over weekend."
+    },
+    {
+      "symbol": "AVGO",
+      "bucket": "long-term",
+      "qty": 11,
+      "entry_price": 418.59,
+      "current_price": 419.00,
+      "pnl": 4.51,
+      "pnl_pct": 0.10,
+      "stop_loss": 368.36,
+      "take_profit": 519.05,
+      "setup": "ai-momentum-pullback",
+      "agent_average": 7.0,
+      "note": "GTC bracket limit $418.59 placed ~May 4. Today AVGO range $406.30–$426.49 — bracket LIKELY FILLED. Cannot confirm via blocked API. Stop = bracket OCO child at $368.36 (-12%)."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-08T12:19:32Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 7.33,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "FAILED — Alpaca API blocked HTTP 403 (x-deny-reason: host_not_allowed). Intended MOO: 11 shares. Expected fill ~$413-416. Post-fill stop = fill × 0.95. OPERATOR: place MOO (11sh) or bracket limit $415 GTC before 9:25 AM ET."
+    },
+    {
+      "ts": "2026-05-08T12:19:32Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "long-term",
+      "setup": "ai-momentum-pullback",
+      "score": 7.33,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "FAILED — Alpaca API blocked HTTP 403. Intended MOO: 36 shares. Expected fill ~$137. Post-fill stop = fill × 0.88. OPERATOR: place MOO (36sh) or bracket limit $137.50 GTC before 9:25 AM ET."
+    },
+    {
+      "ts": "2026-05-08T12:19:32Z",
+      "symbol": "BTC/USD",
+      "action": "skip",
+      "bucket": "crypto",
+      "setup": "breakout-volume",
+      "score": 6.17,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 4,
+        "sentiment": 6,
+        "macro": 6,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 6.17,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIPPED — Score 6.17 below 7 threshold. BTC pulled back from $82,320 to $80,206 (-2.6%); breakout-volume setup invalidated. Technical 4/10."
+    },
     {
       "ts": "2026-05-06T22:59:00Z",
       "symbol": "AMD",
@@ -286,7 +362,7 @@
     }
   ],
   "trade_stats": {
-    "total": 9,
+    "total": 12,
     "wins": 0,
     "losses": 0,
     "win_rate_pct": null,
@@ -298,10 +374,10 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "completed-late",
-      "last_run": "2026-05-06 18:59 ET (11h late — heartbeat START at 22:59 UTC confirmed)",
-      "next_run": "2026-05-07 08:00 ET",
-      "last_summary": "Market RISK-ON: Nasdaq +2%, S&P +0.9% (new records). AMD +18.6% on Q1 blowout. Iran peace deal nearing. Three orders APPROVED but API blocked — AMD (7.33), PLTR (7.0), BTC (7.17). XLE stop approaching ($56.15 vs $57.14 close). Operator must place all 3 orders manually before 9:25 AM ET May 7."
+      "status": "completed",
+      "last_run": "2026-05-08 08:19 ET",
+      "next_run": "2026-05-11 08:00 ET (Monday — next trading day)",
+      "last_summary": "Jobs report day (April NFP at 8:30 AM, consensus +55K-73K). Futures +0.33%/+0.51%. AMD MOO (11sh, score 7.33) and PLTR MOO (36sh, score 7.33) both APPROVED and attempted — API blocked HTTP 403 for 3rd consecutive routine. BTC/USD re-scored 6.17 (below threshold — breakout invalidated). AVGO bracket likely filled ($418.59). XLE stop at $56.15 critical (1.5% cushion, weekend Iran-deal risk). OPERATOR: manually place AMD + PLTR before 9:25 AM ET."
     },
     {
       "name": "Market Open",
@@ -412,80 +488,73 @@
     }
   },
   "memory": {
-    "recent_lessons_md": "### 2026-05-06 — Third distinct failure mode: Alpaca API blocked\n\n- Heartbeat START now works (model IS running), but Alpaca API egress is blocked from sandbox runner.\n- All three approved orders (AMD 7.33, PLTR 7.0, BTC 7.17) could not be placed.\n- Routine ran 11h late (7 PM ET vs 8 AM ET target) — missed MOO window, used GTC bracket intent instead.\n- **Operator must manually place all three orders before 9:25 AM ET May 7 OR restore API egress.**\n\n### 2026-05-06 — Key macro development: Iran peace deal nearing\n\n- US and Iran 'nearing agreement' including nuclear enrichment moratorium.\n- Implication: Energy (XLE) supply premium is fading → XLE -3.89% today, stop at $56.15 is close.\n- Gold (GLD) still bid (+3.07%) despite risk-on — suggests market not fully pricing in deal confirmation.\n- If confirmed: consider closing XLE (let stop trigger) and possibly adding to GLD or pivoting energy hedge.\n\n### 2026-05-05 — Silent failure repeated; pre-queue discipline proved essential\n\n- Both May 5 morning routines silently failed AGAIN. NVDA/JPM brackets pre-queued by operator (db9e55a) saved the day.\n- **New rule:** every Daily Review must end with at least one pre-queued GTC bracket for next open.\n\n### 2026-05-01 — Operator-mandated bias correction\n\n- Score ≥ 7 = enter at next routine, period. No 'wait and see.' Only 3 exemptions allowed."
+    "recent_lessons_md": "### 2026-05-08 — API blocked for 3rd consecutive Pre-Market routine\n\n- AMD (7.33) and PLTR (7.33) MOO orders attempted at 12:19Z — HTTP 403 (x-deny-reason: host_not_allowed).\n- BTC/USD re-scored 6.17 (below threshold) — original breakout-volume setup invalidated by -2.6% BTC pullback.\n- AVGO bracket at $418.59 likely filled today (intraday low $406 — bracket eligible). Cannot confirm via API.\n- XLE approaching critical stop ($56.15 vs $57 close) — weekend Iran-deal binary risk highlighted.\n- **OPERATOR MUST:** (1) Confirm AVGO fill. (2) Place AMD MOO + PLTR MOO before 9:25 AM today. (3) Unblock paper-api.alpaca.markets in sandbox egress policy.\n\n### 2026-05-06 — Alpaca API blocked; approved orders failed\n\n- Heartbeat START committed (model running); Alpaca API egress blocked. AMD 7.33, PLTR 7.0, BTC 7.17 all attempted and failed.\n- Iran deal framework 'one-page MOU' per Axios — not yet confirmed. Geopolitical uncertainty continues.\n\n### 2026-05-05 — Silent failure + pre-queue rule established\n\n- Pre-queue GTC brackets every Daily Review as safety net for when morning routines fail.\n\n### 2026-05-01 — Operator-mandated deployment bias correction\n\n- Score ≥ 7 = enter at next routine. Only 3 valid skip exemptions. 85% cash is an execution failure, not a strategy choice."
   },
   "market": {
-    "mode": "Risk-on (record highs)",
+    "mode": "Risk-on (cautious — SPX pullback from record, jobs report day)",
     "fear_greed": null,
-    "fear_greed_label": "Elevated optimism — Iran deal + AMD blowout. Nasdaq +2% to new record.",
-    "spx": "New record high, ~+0.9% on day. Nasdaq +2.02% to 25,838.94.",
-    "btc": "BTC $82,320 (+5.4% 5-day, highest since January). ETH $2,412 (+5.61% 5-day).",
+    "fear_greed_label": "Moderately optimistic — futures +0.33%. Jobs report softness expected to boost rate-cut bets.",
+    "spx": "Futures +0.33% at 7,387.50. May 7 close: 7,337.11 (-0.38% from record). Jobs report at 8:30 AM ET.",
+    "btc": "BTC $80,206 (pre-market May 8, down from $82,320 May 6, -2.6%). ETH $2,290 (-2.5%). Crypto pullback.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
-        "change_pct": 4.0,
-        "note": "AMD +18.6%, NVDA +4%, TSM +3.5%"
+        "change_pct": -1.5,
+        "note": "NVDA -3% pre-market, TSM -0.4%. AMD ~$413-416 (down from $421 May 6 after earnings gap)"
       },
       {
         "name": "Financials",
-        "change_pct": 2.0,
-        "note": "JPM +2% on risk-on"
+        "change_pct": 0.2,
+        "note": "JPM ~$315, modest positive"
       },
       {
         "name": "Precious Metals",
-        "change_pct": 3.07,
-        "note": "GLD +3.07% despite risk-on — Iran deal not yet confirmed"
+        "change_pct": -2.4,
+        "note": "GLD ~$420 (down from $430 peak). Iran deal not confirmed; gold thesis intact long-term."
       },
       {
         "name": "Energy",
-        "change_pct": -3.89,
-        "note": "XLE -3.89% — Iran deal fades supply premium"
+        "change_pct": -0.2,
+        "note": "XLE ~$57.00. Critical stop level at $56.15. Iran deal still unconfirmed = weekend binary risk."
       }
     ],
-    "macro_notes_md": "- **Fed:** April 29 FOMC held at 3.75% with 4 dissenters. Market pricing 50bps cuts in 2026.\n- **Iran deal:** US 'nearing agreement' with Iran; nuclear enrichment moratorium reportedly on the table. Not yet signed. Energy selling off; gold still bid.\n- **AMD Q1 blowout:** Revenue $10.25B (+38% YoY), EPS $1.37 (+7% beat), Data Center +57%, Q2 guide $11.2B vs $10.52B. Validates AI capex cycle broadly.\n- **DIS Q2 FY2026 beat:** Revenue $25.17B, adj EPS $1.57 (+$0.08 beat). Streaming income +88%. DIS +7% today under new CEO Josh D'Amaro.\n- **Tonight's binary events (AMC May 6):** ARM, SNAP, APP, IONQ, FTNT. ARM is key read for semis sector tomorrow.\n- **Crypto:** BTC $82,320 (highest since January). Risk-on = crypto bid. Crypto bucket still 0% deployed."
+    "macro_notes_md": "- **Jobs report (TODAY 8:30 AM ET):** April NFP expected +55K–73K (down from +178K March). ADP private payrolls +109K on May 6 (beat). Wage growth slowdown expected. Soft print = higher rate-cut probability = bullish growth/tech.\n- **Iran deal:** US and Iran 'closing in on framework' (one-page MOU, per Axios May 6). NOT YET CONFIRMED as of May 8. Oil still >$100/barrel (Brent). Hormuz partially restricted. Mixed signals from both sides May 7. Weekend binary risk for XLE.\n- **AI capex:** AMD validated (+38% rev, +57% DC revenue). ARM +11.65% May 6 (sympathy). PLTR AIP adoption accelerating. AI theme intact.\n- **Fed:** April 29 FOMC held 3.75%. Market pricing 50bps cuts in 2026; soft NFP today increases probability.\n- **Crypto:** BTC at $80K support level. ETH $2,290. Pullback from $82K high. Watching for re-entry above $82K or flush to $75K."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": 7.33,
-      "action": "APPROVED — Order attempted, API blocked. Operator: place bracket (11sh, limit $423.50, stop $400.32, target $463.53, GTC) before 9:25 AM ET May 7. ARM tonight = indirect read-through risk.",
-      "notes": "Q1: Revenue +38% YoY, EPS +7% beat, Data Center +57%. Closed $421.39 (+18.6%). Fundamentals 9, Technical 5 (extended), Macro 8."
+      "action": "APPROVED — MOO attempted May 8, API blocked (HTTP 403). OPERATOR: place MOO (11 shares) or bracket limit $415.00 GTC (stop $394.25, target $466.30) BEFORE 9:25 AM ET TODAY.",
+      "notes": "Re-scored at ~$413-416 (2-day consolidation after +18.6% earnings gap). Fundamentals 9, Technical 6, Sentiment 8, Macro 7, Risk 7, Tech 8."
     },
     {
       "symbol": "PLTR",
       "bucket": "long-term",
-      "score": 7.0,
-      "action": "APPROVED — Order attempted, API blocked. Operator: place bracket (37sh, limit $135.00, stop $118.20, target $166.56, GTC) before 9:25 AM ET May 7.",
-      "notes": "Q1: Revenue +85% YoY, EPS +22% beat. Sold off -7% post-earnings. Binary event over (reported May 4). Closed $134.32."
+      "score": 7.33,
+      "action": "APPROVED — MOO attempted May 8, API blocked. OPERATOR: place MOO (36 shares) or bracket limit $137.50 GTC (stop $120.96, target $170.50) BEFORE 9:25 AM ET TODAY.",
+      "notes": "Re-scored at $137 (bounced from $134 post-earnings low). Q1 revenue +85% YoY. Fundamentals 9, Technical 6, Sentiment 7, Macro 7, Risk 7, Tech 8."
     },
     {
       "symbol": "BTC/USD",
       "bucket": "crypto",
-      "score": 7.17,
-      "action": "APPROVED — Order attempted, API blocked. Operator: place limit (0.06 BTC, $82,732 GTC) + standalone stop at $67,502 after fill.",
-      "notes": "BTC highest since January, +5.4% 5-day. Crypto bucket 0% deployed vs 5% target. Risk-on macro."
+      "score": 6.17,
+      "action": "SKIP — re-score below threshold. BTC pulled back from $82,320 to $80,206 (-2.6%). Breakout-volume setup invalidated. Re-evaluate if BTC reclaims $82K (breakout-volume) or drops to $75K (crypto-flush-rebound).",
+      "notes": "Technical 4/10. Avg 6.17 < 7 threshold. Crypto bucket 0% deployed; patience required until momentum recovers."
     },
     {
       "symbol": "XLE",
       "bucket": "active",
       "score": null,
-      "action": "WATCH — stop at $56.15, current $57.14. Iran deal confirmation = possible stop trigger.",
-      "notes": "Hold existing 50-share position. Stop is live. Do not add; consider tightening stop if Iran deal confirmed."
+      "action": "WATCH CRITICAL — stop at $56.15, current ~$57.00 ($0.85 cushion, 1.5%). Iran deal weekend binary risk. GTC stop in place.",
+      "notes": "Hold existing 50-share position. Stop will execute if triggered. No additional action. Monday open key risk event."
     },
     {
       "symbol": "AVGO",
       "bucket": "long-term",
-      "score": 7,
-      "action": "GTC bracket at $418.59 stale — AVGO now ~$440+. Consider cancel and re-queue at $442.",
-      "notes": "Bracket resting since May 4. Price moved away from limit. Operator should evaluate whether to update."
-    },
-    {
-      "symbol": "INTC",
-      "bucket": "long-term",
-      "score": 5.5,
-      "action": "REJECTED (user-suggestion #1) — Risk veto. Revisit after 15-20% pullback from current ~$108.",
-      "notes": "Up 190% YTD, analyst consensus PT $79.19 (-27% below current). R:R < 2:1. Score 5.5 / 10."
+      "score": 7.0,
+      "action": "PROBABLE FILL — GTC bracket at $418.59 likely executed today (intraday range $406.30–$426.49). Confirm via API or account statement. If filled: stop at $368.36 (-12%), target $519.05 (+24%).",
+      "notes": "Bracket placed ~May 4. Intraday low $406 was well below limit $418.59. Cannot confirm via blocked API."
     }
   ],
   "history": []
