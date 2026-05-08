@@ -4,6 +4,215 @@
 
 ---
 
+## 2026-05-08 — Pre-Market routine (05:12 UTC / 1:12 AM ET — early run; market opens ~13:30 UTC)
+
+**Context:** Pre-Market heartbeat START committed at 05:12 UTC. Market opens at 13:30 UTC (9:30 AM ET); MOO orders must be submitted before ~13:25 UTC (9:25 AM ET). Alpaca API remains blocked ("Host not in allowlist" on all endpoints — HTTP 403). Both MOO order attempts below failed. Operator must place manually before 9:25 AM ET. No May 7 routine log entries exist — silent failure repeated on 2026-05-07 (routine infra still broken). AVGO bracket (7 sh, limit $418.59 GTC, order_id 7fe3b17a) almost certainly FILLED on May 7 — AVGO's intraday low was ~$414-418 on May 7 — operator must verify.
+
+**User suggestion inbox:** 0 open `user-suggestion` issues on GitHub. No action required.
+
+**xAI/X Sentiment check:** `XAI_API_KEY` not provisioned in this runner (session context: `xai_api_key: NO`). Degrading gracefully per CLAUDE.md: X sentiment scored neutral (0 modifier) for all tickers; failure noted in each entry's `master_notes`. This does NOT block any trade.
+
+### Market Context — May 7–8, 2026
+
+**May 7 close summary:**
+- S&P 500: 7,337.11 (-0.38% from record 7,365.12) — Iran ceasefire COLLAPSED; Iran struck UAE port (Fujairah)
+- Oil surged: WTI ~$110 (+4%), Brent ~$114–126 (+6%) — Iran war premium back on
+- Energy sector: XLE likely surged from $57.14 close on May 6 → estimated $61–62 on May 7
+- Gold: ~$4,700+/oz bid → GLD estimated ~$445–450 (safe-haven premium)
+- TSM: $415.70 close on May 7 (Taiwan TAIEX +2.1% overnight = bullish for TSM today)
+- NVDA: $212.72 on May 7 (+3.0% from May 6 close)
+- PLTR: $137.86 on May 7 (recovered from post-earnings $134 low)
+- AMD: $408.46 on May 8 pre-market (pulled back from $421.39 on ARM's -10.1% sympathy selloff)
+- ARM: -10.1% to $213.33 on May 7 despite Q4 EPS beat (supply fears for new chip spooked market)
+- AVGO: intraday low ~$414–418 on May 7 → **bracket fill at $418.59 likely** (GTC limit $418.59, low below limit)
+- BTC: $79,642 on May 8 (down from $82,320 on May 6; -3.3% in 2 days; risk-off crypto)
+
+**May 8 pre-market conditions:**
+- US futures: flat
+- Asia: Taiwan TAIEX +2.1% (bullish for TSM, NVDA), MSCI Asia -1.1% (broader risk-off)
+- Oil: Brent falling back as US–Iran nearing Hormuz reopening deal (conflicting signals with ceasefire breakdown)
+- Geopolitical state: HIGHLY VOLATILE — Iran ceasefire collapsed → Iran struck UAE → oil surged → now new Hormuz deal talks → oil falling again
+- No major US economic releases confirmed for today
+- Binary events: none confirmed with 48h exclusion window for today's candidates
+
+### Stop-Loss Audit (MANDATORY FIRST ACTION — API blocked, estimated from last-known state)
+
+| Symbol | Qty | Bucket | Est. Current | Stop | Distance | Status |
+|--------|-----|--------|-------------|------|----------|--------|
+| TSM | 7 | long-term | ~$418 | $353.76 | +18.2% | ✓ Safe (bracket OCO) |
+| GLD | 7 | active | ~$447 | $397.92 | +12.3% | ✓ Safe (two GTC stops) |
+| NVDA | 15 | long-term | ~$213 | $175.60 | +21.3% | ✓ Safe (bracket OCO) |
+| JPM | 9 | long-term | ~$311 | $272.14 | +14.3% | ✓ Safe (bracket OCO) |
+| XLE | 50 | active | ~$62 | $56.15 | +10.4% | ✓ Safe — Iran ceasefire collapse sent oil surging; XLE recovered from $57.14 danger zone |
+| AVGO | 7 | long-term | ~$424 | $368.36 | +15.1% | ⚠ UNVERIFIED — bracket fill at $418.59 likely (May 7 intraday low ~$414–418); bracket OCO should have activated stop automatically IF filled |
+
+**API status:** BLOCKED — cannot confirm any stop orders. Operator must verify via Alpaca dashboard that all 6 positions have resting stop orders. Particularly critical for AVGO if it filled on May 7.
+
+### AVGO Potential Fill — Operator Action Required
+
+The AVGO GTC bracket (order_id: `7fe3b17a`, limit $418.59, 7 sh, stop $368.36, target $519.05, placed 2026-05-05T00:08Z) likely filled on May 7 when AVGO's intraday price crossed below $418.59 (confirmed low ~$414–418). If filled:
+- Cash decreases by ~$2,930 (7 × $418.59)
+- AVGO position opens with bracket stop $368.36 and target $519.05 automatically active
+- **Operator: verify in Alpaca that (a) fill occurred, (b) bracket stop leg is active at $368.36**
+- If NOT filled (AVGO never touched $418.59): cancel the order — it is now stale and AVGO at $424 means any pullback re-entry should use a new bracket at current levels
+
+### Candidate Scoring — May 8 Watchlist
+
+**Commitment from prior watchlist:** AMD (7.33), PLTR (7.0), BTC/USD (7.17) were all approved on May 6 but API-blocked. BTC has weakened (score re-runs below); AMD and PLTR carry over.
+
+---
+
+#### AMD — earnings-reaction-follow (active bucket) — RE-SCORED for May 8
+
+AMD at $408.46 (down 3.1% from $421.39 May 6 close due to ARM sympathy selloff). Fundamentals unchanged. Pullback IMPROVES the technical setup vs. the overbought +18.6% single-day spike we were entering on May 6.
+
+**6-Agent Analysis:**
+- **Fundamentals (9/10):** Q1 2026 revenue $10.25B (+38% YoY), EPS $1.37 vs $1.28 est (+7%), Data Center +57%, Q2 guide $11.2B vs $10.5B consensus (+6.7% beat). Free cash flow record. Bernstein PT $525; Goldman Sachs $450. One of the cleanest fundamental prints in semis.
+- **Technical (7/10):** Pulled back 3.1% from the post-earnings spike. Daily trend strongly up (still +15% above pre-earnings base). $400 round-number support nearby. RSI normalized from extreme overbought. MACD still bullish from the earnings gap. Volume on pullback lighter than the earnings day — healthy consolidation pattern.
+- **Sentiment (7/10):** ARM's -10.1% selloff was ARM-specific (supply fears for new ARM chip design), not an AMD fundamental story. Analyst consensus overwhelmingly bullish (Buy, avg PT above current price). X sentiment: NOT queried (xAI key not provisioned); degraded to neutral (0 modifier). Base: 7.
+- **Macro (7/10):** Iran war escalation = mild risk-off for equity markets. But AI capex cycle intact — hyperscalers (Azure, AWS, GCP) all guiding for accelerating GPU spend. Taiwan TAIEX +2.1% overnight = bullish semi sentiment for today's open.
+- **Risk (7/10):** 11 sh × $408 = $4,488 = 4.47% (<5% ✓); stop 5% = $387.60; target $449 (≈+10%) → R:R = $41/$20 = 2.05:1 (≥2:1 ✓); trade risk 11 × $20 = $220 = 0.22% (<1.5% ✓); semi sector after fills: TSM+NVDA+AMD+AVGO = ~$2,910+$3,191+$4,488+$2,968 = $13,557 = 13.5% (<25% ✓); cash after AMD+PLTR = ~$73,100 (>10% ✓); positions after = 8 (<12 ✓).
+- **Tech Analyst (8/10):** AMD MI300X/MI350X accelerator family competitive with NVIDIA H200. CDNA4 architecture. ROCm software stack maturing rapidly. Data center AI revenue $3.7B in Q1 (57% YoY). AI full-stack play with defensible custom silicon roadmap. Switching cost still high for committed hyperscaler deployments.
+
+```yaml
+---
+ts: 2026-05-08T05:12:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: AMD Q1 blowout (+38% rev, Data Center +57%, Q2 guide beat) — 3% ARM-sympathy pullback from $421 to $408 creates better entry than May 6; RSI normalized; $400 support nearby; Bernstein PT $525.
+size_pct: 4.47
+stop: 387.60
+target: 449.00
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED (7.5 avg, 6/6 agents ≥7, Risk=7). ORDER ATTEMPTED AND FAILED — Alpaca API blocked: 'Host not in allowlist' (HTTP 403). Intended MOO: symbol=AMD, qty=11, side=buy, type=market, time_in_force=opg. After fill, Market Open routine must place stop-sell GTC at entry × 0.95. X sentiment not queried — xAI key not provisioned; degraded gracefully (neutral, 0 modifier). Operator must place AMD MOO (11 sh) before 9:25 AM ET. Guardrails all pass (see Risk agent notes)."
+---
+```
+
+---
+
+#### PLTR — ai-momentum-pullback (long-term bucket) — RE-SCORED for May 8
+
+PLTR at ~$137.86 (May 7 close, recovered from post-earnings $134 low on May 5). Q1 report already past (May 4 AMC). Next earnings: August 2026.
+
+**6-Agent Analysis:**
+- **Fundamentals (8/10):** Q1 2026 EPS $0.33 vs $0.27 est (+22%), Revenue $1.63B (+85% YoY — highest-ever growth rate). Full-year guidance raised meaningfully above prior consensus. US Commercial revenue +68% YoY. AI Platform (AIP) traction accelerating. High P/S but growth justifies premium for patient LT investor.
+- **Technical (6/10):** Post-earnings sell-off bottomed at $134 on May 5; now $137.86 (+2.9% recovery). Trend: PLTR was $207+ in Feb–Mar, sold off to $134 on earnings — still in a macro downtrend from those highs. However, the earnings reaction is over (binary event passed), $134 is a confirmed support level (tested May 5), and the daily RSI is in recovery mode (35–45 range). Entry here is after the capitulation flush, not before.
+- **Sentiment (6/10):** Market skeptical of PLTR's valuation at $137+ given high P/S. However, defense/intel investors increasingly supportive. Iran war = bullish for PLTR (government defense contracts accelerate). X sentiment not queried (xAI key not provisioned); degraded to neutral.
+- **Macro (7/10):** Iran war escalation = explicitly bullish for PLTR. US government defense/surveillance spending surges in conflict periods. PLTR's Gotham platform (used by DoD, intelligence agencies) becomes more in-demand. Commercial AIP contracts also benefiting from broader AI spending.
+- **Risk (7/10):** 36 sh × $137.86 = $4,963 = 4.95% (<5% ✓, barely); stop 12% = $121.32; target 24% = $170.94; R:R = $33/$16.54 = 2.0:1 (meets minimum ✓); trade risk 36 × $16.54 = $595 = 0.59% (<1.5% ✓); LT-tech sub after PLTR: (TSM+NVDA+AVGO+PLTR)/LT = ~$14,040/$16,840 = 83.4% — above 60% ceiling BUT LT bucket ($16,840 est.) still < $20k threshold, ceiling is informational ✓; positions after AMD+PLTR = 8 (<12 ✓).
+- **Tech Analyst (8/10):** Palantir Foundry + Gotham = sticky, high-switching-cost data integration platforms. AIP (AI Platform) built on top of ontology-based architecture — genuinely defensible. US government classified-systems integrations = essentially permanent revenue. Commercial AIP traction is a new, expanding growth vector. R&D as % of revenue declining (scale kicking in) while margins expanding. Strong moat.
+
+```yaml
+---
+ts: 2026-05-08T05:12:00Z
+action: entry
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 7.0
+thesis: PLTR Q1 blowout (+85% rev YoY, EPS +22%) — post-earnings sell-off bottomed $134 on May 5; recovery to $137.86 confirms support; Iran war accelerates US defense/AI spending; LT bucket underfilled (11% vs 55% target).
+size_pct: 4.95
+stop: 121.32
+target: 170.94
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED (7.0 avg exactly at floor, 4/6 agents ≥7: Fundamentals/Macro/Risk/Tech Analyst; Risk=7 ≥6). ORDER ATTEMPTED AND FAILED — Alpaca API blocked: 'Host not in allowlist' (HTTP 403). Intended MOO: symbol=PLTR, qty=36, side=buy, type=market, time_in_force=opg. After fill, Market Open routine must place stop-sell GTC at entry × 0.88 (LT 12% stop). X sentiment not queried — xAI key not provisioned; degraded gracefully. Operator must place PLTR MOO (36 sh) before 9:25 AM ET. LT-tech sub 83.4% > 60% ceiling but LT bucket < $20k threshold — ceiling informational per CLAUDE.md."
+---
+```
+
+---
+
+#### BTC/USD — breakout-volume (crypto bucket) — RE-SCORED: REJECTED
+
+BTC fell from $82,320 (May 6) to $79,642 (May 8), -3.3%. The original breakout thesis was "BTC at highest level since January" — that breakout HAS FAILED. BTC is now below the January high retest level.
+
+**6-Agent Analysis:**
+- Fundamentals: 7 (supply/demand favorable, halving cycle, institutional accumulation ongoing)
+- Technical: 5 (breakout FAILED — BTC reversed from $82,320 back below; RSI declining; no clear support until $75,000 range; risk-off crypto environment)
+- Sentiment: 5 (Iran war escalation = risk-off; BTC -3.3% in 2 days; Fear & Greed index likely neutral-to-fearful; X sentiment not queried)
+- Macro: 6 (Iran war = risk-off for speculative assets; US-Iran Hormuz deal talks = shifting; BTC as "digital gold" narrative partially offset by risk-off selling)
+- Risk: 6 (0.06 BTC × $79,642 = $4,779 = 4.77% <5% ✓; stop 18% = $65,307; R:R barely meets 2:1; borderline)
+- Tech Analyst: 7 (BTC PoW security, 21M cap, strong hash rate)
+- Average: (7+5+5+6+6+7)/6 = 6.0 — BELOW 7.0 threshold
+
+```yaml
+---
+ts: 2026-05-08T05:12:00Z
+action: skip
+symbol: BTC/USD
+bucket: crypto
+setup: breakout-volume
+score: 6.0
+thesis: BTC breakout thesis FAILED — reversed from $82,320 back to $79,642 (-3.3%). Risk-off crypto environment. Average 6.0 < 7.0 minimum; not a deployment-bias violation (score below threshold is a valid non-entry).
+size_pct: 0
+stop: null
+target: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 5
+  macro: 6
+  risk: 6
+  tech_analyst: 7
+agent_average: 6.0
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED — avg 6.0 < 7.0 minimum. Technical score 5: breakout failed, BTC reversed below the Jan-high retest level. Sentiment 5: Iran war risk-off weighing on crypto. This is a valid rejection (scored below threshold) — NOT a Deployment Bias violation. Will reassess when BTC re-establishes above $82,000 OR shows strong reversal from $75,000 support. X sentiment not queried (xAI key not provisioned)."
+---
+```
+
+---
+
+#### ARM — earnings-reaction-fade bounce — CONSIDERED, REJECTED
+
+ARM fell -10.1% to $213.33 on May 7 despite Q4 EPS beat ($0.60 vs $0.58) on supply fears for new chip design. Multiple analyst upgrades (TD Cowen PT $265, RBC $260, Deutsche Bank $205). Classic sell-the-news setup.
+
+- Fundamentals: 7, Technical: 4 (massive -10.1% gap down, short-term downtrend), Sentiment: 6, Macro: 7, Risk: 6, Tech Analyst: 7
+- Average: (7+4+6+7+6+7)/6 = 6.17 — BELOW 7.0 threshold
+- Technical score 4 is the veto — entering into a freshly gapped-down stock without stabilization is low-conviction. Skip without logging a deployment-bias violation (avg < 7.0 is a valid rejection reason).
+
+---
+
+### May 7 Silent Failure — Logged
+
+No trades.md entries exist for 2026-05-07, confirming the Pre-Market routine FAILED SILENTLY again. The pattern continues: heartbeat infra fires (when it does) but Alpaca API remains blocked preventing any order execution even when the routine runs. Additionally, May 7's routine likely did not fire at all given zero heartbeat log lines for that date.
+
+**Consequence:** AVGO bracket fill on May 7 was unmonitored. No stop-loss audit was performed on May 7. All 5 confirmed positions (TSM, GLD, NVDA, JPM, XLE) had no routine oversight on May 7.
+
+---
+
+### Order Summary — May 8 Pre-Market
+
+| Symbol | Action | Qty | Type | Status | Operator Action Required |
+|--------|--------|-----|------|--------|--------------------------|
+| AMD | MOO buy | 11 | market, opg | **FAILED — API blocked** | Place MOO (11 sh) before 9:25 AM ET |
+| PLTR | MOO buy | 36 | market, opg | **FAILED — API blocked** | Place MOO (36 sh) before 9:25 AM ET |
+| BTC/USD | — | — | — | REJECTED (score 6.0) | No action |
+| ARM | — | — | — | REJECTED (score 6.17) | No action |
+| AVGO | verify fill | 7 | bracket | STATUS UNKNOWN | Verify fill at $418.59 on May 7; confirm stop $368.36 active |
+
+---
+
 ## 2026-05-06 — Pre-Market routine (LATE RUN — 22:59 UTC / 6:59 PM ET; market already closed)
 
 **Context:** Pre-Market routine DID fire a heartbeat START at 22:59:46Z (commit `d8d0552`) — marking progress vs. prior silent failures. However, the routine ran at 22:59 UTC (6:59 PM ET) instead of 12:00 UTC (8:00 AM ET), meaning the market had already closed. MOO orders cannot be placed; GTC bracket limit orders were attempted instead as pre-queue for May 7 open. All three Alpaca API calls failed with "Host not in allowlist" — outbound egress to paper-api.alpaca.markets is blocked in the sandbox runner. Orders are documented below as **attempted entries**; operator must either restore API access or manually place the brackets in Alpaca before 9:25 AM ET on May 7.
