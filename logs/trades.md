@@ -4,6 +4,185 @@
 
 ---
 
+## 2026-05-11 — Daily Review (4:30 PM ET / 20:34 UTC)
+
+**Context:** Monday May 11. First trading day after the May 9–10 weekend. S&P 500 closed at all-time high 7,412.84 (+0.19%). NVDA surged +8.3% to $221.98; MU +151% YTD; AI memory supercycle confirmed. Fragile US-Iran ceasefire reached → oil fell → XLE at near-stop levels (low $56.24 vs stop $56.15). Alpaca API still blocked (HTTP 403). All 6 daytime routines silently failed. AMD setup (approved May 6, score 7.33) has expired — AMD ran $413 → $463 (+$50/share, $554 missed gain on 11sh) while we sat in cash.
+
+**Prices used (web research):**
+- NVDA: $221.98 | TSM: $405.48 | AVGO: $430.00 | JPM: $300.70 | GLD: $433.77 | XLE: $56.78 (LOW $56.24)
+- AMD: $463.40 | PLTR: $135.22 | BTC: $81,224 | TSLA: $422.27 | WDC: $480.00 | MU: ~$710 | BA: $239.45 | SPY: $738.40
+
+---
+
+### Silent Failure Violations — May 11, 2026
+
+```yaml
+---
+ts: 2026-05-11T12:00:00Z
+action: violation
+type: silent_failure
+routine: Pre-Market
+master_notes: "No heartbeat STARTED or COMPLETED in logs/heartbeats/2026-05-11.log for this routine. AMD and PLTR approved orders (score 7.33 each) not attempted. AMD continued its run from $413→$463 — setup is now expired. XLE stop-coverage audit not performed at market open. This is the top operational issue for May 11."
+---
+```
+
+```yaml
+---
+ts: 2026-05-11T13:45:00Z
+action: violation
+type: silent_failure
+routine: Market-Open
+master_notes: "No heartbeat. Post-fill stop verification not performed. No XLE close evaluated despite thesis reversal (Iran ceasefire). MOO follow-up stops for AMD/PLTR would have been placed here if Pre-Market had fired."
+---
+```
+
+```yaml
+---
+ts: 2026-05-11T15:00:00Z
+action: violation
+type: silent_failure
+routine: Mid-Morning
+master_notes: "No heartbeat. No mid-morning scan performed. MU, WDC, TSLA momentum names not evaluated for entry."
+---
+```
+
+```yaml
+---
+ts: 2026-05-11T16:30:00Z
+action: violation
+type: silent_failure
+routine: Midday
+master_notes: "No heartbeat. No midday review. XLE near-stop not flagged in real time."
+---
+```
+
+```yaml
+---
+ts: 2026-05-11T18:00:00Z
+action: violation
+type: silent_failure
+routine: Afternoon
+master_notes: "No heartbeat. No afternoon review. BTC opened at $82,164 (near breakout) but pulled back to $81,224; opportunity missed to log or act."
+---
+```
+
+```yaml
+---
+ts: 2026-05-11T19:30:00Z
+action: violation
+type: silent_failure
+routine: Market-Close
+master_notes: "No heartbeat. No MOC orders placed. No end-of-day stop audit. No pre-queue brackets placed for tomorrow. XLE carried overnight at $56.78 vs stop $56.15 — thesis reversing."
+---
+```
+
+---
+
+### AMD — Setup Expiry (earnings-reaction-follow)
+
+```yaml
+---
+ts: 2026-05-11T20:34:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: earnings-reaction-follow
+score: 6.83
+thesis: AMD setup approved May 6 at $413-416 (score 7.33). Today at $463.40 (+12%). Original target $464 is now at entry level — R:R fails. Re-scored at $463: technical 4/10 (very extended, 3 days after +18.6% gap), avg 6.83 < 7 threshold. Setup expired.
+agent_scores:
+  fundamentals: 9
+  technical: 4
+  sentiment: 7
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — setup expired. AMD ran from approved entry ~$413 to $463 (+$50/sh) while API was blocked and routines failed. At $463: R:R fails (original target $464 is now at entry; new 2:1 target requires $509 which is reasonable but technical score only 4 — RSI overbought, 3 days after earnings gap). Avg 6.83 < 7 threshold. Missed gain: 11sh × $50 = $554. Direct cost of infrastructure failure. Will re-evaluate AMD if it pulls back to the $435-440 support zone. Active bucket still has capacity (2 positions vs 12 max)."
+---
+```
+
+---
+
+### Daily Review Summary
+
+**Portfolio P&L:**
+| Symbol | Qty | May 8 Est. | May 11 | Session P/L | Unrealized from Entry |
+|--------|-----|-----------|--------|-------------|----------------------|
+| NVDA | 15 | $205.00 | $221.98 | +$254.70 | +$347.25 |
+| GLD | 7 | $420.00 | $433.77 | +$96.39 | +$104.37 |
+| AVGO | 11 | $419.00 | $430.00 | +$121.00 | +$125.51 |
+| TSM | 7 | $414.00 | $405.48 | -$59.64 | +$28.07 |
+| JPM | 9 | $315.00 | $300.70 | -$128.70 | -$68.40 |
+| XLE | 50 | $57.00 | $56.78 | +$11.00 | -$111.50 |
+| **TOTAL** | | | | **+$294.75 (+0.29%)** | **+$425.30** |
+
+- **SPY session:** +$0.78 / +0.11% ($737.62 → $738.40); S&P 500 index: +0.19% (7,398.93 → 7,412.84)
+- **Daily alpha:** +0.10–0.18 ppts — OUTPERFORMED today
+- **Portfolio cumulative:** +0.43% ($100,000 → $100,425)
+- **SPX cumulative since ~Apr 27:** ~+1.5–2.5%
+- **Benchmark gap:** Portfolio lagging ~-1.1 to -2.0 ppts (80% cash drag from infrastructure failures)
+
+**Heartbeat Table:**
+| Routine | STARTED | COMPLETED |
+|---------|---------|-----------|
+| Pre-Market | ✗ | ✗ |
+| Market-Open | ✗ | ✗ |
+| Mid-Morning | ✗ | ✗ |
+| Midday | ✗ | ✗ |
+| Afternoon | ✗ | ✗ |
+| Market-Close | ✗ | ✗ |
+| Daily-Review | ✓ 20:34:10Z | ✓ |
+
+**Stop-Coverage (estimated):**
+| Symbol | Stop | Today Low | Cushion | Status |
+|--------|------|-----------|---------|--------|
+| TSM | $353.76 | ~$402 | +14.6% | ✅ |
+| GLD | $397.92 | ~$430 | +9.0% | ✅ |
+| NVDA | $175.60 | $213.21 | +21.4% | ✅ |
+| JPM | $272.14 | ~$298 | +10.5% | ✅ |
+| XLE | $56.15 | **$56.24** | **+0.2%** | 🚨 NEAR-MISS |
+| AVGO | $368.36 | ~$414 | +12.4% | ✅ |
+
+**3 things that worked:**
+1. NVDA and AVGO positions captured the AI infrastructure rally (+$254.70 and +$121 session gains)
+2. GLD continues performing as macro hedge — gold near ATH, JPMorgan $6,300 year-end target providing floor bid
+3. Stop-loss discipline: XLE GTC stop at $56.15 was not triggered (low $56.24) — bracket-at-entry system protecting capital automatically
+
+**3 to improve:**
+1. Infrastructure: 6/6 daytime routines silently failed. Must pre-queue GTC brackets EVERY NIGHT as defensive layer
+2. XLE thesis management: Iran ceasefire confirmed → XLE thesis reversing. Need to evaluate early close tomorrow before stop gets hit at gap-down open
+3. LT-tech sub-cap: 80% tech concentration in LT bucket requires adding SPY/BA (non-tech) BEFORE any new LT tech entries
+
+**Setup-tag tally (5-day rolling: May 7–11):** No exits → no completed trades to score. All open.
+
+**Tomorrow's watchlist commitment (per Deployment Bias — this is a COMMITMENT for May 12 Pre-Market):**
+
+| # | Symbol | Bucket | Price | Score | Setup | Entry Plan |
+|---|--------|--------|-------|-------|-------|-----------|
+| 1 | SPY | LT | $738.40 | 7.0 | sector-rotation | GTC bracket $735, stop $646.80, target $911.40, 6sh (NON-TECH FIRST) |
+| 2 | BA | LT | $239.45 | 7.0 | sector-rotation | GTC bracket $238, stop $209.44, target $295.12, 20sh (NON-TECH SECOND) |
+| 3 | PLTR | LT | $135.22 | 7.67 | ai-momentum-pullback | GTC bracket $135, stop $118.80, target $167.40, 36sh |
+| 4 | TSLA | LT | $422.27 | 7.17 | sector-rotation | GTC bracket $420, stop $369.60, target $520.80, 11sh |
+| 5 | WDC | LT | $480.00 | 7.0 | ai-momentum-pullback | GTC bracket $476, stop $419.28, target $590.24, 10sh |
+| 6 | MU | LT | ~$710 | 7.67 | ai-momentum-pullback | GTC bracket $705, stop $620.40, target $874.20, 7sh |
+| 7 | BTC/USD | crypto | $81,224 | 7.0 | breakout-volume | GTC limit $82,500 (breakout confirm), stop $67,650, target $111,375, 0.06 BTC |
+| 8 | NVDA | LT | $221.98 | 7.5 | ai-momentum-pullback | ADD-ON 7sh: GTC $220, stop $193.60, target $272.80 (DEFER until tech sub-cap resolved) |
+| 9 | AMD | active | $463.40 | 6.83 | — | SKIP — setup expired; re-score at $435 pullback |
+| 10 | GLD | active | $433.77 | 7.0 | macro-hedge | HOLD 7sh; consider add at $430 on dip |
+
+⚠️ LT-tech sub-cap order: MUST add SPY + BA (non-tech) before PLTR/TSLA/MU/WDC. Once LT bucket ≥ $20K the 60% tech ceiling is hard.
+⚠️ CPI risk: April CPI releases 8:30 AM ET May 12. Use GTC limit brackets, NOT MOO. Limits set ~0.5-1% below current.
+
+**Key macro events May 12–15:**
+- Tue May 12: CPI (headline 3.7%, core 2.7% consensus) — biggest catalyst this week
+- Wed May 13: CSCO earnings AMC (48h exclusion: do not enter CSCO before print)
+- Thu May 14: AMAT earnings AMC (48h exclusion: do not enter AMAT before print)
+- Fri May 15: Powell term ends; Kevin Warsh Fed Chair nomination vote
+
+---
+
 ## 2026-05-08 — Pre-Market routine (8:00 AM ET / 12:19 UTC)
 
 **Context:** Friday May 8. Market opens in ~70 min. Jobs report (April NFP) releases at 8:30 AM ET today — consensus +55K–73K, prior +178K; ADP private payrolls came in +109K on May 6 (beats expectations). S&P 500 futures +0.33% (7,387.50), Nasdaq futures +0.51% (28,827.50). Iran nuclear deal NOT yet confirmed; oil still volatile above $100/bbl, geopolitical uncertainty persists. Alpaca API confirmed blocked (HTTP 403 / x-deny-reason: host_not_allowed — Anthropic sandbox TLS proxy intercepting). Both MOO order attempts below were submitted and blocked.
