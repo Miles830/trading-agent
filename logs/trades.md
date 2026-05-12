@@ -144,6 +144,152 @@ master_notes: "APPROVED (7.33 avg, 5/6 agents ≥7, Risk=7 ✓). Technical 5 fla
 
 ---
 
+### 2026-05-12 — Market Open routine — VIOLATION (silent failure — not in heartbeat log)
+
+```yaml
+---
+ts: 2026-05-12T13:45:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: all
+setup: silent-failure
+score: null
+thesis: Market Open routine (9:45 AM ET) did not run — absent from logs/heartbeats/2026-05-12.log. Detected by Midday predecessor check.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Market Open was critical today: (1) Confirm April CPI result (actual +3.8% YoY / +0.6% MoM — hotter than expected). (2) Confirm or deny PLTR+AMD MOO fills (both likely failed due to persistent API blockage). (3) Place post-fill stops for PLTR (fill×0.88) and AMD (fill×0.95) if filled. All three tasks missed. Midday catch-up running both entries as GTC limit bracket orders."
+---
+```
+
+### 2026-05-12 — Mid-Morning routine — VIOLATION (silent failure — not in heartbeat log)
+
+```yaml
+---
+ts: 2026-05-12T15:00:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: all
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET) did not run — absent from heartbeat log.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Second consecutive predecessor failure today (Market Open + Mid-Morning both missed). Mid-Morning stop audit and position check did not execute. Midday routine executing full stop audit and watchlist catch-up per midday.md protocol."
+---
+```
+
+---
+
+### 2026-05-12 — Midday routine (12:30 PM ET / 16:33 UTC)
+
+**Context:** Two predecessor routines (Market Open, Mid-Morning) are silent failures. Running WATCHLIST EXECUTION CATCH-UP (cap: 2 entries per midday.md). Alpaca API remains blocked (HTTP 403 / host_not_allowed — 6th consecutive blocked session since May 6).
+
+**Market summary (midday):**
+- S&P 500: -0.37% intraday (retreating from record 7,412.84 after hot CPI print)
+- April CPI: +3.8% YoY, +0.6% MoM (hotter than expected +3.7%/+0.2%). Core +2.8% YoY. Fed higher-for-longer confirmed; no rate cuts until 2027.
+- Nasdaq: -0.65% | Dow: -0.21% | Russell 2000: +0.33% (small-cap outperform — value rotation)
+- Oil: $100–126/bbl (Brent) — Iran deal still unconfirmed
+- Sector leaders: Precious metals (gold bid on inflation), Energy; Laggards: Tech/growth, Financials
+
+**Stop-coverage audit (API blocked — prices from web research):**
+
+| Symbol | Qty | Bucket | Entry | Stop | Midday Price | Cushion | Status |
+|--------|-----|--------|-------|------|-------------|---------|--------|
+| TSM | 7 | LT | $401.47 | $353.76 | ~$404.54 | +14.4% | ✓ |
+| GLD | 7 | active | $418.86 | $397.92 | ~$434.65 | +9.2% | ✓ |
+| NVDA | 15 | LT | $198.83 | $175.60 | ~$221.50 | +20.8% | ✓ ⚠️ Earnings May 20 |
+| JPM | 9 | LT | $308.30 | $272.14 | ~$299.60 | +10.1% | ✓ (underwater on P&L) |
+| XLE | 50 | active | $59.01 | $56.15 | ~$57.60 | +2.6% | ⚠️ Tight — watch Iran headlines |
+| AVGO | 11 | LT | $418.59 | $368.36 | ~$428.43 | +16.4% | ✓ |
+
+All stops above current prices. No stop breaches today. Daily circuit breaker: ~-$373 / $100,804 = -0.37% ✓ (well under 3%).
+
+**Position notes:**
+- **TSM (+0.8%):** Down from pre-market $430 est. to $404.54. China chip deal thesis intact. Hold.
+- **GLD (+3.8%):** Hot CPI directly bullish. Trail stop recommended: $397.92 → $412.92 (= $434.65 × 0.95). API blocked — cannot execute trail.
+- **NVDA (+11.4%):** Earnings confirmed May 20, 2026 (corrected from prior May 21 estimate). 48h window opens May 18 — no new NVDA entries after May 18. Flag for Daily Review: pre-earnings strategy. Trail stop: $175.60 → ~$190 (conservative trail to lock near-breakeven without risking normal volatility stop-out). API blocked.
+- **JPM (-2.8%):** Hot CPI headwind for financials. Higher-for-longer = NIM benefit but slower loan growth. Stop at $272.14 = 9.1% cushion from $299.60. Q1 fundamentals still strong. Hold.
+- **XLE (-2.4%):** $57.60 vs stop $56.15 = 2.5% cushion. Iran deal remains rebuffed. Hold with stop.
+- **AVGO (+2.4%):** China chip deal named AVGO. Bracket OCO active. Hold.
+
+**Intended stop trails (API blocked — cannot execute):**
+1. GLD: $397.92 → $412.92 (GTC stop sell on 7 shares)
+2. NVDA: $175.60 → $190.00 (conservative trail; GTC stop sell on 15 shares)
+
+**Watchlist catch-up attempt 1 of 2 — PLTR:**
+
+```yaml
+---
+ts: 2026-05-12T16:35:00Z
+action: entry
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 7.33
+thesis: CATCH-UP (Market Open + Mid-Morning silent failures). PLTR Q1 +85% rev YoY, 2-week $134-137 support consolidation, AIP government AI acceleration. Score 7.33 unchanged. Limit buy $135.55 (ask×1.005), qty 36sh, GTC bracket, stop -12%, target +24%.
+size_pct: 4.84
+stop: 119.28
+target: 168.08
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 ≥7, Risk=7 ✓). Catch-up entry per midday.md catch-up protocol. PLTR now at $134.88 (near bottom of $134-137 support — slightly better entry than $137 pre-market). Hot CPI scores: government AI revenues are fiscal/not rate-sensitive — Macro/Sentiment unchanged. ORDER ATTEMPTED AND FAILED: curl POST /v2/orders → HTTP 403 'Host not in allowlist'. Intended: symbol=PLTR, qty=36, side=buy, type=limit, limit_price=135.55, time_in_force=gtc, order_class=bracket, stop_loss.stop_price=119.28, take_profit.limit_price=168.08. Guardrails PASS: size $4,880=4.84% <5% ✓; LT tech sub-cap informational (LT<$20K) ✓; trade risk 36×$16.27=$586=0.58% <1.5% ✓; cash post-orders $66,066=65.5%>10% ✓; positions 7<12 ✓. API blocked 6th consecutive since May 6. OPERATOR: place GTC bracket limit buy PLTR 36sh at $135.55, stop $119.28, target $168.08."
+---
+```
+
+**Watchlist catch-up attempt 2 of 2 — AMD:**
+
+```yaml
+---
+ts: 2026-05-12T16:36:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: CATCH-UP (Market Open + Mid-Morning silent failures). AMD China chip deal (MI308 approved, $500M-800M 2026 rev upside). Score 7.33 unchanged. Limit buy $467.13 (ask×1.005), qty 10sh, GTC bracket, stop -5%, target 2:1.
+size_pct: 4.63
+stop: 443.77
+target: 513.85
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 ≥7, Risk=7 ✓). Catch-up entry per midday.md catch-up protocol. AMD at $464.81 midday (down slightly from $466 pre-market — still valid setup). Technical still 5/10 (elevated RSI after 15% move); Hot CPI slight headwind but China chip deal overrides. ORDER ATTEMPTED AND FAILED: curl POST /v2/orders → HTTP 403 'Host not in allowlist'. Intended: symbol=AMD, qty=10, side=buy, type=limit, limit_price=467.13, time_in_force=gtc, order_class=bracket, stop_loss.stop_price=443.77, take_profit.limit_price=513.85. Guardrails PASS: size $4,671=4.63% <5% ✓; semis sector 15.6% <25% ✓; trade risk 10×$23.36=$234=0.23% <1.5% ✓; R/R 2.0:1 ✓; cash post-both-orders $61,395>10% ✓; positions 8<12 ✓. OPERATOR: place GTC bracket limit buy AMD 10sh at $467.13, stop $443.77, target $513.85."
+---
+```
+
+**Overnight hold plan:**
+- Hold all 6 positions overnight: TSM, GLD, NVDA, JPM, XLE, AVGO
+- Key overnight risk: XLE stop at $56.15 — any after-hours Iran deal confirmation could gap XLE down
+- Trump-Xi summit (May 14-15) is 2 days away — no new entries into binary diplomatic event names but existing semis benefit
+- NVDA earnings May 20 — pre-earnings strategy decision needed by May 18 Daily Review
+
+---
+
 ## 2026-05-08 — Pre-Market routine (8:00 AM ET / 12:19 UTC)
 
 **Context:** Friday May 8. Market opens in ~70 min. Jobs report (April NFP) releases at 8:30 AM ET today — consensus +55K–73K, prior +178K; ADP private payrolls came in +109K on May 6 (beats expectations). S&P 500 futures +0.33% (7,387.50), Nasdaq futures +0.51% (28,827.50). Iran nuclear deal NOT yet confirmed; oil still volatile above $100/bbl, geopolitical uncertainty persists. Alpaca API confirmed blocked (HTTP 403 / x-deny-reason: host_not_allowed — Anthropic sandbox TLS proxy intercepting). Both MOO order attempts below were submitted and blocked.
