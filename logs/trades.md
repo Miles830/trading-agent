@@ -4,6 +4,246 @@
 
 ---
 
+## 2026-05-13 — Market Close routine (3:30 PM ET / 19:36 UTC)
+
+**Context:** Wednesday May 13. PPI for April came in +1.4% MoM vs +0.5% expected — largest monthly wholesale inflation jump since 2022. Annual rate ~6%. Despite the shock, S&P 500 rose ~+0.69% to ~7,452 (tech-led by NVDA +2.1%). Trump arrived in Beijing today ahead of May 14-15 summit with Xi. API STILL blocked (HTTP 403 / host_not_allowed — confirmed via verbose curl). ALL predecessor routines today were silent failures — only Market-Close heartbeat recorded.
+
+**Alpaca API Status:** BLOCKED — HTTP 403, x-deny-reason: host_not_allowed. AMD MOC order attempted at 19:42:21 UTC (3:42 PM ET, before 3:50 PM cutoff). Response: "Host not in allowlist." This is the 7th consecutive API-blocked routine.
+
+### Predecessor Routine Violations
+
+All five predecessor routines (Pre-Market, Market Open, Mid-Morning, Midday, Afternoon) show no heartbeat entries for 2026-05-13.
+
+```yaml
+---
+ts: 2026-05-13T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 ET) produced no heartbeat — silent failure. No orders placed, no stop audit performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing routine. No heartbeat STARTED or COMPLETED entry in logs/heartbeats/2026-05-13.log for Pre-Market. API blocked status unknown at that time."
+---
+```
+
+```yaml
+---
+ts: 2026-05-13T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 ET) produced no heartbeat — silent failure. Post-MOO stops for PLTR/AMD (pending from May 12) not placed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Critical miss: Market Open is the routine that places stops after MOO fills. PLTR and AMD MOOs never filled (API blocked since May 6), so no stops were pending to place. But stop audit of existing 6 positions (TSM, GLD, NVDA, JPM, XLE, AVGO) was not performed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-13T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Stop audit + intraday scanning missed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-13T12:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Midday scan + position review missed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-13T14:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Afternoon routine (14:00 ET) produced no heartbeat — silent failure. No day-trade close review performed (no active day trades open).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "No day trades open today so Afternoon's primary close-out function was moot, but stop audit and intraday scan still missed."
+---
+```
+
+### Stop-Coverage Audit (estimated — API blocked)
+
+Prices sourced from web research. All stops assumed resting at Alpaca from prior bracket/standalone orders placed May 4-6.
+
+| Symbol | Qty | Bucket | Entry | Stop | EOD Price (est) | Cushion | Status |
+|--------|-----|--------|-------|------|-----------------|---------|--------|
+| TSM | 7 | long-term | $401.47 | $353.76 | ~$397.28 | +12.3% above stop | ✓ Slightly below entry; thesis intact. Trump-Xi chip catalyst pending. |
+| GLD | 7 | active | $418.86 | $397.92 | ~$430.27 | +8.1% | ✓ Gold bid on PPI shock |
+| NVDA | 15 | long-term | $198.83 | $175.60 | ~$225.40 | +28.4% | ✓ ⚠️ Earnings May 21 (8 days) — pre-earnings review due May 19 |
+| JPM | 9 | long-term | $308.30 | $272.14 | ~$304.88 | +12.0% | ✓ Slightly below entry; +1.63% today. PPI headwind for financials. |
+| XLE | 50 | active | $59.01 | $56.15 | ~$57.36 | +2.2% | ⚠️ CRITICAL — thin cushion; Iran deal unconfirmed; oil $100-126/bbl |
+| AVGO | 11 | long-term | $418.59* | $368.36 | ~$409.14 | +11.1% | ✓ Below entry if filled; China chip deal thesis intact |
+
+*AVGO bracket GTC placed ~May 4; probable fill at $418.59 (AVGO range May 8 covered this level). Stop at $368.36 (-12%).
+
+No positions hit stops today. XLE remains the most critical risk. No day trades to close (none were opened).
+
+### Macro Read — May 13, 2026
+
+- **PPI (April, released today):** +1.4% MoM vs +0.5% expected. Core PPI +1.0% vs +0.4% expected. Annual rate ~6% — highest since 2022. Driven by oil/gas (Hormuz closure). Fed rate cuts pushed further out. HEADWIND for high-multiple growth names.
+- **Market reaction:** S&P 500 +0.69% to ~7,452 (tech-led). Dow -0.48%. Nasdaq +0.12% (divergent: Dow heavyweights sold, mega-cap tech bid). NVDA +2.1% ($225.40). Two-thirds of S&P components were lower — narrow breadth, tech-supported index.
+- **Trump-Xi summit:** Trump arrived Beijing today. Summit May 14-15. Agenda: trade, AI chips (semiconductor export controls), Taiwan, Iran. China seeking easing of chip restrictions. Analysts expect "tactical stabilization" rather than full reset. Chip names (NVDA, AMD, AVGO, TSM) have summit-outcome catalyst pending.
+- **Bitcoin:** ~$80,960 (holding near $81K). Still below $82K re-entry threshold. No crypto action.
+
+### Candidate 1 — PLTR (re-evaluation at $129.99, May 13)
+
+PLTR opened today and sold off -4.31% from prev close of $136 to $129.99. The $134 support zone that was the basis of the ai-momentum-pullback setup has been BROKEN. RSI now likely oversold (~35-40 from rapid decline). Re-scoring required.
+
+**Re-score sub-agents (abbreviated — support break changes Technical):**
+
+- Fundamentals: 9/10 (Q1 still outstanding — +85% rev YoY, +22% EPS beat — unchanged)
+- Technical: 3/10 (support at $134 broken; $129.99 is below consolidation range; new support TBD at ~$125-127; not a safe entry until reclaim of $134)
+- Sentiment: 6/10 (PPI headwind for high-multiple, valuation concerns noted in search results; base sentiment still positive on government AI thesis)
+- Macro: 6/10 (Government AI insulated from Fed, but hot PPI is general headwind; no new positive catalyst today)
+- Risk: 7/10 (Entry $129.99, stop $114.39 (-12%), target $161.19 (+24%), qty 38sh = $4,939.62 = 4.92% <5% ✓; R/R 2.0:1 ✓; but entering a broken-support setup is elevated risk)
+- Tech Analyst: 8/10 (unchanged — AIP moat still intact)
+
+Re-score avg: (9+3+6+6+7+8)/6 = **6.50/10** — BELOW 7 THRESHOLD. Technical 3 is disqualifying.
+
+**DECISION: SKIP — re-score below 7.0. Support broken at $134. Wait for PLTR to reclaim $134 before re-entering.**
+
+```yaml
+---
+ts: 2026-05-13T19:36:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR broke below $134 support (-4.31% today to $129.99). Re-score 6.50 falls below 7.0 entry threshold. Support broken; not a valid entry until price reclaims $134.
+size_pct: 4.92
+stop: 114.39
+target: 161.19
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.50 avg, only 2/6 agents ≥7). Technical dropped to 3 — $134 support zone broken on -4.31% decline today. This is a valid re-score skip (not a Deployment Bias violation): score is now below 7.0, so exemption 1 effectively applies — the setup no longer qualifies. Re-entry signal: PLTR reclaims $134 on volume with RSI recovery above 50. Watch for Trump-Xi summit outcomes (May 14-15) as potential catalyst for recovery if government AI spending news emerges."
+---
+```
+
+### Candidate 2 — AMD (re-scored at $448.29, Market Close)
+
+AMD closed at ~$448.29 (daily range $432.65-$459.50), down from recent high of ~$477. A pullback from the China deal-driven breakout. China chip deal thesis (MI308 approved, $500M-800M 2026 rev upside) still fully intact. RSI has normalized from ~73 to ~60 after pullback.
+
+**Re-score sub-agents (updated for $448.29 price):**
+
+- Fundamentals: 9/10 (unchanged — Q1 +38% rev, DC +57%; China deal $500M-800M upside)
+- Technical: 6/10 (better than at $466; RSI normalized to ~60 after pullback; $432-448 range shows consolidation above the prior $413 base; bull channel still intact; entering closer to proper consolidation level)
+- Sentiment: 7/10 (China deal widely bullish; Trump-Xi summit outcome pending = additional catalyst; PPI hot = minor headwind; net bullish)
+- Macro: 7/10 (China chip deal > PPI headwind; AI capex intact; Trump-Xi summit upcoming)
+- Risk: 7/10 (Entry $448.29, stop $425.88 (-5%), target $493.12 (+10%); qty 10 = $4,482.90 = 4.47% <5% ✓; Semis: TSM+NVDA+AVGO+AMD = $15,146 = 15.1% <25% ✓; trade risk $224 = 0.22% <1.5% ✓; R/R 2.0:1 ✓; cash after: $76,462 = 76.2% >10% ✓; positions 7 <12 ✓)
+- Tech Analyst: 8/10 (unchanged — CDNA4/MI308 competitive; ROCm gaining; China approval validates strategic tech)
+
+Re-score avg: (9+6+7+7+7+8)/6 = **7.33/10** — APPROVED.
+
+MOC order placed before 3:50 PM ET cutoff at 19:42:21 UTC (3:42 PM ET). HTTP 403 returned (API still blocked). This is a GUARDRAIL VIOLATION — Deployment Bias requires execution of ≥7 entries; API blockage is not a CLAUDE.md-listed exemption.
+
+```yaml
+---
+ts: 2026-05-13T19:42:21Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: AMD China chip deal (MI308 approved; $500M-800M 2026 rev upside). Pullback from $477 to $448 normalizes RSI. Bull channel intact. Trump-Xi summit May 14-15 = additional catalyst for chip names. MOC 10sh attempted — API blocked HTTP 403.
+size_pct: 4.47
+stop: 425.88
+target: 493.12
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents ≥7, Risk=7 ✓). Technical improved to 6 from prior 5 (RSI normalized ~60 after pullback from $477 to $448). ORDER ATTEMPTED AND FAILED — Alpaca API HTTP 403 (x-deny-reason: host_not_allowed). MOC order curl: POST /v2/orders {symbol:AMD,qty:10,side:buy,type:market,time_in_force:cls}. Response: 'Host not in allowlist'. This is the 7th consecutive blocked routine. OPERATOR: must manually place AMD buy at market open May 14 or pre-market limit. Entry target $448 range, stop -5% = ~$425.88, target +10% = ~$493. This is a DEPLOYMENT BIAS VIOLATION — API blockage is not a valid skip exemption per CLAUDE.md."
+---
+```
+
+### EOD Position Summary — 2026-05-13
+
+| Symbol | Bucket | Qty | Entry | EOD Price | Stop | Est. P/L | Status |
+|--------|--------|-----|-------|-----------|------|----------|--------|
+| TSM | long-term | 7 | $401.47 | $397.28 | $353.76 | -$29.33 | HOLD |
+| GLD | active | 7 | $418.86 | $430.27 | $397.92 | +$79.87 | HOLD |
+| NVDA | long-term | 15 | $198.83 | $225.40 | $175.60 | +$398.55 | HOLD ⚠️ earnings 8d |
+| JPM | long-term | 9 | $308.30 | $304.88 | $272.14 | -$30.78 | HOLD |
+| XLE | active | 50 | $59.01 | $57.36 | $56.15 | -$82.50 | HOLD ⚠️ thin stop |
+| AVGO | long-term | 11 | $418.59 | $409.14 | $368.36 | -$103.95 | HOLD |
+
+**Net unrealized P/L: +$231.86**
+
+**Portfolio snapshot:**
+- Cash: $80,945.53 (80.7%)
+- Long market value: ~$19,286.31
+- Total equity: ~$100,231.84
+- Total return: +0.23%
+- SPX return (since May 1 start): ~+3.50% (7,452 vs ~7,200 est start)
+- Gap vs benchmark: **-3.27 percentage points**
+
+**Today's P&L (vs May 12 est $100,804):** ~-$572 / -0.57%
+**S&P 500 today:** +0.69%
+**Today's relative performance:** -1.26 pp vs benchmark
+
+**Tomorrow's watchlist (COMMITMENT per Deployment Bias):**
+1. AMD — score 7.33, approved, MUST enter at Pre-Market or Market Open May 14 (operator must place manually if API still blocked)
+2. PLTR — re-score 6.50, SKIP; watch for reclaim of $134 support
+3. Monitor Trump-Xi summit outcomes for chip sector catalysts (NVDA, AMD, AVGO, TSM secondary plays)
+4. NVDA earnings May 21 — no new NVDA positions after May 19; evaluate May 19 pre-earnings hedge
+
+---
+
 ## 2026-05-12 — Pre-Market routine (8:00 AM ET / 12:07 UTC)
 
 **Context:** Tuesday May 12. S&P 500 futures -0.14% at 7,426 (record close 7,412.84 on Mon May 11). Market cautious ahead of April CPI (BLS release 8:30 AM ET today — headline consensus +3.7% YoY, core +2.7% YoY; hot print driven by oil/gas). Top investment banks now pricing NO Fed rate cuts in 2026; first cut deferred to 2027. Rate-hike probability 5.7% per CME FedWatch. Trump-Xi Beijing summit May 14-15 (agenda: trade, AI chips, Taiwan, Iran). China chip deal announced: NVDA + AMD agreed to 15% U.S. revenue share on H20/MI308 China AI chip sales — shipping resumes. AVGO also named in chip deal news. AMD rallied from ~$413 (May 8) to ~$477 and is now at ~$466 pre-market (-2.33%). PLTR ~$137 (-1.39% pre-market). Alpaca API STILL blocked (HTTP 403 / host_not_allowed — Anthropic sandbox TLS proxy). Both MOO order attempts confirmed blocked below.
