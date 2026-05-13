@@ -4,6 +4,213 @@
 
 ---
 
+## 2026-05-13 — Mid-Morning routine (11:00 AM ET / 15:09 UTC)
+
+**Context:** Wednesday May 13. Alpaca API STILL blocked (HTTP 403 / host_not_allowed). S&P 500 mixed: one source shows slight decline on PPI shock; XLK (tech) +1.1%, XLE (energy) +2.6%. **PPI released today 8:30 AM ET:** April PPI +1.4% MoM (largest since March 2022), +6.0% YoY (largest since Dec 2022). Gasoline surged +15.6% driven by Iran-Hormuz conflict. Market reaction: dollar stronger, gold slightly softer, tech mixed. Trump-Xi Beijing summit begins tomorrow (May 14-15): semiconductor export controls, AI chips, Taiwan, Iran on agenda. Motley Fool article today: "AMD is the AI stock crushing Palantir, Nvidia, and Alphabet" — AMD up 115% YTD; PLTR down 24% YTD. No operator-confirmed fills since May 4/5.
+
+**Predecessor heartbeat check:**
+- `grep "STARTED Pre-Market" logs/heartbeats/2026-05-13.log` → **MISSING** (no heartbeat)
+- `grep "STARTED Market-Open" logs/heartbeats/2026-05-13.log` → **MISSING** (no heartbeat)
+- Both predecessor routines silently failed today. Logging violations and running catch-ups below.
+
+```yaml
+---
+ts: 2026-05-13T15:09:45Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (8:00 AM ET) did not heartbeat today — running catch-up from Mid-Morning.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Pre-Market routine missed on 2026-05-13. No heartbeat found in logs/heartbeats/2026-05-13.log. Running catch-up from Mid-Morning per routines/midmorning.md PREDECESSOR HEARTBEAT CHECK. Alpaca API remains blocked (HTTP 403 / host_not_allowed) — persistent since May 6."
+---
+```
+
+```yaml
+---
+ts: 2026-05-13T15:09:45Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (9:45 AM ET) did not heartbeat today — running catch-up from Mid-Morning.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market Open routine missed on 2026-05-13. No heartbeat found in logs/heartbeats/2026-05-13.log. Running catch-up from Mid-Morning per routines/midmorning.md. Market Open catch-up requires: (1) check for MOO fills from today's open, (2) place stop-loss orders on any filled MOOs. Since PLTR and AMD MOOs were never placed (API blocked May 12), no MOO fills expected today."
+---
+```
+
+### Market-Open Catch-Up — MOO Fill Check
+
+No MOO orders were placed for May 13 (Pre-Market missed). The pending PLTR and AMD MOO orders from May 12 Pre-Market were BLOCKED by the API and never submitted. Therefore, no MOO fills to process, no post-fill stops to place.
+
+### Stop-Coverage Audit (FIRST ACTION — estimated, API blocked)
+
+Cannot query Alpaca API. Prices from web research as of 11:09 AM ET:
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 13 | Cushion | Status |
+|--------|-----|--------|-------|------|-------------------|---------|--------|
+| TSM | 7 | long-term | $401.47 | $353.76 | ~$397.28 | +12.3% above stop | ⚠️ Below entry (-1.04%); analyst target $416.67 |
+| GLD | 7 | active | $418.86 | $397.92 | ~$430.27 | +8.1% above stop | ✓ PPI slightly weighs on gold (dollar up) |
+| NVDA | 15 | long-term | $198.83 | $175.60 | ~$222.47 | +26.7% above stop | ✓ ⚠️ Earnings May 21 (8 days). Stop trail recommended. |
+| JPM | 9 | long-term | $308.30 | $272.14 | ~$320 | +17.6% above stop | ✓ |
+| XLE | 50 | active | $59.01 | $56.15 | ~$57.79 | +2.9% above stop | ⚠️ CRITICAL tight cushion; Iran situation unresolved |
+| AVGO | 11 | long-term | $418.59 | $368.36 | ~$417.62 | +13.4% above stop | ✓ Slight loss from entry |
+
+No positions have hit their stops or targets. All stops resting at Alpaca (or assumed so from bracket OCO orders placed May 4/5). API block prevents real-time verification.
+
+**Stop trail: NVDA** — NVDA at $222.47 is +11.9% above entry ($198.83). Trailing stop from $175.60 to $195.77 (12% below current $222.47). This adds $20.17/sh of downside protection while locking in more of the gain. Attempt via API (expected to fail).
+
+### NVDA Stop Trail Attempt
+
+```
+curl -X POST https://paper-api.alpaca.markets/v2/orders
+  symbol=NVDA, qty=15, side=sell, type=stop, stop_price=195.77, tif=gtc
+→ HTTP 403: Host not in allowlist
+```
+
+```yaml
+---
+ts: 2026-05-13T15:15:00Z
+action: stop_trail
+symbol: NVDA
+bucket: long-term
+setup: ai-momentum-pullback
+score: null
+thesis: Trail NVDA stop from $175.60 to $195.77 (12% below current $222.47). +11.9% from entry; lock in more protection ahead of May 21 earnings.
+size_pct: null
+stop: 195.77
+target: 247.44
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: approved
+master_notes: "Stop trail APPROVED: NVDA +11.9% from entry $198.83. Current $222.47. New stop = $222.47 × 0.88 = $195.77 (vs old $175.60). Saves +$20.17/sh on 15 shares = +$302.55 additional protection. NVDA earnings May 21 (8 days) — tighter stop is prudent. ORDER FAILED: Alpaca API blocked HTTP 403. Operator must cancel existing NVDA stop at $175.60 and place new GTC stop at $195.77 for qty=15."
+---
+```
+
+### Pre-Market / Market-Open Catch-Up: PLTR Re-Score at $129.93
+
+PLTR closed May 12 at an estimated ~$137. Today (May 13) it is trading at $129.93 — down 5.2% in one day. The May 12 analysis established support at $134. PLTR has **broken below $134 support**. Re-score required.
+
+**Sub-Agent 1 — Fundamentals Agent:**
+Q1 2026 results unchanged: Revenue $1.63B (+85% YoY), EPS $0.33 vs $0.27 (+22% beat). FY 2026 guidance $7.7B. Outstanding business results. But: at $129.93 / P/E ~85x forward, the multiple remains stretched. Score: **8/10** (reduced from 9 — valuation concerns now material at this price vs. market read-through)
+
+**Sub-Agent 2 — Technical Agent:**
+PLTR at $129.93, range $129.64-$136.99 today. Broken through prior $134 support. Down 24% YTD while S&P +8.17% — confirmed multi-month downtrend. 52-week low is $118.93 (not far away). Stop at 12% below entry ($129.93 × 0.88 = $114.42) would be BELOW 52-week low — stop has no structural support. MACD: bearish. RSI: declining. Score: **2/10** (broken support, downtrend, stop below 52-week low)
+
+**Sub-Agent 3 — Sentiment Agent:**
+Negative sentiment dominating: "even dividend stocks are beating PLTR," "costs investors are making with Palantir," "AI stock crushing Palantir" (referring to AMD). Valuation fatigue on 85x P/E. Sell-the-news narrative after Q1 beat. xAI API blocked — scored qualitatively negative. Score: **4/10**
+
+**Sub-Agent 4 — Macro Agent:**
+PPI +1.4% MoM, +6% YoY today — largest since March 2022. Rate hike probability rising. Higher rates are a severe headwind for high-multiple growth (PLTR at P/E ~85x forward). No rate cuts until 2027. Score: **3/10** (PPI hot print = direct valuation headwind for 85x-multiple stock)
+
+**Sub-Agent 5 — Risk Agent:**
+Entry $129.93, stop 12% below = $114.42. This is BELOW PLTR's 52-week low of $118.93. A stop below the 52-week low means position has zero historical price support — next stop is unknowable. Target +24% = $161.09. R/R: $31.16 / $15.51 = 2.0:1 (barely passes). Size 36 shares = $4,677 = 4.64% <5% ✓. Trade risk = 36 × $15.51 = $558 = 0.55% ✓. But stop below 52-week low makes this structurally unsound. Score: **4/10** ← **AUTOMATIC VETO** (Risk score < 6)
+
+**Sub-Agent 6 — Tech Analyst Agent:**
+PLTR AIP defensible moat unchanged. Government AI with high switching costs. R&D ~25% revenue. Score: **8/10**
+
+**Master Agent:**
+Avg: (8+2+4+3+4+8)/6 = **4.83/10**. Risk = 4 < 6 → **AUTOMATIC VETO**. Decision: **REJECTED**.
+
+```yaml
+---
+ts: 2026-05-13T15:18:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 4.83
+thesis: PLTR re-scored at $129.93. Support broken at $134. PPI +1.4% MoM headwind for 85x multiple. Stop at $114.42 below 52-week low ($118.93). Risk agent automatic veto (score 4).
+size_pct: 4.64
+stop: 114.42
+target: 161.09
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 2
+  sentiment: 4
+  macro: 3
+  risk: 4
+  tech_analyst: 8
+agent_average: 4.83
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (avg 4.83/10; Risk=4 < 6 = automatic veto). PLTR has broken below $134 support. At $129.93, stop at 12% = $114.42 — this is BELOW the 52-week low of $118.93, indicating no structural price support. PLTR -24% YTD vs S&P +8.17% = confirmed downtrend. PPI +1.4% MoM (May 13) = hot inflation = Fed rate hike risk = severe headwind for 85x forward P/E. Sentiment turned negative: 'AI stock crushing Palantir' articles. Skip per Master Agent veto. Note: May 12 score was 7.33 at $137 with $134 support intact — that setup no longer exists at $129.93. Exemption type: legitimate re-score shows sub-7 result; this is NOT one of the 3 CLAUDE.md skip exemptions, it is a genuine score-based rejection."
+---
+```
+
+### Pre-Market / Market-Open Catch-Up: AMD Re-Score at $445 (Limit Bracket Entry)
+
+AMD original MOO intent was $466 on May 12 (blocked by API). AMD has since pulled back to ~$445. Thesis unchanged: China chip deal, strong Q1, AMD is now the top-performing AI chip stock (+115% YTD). Pullback from $477 to $445 (-6.7%) is constructive — cooling overbought RSI. Re-score at current price.
+
+**Sub-Agent 1 — Fundamentals Agent:**
+Q1 2026: Revenue $10.25B (+38% YoY), EPS $1.37 vs $1.28 (+7% beat). Data Center $5.8B (+57% YoY). Q2 guide $11.2B vs $10.52B consensus. China chip deal: MI308 approved for China market; $500M-800M additional 2026 revenue, $0.10-$0.20 EPS upside. Goldman Sachs raised target to $450 (from $240) and upgraded to Buy. AMD custom GPUs being built for Meta and OpenAI (MI450). EPYC Venice CPUs for H2 2026. Earnings growth expected at 51% CAGR. Score: **9/10**
+
+**Sub-Agent 2 — Technical Agent:**
+AMD at $445 (range today: $432.65-$459.50). Pulled back 6.7% from $477 peak on China chip deal announcement — healthy digestion. RSI cooling from ~72-75 (May 8) toward ~60-65 now (constructive). Still within bull channel from earnings gap. Support at $430-440 zone (May 12 low was $432.65). 1-hr trend: still bullish higher lows. Score: **6/10** (constructive pullback but still elevated post-breakout; not a fresh setup)
+
+**Sub-Agent 3 — Sentiment Agent:**
+AMD is outperforming ALL AI peers: +115% YTD (PLTR -24%, NVDA +18%, GOOG +25%). Motley Fool feature article today specifically highlights AMD as "the AI stock crushing Palantir, Nvidia, and Alphabet." Goldman upgraded to Buy with $450 target. Lisa Su's "structural shift" commentary widely cited. Analyst consensus: Buy, 33 analysts. xAI API blocked — scored qualitatively very bullish. Score: **8/10**
+
+**Sub-Agent 4 — Macro Agent:**
+PPI hot (+1.4% MoM) is a general tech headwind but AMD's semiconductor thesis is INDEPENDENT — China chip deal and AI capex cycle override macro noise. Trump-Xi summit tomorrow (May 14-15): semiconductor export controls are key agenda item — potential additional catalyst for chip export further easing. S&P 500 mixed but semiconductors showing specific strength today. Score: **7/10**
+
+**Sub-Agent 5 — Risk Agent:**
+Entry via limit $447.23 (ask × 1.005), stop -5% = $424.87, target 2:1 = $491.95. Qty 10 shares. Size: 10×$447.23=$4,472=4.43% of ~$101,000 ✓ (<5%). Semis sector: TSM($2,781)+NVDA($3,337)+AVGO($4,594)+AMD($4,472)=$15,184=15.0% ✓ (<25%). Trade risk: 10×$22.36=$223.60=0.22% ✓ (<1.5%). R/R: $44.72/$22.36=2.0:1 ✓. Cash after AMD: $80,946-$4,472=$76,474=75.7%, well above 10% floor ✓. Open positions: 7 (<12 max ✓). Score: **7/10**
+
+**Sub-Agent 6 — Tech Analyst Agent:**
+AMD CDNA4 (MI300X/MI308) competitive with NVDA H100/H200 for AI inferencing — NOW APPROVED FOR CHINA MARKET. ROCm open-source AI framework gaining developer traction vs CUDA. AMD building custom GPUs for Meta and OpenAI (MI450 series). EPYC Venice CPUs dominating server market. R&D ~20% of revenue. Picks-and-shovels play in AI infrastructure AND application layer via custom silicon. Score: **8/10**
+
+**Master Agent:**
+Avg: (9+6+8+7+7+8)/6 = **7.50/10**. Risk=7 ✓ (≥6). Agents ≥7: Fundamentals(9), Sentiment(8), Macro(7), Risk(7), Tech(8) = 5/6 ✓. Tech≥6 ✓. **DECISION: APPROVED.**
+
+```yaml
+---
+ts: 2026-05-13T15:25:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD China chip deal (MI308 approved; $500M-800M 2026 rev upside). +115% YTD, best AI chip stock. 6.7% pullback from $477 high cooling RSI. Goldman Sachs upgraded to Buy/$450 target. Trump-Xi summit May 14-15 potential additional chip catalyst. Limit bracket 10sh @ $447.23.
+size_pct: 4.43
+stop: 424.87
+target: 491.95
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (avg 7.50/10; Risk=7 ✓; 5/6 agents ≥7; Tech=8 ✓). Catch-up entry for silently failed Pre-Market and Market-Open routines. AMD at $445 — original MOO entry was $466 on May 12 (blocked). 6.7% pullback from $477 peak is constructive; RSI cooling. Goldman Sachs raised target to $450 (near current) and upgraded to Buy. Custom MI450 GPUs for Meta/OpenAI. Trump-Xi summit tomorrow = potential chip export tailwind. ORDER ATTEMPTED: POST /v2/orders symbol=AMD qty=10 side=buy type=limit limit_price=447.23 tif=gtc order_class=bracket stop_loss.stop_price=424.87 take_profit.limit_price=491.95 → HTTP 403: Host not in allowlist. Alpaca API blocked. OPERATOR: place limit bracket (AMD, 10 shares, limit=$447.23, stop=$424.87, target=$491.95, GTC) immediately."
+---
+```
+
+---
+
 ## 2026-05-12 — Pre-Market routine (8:00 AM ET / 12:07 UTC)
 
 **Context:** Tuesday May 12. S&P 500 futures -0.14% at 7,426 (record close 7,412.84 on Mon May 11). Market cautious ahead of April CPI (BLS release 8:30 AM ET today — headline consensus +3.7% YoY, core +2.7% YoY; hot print driven by oil/gas). Top investment banks now pricing NO Fed rate cuts in 2026; first cut deferred to 2027. Rate-hike probability 5.7% per CME FedWatch. Trump-Xi Beijing summit May 14-15 (agenda: trade, AI chips, Taiwan, Iran). China chip deal announced: NVDA + AMD agreed to 15% U.S. revenue share on H20/MI308 China AI chip sales — shipping resumes. AVGO also named in chip deal news. AMD rallied from ~$413 (May 8) to ~$477 and is now at ~$466 pre-market (-2.33%). PLTR ~$137 (-1.39% pre-market). Alpaca API STILL blocked (HTTP 403 / host_not_allowed — Anthropic sandbox TLS proxy). Both MOO order attempts confirmed blocked below.
