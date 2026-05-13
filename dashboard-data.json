@@ -1,31 +1,31 @@
 {
-  "last_updated": "2026-05-12T12:27:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-05-13T13:45:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 100804.53,
+    "total_equity": 100177.31,
     "starting_equity": 100000.00,
     "cash": 80945.53,
-    "cash_pct": 80.3,
+    "cash_pct": 80.8,
     "buying_power": 161891.06,
-    "long_market_value": 19859.00,
+    "long_market_value": 19231.78,
     "short_market_value": 0.00,
-    "daily_pnl": null,
-    "daily_pnl_pct": null,
-    "total_return_pct": 0.80,
-    "spx_return_pct": 2.95,
-    "benchmark_gap_pct": -2.15,
+    "daily_pnl": -627.22,
+    "daily_pnl_pct": -0.62,
+    "total_return_pct": 0.18,
+    "spx_return_pct": 2.40,
+    "benchmark_gap_pct": -2.22,
     "open_positions_count": 6,
-    "note": "Prices estimated from web research — Alpaca API blocked (HTTP 403 / host_not_allowed). AVGO bracket at $418.59 treated as probable fill. PLTR+AMD MOO orders attempted and blocked. S&P 500 at record 7,412.84 (May 11); benchmark gap growing due to 80% cash exposure.",
+    "note": "Prices estimated from web research — Alpaca API blocked (HTTP 403 / host_not_allowed). PPI +1.4% MoM (+6% YoY) shocked markets; SOX -3%; chip stocks broadly selling. TSM below entry. Pre-Market SILENTLY FAILED; Market Open catch-up executed. PLTR+AMD limit bracket GTC orders attempted and blocked (HTTP 403). Operator must place manually. Trump-Xi summit tomorrow (May 14-15) is key catalyst for chip stocks.",
     "buckets": [
       {
         "key": "long-term",
         "label": "Long-term (target 55%)",
-        "value": 13970.00
+        "value": 13346.78
       },
       {
         "key": "active",
         "label": "Active Trading (target 30%)",
-        "value": 5909.00
+        "value": 5885.00
       },
       {
         "key": "crypto",
@@ -45,88 +45,139 @@
       "bucket": "long-term",
       "qty": 7,
       "entry_price": 401.47,
-      "current_price": 430.00,
-      "pnl": 199.29,
-      "pnl_pct": 7.08,
+      "current_price": 397.28,
+      "pnl": -29.33,
+      "pnl_pct": -1.04,
       "stop_loss": 353.76,
       "take_profit": 498.48,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.7,
-      "note": "China chip deal tailwind. +7.1% from entry. Stop well below."
+      "note": "Below entry on chip sector -3% (PPI shock). Stop $353.76 has $43.52/sh cushion (12.3% above stop). Trump-Xi summit tomorrow = key catalyst.",
+      "risk_flag": "TSM below entry price for first time. SOX -3% today. Stop at $353.76 intact. Monitor at subsequent routines."
     },
     {
       "symbol": "GLD",
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 432.00,
-      "pnl": 91.98,
-      "pnl_pct": 3.13,
+      "current_price": 430.50,
+      "pnl": 81.48,
+      "pnl_pct": 2.76,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "Hot CPI today (3.7% YoY) bullish for gold. Iran deal unconfirmed. JPM $6,300/oz year-end target."
+      "note": "Hot PPI (+6% YoY) reinforces gold bull thesis. Iran ceasefire 'on life support' (Trump). +2.8% from entry."
     },
     {
       "symbol": "NVDA",
       "bucket": "long-term",
       "qty": 15,
       "entry_price": 198.83,
-      "current_price": 222.00,
-      "pnl": 347.55,
-      "pnl_pct": 11.65,
+      "current_price": 224.46,
+      "pnl": 384.45,
+      "pnl_pct": 12.89,
       "stop_loss": 175.60,
       "take_profit": 247.44,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.5,
-      "note": "EARNINGS MAY 21 (9 days). +11.6% from entry. China chip deal: NVDA $7-12.5B 2026 revenue upside. No new entries after May 19.",
-      "risk_flag": "NVDA Q2 earnings May 21. Existing stop at $175.60 provides 26% downside protection. Flag for pre-earnings review May 19."
+      "note": "EARNINGS MAY 21 (8 days). Resilient vs chip selloff ($224 vs sector -3%). +12.9% from entry. No new entries after May 19.",
+      "risk_flag": "NVDA Q2 earnings May 21. Stop $175.60 provides 27.8% downside protection. Flag for pre-earnings review May 19."
     },
     {
       "symbol": "JPM",
       "bucket": "long-term",
       "qty": 9,
       "entry_price": 308.30,
-      "current_price": 320.00,
-      "pnl": 105.30,
-      "pnl_pct": 3.80,
+      "current_price": 304.88,
+      "pnl": -30.78,
+      "pnl_pct": -1.11,
       "stop_loss": 272.14,
       "take_profit": 383.47,
       "setup": "sector-rotation",
       "agent_average": 7.3,
-      "note": "+3.8% from entry. Financials steady."
+      "note": "Below entry. Hot PPI = rate-hike fear = banks pressured. Stop $272.14 has 12% cushion. Thesis (financials rotation) intact."
     },
     {
       "symbol": "XLE",
       "bucket": "active",
       "qty": 50,
       "entry_price": 59.01,
-      "current_price": 57.70,
-      "pnl": -65.50,
-      "pnl_pct": -2.22,
+      "current_price": 57.43,
+      "pnl": -79.00,
+      "pnl_pct": -2.68,
       "stop_loss": 56.15,
       "take_profit": 65.01,
       "setup": "macro-hedge",
       "agent_average": 7.5,
-      "risk_flag": "Stop at $56.15 vs $57.70 = 2.8% cushion. Iran deal rebuffed by Iranian official. Oil $100-126/bbl (Brent). Hold with stop."
+      "risk_flag": "CRITICAL: Stop $56.15 vs $57.43 = 2.3% cushion. Trump called Iran ceasefire 'unbelievably weak / on massive life support.' GTC stop is resting at broker."
     },
     {
       "symbol": "AVGO",
       "bucket": "long-term",
       "qty": 11,
       "entry_price": 418.59,
-      "current_price": 430.00,
-      "pnl": 125.51,
-      "pnl_pct": 2.73,
+      "current_price": 405.00,
+      "pnl": -149.49,
+      "pnl_pct": -3.24,
       "stop_loss": 368.36,
       "take_profit": 519.05,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.0,
-      "note": "GTC bracket limit $418.59 treated as probable fill. China chip deal named AVGO. +2.7% from entry."
+      "note": "GTC bracket limit $418.59 treated as probable fill. Chip sector -3% today = $405 estimated. Stop $368.36 intact (bracket OCO)."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-13T13:45:37Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "N/A",
+      "setup": "silent-failure",
+      "score": null,
+      "master_decision": "N/A",
+      "order_status": "Pre-Market routine SILENTLY FAILED — no STARTED Pre-Market heartbeat in 2026-05-13.log. Market Open ran catch-up."
+    },
+    {
+      "ts": "2026-05-13T13:45:00Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "long-term",
+      "setup": "ai-momentum-pullback",
+      "score": 7.17,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 6,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "FAILED — Alpaca API blocked HTTP 403 (host_not_allowed). Intended: 36 shares, limit $135.51, stop $118.66, target $167.20, bracket GTC. OPERATOR must place manually."
+    },
+    {
+      "ts": "2026-05-13T13:50:00Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.17,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 6,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "FAILED — Alpaca API blocked HTTP 403 (host_not_allowed). Intended: 10 shares, limit $450.53, stop $425.88, target $493.11, bracket GTC. OPERATOR must place manually."
+    },
     {
       "ts": "2026-05-12T12:27:00Z",
       "symbol": "PLTR",
@@ -417,66 +468,66 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "completed",
+      "status": "SILENTLY FAILED",
       "last_run": "2026-05-12 08:07 ET",
-      "next_run": "2026-05-13 08:00 ET",
-      "last_summary": "CPI day (April +3.7% YoY expected at 8:30 AM ET). S&P futures -0.14% at 7,426. China chip deal (NVDA+AMD+AVGO revenue share deal) is week's dominant catalyst — AMD rallied from $413 to $466. PLTR MOO (36sh, score 7.33) and AMD MOO (10sh, score 7.33) both APPROVED and attempted — API blocked HTTP 403 for 5th consecutive routine. No open user suggestions. NVDA earnings May 21 flagged. OPERATOR: manually place PLTR 36sh + AMD 10sh MOO before 9:25 AM ET."
+      "next_run": "2026-05-14 08:00 ET",
+      "last_summary": "2026-05-13 Pre-Market silently failed — no heartbeat. Market Open ran catch-up. Recurring API blockage (HTTP 403) continues; 6th consecutive routine blocked."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "pending",
-      "last_run": "unknown",
-      "next_run": "2026-05-12 09:45 ET",
-      "last_summary": "PRIORITY: Confirm CPI result (8:30 AM ET). If PLTR/AMD MOO filled: immediately place stops (PLTR: fill×0.88, AMD: fill×0.95). Confirm AVGO bracket status. Assess XLE on Iran deal news."
+      "status": "completed",
+      "last_run": "2026-05-13 09:45 ET",
+      "next_run": "2026-05-14 09:45 ET",
+      "last_summary": "PPI +1.4% MoM (+6% YoY) shocked markets; SOX -3%; Dow -242pts. Pre-Market catch-up included. PLTR (7.17) and AMD (7.17) approved — both limit bracket GTC orders BLOCKED (HTTP 403). Operator must place manually. All 6 positions above stops. TSM below entry at $397 (stop $353.76 intact). XLE critical: $57.43 vs stop $56.15. Trump-Xi summit tomorrow — key catalyst for chip stocks."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "unknown",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-12 11:00 ET",
-      "last_summary": "Stop verification audit for all open positions."
+      "next_run": "2026-05-13 11:00 ET",
+      "last_summary": "PRIORITY: (1) Operator place PLTR/AMD orders if API still blocked. (2) Monitor TSM — below entry, watching chip sector. (3) Check Trump-Xi pre-summit news for chip sector movement."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "unknown",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-12 12:30 ET",
+      "next_run": "2026-05-13 12:30 ET",
       "last_summary": "Awaiting routine."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "unknown",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-12 14:00 ET",
+      "next_run": "2026-05-13 14:00 ET",
       "last_summary": "Awaiting routine."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "unknown",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-12 15:30 ET",
-      "last_summary": "Append daily snapshot to history. Pre-queue Trump-Xi summit plays if needed."
+      "next_run": "2026-05-13 15:30 ET",
+      "last_summary": "Assess Trump-Xi summit Day 1 impact on chip stocks. PLTR/AMD orders status check."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
-      "status": "unknown",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-12 16:30 ET",
-      "last_summary": "Score Trump-Xi summit plays. NVDA pre-earnings assessment. BTC re-evaluation. Set durable GTC brackets for Wednesday."
+      "next_run": "2026-05-13 16:30 ET",
+      "last_summary": "Trump-Xi Day 1 recap. NVDA pre-earnings strategy (8 days). Setup tally. BTC re-evaluation. Committed watchlist for May 14."
     },
     {
       "name": "Weekly Review",
       "schedule": "Friday 16:30 ET",
-      "status": "unknown",
+      "status": "pending",
       "last_run": "2026-05-08 (not executed — API blocked)",
       "next_run": "2026-05-15 16:30 ET",
-      "last_summary": "Missed May 8 due to API block. May 15 weekly review must cover full week performance, setup tally, and Trump-Xi summit outcome."
+      "last_summary": "May 15 weekly review must cover full week performance, Trump-Xi summit outcome, setup tally, and NVDA earnings positioning."
     }
   ],
   "agent_scorecard": {
