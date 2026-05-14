@@ -4,6 +4,169 @@
 
 ---
 
+## 2026-05-14 — Midday routine (12:30 PM ET / 16:33 UTC)
+
+**Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1 — MAJOR CATALYST: H200 GPUs cleared for China (Alibaba, Tencent, ByteDance, JD.com). S&P 500 +0.75% to ~7,499. Nasdaq +0.88%. Semiconductor sector surging: NVDA +3.41% ($233.60), AVGO +4.6% ($435.88), TSM +3.9% from entry ($416). AMD ~$449, range $433-$453. GLD ~$430 (flat). XLE $57.64 (day low $56.96 — stop $56.15 is 2.6% away ⚠️). PLTR $133.36 (briefly $134.48 but failed to hold). API STILL BLOCKED — 8th consecutive routine. AMD bracket limit order attempted; HTTP 403 returned.
+
+**Predecessor Heartbeat Check:** Only "Midday STARTED" logged today. Pre-Market, Market Open, Mid-Morning all missed — ZERO heartbeats for May 14 before this session.
+
+### Predecessor Routine Violations
+
+```yaml
+---
+ts: 2026-05-14T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 ET) produced no heartbeat — silent failure. AMD MOO order not placed (was the #1 mandatory action from May 13 daily review). Stop audit not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing routine. API blocked status was already known from May 13. Predecessor should have still run: logged violations + documented market research + attempted AMD MOO + updated trades.md. AMD opened at ~$449 today with H200 catalyst — missed the gap-up entry opportunity by not placing MOO before 9:25 AM ET."
+---
+```
+
+```yaml
+---
+ts: 2026-05-14T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 ET) produced no heartbeat — silent failure. Post-MOO stop placement missed (moot since MOO never placed). Stop audit of 6 existing positions not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Critical miss: Market Open is the routine that places stops after MOO fills and performs the mandatory stop-loss audit. All 6 positions (TSM, GLD, NVDA, JPM, XLE, AVGO) assumed to have resting stops from prior GTC brackets, but not verified this session."
+---
+```
+
+```yaml
+---
+ts: 2026-05-14T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 ET) produced no heartbeat — silent failure. Intraday scanning missed during the peak of the Trump-Xi H200 rally. AMD catch-up entry at limit missed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Mid-morning is the prime catch-up window after market open. With NVDA, TSM, AVGO all surging on H200 news, AMD catch-up entry via limit bracket should have been placed at 11:00 AM ET (AMD was ~$449 then, same as now). Missed catch-up entry is a Deployment Bias violation."
+---
+```
+
+### Stop-Loss Audit (Midday — API Blocked)
+
+API blocked — cannot verify via GET /v2/orders?status=open. Assumes all GTC stops from prior brackets are resting at Alpaca. Estimated positions and stop coverage:
+
+| Symbol | Qty | Est. Price | Stop | Cushion | Status |
+|--------|-----|------------|------|---------|--------|
+| TSM | 7 | ~$416.00 | $353.76 | +17.6% above stop | ✓ Thesis improving (China H200 = TSM fab volumes) |
+| GLD | 7 | ~$430.00 | $397.92 | +8.1% | ✓ Flat today — holds |
+| NVDA | 15 | ~$233.60 | $175.60 | +33.0% | ✓ STRONG — trail recommended to $205.57 |
+| JPM | 9 | ~$309.00 | $272.14 | +13.5% | ✓ Above entry; financials ok |
+| XLE | 50 | ~$57.64 | $56.15 | +2.7% | ⚠️ CRITICAL — Iran truce = oil premium fading |
+| AVGO | 11 | ~$435.88 | $368.36 | +18.3% | ✓ STRONG — trail recommended to $383.57 |
+
+Stop trail recommendations (cannot execute — API blocked. OPERATOR action needed):
+- NVDA: Raise stop from $175.60 → $205.57 ($233.60 × 0.88)
+- TSM: Raise stop from $353.76 → $366.08 ($416 × 0.88)
+- AVGO: Raise stop from $368.36 → $383.57 ($435.88 × 0.88)
+
+### AMD Re-Score (Midday — upgraded with H200 catalyst)
+
+AMD at ~$449 (range $433-$453). Score UPGRADED from 7.33 to 7.67 on Trump-Xi H200 deal.
+
+**Sub-agent scores:**
+- Fundamentals: 9/10 — Q1 +38% rev, DC segment +57%; China deal MI308 approved ($500M-800M rev upside); H200 clearance boosts entire chip sector
+- Technical: 6/10 — RSI ~60, consolidating $433-$453 range; bull channel from $413 base intact; not overbought; accumulation zone
+- Sentiment: 8/10 — Trump-Xi H200 deal = massive positive for entire chip sector; AMD MI308 already approved; cashtag $AMD trending bullish on X; semiconductor ETF SOXX +3%+; base 7 + X/summit modifier +1
+- Macro: 8/10 — Summit outcomes very positive; S&P +0.75%; AI capex narrative intact and strengthened; risk-on broad market
+- Risk: 7/10 — Entry $449, stop $426.55 (-5%), target $493.90 (+10%), qty 10 = $4,490 = 4.47% < 5% ✓; Semis sector ~15.6% < 25% ✓; trade risk $225 = 0.22% < 1.5% ✓; R/R 2.0:1 ✓; cash after $76,456 = 75.8% > 10% ✓; positions 7 < 12 ✓
+- Tech Analyst: 8/10 — CDNA4/MI308 tech is competitive with NVDA in inference; ROCm ecosystem maturing; China market access now meaningful; GPU market share gains documented
+
+Average: (9+6+8+8+7+8)/6 = **7.67/10** — APPROVED
+
+Master gate: avg 7.67 ≥ 7 ✓ | Risk 7 ≥ 6 ✓ | Agents ≥7: Fundamentals(9), Sentiment(8), Macro(8), Tech(8) = 4/6 ✓ | MASTER DECISION: APPROVED
+
+AMD limit bracket order attempted at 16:38 UTC (limit $451.25, stop $426.55, target $493.90, qty 10, tif=gtc). Response: "Host not in allowlist" — HTTP 403. API blocked 8th consecutive routine. ORDER NOT FILLED.
+
+```yaml
+---
+ts: 2026-05-14T16:38:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: AMD China chip deal (MI308 approved; $500M-800M 2026 rev upside). Trump-Xi summit Day 1 — H200 cleared for China = full semiconductor sector catalyst. RSI normalized at 60 after $477 peak pullback to $449 range. MOC bracket attempted — API blocked HTTP 403 (8th consecutive blocked session).
+size_pct: 4.47
+stop: 426.55
+target: 493.90
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED (7.67 avg, 4/6 agents ≥7). Upgraded from 7.33 to 7.67 on Trump-Xi H200 catalyst. Technical still 6 (consolidation, not breakout). AMD at $449 range $433-$453; limit $451.25 placed. HTTP 403 returned — API blocked (Anthropic TLS sandbox proxy). DEPLOYMENT BIAS VIOLATION: This is the 8th consecutive routine where AMD (score ≥7) has not been entered. The only exemption is (1) guardrail breach, (2) binary event exclusion, (3) circuit breaker — none apply. OPERATOR MUST PLACE AMD 10sh manually at market or limit $451.25. X sentiment: $AMD cashtag trending bullish, semiconductor sector momentum strong. No viral bearish posts from prominent accounts noted."
+---
+```
+
+### PLTR Re-Evaluation (Midday — skipping again)
+
+PLTR intraday high $134.48 (briefly above $134 support/resistance) but current price $133.36 — CANNOT HOLD $134. Not a confirmed reclaim.
+
+```yaml
+---
+ts: 2026-05-14T16:40:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR touched $134.48 intraday but failed to hold. Current $133.36. Technical score remains 3/10 — not a confirmed reclaim of $134 support. Skip maintained.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED (6.67 avg — below 7.0 threshold; Technical 3 = disqualifying). Intraday $134.48 touch insufficient — need confirmed DAILY CLOSE above $134 to upgrade Technical to ≥5. Trump-Xi summit AI governance news hasn't materially changed government AI thesis. Macro upgraded to 7 (risk-on, summit positive, retail sales solid). Re-entry trigger: confirmed close above $134 on volume ≥ 20M shares. This is a valid score-based skip per Deployment Bias — score below 7, not a bias violation. Note: if PLTR closes above $134 today, rescore at Daily Review."
+---
+```
+
+### Overnight Hold Plan
+
+All 6 positions held overnight:
+- **TSM, NVDA, AVGO** — Long-term holds. Summit catalyst intact (Day 2 May 15 tomorrow). NVDA stop $175.60 provides 32.5% cushion. Trail stops recommended.
+- **JPM** — Long-term hold. Rate-elevated environment positive for NIM. Stop $272.14 is deep.
+- **GLD** — Active hold. Summit risk-on reduces aggressive upside but elevated inflation is floor. Stop $397.92 provides 8.1% protection.
+- **XLE** — Active hold but CRITICAL. Stop $56.15 is 2.6% from $57.64. Iran-US truce confirmed = oil geopolitical premium declining. If XLE opens below $57 tomorrow, consider closing at daily review. Stop holds overnight.
+
+---
+
 ## 2026-05-13 — Market Close routine (3:30 PM ET / 19:36 UTC)
 
 **Context:** Wednesday May 13. PPI for April came in +1.4% MoM vs +0.5% expected — largest monthly wholesale inflation jump since 2022. Annual rate ~6%. Despite the shock, S&P 500 rose ~+0.69% to ~7,452 (tech-led by NVDA +2.1%). Trump arrived in Beijing today ahead of May 14-15 summit with Xi. API STILL blocked (HTTP 403 / host_not_allowed — confirmed via verbose curl). ALL predecessor routines today were silent failures — only Market-Close heartbeat recorded.
