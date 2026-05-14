@@ -4,6 +4,225 @@
 
 ---
 
+## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
+
+**Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
+
+**AMD Status:** MOC attempt from May 13 was blocked. Operator was instructed to manually enter AMD at market open May 14. No API confirmation available. Treating AMD as STILL UNFILLED — 4th consecutive entry attempt blocked or unconfirmed.
+
+---
+
+### Heartbeat Tally — 2026-05-14
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Afternoon | 14:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Close | 15:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Daily Review | 16:30 | ✓ 20:35:36Z | IN PROGRESS | 🟡 RUNNING |
+
+**TOP OPERATIONAL ISSUE:** All 6 intraday routines silently failed for the 2nd consecutive day (8th consecutive day for the broader API/routing failure). No stop audits ran. No intraday scans ran. No AMD entry attempted (API blocked anyway). The scheduler/cron only fires the Daily Review session; intraday routines receive no trigger.
+
+**Remediation required (operator action):**
+1. Fix Alpaca API TLS allowlist: `paper-api.alpaca.markets` must be added to Anthropic sandbox egress allowlist. Without this, no orders can execute programmatically.
+2. Fix intraday routine triggers: Pre-Market through Market-Close sessions are not being invoked by the scheduler. Only Daily Review fires. This leaves positions unmonitored for 6.5 hours/day.
+3. Operator manual order: AMD must be manually entered (10 shares, ~$445 market, stop $423, target $490) before May 15 Pre-Market. 4th consecutive instruction.
+
+---
+
+### Stop-Coverage Audit (FIRST ACTION — API blocked, using web-research prices)
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 14 | Cushion | Status |
+|--------|-----|--------|-------|------|-------------------|---------|--------|
+| TSM | 7 | long-term | $401.47 | $353.76 | $399.80 | +13.0% | ✓ Recovering on summit optimism |
+| GLD | 7 | active | $418.86 | $397.92 | $429.01 | +7.8% | ✓ Slight pullback; risk-on day |
+| NVDA | 15 | long-term | $198.83 | $175.60 | $235.63 | +34.2% | ✓ ⚠️ Earnings May 21 (7 days) |
+| JPM | 9 | long-term | $308.30 | $272.14 | $300.26 | +10.3% | ✓ Down -1.52% today; financials soft |
+| XLE | 50 | active | $59.01 | $56.15 | $57.64 | +2.65% | ⚠️ CRITICAL — thin cushion; Iran deal unconfirmed |
+| AVGO | 11 | long-term | $418.59 | $368.36 | $422.50 | +14.7% | ✓ Summit tailwind; near entry price |
+
+All stops assumed resting from bracket/standalone orders placed May 4-6 (GTC). No position breached its stop today. NVDA at +34% cushion makes premature stop-hit impossible before May 21 earnings.
+
+**XLE critical watch:** Stop at $56.15, price $57.64 = $1.49/sh cushion = 2.65%. Iran deal still unconfirmed. Oil remains elevated. If XLE closes below $57 for two consecutive sessions, review thesis and consider closing proactively.
+
+---
+
+### Market Summary — 2026-05-14
+
+**Macro:**
+- S&P 500: ~7,511 (+0.79%, NEW RECORD HIGH). Dow retook 50,000 (+0.79%). Nasdaq at new record (+1.05%).
+- Trump-Xi Summit Day 1: Jensen Huang attended with Trump delegation. Xi told US CEOs China "will open wider." H200 chips cleared for select Chinese companies. 200-jet Boeing order confirmed (below 500-jet initial reports).
+- No definitive semiconductor export-control framework announced — Day 2 (May 15) expected to produce final communiqué.
+- Bitcoin: ~$79,600 — still below $82K re-entry threshold. Summit did not produce crypto-specific language.
+- Healthcare (XLV) outperformed +1.2%; Energy (XLE) +0.49%; Financials (JPM) lagged.
+
+**Individual positions:**
+- NVDA: $235.63 (+4.54%) — Jensen Huang at summit = direct positive catalyst; 6 straight sessions up +15% cumulative. ⚠️ Earnings May 21.
+- TSM: $399.80 (+0.63%) — Summit tailwind modest; chip easing optimism priced in.
+- AVGO: $422.50 (est. +1.38%) — Summit beneficiary; China AI chip deal intact.
+- GLD: $429.01 (-0.29%) — Slight risk-on headwind; Iran deal still uncertain.
+- XLE: $57.64 (+0.49%) — Oil elevated; Iran deal unconfirmed = thin stop.
+- JPM: $300.26 (-1.52%) — Financials soft despite broad market strength; hot inflation = no rate cuts.
+
+---
+
+### Performance vs Benchmark
+
+**Today:**
+- Portfolio return: +$281.65 / +0.28% (from $100,232 est. May 13)
+- SPY return: +0.78% ($748.14 vs ~$742.31)
+- Today's gap vs benchmark: **-0.50 pp**
+
+**Cumulative (since ~May 1 start):**
+- Portfolio total equity: ~$100,514
+- Portfolio return: +0.51%
+- S&P 500 return (~May 1 to May 14): ~+4.32% (7,200 → 7,511)
+- Cumulative gap vs SPX: **-3.81 pp** (slightly improved from -3.27 pp yesterday — portfolio gained more than benchmark today)
+
+Wait — benchmark gain was +0.79%, portfolio gain was +0.28%. The cumulative gap did NOT improve today; it widened by -0.51 pp.
+
+Corrected cumulative gap: **-3.81 pp** (from -3.27 pp yesterday; gap widened -0.54 pp today)
+
+**Root cause of gap: 80.6% cash position from persistent API blockage and routine silent failures. Capital sitting in cash earned zero while market rose +4.32% since start. AMD alone, if entered at $448.29 (May 13 price): 10sh × $445.50 = $4,455 position; $4,455 / $100,000 × (-0.62%) = ~-$2 lost opportunity (AMD flat today, but over the full period this matters).**
+
+---
+
+### Today's Best & Worst Positions
+
+**Best:** NVDA (+$153.45) — Jensen Huang at Trump-Xi summit = direct catalyst. Six consecutive up sessions. Cumulative unrealized gain on position: +$552.00 (+18.5% vs $198.83 entry).
+
+**Worst:** JPM (-$41.58) — Financial sector soft on hot inflation (no rate cuts in 2026). JPM down -1.52% as NIM compression fears offset PPI headwinds. Still 10.3% above stop ($272.14).
+
+---
+
+### 3 Things That Worked Today
+1. **NVDA position sizing:** 15 shares at entry produced $153.45 single-day gain on the Trump-Xi catalyst. Summit catalyst was identifiable in advance (thesis documented May 12). Position correctly sized at 2.98% of portfolio.
+2. **GLD retained despite risk-on day:** GLD only -0.29% on a +0.79% market day — shows gold's resilience as inflation hedge. PPI +1.4% underlying bid supports GLD even when risk appetite rises.
+3. **XLE thin-stop awareness:** XLE stop at $56.15 was flagged repeatedly. XLE rose +0.49% today, widening cushion from 2.2% to 2.65%. Continued vigilance appropriate — not a false alarm.
+
+---
+
+### 3 Things to Improve Tomorrow
+1. **AMD entry is non-negotiable.** Four consecutive sessions of "must enter AMD" with no execution. This is the single largest deployment failure. At Pre-Market May 15 (8:00 AM ET), place AMD MOO regardless of API status — operator must manually submit if API remains blocked.
+2. **PLTR re-entry preparation.** PLTR at $133.40, just $0.60 from $134 re-entry trigger. Summit Day 2 communiqué likely to include AI language. Pre-Market routine should have a re-score ready to go the moment PLTR opens above $134.
+3. **Intraday routine silence.** Six routines produced zero heartbeats today. While the API blockage would have prevented order execution anyway, the stop audits and scans did not run. This makes the portfolio blind for 6.5 hours/day. Operator must activate the intraday scheduler.
+
+---
+
+### Setup-Tag Tally (rolling 5-day window: May 10-14)
+
+No closed positions in the 5-day window. All setups are in open positions. Tally unchanged from yesterday.
+
+| Setup tag | 5-day Wins | 5-day Losses | Cumulative W/L | Status |
+|-----------|-----------|--------------|----------------|--------|
+| ai-momentum-pullback | 0 | 0 | 0/0 | Active (TSM, PLTR pending) |
+| macro-hedge | 0 | 0 | 0/0 | Active (GLD +2.4%, XLE -2.3%) |
+| breakout-volume | 0 | 0 | 0/0 | Pending (AMD unfilled x4) |
+| sector-rotation | 0 | 0 | 0/0 | Active (JPM -2.6% vs entry) |
+| earnings-reaction-follow | — | — | — | Reclassified (AMD → breakout-volume) |
+
+No 3-in-a-row halt or boost rules triggered (no closed P&L records exist yet).
+
+---
+
+### Tomorrow's Watchlist — COMMITMENT for Pre-Market May 15
+
+Per CLAUDE.md Deployment Bias: this is a commitment, not a suggestion. Routines tomorrow MUST place orders for ≥7 scored names subject only to the 3 valid skip exemptions.
+
+**Friday May 15 is a trading day AND the last day of Trump-Xi Summit — Day 2 final communiqué expected.**
+
+| Rank | Symbol | Bucket | Setup | Score | Entry | Stop | Target | Notes |
+|------|--------|--------|-------|-------|-------|------|--------|-------|
+| 1 | AMD | active | breakout-volume | **7.33** | ~$445 MOO | fill×0.95 | fill×1.10 | MANDATORY — 4th attempt |
+| 2 | PLTR | long-term | ai-momentum-pullback | **7.33*** | $134.50+ | $118.36 (-12%) | $166.64 (+24%) | *Conditional: re-enter ONLY if >$134 at open |
+| 3 | MU | long-term | ai-momentum-pullback | **~7.33** | ~$788 | $693 (-12%) | $977 (+24%) | Full 6-agent at Pre-Market; anchor name |
+| 4 | GE Aerospace | active | sector-rotation | **~6.8** | TBD | TBD | TBD | Boeing China order tailwind; research Pre-Market |
+| 5 | WDC | long-term | ai-momentum-pullback | **~6.8** | ~$489 | $430 (-12%) | $607 (+24%) | Anchor name; AI storage; needs full 6-agent |
+| 6 | BA | active | sector-rotation | **~6.2** | TBD | TBD | TBD | Disappointment on 200 vs 500 jet order; monitor Day 2 |
+| 7 | TSLA | long-term | ai-momentum-pullback | **TBD** | TBD | TBD | TBD | Anchor name; scan at Pre-Market |
+| 8 | XLV play | active | sector-rotation | **TBD** | TBD | TBD | TBD | Healthcare outperforming; scan for best component |
+| 9 | INTC | long-term | ai-momentum-pullback | **TBD** | TBD | TBD | TBD | Anchor name; China deal beneficiary; scan |
+| 10 | SNDK | active | ai-momentum-pullback | **TBD** | TBD | TBD | TBD | Trump disclosed SanDisk purchase; AI memory |
+
+**Hard commitments for May 15:** AMD (MUST ENTER, score 7.33). PLTR conditional on >$134 reclaim. MU pending full 6-agent score at Pre-Market (likely ≥7).
+
+---
+
+### Key Events Tomorrow (May 15, 2026)
+
+- **Trump-Xi Summit Day 2:** Final communiqué expected. Chip export-control language watched closely. Potential additional Boeing/GE/energy orders. Semiconductor sector catalyst if positive language on H20/MI308/HBM4 supply chains.
+- **Friday trading dynamics:** Options expiration (monthly? check). Lower volume possible. AI-sector momentum likely to continue if summit ends positively.
+- **NVDA:** 6 days to May 21 earnings. No new entries permitted after May 19. Consider partial exit or hedge strategy at Daily Review May 19.
+- **BTC:** Still at ~$79,600. $82K re-entry threshold unchanged. Monitor summit crypto language.
+- **Weekly strategy evolution note:** Due at today's Daily Review (Friday) — see memory/portfolio.md.
+
+---
+
+### Daily Summary Entry (for portfolio.md)
+
+**2026-05-14:** S&P 500 new record +0.79%. Portfolio +0.28% (+$281.65). Today's gap: -0.51 pp. Cumulative gap: -3.81 pp. NVDA +4.54% (Jensen Huang at Trump-Xi summit). JPM -1.52% (financials soft). AMD unfilled (4th consecutive deployment failure). All 6 intraday routines silent-failed. API still blocked.
+
+---
+
+```yaml
+---
+ts: 2026-05-14T20:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: AMD score 7.33 confirmed. 4th consecutive entry attempt. Alpaca API HTTP 403 blocks all programmatic orders. Operator instructed to manually enter at market open — no confirmation received. Score and thesis unchanged from May 13 re-score.
+size_pct: 4.47
+stop: 423.23
+target: 490.05
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents >=7, Risk=7 no veto). AMD China chip deal thesis intact (MI308 approved; $500M-800M 2026 rev upside). Price $445.50 (range $433.81-$453.07). Stop $423.23 (-5%), target $490.05 (+10%). This is the 4th consecutive DEPLOYMENT BIAS VIOLATION. Valid skip exemptions (CLAUDE.md): (1) guardrail breach — NO, all guardrails pass; (2) binary event exclusion — NO, summit is not earnings/FDA/Fed; (3) circuit breaker — NO, portfolio up today. API blockage is NOT a valid CLAUDE.md skip exemption. OPERATOR: AMD must be entered manually before May 15 market open. If the operator's manual entry from today executed: price range $433.81-$453.07, likely fill $440-445, stop at fill*0.95, target at fill*1.10. Summit Day 1 positive but AMD was flat (-0.62%). xAI API blocked — X sentiment not queried; sentiment scored qualitatively at 7."
+---
+```
+
+```yaml
+---
+ts: 2026-05-14T20:35:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR recovered +2.62% to $133.40 but has NOT reclaimed the $134 support level. Technical score remains 3 until $134 is reclaimed on volume. Trump-Xi summit AI language could be the catalyst for re-entry Friday.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.50 avg — below 7.0 threshold; only 2/6 agents >=7; Technical=3). PLTR at $133.40 = $0.60 below $134 support re-entry trigger. The +2.62% recovery today is encouraging. Re-entry signal: PLTR opens and holds above $134.00 with volume on May 15 summit Day 2 news. If triggered: full 6-agent re-score; estimated re-score 7.33 (Technical rises from 3 to 6 on support reclaim). xAI API blocked — X sentiment not queried; sentiment scored qualitatively."
+---
+```
+
+---
+
 ## 2026-05-13 — Market Close routine (3:30 PM ET / 19:36 UTC)
 
 **Context:** Wednesday May 13. PPI for April came in +1.4% MoM vs +0.5% expected — largest monthly wholesale inflation jump since 2022. Annual rate ~6%. Despite the shock, S&P 500 rose ~+0.69% to ~7,452 (tech-led by NVDA +2.1%). Trump arrived in Beijing today ahead of May 14-15 summit with Xi. API STILL blocked (HTTP 403 / host_not_allowed — confirmed via verbose curl). ALL predecessor routines today were silent failures — only Market-Close heartbeat recorded.
