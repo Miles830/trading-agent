@@ -4,6 +4,197 @@
 
 ---
 
+## 2026-05-14 — Market Open routine (9:45 AM ET / 13:45 UTC)
+
+**Context:** Thursday May 14. MASSIVE catalyst day: Trump-Xi summit underway in Beijing (Day 1). Jensen Huang (NVDA CEO) joined Trump's delegation. US Commerce Dept cleared H200 chip sales to 10 Chinese firms (Alibaba, Tencent, ByteDance, JD.com; up to 75K chips each). NVDA +1.1% to ~$227.80. AMD ~$445 (premarket was +2.31% to $458.64; pulled back to ~$445 at open). S&P 500 futures +0.20%, Nasdaq futures +0.69%. Market is NOT up >2% overall (S&P +0.2%) — no "don't chase" override triggered. Pre-Market routine silently failed again (9th consecutive API-blocked session); catch-up executed here per open.md.
+
+**Alpaca API Status:** BLOCKED — HTTP 403, x-deny-reason: host_not_allowed (9th consecutive blocked routine since May 6). ALL API calls (orders, positions, open orders audit) returned "Host not in allowlist." This is an ongoing Anthropic sandbox TLS proxy restriction. Not a CLAUDE.md-listed valid skip exemption.
+
+### Predecessor Routine Violations
+
+```yaml
+---
+ts: 2026-05-14T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 ET May 14) produced no heartbeat — silent failure. No MOO orders placed. AMD watchlist commitment not executed at Pre-Market.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "No heartbeat STARTED or COMPLETED for Pre-Market in logs/heartbeats/2026-05-14.log. AMD (score 7.33/now 8.0) was the mandatory Pre-Market MOO commitment from yesterday's Daily Review. Catch-up executed at Market Open via limit bracket orders. Operator action still required if API unblocked."
+---
+```
+
+### Stop-Loss Audit (FIRST ACTION per CLAUDE.md) — API Blocked, Estimated
+
+`GET /v2/orders?status=open` and `GET /v2/positions` both returned HTTP 403 "Host not in allowlist." Audit based on last-known resting stops (bracket/standalone orders placed May 4-6) and May 14 price estimates from web research.
+
+| Symbol | Qty | Bucket | Entry | Stop @ | Est. Price May 14 | Cushion | Status |
+|--------|-----|--------|-------|--------|-------------------|---------|--------|
+| TSM | 7 | long-term | $401.47 | $353.76 | ~$399.80 | +13.0% above stop | ✓ Slightly below entry; Trump-Xi H200 tailwind for TSMC as fabricator |
+| GLD | 7 | active | $418.86 | $397.92 | ~$431.38 | +8.4% | ✓ Gold ~$431; Iran deal still unresolved |
+| NVDA | 15 | long-term | $198.83 | $175.60 | ~$227.80 | +29.7% | ✓ Up +1.1% on H200 China approval ⚠️ Earnings May 21 (7 days) |
+| JPM | 9 | long-term | $308.30 | $272.14 | ~$302.00 | +11.0% | ✓ Range $300.07-$304.00; slightly below entry |
+| XLE | 50 | active | $59.01 | $56.15 | ~$57.80 | +2.9% | ⚠️ Thin stop cushion; oil $110/bbl; Iran unconfirmed |
+| AVGO | 11 | long-term | $418.59 | $368.36 | ~$416.79 | +13.2% | ✓ Slightly below entry; China chip deal thesis intact |
+
+No positions appear to have hit stops. XLE stop cushion critical but holding. No MOO fills to backfill (Pre-Market did not run).
+
+### Macro Read — May 14, 2026 (9:45 AM ET)
+
+- **Trump-Xi Summit (Day 1):** Trump met Xi in Beijing; Jensen Huang and Tim Cook in delegation. US cleared H200 chip sales to 10 Chinese firms — each can buy up to 75K H200 chips. Alibaba, Tencent, ByteDance, JD.com approved. Chinese government go-ahead still pending (stalled on Chinese side). MASSIVE positive catalyst for NVDA, TSM, AVGO, AMD, MU.
+- **Market reaction:** NVDA +1.1%; Nasdaq futures +0.69%. S&P 500 futures +0.20%. Market cheering but reality-checking (deliveries still zero — Chinese buyers waiting for Beijing go-ahead).
+- **MU (Micron):** +4.83% to ~$803.63 today. Q2 2026 sales $23.86B (3x YoY). HBM sold out through 2026. H200 approval = HBM demand surge. Up 180% YTD.
+- **Oil:** ~$110/bbl (Brent). Iran deal unconfirmed. XLE thesis intact.
+- **PLTR:** ~$130.27 — still below $134 support zone. SKIP confirmed.
+
+### Candidate 1 — AMD (MUST-ENTER, catch-up from Pre-Market failure)
+
+AMD was the #1 mandatory watchlist commitment from May 13 Daily Review (score 7.33). Pre-Market silently failed — catch-up here. Updated score for May 14 context (H200 China approval, Trump-Xi summit catalyst, AMD ~$445 at open after $458 premarket).
+
+**Sub-agent scores (updated for May 14):**
+
+- Fundamentals: 9/10 (Q1 +38% revenue, DC +57%; China chip deal MI308 approved; $500M-800M 2026 revenue upside now further confirmed by H200 precedent)
+- Technical: 7/10 (AMD pulled back from $458 premarket to ~$445 at open — RSI normalized from premarket spike; bull channel intact; consolidating above $432 support; pullback from premarket high is healthy; MACD bullish bias on daily; candlestick: morning reversal pullback to support → bullish on confirmation)
+- Sentiment: 9/10 (Trump-Xi summit Day 1 = massive chip catalyst; Jensen Huang in Beijing; H200 approval boosts entire chip sector including AMD MI308; viral across financial media; base 8 + X modifier +1 = 9)
+- Macro: 8/10 (China chip deal confirmed and expanding; AI capex intact; Nasdaq futures +0.69%; summit ongoing Day 1 with potential Day 2 more positive outcomes)
+- Risk: 7/10 (Entry limit $447.23, stop $424.87 (-5% active), target $491.95 (+10%); qty 10 = $4,472 = 4.46% <5% ✓; Semis sector: TSM+NVDA+AVGO+AMD = $15,273 = 15.2% <25% ✓; trade risk $224 = 0.22% <1.5% ✓; cash after fill $76,473 = 76.3% >10% ✓; positions 7 <12 ✓; R/R 2.0:1 ✓)
+- Tech Analyst: 8/10 (CDNA4/MI308 now China-accessible; ROCm ecosystem growing; AMD competing directly in AI accelerator market with restored China access; strong R&D trajectory)
+
+**Updated avg: (9+7+9+8+7+8)/6 = 8.00/10 — APPROVED** ✓ (avg 8.0≥7, Risk=7≥6, all 6 agents ≥7, tech analyst 8≥6)
+
+AMD ORDER ATTEMPTED at 13:50:32Z (9:50 AM ET): POST /v2/orders bracket limit 10sh limit_price=$447.23 stop=$424.87 take_profit=$491.95 tif=gtc. Response: "Host not in allowlist" (HTTP 403). 9th consecutive API-blocked routine. DEPLOYMENT BIAS VIOLATION — API blockage is not a valid CLAUDE.md skip exemption.
+
+```yaml
+---
+ts: 2026-05-14T13:50:32Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 8.00
+thesis: AMD China chip deal (MI308 approved); Trump-Xi summit Day 1 confirms H200 precedent — AMD China market access restored. Pulled back from $458 premarket to $445 at open = better entry. Catch-up from Pre-Market silent failure.
+size_pct: 4.46
+stop: 424.87
+target: 491.95
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 8.00
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED (8.00 avg, 6/6 agents ≥7, Risk=7 ✓). Catch-up entry for Pre-Market silent failure. ORDER ATTEMPTED AND FAILED — Alpaca API HTTP 403 (x-deny-reason: host_not_allowed) at 13:50:32Z. curl POST /v2/orders {symbol:AMD,qty:10,side:buy,type:limit,limit_price:447.23,time_in_force:gtc,order_class:bracket,stop_loss:{stop_price:424.87},take_profit:{limit_price:491.95}}. Response: 'Host not in allowlist'. This is the 9th consecutive blocked routine. OPERATOR: must manually place AMD buy limit $447.23 (or market) immediately. Stop -5% = $424.87, target +10% = $491.95, bracket GTC. DEPLOYMENT BIAS VIOLATION — API blockage is not a valid skip exemption per CLAUDE.md. X sentiment: Trump-Xi summit chip rally viral across financial X; Jensen Huang trending; strongly bullish +1 modifier applied."
+---
+```
+
+### Candidate 2 — MU (Micron Technology, anchor name, H200 HBM catalyst)
+
+MU is an anchor name per CLAUDE.md. H200 China approval directly benefits Micron: each H200 chip contains HBM3E memory from Micron, and US clearing 75K-chip-per-firm orders means potential 750K+ H200 units requiring Micron HBM. MU already +4.83% today to ~$803.63. Q2 2026 revenue $23.86B (3x YoY); HBM sold out through 2026.
+
+**Sub-agent scores:**
+
+- Fundamentals: 9/10 (Q2 2026 $23.86B revenue = 3x YoY; HBM sold out through 2026; AI memory supercycle fully confirmed; expanding margins; $803.63 price = 180% YTD gain on substance not hype)
+- Technical: 6/10 (Up 4.83% today; RSI elevated (~75 estimated after 180% YTD run); uptrend strong but extended in near term; daily chart bull channel intact; 5-min: gap up then steady grind — momentum confirmed; not oversold, just extended; long-term position so daily RSI less relevant vs weekly trend)
+- Sentiment: 9/10 (HBM demand story is dominant chip narrative; H200 China approval = direct HBM demand catalyst; viral; analysts raising targets; base 8 + X modifier +1 = 9)
+- Macro: 8/10 (AI capex intact; China deal creates new HBM demand vector; Trump-Xi summit confirms chip sector political will; oil/inflation headwind minor vs AI tailwind)
+- Risk: 8/10 (Entry limit $807.65, stop $710.73 (-12% LT), target $1,001.49 (+24%); qty 5 = $4,038 = 4.03% <5% ✓; Semis sector after AMD+MU: $15,273+$4,038=$19,311 = 19.3% <25% ✓; trade risk 5×$96.92=$484.60 = 0.48% <1.5% ✓; cash after AMD+MU fills $72,435 = 72.2% >10% ✓; positions 8 <12 ✓; R/R 2.0:1 ✓)
+- Tech Analyst: 9/10 (HBM3E/HBM4 architecture = technical moat in AI chip stack; only 3 companies in world make HBM (Micron, SK Hynix, Samsung) = defensible oligopoly; sold-out status = pricing power; HBM4 roadmap in development; R&D spending high relative to revenue; technology getting faster/cheaper per GB with each gen)
+
+**Avg: (9+6+9+8+8+9)/6 = 8.17/10 — APPROVED** ✓ (avg 8.17≥7, Risk=8≥6, 5/6 agents ≥7 ✓≥4, tech analyst 9≥6)
+
+MU ORDER ATTEMPTED at 13:50:37Z (9:50 AM ET): POST /v2/orders bracket limit 5sh limit_price=$807.65 stop=$710.73 take_profit=$1001.49 tif=gtc. Response: "Host not in allowlist" (HTTP 403). 9th consecutive API-blocked routine. DEPLOYMENT BIAS VIOLATION.
+
+```yaml
+---
+ts: 2026-05-14T13:50:37Z
+action: entry
+symbol: MU
+bucket: long-term
+setup: ai-momentum-pullback
+score: 8.17
+thesis: Micron HBM sold out through 2026; Q2 2026 revenue $23.86B (3x YoY). H200 China approval = direct HBM demand surge (each H200 contains HBM3E). Anchor name per CLAUDE.md. Up 4.83% today on catalyst.
+size_pct: 4.03
+stop: 710.73
+target: 1001.49
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 9
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (8.17 avg, 5/6 agents ≥7, Risk=8 ✓, Tech=9 ✓). Technical=6 only: RSI elevated after 180% YTD run; for long-term LT bucket this is acceptable — trend intact and catalyst is new. ORDER ATTEMPTED AND FAILED — Alpaca API HTTP 403 (x-deny-reason: host_not_allowed) at 13:50:37Z. curl POST /v2/orders {symbol:MU,qty:5,side:buy,type:limit,limit_price:807.65,time_in_force:gtc,order_class:bracket,stop_loss:{stop_price:710.73},take_profit:{limit_price:1001.49}}. Response: 'Host not in allowlist'. 9th consecutive blocked routine. OPERATOR: must manually place MU buy limit $807.65. Stop -12% LT = $710.73, target +24% = $1,001.49, bracket GTC. DEPLOYMENT BIAS VIOLATION. X sentiment: MU HBM supercycle widely discussed on financial X; H200 China approval boosting all chip names; strongly bullish +1 modifier applied."
+---
+```
+
+### Candidate 3 — PLTR (re-evaluation at $130.27 — SKIP confirmed)
+
+PLTR at ~$130.27, still below $134 support zone broken May 13. No improvement from Trump-Xi summit news yet (government AI spending catalyst has not materialized today). Skip remains valid.
+
+```yaml
+---
+ts: 2026-05-14T13:51:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR still trading ~$130.27, below broken $134 support level. Re-score unchanged at 6.50 (Technical=3). No Trump-Xi catalyst yet for government AI spending.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.50 avg, Technical=3 disqualifying). Valid skip per CLAUDE.md Deployment Bias exemption (1): score below 7.0 threshold — guardrail applies. PLTR $130.27 remains below $134 support. Re-entry signal: reclaim of $134 on volume with RSI recovery above 50. Trump-Xi summit Day 2 (May 15) could provide government AI catalyst — re-evaluate at Pre-Market May 15."
+---
+```
+
+### EOD Position Summary (Estimated — 9:45 AM ET May 14)
+
+| Symbol | Bucket | Qty | Entry | Est. Price | Stop | Est. P/L | Status |
+|--------|--------|-----|-------|-----------|------|----------|--------|
+| TSM | long-term | 7 | $401.47 | ~$399.80 | $353.76 | -$11.69 | HOLD |
+| GLD | active | 7 | $418.86 | ~$431.38 | $397.92 | +$87.64 | HOLD |
+| NVDA | long-term | 15 | $198.83 | ~$227.80 | $175.60 | +$434.55 | HOLD ⚠️ earnings 7d |
+| JPM | long-term | 9 | $308.30 | ~$302.00 | $272.14 | -$56.70 | HOLD |
+| XLE | active | 50 | $59.01 | ~$57.80 | $56.15 | -$60.50 | HOLD ⚠️ thin stop |
+| AVGO | long-term | 11 | $418.59 | ~$416.79 | $368.36 | -$19.80 | HOLD |
+
+**Net unrealized P/L (6 positions): +$373.50**
+
+**Portfolio snapshot (9:45 AM ET):**
+- Cash: $80,945.53 (unchanged — no fills)
+- Long market value: ~$19,429
+- Total equity: ~$100,374.53
+- Total return: +0.37%
+- S&P 500 estimated (futures +0.20% from 7,452): ~7,467
+- S&P 500 return since start (~$7,200): ~+3.71%
+- **Gap vs benchmark: -3.34 pp** (widened from -3.27 pp — 9th consecutive blocked deployment day)
+
+---
+
 ## 2026-05-13 — Market Close routine (3:30 PM ET / 19:36 UTC)
 
 **Context:** Wednesday May 13. PPI for April came in +1.4% MoM vs +0.5% expected — largest monthly wholesale inflation jump since 2022. Annual rate ~6%. Despite the shock, S&P 500 rose ~+0.69% to ~7,452 (tech-led by NVDA +2.1%). Trump arrived in Beijing today ahead of May 14-15 summit with Xi. API STILL blocked (HTTP 403 / host_not_allowed — confirmed via verbose curl). ALL predecessor routines today were silent failures — only Market-Close heartbeat recorded.
