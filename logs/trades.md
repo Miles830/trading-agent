@@ -4,6 +4,157 @@
 
 ---
 
+## 2026-05-14 — Pre-Market routine (8:00 AM ET / 12:15 UTC)
+
+**Context:** Thursday May 14. Trump-Xi Beijing summit Day 1 — U.S. cleared Nvidia H200 chip sales to ~10 Chinese tech firms (Alibaba, ByteDance, Tencent, JD.com). NVDA up ~3% pre-market ($229-233). Cisco (CSCO) Q3 FY2026 massive beat: revenue $15.84B (+12% YoY, beat $280M), EPS $1.06 (beat), AI orders raised to $9B target — stock up 15-18% to ~$100-102 pre-market. S&P 500 futures +0.3%, Nasdaq +0.2% — risk-on. AMD flat at ~$437-439. PLTR still $130.25, below $134 support — skip continues. BTC $79,549, below $82K threshold — skip continues. **Alpaca API STILL BLOCKED** — HTTP 403, host_not_allowed. 9th consecutive blocked routine. All order attempts below failed; OPERATOR MUST EXECUTE MANUALLY before 9:25 AM ET.
+
+**Stop Audit:** Attempted GET /v2/orders?status=open → "Host not in allowlist." Cannot verify resting stops via API. Based on prior records, stops should be: TSM $353.76 (bracket), GLD $397.92 (standalone GTC), NVDA $175.60 (bracket), JPM $272.14 (bracket), XLE $56.15 (standalone GTC), AVGO $368.36 (bracket OCO child). OPERATOR MUST verify these resting stops on the Alpaca dashboard. XLE stop cushion ~2.3% ($57.47 vs $56.15) — thin, monitor closely.
+
+**Market Intelligence:**
+- Trump-Xi Day 1: NVDA H200 approved for Alibaba, ByteDance, Tencent, JD.com, Lenovo, Foxconn (~10 firms, up to 75,000 chips each)
+- Cisco Q3 FY2026: Rev $15.84B (+12% YoY, beat), EPS $1.06 (beat), AI orders $9B target (cumulative $5.3B), product orders +35%, FY guidance raised to $62.8-63.0B, ~4,000 job cuts (streamlining for AI pivot)
+- TSM: $399.80 (China deal = TSM as NVDA's fab — positive catalyst)
+- AVGO: ~$418 (chip rally, bracket stop $368.36 safe)
+- XLE: $57.47 pre-market (stop at $56.15 — 2.3% cushion, monitor)
+- GLD: ~$432 est (PPI shock sustains gold bid; no rate cuts until 2027)
+
+### Stop Audit Log
+
+```yaml
+---
+ts: 2026-05-14T12:15:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: other
+score: null
+thesis: Stop audit attempted but API blocked (HTTP 403 host_not_allowed). Cannot verify resting stops for 6 open positions. 9th consecutive blocked routine.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "OPERATOR ACTION REQUIRED: Verify these stops on Alpaca dashboard before market open: TSM stop=$353.76, GLD stop=$397.92, NVDA stop=$175.60, JPM stop=$272.14, XLE stop=$56.15, AVGO stop=$368.36. XLE stop cushion is thin (2.3%). If any stop is missing, place immediately. API has been blocked 9 consecutive sessions — persistent infrastructure issue."
+---
+```
+
+### MOO Order 1: AMD — ENTRY ATTEMPTED (API BLOCKED)
+
+```yaml
+---
+ts: 2026-05-14T12:16:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD China chip deal catalyst (MI308 approved for export) + RSI normalized after pullback from $477 to $438 — resuming breakout. 10th attempt blocked by API.
+size_pct: 4.38
+stop: 416.10
+target: 481.80
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents at 7+. Fundamentals: Q1 2026 rev $7.4B (+36% YoY); MI308 China approval adds $500-800M 2026 revenue. Technical: 8% pullback from $477 to $438 normalizes RSI; support zone $435-440 holding; uptrend intact from May 8 China deal breakout. Sentiment: Trump-Xi summit Day 1 confirms MI308 export approval; X sentiment bullish but xAI API also blocked (degrade gracefully). Macro: Risk-on, SPX +0.3%, chip sector rallying on H200/MI308 news. Risk: 10sh × $438 = $4,380 = 4.38% (<5%); stop -5% = $416.10, risk $219 = 0.22% (<1.5%); R/R 2:1; semiconductors sector 15% after fill (<25%); cash $76,566 (>10%). Tech: #2 AI chip vendor; MI308 China access = direct revenue catalyst; CDNA architecture competitive. ORDER ATTEMPTED via curl POST /v2/orders at 12:16Z — RESPONSE: 'Host not in allowlist'. OPERATOR MUST PLACE: BUY 10 shares AMD MOO (time_in_force:opg) before 9:25 AM ET. After fill, place stop at fill_price × 0.95. Target = fill_price × 1.10."
+---
+```
+
+### MOO Order 2: CSCO — ENTRY ATTEMPTED (API BLOCKED)
+
+```yaml
+---
+ts: 2026-05-14T12:17:00Z
+action: entry
+symbol: CSCO
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: Cisco Q3 FY2026 massive beat (rev +12% YoY, AI orders raised to $9B, guidance raised $1.3B) — strongest networking/AI capex confirmation this quarter. Stock surged 15-18% to ~$101-102.
+size_pct: 3.0
+stop: 95.95
+target: 111.10
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 5
+master_decision: approved
+master_notes: "5 of 6 agents at 7+. Technical scored 6 (only lagging agent) — gap-up at open creates premium entry risk but earnings-driven. Fundamentals(9): Rev $15.84B (+12% YoY, beat $280M), EPS $1.06 (beat), AI orders $9B target, cumulative $5.3B, product orders +35%, FY guidance raised to $62.8-63.0B — exceptional print. Technical(6): Gap-up 15-18% = premium entry; RSI elevated but earnings-justified; 52-week high test ($102.01); momentum strongly up. Sentiment(8): CEO 'very strong broad-based demand'; analysts raising PTs; restructuring signals discipline; xAI API blocked — degrade gracefully. Macro(8): Risk-on; AI capex cycle confirmed by Cisco's $9B order target — picks-and-shovels for AI build-out; Trump-Xi positive. Risk(8): 30sh × $101 = $3,030 = 3.0% (<5%); stop -5% = $95.95, risk $153 = 0.15% (<1.5%); R/R 2:1; tech/networking sector new exposure, total tech 18.1% (<25%); 8 positions (<12). Tech(8): Core enterprise networking + AI networking stack; deep switching-cost moat; Hypershield AI security; silicon-one custom chips; $9B AI orders = picks-and-shovels for AI capex; competing with Arista but dominant in enterprise. ORDER ATTEMPTED via curl POST /v2/orders at 12:17Z — RESPONSE: 'Host not in allowlist'. OPERATOR MUST PLACE: BUY 30 shares CSCO MOO (time_in_force:opg) before 9:25 AM ET. After fill, place stop at fill_price × 0.95. Target = fill_price × 1.10."
+---
+```
+
+### PLTR Skip
+
+```yaml
+---
+ts: 2026-05-14T12:18:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.5
+thesis: PLTR still below $134 support at $130.25. Technical setup broken — skip per May 13 re-score rule.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 3
+  sentiment: 7
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 6.5
+agents_above_7: 3
+master_decision: rejected
+master_notes: "Exemption (1): Technical setup broken — PLTR broke $134 support on May 13 (-4.31% to $129.99). May 14 pre-market: still at $130.25 — $134 support NOT reclaimed. Average score 6.5 < 7 threshold and fewer than 4 agents at 7+. Valid skip per CLAUDE.md: price signal is negative. Re-entry trigger: close above $134 on volume OR fresh catalyst (government AI contract, DOGE deployment news). Trump-Xi summit did not produce direct PLTR catalyst. Will re-score at Daily Review."
+---
+```
+
+### BTC Skip
+
+```yaml
+---
+ts: 2026-05-14T12:19:00Z
+action: skip
+symbol: BTC/USD
+bucket: crypto
+setup: crypto-flush-rebound
+score: 5.0
+thesis: BTC at $79,549 — below $82K re-entry threshold. Strategy requires $82K+ for re-entry. Crypto down 1.5% today despite risk-on equity market.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 4
+  sentiment: 5
+  macro: 6
+  risk: 6
+  tech_analyst: 7
+agent_average: 5.67
+agents_above_7: 1
+master_decision: rejected
+master_notes: "Exemption (1): BTC below portfolio's $82K re-entry threshold — quantitative guardrail per memory/portfolio.md. BTC at $79,549 = -3.0% below threshold. No flush-and-rebound setup visible (no capitulation candle). Crypto bill (Digital Asset Market Clarity Act) providing background support but Trump-Xi summit not yet showing direct crypto catalyst. ETH at $2,261. Re-entry requires BTC above $82K on a daily close or classic flush below $75K with reversal hammer."
+---
+```
+
+---
+
 ## 2026-05-13 — Market Close routine (3:30 PM ET / 19:36 UTC)
 
 **Context:** Wednesday May 13. PPI for April came in +1.4% MoM vs +0.5% expected — largest monthly wholesale inflation jump since 2022. Annual rate ~6%. Despite the shock, S&P 500 rose ~+0.69% to ~7,452 (tech-led by NVDA +2.1%). Trump arrived in Beijing today ahead of May 14-15 summit with Xi. API STILL blocked (HTTP 403 / host_not_allowed — confirmed via verbose curl). ALL predecessor routines today were silent failures — only Market-Close heartbeat recorded.
