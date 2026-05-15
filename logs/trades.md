@@ -4,6 +4,391 @@
 
 ---
 
+## 2026-05-15 — Midday (12:30 PM ET / 16:35 UTC)
+
+**Context:** Friday May 15, 2026. Trump-Xi Summit Day 2 DISAPPOINTMENT. No semiconductor deal signed; not a single H200 chip has shipped to approved Chinese buyers; rare-earth exports still 50% below baseline; no AI governance framework agreed. S&P 500 DOWN ~1% midday (7,511→~7,436). Tech selloff: NVDA -3%, AMD -3.7%, MU -5%, INTC -6%. Energy OUTPERFORMING: oil surging (Brent $107.30 +1.5%, WTI $102.74 +1.6%). Alpaca API STILL BLOCKED ("Host not in allowlist") — 9th consecutive blocked session. Pre-Market, Market Open, and Mid-Morning routines ALL SILENT FAILURES (no heartbeats recorded). This is the first heartbeat of the day. Catchup execution attempted — all 3 watchlist candidates re-scored and REJECTED on today's conditions.
+
+---
+
+### Predecessor Heartbeat Audit — 2026-05-15
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 | ✓ 16:35:26Z | IN PROGRESS | 🟡 RUNNING |
+
+**3 violations logged below (one per missing routine). Watchlist catch-up execution follows.**
+
+---
+
+### Violation — Pre-Market Missing
+
+```yaml
+---
+ts: 2026-05-15T08:00:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: all
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine (8:00 AM ET) did not fire — no heartbeat recorded for 9th consecutive session.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: rejected
+master_notes: >
+  Scheduler/cron not firing intraday routines again. AMD MOO (score 7.33) not placed for 5th consecutive session.
+  PLTR and MU not re-scored at open. Stop audit not performed. Summit Day 2 communique not read before
+  market open — missed the key signal (no chip deal = tech selloff) that would have informed entries.
+  Alpaca API blocked regardless — no orders could have executed. Root cause: two separate infrastructure
+  failures: (1) intraday routine triggers not firing; (2) Alpaca API blocked by sandbox TLS proxy.
+---
+```
+
+---
+
+### Violation — Market Open Missing
+
+```yaml
+---
+ts: 2026-05-15T09:45:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: all
+setup: silent-failure
+score: 0
+thesis: Market Open routine (9:45 AM ET) did not fire — no heartbeat recorded.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: rejected
+master_notes: >
+  Market Open is the required post-MOO stop placement window per CLAUDE.md bracket/stop protocol.
+  Even if AMD MOO had filled at pre-market, no post-fill stop would have been placed at 9:45 AM.
+  Positions nakedly monitored for full morning session. Stop audit not performed at open.
+  AMD MOO could not have been placed anyway (API blocked), but the routine still required to
+  run the stop audit and confirm existing GTC brackets are resting.
+---
+```
+
+---
+
+### Violation — Mid-Morning Missing
+
+```yaml
+---
+ts: 2026-05-15T11:00:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: all
+setup: silent-failure
+score: 0
+thesis: Mid-Morning routine (11:00 AM ET) did not fire — no heartbeat recorded.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: rejected
+master_notes: >
+  Tech selloff driven by summit disappointment was well underway by 11 AM but no monitoring occurred.
+  NVDA -3%, AMD -3.7%, TSM -2.6%, MU -5%. Watchlist re-scoring opportunity missed. Stop audit missed.
+  No decisions on trailing stops for NVDA or XLE despite NVDA +14.6% unrealized gain and XLE approaching
+  entry price. 9th consecutive session with all intraday routines silent.
+---
+```
+
+---
+
+### Stop-Loss Audit (API Blocked — Web-Research Prices)
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 15 Midday | Cushion | Status |
+|--------|-----|--------|-------|------|--------------------------|---------|--------|
+| TSM | 7 | long-term | $401.47 | $353.76 | ~$390 (-2.6%) | 10.1% | ✓ Summit disappointment hit TSM but stop safe |
+| GLD | 7 | active | $418.86 | $397.92 | ~$416 (-0.7%) | 4.3% | ✓ Below entry but thesis intact (oil UP, inflation) |
+| NVDA | 15 | long-term | $198.83 | $175.60 | ~$228 (-3.1%) | 29.7% | ✓ ⚠️ Earnings May 21 (6 days); trail stop review at DR May 19 |
+| JPM | 9 | long-term | $308.30 | $272.14 | ~$299 (-0.4%) | 9.3% | ✓ Financials soft; thesis ongoing |
+| XLE | 50 | active | $59.01 | $56.15 | ~$58.50 (+1.5%) | 4.2% | ✓ Oil surge improving cushion — thesis strengthening |
+| AVGO | 11 | long-term | $418.59 | $368.36 | ~$431 (+2.0%) | 14.5% | ✓ Holding up well; AI networking resilient |
+
+**All stops assumed resting from GTC bracket/standalone orders placed May 4-6. API blocked — cannot confirm. No position has breached its stop. GLD closest to stop (4.3% cushion) but inflation/oil thesis still supportive.**
+
+**Daily P&L estimate:**
+- TSM: 7 × (-$9.80) = -$68.60
+- GLD: 7 × (-$13.01) = -$91.07
+- NVDA: 15 × (-$7.63) = -$114.45
+- JPM: 9 × (-$1.26) = -$11.34
+- XLE: 50 × (+$0.86) = +$43.00
+- AVGO: 11 × (+$8.50) = +$93.50
+- **Total daily P&L: ~-$149 / -0.15% — Circuit breaker NOT tripped (threshold: -3%)**
+
+---
+
+### Midday Market Summary
+
+S&P 500 trading down ~1% midday (7,436) as Trump-Xi Summit Day 2 underwhelmed — no semiconductor framework signed, no H200 shipments cleared, no AI governance document. Tech leading the selloff: NVDA -3%, AMD -3.7%, MU -5%, INTC -6%. Energy is the standout: oil surging (Brent $107.30, WTI $102.74, both +1.5%) supporting XLE and reinforcing the inflation hedge thesis. GLD trading at ~$416, slightly below entry $418.86, but oil-price-driven inflation expectations keep the macro-hedge thesis intact. AVGO is a surprising hold (+2.0%) suggesting AI infrastructure networking demand is less China-dependent than pure chip exports.
+
+---
+
+### Watchlist Catch-Up Execution (3 candidates — all re-scored and REJECTED)
+
+Per midday.md: since Pre-Market, Market Open, and Mid-Morning all missed, the Midday routine must run 6-agent gate on all ≥7 watchlist names and enter approved candidates (capped at 2 catch-ups this routine).
+
+**Candidate 1 — AMD (prior score 7.33, setup: breakout-volume)**
+
+```yaml
+---
+ts: 2026-05-15T16:40:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 5.5
+thesis: AMD re-scored 5.5 on summit Day 2 disappointment. Technical, Sentiment, and Macro all degraded. Prior 7.33 was pre-summit; today's conditions do not support entry.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 4
+  macro: 4
+  risk: 7
+  tech_analyst: 7
+agent_average: 5.5
+agents_above_7: 3
+master_decision: rejected
+master_notes: >
+  CONTEXT: Summit Day 2 produced no chip deal. H200 not shipping. Rare-earth exports 50% below baseline.
+  AMD trading ~$433 (-3.7% from prior ~$448 context). S&P -1%, tech sector -3%.
+
+  FUNDAMENTALS (7/10): AI/data center thesis intact. EPYC 4 + Instinct MI350X strong. Revenue growth
+  trajectory unaffected by one-day selloff. Score unchanged from prior 7.
+
+  TECHNICAL (4/10): AMD broke down from the $445-$450 breakout-volume setup level. The entire summit-
+  driven breakout is being unwound. RSI declining. Support at $420-$430 but no reversal signals visible
+  at midday. Setup DAMAGED — "breakout-volume" entry requires a clean break above resistance with
+  volume confirmation; the opposite is happening today.
+
+  SENTIMENT (4/10): Summit narrative unwound intraday. Social/news sentiment very negative for chip names.
+  H200 not shipping is a direct AMD competitor thesis undermining the "China AI chip deal" catalyst.
+  xAI API blocked — manual research substituted; sentiment classified as STRONGLY BEARISH → -2 modifier.
+  Base sentiment score 6 + (-2) = 4/10.
+
+  MACRO (4/10): Risk-off day. S&P -1%. Tech sector -3%. Dollar strengthening slightly. No macro tailwind
+  for new tech entries. Rate environment unchanged (no cuts, PPI hot).
+
+  RISK (7/10): Guardrails still passable. 10sh×$433=$4,330=4.33%<5% cap. Risk per trade:
+  10×$433×5%=$216.50=0.22%<1.5% cap. R/R: stop -5%/target +10% = 2:1 minimum met. Score 7.
+
+  TECH ANALYST (7/10): EPYC 4, Instinct MI350X, RDNA 4 — defensible technology stack. AI inference
+  demand growing. Score unchanged.
+
+  MASTER DECISION: REJECTED. Average 5.5/10 < 7.0 minimum. Only 3 of 6 agents scored ≥7 (need ≥4 of 6).
+  This is a genuine re-score on materially changed conditions (summit outcome, tech selloff), not a
+  deployment-bias skip. Re-entry: wait for technical stabilization above $430-440 support, re-score
+  when macro/sentiment normalize (likely next session or early next week if summit noise fades).
+  API blocked regardless — no order could have executed.
+---
+```
+
+---
+
+**Candidate 2 — PLTR (prior conditional score 7.33 if >$134)**
+
+```yaml
+---
+ts: 2026-05-15T16:42:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 5.83
+thesis: PLTR at $134.06 midday (range $131.57-$134.99). Barely at conditional re-entry threshold. Re-score 5.83 fails 7.0 minimum. Summit produced no AI language; today's volatile range disconfirms support reclaim.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 5
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 5.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: >
+  CONTEXT: PLTR range today $131.57-$134.99. Currently ~$134.06 — at the $134 threshold but volatile.
+  Intraday low of $131.57 means $134 support NOT conclusively reclaimed. Summit AI language was minimal —
+  no signed AI governance framework, no China AIP expansion.
+
+  FUNDAMENTALS (7/10): Government + commercial AI platform. Q1 2025 strong. AIP revenue accelerating.
+  Not China-dependent for primary revenue. Score 7.
+
+  TECHNICAL (4/10): $134 is resistance, not support reclaim. Trading range spans below $134 today
+  ($131.57 low). No clean above-$134 breakout with volume. Per CLAUDE.md: candlestick entry requires
+  volume confirmation — not present. Prior score 3/10 from May 13 hasn't recovered enough to warrant entry.
+
+  SENTIMENT (5/10): Summit produced no AI-specific wins. PLTR domestic-government AI thesis insulates
+  from China, but the broader AI narrative is negative today. Neutral-to-bearish X sentiment.
+  xAI API blocked — manual research.
+
+  MACRO (5/10): Risk-off day but government AI spending is partly insulated from market cycles.
+  Partial credit for thesis independence from summit outcome. Score 5.
+
+  RISK (7/10): At $134: 36sh×$134=$4,824=4.82%<5%. Stop -12%=$117.92.
+  Risk: 36×$134×12%=$578.88=0.58%<1.5%. R/R: stop-12%/target+24%=2:1 met. Score 7.
+
+  TECH ANALYST (7/10): AIP platform defensible. Government contracts = switching cost moat. Score 7.
+
+  MASTER DECISION: REJECTED. Average 5.83/10 < 7.0. 3 of 6 agents ≥7 (need ≥4). Re-entry condition
+  updated: PLTR must CLOSE above $134 for 2 consecutive sessions with volume confirmation AND re-score
+  ≥7.0 at next Pre-Market. Intraday touching $134 on volatile summit day is insufficient.
+  API blocked — no order could have executed regardless.
+---
+```
+
+---
+
+**Candidate 3 — MU (prior estimated score 7.33)**
+
+```yaml
+---
+ts: 2026-05-15T16:43:00Z
+action: skip
+symbol: MU
+bucket: long-term
+setup: ai-momentum-pullback
+score: 5.5
+thesis: MU ~$745 midday (-5% today). Summit produced no HBM/memory chip deal; rare-earth exports still 50% below baseline (direct HBM4 production risk). Re-score 5.5 below threshold.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 4
+  macro: 4
+  risk: 7
+  tech_analyst: 7
+agent_average: 5.5
+agents_above_7: 3
+master_decision: rejected
+master_notes: >
+  CONTEXT: MU trading ~$745 midday (daily range per research: $719-$761). Down ~4-5% on summit
+  disappointment. The prior thesis included a China HBM4/memory supply chain component — today's summit
+  outcome directly undermines that element. Rare-earth exports still 50% below baseline = ongoing HBM4
+  production risk for ALL memory makers.
+
+  FUNDAMENTALS (7/10): AI memory supercycle thesis intact. HBM4 JEDEC standard. Enterprise + data center
+  demand durable. Q2 2025 guidance was strong. Score 7.
+
+  TECHNICAL (4/10): MU broke down from $760-$776 consolidation zone. RSI declining from ~65 area.
+  No reversal signals at midday. Falling 5% on a single day = catching a falling knife.
+  Per Day Trading Method: only trade patterns aligned with overall daily trend — daily trend is DOWN.
+
+  SENTIMENT (4/10): Summit disappointment = direct negative for China memory/HBM thesis.
+  Rare-earth exports still restricted = ongoing supply chain risk. Social sentiment strongly bearish.
+  xAI API blocked — manual research. Base 6 + (-2 from strongly bearish X classification) = 4/10.
+
+  MACRO (4/10): Risk-off. S&P -1%. Tech -3-6%. Energy only sector up. No macro tailwind for
+  memory semi entry today.
+
+  RISK (7/10): At $745: 6sh×$745=$4,470=4.47%<5%. Stop -12%=$655.60.
+  Risk: 6×$745×12%=$536.40=0.54%<1.5%. R/R: stop-12%/target+24%=2:1 met. Score 7.
+
+  TECH ANALYST (7/10): HBM4 technology defensible. First-mover advantage in AI memory stack.
+  JEDEC standard-setting role. Score 7.
+
+  MASTER DECISION: REJECTED. Average 5.5/10 < 7.0. 3 of 6 ≥7 (need ≥4). Re-entry: wait for summit
+  noise to clear, MU to stabilize above $750-$760, rare-earth situation to improve.
+  Anchor name — thesis valid long-term; entry timing wrong today.
+  API blocked — no order could have executed regardless.
+---
+```
+
+---
+
+### Position Management Decisions
+
+**NVDA (15sh, entry $198.83, stop $175.60, est. price ~$228):**
+- Down ~3.1% today from $235.63 but still +14.6% above entry
+- Unrealized gain: ~15 × ($228-$198.83) = ~+$437.55
+- Existing stop $175.60 = 29.7% below current — very wide for pre-earnings position
+- **INTENT: Trail stop UP to $207.00 (protecting ~40% of unrealized gains, still ~9.2% below current $228)**
+- Cannot execute via API (blocked). Documenting intent for Daily Review May 19 pre-earnings review.
+- NVDA earnings: May 21 (6 days). No new NVDA entries. Pre-earnings full review at Daily Review May 19 MANDATORY.
+
+**XLE (50sh, entry $59.01, stop $56.15, est. price ~$58.50):**
+- Oil surging (WTI $102.74, Brent $107.30) — XLE's best session in weeks
+- Stop cushion improving: $58.50 vs $56.15 = 4.0%
+- **INTENT: Trail stop UP to $57.00 from $56.15 (protecting against sudden oil reversal)**
+- Cannot execute via API (blocked).
+
+**GLD (7sh, entry $418.86, stop $397.92, est. price ~$416):**
+- Slightly below entry but oil/inflation thesis intact
+- Hold — no changes needed. Stop at $397.92 provides 4.3% cushion.
+
+**TSM (7sh, entry $401.47, stop $353.76, est. price ~$390):**
+- Down on summit disappointment; no new chip deal signed
+- Stop still provides 9.9% cushion from current levels
+- Hold — thesis (leading AI chip manufacturer) intact long-term
+
+**AVGO (11sh, entry $418.59, stop $368.36, est. price ~$431):**
+- Holding up +2.0% despite broad tech selloff
+- AI networking/infrastructure demand less China-dependent than pure chip exports
+- Hold — no changes needed
+
+**JPM (9sh, entry $308.30, stop $272.14, est. price ~$299):**
+- Soft again today (-0.4%). Down -3.1% from entry
+- Hot PPI + no rate cuts = ongoing headwind for financials
+- Stop at $272.14 = 9.3% cushion — safe but thesis underperforming
+- Hold — no action today
+
+---
+
+### Overnight Hold Plan
+
+All 6 positions HOLD overnight:
+| Symbol | Hold? | Reason |
+|--------|-------|--------|
+| NVDA | ✓ HOLD | Pre-earnings run thesis intact; stop -30% below current; daily review May 19 will assess collar/partial |
+| AVGO | ✓ HOLD | Holding up well despite selloff; AI networking demand durable |
+| TSM | ✓ HOLD | Summit disappointment already priced in; long-term chip manufacturing thesis intact |
+| GLD | ✓ HOLD | Oil surge (Brent $107) supports inflation hedge; PPI +1.4% thesis very much alive |
+| XLE | ✓ HOLD | Oil surging intraday — thesis strengthening; Iran deal still unconfirmed = ongoing bid |
+| JPM | ✓ HOLD | Underperforming but stop not threatened; financial sector thesis requires patience |
+
+**No day-trade closures today** — no intraday positions were opened. All holdings are swing/long-term trades.
+
+---
+
+### Performance vs Benchmark
+
+**Today (midday estimate):**
+- Portfolio daily P&L: ~-$149 / -0.15% (tech positions drag, XLE+AVGO partially offset)
+- S&P 500 midday: ~-1.0% (7,511→7,436)
+- Today's gap vs benchmark: **+0.85 pp** (portfolio loses less than benchmark on down day, thanks to 80% cash buffer)
+
+**Cumulative (since ~May 1 start):**
+- Portfolio equity: ~$100,365 (+0.37%)
+- S&P 500 return: ~+3.28% (7,200→7,436)
+- Cumulative gap vs SPX: **-2.91 pp** (improved from -3.81 pp yesterday — down day narrowed the gap)
+
+**Note:** The paradox of having 80% cash: it hurts on up-market days (-0.5 pp drag per +1% SPX day) but protects on down days (+0.85 pp today). The net gap effect of the cash drag is still deeply negative for the full period.
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
