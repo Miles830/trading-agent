@@ -4,6 +4,67 @@
 
 ---
 
+## 2026-05-17 — Pre-Market (NON-TRADING DAY — Sunday)
+
+**Not a trading day (Sunday). No orders placed. No market open.**
+
+Alpaca API still blocked ("Host not in allowlist") — 9th+ consecutive session. Git push blocked (known auth gap).
+
+### Weekend Research Summary (May 15-17)
+
+**Friday May 15 — Market Recap (Trump-Xi Summit Day 2: Disappointment):**
+- S&P 500 closed **7,408.50 (-1.24%)** — gave back Thursday's record gains; no major deals announced at summit close
+- All 3 indexes fell >1%; weekly performance: S&P +0.3%, Nasdaq +0.3%, Dow -0.05% for the week
+- Semiconductor sector: heavy profit-taking. Intel -7%, NVDA -3.6%, MU -3.4%, AMD down significantly
+- Oil surged: WTI ~$102, Brent ~$107 (Iran deal uncertainty; no peace framework)
+
+**Portfolio positions estimated May 15 close:**
+| Symbol | May 14 | May 15 est. | Change | Notes |
+|--------|--------|-------------|--------|-------|
+| NVDA | $235.63 | **$225.32** | -3.6% | Semiconductor profit-taking |
+| TSM | $399.80 | **$404.35** | +1.1% | Slight resilience vs peers |
+| AVGO | $422.50 | **~$410** | -3.0% | Chip selloff |
+| JPM | $300.26 | **$297.81** | -0.8% | Soft financials |
+| GLD | $429.01 | **$427.21** | -0.4% | Mild risk-on headwind; GLD ~$417 by May 16 |
+| XLE | $57.64 | **~$61.50** | +6.7% | Oil surge to $102 WTI; Iran deal uncertainty |
+| AMD | $448.29 | **~$424** | -5.4% | Chip selloff; still above stop levels |
+| MU | ~$788 ATH | **$749.33** | -3.4% | Pulled back from ATH |
+| PLTR | $133.40 | **$132.28** | -0.8% | Below $134 re-entry; thesis intact |
+
+**Est. portfolio equity May 15:** ~$100,380 (cash unchanged; long positions fell ~$134 net; XLE rally offset chip losses)
+**Est. portfolio return:** +0.38%
+**S&P 500 return from May 1 start (7,200 → 7,408):** +2.89%
+**Gap vs SPX:** **-2.51 pp** (improved from -3.81 pp Thursday — large cash position cushioned the -1.24% selloff)
+
+**CRITICAL NVDA EARNINGS DATE CORRECTION:**
+NVDA earnings confirmed **Wednesday May 20, 2026 AH** (not May 21 as previously recorded).
+- 48h pre-earnings entry cutoff = **Monday May 18 COB** — no new NVDA entries after Monday
+- Existing position (15sh @ $198.83, stop $175.60) at ~$225.32 = +$397 unrealized gain; stop provides 28.6% cushion
+- Goldman Sachs raised NVDA target to $275 ahead of earnings; consensus EPS $1.76 (+117% YoY), rev $78.5B (+78% YoY)
+- Pre-earnings review and partial-exit/hedge decision MUST happen at Monday Pre-Market (May 18)
+
+**Bitcoin May 17:** $78,026 (-1.64% over weekend) — Fear & Greed Index 31 (Fear). Still below $82K threshold. Do NOT enter. CLARITY Act passing Senate banking committee = positive regulatory signal but insufficient for crypto entry without price recovery.
+
+**Week of May 18-22 critical events:**
+1. **Mon May 18:** Pre-Market AMD MOO (MANDATORY — 5th attempt), MU full 6-agent score, PLTR re-score; NVDA pre-earnings positioning decision
+2. **Tue May 19:** Last day NVDA entries; Walmart & Home Depot earnings; macro check
+3. **Wed May 20:** NVDA earnings AH — HOLD position through; DO NOT enter or pyramid NVDA today
+4. **Thu May 21:** Post-NVDA reaction; manage stop/exit strategy; scan for new opportunities
+5. **Fri May 22:** Weekly review; strategy evolution note
+
+---
+
+## 2026-05-15 — ALL ROUTINES SILENT FAILED
+
+**Friday May 15 was a trading day. Zero heartbeats recorded. Zero orders attempted. Zero stops audited. API blocked.** This is the 9th consecutive session of infrastructure failure. See weekend research summary above (prepended 2026-05-17 section) for estimated position impact.
+
+**Pending mandatory actions carried forward from May 14 (now 5 consecutive failures for AMD):**
+- AMD (score 7.33): 10 shares, MOO, active/breakout-volume — MUST execute Monday May 18
+- MU (est. 7.33): full 6-agent score at Pre-Market Monday; 6sh entry ~$749, stop -12% $659, target +24% $929
+- PLTR (6.50 current): re-score Monday at open price; still below $134 trigger — likely still below entry threshold
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
