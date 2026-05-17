@@ -4,6 +4,213 @@
 
 ---
 
+## 2026-05-17 (Sunday) — Daily Review CATCH-UP (covering 2026-05-15 Friday, run 2026-05-17)
+
+**Context:** Today is Sunday May 17 — a non-trading day. This entry covers the MISSED Friday May 15 Daily Review. Friday May 15 was a complete silent failure: the heartbeat file exists (`logs/heartbeats/2026-05-15.log`) but contains zero entries — no STARTED, no COMPLETED for any routine including the Daily Review. This is the worst form of silent failure (session triggered but crashed silently, no output). Alpaca API remains blocked (HTTP 403 — 9th+ consecutive session). All prices from web research.
+
+**Trump-Xi Summit Day 2 outcome ("Chip Letdown"):** US Commerce approved H200 export licenses for Alibaba, Tencent, ByteDance, JD.com — but Beijing has not officially cleared the shipments. Chip export issues were "not a central focus" of talks. Taiwan remains the central flashpoint. Another summit scheduled for fall 2026. Market reaction: NVDA -4.42%, AMD -5.69%, SPX -1.24%.
+
+**⚠️ CRITICAL DATE CORRECTION: NVDA earnings confirmed May 20 AHM** (was documented as May 21 — multiple sources now confirm May 20). 48-hour binary event window = no new NVDA entries after Monday May 18 close.
+
+---
+
+### Heartbeat Tally — 2026-05-15 (Friday)
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Afternoon | 14:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Close | 15:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Daily Review | 16:30 | ✗ MISSING | ✗ MISSING | 🔴 COMPLETE SILENT FAILURE |
+
+**ALL 7 routines (including Daily Review) silently failed on May 15.** This is worse than prior days where at least the Daily Review fired. The heartbeat file exists but is empty — the session was invoked but produced no output. This is the 9th+ consecutive day of intraday routine failures.
+
+**TOP OPERATIONAL ISSUE (promoted to CRITICAL):** Friday May 15 Daily Review — not just intraday routines — completely failed. The weekend is the longest gap between reviews. Portfolio had NO monitoring from May 14 20:51 UTC through May 17 06:13 UTC (over 57 hours).
+
+**Remediation required (operator action — SAME AS PREVIOUS WEEKS):**
+1. Fix Alpaca API TLS allowlist: `paper-api.alpaca.markets` must be added to Anthropic sandbox egress allowlist.
+2. Fix session stability: investigate why May 15 Daily Review session launched but produced no output. Likely OOM or timeout.
+3. AMD must be entered at market open Monday May 18 — OPERATOR MANUAL ORDER if API remains blocked.
+
+---
+
+### Stop-Coverage Audit — 2026-05-15 (web research prices)
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 15 | Cushion | Status |
+|--------|-----|--------|-------|------|-------------------|---------|--------|
+| TSM | 7 | long-term | $401.47 | $353.76 | ~$404.35 | +14.3% | ✓ Held up (+1.1%): foundry thesis insulated from export control bilateral risk |
+| GLD | 7 | active | $418.86 | $397.92 | ~$417.29 | +4.9% | ⚠️ Below entry (-0.37%); crude $105 stagflation thesis intact; risk-off + rate hike fears = mixed for gold |
+| NVDA | 15 | long-term | $198.83 | $175.60 | ~$225.32 | +28.3% | ✓ -4.42% on chip letdown but still +13.3% above entry. ⚠️ EARNINGS MAY 20 |
+| JPM | 9 | long-term | $308.30 | $272.14 | ~$297.81 | +9.4% | ⚠️ Down -3.4% from entry; rate hike scenario continues to pressure thesis |
+| XLE | 50 | active | $59.01 | $56.15 | ~$58.07 | +3.4% | ✓ Up +0.74% on crude surge ($105.42/bbl WTI; Iran Hormuz closure). Stop cushion widened. |
+| AVGO | 11 | long-term | $418.59 | $368.36 | ~$421.00 | +14.2% | ✓ -4.3% est. on chip letdown; still near entry. Summit tailwind partially negated. |
+
+No stop-hit events on May 15. All stops assumed resting from May 4-6 bracket/GTC orders.
+
+---
+
+### Market Summary — 2026-05-15 (Friday)
+
+**Macro:**
+- S&P 500: 7,408.50 (-1.24%). Nasdaq, Dow similarly down.
+- WTI Crude Oil: $105.42/bbl (+4.2%). Brent ~$126/bbl. Iran Strait of Hormuz effectively closed (conflict started late Feb 2026). THIS IS THE DOMINANT MACRO THEME.
+- 10-Year Treasury yield: ~4.6% (1-year high). Rate hike odds: 45% (CME FedWatch). Kevin Warsh taking over at Fed (hawkish).
+- Trump-Xi Summit Day 2: Trade truce strengthened; next summit fall 2026. Chip deal: approved by US, not cleared by China. AI not a central summit topic.
+
+**Individual positions:**
+- NVDA: $225.32 (-4.42%) — "Chip letdown." Still +13.3% above entry.
+- AMD: $424.10 (-5.69%) — Same "letdown" catalyst. All-time high was $469.22 on May 11; now 9.8% off ATH.
+- PLTR: ~$131.00 (est. -1.8%) — Still below $134 re-entry trigger. Motley Fool: "Down 25% in 2026."
+- TSM: $404.35 (+1.14%) — Foundry insulated from bilateral export control risk.
+- GLD: $417.29 (-0.38% vs entry, -2.32% from ~$427 day-prior est.) — Risk-off + rate hike pressure.
+- JPM: $297.81 (-0.70%) — Financials soft on rate hike + economic slowdown fears.
+- XLE: $58.07 (+0.74%) — Crude $105. Stop cushion widened. 
+- AVGO: ~$421 (est. -4.3%) — Chip letdown.
+- BTC (May 17 weekend): $78,109 (-1.64%). Fear & Greed: 31 (Fear). Still below $82K re-entry threshold.
+
+---
+
+### Performance vs Benchmark — 2026-05-15
+
+**Friday May 15:**
+- Portfolio P&L: -$223 / -0.22% (from $100,514 est. May 14)
+- SPY return: -1.24%
+- Daily gap: **+1.02 pp** (portfolio outperformed on down day — 80% cash buffer)
+
+**Cumulative (since ~May 1 start):**
+- Portfolio total equity: ~$100,291 (+0.29%)
+- SPX return May 1→May 15: +2.90% (7,200 → 7,408.50)
+- **Cumulative gap: -2.61 pp** (improved from -3.81 pp on May 14; down day narrowed gap)
+
+**Rolling 20-day (available data):** Gap widened from 0 to -3.81 pp over trading days May 1-14, then partially recovered to -2.61 pp on May 15's down day. With AMD, MU, and XLE entries pending, the gap could shrink to near -1 pp if markets hold flat or decline further.
+
+---
+
+### Today's Best & Worst (May 15)
+
+**Best position:** TSM (+$20.16 unrealized, +1.1%) — TSMC's foundry model is agnostic to which chip designer sells into China; it makes chips for everyone. Held up when pure US chip designers sold off. Validates the TSM thesis as a China-agnostic AI infrastructure play.
+
+**Worst position:** JPM (-$94.43 unrealized, -3.4% from entry) — Compounding losses on rate-hike fears. Financials are now the portfolio's clearest underperformer. With rate hike probability at 45% and Warsh taking over, the macro environment is increasingly hostile to this thesis.
+
+---
+
+### 3 Things That Worked (May 15)
+1. **Cash buffer as accidental hedge:** 80.7% cash absorbed the -1.24% SPX selloff. Portfolio lost only -0.22%. The cumulative gap vs SPX improved +1.2 pp in one session. This validates the mechanical outcome of the cash position even if it was never intentional.
+2. **TSM foundry thesis outperformed:** TSM +1.1% on a -1.24% market day. The insight that foundries (TSMC) are insulated from bilateral export-control risk while chip designers (NVDA, AMD) are exposed was correct and differentiated performance.
+3. **XLE stop management:** Stop at $56.15 was already well-placed; crude's $4.20% jump to $105 moved XLE UP (+0.74%) instead of triggering the stop. XLE is now the highest-conviction long thesis in the portfolio.
+
+### 3 Things to Improve (for Monday May 18)
+1. **AMD entry is 5 sessions late and counting.** AMD is now at $420 — a better entry point than the $445 we've been targeting. Five consecutive deployment failures for a 7.33-score name is an egregious deployment bias violation. Enter Monday regardless of API status (operator manual order if needed).
+2. **NVDA pre-earnings decision is time-critical.** Earnings May 20 AHM. If we do not trim at Monday close, we go fully exposed through a binary event. Option B (trim 5 shares) is the recommended action. Do not wait until May 19 — that leaves no time to act.
+3. **JPM is the portfolio's weakest link.** -3.4% from entry, continuing downtrend, rate hike environment = headwind. Consider tightening the stop from $272.14 to ~$285 (captures more of the remaining capital if thesis is truly broken).
+
+---
+
+### Setup-Tag Tally (rolling 5-day window: May 11-15)
+
+No closed positions in the 5-day window. All positions remain open. Tally unchanged.
+
+| Setup tag | 5-day Wins | 5-day Losses | Cumulative W/L | Status |
+|-----------|-----------|--------------|----------------|--------|
+| ai-momentum-pullback | 0 | 0 | 0/0 | Active (TSM +0.7%, NVDA +13.3% vs entry) |
+| macro-hedge | 0 | 0 | 0/0 | Active (GLD -0.37%, XLE -1.6% vs entry; oil thesis intact) |
+| breakout-volume | 0 | 0 | 0/0 | AMD 5x blocked — still pending fill |
+| sector-rotation | 0 | 0 | 0/0 | JPM -3.4% vs entry — weakening thesis |
+
+No 3-in-a-row rules triggered.
+
+---
+
+### Tomorrow's Watchlist — COMMITMENT for Pre-Market Monday May 18
+
+**Monday May 18 is the last day to enter NVDA (48-hour window before May 20 AHM earnings). FOMC minutes also May 20. High-volatility week.**
+
+| Rank | Symbol | Bucket | Setup | Score (est.) | Entry | Stop | Target | Notes |
+|------|--------|--------|-------|-------------|-------|------|--------|-------|
+| 1 | AMD | active | breakout-volume | **~7.0** | ~$420 MOO | fill×0.95 | fill×1.10 | MANDATORY 5th attempt. Re-score at Pre-Market. ATH $469, now -10.5% off ATH. Better entry than $445. |
+| 2 | XLE (add) | active | macro-hedge | **~7.5** | ~$58 MOO | $56.15 | $63.80 | Crude $105, Hormuz closed. Add 30-36sh to existing 50sh. Max 86sh total at 5% cap. |
+| 3 | PLTR | long-term | ai-momentum-pullback | **7.33** | $134.50+ | $118.36 (-12%) | $166.64 (+24%) | Conditional: re-enter ONLY if >$134 at open on volume. Est. ~$131 Friday. |
+| 4 | MU | long-term | ai-momentum-pullback | **~7.33** | ~TBD | TBD | TBD | Full 6-agent score at Pre-Market. Check earnings date first — if within 48h, skip. AI memory supercycle, HBM4. |
+| 5 | NVDA partial trim | long-term | (exit 5sh) | n/a | sell 5sh MOC | — | — | If NVDA >$225 at Monday close: sell 5 shares at MOC. Lock in ~$132 gain. Manage binary event risk. |
+| 6 | GLD (hold / reassess) | active | macro-hedge | ~7.0 | hold | $397.92 | — | Crude $105 + rate hike = stagflation → bullish for gold long-term. Consider widening target. |
+| 7 | JPM (stop tighten) | long-term | sector-rotation | review | — | $285 (proposed) | $383.47 | Tighten stop from $272.14 to ~$285 given continuing weakness. |
+| 8 | WMT | long-term | sector-rotation | **~6.5** | ~TBD | TBD | TBD | Consumer defensive. Earnings this week. Research pre-market. Rate-insensitive earnings. |
+| 9 | EOG / XOM | active | macro-hedge | **~7.0** | ~TBD | TBD | TBD | Hormuz closure = individual energy names with higher beta than XLE ETF. Research at Pre-Market. |
+| 10 | BIDU | active | sector-rotation | **~6.5** | ~TBD | TBD | TBD | Reports May 18. China trade truce positive. US-China AI cooperation thesis. Research pre-market. |
+
+**Hard commitments for May 18:** AMD (MUST ENTER, score ≥7 — 5th instruction). XLE add (oil at $105, high conviction). NVDA partial trim at Monday close (earnings risk management).
+
+---
+
+### Key Events Week of May 18-22
+
+- **Monday May 18:** Baidu (BIDU) earnings. AMD MOO target. XLE add. PLTR re-check. LAST DAY for new NVDA entries.
+- **Tuesday May 19:** Home Depot (HD) earnings. Housing starts/permits data. 
+- **Wednesday May 20:** **NVDA earnings (AHM)** + **FOMC minutes release** — DOUBLE BINARY EVENT. This is the most important day of the week. Close existing NVDA partial trim at MOC if not done Monday.
+- **Thursday May 21:** John Deere (DE) earnings. Post-NVDA reaction trade opportunities.
+- **Friday May 22:** Consumer data. End-of-week review.
+
+---
+
+```yaml
+---
+ts: 2026-05-17T06:13:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.00
+thesis: AMD re-scored at ~$420 (post-summit chip letdown pullback). ATH $469.22 on May 11, now 10.5% off ATH. Better entry than $445 previously proposed. China thesis intact (MI308 approved). 5th consecutive deployment failure — Alpaca API blocked. Operator must enter Monday May 18 at market open (MOO). Score may be updated at Pre-Market re-score.
+size_pct: 4.20
+stop: 399.00
+target: 462.00
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED (7.17 avg est., 4/6 agents >=7, Risk=7 no veto). AMD China chip deal thesis intact despite summit Day 2 disappointment — MI308 approved for limited sales. Price ~$420 is a better entry than $445 (price came down, risk/reward improved). Stop $399 (-5%), target $462 (+10%). This is the 5TH CONSECUTIVE DEPLOYMENT BIAS VIOLATION. Valid skip exemptions: (1) guardrail breach — NO; (2) binary event — NO; (3) circuit breaker — NO (portfolio not down 3%). API blockage is NOT a CLAUDE.md-valid skip exemption. OPERATOR: AMD must be entered manually before Monday May 18 market open. xAI API blocked — X sentiment not queried; scored qualitatively. NOTE: Score reflects preliminary estimate; full 6-agent re-score to be done at Pre-Market Monday May 18."
+---
+```
+
+```yaml
+---
+ts: 2026-05-17T06:13:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.00
+thesis: PLTR est. ~$131 on May 15 (market sold off -1.24%; chip letdown hit AI names). Has NOT reclaimed $134 support level. Technical score remains low. Re-entry trigger: $134 reclaimed on volume.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 2
+  sentiment: 5
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.17 avg — below 7.0; only 2/6 agents >=7; Technical=2). PLTR est. ~$131, well below $134 support. Motley Fool reports PLTR down 25% YTD as of May 15. The fundamental story (PLTR Q1: +85% YoY rev, AIP traction, government AI) remains excellent. But technical break is real. Re-entry signal: PLTR opens AND holds above $134 with above-average volume. At that point run full 6-agent re-score (est. 7.33 if Technical rises to 6). Do not force entry into a broken technical setup regardless of fundamentals."
+---
+```
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
