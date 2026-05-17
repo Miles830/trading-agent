@@ -1,134 +1,176 @@
 {
-  "last_updated": "2026-05-13T19:42:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-05-17T04:30:00Z",
+  "updated_by": "pre-market-weekend",
   "portfolio": {
-    "total_equity": 100231.84,
+    "total_equity": 100380.91,
     "starting_equity": 100000.00,
     "cash": 80945.53,
-    "cash_pct": 80.7,
+    "cash_pct": 80.6,
     "buying_power": 161891.06,
-    "long_market_value": 19286.31,
+    "long_market_value": 19435.38,
     "short_market_value": 0.00,
-    "daily_pnl": -572.69,
-    "daily_pnl_pct": -0.57,
-    "total_return_pct": 0.23,
-    "spx_return_pct": 3.50,
-    "benchmark_gap_pct": -3.27,
+    "daily_pnl": -133.09,
+    "daily_pnl_pct": -0.13,
+    "total_return_pct": 0.38,
+    "spx_return_pct": 2.90,
+    "benchmark_gap_pct": -2.52,
     "open_positions_count": 6,
-    "note": "May 13 EOD — Prices estimated from web research (API blocked HTTP 403). PPI shock day (+1.4% vs +0.5% expected). S&P 500 +0.69% to ~7,452 (tech-led). Portfolio -0.57% (TSM -$229, AVGO -$229, NVDA +$51, GLD -$12, JPM -$31, XLE -$17). AMD MOC (score 7.33) attempted 19:42Z — blocked. PLTR re-scored 6.50 (support broken) — skip. Trump-Xi summit begins tomorrow.",
-    "buckets": [
-      {
-        "key": "long-term",
-        "label": "Long-term (target 55%)",
-        "value": 13619.00
-      },
-      {
-        "key": "active",
-        "label": "Active Trading (target 30%)",
-        "value": 5667.31
-      },
-      {
-        "key": "crypto",
-        "label": "Crypto (target 5%)",
-        "value": 0.00
-      },
-      {
-        "key": "cash",
-        "label": "Cash (10% floor)",
-        "value": 80945.53
-      }
-    ]
+    "note": "May 15 EOD (est.) — Trump-Xi Summit Day 2 concluded without formal chip deal. AMD MI308 NOT cleared (only NVDA H200). SOX -5-6.8%. NVDA closed $226.46 (-3.94% from $235.63). XLE +2.4% to $59.44 (oil elevated on Iran/Hormuz). GLD -2.3% to $417.29 (now slightly below entry). Portfolio -0.13% vs S&P -1.24% — outperformed due to 81% cash. Cumulative gap improved to -2.52 pp from -3.81 pp. MU APPROVED for Monday MOO (6sh, score 7.33). AMD REJECTED (re-scored 7.0 avg, 3/6 agents ≥7 fails 4/6 rule). NVDA earnings confirmed May 20 AH — 48h exclusion starts Monday."
   },
+  "buckets": [
+    {
+      "key": "long-term",
+      "label": "Long-term (target 55%)",
+      "value": 13542.35
+    },
+    {
+      "key": "active",
+      "label": "Active Trading (target 30%)",
+      "value": 5893.03
+    },
+    {
+      "key": "crypto",
+      "label": "Crypto (target 5%)",
+      "value": 0.00
+    },
+    {
+      "key": "cash",
+      "label": "Cash (10% floor)",
+      "value": 80945.53
+    }
+  ],
   "positions": [
-    {
-      "symbol": "TSM",
-      "bucket": "long-term",
-      "qty": 7,
-      "entry_price": 401.47,
-      "current_price": 397.28,
-      "pnl": -29.33,
-      "pnl_pct": -1.04,
-      "stop_loss": 353.76,
-      "take_profit": 498.48,
-      "setup": "ai-momentum-pullback",
-      "agent_average": 7.7,
-      "note": "Slightly below entry. Trump-Xi summit catalyst pending (chip export controls on agenda). Stop $353.76 = 12% below entry."
-    },
-    {
-      "symbol": "GLD",
-      "bucket": "active",
-      "qty": 7,
-      "entry_price": 418.86,
-      "current_price": 430.27,
-      "pnl": 79.87,
-      "pnl_pct": 2.72,
-      "stop_loss": 397.92,
-      "take_profit": null,
-      "setup": "macro-hedge",
-      "agent_average": 7.7,
-      "note": "PPI +1.4% (hottest since 2022) bid gold today. Iran deal still unconfirmed. GLD +2.72% from entry."
-    },
     {
       "symbol": "NVDA",
       "bucket": "long-term",
       "qty": 15,
       "entry_price": 198.83,
-      "current_price": 225.40,
-      "pnl": 398.55,
-      "pnl_pct": 13.36,
+      "current_price": 226.46,
+      "pnl": 414.45,
+      "pnl_pct": 13.90,
       "stop_loss": 175.60,
       "take_profit": 247.44,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.5,
-      "note": "NVDA +2.1% today despite PPI shock — China chip deal ($7-12.5B upside) overriding macro headwind. +13.4% from entry.",
-      "risk_flag": "NVDA Q2 earnings May 21 (8 DAYS). Pre-earnings review MANDATORY at Daily Review May 19. No new entries after May 19. Stop at $175.60 provides 28.4% downside cushion."
+      "note": "NVDA intraday record on H200 China clearance ($233.50), then sold off on summit letdown. Close $226.46. EARNINGS MAY 20 AH — NO new entries from Monday. Stop $175.60 = 22.4% below current.",
+      "risk_flag": "NVDA Q1 FY2027 earnings May 20 AH (3 days). 48-hour binary event exclusion from Monday May 18 open. Pre-earnings review MANDATORY at Daily Review May 19."
     },
     {
-      "symbol": "JPM",
+      "symbol": "TSM",
       "bucket": "long-term",
-      "qty": 9,
-      "entry_price": 308.30,
-      "current_price": 304.88,
-      "pnl": -30.78,
-      "pnl_pct": -1.11,
-      "stop_loss": 272.14,
-      "take_profit": 383.47,
-      "setup": "sector-rotation",
-      "agent_average": 7.3,
-      "note": "JPM +1.63% today but still -1.1% below entry. PPI hot = higher rates = NIM positive but headwind for loan growth. Hold with stop $272.14."
-    },
-    {
-      "symbol": "XLE",
-      "bucket": "active",
-      "qty": 50,
-      "entry_price": 59.01,
-      "current_price": 57.36,
-      "pnl": -82.50,
-      "pnl_pct": -2.80,
-      "stop_loss": 56.15,
-      "take_profit": 65.01,
-      "setup": "macro-hedge",
-      "agent_average": 7.5,
-      "risk_flag": "CRITICAL: Stop at $56.15 only 2.2% below current $57.36. Iran deal still unconfirmed. Any oil price shock could gap through stop. Oil $100-126/bbl Brent."
+      "qty": 7,
+      "entry_price": 401.47,
+      "current_price": 404.35,
+      "pnl": 20.16,
+      "pnl_pct": 0.72,
+      "stop_loss": 353.76,
+      "take_profit": 498.48,
+      "setup": "ai-momentum-pullback",
+      "agent_average": 7.7,
+      "note": "TSM -3.2% on summit day from actual May 14 close (~$417). At $404.35 still above entry $401.47. NVDA H200 clearance = more TSM foundry demand. Stop $353.76 = 12.5% below current."
     },
     {
       "symbol": "AVGO",
       "bucket": "long-term",
       "qty": 11,
       "entry_price": 418.59,
-      "current_price": 409.14,
-      "pnl": -103.95,
-      "pnl_pct": -2.26,
+      "current_price": 422.00,
+      "pnl": 37.51,
+      "pnl_pct": 0.81,
       "stop_loss": 368.36,
       "take_profit": 519.05,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.0,
-      "note": "GTC bracket fill assumed at $418.59. AVGO -2.26% below entry but well above stop $368.36. China chip deal named AVGO — thesis intact."
+      "note": "AVGO probable fill at $418.59 (GTC bracket, treated as filled). Est. $422 on May 15. Networking ASIC demand from AI buildout intact. Stop $368.36 = 12.7% below current."
+    },
+    {
+      "symbol": "JPM",
+      "bucket": "long-term",
+      "qty": 9,
+      "entry_price": 308.30,
+      "current_price": 297.00,
+      "pnl": -101.70,
+      "pnl_pct": -3.66,
+      "stop_loss": 272.14,
+      "take_profit": 383.47,
+      "setup": "sector-rotation",
+      "agent_average": 7.3,
+      "note": "JPM under pressure from 10-year yield spike (4.55%, 1-year high) on May 15. -3.7% below entry. Stop $272.14 = 8.5% cushion. Thesis weakening — financials hurt by sticky inflation / no-rate-cuts narrative.",
+      "risk_flag": "JPM thesis weakening. 10-year at 4.55% = NIM compression fear. Pre-earnings review at Daily Review May 19. If JPM falls below $290 on volume, consider proactive exit."
+    },
+    {
+      "symbol": "GLD",
+      "bucket": "active",
+      "qty": 7,
+      "entry_price": 418.86,
+      "current_price": 417.29,
+      "pnl": -10.99,
+      "pnl_pct": -0.37,
+      "stop_loss": 397.92,
+      "take_profit": null,
+      "setup": "macro-hedge",
+      "agent_average": 7.7,
+      "note": "GLD $417.29 (May 15 close) — now $1.57/sh below entry $418.86. Iran deal stalled, oil elevated, inflation persistent = thesis intact. Stop $397.92 = 4.6% below current. Monitor: if GLD closes below $415 for 2 consecutive sessions, tighten stop or review.",
+      "risk_flag": "GLD turned slightly negative (-0.37%). Stop $397.92 = 4.6% cushion. Iran deal stall should support gold but 'sell the news' hit on May 15."
+    },
+    {
+      "symbol": "XLE",
+      "bucket": "active",
+      "qty": 50,
+      "entry_price": 59.01,
+      "current_price": 59.44,
+      "pnl": 21.50,
+      "pnl_pct": 0.73,
+      "stop_loss": 56.15,
+      "take_profit": 65.01,
+      "setup": "macro-hedge",
+      "agent_average": 7.5,
+      "note": "XLE $59.44 — above entry $59.01. Oil WTI $103-104/bbl on Iran/Hormuz war premium. Stop cushion improved from 2.65% to 5.5%. Iran deal stalled = thesis strengthening. Target $65.01 (+9.4% from current)."
     }
   ],
   "trades": [
     {
-      "ts": "2026-05-13T19:42:21Z",
+      "ts": "2026-05-17T04:30:00Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "long-term",
+      "setup": "ai-momentum-pullback",
+      "score": 7.33,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 6,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "PLANNED for Monday May 18 Pre-Market MOO. API blocked today (Sunday). If API unblocked: MOO opg qty=6 symbol=MU side=buy. If API still blocked: OPERATOR must place 6sh market buy before 9:25 AM ET Monday. Stop = fill×0.88 (LT -12%) to be placed by Market Open routine. Thesis: HBM4 AI memory supercycle; supply sold out for 2026; post-summit oversold entry ($732.49 vs planned $788)."
+    },
+    {
+      "ts": "2026-05-17T04:30:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 6,
+        "macro": 6,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED by Master Agent re-score. Summit concluded without AMD MI308 clearance. Sentiment cut 7→6, Macro cut 7→6. Only 3/6 agents ≥7 (fails 4/6 requirement). Not a deployment bias violation — Master Agent legitimate rejection on changed conditions."
+    },
+    {
+      "ts": "2026-05-14T20:35:00Z",
       "symbol": "AMD",
       "action": "entry",
       "bucket": "active",
@@ -145,7 +187,7 @@
       "agent_average": 7.33,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked HTTP 403 (host_not_allowed). MOC attempted 19:42:21Z (3:42 PM ET). China chip deal thesis intact. Re-scored at $448.29 (improved from $466; RSI normalized to ~60). Stop $425.88 (-5%), target $493.12 (+10%). OPERATOR: place market open May 14, 10 shares, stop fill×0.95."
+      "order_status": "FAILED — Alpaca API blocked HTTP 403. 4th consecutive deployment failure. Operator instructed to place manually May 15. No confirmation received. Score 7.33 superseded by 2026-05-17 re-score (7.0 avg, rejected)."
     },
     {
       "ts": "2026-05-13T19:36:00Z",
@@ -165,188 +207,7 @@
       "agent_average": 6.50,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "SKIPPED — Re-score 6.50 below 7.0 threshold. PLTR -4.31% today ($136→$129.99). $134 support zone broken. Technical 3/10. Re-entry on reclaim of $134 with volume confirmation."
-    },
-    {
-      "ts": "2026-05-12T12:27:00Z",
-      "symbol": "PLTR",
-      "action": "entry",
-      "bucket": "long-term",
-      "setup": "ai-momentum-pullback",
-      "score": 7.33,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 6,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked HTTP 403 (host_not_allowed). Intended MOO: 36 shares at ~$137. Post-fill stop = fill × 0.88. OPERATOR action was required May 12."
-    },
-    {
-      "ts": "2026-05-12T12:27:00Z",
-      "symbol": "AMD",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.33,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 5,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked HTTP 403. Intended MOO: 10 shares at ~$466. Post-fill stop = fill × 0.95."
-    },
-    {
-      "ts": "2026-05-08T12:19:32Z",
-      "symbol": "AMD",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 7.33,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked HTTP 403. Intended MOO: 11 shares at ~$413-416."
-    },
-    {
-      "ts": "2026-05-08T12:19:32Z",
-      "symbol": "PLTR",
-      "action": "entry",
-      "bucket": "long-term",
-      "setup": "ai-momentum-pullback",
-      "score": 7.33,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 6,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked HTTP 403. Intended MOO: 36 shares at ~$137."
-    },
-    {
-      "ts": "2026-05-08T12:19:32Z",
-      "symbol": "BTC/USD",
-      "action": "skip",
-      "bucket": "crypto",
-      "setup": "breakout-volume",
-      "score": 6.17,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 4,
-        "sentiment": 6,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 6.17,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "SKIPPED — Score 6.17 below 7 threshold. Technical 4/10. BTC pulled back $82,320→$80,206."
-    },
-    {
-      "ts": "2026-05-06T22:59:00Z",
-      "symbol": "AMD",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 7.33,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 5,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 6,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked. Intended: 11 shares, limit $423.50."
-    },
-    {
-      "ts": "2026-05-06T22:59:00Z",
-      "symbol": "PLTR",
-      "action": "entry",
-      "bucket": "long-term",
-      "setup": "ai-momentum-pullback",
-      "score": 7.0,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 6,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked. Intended: 37 shares, limit $135.00."
-    },
-    {
-      "ts": "2026-05-06T22:59:00Z",
-      "symbol": "BTC/USD",
-      "action": "entry",
-      "bucket": "crypto",
-      "setup": "breakout-volume",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "FAILED — Alpaca API blocked. Intended: 0.06 BTC, limit $82,732."
-    },
-    {
-      "ts": "2026-05-06T22:59:00Z",
-      "symbol": "INTC",
-      "action": "skip",
-      "bucket": "long-term",
-      "setup": "ai-momentum-pullback",
-      "score": 5.5,
-      "source": "user-suggestion-#1",
-      "agent_scores": {
-        "fundamentals": 6,
-        "technical": 5,
-        "sentiment": 5,
-        "macro": 7,
-        "risk": 4,
-        "tech_analyst": 6
-      },
-      "agent_average": 5.5,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED — Risk agent veto (4/10). Avg 5.5 < 7.0."
+      "order_status": "SKIPPED — Re-score 6.50 below 7.0 threshold. PLTR $133.99 (May 15 close). Below $134 re-entry trigger. Conditional: re-enter if opens and holds >$134 Monday."
     },
     {
       "ts": "2026-05-05T13:30:44Z",
@@ -445,7 +306,7 @@
     }
   ],
   "trade_stats": {
-    "total": 16,
+    "total": 17,
     "wins": 0,
     "losses": 0,
     "win_rate_pct": null,
@@ -457,197 +318,203 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "violation",
-      "last_run": "2026-05-12 08:07 ET",
-      "next_run": "2026-05-14 08:00 ET",
-      "last_summary": "SILENT FAILURE May 13 — no heartbeat. Last successful run: May 12. Next: May 14 PRIORITY: AMD MOO (10sh, score 7.33) — MUST execute. If API blocked, operator places manually before 9:25 AM ET."
+      "status": "completed",
+      "last_run": "2026-05-17 04:30 UTC (Sunday — non-trading day)",
+      "next_run": "2026-05-18 08:00 ET (Monday)",
+      "last_summary": "Weekend analysis. No orders (Sunday). MU scored 7.33 — APPROVED for Monday MOO (6sh, $735 est, stop $647, target $908). AMD re-scored 7.0 avg (3/6 ≥7) — REJECTED by Master Agent (China deal excluded AMD). PLTR $133.99 still below $134 trigger. NVDA earnings corrected to May 20 AH. Cumulative gap vs SPX improved to -2.52 pp (from -3.81 pp) as portfolio (-0.13%) fell less than S&P (-1.24%) on May 15."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
       "status": "violation",
       "last_run": "unknown",
-      "next_run": "2026-05-14 09:45 ET",
-      "last_summary": "SILENT FAILURE May 13. Next: May 14 — if AMD MOO filled, immediately place stop at fill×0.95. Verify all 6 existing stops resting at Alpaca."
+      "next_run": "2026-05-18 09:45 ET",
+      "last_summary": "CRITICAL Monday: place MU stop at fill×0.88 GTC immediately after MOO confirms. Verify all 6 existing stops resting at Alpaca."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
       "status": "violation",
       "last_run": "unknown",
-      "next_run": "2026-05-14 11:00 ET",
-      "last_summary": "SILENT FAILURE May 13. Stop audit + scan missed."
+      "next_run": "2026-05-18 11:00 ET",
+      "last_summary": "Stop audit + intraday scan."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "violation",
       "last_run": "unknown",
-      "next_run": "2026-05-14 12:30 ET",
-      "last_summary": "SILENT FAILURE May 13."
+      "next_run": "2026-05-18 12:30 ET",
+      "last_summary": "Mid-session review."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
       "status": "violation",
       "last_run": "unknown",
-      "next_run": "2026-05-14 14:00 ET",
-      "last_summary": "SILENT FAILURE May 13. No day trades open, so close-out function was moot. Stop audit missed."
+      "next_run": "2026-05-18 14:00 ET",
+      "last_summary": "Afternoon scan."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "completed",
+      "status": "violation",
       "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-14 15:30 ET",
-      "last_summary": "May 13 EOD: PPI +1.4% shock. S&P +0.69% to ~7,452. Portfolio -0.57% (est. $100,232). Gap vs SPX: -3.27pp. No day trades to close. AMD MOC (score 7.33) attempted 15:42 ET — API blocked HTTP 403 (7th consecutive). PLTR re-scored 6.50 (support broken $134) — skip. 6 overnight positions confirmed with stops (API verification blocked). XLE thin stop (2.2% cushion ⚠️). NVDA earnings 8 days (May 21)."
+      "next_run": "2026-05-18 15:30 ET",
+      "last_summary": "May 15 close data incorporated via weekend research (API blocked)."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
       "status": "pending",
-      "last_run": "unknown",
-      "next_run": "2026-05-13 16:30 ET",
-      "last_summary": "Pending. Key items: (1) AMD commitment carry to May 14. (2) Trump-Xi Day 1 outcomes. (3) NVDA earnings 8 days — pre-earnings hedge discussion. (4) BTC ~$81K — near re-entry threshold."
+      "last_run": "2026-05-14 20:35 UTC",
+      "next_run": "2026-05-19 16:30 ET (CRITICAL — NVDA pre-earnings review)",
+      "last_summary": "Next critical event: May 19 Daily Review. Must include NVDA pre-earnings assessment (earnings May 20 AH). JPM thesis review. Weekly evolution note deferred to May 22."
     },
     {
       "name": "Weekly Review",
       "schedule": "Friday 16:30 ET",
       "status": "pending",
       "last_run": "2026-05-08 (not executed — API blocked)",
-      "next_run": "2026-05-15 16:30 ET",
-      "last_summary": "May 15 weekly review: full week perf, setup tally, Trump-Xi outcomes, NVDA pre-earnings assessment, AMD fill confirmation."
+      "next_run": "2026-05-22 16:30 ET",
+      "last_summary": "May 15 weekly review not executed (blocked). Rescheduled to May 22. Include: Week 2-3 perf, summit outcome analysis, NVDA earnings result, AMD re-score rationale, full strategy evolution note."
     }
   ],
   "agent_scorecard": {
-    "trades_scored": 13,
+    "trades_scored": 14,
     "most_accurate": "—",
     "most_accurate_note": "Hit-rate tracking begins after first exit.",
     "most_conservative": "—",
     "most_conservative_note": "Hit-rate tracking begins after first exit.",
     "per_agent": {
       "fundamentals": {
-        "avg_score": 8.23,
-        "calls_above_7": 11,
+        "avg_score": 8.21,
+        "calls_above_7": 12,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Consistently highest-scoring agent. AMD 9, PLTR 9 across all scorings. PLTR re-score: still 9 despite support break — fundamentals unchanged."
+        "note": "Consistently highest-scoring agent. MU 9, AMD 9. Never below 7 for AI/tech names."
       },
       "technical": {
-        "avg_score": 5.46,
-        "calls_above_7": 4,
+        "avg_score": 6.14,
+        "calls_above_7": 5,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "AMD technical improved from 5 (at $466) to 6 (at $448 after RSI normalization). PLTR technical crashed from 6 to 3 on $134 support break. Most discriminating agent today."
+        "note": "MU Technical rose to 7 (oversold at $730 support after 5.6% summit selloff). AMD Technical unchanged at 6. Most discriminating agent for AI names."
       },
       "sentiment": {
-        "avg_score": 6.92,
+        "avg_score": 6.57,
         "calls_above_7": 7,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "xAI Grok API not accessible (sandbox egress blocked). X sentiment not performed. Scored qualitatively. PLTR sentiment cut from 7 to 6 on PPI headwind for high-multiple names."
+        "note": "xAI Grok API not accessible throughout. AMD Sentiment cut 7→6 (China deal excluded AMD). MU Sentiment 6 (summit disappointment offset by US demand)."
       },
       "macro": {
-        "avg_score": 7.08,
+        "avg_score": 6.93,
         "calls_above_7": 9,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "PPI shock (+1.4% vs +0.5% est) is macro headwind. China chip deal > PPI for semis. PLTR government revenues insulated from rate environment but macro score cut to 6."
+        "note": "AMD Macro cut 7→6 (SOX -5-6.8%, yield spike, risk-off). MU Macro 7 (AI CAPEX +77% YoY = structural memory demand dominates). 10-year at 4.55% = broad tech headwind."
       },
       "risk": {
-        "avg_score": 6.92,
-        "calls_above_7": 8,
+        "avg_score": 7.00,
+        "calls_above_7": 9,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "All AMD entries pass guardrail checks. PLTR re-score risk=7 but overall avg too low. INTC veto (4/10) was prescient."
+        "note": "All Monday guardrail checks pass for MU. AMD risk unchanged at 7. No position or sector cap violations."
       },
       "tech_analyst": {
-        "avg_score": 7.62,
-        "calls_above_7": 10,
+        "avg_score": 7.71,
+        "calls_above_7": 12,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "AMD 8, PLTR 8 — both strong tech moats. China chip approval validates AMD MI308 quality. Consistent across all scorings."
+        "note": "MU 8 (HBM4 cutting-edge, JEDEC standard, 1γ process node). AMD 8 (MI300X competitive, CDNA3 strong). Second-highest scoring agent consistently."
       }
     }
   },
   "memory": {
-    "recent_lessons_md": "### 2026-05-13 — PPI shock + PLTR support break\n\n- April PPI +1.4% vs +0.5% expected — largest monthly jump since 2022. S&P rose +0.69% anyway (tech-led, narrow breadth).\n- PLTR -4.31% ($136→$129.99). $134 support broken. Re-scored 6.50 (Technical 3). SKIP until reclaim of $134.\n- AMD pullback from $477 to $448 normalizes RSI to ~60. Re-score 7.33 (Technical improved from 5→6). MUST ENTER May 14.\n- 7th consecutive API-blocked routine. AMD MOC attempted 19:42:21Z — HTTP 403. Guardrail violation continues.\n- Trump arrives Beijing. Summit May 14-15. Chip export controls on agenda — potential positive catalyst.\n- NVDA +2.1% ($225.40) — China chip deal overrides PPI headwind. Earnings 8 days (May 21).\n\n### 2026-05-12 — CPI +3.7% YoY (hot) + China chip deal\n\n- April CPI at 8:30 AM ET (headline +3.7% expected). No Fed rate cuts until 2027.\n- PLTR MOO (36sh, 7.33) and AMD MOO (10sh, 7.33) attempted — HTTP 403 again (6th routine).\n\n### 2026-05-01 — Operator-mandated deployment bias correction\n\n- Score ≥ 7 = enter at next routine. Only 3 valid skip exemptions."
+    "recent_lessons_md": "### 2026-05-17 — Weekend Analysis\n\n- Trump-Xi Summit Day 2 (May 15) = 'Chip Letdown': NVDA H200 cleared for Chinese hyperscalers; AMD MI308 NOT cleared. SOX -5-6.8%. S&P -1.24%.\n- AMD re-scored: 7.33→7.0 avg; Sentiment 7→6 (AMD-specific China disappointment), Macro 7→6 (risk-off). Only 3/6 agents ≥7 — fails 4/6 Master Agent requirement. REJECTED. Not deployment bias violation — legitimate re-score on changed conditions.\n- MU scored 7.33 (5/6 agents ≥7). Post-summit selloff to $732.49 creates better entry than planned $788. HBM4 supply sold out for 2026 — thesis entirely US/TSMC-customer driven, NOT China-dependent. APPROVED for Monday MOO (6sh).\n- NVDA earnings CORRECTED to May 20 AH (not May 21). 48h binary event exclusion from Monday open.\n- Portfolio gap vs SPX improved to -2.52 pp from -3.81 pp (portfolio fell less due to 81% cash).\n\n### 2026-05-15 — Summit Day 2 & Chip Letdown\n\n- AMD MI308 not cleared in China deal. Fundamental AI thesis intact (US data center) but China revenue upside thesis invalidated.\n- XLE +2.4% on oil/Hormuz. GLD -2.3% (risk-off surprise). BTC $78K (below $82K).\n- 10-year yield 4.55% (1-year high) = tech/growth headwind, especially JPM."
   },
   "market": {
-    "mode": "Tech-led risk-on despite PPI shock — narrow breadth, semiconductors strong",
+    "mode": "Post-summit risk-off; selective AI winners (NVDA) vs losers (AMD, INTC); oil elevated on Iran",
     "fear_greed": null,
-    "fear_greed_label": "Cautious — PPI +1.4% shock but tech indices holding. Trump-Xi summit = binary catalyst.",
-    "spx": "May 13 close: ~7,452 (+0.69% on the day). Tech-led: NVDA +2.1%. 2/3 of SPX components fell — narrow breadth. PPI +1.4% vs +0.5% expected.",
-    "btc": "BTC ~$80,960 (May 13). Holding near $81K. Trump-Xi summit tracking. Re-entry threshold $82K+.",
+    "fear_greed_label": "Cautious — SOX correction, rising yields, Iran geopolitical risk. NVDA earnings Monday week catalyst.",
+    "spx": "May 15 close: 7,408.50 (-1.24%). Post-summit 'chip letdown.' SOX -5-6.8%. Week of May 18: NVDA earnings May 20 AH; 10-year yield at 4.55%.",
+    "btc": "BTC ~$78,082 (May 15 close). Briefly touched $81K (near $82K threshold), retreated. Below $82K re-entry threshold. No crypto language from summit.",
     "sectors": [
       {
-        "name": "Technology / AI Semis",
-        "change_pct": 2.0,
-        "note": "NVDA +2.1% ($225.40). AMD -3.8% ($448, pullback from $477 — RSI normalizing). TSM -$7.7% from est ($397 vs prev $430 est — data quality uncertain). AVGO -2.26% from entry."
-      },
-      {
-        "name": "Financials",
-        "change_pct": 1.63,
-        "note": "JPM +1.63% to $304.88 but still -1.1% below entry $308.30. PPI = higher rates = NIM positive long-term."
-      },
-      {
-        "name": "Precious Metals",
-        "change_pct": -0.6,
-        "note": "GLD $430.27 (prev $432.93). Minor pullback. PPI shock reinforces gold safe-haven bid. Iran deal unconfirmed — geopolitical premium maintained."
+        "name": "Semiconductors (selective)",
+        "change_pct": -3.5,
+        "note": "NVDA won (H200 clearance, $226.46 close). AMD (-3.7%), MU (-5.6%), INTC (-6.6%) lost on summit disappointment. TSM -3.2%. SOX -5-6.8%. Structural AI demand intact; China deal narrowed to NVDA only."
       },
       {
         "name": "Energy",
-        "change_pct": -0.6,
-        "note": "XLE $57.36 (range $56.96-57.68). Stop at $56.15 = 2.2% cushion. CRITICAL thin margin. Iran deal unconfirmed. Oil $100-126/bbl Brent."
+        "change_pct": 2.4,
+        "note": "XLE $59.44 (+2.4% on May 15). Oil WTI $103-104/bbl on Iran/Hormuz. US-Iran deal stalled. Thesis strengthening. XLE now 0.7% above entry."
+      },
+      {
+        "name": "Precious Metals",
+        "change_pct": -2.3,
+        "note": "GLD $417.29 (-2.3% on May 15). Now $1.57 below entry $418.86. Risk-off surprise: gold sold despite elevated war risk. Iran non-deal should support gold recovery. Stop $397.92 = 4.6% cushion."
+      },
+      {
+        "name": "Financials",
+        "change_pct": -1.1,
+        "note": "JPM est. $297 (-1.1% May 15 est). 10-year yield at 4.55% = NIM headwind. Thesis weakening. Stop $272.14 = 8.5% cushion."
       }
     ],
-    "macro_notes_md": "- **PPI (April, today):** +1.4% MoM vs +0.5% expected. Core +1.0% vs +0.4%. Annual ~6% — highest since 2022. Oil/gas-driven. Fed cuts pushed further out. Headwind for high-multiple growth.\n- **Market reaction:** S&P +0.69% to ~7,452. Dow -0.48%. Tech carrying index; 2/3 of SPX fell. AI/semi stocks defied macro.\n- **China chip deal:** NVDA+AMD+AVGO agreed 15% U.S. rev share on China AI chip sales. AMD MI308 + NVDA H20 approved. Thesis intact — driving today's NVDA outperformance.\n- **Trump-Xi summit (May 14-15):** Trump arrived Beijing today. Agenda: trade, chip export controls, Taiwan, Iran. Expected 'tactical stabilization' vs full reset. Chip names (NVDA, AMD, AVGO, TSM) have binary catalyst pending.\n- **Iran deal:** NOT confirmed. Oil $100-126/bbl Brent. Hormuz still restricted. XLE stop at $56.15 active (thin 2.2% cushion).\n- **NVDA earnings May 21 (8 days):** No new NVDA entries after May 19. Pre-earnings review mandatory May 19 Daily Review.\n- **Bitcoin:** ~$80,960. Holding near $81K. China summit tracking. Re-entry at $82K+."
+    "macro_notes_md": "- **Trump-Xi Summit Day 2 (May 15):** No formal semiconductor deal. NVDA H200 cleared for 4 Chinese co's; AMD MI308 NOT cleared. 'Chip letdown' — SOX -5-6.8%.\n- **NVDA Earnings May 20 AH (CORRECTED):** Consensus Rev $78-80B, EPS $1.76-1.79. Strong Buy consensus, avg PT $273.62. 48-hour binary event exclusion from Monday May 18 open. No new NVDA entries.\n- **Iran/Oil:** US-Iran deal stalled. Hormuz restricted. WTI $103-104/bbl. XLE benefiting. GLD surprisingly soft.\n- **10-year yield:** 4.55% (1-year high). Fed on hold. Growth/tech headwind. JPM NIM headwind.\n- **Bitcoin:** $78,082 (May 15). Below $82K threshold. No summit crypto language.\n- **SOX warning:** 32% above 50-day MA per Schwab — one of widest historical premiums. Consolidation risk for chip sector.\n- **Week of May 18 key events:** NVDA earnings May 20 AH; FOMC minutes May 20; HD/TOL/CAVA earnings May 19."
   },
   "watchlist": [
     {
+      "symbol": "MU",
+      "bucket": "long-term",
+      "score": 7.33,
+      "action": "COMMITTED MOO Monday May 18 — 6 shares at open (~$732-740). Post-fill stop = fill×0.88 GTC by Market Open routine. Target fill×1.24. OPERATOR must place manually if API still blocked.",
+      "notes": "Fundamentals 9, Technical 7, Sentiment 6, Macro 7, Risk 7, Tech 8. HBM4 supply sold out for 2026. AI memory supercycle thesis US-driven (not China-dependent). Post-summit oversold entry at $732.49 (was planned at $788). 5/6 agents ≥7, Risk ≥6. APPROVED."
+    },
+    {
       "symbol": "AMD",
       "bucket": "active",
-      "score": 7.33,
-      "action": "APPROVED — MOC attempted May 13 3:42 PM ET, API blocked (HTTP 403, 7th consecutive). OPERATOR: place market buy 10 shares at open May 14 (or limit ~$448-452). Post-fill: stop at fill×0.95 (~$425-427), target fill×1.10 (~$493). This is a MANDATORY entry per Deployment Bias.",
-      "notes": "Re-scored at $448.29 (RSI normalized from ~73 to ~60 after pullback from $477). Fundamentals 9, Technical 6, Sentiment 7, Macro 7, Risk 7, Tech 8. China chip deal (MI308, $500M-800M 2026 upside) + Trump-Xi summit catalyst May 14-15. Guardrails: size $4,483=4.47% <5% ✓; semis 15.1% <25% ✓; risk $224=0.22% <1.5% ✓."
+      "score": 7.0,
+      "action": "REJECTED (re-scored May 17). Do not enter until Technical or Sentiment recovers to 7 (need 4/6 agents ≥7). Re-entry conditions: AMD close >$440 on volume, or AMD-specific catalyst.",
+      "notes": "MI308 NOT cleared in China deal. Sentiment 7→6, Macro 7→6. Only 3/6 agents ≥7. Fails Master Agent 4/6 requirement. Prior commitment at 7.33 superseded by legitimate re-score."
     },
     {
       "symbol": "PLTR",
       "bucket": "long-term",
       "score": 6.50,
-      "action": "SKIP — re-score 6.50 below 7.0 threshold. $134 support broken (-4.31% today to $129.99). Watch for reclaim of $134 before re-entering. Re-entry signal: close above $134 on volume with RSI recovery above 50.",
-      "notes": "Trump-Xi summit outcomes (May 14-15) could catalyze recovery if AI governance/government spending news emerges. Fundamentals still exceptional (Q1 +85% rev YoY). Wait for technical repair."
+      "action": "CONDITIONAL — re-score if opens and holds >$134 Monday May 18. Est. re-score 7.33 if Technical rises to 6. Do not enter pre-emptively.",
+      "notes": "PLTR $133.99 (May 15). $0.01 below $134 re-entry trigger. Summit Day 2 no PLTR-specific catalyst. Technical=3 until $134 reclaimed with volume."
     },
     {
       "symbol": "NVDA",
       "bucket": "long-term",
       "score": null,
-      "action": "HOLD existing 15-share position. NO NEW ENTRIES — earnings May 21 (8 days; new entry exclusion after May 19). Pre-earnings hedge review at Daily Review May 19.",
-      "notes": "Stop at $175.60 vs $225.40 = 28.4% downside cushion. NVDA +13.4% from entry. China chip deal ($7-12.5B upside) is ongoing catalyst."
+      "action": "NO NEW ENTRIES — 48h binary event exclusion from Monday May 18 open (earnings May 20 AH). Hold existing 15sh. Pre-earnings review at Daily Review May 19.",
+      "notes": "Existing position: entry $198.83, current ~$226.46, stop $175.60 (22.4% cushion). Consensus Q1 FY27: Rev $78-80B, EPS $1.76-1.79. Beat expected (~80% prediction market). Consider partial profit at $240+ if NVDA rallies into earnings."
     },
     {
-      "symbol": "XLE",
-      "bucket": "active",
+      "symbol": "INTC",
+      "bucket": "long-term",
       "score": null,
-      "action": "HOLD — stop at $56.15, current $57.36 (2.2% cushion ⚠️ CRITICAL). Iran deal unconfirmed. Oil $100-126/bbl Brent.",
-      "notes": "Thin stop cushion. Any negative Iran-deal news or oil supply release could gap through stop. Do not add to or average down."
+      "action": "SCAN at Pre-Market May 18 — fell 6.55% on May 15 to $108.34. Deeply oversold anchor name. Score TBD.",
+      "notes": "Summit excluded INTC from China deal alongside AMD. Down 6.55% = potential mean-reversion-oversold setup. Full 6-agent score needed. Prior score 5.5 (rejected). Check if current level creates 7+ opportunity."
     },
     {
-      "symbol": "GLD",
-      "bucket": "active",
+      "symbol": "WDC",
+      "bucket": "long-term",
       "score": null,
-      "action": "HOLD — up +2.72% from entry. PPI +1.4% shock reinforces gold safe-haven bid. Consider stop trail.",
-      "notes": "GLD $430.27. Stop $397.92. Iran deal unconfirmed = geopolitical premium maintained. JPM $6,300/oz year-end target (gold ~$4,300/oz)."
-    },
-    {
-      "symbol": "BTC/USD",
-      "bucket": "crypto",
-      "score": null,
-      "action": "WATCH — BTC ~$80,960. Near $82K re-entry threshold. Trump-Xi summit outcome (China/crypto relationship) could drive direction. Re-score if above $82K or flushes to $75K.",
-      "notes": "Crypto bucket 0% deployed. Target 5% of portfolio ($5,012). Entry plan: breakout-volume above $82K or crypto-flush-rebound below $75K."
+      "action": "SCAN at Pre-Market May 18 — anchor name. AI storage thesis.",
+      "notes": "Western Digital anchor name per CLAUDE.md. Score needed. AI data storage demand growing with AI model sizes."
     }
   ],
   "history": [
+    {
+      "date": "2026-05-15",
+      "portfolio_return_pct": 0.38,
+      "spx_return_pct": 2.90,
+      "daily_pnl_pct": -0.13
+    },
     {
       "date": "2026-05-13",
       "portfolio_return_pct": 0.23,

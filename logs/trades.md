@@ -4,6 +4,168 @@
 
 ---
 
+## 2026-05-17 — Pre-Market Weekend Analysis (Non-Trading Day — Sunday)
+
+**Context:** Sunday May 17, 2026. NOT a trading day per CLAUDE.md ("No routines on weekends or market holidays"). Pre-Market routine was invoked; no orders can be placed today. Weekend research completed to prepare Monday May 18 plan. Alpaca API remains blocked (HTTP 403 "Host not in allowlist"). User suggestion inbox: no open `user-suggestion` issues found via GitHub MCP.
+
+**Key events since last Daily Review (May 14 Thursday):**
+- **Trump-Xi Summit Day 2 (May 15):** Concluded WITHOUT formal semiconductor export-control framework. NVDA H200 cleared for Alibaba/Tencent/ByteDance/JD.com; AMD MI308 NOT cleared. No China AI chip policy agreement. "Chip letdown" — SOX -5 to -6.8% intraday on May 15.
+- **S&P 500 May 15:** Closed 7,408.50 (-1.24%). Dow, Nasdaq also declined. Post-summit profit-taking.
+- **NVDA May 15:** Opened at record high ~$233-234 (H200 news), then sold off. Close: **$226.46** (-3.94% from $235.63). Stop $175.60 provides +28.8% cushion.
+- **AMD May 15:** **$433.06** (-3.7%). MI308 not cleared = China revenue upside thesis invalidated. Re-scored this session — see YAML below.
+- **MU May 15:** **$732.49** (-5.61%). Summit selloff creates better entry than originally planned ~$788. Re-scored this session — see YAML below.
+- **TSM May 15:** **$404.35** (-3.2% from actual May 14 close ~$417-418). Still above entry $401.47; stop $353.76 intact.
+- **GLD May 15:** **$417.29** (-2.3%). Now slightly below entry $418.86 but above stop $397.92. Iran deal still unconfirmed; oil elevated. Inflation thesis intact.
+- **XLE May 15:** **$59.44** (+2.4%). Now above entry $59.01. Oil WTI ~$103-104/bbl on Hormuz closure. Iran deal unconfirmed. Thesis strengthening.
+- **JPM May 15 (est.):** **~$297** (-1.1%). 10-year yield spiked to 4.55% (1-year high). Financials soft. Stop $272.14 intact but thesis weakening.
+- **AVGO May 15 (est.):** **~$422** (-0.1%). Held up relatively well. Stop $368.36 intact.
+- **BTC May 15:** Briefly hit $81K (near $82K threshold), retreated to **$78,082** by close. Still below $82K re-entry threshold.
+- **NVDA Earnings CORRECTION:** Confirmed May **20** AH (5 PM ET conference call) — NOT May 21. 48-hour binary event exclusion applies from Monday May 18 open. No new NVDA entries Monday. Existing 15sh position with stop $175.60 untouched.
+
+**Portfolio estimate (May 15 close):**
+| Symbol | Qty | Est. Price | Value | Unrealized P/L |
+|--------|-----|------------|-------|----------------|
+| NVDA | 15 | $226.46 | $3,396.90 | +$414.45 |
+| TSM | 7 | $404.35 | $2,830.45 | +$20.16 |
+| AVGO | 11 | $422.00 | $4,642.00 | +$37.51 |
+| JPM | 9 | $297.00 | $2,673.00 | -$101.70 |
+| GLD | 7 | $417.29 | $2,921.03 | -$10.99 |
+| XLE | 50 | $59.44 | $2,972.00 | +$21.50 |
+| **Total LMV** | | | **$19,435.38** | **+$380.93** |
+| Cash | | | $80,945.53 | — |
+| **Total Equity** | | | **$100,380.91** | |
+
+**Performance vs benchmark (May 15):**
+- Portfolio May 15 change: -$133 (-0.13%) vs S&P -1.24% — outperformed (low equity exposure + XLE gain)
+- Portfolio total return: **+0.38%**
+- S&P 500 return from ~May 1 start (~7,200): **+2.90%** (7,408.50)
+- Cumulative gap vs benchmark: **-2.52 pp** (improved from -3.81 pp; portfolio fell less due to 81% cash)
+
+---
+
+### AMD Re-Score (summit outcome — China deal excluded AMD)
+
+AMD's prior commitment at 7.33 was predicated on the China chip deal including MI308 clearance. Summit concluded with NVDA H200 cleared but AMD MI308 NOT cleared. China revenue upside thesis invalidated. Sentiment and Macro both fall to 6. Score drops to 7.0 average but **only 3/6 agents score ≥7** (fails Master Agent 4/6 requirement). This is a Master Agent rejection based on changed conditions — not a deployment bias violation.
+
+```yaml
+---
+ts: 2026-05-17T04:30:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: AMD re-scored after summit; MI308 NOT cleared in China deal (only NVDA H200). Score 7.0 avg but fails 4/6 agents-at-7+ requirement — only Fundamentals/Risk/Tech at ≥7.
+size_pct: 4.33
+stop: 411.35
+target: 476.30
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — Master Agent gate requires 4/6 agents ≥7; only 3 qualify (Fundamentals=9, Risk=7, Tech=8). Average 7.0 meets floor but 4/6 rule fails. Root cause: Trump-Xi summit concluded without AMD MI308 clearance. Only NVDA H200 cleared for Chinese companies (Alibaba/Tencent/ByteDance/JD.com). Sentiment cut 7→6: AMD-specific China upside thesis invalidated; mixed 'buy the dip' vs 'wait for clarity' sentiment. Macro cut 7→6: SOX -5-6.8% on May 15; 10-year yield 4.55% (1-year high); risk-off environment from both summit disappointment and Iran/Hormuz. Technical unchanged at 6: AMD fell 3.7% to $433.06; sitting in support zone $430-435 but no confirmed reversal signal yet. Valid skip exemption: Master Agent rejection based on changed conditions — not one of the 3 deployment-bias exemptions but a legitimate re-score outcome. Re-entry conditions: (1) Technical recovers to 7 (RSI oversold bounce, hammer candle on volume confirms), AND/OR (2) Sentiment recovers to 7 (AMD enterprise win, CDNA4 reveal, or sector sentiment rotation back to AI). Anticipated re-score: 7.33 once 4/6 pass — enter at that point. xAI API blocked throughout."
+---
+```
+
+---
+
+### PLTR Update (still below $134 trigger)
+
+```yaml
+---
+ts: 2026-05-17T04:30:00Z
+action: skip
+symbol: PLTR
+bucket: long-term
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR closed $133.99 on May 15 — $0.01 below $134 re-entry trigger. Summit Day 2 produced no PLTR-specific AI language. Score 6.50 unchanged from May 14 re-score.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.50 avg — below 7.0 threshold; Technical=3; 2/6 agents ≥7). PLTR $133.99 on May 15 close — within $0.01 of $134 trigger but has NOT reclaimed it. Summit Day 2 produced no PLTR-specific positive catalyst. Conditional re-entry Monday: if PLTR opens and holds above $134 at market open, run full 6-agent re-score (est. 7.33 if Technical rises to 6 on support reclaim). Do not enter pre-emptively below $134."
+---
+```
+
+---
+
+### MU Full 6-Agent Score (planned Monday May 18 MOO)
+
+MU at $732.49 (May 15 close, post-summit selloff -5.61%) is a better entry than the originally planned ~$788. AI memory supercycle thesis (HBM4) is fully intact and independent of the China chip deal. **APPROVED for Monday May 18 Pre-Market MOO — 6 shares.**
+
+**6-Agent Analysis:**
+- **Fundamentals (9/10):** MU Q2 FY25 beat; $9.0B vs $8.6B est. Revenue +36% YoY. HBM3e revenue growing. Forward P/E ~8x (cyclical discount). Strong Buy consensus. HBM4 order books stretching to 2027.
+- **Technical (7/10):** Testing $730-735 support after 5.6% single-day drop. RSI likely ~30-35 (oversold territory). Potential hammer reversal at this level. Better entry than $788 target.
+- **Sentiment (6/10):** Summit disappointment hit memory sector. But HBM4 demand is US/Taiwan-customer driven (Hyperscalers). "Up 68% YTD" narrative intact long-term. Mixed near-term. xAI API blocked.
+- **Macro (7/10):** AI hyperscaler CAPEX +77% YoY = more servers = more memory demand. HBM4 supply sold out for 2026 regardless of China deal. Near-term headwind from yield/risk-off but structural AI demand dominates.
+- **Risk (7/10):** 6sh × $735 = $4,410 = 4.4% <5% ✓; Semis sector $10,981+$4,410=$15,391=15.4% <25% ✓; Stop risk $88×6=$529=0.53% <1.5% ✓; R/R 2.0:1 ✓.
+- **Tech Analyst (8/10):** 1γ process node cutting-edge. HBM4 JEDEC standard (one of 3 players with SK Hynix/Samsung). Cloud customers locked in with multi-year supply agreements. R&D in 3D stacking + EUV. Key risk: SK Hynix leading in HBM share.
+
+```yaml
+---
+ts: 2026-05-17T04:30:00Z
+action: entry
+symbol: MU
+bucket: long-term
+setup: ai-momentum-pullback
+score: 7.33
+thesis: AI memory supercycle — HBM4 supply sold out for 2026; post-summit oversold pullback creates better entry than originally planned ~$788. Long-term anchor name.
+size_pct: 4.40
+stop: 645.00
+target: 908.29
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents ≥7, Risk=7 no veto). MU at $732.49 (down 5.61% on summit disappointment) is better entry than original ~$788 target. HBM4 supply for 2026 sold out on price and volume (order books into 2027). Hyperscaler CAPEX +77% YoY = structural memory demand. Technical=7: testing $730 support; RSI oversold ~30-35; potential hammer reversal. Anchor name per CLAUDE.md universe. Guardrails: 6sh×$735=$4,410=4.4%<5% ✓; semis sector adds to 15.4%<25% ✓; LT bucket grows to ~$17.9K (still below $20K LT sub-allocation enforcement threshold); stop risk 0.53%<1.5% ✓; R/R 2.0:1 ✓. ORDER STATUS: PLANNED for Monday May 18 Pre-Market routine. API blocked today. If unblocked Monday: MOO (time_in_force=opg, qty=6, side=buy). If still blocked: OPERATOR must place 6sh market buy at open ~$730-740. Market Open routine MUST place GTC stop-loss at fill×0.88 immediately after fill confirmation. NVDA earnings May 20 AH — no new NVDA entries Monday (48h binary event rule). xAI API blocked — X sentiment not queried; sentiment scored qualitatively at 6."
+---
+```
+
+---
+
+### Monday May 18 Committed Watchlist
+
+| Rank | Symbol | Bucket | Setup | Score | Action | Entry | Stop | Target |
+|------|--------|--------|-------|-------|--------|-------|------|--------|
+| 1 | MU | long-term | ai-momentum-pullback | **7.33** | **MOO 6sh — COMMITTED** | ~$735 MOO | $647 (-12%) | $908 (+24%) |
+| 2 | AMD | active | breakout-volume | 7.0 | **SKIP** (re-scored; 3/6 agents ≥7; fails 4/6 rule) | — | — | — |
+| 3 | PLTR | long-term | ai-momentum-pullback | 6.50 | **CONDITIONAL** (re-score if >$134 at open) | $134.50+ | $118.36 | $166.64 |
+| 4 | NVDA | — | — | — | **NO NEW ENTRIES** (48h before May 20 AH earnings) | — | — | — |
+
+**Key risks for Monday:**
+1. NVDA earnings May 20 AH — positions must be reviewed at Pre-Market Monday for sizing risk
+2. SOX correction may continue; 32% above 50-day MA per Schwab (highest in history) = consolidation risk
+3. 10-year yield at 4.55% (1-year high) = growth/tech headwind
+4. GLD now below entry ($417.29 vs $418.86) — thesis intact but monitor
+5. XLE above entry ($59.44 vs $59.01) — Iran/oil thesis strengthening; widen stop consideration
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
