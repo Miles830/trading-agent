@@ -1,132 +1,188 @@
 {
-  "last_updated": "2026-05-13T19:42:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-05-18T13:46:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 100231.84,
+    "total_equity": 100640.00,
     "starting_equity": 100000.00,
-    "cash": 80945.53,
-    "cash_pct": 80.7,
-    "buying_power": 161891.06,
-    "long_market_value": 19286.31,
+    "cash": 85550.00,
+    "cash_pct": 85.0,
+    "buying_power": 171100.00,
+    "long_market_value": 15090.00,
     "short_market_value": 0.00,
-    "daily_pnl": -572.69,
-    "daily_pnl_pct": -0.57,
-    "total_return_pct": 0.23,
-    "spx_return_pct": 3.50,
-    "benchmark_gap_pct": -3.27,
-    "open_positions_count": 6,
-    "note": "May 13 EOD — Prices estimated from web research (API blocked HTTP 403). PPI shock day (+1.4% vs +0.5% expected). S&P 500 +0.69% to ~7,452 (tech-led). Portfolio -0.57% (TSM -$229, AVGO -$229, NVDA +$51, GLD -$12, JPM -$31, XLE -$17). AMD MOC (score 7.33) attempted 19:42Z — blocked. PLTR re-scored 6.50 (support broken) — skip. Trump-Xi summit begins tomorrow.",
+    "daily_pnl": null,
+    "daily_pnl_pct": null,
+    "total_return_pct": 0.64,
+    "spx_return_pct": 4.50,
+    "benchmark_gap_pct": -3.86,
+    "open_positions_count": 5,
+    "note": "2026-05-18 Market Open — API BLOCKED HTTP 403 (10th+ consecutive session). Pre-Market silent failure. Strategy switch (2026-05-17): LT bucket retired. 4 LT positions (TSM 7, NVDA 15, JPM 9, AVGO 7) queued for market sells — all API calls blocked. AMD entry #5 (score 7.67) blocked. All values estimated (May 17 operator API verification + est. price moves). OPERATOR ACTION REQUIRED: close TSM/NVDA/JPM/AVGO and enter AMD via Alpaca dashboard NOW. NVDA earnings May 21 (3 days) — sell today.",
     "buckets": [
       {
-        "key": "long-term",
-        "label": "Long-term (target 55%)",
-        "value": 13619.00
-      },
-      {
         "key": "active",
-        "label": "Active Trading (target 30%)",
-        "value": 5667.31
+        "label": "Active Trading (target 85%)",
+        "value": 2982.00,
+        "note": "GLD 7 sh only. TSM/NVDA/JPM/AVGO being liquidated per strategy switch. AMD pending entry."
       },
       {
         "key": "crypto",
-        "label": "Crypto (target 5%)",
+        "label": "Crypto (target 10%)",
         "value": 0.00
       },
       {
         "key": "cash",
-        "label": "Cash (10% floor)",
-        "value": 80945.53
+        "label": "Cash (5% floor)",
+        "value": 85550.00,
+        "note": "Verified by operator May 17. ~$97.6K after LT liquidation executes."
+      },
+      {
+        "key": "lt-closing",
+        "label": "LT Positions Being Closed (target 0%)",
+        "value": 12108.00,
+        "note": "TSM 7 + NVDA 15 + JPM 9 + AVGO 7. Operator must sell today. All API attempts blocked."
       }
     ]
   },
   "positions": [
     {
       "symbol": "TSM",
-      "bucket": "long-term",
+      "bucket": "lt-closing",
       "qty": 7,
       "entry_price": 401.47,
-      "current_price": 397.28,
-      "pnl": -29.33,
-      "pnl_pct": -1.04,
+      "current_price": 403.00,
+      "pnl": 10.71,
+      "pnl_pct": 0.38,
       "stop_loss": 353.76,
-      "take_profit": 498.48,
+      "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.7,
-      "note": "Slightly below entry. Trump-Xi summit catalyst pending (chip export controls on agenda). Stop $353.76 = 12% below entry."
+      "note": "CLOSING — strategy switch 2026-05-17. Market sell attempted 13:45Z — BLOCKED HTTP 403. OPERATOR: market sell TSM 7 sh now.",
+      "action_required": "SELL NOW"
     },
     {
       "symbol": "GLD",
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 430.27,
-      "pnl": 79.87,
-      "pnl_pct": 2.72,
+      "current_price": 426.00,
+      "pnl": 50.00,
+      "pnl_pct": 1.70,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "PPI +1.4% (hottest since 2022) bid gold today. Iran deal still unconfirmed. GLD +2.72% from entry."
+      "note": "KEEP — active bucket macro-hedge. Stop $397.92 resting (GTC). GLD +1.7% from entry estimate."
     },
     {
       "symbol": "NVDA",
-      "bucket": "long-term",
+      "bucket": "lt-closing",
       "qty": 15,
       "entry_price": 198.83,
-      "current_price": 225.40,
-      "pnl": 398.55,
-      "pnl_pct": 13.36,
+      "current_price": 240.00,
+      "pnl": 617.55,
+      "pnl_pct": 20.72,
       "stop_loss": 175.60,
-      "take_profit": 247.44,
+      "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.5,
-      "note": "NVDA +2.1% today despite PPI shock — China chip deal ($7-12.5B upside) overriding macro headwind. +13.4% from entry.",
-      "risk_flag": "NVDA Q2 earnings May 21 (8 DAYS). Pre-earnings review MANDATORY at Daily Review May 19. No new entries after May 19. Stop at $175.60 provides 28.4% downside cushion."
+      "note": "CLOSING URGENT — strategy switch + earnings May 21 (3 days). Market sell attempted 13:45Z — BLOCKED HTTP 403. OPERATOR: market sell NVDA 15 sh TODAY. Cancel bracket take-profit ($247.44) after fill.",
+      "action_required": "SELL URGENT — EARNINGS IN 3 DAYS"
     },
     {
       "symbol": "JPM",
-      "bucket": "long-term",
+      "bucket": "lt-closing",
       "qty": 9,
       "entry_price": 308.30,
-      "current_price": 304.88,
-      "pnl": -30.78,
-      "pnl_pct": -1.11,
+      "current_price": 300.00,
+      "pnl": -74.70,
+      "pnl_pct": -2.69,
       "stop_loss": 272.14,
-      "take_profit": 383.47,
+      "take_profit": null,
       "setup": "sector-rotation",
       "agent_average": 7.3,
-      "note": "JPM +1.63% today but still -1.1% below entry. PPI hot = higher rates = NIM positive but headwind for loan growth. Hold with stop $272.14."
-    },
-    {
-      "symbol": "XLE",
-      "bucket": "active",
-      "qty": 50,
-      "entry_price": 59.01,
-      "current_price": 57.36,
-      "pnl": -82.50,
-      "pnl_pct": -2.80,
-      "stop_loss": 56.15,
-      "take_profit": 65.01,
-      "setup": "macro-hedge",
-      "agent_average": 7.5,
-      "risk_flag": "CRITICAL: Stop at $56.15 only 2.2% below current $57.36. Iran deal still unconfirmed. Any oil price shock could gap through stop. Oil $100-126/bbl Brent."
+      "note": "CLOSING — strategy switch 2026-05-17. Market sell attempted 13:45Z — BLOCKED HTTP 403. OPERATOR: market sell JPM 9 sh now. Cancel bracket take-profit ($383.47) after fill.",
+      "action_required": "SELL NOW"
     },
     {
       "symbol": "AVGO",
-      "bucket": "long-term",
-      "qty": 11,
-      "entry_price": 418.59,
-      "current_price": 409.14,
-      "pnl": -103.95,
-      "pnl_pct": -2.26,
+      "bucket": "lt-closing",
+      "qty": 7,
+      "entry_price": 418.48,
+      "current_price": 428.00,
+      "pnl": 66.64,
+      "pnl_pct": 2.27,
       "stop_loss": 368.36,
-      "take_profit": 519.05,
+      "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.0,
-      "note": "GTC bracket fill assumed at $418.59. AVGO -2.26% below entry but well above stop $368.36. China chip deal named AVGO — thesis intact."
+      "note": "CLOSING — strategy switch 2026-05-17. Confirmed 7 sh (not 11 as prev estimated). Market sell attempted 13:45Z — BLOCKED HTTP 403. OPERATOR: market sell AVGO 7 sh now. Cancel bracket take-profit ($519.05) after fill.",
+      "action_required": "SELL NOW"
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-18T13:46:05Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "FAILED — Alpaca API blocked HTTP 403. 5th consecutive attempt. Limit bracket GTC: 10 sh @ $452.25 est., stop $429.64 (-5%), target $520.59 (+15.1%, 3:1 R/R). OPERATOR: enter AMD 10 sh limit bracket GTC immediately."
+    },
+    {
+      "ts": "2026-05-18T13:45:58Z",
+      "symbol": "AVGO",
+      "action": "exit",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "result_pct": null,
+      "master_decision": "exit_ordered",
+      "order_status": "FAILED — market sell 7 sh attempted 13:45Z. HTTP 403 blocked. Strategy switch 2026-05-17. OPERATOR: market sell AVGO 7 sh now."
+    },
+    {
+      "ts": "2026-05-18T13:45:55Z",
+      "symbol": "JPM",
+      "action": "exit",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": null,
+      "result_pct": null,
+      "master_decision": "exit_ordered",
+      "order_status": "FAILED — market sell 9 sh attempted 13:45Z. HTTP 403 blocked. Strategy switch 2026-05-17. OPERATOR: market sell JPM 9 sh now."
+    },
+    {
+      "ts": "2026-05-18T13:45:50Z",
+      "symbol": "NVDA",
+      "action": "exit",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "result_pct": null,
+      "master_decision": "exit_ordered",
+      "order_status": "FAILED — market sell 15 sh attempted 13:45Z. HTTP 403 blocked. URGENT: earnings May 21 in 3 days. Strategy switch 2026-05-17. OPERATOR: market sell NVDA 15 sh TODAY."
+    },
+    {
+      "ts": "2026-05-18T13:45:45Z",
+      "symbol": "TSM",
+      "action": "exit",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "result_pct": null,
+      "master_decision": "exit_ordered",
+      "order_status": "FAILED — market sell 7 sh attempted 13:45Z. HTTP 403 blocked. Strategy switch 2026-05-17. OPERATOR: market sell TSM 7 sh now."
+    },
     {
       "ts": "2026-05-13T19:42:21Z",
       "symbol": "AMD",
@@ -459,64 +515,64 @@
       "schedule": "08:00 ET daily",
       "status": "violation",
       "last_run": "2026-05-12 08:07 ET",
-      "next_run": "2026-05-14 08:00 ET",
-      "last_summary": "SILENT FAILURE May 13 — no heartbeat. Last successful run: May 12. Next: May 14 PRIORITY: AMD MOO (10sh, score 7.33) — MUST execute. If API blocked, operator places manually before 9:25 AM ET."
+      "next_run": "2026-05-19 08:00 ET",
+      "last_summary": "SILENT FAILURE 2026-05-18 (and May 13-15). No heartbeat. Strategy switch MOO sells not placed. AMD MOO not placed. Last 5 consecutive Pre-Market sessions all silently failed. OPERATOR must manually execute pending actions."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-14 09:45 ET",
-      "last_summary": "SILENT FAILURE May 13. Next: May 14 — if AMD MOO filled, immediately place stop at fill×0.95. Verify all 6 existing stops resting at Alpaca."
+      "status": "completed",
+      "last_run": "2026-05-18 09:45 ET",
+      "next_run": "2026-05-19 09:45 ET",
+      "last_summary": "2026-05-18: Pre-Market catch-up ran. API blocked HTTP 403 (10th+ session). 4 LT liquidation sells (TSM 7, NVDA 15, JPM 9, AVGO 7) all blocked. AMD entry #5 (7.67) blocked. All logged in trades.md. Operator must execute manually. NVDA earnings May 21 — urgent."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "violation",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-14 11:00 ET",
-      "last_summary": "SILENT FAILURE May 13. Stop audit + scan missed."
+      "next_run": "2026-05-18 11:00 ET",
+      "last_summary": "Pending today. Priority: (1) Verify LT sells executed by operator. (2) Re-score PLTR — likely >$134 after Summit Day 2. (3) AMD fill confirmation."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "violation",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-14 12:30 ET",
-      "last_summary": "SILENT FAILURE May 13."
+      "next_run": "2026-05-18 12:30 ET",
+      "last_summary": "Pending today. If operator fills landed, update portfolio state."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "violation",
+      "status": "pending",
       "last_run": "unknown",
-      "next_run": "2026-05-14 14:00 ET",
-      "last_summary": "SILENT FAILURE May 13. No day trades open, so close-out function was moot. Stop audit missed."
+      "next_run": "2026-05-18 14:00 ET",
+      "last_summary": "Pending today. Scan for additional active trading opportunities to close deployment gap."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-14 15:30 ET",
-      "last_summary": "May 13 EOD: PPI +1.4% shock. S&P +0.69% to ~7,452. Portfolio -0.57% (est. $100,232). Gap vs SPX: -3.27pp. No day trades to close. AMD MOC (score 7.33) attempted 15:42 ET — API blocked HTTP 403 (7th consecutive). PLTR re-scored 6.50 (support broken $134) — skip. 6 overnight positions confirmed with stops (API verification blocked). XLE thin stop (2.2% cushion ⚠️). NVDA earnings 8 days (May 21)."
+      "next_run": "2026-05-18 15:30 ET",
+      "last_summary": "Last ran May 13. Today: confirm any AMD stop is resting after fill. Scan for close-of-day setups."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
       "status": "pending",
-      "last_run": "unknown",
-      "next_run": "2026-05-13 16:30 ET",
-      "last_summary": "Pending. Key items: (1) AMD commitment carry to May 14. (2) Trump-Xi Day 1 outcomes. (3) NVDA earnings 8 days — pre-earnings hedge discussion. (4) BTC ~$81K — near re-entry threshold."
+      "last_run": "2026-05-14 20:35 ET",
+      "next_run": "2026-05-18 16:30 ET",
+      "last_summary": "Critical items today: (1) Confirm all LT liquidation fills. (2) Log AMD fill. (3) Whole-market scan — need to deploy ~$77K for 85% active target. (4) PLTR re-score. (5) BTC check (threshold $82K). (6) NVDA earnings May 21 — position should be closed. (7) Missed May 15 weekly strategy evolution note."
     },
     {
       "name": "Weekly Review",
       "schedule": "Friday 16:30 ET",
-      "status": "pending",
+      "status": "overdue",
       "last_run": "2026-05-08 (not executed — API blocked)",
-      "next_run": "2026-05-15 16:30 ET",
-      "last_summary": "May 15 weekly review: full week perf, setup tally, Trump-Xi outcomes, NVDA pre-earnings assessment, AMD fill confirmation."
+      "next_run": "2026-05-22 16:30 ET",
+      "last_summary": "May 15 weekly review was MISSED (silent failure). Write combined May 15 + May 22 weekly note at next Friday's Daily Review."
     }
   ],
   "agent_scorecard": {
@@ -574,11 +630,11 @@
     "recent_lessons_md": "### 2026-05-13 — PPI shock + PLTR support break\n\n- April PPI +1.4% vs +0.5% expected — largest monthly jump since 2022. S&P rose +0.69% anyway (tech-led, narrow breadth).\n- PLTR -4.31% ($136→$129.99). $134 support broken. Re-scored 6.50 (Technical 3). SKIP until reclaim of $134.\n- AMD pullback from $477 to $448 normalizes RSI to ~60. Re-score 7.33 (Technical improved from 5→6). MUST ENTER May 14.\n- 7th consecutive API-blocked routine. AMD MOC attempted 19:42:21Z — HTTP 403. Guardrail violation continues.\n- Trump arrives Beijing. Summit May 14-15. Chip export controls on agenda — potential positive catalyst.\n- NVDA +2.1% ($225.40) — China chip deal overrides PPI headwind. Earnings 8 days (May 21).\n\n### 2026-05-12 — CPI +3.7% YoY (hot) + China chip deal\n\n- April CPI at 8:30 AM ET (headline +3.7% expected). No Fed rate cuts until 2027.\n- PLTR MOO (36sh, 7.33) and AMD MOO (10sh, 7.33) attempted — HTTP 403 again (6th routine).\n\n### 2026-05-01 — Operator-mandated deployment bias correction\n\n- Score ≥ 7 = enter at next routine. Only 3 valid skip exemptions."
   },
   "market": {
-    "mode": "Tech-led risk-on despite PPI shock — narrow breadth, semiconductors strong",
+    "mode": "Post-Trump-Xi Summit — chip stocks risk-on; S&P at/near record highs",
     "fear_greed": null,
-    "fear_greed_label": "Cautious — PPI +1.4% shock but tech indices holding. Trump-Xi summit = binary catalyst.",
-    "spx": "May 13 close: ~7,452 (+0.69% on the day). Tech-led: NVDA +2.1%. 2/3 of SPX components fell — narrow breadth. PPI +1.4% vs +0.5% expected.",
-    "btc": "BTC ~$80,960 (May 13). Holding near $81K. Trump-Xi summit tracking. Re-entry threshold $82K+.",
+    "fear_greed_label": "Risk-on post-Summit Day 2. AI capex supercycle intact. NVDA earnings May 21 = binary event approaching.",
+    "spx": "Last known: ~7,511 close May 14 (record). May 15 (Summit Day 2) and May 18 (today) unknown — API blocked. Est. range 7,450-7,600.",
+    "btc": "Last known: ~$79,600 (May 14). Re-entry threshold $82K+. Post-Summit Day 2 crypto language unclear. Check at Daily Review.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
