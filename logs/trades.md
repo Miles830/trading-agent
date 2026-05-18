@@ -4,6 +4,420 @@
 
 ---
 
+## 2026-05-18 — Mid-Morning Routine (11:00 AM ET / 15:08 UTC)
+
+**Context:** Monday May 18, 2026. Iran conflict continues (oil $104-109/bbl; Trump rejected Iran peace framework on May 15). S&P 500 ~7,392 (-0.22% today; -1.6% off May 14 record of 7,511). 10Y Treasury yield 4.60%+ — highest in a year. NVDA earnings WEDNESDAY MAY 20 AMC (48h no-entry window starts ~4 PM ET today). BTC $76,800-77,400 — below $82K threshold. API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 10th+ consecutive blocked session. Alpaca paper-api.alpaca.markets and data.alpaca.markets both returning 403.
+
+**Predecessor heartbeat check:** Pre-Market (8:00 AM ET) = MISSING. Market Open (9:45 AM ET) = MISSING. Both predecessors silently failed today. May 15 (Friday) heartbeat file is EMPTY — all 6 intraday routines plus Daily Review silently failed May 15. Total MISSING routines this run: 2 today + 7 from May 15 = 9 consecutive silent-failure routines since May 14 Daily Review.
+
+**Strategy switch status (from 2026-05-17 operator directive):** MOO liquidations for TSM/NVDA/JPM/AVGO were planned for May 18 open. Pre-Market silently failed → MOOs never placed → positions still OPEN (assumed). Stops for TSM/NVDA/JPM/AVGO may be NAKED (operator deleted stop orders May 17 which went to `pending_cancel`; those may have cleared with no replacement stops placed). GLD stops assumed resting at $397.92 (GTC, not canceled). **OPERATOR: manually execute the 4 limit sells and LMT bracket entry described below IMMEDIATELY.**
+
+---
+
+### Heartbeat Tally — 2026-05-18
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|----------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✓ 15:08:29Z | IN PROGRESS | 🟡 RUNNING |
+| Midday | 12:30 | — | — | PENDING |
+| Afternoon | 14:00 | — | — | PENDING |
+| Market Close | 15:30 | — | — | PENDING |
+| Daily Review | 16:30 | — | — | PENDING |
+
+**May 15 Tally (Friday — all MISSING):**
+| Routine | Status |
+|---------|--------|
+| Pre-Market | 🔴 SILENT FAILURE |
+| Market Open | 🔴 SILENT FAILURE |
+| Mid-Morning | 🔴 SILENT FAILURE |
+| Midday | 🔴 SILENT FAILURE |
+| Afternoon | 🔴 SILENT FAILURE |
+| Market Close | 🔴 SILENT FAILURE |
+| Daily Review | 🔴 SILENT FAILURE |
+
+---
+
+### Predecessor Violation Entries
+
+```yaml
+---
+ts: 2026-05-18T12:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (scheduled 08:00 ET / 12:00 UTC) did not heartbeat today. MOO orders for strategy switch liquidations (TSM/NVDA/JPM/AVGO) were NOT placed. NVDA naked into earnings on May 20 AMC. Stop-loss audit did not run.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Pre-Market 2026-05-18 silently failed. MOO sell orders for TSM 7sh, NVDA 15sh, JPM 9sh, AVGO 7sh (strategy switch 2026-05-17) were never placed. Catch-up attempted from Mid-Morning: all 4 limit sell orders returned HTTP 403 Host not in allowlist. OPERATOR: manually sell TSM 7sh (~$404), NVDA 15sh (~$228 — URGENT pre-earnings), JPM 9sh (~$297), AVGO 7sh (~$423) via operator Codespace. NVDA earnings May 20 AMC — must be sold before 4PM ET today."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T13:45:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Open routine (scheduled 09:45 ET / 13:45 UTC) did not heartbeat today. Post-MOO stop placement for any pre-market fills was not executed. Stop-loss audit did not run.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market Open 2026-05-18 silently failed. No MOO fills to confirm (Pre-Market also failed, so no MOOs were placed). No post-MOO stop orders placed. Portfolio is operating without scheduled stop audits for 3+ consecutive routines. Alpaca API blocked prevents both verification and remediation from cloud runner."
+---
+```
+
+```yaml
+---
+ts: 2026-05-15T20:30:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: ALL 7 routines on May 15 (Friday) silently failed — heartbeat log for 2026-05-15 is empty. No market monitoring, no stop audits, no AMD entry attempt. S&P 500 fell -0.88% on Iran escalation (Trump rejected Iran peace framework). Oil surged to $109/bbl. 10Y yield +9bp to 4.55%.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "May 15 2026 entire trading day: zero routines ran. Heartbeat log 2026-05-15.log is empty. AMD was the only ≥7-score watchlist name; would have been scored but API blocked regardless. May 15 market: S&P -0.88% to ~7,408, Dow -0.76%, Nasdaq -1.27%. Iran escalation caused broad selloff. Oil $109/bbl. 10Y yield 4.55% (highest in a year). NVDA earnings confirmed for May 20 AMC — this changes the timeline. PLTR $132 (below $134). AMD ~$420 (below $445 prior estimate)."
+---
+```
+
+---
+
+### Stop-Loss Audit (FIRST ACTION — API blocked, web-research prices)
+
+**CRITICAL RISK:** The May 17 operator-initiated DELETEs on TSM standalone stop and NVDA/JPM/AVGO bracket take-profit (OCO siblings) went to `pending_cancel`. If those cancels cleared (likely by Mon 4AM pre-market boundary), the positions TSM/NVDA/JPM/AVGO are currently NAKED (no stop orders resting). GLD stops (f0fd18ca qty 6 + 26defbfa qty 1, both at $397.92) were NOT canceled per May 17 plan — GLD is assumed protected.
+
+| Symbol | Qty | Entry | Est. Price May 18 | Stop (last known) | Cushion | Status |
+|--------|-----|-------|-------------------|-------------------|---------|--------|
+| TSM | 7 | $401.47 | $404.35 | $353.76 (canceled?) | ~12.5% | ⚠️ POSSIBLY NAKED — pending strategy switch sell |
+| GLD | 7 | $418.86 | $417.29 | $397.92 | ~4.9% | ✓ Stop assumed resting (not canceled) |
+| NVDA | 15 | $198.83 | ~$228.00 | $175.60 (canceled?) | ~23% | ⚠️ POSSIBLY NAKED — URGENT: earnings May 20 AMC |
+| JPM | 9 | $308.30 | $297.28 | $272.14 (canceled?) | ~8.5% | ⚠️ POSSIBLY NAKED — pending strategy switch sell |
+| AVGO | 7 | $418.59 | $423.50 | $368.36 (canceled?) | ~15.2% | ⚠️ POSSIBLY NAKED — pending strategy switch sell |
+
+**API blocked** — cannot verify stop order status via GET /v2/orders. Cannot place replacement stops via POST /v2/orders (all API calls returning 403).
+
+**Attempted remediation:** Placed limit sell orders for strategy switch liquidations (all returned HTTP 403). Attempted LMT bracket entry (HTTP 403). ALL API CALLS BLOCKED.
+
+**OPERATOR ACTION REQUIRED — URGENT:**
+1. Verify stop order status on Alpaca (GET /v2/orders?status=open)
+2. If TSM/NVDA/JPM/AVGO have no resting stops: Place GTC stops at:
+   - TSM: stop $404.35 × 0.95 = **$384.13**
+   - NVDA: stop $228 × 0.95 = **$216.60** (temporary — then liquidate pre-earnings)
+   - JPM: stop $297.28 × 0.95 = **$282.42**
+   - AVGO: stop $423.50 × 0.95 = **$402.33**
+3. **THEN immediately place limit sells** (strategy switch) for TSM 7sh ~$404, NVDA 15sh ~$228, JPM 9sh ~$297, AVGO 7sh ~$423. NVDA is most urgent — earnings May 20 AMC.
+4. GLD: verify f0fd18ca and 26defbfa still resting at $397.92. If not: re-place GTC stop for GLD 7sh at $397.92.
+
+---
+
+### Market Context — May 18, 2026
+
+**Macro environment:**
+- S&P 500: ~7,392 (-0.22% today; -1.58% from May 14 record 7,511)
+- Iran conflict escalating: Trump rejected peace framework May 15. Oil $104-109/bbl. Strait of Hormuz risk.
+- 10Y Treasury yield: 4.60%+ — highest in a year. Rate hike fears intensifying.
+- Bitcoin: $76,800-77,400 — rate hike fears + whale liquidations. Well below $82K re-entry threshold.
+- NVDA earnings: Wednesday May 20 AMC — Wall Street watching closely for AI capex confirmation.
+
+**Position-by-position update (API blocked — prices from web research):**
+- NVDA: ~$228 (range $225.50-$230.63). +$437.55 unrealized P/L. EARNINGS MAY 20 AMC — 48h no-new-entry window starts ~4PM ET today. Must liquidate per strategy switch.
+- GLD: ~$417.29. -$10.99 unrealized P/L (just below entry; stop $397.92 = 4.9% cushion). Iran geopolitical bid supporting gold; rate hike fears mildly negative.
+- TSM: ~$404.35. +$20.16 P/L. Pending strategy switch liquidation.
+- JPM: ~$297.28. -$99.18 P/L. Pending liquidation. Financials hit hard by rate hike fears.
+- AVGO: ~$423.50. +$34.37 P/L. Pending liquidation.
+- AMD: ~$428 today (high $438.80, range suggests volatility). Previous score 7.33 → RE-SCORED TODAY to 6.5 (see below).
+- PLTR: $132.20 (range $131.57-$135.62). Below $134 re-entry condition.
+- LMT: $518.74 (+0.53%). Defense sector outperforming on Iran conflict. SCORED 7.83 — APPROVED (see entry attempt below).
+
+---
+
+### Research — New Setup Discovery: LMT (Lockheed Martin)
+
+**Thesis:** Iran conflict is a direct, sustained catalyst for US defense spending. LMT is the largest US defense contractor ($156B+ backlog, F-35 program, missile defense, THAAD). With oil at $104-109 and Trump rejecting the peace framework, defense spending is escalating. LMT is up on a risk-off day (+0.53%) while S&P is -0.22% = strong relative strength. Q2 2026 earnings not until July 21 — no 48h window concern.
+
+**6-Agent Analysis — LMT:**
+
+**Agent 1 — Fundamentals: 8/10**
+LMT backlog ~$156B (18+ months of revenue visibility). Q1 2026 beat estimates. Revenue growing on emergency supplemental defense bills. P/E 25.1 vs defense sector ~22x — slight premium justified by backlog quality. EPS $20.65. 52-week high $692, current $518 = 25% discount to ATH with conflict intensifying.
+
+**Agent 2 — Technical: 5/10**
+LMT +0.53% on a -0.22% market day = strong relative strength. Uptrend from $410 52-week low. Currently 26% above low, 25% from ATH. Positive price momentum into conflict escalation. However, full 5-indicator stack (Stochastic 14,3,3, Candlestick pattern, Volume Oscillator 5/20, MACD, Volume Spike) cannot be verified without Alpaca chart data — API blocked. Capping at 5/10 per CLAUDE.md rule: "technical score to exceed 5/10 requires ≥2 of 5 indicators confirmed." xNote: candlestick bonus does not apply (no chart data).
+
+**Agent 3 — Sentiment: 8/10**
+Iran conflict = defense hawk sentiment at multi-decade highs. Congressional support for emergency defense appropriations bipartisan. Options activity likely skewed to calls. LMT appearing in "buy defense" recommendations across financial media. Short interest minimal (defense ETFs dominate ownership). xAI API blocked — X sentiment not queried; scored qualitatively. Modifier: 0 (neutral, no X data).
+
+**Agent 4 — Macro: 9/10**
+Iran conflict is the most direct macro tailwind possible for defense. Trump rejected peace framework May 15 → escalation path. Oil $104-109/bbl = inflationary defense spending urgency. Rate hike fears (4.60% yield) = normally negative for equities but LMT is government-revenue company insulated from rate cycles. US allies buying F-35s in quantity. Counter-cyclical nature of defense contracts = inflation-resistant revenue.
+
+**Agent 5 — Risk: 9/10**
+Entry $521.13 (limit 0.5% above ask $518.74), Stop $492.80 (-5%), Target $596.55 (+15%). R/R = 3.0:1 ✓. Position: 9sh × $518.74 = $4,669 = 4.65% of $100,362 ✓ (under 5%). Trade risk: $4,669 × 5% = $233 = 0.23% of portfolio ✓ (under 1.5%). Sector (Aerospace & Defense): 0% current exposure → new sector, well under 25% cap ✓. Max positions: 5 open → +1 LMT = 6 ✓ (under 12). Cash after entry: $85,550 - $4,669 = $80,881 = 80.6% → well above 5% floor ✓.
+
+**Agent 6 — Tech Analyst: 8/10**
+LMT's F-35 is the most advanced tactical aircraft in history; no substitute exists for allied air forces (~800 jets ordered, hundreds in queue). THAAD and PAC-3 missile defense are irreplaceable sovereign capability programs. LMT AI integration: JADC2 (Joint All-Domain Command & Control) uses AI for battle network connectivity. R&D ~8% of revenue. Key moat: classification = competitors cannot see IP; switching cost = multi-decade program lock-in. Hypersonic programs (LRHW, HACM) = next-gen growth driver.
+
+**Master Agent Decision:**
+Scores: Fund=8, Tech=5, Sent=8, Macro=9, Risk=9, TechAnalyst=8
+Average: (8+5+8+9+9+8)/6 = **7.83/10** ✓
+Risk: 9/10 ✓ (≥6, no veto)
+Agents ≥7: Fund(8), Sent(8), Macro(9), Risk(9), TechAnalyst(8) = **5 of 6** ✓ (≥4)
+Technical = 5 (disagrees — cannot verify indicator stack)
+Decision: **APPROVED** — 5/6 agents agree, strong macro/risk/tech-analyst consensus.
+
+**ORDER ATTEMPTED — FAILED:**
+POST /v2/orders → HTTP 403 "Host not in allowlist". 
+Payload: LMT, qty=9, side=buy, type=limit, limit_price=521.13, time_in_force=gtc, order_class=bracket, stop_loss={"stop_price":"492.80"}, take_profit={"limit_price":"596.55"}
+
+**OPERATOR: Place this order manually from your Codespace.** This is a scored, approved entry. Skipping it post-approval without a valid CLAUDE.md exemption is a deployment bias violation.
+
+```yaml
+---
+ts: 2026-05-18T15:08:00Z
+action: entry
+symbol: LMT
+bucket: active
+setup: sector-rotation
+score: 7.83
+thesis: Defense sector rotation on Iran conflict escalation; Trump rejected peace framework May 15; oil $104-109/bbl; LMT +0.53% on -0.22% market day = strong relative strength; Q2 earnings July 21 (no 48h concern).
+size_pct: 4.65
+stop: 492.80
+target: 596.55
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 8
+  macro: 9
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.83 avg, 5/6 agents >=7, Risk=9 no veto). Technical=5 (API blocked — 5-indicator stack unverifiable; capped at 5 per CLAUDE.md). Macro=9 (Iran conflict direct tailwind; Trump rejected peace framework). ORDER ATTEMPTED: POST /v2/orders HTTP 403 Host not in allowlist. API has been blocked 10+ consecutive sessions. This is a deployment bias violation — the order was approved and attempted but failed due to infrastructure blockage. xAI API blocked — X sentiment not queried; Sentiment scored qualitatively at 8. OPERATOR: place LMT 9sh bracket buy limit $521.13, stop $492.80, target $596.55 from Codespace."
+---
+```
+
+---
+
+### Strategy Switch Liquidation Attempts (HTTP 403 — all blocked)
+
+Attempted limit sell orders per 2026-05-17 operator strategy switch directive. All failed HTTP 403.
+
+| Order | Qty | Side | Limit | HTTP | Status |
+|-------|-----|------|-------|------|--------|
+| TSM | 7 | sell | $402.33 | 403 | BLOCKED |
+| NVDA | 15 | sell | $227.00 | 403 | BLOCKED — URGENT PRE-EARNINGS |
+| JPM | 9 | sell | $296.00 | 403 | BLOCKED |
+| AVGO | 7 | sell | $421.00 | 403 | BLOCKED |
+
+```yaml
+---
+ts: 2026-05-18T15:08:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: Strategy switch 2026-05-17 requires liquidating NVDA 15sh. NVDA earnings May 20 AMC — 48h no-entry window starts ~4PM ET today. Must liquidate TODAY. Limit sell $227.00 attempted and returned HTTP 403.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "LIQUIDATION (not a new entry) for strategy switch 2026-05-17. POST /v2/orders HTTP 403. OPERATOR: sell NVDA 15sh at market or limit ~$228 BEFORE 4PM ET today (48h NVDA earnings window). If not sold: position is naked into earnings (stop $175.60 does not protect against overnight earnings gap). Cost basis $198.83, current ~$228, unrealized P/L ~+$437. Selling now locks in +$437 gain. Holding into earnings risks gap-down on any guidance miss."
+---
+```
+
+---
+
+### Re-Scoring: AMD (Score 7.33 → 6.5 — BELOW THRESHOLD)
+
+**Previous score (May 14): 7.33** — setup: breakout-volume (China chip deal catalyst at $445).
+
+**Current price: ~$428** (range May 18: $412.10-$438.80). AMD hit ATH $469.22 on May 11, fell -10% to ~$420 on May 15 Iran selloff, recovering to ~$428 today.
+
+The China chip deal thesis remains intact (MI308 approved, $500-800M 2026 revenue upside). However:
+1. Technical: AMD broke below breakout level (~$440-445). Candlestick pattern: multiple red candles from ATH ($469 → $412). Bearish momentum. 5-indicator stack: Stochastic likely overbought coming off ATH (not confirming bullish entry). Volume oscillator: high volume on down days = distribution signal. MACD: likely bearish crossover after May 15 drop. Only 1-2 indicators potentially confirming bullish (stock still above 200MA estimated). Score: 5
+2. Macro: Iran conflict, 10Y yield 4.60%, rate hike fears — all negative for growth/tech. Score: 5
+3. Average re-score: (9+5+7+5+7+8)/6 = 41/6 = 6.83 → round to **6.5** (being conservative given macro)
+
+**Decision: SKIP (re-scored 6.5, below 7.0 threshold)**
+Valid CLAUDE.md exemption: Score dropped below 7 → entry not required. This is NOT a deployment bias violation.
+
+```yaml
+---
+ts: 2026-05-18T15:08:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.5
+thesis: AMD re-scored 6.5 at Mid-Morning (down from 7.33 May 14). Breakout from $445 failed — AMD fell to $412 on May 15 Iran selloff. Technical setup degraded. Macro headwinds (4.60% yield, rate hike fears) weigh on growth names.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 7
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED (6.83 avg < 7.0 minimum; only 3 of 6 agents >=7, need >=4). Technical=5: breakout level ~$445 broken; AMD fell to $412 on May 15 Iran selloff; multiple red candles from ATH $469; 5-indicator stack cannot confirm bullish (stochastic not yet oversold, MACD likely bearish crossover). Macro=5: Iran conflict, 4.60% yield, rate hike fears = growth headwind. Previous 7.33 score was based on $445 entry in a more risk-on environment (May 13-14). Score dropped legitimately. Skip is NOT a deployment bias violation — score is below 7 threshold. Will re-score at Pre-Market if AMD holds $420 support and technical indicators turn bullish. xAI API blocked."
+---
+```
+
+---
+
+### Re-Scoring: PLTR (Score 6.50 conditional — CONDITION NOT MET)
+
+**PLTR current: $132.20** (range $131.57-$135.62). Re-entry condition: price must reclaim $134. Condition NOT MET. Score remains conditional-6.50 without $134 reclaim.
+
+Note: PLTR briefly touched $135.62 intraday (above $134), but the closing/mid-morning price of $132.20 is below the trigger. The intraday breach of $134 is notable — watch for sustained break above $134.
+
+```yaml
+---
+ts: 2026-05-18T15:08:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.5
+thesis: PLTR $132.20 — below $134 re-entry condition. Intraday high $135.62 breached condition briefly but price retreated. Score 6.50 without $134 reclaim.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 3
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.50
+agents_above_7: 4
+master_decision: rejected
+master_notes: "REJECTED — condition not met ($132.20 < $134 re-entry trigger). Technical=3: PLTR previously broke $134 support zone May 13. Intraday high $135.62 suggests buyers at $134-135 but price retreated to $132.20. A sustained close above $134 would trigger re-score to ~7.33 (Technical would improve to 6). Valid CLAUDE.md skip — the PLTR re-entry was defined as conditional on >$134 sustained; intraday spike does not qualify. Will re-evaluate at Daily Review. xAI API blocked."
+---
+```
+
+---
+
+### Re-Scoring: MU (Micron — Score ~7.33 estimated → 6.5 — BELOW THRESHOLD)
+
+**Previous estimate (May 14): ~7.33** — full 6-agent score was deferred to Pre-Market May 15, which silently failed.
+
+**Current assessment (API blocked — cannot verify chart data or current price):**
+AI memory demand intact (NVDA earnings this week = HBM demand proxy). Iran conflict = macro headwind. Rate hike fears = memory stocks (cyclical) hit harder than NVDA (high multiple). Without current price or verified technical indicators: Technical = 5 (cap), Macro = 5 (rate hike fears + Iran). Re-scored average: ~6.5.
+
+**Decision: SKIP (estimated 6.5, below 7 threshold)**
+
+This is a preliminary re-score due to lack of API data. Will run full 6-agent at next available Pre-Market routine with real price data.
+
+```yaml
+---
+ts: 2026-05-18T15:08:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 6.5
+thesis: MU re-scored ~6.5 at Mid-Morning due to macro headwinds (4.60% yield, rate hike fears) and unverified technical setup (API blocked). AI memory thesis intact but macro environment deteriorated since May 14. Full 6-agent deferred to Pre-Market when API available.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED (6.5 avg < 7.0; 3 of 6 agents >=7, need >=4). Technical=5: cannot verify 5-indicator stack without API. Macro=5: rate hike fears + Iran conflict = memory sector headwind (memory is cyclical, hit harder than AI compute in stagflation scenarios). Fundamentals=8: HBM4 demand + NVDA AI training still strong. Will re-score at next Pre-Market with real price data — MU may recover score if macro sentiment improves. xAI API blocked."
+---
+```
+
+---
+
+### Performance vs Benchmark — May 18, 2026
+
+**Portfolio (estimated, API blocked):**
+- Total equity: ~$100,362 (5 positions + ~$85,550 cash)
+- Total return: +0.36% ($362 / $100,000 initial)
+- Today's change (vs ~$100,514 May 14 est): -$152 / -0.15%
+
+**S&P 500:**
+- Current: ~7,392 (-0.22% today)
+- Return since ~May 1 start (~7,200): +2.67%
+
+**Gap vs SPX: -2.31 pp** (IMPROVED from -3.81 pp on May 14!)
+- The May 15 Iran-driven selloff (-0.88%) and May 18 early weakness (-0.22%) reduced the SPX benchmark, which partially closed our gap. Cash-heavy portfolio is more stable in risk-off environments.
+- However: gap closure came from benchmark falling, not portfolio outperforming. A recovery in markets would widen the gap again.
+
+---
+
+### 3 Things That Worked
+1. **Cash preserved in risk-off event:** Portfolio only -0.15% from May 14 vs SPX -1.58%. The 80%+ cash position that has been a drag in the bull run became a temporary cushion in the Iran-driven selloff.
+2. **LMT identified as new ≥7 setup:** Defense sector-rotation thesis is clear (7.83 avg, 5/6 agents ≥7). Sector not in portfolio yet. LMT earnings not until July 21. Clean opportunity.
+3. **NVDA earnings urgency recognized:** NVDA earnings May 20 AMC identified. 48h no-new-entry window = today 4PM ET. Strategy switch liquidation of NVDA 15sh is now CRITICAL URGENT (not just routine).
+
+### 3 Things to Improve
+1. **Pre-Market and Market Open must fire.** 9 consecutive silent failures (May 15 all-day + today's pre-market/market-open). Strategy switch liquidations still sitting unexecuted. NVDA earnings exposure accumulating.
+2. **API allowlist must be resolved.** 10+ consecutive sessions. LMT entry (score 7.83, approved) blocked. Strategy switch liquidations blocked. AMD re-scored sub-7 but if macro recovers, future entries will also be blocked.
+3. **NVDA naked-into-earnings risk.** If the strategy switch MOO from May 18 open didn't execute AND the bracket cancel from May 17 cleared, NVDA 15sh is unprotected into a binary event (May 20 AMC). Operator must address.
+
+---
+
+### Watchlist for Next Routine (Midday, 12:30 PM ET)
+
+| Rank | Symbol | Bucket | Setup | Score | Notes |
+|------|--------|--------|-------|-------|-------|
+| 1 | LMT | active | sector-rotation | **7.83** | MUST ENTER — APPROVED, blocked by API. Operator: place bracket manually. |
+| 2 | NVDA | exit | — | — | MUST SELL TODAY (earnings May 20 AMC). |
+| 3 | TSM/JPM/AVGO | exit | — | — | Strategy switch liquidations pending. |
+| 4 | GLD | hold | macro-hedge | — | Stop $397.92. Iran bid supports. Keep. |
+| 5 | AMD | active | breakout-volume | 6.5 | Re-score at Midday if price holds $420 support. |
+| 6 | PLTR | watch | ai-momentum-pullback | 6.5* | *Re-enter ONLY if $134 reclaims and sustains. |
+| 7 | XLE | watch | macro-hedge | 6.5 | Oil $104-109; scored 6.5 today — below threshold. |
+| 8 | RTX (Raytheon) | watch | sector-rotation | TBD | Defense pair trade with LMT if API unblocks. |
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
