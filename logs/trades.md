@@ -4,6 +4,271 @@
 
 ---
 
+## 2026-05-18 — Afternoon Routine (2:00 PM ET / 18:10 UTC)
+
+**Context:** Monday May 18. First trading day after the 2026-05-17 strategy switch (LT bucket → 100% trading). Markets risk-off: S&P 500 ~7,380 (-0.5%), tech sector -2%. Iran conflict resurfacing. 10Y yield at 4.60%+ (new year high). NVDA earnings confirmed **May 20 AMC** (Q1 FY2027) — 48h binary-event window begins tonight ~4:30 PM ET. Trump-Xi summit ended May 15 without formal chip deal → chip stocks sold off -3-6% on May 15; continuation selling today. API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 10th+ consecutive session. All 4 predecessor routines (Pre-Market, Market Open, Mid-Morning, Midday) produced NO heartbeats today — SILENT FAILURES.
+
+**CRITICAL OPERATOR ACTION REQUIRED BEFORE 3:50 PM ET TODAY:**
+The following MOC sells were attempted programmatically but ALL BLOCKED by API. Operator must manually execute in Alpaca paper account before 3:50 PM ET (Market on Close cutoff):
+1. TSM: SELL 7 shares MOC (strategy switch LT liquidation)
+2. **NVDA: SELL 15 shares MOC — URGENT. Earnings May 20 AMC. 48h window starts ~4:30 PM ET tonight. Do NOT carry NVDA through earnings.**
+3. JPM: SELL 9 shares MOC (strategy switch LT liquidation)
+4. AVGO: SELL 7 shares MOC (strategy switch LT liquidation)
+
+---
+
+### Predecessor Routine Violations — 2026-05-18
+
+```yaml
+---
+ts: 2026-05-18T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 ET) produced no heartbeat — silent failure. Strategy-switch MOO sells for TSM/NVDA/JPM/AVGO never placed. Stop audit not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing routine. No heartbeat STARTED or COMPLETED in logs/heartbeats/2026-05-18.log for Pre-Market. MOO sells planned for strategy switch liquidation did not fire. API blocked status unknown at that time."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 ET) produced no heartbeat — silent failure. Post-MOO stops never placed (MOOs never submitted). Stop audit of all 5 positions not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Critical miss: Market Open places stops after MOO fills. No MOO fills to stop since Pre-Market failed. Existing stops (TSM, GLD, NVDA, JPM, AVGO bracket/standalone GTC from May 4-6) assumed still resting but unverified."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 ET) produced no heartbeat — silent failure. Intraday scanning and stop audit not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Stop audit missed. NVDA earnings risk going unmonitored during market hours."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T12:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Stop audit missed. No intraday scan performed."
+---
+```
+
+---
+
+### Stop-Coverage Audit — 2026-05-18 (API BLOCKED — web-research prices)
+
+API call `GET /v2/orders?status=open` returned "Host not in allowlist." Cannot verify resting stops programmatically. Estimated intraday prices from web research (~2:00 PM ET):
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 18 | Cushion | Status |
+|--------|-----|--------|-------|------|-------------------|---------|--------|
+| TSM | 7 | legacy-LT | $401.47 | $353.76 | ~$404 | +14.2% | ✓ Stop assumed resting (GTC bracket from May 4) |
+| GLD | 7 | active | $418.86 | $397.92 | ~$417 | +4.8% | ✓ Stop assumed resting. Below entry; thesis intact (inflation) |
+| NVDA | 15 | legacy-LT | $198.83 | $175.60 | ~$225 | +28.1% | ⚠️ **EARNINGS MAY 20 AMC — MOC sell attempted, BLOCKED** |
+| JPM | 9 | legacy-LT | $308.30 | $272.14 | ~$297 | +9.2% | ✓ Stop assumed resting. Sell queued (blocked) |
+| AVGO | 7 | legacy-LT | $418.48 | $368.36 | ~$420 | +14.0% | ✓ Stop assumed resting. Sell queued (blocked) |
+
+**XLE: CONFIRMED SOLD** (verified May 17 via Alpaca API). No position exists.
+
+GLD stop ($397.92): $417 - $397.92 = $19.08 cushion = 4.6%. GLD down from $430 May 14 high but above stop. Inflation/Iran thesis intact.
+
+---
+
+### Market Summary — 2026-05-18 (~2:00 PM ET)
+
+S&P 500 ~7,380 (-0.48%), Nasdaq -1.0%, Russell -0.79%. Tech sector -2% as the Trump-Xi chip-deal optimism that drove record highs May 14 (S&P 7,511) fully unwound. The May 15 summit ended without a formal semiconductor export agreement — U.S. authorized H200 sales to China but Beijing has not yet approved shipments. Iran tensions resurging (Trump: "get moving or there won't be anything left"). 10Y Treasury yield 4.60%+ (new year high). No rate cuts expected in 2026. **NVDA earnings Wednesday May 20 AMC** — options pricing ±8-10% move; $78-79B revenue consensus.
+
+**Position highlights (estimated, API blocked):**
+- NVDA 15sh: ~$225 (from $235.63 May 14) = -$10.63/sh = -$159.45 vs May 14. Still +13.2% above entry $198.83. **MUST CLOSE TODAY before 48h earnings window.**
+- TSM 7sh: ~$404 (+$2.53/sh vs entry) = +$17.71 unrealized P/L
+- GLD 7sh: ~$417 (-$1.86/sh vs entry) = -$13.02 unrealized P/L. Below entry but above stop.
+- JPM 9sh: ~$297 (-$11.30/sh vs entry) = -$101.70 unrealized P/L
+- AVGO 7sh: ~$420 (+$1.52/sh vs entry) = +$10.64 unrealized P/L
+
+---
+
+### Strategy Switch LT Liquidation — MOC Sell Attempts (ALL BLOCKED)
+
+API blocked. All 4 MOC sell orders returned "Host not in allowlist." Attempts logged below.
+
+```yaml
+---
+ts: 2026-05-18T18:12:00Z
+action: skip
+symbol: TSM
+bucket: active
+setup: ai-momentum-pullback
+score: 7.7
+thesis: MOC SELL 7sh — strategy switch directive (2026-05-17): liquidate all LT bucket positions. Programmatic MOC order attempted, BLOCKED by API (HTTP 403 Host not in allowlist). Operator must manually execute SELL 7sh TSM MOC before 3:50 PM ET.
+size_pct: 2.8
+stop: 353.76
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "SELL BLOCKED — infrastructure failure (API HTTP 403). This is NOT a valid CLAUDE.md skip exemption — operator must manually execute. MOC target price: ~$404. Estimated sale proceeds: 7 × $404 = $2,828. Strategy switch directive: retire LT bucket, all proceeds to active deployment post-sale. TSM position: +0.6% above entry ($401.47). Trailing stop would also work as alternative to MOC."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T18:12:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: MOC SELL 15sh — strategy switch directive (2026-05-17) + earnings binary event May 20 AMC. MUST CLOSE before 48h earnings window (starts ~tonight 4:30 PM ET). Programmatic MOC order attempted, BLOCKED by API. Operator must manually execute SELL 15sh NVDA MOC BEFORE 3:50 PM ET TODAY.
+size_pct: 3.4
+stop: 175.60
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.3
+agents_above_7: 4
+master_decision: approved
+master_notes: "SELL BLOCKED — infrastructure failure (API HTTP 403). HIGHEST PRIORITY: NVDA earnings May 20 AMC. Options pricing ±8-10% implied move. Consensus: $78-79B revenue. 48h binary event window begins ~tonight. Carrying 15sh through earnings = $225 × 15 = $3,375 at ±$337-$450 unquantified binary risk. Strategy switch directive requires exit regardless. Estimated MOC proceeds: 15 × ~$225 = $3,375. If operator cannot place before 3:50 PM ET today, MUST place first thing May 19 at Pre-Market open or market open at latest. Do NOT hold NVDA into May 20 earnings."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T18:12:00Z
+action: skip
+symbol: JPM
+bucket: active
+setup: sector-rotation
+score: 7.3
+thesis: MOC SELL 9sh — strategy switch directive (2026-05-17): liquidate all LT bucket positions. Programmatic MOC order attempted, BLOCKED by API. Operator must manually execute SELL 9sh JPM MOC before 3:50 PM ET.
+size_pct: 2.7
+stop: 272.14
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "SELL BLOCKED — infrastructure failure. JPM at ~$297, below entry $308.30 = -$101 unrealized loss. Rising rate environment (10Y yield 4.60%+) supports NIM but hurts loan growth. Thesis deteriorating. Selling at loss per strategy switch directive. Proceeds ~9 × $297 = $2,673."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T18:12:00Z
+action: skip
+symbol: AVGO
+bucket: active
+setup: ai-momentum-pullback
+score: 7.0
+thesis: MOC SELL 7sh — strategy switch directive (2026-05-17): liquidate all LT bucket positions. Programmatic MOC order attempted, BLOCKED by API. Operator must manually execute SELL 7sh AVGO MOC before 3:50 PM ET.
+size_pct: 2.9
+stop: 368.36
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "SELL BLOCKED — infrastructure failure. AVGO at ~$420, barely above entry $418.48 = +$10.64 unrealized gain. China chip deal not formally confirmed (Beijing has not approved H200 shipments despite US authorization). Thesis partially intact but selling per strategy switch directive. Proceeds ~7 × $420 = $2,940."
+---
+```
+
+---
+
+### GLD Position Review
+
+GLD remains in active bucket (not subject to LT liquidation). Current: ~$417.29, entry $418.86, stop $397.92.
+- P/L: -$11.02 (-0.38% vs entry) — below entry but above stop
+- Thesis: inflation hedge (PPI +1.4%, CPI elevated, no rate cuts), Iran conflict geopolitical risk, rising Treasury yields = real-rate concern. GLD typically rises when real rates rise OR geopolitical stress elevated. Both conditions apply today.
+- **No trailing stop adjustment** — GLD needs to clear entry $418.86 first before trailing up.
+- Action: HOLD. No change to stop $397.92.
+
+---
+
+### Tomorrow's Watchlist (Preliminary — Pre-Market May 19 COMMITMENT)
+
+Per CLAUDE.md Deployment Bias: this preliminary watchlist is a commitment. Pre-Market May 19 MUST place orders for any name ≥7 subject only to the 3 valid skip exemptions.
+
+**⚠️ Pre-Market May 19 TOP PRIORITY: Complete the LT liquidation if not done today (TSM, NVDA, JPM, AVGO MOO sells). NVDA must be out before earnings May 20.**
+
+**Active entries to evaluate at Pre-Market:**
+
+| Rank | Symbol | Setup | Pre-Score | Entry est. | Stop | Target | Notes |
+|------|--------|-------|-----------|------------|------|--------|-------|
+| 1 | AMD | mean-reversion-oversold | 6.8* | ~$415 | $394 | $477 | Mizuho PT $515; China miss priced in; AI data center structural demand. Re-score at Pre-Market. |
+| 2 | GLD | macro-hedge | hold | — | $397.92 | — | Existing position; add only if Pre-Market shows strong buy signal |
+| 3 | PLTR | ai-momentum-pullback | 5.5 | $134+ | $125 | $154+ | Still below $134 trigger (at $132.20). Conditional: re-enter ONLY if $134 reclaimed with volume |
+
+*AMD preliminary pre-score: Fundamentals 9, Technical 6, Sentiment 5, Macro 5, Risk 7, Tech Analyst 9 → avg 6.8. One point below entry threshold. **Full 6-agent re-score MANDATORY at Pre-Market** — if Technical rises to 7 on Pre-Market setup and Sentiment improves (NVDA earnings catalyst), score reaches 7.17 → ENTER.
+
+**Crypto:**
+BTC: still monitoring $82K re-entry threshold. No crypto entries until BTC clears that level.
+
+**NVDA blackout:** No new NVDA entries May 19-20. Earnings May 20 AMC. If sold today (per operator action), do not re-enter until earnings reaction is digested (May 21+).
+
+---
+
+
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
