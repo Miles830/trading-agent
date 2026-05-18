@@ -1,7 +1,90 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-17 (Sunday) — STRATEGY SWITCH to 100% trading account (operator directive from main session).** Allocation changed from 55/30/5/10 (LT/active/crypto/cash) to **85/10/5 (active/crypto/cash).** Long-term bucket retired. All 4 LT positions queued for MOO close at Monday 2026-05-18 open (TSM 7, NVDA 15, JPM 9, AVGO 7). Only GLD carries over. New 3:1 R/R minimum. New mandatory 5-indicator stack (Stochastic, Candle, Volume Oscillator, MACD, Volume Spike — 2-of-5 confirms required).
+**2026-05-18 (Monday Midday) — Midday routine. API still blocked (HTTP 403). LT position closes (TSM/NVDA/JPM/AVGO) attempted but blocked — operator must verify and execute manually. NVDA URGENT: earnings May 20. XLE (7.33) and AMD (7.17) scored and approved but orders blocked. Two new CLAUDE.md deployment bias violations logged.**
+
+Prior "Last Updated" entry preserved below.
+
+## 2026-05-18 — Midday Routine State
+
+### CRITICAL OPERATOR ACTIONS REQUIRED
+1. **NVDA 15sh — CLOSE TODAY** (earnings May 20, inside 48h window)
+2. **TSM 7sh, JPM 9sh, AVGO 7sh — CLOSE TODAY** (strategy switch 2026-05-17)
+3. **XLE 82sh — ENTER** (limit $59.30, stop $56.34, target $68.20 — score 7.33, APPROVED)
+4. **AMD 11sh — ENTER** (limit $421.00, stop $399.95, target $484.15 — score 7.17, APPROVED)
+
+### Current Account Snapshot (estimated — API blocked)
+- **Total Equity (estimated):** ~$100,301 (positions at last-verified May 17 prices)
+- **Cash:** ~$85,550 (85.3%) — well above 5% floor but underfunded vs 85% active target
+- **Long Market Value (estimated, LT positions still open — unconfirmed):** ~$14,751
+- **API Status:** BLOCKED HTTP 403 — 12th+ consecutive blocked session
+- **NVDA Earnings:** May 20, 2026 (Wednesday) — INSIDE 48h window NOW
+
+### Market Context May 18 Midday
+- **S&P 500:** ~7,490-7,500 (down ~0.2% on day; SPY $740.31)
+- **Iran conflict:** U.S.-Iran tension escalating; Strait of Hormuz 20% global supply disrupted; oil WTI $104+
+- **NVDA:** ~$222 (range $220.26-$230.63), down on pre-earnings pressure
+- **AMD:** ~$420 (range $411.80-$438.80) — -11.6% from $477 high; Q1 2026 blowout beat
+- **XLE:** ~$58.48-$59.47 — energy only green sector YTD
+- **GLD:** $417.29 — below entry $418.86 (-0.4%); Iran war = sustained floor
+- **BTC:** $76,803 — below $82K re-entry threshold; mass liquidations on Iran fear
+- **ETH:** $2,113
+
+### Position State (estimated — unverified, API blocked)
+| Symbol | Bucket | Qty | Entry | Stop | Est. Price | Est. P/L | Notes |
+|--------|--------|-----|-------|------|------------|----------|-------|
+| TSM | [close] | 7 | $401.47 | $353.76 | ~$404 | ~+$18 | CLOSE — strategy switch |
+| GLD | active | 7 | $418.86 | $397.92 | $417.29 | -$11 | HOLD — macro-hedge |
+| NVDA | [close] | 15 | $198.83 | $175.60 | ~$222 | ~+$348 | 🚨 CLOSE URGENT — earnings May 20 |
+| JPM | [close] | 9 | $308.30 | $272.14 | ~$299 | ~-$84 | CLOSE — strategy switch |
+| AVGO | [close] | 7 | $418.48 | $368.36 | ~$425 | ~+$46 | CLOSE — strategy switch |
+
+### Pending Approved Entries (operator must execute)
+| Symbol | Setup | Score | Limit | Stop | Target | R/R | Size |
+|--------|-------|-------|-------|------|--------|-----|------|
+| XLE | macro-hedge | 7.33 | $59.30 | $56.34 | $68.20 | 3:1 | 82sh ($4,838 = 4.82%) |
+| AMD | mean-reversion-oversold | 7.17 | $421.00 | $399.95 | $484.15 | 3:1 | 11sh ($4,631 = 4.62%) |
+
+### Bucket State (estimated, assuming LT positions still open)
+| Bucket | Target | Current $ (est.) | Current % |
+|--------|--------|-------------------|-----------|
+| Active Trading | 85% ($85,255) | ~$2,921 (GLD) | 2.9% |
+| Crypto | 10% ($10,030) | $0 | 0% |
+| Cash Reserve | 5% ($5,015 floor) | ~$85,550 | 85.3% |
+| [LT to close] | 0% | ~$11,830 | 11.8% |
+
+**Deployment gap (post-LT closes):** ~$82K underdeployed in active bucket. 10 new positions at 5% each needed.
+
+### Performance vs S&P 500
+- Portfolio return: +0.30% (estimated)
+- S&P 500 return May 1 to May 18: ~+3.9% (7,200 → ~7,490)
+- **Cumulative gap: ~-3.6 pp** (narrowed slightly from -3.81 pp at May 14)
+- Root cause: 85%+ cash position from API blockage
+
+### Lessons Learned (May 15-18)
+1. **NVDA binary risk exposure:** Strategy switch was supposed to close NVDA before earnings window. API blockage means the position is now inside the 48h window unexited. This is the largest operational risk in the portfolio.
+2. **Energy sector (XLE) is the best macro trade:** With Iran war, oil $104+, and energy the only green sector, this should have been entered weeks ago. Score 7.33, delayed by API.
+3. **AMD post-earnings mean reversion:** Q1 blowout beat creates a long-term floor. Price -11.6% from peak is oversold. Strong entry at $420 zone.
+4. **BTC/Crypto:** Crypto is being crushed by Iran risk-off ($563M liquidations). Do NOT enter BTC until $82K+ reclaim or a clear capitulation flush below $73K for a flush-rebound setup.
+
+### Setup Performance Tracker (rolling 5-day May 14-18)
+No closed positions yet — all P/L unrealized. Tally unchanged.
+
+| Setup tag | 5-day Wins | 5-day Losses | Cumulative W/L | Status |
+|-----------|-----------|--------------|----------------|--------|
+| ai-momentum-pullback | 0 | 0 | 0/0 | Pending (LT positions closing) |
+| macro-hedge | 0 | 0 | 0/0 | Active (GLD -0.4%) |
+| mean-reversion-oversold | 0 | 0 | 0/0 | Approved, not entered (AMD) |
+
+### Next Routine Watchlist (Afternoon / Market Close)
+If API unblocks OR operator acts:
+1. **XLE** — macro-hedge, score 7.33, APPROVED. Enter limit $59.30 if price in range.
+2. **AMD** — mean-reversion-oversold, score 7.17, APPROVED. Enter limit $421 if price holds.
+3. **GLD** — hold, trail stop up if closes above $420.
+4. **Crypto:** Do NOT enter BTC below $82K.
+5. **NVDA:** CLOSE, not monitor.
+
+---
 
 Prior "Last Updated" entry preserved below for context.
 
