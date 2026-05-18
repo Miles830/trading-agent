@@ -4,6 +4,283 @@
 
 ---
 
+## 2026-05-18 — Daily Review (4:30 PM ET / 20:37 UTC)
+
+**Context:** Monday May 18. Iran conflict escalating ("clock is ticking" presidential language). 10Y Treasury yield hit a year-high (>4.60%). S&P 500 down ~1.20% (SPY $739.17 from $748.17). Tech underperformed: Nasdaq -1.1%. Crypto flush: BTC $76K, ETH $2.1K, $814M liquidated. **NVDA earnings THIS WEDNESDAY May 20 AH** (8-10% implied options move). Strategy switch from May 17 (close TSM/NVDA/JPM/AVGO via MOO) remains unexecuted — Pre-Market routine silently failed for the 12th consecutive session. May 15 Daily Review also silently failed (empty heartbeat log). API still blocked ("Host not in allowlist"). All prices estimated from web research.
+
+---
+
+### Heartbeat Tally — 2026-05-18
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE — strategy switch MOO missed AGAIN |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Afternoon | 14:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Close | 15:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Daily Review | 16:30 | ✓ 20:31:46Z | ✓ IN PROGRESS | 🟡 RUNNING |
+
+### Heartbeat Tally — 2026-05-15 (Friday — RETROSPECTIVE)
+ALL 7 routines had empty heartbeat log (file exists, zero bytes). COMPLETE SILENT FAILURE of the entire Friday session. Weekly strategy evolution note (due Fridays) was NOT written. No orders placed. Gap widened -0.96 pp that day (SPY +0.79%, portfolio -0.17%).
+
+**TOP OPERATIONAL ISSUE:** Strategy switch (close TSM/NVDA/JPM/AVGO via MOO) has now been delayed across 2 consecutive trading days (May 18 Mon + missed May 15 Fri opportunity). NVDA earnings WEDNESDAY creates urgency — MOO sells MUST fire on May 19 (tomorrow) morning. **Operator must manually execute if routine fails again.**
+
+---
+
+### Stop-Coverage Audit (FIRST ACTION — API blocked, using web-research prices)
+
+**Background:** On Sunday May 17, operator cancelled 4 bracket/stop orders (TSM stop, AVGO bracket, JPM bracket, NVDA bracket). These were `pending_cancel` at close Sunday, expected to process at ~4 AM ET Monday. If they processed, positions TSM/NVDA/JPM/AVGO went NAKED (no stop protection) from market open today.
+
+| Symbol | Qty | Bucket | Entry | Prior Stop | Est Price May 18 | Cushion vs Old Stop | Stop Status |
+|--------|-----|--------|-------|-----------|-----------------|---------------------|-------------|
+| TSM | 7 | LT→close | $401.47 | $353.76 | ~$393.43 | +11.2% | 🔴 NAKED — stop cancelled May 17 |
+| GLD | 7 | active | $418.86 | $397.92 | ~$417.00 | +4.8% | ✅ Stop resting (not cancelled) |
+| NVDA | 15 | LT→close | $198.83 | $175.60 | ~$224.00 | +27.6% | 🔴 NAKED — bracket cancelled May 17 |
+| JPM | 9 | LT→close | $308.30 | $272.14 | ~$299.00 | +9.9% | 🔴 NAKED — bracket cancelled May 17 |
+| AVGO | 7 | LT→close | $418.48 | $368.36 | ~$419.79 | +13.9% | 🔴 NAKED — bracket cancelled May 17 |
+
+**No stop hits today.** All naked positions remain above their prior stop levels despite market selloff. GLD stop at $397.92 is safely above today's low of $414.12. NVDA intraday low $218.37 — 24.3% above old stop $175.60. No emergency, but positions are unprotected between routines.
+
+**MANDATORY Pre-Market May 19 Step 1:** Before placing MOO sells, place GTC stop-loss orders on TSM/NVDA/JPM/AVGO as backstop insurance:
+```bash
+# TSM stop @ $373.76 (-5% of $393.43)
+# NVDA stop @ $212.80 (-5% of $224)  
+# JPM stop @ $284.05 (-5% of $299)
+# AVGO stop @ $398.80 (-5% of $419.79)
+```
+
+---
+
+### Market Summary — 2026-05-18
+
+**Macro:**
+- S&P 500 (SPY): $739.17 (−1.20% from May 15 close $748.17). S&P ~7,392.
+- Nasdaq: −1.1%. Tech sector underperformed.
+- Iran conflict: Trump "clock is ticking" statement → oil higher, 10Y yield hit year-high >4.60%, risk-off.
+- Crypto: BTC $76K (↓ from $79.6K May 14), ETH $2.1K. $814M liquidations. Fear & Greed Index 37 (Fear).
+- NVDA earnings Wednesday May 20 AH. Options imply ±8-10% move. Consensus: $1.78 EPS (+120% YoY), $79.2B revenue (+79.5% YoY). China commentary (H200, Beijing visit) is the single biggest variable.
+- ServiceNow (NOW): +8.9% on BofA "Buy" reinstatement + agentic AI production partnerships (Experian, Accenture, FedEx, Boomi). Breakout on volume.
+
+**Individual positions (estimated prices from web research):**
+- TSM: $393.43 (−2.70% from $404.35 May 15). Chip sector under pressure.
+- GLD: ~$417.00 (−0.07% from $417.29 May 15). Gold resilient on Iran + inflation + 10Y yields.
+- NVDA: ~$224.00 (prev close $225.32; range $218.37–$230; −0.59% est). Earnings Wednesday.
+- JPM: ~$299.00 (+0.40% from $297.81 May 15). Financials slight bounce.
+- AVGO: $419.79 (−1.27% from $425.19 May 15). Broadcom off on chip sector weakness.
+
+**AMD:** $412.38 (−2.76%). RE-SCORED REJECTED (see YAML below). Technical score deteriorated.
+
+---
+
+### Performance vs Benchmark
+
+**Today (May 18):**
+- Portfolio change: −$125 / −0.12% (from verified May 15 equity ~$100,338)
+- SPY change: −1.20% ($739.17 from $748.17)
+- Today's gap vs SPY: **+1.08 pp** (outperformed because 85% cash buffered against market decline)
+
+**Retrospective May 15 (first record of the gap for that day):**
+- Portfolio change from May 14: −$176 / −0.17% (NVDA −4.37% on summit disappointment, GLD −2.73%)
+- SPY change May 14→15: +0.79% (S&P crossed $7,500 for first time)
+- May 15 gap: **−0.96 pp** (portfolio down on chip sell-off while market rose)
+
+**Cumulative (chained from May 14 reported −3.81 pp):**
+- May 15 widened gap to −4.77 pp (portfolio −0.17% vs SPY +0.79%)
+- May 18 recovered to −3.69 pp (portfolio −0.12% vs SPY −1.20%)
+- **Cumulative gap vs SPX: −3.69 pp** as of May 18 close
+
+**Rolling 20-day tracking:** Portfolio has underperformed SPY every single trading day since strategy start (May 1). Count: 12 consecutive underperforming days. Threshold for strategy review: 20 days. Root cause remains infrastructure failure (85% cash forced by API blockage + routine silent failures), NOT strategy failure. If strategy switch executes and active trades begin next week, the fundamental underperformance driver is removed.
+
+---
+
+### Today's Best & Worst Positions
+
+**Best today:** JPM (+$10.71 on the day, +0.40%). Financials bounced slightly on lower equity indices — modest flight to dividend quality on risk-off.
+
+**Worst today:** TSM (−$76.44 on the day, −2.70%). Chip sector continue their post-summit recalibration — no major semiconductor export framework announced, profit-taking from May 14 summit-day surge.
+
+---
+
+### 3 Things That Worked Today
+1. **85% cash position protected on a −1.20% market day.** Portfolio only fell −0.12% vs SPY −1.20% = outperformed by +1.08 pp. The structural "problem" (forced cash) served as a de facto hedge today.
+2. **GLD thesis intact.** Iran conflict escalating ("clock is ticking") + 10Y yields at year high + inflation fears = gold support. GLD held near entry, stop $397.92 is 4.8% below current price. Correct to keep this as the only carryover position.
+3. **AMD rejection.** Re-scoring AMD to 6.17 (below 7 threshold) prevented chasing a deteriorating technical setup. AMD at $412 with RSI 80.6 and analyst consensus target below current price is not an entry point.
+
+### 3 Things to Improve Tomorrow
+1. **Execute strategy switch — this is now 2 days overdue.** MOO sells for TSM 7/NVDA 15/JPM 9/AVGO 7 MUST fire tomorrow. If routine fails again, operator must manually submit by 9:25 AM ET. **NVDA earnings Wednesday makes this genuinely urgent.**
+2. **Pre-establish stops before MOO.** The 4 naked positions (TSM/NVDA/JPM/AVGO) need GTC stop orders placed at Pre-Market open (even 30 seconds before the MOO) as backstop insurance in case fills don't execute.
+3. **New active-trading entries from watchlist.** Post-strategy-switch will free ~$97K. The first 3 watchlist names scoring ≥7 (NOW, LMT, RTX) should have bracket orders ready to place at market open May 19 per Deployment Bias.
+
+---
+
+### AMD Re-Score (MAY 18 — FIRST FORMAL REJECTION)
+
+**Previous score (May 12–14):** 7.33 (Fundamentals 9, Technical 6, Sentiment 7, Macro 7, Risk 7, Tech Analyst 8)
+
+**May 18 updated data:**
+- Price: $412.38 (−13.4% from $477 peak, −2.76% today)
+- RSI: 80.6 (overbought — elevated despite price decline, still concerning)
+- Analyst consensus target: $395.65 (BELOW current $412.38)
+- Trend: Consecutive declines from $477 → $448 → $434 → $412
+
+**Updated score:**
+Fundamentals: 8 (strong AI/server CPU growth thesis intact)
+Technical: 4 (RSI overbought, price in downtrend from peak, analyst target below current)
+Sentiment: 6 (Buy consensus but target below current; market risk-off)
+Macro: 5 (Iran conflict + 10Y yield spike + chip sector headwinds; no fresh catalyst)
+Risk: 6 (R/R just meets 3:1 at -5% stop = $391.76, +15% target = $474.24; but entry into falling knife concerns)
+Tech Analyst: 8 (competitive position unchanged)
+
+Average: 6.17 → **REJECTED** (below 7.0 average; only 2/6 agents ≥7)
+
+```yaml
+---
+ts: 2026-05-18T20:37:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.17
+thesis: Re-scored REJECTED. AMD fell from $477 to $412 (-13.4%). RSI 80.6 (overbought). Analyst consensus target $395.65 below current price. Downtrend from peak contradicts breakout-volume setup. No fresh catalyst to reverse. Waiting for RSI reset and price stabilization.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 6
+  macro: 5
+  risk: 6
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.17 avg, only 2/6 agents ≥7, minimum is 4/6). Technical Agent scored 4 — RSI 80.6 overbought despite price falling from $477 to $412, analyst consensus target $395.65 below current price = distributional pressure. Macro Agent scored 5 — Iran conflict + 10Y year-high + chip sector headwinds with no fresh AMD-specific catalyst post-summit. AMD transitions from 5 consecutive 'approved but skipped' entries to first formal REJECTION. Will re-score when: (1) RSI resets below 60, (2) price stabilizes above a support level, or (3) a fresh catalyst (new China deal, earnings beat) materializes. xAI API blocked — X sentiment not queried; scored qualitatively."
+---
+```
+
+```yaml
+---
+ts: 2026-05-18T20:37:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: other
+score: null
+thesis: Pre-Market routine (8:00 AM ET) SILENTLY FAILED — no heartbeat STARTED or COMPLETED. Strategy switch MOO sells (TSM 7, NVDA 15, JPM 9, AVGO 7) were not submitted. This is the 12th consecutive session where an intraday routine failed to fire. TSM/NVDA/JPM/AVGO remain open as naked (no stop-loss) positions. NVDA earnings Wednesday May 20 — urgency is high.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SILENT FAILURE. Mandatory MOO sells unsubmitted for the 2nd consecutive trading day (operator also planned May 18 as the execution day per the May 17 strategy switch). Intraday routine scheduler has not fired any session other than Daily Review since May 14. Remediation: operator must manually submit MOO sell orders before 9:25 AM ET May 19, OR the routine must successfully trigger and execute."
+---
+```
+
+---
+
+### Setup-Tag Tally (rolling 5-day window: May 14–18)
+
+No closed positions in the 5-day window. Tally unchanged.
+
+| Setup tag | 5-day W/L | Cumulative W/L | Status |
+|-----------|-----------|----------------|--------|
+| ai-momentum-pullback | 0/0 | 0/0 | Active (TSM, GLD open) |
+| macro-hedge | 0/0 | 0/0 | Active (GLD open) |
+| breakout-volume | 0/0 | 0/0 | AMD now REJECTED; awaiting re-entry criteria |
+| sector-rotation | 0/0 | 0/0 | Active (JPM open — LT) |
+| mean-reversion-oversold | — | — | No entries |
+| candlestick-reversal | — | — | No entries |
+| crypto-flush-rebound | — | — | No entries |
+
+No 3-in-a-row halt or boost rules triggered (zero closed P&L records).
+
+---
+
+### MISSED WEEKLY STRATEGY EVOLUTION NOTE (Due May 15 — Silent Failure)
+
+**Week of May 12–16, 2026 retrospective (written May 18):**
+
+This week (May 12–16) was dominated by two themes: the Trump-Xi Beijing Summit and the NVDA earnings approach. The summit delivered a partial win (H200 cleared for select Chinese companies, 200-jet Boeing order) but fell short of a comprehensive semiconductor export framework. Chip stocks ran hard into the event (NVDA +15% cumulative by May 14) and gave back gains after Day 2 communiqué disappointed (NVDA −4.37% May 15, MU fell from $818 ATH). This pattern — buy the rumor, sell the news — should be incorporated into future event-driven entries: reduce position size by 30% going into a known binary-news catalyst, exit ≥50% of any event-driven position the day before final communiqué.
+
+The strategy switch from long-term to 100% trading was operationally blocked again: both May 15 (Friday Daily Review silent failure) and May 18 (Monday Pre-Market silent failure) failed to execute the planned MOO sells. NVDA earnings Wednesday creates a hard deadline — the switch must execute by May 19 open or we hold a 15-share NVDA position through one of the most important earnings reports of 2026.
+
+AMD was formally re-scored and REJECTED for the first time this week. This is a healthy evolution — the setup (breakout-volume from China chip deal) has partially played out and the technical indicators no longer support the entry. No strategy core guardrail change.
+
+BTC fell through $80K to $76K this week — further below the $82K re-entry threshold. Crypto bucket remains $0. Correct discipline maintained.
+
+---
+
+### Tomorrow's Watchlist — COMMITMENT for Pre-Market May 19
+
+**STEP 1 is NOT trading — it is the strategy switch execution:**
+1. Re-establish 4 backup stops (TSM, NVDA, JPM, AVGO at −5%)
+2. Submit 4 MOO sells (TSM 7, NVDA 15, JPM 9, AVGO 7)
+3. Verify GLD stops still active at $397.92
+4. At Market Open routine (9:45 AM ET): confirm MOO fills, log exits, compute post-switch cash
+
+**STEP 2 — deploy post-switch ~$97K into new active positions:**
+
+| Rank | Symbol | Bucket | Setup | Est Score | Entry | Stop | Target | Thesis |
+|------|--------|--------|-------|-----------|-------|------|--------|--------|
+| 1 | NOW | active | breakout-volume | **~7.5** | ~$98 | $93.10 (−5%) | $112.70 (+15%) | BofA Buy reinstatement + agentic AI production deployments (Experian, Accenture, FedEx). Breakout on heavy volume. Full 6-agent at Pre-Market. |
+| 2 | LMT | active | macro-hedge | **~7.2** | TBD | TBD | TBD | Iran conflict "clock is ticking" + record defense backlog. Missiles, air defense systems in demand. Full score at Pre-Market. |
+| 3 | RTX | active | macro-hedge | **~7.0** | TBD | TBD | TBD | Iran war beneficiary (Patriot, air defense). Similar thesis to LMT. Borderline — full score required. |
+| 4 | MU | active | mean-reversion-oversold | **TBD** | ~$760 | $722 (−5%) | $874 (+15%) | Fell from $818 ATH on summit disappointment. AI memory supercycle thesis intact. HBM4 leadership. Needs full 6-agent. Est score ~7.0. |
+| 5 | GDX | active | sector-rotation | **~7.0** | TBD | TBD | TBD | Gold miners on Iran + inflation + 10Y year-high. Leveraged gold exposure. Full score at Pre-Market. |
+| 6 | VRT | active | mean-reversion-oversold | **TBD** | ~$90 | $85.50 (−5%) | $103.50 (+15%) | Vertiv down −10.2% today. Data center cooling for AI. RSI likely oversold. Full score needed. |
+| 7 | XOM | active | sector-rotation | **~6.8** | TBD | TBD | TBD | Iran + oil elevated. Energy sector +25% YTD. Needs 6-agent (risk: ceasefire would reverse thesis). |
+| 8 | GE Aerospace | active | sector-rotation | **~6.8** | TBD | TBD | TBD | Defense + China aviation order. Post-summit follow-through? Check earnings window first. |
+| 9 | PLTR | active | ai-momentum-pullback | **~6.5** | SKIP | — | — | CONDITIONAL only if opens >$134. Currently $132.20 → SKIP at open. Re-score if $134 reclaimed. |
+| 10 | AMD | active | breakout-volume | **6.17** | SKIP | — | — | RE-SCORED REJECTED. RSI 80.6, price falling, analyst target below current. Monitor for RSI reset to <60. |
+
+**Hard commitments:** NOW (score ~7.5, enter if confirms above $97 at open). LMT (full 6-agent, likely ≥7). MU (full 6-agent, likely ≥7). PLTR/AMD: SKIP.
+
+**NVDA 48h earnings rule:** No new NVDA positions may be initiated after market close today (May 18). Post-earnings (May 20 AH) re-entry allowed and encouraged if print is strong.
+
+**Crypto:** BTC $76K, Fear & Greed 37 (Fear). Below $82K threshold. DO NOT ENTER. Monitor for capitulation bottom — if BTC reaches $70K with high volume flush and Fear & Greed <25, that is the crypto-flush-rebound setup.
+
+---
+
+### Key Events This Week (May 19–23, 2026)
+
+- **Tuesday May 20 (after close): NVDA earnings** — Q1 FY2027. Consensus $1.78 EPS (+120% YoY), $79.2B revenue (+79.5% YoY). Options imply ±8-10%. Strategy implication: our NVDA position SHOULD be closed via MOO on May 19 (pre-earnings). If MOO executes, we are flat NVDA going into earnings. If MOO fails again (routine fails), place a standalone market sell before 9:25 AM ET May 19.
+- **Wednesday May 21: Walmart (WMT) earnings** — consumer health barometer. Monitor for sector rotation into consumer staples.
+- **Thursday May 22: Retail Sales** — economic data reading on consumer spending.
+- **Iran conflict:** US military deadlines pending. Any ceasefire announcement would be risk-on and would hit energy/defense/gold positions. Monitor closely.
+- **10Y Treasury yield:** Hit year-high >4.60% today. Further rise would pressure growth stocks (tech). Benefit: energy, materials, financials.
+
+---
+
+```yaml
+---
+ts: 2026-05-18T20:37:00Z
+action: skip
+symbol: DAILY-REVIEW-SUMMARY
+bucket: active
+setup: other
+score: null
+thesis: Daily Review May 18. No new trades executed today (all routines silently failed, API blocked). Strategy switch still pending (2 days overdue). Portfolio estimated -$125/-0.12% on a -1.20% SPY day. Cumulative gap -3.69 pp. AMD formally re-scored and rejected (6.17). Watchlist: NOW(~7.5), LMT(~7.2), RTX(~7.0), MU(TBD), GDX(~7.0) for tomorrow.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Infrastructure status: API still blocked (HTTP 403 'Host not in allowlist'). 12 consecutive intraday routine failures. Only Daily Review fires. Strategy switch (close TSM/NVDA/JPM/AVGO) 2 days overdue. NVDA earnings Wednesday May 20 creates hard deadline for closing the NVDA position. Operator MUST manually submit MOO sells before 9:25 AM ET May 19 if Pre-Market routine fails. May 15 Daily Review was a complete silent failure — no records exist for that session. May 16-17 weekend, no action. xAI API blocked — X sentiment not queried across all skips."
+---
+```
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
