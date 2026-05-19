@@ -4,6 +4,166 @@
 
 ---
 
+## 2026-05-19 — Market Open (9:45 AM ET / 13:45 UTC)
+
+**Context:** Tuesday May 19. 3rd consecutive session of chip-stock sell-off. S&P 500 futures −0.27%, Nasdaq −1%. Summit ended May 16 with no major semiconductor policy breakthroughs → chips sold off −1.24% May 16. NVDA $220.35 (−6.5% from May 14 $235.63). AMD $421 (−6% from ~$448). PLTR opened $139.65 (above $134 trigger — but summit catalyst now stale). GLD $411 (−1.78%): Iran peace-deal talks → geopolitical risk premium unwinding → gold headwind. **NVDA earnings confirmed May 20 AH — within 48-hour binary-event window.** Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 10th+ consecutive blocked session. Pre-Market routine silently failed today.
+
+**Strategy Switch Status (UNKNOWN):** May 18 was supposed to see MOO sells of TSM/NVDA/JPM/AVGO (strategy switch 2026-05-17). API-blocked cloud runner could not place these orders programmatically. Operator may have executed manually via Codespace. Cannot confirm. Both scenarios give total equity ~$100,150–$100,183. See YAML entries below for per-position accounting.
+
+---
+
+### Heartbeat Status — 2026-05-19
+
+| Routine | Scheduled (ET) | Status |
+|---------|---------------|--------|
+| Pre-Market | 08:00 | 🔴 SILENT FAILURE — no heartbeat |
+| Market Open | 09:45 | 🟡 RUNNING (catch-up for Pre-Market) |
+
+---
+
+### Stop-Loss Audit (FIRST ACTION)
+
+**Cannot verify via Alpaca API (HTTP 403 blocked).** Assumptions per last known state:
+- GLD 7sh: stops at $397.92 (GTC from May 4-6 bracket placements) — ASSUMED still resting
+- TSM/NVDA/JPM/AVGO: if strategy switch executed May 18, bracket orders canceled and positions closed. If NOT executed, GTC stops assumed resting. Operator must confirm.
+
+**GLD stop cushion at current price $411:** $411 − $397.92 = $13.08 / $411 = 3.18% cushion. ADEQUATE but watchful — Iran peace deal could push gold further lower.
+
+---
+
+### Market-Open Actions
+
+**NO ORDERS PLACED — Alpaca API blocked (HTTP 403).** Re-scoring of May 14 watchlist names below threshold after 5 days of new market data. See YAML decisions.
+
+---
+
+### URGENT OPERATOR ACTION REQUIRED
+
+🚨 **NVDA EARNINGS MAY 20 AH — WITHIN 48-HOUR WINDOW**
+
+NVDA reports Q1 FY27 on Wednesday May 20, after market. Analysts expect $1.78 EPS (+120% YoY) on $79.2B revenue. The strategy-switch directive (May 17) planned to close NVDA on May 18 MOO. If NVDA 15sh is still open:
+
+- Current price: $220.35 | Entry: $198.83 | Unrealized gain: +$321 (+10.8%)
+- Stop: $175.60 (22.4% below current — stop will NOT be hit before earnings)
+- Binary risk: ±10-20% gap possible on earnings miss or beat
+- Recommendation: **Close NVDA before May 20 market open** to eliminate binary event risk, consistent with strategy-switch directive and earnings-window caution
+- Per CLAUDE.md: "Do not initiate any position inside the 48-hour window before a scheduled earnings release" — this restricts NEW entries, but operator should evaluate whether to hold existing through binary event
+- If keeping through earnings: thesis remains strong (H200 China clearance, Blackwell data center demand), but gap-down risk is real
+
+**OPERATOR: Confirm NVDA position status and close before May 20 open if still held.**
+
+---
+
+```yaml
+---
+ts: 2026-05-19T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine (08:00 AM ET / 12:00 UTC) did not heartbeat on May 19. No STARTED or COMPLETED Pre-Market entry in logs/heartbeats/2026-05-19.log. Market-Open running catch-up per routines/open.md.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Pre-Market silently failed. This is the 10th+ consecutive session with at least one silent-failed intraday routine. Alpaca API continues to return HTTP 403 'Host not in allowlist' on all calls to paper-api.alpaca.markets and data.alpaca.markets. No stop audit, no MOO placements, no indicator-stack reads possible. Market-Open routine running full catch-up: re-scoring May 14 watchlist with 5 days of new market data (May 15–19 chip sell-off context)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T13:47:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: other
+score: 0
+thesis: NVDA earnings confirmed May 20 2026 AH. Within 48-hour binary-event window per CLAUDE.md Earnings-window rule. No new NVDA positions. Existing position (if still open from pre-strategy-switch) flagged for operator review and urgent close recommendation.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "BINARY EVENT EXEMPTION (CLAUDE.md exemption #2): NVDA reports May 20 2026 AH. No new NVDA entries permitted. Operator ACTION REQUIRED: (1) Confirm whether NVDA 15sh was closed on May 18 MOO as part of strategy-switch execution; (2) If still open, close before May 20 market open to eliminate binary risk. NVDA current $220.35 vs entry $198.83 = +$321 unrealized (+10.8%). Analysts bullish ($1.78 EPS expected +120% YoY, Wedbush says beat likely given Blackwell demand + H200 China clearance) but binary gap risk ±10-20%. Stop $175.60 = 22.4% cushion — stop will NOT be hit pre-earnings. xAI API blocked — X sentiment not queried."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T13:50:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.0
+thesis: AMD re-scored 6.0 (was 7.33 on May 14 watchlist). 5 days of new data: 3-day chip sell-off (AMD $448 → $421 = -6%), Trump-Xi summit Day 2 ended with no major semiconductor breakthroughs, HSBC downgraded AMD on 2026 capacity concerns, risk-off macro (Nasdaq -1%, high yields). Technical and Macro scores insufficient for entry.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 5
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.0
+agents_above_7: 2
+master_decision: rejected
+master_notes: "RE-SCORED BELOW THRESHOLD (6.0, was 7.33 on May 14). Score legitimately dropped on new market data — not a Deployment Bias violation. Key deterioration: (1) Technical 4/10 — AMD dropped from $448 to $421 (-6%) over 3 sessions, HSBC downgraded AMD for '2026 semiconductor capacity worries', 3-day chip sell-off (Qualcomm -11%, INTC -7%, semis broadly -5%+), cannot confirm 2-of-5 mandatory indicator stack without Alpaca real-time data (Pre-Market failed); (2) Macro 4/10 — risk-off environment, Nasdaq -1% today, high yields, Trump-Xi summit ended May 16 with disappointment ('no major policy breakthroughs'), PPI +1.4% = no rate cuts; (3) Sentiment 5/10 — HSBC downgrade on record, chip sector bearish narrative, xAI API blocked (scored qualitatively). Agents above 7: Fundamentals (8, China chip deal + MI308 + AI capex thesis intact), Tech Analyst (8, AMD GPU competitive position strong). Risk Agent 7 (R/R passes at $421: stop $400 -5%, target $484 +15% = 3:1). Only 2 of 6 agents above 7 — falls short of the 4-of-6 Master Agent gate. Master Agent REJECTS. Additionally, Alpaca API blocked — orders cannot be placed regardless. Entry deferred until: (a) chip sector stabilizes, (b) AMD reclaims $440+ with volume confirmation, (c) 2-of-5 indicator stack confirmed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T13:52:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.3
+thesis: PLTR opened $139.65 (above $134 re-entry trigger). However re-scored 6.3 in current environment: summit Day 2 catalyst now stale (ended May 16 with disappointment), risk-off macro (Nasdaq -1%, 3rd chip sell-off day), no Pre-Market indicator confirmation. Score below 7 threshold. Note PLTR's relative resilience vs. chip sector — monitor for future entry.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 8
+  tech_analyst: 7
+agent_average: 6.3
+agents_above_7: 3
+master_decision: rejected
+master_notes: "RE-SCORED BELOW THRESHOLD (6.3, was conditional 7.33 on May 14, conditional on summit Day 2 catalyst + $134 reclaim). PLTR DID open at $139.65 (above $134 trigger, range $134.68-$139.76). Score legitimately dropped — not a Deployment Bias violation. Key factors: (1) Summit Day 2 catalyst STALE: the May 14 PLTR conditional was 're-enter ONLY if PLTR opens >$134 on May 15 summit Day 2 news.' Summit ended May 16 with no major policy breakthroughs — the specific catalyst is gone. PLTR above $134 without the summit catalyst is a different, weaker setup; (2) Technical 5/10 — cannot confirm 2-of-5 mandatory indicator stack (Pre-Market failed, no Alpaca data, no real-time candle/stochastic reads); (3) Macro 5/10 — risk-off, Nasdaq -1%, 3rd consecutive chip sell-off, high yields. PLTR is government AI (defensive vs. chips) but not immune to broad market sell-off; (4) Sentiment 6/10 — government AI spending narrative positive, PLTR showing relative strength (above $134 while chips sell off), but xAI API blocked (scored qualitatively). Agents above 7: Fundamentals (7, AIP + government contracts), Risk (8, 35sh × $138 × 5% stop = $241 trade risk = 0.24% equity, well within 1.5% cap; 3:1 R/R passes), Tech Analyst (7, Foundry/AIP defensible IP). 3 of 6 agents above 7 — below the 4-of-6 gate. Master Agent REJECTS. NOTE: PLTR's relative strength vs. chip sector is encouraging — re-score at Mid-Morning or Midday routine if market stabilizes and indicators confirm. Alpaca API blocked — orders cannot be placed regardless."
+---
+```
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
