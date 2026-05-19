@@ -1,6 +1,59 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
+**2026-05-19 (Tuesday) — Afternoon routine (2:00 PM ET / ~18:06 UTC).** API still blocked (13th consecutive session). Strategy switch (May 17) assumed executed: TSM/NVDA/JPM/AVGO sold at MOO May 18; only GLD carried over. Portfolio now ~97% cash. NVDA earnings TOMORROW (May 20 after close). JPM and AMD approved at score 7.0 for Pre-Market May 20 MOO (mandatory Deployment Bias commitments).
+
+Prior "Last Updated" entry preserved below.
+
+## CURRENT STATE — 2026-05-19 Afternoon
+
+### Account Snapshot (estimated — API blocked)
+- **Total Equity:** ~$100,049 (assumes strategy switch MOO sells executed May 18)
+- **Cash:** ~$97,120 (97.1%)
+- **Long Market Value:** ~$2,929 (GLD 7sh × $418.43)
+- **Open Positions:** 1 (GLD only)
+- **API Status:** BLOCKED — HTTP 403 "Host not in allowlist" — 13th consecutive session
+
+### Bucket State
+| Bucket | Target | Current $ (est.) | Current % | Positions |
+|---|---|---|---|---|
+| Active Trading | 85% ($85K) | ~$2,929 (GLD) | 2.9% | 1 |
+| Crypto | 10% ($10K) | $0 | 0% | 0 |
+| Cash Reserve | 5% ($5K floor) | ~$97,120 | 97.1% | — |
+
+**CRITICAL DEPLOYMENT GAP: $87K+ above 5% cash floor with 0 active trades (excl. GLD). Must deploy immediately.**
+
+### Open Position
+| Symbol | Bucket | Qty | Entry | Stop | Target | Est. Price | Est. P/L | Sector |
+|---|---|---|---|---|---|---|---|---|
+| GLD | active | 7 | $418.86 | $397.92 | ~$481 | $418.43 | −$3.01 | Precious metals |
+
+### Tomorrow's Pre-Market Commitments (MANDATORY — Deployment Bias)
+| Rank | Symbol | Setup | Score | Entry | Stop | Target | Rule |
+|------|--------|-------|-------|-------|------|--------|------|
+| 1 | JPM | sector-rotation | 7.0 | ~$301 MOO | $285.95 | $346.15 | MANDATORY |
+| 2 | AMD | breakout-volume | 7.0 | ~$422 MOO | $400.90 | $485.30 | MANDATORY |
+| 3 | GLD add | macro-hedge | 6.83 | ~$418 limit | $397 | $481 | MONITOR — re-score at open |
+
+### Performance vs S&P 500 (May 19 Afternoon)
+- **Portfolio total equity (est.):** ~$100,049
+- **Portfolio total return:** +0.05%
+- **S&P 500 return since ~May 1 start:** ~+2.24% (7,200 → est. 7,361 today)
+- **Gap vs SPX:** **−2.19 pp** (improved from −3.81 pp on May 14; market pulled back from record 7,511)
+
+### Today's Market Context (May 19)
+- S&P 500: −0.51% | Nasdaq: −0.55% | Russell 2000: −0.65%
+- 30Y Treasury: **5.185%** (highest since 2007) | 10Y Treasury: 4.7%
+- NVDA: $199.88 (−1.08%) | AMD: $422.48 | AVGO: $402.17 | TSM: $395.95
+- JPM: $300.73 (+0.97%) | GLD: $418.43 | BTC: $76,565 (−4.83% this week)
+- **NVDA Q1 FY2027 earnings: TOMORROW May 20 after close.** 48h exclusion window ACTIVE.
+
+### NVDA Earnings — Critical Note
+NVDA reports May 20 after close. Analysts expect $1.78 EPS (+120% YoY), $79.2B revenue (+79.5% YoY). Options pricing ±5.07% move. No new NVDA entries permitted. Post-NVDA beat (if confirmed): AMD and AVGO become `earnings-reaction-follow` candidates for May 21 morning with estimated 8.0+ avg score.
+
+---
+
+## Last Updated (PRIOR — preserved for context)
 **2026-05-17 (Sunday) — STRATEGY SWITCH to 100% trading account (operator directive from main session).** Allocation changed from 55/30/5/10 (LT/active/crypto/cash) to **85/10/5 (active/crypto/cash).** Long-term bucket retired. All 4 LT positions queued for MOO close at Monday 2026-05-18 open (TSM 7, NVDA 15, JPM 9, AVGO 7). Only GLD carries over. New 3:1 R/R minimum. New mandatory 5-indicator stack (Stochastic, Candle, Volume Oscillator, MACD, Volume Spike — 2-of-5 confirms required).
 
 Prior "Last Updated" entry preserved below for context.
@@ -202,7 +255,12 @@ LT-tech % = 80.3% → above 60% ceiling BUT LT bucket ($13.7K) < $20K threshold 
 - **2026-05-13 — AMD pullback (thesis intact):** AMD declined from $477 peak to $448.29. Re-score: 7.33 (Technical improved from 5 to 6 as RSI normalized). Remains a MUST-ENTER. 7th consecutive API blockage.
 - **2026-05-14 — Trump-Xi Summit Day 1:** Jensen Huang attended. NVDA +4.54% on H200 clearance for select Chinese companies. 200-jet Boeing order confirmed (below 500-jet). Markets hit all-time records (S&P, Nasdaq, Dow 50K). PLTR recovered +2.62% to $133.40 — nearly at $134 re-entry trigger. JPM fell -1.52% despite record market (financials soft on no-cut rates thesis). Lesson: high-inflation environment benefits AI/tech names but hurts financials even on up-market days.
 - **2026-05-14 — 8th consecutive API blockage, 6 more silent routine failures:** AMD entry now 4 consecutive deployment failures. Cumulative benchmark gap: -3.81 pp. Intraday routine scheduler not firing. Two separate infrastructure problems: (1) API allowlist not patched; (2) cron/scheduler not firing intraday sessions.
-- **NVDA earnings risk:** NVDA reports Q2 on May 21 (7 days). Pre-earnings review MUST happen at Daily Review May 19. Stop $175.60 provides 34.2% cushion vs $235.63. Consider partial profit-taking or collar if NVDA above $240 on May 19.
+- **2026-05-17 — Strategy switch (operator-mandated):** Long-term bucket retired. 100% active trading account. All 4 LT positions queued for MOO sell at May 18 open. Only GLD carried over. New allocation: 85% active + 10% crypto + 5% cash floor.
+- **2026-05-18 — Market pullback from record highs:** Nasdaq and S&P 500 "sink to start week" (TheStreet headline). 10Y Treasury hit highest in a year. This validates the strategy switch timing — selling LT positions on May 18 morning would have captured better prices than holding through the pullback.
+- **2026-05-19 — Rising yields regime:** 30Y Treasury at 5.185% (highest since 2007). This changes sector scoring: (1) Financials (JPM, BAC) benefit from NIM expansion — score M=7-8; (2) Tech growth stocks face multiple compression — score M=5-6 unless sector-specific catalyst overrides; (3) Gold bullish as fiscal-crisis bid — but unusual cross-asset selloff today mutes near-term signal.
+- **2026-05-19 — NVDA earnings date corrected:** NVDA reports May 20 (not May 21 as previously noted). 48-hour exclusion window started May 18. Lesson: always verify exact earnings date via search before logging "NVDA earnings May 21" — the date was 1 day earlier than assumed.
+- **2026-05-19 — AMD thesis update (Alibaba order rumor):** Alibaba mulling 40K-50K AMD MI308 GPUs ($600M-$1.25B potential revenue) per search results. AMD up vs broader market pullback. Thesis strengthened vs May 14. RSI 77.37 = overbought, but Deployment Bias requires entry at 7.0 avg score — RSI is already priced into Technical 5/10.
+- **2026-05-19 — Sector rotation lesson:** On a risk-off day (30Y 5.19%, S&P -0.51%), JPM was +0.97%. This is the correct directional bet for the high-rate regime: financials outperform when rates rise because NIM expands. Lesson: in a structural high-rate environment, maintain JPM or BAC as a portfolio anchor until rate policy reversal signals.
 
 ## Setup Performance Tracker (updated 2026-05-14)
 | Setup type | Wins | Losses | 3-in-a-row | Status |
@@ -226,15 +284,17 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate.
 - **2026-05-12:** China chip deal changes AMD thesis from earnings-follow to breakout-volume. Rate-cut thesis broken (no cuts until 2027) but partially offset by China chip deal sector tailwind. PLTR government AI revenues insulated from rate environment. NVDA May 21 earnings approaching.
 - **2026-05-14 (Week 2 Thursday):** Trump-Xi Summit Day 1 delivered massive NVDA catalyst (+4.54%). Boeing 200-jet order confirmed. PLTR near $134 re-entry. Markets at all-time records. Portfolio at +0.51% vs S&P +4.32% — entire gap attributable to API blockage keeping portfolio 80% in cash. No strategy changes warranted; execution infrastructure is the only problem. If API fixed and AMD/PLTR/MU deployed, portfolio would be ~+4-5% aligned with benchmark. **Friday Weekly Evolution Note:** Full strategy evolution note to be written at Daily Review May 15 (Friday).
 
-## Next Routine Plan
-- **Pre-Market May 15 (8:00 AM ET — FRIDAY, Summit Day 2):** 
-  1. **AMD MOO 10 shares** — score 7.33, MANDATORY (4th instruction). If API blocked: operator places manually before 9:25 AM ET. 
-  2. **PLTR re-score** — if opens >$134: run full 6-agent framework, est. score 7.33. Enter 36sh at market open with LT stop -12%.
-  3. **MU full 6-agent score** — AI memory supercycle; est. score 7.33. Entry ~$788, stop -12% $693, target +24% $977. 10sh = $7,880 = 7.8% > 5% cap → reduce to 6sh = $4,728 = 4.7% ✓.
-  4. **Trump-Xi Day 2 communiqué** — read final semiconductor language before placing orders. Adjust chip name scores accordingly.
-  5. **Stop audit** — verify all 6 existing stops still resting (assumed GTC from May 4-6 bracket placements).
-- **Market Open (9:45 AM ET):** Post-MOO stops for AMD (and PLTR/MU if entered). Verify fills.
-- **Daily Review May 15 (4:30 PM ET — FRIDAY):** Weekly strategy evolution note. NVDA pre-earnings prep begins (6 days to May 21).
+## Next Routine Plan (updated 2026-05-19 Afternoon)
+- **Pre-Market May 20 (8:00 AM ET — WEDNESDAY, NVDA earnings day):**
+  1. **STOP AUDIT FIRST** — verify GLD stop $397.92 is resting at Alpaca. If strategy switch positions still open (verify via /v2/positions): close any NVDA position immediately (inside 48h earnings window); close TSM/JPM/AVGO if not yet sold.
+  2. **JPM MOO 16 shares** — score 7.0, MANDATORY. Entry ~$301, stop $285.95 (−5%), target $346.15 (+15%, 3:1 R/R). Financials outperforming on high-rate NIM expansion.
+  3. **AMD MOO 11 shares** — score 7.0, MANDATORY. Entry ~$422, stop $400.90 (−5%), target $485.30 (+15%, 3:1 R/R). China deal intact; Alibaba MI308 order rumor $600M–$1.25B.
+  4. **GLD add re-score** — if GLD opens above $421 AND 30Y yield holds above 5.0%: re-score (M=9, S may improve to 7 → avg 7.17+ → APPROVED). Add 4sh limit at ask+0.5%.
+  5. **NVDA exclusion** — no new NVDA entries today (48h window). Existing NVDA if still held: close at market open.
+  6. **Semiconductor caution** — NVDA reports after close today. AMD entry is pre-NVDA. Ensure stop protects downside if NVDA misses.
+- **Market Open May 20 (9:45 AM ET):** Post-MOO stops for JPM (stop $285.95 GTC) and AMD (stop $400.90 GTC) immediately after fill confirmation. Bracket or standalone stop orders — MUST be at Alpaca by 10:00 AM ET.
+- **Market Close May 20 (3:30 PM ET):** No day trades to flatten. NVDA print happens after close — monitor for gap risk on AMD/AVGO/TSM pre-market May 21.
+- **Pre-Market May 21 (8:00 AM ET):** Post-NVDA earnings reaction. If NVDA beats: re-score AMD and AVGO as `earnings-reaction-follow` (expected 8.0+ avg) — enter at MOO if ≥7. If NVDA misses: reassess AMD stop ($400.90); consider early close if AMD gaps below stop pre-market.
 
 ## Cash Reserve Floor
 $10,000 (10%). Current cash $80,946 — $70,946 available to deploy before hitting floor.

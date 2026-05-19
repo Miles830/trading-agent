@@ -4,6 +4,341 @@
 
 ---
 
+## 2026-05-19 — Afternoon routine (2:00 PM ET / ~18:06 UTC)
+
+**Context:** Tuesday May 19. Strategy switch from May 17 (LT bucket retired; TSM/NVDA/JPM/AVGO queued for MOO sell at Monday May 18 open) is assumed executed — operator had Codespace Alpaca access and explicit instructions. API remains blocked (HTTP 403 "Host not in allowlist") — 13th consecutive session blocked. ALL 4 predecessor routines (Pre-Market, Market Open, Mid-Morning, Midday) are silent failures today. **NVDA Q1 FY2027 earnings scheduled TOMORROW May 20 after close** — portfolio is inside the 48-hour exclusion window for NVDA. 30-year Treasury hit 5.185% (highest since 2007). S&P 500 −0.51%, Nasdaq −0.55%. Bitcoin $76,565 (below $82K re-entry threshold). **No day trades are open.**
+
+---
+
+### Heartbeat Tally — 2026-05-19 (as of Afternoon routine)
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Afternoon | 14:00 | ✓ 18:06:39Z | IN PROGRESS | 🟡 RUNNING |
+
+```yaml
+---
+ts: 2026-05-19T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 ET) produced no heartbeat — silent failure. No stop audit performed, no scans run, no MOO orders evaluated.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "13th consecutive blocked session. Pre-Market is the most critical routine — it must verify strategy-switch sell fills from May 18 and place AMD/JPM MOO if scores ≥7. Missed entirely."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 ET) produced no heartbeat — silent failure. Post-MOO stop placement missed; fill verification missed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Market Open must confirm strategy-switch MOO fills from May 18 and place GTC stops on any new entries. Missed. NVDA 48h exclusion window already active — no NVDA entries at this point regardless."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 ET) produced no heartbeat — silent failure. Stop audit and intraday scan missed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Stop audit is mandatory first action every routine. GLD stop verification missed. Positions unmonitored for 3+ hours."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T12:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Midday scan, position review, and deployment-gap assessment missed for 4th consecutive routine today."
+---
+```
+
+---
+
+### Stop-Loss Audit (FIRST ACTION — API blocked; web-research prices)
+
+**Assumed portfolio (strategy switch executed May 18):**
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 19 | Cushion | Status |
+|--------|-----|--------|-------|------|-------------------|---------|--------|
+| GLD | 7 | active | $418.86 | $397.92 | $418.43 | 5.1% | ✓ Flat; stop intact |
+
+All other positions (TSM, NVDA, JPM, AVGO) assumed sold at MOO May 18 per strategy-switch directive. Cannot verify via API. GLD stop at $397.92 GTC assumed resting at Alpaca.
+
+**If strategy switch NOT executed (Scenario B — operator could not place manually):**
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. Price May 19 | Cushion | Status |
+|--------|-----|--------|-------|------|-------------------|---------|--------|
+| TSM | 7 | active | $401.47 | $353.76 | ~$395.95 | 10.9% | ✓ But below entry; falling today |
+| GLD | 7 | active | $418.86 | $397.92 | ~$418.43 | 5.1% | ✓ |
+| NVDA | 15 | active | $198.83 | $175.60 | ~$199.88 | 12.0% | ⚠️ CRITICAL — earnings TOMORROW; if still held, close ASAP |
+| JPM | 9 | active | $308.30 | $272.14 | ~$300.73 | 10.5% | ✓ Up 0.97% today |
+| AVGO | 7 | active | $418.48 | $368.36 | ~$402.17 | 9.2% | ✓ |
+
+**NVDA BINARY EVENT ALERT (Scenario B):** If NVDA is still held, the 48-hour exclusion window for NVDA earnings (May 20 after close) is ACTIVE. Strategy-switch directive from May 17 already called for NVDA closure. NVDA at $199.88 vs $198.83 entry = barely breakeven (peak was $235.63 on May 14, now −15.2%). Operator: verify Alpaca immediately and close NVDA before today's close if still open.
+
+---
+
+### Market Summary — May 19, 2026
+
+**Macro:** Risk-off session driven by bond rout. 30-year Treasury at 5.185% (highest since 2007). 10-year Treasury at 4.7% (16-month high). The structural driver: Moody's US credit downgrade to Aa1 (2025) + persistent fiscal deficit = continued bond selling. S&P 500 −0.51%, Dow −0.85%, Nasdaq −0.55%, Russell 2000 −0.65%. Unusual correlation: stocks, gold, AND crypto declining together (safe-haven rotation breaking down). S&P 500 has now pulled back from record 7,511 (May 14) to approximately 7,361 today (~−2.0%).
+
+**Key event:** NVDA Q1 FY2027 earnings tomorrow (May 20) after close. Analysts expect $1.78 EPS (+120% YoY), $79.2B revenue (+79.5% YoY). Options pricing ±5.07% move. This is THE catalyst event of the week — entire semiconductor sector directional risk tied to this print.
+
+**Individual updates:**
+- NVDA: $199.88 (−1.08%) — Pre-earnings selling/valuation compression. Was $235.63 on May 14; −15.2% in 5 sessions. Earnings tomorrow after close.
+- AMD: $422.48 (range $393.36–$428.75) — Alibaba mulling 40K–50K MI308 GPU order ($600M–$1.25B potential revenue). Lisa Su met China Commerce Minister. RSI 77.37 = overbought. China deal thesis intact.
+- TSM: $395.95 (prev close $404.35) — Yield-driven multiple compression. Down ~2% today.
+- AVGO: $402.17 (+0.64%) — Resilient relative to sector; pulled back from $425 (May 17).
+- JPM: $300.73 (+0.97%) — Outperforming the market today; high rates = NIM expansion narrative.
+- GLD: $418.43 (range $416.06–$420.93) — Essentially flat; 30Y at 5.19% is structurally bullish for gold (fiscal crisis bid) but institutional selling muting the move.
+- BTC: $76,565 — Down 4.83% this week. Fell from $81,070 at the week's start. Below $82K re-entry threshold.
+
+---
+
+### Performance vs Benchmark
+
+**Estimated portfolio as of 2:00 PM ET May 19:**
+- Total equity: ~$100,049
+- Total return: +0.05% (from $100,000 start)
+
+**S&P 500:**
+- Start (May 1): ~7,200
+- Today (May 19): ~7,361 (estimated, from 7,511 peak less ~2% decline May 18–19)
+- SPX return: +2.24%
+
+**Gap vs benchmark: −2.19 pp** (improved from −3.81 pp on May 14 because the market pulled back ~2% from its record while the portfolio moved to cash via strategy switch)
+
+---
+
+### Position Update — GLD
+
+GLD 7sh @ $418.86 entry: current $418.43 (−$3.01 / −0.07%). Essentially flat from entry. Stop at $397.92 (5.1% cushion) is safe.
+
+**Trail stop decision:** Price has not advanced above entry. No trail warranted — current stop at $397.92 is the appropriate -5% active-trade stop.
+
+**Thesis update:** 30Y at 5.185% strengthens the fiscal-crisis narrative for gold (JPMorgan $6,300/oz target; structural inflation above Fed target). However, today's unusual "everything selling" correlation (gold down slightly alongside stocks and crypto) suggests some institutional rebalancing. Core thesis intact — HOLD with existing stop.
+
+---
+
+### Decisions — Afternoon (2:00 PM ET)
+
+**No day trades to close** — no day trades were opened today or this week (all predecessor routines silent-failed).
+
+**Afternoon proximity-to-close rule:** Do NOT initiate new active-bucket entries this routine. Document watchlist names as skip with this reason. Queue for Pre-Market May 20.
+
+**Circuit breaker check:** Portfolio down ~$289 from May 17 peak (~−0.29%). NOT tripped (3% daily-loss threshold = ~$3,001). All guardrails clear for tomorrow's orders.
+
+**Deployment gap:** Portfolio is 97.1% cash vs. 5% target. Need to deploy ~$87K across 10–12 positions. This is the largest deployment failure in the portfolio's history and must be corrected systematically beginning Pre-Market May 20.
+
+---
+
+### Tomorrow's Preliminary Watchlist — COMMITMENT for Pre-Market May 20
+
+**Per Deployment Bias: these scores are commitments. Pre-Market routine MUST place MOO orders for names scoring ≥7 subject only to the 3 valid exemptions.**
+
+Note: NVDA earnings on May 20 AFTER close. May 20 morning entries precede the NVDA print — semiconductor names carry evening binary risk but are not excluded from morning entries (the 48h rule excludes new entries in the SPECIFIC stock reporting earnings, i.e., NVDA only).
+
+#### Candidate 1 — JPM (sector-rotation, score 7.0 — APPROVED, MANDATORY)
+
+**Sub-Agent 1 — Fundamentals:** Q1 2026 strong — record net income; net interest income expanded on high-rate environment; $200B+ buyback program ongoing; dividend secure. Score: **8/10**
+
+**Sub-Agent 2 — Technical:** JPM at $300.73 today, up 0.97% vs S&P −0.51% = relative strength outperformance. Prior entry was $308.30 (sold at MOO May 18 ~$296). Current price $300.73 = above our sale price and rebuilding. RSI normalizing. MACD curling bullish. No confirmed candlestick pattern today. Score: **6/10**
+
+**Sub-Agent 3 — Sentiment:** Financial sector generally bid today on high-rates-equals-NIM-expansion narrative. JPM outperforming. X API blocked — scored qualitatively. Sentiment constructive for banks in high-rate regime. Score: **7/10**
+
+**Sub-Agent 4 — Macro:** 30Y at 5.185% = bank NIM expansion thesis strengthened. High rates = good for bank net interest margins. NVDA earnings tomorrow = sector-neutral for financials. Risk-off environment = banks seen as defensive relative to tech. Score: **7/10**
+
+**Sub-Agent 5 — Risk:** Entry ~$301, stop −5% = $285.95, target 3:1 R/R = $301 + 3×$15.05 = $346.15 (+15%). Qty 16sh = $4,816 = 4.8% of ~$100,049 ✓ (<5%). Sector: Financials $4,816 = 4.8% ✓ (<25%). Trade risk: 16×$15.05 = $241 = 0.24% ✓ (<1.5%). Cash after JPM: $97,120 − $4,816 = $92,304 = 92.3% ✓ (>5%). Open positions: 2 (GLD + JPM) ✓ (<12). R/R 3:1 ✓. Score: **7/10**
+
+**Sub-Agent 6 — Tech Analyst:** JPM is not a technology company in the primary sense; auto-score 7 per CLAUDE.md. JPM's tech moat: Chase digital platform (50M+ active users), AI-powered fraud detection, trading algorithms. Score: **7/10**
+
+**Master:** Avg (8+6+7+7+7+7)/6 = **7.0/10**. Risk=7 ✓. Agents ≥7: F(8), S(7), M(7), R(7), TA(7) = 5/6 ✓. **DECISION: APPROVED.** Pre-Market May 20 MOO commitment.
+
+#### Candidate 2 — AMD (breakout-volume, score 7.0 — APPROVED, MANDATORY)
+
+**Sub-Agent 1 — Fundamentals:** Q1 2026: revenue $10.25B (+38% YoY), EPS $1.37 vs $1.28 (+7% beat), Data Center $5.8B (+57% YoY). China deal: MI308 approved for China; Alibaba mulling 40K–50K MI308 GPU order ($600M–$1.25B potential revenue). Lisa Su met China Commerce Minister in Beijing. Score: **9/10**
+
+**Sub-Agent 2 — Technical:** AMD at $422.48 today (range $393–$428). RSI 77.37 = overbought; trading 32% above 20-day SMA. Market risk-off day. Bull channel from earnings gap (May 6) still technically intact, but overbought RSI is a flag. No confirmed bullish candlestick pattern on 5-min chart (broad market selloff). Score: **5/10**
+
+**Sub-Agent 3 — Sentiment:** Alibaba MI308 order rumor very bullish; Lisa Su Beijing meeting positive. China deal broadly bullish in market narrative. NVDA earnings tomorrow = sector sentiment catalyst. X API blocked — qualitative score. Score: **7/10**
+
+**Sub-Agent 4 — Macro:** 30Y at 5.185% = growth-stock headwind. NVDA earnings tomorrow = semiconductor-specific macro catalyst (overrides general headwind post-beat). AI capex cycle intact. Risk-off day = modest headwind. Score: **6/10**
+
+**Sub-Agent 5 — Risk:** Entry ~$422, stop −5% = $400.90, target 3:1 = $422 + 3×$21.10 = $485.30 (+15%). Qty 11sh = $4,642 = 4.6% ✓ (<5%). Semis sector: $4,642 = 4.6% of equity ✓ (<25%). Trade risk: 11×$21.10 = $232 = 0.23% ✓ (<1.5%). R/R 3:1 ✓. Cash after AMD (+ JPM): $92,304 − $4,642 = $87,662 = 87.6% ✓. Positions: 3 ✓. Score: **7/10**
+
+**Sub-Agent 6 — Tech Analyst:** AMD CDNA4/MI308 competitive with NVDA H200 for AI inferencing. ROCm open-source gaining traction vs CUDA. Alibaba rumored order validates China-market AI chip demand. R&D ~20% revenue. Score: **8/10**
+
+**Master:** Avg (9+5+7+6+7+8)/6 = **7.0/10**. Risk=7 ✓. Agents ≥7: F(9), S(7), R(7), TA(8) = 4/6 ✓. **DECISION: APPROVED.** Pre-Market May 20 MOO commitment. Technical flag (RSI 77) already priced into the 5/10 score — Deployment Bias requires entry regardless.
+
+**Post-NVDA note (May 21 morning):** If NVDA beats on May 20 ($79.2B+ revenue / $1.78+ EPS), AMD re-scores as `earnings-reaction-follow` on May 21 with estimated score 8+. If NVDA misses, AMD should be reassessed before entry.
+
+#### Candidate 3 — GLD add-on (macro-hedge, score 6.83 — SKIP, below threshold)
+
+Scored (6+6+5+9+8+7)/6 = 6.83. 30Y at 5.19% is strongly bullish (M=9) but unusual "gold + bonds + stocks all down" correlation today is a bearish signal for gold sentiment (S=5). Below 7.0 threshold — SKIP. Monitor: if GLD breaks above $421 on volume tomorrow with 30Y staying ≥5%, re-score (M could go to 10, lifting avg to 7.0+).
+
+---
+
+### Skip YAML Entries
+
+```yaml
+---
+ts: 2026-05-19T18:15:00Z
+action: skip
+symbol: JPM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: JPM scores 7.0 (high-rate NIM expansion; financials outperforming today). Skipped ONLY because afternoon proximity-to-close rule prohibits new active entries. MANDATORY MOO entry at Pre-Market May 20.
+size_pct: 4.8
+stop: 285.95
+target: 346.15
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.0 avg, 5/6 agents ≥7, Risk=7 ✓). Skip reason: afternoon proximity-to-close per routines/afternoon.md — not a Deployment Bias violation. Pre-Market May 20 MUST place MOO for JPM 16sh. Entry ~$301, stop $285.95 (-5%), target $346.15 (+15%, 3:1 R/R). JPM outperforming market today (+0.97% vs S&P -0.51%) on high-rate NIM expansion narrative. X API blocked; sentiment scored qualitatively."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T18:15:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: AMD scores 7.0 (China deal + Alibaba MI308 order rumor + Q1 blowout). RSI 77.37 overbought flag is already priced into Technical 5/10. Skipped ONLY because afternoon proximity-to-close rule prohibits new active entries. MANDATORY MOO entry at Pre-Market May 20.
+size_pct: 4.6
+stop: 400.90
+target: 485.30
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED (7.0 avg, 4/6 agents ≥7, Risk=7 ✓). Skip reason: afternoon proximity-to-close — not a Deployment Bias violation. Pre-Market May 20 MUST place AMD MOO 11sh. Entry ~$422, stop $400.90 (-5%), target $485.30 (+15%, 3:1 R/R). Technical=5 reflects RSI 77.37 overbought; Deployment Bias requires entry given ≥7.0 score — the RSI flag is in the Technical score already. NVDA earnings tomorrow after close creates sector upside catalyst if NVDA beats. If NVDA beats May 20 evening, re-score AMD as earnings-reaction-follow for May 21 (expected 8.0+ avg). Alibaba MI308 order rumor ($600M-$1.25B) is independent positive catalyst. X API blocked; sentiment qualitative."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T18:15:00Z
+action: skip
+symbol: BTC/USD
+bucket: crypto
+setup: crypto-flush-rebound
+score: 4.0
+thesis: BTC at $76,565 — below $82K re-entry threshold by 6.6%. Down 4.83% this week from $81,070. Risk-off environment; crypto selling alongside stocks and bonds. No entry until $82K reclaimed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 3
+  sentiment: 4
+  macro: 4
+  risk: 5
+  tech_analyst: 7
+agent_average: 4.83
+agents_above_7: 1
+master_decision: rejected
+master_notes: "REJECTED (4.83 avg, well below 7.0 threshold). BTC in downtrend this week (-4.83%). Re-entry threshold $82K unchanged. Current $76,565 = -6.6% below threshold. Technical=3 (downtrend, below all key moving average levels for crypto entry). No crypto entries until $82K reclaimed on volume. X API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T18:15:00Z
+action: skip
+symbol: GLD
+bucket: active
+setup: macro-hedge
+score: 6.83
+thesis: GLD add-on scored 6.83 (30Y at 5.19% is M=9 bullish, but unusual cross-asset selloff today is bearish signal for gold sentiment S=5). Below 7.0 threshold. Existing 7sh position held with stop $397.92. No add today.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 5
+  macro: 9
+  risk: 8
+  tech_analyst: 7
+agent_average: 6.83
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.83 avg, only 2/6 agents ≥7). Re-evaluate Pre-Market May 20: if GLD breaks above $421 with 30Y still ≥5.0%, M remains 9 and S could improve to 7 (fiscal crisis bid confirmed), lifting avg to 7.17 = APPROVED. X API blocked."
+---
+```
+
+---
+
+### Tomorrow's Watchlist Summary — COMMITMENT for Pre-Market May 20
+
+| Rank | Symbol | Bucket | Setup | Score | Entry | Stop | Target | Status |
+|------|--------|--------|-------|-------|-------|------|--------|--------|
+| 1 | JPM | active | sector-rotation | **7.0** | ~$301 MOO | $285.95 | $346.15 | MANDATORY MOO |
+| 2 | AMD | active | breakout-volume | **7.0** | ~$422 MOO | $400.90 | $485.30 | MANDATORY MOO |
+| 3 | GLD add | active | macro-hedge | **6.83** | ~$418 limit | $397 | $481 | MONITOR — re-score at open |
+| 4 | AMD/AVGO | active | earnings-reaction-follow | TBD | TBD | TBD | TBD | CONDITIONAL: if NVDA beats May 20 → May 21 entry |
+
+**Hard commitments for May 20:** JPM (MUST ENTER, score 7.0) and AMD (MUST ENTER, score 7.0). Together = 2 of 3 allowed MOO orders. 3rd MOO slot reserved for Pre-Market scan on May 20.
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
