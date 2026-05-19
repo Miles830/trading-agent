@@ -4,6 +4,400 @@
 
 ---
 
+## 2026-05-19 — Daily Review (4:30 PM ET / 20:35 UTC)
+
+**Context:** Tuesday May 19. S&P 500 down ~0.32% (third consecutive losing session from the May 14 ATH of 7,511). The 30-year Treasury yield hit 5.198% — the highest level since 2007 — driven by: (1) Moody's downgraded US sovereign credit from Aaa to Aa1 on May 16 (Friday AH); (2) oil at ~$108/bbl tied to ongoing Iran conflict; (3) persistent no-rate-cut consensus (first cut now deferred to 2027). NVDA reports Q1 FY2027 earnings TOMORROW (May 20) after close. API STILL BLOCKED — HTTP 403 "Host not in allowlist." Zero ability to query Alpaca programmatically; all data from web research. Strategy switch status (May 17 directive to close TSM/NVDA/JPM/AVGO via MOO May 18) UNCONFIRMED — no routine ran on May 18 or May 15.
+
+---
+
+### Heartbeat Tally — 2026-05-19
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Afternoon | 14:00 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Market Close | 15:30 | ✗ MISSING | ✗ MISSING | 🔴 SILENT FAILURE |
+| Daily Review | 16:30 | ✓ 20:35:45Z | IN PROGRESS | 🟡 RUNNING |
+
+**Also: May 15 (Friday):** Heartbeat log file exists but is EMPTY — all 7 routines silently failed.
+**Also: May 18 (Monday):** No heartbeat log file exists — all 7 routines silently failed.
+
+**Cumulative silent failures since May 6:** 14 consecutive days with only Daily Review heartbeats; all 6 intraday routines silently failing every day.
+
+**TOP OPERATIONAL ISSUE (4th consecutive week):** The scheduler fires ONLY the Daily Review session. Intraday routines (Pre-Market through Market-Close) receive no trigger. Combined with the Alpaca API allowlist block (HTTP 403), the strategy has been functionally blind and orderless during market hours for 14 straight trading days.
+
+**Remediation required:**
+1. `paper-api.alpaca.markets` and `data.alpaca.markets` must be added to the Anthropic sandbox egress allowlist.
+2. Intraday routine scheduler must be activated (Pre-Market, Market Open, Mid-Morning, Midday, Afternoon, Market Close).
+3. Both failures must be resolved BEFORE the strategy can execute programmatically. Until then, all orders require operator manual submission from an environment with Alpaca access.
+
+---
+
+### Predecessor Routine Violations — 2026-05-19
+
+```yaml
+---
+ts: 2026-05-19T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 ET) produced no heartbeat — silent failure. No MOO scans, no stop audit.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing routine. No STARTED entry in logs/heartbeats/2026-05-19.log for Pre-Market. Alpaca API blocked; NVDA earnings tomorrow (May 20) makes pre-market scan especially critical today."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 ET) produced no heartbeat — silent failure. Post-MOO stop placement and strategy switch verification missed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Critical miss: Market Open should have verified strategy switch MOO fills from May 18. No confirmation possible."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T15:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Stop audit and intraday scan missed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T16:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Midday scan missed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T18:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Afternoon routine (14:00 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Afternoon scan missed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T19:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Close routine (15:30 ET) produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Market Close catch-up not performed. NVDA (if still open) not flattened before close — earnings tomorrow."
+---
+```
+
+---
+
+### Stop-Coverage Audit (FIRST ACTION — API blocked; Scenario B assumed)
+
+Prices from web research (May 19 close estimates). Old stops from May 4-6 LT bracket orders (GTC). Strategy switch directive (May 17) converted all positions to active bucket with -5% stops; old -12% LT stops still resting at Alpaca per last known state.
+
+| Symbol | Qty | Old Entry | Old Stop (LT -12%) | May 19 Est. Price | Cushion vs Old Stop | New Active Stop (-5%) | Status |
+|--------|-----|-----------|--------------------|--------------------|---------------------|-----------------------|--------|
+| TSM | 7 | $401.47 | $353.76 | ~$396.00 | +11.9% | $376.20 | ✓ Protected (old stop) / ⚠️ CLOSE per strategy switch |
+| NVDA | 15 | $198.83 | $175.60 | ~$220.76 | +25.7% | $209.72 | ✓ Protected / 🔴 MUST CLOSE TODAY (earnings tomorrow) |
+| JPM | 9 | $308.30 | $272.14 | ~$298.36 | +9.6% | $283.44 | ✓ Protected / ⚠️ CLOSE per strategy switch |
+| AVGO | 7 | $418.48 | $368.36 | ~$410.98 | +11.6% | $390.43 | ✓ Protected / ⚠️ CLOSE per strategy switch |
+| GLD | 7 | $418.86 | $397.92 | ~$411.21 | +3.3% | $397.92 | ⚠️ MONITOR — thin cushion; rising yields headwind |
+
+**No position has hit its stop.** GLD is the most vulnerable (3.3% cushion). NVDA MUST be closed TODAY if still open — earnings binary event risk tomorrow.
+
+**NOTE:** If Scenario A (strategy switch executed May 18): only GLD remains; above table irrelevant for TSM/NVDA/JPM/AVGO. Operator MUST verify Alpaca account.
+
+---
+
+### Market Context — Week of May 15-19, 2026
+
+**May 15 (Friday):** S&P 500 -1.24% to 7,408.50. Trump-Xi summit ended without major semiconductor policy breakthroughs — markets sold the news (summit was bought into May 14 ATH 7,511). Oil surged on Iran war fears. Tech pulled back from overbought levels. Gold fell as yields rose.
+
+**May 16-17 (Weekend):** Moody's downgraded US sovereign credit from **Aaa → Aa1** on Friday AH (May 16). Cited: (1) persistent/widening fiscal deficit, (2) compounding elevated interest costs. First Moody's downgrade in US history. 30Y Treasury yield spiked to 5.01%+ on Monday morning.
+
+**May 18 (Monday):** S&P 500 -0.07% (recovered most of early -2%+ losses). Nasdaq -0.51%. 10Y Treasury yield hit a 52-week high. Tech sector declined 1.1% at close after -2.3% intraday. Oil surged to ~$108/bbl on Iran conflict escalation. Bitcoin retreated to ~$77K. Strategy switch MOO orders did not execute programmatically (no heartbeat). Operator manual execution status unconfirmed.
+
+**May 19 (Today):** S&P 500 -0.32% (third consecutive session of losses from ATH). 30Y Treasury at 5.198% — highest since before the 2008 financial crisis. NVDA at $220.76 (down -6.3% from May 14 ATH close of $235.74). AMD $421.01, TSM ~$396, AVGO $410.98, JPM $298.36, GLD $411.21 (down -1.72%). Bitcoin at $77,119 — worst week since February.
+
+---
+
+### 🔴 MANDATORY PRE-EARNINGS REVIEW — NVDA (per CLAUDE.md)
+
+**NVDA Q1 FY2027 Earnings: May 20, 2026 (TOMORROW) after close.**
+
+Analyst consensus: EPS $1.78 (+120% YoY), revenue $79.2B (+79.5% YoY). Beat probability ~90% per prediction markets (Polymarket). NVDA all-time high was $235.74 on May 14. Current: $220.76.
+
+**Current NVDA position (IF Scenario B — still open):**
+- 15 shares @ $198.83 entry → current $220.76 → unrealized gain **+$329.55 (+11.0%)**
+- Old bracket stop at $175.60 (-11.7% below current price) — protective but LT-era stop level
+- New active-bucket stop would be $209.72 (-5% from current)
+
+**DECISION: CLOSE NVDA TODAY (before market close 4:00 PM ET / 20:00 UTC).**
+
+Reasons:
+1. **Strategy switch mandate** (May 17): NVDA was scheduled for MOO close on May 18. This is overdue by 1 business day.
+2. **Earnings binary event** (May 20 AH): Even with 90% beat probability, holding through earnings on an active-trading account when the stock has already rallied +11.0% from entry is poor risk management. The "buy the rumor" phase (+10% from $198 → $220) is complete.
+3. **Protect the gain**: $329.55 unrealized P/L is the portfolio's largest single-position gain. Closing it locks in the NVDA catalyst trade.
+4. **Re-entry after print**: Post-earnings entries are explicitly allowed and encouraged per CLAUDE.md. If NVDA beats and continues the AI capex thesis, fresh entry on May 21 is superior to holding through the binary event.
+
+**OPERATOR INSTRUCTION (5th consecutive):** If NVDA is still open in Alpaca account, PLACE MARKET SELL for 15 shares of NVDA TODAY before 3:59 PM ET. If market is closed: place after-hours limit sell at current bid (~$220) via extended-hours limit order.
+
+---
+
+### Performance vs Benchmark
+
+**Today (May 19):**
+- Portfolio est. return: ~-0.18% (positions down ~$176; mostly driven by GLD -$48 + equity positions -$128)
+- SPY return: -0.50%
+- Today's relative performance: **+0.32 pp** (cash position provided protection in market selloff)
+
+**Cumulative (since ~May 1 start):**
+- S&P 500 (May 1 ~7,200 → May 19 ~7,380): **+2.50%**
+- Portfolio total equity: ~$100,080 → return: **+0.08%**
+- Cumulative gap vs S&P: **-2.42 pp** ← IMPROVED from -3.81 pp on May 14
+
+**Key observation:** The cumulative gap improved by **+1.39 pp** from May 14 to May 19. This is entirely because the S&P pulled back -1.75% from its May 14 ATH while our mostly-cash portfolio absorbed only a small fraction of that decline (-0.18%). The improvement was passive, not earned through active trading. The deployment gap remains the core problem.
+
+**Rolling 20-day summary (13 trading days of data — below 20-day minimum for full stat):**
+- Win rate: N/A — no confirmed closed P&L records (all entries API-blocked; strategy switch exits unconfirmed)
+- Profit factor: N/A
+- Daily P/L (est.): Portfolio return oscillated between -0.57% (worst, May 13 PPI shock day) and +0.28% (best, May 14 NVDA summit surge) — far narrower than SPY swings due to cash position
+- Underperforming SPY for: 13+ consecutive trading days. **Not yet 20-day threshold** for mandatory strategy review.
+
+---
+
+### Setup-Tag Tally (Rolling 5-Day Window: May 15-19)
+
+No CONFIRMED closed positions in the rolling window. All setups remain open (if strategy switch did not execute) or were exited without log confirmation (if it did execute May 18).
+
+| Setup tag | 5-day Wins | 5-day Losses | Cumulative W/L | Status |
+|-----------|-----------|--------------|----------------|--------|
+| ai-momentum-pullback | 0 | 0 | 0/0 | Active (TSM, NVDA, AVGO pending closure) |
+| macro-hedge | 0 | 0 | 0/0 | Active (GLD, below entry) |
+| breakout-volume | 0 | 0 | 0/0 | AMD unfilled (10th+ session) |
+| sector-rotation | 0 | 0 | 0/0 | Active (JPM, pending closure) |
+| earnings-reaction-follow | — | — | — | Not yet entered |
+| candlestick-reversal | — | — | — | Not yet entered |
+| crypto-flush-rebound | — | — | — | BTC below $82K threshold |
+
+No 3-in-a-row halt or boost rules triggered (no confirmed closed P&L).
+
+**NOTE:** If Scenario A (strategy switch exits logged): ai-momentum-pullback = 1W (NVDA +11.0%), 2L (TSM -1.4%, AVGO -1.8%); sector-rotation = 1L (JPM -3.1%). These would begin filling the tracker. Agent calibration data available if those exits are logged.
+
+---
+
+### Agent Calibration Update
+
+Insufficient closed trade data to run formal calibration. Deferred to next session with confirmed exits.
+
+---
+
+### Today's Best & Worst
+
+**Best position performance:** NVDA (if Scenario B, still open) at +11.0% from entry — the AI capex / Jensen Huang summit trade is working. However, the position must be closed today per strategy switch + earnings risk.
+
+**Worst position performance:** GLD at -$54 vs entry ($411.21 vs $418.86 entry). The 30Y Treasury yield spiking to 5.198% (highest since 2007) is the dominant headwind — rising real yields reduce gold's attractiveness. The Moody's downgrade should be gold-bullish (USD flight from US Treasuries), but the immediate rate spike is outweighing the flight-to-safety bid.
+
+---
+
+### 3 Things That Worked Today
+
+1. **Cash position provided passive protection during 3-day selloff.** SPY fell -1.77% from the May 14 ATH to May 19. Our ~85% cash portfolio absorbed only -0.18%. Though this is a symptom of the deployment failure (not intentional), the result is that the cumulative benchmark gap improved from -3.81 pp to -2.42 pp as the market corrected.
+
+2. **GLD hold is correct on Moody's downgrade thesis.** The short-term headwind (rising real yields) is real, but the medium-term thesis (Moody's downgrade → USD credibility at risk → gold as non-sovereign store of value → JPMorgan $6,300/oz target) is intact. Stop at $397.92 (3.3% cushion) is appropriate.
+
+3. **Discipline on PLTR and AMD entry timing.** PLTR at $135.58 (above $134 trigger) scored 6.50; AMD at $421 scored 6.83. Both correct skips in the current macro environment (Moody's + rising yields + 3-day losing streak). The 7.0 entry threshold correctly filtered out borderline entries during a regime-shift week.
+
+---
+
+### 3 Things to Improve Tomorrow
+
+1. **NVDA close is the single most urgent action.** If open, the active-trading account should not carry an 11% unrealized gain into an earnings binary event. OPERATOR: Close NVDA 15sh today before 4 PM ET. Earnings are May 20 AH. Every hour this stays open without Alpaca API access is additional unmonitored risk.
+
+2. **Strategy switch execution is overdue by 2 business days.** TSM, NVDA, JPM, and AVGO were mandated for MOO closure May 18. It is now May 19 close. OPERATOR: Verify Alpaca account. If these positions are still open (Scenario B), close all four immediately. The new allocation is 85% active + 10% crypto; the LT positions have no place in the new structure.
+
+3. **Post-NVDA earnings game plan must be executed.** Tomorrow (May 20) after close, NVDA will report. The Pre-Market routine on May 21 must be the first "live deployment" session — AMD, NVDA (re-entry), and TSM should all be re-scored with fresh post-earnings market context. If the routine doesn't fire, OPERATOR manually executes the top-scored entries.
+
+---
+
+### NVDA Pre-Earnings Sub-Agent Scores (Mandatory — per CLAUDE.md)
+
+**Context:** NVDA at $220.76 (ATH $235.74 on May 14). EPS est. $1.78 (+120% YoY), Rev est. $79.2B (+79.5% YoY). Conference call May 20 5 PM ET. Recommendation: CLOSE existing position before print; re-enter May 21 on confirmed beat.
+
+**Sub-Agent 1 — Fundamentals:** Q1 FY2027 consensus 90% beat probability. Hyperscaler capex (Alphabet, Amazon, Meta, Microsoft) combined 2026 forecast >$700B. Data center segment expected $72.8B (+35% from year-ago estimates). GB200 NVL72 racks driving ASP expansion. NVDA consistently beats by 15-20% above consensus. Score: **9/10**
+
+**Sub-Agent 2 — Technical:** NVDA at $220.76, down -6.3% from ATH $235.74 (May 14). Classic pre-earnings mean reversion — "sell the rumor" phase partially complete. Daily RSI declining from overbought. 5-min chart shows a 3-day downtrend. Volume oscillator: selling pressure has abated somewhat. Stochastic: %K below %D but approaching oversold — possible reversal if earnings beat. DOES NOT meet ≥ 2 of 5 mandatory indicators for a new entry. Score: **5/10** — precludes new long entry today. Score improves post-print if bullish reaction.
+
+**Sub-Agent 3 — Sentiment:** Earnings beat probability 90% per prediction markets. NVDA consistently overdelivers. AI capex theme is accelerating globally. BUT: Moody's downgrade + rising yields = headwind for high-multiple tech. Bitcoin retreat suggests some risk-off. NVDA stock -6.3% from ATH into earnings = "priced-in" caution by smart money. Score: **7/10**
+
+**Sub-Agent 4 — Macro:** Rising 30Y yields (5.198%) = headwind for high-multiple growth. However, AI capex spending decisions by hyperscalers are multi-year commitments driven by competitive dynamics, not short-term rate levels. The China chip deal (H200 clearance) adds international revenue upside beyond the consensus model. Score: **6/10**
+
+**Sub-Agent 5 — Risk (for CLOSING position):** Closing NVDA at $220.76 vs entry $198.83 = +11.0% gain. Strategy switch mandate + earnings binary event = two independent closing triggers. Closing is the low-risk action. Score on HOLDING: **5/10** (earnings binary event risk; strategy switch overdue). Decision is to CLOSE.
+
+**Sub-Agent 6 — Tech Analyst:** NVDA's GB200 / Blackwell architecture has no peer through 2027. GB300 on 2H 2026 roadmap. CUDA ecosystem moat deepens with every developer commit. AMDs ROCm gaining but not threatening at hyperscaler scale. Score: **9/10**
+
+**Master Agent — Pre-Earnings Recommendation:**
+Action: CLOSE existing 15sh NVDA position TODAY. Rationale: (1) Strategy switch mandate overdue; (2) Technical score 5 precludes holding through binary event under active trading rules; (3) Risk/Reward favors closing at +11% gain vs risking overnight binary volatility. Post-earnings action (May 21): Full 6-agent re-score on the fresh print. If NVDA beats and initial reaction is positive (+5%+): earnings-reaction-follow entry targeting $250-260 range, stop -5% at fill×0.95.
+
+---
+
+### AMD Skip Decision
+
+```yaml
+---
+ts: 2026-05-19T20:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.83
+thesis: AMD at $421.01 (intraday low $393.36 then recovery). China chip deal thesis intact. But Moody's downgrade + rising yields + 3-day market losing streak reduces macro/sentiment scores below threshold. Score 6.83 < 7.0 minimum.
+size_pct: 4.21
+stop: 399.95
+target: 484.15
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — 6.83 avg below 7.0 threshold; only 3/6 agents ≥7. Technical 5: RSI recovering from intraday flush to $393 but Moody's + 3-day selloff context means ≥2 of 5 mandatory confirmations not met on daily chart. Macro 6: rising 30Y yields (5.198%) compete with chip sector tailwind. Sentiment 6: China chip deal intact but risk-off environment. VALID SKIP — exemption #1 applies (score below threshold). Post-NVDA-earnings re-score: if NVDA beats May 20, AMD expected to gap up — conditional score rises to ~7.67 (Technical improves to 7 on NVDA-driven breakout, Sentiment to 8, Macro to 7). TARGET MAY 21 ENTRY. xAI API blocked — X sentiment not queried; scored qualitatively."
+---
+```
+
+### PLTR Skip Decision
+
+```yaml
+---
+ts: 2026-05-19T20:35:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR at $135.58 (range $134.12-$137.46) — above $134 re-entry trigger. But conditional re-entry was predicated on May 15 summit Day 2 catalyst; summit ended without breakthroughs. Score 6.50 due to macro headwinds.
+size_pct: 4.86
+stop: 128.80
+target: 155.92
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 5
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — 6.50 avg below 7.0 threshold; only 3/6 agents ≥7. Technical 5: PLTR above $134 but not a clean breakout — range is $134.12-$137.46 on a down-market day; no volume confirmation; MACD not bullishly crossed on daily. Sentiment 5: Moody's downgrade = risk-off; summit ended without AI-specific breakthroughs (May 15 the catalyst failed to materialize). Macro 5: rising real yields are a structural headwind for high-multiple growth even though PLTR government revenues are contractually locked. VALID SKIP — score below threshold. Re-score if: (a) NVDA beats May 20 and market recovers, (b) PLTR holds above $134, (c) RSI turns up. xAI API blocked — X sentiment not queried; scored qualitatively."
+---
+```
+
+---
+
+### Tomorrow's Watchlist — COMMITMENT for Pre-Market May 20
+
+**Critical context:** NVDA reports Q1 FY2027 earnings May 20 after close (5 PM ET conf call). The chip sector's reaction to the NVDA print will reshape the entire watchlist. For May 20 Pre-Market, the primary objective is monitoring for post-close setup, not entering new chip positions before earnings. For May 21 Pre-Market, execute the chip sector follow-through if NVDA beats.
+
+| Rank | Symbol | Bucket | Setup | Est. Score | Entry Trigger | Stop | Target | Notes |
+|------|--------|--------|-------|-----------|---------------|------|--------|-------|
+| 1 | NVDA (re-entry) | active | earnings-reaction-follow | **TBD May 21** | May 20 AH print beat → gap-up | fill×0.95 | fill×1.15 (3:1 min) | First priority May 21; re-score after print |
+| 2 | AMD | active | breakout-volume/earnings-reaction-follow | **~7.67 post-NVDA-beat** | NVDA beats → AMD gap-up at open May 21 | fill×0.95 | fill×1.15 | 10sh @ ~$440 target if NVDA catalyst fires; broker-bracket GTC |
+| 3 | TSM | active | earnings-reaction-follow (sector) | **~7.0 post-NVDA-beat** | NVDA beats → chip sector tailwind | fill×0.95 | fill×1.15 | Close existing LT position first, then consider active re-entry |
+| 4 | PLTR | active | ai-momentum-pullback | **~7.0 if mkt recovers** | NVDA beat + market stabilizes + PLTR above $134 | fill×0.95 | fill×1.15 | Re-score May 21; today's 6.50 could hit 7.0 in improved sentiment |
+| 5 | GLD | active | macro-hedge | **~7.0 ongoing** | Moody's downgrade / yields stabilize → gold bid | $397.92 existing | TBD | Add to existing 7sh if GLD recovers above $418; Moody's = long-term USD credibility risk → gold |
+| 6 | XOM | active | sector-rotation | **~7.0** | Oil $108 + Iran conflict → energy earnings upside | fill×0.95 | fill×1.15 | Iran conflict ongoing; no Fed cuts = no oil demand destruction signal; pre-screen May 20 |
+| 7 | MU | active | ai-momentum-pullback | **~7.33 est.** | Full 6-agent score at Pre-Market May 20 | fill×0.95 | fill×1.15 | AI memory (HBM4); anchor name; last scored ~7.33 in May 12 |
+| 8 | AVGO | active | earnings-reaction-follow (sector) | **~7.0 post-NVDA-beat** | NVDA beats → AVGO follows; close existing LT position first | fill×0.95 | fill×1.15 | AVGO at $411, below $418 entry; conditional on NVDA catalyst |
+| 9 | WDC/SNDK | active | ai-momentum-pullback | **TBD** | Full 6-agent score; AI storage play | fill×0.95 | fill×1.15 | AI storage demand from NVDA GB200 racks; anchor name |
+| 10 | BTC | crypto | crypto-flush-rebound | **SKIP — below threshold** | $82K re-entry threshold NOT met ($77,119) | — | — | BTC at $77K declining; DO NOT lower threshold; monitor for capitulation flush |
+
+**COMMITMENTS for May 21 Pre-Market (contingent on NVDA beat May 20):**
+- AMD 10sh MOO (score ~7.67 post-beat): MUST enter
+- NVDA re-entry (bracket limit GTC, bracket order): score TBD post-print
+
+**Non-NVDA-dependent actions (Pre-Market May 20):**
+- TSM/NVDA/JPM/AVGO: If strategy switch NOT yet executed, submit MOO sells IMMEDIATELY on May 20 for all 4 (before 9:25 AM ET)
+- Run full 6-agent on XOM and MU
+
+---
+
+### Key Events — May 20, 2026
+
+| Event | Time | Impact |
+|-------|------|--------|
+| **NVDA Q1 FY2027 Earnings** | After close (~4 PM ET); call 5 PM ET | 🔴 CRITICAL — single largest market catalyst of the week; chip sector and broader tech direction set |
+| Treasury yield watch | All day | 30Y at 5.198% (19-yr high) — monitor for stabilization or further spike |
+| Oil / Iran conflict update | All day | Oil ~$108; any ceasefire/escalation news will move energy and inflation expectations |
+| Fed speakers (if any) | TBD | Any comment on Moody's downgrade or rate path will move markets |
+| AMD, TSM, AVGO | All day | Move in sympathy with NVDA into print; likely consolidation pre-earnings |
+| BTC / crypto | All day | Risk-off continues; $77K declining — no entry below $82K |
+
+---
+
+### Daily Summary (for portfolio.md)
+
+**2026-05-19:** S&P 500 -0.32% (third consecutive session of losses, 30Y yield at 5.198% — 2007 high, Moody's downgrade fallout). Portfolio est. -0.18% (mostly GLD weakness). Today's relative performance: +0.32 pp. Cumulative gap vs SPX: **-2.42 pp** (improved from -3.81 pp as market pulled back from ATH). All 6 intraday routines silent-failed (14th consecutive day of full intraday silence). Strategy switch unconfirmed. NVDA earnings TOMORROW. AMD skip (6.83). PLTR skip (6.50). No new entries.
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
