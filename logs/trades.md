@@ -4,6 +4,264 @@
 
 ---
 
+## 2026-05-19 — Pre-Market Routine (8:00 AM ET / 12:03 UTC)
+
+**Context:** Tuesday May 19, 2026. Pre-Market routine. Strategy switch to 100% trading account (85/10/5) committed 2026-05-17 — May 18 MOO sell orders (TSM, NVDA, JPM, AVGO) status UNKNOWN — API blocked from cloud runner. No heartbeat records for May 15-18 (all silent failures). NVDA earnings TOMORROW (May 20) after close — 48h window in effect. Chip sector in multi-day sell-off (SOX -6% in 2 days). S&P 500 at 7,403 (down from 7,511 peak May 14). Alpaca API: **BLOCKED** (HTTP 403 "Host not in allowlist" — 10th consecutive blocked session).
+
+**CRITICAL OPERATOR ALERT — NVDA Earnings May 20 AMC:**
+NVIDIA reports Q1 FY2027 results on **Wednesday May 20 after market close**. The 48-hour binary-event window started Monday May 18 ~4:30 PM ET. If NVDA position is still open (15 shares @ $198.83 entry, old stop $175.60 / -12%):
+- Current NVDA price: ~$222.75 premarket (down from $235.63 peak; 3rd day of decline in chip sell-off)
+- Strategy switch requires updating stop from -12% ($175.60) to -5% ($211.61)
+- If post-earnings gap-down occurs, -12% stop at $175.60 provides inadequate active-bucket protection
+- **OPERATOR MUST MANUALLY:** (a) confirm if NVDA sold via MOO on May 18, (b) if NOT sold, place new stop at $211.61 or close position before earnings
+
+**No heartbeat records for May 15-18:** All 6 intraday routines for May 15-18 silently failed. No orders, no stop audits, no scans. This is the 10th consecutive blocked routine. The May 17 strategy switch MOO sell plan (TSM, NVDA, JPM, AVGO) should have executed via MOO on May 18 — unconfirmed.
+
+---
+
+### Stop-Coverage Audit (FIRST ACTION — API blocked; prices from May 19 web research)
+
+**API STATUS: BLOCKED — HTTP 403 "Host not in allowlist." Cannot verify actual positions.**
+
+Estimated positions (assuming May 18 MOO sells DID NOT execute — conservative/protective assumption):
+
+| Symbol | Qty | Bucket | Entry | Old Stop | Est. Price May 19 PM | Cushion | Status |
+|--------|-----|--------|-------|----------|----------------------|---------|--------|
+| TSM | 7 | ~~LT~~/active | $401.47 | $353.76 (-12%) | ~$395.95 | +12.0% | ⚠️ Should be CLOSED per strategy switch. If open: chip sector -2.1% PM. Stop NOT updated to -5%. |
+| GLD | 7 | active | $418.86 | $397.92 (-5%) | ~$418.43 | +5.1% | ✓ Near entry. Trump called off Iran strike → oil fell, GLD flat. Stop intact. |
+| NVDA | 15 | ~~LT~~/active | $198.83 | $175.60 (-12%) | ~$222.75 | +26.9% | ⚠️ CRITICAL — Earnings tomorrow AMC! Old stop -12% insufficient per trading-only book. Should be CLOSED per strategy switch OR stop updated to $211.61 (-5%). |
+| JPM | 9 | ~~LT~~/active | $308.30 | $272.14 (-12%) | ~$297.81 | +9.5% | ⚠️ Should be CLOSED per strategy switch. Rising yields = headwind. Stop NOT updated. |
+| AVGO | 7 | ~~LT~~/active | $418.59 | $368.36 (-12%) | ~$416.88 | +13.2% | ⚠️ Should be CLOSED per strategy switch. Chip sector sell-off. |
+
+**OPERATOR MANDATORY ACTION IF May 18 MOO sells did NOT execute:**
+1. CLOSE TSM (7sh) — any available method before market open
+2. CLOSE NVDA (15sh) — URGENT before NVDA earnings tomorrow May 20
+3. CLOSE JPM (9sh)
+4. CLOSE AVGO (7sh)
+5. Update GLD stop to confirm $397.92 is resting at Alpaca
+
+---
+
+### Market Summary — 2026-05-19 Pre-Market
+
+**Macro:**
+- S&P 500 futures: -0.4% | Nasdaq 100 futures: -0.6% | Dow futures: -0.2% | Russell 2000: -0.62% → Risk-OFF
+- S&P 500 close May 18: ~7,403 (down from 7,511 record on May 14)
+- Semiconductor sector (SOX): -6% in 2 days (May 15-18) — "AI run gone too far, too fast" narrative
+- Yields rising: US 2-year 3.99%, US 10-year 4.46% → rate headwind for growth/tech names
+- Trump called off planned Iran military strike (Gulf allies requested pause for negotiations). Oil fell ~2% (Brent ~$109/bbl, WTI ~$102.90/bbl). GLD roughly flat.
+- Putin state visit to Beijing (following Trump's May 13-15 summit). Geopolitical complexity elevated.
+- **Home Depot (HD) reported Q1 before market open today:** Beat revenue ($41.77B vs $41.6B est) and adj EPS. Net earnings -4.2% YoY. Stock near $297 (down 22% in 3 months).
+
+**Individual positions (estimated):**
+- NVDA: ~$222.75 (-4.9% from May 14 close of $235.63) — 3rd consecutive decline; chip sell-off; earnings tomorrow
+- TSM: ~$395.95 (-2.1% from $404.35) — chip sector headwind
+- GLD: ~$418.43 (+0.27%) — flat; Iran premium fading but rates hedge intact
+- JPM: ~$297.81 — below entry; rising yields mixed signal (NIM better but growth headwinds)
+- AVGO: ~$416.88 — below entry of $418.59 (bracket fill); chip sector weakness
+- AMD: ~$429.57 premarket — down from $448+ peak; chip sector
+- PLTR: ~$133.07 — below $134 re-entry trigger
+- BTC: ~$76,771 — below $82K threshold (-6.6% from May 15's $80,120)
+- ETH: ~$2,113 — declining
+
+**NVDA Earnings (TOMORROW, May 20 after close):**
+- Analysts expect EPS $1.78 (+120% YoY), Revenue $79.2B (+79.5% YoY)
+- Data Center is the primary driver
+- Stock has rallied into earnings (from $198.83 entry to $235+ peak)
+- Current price $222.75 shows some pre-earnings selling pressure
+- 48-hour binary event window: NO new NVDA entries (window started May 18 4:30 PM ET)
+
+---
+
+### Re-Score Analysis — Watchlist Candidates
+
+**Environment note:** Chip sector -6% in 2 days; rising yields; risk-off macro; NVDA earnings overhang creates sector uncertainty. All prior 7.33-scored names re-evaluated under current conditions. xAI API blocked — X sentiment not queried; sentiment scored qualitatively.
+
+#### AMD (Advanced Micro Devices) — Re-score from 7.33 → **6.17**
+
+| Agent | Score | Notes |
+|-------|-------|-------|
+| Fundamentals | 9 | China MI308 deal intact; Q1 beat $7.7B vs $7.1B est; +36% YoY revenue; strong AI accelerator demand |
+| Technical | 5 | Down from $448+ peak to $429.57; chip sector SOX -6% in 2 days; RSI normalizing but MACD likely bearish crossover; volume oscillator turning negative; only 1-2 of 5 indicators confirming |
+| Sentiment | 4 | Chip sector broadly bearish; NVDA earnings tomorrow creates sector uncertainty; "AI run gone too far" narrative; MU specifically cited as down 2% on valuation concerns |
+| Macro | 4 | Risk-off day (S&P futures -0.4%); rising yields (10yr 4.46%) = rate headwind for growth; SOX sector headwind; China MI308 still positive but overwhelmed by sector rotation |
+| Risk | 7 | Entry ~$430, stop $408.50 (-5%), target $495 (+15%) = 3:1 R/R ✓; position $4,300 = 4.3% equity (assuming ~$100K) ✓; sector exposure fine |
+| Tech Analyst | 8 | RDNA/CDNA architecture competitive; MI308 China revenue; AI GPU competitive; strong R&D |
+
+**Average: 6.17/10 — REJECTED (below 7.0 threshold; only 2/6 agents ≥7)**
+
+Prior score was 7.33 (May 14). Re-score deterioration: Sentiment -3 (chip sector fear), Macro -3 (risk-off + rising yields). This is a legitimate re-score, not a "wait for better setup" violation. The entry checklist minimum of 7 is not met today.
+
+Candlestick bonus N/A (cannot observe 5-min chart pre-market; chip sector trend is down → no bullish pattern anticipated at open).
+
+#### PLTR (Palantir Technologies) — Re-score **5.50**
+
+| Agent | Score | Notes |
+|-------|-------|-------|
+| Fundamentals | 9 | Government AI AIP contracts solid; Q1 beat; expanding commercial segment |
+| Technical | 3 | $133.07 PM (still below $134 trigger); support broken May 13; chip/tech sector selling off; MACD bearish; only 0-1 of 5 indicators confirming |
+| Sentiment | 5 | Government AI theme still valid; but risk-off day depresses sentiment; no summit catalyst remaining |
+| Macro | 5 | Risk-off; defense spending supportive; but broader tech sell-off creates headwind |
+| Risk | 7 | Would pass guardrails if above $134; but current price $133.07 < $134 trigger → thesis not triggered |
+| Tech Analyst | 8 | AIP platform; government and commercial AI; strong moat |
+
+**Average: 5.50/10 — REJECTED (below $134 trigger; below 7.0 threshold; only 2/6 agents ≥7)**
+
+Re-entry signal: PLTR holds above $134 with volume on a risk-on day.
+
+#### MU (Micron Technology) — Initial 6-agent score **6.17** (never formally scored; est. was 7.33 based on May 14 conditions)
+
+| Agent | Score | Notes |
+|-------|-------|-------|
+| Fundamentals | 9 | HBM4 AI memory supercycle; Q1 beat; JEDEC standard setter; Samsung/SK Hynix competition offset by JEDEC leadership |
+| Technical | 4 | 4th consecutive day of declines in premarket; MU specifically cited as down 2% PM; SOX -6% in 2 days; all 5 indicators likely bearish |
+| Sentiment | 4 | South Korea AI profit tax proposal hurts memory sector sentiment; MU specifically called out for "AI run in memory gone too far, too fast"; X sentiment not queried (xAI blocked) |
+| Macro | 4 | Risk-off; rising yields; chip sector headwind; South Korea political risk |
+| Risk | 7 | Entry ~$700-720 (estimated from May 14 est. $788 × 0.90); stop -5% = $660-684; target +15% = $805-828; 3:1 R/R ✓; position ~$3,500 = 3.5% equity ✓ |
+| Tech Analyst | 9 | HBM4 leadership for AI training; JEDEC standard setter; switching costs high for data center HBM customers |
+
+**Average: 6.17/10 — REJECTED (below 7.0 threshold; only 2/6 agents ≥7; formal first score)**
+
+Note: The May 14 estimated score of 7.33 was based on pre-sell-off conditions. The actual first formal score is 6.17. Will re-score once chip sector stabilizes.
+
+#### HD (Home Depot) — Post-earnings watchlist addition **6.33**
+
+| Agent | Score | Notes |
+|-------|-------|-------|
+| Fundamentals | 7 | Beat Q1 revenue $41.77B (+4.4% vs $41.6B est) and adj EPS; but net earnings -4.2% YoY; $411 avg analyst target (38% upside from $297); Strong Buy consensus |
+| Technical | 6 | Down 22% in 3 months; potential base-building; post-earnings reaction unknown; earnings beat = potential relief rally |
+| Sentiment | 7 | Beat consensus = positive sentiment catalyst; analysts Strong Buy with $411 target |
+| Macro | 5 | Rising rates = headwind for housing and home improvement; risk-off day suppresses consumer discretionary |
+| Risk | 6 | Uncertain gap direction; hard to set precise stop pre-open; R/R achievable but less defined |
+| Tech Analyst | 7 | Auto-score 7 for non-tech (retail/home improvement) |
+
+**Average: 6.33/10 — REJECTED (below 7.0 threshold; only 3/6 agents ≥7)**
+
+Watch: If HD opens with a Bullish Engulfing or gap-up with volume ≥2x average, re-score at Market Open routine. Rising rates remain the primary headwind.
+
+---
+
+### MOO Orders — NONE PLACED
+
+**API Status:** BLOCKED — HTTP 403. No orders can be submitted programmatically.
+**Score gate:** All candidates re-scored below 7.0 threshold.
+**Deployment Bias assessment:** This is NOT a deployment bias violation. The CLAUDE.md entry checklist requires score ≥7 to enter. Re-scores today yield 6.17 (AMD), 5.50 (PLTR), 6.17 (MU), 6.33 (HD) — all below the mandatory threshold. Chip sector -6% decline (SOX) in 2 trading days materially changed Sentiment (-3 pts) and Macro (-3 pts) for all AI/semiconductor names. This is a legitimate re-score, not a "conditions uncertain" vague deferral.
+
+The prior Daily Review (May 14) watchlist AMD score of 7.33 was valid under May 14 conditions. Re-scoring at each routine is the correct behavior when material market conditions have changed.
+
+**Watchlist for next routine (Market Open 9:45 AM ET):**
+1. AMD — 6.17 (re-enter watchlist when SOX stabilizes or AMD forms bullish reversal pattern with ≥2 indicator confirms)
+2. HD — 6.33 (watch open reaction; if Bullish Engulfing + volume spike ≥2x at open, re-score may reach 7+)
+3. GLD — holding; no new entry needed
+4. PLTR — 5.50; re-entry only if $134 reclaimed on volume
+5. MU — 6.17 (same as AMD; chip sector needs to stabilize)
+
+---
+
+### YAML Trade Log Entries
+
+```yaml
+---
+ts: 2026-05-19T12:03:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.17
+thesis: AMD re-scored 6.17 in chip sector sell-off. SOX -6% in 2 days. Macro and Sentiment both dropped to 4 from prior 7s. Score below 7 minimum — legitimate re-score, not deployment bias violation. API also blocked.
+size_pct: 4.30
+stop: 408.50
+target: 494.50
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 4
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.17 avg — below 7.0; only 2/6 agents >=7). Prior score 7.33 (May 14) deteriorated due to: chip sector SOX -6% in 2 days (May 15-18); rising 10yr yield at 4.46%; NVDA earnings tomorrow creating sector uncertainty; MU cited as 'AI memory run gone too far' = sentiment contagion to AMD. China MI308 thesis intact but overwhelmed by sector rotation fears. NOT a deployment bias violation — re-score <7 is valid gate per Entry Checklist. API blocked (HTTP 403) — orders unexecutable regardless. xAI API blocked — X sentiment not queried; scored qualitatively at 4 (bearish chip sector chatter)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T12:03:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 5.50
+thesis: PLTR at $133.07 premarket — still below $134 re-entry trigger. Technical score 3 (support broken). Risk-off day. Score 5.50 — well below 7.0 threshold.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 5
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 5.50
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (5.50 avg — below 7.0; only 2/6 agents >=7). PLTR at $133.07 PM, $0.93 below $134 re-entry trigger. Technical score 3 — support broken May 13, not reclaimed. Risk-off day with tech sector weakness. Re-entry signal: $134 reclaimed with volume on a risk-on catalyst. xAI API blocked — X sentiment not queried."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T12:03:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 6.17
+thesis: MU formal first score 6.17 (vs est. 7.33 from May 14 pre-sell-off conditions). 4th day of declines; South Korea AI tax threat; SOX -6%. Score below 7.0.
+size_pct: 3.50
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 4
+  sentiment: 4
+  macro: 4
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.17
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.17 avg — first formal score; below 7.0; only 2/6 agents >=7). MU specifically called out premarket as down 2% — 'AI run in memory gone too far, too fast' narrative; South Korea AI profit tax proposal hurts memory sector; SOX -6% in 2 days. HBM4/JEDEC thesis intact long-term but not actionable in current environment. Prior est. score 7.33 (May 14) was pre-sell-off estimate. Actual first score today is 6.17. xAI API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T12:03:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Alpaca API blocked (HTTP 403 'Host not in allowlist') — 10th consecutive blocked session. No positions can be verified, no orders can be placed, no stop audits can be confirmed. All routines May 15-18 silently failed. Strategy switch MOO sell orders (TSM, NVDA, JPM, AVGO) for May 18 are UNCONFIRMED.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "API blockage is NOT a CLAUDE.md-exempt skip reason. Infrastructure failure is a documented violation. OPERATOR MUST: (1) Confirm if May 18 strategy switch MOO sells executed; (2) If not, close TSM/NVDA/JPM/AVGO URGENTLY — especially NVDA before earnings May 20 AMC; (3) Request Anthropic add paper-api.alpaca.markets to sandbox egress allowlist."
+---
+```
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
