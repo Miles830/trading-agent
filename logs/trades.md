@@ -4,6 +4,275 @@
 
 ---
 
+## 2026-05-20 — Afternoon Routine (2:00 PM ET / 18:05 UTC)
+
+**Context:** Wednesday May 20, 2026. Alpaca API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 11th+ consecutive blocked session counting from May 6. All 4 predecessor routines today (Pre-Market, Market Open, Mid-Morning, Midday) are SILENT FAILURES per heartbeats log (only `2026-05-20T18:04:33Z STARTED Afternoon` recorded). May 15 heartbeat log is 0 bytes (all routines failed). May 19 heartbeat log does not exist (all routines failed). Strategy-switch MOO sells (TSM, NVDA, JPM, AVGO — scheduled May 18) are unconfirmed via API.
+
+**CRITICAL — NVDA Earnings Tomorrow (May 21):** NVDA Q2 FY2026 results due May 21 after market close. The 48-hour binary-event exclusion window is ACTIVE as of May 19 market close. No new NVDA positions may be initiated. If NVDA is still held from pre-switch LT book (15 sh @ $198.83 entry), evaluate closure before end of day to lock gains and avoid earnings binary risk.
+
+---
+
+### Predecessor Routine Violations — 2026-05-20
+
+```yaml
+---
+ts: 2026-05-20T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (08:00 AM ET) produced no heartbeat — silent failure. No stop audit, no MOO order placement, no watchlist execution.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing heartbeat for Pre-Market 2026-05-20. AMD (7.33) not entered — 5th+ consecutive deployment failure. NVDA 48h earnings window now active; no new NVDA entries permitted. API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 AM ET) produced no heartbeat — silent failure. Post-MOO stop placement and fill verification not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing heartbeat for Market Open 2026-05-20. If strategy-switch MOO sells (TSM/NVDA/JPM/AVGO) executed on May 18, their fills have never been logged. If not, naked positions are unmonitored. API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET) produced no heartbeat — silent failure. Intraday stop audit and sector scan not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing heartbeat for Mid-Morning 2026-05-20. With NVDA earnings tomorrow, mid-morning stop trail check was critical to protect gains. API blocked prevents any corrective action."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T12:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET) produced no heartbeat — silent failure. No midday position review or intraday scan performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Missing heartbeat for Midday 2026-05-20. Cumulative silence since May 14 Daily Review: May 15 all routines, May 19 all routines, May 20 Pre-Market through Midday."
+---
+```
+
+---
+
+### Prior Trading-Day Violations (May 15 and May 19 — retroactive log)
+
+```yaml
+---
+ts: 2026-05-15T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: ALL 7 routines on May 15 (Friday, Trump-Xi Summit Day 2) produced no heartbeats — complete silent failure. AMD (7.33), PLTR (conditional 7.33), MU (~7.33) not entered. Strategy-switch execution not triggered.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "May 15 heartbeat log exists but is 0 bytes — no routine fired. Trump-Xi Summit Day 2 communiqué day. AMD missed its 5th entry opportunity. PLTR conditional entry window unknown. MU entry never scored."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: ALL 7 routines on May 19 (Monday) produced no heartbeats — complete silent failure. No heartbeat log file exists for May 19. No stop audit, no watchlist execution, no strategy-switch status verification.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "May 19 heartbeat log does not exist. No evidence of any routine firing on Monday. NVDA earnings 48h window began May 19 EOD. AMD still unfilled. Strategy-switch MOO status (May 18) unverifiable."
+---
+```
+
+---
+
+### Stop-Loss Audit — 2026-05-20 (API BLOCKED — estimated state)
+
+Cannot verify resting stop orders via Alpaca API (HTTP 403). Using last confirmed state from May 17.
+
+**Scenario A — Strategy-switch MOOs DID execute on May 18 (operator manual or successful API call):**
+- TSM: SOLD (7 sh MOO) ✓ — position closed
+- NVDA: SOLD (15 sh MOO) ✓ — position closed
+- JPM: SOLD (9 sh MOO) ✓ — position closed
+- AVGO: SOLD (7 sh MOO) ✓ — position closed
+- GLD: 7 sh @ $418.86, stop $397.92 — RESTING (assumed GTC from May 4-6)
+- All stops from closed positions auto-cancelled on fill
+
+**Scenario B — Strategy-switch MOOs DID NOT execute (API blocked May 18, operator did not manually execute):**
+| Symbol | Qty | Entry | Stop | Estimated Price May 20 | Cushion | Status |
+|--------|-----|-------|------|------------------------|---------|--------|
+| TSM | 7 | $401.47 | $353.76 | ~$400-420 (est) | ~12-18% | ⚠️ LT bucket — strategy switch pending |
+| GLD | 7 | $418.86 | $397.92 | ~$430-445 (est, gold elevated) | ~8-12% | ✓ Active bucket — keep |
+| NVDA | 15 | $198.83 | $175.60 | ~$245-275 (est, pre-earnings run) | ~34-57% | ⚠️ **EARNINGS TOMORROW — MUST CLOSE** |
+| JPM | 9 | $308.30 | $272.14 | ~$290-310 (est) | ~7-14% | ⚠️ LT bucket — strategy switch pending |
+| AVGO | 7 | $418.59 | $368.36 | ~$430-460 (est) | ~14-20% | ⚠️ LT bucket — strategy switch pending |
+
+**CRITICAL OPERATOR ACTION REQUIRED (if Scenario B):**
+- NVDA 15 shares must be SOLD before May 21 earnings. Earnings binary event is MANDATORY exclusion per CLAUDE.md. Do NOT carry NVDA through the print.
+- All LT positions (TSM, JPM, AVGO) must be closed via the May 17 strategy-switch directive.
+- Execute via Alpaca web UI or Codespace with API access.
+
+---
+
+### Market Context — 2026-05-20 (estimated, API blocked)
+
+**API-blocked research — context derived from known trajectories and general market knowledge:**
+- S&P 500: Estimated ~7,500-7,600 range (continued AI/tech momentum post-summit). Exact close unknown.
+- NVDA: Pre-earnings run likely put NVDA in $245-275 range. **Earnings TOMORROW — high volatility expected.** Do not hold through print.
+- AMD: Still in $440-470 range (estimated). No confirmed entry. Score 7.33 unchanged.
+- PLTR: Unknown if $134 was reclaimed post-summit. Re-score needed.
+- GLD: Estimated $430-445 (gold elevated on macro uncertainty).
+- BTC: Likely still in $78K-$85K range. Re-entry threshold $82K unchanged.
+- Trump-Xi Summit Day 2 (May 15): Final communiqué expected to have clarified chip export language; specifics unknown to this session.
+
+**NVDA Earnings — Binary Event Protocol:**
+- Report: May 21 after market close
+- 48h exclusion window: Active since May 19 EOD
+- Action: Close existing NVDA position before today's close if still held (via operator manual action)
+- Post-print: Assess whether to re-enter on reaction (gap-up follow or fade, per Day Trading Method)
+
+---
+
+### AMD — Deployment Bias Status
+
+```yaml
+---
+ts: 2026-05-20T18:05:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: AMD score 7.33 — 5th+ consecutive entry block. Alpaca API HTTP 403 prevents all programmatic orders. Score and thesis unchanged from May 13 re-score. This is a DEPLOYMENT BIAS VIOLATION per CLAUDE.md — API blockage is NOT a valid skip exemption. Operator must enter manually.
+size_pct: 4.47
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents >=7, Risk=7 no veto). AMD AI chip thesis intact. China MI308 approval = meaningful revenue upside 2026-2027. Entry ~$445-460 range (est), stop fill×0.95, target fill×1.10 (3:1 R/R requires target ≥ fill×1.15 for 5% stop). CORRECTION: For active bucket with 5% stop, 3:1 R/R minimum requires 15% target. Use stop -5%, target +15%. 5th consecutive skip = VIOLATION. xAI API blocked — X sentiment not queried; sentiment scored qualitatively at 7. OPERATOR: Enter AMD 10 shares before May 21 open (avoid NVDA earnings day if AMD correlation concern). AMD does NOT have earnings near-term."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T18:05:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR conditional re-entry at $134+. Last known price $133.40 (May 14). Trump-Xi Day 2 outcome and intervening 4 trading sessions unknown. API blocked prevents price verification. Cannot confirm $134 trigger hit.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 3
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.50
+agents_above_7: 2
+master_decision: rejected
+master_notes: "REJECTED (6.50 avg — below 7.0 threshold; Technical=3). Cannot verify if $134 was reclaimed without API access. Re-score required at tomorrow Pre-Market with live price. If PLTR opened above $134 on May 15 summit Day 2 news and held, score would upgrade to ~7.33 (Technical from 3 to 6). xAI API blocked — X sentiment not queried."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T18:05:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: other
+score: null
+thesis: NVDA earnings scheduled May 21. 48-hour binary-event exclusion window is ACTIVE. No new NVDA positions may be initiated. This is a VALID skip per CLAUDE.md Deployment Bias exemption (2): binary event within 48h.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 2
+  tech_analyst: 9
+agent_average: 7.00
+agents_above_7: 4
+master_decision: rejected
+master_notes: "REJECTED — Risk Agent veto. NVDA earnings May 21 = binary event within 48h. Risk Agent scores 2/10 (automatic veto: binary event risk, R/R undefined around earnings). VALID CLAUDE.md exemption (2). Post-earnings: assess gap-up follow (earnings-reaction-follow) or gap-down fade. If existing NVDA position still held from LT book (strategy switch unconfirmed), OPERATOR MUST close before today's close."
+---
+```
+
+---
+
+### Tomorrow's Preliminary Watchlist — May 21, 2026
+
+**IMPORTANT:** May 21 = NVDA earnings day. DO NOT initiate new NVDA positions. Post-earnings reaction (gap-up or gap-down) may create earnings-reaction-follow or earnings-reaction-fade setups — score at Market Open routine after the print is known.
+
+| Rank | Symbol | Bucket | Setup | Est. Score | Entry Zone | Stop | Target | Notes |
+|------|--------|--------|-------|-----------|-----------|------|--------|-------|
+| 1 | AMD | active | breakout-volume | **7.33** | MOO ~$445-465 est. | fill×0.95 | fill×1.15 | MANDATORY — 5th+ attempt. No earnings conflict. |
+| 2 | PLTR | active | ai-momentum-pullback | **7.33*** | $134+ reclaim | fill×0.95 | fill×1.15 | *Conditional: run full re-score at Pre-Market if >$134 |
+| 3 | MU | active | ai-momentum-pullback | **~7.0** | ~$760-800 est. | fill×0.95 | fill×1.15 | Full 6-agent at Pre-Market. AI memory supercycle. |
+| 4 | NVDA post-earnings | active | earnings-reaction-follow OR earnings-reaction-fade | **TBD** | After May 21 print | TBD | TBD | Score at Market Open May 21 post-print. Gap-up: follow momentum. Gap-down: fade if oversold. |
+| 5 | GLD | active | macro-hedge | **hold** | Already in position | $397.92 | — | Review if gold elevated on NVDA earnings macro noise |
+
+**Hard commitments for May 21:**
+1. AMD MOO — MANDATORY (score 7.33, 5+ failed attempts)
+2. PLTR — conditional on $134 reclaim (run full 6-agent re-score at Pre-Market)
+3. NVDA reaction play — score post-print at Market Open
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
