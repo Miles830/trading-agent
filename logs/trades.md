@@ -4,6 +4,331 @@
 
 ---
 
+## 2026-05-20 — Midday Routine (12:30 PM ET / 16:37 UTC)
+
+**Context:** Wednesday May 20. CRITICAL SESSION — NVDA earnings scheduled for tomorrow May 21. Alpaca API STILL BLOCKED (HTTP 403 "Host not in allowlist") — estimated 15th+ consecutive blocked session. No routines have fired since the Daily Review on 2026-05-14 (6 calendar days, 4 trading days). The strategy switch (committed 2026-05-17) mandated closing 4 LT positions (TSM, NVDA, JPM, AVGO) via MOO on 2026-05-18. Those closes are unconfirmed — API blockage means no programmatic execution; operator manual execution unknown. NVDA earnings tomorrow are the most time-sensitive issue in the portfolio.
+
+**Predecessor heartbeat check:**
+- Pre-Market 2026-05-20 (08:00 ET): ✗ MISSING — 🔴 SILENT FAILURE
+- Market Open 2026-05-20 (09:45 ET): ✗ MISSING — 🔴 SILENT FAILURE
+- Mid-Morning 2026-05-20 (11:00 ET): ✗ MISSING — 🔴 SILENT FAILURE
+- Midday 2026-05-20 (12:30 ET): ✓ NOW RUNNING
+
+**Missing trading days since last routine (May 14 Daily Review):**
+- 2026-05-15 (Thursday): ALL 7 routines silently failed (heartbeat log file exists but empty)
+- 2026-05-16 (Friday): ALL 7 routines silently failed (no heartbeat log file)
+- 2026-05-19 (Monday): ALL 7 routines silently failed (no heartbeat log file) — CRITICAL miss; LT MOO closes were supposed to execute this day
+
+**API Status:** BLOCKED — HTTP 403 "Host not in allowlist" confirmed on: GET /v2/account, GET /v2/positions, GET /v2/orders, POST /v2/orders, GET /v2/clock. ALL data.alpaca.markets endpoints also blocked. All market data endpoints (Yahoo Finance, Nasdaq API) also blocked. 15th+ consecutive blocked session.
+
+---
+
+### Stop-Loss Audit (FIRST ACTION — API blocked; positions unconfirmed)
+
+Cannot verify via GET /v2/positions — API blocked. Last confirmed state from operator session 2026-05-17:
+
+| Symbol | Qty | Bucket | Entry | Stop | Est. May 14 price | Status |
+|--------|-----|--------|-------|------|-------------------|--------|
+| TSM | 7 | was LT | $401.47 | $353.76 | $399.80 | ⚠️ UNCONFIRMED — should have closed MOO May 18; LT bucket retired |
+| NVDA | 15 | was LT | $198.83 | $175.60 | $235.63 | 🚨 CRITICAL — Earnings May 21 (TOMORROW). Must close TODAY |
+| JPM | 9 | was LT | $308.30 | $272.14 | $300.26 | ⚠️ UNCONFIRMED — should have closed MOO May 18; LT bucket retired |
+| AVGO | 7 | was LT | $418.59 | $368.36 | $422.50 | ⚠️ UNCONFIRMED — should have closed MOO May 18; LT bucket retired |
+| GLD | 7 | active | $418.86 | $397.92 | $429.01 | ✓ GLD is the only intended carryover post strategy switch |
+| XLE | 0 | — | — | — | — | Confirmed not on Alpaca (May 17 verification) |
+
+**Attempted stop-loss audit via API — BLOCKED:**
+All GET /v2/positions and GET /v2/orders requests returned HTTP 403 "Host not in allowlist."
+
+**OPERATOR URGENT ACTION REQUIRED (in priority order):**
+1. 🚨 **NVDA — CLOSE TODAY**: NVDA has earnings TOMORROW (May 21). The stop at $175.60 provides no protection against a post-earnings gap-down. If position is still open, OPERATOR MUST MANUALLY SELL NVDA 15sh BEFORE TODAY'S CLOSE (3:50 PM ET latest for MOC). Failure to do so exposes ~$3,534+ to unlimited downside risk overnight.
+2. ⚠️ **Verify LT closes (TSM/JPM/AVGO)**: If operator did NOT manually close TSM (7sh), JPM (9sh), AVGO (7sh) on May 18-19 as directed by the strategy switch, these positions are still open with retired-bucket stops that may have been cancelled. Operator must verify and close if still open.
+3. **GLD stop verification**: If GLD stops ($397.92 GTC) are still resting, they are acceptable. If cancelled, re-place immediately.
+
+---
+
+### Violation Entries — Missing Predecessor Routines
+
+```yaml
+---
+ts: 2026-05-15T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine 2026-05-15 produced no heartbeat — silent failure. Trump-Xi Summit Day 2 communiqué day. AMD MOO (mandatory, 5th consecutive attempt) not placed. PLTR re-entry if >$134 not evaluated. MU 6-agent score not run.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Heartbeat log exists (logs/heartbeats/2026-05-15.log) but is empty — session fired but produced no STARTED heartbeat. All pre-market actions missed. API still blocked. AMD deployment failure count: 5th consecutive day."
+---
+```
+
+```yaml
+---
+ts: 2026-05-15T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine 2026-05-15 produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Post-MOO stop placement missed. No fill verification. Silent failure."
+---
+```
+
+```yaml
+---
+ts: 2026-05-15T16:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Daily Review 2026-05-15 (Friday — weekly strategy evolution note required) produced no heartbeat — silent failure. Weekly evolution note not written.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Friday Daily Review is the weekly evolution note deadline per CLAUDE.md. Missed. 6th AMD deployment failure day."
+---
+```
+
+```yaml
+---
+ts: 2026-05-16T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: All routines 2026-05-16 (Friday) silently failed — no heartbeat log file exists. AMD, PLTR, MU unaddressed for 6th consecutive trading day.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "No heartbeat file for 2026-05-16. May 16 is a Friday — trading day. Pre-Market through Daily Review all missed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-19T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine 2026-05-19 produced no heartbeat — CRITICAL SILENT FAILURE. This was the first trading day after the strategy switch. LT MOO closes (TSM 7sh, NVDA 15sh, JPM 9sh, AVGO 7sh) for the 2026-05-17 strategy switch were supposed to be placed here if the operator had not placed them manually. NVDA pre-earnings review was also due (Daily Review May 19 per CLAUDE.md).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "CRITICAL MISS: No heartbeat file for 2026-05-19. This was the Monday following the 2026-05-17 strategy switch. If operator did not manually execute the LT closes on May 18-19, all 4 LT positions are still open now (May 20), including NVDA which reports earnings TOMORROW May 21. API has been blocked for every session since approximately May 6."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine 2026-05-20 produced no heartbeat — silent failure. Day before NVDA earnings.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "No Pre-Market STARTED heartbeat in logs/heartbeats/2026-05-20.log. Critical day: NVDA earnings tomorrow."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market Open routine 2026-05-20 produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "No Market-Open STARTED heartbeat in logs/heartbeats/2026-05-20.log."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine 2026-05-20 produced no heartbeat — silent failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "No Mid-Morning STARTED heartbeat in logs/heartbeats/2026-05-20.log."
+---
+```
+
+---
+
+### LT Position Close Attempts (Strategy Switch Mandate — 2026-05-17)
+
+The 2026-05-17 strategy switch mandated closing TSM/NVDA/JPM/AVGO via MOO on 2026-05-18. Since no routine ran on May 18-19, this routine is attempting the closes now as market orders. ALL ATTEMPTS BLOCKED BY API.
+
+```yaml
+---
+ts: 2026-05-20T16:37:00Z
+action: exit
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: CLOSING for strategy switch (LT bucket retired 2026-05-17) AND pre-earnings risk management. NVDA earnings tomorrow May 21. Market sell 15sh. ORDER BLOCKED — HTTP 403 Host not in allowlist.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "ATTEMPTED market sell NVDA 15sh. API blocked — HTTP 403 Host not in allowlist. OPERATOR MUST CLOSE NVDA BEFORE TODAY'S MARKET CLOSE (by 3:50 PM ET). Earnings tomorrow May 21. Stop at $175.60 does not protect against post-earnings gap-down. This is a guardrail violation: position running into earnings with no exit mechanism. API failure is the cause."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T16:37:00Z
+action: exit
+symbol: TSM
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: CLOSING for strategy switch (LT bucket retired 2026-05-17). Market sell 7sh. ORDER BLOCKED — HTTP 403 Host not in allowlist.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "ATTEMPTED market sell TSM 7sh. API blocked. OPERATOR MUST CLOSE if still open. Strategy switch mandated close by May 18 MOO — unexecuted."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T16:37:00Z
+action: exit
+symbol: JPM
+bucket: active
+setup: sector-rotation
+score: null
+thesis: CLOSING for strategy switch (LT bucket retired 2026-05-17). Market sell 9sh. ORDER BLOCKED — HTTP 403 Host not in allowlist.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "ATTEMPTED market sell JPM 9sh. API blocked. OPERATOR MUST CLOSE if still open."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T16:37:00Z
+action: exit
+symbol: AVGO
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: CLOSING for strategy switch (LT bucket retired 2026-05-17). Market sell 7sh. ORDER BLOCKED — HTTP 403 Host not in allowlist.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "ATTEMPTED market sell AVGO 7sh. API blocked. OPERATOR MUST CLOSE if still open."
+---
+```
+
+---
+
+### Watchlist Execution — AMD (Mandatory ≥7 Entry — Now 10th+ Consecutive Deployment Failure)
+
+Per CLAUDE.md Deployment Bias and May 14 Daily Review commitment: AMD score 7.33 means ENTER. This is the 10th+ consecutive failed entry attempt. Bracket limit order attempted and blocked.
+
+**Order attempted (blocked):**
+- AMD 10sh, buy limit $450.54 (last known ~$448 × 1.005), bracket
+- Stop: $427.73 (-5% from entry)
+- Target: $517.86 (+15% from entry = 3:1 R/R)
+- Time in force: GTC
+- Response: HTTP 403 "Host not in allowlist"
+
+```yaml
+---
+ts: 2026-05-20T16:37:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: AMD score 7.33 (approved May 13-14). Breakout-volume AI semiconductor play on China chip deal. Order attempted; API blocked HTTP 403. 10th+ consecutive deployment failure.
+size_pct: 4.51
+stop: 427.73
+target: 517.86
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents >=7, Risk=7 no veto). ORDER ATTEMPTED AND BLOCKED — HTTP 403 Host not in allowlist. Curl: POST /v2/orders {symbol:AMD, qty:10, side:buy, type:limit, limit_price:450.54, time_in_force:gtc, order_class:bracket, stop_loss:{stop_price:427.73}, take_profit:{limit_price:517.86}}. This is NOT a valid CLAUDE.md skip exemption (not a guardrail breach, not a binary event, circuit breaker not tripped). API infrastructure failure is the cause. OPERATOR: Must place AMD 10sh immediately via Alpaca dashboard or Codespace. Entry ~$445-455, stop -5%, target +15%. xAI API also blocked; X sentiment not queried; scored qualitatively."
+---
+```
+
+---
+
+### Midday Market Summary (Estimated — All Data APIs Blocked)
+
+**Cannot access live market data.** All market data endpoints (Alpaca, Yahoo Finance, Nasdaq API) return HTTP 403 from the Anthropic sandbox TLS proxy. Market summary is based on last verified state (May 14, 2026) plus inference.
+
+**Key macro context as of last known state (May 14):**
+- S&P 500 was at record 7,511 (May 14 close)
+- Trump-Xi Summit Day 2 communiqué (May 15) expected to produce semiconductor framework
+- NVDA earnings: MAY 21 (TOMORROW) — no new entries allowed; existing position must be managed TODAY
+- Bitcoin: ~$79,600 (below $82K re-entry threshold as of May 14)
+- Federal Reserve: No rate cuts in 2026; hot inflation (PPI +1.4% April)
+
+**What cannot be assessed without market data:**
+- Current prices for TSM, NVDA, JPM, AVGO, GLD
+- Whether any stop-losses have been triggered since May 14
+- Current AMD, PLTR, MU prices for re-scoring
+- Market direction May 15 - May 20
+
+---
+
+### Overnight Hold Plan
+
+**Cannot determine without API access.** Based on strategy switch directive:
+- All positions except GLD should be CLOSED (operator action required)
+- NVDA: MUST be closed before today's close — earnings tomorrow
+- GLD: Retain with stop at $397.92 if still resting
+- After LT closes: ~$97K+ cash available for new active/crypto deployments per 85/10/5 plan
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
