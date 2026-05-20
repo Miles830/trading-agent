@@ -4,6 +4,270 @@
 
 ---
 
+## 2026-05-20 — Pre-Market (8:00 AM ET / 12:12 UTC)
+
+**Context:** Wednesday May 20, 2026. NVDA Q1 FY2027 earnings due TONIGHT after close (~4:20 PM ET). Moody's downgraded US sovereign credit Aaa → Aa1 over the May 16-17 weekend (30-year Treasury yield briefly hit 5.01%). Markets modestly higher pre-market: S&P +0.37%, Nasdaq +0.66%, Dow +0.19% — NVDA earnings excitement + Iran conflict easing (WTI oil -1.83% to $102.20). Fed minutes also released today. No user suggestions in GitHub (0 open issues labeled `user-suggestion`). **Alpaca API blocked: HTTP 403 "Host not in allowlist" — 11th+ consecutive blocked session.** All programmatic orders remain impossible.
+
+**Gap since May 14:** No routine commits for May 15–19 (5 full trading days). Strategy switch from May 17 (close TSM/NVDA/JPM/AVGO via MOO on May 18) is UNCONFIRMED — operator may or may not have executed manually. Treating all May 17 positions as still open (conservative assumption).
+
+---
+
+### Heartbeat Tally — 2026-05-20
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 08:00 | ✓ 12:11Z | IN PROGRESS | 🟡 RUNNING |
+
+**Missed routines May 15–19:** All intraday and daily review routines for May 15, 16 (weekend), 17 (weekend/operator session), 18, 19 — no heartbeat commits recorded. Silent failure streak continues.
+
+---
+
+### STEP 0 — Stop-Coverage Audit (FIRST ACTION)
+
+API blocked — cannot query `/v2/orders?status=open`. Using estimated prices from web research and assuming GTC stops placed May 4-6 remain resting.
+
+| Symbol | Qty | Bucket | Entry | Stop (resting est.) | Est. Price May 20 PM | Cushion | Status |
+|--------|-----|--------|-------|---------------------|----------------------|---------|--------|
+| TSM | 7 | active* | $401.47 | $353.76 | ~$392.61 | +11.0% | ✓ Estimate OK; stop resting |
+| GLD | 7 | active | $418.86 | $397.92 | ~$412.00 | +3.5% | ✓ Moody's tailwind |
+| NVDA | 15 | active* | $198.83 | $175.60 | ~$222.32 | +26.5% | ⚠️ EARNINGS TONIGHT — binary event |
+| JPM | 9 | active* | $308.30 | $272.14 | ~$300.57 | +10.4% | ✓ Moody's headwind; financials soft |
+| AVGO | 7 | active* | $418.48 | $368.36 | ~$411.00 | +11.6% | ✓ AI chip theme intact |
+
+*These were "long-term" pre–May 17. Per strategy switch (2026-05-17), all are now tagged `active`.
+
+**NVDA CRITICAL:** Earnings tonight. Stop at $175.60 is 26.5% below current price — protects against catastrophic loss but will NOT activate during after-hours gap. Strategy switch called for closing NVDA at May 18 MOO; that execution is UNCONFIRMED. **OPERATOR ACTION REQUIRED: Place MOC sell for NVDA 15 shares before 3:50 PM ET today to capture +11.8% gain and avoid binary earnings risk.**
+
+**XLE status:** Per May 17 Alpaca verification, XLE DOES NOT EXIST on this account (was incorrect in prior portfolio.md). Confirmed removed.
+
+---
+
+### Market Research Summary
+
+**Macro:**
+- S&P 500 pre-market: ~7,387 estimate (+0.37% today; pulled back from 7,511 peak post-Moody's)
+- Moody's downgraded US Aaa → Aa1 (May 16-17 weekend); 30yr Treasury yield briefly 5.01%
+- Nasdaq futures +0.66% — AI/NVDA earnings excitement
+- WTI oil $102.20 (-1.83%) — U.S.-Iran conflict easing; Strait of Hormuz concerns easing
+- Fed minutes release today (scheduled); no rate changes expected (CPI/PPI remain hot)
+- Bitcoin: $77,428 (below $82K re-entry threshold — NO crypto entry)
+- Ethereum: $2,129
+
+**Key earnings calendar:**
+- TONIGHT: NVDA (Q1 FY2027, est. $1.78 EPS, $79.2B rev +79% YoY) — **48-hour binary event window ACTIVE**
+- TOMORROW (May 21): WMT, DE — **48-hour window applies; no new entries**
+
+**Individual position moves since May 14:**
+- NVDA: $235.63 (May 14) → $222.32 (May 19 close) — pulled back -5.6% from summit highs; earnings tonight
+- TSM: $399.80 (May 14) → $392.61 (May 20) — modestly softer; Moody's macro headwind
+- GLD: $429.01 (May 14) → ~$412.00 (May 20) — GLD fell post-Trump-Xi summit optimism; but Moody's downgrade creating fresh safe-haven bid
+- JPM: $300.26 (May 14) → $300.57 (May 19) — essentially flat; financials range-bound
+- AVGO: $422.50 (May 14) → $411.00 (May 19) — pulled back with broad semis
+- AMD: ~$448 (May 14) → ~$414 (May 20) — significant pullback (-7.6%); better entry point
+
+**AMD specific:** Alibaba reportedly considering 40,000-50,000 MI308 orders ($600M-$1.25B rev impact). Q1 already reported (May 5, beat). Price at $414 vs our prior $445 estimate = improved R/R.
+
+**PLTR specific:** U.S. commercial revenue +133% YoY ($595M). Market cap crossed $300B. Price $134.12-137.46 range on May 19; after-hours dipped to $133.06 (below $134 trigger). Hovering at the conditional re-entry trigger.
+
+---
+
+### 6-Agent Analysis: AMD (entry price ~$414)
+
+**Sub-Agent 1 — Fundamentals:** Q1 FY2026 reported May 5 — beat. Data center revenue strong. MI308 export-approved for China. Alibaba potential 40,000-50,000 unit order = $600M-$1.25B revenue. Lisa Su execution track record excellent. Revenue growth accelerating. **Score: 9/10**
+
+**Sub-Agent 2 — Technical:** AMD pulled from $477 peak to $414 = -13.2% correction normalizing RSI. 5-indicator mandatory stack check:
+1. Stochastic (14,3,3): After -13% pullback, %K likely approaching or crossing into oversold. Approaching confirmation but not yet confirmed.
+2. Candlestick: Insufficient real-time data to confirm daily reversal pattern.
+3. Volume oscillator: Pullback volume ambiguous without feed.
+4. MACD: Bearish crossover on the pullback — NEGATIVE signal.
+5. Volume spike: Unknown.
+**0-of-5 positively confirmed (MACD bearish). Technical score capped at 5 per CLAUDE.md.** Score: **5/10**
+
+**Sub-Agent 3 — Sentiment:** China MI308 deal extensively covered — broadly bullish sentiment. Multiple articles flagging Alibaba order catalyst. xAI/X API blocked (no X sentiment query). Qualitative assessment: 7. **Score: 7/10**
+
+**Sub-Agent 4 — Macro:** Moody's downgrade = growth multiple headwind. But Nasdaq +0.66% pre-market shows tech/AI theme absorbing macro pressure. China deal provides AMD-specific tailwind independent of macro. No AMD earnings within 48h window. **Score: 7/10**
+
+**Sub-Agent 5 — Risk:**
+- Entry: $414; Stop: $393.30 (-5%); Target: $476.10 (+15%)
+- R/R = 15/5 = **3.0:1 — meets 3:1 minimum exactly**
+- Shares: floor($5,005/$414) = 12 shares; cost = $4,968 = **4.97% ≤ 5%** ✓
+- Risk: 12 × $414 × 0.05 = $248 = **0.25% < 1.5%** ✓
+- Sector (semis: TSM $2,748 + NVDA $3,335 + AVGO $2,877 + AMD $4,968 = $13,928 = **13.9% < 25%**) ✓
+- Cash post-entry: $85,550 - $4,968 = $80,582 = 80.5% > 5% floor ✓
+- **Score: 8/10**
+
+**Sub-Agent 6 — Tech Analyst:** MI308 is purpose-built for China market (modified for export compliance). Alibaba ordering at scale = product-market fit confirmed. CDNA4 roadmap competitive with NVIDIA Hopper. AMD picks-and-shovels positioning in AI data center. **Score: 8/10**
+
+**Master Agent — AMD:**
+| Agent | Score |
+|-------|-------|
+| Fundamentals | 9/10 |
+| Technical | 5/10 |
+| Sentiment | 7/10 |
+| Macro | 7/10 |
+| Risk | 8/10 |
+| Tech Analyst | 8/10 |
+| **Average** | **7.33/10** |
+
+- Average 7.33 ≥ 7.0 ✓
+- Risk 8 ≥ 6 (no veto) ✓
+- Agents ≥7: Fundamentals(9), Sentiment(7), Macro(7), Risk(8), Tech(8) = **5 of 6** ✓
+- **Decision: APPROVED** — 12 shares at ~$414, stop $393.30, target $476.10
+
+**BLOCKED:** Alpaca API HTTP 403. Order cannot be placed programmatically. This is deployment bias violation #6 (AMD). Operator must place manually before 9:25 AM ET for MOO, or as a limit order at open.
+
+---
+
+### 6-Agent Analysis: PLTR (conditional, price hovering at $134 trigger)
+
+**Sub-Agent 1 — Fundamentals:** U.S. commercial revenue +133% YoY to $595M. Market cap crossed $300B. AIP platform adoption accelerating. Government + commercial dual revenue streams. Rich valuation (high P/E). **Score: 8/10**
+
+**Sub-Agent 2 — Technical:** PLTR range May 19: $134.12-137.46. After-hours May 19: dipped to $133.06 — BELOW $134 trigger. The re-entry condition (close/open above $134 on volume) is NOT confirmed for today's open. 5-indicator stack: insufficient confirmation signals for a stock oscillating around the exact trigger price. Technical score capped without 2-of-5 confirmation. **Score: 5/10**
+
+**Sub-Agent 3 — Sentiment:** Government AI theme very strong. $300B market cap milestone is positive. Moody's downgrade raises risk of government budget cuts — modest headwind. xAI API blocked. Qualitative: 6. **Score: 6/10**
+
+**Sub-Agent 4 — Macro:** Moody's downgrade = potential government spending scrutiny, but DoD/national security AI is ring-fenced. Rising 30-yr yield = growth multiple compression. Nasdaq +0.66% helps. **Score: 6/10**
+
+**Sub-Agent 5 — Risk:** Entry ~$135; Stop $128.25 (-5%); Target $155.25 (+15%). R/R = 3.0:1 ✓. Size: 37sh × $135 = $4,995 = 4.99% ✓. Risk: $250 = 0.25% ✓. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst:** PLTR AIP is differentiated enterprise AI platform. Government classified data integration = strong moat. Developer ecosystem growing. **Score: 8/10**
+
+**Master Agent — PLTR:**
+| Agent | Score |
+|-------|-------|
+| Fundamentals | 8/10 |
+| Technical | 5/10 |
+| Sentiment | 6/10 |
+| Macro | 6/10 |
+| Risk | 7/10 |
+| Tech Analyst | 8/10 |
+| **Average** | **6.67/10** |
+
+- Average 6.67 < 7.0 ✗
+- Agents ≥7: Fundamentals(8), Risk(7), Tech(8) = **3 of 6** (need 4) ✗
+- **Decision: REJECTED** — below threshold. Technical score 5 (PLTR hovering at/below $134 trigger, cannot confirm 2-of-5 mandatory indicators for bullish entry). Will re-score if PLTR clearly opens and holds above $134 with volume in the Market Open routine.
+
+---
+
+### Today's Watchlist
+
+| Rank | Symbol | Bucket | Setup | Score | Action | Notes |
+|------|--------|--------|-------|-------|--------|-------|
+| 1 | AMD | active | breakout-volume | **7.33** | APPROVED — API BLOCKED | 12sh @$414, stop $393, target $476. Operator must enter MOO before 9:25AM |
+| 2 | NVDA | active | — | N/A | NO NEW POSITIONS | Earnings tonight — 48h binary exclusion; existing position HOLD |
+| 3 | PLTR | active | ai-momentum-pullback | **6.67** | REJECTED | Hovering at $134; after-hours dipped below; Technical 5 (2-of-5 not confirmed) |
+| 4 | MU | active | ai-momentum-pullback | TBD | WATCH | AI memory/HBM4; pending full 6-agent at next routine |
+| 5 | GLD | active | macro-hedge | — | HOLD (no add) | Adding would exceed 5% position cap with existing 7sh |
+| 6 | WMT | — | — | N/A | NO ENTRY | Earnings tomorrow (May 21) — 48h exclusion |
+| 7 | DE | — | — | N/A | NO ENTRY | Earnings tomorrow (May 21) — 48h exclusion |
+
+---
+
+### Key Risks Today
+
+1. **NVDA earnings binary event (4:20 PM ET):** Existing 15-share position at +11.8% unrealized gain. Strategy switch planned to close NVDA on May 18 (unconfirmed). Operator should place MOC sell for NVDA 15sh before 3:50 PM ET to capture gain and avoid after-hours gap risk. The stop at $175.60 will NOT fire in after-hours.
+2. **Strategy switch still unexecuted (assumed):** TSM, NVDA, JPM, AVGO MOO sells planned for May 18 have no confirmation. 85% of equity remains in cash — deployment target is 85% active. Deploying the remaining cash (minus 5% floor) is the primary mission.
+3. **GLD stop cushion:** $412 vs stop $397.92 = 3.4% cushion. Moody's downgrade is GLD bullish, but oil easing (WTI -1.83%) is mildly negative for commodity sentiment. Monitor.
+4. **AMD deployment failure #6:** Every routine since May 8 has failed to execute AMD despite score 7.33. Cumulative opportunity cost is significant (AMD went from ~$413 entry target to $477 then back to $414 — we've missed both the rally and the re-entry).
+
+---
+
+### YAML Trade Decisions
+
+```yaml
+---
+ts: 2026-05-20T12:12:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: AMD MI308 China export + Alibaba 40-50K unit order potential ($600M-$1.25B). Price $414 is better entry than prior $445 estimate. Score 7.33 confirmed — 6th consecutive deployment failure.
+size_pct: 4.97
+stop: 393.30
+target: 476.10
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents >=7, Risk=8 no veto). AMD at $414 improved entry vs $445 prior estimate. R/R = 15%/5% = 3:1 exactly. 12 shares, $4,968 = 4.97%. SKIP REASON: Alpaca API HTTP 403 'Host not in allowlist' — infrastructure blockage. This is NOT a valid CLAUDE.md skip exemption (guardrail breach, binary event, circuit breaker). This is deployment bias violation #6 for AMD. Operator must place MOO 12sh AMD at market before 9:25 AM ET. Post-fill stop: fill*0.95. xAI API blocked — X sentiment not queried; scored qualitatively at 7. Moody's downgrade (Aaa→Aa1) is modest headwind but Nasdaq +0.66% pre-market shows AI theme absorbing macro."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T12:12:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.67
+thesis: PLTR commercial revenue +133% YoY, $300B market cap milestone. Price at $134 trigger zone but after-hours dipped to $133.06. Technical score 5 (cannot confirm 2-of-5 mandatory indicators at current price action).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED (6.67 avg — below 7.0 threshold; only 3/6 agents >=7; Technical=5 because PLTR is hovering at/below $134 trigger and 2-of-5 mandatory indicator stack cannot be confirmed bullish). After-hours May 19 dipped to $133.06 (<$134 trigger). Will re-score at Market Open if PLTR opens and holds above $134 with volume confirmation. Moody's downgrade creates mild headwind for government spending budgets (Macro=6). xAI API blocked — X sentiment not queried; qualitative 6. Fundamental and tech thesis unchanged (AIP momentum strong)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T12:12:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: other
+score: null
+thesis: NVDA earnings Q1 FY2027 due tonight after close — binary event exclusion. No new NVDA positions. Existing 15-share position at +11.8% unrealized gain should be closed via MOC per strategy switch (operator action required).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SKIP REASON (2): Binary event within 48h — NVDA reports Q1 FY2027 TONIGHT (May 20, ~4:20 PM ET). Analysts expect $1.78 EPS, $79.2B revenue (+79% YoY). No new NVDA positions per CLAUDE.md earnings exclusion rule. CRITICAL: Existing 15-share position from strategy switch was scheduled to be closed via MOO on May 18 (unconfirmed due to API blockage). Operator should place MOC sell 15sh NVDA before 3:50 PM ET today to capture +11.8% gain ($352 unrealized) and avoid after-hours earnings gap risk. If earnings beat strongly, the position could rally in after-hours — but without a stop that fires in after-hours, the risk is asymmetric to the downside on a miss."
+---
+```
+
+```yaml
+---
+ts: 2026-05-20T12:12:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine executing (heartbeat recorded) but no orders can be placed due to persistent Alpaca API blockage (HTTP 403, 11th+ consecutive session). Portfolio is 85.5% in cash vs 85% active deployment target. This is a guardrail violation — deployment target not met despite >=7 watchlist names.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "Infrastructure gap (Alpaca API 'Host not in allowlist') is the root cause of all deployment failures since May 6. This run has a heartbeat (scheduler firing correctly) but cannot execute orders. Operator remediation required: add paper-api.alpaca.markets and data.alpaca.markets to Anthropic sandbox egress allowlist. Until fixed, every routine is a documented violation of Deployment Bias. AMD approved at 7.33 for 6 consecutive sessions with no execution."
+---
+```
+
+---
+
 ## 2026-05-14 — Daily Review (4:30 PM ET / 20:35 UTC)
 
 **Context:** Thursday May 14. Trump-Xi Beijing Summit Day 1. Markets surged to new records: S&P 500 +0.79% to ~7,511 (record), Dow retook 50,000, Nasdaq +1.05% (record). Jensen Huang attended summit with Trump delegation; H200 chips cleared for select Chinese companies. China 200-jet Boeing order confirmed at summit (below 500-jet expectation). API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 8th consecutive day. ALL 6 intraday routines (Pre-Market through Market Close) are SILENT FAILURES again today — only Daily Review heartbeat recorded.
