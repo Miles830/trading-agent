@@ -4,6 +4,181 @@
 
 ---
 
+## 2026-05-20 — Market Close Routine (3:30 PM ET / 19:31 UTC)
+
+**Context:** Wednesday May 20, 2026. Alpaca API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 12th consecutive blocked session. Current time: 19:31 UTC = 3:31 PM ET (market open, MOC window closes 3:50 PM ET / 19:50 UTC). Cannot place any orders or verify positions programmatically. NVDA earnings tomorrow (May 21 after close) — 48-hour binary event exclusion window remains active. All API-required actions are guardrail violations until Alpaca allowlist is patched.
+
+**Predecessor heartbeat check:** `grep "STARTED" logs/heartbeats/2026-05-20.log` shows:
+- `2026-05-20T18:04:33Z STARTED Afternoon` ✓ (ran 18:04-18:11 UTC)
+- Pre-Market, Market Open, Mid-Morning, Midday: SILENT FAILURES (already logged by Afternoon routine)
+- Afternoon routine: COMPLETED 18:11:19Z ✓
+
+**Day trade closure status:** No day trades were initiated on 2026-05-20 (all earlier routines were silent failures; Afternoon routine did not open any intraday positions). No MOC closure required for day trades — **however, two API-blocked MOC items must be attempted:**
+1. AMD MOC entry (score 7.33 approved — 6th consecutive deployment failure)
+2. NVDA emergency close if still held (binary event: earnings May 21)
+
+---
+
+### Stop-Loss Audit — Market Close 2026-05-20 (API BLOCKED)
+
+API blocked. Cannot run `GET /v2/orders?status=open`. Cannot verify any resting stop orders. State remains at last confirmed snapshot (May 17 operator session):
+
+| Symbol | Scenario | Stop Status | Action Required |
+|--------|----------|-------------|-----------------|
+| GLD | Both A & B | Stop $397.92 assumed resting (GTC from May 4-6) | OPERATOR: verify via web UI |
+| TSM | Scenario B only | Stop $353.76 assumed resting OR cancelled per strategy switch | OPERATOR: verify/close |
+| NVDA | Scenario B only | Stop $175.60 assumed resting OR cancelled per strategy switch | **OPERATOR: SELL BEFORE CLOSE** |
+| JPM | Scenario B only | Stop $272.14 assumed resting OR cancelled per strategy switch | OPERATOR: verify/close |
+| AVGO | Scenario B only | Stop $368.36 assumed resting OR cancelled per strategy switch | OPERATOR: verify/close |
+
+**⚠️ NAKED POSITION RISK:** If any position's stop was cancelled (by the strategy-switch DELETE on 2026-05-17) and the MOO sell didn't execute on May 18, those positions have been naked overnight for 2 days. This is a critical guardrail violation.
+
+---
+
+### NVDA — Emergency Close (MANDATORY — Binary Event Protocol)
+
+```yaml
+---
+ts: 2026-05-20T19:31:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "NVDA earnings May 21 after close. 48-hour binary event exclusion window is ACTIVE. No new NVDA entries permitted AND existing NVDA position (15 sh @ $198.83, if still held) MUST be closed before today's close. API blocked — cannot execute close programmatically. This is an escalating VIOLATION: position should have been closed by strategy switch May 18 or via this session. OPERATOR ACTION REQUIRED."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SKIP reason: Exemption (2) — binary event within 48h (NVDA earnings May 21). NEW NVDA entries are prohibited. Existing position MUST be closed — this is an emergency action, not a discretionary skip. API blockage prevents programmatic close. OPERATOR: Login to Alpaca paper account web UI (https://app.alpaca.markets) or use Codespace with API access. Sell 15 shares NVDA at market BEFORE 3:50 PM ET today (19:50 UTC). Est. realized gain at ~$255/sh = ($255-$198.83)×15 = ~$843. Do NOT carry NVDA through the earnings print — a 10-15% gap-down on miss = $375-$562 unrealized loss that reverses the bulk of the gain. xAI API blocked — X sentiment not queried."
+---
+```
+
+---
+
+### AMD — MOC Entry Attempt (BLOCKED — Guardrail Violation)
+
+```yaml
+---
+ts: 2026-05-20T19:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: "AMD score 7.33, approved. 6th consecutive entry failure. API blocked prevents MOC order submission. API blockage is NOT a valid skip exemption per CLAUDE.md Deployment Bias. This is a guardrail violation. Operator must place manually before close or at Pre-Market May 21."
+size_pct: 4.47
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (7.33 avg, 5/6 agents >=7, Risk=7 no veto). MOC order blocked by API. curl POST ${APCA_API_BASE_URL}/v2/orders returned HTTP 403 'Host not in allowlist'. 6th consecutive DEPLOYMENT BIAS VIOLATION. AMD: entry ~$445-465 (est), stop fill×0.95 (-5%), target fill×1.15 (+15% for 3:1 R/R minimum). Guardrail check at est. $455: size=10sh×$455=$4,550=4.55%<5% ✓; semis sector<25% ✓; risk=$227=0.23%<1.5% ✓; 3:1 R/R: stop -5%→$432.25, target +15%→$523.25 ✓. NOTE: AMD does NOT have near-term earnings — no binary event exemption applies. xAI API blocked — X sentiment not queried."
+---
+```
+
+---
+
+### PLTR — Re-Score Status (API BLOCKED — No Price Data)
+
+```yaml
+---
+ts: 2026-05-20T19:36:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: other
+score: null
+thesis: "Cannot determine if PLTR reclaimed $134 trigger — API blocked, no price feed. Last known $133.40 (May 14). Re-score deferred to Pre-Market May 21 when price is observable."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SKIP reason: Cannot score without price data (API blocked). Last known score 6.50 (below threshold) at $129.99 on May 13. Conditional re-entry requires close above $134. No valid exemption applied — data unavailability prevents scoring, not a deployment bias violation per se. Re-score MANDATORY at Pre-Market May 21. xAI API blocked."
+---
+```
+
+---
+
+### Overnight Position Summary (Market Close 2026-05-20)
+
+**API blocked — cannot confirm. Estimated overnight state:**
+
+**Scenario A (strategy switch executed May 18):**
+| Symbol | Qty | Entry | Est. Close Price | Est. P/L | Stop | Stop Status |
+|--------|-----|-------|-----------------|----------|------|-------------|
+| GLD | 7 | $418.86 | ~$435-450 (est) | ~+$113-$218 | $397.92 | Assumed resting |
+
+**Scenario B (strategy switch NOT executed):**
+| Symbol | Qty | Entry | Est. Close Price | Est. P/L | Stop | Stop Status |
+|--------|-----|-------|-----------------|----------|------|-------------|
+| TSM | 7 | $401.47 | ~$405-425 (est) | ~+$25-$166 | $353.76 | UNVERIFIED ⚠️ |
+| GLD | 7 | $418.86 | ~$435-450 (est) | ~+$113-$218 | $397.92 | Assumed resting |
+| NVDA | 15 | $198.83 | ~$250-280 (est) | ~+$767-$1,226 | $175.60 | UNVERIFIED ⚠️ **CLOSE BEFORE EARNINGS** |
+| JPM | 9 | $308.30 | ~$295-315 (est) | ~-$120-+$60 | $272.14 | UNVERIFIED ⚠️ |
+| AVGO | 7 | $418.59 | ~$440-470 (est) | ~+$151-$360 | $368.36 | UNVERIFIED ⚠️ |
+
+---
+
+### Today's Performance Estimate
+
+**Cannot compute exact P&L — API blocked. Best estimate:**
+- Portfolio equity: ~$100,500-$103,000 (estimated range across scenarios)
+- Today's P&L: ~0% (no trades executed; market moves embedded in estimated positions above)
+- S&P 500 May 20 close: ~7,520-7,560 (estimated; AI/tech momentum continues pre-NVDA earnings)
+- S&P 500 YTD return vs portfolio: Gap estimated ~-5 to -6 pp (80%+ cash continues to drag)
+
+---
+
+### Key Things to Watch Tomorrow (May 21 — NVDA Earnings Day)
+
+1. **NVDA Q2 FY2026 earnings** (after market close May 21) — DO NOT hold any NVDA position through the print
+2. **AMD Pre-Market score** — 7.33 approved, MANDATORY entry at Pre-Market unless API still blocked
+3. **PLTR** — re-score at Pre-Market. Enter if $134+ reclaimed on volume
+4. **MU** — run full 6-agent framework at Pre-Market (est. score ~7.0, AI memory supercycle)
+5. **Stop audit** — FIRST action of Pre-Market must be `GET /v2/orders?status=open` to verify all resting stops
+6. **Strategy-switch verification** — run `GET /v2/positions` to finally confirm whether TSM/NVDA/JPM/AVGO are still held
+7. **If API still blocked** — OPERATOR MUST execute AMD MOO manually before 9:25 AM ET
+
+---
+
+### Market Close Routine Violation Log
+
+```yaml
+---
+ts: 2026-05-20T19:40:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: "Market Close routine PARTIAL FAILURE: API blocked (HTTP 403). Stop audit cannot be performed. MOC orders for AMD (score 7.33) and NVDA emergency close cannot be placed. All required order activity is unexecuted for the 12th consecutive session. Routine fired but no Alpaca interaction possible."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_notes: "HTTP 403 'Host not in allowlist' on all Alpaca endpoints: /v2/clock, /v2/account, /v2/positions, /v2/orders. xAI API also blocked (XAI_API_KEY env var not set). Two mandatory actions failed: (1) AMD MOC entry — DEPLOYMENT BIAS VIOLATION (6th consecutive); (2) NVDA emergency close — binary-event protocol cannot execute. OPERATOR ESCALATION REQUIRED: Alpaca API allowlist must be patched. See memory/project_routine_github_auth_root_cause.md. Until fixed, ALL orders must be placed manually via Alpaca web UI or operator Codespace."
+---
+```
+
+---
+
 ## 2026-05-20 — Afternoon Routine (2:00 PM ET / 18:05 UTC)
 
 **Context:** Wednesday May 20, 2026. Alpaca API STILL BLOCKED (HTTP 403 "Host not in allowlist") — 11th+ consecutive blocked session counting from May 6. All 4 predecessor routines today (Pre-Market, Market Open, Mid-Morning, Midday) are SILENT FAILURES per heartbeats log (only `2026-05-20T18:04:33Z STARTED Afternoon` recorded). May 15 heartbeat log is 0 bytes (all routines failed). May 19 heartbeat log does not exist (all routines failed). Strategy-switch MOO sells (TSM, NVDA, JPM, AVGO — scheduled May 18) are unconfirmed via API.
