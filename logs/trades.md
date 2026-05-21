@@ -130,6 +130,220 @@ master_notes: "SKIP — BINARY EVENT EXEMPTION (Exemption 2, CLAUDE.md Deploymen
 ---
 ```
 
+## 2026-05-21 — Market Close (3:30 PM ET / 19:33 UTC)
+
+**Context:** Thursday May 21, 2026 | 19:33 UTC (3:33 PM ET). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 14th+ consecutive blocked session. **Predecessor heartbeat tally today:** Pre-Market ✓ (12:02–12:17Z) · Market Open ✗ SILENT FAILURE · Mid-Morning ✗ SILENT FAILURE · Midday ✗ SILENT FAILURE · Afternoon ✗ SILENT FAILURE. 4 of 5 predecessors silently failed. No day trades open (all MOO orders blocked at Pre-Market). MRVL binary event window now closed — earnings released today; reassess at Daily Review.
+
+**STOP AUDIT — MANDATORY FIRST ACTION (RESULT: FAILED):** GET /v2/positions + GET /v2/orders?status=open → HTTP 403 "Host not in allowlist" (14th+ consecutive). Cannot verify GLD stop $397.92 or strategy-switch status. OPERATOR: verify at https://app.alpaca.markets.
+
+**DAY TRADES TO CLOSE:** None — no positions filled today (all MOO orders blocked at Pre-Market; MOC orders also blocked — see attempts below).
+
+**VIOLATION ENTRIES (silently failed predecessor routines):**
+
+```yaml
+---
+ts: 2026-05-21T13:45:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Open routine (9:45 AM ET / 13:45 UTC) silently failed — no heartbeat logged. AMD/PLTR/MU MOO fill confirmation not done; standalone GTC stop orders not posted; NVDA earnings reaction not assessed; AVGO limit not placed.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: 0
+master_decision: violation
+master_notes: "SILENT FAILURE — Market Open (9:45 AM ET / 13:45 UTC). Heartbeat absent from logs/heartbeats/2026-05-21.log. Consequences: (1) No MOO fill confirmation for AMD/PLTR/MU; (2) No GTC stop orders posted for any fills; (3) No NVDA earnings gap assessment; (4) No stop audit."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) silently failed — no heartbeat logged.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: 0
+master_decision: violation
+master_notes: "SILENT FAILURE — Mid-Morning (11:00 AM ET / 15:00 UTC). No heartbeat found. Stop audit, sector scan, and stale order cancellation not performed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T16:30:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) silently failed — no heartbeat logged.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: 0
+master_decision: violation
+master_notes: "SILENT FAILURE — Midday (12:30 PM ET / 16:30 UTC). No heartbeat found. Position review and limit order management not performed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T18:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC) silently failed — responsible for day-trade exit decisions before the close window.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: 0
+master_decision: violation
+master_notes: "SILENT FAILURE — Afternoon (2:00 PM ET / 18:00 UTC). No heartbeat found. Day-trade exit review and final stop check not performed. No open day trades existed today (API blocked all fills), so functional impact limited to missed stop audit."
+---
+```
+
+**MOC ORDER ATTEMPTS — all 3 BLOCKED HTTP 403 (Deployment Bias mandatory — pre-scored names):**
+
+```yaml
+---
+ts: 2026-05-21T19:36:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: AMD MOC attempt — Deployment Bias non-negotiable. Score 7.67 confirmed Pre-Market 08:02 ET. AMD Q1 $10.3B +38% YoY, Data Center $5.8B +57%; MI450 momentum; NVDA $80B buyback confirms AI capex cycle intact.
+size_pct: 4.3
+stop: fill_price_x_0.95
+target: fill_price_x_1.15
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOC ATTEMPTED AND BLOCKED — POST /v2/orders AMD 10sh time_in_force=cls → HTTP 403 'Host not in allowlist' (14th+ consecutive). No valid skip exemption applies. DEPLOYMENT BIAS VIOLATION. EOD estimate ~$447. OPERATOR: carry forward to May 22 Pre-Market MOO (MANDATORY — 8th consecutive attempt)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T19:37:00Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: PLTR MOC attempt — Deployment Bias non-negotiable. Score 7.17 confirmed Pre-Market 08:02 ET. Q1 $1.63B +39% YoY; EPS beat 37.5%; $134 support confirmed pre-market $134.01.
+size_pct: 1.3
+stop: fill_price_x_0.95
+target: fill_price_x_1.15
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "MOC ATTEMPTED AND BLOCKED — POST /v2/orders PLTR 10sh time_in_force=cls → HTTP 403 'Host not in allowlist'. No valid skip exemption (price conditional ≥$134 — not a binary event; guardrails clear). DEPLOYMENT BIAS VIOLATION. OPERATOR: carry forward to May 22 Pre-Market MOO if price still ≥$134."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T19:38:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: MU MOC attempt — Deployment Bias non-negotiable. Score 7.67 confirmed Pre-Market 08:02 ET. Q2 FY2026 EPS $12.20 beat +42%; NVDA $81.62B = direct HBM3e demand confirmation; -12% pullback from ATH $818.67.
+size_pct: 4.3
+stop: fill_price_x_0.95
+target: fill_price_x_1.15
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOC ATTEMPTED AND BLOCKED — POST /v2/orders MU 6sh time_in_force=cls → HTTP 403 'Host not in allowlist'. No valid skip exemption. DEPLOYMENT BIAS VIOLATION. OPERATOR: carry forward to May 22 Pre-Market MOO (MANDATORY)."
+---
+```
+
+**EOD MARKET SUMMARY (estimated — API blocked):**
+- S&P 500 May 21: ~7,450–7,470 (est. +0.2–0.5% on NVDA $80B buyback + AI capex sentiment)
+- AMD: ~$447 (pre-market $429; recovered on AI sector strength)
+- PLTR: ~$135–137 (held above $134 trigger)
+- MU: ~$725–735 (positive on NVDA HBM demand confirmation)
+- NVDA: ~$222–225 ($80B buyback offset sell-the-news)
+- GLD: ~$415–418 (gold stable; dollar weakness bid)
+- BTC: ~$78,000–80,000 (risk-on; below $82K threshold)
+- MRVL: Earnings released today — results unknown; reassess at Daily Review May 21
+
+**TODAY'S P&L (estimated):**
+- GLD 7sh: unrealized ~−$13 (GLD ~$417 vs entry $418.86)
+- AMD/PLTR/MU: $0 (not filled)
+- Portfolio equity: ~$100,150–200 (essentially unchanged)
+- Today's return: ~0% to −0.05%
+- S&P 500 today (est.): +0.2–0.5%
+- Today's gap vs SPX: ~−0.2 to −0.5 pp
+- Cumulative gap vs SPX: ~−3.24 to −3.54 pp (widening from −3.04 pp)
+
+**OVERNIGHT POSITIONS (memory — API blocked, UNVERIFIED):**
+| Symbol | Qty | Entry | Est. EOD | Stop | Status |
+|---|---|---|---|---|---|
+| GLD | 7 | $418.86 | ~$417 | $397.92 (UNVERIFIED) | Active swing |
+| TSM | 7 | $401.47 | ~$405 | $353.76 | LT→closing; status UNKNOWN |
+| NVDA | 15 | $198.83 | ~$223 | $175.60 | LT→closing; binary event resolved |
+| JPM | 9 | $308.30 | ~$305 | $272.14 | LT→closing; status UNKNOWN |
+| AVGO | 7 | $418.59 | ~$412 | $368.36 | LT→closing; status UNKNOWN |
+
+**MANDATORY TOMORROW (May 22, Friday — Pre-Market 8:00 AM ET):**
+1. AMD MOO 10sh — 8th consecutive attempt; MANDATORY (score 7.67)
+2. PLTR MOO 10sh — if open ≥$134; MANDATORY (score 7.17)
+3. MU MOO 6sh — MANDATORY (score 7.67)
+4. MRVL post-earnings score — binary window closed; run 6-agent at Pre-Market
+5. GLD stop verify — confirm $397.92 resting; consider trailing to $405 if GLD >$415
+6. Weekly evolution note — DUE at Friday May 22 Daily Review
+7. Post-fill stops — IMMEDIATELY post GTC stops at fill × 0.95 after any MOO fills confirmed at Market Open
+
 ---
 
 ## 2026-05-20 — Daily Review (4:30 PM ET / 20:35 UTC)

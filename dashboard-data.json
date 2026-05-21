@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-21T12:08:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-05-21T19:38:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.00,
@@ -9,13 +9,13 @@
     "buying_power": 171100,
     "long_market_value": 14650,
     "short_market_value": 0.00,
-    "daily_pnl": 100,
-    "daily_pnl_pct": 0.10,
-    "total_return_pct": 0.20,
-    "spx_return_pct": 3.24,
-    "benchmark_gap_pct": -3.04,
+    "daily_pnl": -13,
+    "daily_pnl_pct": -0.01,
+    "total_return_pct": 0.19,
+    "spx_return_pct": 3.50,
+    "benchmark_gap_pct": -3.31,
     "open_positions_count": 5,
-    "note": "May 21 Pre-Market — API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news — closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K — score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "note": "May 21 Market-Close — API BLOCKED (HTTP 403), 14th+ consecutive session. 3 MOC orders ATTEMPTED AND BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). 4 of 5 predecessor routines silently failed (Market Open, Mid-Morning, Midday, Afternoon). No day trades to close. MRVL binary event window closed (earnings released today, results unknown). GLD ~-$13 unrealized est. S&P 500 May 21 est. +0.3% to 7,454. Cumulative gap ~-3.3 pp. MANDATORY May 22: AMD+PLTR+MU MOO + MRVL post-earnings score + weekly evolution note.",
     "buckets": [
       {
         "key": "active",
@@ -611,10 +611,10 @@
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "violation",
-      "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-21 15:30 ET",
-      "last_summary": "SILENT FAILURE May 20. No day trades to close. NVDA AH earnings reaction ongoing (beat, -2.44% AH). No Market Close stop audit performed."
+      "status": "completed",
+      "last_run": "2026-05-21 15:33 ET",
+      "next_run": "2026-05-22 15:30 ET",
+      "last_summary": "May 21: API BLOCKED (HTTP 403, 14th+ consecutive). 3 MOC order attempts BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). 4 predecessor routines silently failed (Market Open, Mid-Morning, Midday, Afternoon). No day trades to close. GLD est. -$13 unrealized. MRVL binary event window closed. Portfolio est. unchanged. Carry AMD+PLTR+MU mandatory to May 22 MOO."
     },
     {
       "name": "Daily Review",
@@ -795,6 +795,18 @@
       "portfolio_return_pct": 0.23,
       "spx_return_pct": 3.50,
       "daily_pnl_pct": -0.57
+    },
+    {
+      "date": "2026-05-20",
+      "portfolio_return_pct": 0.20,
+      "spx_return_pct": 3.24,
+      "daily_pnl_pct": 0.10
+    },
+    {
+      "date": "2026-05-21",
+      "portfolio_return_pct": 0.19,
+      "spx_return_pct": 3.50,
+      "daily_pnl_pct": -0.01
     }
   ]
 }
