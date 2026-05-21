@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-21T12:08:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-05-21T15:20:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.00,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.24,
     "benchmark_gap_pct": -3.04,
     "open_positions_count": 5,
-    "note": "May 21 Pre-Market — API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news — closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K — score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "note": "May 21 Mid-Morning — API BLOCKED (HTTP 403), 14th consecutive session. Market-Open SILENT FAILURE. S&P -0.45% (oil +2.31% Iran news, inflation fears). AMD +8.1% ($447.58, range $426-$449). MU +3.88% ($731.99). NVDA $220.66. PLTR ~$136. GLD $413.66 (-1.24% from entry, stop $397.92 intact). MRVL ~$183 (CORRECTION: earnings May 27 not May 21 — scored 7.0 in Mid-Morning). BTC ~$77,262 (below $82K). 4 limit bracket orders attempted and BLOCKED: AMD 10sh ($449.90 limit), PLTR 10sh ($136.68), MU 6sh ($735.65), MRVL 26sh ($183.92). OPERATOR: place all 4 GTC limit brackets immediately. MRVL: last window before May 25 binary event cutoff. Strategy switch STILL UNCONFIRMED.",
     "buckets": [
       {
         "key": "active",
@@ -47,7 +47,10 @@
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD +1.25% today ($411.50→$416.64). Cross-asset hedge — gold rising despite oil collapse and risk-on equity day. Dollar weakness component. Stop $397.92 (-4.9% from current). GLD confirmed active (only certain position)."
+      "current_price": 413.66,
+      "pnl": -36.40,
+      "pnl_pct": -1.24,
+      "note": "GLD mid-morning $413.66 (range $413.66-$414.78). Entry $418.86. Currently -1.24% from entry (-$5.20/share). Stop $397.92 = -3.78% below current — intact, not near stop. Oil rebounding +2.31% today (Iran) adding mild headwind to gold. Dollar weakness partially offsetting. No trailing (position underwater — stop fixed)."
     },
     {
       "symbol": "TSM",
@@ -108,6 +111,112 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-21T15:03:00Z",
+      "symbol": "MARKET-OPEN",
+      "action": "violation",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "VIOLATION — Market-Open routine (9:45 AM ET) silent failure. No heartbeat logged. MOO fill verification and stop placement skipped. Catch-up running from Mid-Morning."
+    },
+    {
+      "ts": "2026-05-21T15:04:00Z",
+      "symbol": "MRVL",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "other",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "VIOLATION — Pre-Market incorrectly excluded MRVL as binary event. MRVL earnings confirmed May 27 After Close (not May 21). MRVL scored and attempted in Mid-Morning (7.0 — approved)."
+    },
+    {
+      "ts": "2026-05-21T15:06:00Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist' (14th consecutive). Limit bracket BUY 10sh AMD @ $449.90, stop $425.20, target $514.70, tif=gtc. OPERATOR: place GTC limit bracket AMD manually."
+    },
+    {
+      "ts": "2026-05-21T15:08:00Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.0,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 5,
+        "sentiment": 7,
+        "macro": 6,
+        "risk": 8,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist'. Limit bracket BUY 10sh PLTR @ $136.68, stop $129.20, target $156.40, tif=gtc. Only if current price ≥$134. OPERATOR: verify PLTR ≥$134 then place GTC limit bracket manually."
+    },
+    {
+      "ts": "2026-05-21T15:10:00Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.5,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist'. Limit bracket BUY 6sh MU @ $735.65, stop $695.39, target $841.79, tif=gtc. OPERATOR: place GTC limit bracket MU manually."
+    },
+    {
+      "ts": "2026-05-21T15:15:00Z",
+      "symbol": "MRVL",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 5,
+        "sentiment": 7,
+        "macro": 6,
+        "risk": 7,
+        "tech_analyst": 9
+      },
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist'. Limit bracket BUY 26sh MRVL @ $183.92, stop $173.85, target $210.45, tif=gtc. LAST WINDOW before May 25 binary event cutoff (48h before May 27 earnings). OPERATOR: place GTC limit bracket MRVL today or skip until post-earnings."
+    },
     {
       "ts": "2026-05-21T12:04:00Z",
       "symbol": "AMD",
@@ -580,17 +689,17 @@
       "name": "Market Open",
       "schedule": "09:45 ET daily",
       "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 09:45 ET",
-      "last_summary": "SILENT FAILURE May 20. Next May 21: (1) Confirm AMD/PLTR/MU fills, place stops (fill×0.95 GTC) immediately. (2) Assess NVDA open gap — AH -2.44% on beat; if gap-down -3%+ with 2× vol + 2/5 indicators: score earnings-reaction-fade. (3) Close NVDA if still held (binary event violation, exit at open). (4) Limit orders for AVGO, MRVL if score ≥7."
+      "last_run": "2026-05-20 14:04 ET (last known)",
+      "next_run": "2026-05-22 09:45 ET",
+      "last_summary": "SILENT FAILURE May 21. No heartbeat. MOO fills unchecked. Stop placement for any operator-placed MOO orders skipped. Catch-up ran from Mid-Morning: stop audit blocked (API), 4 limit bracket orders attempted (AMD, PLTR, MU, MRVL) — all API-blocked. OPERATOR: verify any fills and place stops at fill×0.95."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 11:00 ET",
-      "last_summary": "SILENT FAILURE May 20. Stop audit + sector scan missed."
+      "status": "completed",
+      "last_run": "2026-05-21 11:02 ET",
+      "next_run": "2026-05-22 11:00 ET",
+      "last_summary": "May 21: S&P -0.45% (oil +2.31% Iran, inflation). AMD +8.1% ($447.58). MU +3.88% ($731.99). NVDA $220.66. PLTR ~$136. GLD $413.66 (-1.24%, stop intact). MRVL ~$183 (CORRECTION: earnings May 27, not today). Market-Open violation logged. 2 violations logged (Market-Open silent failure + MRVL date error). 4 limit bracket orders attempted and blocked: AMD 10sh ($449.90), PLTR 10sh ($136.68), MU 6sh ($735.65), MRVL 26sh ($183.92). MRVL: last window before May 25 binary event cutoff. API blocked (14th consecutive). OPERATOR: place all 4 GTC limit brackets manually."
     },
     {
       "name": "Midday",

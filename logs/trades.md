@@ -4,6 +4,191 @@
 
 ---
 
+## 2026-05-21 — Mid-Morning (11:00 AM ET / 15:02 UTC)
+
+**Context:** Thursday May 21, 2026. S&P 500 −0.45% (inflation fears: oil +2.31% to $100.50/bbl on Iran supreme leader directive blocking uranium removal — reversing yesterday's −5.66% collapse). Nasdaq −0.50%. Dow −0.48%. Russell 2000 +2.56%. Semiconductors sharply outperforming broad market: AMD +8.1% to $447.58 (day range $426.05–$449.39), MU +3.88% to $731.99, NVDA $220.66 (range $216.25–$226.94, opened $223.18 — initial bounce from "sell the news" −2.44% AH). PLTR ~$136 (above $134 trigger; May 20 close $137.15). GLD $413.66 (day range $413.66–$414.78). MRVL ~$183 (sliding; prior close $188.17). BTC ~$77,262 (below $82K threshold). Notable movers: APLD +16% (AI campus leasing), IBM +6.2% ($2B quantum funding), INTU −19% (17% workforce cut), DE −6.8%. Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 14th consecutive blocked session. Market-Open routine SILENT FAILURE (heartbeat missing).
+
+**PREDECESSOR CHECK:**
+- Pre-Market 8:00 AM ET: ✅ STARTED 12:02:32Z / COMPLETED 12:17:16Z
+- Market-Open 9:45 AM ET: ❌ MISSING — no heartbeat in logs/heartbeats/2026-05-21.log
+
+**MARKET-OPEN CATCH-UP:** Market-Open silent failure. Per playbook: (1) Cannot check MOO fills via API (blocked). Pre-Market documented 3 MOO attempts all blocked: AMD 10sh, PLTR 10sh (if ≥$134), MU 6sh — none filled via agent. (2) Cannot post stop-loss orders (API blocked). If operator manually placed MOO orders before 9:25 AM ET, stops MUST be placed at fill × 0.95 — operator must verify and act at https://app.alpaca.markets.
+
+**MRVL DATE CORRECTION (Pre-Market error):** Pre-Market excluded MRVL citing "MRVL reports Q1 FY2027 earnings May 21." Confirmed incorrect via MarketBeat: MRVL Q1 FY2027 earnings scheduled May 27, 2026 After Close (confirmed). Today (May 21) is 6 calendar days before earnings — outside the 48h binary event window. MRVL is eligible. Scoring now.
+
+**STOP AUDIT (MANDATORY FIRST ACTION — RESULT: BLOCKED):**
+- GET /v2/positions → "Host not in allowlist"
+- GET /v2/orders?status=open → "Host not in allowlist"
+- Cannot verify GLD stop $397.92 or strategy-switch close status. OPERATOR: Verify at https://app.alpaca.markets.
+
+**GLD STATUS:** $413.66 (day range $413.66–$414.78). Entry $418.86. Currently −1.24% from entry. Stop $397.92 = −3.78% below current. Position not near stop — no action. Stop resting at broker (per prior documentation; unverifiable via API). No trailing: position is underwater; guardrails prohibit trailing stop downward.
+
+---
+
+```yaml
+---
+ts: 2026-05-21T15:03:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET) did not heartbeat on 2026-05-21 — running catch-up from Mid-Morning.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "VIOLATION — Market-Open silent failure. No STARTED or COMPLETED heartbeat in logs/heartbeats/2026-05-21.log for Market-Open. Consequence: (1) MOO fill verification skipped — could not confirm AMD/PLTR/MU fills from operator-manual orders. (2) Stop-loss placement for any MOO fills skipped. (3) Positions unprotected between 9:45 AM ET and 11:00 AM ET (~75 minutes). Running stop audit and order catch-up from Mid-Morning."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:04:00Z
+action: violation
+symbol: MRVL
+bucket: active
+setup: other
+score: null
+thesis: Pre-Market routine incorrectly excluded MRVL citing binary event — MRVL earnings are May 27 not May 21.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "VIOLATION — Pre-Market skip of MRVL was a documentation error. Pre-Market stated 'MRVL reports Q1 FY2027 earnings May 21.' Confirmed via MarketBeat: MRVL Q1 FY2027 earnings are May 27, 2026 After Close (confirmed). Today is 6 days before the event, well outside the 48h binary event window. Pre-Market should have scored MRVL. Correcting now: full 6-agent score run in Mid-Morning."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:06:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD Q1 2026 revenue $10.3B (+38% YoY) + NVDA beat ($81.62B) confirms AI accelerator demand; AMD +8.1% today ($447.58) on institutional rotation showing relative strength vs broad market −0.45%; buying gap-up continuation on heavy volume.
+size_pct: 4.47
+stop: 425.20
+target: 514.70
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "MID-MORNING RE-SCORE (catch-up for Pre-Market MOO block + Market-Open silent failure). All 6 agents ≥7. Fundamentals 8 — Q1 2026: revenue $10.3B +38% YoY, DC +57% to $5.8B, non-GAAP EPS $1.37 +43%, Q2 guidance $11.2B (+46% YoY); NVDA beat validates entire AI accelerator TAM. Technical 7 — gap-up +8.1% from $414.05 close; volume spike (heavy volume on directional move) + MACD bullish = 2/5 stack confirmed; buying near intraday high ($449.39) is risk but momentum confirmed. Sentiment 8 — AMD diverging positively from −0.45% market; institutional rotation into AI semis; NVDA CEO 'AI factories accelerating'; xAI API unavailable — degrading gracefully. Macro 7 — S&P −0.45% (Iran/oil/inflation); but semiconductors +8% defying market = sector relative strength; AI capex secular. Risk 7 — 10sh × $447.58 = $4,475.80 = 4.47% ≤ 5%; stop −5% = $425.20; target +15% = $514.70; R/R 3:1 ✓; trade risk $224 = 0.22% ≤ 1.5%; semis sector (AMD+MU) = 8.86% ≤ 25% in Scenario A; if Scenario B (old LT positions still held), operator must verify sector cap before placing. Tech Analyst 8 — MI450 CDNA4 architecture exceeding demand forecasts; EPYC >32% DC CPU share; ROCm stack maturing; chiplet lead intact. ORDER: POST /v2/orders AMD 10sh limit $449.90 bracket (stop $425.20, target $514.70) → BLOCKED 'Host not in allowlist'. OPERATOR: Place GTC limit bracket for AMD manually."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:08:00Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.0
+thesis: PLTR Q1 2026 revenue $1.63B (+39% YoY), EPS $0.33 beat $0.24 by 37.5%; US Gov +84% YoY; $134 support holding at ~$136 today; AIP agentic AI confirmed by NVDA CEO.
+size_pct: 1.36
+stop: 129.20
+target: 156.40
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "MID-MORNING RE-SCORE (catch-up for Pre-Market MOO block + Market-Open silent failure). 4 of 6 agents ≥7 (minimum threshold met). Approved at exactly 7.0 average — marginal but valid per CLAUDE.md. Fundamentals 8 — Q1 2026 revenue $1.63B +39%, EPS $0.33 beat $0.24 (+37.5%), US Gov revenue +84% YoY, Maven usage 4×, guidance raised. Technical 5 — $134 support holding at ~$136; only 1/5 indicator stack confirmed (candlestick support touch); MACD inconclusive; score capped at 5 per CLAUDE.md rule (need ≥2 of 5 to exceed 5). Sentiment 7 — government AI secular; NVDA CEO 'agentic AI has arrived' validates PLTR AIP; xAI API unavailable — degrading gracefully. Macro 6 — risk-off day (−0.45%); PLTR is growth stock in uncertain macro; government contracts provide some insulation. Risk 8 — 10sh × $136 = $1,360 = 1.36% ≤ 5%; stop −5% = $129.20; target +15% = $156.40; R/R 3:1 ✓; trade risk $68 = 0.07% ≤ 1.5%. Tech Analyst 8 — ontology-based AIP unique; government security clearance moat; Maven + agent engine SDK differentiated. NOTE: Technical score of 5 is the limiting factor. If PLTR confirms a second indicator (e.g., volume spike or Stochastic crossover from oversold), technical upgrades to 6+ and conviction improves. ORDER: POST /v2/orders PLTR 10sh limit $136.68 bracket (stop $129.20, target $156.40) → BLOCKED 'Host not in allowlist'. OPERATOR: Place GTC limit bracket for PLTR manually."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:10:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: MU Q2 FY2026 EPS $12.20 beat $8.60 (+42%); HBM3e demand directly confirmed by NVDA Q1 $81.62B; continuation of +3.88% move today ($731.99); next earnings June 24 (outside 48h window).
+size_pct: 4.39
+stop: 695.39
+target: 841.79
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "MID-MORNING RE-SCORE (catch-up for Pre-Market MOO block + Market-Open silent failure). All 6 agents ≥7. Fundamentals 8 — Q2 FY2026 EPS $12.20 vs $8.60 (+42%); HBM3e is the sole memory architecture for NVDA A100/H100/H200/B200 GPU clusters; Melius PT $1,100; next earnings June 24 (no binary event). Technical 7 — continuation move +3.88% from prior close; volume spike + MACD bullish = 2/5 stack confirmed; prior-day range $712.67–$739.35 with today's $731.99 showing continued momentum post NVDA beat. Sentiment 8 — NVDA Q1 $81.62B is a direct HBM3e demand signal; strong buy consensus; hyperscaler capex $400B+ in 2026 all uses HBM; xAI API unavailable — degrading gracefully. Macro 7 — S&P −0.45% (oil/Iran); AI capex uncorrelated to oil; HBM3e is supply-constrained secular. Risk 7 — 6sh × $731.99 = $4,391.94 = 4.39% ≤ 5%; stop −5% = $695.39; target +15% = $841.79 (above May 11 ATH $818.67); R/R 3:1 ✓; trade risk $219.60 = 0.22% ≤ 1.5%. Tech Analyst 8 — HBM3e sole-source for NVDA high-end GPU clusters; gaining share vs SK Hynix/Samsung in HBM segment; CXL memory and next-gen HBM4 roadmap differentiated. ORDER: POST /v2/orders MU 6sh limit $735.65 bracket (stop $695.39, target $841.79) → BLOCKED 'Host not in allowlist'. OPERATOR: Place GTC limit bracket for MU manually."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:15:00Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: MRVL custom AI ASIC/XPU platform for hyperscalers (Amazon Trainium2, Google TPU, Microsoft Maia) is the #2 AI silicon opportunity after NVDA; FY2026 revenue $8.195B (record); earnings May 27 (outside 48h window); today's pullback to ~$183 offers better entry than yesterday's $188.
+size_pct: 4.75
+stop: 173.85
+target: 210.45
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "NEW MID-MORNING SCORE (MRVL incorrectly excluded by Pre-Market — binary event date was wrong; corrected above). 4 of 6 agents ≥7 (minimum threshold met). Approved at exactly 7.0 — marginal but valid. Fundamentals 8 — Q4 FY2026 non-GAAP EPS $0.80 beat; FY2026 revenue $8.195B record; custom AI ASIC segment growing rapidly; hyperscaler customer base (Amazon, Google, Microsoft); Q1 FY2027 earnings May 27 (outside 48h window). Technical 5 — stock 'sliding today' per Yahoo Finance article; day range partially known (May 20 range $182.28–$193.32); 1/5 stack confirmed (MACD bullish on multi-week uptrend); score capped at 5 (need ≥2 of 5 to exceed 5 per CLAUDE.md). Sentiment 7 — NVDA beat directly validates custom AI ASIC demand; 36/37 analysts buy; analyst PT increases mid-May; xAI API unavailable — degrading gracefully. Macro 6 — broad market risk-off (−0.45%); semiconductors outperforming but MRVL specifically sliding today; Iran/oil headwind. Risk 7 — 26sh × $183 = $4,758 = 4.75% ≤ 5%; stop −5% = $173.85; target +15% = $210.45; R/R 3:1 ✓; trade risk $237.90 = 0.24% ≤ 1.5%; semis sector AMD+MU+MRVL = 13.72% ≤ 25% in Scenario A; operator must verify if Scenario B positions still held. Tech Analyst 9 — custom ASIC/XPU is highest-conviction moat in AI silicon: sole alternative to NVDA for hyperscaler custom compute; Amazon Trainium2, Google, Microsoft, Meta all using MRVL custom silicon; 5G infrastructure TAM parallel revenue; DSP and SerDes IP differentiated. NOTE: Tomorrow MRVL enters 48h binary event window (May 25 is 48h before May 27 close). This is the last routine before the window. ORDER: POST /v2/orders MRVL 26sh limit $183.92 bracket (stop $173.85, target $210.45) → BLOCKED 'Host not in allowlist'. OPERATOR: Place GTC limit bracket for MRVL manually before market close today — this is the last eligible entry window before the May 25 binary event cutoff."
+---
+```
+
+---
+
 ## 2026-05-21 — Pre-Market (8:00 AM ET / 12:02 UTC)
 
 **Context:** Thursday May 21, 2026. NVDA post-earnings reaction day. Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 13th+ consecutive blocked session. All 3 MOO order attempts failed (AMD, PLTR, MU) — responses documented below. NVDA Q1 FY2027: BEAT ($81.62B revenue, +85% YoY; EPS beat), $80B additional buyback + quarterly dividend raised 1¢ → 25¢. NVDA trading ~$220.66 today (range $216.25–$226.94). AMD pre-market ~$428.92 (−3.59% — sector contagion; no AMD-specific news; AMD ended May 21 at $447.58). PLTR pre-market $134.01 (barely at $134 trigger). BTC $77,852 (below $82K threshold, scored 5.3/10 — not a mandatory entry, not a Deployment Bias violation). S&P 500 futures +0.09%. No open user-suggestion GitHub issues.
