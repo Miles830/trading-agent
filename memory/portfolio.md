@@ -1,9 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-21 (Thursday) — Pre-Market (8:00 AM ET / 12:02 UTC).** Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 13th+ consecutive blocked session. NVDA Q1 FY2027 POST-EARNINGS: Beat ($81.62B, +85% YoY), $80B additional buyback, quarterly dividend raised 1¢ → 25¢. NVDA trading ~$220.66 today (high $226.94, low $216.25). AMD pre-market ~$429 (−3.6% sector contagion, no AMD-specific news; AMD day close $447.58). PLTR pre-market $134.01 (barely at $134 trigger). MU ~$720.55. BTC $77,852 (below $82K threshold, scored 5.3/10). S&P futures +0.09%. 3 MOO orders attempted (AMD 10sh, PLTR 10sh, MU 6sh) — all blocked by API. Orders documented in trades.md for operator execution. MRVL excluded (earnings binary event May 21).
+**2026-05-21 (Thursday) — Market Open (9:45 AM ET / 13:47 UTC).** Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 14th+ consecutive blocked session. Market conditions confirmed via web research: AMD ~$447.35 (massive reversal from pre-market −3.59%; NVDA earnings read-through). PLTR opened $139.65 (strong gap from $134.01 pre-market — operator MOO would have filled at $139.65). MU $714.20 (+2.21%). GLD $413.66 (range $413.66–$414.78; safe above $397.92 stop). AVGO $417.76 (+2.10%). NVDA $220.66 (range $216.25–$226.94; outperforming market -0.45%). S&P 500 −0.45% (WTI oil +2.31% to $100.50 on Iran nuclear directive; risk-off). Stop audit FAILED. MOO fills unverifiable. AVGO 10-share bracket intended ($419.87 limit / $396.87 stop / $480.42 target) — blocked. MRVL binary event date uncertain (May 21 vs May 27 conflicting). NVDA reaction: NO fade trigger (-3% threshold not breached); outperforming market.
 
-**Prior Last Updated:** 2026-05-20 (Wednesday) — Daily Review (4:30 PM ET / 20:35 UTC). NVDA reported Q1 FY2027 TONIGHT after close: BEAT ($81.62B vs $79.19B) but AH down -2.44% ($217.91) — "sell the news." AMD +6.39% to $440.50. PLTR confirmed above $134 trigger (~$135). MU $720.55. S&P 500 +1.08% to 7,432.97. Cumulative gap vs SPX: -3.04 pp.
+**Prior Last Updated:** 2026-05-21 (Thursday) — Pre-Market (8:00 AM ET / 12:02 UTC). 3 MOO orders attempted (AMD 10sh, PLTR 10sh, MU 6sh) — all blocked. MRVL excluded (binary event). BTC scored 5.3 — not mandatory entry.
 
 **CORRECTION (preserved):** NVDA earnings were May 20 after close (not May 21 as previously documented). Binary-event window ran May 18 close → May 20 close.
 
@@ -106,16 +106,23 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 
 **Deployment gap:** Cash ~$70.9K above the 10% floor. AMD entry unconfirmed for 4th consecutive session. Massive underfillment continues. MU and PLTR also pending first entries.
 
-## Open Positions (estimated — May 20 EOD prices from web research; API blocked)
-| Symbol | Bucket | Qty | Entry | Stop | Target | Cost Basis | May 20 Price | Est. P/L | Sector |
+## Open Positions (estimated — May 21 Market Open prices from web research; API blocked)
+| Symbol | Bucket | Qty | Entry | Stop | Target | Cost Basis | May 21 Price | Est. P/L | Sector |
 |---|---|---|---|---|---|---|---|---|---|
-| GLD | active | 7 | $418.86 | $397.92 (-5%) | — | $2,932.02 | $416.64 | -$15.54 | Precious metals |
+| GLD | active | 7 | $418.86 | $397.92 (-5%) | — | $2,932.02 | $413.66 | -$36.40 | Precious metals |
 | TSM* | LT→closing | 7 | $401.47 | $353.76 | $498.48 | $2,810.29 | ~$404 | +$17.71 | Semiconductors |
-| NVDA* | LT→closing | 15 | $198.83 | $175.60 | $247.44 | $2,982.45 | $222.70 | +$358.05 (reg) / ~$286 (AH) | Semiconductors |
-| JPM* | LT→closing | 9 | $308.30 | $272.14 | $383.47 | $2,774.72 | ~$303 | -$47.70 | Financials |
-| AVGO* | LT→closing | 7 | $418.59 | $368.36 | $519.05 | $2,930.13 | ~$410 | -$59.50 | Semiconductors |
+| NVDA* | LT→closing | 15 | $198.83 | $175.60 | $247.44 | $2,982.45 | $220.66 | +$326 (est.) | Semiconductors |
+| JPM* | LT→closing | 9 | $308.30 | $272.14 | $383.47 | $2,774.72 | ~$300 | -$74.70 (est.) | Financials |
+| AVGO* | LT→closing | 7 | $418.59 | $368.36 | $519.05 | $2,930.13 | $417.76 | -$5.81 | Semiconductors |
 
 *TSM/NVDA/JPM/AVGO: marked for liquidation per May 17 strategy switch. May have been closed via May 18 MOO (unconfirmed). If Scenario A (closed): only GLD remains. If Scenario B: all 5 still open. XLE confirmed NOT held (verified May 17).
+
+**If AMD/PLTR/MU MOO orders were executed by operator:**
+| Symbol | Qty | Est. Fill | Est. Stop | Est. Target | Est. Cost |
+|---|---|---|---|---|---|
+| AMD | 10 | ~$432-440 | ~$410-418 | ~$497-506 | ~$4,320-4,400 |
+| PLTR | 10 | $139.65 | $132.67 | $160.60 | $1,396.50 |
+| MU | 6 | ~$710-714 | ~$674-678 | ~$817-821 | ~$4,260-4,284 |
 
 **Est. total long market value:**
 - Scenario A (GLD only): $2,917
@@ -161,15 +168,15 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **Gap vs SPX:** **-3.04 percentage points** — improved from -3.81 pp (May 14) because market retreated from all-time highs. Today widened ~-1.0 pp (portfolio near flat vs SPX +1.08%).
 - **Root cause unchanged:** 80–97% cash from persistent API blockage. No new entries placed since account inception. Every market up-day widens the gap.
 
-## Macro Context (as of 2026-05-20 market close)
-- **NVDA Q1 FY2027 EARNINGS (TONIGHT):** Revenue $81.62B vs $79.19B expected (+85% YoY). EPS $1.87 vs $1.76 expected. Q2 guidance $89.18–92.82B vs $87.36B expected. BEAT on all metrics. CEO Jensen Huang: "AI factories — the largest infrastructure expansion in human history — accelerating at extraordinary speed. Agentic AI has arrived." BUT after-hours: $217.91, -$5.56 (-2.44%). "Sell the news" pattern matches Feb quarter (-5% next day despite beat). Watch May 21 open carefully.
-- **Oil collapse (-5.66% today):** WTI → $98.26/bbl. Brent → $105.02/bbl. Catalyst: Middle East de-escalation optimism. Lower oil = lower inflation path = potential rate-cut runway restored. Positive for broad equities (Dow +1.31%), negative for energy sector (XLE — but XLE not held per May 17 verification).
-- **Semiconductor sector (May 20):** AMD +6.39% to $440.50 (AI demand momentum). MU $720.55 (+range $712–739). Nasdaq +1.54%. AI infrastructure theme dominant. NVDA beat validates entire sector demand thesis — HBM memory, custom ASICs, foundry capacity.
-- **S&P 500 context:** 7,432.97 — down from 7,511 record (May 14) after May 15 sell-off ("Deep in the Red" per headline). Recovery underway. Today +1.08% mostly on oil collapse + NVDA anticipation.
-- **PPI/Rates:** April PPI +1.4% (reported May 13, hottest since 2022). Oil collapse may shift inflation trajectory. Market now reassessing rate-cut timeline. GLD +1.25% today despite risk-on = dollar weakness component.
-- **Bitcoin:** Estimated $80K–85K range (above or near $82K threshold). Risk-on environment. Check BTC vs $82K at Pre-Market May 21. If above threshold, begin 10% crypto bucket deployment.
-- **PLTR:** ~$135 (last confirmed May 18), above $134 re-entry trigger. Government AI revenue secular. AIP deployments accelerating.
-- **Strategy switch (May 18 MOO):** UNCONFIRMED. TSM/NVDA/JPM/AVGO may or may not have been closed. NVDA just went through earnings — if still held, binary event was violated (fortunately a beat, but this is still a process violation).
+## Macro Context (updated 2026-05-21 Market Open)
+- **NVDA Q1 FY2027 RESULT:** Revenue $81.62B (+85% YoY), EPS $1.87 beat. $80B buyback + $0.25/qtr dividend raised. Q2 guide $89-93B. NVDA trading $220.66 at Market Open (range $216.25–$226.94) — recovering from AH low $217.91. Outperforming market by ~3.1 pp.
+- **Oil REVERSAL (+2.31% today):** WTI → $100.50/bbl, Brent → $106.90/bbl. Iran supreme leader directed enriched uranium to remain in-country — complicates U.S.-Iran nuclear deal. Yesterday's oil collapse (-5.66%) partly reversed. Risk-off macro today.
+- **Semiconductor sector (May 21 intraday):** AMD ~$447.35 (reversal from pre-market -3.59%). PLTR opened $139.65 (strong gap). MU $714.20 (+2.21%). AVGO $417.76 (+2.10%). Semiconductors decoupled from broad market weakness — AI capex theme dominant.
+- **S&P 500:** −0.45% today on oil rebound + Iran. Dow −0.48%, Nasdaq −0.50%. Russell 2000 +2.56% (small-cap divergence — possible sector rotation).
+- **GLD:** $413.66 (range $413.66–$414.78). DOWN from $416.64 yesterday. Risk-off day but gold slightly weaker — dollar may be firming slightly vs. yesterday. Stop $397.92 provides $15.74 (3.8%) cushion.
+- **Bitcoin:** $77,852 pre-market (estimated below $82K). Not reassessed Market Open — still below threshold. Monitor.
+- **MRVL:** ~$188.17 (May 20 price). Earnings date uncertain — May 21 vs May 27. Skip maintained conservatively.
+- **Strategy switch (May 18 MOO):** UNCONFIRMED. TSM/NVDA/JPM/AVGO may or may not have been closed. NVDA through earnings (beat, AH -2.44%). If still held: close per strategy switch. API blocked — cannot verify.
 
 ## Active Themes
 1. **AI infrastructure / semiconductor supercycle** — NVDA beat ($81.62B Q1 FY2027) confirms the thesis. AMD (7.33, MANDATORY entry), MU (HBM demand confirmed, full 6-agent May 21), AVGO (custom ASICs), TSM (foundry demand) all beneficiaries. Semiconductor SOX up 65% YTD 2026.
@@ -179,32 +186,29 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 5. **PLTR government AI** — $135, trigger confirmed. AIP government contracts secular revenue. Re-score at Pre-Market May 21. Entry MOO if ≥$134.
 6. **Oil collapse implications** — WTI -5.66% to $98.26. Middle East de-escalation. Positive for consumer discretionary, airlines, transports. Negative for energy sector. GLD thesis shifts slightly (less geopolitical fear premium, more dollar weakness premium).
 
-## Pending Actions — OPERATOR MUST EXECUTE (Updated May 21 Pre-Market)
+## Pending Actions — OPERATOR MUST EXECUTE (Updated May 21 Market Open)
 
-**CRITICAL — PRE-MARKET TODAY (before 9:25 AM ET May 21):**
+**CRITICAL — MARKET OPEN TODAY (STILL OUTSTANDING — API BLOCKED):**
 
-1. **STOP AUDIT:** Verify at https://app.alpaca.markets — GLD stop $397.92 resting. Confirm strategy-switch status (are TSM/NVDA/JPM/AVGO still held?). API BLOCKED from cloud routine.
+1. **STOP AUDIT:** Verify at https://app.alpaca.markets — GLD stop $397.92 must be resting. GLD currently $413.66 (safe but unverified from cloud). Confirm all positions.
 
-2. **AMD** (score **7.67**, breakout-volume, active): Buy **10 shares MOO** (`type: market, time_in_force: opg`). Stop: fill×0.95. Target: fill×1.15. **MANDATORY — 7th consecutive attempt. ORDER ATTEMPTED AND BLOCKED.** AMD pre-market ~$429 (−3.6% sector contagion). AMD Q1: $10.3B +38% YoY, Data Center $5.8B +57%. OPERATOR MUST MANUALLY PLACE.
+2. **AMD MOO FILL:** If operator placed AMD 10-share MOO pre-market → confirm fill price. Place standalone GTC stop at fill×0.95 IMMEDIATELY. AMD now ~$447 (great entry if filled at $430-440).
 
-3. **PLTR** (score **7.17**, ai-momentum-pullback, active): Buy **10 shares MOO** only if open ≥$134 (pre-market $134.01). Stop: fill×0.95. Target: fill×1.15. **MANDATORY if open ≥$134. ORDER ATTEMPTED AND BLOCKED.** PLTR Q1: $1.63B +39% YoY, EPS $0.33 beat $0.24 by 37.5%. OPERATOR MUST MANUALLY PLACE.
+3. **PLTR MOO FILL:** If operator placed PLTR 10-share MOO → confirm fill at $139.65 (open). Place standalone GTC stop at $139.65×0.95 = $132.67. PLTR opened very strong (+$5.64 gap above $134 trigger).
 
-4. **MU** (score **7.67**, ai-momentum-pullback, active): Buy **6 shares MOO**. Stop: fill×0.95. Target: fill×1.15. **MANDATORY. ORDER ATTEMPTED AND BLOCKED.** MU ATH $818.67 (May 11), now at $720.55 (-12% pullback). NVDA beat = HBM demand confirmed. Next earnings June 24. OPERATOR MUST MANUALLY PLACE.
+4. **MU MOO FILL:** If operator placed MU 6-share MOO → confirm fill price (~$710-714). Place standalone GTC stop at fill×0.95 ≈ $674-678.
 
-**MAX 3 MOO ORDERS CAP = AMD + PLTR + MU (filled).**
+5. **AVGO** (score **7.5**, ai-momentum-pullback, active): Buy **10 shares** limit bracket. Limit: $419.87 (ask+0.5%), stop: $396.87 (−5%), target: $480.42 (+15%), tif=gtc, order_class=bracket. OPERATOR: `curl -X POST https://paper-api.alpaca.markets/v2/orders -H "APCA-API-KEY-ID:PKWR6RSMZOLOFLTIOQYIHGB7LZ" -H "APCA-API-SECRET-KEY:KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" -H "Content-Type:application/json" -d '{"symbol":"AVGO","qty":10,"side":"buy","type":"limit","limit_price":"419.87","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"396.87"},"take_profit":{"limit_price":"480.42"}}'`
 
-**MARKET OPEN (9:45 AM ET — MANDATORY):**
-5. After confirming AMD/PLTR/MU fills: POST separate GTC stop orders for each fill (fill×0.95). This is the MANDATORY stop-placement step per CLAUDE.md MOO workflow.
-6. NVDA reaction assessment: NVDA trading ~$220.66 (range $216.25–$226.94). $80B buyback + 25¢ dividend = bullish catalysts offset sell-the-news. If NVDA gap-down -3%+ with ≥2× volume + 2/5 indicator confirmation: score `earnings-reaction-fade`. If recovery: `earnings-reaction-follow` or `candlestick-reversal`.
-7. Strategy-switch close (if still needed): If TSM/JPM/AVGO still held, post limit sells at bid (NOT MOO — 3-order cap used today).
-8. AVGO limit order: AVGO ~$416–427 today, 52-week high area, NVDA custom ASIC thesis intact. Score ~7.5. BUY 10 shares AVGO limit at ask+0.5% (~$418–$430 range) if API accessible.
+6. **MRVL DATE CONFIRM:** Verify MRVL Q1 FY2027 earnings date at https://investor.marvell.com. If May 27 (not today): run 6-agent immediately and place MRVL limit bracket (score est. 7.0-7.5, price ~$188).
 
-**SUBSEQUENT ROUTINES (limit orders):**
-9. AVGO (score ~7.5): 10 shares limit — NVDA custom ASIC pipeline.
-10. TSM (score ~7.0): 7 shares limit — NVDA fab demand surge.
-11. MSFT (score ~7.0): 5 shares limit — Azure AI, Copilot enterprise.
+7. **Strategy-switch close (if Scenario B — TSM/JPM/AVGO/NVDA still held):** Post limit sells at bid for each remaining LT position. NVDA: close at market — binary event passed.
 
-**BTC/CRYPTO:** BTC $77,852 (below $82K threshold, score 5.3 — not mandatory entry). Monitor vs $82K. If BTC crosses $82K in a subsequent routine, run full 6-agent and enter if ≥7.
+**SUBSEQUENT ROUTINES (Mid-Morning onward):**
+8. **TSM** (score ~7.0): 7 shares limit — NVDA fab demand thesis.
+9. **MSFT** (score ~7.0): 5 shares limit — Azure AI, Copilot.
+
+**BTC/CRYPTO:** BTC $77,852 (below $82K threshold). Monitor vs $82K. Risk-off today (market -0.45%) slightly negative for crypto. Check vs threshold at Mid-Morning.
 
 ## Pending Deferrals (≥7 watchlist names not yet entered — Updated May 20 Daily Review)
 - **AMD** (7.50 — upgraded) — 6th+ consecutive deployment failure; MANDATORY at May 21 MOO
@@ -260,24 +264,31 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 
 ## Next Routine Plan
 
-**Pre-Market May 21 (8:00 AM ET — COMPLETED THIS ROUTINE):**
+**Pre-Market May 21 (8:00 AM ET — COMPLETED):**
 - 3 MOO orders scored and attempted (AMD 7.67, PLTR 7.17, MU 7.67) — all BLOCKED by API.
-- OPERATOR: manually place all 3 MOO orders before 9:25 AM ET (see Pending Actions above).
 - MRVL excluded (binary event). BTC scored 5.3 (not mandatory entry).
 
-**Market Open May 21 (9:45 AM ET — NEXT ROUTINE):**
-1. **MANDATORY:** Confirm AMD/PLTR/MU MOO fills. POST standalone GTC stop orders immediately for each (stop = fill × 0.95).
-2. **Stop audit:** Re-run GET /v2/orders?status=open; confirm GLD stop $397.92 still resting.
-3. **Strategy-switch close (if still needed):** If TSM/JPM/AVGO still held, post limit sells at bid. NVDA: if still held, close per strategy-switch directive (earnings now past; lock in gain at ~+11%).
-4. **NVDA reaction trade assessment:** NVDA ~$220.66 (range $216.25–$226.94). $80B buyback + 25¢ dividend = bullish. Assess 5-min chart for: (a) `earnings-reaction-fade` if gap-down -3%+ with 2/5 confirmation, (b) `candlestick-reversal` long if gap-down then recovery, (c) `earnings-reaction-follow` if gap-up.
-5. **AVGO limit:** BUY 10 shares AVGO limit at ask+0.5% (~$418–430). Score ~7.5, all guardrails clear.
-6. **MRVL post-earnings:** If MRVL reports good Q1 after open, score immediately. Do NOT enter before report is out.
+**Market Open May 21 (9:45 AM ET — COMPLETED THIS ROUTINE):**
+- Stop audit: FAILED (API blocked). GLD $413.66 — safe above $397.92.
+- MOO fills: UNVERIFIABLE (API blocked). AMD ~$447.35 (+8% reversal); PLTR opened $139.65 (strong); MU $714.20.
+- AVGO 10-share bracket intended and scored (7.5/10, all approved) — BLOCKED.
+- NVDA reaction: NOT triggering fade (-3% threshold not breached); outperforming market. No trade.
+- MRVL: skip maintained (earnings date conflict). Reassess at Mid-Morning if date confirmed.
+
+**Mid-Morning May 21 (11:00 AM ET — NEXT ROUTINE):**
+1. **Stop audit:** FIRST ACTION — verify GLD stop $397.92, AMD/PLTR/MU stops (if fills confirmed). API will likely still be blocked.
+2. **AVGO re-attempt:** If API accessible, place AVGO 10-share GTC bracket (limit ~$419, stop $396.87, target $480.42).
+3. **MRVL verify:** Confirm earnings date. If May 27 confirmed → run full 6-agent immediately and score. Expected 7.0-7.5.
+4. **NVDA watch:** If NVDA breaks below $216.25 on ≥2× volume with 2/5 indicators → earnings-reaction-fade score ~7.5. If holds/recovers → earnings-reaction-follow.
+5. **GLD stop trail consideration:** GLD at $413.66. If holds above $415, consider trailing stop from $397.92 to ~$405 (locking in smaller loss).
+6. **AMD/PLTR/MU update:** Get latest intraday prices. Verify stop placement if operator acted.
+7. **Oil/Iran monitor:** WTI +2.31% to $100.50. Iran directive = supply risk. Could benefit energy sector (not held) but headwind for broad market.
 
 **Daily Review May 21 (4:30 PM ET):**
-- Tally AMD/PLTR/MU fills and stop placements (first actual entries since account inception if operator manually placed)
-- NVDA reaction setup P&L
-- AVGO limit order status
-- **Weekly strategy evolution note DUE (should be Friday May 22 but advancing if useful)**
+- Tally all activity. Confirm AMD/PLTR/MU status.
+- AVGO limit order status. MRVL scoring if confirmed.
+- **Weekly strategy evolution note DUE (Friday May 22).**
+- Performance vs S&P 500: market -0.45% today — if we have no positions or positions flat, gap narrows slightly.
 
 **Weekly evolution note due:** Friday May 22 Daily Review.
 

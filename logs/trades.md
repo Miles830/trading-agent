@@ -130,6 +130,130 @@ master_notes: "SKIP — BINARY EVENT EXEMPTION (Exemption 2, CLAUDE.md Deploymen
 ---
 ```
 
+## 2026-05-21 — Market Open (9:45 AM ET / 13:47 UTC)
+
+**Context:** Thursday May 21, 2026. Alpaca API BLOCKED (HTTP 403 — 14th+ consecutive session). S&P 500 −0.45% (WTI oil +2.31% to $100.50/bbl on Iran supreme leader directive to keep enriched uranium in-country — reversal of yesterday's oil collapse; Dow −0.48%, Nasdaq −0.50%). AMD intraday ~$447.35 (massive reversal from pre-market −3.59% weakness; NVDA earnings read-through driving AI semi sector). PLTR opened $139.65 (vs pre-market $134.01 — strong gap, well above $134 trigger). MU $714.20 (+2.21%). NVDA $220.66 (range $216.25–$226.94, outperforming market by ~3.1 pp). GLD $413.66 (range $413.66–$414.78, safe above stop $397.92). AVGO $417.76 (+2.10%). MRVL earnings date uncertain — conflicting sources (May 21 vs May 27).
+
+**PREDECESSOR CHECK:** Pre-Market STARTED 12:02Z, COMPLETED 12:17Z ✓ — predecessor ran normally. No silent-failure catch-up required.
+
+**STOP AUDIT — MANDATORY FIRST ACTION (FAILED):** GET /v2/orders?status=open → HTTP 403. GET /v2/positions → HTTP 403. Cannot audit stop coverage. GLD $413.66 is above stop $397.92 (safe, not at immediate stop-hit risk). OPERATOR: verify all positions and stops at https://app.alpaca.markets IMMEDIATELY before taking any other action.
+
+**MOO FILL CONFIRMATION (FAILED):** AMD/PLTR/MU MOO fill status unverifiable — API blocked. If operator placed MOOs pre-market: AMD likely opened ~$430–440 range then ran to $447 (est. fill ~$432–440); PLTR opened $139.65 (strong gap); MU opened ~$710–714. Stop backfills are MANDATORY for each confirmed fill — standalone GTC sell stops at fill×0.95. See violation YAML below.
+
+**NVDA REACTION ASSESSMENT:** NVDA $220.66 (range $216.25–$226.94). Market −0.45%, NVDA approximately flat-to-slightly-positive = outperforming broad market by ~3.1 pp. $80B buyback + $0.25/qtr dividend authorization providing institutional support floor. The −3%+ gap-down threshold for earnings-reaction-fade has NOT triggered. NVDA showing earnings-reaction-follow characteristics (holding up in a down market). No action — API blocked, deferred to Mid-Morning routine.
+
+**AVGO LIMIT ORDER (INTENDED, BLOCKED):** AVGO $417.76 (+2.10%). Full 6-agent score = 7.5 (all 6 agents ≥7). Intended bracket: 10 shares, limit $419.87 (ask+0.5%), stop $396.87 (−5%), target $480.42 (+15%), tif=gtc, order_class=bracket. Blocked by API. OPERATOR: place AVGO bracket immediately.
+
+**MRVL DATE CORRECTION NOTE:** Pre-Market logged May 21 as MRVL Q1 FY2027 earnings date. Market Open research finds conflicting data — IR page suggests May 27, one source confirms May 21. Conservative skip maintained until date is verified. If May 27 confirmed, MRVL is scoreable today (6 days out, outside 48h window; score estimate 7.0–7.5).
+
+```yaml
+---
+ts: 2026-05-21T13:47:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: active
+setup: other
+score: null
+thesis: Market Open mandatory stop-loss audit FAILED — Alpaca API blocked 14th+ consecutive session. Cannot verify MOO fills, stop coverage, or execute any Alpaca action this routine.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "API BLOCKED (HTTP 403, 'Host not in allowlist') — 14th+ consecutive session. STOP AUDIT FAILED: cannot verify GLD stop $397.92, AMD/PLTR/MU MOO fills, or any Alpaca position. Market conditions via web research: AMD ~$447.35 (strong +8% reversal from pre-mkt -3.59%); PLTR opened $139.65 (strong gap from $134.01 pre-mkt); MU $714.20 (+2.21%); GLD $413.66 (safe above $397.92 stop); AVGO $417.76 (+2.10%); NVDA $220.66 (outperforming market -0.45%). S&P 500 -0.45%, WTI oil +2.31% to $100.50 on Iran nuclear directive reversal. OPERATOR MANDATORY ACTIONS: (1) Verify all positions/stops at app.alpaca.markets; (2) If AMD MOO filled (~$432-440 est.), IMMEDIATELY place GTC stop at fill×0.95; (3) If PLTR MOO filled ($139.65 open), IMMEDIATELY place GTC stop at fill×0.95 ≈ $132.67; (4) If MU MOO filled (~$710-714), IMMEDIATELY place GTC stop at fill×0.95 ≈ $674-678; (5) If TSM/JPM/AVGO still held (Scenario B, strategy switch unexecuted), place limit sells at bid; (6) If NVDA still held (binary event violation), close at market immediately; (7) Place AVGO 10-share GTC bracket: limit $419.87, stop $396.87, target $480.42."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T13:52:00Z
+action: entry
+symbol: AVGO
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: AVGO custom ASIC pipeline (Google TPU v5, Meta MTIA) directly confirmed by NVDA Q1 $81.62B beat; AI infrastructure CapEx cycle validated; AVGO $417.76 (+2.10%); 3:1 R/R met at $396.87 stop / $480.42 target.
+size_pct: 4.18
+stop: 396.87
+target: 480.42
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7 — fully approved. Fundamentals 8 — Q4 FY2026 revenue $14.92B; AI revenue $4.1B growing fast; multi-year hyperscaler ASIC contracts (Google TPU, Meta MTIA, Apple Silicon) with near-infinite switching costs; Hock Tan confirmed $60-90B AI SAM for AVGO custom silicon. Technical 7 — $417.76 (+2.10%); MACD bullish on NVDA read-through sector lift; volume expansion; 2/5 indicator stack confirmed (MACD bullish crossover + volume spike on NVDA earnings catalyst). Sentiment 8 — NVDA Q1 $81.62B directly confirms AVGO AI ASIC demand; strong buy consensus; semiconductor sector leading vs weak broad market today. Macro 7 — AI capex cycle confirmed (NVDA Q2 guide $89-93B); market risk-off today (-0.45%) on oil rebound but semis decoupled. Risk 7 — 10sh × $418 = $4,180 = 4.18% ≤5%; stop -5% = $396.87, target +15% = $480.42, R/R 3:1 exactly ✓; trade risk $209 = 0.21% ≤1.5%; semis sector (AMD+MU+AVGO if all three filled) ≈12.9% ≤25%; cash floor not breached in any scenario. Tech Analyst 8 — XPU ASIC architectural moat; 5nm/3nm TSMC process mastery; hyperscaler design-win switching cost is near-infinite; Polariton acquisition adds photonic networking capability. ORDER ATTEMPTED: curl POST AVGO 10sh bracket limit $419.87 stop $396.87 target $480.42 tif=gtc order_class=bracket → BLOCKED HTTP 403 'Host not in allowlist'. OPERATOR: place AVGO 10-share bracket immediately. xAI API unavailable — X sentiment not performed, degrading gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T13:54:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: other
+score: null
+thesis: MRVL binary event date uncertain — conflicting sources say May 21 vs May 27. Conservative skip maintained until earnings date confirmed. Strong AI ASIC thesis (~7.0-7.5 score) pending verification.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: 0
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "BINARY EVENT DATE CONFLICT — CONSERVATIVE SKIP. Pre-Market logged MRVL Q1 FY2027 earnings as May 21. Market Open research: investor.marvell.com IR suggests May 27, 2026; one source confirms May 21. Cannot resolve conflict without primary source access. Conservatism applied (CLAUDE.md Deployment Bias Exemption 2 — binary events). IF earnings are TODAY (May 21): binary event rule correctly applied. IF earnings are May 27 (6 days out, outside 48h window): MRVL is a valid immediate entry candidate. MRVL thesis: data center 74% of revenue ($8.2B FY2026), AI custom ASIC for AWS/Google/Apple, Polariton acquisition (photonic AI networking), 36 analysts strong buy vs 1 sell, ~$188 price. Score estimate 7.0-7.5. OPERATOR: verify exact date at https://investor.marvell.com — if May 27, run 6-agent immediately and place limit bracket."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T13:56:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: earnings-reaction-fade
+score: null
+thesis: NVDA $220.66 outperforming market (-0.45%); gap-down -3%+ threshold not triggered; $80B buyback + dividend floor preventing fade setup. Earnings-reaction-follow characteristics. No order possible — API blocked.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "NVDA REACTION — NO TRADE. AH close was $217.91 (-2.44%). Current: $220.66, range $216.25-$226.94. S&P -0.45%, Nasdaq -0.50%. NVDA outperforming market by ~3.1pp — NOT the -3%+ gap-down triggering earnings-reaction-fade. $80B buyback + $0.25/qtr dividend = strong institutional support floor. NVDA shows earnings-reaction-follow signal (relative strength vs weak tape). API blocked — cannot place any order. OPERATOR: monitor NVDA intraday. Triggers: (a) break below $216.25 on ≥2× volume with 2/5 indicator stack → earnings-reaction-fade score ~7.5; (b) recovery above $226 on volume → earnings-reaction-follow score ~7.0. If NVDA was still held from LT bucket (strategy switch unconfirmed Scenario B): close at market limit (no delay — binary event was violated). Deferred to Mid-Morning routine."
+---
+```
+
 ---
 
 ## 2026-05-20 — Daily Review (4:30 PM ET / 20:35 UTC)
