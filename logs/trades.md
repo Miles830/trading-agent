@@ -126,7 +126,261 @@ agent_scores:
 agent_average: null
 agents_above_7: 0
 master_decision: rejected
-master_notes: "SKIP — BINARY EVENT EXEMPTION (Exemption 2, CLAUDE.md Deployment Bias). MRVL reports Q1 FY2027 earnings on May 21, 2026 — within 48-hour binary event exclusion window. No 6-agent score run. Reassess post-earnings at Market Open or Mid-Morning routine today."
+master_notes: "SKIP — BINARY EVENT EXEMPTION (Exemption 2, CLAUDE.md Deployment Bias). MRVL reports Q1 FY2027 earnings on May 21, 2026 — within 48-hour binary event exclusion window. No 6-agent score run. Reassess post-earnings at Market Open or Mid-Morning routine today. NOTE: CORRECTION ISSUED IN AFTERNOON ROUTINE — MRVL earnings are actually May 27, 2026, not May 21. This skip was filed on faulty date. MRVL available for entry May 22 (binary exclusion starts May 25 close)."
+---
+```
+
+---
+
+## 2026-05-21 — Afternoon (2:00 PM ET / 18:10 UTC)
+
+**Context:** Thursday May 21, 2026. 2:10 PM ET (18:10 UTC). Alpaca API BLOCKED (14th+ consecutive session — HTTP 403 "Host not in allowlist"). Market conditions: S&P 500 −0.35%, Nasdaq −0.48%, Russell 2000 only major index in the green; Treasury yields and oil rising (reversal from yesterday's risk-on). AMD +8.10% to $447.58 — Pre-Market MOO thesis fully validated, missed due to API blockage. PLTR +3.2% to $138.28. MU +3.3% to $744.68. NVDA $219.45 (range $217.93–$227.40 — sell-the-news drift continues). GLD $413.66 (range $413.66–$414.78 — at daily low; −1.25% vs entry $418.86; above stop $397.92). Bitcoin $77,852 — still below $82K threshold (score 5.3 unchanged).
+
+**PREDECESSOR HEARTBEAT AUDIT (May 21):**
+| Routine | Scheduled | STARTED | COMPLETED | Status |
+|---------|-----------|---------|-----------|--------|
+| Pre-Market | 08:00 ET / 12:00 UTC | ✅ 12:02Z | ✅ 12:17Z | OK |
+| Market Open | 09:45 ET / 13:45 UTC | ❌ MISSING | ❌ MISSING | 🔴 SILENT FAILURE |
+| Mid-Morning | 11:00 ET / 15:00 UTC | ❌ MISSING | ❌ MISSING | 🔴 SILENT FAILURE |
+| Midday | 12:30 ET / 16:30 UTC | ❌ MISSING | ❌ MISSING | 🔴 SILENT FAILURE |
+
+**STOP AUDIT — MANDATORY FIRST ACTION (RESULT: API BLOCKED):** Cannot verify GLD stop $397.92 or AMD/PLTR/MU MOO fill status. OPERATOR: verify https://app.alpaca.markets immediately. GLD stop must be at $397.92. AMD/PLTR/MU — confirm whether operator manually placed these MOO orders at open.
+
+**MRVL EARNINGS DATE CORRECTION:** Pre-Market logged MRVL skip citing "earnings May 21, 2026." Research confirms MRVL Q1 FY2027 earnings are **May 27, 2026** (not May 21). Binary event exclusion window: May 25 close → May 27 close. MRVL IS available for entry on May 22. Pre-scored below at avg 7.50 — APPROVED for limit order on May 22 Market Open routine.
+
+**AFTERNOON MARKET SUMMARY:** Risk-off pivot. S&P 500 −0.35%, Nasdaq −0.48% as Treasury yields and oil prices reversed higher, unwinding yesterday's risk-on rally. AMD, PLTR, MU all significantly outperformed the index on pure AI demand momentum — validating the entry thesis but highlighting the cost of API blockage. NVDA drifting lower ($219.45) as sell-the-news pattern holds. GLD slightly lower on dollar strength from rising yields — typical mechanics; still above stop.
+
+**NO DAY TRADES TO CLOSE:** No intraday positions were placed today (all Pre-Market MOO attempts blocked by API). Nothing to flatten.
+
+**GLD POSITION UPDATE:** $413.66 current vs $418.86 entry → unrealized P/L: −$36.40 (−0.86%). Stop $397.92 intact (−4.8% from current). Below entry price — no trailing stop up. Rising yields = dollar strength = slight gold pressure. Hedge function still active (portfolio protection against drawdown). No action; hold with stop.
+
+**SECTOR EXPOSURE (estimated, API blocked):**
+- If AMD/PLTR/MU NOT filled (operator did not manually place): semis = $0; only GLD $2,896 = 2.9%
+- If AMD/PLTR/MU filled at MOO prices (~$429/$134/$721 est.): semis AMD+MU = ~$8,626 (8.6%); PLTR tech-software = $1,340 (1.3%) — all under 25% caps
+
+---
+
+**VIOLATION ENTRIES — Missing routines (Market Open, Mid-Morning, Midday):**
+
+```yaml
+---
+ts: 2026-05-21T13:45:00Z
+action: violation
+symbol: _ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Open routine (09:45 ET / 13:45 UTC) did not fire — no heartbeat STARTED or COMPLETED in logs/heartbeats/2026-05-21.log. MANDATORY actions missed: (1) stop-loss audit for all open positions, (2) confirm AMD/PLTR/MU MOO fills and post standalone GTC stops, (3) NVDA reaction assessment, (4) AVGO limit order placement.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "ROUTINE VIOLATION: Market Open silent failure. Missing: stop audit, MOO fill confirmations, standalone GTC stop placements for AMD/PLTR/MU, AVGO limit order. 14th+ consecutive API blockage compounds impact — no way to retroactively confirm fills."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T15:00:00Z
+action: violation
+symbol: _ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 ET / 15:00 UTC) did not fire — no heartbeat in today's log. MANDATORY actions missed: (1) stop-loss audit, (2) candlestick/indicator review of all open positions, (3) trailing stop updates, (4) additional limit order opportunities (AVGO, MRVL, MSFT).
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "ROUTINE VIOLATION: Mid-Morning silent failure. AMD was +6% by this point; PLTR +2.5%; MU +2% — all missed potential limit entries if MOO hadn't filled. Stop audit not performed."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T16:30:00Z
+action: violation
+symbol: _ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 ET / 16:30 UTC) did not fire — no heartbeat in today's log. MANDATORY actions missed: (1) stop-loss audit, (2) midday market assessment, (3) position reviews, (4) preliminary afternoon watchlist prep.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "ROUTINE VIOLATION: Midday silent failure. Three consecutive missing routines (Market Open, Mid-Morning, Midday) on a high-activity day post-NVDA-earnings. Positions unmonitored for 4.5 hours."
+---
+```
+
+---
+
+**TOMORROW'S PRE-MARKET WATCHLIST (Pre-scored — May 22 2026)**
+
+*Updated prices as of ~2:10 PM ET May 21. MOO cap (3/day): AMD + PLTR + MU. MRVL + AVGO = limit orders at Market Open / Mid-Morning.*
+
+```yaml
+---
+ts: 2026-05-21T18:15:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: AMD Q1 Data Center +57% YoY; NVDA beat confirms AI accelerator TAM; +8.10% today to $447.58 validates breakout — pre-scored for May 22 MOO entry at market price.
+size_pct: 4.5
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "PRE-SCORED FOR MAY 22 MOO. All 6 agents approved at 7.67 avg. Updated sizing at $447.58: 10sh = $4,475.80 = 4.48% ≤ 5% ✓; stop $425.20 (-5%), target $514.72 (+15%), R/R 3:1 ✓; trade risk $224 = 0.22% ≤ 1.5% ✓. Semis: AMD+MU = 8.95% ≤ 25% ✓. SKIP TODAY (afternoon proximity-to-close rule). MUST enter at May 22 Pre-Market MOO (deployment bias — 8th+ consecutive missed entry). xAI API unavailable, degrading gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T18:16:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.33
+thesis: PLTR $134 support firmly confirmed (+3.2% to $138.28 today); Q1 revenue +39% YoY; AIP agentic AI government revenue secular; re-scored higher than Pre-Market 7.17 due to Technical improvement.
+size_pct: 1.4
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "PRE-SCORED FOR MAY 22 MOO. 5/6 agents ≥ 7 (Technical outlier at 6 — $134 support now confirmed bullish from below, MACD turning, but need more confirmation candles). Updated sizing at $138.28: 10sh = $1,382.80 = 1.38% ≤ 5% ✓; stop $131.37 (-5%), target $159.02 (+15%), R/R 3:1 ✓. SKIP TODAY (afternoon proximity-to-close). xAI API unavailable, degrading gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T18:17:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: MU +3.3% to $744.68 today (range $727.97–$764.90); NVDA HBM3e demand confirmation intact; ATH $818.67 still +10% upside from current; next earnings June 24 (no binary event within 48h).
+size_pct: 4.5
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "PRE-SCORED FOR MAY 22 MOO. All 6 agents at 7.67 avg. Updated at $744.68: 6sh = $4,468.08 = 4.47% ≤ 5% ✓; stop $707.45 (-5%), target $856.38 (+15%, above ATH $818.67), R/R 3:1 ✓; trade risk $223 = 0.22% ≤ 1.5% ✓. Semis: AMD+MU = 8.95% ≤ 25% ✓. SKIP TODAY (afternoon). xAI API unavailable, degrading gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T18:18:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 7.50
+thesis: MRVL custom AI ASIC wins (Amazon Trainium, Apple, Google); Q4 FY2026 $2.219B +22% YoY; pulled back -8.3% from ATH $192.15 to $176.27; +4.34% today vs Nasdaq -0.48% = strong relative strength; earnings May 27 (48h exclusion starts May 25 close — AVAILABLE for entry May 22).
+size_pct: 1.8
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 5
+master_decision: approved
+master_notes: "PRE-SCORED FOR MAY 22 LIMIT ORDER (not MOO — MOO cap used by AMD+PLTR+MU). 5/6 agents ≥ 7 (Technical 6 — opened gap-up $183.02 but closed lower at $176.27, intraday reversal is a caution flag; 2/5 indicators: volume spike + early MACD). Sizing at $176.27: 10sh = $1,762.70 = 1.76% ≤ 5% ✓; stop $167.46 (-5%), target $202.71 (+15%), R/R 3:1 ✓. CORRECTION: Pre-Market skip reason was wrong (cited May 21 earnings — actual date is May 27). Binary exclusion: May 25 close → May 27. Enter May 22 via limit at ask+0.5%. Semis: AMD+MU+MRVL ≈ 10.7% ≤ 25% ✓. xAI API unavailable, degrading gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-05-21T18:19:00Z
+action: skip
+symbol: AVGO
+bucket: active
+setup: ai-momentum-pullback
+score: 7.33
+thesis: AVGO custom silicon platform (XPU) for Apple, Meta, Google, ByteDance; NVDA beat confirms AI capex TAM; range $411.42–$424.17 today; near 52-week high area; earnings not imminent.
+size_pct: 4.2
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "PRE-SCORED FOR MAY 22 LIMIT ORDER (not MOO — cap used). 4/6 agents ≥ 7 (Technical 6 — down on the day in risk-off environment; Macro 7 — broad market soft but AI theme secular; meets minimum 4/6 threshold). Sizing at $417.76: 10sh = $4,177.60 = 4.18% ≤ 5% ✓; stop $396.87 (-5%), target $480.42 (+15%), R/R 3:1 ✓. Semis: AMD+MU+MRVL+AVGO ≈ 15.4% ≤ 25% ✓. Enter May 22 limit at ask+0.5%. xAI API unavailable, degrading gracefully."
 ---
 ```
 
