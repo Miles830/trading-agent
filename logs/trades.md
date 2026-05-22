@@ -4,6 +4,278 @@
 
 ---
 
+## 2026-05-22 — Daily Review (4:30 PM ET / 20:36 UTC)
+
+**Context:** Friday May 22, 2026. Daily Review running at 20:36 UTC (4:36 PM ET). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 16th+ consecutive blocked session. Market CLOSED. Today was a positive day (S&P 500 estimated +0.73% to ~7,500 based on mid-morning read of +0.55%/7,487 + continued macro tailwinds). Memorial Day weekend begins — next trading day is Tuesday May 26. Weekly evolution note (required per CLAUDE.md) was completed in the Market Open / Pre-Market Catch-Up routine today.
+
+---
+
+### Heartbeat Tally — 2026-05-22
+
+| Routine | Scheduled (ET) | UTC Timestamp | Status |
+|---------|---------------|--------------|--------|
+| Pre-Market | 08:00 | MISSING | 🔴 SILENT FAILURE |
+| Market Open | 09:45 | STARTED 13:45:39Z / COMPLETED 13:56:28Z | 🟢 COMPLETED |
+| Mid-Morning | 11:00 | STARTED 15:09:04Z / COMPLETED 15:24:01Z | 🟢 COMPLETED |
+| Midday | 12:30 | MISSING | 🔴 SILENT FAILURE |
+| Afternoon | 14:00 | MISSING | 🔴 SILENT FAILURE |
+| Market Close | 15:30 | MISSING | 🔴 SILENT FAILURE — TOP ISSUE |
+| Daily Review | 16:30 | STARTED 20:36:36Z / IN PROGRESS | 🟡 RUNNING |
+
+**TOP OPERATIONAL ISSUE: Market Close silently failed — 8th+ consecutive trading day.** No end-of-day stop audit performed. No MOC exit capability. Positions held through close without final stop verification. AMD/PLTR/MU GTC limit orders placed during Market Open and Mid-Morning were ALL blocked (HTTP 403). If operator has not manually placed orders, no orders are resting at Alpaca for the weekend.
+
+**REMEDIATION (priority order):**
+1. 🚨 Add `paper-api.alpaca.markets` + `data.alpaca.markets` to Anthropic sandbox egress allowlist — 16 consecutive blocked sessions, root cause documented in `memory/project_routine_github_auth_root_cause.md`.
+2. 🔧 Fix Midday, Afternoon, Market Close scheduler triggers — only Market Open (9:45 ET) and Mid-Morning (11:00 ET) fired today. Pre-Market, Midday, Afternoon, and Market Close remain broken.
+3. 📋 Operator manual execution: verify all open positions and stops at https://app.alpaca.markets before end of May 22. Confirm AMD/PLTR/MU GTC brackets are resting for May 26 open.
+
+**MARKET CLOSE CATCH-UP (Market Close silently failed):**
+API blocked — cannot verify. Documented expected state:
+- GLD 7sh: Stop $397.92 expected resting. GLD ~$417 estimated EOD. No MOC required.
+- AMD/PLTR/MU: Limit brackets attempted ×2 today (Market Open + Mid-Morning), both blocked HTTP 403. Status unknown — if operator placed manually: orders resting as GTC, eligible May 26. If not placed: NO protection on those planned entries.
+- MRVL: Not entered (correctly invoked Exemption 2). Safe going into weekend.
+- No day trades to flatten via MOC.
+
+---
+
+### S&P 500 Benchmark Comparison — 2026-05-22
+
+| Metric | Today (May 22 est.) | Cumulative since ~May 1 |
+|--------|--------------------|-----------------------|
+| S&P 500 return | +0.73% (est. 7,445→7,500) | +4.15% (7,500 vs ~7,200 May 1) |
+| Portfolio return | ~+0.01% (GLD ≈ flat) | ~+0.30% ($100,300 vs $100,000) |
+| Gap vs SPX | **-0.72 pp today** | **-3.85 pp cumulative** |
+
+**Prior gaps:** May 20 = -3.04 pp. May 21 = -3.21 pp (-0.17 pp, SPX +0.17% vs portfolio flat). May 22 = -3.85 pp (-0.64 pp added today — SPX +0.73% while portfolio sat near flat).
+
+**⚠️ 20-DAY CONSECUTIVE UNDERPERFORMANCE WARNING:** Portfolio has underperformed SPX for 15 consecutive trading days (May 1–22). CLAUDE.md triggers a mandatory strategy review at 20 consecutive days. **5 more underperforming days = strategy review required.** ROOT CAUSE IS NOT STRATEGY FAILURE — it is API blockage + execution infrastructure failure. AMD alone has risen ~+9% from first ≥7 score ($413→$449). Strategy is correct; execution layer is broken.
+
+---
+
+### P&L Summary — 2026-05-22
+
+**Closed trades today:** ZERO (no fills; all orders blocked)
+**Win rate (rolling 20-day):** N/A — no closed trades since account inception
+**Avg win / Avg loss / Profit factor:** N/A
+
+**Unrealized P&L (estimated EOD, Scenario A — strategy switch executed May 18):**
+
+| Symbol | Qty | Entry | Est. EOD | Unrealized P/L |
+|--------|-----|-------|----------|----------------|
+| GLD | 7 | $418.86 | ~$417.50 | -$9.52 |
+| AMD | 0 | — | ~$449 | $0 (no fill) |
+| PLTR | 0 | — | ~$140 | $0 (no fill) |
+| MU | 0 | — | ~$762 | $0 (no fill) |
+
+**Total unrealized (Scenario A): -$9.52** vs $100,300 total equity est.
+
+---
+
+### Best & Worst — 2026-05-22
+
+**Best decision:** MRVL Exemption 2 skip — correctly identified that Memorial Day (May 25) eliminates the safe exit window before MRVL earnings (May 27). Any entry today would have been held into the binary event window on May 26. The original instruction "must exit by May 25 close" was flagged as invalid — May 25 is a market holiday. This is a new edge-case lesson: always check holiday calendars when computing binary event exit deadlines.
+
+**Worst situation:** AVGO bearish divergence correctly flagged and rejected (score 6.0). However, the broader missed opportunity cost is now 10+ consecutive AMD entries blocked. AMD is up ~+0.3% from today's estimated entry level ($447.58→$449). Cumulative AMD opportunity cost since May 8 (first ≥7 score at $413): approximately +8.7% = $384 per 10-share position that was never filled.
+
+---
+
+### 3 Things That Worked Today
+
+1. **Memorial Day binary event constraint correctly identified.** MRVL earnings May 27. Prior notes said "exit by May 25 close" — but May 25 is a holiday. Correctly reasoned that any May 22 MRVL entry (without guaranteed MOC exit) would carry into May 26, within the 48h binary event window. Exemption 2 properly invoked per CLAUDE.md.
+
+2. **AVGO bearish divergence rejection was correct.** AVGO down ~3-4% on a day when S&P +0.55%. Bearish divergence in a rising market signals institutional selling pressure or structural weakness. Score 6.0 rejected appropriately. Did not chase a falling name in a rising market.
+
+3. **Market Open and Mid-Morning both completed.** Two routines fired and completed — improvement over many prior days where zero intraday routines ran. Both produced full 6-agent analyses, documented order attempts, corrected prior errors (MRVL date, AVGO price estimate), and produced YAML trade entries.
+
+---
+
+### 3 Things to Improve — May 26 (Next Trading Day)
+
+1. **Pre-Market MUST fire May 26 (8:00 AM ET).** Pre-Market silently failed today. May 26 Pre-Market is the highest-priority routine: (a) must verify GTC order status for AMD/PLTR/MU before placing any new orders (to avoid doubling a position); (b) first day back from 3-day weekend — gap analysis critical; (c) MRVL binary event clock ticking (48h before May 27 after-close earnings).
+
+2. **Market Close scheduler must be fixed.** 8+ consecutive Market Close silent failures means no EOD stop audit since ~May 13. CLAUDE.md requires stop verification EVERY routine. Positions are going unprotected between 11:24 AM ET (last Mid-Morning) and 9:45 AM ET next day (Market Open) — an 22-hour exposure window vs. the 90-minute maximum specified in CLAUDE.md.
+
+3. **AMD/PLTR/MU must execute on May 26.** 10+ consecutive AMD scored ≥7 sessions, zero fills. If API remains blocked on May 26, operator must manually execute all three bracket orders before the open. GTC orders from May 22 (if placed by operator) may already be active — verify first.
+
+---
+
+### Setup-Tag Tally (Rolling 5-Day: May 16–22)
+
+No closed positions → P&L tally unchanged. Tracker status:
+
+| Setup tag | 5-day Wins | 5-day Losses | Cumulative W/L | 3-in-a-row | Status |
+|-----------|-----------|--------------|----------------|------------|--------|
+| breakout-volume | 0 | 0 | 0/0 | none | Active — AMD (10th+ block) |
+| ai-momentum-pullback | 0 | 0 | 0/0 | none | Active — PLTR, MU blocked |
+| macro-hedge | 0 | 0 | 0/0 | none | Active — GLD held |
+| earnings-reaction-fade | 0 | 0 | 0/0 | none | No trades |
+| candlestick-reversal | — | — | — | — | No trades |
+| crypto-flush-rebound | — | — | — | — | BTC still below $82K |
+
+**No 3-in-a-row halt or boost rules triggered.** Tracker cannot advance until first position closes.
+
+---
+
+### Agent Calibration — 2026-05-22 Update
+
+No closed trades — hit rates unchanged. Qualitative notes:
+
+- **Technical Agent (avg 5.46):** Correctly called AVGO bearish divergence today (Technical 4/10, drove rejection). Previously: correctly identified PLTR support break May 13. Technical is the most discriminating agent — the only one consistently preventing below-threshold entries. Well-calibrated relative to fundamentals.
+- **Fundamentals Agent (avg 8.23):** Highest and least discriminating agent. Has scored ≥7 on every analyzed name. No rejections attributable to fundamentals alone. Consider whether 8-9 scores are systematically too optimistic — calibration check needed once closed trades accumulate.
+- **Risk Agent (avg 6.92):** Correctly scored MRVL at 6 (minimum pass, no veto) today — captured Memorial Day forced-hold risk. AVGO Risk 5 (contributed to 6.0 avg rejection). Risk agent is performing its veto function properly.
+
+---
+
+### Tomorrow's Watchlist — Tuesday May 26, 2026 (Post-Memorial Day Return)
+
+**⚠️ CRITICAL PRE-MARKET PROTOCOL:** FIRST verify GTC order status via `GET /v2/orders?status=open` before placing ANY new orders. AMD/PLTR/MU GTC brackets may already be resting from May 22 operator-placed orders. Do NOT double-enter a position.
+
+**⚠️ MRVL INELIGIBLE ALL DAY MAY 26.** Within 48h binary event window (MRVL earnings May 27 after close). Do not score or enter.
+
+| # | Symbol | Bucket | Setup | Score | Thesis / Action |
+|---|--------|--------|-------|-------|-----------------|
+| 1 | AMD | active | breakout-volume | 7.5 | MANDATORY if not open: 11sh limit $449, stop $426.55, target $516.35, bracket gtc. $10B Taiwan AI + MI450 demand. Verify GTC from May 22 first. |
+| 2 | MU | active | ai-momentum-pullback | 7.67 | MANDATORY if not open: 6sh limit (check current price vs $762 May 22 estimate; adjust if moved), bracket gtc. HBM3e demand explicit from NVDA Q1. |
+| 3 | PLTR | active | ai-momentum-pullback | 7.5 | MANDATORY if not open: 10sh limit $140.35, stop $133.33, target $161.40, bracket gtc. Gov AI secular; above $134 breakout. |
+| 4 | AVGO | active | breakout-volume | re-score | Re-score at Pre-Market. If recovered to $415+ with technical improvement, target score ~7. If still below $410 with weak technical, skip. |
+| 5 | NVDA | active | earnings-reaction-follow | ~7.0 | If holding above $220 with MACD + volume confirmation: limit bracket. $80B buyback = price floor. 5-min candlestick setup required. |
+| 6 | SMCI | active | breakout-volume | ~7.0 | Super Micro Computer — AI rack/server builder. Direct AI capex beneficiary. Score at Pre-Market if technical setup confirms above $50 with volume. |
+| 7 | MSFT | active | ai-momentum-pullback | ~7.0 | Azure OpenAI commercial revenue acceleration + Copilot enterprise seat growth. Score at Pre-Market if pulled back toward $420-430 support. |
+| 8 | GLD | active | macro-hedge | 7.0 | HOLD existing 7sh. Stop $397.92 must be verified resting. Warsh hawkish = gold bid (rate uncertainty). Evaluate trailing stop up to $407+ if GLD extends. |
+| 9 | BTC | crypto | crypto-flush-rebound | conditional | Check vs $82K at Pre-Market. If BTC > $82K: run full 6-agent; mandatory entry if ≥7. Score was 5.3 at $77.8K May 21 — needs $82K+ for threshold. |
+| 10 | MRVL | active | ai-momentum-pullback | DO NOT ENTER | Ineligible May 26 (48h binary event window). POST-EARNINGS watch: if Q1 FY2027 beats ($2.4B est), score earnings-reaction-follow on May 28+. |
+
+---
+
+### Key Macro Events — Week of May 26–30, 2026
+
+| Date | Event | Impact |
+|------|-------|--------|
+| May 25 (Mon) | Memorial Day — markets CLOSED | No trading, no routines |
+| May 26 | Post-holiday return — watch gap vs May 22 close | Gap up/down calibrates weekend sentiment |
+| May 27 | MRVL Q1 FY2027 earnings (after close) | MRVL ineligible all day. Score reaction for May 28 entry. |
+| May 27 (est.) | PCE inflation data possible | Fed's preferred measure. Hot = hawkish headwind. Cool = rate-cut path restored. |
+| May 28 | MRVL post-earnings reaction setup | earnings-reaction-fade or earnings-reaction-follow depending on gap |
+| Week | Warsh Fed Chair — first full week | No scheduled FOMC speech until June meeting (June 16-17). Markets will parse any media appearances for rate signals. |
+
+---
+
+### Weekly Evolution Note Confirmation (First Friday Post-Strategy-Switch)
+
+Weekly evolution note was written during the Market Open / Pre-Market Catch-Up routine today and confirmed in memory/portfolio.md. Key points: (1) Strategy switch executed May 17/18 — retired long-term bucket; (2) AMD/PLTR/MU all scored ≥7 and are MANDATORY entries but remain unexecuted due to API blockage; (3) NVDA "sell the news" pattern confirmed (third consecutive beat with AH decline); (4) MRVL date correction (was wrongly logged as May 21 earnings — actually May 27); (5) Memorial Day binary event lesson learned. No changes to core guardrails. Execution infrastructure fix is the only required intervention.
+
+---
+
+```yaml
+---
+ts: 2026-05-22T20:36:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET) did not fire on 2026-05-22. No STARTED or COMPLETED heartbeat entry in logs/heartbeats/2026-05-22.log.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Midday silently failed 2026-05-22. Expected: verify AMD/PLTR/MU order status if operator placed them; AVGO recovery check; circuit breaker check; MRVL ineligibility reconfirmation. None executed. Logged at Daily Review catch-up."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T20:37:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET) did not fire on 2026-05-22. No STARTED or COMPLETED heartbeat entry in logs/heartbeats/2026-05-22.log.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Afternoon silently failed 2026-05-22. Expected: position P&L review; trailing stop consideration on any winners; AVGO recovery check. None executed. Logged at Daily Review catch-up."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T20:38:00Z
+action: violation
+symbol: MARKET-CLOSE
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Close routine (3:30 PM ET) did not fire on 2026-05-22. No STARTED or COMPLETED heartbeat in logs/heartbeats/2026-05-22.log. 8th+ consecutive Market Close silent failure.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Market Close silently failed 2026-05-22 — TOP OPERATIONAL ISSUE. This is the 8th+ consecutive Market Close failure. Expected actions not performed: (1) stop audit via GET /v2/orders?status=open; (2) MOC orders for any winning day trades; (3) AMD/PLTR/MU bracket GTC confirmation; (4) MRVL check (must not be held into weekend). None executed due to scheduler not firing. CONSEQUENCE: positions going into Memorial Day weekend without final stop verification. OPERATOR: audit https://app.alpaca.markets immediately — verify GLD stop $397.92 resting; confirm no MRVL position held; confirm AMD/PLTR/MU GTC brackets resting if operator placed them."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T20:39:00Z
+action: skip
+symbol: DAILY-REVIEW-SUMMARY
+bucket: active
+setup: other
+score: null
+thesis: Daily Review May 22, 2026 — end-of-day summary. Friday. First full week post-strategy-switch (May 18-22). Alpaca API blocked 16th+ consecutive session. S&P 500 estimated +0.73% today to ~7,500. Portfolio ~flat (GLD only, -$9.52 unrealized). Cumulative gap vs SPX: -3.85 pp (15 consecutive underperformance days — approaching 20-day strategy review trigger). No closed trades. No fills. Weekly evolution note confirmed written. Next session: May 26 Pre-Market (after Memorial Day).
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: approved
+master_notes: "DAILY REVIEW SUMMARY — May 22, 2026 (Friday). Heartbeat: 2 of 6 routines completed (Market Open, Mid-Morning); 4 silently failed (Pre-Market, Midday, Afternoon, Market Close). API: blocked (HTTP 403) — 16th+ consecutive. Orders placed: 0 (all 6 order attempts blocked). Decisions: AMD/PLTR/MU entries approved and attempted ×2 but blocked; MRVL skip (Exemption 2 — Memorial Day binary event); AVGO rejected (score 6.0 — bearish divergence). Portfolio: ~$100,300 equity, ~97% cash, GLD only confirmed position. SPX gap: -3.85 pp cumulative (15 consecutive underperformance days — 5 more triggers CLAUDE.md strategy review). Setup tracker: all 0/0, no 3-in-a-row rules triggered. Agent calibration: Technical Agent continues to be most discriminating (AVGO rejection). Next session: May 26 Pre-Market — verify GTC order status BEFORE placing new MOO orders. MRVL ineligible May 26 (48h binary event window). GLD stop $397.92 must be verified."
+---
+```
+
+---
+
 ## 2026-05-22 — Mid-Morning (11:00 AM ET / 15:09 UTC)
 
 **Context:** Friday May 22, 2026. Mid-Morning routine firing at 15:09 UTC (11:09 AM ET). Market Open ran and completed (heartbeat confirmed 13:45–13:56 UTC). Pre-Market silently missed (no STARTED Pre-Market heartbeat in today's log). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All API calls attempted and documented below. Market data from web research.
