@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-22T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-05-22T16:42:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.24,
     "benchmark_gap_pct": -3.04,
     "open_positions_count": 5,
-    "note": "May 21 Pre-Market \u2014 API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news \u2014 closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K \u2014 score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "note": "2026-05-22 Midday \u2014 API BLOCKED (HTTP 403), 16th+ consecutive session. MAJOR CATALYST: AMD 2nm EPYC Venice production ramp (industry first HPC on 2nm) + BofA $500 PT upgrade. AMD ~$462-470 (+3.71-5.89%). AMD score 8.0 (UPGRADED from 7.5). Updated limits: AMD $464.30 (from stale $449), MU $758.78 (from stale $765.91). PLTR $137.41 (GTC limit $140.35 unchanged \u2014 afternoon push may fill). GLD $414.67 (stop $397.92 intact). MRVL $183.52 new ATH \u2014 INELIGIBLE (earnings May 27; Memorial Day constraint). S&P +0.55% (~7,487), stable into midday. All 3 entry orders (AMD/MU/PLTR) blocked. OPERATOR: place manually before 3:50 PM ET. GTC carries to May 26 (post-Memorial Day).",
     "buckets": [
       {
         "key": "active",
@@ -40,14 +40,14 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 416.64,
-      "pnl": -15.54,
-      "pnl_pct": -0.53,
+      "current_price": 414.67,
+      "pnl": -29.33,
+      "pnl_pct": -1.00,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD +1.25% today ($411.50\u2192$416.64). Cross-asset hedge \u2014 gold rising despite oil collapse and risk-on equity day. Dollar weakness component. Stop $397.92 (-4.9% from current). GLD confirmed active (only certain position)."
+      "note": "GLD midday $414.67 (range $412.17-$416.30, softer from morning $416 high). Cross-asset hedge. Stop $397.92 intact (4.2% below current). HOLD through Memorial Day weekend. Thesis: dollar weakness + geopolitical uncertainty supportive even in risk-on."
     },
     {
       "symbol": "TSM",
@@ -595,10 +595,10 @@
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 12:30 ET",
-      "last_summary": "SILENT FAILURE May 20."
+      "status": "completed",
+      "last_run": "2026-05-22T16:42:00Z",
+      "next_run": "2026-05-26 12:30 ET (post-Memorial Day)",
+      "last_summary": "AMD score UPGRADED 7.5→8.0 (2nm Venice production ramp + BofA $500 PT). AMD limit updated $449→$464.30 (10sh). MU limit updated $765.91→$758.78 (6sh). PLTR GTC $140.35 unchanged (monitoring for afternoon $140 break). GLD $414.67, stop $397.92 intact, holding through Memorial Day. MRVL confirmed ineligible (earnings May 27). All orders blocked (API 403). OPERATOR: place AMD/MU/PLTR brackets before 3:50 PM ET. GTC orders carry to May 26."
     },
     {
       "name": "Afternoon",
@@ -718,15 +718,15 @@
     "macro_notes_md": "- **Oil collapse today (-5.66%):** WTI \u2192 $98.26, Brent \u2192 $105.02. Middle East de-escalation optimism. Positive for equities broadly. Lower inflation trajectory \u2192 rate-cut expectations potentially restored.\n- **NVDA Q1 FY2027 (tonight):** Revenue $81.62B vs $79.19B (+85% YoY). EPS $1.87 vs $1.76. Q2 guidance $89.18-92.82B vs $87.36B. CEO: 'AI factories \u2014 largest infrastructure expansion in human history accelerating.' AH: $217.91 (-$5.56, -2.44%). Third consecutive beat with AH decline.\n- **AI infrastructure thesis confirmed:** NVDA data center $39.4B (est) in Q1. HBM memory demand = MU read-through. Custom ASICs = AVGO read-through. Foundry demand = TSM read-through. Agentic AI 'doing productive work.'\n- **AMD +6.39% to $440.50:** Strongest single-day move since Q1 earnings (May 5 +16%). AMD has doubled YTD 2026. AI data center CPU + GPU momentum. Score upgraded to 7.50.\n- **PLTR ~$135:** Above $134 re-entry trigger. Government AI (AIP) secular revenue. Score 7.33 confirmed. MANDATORY MOO May 21.\n- **MU $720.55:** NVDA HBM demand confirmation = direct MU read-through. Score likely \u22657.5 post-NVDA print. Entry zone $720-740.\n- **S&P 500:** 7,432.97 (+1.08%). Down from 7,511 all-time high (May 14) after May 15 sell-off. Recovery underway. Portfolio gap vs SPX: -3.04 pp (improved from -3.81 pp).",
     "sp500_today_pct": "+0.55%",
     "sp500_est": 7487,
-    "macro_note": "Kevin Warsh sworn in as Fed Chair (hawkish). Iran war talks progress (risk-on). Oil +1.8%."
+    "macro_note": "Kevin Warsh sworn in as Fed Chair (hawkish). Iran war talks progress (risk-on). Oil +1.8%. AMD 2nm Venice production ramp (industry-first) = major semiconductor sector catalyst today."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
-      "score": 7.67,
-      "action": "MANDATORY MOO TODAY \u2014 10 shares. Score 7.67 (all 6 agents approved). Pre-market $428.92 (-3.59% sector contagion, no AMD-specific news). OPERATOR: place 10-share MOO before 9:25 AM ET. Stop: fill\u00d70.95. Target: fill\u00d71.15.",
-      "notes": "F8/T7/S7/M8/R8/TA8 avg 7.67. AMD Q1 2026: $10.3B +38% YoY, Data Center $5.8B +57%, EPS $1.37 +43%. MI450 demand exceeding expectations. Q2 guidance $11.2B (+46% YoY). AMD closed May 21 at $447.58 (pre-market pullback reversed). Guardrails: 10sh \u00d7 ~$429 = $4,290 = 4.3% <5%; stop $407.55, target $493.35; trade risk $214 = 0.21% <1.5%."
+      "score": 8.0,
+      "action": "MANDATORY \u2014 MIDDAY SCORE UPGRADED 7.5\u21928.0. 2nm EPYC Venice production ramp (industry first). BofA PT $500. OPERATOR: place BUY 10sh limit $464.30, stop $441.09, target $534.00, order_class:bracket, time_in_force:gtc. CANCEL any prior $449 limit first.",
+      "notes": "F9/T7/S8/M7/R8/TA9 avg 8.0. AMD 2nm EPYC Venice: first HPC on 2nm (TSMC), 12-18mo lead over Intel. Venice for AI inference, Verano follow-on in development. BofA $500, Mizuho/Evercore/Cantor/Arete/Melius all upgrading. +3.71-5.89% today. AMD Q1 $10.3B +38% YoY. Guardrails: 10sh \u00d7 $464.30 = $4,643 = 4.64% <5%; stop $441.09 (-5%), target $534.00 (+15%); trade risk $232 = 0.23% <1.5%."
     },
     {
       "symbol": "PLTR",

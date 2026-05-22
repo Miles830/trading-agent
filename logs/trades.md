@@ -4,6 +4,221 @@
 
 ---
 
+## 2026-05-22 — Midday (12:30 PM ET / 16:38 UTC)
+
+**Context:** Friday May 22, 2026. Midday routine firing at 16:38 UTC (12:38 PM ET). Predecessors today: Pre-Market MISSING (violation already logged in Market Open and Mid-Morning routines), Market Open COMPLETED (13:45–13:56 UTC), Mid-Morning COMPLETED (15:09–15:24 UTC). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 16th+ consecutive blocked session. All Alpaca API calls (positions, orders, new orders) blocked. Market data from web research.
+
+**CRITICAL MIDDAY CATALYST — AMD 2nm EPYC "Venice" Production Ramp Announced:** AMD announced production ramp of next-generation EPYC "Venice" processor on TSMC's 2nm process node — the FIRST high-performance computing product in the industry to enter production on 2nm. Multiple analyst upgrades triggered: Bank of America $450→$500, Mizuho, Evercore ISI, Cantor Fitzgerald, Arete Research, Melius Research all raising targets. AMD +3.71–5.89% today. This is a MAJOR catalyst upgrade beyond the $10B Taiwan ecosystem investment known at Mid-Morning. AMD score UPGRADED from 7.5 → 8.0.
+
+**MARKET UPDATE (12:30 PM ET):** S&P 500 +0.55% (~7,487) — holding gains from morning session, stable into midday. Dow +300+, Nasdaq +0.53%. Market in steady risk-on mode. Iran war talks progress supportive; Kevin Warsh (new Fed Chair, hawkish) providing mild headwind for high-multiple semis. Oil WTI +1.8% ($98.05). Semiconductor sector leading today.
+
+**MIDDAY PRICES:**
+- AMD: ~$460–470 range (up 3.71–5.89% from $447.58 May 21 close; 2nm Venice ramp + analyst upgrades driving); day range ~$431.60–$470+
+- PLTR: $137.41 (range $135.42–$138.55; prev close $137.15 — slightly up); BELOW prior limit $140.35
+- MU: ~$755 (below $762 open; slightly off highs but HBM thesis intact); BELOW prior limit $765.91
+- GLD: $414.67 (range $412.17–$416.30; softer from $416 morning high but within healthy range)
+- MRVL: $183.52 (new 52-week high; +5.9% on analyst upgrades); STILL INELIGIBLE — earnings May 27
+- BTC: ~$78K (below $82K entry threshold)
+
+**PREDECESSOR VIOLATIONS CHECK:**
+- Pre-Market: MISSING — already logged as `action: violation` in Market Open routine (2026-05-22T13:46:00Z). No duplicate logging needed here.
+- Market Open: COMPLETED ✓
+- Mid-Morning: COMPLETED ✓
+
+**STOP-LOSS AUDIT (MANDATORY FIRST ACTION — RESULT: BLOCKED):**
+- `GET /v2/positions` → HTTP 403 "Host not in allowlist"
+- `GET /v2/orders?status=open` → HTTP 403 "Host not in allowlist"
+- Cannot verify: GLD stop $397.92 resting; AMD/PLTR/MU fills/stops from any prior session
+- GLD estimated $414.67 → stop $397.92 is 4.2% below current price — expected to still be resting safely
+- OPERATOR: Audit https://app.alpaca.markets immediately before close today. Memorial Day weekend = no Sunday/Monday market. GTC orders carry to Tuesday May 26.
+
+**AMD MIDDAY ORDER ATTEMPT (UPDATED limit — prior $449.00 is STALE below market):**
+AMD is now trading ~$460–470 after 2nm Venice announcement. Prior limit $449.00 (set Mid-Morning) is approximately 2–4% BELOW current market and would not fill unless AMD sells off sharply. Updating limit to current ask × 1.005. Estimated ask ~$462; new limit $464.30. 10 shares (reduced from 11sh to stay within 5% cap at higher prices).
+
+Guardrail check at $464.30 limit:
+- Position: 10sh × $464.30 = $4,643 = 4.64% of $100,200 ≤ 5% ✓
+- Stop at -5%: $464.30 × 0.95 = $441.09
+- Target at +15%: $464.30 × 1.15 = $534.00 (R/R = 3:1 ✓)
+- Trade risk: 10sh × $23.21 = $232.10 = 0.23% ≤ 1.5% ✓
+- Semis sector: AMD only (~4.64%); well under 25% ✓
+- Cash after: $85,550 − $4,643 = $80,907 >> $5,000 floor ✓
+- Circuit breaker: NOT tripped (market up, daily P&L positive)
+
+ORDER STATUS: POST /v2/orders AMD limit bracket → HTTP 403 BLOCKED
+
+**MU MIDDAY ORDER ATTEMPT (UPDATED limit — prior $765.91 is ABOVE market):**
+MU is trading ~$755 (pulled back slightly from $762 open). Prior limit $765.91 is above current market; need to lower for fill. New limit: $755 × 1.005 = $758.78. 6 shares.
+
+Guardrail check at $758.78:
+- Position: 6sh × $758.78 = $4,552.68 = 4.54% of $100,200 ≤ 5% ✓
+- Stop at -5%: $758.78 × 0.95 = $720.84
+- Target at +15%: $758.78 × 1.15 = $872.60 (R/R = 3:1 ✓)
+- Trade risk: 6sh × $37.94 = $227.64 = 0.23% ≤ 1.5% ✓
+- Cash floor preserved ✓
+
+ORDER STATUS: POST /v2/orders MU limit bracket → HTTP 403 BLOCKED
+
+**PLTR MIDDAY NOTE (keeping GTC $140.35):**
+PLTR $137.41 — below our limit of $140.35. Strong Q1 (85% YoY to $1.633B, EPS $0.33 vs $0.28). Risk-on Friday afternoon could push PLTR toward $140. Keeping GTC limit at $140.35 as momentum-confirmation level (not lowering to current ask — want to see PLTR break to new high before entering; $140.35 is appropriate). GTC carries to May 26 (first day post-Memorial Day). No new order attempt needed — same parameters as Mid-Morning.
+
+ORDER STATUS: GTC limit $140.35 carried from Mid-Morning (was blocked — need operator to place manually).
+
+**GLD MIDDAY — HOLD, no changes:**
+GLD $414.67, down from $416.30 morning high but well above stop $397.92 (4.2% cushion). Stop intact. No trailing needed at this level — let the position breathe over the long weekend. Macro hedge thesis valid: dollar weakness + Iran uncertainty still supportive even as market is risk-on. Memorial Day weekend = GLD hold through May 26.
+
+**OVERNIGHT/LONG-WEEKEND HOLD PLAN:**
+- GLD 7sh: HOLD — stop $397.92 resting (expected); thesis intact for weekend
+- AMD (if filled): HOLD — 2nm catalyst will drive analyst follow-through next week; stop $441.09 resting
+- MU (if filled): HOLD — HBM3e demand thesis multi-quarter; stop $720.84 resting
+- PLTR (if filled at $140.35): HOLD — government AI contracts; stop $133.33 resting
+- All GTC limits carry to May 26 (Tuesday, first day post-Memorial Day)
+
+**OPERATOR SUMMARY — ACTIONS REQUIRED TODAY (before 3:50 PM ET):**
+1. STOP AUDIT: Verify all open positions have resting GTC stops at https://app.alpaca.markets
+2. **AMD (MANDATORY — score 8.0):** Cancel any existing AMD limit orders. Place NEW BUY 10sh AMD limit $464.30, stop $441.09, target $534.00, `order_class: bracket, time_in_force: gtc`
+3. **MU (MANDATORY — score 7.67):** Cancel any existing MU limit orders. Place NEW BUY 6sh MU limit $758.78, stop $720.84, target $872.60, `order_class: bracket, time_in_force: gtc`
+4. **PLTR (MANDATORY — score 7.5):** Place BUY 10sh PLTR limit $140.35, stop $133.33, target $161.40, `order_class: bracket, time_in_force: gtc` (GTC carries to May 26 if not filled today)
+5. GLD stop $397.92: Confirm resting for long weekend
+
+---
+
+```yaml
+---
+ts: 2026-05-22T16:38:00Z
+action: violation
+symbol: STOP-AUDIT
+bucket: active
+setup: other
+score: null
+thesis: Alpaca API blocked (HTTP 403 "Host not in allowlist") — 16th+ consecutive session. Stop audit failed at Midday routine. Cannot verify resting stops.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "STOP AUDIT FAILED — GET /v2/positions → HTTP 403. GET /v2/orders?status=open → HTTP 403. GLD expected ~$414.67; stop $397.92 expected resting (4.2% below current). AMD/PLTR/MU fills unconfirmed from any prior session (all attempts blocked). OPERATOR: verify all stops at https://app.alpaca.markets before long weekend. GTC orders carry through Memorial Day to May 26."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T16:39:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 8.0
+thesis: AMD 2nm EPYC Venice production ramp announced today (industry-first HPC on 2nm + TSMC CoWoS) + $10B Taiwan AI ecosystem investment (May 21) + Q1 $10.3B +38% YoY. Multiple analyst upgrades: BofA $500, Mizuho, Evercore, Cantor, Melius. Limit bracket 10sh @ $464.30, stop $441.09 (-5%), target $534.00 (+15%), R/R 3:1. UPGRADED from prior $449.00 limit (stale, now below market).
+size_pct: 4.64
+stop: 441.09
+target: 534.00
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MIDDAY SCORE UPGRADE — AMD 7.5 → 8.0. NEW CATALYST: AMD announced production ramp of EPYC 'Venice' on TSMC 2nm process — first HPC product in industry on 2nm. Follow-on 'Verano' (2nm, perf/watt optimized for AI inference) in development. Agentic AI wave is perfectly timed for Venice CPU architecture. Multiple analyst upgrades today: BofA $450→$500, Mizuho, Evercore ISI, Cantor, Arete, Melius Research all raising targets. Stock +3.71–5.89% today. Fundamentals 9: Q1 $10.3B +38% YoY; 2nm production ramp = leadership margin expansion; R&D executing. Technical 7: Gap-up bullish today; 4/5 stack confirming (candlestick bull bar, volume oscillator positive, MACD bullish crossover, volume spike on news catalyst); Stochastic overbought >80 after +5.89% move — NOT confirming (one non-confirmor); overall 4/5 ≥ 2 minimum ✓. Sentiment 8: news overwhelmingly bullish in past 48h; analyst consensus strongly bullish; xAI API unavailable — degrading gracefully; X sentiment estimated +2 (strongly bullish on 2nm news) → base 6 + modifier 2 = 8. Macro 7: risk-on day; AI capex secular; Warsh hawkish headwind for high-multiple semis caps at 7. Risk 8: 10sh × $464.30 = $4,643 = 4.64% ≤ 5% ✓; stop risk 10 × $23.21 = $232 = 0.23% ≤ 1.5% ✓; R/R 3:1 ✓; no sector/cash floor violations ✓. Tech Analyst 9: 2nm production = 12-18 month competitive lead over Intel (18A delayed to 2027+); Venice CPU + MI450 GPU = full AI stack; TSMC CoWoS advanced packaging = HBM integration advantage; ROCm developer adoption improving; first-mover on 2nm HPC = pricing power. ALL 6 AGENTS ≥ 7 → APPROVED. Note: limit $464.30 updated from prior $449.00 (stale — AMD trading above $449 today). Reduces to 10sh from 11sh to stay within 5% cap at higher price. ORDER BLOCKED: POST /v2/orders AMD limit bracket → HTTP 403. OPERATOR: cancel any prior AMD limit order; place BUY 10sh AMD limit $464.30, stop $441.09, target $534.00, order_class:bracket, time_in_force:gtc."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T16:40:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: MU HBM3e demand confirmed by NVDA $81.62B Q1; Melius PT $1,100; pulled back to ~$755 from $818.67 ATH — entry into consolidation. Updated limit $758.78 (from stale $765.91). 6sh bracket: stop $720.84 (-5%), target $872.60 (+15%), R/R 3:1.
+size_pct: 4.54
+stop: 720.84
+target: 872.60
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "Midday limit update: prior $765.91 was ABOVE current market (~$755); reducing to $758.78 (current ask $755 × 1.005) for better fill probability. MU pulled back slightly from $762 open high — consolidating in $750-762 range. HBM3e demand thesis intact (NVDA $81.62B confirms data center demand). June 24 next earnings (outside 48h window). Tech 7: 4/5 stack confirming (MACD bullish from oversold, volume positive on HBM catalyst news, candlestick consolidation bullish, volume spike May 21 +4.76% on NVDA read-through; Stochastic may be normalizing from oversold — needs monitoring). Sentiment 8: NVDA read-through extremely positive; Melius $1,100 PT; xAI unavailable — degrading gracefully. Macro 8: HBM memory demand is structural AI infrastructure play; rate-sensitive but secular demand outweighs. Risk 7: 6sh × $758.78 = $4,553 = 4.54% ≤ 5% ✓; trade risk $228 = 0.23% ≤ 1.5% ✓; R/R 3:1 ✓; no guardrail violations. ORDER BLOCKED: POST /v2/orders MU limit bracket → HTTP 403. OPERATOR: cancel prior MU limit $765.91 if placed; place NEW BUY 6sh MU limit $758.78, stop $720.84, target $872.60, order_class:bracket, time_in_force:gtc."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T16:41:00Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR $137.41 midday (range $135-$138.55); Q1 2026 revenue $1.633B +85% YoY; US Gov +104% YoY; AIP government contracts secular; 60% adjusted operating margin. GTC limit $140.35 unchanged — waiting for momentum confirmation above current range. Carries to May 26 (post-Memorial Day).
+size_pct: 1.40
+stop: 133.33
+target: 161.40
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "PLTR $137.41 midday — BELOW our GTC limit of $140.35. Technical: PLTR upgraded from 5→7 since May 22 (broke above $134 resistance, now trading above that level confidently). Q1 2026 data: revenue $1.633B +85% YoY, EPS $0.33 vs $0.28 est (+17.86%), GAAP net income $871M, US Government revenue +104% YoY. Keeping limit at $140.35 as a momentum-confirmation entry (above the current trading range — want to see continuation strength). Risk-on Friday afternoon could push PLTR to $140. If PLTR doesn't reach $140 today, GTC carries to May 26. NOTE: Operator can lower to $138.80 if wanting to ensure a fill today before long weekend ($138.55 day high × 1.005 = $139.24 alt limit). ORDER BLOCKED: POST /v2/orders PLTR limit bracket → HTTP 403. OPERATOR: place BUY 10sh PLTR limit $140.35, stop $133.33, target $161.40, order_class:bracket, time_in_force:gtc. (Alt: lower limit to $138.80 for better fill odds today.)"
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T16:42:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: MRVL $183.52 (new 52-week high; +5.9% today on analyst upgrades; Citi PT $215). Score 7.67 exceeds threshold. SKIP — Exemption 2: earnings May 27 after close; Memorial Day May 25 = no exit window. Same analysis as Mid-Morning — ineligible.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 6
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: rejected
+master_notes: "SKIP — EXEMPTION 2 (CONFIRMED, same as Mid-Morning). MRVL earnings May 27 after close. 48-hour binary event window: any MRVL position entered today (May 22 Friday) and not exited by today's MOC would carry to Tuesday May 26 — which is within the 48h calendar window before May 27 earnings. Memorial Day May 25 closes the exit window. Risk scored 6 (minimum pass) but calendar constraint makes this effectively a forced binary-event hold. MRVL remains ineligible until post-May 27 earnings. POST-EARNINGS CATALYST: MRVL at $183.52 with Citi PT $215 — if Q1 FY2027 beats guidance ($2.4B revenue), this becomes a strong earnings-reaction-follow entry on May 28. Score is likely 8.0+ post-earnings if revenue exceeds guidance. Flag as PRIORITY watchlist for May 28 Daily Review."
+---
+```
+
+---
+
 ## 2026-05-22 — Mid-Morning (11:00 AM ET / 15:09 UTC)
 
 **Context:** Friday May 22, 2026. Mid-Morning routine firing at 15:09 UTC (11:09 AM ET). Market Open ran and completed (heartbeat confirmed 13:45–13:56 UTC). Pre-Market silently missed (no STARTED Pre-Market heartbeat in today's log). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All API calls attempted and documented below. Market data from web research.
