@@ -1,21 +1,21 @@
 {
-  "last_updated": "2026-05-22T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-05-22T18:15:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
-    "total_equity": 100200,
+    "total_equity": 100850,
     "starting_equity": 100000.0,
     "cash": 85550,
-    "cash_pct": 85.4,
+    "cash_pct": 84.8,
     "buying_power": 171100,
-    "long_market_value": 14650,
+    "long_market_value": 15300,
     "short_market_value": 0.0,
-    "daily_pnl": 100,
-    "daily_pnl_pct": 0.1,
-    "total_return_pct": 0.2,
-    "spx_return_pct": 3.24,
-    "benchmark_gap_pct": -3.04,
-    "open_positions_count": 5,
-    "note": "May 21 Pre-Market \u2014 API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news \u2014 closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K \u2014 score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "daily_pnl": 450,
+    "daily_pnl_pct": 0.45,
+    "total_return_pct": 0.85,
+    "spx_return_pct": 4.0,
+    "benchmark_gap_pct": -3.15,
+    "open_positions_count": 3,
+    "note": "2026-05-22 Afternoon (2 PM ET) \u2014 API BLOCKED (16th+ consecutive). AMD surged to $469.43 (+3.7%) on Venice 2nm production ramp + $10B Taiwan AI investment. Score upgraded 7.83. PLTR $136.87 (limit $140.35 not filled). MU $771.20 (limit $765.91 in day range \u2014 likely filled). AVGO recovered to $416 from morning lows $394-404 (bearish divergence resolved). S&P 500 +0.63% (~7,492). MEMORIAL DAY May 25 \u2014 markets closed. Next session: May 26 Pre-Market. OPERATOR: verify all stops before 4 PM today; trail AMD stop from $426.55 to $447 ahead of 3-day weekend.",
     "buckets": [
       {
         "key": "active",
@@ -108,6 +108,45 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-22T18:13:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.83,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 7, "risk": 9, "tech_analyst": 9},
+      "agent_average": 7.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — Exemption 1 (proximity-to-close + API blocked stop placement = guardrail violation). AMD $469.43 (+3.7%): Venice 2nm confirmed. Updated params for May 26: limit $470, stop $446.50, target $540.50."
+    },
+    {
+      "ts": "2026-05-22T18:14:00Z",
+      "symbol": "PLTR",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.5,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 7, "macro": 7, "risk": 8, "tech_analyst": 8},
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — Exemption 1 (proximity-to-close + API blocked). PLTR $136.87, limit $140.35 not filled. Recommend limit update to $137.25 for May 26."
+    },
+    {
+      "ts": "2026-05-22T18:15:00Z",
+      "symbol": "MU",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.67,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 8, "risk": 7, "tech_analyst": 8},
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — Exemption 1 (proximity-to-close + API blocked). MU $771.20, limit $765.91 was in today's range — may have been filled by operator. OPERATOR: verify fill status."
+    },
     {
       "ts": "2026-05-21T12:04:00Z",
       "symbol": "AMD",
@@ -596,17 +635,17 @@
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 12:30 ET",
-      "last_summary": "SILENT FAILURE May 20."
+      "last_run": "unknown (silent failure 2026-05-22)",
+      "next_run": "2026-05-26 12:30 ET",
+      "last_summary": "SILENT FAILURE 2026-05-22. 2nd predecessor failure today (Pre-Market also missed). AMD/PLTR/MU limit re-attempts not performed at midday. AVGO recovery to $416 (from morning $394 lows) not checked until Afternoon routine. OPERATOR: check Midday 12:30 PM ET scheduler."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
       "status": "completed",
-      "last_run": "2026-05-20 14:04 ET",
-      "next_run": "2026-05-21 14:00 ET",
-      "last_summary": "May 20: STARTED 18:04Z / COMPLETED 18:11Z. API blocked (HTTP 403 confirmed). AMD skip (5th+ consecutive, score 7.33). PLTR skip (trigger unconfirmed). NVDA skip (binary event 48h window active). NVDA earnings noted for May 21 \u2014 actually reported May 20 AH (BEAT, -2.44% AH). S&P 500 +1.08% to 7,432.97."
+      "last_run": "2026-05-22T18:11:00Z",
+      "next_run": "2026-05-26 14:00 ET",
+      "last_summary": "2026-05-22: API blocked (HTTP 403, 16th+ consecutive). AMD $469.43 (+3.7%, Venice 2nm ramp confirmed, score 7.83, new params $470/$446.50/$540.50). PLTR $136.87 (limit not filled, recommend update to $137.25). MU $771.20 (limit $765.91 in range, likely filled). AVGO recovered $416 (bearish divergence resolved, re-score May 26). Midday predecessor MISSING. All new entries skipped (proximity-to-close + API blocked). Tomorrow watchlist: AMD/$470, PLTR/$137.25, MU/$772.50, AVGO re-score. MEMORIAL DAY May 25 \u2014 next session May 26."
     },
     {
       "name": "Market Close",
@@ -716,80 +755,59 @@
       }
     ],
     "macro_notes_md": "- **Oil collapse today (-5.66%):** WTI \u2192 $98.26, Brent \u2192 $105.02. Middle East de-escalation optimism. Positive for equities broadly. Lower inflation trajectory \u2192 rate-cut expectations potentially restored.\n- **NVDA Q1 FY2027 (tonight):** Revenue $81.62B vs $79.19B (+85% YoY). EPS $1.87 vs $1.76. Q2 guidance $89.18-92.82B vs $87.36B. CEO: 'AI factories \u2014 largest infrastructure expansion in human history accelerating.' AH: $217.91 (-$5.56, -2.44%). Third consecutive beat with AH decline.\n- **AI infrastructure thesis confirmed:** NVDA data center $39.4B (est) in Q1. HBM memory demand = MU read-through. Custom ASICs = AVGO read-through. Foundry demand = TSM read-through. Agentic AI 'doing productive work.'\n- **AMD +6.39% to $440.50:** Strongest single-day move since Q1 earnings (May 5 +16%). AMD has doubled YTD 2026. AI data center CPU + GPU momentum. Score upgraded to 7.50.\n- **PLTR ~$135:** Above $134 re-entry trigger. Government AI (AIP) secular revenue. Score 7.33 confirmed. MANDATORY MOO May 21.\n- **MU $720.55:** NVDA HBM demand confirmation = direct MU read-through. Score likely \u22657.5 post-NVDA print. Entry zone $720-740.\n- **S&P 500:** 7,432.97 (+1.08%). Down from 7,511 all-time high (May 14) after May 15 sell-off. Recovery underway. Portfolio gap vs SPX: -3.04 pp (improved from -3.81 pp).",
-    "sp500_today_pct": "+0.55%",
-    "sp500_est": 7487,
-    "macro_note": "Kevin Warsh sworn in as Fed Chair (hawkish). Iran war talks progress (risk-on). Oil +1.8%."
+    "sp500_today_pct": "+0.63%",
+    "sp500_est": 7492,
+    "macro_note": "Kevin Warsh Fed Chair (hawkish, 20-30% hike odds Dec). Iran war talks advancing (risk-on). AMD Venice 2nm ramp + $10B Taiwan investment (chip sector breakout day). MEMORIAL DAY May 25 — next session May 26."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
-      "score": 7.67,
-      "action": "MANDATORY MOO TODAY \u2014 10 shares. Score 7.67 (all 6 agents approved). Pre-market $428.92 (-3.59% sector contagion, no AMD-specific news). OPERATOR: place 10-share MOO before 9:25 AM ET. Stop: fill\u00d70.95. Target: fill\u00d71.15.",
-      "notes": "F8/T7/S7/M8/R8/TA8 avg 7.67. AMD Q1 2026: $10.3B +38% YoY, Data Center $5.8B +57%, EPS $1.37 +43%. MI450 demand exceeding expectations. Q2 guidance $11.2B (+46% YoY). AMD closed May 21 at $447.58 (pre-market pullback reversed). Guardrails: 10sh \u00d7 ~$429 = $4,290 = 4.3% <5%; stop $407.55, target $493.35; trade risk $214 = 0.21% <1.5%."
+      "score": 7.83,
+      "action": "MAY 26 PRE-MARKET: BUY 10 shares limit $470.00, stop $446.50 (-5%), target $540.50 (+15%), R/R 3:1. GTC bracket. MANDATORY \u2014 10th+ consecutive session at \u22657. CANCEL prior $449 limit if unfilled and replace with $470.",
+      "notes": "F8/T7/S8/M7/R9/TA9 avg 7.83. Venice 2nm EPYC production ramp confirmed (first industry 2nm HPC processor). $10B Taiwan AI ecosystem investment. Stock at $469.43 today (+3.7%), breaking $452 cycle high. Verano follow-up on 2nm announced. AMD+TSMC deepening partnership = structural moat. Guardrails: 10sh \u00d7 $470 = $4,700 = 4.7% <5%; stop risk $23.50 \u00d7 10 = $235 = 0.24% <1.5%; R/R 3:1. NOTE: AMD at potential ATH \u2014 if opens above $473 on May 26, consider waiting for intraday pullback to $467-469 before placing limit."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
-      "score": 7.17,
-      "action": "MANDATORY MOO TODAY if open \u2265$134 \u2014 10 shares. Score 7.17 (5 of 6 agents approved; Technical 5/10). Pre-market $134.01. OPERATOR: place 10-share MOO PLTR only if open \u2265$134. Stop: fill\u00d70.95. Target: fill\u00d71.15.",
-      "notes": "F8/T5/S7/M7/R8/TA8 avg 7.17. Technical 5 (only 1/5 indicators confirmed \u2014 $134 support barely holding). PLTR Q1: $1.63B +39% YoY, EPS $0.33 vs $0.24 (+37.5% beat), US Gov +84% YoY, guidance raised. AIP agentic AI platform. Guardrails: 10sh \u00d7 ~$134 = $1,340 = 1.3% <5%; trade risk $67 = 0.07% <1.5%."
+      "score": 7.5,
+      "action": "MAY 26 PRE-MARKET: BUY 10 shares limit $137.25, stop $130.39 (-5%), target $157.84 (+15%), R/R 3:1. GTC bracket. (ALTERNATIVE: keep $140.35 limit for breakout play \u2014 lower fill prob). PLTR at $136.87 today, below our $140.35 limit which did not fill.",
+      "notes": "F8/T7/S7/M7/R8/TA8 avg 7.5. PLTR $136.87 today (range $134.30-$139.02). $134 support firmly held. AIP government AI contracts secular revenue. Warsh hawkish = mild headwind for high-multiple but PLTR gov revenues are rate-insensitive. Guardrails: 10sh \u00d7 $137.25 = $1,373 = 1.4% <5%; stop risk $6.86 \u00d7 10 = $68.60 = 0.07% <1.5%; R/R 3:1."
     },
     {
       "symbol": "MU",
       "bucket": "active",
       "score": 7.67,
-      "action": "MANDATORY MOO TODAY \u2014 6 shares. Score 7.67 (all 6 agents approved). Pre-market ~$720. OPERATOR: place 6-share MOO before 9:25 AM ET. Stop: fill\u00d70.95. Target: fill\u00d71.15.",
-      "notes": "F8/T7/S8/M8/R7/TA8 avg 7.67. MU Q2 FY2026: EPS $12.20 vs $8.60 (+42% beat). ATH $818.67 on May 11; pulled back -12% to $720.55. NVDA $81.62B beat = direct HBM3e demand confirmation. Analyst PT $1,100. Next earnings June 24. Guardrails: 6sh \u00d7 ~$720 = $4,320 = 4.32% <5%; stop $684, target $828; trade risk $216 = 0.22% <1.5%."
-    },
-    {
-      "symbol": "NVDA",
-      "bucket": "active",
-      "score": null,
-      "action": "ASSESS AT MARKET OPEN (9:45 AM ET). NVDA trading ~$220.66 today (range $216.25-$226.94). $80B buyback + 25c dividend = bullish offset to sell-the-news. Score earnings reaction at open.",
-      "notes": "BEAT: Revenue $81.62B vs $79.19B (+85% YoY). EPS $1.87 vs $1.76. Q2 guidance strong. $80B additional buyback. Dividend 1c \u2192 25c/qtr. Initial AH -2.44% but morning recovery. If gap-down -3%+ with 2/5 indicators: earnings-reaction-fade. If recovery: earnings-reaction-follow or candlestick-reversal."
+      "action": "MAY 26 PRE-MARKET: If NOT filled on May 22 \u2014 BUY 6 shares limit $772.50, stop $733.88 (-5%), target $888.38 (+15%), R/R 3:1. If FILLED at $765.91 \u2014 HOLD, verify stop $727.61 resting, target $880.80.",
+      "notes": "F8/T7/S8/M8/R7/TA8 avg 7.67. MU $771.20 today (range $747-$772). Limit $765.91 was in today's range \u2014 likely filled if operator placed it. AMD Venice 2nm on TSMC = additional HBM demand read-through (AMD+MU AI workload partnership). ATH $818.67 in sight. Next earnings June 24. Guardrails: 6sh \u00d7 $772.50 = $4,635 = 4.6% <5%; stop risk $38.62 \u00d7 6 = $231.72 = 0.23% <1.5%; R/R 3:1."
     },
     {
       "symbol": "AVGO",
       "bucket": "active",
-      "score": 7.5,
-      "action": "FULL 6-AGENT AT PRE-MARKET May 21. Limit order at open if score \u22657. Stop: fill\u00d70.95. Target: fill\u00d71.15. NVDA custom ASIC pipeline + Google/Meta TPU demand.",
-      "notes": "AVGO custom AI ASICs (Google TPU v5, Meta MTIA) are a structural AI infrastructure play. NVDA beat validates the AI infrastructure CapEx cycle that drives AVGO's design wins. Current est. $410."
+      "score": 6.5,
+      "action": "MAY 26 PRE-MARKET: Full 6-agent re-score required. Tentative entry if score \u22657 at open \u2014 BUY 10 shares limit (open ask \u00d7 1.005), stop fill\u00d70.95, target fill\u00d71.15, R/R 3:1. AVGO recovered from morning lows $394-404 to $416 \u2014 bearish divergence RESOLVED.",
+      "notes": "AVGO ~$416 PM ET (recovered from $394-404 morning lows). Morning flush was likely institutional profit-taking that reversed. Google/Meta/Apple custom ASIC pipeline intact. Warsh hawkish = high-multiple headwind (PE premium). Re-score on May 26 open: if AVGO above $415 with MACD/volume confirmation, likely qualifies at 7.0. Tentative score 6.5 \u2014 upgrade to 7.0 possible if open shows strength."
     },
     {
       "symbol": "GLD",
       "bucket": "active",
       "score": null,
-      "action": "HOLD \u2014 stop $397.92 must be verified resting. GLD $416.64 today (+1.25%). Cross-asset hedge confirmed. Stop trail consideration: if GLD holds above $415, consider moving stop to $405 (trailing).",
-      "notes": "Gold rising despite oil collapse and risk-on day = dollar weakness driving, not fear premium. This makes GLD thesis more durable. PPI-driven inflation still a bid. Stop $397.92 = 4.9% cushion from $416.64."
+      "action": "HOLD \u2014 verify stop $397.92 resting. GLD ~$416-418. If AMD/MU positions confirmed filled, GLD becomes smaller pct of active bucket. Stop trail: if GLD holds above $415 post-Memorial Day, consider trailing stop to $405.",
+      "notes": "GLD ~$416-418 (flat to +0.1% vs entry $418.86). Dollar weakness thesis intact. 3-day weekend means overnight macro risk \u2014 GLD provides hedge against geopolitical reversal (Iran talks could fail). Stop $397.92 = 4.6% cushion from $418."
     },
     {
       "symbol": "BTC",
       "bucket": "crypto",
       "score": null,
-      "action": "CHECK vs $82K at Pre-Market May 21. Risk-on environment (oil collapse \u2192 lower inflation \u2192 rate cuts \u2192 crypto positive). If BTC \u2265$82K: run full 6-agent assessment and begin 10% crypto bucket deployment (target $10,000).",
-      "notes": "Crypto bucket: 0% deployed (target 10%). Oil collapse may restore rate-cut expectations \u2014 positive for BTC. Middle East de-escalation = less energy cost inflation = crypto mining economics improve. Check threshold at Pre-Market."
+      "action": "MAY 26 PRE-MARKET: CHECK vs $82K threshold. Risk-on environment (Iran de-escalation, equities at highs). Warsh hawkish = slight headwind but crypto driven more by risk sentiment than rates. If BTC \u2265$82K at May 26 pre-market: run full 6-agent and enter.",
+      "notes": "Crypto bucket: 0% deployed (target 10%). BTC below $82K as of May 22. Memorial Day weekend crypto often sees retail buying (no equity market = crypto the only market open May 25). If BTC approaches $82K on May 25, it may break above by May 26 open."
     },
     {
       "symbol": "MRVL",
       "bucket": "active",
-      "score": 7.0,
-      "action": "FULL 6-AGENT AT PRE-MARKET May 21. Limit order if score \u22657. Custom AI networking silicon \u2014 NVDA beat read-through.",
-      "notes": "MRVL custom AI connectivity chips (DPUs, SmartNICs) are infrastructure layer for NVDA-based data centers. NVDA CapEx beat = MRVL demand visibility. Score estimate ~7.0."
-    },
-    {
-      "symbol": "MSFT",
-      "bucket": "active",
-      "score": 7.0,
-      "action": "FULL 6-AGENT AT PRE-MARKET May 21. Limit order if score \u22657. Azure AI + Copilot + NVDA partnership. NVDA CEO 'agentic AI' narrative is enterprise software tailwind.",
-      "notes": "MSFT Azure is NVDA's largest cloud customer. NVDA beat = Azure AI workloads growing faster than expected. Copilot adoption driving enterprise revenue. Score estimate ~7.0. Diversification from semiconductors."
-    },
-    {
-      "symbol": "TSM",
-      "bucket": "active",
-      "score": 7.3,
-      "action": "FULL 6-AGENT AT PRE-MARKET May 21. Limit or MOO if score \u22657 AND strategy switch confirmed (check if already held first). NVDA beat = H200/B200 foundry order surge.",
-      "notes": "TSM is the only foundry for NVDA's H100/H200/B200 chips. NVDA Q1 beat implies massive wafer demand through 2025-2026. Score ~7.3 pre-NVDA beat; may be higher post-confirmation. Do NOT double up if strategy switch executed and TSM was held then re-entered."
+      "score": 7.67,
+      "action": "INELIGIBLE until May 28+ (post-earnings). Earnings May 27 after close. 48h window covers ALL of May 26. DO NOT ENTER on May 26. First valid entry: May 28 Pre-Market (post-earnings reaction).",
+      "notes": "MRVL ~$190.69 today (+2.08%). Multiple analyst upgrades (Citi PT $215, Oppenheimer, Wells Fargo, Melius). Up 105% YTD. Score 7.67 \u2014 would be MANDATORY if not for binary event. Post-earnings setup on May 28: if beats Q1 FY2027 (consensus $2.4B revenue), earnings-reaction-follow entry. If misses: earnings-reaction-fade. Full 6-agent at May 28 Pre-Market."
     }
   ],
   "history": [

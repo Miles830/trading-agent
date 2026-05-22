@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-22 (Friday) — Mid-Morning (11:00 AM ET / 15:09 UTC).** Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All three routine API calls (positions, open orders, new orders) blocked. Market is UP +0.55% (S&P 500 ~7,487, Dow +300+, Nasdaq +0.53%). Key drivers: Kevin Warsh sworn in as Fed Chair today (hawkish — 20-30% rate hike odds by Dec 2026); Iran war talks progress (risk-on). AMD fresh catalyst: $10B Taiwan AI ecosystem investment announced May 21. Three limit bracket order re-attempts (AMD 7.5, PLTR 7.5, MU 7.67) — all blocked. MRVL: SKIPPED (Exemption 2 — Memorial Day May 25 creates binary-event-equivalent constraint: no safe exit before May 27 earnings window). AVGO: REJECTED (score 6.0 — bearish divergence, down ~3% vs market up +0.55%, Warsh hawkish headwind for high-multiple). MRVL price note: ~$183-184 today (multiple analyst upgrades — Citi PT $215 — not $190.95 as May 21 estimate had; $190.95 appears to have been wrong). MRVL ineligible until post-May 27 earnings.
+**2026-05-22 (Friday) — Afternoon (2:00 PM ET / 18:11 UTC).** Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 16th+ consecutive blocked session. **KEY UPDATE: AMD surged to $469.43 (+3.7% today)** on Venice 2nm EPYC CPU production ramp (first industry 2nm HPC processor) + $10B Taiwan AI ecosystem investment confirmation. Score upgraded to 7.83. New entry params for May 26: limit $470, stop $446.50, target $540.50, R/R 3:1. Midday routine MISSED (2nd predecessor failure today after Pre-Market). AVGO RECOVERED to ~$416 from morning lows $394–404 — bearish divergence resolved; re-score for May 26 pre-market. PLTR $136.87 (below our $140.35 limit — not filled). MU $771.20 (limit $765.91 was in day range $747–$772 — likely filled if operator placed order). S&P 500 +0.63% (~7,492, strengthening). All afternoon orders BLOCKED and afternoon playbook prohibits new active entries (proximity-to-close + API-blocked stop placement). No day trades to close. MEMORIAL DAY May 25 — markets closed; next trading day May 26.
+
+**Prior Last Updated:** 2026-05-22 (Friday) — Mid-Morning (11:00 AM ET / 15:09 UTC). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All three routine API calls (positions, open orders, new orders) blocked. Market is UP +0.55% (S&P 500 ~7,487, Dow +300+, Nasdaq +0.53%). Key drivers: Kevin Warsh sworn in as Fed Chair today (hawkish — 20-30% rate hike odds by Dec 2026); Iran war talks progress (risk-on). AMD fresh catalyst: $10B Taiwan AI ecosystem investment announced May 21. Three limit bracket order re-attempts (AMD 7.5, PLTR 7.5, MU 7.67) — all blocked. MRVL: SKIPPED (Exemption 2 — Memorial Day May 25 creates binary-event-equivalent constraint: no safe exit before May 27 earnings window). AVGO: REJECTED (score 6.0 — bearish divergence, down ~3% vs market up +0.55%, Warsh hawkish headwind for high-multiple). MRVL price note: ~$183-184 today (multiple analyst upgrades — Citi PT $215 — not $190.95 as May 21 estimate had; $190.95 appears to have been wrong). MRVL ineligible until post-May 27 earnings.
 
 **Prior Last Updated:** 2026-05-22 (Friday) — Market Open / Pre-Market Catch-Up (9:45 AM ET / 13:45 UTC). Alpaca API BLOCKED — 14th+ consecutive blocked session. Pre-Market silently failed today. S&P 500 May 21 close: 7,445.72; today intraday ~7,413 (-0.26%). AMD $449.59 (up from $447.58 May 21 close — thesis intact). PLTR $139.65 open (broke above $134 resistance — technical upgraded to 7; score 7.5). MU $762.10 (+4.76% — strong NVDA HBM read-through; score 7.67). NVDA $221.06 (recovered from AH selloff; $80B buyback supporting). GLD ~$416.99. BTC $77,447 (below $82K threshold — not mandatory entry). MRVL $190.95 (May 21 close); earnings **May 27** (CORRECTED from May 21 — prior date was wrong). Three limit bracket orders scored+attempted (AMD 7.5, PLTR 7.5, MU 7.67) — all blocked. MRVL skipped (3-order cap; recommend Mid-Morning score). Weekly evolution note written below.
 
@@ -88,19 +90,26 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-05-22 Mid-Morning ~11:00 AM ET — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-05-22 Afternoon ~2:00 PM ET — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** ~$100,600 (estimated; API blocked; market up +0.55% today, GLD ~$417, positions unknown)
+- **Total Equity (estimated):** ~$100,850 (estimated; API blocked; market up +0.63% today; AMD +3.7% if filled)
 - **Cash:** ~$85,550 (Scenario B: switch NOT executed) OR ~$97,280 (Scenario A: switch executed May 18) — unchanged, orders blocked
 - **Long Market Value (estimated):**
-  - Scenario A (switch executed May 18): ~$2,919 (GLD 7sh × $417)
-  - Scenario B (switch NOT executed): ~$15,400 (TSM+GLD+NVDA+JPM+AVGO estimated with today's market +0.55%)
-- **Open Positions:** 1 confirmed (GLD) + unknowns (strategy switch unconfirmed; AMD/PLTR/MU fills from May 21 MOO and May 22 Market Open limit attempts all unknown due to API blockage)
-- **MRVL NOTE:** MRVL price CORRECTED to ~$183-184 (was $190.95 in Market Open estimate — that was wrong). MRVL INELIGIBLE for new entry until post-May 27 earnings (Memorial Day May 25 creates unavoidable binary-event-equivalent constraint).
-- **AVGO NOTE:** AVGO trading ~$394-404 today (bearish divergence — DOWN vs market UP). Scored 6.0, REJECTED. Re-score if it recovers to $415+ in later routine.
-- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 15th+ consecutive blocked session.
+  - Scenario A (switch executed May 18) + AMD filled: ~$8,075 (GLD 7sh×$417 + AMD 11sh×$469 + MU 6sh×$771 = $2,919+$5,159+$4,626)
+  - Scenario A + only GLD: ~$2,919
+  - Scenario B (switch NOT executed): ~$15,800 (TSM+GLD+NVDA+JPM+AVGO estimated with today's market +0.63%)
+- **Open Positions:** 1 confirmed (GLD) + unknowns (AMD/MU possible fills today; PLTR not filled)
+- **MARKET UPDATE (2 PM ET):**
+  - AMD: **$469.43 (+3.7%)** — Venice 2nm CPU production ramp + $10B Taiwan investment. New ATH for this cycle.
+  - PLTR: $136.87 — below our $140.35 limit; GTC order still pending.
+  - MU: $771.20 (range $747–$772) — limit $765.91 was in range; LIKELY FILLED if operator placed it.
+  - AVGO: **~$416** — RECOVERED from morning lows $394–404. Bearish divergence RESOLVED.
+  - MRVL: ~$190.69 (+2.08%) — INELIGIBLE (earnings May 27; 48h window via Memorial Day May 25).
+  - GLD: ~$416–418 est.
+  - S&P 500: **+0.63%** (~7,492).
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). 16th+ consecutive blocked session.
 - **Daytrade Count:** 0
-- **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
+- **3% Circuit Breaker:** NOT TRIGGERED (market UP +0.63%)
 
 ## Bucket State
 | Bucket | Target | Current $ (est.) | Current % | Positions |
@@ -158,25 +167,24 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 All well under 25% sector cap in either scenario. If both old semis (Scenario B) AND new entries (AMD+MU) exist simultaneously: ~18.8% semis — still under 25% cap.
 
 ## Performance vs S&P 500
-- **Portfolio total equity (est.):** ~$100,400 (May 22 intraday)
-- **Portfolio total return:** ~+0.40%
-- **S&P 500 close May 21:** 7,445.72 (+0.17% from May 20 close of 7,432.97). Today (May 22) intraday ~7,413 (-0.26%).
-- **S&P 500 return since strategy start (~May 1):** **+3.4%** (7,445.72 vs ~7,200 est.)
-- **Gap vs SPX:** **~-3.0 percentage points** (improved marginally — S&P down -0.26% today while portfolio estimated flat or tiny positive from GLD/NVDA if still held).
-- **Root cause unchanged:** 85-97% cash from persistent API blockage. 8+ consecutive entry blocks on AMD alone. Every market up-day widens the gap further. The only cure is operator manual execution OR Alpaca API allowlist fix.
+- **Portfolio total equity (est.):** ~$100,850 (May 22 afternoon; AMD +3.7% if filled)
+- **Portfolio total return:** ~+0.85% (mostly from AMD unrealized gain if filled; GLD flat)
+- **S&P 500 close May 21:** 7,445.72. Today May 22 intraday: ~7,492 (+0.63%).
+- **S&P 500 return since strategy start (~May 1):** **~+4.0%** (7,492 vs ~7,200 est.)
+- **Gap vs SPX (best case — AMD filled):** **~-3.2 pp** (portfolio +0.85% vs SPX +4.0%)
+- **Gap vs SPX (worst case — all cash):** **~-4.0 pp** (portfolio ~0% vs SPX +4.0%)
+- **Root cause unchanged:** 85–97% cash from persistent API blockage. AMD has now scored ≥7 for 10+ consecutive sessions. S&P 500 +0.63% today further widens the gap on the cash portion. Only cure: operator manual execution OR Alpaca API allowlist fix.
 
-## Macro Context (as of 2026-05-22 Mid-Morning — web research)
-- **S&P 500 +0.55% today (~7,487):** Dow +300+ pts, Nasdaq +0.53%. Key drivers: Warsh swearing-in (risk-on initially), Iran war talks progress (de-escalation = risk-on). Oil up +1.8% (WTI $98.05) — mild inflationary headwind.
-- **Kevin Warsh NEW FED CHAIR (sworn in today May 22):** Hawkish stance — rates held through 2026, 20-30% probability of hike by December. First FOMC meeting as chair: June 16-17. Higher-for-longer = mild headwind for high-multiple semis (AVGO, MRVL). Lower-multiple value/financials may benefit.
-- **Iran war talks progress:** Geopolitical de-escalation → risk-on → equities bid. Oil up but equities also up (market reading de-escalation as more important than oil supply risk).
-- **AMD $441-451 range today:** Prev close $447.58. NEW CATALYST: $10B Taiwan AI ecosystem investment (May 21). AMD is going big on AI chip manufacturing capacity (TSM CoWoS partnerships). Thesis strengthened. 9th+ consecutive entry attempt blocked.
-- **MU:** Was $762.10 at open; mid-morning price unknown (API blocked). Melius PT $1,100. HBM3e demand validated. Limit $765.91 may be above current price — OPERATOR should check and adjust.
-- **PLTR ~$138-142 range:** Risk-on day should support PLTR continuation. Limit $140.35 may fill.
-- **MRVL ~$183-184:** Multiple analyst upgrades today (Citi PT $215, Oppenheimer, Wells Fargo, Melius). New 52-week high. UP 105% YTD. INELIGIBLE for new entry until post-May 27 earnings due to Memorial Day constraint. Post-earnings entry candidate (May 28+).
-- **AVGO ~$394-404:** Significantly down from May 21 ($410-422). Bearish divergence in up market. Scored 6.0, rejected. Monitor for recovery to $415+.
-- **NVDA ~$221+ today:** Up from May 21 close $219.51. $80B buyback supporting. Not a new entry target — thesis is AMD/MU as cleaner AI vehicles with better R/R.
-- **BTC ~$77K:** Still below $82K threshold. Not a mandatory entry.
-- **GLD ~$417:** Remains near current levels. Stop $397.92 resting (expected — GLD ~4.9% above stop). Thesis: dollar weakness hedge.
+## Macro Context (as of 2026-05-22 Afternoon ~2:00 PM ET — web research)
+- **S&P 500 +0.63% today (~7,492):** Strengthening from +0.55% mid-morning. Dow at record highs. Key drivers: Warsh swearing-in ceremony (hawkish but risk-on today on Iran progress), Iran war talks advancing (geopolitical de-escalation = major risk-on catalyst).
+- **Kevin Warsh NEW FED CHAIR (sworn in today May 22):** Hawkish — 20-30% probability of rate hike by December 2026. First FOMC meeting as chair: June 16-17. Market appears to be taking this positively today (certainty of policy direction is risk-on vs uncertainty).
+- **AMD $469.43 (+3.7% today):** Venice 2nm EPYC CPU production ramp confirmed (first industry 2nm HPC product). $10B Taiwan AI ecosystem investment. AMD breaking above $452 cycle high. Score upgraded 7.83. New all-time intraday high territory.
+- **PLTR $136.87:** Pulled back from $139 intraday high. Still above $134 support. Our limit $140.35 not triggered. Recommend lowering to $137.25 for May 26.
+- **MU $771.20 (range $747–$772):** Limit $765.91 was in today's range. AMD Venice 2nm on TSMC = additional MU HBM demand read-through. Thesis reinforced.
+- **AVGO ~$416:** RECOVERED from morning lows $394–404. Bearish divergence from mid-morning fully reversed. AVGO essentially back to yesterday's range ($410–422). Re-score candidate for May 26 — likely 7.0 if opens above $415 with positive momentum.
+- **MRVL ~$190.69 (+2.08%):** MU/AVGO/MRVL hitting 52-week highs together (chip rally day). MRVL still INELIGIBLE. Earliest entry May 28 (post-earnings).
+- **GLD ~$416–418:** Near flat for the day. Stop $397.92 expected resting.
+- **BTC:** Still below $82K threshold. Not a mandatory entry.
 
 ## Active Themes
 1. **AI infrastructure / semiconductor supercycle** — NVDA beat ($81.62B Q1 FY2027) confirms the thesis. AMD (7.33, MANDATORY entry), MU (HBM demand confirmed, full 6-agent May 21), AVGO (custom ASICs), TSM (foundry demand) all beneficiaries. Semiconductor SOX up 65% YTD 2026.
@@ -186,23 +194,31 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 5. **PLTR government AI** — $135, trigger confirmed. AIP government contracts secular revenue. Re-score at Pre-Market May 21. Entry MOO if ≥$134.
 6. **Oil collapse implications** — WTI -5.66% to $98.26. Middle East de-escalation. Positive for consumer discretionary, airlines, transports. Negative for energy sector. GLD thesis shifts slightly (less geopolitical fear premium, more dollar weakness premium).
 
-## Pending Actions — OPERATOR MUST EXECUTE (Updated May 22 Mid-Morning)
+## Pending Actions — OPERATOR MUST EXECUTE (Updated May 22 Afternoon)
 
-**CRITICAL — TODAY (Friday May 22, before 3:50 PM ET close):**
+**CRITICAL — TODAY (Friday May 22, before 3:50 PM ET MOC deadline):**
 
-1. **STOP AUDIT (HIGHEST PRIORITY):** Verify at https://app.alpaca.markets — confirm ALL open positions have resting GTC stop orders. GLD stop $397.92 must be resting. If AMD/PLTR/MU filled from May 21 MOO or any May 22 limits, place stops at fill×0.95 immediately.
+1. **STOP AUDIT (HIGHEST PRIORITY):** Verify at https://app.alpaca.markets — confirm ALL open positions have resting GTC stop orders BEFORE the 3-day Memorial Day weekend.
+   - GLD 7sh: stop $397.92 expected resting
+   - AMD 11sh (if filled at ~$449): stop $426.55 — **CONSIDER TRAILING TO ~$447** (AMD surged to $469; trailing locks in breakeven buffer ahead of 3-day weekend)
+   - MU 6sh (if filled at ~$765.91): stop $727.61 — VERIFY RESTING
+   - PLTR: NOT filled (limit $140.35; PLTR at $136.87); no stop needed yet
 
-2. **AMD** (score **7.5**, breakout-volume, active): If NOT already open — BUY **11 shares** limit bracket: limit **$449.00** (UPDATED from $451.84 — better fill odds, today range $441-$451.20), stop **$426.55** (-5%), target **$516.35** (+15%, R/R 3:1), `order_class: bracket, time_in_force: gtc`. NEW CATALYST: $10B Taiwan AI investment. **9th+ consecutive deployment failure. MANDATORY.** Note: Cathie Wood selling AMD (mild contrarian signal — often precedes rallies). GTC limit carries to May 26 (first day post-Memorial Day) if not filled today.
+2. **AMD LIMIT UPDATE:** AMD is now at $469.43 — well above the $449.00 limit placed this morning. **CANCEL the $449 limit order and replace with:**
+   BUY 10 shares AMD limit **$470.00**, stop **$446.50** (-5%), target **$540.50** (+15%), `order_class: bracket, time_in_force: gtc`. Score 7.83 (Venice 2nm + $10B Taiwan). GTC carries to May 26.
+   *(Alternatively: if AMD gaps down pre-market May 26 toward $460–465, new limit may not need updating — let the GTC order rest)*
 
-3. **PLTR** (score **7.5**, ai-momentum-pullback, active): If NOT already open — BUY **10 shares** limit bracket: limit $140.35, stop $133.33, target $161.40, `order_class: bracket, time_in_force: gtc`. PLTR ~$138-142 today (risk-on). Limit may fill. GTC carries to May 26 if not filled.
+3. **PLTR** (score 7.5): Limit $140.35 did NOT fill today. **UPDATE LIMIT to $137.25** (lower to match current price area) for May 26. Stop $130.39 (-5%), target $157.84 (+15%), `order_class: bracket, time_in_force: gtc`. GTC carries from today to May 26.
 
-4. **MU** (score **7.67**, ai-momentum-pullback, active): If NOT already open — Check current MU price first. If below $762, LOWER the limit to (current ask × 1.005). Place BUY **6 shares** limit bracket, stop at fill×0.95, target at fill×1.15, `order_class: bracket, time_in_force: gtc`. GTC carries to May 26.
+4. **MU** (score 7.67): If NOT yet filled — **current limit $765.91 is within today's range ($747–$772)**. If still open as GTC: leave as-is (high fill probability May 26). If FILLED today: verify stop $727.61 resting. If NOT placed: place BUY 6sh limit $772.50, stop $733.88, target $888.38, `order_class: bracket, time_in_force: gtc`.
 
-5. **MRVL — DO NOT ENTER.** MRVL is INELIGIBLE until post-May 27 earnings. Reason: Memorial Day May 25 (markets closed) eliminates the safe exit window between today and the 48h earnings window. Any MRVL entered today that isn't closed by today's close would be held into the binary event window on May 26. If accidentally entered: EXIT via MOC order before 3:50 PM ET today.
+5. **AVGO — Re-score candidate for May 26:** AVGO recovered to ~$416 from morning lows $394–404 (full reversal of bearish divergence). Run full 6-agent at May 26 Pre-Market if AVGO opens above $415. Tentative score 7.0. **DO NOT ENTER TODAY** (afternoon rule + API blocked).
 
-6. **AVGO — DO NOT ENTER.** Scored 6.0 (rejected). AVGO bearish divergence today (down ~3-4% vs market up +0.55%). Re-score if it recovers to $415+ with renewed buying volume.
+6. **MRVL — DO NOT ENTER.** INELIGIBLE until post-May 27 earnings. 48h window runs May 25 4PM ET (Memorial Day, closed) → May 27 4PM ET. ALL of May 26 is inside the 48h window. Earliest entry: May 28.
 
-**MEMORIAL DAY NOTE:** May 25 is a market holiday. No trading. GTC limit orders placed today (AMD/PLTR/MU) will be eligible for filling on May 26 (next trading day). No MOO orders May 25. No routine fires May 25. Next scheduled session: May 26 Pre-Market (8:00 AM ET).
+**MEMORIAL DAY NOTE:** May 25 = market holiday. No trading May 23–25. GTC orders from today carry to May 26. Next scheduled session: **May 26 Pre-Market (8:00 AM ET)**. All bracket orders (AMD, PLTR, MU) will be eligible May 26 open.
+
+**3-DAY WEEKEND RISK:** AMD +3.7% today, MU +1.2% today. Both potentially at all-time high territory going into a long weekend. Macro risk: Iran talks progress could reverse (binary geopolitical outcome). Warsh hawkish (rate hike risk). Ensure ALL stops are resting at Alpaca before 4 PM ET today.
 
 **WEEKLY EVOLUTION NOTE DUE:** Friday May 22 Daily Review (4:30 PM ET) — this is the first Friday post-strategy-switch requiring a weekly review update.
 
@@ -263,6 +279,9 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **2026-05-22 — Memorial Day binary event trap identified:** MRVL earnings May 27 (Wed). Prior routines said "must exit by May 25 close" — but May 25 is Memorial Day (market CLOSED). Any MRVL position entered today (Fri May 22) that is not closed by today's MOC would carry to May 26, which is within the 48-calendar-hour binary event window. Lesson: always check holiday calendar when computing binary event windows, especially around 3-day weekends. A "must exit by May 25" instruction is invalid if May 25 is a holiday. The effective last entry date for MRVL was May 22 as a same-day trade only — which is operationally impossible without live API access. Correctly invoked Exemption 2.
 - **2026-05-22 — Warsh hawkish headwind for high-multiple semis:** New Fed Chair Kevin Warsh sworn in today. Markets pricing 20-30% probability of rate hike by December 2026. Higher-for-longer rates = valuation headwind for AVGO (high PE) and other high-multiple semis. This was a contributing factor in AVGO scoring 6.0 (rejected). Future entries in this sector should note Warsh policy trajectory.
 - **2026-05-22 — AVGO bearish divergence signal:** AVGO down ~3-4% on a day when S&P is up +0.55%. This type of bearish divergence (individual stock falling in a rising market) is a meaningful technical signal — suggests specific selling pressure (institutional rebalancing, profit-taking from ATH levels). Correct response: reject entry on negative divergence, wait for recovery to prior support ($415+) with renewed buying volume.
+- **2026-05-22 — AMD Venice 2nm production ramp (Afternoon update):** AMD confirmed production ramp of EPYC "Venice" on TSMC 2nm — the first HPC processor in the industry on 2nm. Combined with $10B Taiwan investment, AMD surged to $469.43 (+3.7%). This is not just a news catalyst; it's a product cycle confirmation (2nm node advantage vs NVDA's 3nm Blackwell). Score upgraded to 7.83. Lesson: when a news catalyst is backed by product cycle confirmation (not just announcement), technical breakouts tend to hold. AMD is now in ATH territory — entry on consolidation (not chase) is the right approach.
+- **2026-05-22 — AMD limit order lag cost:** AMD opened at $449.59 today near our $449 limit. Had the operator placed the order at the Market Open, it likely would have filled near open. AMD then surged to $469 — a 4.4% gain missed on the deployed capital. 10+ consecutive deployment failures. Every day of inaction compounds the opportunity cost (AMD alone: from $413 first score to $469 today = +13.6% in ~2 weeks, all missed).
+- **2026-05-22 — AVGO intraday flush and recovery:** AVGO fell from $410–422 (May 21) to $394–404 at mid-morning, creating a bearish divergence signal. By afternoon, AVGO recovered to $416 — fully reversing the move. Lesson: morning session bearish divergence on a name like AVGO (high institutional ownership) can be a flush/shakeout rather than a true breakdown. Waiting until afternoon to observe recovery before acting was correct — entering at $394–404 would have been catching a flush, not a setup. Re-score on next session's open momentum is the right protocol.
 - **2026-05-22 — AMD $10B Taiwan AI investment catalyst:** AMD announced $10B investment in Taiwan's AI ecosystem (TSM CoWoS, AI chip partnerships). This is a POSITIVE catalyst that strengthens the AI accelerator thesis and supports the $449 entry thesis. AMD has now scored ≥7 for 9+ consecutive sessions without a fill due to API blockage.
 - **2026-05-22 — MRVL price estimate was wrong in Market Open:** Portfolio.md had MRVL at $190.95 (from May 21 close). Mid-Morning web research shows MRVL ~$183-184 (new 52-week high after analyst upgrades). The $190.95 figure was from an earlier data source that may have been incorrect. Lesson: web-research price estimates can drift significantly from actual market prices. Always note the source and time of any price estimate.
 
@@ -341,14 +360,23 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 5. **Memorial Day reminder:** US markets CLOSED May 25. Next trading day after today = May 26. All GTC orders placed today will be eligible May 26.
 6. **MRVL remains INELIGIBLE** through May 27 earnings. Post-earnings entry possible May 28+ if reaction is bullish.
 
-**Afternoon May 22 (2:00 PM ET):**
-- Position P&L review.
-- Any trailing stops upward on winners.
+**Afternoon May 22 (2:00 PM ET — THIS ROUTINE — COMPLETED):**
+- Midday MISSING (2nd predecessor violation today).
+- Stop audit: BLOCKED (HTTP 403, 16th+ consecutive).
+- AMD surged to $469.43 (+3.7%): Score upgraded 7.83. New params: $470 limit, stop $446.50, target $540.50.
+- AVGO recovered to $416: Bearish divergence resolved; re-score May 26.
+- PLTR $136.87: below limit $140.35; recommend lowering limit to $137.25 for May 26.
+- MU $771.20: limit $765.91 was in day range — likely filled if operator acted.
+- No new entries (afternoon proximity-to-close + API blocked).
 
-**Market Close May 22 (3:30 PM ET — CRITICAL for today):**
-- Place MOC orders to close any winning day trades.
-- OPERATOR: Ensure no MRVL position is held into close — if any MRVL accidentally entered, MUST close by 3:50 PM ET (last valid trading day before 48h earnings window + Memorial Day).
-- AMD/PLTR/MU limit orders: if not filled and thesis intact, GTC limits can carry to May 26 (next trading day post-Memorial Day).
+**Market Close May 22 (3:30 PM ET — NEXT ROUTINE):**
+- Stop verification: all open positions must have resting stops before 4 PM (3-day weekend).
+- AMD stop: if filled at $449, TRAIL STOP from $426.55 to $447 before weekend.
+- MU stop: if filled at $765.91, verify $727.61 resting.
+- PLTR: limit $140.35 GTC → recommend operator change to $137.25 for better fill on May 26.
+- MRVL: MUST NOT be held into close (ineligible). No MRVL position should exist.
+- AMD limit: if still at $449 and unfilled, update to $470.00 for May 26.
+- MOC orders: no day trades to close. Only action if any positions need adjustment.
 
 **Daily Review May 22 (4:30 PM ET — WEEKLY EVOLUTION NOTE DUE):**
 - First full week post-strategy-switch (May 18-22) with actual market data.

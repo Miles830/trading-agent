@@ -4,6 +4,181 @@
 
 ---
 
+## 2026-05-22 — Afternoon (2:00 PM ET / 18:11 UTC)
+
+**Context:** Friday May 22, 2026. Afternoon routine firing at 18:11 UTC (2:11 PM ET). Market closes in ~1h 49min. Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 16th+ consecutive blocked session. Market data from web research. **MEMORIAL DAY: US markets CLOSED May 25. Next trading day = May 26 (Tuesday).**
+
+**PREDECESSOR CHECK:**
+- Pre-Market: MISSING (violations logged in Market Open + Mid-Morning routines)
+- Market Open: ✓ STARTED 13:45:39Z / COMPLETED 13:56:28Z
+- Mid-Morning: ✓ STARTED 15:09:04Z / COMPLETED 15:24:01Z
+- **Midday: MISSING** — no heartbeat between 15:24:01Z and 18:11:07Z. Logging violation below.
+
+**MARKET UPDATE (2:11 PM ET):** S&P 500 **+0.63%** (~7,492, strengthening from +0.55% at mid-morning). Dow at record highs on Iran war-talks optimism. **AMD: $469.43 (+3.7%)** — SURGED above $452 prior cycle high on Venice 2nm production ramp confirmation + $10B Taiwan AI ecosystem investment (AMD official press release May 21). **PLTR: $136.87** (day range $134.30–$139.02; below our $140.35 limit — limit did NOT fill). **MU: $771.20** (day range $747.27–$772.30; limit $765.91 was WITHIN range — likely filled if operator placed order). **AVGO: ~$416** — SIGNIFICANT REVERSAL from morning lows of $394–404; bearish divergence resolved, recovering to May 21 levels. **MRVL: ~$190.69** (+2.08%) — INELIGIBLE (Earnings May 27, 48h window starts May 25 = Memorial Day, cannot safely exit before binary event).
+
+**STOP-LOSS AUDIT (MANDATORY FIRST ACTION — RESULT: BLOCKED):**
+- `GET /v2/account` → HTTP 403 "Host not in allowlist"
+- `GET /v2/positions` → HTTP 403 "Host not in allowlist"
+- `GET /v2/orders?status=open` → HTTP 403 "Host not in allowlist"
+- `GET /v2/clock` → HTTP 403 "Host not in allowlist"
+- 16th+ consecutive blocked session. All positions unverified.
+- OPERATOR: **URGENT — verify at https://app.alpaca.markets before 3:50 PM ET today:**
+  1. GLD 7sh stop $397.92 → should be resting (GLD ~$416-418, stop 4.8% below current)
+  2. AMD: if filled at $449, stop $426.55 resting? AMD now at $469 — **consider trailing stop to $447** to lock in breakeven buffer
+  3. MU: if filled at $765.91, stop $727.61 resting?
+  4. PLTR: limit $140.35 pending — did NOT fill (PLTR at $136.87)
+
+**DAY TRADES:** None to close. No day trades were confirmed open (API blocked throughout).
+
+**SWING POSITION UPDATES (estimated):**
+- **GLD**: ~$416–418 vs entry $418.86. Est. P/L: ~-$7 to +$0. Stop $397.92 unchanged. No trail needed (not up 15%+).
+- **AMD (if filled at $449)**: $469.43 current = **+4.54% unrealized** (11sh × $20.43 = $224.73 est.). Stop $426.55 should trail to ~$447. Thesis massively strengthened by Venice 2nm confirmation.
+- **MU (if filled at $765.91)**: $771.20 current = **+0.69% unrealized** (6sh × $5.29 = $31.74 est.). Stop $727.61 resting. Target $880.80 intact.
+- **PLTR**: Limit $140.35 NOT filled. PLTR at $136.87 — pulling back from $139 intraday high. Limit carries as GTC to May 26.
+
+**AVGO RE-ASSESSMENT:** AVGO recovered to ~$416 from morning lows $394–404. This reverses the bearish divergence signal that produced the 6.0 rejection at Mid-Morning. At $416, AVGO is back in the May 21 range ($410–$422). The morning flush appears to have been institutional profit-taking that has since been absorbed. **Pre-scoring for May 26**: Technical improved (reversal candle; may have formed morning hammer or bullish engulfing on hourly chart). Updated tentative score: ~7.0. Full 6-agent at May 26 Pre-Market required before entry.
+
+**CIRCUIT BREAKER CHECK:** S&P 500 +0.63% (UP). Portfolio estimated +0.2–0.5% (GLD near flat; AMD gains if filled). Circuit breaker NOT triggered.
+
+**AFTERNOON ORDERS:** Per routines/afternoon.md — "do NOT initiate new active-bucket entries this routine — too close to close." No new orders placed. All skips documented below with exemption citations.
+
+---
+
+```yaml
+---
+ts: 2026-05-22T18:11:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) did not heartbeat on 2026-05-22. No STARTED or COMPLETED Midday entry in logs/heartbeats/2026-05-22.log between Mid-Morning COMPLETED (15:24:01Z) and Afternoon STARTED (18:11:07Z).
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "VIOLATION: Midday routine silently failed 2026-05-22. This is the 2nd predecessor silent failure today (Pre-Market also missed). Today's execution record: Pre-Market MISSING, Market Open ✓, Mid-Morning ✓, Midday MISSING, Afternoon current. OPERATOR: check scheduler — Midday trigger (12:30 PM ET) did not fire. AMD/PLTR/MU limit-bracket re-attempts were not performed at midday. AVGO recovery check at $416 (from morning $394 lows) would have been a key midday finding."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T18:12:00Z
+action: violation
+symbol: STOP-AUDIT
+bucket: active
+setup: other
+score: null
+thesis: Alpaca API blocked (HTTP 403 'Host not in allowlist') — 16th+ consecutive session. Afternoon stop audit failed. Cannot verify any resting stop orders.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "STOP AUDIT FAILED — GET /v2/positions HTTP 403, GET /v2/orders?status=open HTTP 403. 16th consecutive blocked session. Estimated position stops: GLD stop $397.92 (GLD ~$416 est., cushion ~4.8% — expected resting); AMD stop $426.55 IF filled at $449 (AMD now $469.43 — stop is 9.4% below current, conservative — consider trailing to $447); MU stop $727.61 IF filled at $765.91 (MU $771.20 — stop 5.7% below, within expected bracket). OPERATOR: audit https://app.alpaca.markets BEFORE 3:50 PM ET (MOC deadline). AMD has surged to $469 — if filled at $449, consider trailing stop to ~$447 to protect against overnight gap risk over the 3-day Memorial Day weekend."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T18:13:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.83
+thesis: AMD Venice 2nm EPYC production ramp confirmed (May 21 press release) + $10B Taiwan AI ecosystem investment. Stock at $469.43 — broke above $452 cycle high. Industry's first HPC processor on TSMC 2nm. Score 7.83.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 9
+agent_average: 7.83
+agents_above_7: 5
+master_decision: rejected
+master_notes: "SKIP — EXEMPTION 1 (Guardrail violation): (A) routines/afternoon.md explicitly prohibits new active-bucket entries at this routine — 'too close to close'; (B) Alpaca API blocked (HTTP 403) — stop-loss placement is impossible; placing an order at 2:11 PM ET with no path to stop placement before 4 PM close would create a naked overnight position violating CLAUDE.md mandatory stop requirement; (C) 3-day Memorial Day weekend (May 23–25) amplifies overnight gap risk for new entries without confirmed stops. UPDATED ENTRY PARAMS FOR MAY 26: AMD at $469.43, limit $470.00, stop $446.50 (-5%), target $540.50 (+15%), R/R 3.0:1. Qty 10sh × $470 = $4,700 = 4.7% of $100K (under 5% cap). Trade risk: $23.50 × 10 = $235 = 0.24% (under 1.5%). Score upgraded: Technical 7 (Venice 2nm breakout above $452 resistance + volume spike catalyst; MACD bullish; 2/5+ stack confirmed); Tech Analyst 9 (first industry 2nm HPC CPU — defensible moat; Verano roadmap already announced; AMD+TSMC partnership deepens at $10B+ investment level); Risk 9 (clean guardrail compliance at $470 entry — sub-5% position, sub-1.5% risk, 3:1 R/R). Warsh hawkish slight headwind (Macro 7, not 8). xAI API unavailable — degrading gracefully. NOTE: AMD up 3.7% today; RSI likely overbought intraday. On May 26, if AMD consolidates at $465–470 with MACD/Stochastic confirming (not overbought), enter limit. If AMD gaps up >2% more, wait for intraday pullback to $467–468 before adjusting limit."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T18:14:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR at $136.87, pulled back from $139.02 intraday high. Still above $134 key support. Limit $140.35 did NOT fill. AI AIP government revenue secular; breakout above $134 resistance intact.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: rejected
+master_notes: "SKIP — EXEMPTION 1 (Guardrail): (A) routines/afternoon.md proximity-to-close rule; (B) API blocked — no stop placement possible. PLTR at $136.87, below our limit of $140.35 — limit order has NOT been triggered. Note: PLTR touched $139.02 intraday but pulled back. This pullback is normal consolidation above $134 support. UPDATED ENTRY PARAMS FOR MAY 26 (Option A — aggressive, tighter to current price): limit $137.25 (current ask ~$137 × 1.005), stop $130.39 (-5%), target $157.84 (+15%), R/R 3.0:1. 10sh × $137.25 = $1,373 = 1.4% of $100K (under 5%). Trade risk: $6.86 × 10 = $68.60 = 0.07% (well under 1.5%). OPTION B (conservative): keep limit $140.35 for breakout above today's intraday high. Recommend Option A — PLTR likely to open near $136–138 on May 26 after the long weekend; limit $137.25 has higher fill probability while still entering above the key $134 pivot. xAI API unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T18:15:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: MU at $771.20 (day range $747.27–$772.30). Limit $765.91 was within today's range — likely filled if operator placed order. Thesis intact: NVDA HBM3e demand confirmed; ATH $818.67 in sight. Score 7.67 maintained.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: rejected
+master_notes: "SKIP — EXEMPTION 1 (Guardrail): (A) routines/afternoon.md proximity-to-close; (B) API blocked — fill status and stop placement unverifiable. CRITICAL: MU limit $765.91 was WITHIN today's range ($747.27–$772.30). IF OPERATOR PLACED THE LIMIT ORDER, IT VERY LIKELY FILLED. OPERATOR: (1) Check if MU 6sh filled at ~$765.91; (2) If filled, verify stop $727.61 is resting — CRITICAL ahead of Memorial Day 3-day weekend; (3) If NOT filled, new limit for May 26: $772.50 (current ask × 1.005), stop $733.88 (-5%), target $888.38 (+15%), R/R 3.0:1. AMD Venice 2nm on TSMC 2nm node = AMD+MU HBM partnership for AI workloads; direct additional read-through catalyst for MU HBM3e demand. Next MU earnings: June 24 (well outside 48h window). xAI API unavailable."
+---
+```
+
 ## 2026-05-22 — Mid-Morning (11:00 AM ET / 15:09 UTC)
 
 **Context:** Friday May 22, 2026. Mid-Morning routine firing at 15:09 UTC (11:09 AM ET). Market Open ran and completed (heartbeat confirmed 13:45–13:56 UTC). Pre-Market silently missed (no STARTED Pre-Market heartbeat in today's log). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All API calls attempted and documented below. Market data from web research.
