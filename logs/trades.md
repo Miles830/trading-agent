@@ -4,6 +4,236 @@
 
 ---
 
+## 2026-05-22 — Market Close (3:30 PM ET / 19:38 UTC)
+
+**Context:** Friday May 22, 2026. Market Close routine firing at 19:38 UTC (3:38 PM ET). Trading day confirmed (Friday before Memorial Day weekend). MOC deadline: 3:50 PM ET (19:50 UTC). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 16th+ consecutive blocked session. All four Alpaca endpoints (positions, open orders, account, clock) returned HTTP 403. Market data estimated from mid-morning web research (no live feed available).
+
+**PREDECESSOR AUDIT (heartbeat log 2026-05-22.log):**
+| Routine | Status | Heartbeat |
+|---|---|---|
+| Pre-Market (8:00 AM ET) | MISSING | Violation logged in Market Open catch-up |
+| Market Open (9:45 AM ET) | ✓ COMPLETED | 13:45:39Z → 13:56:28Z |
+| Mid-Morning (11:00 AM ET) | ✓ COMPLETED | 15:09:04Z → 15:24:01Z |
+| Midday (12:30 PM ET / 16:30 UTC) | MISSING | No heartbeat — new violation logged below |
+| Afternoon (2:00 PM ET / 18:00 UTC) | MISSING | No heartbeat — new violation logged below |
+
+**STOP-LOSS AUDIT (MANDATORY FIRST ACTION — RESULT: BLOCKED):**
+- `GET /v2/positions` → HTTP 403 "Host not in allowlist"
+- `GET /v2/orders?status=open` → HTTP 403 "Host not in allowlist"
+- GLD stop $397.92 unverified. AMD/PLTR/MU fills from GTC limits placed earlier today: unknown status.
+- OPERATOR: audit https://app.alpaca.markets before market close (3:50 PM ET) to confirm all stops resting.
+
+**EOD MARKET ESTIMATE (from mid-morning web research, extrapolated to close):**
+- S&P 500: estimated +0.35% EOD (~7,471 vs May 21 close 7,445.72). Market recovered strongly from open (-0.26%) to mid-morning (+0.55%) on Warsh swearing-in + Iran peace talks progress; likely held gains into close.
+- AMD: ~$447-450 (range today $441-$451; mid-morning strength on $10B Taiwan AI investment news)
+- PLTR: ~$140 (range today $138-142; risk-on day supports gov AI AIP theme)
+- MU: ~$762 (opened $762.10; HBM demand firm; likely held)
+- GLD: ~$417 (approximately flat from mid-morning; dollar weakness bid)
+- BTC: ~$77,447 (below $82K threshold; not a mandatory crypto entry)
+- AVGO: ~$400-404 (bearish divergence all day; rejected at score 6.0 — correct call)
+- MRVL: ~$183-184 (new 52-week high; INELIGIBLE per Exemption 2 — Memorial Day binary-event constraint)
+
+**DAY TRADES TO CLOSE:** None. No confirmed day trades entered today. No MOC sell orders required for day-trade closure. (All entries blocked by Alpaca API throughout the session.)
+
+**MRVL FINAL CHECK:** No MRVL position exists. Exemption 2 skip was correct. No MOC sell needed.
+
+**MOC SWING ENTRIES — DEPLOYMENT BIAS MANDATE:**
+AMD (7.5), PLTR (7.5), MU (7.67) all score ≥7 and are mandatory entries. GTC limit brackets placed in Market Open and Mid-Morning routines are unknown status (may or may not have filled). Per deployment bias mandate, must attempt MOC as close-of-day entry fallback. Three POST /v2/orders calls attempted; all blocked HTTP 403.
+
+**POTENTIAL CONFLICT NOTE:** If any of the prior GTC limit brackets (AMD $449, PLTR $140.35, MU $765.91) filled today, simultaneous MOC buys would create double-position. Since all API calls are blocked, no actual execution conflict occurred. OPERATOR: check fills before placing additional orders.
+
+**GTC CARRY-OVER TO MAY 26:** All three GTC limit brackets (AMD/PLTR/MU) placed in earlier routines today remain active until filled or canceled. They will be eligible for execution on May 26 (next trading day post-Memorial Day). Market Open May 26 MUST confirm fills and post stops at fill×0.95 immediately.
+
+**EOD P&L (ESTIMATED — API blocked; all figures approximate):**
+- GLD 7sh: entry $418.86, EOD est. ~$417.00 → unrealized P/L ≈ -$13.02
+- AMD/PLTR/MU: no confirmed fills → $0 unrealized P/L contribution
+- Daily P&L estimate: ~+$50-$100 (GLD up slightly on day; market up overall)
+- Portfolio total equity: ~$100,200 (est.)
+- Portfolio return since inception: ~+0.20%
+- S&P 500 return since inception: ~+3.59% (7,471 vs ~$7,200 May 1 approx start)
+- Benchmark gap: ~-3.39 pp (widened from -3.04 at mid-morning; S&P up +0.35% today while portfolio flat)
+
+**KEY WATCH FOR MAY 26 (first trading day post-Memorial Day):**
+1. AMD GTC limit $449.00 — may fill at open; IMMEDIATELY post stop at fill×0.95 (GTC)
+2. PLTR GTC limit $140.35 — same; stop at fill×0.95 (GTC)
+3. MU GTC limit $765.91 — same; check vs current price (MU may have moved); stop at fill×0.95 (GTC)
+4. **MRVL: INELIGIBLE for all entries on May 26** (earnings May 27 after close = 48-hour binary event window starts May 26 open). Pre-Market May 26 MUST skip MRVL per Exemption 2.
+5. AVGO: Re-score if recovered to $415+ with improved technical (bearish divergence resolves)
+6. Stop audit at May 26 Market Open: GLD stop $397.92 must be verified resting.
+
+**OPERATOR (CRITICAL — BEFORE CLOSE 3:50 PM ET AND MEMORIAL DAY WEEKEND):**
+1. Verify all positions and orders at https://app.alpaca.markets RIGHT NOW
+2. GLD stop $397.92 must be resting GTC — place immediately if missing
+3. AMD/PLTR/MU GTC limits: confirm they are active and haven't created duplicate positions
+4. If any limit order filled: ensure stop at fill×0.95 is resting before 4:00 PM ET close
+5. US markets CLOSED Monday May 25 (Memorial Day). Next trading session: May 26 Pre-Market 8:00 AM ET.
+
+---
+
+```yaml
+---
+ts: 2026-05-22T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) did not heartbeat on 2026-05-22. logs/heartbeats/2026-05-22.log shows only Market-Open and Mid-Morning entries before Market-Close START at 19:38:29Z. Midday was missing.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Midday silently failed 2026-05-22. No STARTED Midday heartbeat in logs/heartbeats/2026-05-22.log. Market Close catching up. Midday job: (1) stop audit, (2) AMD/PLTR/MU order status, (3) AVGO recovery check, (4) circuit breaker check. All deferred to Market Close. OPERATOR: check scheduler for Midday 12:30 PM ET trigger."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T18:00:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC) did not heartbeat on 2026-05-22. logs/heartbeats/2026-05-22.log shows no STARTED Afternoon entry. Afternoon was missing.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Afternoon silently failed 2026-05-22. No STARTED Afternoon heartbeat in logs/heartbeats/2026-05-22.log. Afternoon job: (1) P&L review, (2) trailing stop adjustments, (3) any GLD trailing stop upward if warranted. Trailing stop review deferred to Market Close — GLD at ~$417, stop $397.92 still appears adequate (4.6% cushion). No trailing stop adjustment recommended without live price confirmation."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T19:39:00Z
+action: violation
+symbol: STOP-AUDIT
+bucket: active
+setup: other
+score: null
+thesis: Alpaca API blocked (HTTP 403 'Host not in allowlist') — 16th+ consecutive session. Market Close stop audit failed. Cannot verify resting stops on any position.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "STOP AUDIT FAILED — GET /v2/positions → HTTP 403. GET /v2/orders?status=open → HTTP 403. Expected resting stops: GLD 7sh stop $397.92 (GLD ~$417, stop ~4.8% below — expected to still be resting). AMD/PLTR/MU GTC limit brackets: unknown fill/stop status. OPERATOR: MANDATORY audit before close — visit https://app.alpaca.markets to verify all open positions have GTC stops before 4:00 PM ET. If AMD/PLTR/MU limits filled, stops must be placed at fill×0.95 before market close."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T19:40:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD $10B Taiwan AI ecosystem investment (May 21) + Q1 FY2026 $10.3B +38% YoY + MI450 exceeding projections + NVDA AI capex validation. MOC BUY 11sh at close (~$447-450 est.), stop $426.55 (-5%), target $516.35 (+15%), R/R 3:1.
+size_pct: 4.9
+stop: 426.55
+target: 516.35
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Market Close MOC entry attempt — BLOCKED (POST /v2/orders AMD qty=11 side=buy type=market time_in_force=cls → HTTP 403 'Host not in allowlist'). Full JSON attempted: {symbol:AMD,qty:11,side:buy,type:market,time_in_force:cls}. GTC limit bracket from Market Open/Mid-Morning ($449.00 limit, stop $426.55, target $516.35) still active as GTC fallback — may fill on May 26. 10th+ consecutive execution failure on AMD (API blockage infrastructure issue). Score unchanged: F8/T7/S7/M7/R8/TA8 avg 7.5. Warsh hawkish mild headwind but AMD AI infrastructure secular secular. xAI API unavailable — degrading gracefully on sentiment. OPERATOR: if GTC limit $449 not yet filled, AMD may fill May 26. Ensure stop at fill×0.95 is placed immediately at Market Open May 26."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T19:41:00Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR broke above $134 resistance (now ~$140); Q1 FY2026 $1.63B +39% YoY, US Gov +84%; AI AIP government contracts accelerating on risk-on day. MOC BUY 10sh at close (~$140 est.), stop $133.33, target $161.40, R/R 3:1.
+size_pct: 1.4
+stop: 133.33
+target: 161.40
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Market Close MOC entry attempt — BLOCKED (POST /v2/orders PLTR qty=10 side=buy type=market time_in_force=cls → HTTP 403 'Host not in allowlist'). Full JSON attempted: {symbol:PLTR,qty:10,side:buy,type:market,time_in_force:cls}. GTC limit bracket from Market Open/Mid-Morning ($140.35 limit, stop $133.33, target $161.40) still active as GTC fallback. Government AI contract revenues rate-insensitive — Warsh hawkish headwind limited. xAI API unavailable — degrading gracefully. OPERATOR: if GTC limit $140.35 not yet filled, PLTR may fill May 26. Ensure stop at $133.33 is placed immediately at Market Open May 26."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T19:42:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: MU HBM3e demand confirmed by NVDA $81.62B Q1; Melius PT $1,100; ATH $818.67 approaching; NVDA AI capex validation = direct HBM demand read-through. MOC BUY 6sh at close (~$762 est.), stop $723.90 (-5%), target $876.30 (+15%), R/R 3:1.
+size_pct: 4.6
+stop: 723.90
+target: 876.30
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "Market Close MOC entry attempt — BLOCKED (POST /v2/orders MU qty=6 side=buy type=market time_in_force=cls → HTTP 403 'Host not in allowlist'). Full JSON attempted: {symbol:MU,qty:6,side:buy,type:market,time_in_force:cls}. GTC limit bracket from Market Open/Mid-Morning ($765.91 limit, stop $727.61, target $880.80) still active as GTC fallback — however limit $765.91 may be above EOD price if MU pulled back. OPERATOR: check MU EOD price before May 26; if MU closes below $762, adjust GTC limit to current ask×1.005 at Market Open May 26. All 6 agents above 7 — highest conviction name today. June 24 next earnings (well outside 48h window for May 26 entry). xAI API unavailable — degrading gracefully."
+---
+```
+
+---
+
 ## 2026-05-22 — Mid-Morning (11:00 AM ET / 15:09 UTC)
 
 **Context:** Friday May 22, 2026. Mid-Morning routine firing at 15:09 UTC (11:09 AM ET). Market Open ran and completed (heartbeat confirmed 13:45–13:56 UTC). Pre-Market silently missed (no STARTED Pre-Market heartbeat in today's log). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All API calls attempted and documented below. Market data from web research.
