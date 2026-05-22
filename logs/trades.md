@@ -4,6 +4,183 @@
 
 ---
 
+## 2026-05-22 — Pre-Market (8:00 AM ET / 12:10 UTC)
+
+**Context:** Friday May 22, 2026. Last trading day before Memorial Day weekend (market closed Monday May 25). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 14th+ consecutive blocked session. S&P 500 futures +0.39% (risk-on). Iran peace talks + continued oil retreat ($96.35 WTI, -2% Thursday) = supportive macro. University of Michigan Consumer Sentiment (Final May) on calendar. Bond market closes at 2:00 PM ET today (early close pre-holiday — equities trade normal hours).
+
+**Pre-market prices:** AMD ~$449-455 (+1.6% from $447.58 May 21 close) · PLTR $137.41 (+$0.26, well above $134 trigger) · MU $739.11 pre-market (+2.6% — Samsung worker strike expected through June 7 → ~3% global DRAM supply impact = direct MU benefit) · NVDA $213.35 pre-market (-0.87%) · MRVL $194.54 (+2% on Citi price target raise from $118→$215, +82%) · AVGO ~$400 (consolidating; next earnings June 3) · BTC $77,482 (still below $82K threshold).
+
+**USER SUGGESTIONS:** No open GitHub issues with label `user-suggestion`. None to process.
+
+**STOP AUDIT — MANDATORY FIRST ACTION (RESULT: FAILED):** GET /v2/positions and GET /v2/orders?status=open → "Host not in allowlist" on all calls. Cannot verify GLD stop $397.92, cannot confirm strategy-switch status (TSM/NVDA/JPM/AVGO), cannot confirm whether May 21 operator-directed AMD/PLTR/MU MOO fills exist. OPERATOR: manually verify all open positions and stops at https://app.alpaca.markets before 9:30 AM ET.
+
+**MRVL STATUS CORRECTION (vs. May 21 skip entry):** May 21 entry incorrectly logged MRVL as binary-event blocked due to "earnings May 21." CONFIRMED: MRVL Q1 FY2027 earnings are scheduled for **May 27, 2026 after close** (TipRanks confirmed). The 48-hour pre-earnings exclusion window runs from close of Friday May 23 (weekend) → effectively Mon May 25 close → Tue May 26 is excluded. **Today May 22 is the LAST VALID ENTRY DAY for MRVL before the earnings window.** Next valid entry: May 28+ (post-earnings). MRVL scored and attempted today.
+
+**NEW CATALYST — MU (Samsung strike):** Samsung semiconductor workers expected to strike May 22–June 7 (talks broke down). Samsung supplies ~35-40% of global DRAM. A strike affecting ~3% of global DRAM production creates immediate supply-tightening for MU — pricing power, faster share gains. This NEW catalyst updates MU's score from 7.67 → 8.33 today.
+
+**MOO ORDER PRIORITY TODAY (3 slots):**
+1. **MRVL** (8.33) — new entry, time-sensitive (last valid day before May 27 earnings exclusion)
+2. **AVGO** (7.50) — new entry, not on yesterday's MOO list, NVDA custom ASIC thesis
+3. **AMD** (7.83) — continued from yesterday (API-blocked, potential operator fill — see duplicate risk note)
+
+**SKIP RATIONALE — MU and PLTR:**
+- **MU**: Scored 8.33 today (higher than AVGO/AMD). Skipped for MOO today under Exemption 1: if operator manually placed May 21 MOO (6sh at ~$720), a new 6sh buy today at $739 = 12sh total × $739 = $8,868 = **8.8% of equity — violates 5% single-position cap**. Cannot verify fill status via API. Safer to skip; if not held, MU must be entered Tuesday May 26 (also within earnings 48h window — wait, MU earnings are June 24, so May 26 is fine). MU skip with Exemption 1.
+- **PLTR**: Already scored 7.17 May 21. If operator filled 10sh at ~$134-137, adding another 10sh = 20sh × $137 = $2,740 = 2.7% (within 5% cap but doubles intended position). Skipping to avoid inadvertent overweight; document as Exemption 1 precaution.
+
+**3 MOO ORDERS ATTEMPTED — ALL BLOCKED:**
+
+```
+curl POST /v2/orders MRVL 25sh MOO → "Host not in allowlist"
+curl POST /v2/orders AVGO 12sh MOO → "Host not in allowlist"
+curl POST /v2/orders AMD 10sh MOO → "Host not in allowlist"
+```
+
+**OPERATOR ACTION REQUIRED — BEFORE 9:25 AM ET TODAY (Friday May 22):**
+1. **MRVL**: BUY 25 shares MOO (`type: market, time_in_force: opg`). Stop: fill × 0.95. Target: fill × 1.15 (natural target also $215 Citi PT). **LAST VALID DAY** — earnings May 27 after close; next entry opportunity May 28+.
+2. **AVGO**: BUY 12 shares MOO. Stop: fill × 0.95. Target: fill × 1.15.
+3. **AMD**: BUY 10 shares MOO **ONLY IF** AMD is NOT already held from May 21 operator action. If AMD is already held, CANCEL this order — doubling would reach ~$9K = 9% position, violating 5% cap.
+4. **MU**: IF MU is NOT held from May 21, BUY 6 shares (Samsung strike new catalyst; can use remaining limit-order capacity at Market Open instead of MOO to avoid cap issues).
+5. **Market Open (9:45 AM ET)**: For EVERY MOO that fills today, post a standalone GTC stop-loss order immediately: `stop_price = fill × 0.95`.
+
+---
+
+```yaml
+---
+ts: 2026-05-22T12:15:00Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 8.33
+thesis: MRVL Q1 FY2026 DC revenue $1.44B (+76% YoY); co-designs Amazon Trainium 2 AI accelerator; Citi raised PT $118→$215 (+82%) on Trainium 2 ramp; +15% in 5 sessions; May 22 is last valid day before May 27 earnings 48h exclusion window.
+size_pct: 4.85
+stop: 184.81
+target: 223.72
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents at ≥7; avg 8.33 — highest-scoring setup this session. Fundamentals 9: Q1 FY2026 revenue $1.895B (+63% YoY), data center $1.44B (+76% YoY), Q2 guidance $2B (+57% YoY), co-designing Amazon Trainium 2 custom ASIC + custom silicon for MSFT and Google — massive TAM. Citi PT raised 82% to $215 (analyst Atif Malik). Technical 7: +15% in 5 sessions, strong uptrend, volume spike on PT raise confirmed (1/5), MACD bullish crossover in uptrend (2/5); technically in momentum mode; score capped at 7 because RSI likely overbought (40+ point run). Sentiment 9: Citi +82% PT raise (most aggressive upgrade in semiconductor space this week), Marvell up 179% in past year, Amazon Trainium 2 co-design = earnings catalyst visibility; xAI API unavailable — no X modifier, degrading gracefully. Macro 8: AI infrastructure capex cycle intact (NVDA Q1 $81.62B validates custom ASIC TAM); oil retreat + Iran talks = risk-on macro; S&P futures +0.39%. Risk 8: 25sh × $194.54 = $4,864 = 4.85% ≤ 5% ✓; stop -5% = $184.81, target +15% = $223.72 (also below Citi PT $215), R/R 3:1 ✓; trade risk 25 × $9.73 = $243 = 0.24% ≤ 1.5% ✓; semis sector well under 25% ✓; positions ≤ 12 ✓; cash floor maintained ✓. Tech Analyst 9: Amazon Trainium 2 co-design is a multi-year design win worth multiple billions in silicon revenue; MRVL also leads in 1.6T optical transceivers for AI spine networks (picks-and-shovels AI infrastructure); PAM4 DSP chips for hyperscaler interconnects; defensible through co-design relationships (12-18 month design lock-in). ORDER ATTEMPTED: POST /v2/orders MRVL 25sh MOO → BLOCKED 'Host not in allowlist' (14th+ consecutive). OPERATOR: place 25-share MRVL MOO before 9:25 AM ET — THIS IS THE LAST VALID ENTRY DAY BEFORE MAY 27 EARNINGS."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T12:16:00Z
+action: entry
+symbol: AVGO
+bucket: active
+setup: ai-momentum-pullback
+score: 7.50
+thesis: AVGO Q1 FY2026 AI semiconductors $8.4B (+106% YoY); custom ASICs for Google (TPU), Meta, Microsoft; NVDA Q1 beat confirms hyperscaler AI spend secular; pulled back from highs to ~$400; next earnings June 3 (outside 48h window today).
+size_pct: 4.79
+stop: 380.00
+target: 460.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 5
+master_decision: approved
+master_notes: "5 of 6 agents ≥7 (Technical 6 is the outlier); avg 7.50 ≥ 7.0; Risk 7 ≥ 6 (no veto); 5 of 6 ≥ 7 ≥ 4 requirement ✓. Fundamentals 8: Q1 FY2026 record revenue $19.3B (+29% YoY); AI semiconductors $8.4B (+106% YoY); semiconductor solutions +52% YoY; VMware integration on track; June 3 next earnings = no binary event. Technical 6: AVGO ~$400 pulled back from recent highs (~$427 May 21); consolidating — not a clean breakout or reversal; MACD tentatively bullish in overall uptrend but insufficient indicator stack (1/5 confirmed — MACD only); RSI normalizing from overbought, which improves entry quality. Technical kept at 6 (under 2/5 threshold). No candlestick bonus (technical already scored 6). Sentiment 8: NVDA custom ASIC validation directly benefits AVGO (Google TPU, Meta custom chip, Microsoft Maia — all AVGO-designed); strong buy consensus; xAI API unavailable. Macro 8: AI capex secular; risk-on Friday (futures +0.39%); oil retreat improving macro backdrop. Risk 7: 12sh × $400 = $4,800 = 4.79% ≤ 5% ✓; stop -5% = $380, target +15% = $460, R/R 3:1 ✓; trade risk 12 × $20 = $240 = 0.24% ≤ 1.5% ✓; semis sector ≤ 25% ✓. Tech Analyst 8: Custom ASIC design for three of five largest hyperscalers (Google, Meta, MSFT); network infrastructure (ethernet switching, storage networking); VMware acquisition adds sticky software stack; multi-year design-win moats. ORDER ATTEMPTED: POST /v2/orders AVGO 12sh MOO → BLOCKED 'Host not in allowlist' (14th+ consecutive). OPERATOR: place 12-share AVGO MOO before 9:25 AM ET."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T12:17:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.83
+thesis: AMD Q1 2026 Data Center $5.8B (+57% YoY); MI450 exceeding demand expectations; NVDA Q1 beat confirms AI accelerator TAM; pre-market ~$450 (+1.6% from $447.58 May 21 close); 7th+ consecutive attempt (all API-blocked).
+size_pct: 4.54
+stop: 427.35
+target: 518.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7; avg 7.83. Thesis unchanged from May 21 score (7.67 → 7.83 today as AMD closed +$7.08 from pre-market open level). Fundamentals 8: Q1 2026 revenue $10.3B +38% YoY, DC $5.8B +57% YoY, MI450 demand exceeding forecast. Technical 7: closed $447.58 May 21 (+$19 intraday reversal from $428.92 pre-market low), pre-market $449-455 today; MACD bullish + volume spike on the May 21 session confirmed 2/5 stack. Sentiment 8: NVDA AI accelerator demand confirmation; risk-on Friday macro. Macro 8: AI capex intact; oil retreat supportive. Risk 8: 10sh × ~$450 = $4,500 = 4.49% ≤ 5% ✓; stop -5% = $427.35, target +15% = ~$518, R/R 3:1 ✓; trade risk ~$225 = 0.22% ≤ 1.5% ✓. Tech Analyst 8: CDNA4/MI450, ROCm improving, EPYC 32%+ DC CPU market share. DUPLICATE RISK WARNING: May 21 operator was directed to manually place AMD 10sh MOO. If operator executed, this is a duplicate order — CANCEL if AMD already held (doubling to 20sh × $450 = $9K = 9% position would VIOLATE 5% cap). OPERATOR: verify AMD position before placing. ORDER ATTEMPTED: POST /v2/orders AMD 10sh MOO → BLOCKED 'Host not in allowlist' (14th+ consecutive)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T12:18:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 8.33
+thesis: MU Samsung strike new catalyst — supply tightening boosts MU pricing power; pre-market $739.11 (+2.6%); next earnings June 24 (outside 48h window).
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 9
+  macro: 9
+  risk: 8
+  tech_analyst: 8
+agent_average: 8.33
+agents_above_7: 6
+master_decision: rejected
+master_notes: "SKIP — GUARDRAIL EXEMPTION 1. MU scores 8.33 (would be MANDATORY entry) but cannot safely place today without verifying May 21 fill status. If operator placed May 21 MOO (6sh directed MOO), current holding = 6sh × ~$720. Adding today's 6sh × $739 = total 12sh × $739 = $8,868 = 8.8% equity — VIOLATES 5% single-position hard cap. API blocked; cannot verify. MU MUST be entered Tuesday May 26 (next trading day; MU earnings June 24 = outside 48h window ✓) or via limit order at Market Open today IF position is confirmed NOT held. Samsung catalyst NEW today: workers expected to strike May 22–June 7 (talks broke down); affects ~3% global DRAM production; immediate pricing power for MU. Score update F=8, T=8, S=9, M=9, R=8, TA=8 → 8.33."
+---
+```
+
+```yaml
+---
+ts: 2026-05-22T12:19:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: PLTR $137.41 pre-market; $134 support holding comfortably; AIP government AI narrative intact; prior score unchanged.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 5
+master_decision: rejected
+master_notes: "SKIP — GUARDRAIL EXEMPTION 1 (precautionary). PLTR scored 7.17 May 21 (unchanged today — no material new data). May 21 operator was directed to place PLTR 10sh MOO if open ≥$134. If operator placed and filled, PLTR is already held at 10sh. Adding another 10sh today = 20sh × $137 = $2,740 = 2.7% (within 5% cap but doubles intended position without new thesis justification). Skipping to avoid inadvertent position doubling; PLTR at $137.41 is holding well above $134 trigger — thesis intact, position size already appropriate if held. If NOT held from May 21, score 7.17 is above threshold but below MRVL/AVGO/AMD in today's priority queue (3-MOO cap exhausted). PLTR remains MANDATORY entry at Tuesday May 26 routine if not yet held."
+---
+```
+
+---
+
 ## 2026-05-21 — Pre-Market (8:00 AM ET / 12:02 UTC)
 
 **Context:** Thursday May 21, 2026. NVDA post-earnings reaction day. Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 13th+ consecutive blocked session. All 3 MOO order attempts failed (AMD, PLTR, MU) — responses documented below. NVDA Q1 FY2027: BEAT ($81.62B revenue, +85% YoY; EPS beat), $80B additional buyback + quarterly dividend raised 1¢ → 25¢. NVDA trading ~$220.66 today (range $216.25–$226.94). AMD pre-market ~$428.92 (−3.59% — sector contagion; no AMD-specific news; AMD ended May 21 at $447.58). PLTR pre-market $134.01 (barely at $134 trigger). BTC $77,852 (below $82K threshold, scored 5.3/10 — not a mandatory entry, not a Deployment Bias violation). S&P 500 futures +0.09%. No open user-suggestion GitHub issues.
