@@ -4,6 +4,63 @@
 
 ---
 
+## 2026-05-23 — Pre-Market routine fired on non-trading day (Saturday)
+
+2026-05-23 is a **Saturday**. US equity markets closed. Memorial Day **May 25** also closed. Next trading day: **May 26, 2026 (Tuesday)**. No orders placed or executable.
+
+**Friday May 22, 2026 close (web research — API blocked):**
+- S&P 500: **7,473.47** (+0.37%) — 8th consecutive weekly gain. Dow 50,579.70 (+0.58%), Nasdaq 26,343.97 (+0.19%).
+- AMD: **$467.58** (+$17.99, +4.00%) — 2nm AI ramp, multiple analyst target hikes. OUR LIMIT $449.00 DID **NOT** FILL (AMD gapped well above limit at open ~$474, closed $467.58).
+- MU: **~$771** (low $747.27) — OUR LIMIT $765.91 **LIKELY FILLED** on the intraday dip to $747. To confirm Monday via Alpaca.
+- PLTR: **high $139.02**, close ~$136-139 — OUR LIMIT $140.35 DID **NOT** FILL (never touched $140.35).
+- GLD: **$414.44** (range $412.17–$416.30) — Stop $397.92 safe (~4.2% above stop). Slight unrealized loss from $418.86 entry (~-$30.94 on 7sh).
+- MRVL: **~$190-198 range** (pre-earnings squeeze; Stifel upgrade, PT $210) — INELIGIBLE through May 27 earnings.
+- AVGO: **$414.14**
+- BTC: **~$77,447** (morning; below $82K threshold)
+
+**Weekend macro:**
+- Goldman Sachs warned of correction risk: rising yields + inflation.
+- U.S.-Iran peace negotiations ongoing (de-escalation risk-on theme persists).
+- University of Michigan consumer sentiment fell to new low (inflation/gas cost concerns).
+- Markets reopen Tuesday facing new inflation data and yield moves.
+
+**Monday May 26 action plan (written Saturday, binding for May 26 Pre-Market):**
+1. **STOP AUDIT** (first action): Verify all positions have resting GTC stops via Alpaca.
+2. **Confirm MU fill** at $765.91 — if filled, verify stop order at $727.61 and target at $880.80 are resting. If stop missing, place immediately.
+3. **AMD fresh order**: AMD ~$467-470 on Monday. New limit: ~$470 (ask+0.5%), stop $446.50 (-5%), target $540.50 (+15%), R/R 3:1. 10 shares × $470 = $4,700 = 4.7%. Score remains 7.5+.
+4. **PLTR revised order**: PLTR ~$134-139. New limit: $138.00, stop $131.10 (-5%), target $158.70 (+15%), R/R 3:1. Score remains 7.5. Prior limit $140.35 abandoned.
+5. **MRVL**: INELIGIBLE through May 27 earnings after close. Post-earnings entry candidate May 28+ if reaction bullish. Score at May 28 Daily Review or May 29 Pre-Market.
+6. **Circuit breaker check**: If May 26 opens down ≥3% from May 22 close, halt all new entries.
+
+```yaml
+---
+ts: 2026-05-23T01:37:00Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Non-trading day (Saturday May 23, 2026). Markets closed. No executable orders. Weekend context update recorded.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Non-trading day. Saturday May 23, 2026. Markets closed (also Memorial Day May 25). No orders possible. Web research confirms Friday May 22 close: S&P 500 7,473.47 (+0.37%, 8th weekly gain). AMD $467.58 (+4%) — limit $449 NOT filled (gapped above). MU ~$771 (low $747.27) — limit $765.91 LIKELY filled on dip. PLTR high $139.02 — limit $140.35 NOT filled. GLD $414.44 — stop safe. MRVL ~$190-198 pre-earnings squeeze — INELIGIBLE through May 27. GS warned of correction risk from rising yields+inflation. Monday May 26 plan: fresh AMD limit ~$470, revised PLTR limit ~$138, confirm MU fill+stop. API still blocked (HTTP 403 — Alpaca 'Host not in allowlist'). Next executable routine: May 26 Pre-Market (8:00 AM ET)."
+---
+```
+
+---
+
 ## 2026-05-22 — Mid-Morning (11:00 AM ET / 15:09 UTC)
 
 **Context:** Friday May 22, 2026. Mid-Morning routine firing at 15:09 UTC (11:09 AM ET). Market Open ran and completed (heartbeat confirmed 13:45–13:56 UTC). Pre-Market silently missed (no STARTED Pre-Market heartbeat in today's log). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All API calls attempted and documented below. Market data from web research.
