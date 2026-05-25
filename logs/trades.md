@@ -4,6 +4,47 @@
 
 ---
 
+## 2026-05-25 — Mid-Morning routine fired on non-trading day (Memorial Day)
+
+2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 17th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market and Market-Open predecessor heartbeats absent as expected (holiday — routines do not run on market holidays per CLAUDE.md). Mid-Morning heartbeat fired due to automated schedule.
+
+**May 26 commitment (binding watchlist from May 23 Saturday review):**
+1. **STOP AUDIT** — first action before any new orders; verify GLD resting stop at $397.92; verify MU stop at $727.61 if fill confirmed.
+2. **MU confirm fill** at $765.91 (limit likely filled May 22 intraday dip to $747.27); if filled, verify stop+target resting.
+3. **AMD fresh limit bracket** — limit ~$470 (current ask × 1.005), stop $446.50 (-5%), target $540.50 (+15%), R/R 3:1; score 7.5+.
+4. **PLTR revised limit bracket** — limit ~$138.00, stop $131.10 (-5%), target $158.70 (+15%), R/R 3:1; score 7.5.
+5. **MRVL** — INELIGIBLE through May 27 earnings (binary event window). Score May 28+ after print.
+6. **Circuit breaker**: if May 26 opens down ≥3% from May 22 close (S&P 7,473.47), halt all new entries.
+
+```yaml
+---
+ts: 2026-05-25T15:08:39Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Non-trading day (Memorial Day May 25, 2026). Markets closed. No executable orders.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Memorial Day 2026-05-25 — US markets closed. Alpaca API still blocked (HTTP 403, 'Host not in allowlist', 17th+ consecutive blocked session). No predecessor heartbeats (Pre-Market, Market-Open) as expected on market holiday — NOT a violation per CLAUDE.md routine schedule. May 26 watchlist committed: AMD limit ~$470 (score 7.5), PLTR limit ~$138 (score 7.5), MU fill confirm. MRVL INELIGIBLE through May 27 earnings. GLD resting stop $397.92 — to verify May 26."
+---
+```
+
+---
+
 ## 2026-05-23 — Pre-Market routine fired on non-trading day (Saturday)
 
 2026-05-23 is a **Saturday**. US equity markets closed. Memorial Day **May 25** also closed. Next trading day: **May 26, 2026 (Tuesday)**. No orders placed or executable.
