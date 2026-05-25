@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-25T15:08:39Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-05-25T16:31:50Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.0,
@@ -595,10 +595,10 @@
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 12:30 ET",
-      "last_summary": "SILENT FAILURE May 20."
+      "status": "holiday",
+      "last_run": "2026-05-25T16:31:50Z",
+      "next_run": "2026-05-26 12:30 ET",
+      "last_summary": "Memorial Day May 25 — markets closed. Alpaca API blocked (18th+ consecutive). No orders. May 26 commitments confirmed: AMD limit ~$470 (MANDATORY 10th+ session), PLTR limit ~$138 (MANDATORY), MU fill confirm + stop verify, MRVL INELIGIBLE through May 27 earnings. MRVL reports May 27 AH — 6-agent reanalysis for May 28 entry decision."
     },
     {
       "name": "Afternoon",

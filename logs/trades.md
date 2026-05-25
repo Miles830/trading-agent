@@ -4,6 +4,54 @@
 
 ---
 
+## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
+
+2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.
+
+**Midday routine confirmation — Memorial Day non-trading day:**
+- Stop audit: BLOCKED (API "Host not in allowlist"). GLD stop $397.92 assumed resting from prior sessions.
+- Open positions: estimated GLD 7sh + possible MU 6sh (if limit filled May 22), plus potentially TSM/NVDA/JPM/AVGO if strategy switch unconfirmed.
+- No predecessor violations: all routines correctly absent on market holiday.
+- Crypto check: BTC estimated ~$77-80K range (below $82K mandatory entry threshold). Markets closed.
+
+**May 26 commitments CONFIRMED (binding — no changes from Mid-Morning review):**
+1. **STOP AUDIT** — first action; verify GLD resting stop $397.92; verify MU stop $727.61 if fill confirmed.
+2. **MU confirm fill** at $765.91 (likely filled on May 22 dip to $747.27); if filled, verify stop+target resting via Alpaca.
+3. **AMD fresh limit bracket** — limit ~$470 (ask × 1.005), stop $446.50 (-5%), target $540.50 (+15%), R/R 3:1; score 7.5+. **MANDATORY — 10th+ consecutive session commitment.**
+4. **PLTR revised limit bracket** — limit ~$138.00, stop $131.10 (-5%), target $158.70 (+15%), R/R 3:1; score 7.5. **MANDATORY.**
+5. **MRVL** — INELIGIBLE through May 27 earnings (Exemption 2). Score May 28+ post-print.
+6. **Circuit breaker**: if May 26 opens down ≥3% from May 22 close (S&P 7,473.47 → threshold 7,249), halt all new entries.
+7. **MRVL earnings May 27 after close** — watch reaction for May 28 entry decision.
+
+```yaml
+---
+ts: 2026-05-25T16:31:50Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Non-trading day (Memorial Day May 25, 2026). Markets closed. Midday routine fired on holiday via automated schedule — no executable orders.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Memorial Day 2026-05-25 — Midday routine. US markets closed. Alpaca API still blocked (HTTP 403, 'Host not in allowlist', 18th+ consecutive blocked session). Stop audit blocked. No predecessor violations — Pre-Market/Market-Open correctly absent on holiday; Mid-Morning fired at 15:08Z confirming non-trading day. BTC estimated ~$77-80K (below $82K threshold, not a mandatory entry). May 26 commitments binding: AMD limit ~$470 (score 7.5+, MANDATORY), PLTR limit ~$138 (score 7.5, MANDATORY), MU fill confirm + stop verify, MRVL INELIGIBLE (earnings May 27). Overnight plan: GLD resting stop assumed at $397.92. MRVL earnings May 27 AH — prepare 6-agent reanalysis for May 28 entry decision."
+---
+```
+
+---
+
 ## 2026-05-25 — Mid-Morning routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 17th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market and Market-Open predecessor heartbeats absent as expected (holiday — routines do not run on market holidays per CLAUDE.md). Mid-Morning heartbeat fired due to automated schedule.
