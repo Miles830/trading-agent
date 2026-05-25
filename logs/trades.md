@@ -4,6 +4,70 @@
 
 ---
 
+## 2026-05-25 — Market Close routine fired on non-trading day (Memorial Day)
+
+2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 19th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**.
+
+**Predecessor heartbeat check (2026-05-25):**
+- Pre-Market: ABSENT — expected (holiday; routines do not run on non-trading days per CLAUDE.md)
+- Market Open: ABSENT — expected (holiday)
+- Mid-Morning: STARTED 15:08Z / COMPLETED 15:11Z ✓
+- Midday: STARTED 16:31Z / NO COMPLETED heartbeat — partial (non-trading day, acceptable)
+- Afternoon: ABSENT — expected (holiday)
+- Market Close: STARTED 19:35Z (this routine)
+
+No violations from missing routines — Memorial Day is a CLAUDE.md-exempt non-trading day. Absence of Pre-Market/Market-Open/Afternoon on a holiday is not a silent-failure violation.
+
+**Day trades to close:** None (markets closed; no positions opened today).
+**Day trade P&L:** $0.00
+**End-of-day P&L (estimated):** ~+$100 vs prior day (GLD/positions estimated flat over holiday).
+**S&P 500:** CLOSED (Memorial Day). Last close: 7,473.47 (May 22, +0.37%).
+**Benchmark gap vs SPX:** ~-3.1 pp (unchanged — both portfolio and benchmark flat over holiday).
+
+**Overnight positions and stop audit:**
+- GLD 7sh: stop $397.92 assumed resting (GTC order; last verified pre-API blockage). CANNOT VERIFY via API — 19th+ consecutive HTTP 403.
+- TSM/NVDA/JPM/AVGO: strategy switch status still UNCONFIRMED (API blocked since May 6). Scenario A (closed May 18 MOO) or Scenario B (still held) — unknown.
+- MU 6sh (if limit filled May 22): stop $727.61 and target $880.80 assumed resting via bracket (GTC). CANNOT VERIFY.
+- AMD/PLTR: GTC limit orders from May 22 (AMD $449, PLTR $140.35) — DID NOT FILL (AMD ran to $467.58; PLTR high $139.02). Orders may still be resting as GTC. MUST CANCEL and REPLACE with updated limits May 26.
+
+**May 26 binding commitments (Pre-Market 8:00 AM ET MANDATORY):**
+1. STOP AUDIT — first action: verify GLD stop $397.92, MU stop $727.61 (if filled), all positions via GET /v2/orders?status=open
+2. CANCEL stale GTC orders: AMD $449 limit, PLTR $140.35 limit (both below market — must replace)
+3. AMD: BUY 10sh limit ~$471 (ask×1.005), stop $447.45 (-5%), target $541.65 (+15%), bracket GTC — MANDATORY (10th+ consecutive session, score 7.5+)
+4. PLTR: BUY 10sh limit ~$138.50, stop $131.58 (-5%), target $159.28 (+15%), bracket GTC — MANDATORY (score 7.5)
+5. MU: CONFIRM fill at $765.91; if NOT filled, re-enter BUY 6sh limit ~$774, stop fill×0.95, target fill×1.15, bracket GTC
+6. MRVL: INELIGIBLE through May 27 earnings (Exemption 2) — DO NOT ENTER
+7. Circuit breaker: if May 26 opens ≥3% below May 22 close (threshold: S&P below 7,249), halt all new entries
+
+```yaml
+---
+ts: 2026-05-25T19:35:16Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Non-trading day (Memorial Day May 25, 2026). Market Close routine fired on holiday — no executable orders, no day trades to close. Markets closed.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Memorial Day 2026-05-25 — Market Close routine. US markets closed. Alpaca API still blocked (HTTP 403, 'Host not in allowlist', 19th+ consecutive blocked session). No day trades to close. Overnight positions: GLD 7sh (stop $397.92 assumed resting GTC), MU 6sh if filled (stop $727.61 assumed resting), strategy-switch status unknown. No predecessor violations — holiday exempt per CLAUDE.md. Afternoon heartbeat also absent (expected on holiday). May 26 commitments BINDING: (1) stop audit first, (2) cancel stale AMD $449/PLTR $140.35 GTC orders, (3) AMD limit ~$471 MANDATORY 10th+ session, (4) PLTR limit ~$138.50 MANDATORY, (5) MU confirm fill, (6) MRVL INELIGIBLE through May 27 earnings (Exemption 2). MRVL reports May 27 after close — 6-agent reanalysis for May 28 entry decision."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.

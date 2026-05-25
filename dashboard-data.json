@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-25T16:31:50Z",
-  "updated_by": "midday",
+  "last_updated": "2026-05-25T19:35:16Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.0,
@@ -611,10 +611,10 @@
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "violation",
-      "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-21 15:30 ET",
-      "last_summary": "SILENT FAILURE May 20. No day trades to close. NVDA AH earnings reaction ongoing (beat, -2.44% AH). No Market Close stop audit performed."
+      "status": "holiday",
+      "last_run": "2026-05-25T19:35:16Z",
+      "next_run": "2026-05-26 15:30 ET",
+      "last_summary": "Memorial Day May 25 — markets closed. Alpaca API blocked (19th+ consecutive). No day trades to close. No new MOC entries. Overnight: GLD stop $397.92 assumed resting, MU (if filled) stop $727.61 assumed resting. May 26 MANDATORY: cancel stale AMD $449/PLTR $140.35 GTC limits, place AMD ~$471 (10th+ consecutive MANDATORY), PLTR ~$138.50 (MANDATORY), confirm MU fill. MRVL INELIGIBLE through May 27 earnings. SPX last close: 7,473.47 (May 22). Benchmark gap: ~-3.1 pp."
     },
     {
       "name": "Daily Review",
