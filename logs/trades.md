@@ -4,6 +4,139 @@
 
 ---
 
+## 2026-05-25 — Daily Review (4:30 PM ET / 20:40 UTC) — Memorial Day Non-Trading Day
+
+**Today: Memorial Day, US federal holiday. Markets CLOSED.** Daily Review heartbeat STARTED 20:40Z per automated schedule. Alpaca API BLOCKED ("Host not in allowlist" — 18th+ consecutive blocked session). No orders executable. All API calls blocked.
+
+---
+
+### HEARTBEAT TALLY — 2026-05-25
+
+| Routine | STARTED | COMPLETED | Status |
+|---|---|---|---|
+| Pre-Market (08:00 ET) | ABSENT | ABSENT | ✓ Expected — holiday |
+| Market-Open (09:45 ET) | ABSENT | ABSENT | ✓ Expected — holiday |
+| Mid-Morning (11:00 ET) | 15:08Z ✓ | 15:11Z ✓ | ✓ Ran & completed (confirmed holiday) |
+| Midday (12:30 ET) | 16:31Z ✓ | MISSING ⚠️ | Operational gap — STARTED but no COMPLETED logged; work product verified in trades.md |
+| Afternoon (14:00 ET) | ABSENT | ABSENT | ✓ Expected — holiday |
+| Market-Close (15:30 ET) | ABSENT | ABSENT | ✓ Expected — holiday |
+| Daily-Review (16:30 ET) | 20:40Z ✓ | (this entry) | In progress |
+
+**Top operational issue:** Midday COMPLETED heartbeat missing. Scheduler fires on holidays (automating correctly per schedule) but the COMPLETED log entry did not land. Not a silent failure — work product exists in trades.md — but the heartbeat audit tool will flag it. Long-term fix: add market calendar check to scheduler to suppress holiday runs entirely.
+
+**No predecessor violations flagged** (all absences are holiday-correct per CLAUDE.md: "Routines run on trading days only").
+
+---
+
+### STOP-LOSS AUDIT
+- **BLOCKED** — `GET /v2/orders?status=open` → HTTP 403 "Host not in allowlist" (18th+ consecutive session)
+- **Known resting stops (last confirmed):** GLD 7sh stop $397.92 (confirmed May 17; GLD ~$414.44, stop ~4.2% below — estimated resting)
+- **Unknown:** MU stop $727.61 (if fill confirmed at $765.91); AMD/PLTR/MU stops from any May 22 bracket fills
+- **OPERATOR:** verify all stops at https://app.alpaca.markets before May 26 open
+
+---
+
+### PORTFOLIO STATE (estimated — API blocked)
+
+| Metric | Value | Notes |
+|---|---|---|
+| Total Equity | ~$100,200 | Last confirmed dashboard value; no change today (markets closed) |
+| Cash | ~$85,550 (85.4%) | Above 5% floor; below 85% active target — execution blocked |
+| Active Trading | ~$2,917 (2.9%) | GLD 7sh confirmed only |
+| LT-Closing | ~$11,733 (11.7%) | TSM/NVDA/JPM/AVGO — strategy switch UNCONFIRMED day 8+ |
+| Crypto | $0 (0%) | Below 10% target; BTC ~$77K, below $82K threshold |
+| Daily P&L | $0 (markets closed) | — |
+| SPX Return (May 22) | +0.37% (7,473.47) | 8th consecutive weekly gain |
+| Cumulative Gap vs SPX | **−3.04 pp** | Portfolio +0.20% vs SPX +3.24% since strategy start |
+
+---
+
+### P&L ANALYSIS
+
+**Today:** No trading. Markets closed (Memorial Day). No P&L to compute.
+
+**Rolling 20-day window (estimated):**
+- Portfolio return: +0.20% (from ~$100,000 start → ~$100,200)
+- S&P 500 return: +3.24% (proxy from dashboard)
+- Gap: **−3.04 percentage points**
+- Root cause: 18 consecutive API-blocked sessions; ~$85,550 (85.4%) sitting in cash while markets rallied 8 straight weeks
+- Win rate (rolling 20-day): N/A — no confirmed fills
+- Avg win: N/A | Avg loss: N/A | Profit factor: N/A
+
+**Best trade of the day:** GLD +1.25% May 20 (last active day) — cross-asset hedge working as designed  
+**Worst trade of the day:** AMD non-execution — 10th+ consecutive session without fill on a 7.5-score name. Each missed day costs approximately $467 × 10 × (daily AMD return) in unrealized opportunity cost. AMD closed +4.00% on May 22; that alone was ~$187 in missed exposure.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **Holiday detection was correct.** Mid-Morning and Midday both self-diagnosed Memorial Day and suppressed order attempts. No erroneous orders were placed on a closed market.
+2. **MRVL skip discipline held.** Exemption 2 correctly applied across three consecutive routines (Mid-Morning, Midday, and now Daily Review). Post-earnings entry plan (May 28+) is cleaner risk/reward.
+3. **AMD limit price lesson integrated.** Updated from pullback-buy ($449) to momentum-entry ($471, ask+0.5%) based on May 22 gap lesson. This is now in the watchlist and the pending-actions section.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW (May 26)
+
+1. **AMD MUST execute on May 26.** Ten or more consecutive sessions at score 7.5+ without a fill is a systemic deployment failure. Either (a) API is fixed and the bracket auto-executes, or (b) operator places manually at https://app.alpaca.markets before 9:25 AM ET. No more "pending" entries.
+2. **Strategy switch confirmation.** TSM/NVDA/JPM/AVGO liquidation unconfirmed for 8+ days. May 26 Market Open MUST verify whether these positions are open or closed. The portfolio exposure picture is ambiguous until this is resolved.
+3. **Midday COMPLETED heartbeat gap.** Investigate whether the COMPLETED line is being suppressed on holiday sessions. Add a check to the daily-review playbook: if Midday has STARTED but no COMPLETED for a given date, log a minor operational issue (not a silent-failure violation) with explanation.
+
+---
+
+### SETUP-TAG TALLY (rolling 5-day: May 21–25)
+
+No new `result_pct` values to process this week — all order attempts were blocked (API). The setup tracker remains at 0/0 for all tags. No 3-in-a-row halt or boost triggered. This is the 18th+ consecutive session where the tracker cannot advance due to API blockage.
+
+**Agent calibration:** unchanged. No closed trades to pair entry scores with outcomes.
+
+---
+
+### MAY 26 MACRO CONTEXT & KEY EVENTS
+
+| Date | Event | Relevance |
+|---|---|---|
+| May 26 | Markets reopen post-Memorial Day 3-day weekend | First trading day; potential gap up or down; Goldman Sachs correction warning |
+| May 26 | Consumer Confidence (Conference Board) ~10:00 AM ET | UMich sentiment was weak; could reinforce bearish mood |
+| May 27 | **MRVL earnings after close** | Q1 FY2026; DO NOT hold MRVL into print. Score May 28+ |
+| May 27 | Fed speakers (Warsh expected) | Warsh is hawkish; any rate commentary = volatility |
+| May 28 | MRVL post-earnings reaction | Score earnings-reaction-follow or earnings-reaction-fade setup |
+| May 28 | PCE (Personal Consumption Expenditures) data possible | Inflation read; key for rate path |
+
+**Goldman Sachs correction risk:** GS warned May 22-23 of growing correction risk from rising yields + inflation. UMich consumer sentiment hit new low. This is NOT a circuit breaker trigger (S&P is at 7,473 — threshold 7,249 is −3% away), but it warns of increased volatility.  
+**Circuit breaker threshold May 26:** if S&P 500 opens below **7,249** (−3% from 7,473.47), halt all new entries for the session.
+
+---
+
+```yaml
+---
+ts: 2026-05-25T20:40:08Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Non-trading day (Memorial Day May 25, 2026). US equity markets closed. Daily Review running per automated schedule — confirming holiday status, updating watchlist for May 26, no executable orders.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Memorial Day 2026-05-25 — Daily Review. US markets closed. Alpaca API BLOCKED (HTTP 403, 'Host not in allowlist' — 18th+ consecutive blocked session). Heartbeat tally: Pre-Market ABSENT (correct-holiday), Market-Open ABSENT (correct-holiday), Mid-Morning STARTED 15:08Z COMPLETED 15:11Z ✓, Midday STARTED 16:31Z NO COMPLETED (minor operational gap — work product in trades.md), Afternoon ABSENT (correct-holiday), Market-Close ABSENT (correct-holiday). No predecessor violations. Portfolio: ~$100,200 equity; ~$85,550 cash (85.4%); GLD 7sh confirmed (stop $397.92); strategy switch unconfirmed day 8+. Benchmark gap: -3.04pp vs SPX. Setup tracker: all 0/0, API blockage prevents advancement. May 26 MANDATORY: AMD limit $471 (10th+ consecutive, score 7.5), PLTR limit $138.50 (score 7.5), MU fill confirm or fresh entry (~$774, score 7.5). MRVL INELIGIBLE (earnings May 27 AH, Exemption 2). Circuit breaker threshold S&P 7,249 (-3%). MRVL post-print entry candidate May 28+. OPERATOR ACTION REQUIRED: resolve Alpaca API sandbox allowlist issue OR manually place AMD+PLTR bracket orders at May 26 open."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.
