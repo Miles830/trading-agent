@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-25T16:31:50Z",
-  "updated_by": "midday",
+  "last_updated": "2026-05-25T18:03:34Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.24,
     "benchmark_gap_pct": -3.04,
     "open_positions_count": 5,
-    "note": "May 21 Pre-Market \u2014 API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news \u2014 closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K \u2014 score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "note": "2026-05-25 Afternoon \u2014 Memorial Day (non-trading day). Alpaca API blocked (19th+ consecutive session, 'Host not in allowlist'). Markets closed. No orders placed. GLD stop $397.92 assumed resting. May 26 commitments binding: AMD limit ~$470 (MANDATORY 10th+), PLTR limit ~$138 (MANDATORY), MU fill confirm + stop verify, MRVL INELIGIBLE through May 27 earnings. MRVL earnings May 27 AH \u2014 6-agent reanalysis for May 28 entry decision.",
     "buckets": [
       {
         "key": "active",
@@ -598,22 +598,22 @@
       "status": "holiday",
       "last_run": "2026-05-25T16:31:50Z",
       "next_run": "2026-05-26 12:30 ET",
-      "last_summary": "Memorial Day May 25 — markets closed. Alpaca API blocked (18th+ consecutive). No orders. May 26 commitments confirmed: AMD limit ~$470 (MANDATORY 10th+ session), PLTR limit ~$138 (MANDATORY), MU fill confirm + stop verify, MRVL INELIGIBLE through May 27 earnings. MRVL reports May 27 AH — 6-agent reanalysis for May 28 entry decision."
+      "last_summary": "Memorial Day May 25 \u2014 markets closed. Alpaca API blocked (18th+ consecutive). No orders. May 26 commitments confirmed: AMD limit ~$470 (MANDATORY 10th+ session), PLTR limit ~$138 (MANDATORY), MU fill confirm + stop verify, MRVL INELIGIBLE through May 27 earnings. MRVL reports May 27 AH \u2014 6-agent reanalysis for May 28 entry decision."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-05-20 14:04 ET",
-      "next_run": "2026-05-21 14:00 ET",
-      "last_summary": "May 20: STARTED 18:04Z / COMPLETED 18:11Z. API blocked (HTTP 403 confirmed). AMD skip (5th+ consecutive, score 7.33). PLTR skip (trigger unconfirmed). NVDA skip (binary event 48h window active). NVDA earnings noted for May 21 \u2014 actually reported May 20 AH (BEAT, -2.44% AH). S&P 500 +1.08% to 7,432.97."
+      "status": "holiday",
+      "last_run": "2026-05-25T18:03:34Z",
+      "next_run": "2026-05-26 14:00 ET",
+      "last_summary": "Memorial Day May 25 \u2014 markets closed. Alpaca API blocked (19th+ consecutive). No day trades to close. No MOC orders. Stop trail blocked. May 26 binding watchlist: AMD limit ~$470 (MANDATORY 10th+), PLTR limit ~$138 (MANDATORY), MU fill confirm + stop verify. MRVL INELIGIBLE (earnings May 27 AH)."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "violation",
+      "status": "holiday",
       "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-21 15:30 ET",
+      "next_run": "2026-05-26 15:30 ET",
       "last_summary": "SILENT FAILURE May 20. No day trades to close. NVDA AH earnings reaction ongoing (beat, -2.44% AH). No Market Close stop audit performed."
     },
     {

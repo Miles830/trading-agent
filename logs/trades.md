@@ -4,6 +4,60 @@
 
 ---
 
+## 2026-05-25 — Afternoon routine fired on non-trading day (Memorial Day)
+
+2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 19th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z; Midday fired at 16:31Z. Afternoon heartbeat fired at 18:03Z.
+
+**Afternoon routine — non-trading day summary:**
+- Stop audit: BLOCKED (API "Host not in allowlist"). GLD stop $397.92 assumed resting at Alpaca.
+- Day trades to close: none (markets closed).
+- MOC orders: none applicable.
+- Stop trails: none executable.
+- No predecessor violations noted — Pre-Market and Market-Open absence is correct behavior on a market holiday.
+
+**May 26 commitments CONFIRMED FINAL (binding — must execute at Pre-Market 8:00 AM ET):**
+1. **STOP AUDIT** — FIRST action; verify GLD resting stop $397.92; verify MU stop+target if fill confirmed.
+2. **MU confirm fill** at $765.91 (likely filled May 22 intraday dip to $747.27); if filled, verify stop $727.61 + target $880.30.
+3. **AMD fresh limit bracket** — limit ~$470 (ask × 1.005), stop $446.50 (-5%), target $540.50 (+15%), R/R 3:1; score 7.5+. **MANDATORY — 10th+ consecutive session commitment.**
+4. **PLTR revised limit bracket** — limit ~$138.00, stop $131.10 (-5%), target $158.70 (+15%), R/R 3:1; score 7.5. **MANDATORY.**
+5. **MRVL** — INELIGIBLE through May 27 earnings (Exemption 2: binary event within 48h). Plan 6-agent reanalysis for May 28 entry decision.
+6. **Circuit breaker**: if May 26 opens down ≥3% from May 22 close (S&P 7,473.47 → threshold 7,249), halt all new entries.
+7. **MRVL earnings May 27 after close** — watch reaction; prepare entry/fade thesis for May 28.
+
+**Tomorrow's preliminary watchlist (pre-scored for Pre-Market efficiency):**
+- **AMD** score 7.5+ — AI capex momentum, 2nm ramp, multiple analyst upgrades; limit ~$470
+- **PLTR** score 7.5 — government AI (AIP), US Gov +84% YoY; limit ~$138
+- **MU** score 7.67 — NVDA HBM3e read-through, ATH pullback recovery; confirm fill or fresh entry
+
+```yaml
+---
+ts: 2026-05-25T18:03:34Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Non-trading day (Memorial Day May 25, 2026). Markets closed. Afternoon routine fired on holiday via automated schedule — no executable orders.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Memorial Day 2026-05-25 — Afternoon routine. US markets closed. Alpaca API blocked (HTTP 403, 'Host not in allowlist', 19th+ consecutive blocked session). Stop audit blocked — GLD stop $397.92 assumed resting. No day trades to close (holiday). No predecessor violations: Pre-Market and Market-Open correctly absent on market holiday; Mid-Morning 15:08Z and Midday 16:31Z both confirmed non-trading day. Active-trading catch-up skipped (holiday + afternoon proximity-to-close rule in routines/afternoon.md). May 26 commitments binding: AMD limit ~$470 (score 7.5+, MANDATORY 10th+), PLTR limit ~$138 (score 7.5, MANDATORY), MU fill confirm + stops verify, MRVL INELIGIBLE (earnings May 27 AH). MRVL post-earnings entry thesis to be scored May 28. Circuit breaker threshold: S&P below 7,249 halts new entries."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.
