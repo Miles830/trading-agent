@@ -4,6 +4,65 @@
 
 ---
 
+## 2026-05-25 — Pre-Market routine fired on non-trading day (Memorial Day)
+
+2026-05-25 is **Memorial Day** — US equity and crypto exchange markets are closed. US stock exchanges (NYSE, Nasdaq) are closed all day. Bitcoin/crypto trades 24/7 but no equity orders are possible. Alpaca API still returning HTTP 403 "Host not in allowlist" — 17th+ consecutive blocked session. No orders placed or executable.
+
+**Pre-checks completed:**
+- UTC time: 12:14 UTC = 08:14 AM EDT — confirmed market holiday, no clock query needed
+- Alpaca `/v2/account` → HTTP 403 "Host not in allowlist" (TLS proxy blocking persists)
+- Calendar confirmed: US equity markets CLOSED May 25 (Memorial Day); reopen May 26, 2026 (Tuesday)
+
+**Market data from web research (Memorial Day weekend context):**
+- **S&P 500 May 22 close:** 7,473.47 (+0.37%) — 8th consecutive weekly gain; Dow fresh all-time high 50,579.70
+- **S&P 500 futures (weekend):** +0.31% on holiday weekend; macro backdrop positive (Iran talks, AI earnings season)
+- **AMD $467.51** (+4.7% May 22) — BofA raised PT to $500; 2nm Venice CPU ramping + $10B Taiwan AI ecosystem investment. Our limit $449 still not filled (AMD gapped above). **Score 7.5+**
+- **MU $751.00** (−1.46% May 22; opened at $762.10) — HBM entirely sold out through long-term contracts; Mizuho PT $800; Virginia Manassas fab $2B expansion. Our limit $765.91 from prior session — STATUS UNCERTAIN (if GTC placed, likely filled at $762.10 open; if blocked, NOT filled — verify May 26)
+- **PLTR $135.00** (−1.5% May 22) — Q1 2026 rev $1.63B +85% YoY; EPS $0.33 vs $0.28 est; 2026 guide raised to $7.65B (+71%); still trades at 66× P/S (elevated valuation risk). Our limit $140.35 NOT filled. Score 7.5
+- **GLD ~$414.44** — Gold as inflation/rate-hike hedge. Goldman Sachs correction warning; Kevin Warsh rate-hike odds 20-30% by Dec 2026. Stop $397.92 safe (~4% above). Score: hold
+- **MRVL** — Earnings May 27 after close; Q1 FY2027 consensus $2.4B rev +26% YoY, EPS $0.75-0.79; Citi PT $215; strong AI ASIC (Amazon Trainium 2) narrative. **INELIGIBLE May 26 — within 48h binary event window** (May 26 is <48h before May 27 close-time earnings). Exemption 2 applies.
+- **BTC $76,988** — Below $82K threshold. Not a mandatory entry. Market cap $1.54T, 24h volume $23.35B.
+- **Macro week ahead:** PCE inflation data Thursday May 29 (Fed's preferred measure); GDP Q1 revision; consumer confidence. Iran talks ongoing (risk-on). Warsh hawkish backdrop persists.
+
+**MAY 26 BINDING ACTION PLAN (this is the commitment the Pre-Market May 26 routine MUST execute):**
+
+1. **STOP AUDIT (first action):** Attempt GET /v2/positions and GET /v2/orders?status=open. If API accessible (hope restored): verify GLD stop $397.92 and MU stop $727.61 (if filled). If still HTTP 403, log and continue.
+2. **MU fill verification:** If Alpaca accessible, check MU fill status. If filled at ~$762.10, verify bracket stop $723.99 (-5%) and target $876.42 (+15%). If NOT filled: place BUY 6sh MU limit **$754.76** (ask+0.5% from $751 close), stop $716.02 (−5%), target $867.97 (+15%), bracket GTC.
+3. **AMD MOO (MANDATORY — 11th+ consecutive missed session):** Place MOO BUY 10sh AMD (fill at open ~$467-475). Immediately after fill confirmed at Market Open: place GTC stop at fill×0.95, take-profit target at fill×1.15 (3:1 R/R). Score: 7.5+. Use MOO slot 1 of 3.
+4. **PLTR (revised limit):** Place BUY 10sh PLTR limit **$135.68** (ask+0.5% from $135 close), stop $128.90 (−5%), target $155.53 (+15%), bracket GTC. Score: 7.5. Use MOO slot 2 of 3 if available, or limit.
+5. **MRVL — SKIP (Exemption 2):** MRVL earnings May 27 after close. May 26 is within 48-hour binary event window. No entry permitted. Post-earnings candidate: May 28 Pre-Market or May 29 if reaction is strong.
+6. **Circuit breaker:** If S&P 500 opens May 26 below 7,249.27 (7,473.47 × 0.97 = −3%), halt ALL new entries, hold existing stops.
+7. **AVGO re-score:** AVGO $414.14 May 22 close (down from May 21's $421). Re-score if it shows recovery in pre-market. Not a mandatory entry — was rejected at 6.0 on May 22 bearish divergence.
+
+```yaml
+---
+ts: 2026-05-25T12:14:00Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Memorial Day 2026 (May 25) — US equity markets closed. No orders executable. Research completed for May 26 session. API still blocked HTTP 403.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Non-trading day (Memorial Day May 25, 2026). US markets closed. Alpaca API HTTP 403 — 17th+ consecutive blocked session. No executable orders. BTC $76,988 (below $82K threshold — not mandatory). AMD $467.51 (score 7.5+, MOO mandatory May 26 — 11th+ consecutive missed entry). PLTR $135 (score 7.5, limit $135.68 May 26). MU $751 (fill status uncertain — verify May 26). MRVL INELIGIBLE May 26 — 48h binary event window (earnings May 27 after close; Exemption 2). GLD $414.44 — stop $397.92 safe. PCE data May 29. S&P futures +0.31% over holiday. Iran talks ongoing (risk-on). Warsh hawkish backdrop. Goldman correction warning from rising yields. May 26 plan: STOP AUDIT → MU verify → AMD MOO → PLTR limit. MRVL post-earnings entry candidate May 28-29."
+---
+```
+
+---
+
 ## 2026-05-23 — Pre-Market routine fired on non-trading day (Saturday)
 
 2026-05-23 is a **Saturday**. US equity markets closed. Memorial Day **May 25** also closed. Next trading day: **May 26, 2026 (Tuesday)**. No orders placed or executable.

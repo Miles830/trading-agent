@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-23 (Saturday) — Non-Trading Day / Weekend Context Update (01:37 UTC).** Pre-Market heartbeat fired on Saturday but markets are closed. Friday May 22 close data from web research: S&P 500 **7,473.47** (+0.37%, 8th consecutive weekly gain); AMD **$467.58** (+4% — 2nm AI ramp, multiple target hikes; our limit $449 NOT filled — gapped above at open); MU **~$771** (low $747.27 — limit $765.91 LIKELY FILLED on intraday dip; to confirm May 26); PLTR high **$139.02** (limit $140.35 NOT filled); GLD **$414.44** (stop $397.92 safe). MRVL ~$190-198 (pre-earnings squeeze; Stifel upgrade PT $210; INELIGIBLE through May 27 earnings). AVGO $414.14. BTC ~$77,447 (below $82K threshold). Goldman Sachs warned of correction risk (rising yields+inflation). Iran peace talks ongoing. Memorial Day May 25 = market holiday. Next trading day: **May 26, 2026 (Tuesday)**. Alpaca API STILL BLOCKED (HTTP 403) — 16th+ consecutive blocked session.
+**2026-05-25 (Memorial Day Monday) — Pre-Market routine / Non-Trading Day Context Update (12:14 UTC).** Markets CLOSED (Memorial Day). Alpaca API STILL BLOCKED (HTTP 403) — 17th+ consecutive blocked session. Research completed for May 26 session. Key data: AMD $467.51 (+4.7% May 22, BofA PT $500 — MOO mandatory May 26, 11th+ consecutive missed entry); MU $751.00 (−1.46% May 22 — fill status uncertain, likely filled at $762.10 if GTC placed; verify May 26); PLTR $135.00 (−1.5% May 22 — limit $140.35 NOT filled; new limit $135.68 for May 26); GLD $414.44 (stop $397.92 safe); MRVL earnings May 27 after close (INELIGIBLE May 26 — Exemption 2); BTC $76,988 (below $82K threshold); S&P futures +0.31% over holiday weekend. PCE inflation data due Thursday May 29. Iran talks ongoing (risk-on). Warsh hawkish (20-30% rate hike odds Dec 2026). Goldman Sachs correction warning on rising yields. Next trading day: **May 26, 2026 (Tuesday)**.
+
+**Prior Last Updated:** 2026-05-23 (Saturday) — Non-Trading Day / Weekend Context Update (01:37 UTC). Pre-Market heartbeat fired on Saturday but markets are closed. Friday May 22 close data from web research: S&P 500 **7,473.47** (+0.37%, 8th consecutive weekly gain); AMD **$467.58** (+4% — 2nm AI ramp, multiple target hikes; our limit $449 NOT filled — gapped above at open); MU **~$771** (low $747.27 — limit $765.91 LIKELY FILLED on intraday dip; to confirm May 26); PLTR high **$139.02** (limit $140.35 NOT filled); GLD **$414.44** (stop $397.92 safe). MRVL ~$190-198 (pre-earnings squeeze; Stifel upgrade PT $210; INELIGIBLE through May 27 earnings). AVGO $414.14. BTC ~$77,447 (below $82K threshold). Goldman Sachs warned of correction risk (rising yields+inflation). Iran peace talks ongoing. Memorial Day May 25 = market holiday. Next trading day: **May 26, 2026 (Tuesday)**. Alpaca API STILL BLOCKED (HTTP 403) — 16th+ consecutive blocked session.
 
 **Prior Last Updated:** 2026-05-22 (Friday) — Mid-Morning (11:00 AM ET / 15:09 UTC). Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 15th+ consecutive blocked session. All three routine API calls (positions, open orders, new orders) blocked. Market is UP +0.55% (S&P 500 ~7,487, Dow +300+, Nasdaq +0.53%). Key drivers: Kevin Warsh sworn in as Fed Chair today (hawkish — 20-30% rate hike odds by Dec 2026); Iran war talks progress (risk-on). AMD fresh catalyst: $10B Taiwan AI ecosystem investment announced May 21. Three limit bracket order re-attempts (AMD 7.5, PLTR 7.5, MU 7.67) — all blocked. MRVL: SKIPPED (Exemption 2 — Memorial Day May 25 creates binary-event-equivalent constraint: no safe exit before May 27 earnings window). AVGO: REJECTED (score 6.0 — bearish divergence, down ~3% vs market up +0.55%, Warsh hawkish headwind for high-multiple). MRVL price note: ~$183-184 today (multiple analyst upgrades — Citi PT $215 — not $190.95 as May 21 estimate had; $190.95 appears to have been wrong). MRVL ineligible until post-May 27 earnings.
 
@@ -90,7 +92,7 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-05-23 Weekend — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-05-25 Memorial Day — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
 - **Total Equity (estimated):** ~$100,600 (S&P up 8 straight weeks; portfolio still ~85-97% cash due to API blockage)
 - **Cash:** ~$85,550 (Scenario B: switch NOT executed) OR ~$97,280 (Scenario A: switch executed May 18) — minus ~$4,595 if MU filled ($765.91 × 6)
@@ -388,18 +390,23 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 
 ## Next Routine Plan
 
-**Weekend / Non-Trading Days May 23-25 (Saturday, Sunday, Memorial Day Monday):**
-- No routines. No orders. GTC limit orders from May 22 may be resting on Alpaca — AMD $449 (cancel on May 26), PLTR $140.35 (cancel on May 26), MU $765.91 (likely filled — verify on May 26).
-- MRVL reports earnings May 27 after close. DO NOT ENTER before that.
+**Memorial Day May 25 (TODAY — COMPLETED):**
+- Non-trading day. No orders. Research completed — see trades.md 2026-05-25 entry.
+- MU limit $765.91 status: UNCERTAIN (API blocked; if GTC placed from prior, likely filled at $762.10 May 22 open; verify May 26).
+- AMD limit $449: STALE — AMD closed $467.51, limit way below market. Superseded by MOO plan below.
+- PLTR limit $140.35: NOT FILLED (PLTR never hit $140.35). Cancel and replace with $135.68 limit.
+- MRVL: Earnings May 27 after close. 48h window = INELIGIBLE May 26.
 
-**Pre-Market May 26 (8:00 AM ET — NEXT REQUIRED ROUTINE):**
-1. STOP AUDIT: All positions, all stops. GLD stop $397.92, MU stop $727.61 (if filled).
-2. Cancel stale GTC orders: AMD $449 limit, PLTR $140.35 limit (both were above market on May 22; prices have moved).
-3. AMD MOO (preferred) or limit $471: 10 shares. Score 7.5+. Must enter — 10th+ consecutive missed session.
-4. PLTR revised limit $138.50: 10 shares. Score 7.5. Prior limit abandoned.
-5. MU confirmation: If Alpaca shows fill, log as entry. If not filled, re-enter at market (~$773).
-6. Circuit breaker: If May 26 opens down ≥3% from May 22 close (7,473.47 → below 7,249), halt new entries.
-7. Watchlist for May 26: AMD (mandatory), PLTR (mandatory), AVGO (re-score — $414 close, score estimate ~6.5, may upgrade if macro improves), MRVL post-earnings May 28-29.
+**Pre-Market May 26 (8:00 AM ET — NEXT REQUIRED ROUTINE — binding commitments):**
+1. **STOP AUDIT (FIRST action):** Try GET /v2/positions and GET /v2/orders?status=open. If API now accessible: verify GLD 7sh stop $397.92 and any MU stop from fill. If still HTTP 403: log and continue.
+2. **Cancel stale GTC orders** (if API accessible): AMD $449 limit (stale — AMD at $467), PLTR $140.35 limit (not filled — price has moved to $135). Place cancels before new entries.
+3. **MU fill verify:** If Alpaca shows MU filled at ~$762.10, confirm bracket stop $723.99 (−5%) and target $876.42 (+15%). If NOT filled: place BUY 6sh MU limit **$754.76** (ask+0.5% from $751 close), stop $716.02 (−5%), target $867.97 (+15%), bracket GTC.
+4. **AMD MOO (MANDATORY — 11th+ consecutive missed entry):** Place MOO BUY 10sh AMD (`type: market, time_in_force: opg`). Market Open routine MUST follow with GTC stop at fill×0.95 and target at fill×1.15. Score: 7.5+. MOO slot 1 of 3.
+5. **PLTR (revised limit or MOO):** Place BUY 10sh PLTR limit **$135.68** (ask+0.5% from $135 close), stop $128.90 (−5%), target $155.53 (+15%), bracket GTC. Or MOO if slot available (AMD takes priority for MOO slot 1). Score: 7.5.
+6. **MRVL — SKIP (Exemption 2):** Earnings May 27 after close → within 48h binary event window → no entry allowed. Post-earnings candidate May 28-29.
+7. **AVGO re-score:** $414.14 May 22 close. Was 6.0 (rejected) on May 22 bearish divergence. Re-score in May 26 context. Not mandatory unless scores ≥7.
+8. **Circuit breaker:** S&P 500 below 7,249 at open (−3% from 7,473.47) → halt ALL new entries, hold stops.
+9. **BTC:** $76,988 (below $82K threshold). Not a mandatory entry. Monitor only.
 
 **Afternoon / Market Close May 27:**
 - MRVL earnings release after close May 27. Monitor reaction.
