@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-05-25 — Market-Open routine fired on Memorial Day (market holiday)
+
+2026-05-25 is **Memorial Day**. US equity markets are CLOSED. No orders executable. Next trading day: **May 26, 2026 (Tuesday)**.
+
+Alpaca API remains blocked (HTTP 403 "Host not in allowlist") — 17th+ consecutive blocked session. Calendar could not be verified via API; confirmed via documented portfolio knowledge (portfolio.md: "Memorial Day May 25 = market holiday").
+
+**May 26 mandatory action plan (binding for Pre-Market 8:00 AM ET):**
+1. **STOP AUDIT (first action):** Verify all open positions have resting GTC stops. GLD 7sh stop $397.92; MU 6sh stop $727.61 (if limit $765.91 filled on May 22 dip to $747.27).
+2. **Cancel stale GTC orders:** AMD limit $449.00 and PLTR limit $140.35 from May 22 — both did not fill and are stale.
+3. **AMD MOO or limit $471** — 10 shares. Score 7.5+. 11th+ consecutive entry attempt. MANDATORY. Setup: `breakout-volume`.
+4. **PLTR revised limit ~$138.50** — 10 shares. Score 7.5. Prior limit abandoned. Setup: `ai-momentum-pullback`.
+5. **MU confirmation** — If Alpaca shows fill at $765.91, log entry. If not, re-enter at market (~$773). Setup: `ai-momentum-pullback`.
+6. **MRVL: DO NOT ENTER.** Earnings May 27 after close — 48h window active from May 25 close (today = closed, so window effectively opened). Post-earnings entry May 28–29.
+7. **Circuit breaker:** If May 26 opens down ≥3% from May 22 close (7,473.47 → below 7,249), halt new entries.
+
+```yaml
+---
+ts: 2026-05-25T13:45:00Z
+action: skip
+symbol: MARKET
+bucket: active
+setup: other
+score: null
+thesis: Memorial Day — US equity markets closed. No executable orders. Market-Open routine fired on non-trading day.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "2026-05-25 is Memorial Day (US market holiday). Routine fired but no market open occurred. Alpaca API blocked (HTTP 403, 17th+ consecutive session) — calendar could not be verified via API. Confirmed market closure from portfolio.md documentation. Pre-Market heartbeat also absent today (no Pre-Market STARTED in heartbeat log). No predecessor catch-up needed — non-trading day. May 26 (Tuesday) is next trading day. Binding watchlist: AMD (7.5+ score, MOO or limit $471, 10sh), PLTR (7.5 score, limit ~$138.50, 10sh), MU (7.67 score, confirm fill or re-enter). MRVL ineligible through May 27 earnings. See portfolio.md Pending Actions for full May 26 plan."
+---
+```
+
+---
+
 ## 2026-05-23 — Pre-Market routine fired on non-trading day (Saturday)
 
 2026-05-23 is a **Saturday**. US equity markets closed. Memorial Day **May 25** also closed. Next trading day: **May 26, 2026 (Tuesday)**. No orders placed or executable.

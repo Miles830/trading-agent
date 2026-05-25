@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-22T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-05-25T13:45:00Z",
+  "updated_by": "market-open-holiday",
   "portfolio": {
     "total_equity": 100200,
     "starting_equity": 100000.0,
@@ -579,10 +579,10 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 09:45 ET",
-      "last_summary": "SILENT FAILURE May 20. Next May 21: (1) Confirm AMD/PLTR/MU fills, place stops (fill\u00d70.95 GTC) immediately. (2) Assess NVDA open gap \u2014 AH -2.44% on beat; if gap-down -3%+ with 2\u00d7 vol + 2/5 indicators: score earnings-reaction-fade. (3) Close NVDA if still held (binary event violation, exit at open). (4) Limit orders for AVGO, MRVL if score \u22657."
+      "status": "holiday",
+      "last_run": "2026-05-25T13:45:00Z",
+      "next_run": "2026-05-26 09:45 ET",
+      "last_summary": "Memorial Day May 25 \u2014 market closed. No orders placed. Alpaca API blocked (HTTP 403, 17th+ consecutive). May 26 mandatory: stop audit, cancel stale AMD/PLTR GTC orders, AMD MOO/limit $471 (10sh, score 7.5+), PLTR limit $138.50 (10sh, score 7.5), MU confirm fill or re-enter. MRVL ineligible through May 27 earnings."
     },
     {
       "name": "Mid-Morning",
