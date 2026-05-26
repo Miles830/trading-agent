@@ -4,6 +4,306 @@
 
 ---
 
+## 2026-05-26 — Market Close (3:30 PM ET / 19:35 UTC) — FIRST TRADING DAY POST-MEMORIAL DAY
+
+**API STATUS: BLOCKED** — HTTP 403 "Host not in allowlist" — 19th+ consecutive blocked session. All Alpaca API calls (positions audit, open orders, order placement) returned 403. No orders executed. Alpaca paper account is system of record; all stated fills/positions are ESTIMATES from prior sessions.
+
+**PREDECESSOR AUDIT (CRITICAL — ALL FIVE FAILED TODAY):**
+`grep "STARTED" logs/heartbeats/2026-05-26.log` shows only Market-Close STARTED (19:35:30Z). Pre-Market, Market-Open, Mid-Morning, Midday, and Afternoon all SILENTLY FAILED on the first trading day after Memorial Day weekend. Violation entries logged below.
+
+**MARKET SUMMARY (from web research — API blocked):**
+- S&P 500: +0.56% → estimated close ~7,515 (prior close 7,473.47 May 22)
+- Nasdaq: +~1% (Russell 2000 + Nasdaq strong day despite Iran/Ukraine weekend)
+- **MU: +18% to ~$912.19** (prev close $751) — UBS analyst Timothy Arcuri TRIPLED price target to $1,625 from $535; MU hits $1 TRILLION market cap milestone. Day range $820.30–$912.50
+- **AMD: +7.84% to ~$504.14** — breakout above 52-week high of $481.41; "parabolic advance" per TradingView; data center revenue +57% YoY, AI GPU demand accelerating. Day range ~$467–$504
+- **PLTR: ~$136-137** — range-bound; volume 27.58M vs 35.01M avg (BELOW average)
+- **GLD: ~$413.82** (prior close $414.44 — flat/slightly down)
+- **MRVL: ~$196.33** — earnings TOMORROW May 27 after close (Q1 FY2027 estimate $2.40B revenue, +27% YoY); CONFIRMED INELIGIBLE today
+
+**CIRCUIT BREAKER:** S&P 500 UP today (+0.56% from 7,473.47). 3% down threshold would be 7,249. NOT triggered.
+
+**MU SITUATION — TARGET EXCEEDED, NO BRACKET (GUARDRAIL VIOLATION):**
+Our estimated MU position (6sh filled at $765.91 on May 22 dip) had a take-profit target of $880.80 (+15%). MU today traded UP to $912 — EXCEEDING target by +$31. Because all API calls have been blocked for 19+ sessions, NO bracket order was ever placed. MU has no resting stop loss AND no resting take-profit at Alpaca. Attempted MOC sell → HTTP 403 blocked.
+
+Estimated unrealized gain on MU: ($912.19 − $765.91) × 6 = **+$877.68** (+19.1% from entry).
+
+**AMD — 6-AGENT FULL ANALYSIS (MOC entry at ~$504 close):**
+AMD broke above its previous 52-week high of $481.41 today (+7.84% to ~$504). Data center revenue +57% YoY, Q1 blowout, AI capex acceleration. 5-indicator check: Volume spike (>2x avg on breakout) ✓, MACD bullish crossover (uptrend continuation) ✓, Volume oscillator positive (short-MA > long-MA on breakout day) ✓, Candlestick: white marubozu/bullish continuation on 5-min ✓ — 4 of 5 confirmed ✓ (Stochastic overbought on extended run, not confirming). Full scores: Fundamentals 8, Technical 7, Sentiment 7, Macro 7, Risk 7, Tech Analyst 8. Average 7.33 ≥ 7 ✓. All 6 agents ≥ 7 ✓. MOC BUY attempted: 9sh × ~$504 = $4,536 (4.5% of equity), stop $478.80 (-5%), target $579.60 (+15%), R/R 3:1 ✓. **API BLOCKED** → deployment violation.
+
+**PLTR — 6-AGENT ANALYSIS (MOC consideration):**
+PLTR ~$136-137, volume 27.58M vs 35.01M avg (BELOW average). Stochastic midrange. No clear candlestick pattern today. Only 1 of 5 mandatory technical indicators confirmed (MACD mildly positive) — fails the 2-of-5 requirement, technical capped at 5/10. Full scores: Fundamentals 7, Technical 5, Sentiment 7, Macro 7, Risk 7, Tech Analyst 8. Average 6.83. **REJECTED — below 7.0 threshold** (not a deployment bias violation; today's 6-agent score is legitimately below the mandatory entry floor; volume is below average and no 2-of-5 technical confirmation). Will re-score May 27.
+
+**MRVL — INELIGIBLE (Exemption 2):**
+MRVL earnings May 27 after close (Q1 FY2027). Current time is within 48h of that binary event. SKIP confirmed. Post-earnings re-score target: May 28 Pre-Market or Daily Review. MRVL at $196.33; analysts expect +13% move on earnings. 6-agent reanalysis queued.
+
+**ESTIMATED TODAY'S P&L:**
+- MU 6sh: ($912.19 − $765.91) × 6 = +$877.68 unrealized
+- GLD 7sh: ($413.82 − $414.44) × 7 = −$4.34 unrealized
+- Cash ~$85,550: flat
+- **Net change today: +$873.34 / ~$100,200 base = +0.87% vs SPX +0.56%**
+- Outperforming today: **+0.31 pp** (first outperformance in weeks)
+- Cumulative gap vs SPX: approximately **−3.2 pp** (slightly improved from −3.04 pp May 20 because today's MU surge partially offsets cash drag)
+
+**GUARDRAIL FLAGS:**
+1. MU POSITION SIZE VIOLATION: 6sh × $912.19 = $5,473 = 5.47% of equity → ABOVE the 5% max. Caused by target price appreciation with no resting take-profit order. MOC sell attempted → blocked. OPERATOR: sell MU immediately via Alpaca dashboard to reduce to ≤ 5% or close entirely at ~$912 (target exceeded).
+2. MU NO RESTING STOP: API blocked = no bracket placed. Naked position. MOC sell attempted → blocked. OPERATOR: place sell order immediately.
+3. AMD DEPLOYMENT FAILURE (11th consecutive): Score 7.33 ≥ 7, MOC attempted → HTTP 403 blocked. MANDATORY per Deployment Bias.
+4. ALL FIVE PREDECESSOR ROUTINES FAILED: Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon — all silently failed on 2026-05-26.
+
+**TOMORROW (MAY 27, 2026):**
+- MRVL reports earnings after close → 6-agent full analysis at Daily Review for May 28 entry decision
+- AMD follow-up: if held (MOC fills), verify stop resting at Alpaca; if not filled (API still blocked), mandatory Pre-Market MOO
+- MU: sell if API unblocks; if still blocked, operator must close manually
+- PLTR: re-score if volume picks up and 2-of-5 technical indicators confirm
+- GLD: stop $397.92 safe (price $413.82 = 4.0% above stop)
+
+---
+
+```yaml
+---
+ts: 2026-05-26T12:00:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine silently failed on 2026-05-26 — first trading day after Memorial Day. No STARTED heartbeat in logs/heartbeats/2026-05-26.log.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "SILENT FAILURE — Pre-Market 2026-05-26. No heartbeat STARTED entry. This was the first trading day after Memorial Day (May 25 = holiday). AMD mandatory MOO (11th+ consecutive missed entry) should have fired at 8:00 AM ET. PLTR mandatory MOO should have fired. MU fill confirm + stop verify should have run. Alpaca API still blocked (HTTP 403, 19th+ consecutive)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T13:45:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Open routine silently failed on 2026-05-26 — no STARTED heartbeat in logs/heartbeats/2026-05-26.log.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "SILENT FAILURE — Market Open 2026-05-26. No heartbeat. Should have: confirmed MU fill + placed stop at $727.61; confirmed AMD/PLTR MOO fills or placed follow-up stops; audited all positions for naked exposure. MU surged +18% to $912 intraday — without a stop placed, MU was completely unprotected. This is the worst-case consequence of the silent-failure-chain: a position that exceeded its target with no take-profit, and no stop below. Alpaca API still blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T15:00:00Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine silently failed on 2026-05-26. No STARTED heartbeat.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "SILENT FAILURE — Mid-Morning 2026-05-26. By 11:00 AM ET, MU had already surged past its $880.80 target. Mid-Morning should have placed a MOC sell for MU to lock in gains. Alpaca API still blocked. AMD at ~$490-500 by mid-morning — Mid-Morning should have placed a limit buy for AMD. All blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine silently failed on 2026-05-26. No STARTED heartbeat.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "SILENT FAILURE — Midday 2026-05-26. Midday should have placed MOC orders for MU exit (target exceeded) and AMD entry. 4 of 5 pre-Market-Close routines now missed. Alpaca API still blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T18:00:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine silently failed on 2026-05-26. No STARTED heartbeat.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "SILENT FAILURE — Afternoon 2026-05-26. Should have: closed any day-trades, placed MOC orders for MU sell (target exceeded) and AMD/PLTR entries. All 5 predecessor routines silently failed today. Alpaca API still blocked (HTTP 403, 19th+ consecutive)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T19:35:00Z
+action: violation
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: null
+thesis: MU take-profit target $880.80 exceeded (MU at $912.19 +18%); MOC SELL attempted → API blocked (HTTP 403). Position now oversized (5.47% of equity > 5% limit). No resting stop or take-profit at Alpaca.
+size_pct: 5.47
+stop: 727.61
+target: 880.80
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION: MU target $880.80 exceeded (price $912.19, +19.1% from estimated fill $765.91). No bracket order placed (API blocked for 19+ sessions). MOC sell 6sh attempted 2026-05-26T19:35Z → HTTP 403. Position now $5,473 = 5.47% of equity, breaching 5% max. No resting stop = naked position. OPERATOR MUST: sell MU manually at https://app.alpaca.markets immediately. UBS tripled PT to $1,625; consider closing at current price to lock +$877.68 estimated gain. Unrealized gain: ($912.19 - $765.91) × 6 = +$877.68 (+19.1%)."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T19:35:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: AMD broke above 52-week high ($481) to ~$504 (+7.84%). Score 7.33 ≥ 7 — MANDATORY MOC entry per Deployment Bias (11th consecutive session). MOC BUY 9sh attempted → API blocked (HTTP 403, 19th+ consecutive).
+size_pct: 4.5
+stop: 478.80
+target: 579.60
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "DEPLOYMENT VIOLATION — AMD scored 7.33 (all 6 agents ≥ 7), MOC BUY 9sh at ~$504 attempted. HTTP 403 blocked. Entry details: 9sh × $504 = $4,536 (4.5%), stop $478.80 (-5%), target $579.60 (+15%), R/R 3:1. AMD is up 7.84% today, breaking above 52-week high $481.41. Technical: 4/5 indicators confirmed (volume spike, volume oscillator, MACD, candlestick — stochastic overbought). Fundamentals: data center +57% YoY, Q1 blowout, 2nm AI chip ramp. 11th consecutive session AMD entry blocked by Alpaca API. OPERATOR: buy AMD 9 shares at market immediately. This is the 11th consecutive missed entry on a ≥7 score."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T19:35:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.83
+thesis: PLTR ~$136; today's 6-agent re-score: 6.83 (below 7.0 threshold). Technical 5/10 — volume 27.58M vs 35.01M avg (below average), only 1 of 5 mandatory indicators confirmed; 2-of-5 requirement not met. Legitimate rejection per entry framework.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 5
+master_decision: rejected
+master_notes: "REJECTED — PLTR 6-agent score 6.83 on 2026-05-26 Market Close re-score. Technical scored 5/10 due to: (a) volume 27.58M vs 35.01M average = BELOW AVERAGE (bearish); (b) only MACD mildly positive from 5 indicators — fails 2-of-5 mandatory confirmation. Prior commitment at $138 limit was based on May 22 data. Today at $136 with weak technicals, below-average volume, and no clear pattern, the entry framework correctly rejects. Not a deployment bias violation — the score < 7 is a valid skip. Re-score May 27 if volume picks up and stochastic crosses from oversold."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T19:35:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: null
+thesis: MRVL reports Q1 FY2027 earnings TOMORROW May 27 after close. Within 48-hour binary event window per CLAUDE.md. INELIGIBLE for entry.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "EXEMPTION 2 — Binary event within 48h. MRVL reports Q1 FY2027 May 27 AH. Price $196.33. Morgan Stanley raised PT to $172 (maintained); multiple analyst upgrades/target hikes ahead of print. Options market pricing ~13% move. Zacks consensus: $2.40B revenue (+27% YoY), EPS $0.80. Prepare full 6-agent analysis for May 28 Daily Review or Pre-Market based on actual print reaction. If beat + guidance raise + bullish gap: earnings-reaction-follow setup. If miss: wait for stabilization."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.

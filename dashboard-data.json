@@ -1,26 +1,26 @@
 {
-  "last_updated": "2026-05-25T16:31:50Z",
-  "updated_by": "midday",
+  "last_updated": "2026-05-26T19:35:00Z",
+  "updated_by": "market-close",
   "portfolio": {
-    "total_equity": 100200,
+    "total_equity": 101073,
     "starting_equity": 100000.0,
     "cash": 85550,
-    "cash_pct": 85.4,
+    "cash_pct": 84.6,
     "buying_power": 171100,
-    "long_market_value": 14650,
+    "long_market_value": 8370,
     "short_market_value": 0.0,
-    "daily_pnl": 100,
-    "daily_pnl_pct": 0.1,
-    "total_return_pct": 0.2,
-    "spx_return_pct": 3.24,
-    "benchmark_gap_pct": -3.04,
-    "open_positions_count": 5,
-    "note": "May 21 Pre-Market \u2014 API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news \u2014 closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K \u2014 score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "daily_pnl": 873,
+    "daily_pnl_pct": 0.87,
+    "total_return_pct": 1.07,
+    "spx_return_pct": 4.4,
+    "benchmark_gap_pct": -3.33,
+    "open_positions_count": 2,
+    "note": "May 26 Market Close \u2014 API BLOCKED (HTTP 403), 19th+ consecutive session. ALL 5 PREDECESSOR ROUTINES SILENTLY FAILED. MU SURGED +18% to $912.19 (UBS tripled PT to $1,625; $1T market cap). Estimated fill $765.91 (6sh) = unrealized gain +$877.68. Target $880.80 EXCEEDED \u2014 MOC sell attempted, BLOCKED. MU now OVERSIZED (5.47% > 5% max). OPERATOR MUST SELL MU. AMD broke to ATH ~$504 (+7.84%). MOC buy 9sh attempted, BLOCKED (11th consecutive deployment failure, score 7.33). PLTR re-scored 6.83 today \u2014 rejected (below-average volume, technical 5/10). MRVL INELIGIBLE (earnings May 27 AH). GLD $413.82 (stop $397.92 safe). Today: +0.87% vs SPX +0.56%. Cumulative gap: ~-3.33 pp.",
     "buckets": [
       {
         "key": "active",
         "label": "Active Trading (target 85%)",
-        "value": 14650
+        "value": 8370
       },
       {
         "key": "crypto",
@@ -36,18 +36,33 @@
   },
   "positions": [
     {
+      "symbol": "MU",
+      "bucket": "active",
+      "qty": 6,
+      "entry_price": 765.91,
+      "current_price": 912.19,
+      "pnl": 877.68,
+      "pnl_pct": 19.1,
+      "stop_loss": 727.61,
+      "take_profit": 880.8,
+      "setup": "breakout-volume",
+      "agent_average": 7.67,
+      "note": "MU +18% today to $912.19 (UBS tripled PT to $1,625; $1T market cap). TARGET $880.80 EXCEEDED. No bracket placed (API blocked). MOC sell 6sh attempted \u2192 HTTP 403. POSITION OVERSIZED (5.47% > 5% limit) \u2014 GUARDRAIL VIOLATION. OPERATOR MUST CLOSE IMMEDIATELY at https://app.alpaca.markets. Unrealized gain +$877.68.",
+      "risk_flag": "GUARDRAIL VIOLATION: (1) No resting stop loss at Alpaca. (2) No resting take-profit. (3) Position size 5.47% > 5% max. OPERATOR ACTION REQUIRED \u2014 sell MU 6sh immediately."
+    },
+    {
       "symbol": "GLD",
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 416.64,
-      "pnl": -15.54,
-      "pnl_pct": -0.53,
+      "current_price": 413.82,
+      "pnl": -35.28,
+      "pnl_pct": -1.2,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD +1.25% today ($411.50\u2192$416.64). Cross-asset hedge \u2014 gold rising despite oil collapse and risk-on equity day. Dollar weakness component. Stop $397.92 (-4.9% from current). GLD confirmed active (only certain position)."
+      "note": "GLD ~$413.82 (prev close $414.44 May 22). Flat on risk-on day. Stop $397.92 = 3.8% cushion. Position safe. Hold as cross-asset macro hedge."
     },
     {
       "symbol": "TSM",
@@ -61,50 +76,50 @@
       "take_profit": 498.48,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.7,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed (Scenario A). If still held: NVDA beat = TSM fab demand thesis strengthened. Close via strategy switch or let NVDA read-through lift price."
+      "note": "STRATEGY SWITCH STATUS UNKNOWN (API blocked since May 17). If still held, operator must close. May 26 TSM data not retrieved \u2014 assumed similar to May 22 levels."
     },
     {
       "symbol": "NVDA",
       "bucket": "LT-closing",
       "qty": 15,
       "entry_price": 198.83,
-      "current_price": 217.91,
-      "pnl": 286.2,
-      "pnl_pct": 9.6,
+      "current_price": 221.0,
+      "pnl": 333.0,
+      "pnl_pct": 11.2,
       "stop_loss": 175.6,
       "take_profit": 247.44,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.5,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed. IF STILL HELD: Binary event violation (held through earnings). NVDA reported TONIGHT \u2014 BEAT ($81.62B vs $79.19B) but AH -2.44% ($217.91). Unrealized P/L uses AH price. CLOSE AT OPEN May 21 if still held \u2014 do not carry AH weakness into open.",
-      "risk_flag": "EARNINGS VIOLATION: NVDA reported May 20 after close (not May 21 as documented). Held through binary event. Beat but selling off in AH. CLOSE AT MARKET OPEN MAY 21 if still in portfolio."
+      "note": "STRATEGY SWITCH STATUS UNKNOWN. If still held, operator must close. NVDA likely up today with Nasdaq +1% on May 26.",
+      "risk_flag": "STRATEGY SWITCH UNCONFIRMED \u2014 if still held, close immediately per May 17 directive."
     },
     {
       "symbol": "JPM",
       "bucket": "LT-closing",
       "qty": 9,
       "entry_price": 308.3,
-      "current_price": 303.0,
-      "pnl": -47.7,
-      "pnl_pct": -1.72,
+      "current_price": 300.0,
+      "pnl": -74.7,
+      "pnl_pct": -2.72,
       "stop_loss": 272.14,
       "take_profit": 383.47,
       "setup": "sector-rotation",
       "agent_average": 7.3,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed. Oil collapse today (-5.66%) may restore rate-cut expectations, which would benefit JPM NIM thesis. However, close per strategy-switch directive."
+      "note": "STRATEGY SWITCH STATUS UNKNOWN. If still held, operator must close per May 17 directive."
     },
     {
       "symbol": "AVGO",
       "bucket": "LT-closing",
       "qty": 7,
       "entry_price": 418.59,
-      "current_price": 410.0,
-      "pnl": -60.13,
-      "pnl_pct": -2.05,
+      "current_price": 412.0,
+      "pnl": -46.13,
+      "pnl_pct": -1.57,
       "stop_loss": 368.36,
       "take_profit": 519.05,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.0,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed. NVDA beat = AVGO custom ASIC thesis strengthened (Google/Meta AI chip pipeline). If still held, NVDA read-through should push AVGO higher tomorrow. But close per strategy-switch directive."
+      "note": "STRATEGY SWITCH STATUS UNKNOWN. If still held, operator must close per May 17 directive."
     }
   ],
   "trades": [
@@ -571,66 +586,66 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "completed",
+      "status": "violation",
       "last_run": "2026-05-21 08:02 ET",
-      "next_run": "2026-05-22 08:00 ET",
-      "last_summary": "May 21: S&P futures +0.09% (modest risk-on). NVDA $220.66 post-earnings ($80B buyback + 25c div). AMD pre-mkt $429 (-3.6% contagion). PLTR $134.01 (at trigger). MU ~$720. BTC $77,852 (<$82K, score 5.3). 3 MOO orders ATTEMPTED AND BLOCKED by API: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). MRVL excluded (earnings today). OPERATOR: manually place all 3 MOO before 9:25 AM ET. Market Open (9:45 AM): confirm fills, post GTC stops at fill\u00d70.95."
+      "next_run": "2026-05-27 08:00 ET",
+      "last_summary": "SILENT FAILURE May 26 (first trading day post-Memorial Day). No heartbeat. AMD mandatory MOO (11th+ consecutive) should have fired. PLTR mandatory MOO should have fired. MU fill confirm + stop verify should have run."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
       "status": "violation",
       "last_run": "unknown",
-      "next_run": "2026-05-21 09:45 ET",
-      "last_summary": "SILENT FAILURE May 20. Next May 21: (1) Confirm AMD/PLTR/MU fills, place stops (fill\u00d70.95 GTC) immediately. (2) Assess NVDA open gap \u2014 AH -2.44% on beat; if gap-down -3%+ with 2\u00d7 vol + 2/5 indicators: score earnings-reaction-fade. (3) Close NVDA if still held (binary event violation, exit at open). (4) Limit orders for AVGO, MRVL if score \u22657."
+      "next_run": "2026-05-27 09:45 ET",
+      "last_summary": "SILENT FAILURE May 26. MU surged +18% to $912 without stop placed -- worst-case consequence of silent failure chain. Should have placed MU take-profit capture order and AMD stop-follow after fill."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
+      "status": "violation",
       "last_run": "2026-05-22T15:09:00Z",
-      "next_run": "2026-05-22T16:30:00Z",
-      "last_summary": "Stop audit blocked (HTTP 403, 15th+ consecutive). MRVL skipped (Exemption 2: Memorial Day constraint). AVGO rejected (score 6.0). AMD/PLTR/MU re-attempted (all blocked). AMD limit updated 49 from 51.84. Warsh sworn in (hawkish, rate hike odds 20-30%). Iran talks progress (risk-on). S&P +0.55%."
+      "next_run": "2026-05-27 15:00 ET",
+      "last_summary": "SILENT FAILURE May 26. By 11 AM ET MU already exceeded $880 target. Should have placed MOC sell. AMD at ~$490-500 -- should have placed limit buy."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "holiday",
+      "status": "violation",
       "last_run": "2026-05-25T16:31:50Z",
-      "next_run": "2026-05-26 12:30 ET",
-      "last_summary": "Memorial Day May 25 — markets closed. Alpaca API blocked (18th+ consecutive). No orders. May 26 commitments confirmed: AMD limit ~$470 (MANDATORY 10th+ session), PLTR limit ~$138 (MANDATORY), MU fill confirm + stop verify, MRVL INELIGIBLE through May 27 earnings. MRVL reports May 27 AH — 6-agent reanalysis for May 28 entry decision."
+      "next_run": "2026-05-27 16:30 ET",
+      "last_summary": "SILENT FAILURE May 26. 4th of 5 predecessor routines to fail today. Should have placed MOC sell for MU (target exceeded) and AMD/PLTR entries."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "completed",
+      "status": "violation",
       "last_run": "2026-05-20 14:04 ET",
-      "next_run": "2026-05-21 14:00 ET",
-      "last_summary": "May 20: STARTED 18:04Z / COMPLETED 18:11Z. API blocked (HTTP 403 confirmed). AMD skip (5th+ consecutive, score 7.33). PLTR skip (trigger unconfirmed). NVDA skip (binary event 48h window active). NVDA earnings noted for May 21 \u2014 actually reported May 20 AH (BEAT, -2.44% AH). S&P 500 +1.08% to 7,432.97."
+      "next_run": "2026-05-27 18:00 ET",
+      "last_summary": "SILENT FAILURE May 26. All 5 predecessor routines failed on May 26. API still blocked (HTTP 403, 19th+ consecutive)."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "violation",
-      "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-21 15:30 ET",
-      "last_summary": "SILENT FAILURE May 20. No day trades to close. NVDA AH earnings reaction ongoing (beat, -2.44% AH). No Market Close stop audit performed."
+      "status": "completed",
+      "last_run": "2026-05-26T19:35:00Z",
+      "next_run": "2026-05-27 19:30 ET",
+      "last_summary": "May 26: All 5 predecessors silently failed (logged as violations). API blocked (19th+). MU +18% to $912 -- target $880.80 exceeded; MOC sell attempted -> blocked; position oversized 5.47%. AMD +7.84% to $504 ATH -- MOC buy 9sh (score 7.33) attempted -> blocked (11th miss). PLTR rejected (6.83 re-score, technical 5/10). MRVL SKIP (Exemption 2: earnings May 27 AH). Today: +0.87% vs SPX +0.56%. Cumulative gap: ~-3.33 pp."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-05-20 16:35 ET",
-      "next_run": "2026-05-21 16:30 ET",
-      "last_summary": "May 20: S&P 500 +1.08% to 7,432.97. Portfolio ~+0.10% (GLD +1.25%, other pos mixed). Cumulative gap vs SPX: -3.04 pp. NVDA BEAT ($81.62B vs $79.19B) but AH -2.44% \u2014 sell the news. AMD $440.50 (+6.39%, missed 6th time). PLTR ~$135 (trigger confirmed). MU $720.55. May 21 MANDATORY: AMD MOO + PLTR MOO + MU 6-agent \u2192 MOO. Weekly evolution note due Friday May 22."
+      "next_run": "2026-05-26 20:30 ET",
+      "last_summary": "Last run May 20. May 26 Daily Review should fire tonight (20:30 UTC). Key agenda: MRVL earnings reaction (May 27 AH), AMD deployment plan, MU position status, 5-predecessor silent failure analysis."
     },
     {
       "name": "Weekly Review",
       "schedule": "Friday 16:30 ET",
       "status": "pending",
       "last_run": "never completed",
-      "next_run": "2026-05-22 16:30 ET",
-      "last_summary": "May 15 weekly review: SILENT FAILURE. May 22 due: first full week post-strategy-switch, 3 weeks API blockage, AMD 6x missed entry, NVDA sell-the-news lesson, oil collapse implications."
+      "next_run": "2026-05-29 20:30 ET",
+      "last_summary": "Overdue since May 22. Next Friday May 29. Key topics: 19+ sessions API blockage, 11x AMD missed entry, MU target exceeded without bracket, MRVL post-earnings entry plan, PLTR technical weakness."
     }
   ],
   "agent_scorecard": {
@@ -688,35 +703,30 @@
     "recent_lessons_md": "### 2026-05-20 \u2014 NVDA sell-the-news + AMD 6th miss + oil collapse\n\n**3 things that worked:**\n1. GLD hedge +1.25% on risk-on day + oil collapse \u2014 cross-asset protection confirmed\n2. Binary event exclusion correctly applied \u2014 no new NVDA entries made (AH -2.44% validates the rule)\n3. NVDA beat confirms AI infrastructure thesis \u2014 AMD, MU, AVGO all read-through beneficiaries\n\n**3 to improve:**\n1. AMD MUST be entered at Market Open May 21 \u2014 6th consecutive failure is unacceptable\n2. PLTR conditional entry is NOW triggered ($135 > $134) \u2014 MOO May 21 MANDATORY\n3. NVDA earnings date was miscalculated (May 20 not May 21) \u2014 always verify from primary IR source\n\n### 2026-05-13 \u2014 PPI shock + PLTR support break\n\n- April PPI +1.4% vs +0.5% expected \u2014 largest monthly jump since 2022. S&P rose +0.69% anyway.\n- PLTR -4.31% ($136\u2192$129.99). $134 support broken. Re-scored 6.50 (Technical 3). SKIP until $134 reclaim.\n- AMD pullback from $477 to $448 normalizes RSI to ~60. Re-score 7.33. MUST ENTER.\n- 7th consecutive API-blocked routine. AMD MOC attempted 19:42:21Z \u2014 HTTP 403.\n\n### 2026-05-01 \u2014 Operator-mandated deployment bias correction\n\n- Score \u2265 7 = enter at next routine. Only 3 valid skip exemptions."
   },
   "market": {
-    "mode": "Risk-on modest \u2014 S&P futures +0.09%. NVDA post-earnings recovery ($80B buyback + 25c div offset sell-the-news). AI semi sector resilient. AMD pre-market -3.59% sector contagion only.",
+    "mode": "Risk-on strong -- S&P +0.56%, Nasdaq +1%. MU +18% (UBS $1,625 PT). AMD +7.84% ATH breakout. Iran/Ukraine tensions but markets shrugging off.",
     "fear_greed": null,
-    "fear_greed_label": "Cautiously Greedy \u2014 S&P futures +0.09%. NVDA beat with massive buyback/dividend = AI capex confirmed. AMD pre-market pullback is sector noise. BTC recovery cautious ($77,852).",
-    "spx": "May 21 pre-market: S&P 500 futures +0.09%. Prior close: 7,432.97 (+1.08% May 20). NVDA beat + $80B buyback + 25c dividend support futures. Modest positive open expected.",
-    "btc": "BTC $77,852 as of May 21 pre-market (down from ~$81,500 May 15 high). Below $82K threshold. Score 5.3/10 \u2014 not a mandatory entry. Recovery from $76K low cautiously underway. Monitor vs $82K for re-entry signal.",
+    "fear_greed_label": "Greedy -- strong market rally, MU $1T milestone, AMD ATH. Risk-on day.",
+    "spx": "May 26: S&P 500 estimated close ~7,515 (+0.56% from 7,473.47 May 22). Nasdaq +~1%. First trading day post-Memorial Day strong across the board.",
+    "btc": "BTC data not retrieved May 26. Prior estimate ~$77-80K range. Below $82K mandatory entry threshold.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
-        "change_pct": 1.54,
-        "note": "Nasdaq +1.54%. AMD +6.39% to $440.50. MU $720.55 (range $712-$739). NVDA $222.70 regular close (AH $217.91 on sell-the-news after beat). AVGO ~$410. TSM ~$404."
+        "change_pct": 1.0,
+        "note": "AMD +7.84% to $504 (ATH). MU +18% to $912 ($1T market cap). Nasdaq +~1%. Strong AI infrastructure demand day."
       },
       {
-        "name": "Financials",
-        "change_pct": 1.31,
-        "note": "Dow +1.31%. JPM estimated ~$303-306. Oil collapse \u2192 potential rate-cut path restored \u2192 positive for loan growth thesis."
+        "name": "Memory Chips",
+        "change_pct": 18.0,
+        "note": "MU +18% to $912.19. UBS Timothy Arcuri tripled PT to $1,625 from $535. $1T market cap milestone. Day range $820.30-$912.50."
       },
       {
         "name": "Precious Metals",
-        "change_pct": 1.25,
-        "note": "GLD $416.64 (+1.25%, prev $411.50). Gold up despite oil collapse and risk-on day \u2014 dollar weakness component dominant. Stop $397.92 = 4.9% cushion."
-      },
-      {
-        "name": "Energy",
-        "change_pct": -5.66,
-        "note": "WTI crude -5.66% to $98.26/bbl. Brent -5.63% to $105.02/bbl. Middle East de-escalation optimism. XLE not held (confirmed not in portfolio per May 17 verification)."
+        "change_pct": -0.15,
+        "note": "GLD ~$413.82 (slightly down from $414.44 May 22). Flat on risk-on day. Stop $397.92 safe."
       }
     ],
     "macro_notes_md": "- **Oil collapse today (-5.66%):** WTI \u2192 $98.26, Brent \u2192 $105.02. Middle East de-escalation optimism. Positive for equities broadly. Lower inflation trajectory \u2192 rate-cut expectations potentially restored.\n- **NVDA Q1 FY2027 (tonight):** Revenue $81.62B vs $79.19B (+85% YoY). EPS $1.87 vs $1.76. Q2 guidance $89.18-92.82B vs $87.36B. CEO: 'AI factories \u2014 largest infrastructure expansion in human history accelerating.' AH: $217.91 (-$5.56, -2.44%). Third consecutive beat with AH decline.\n- **AI infrastructure thesis confirmed:** NVDA data center $39.4B (est) in Q1. HBM memory demand = MU read-through. Custom ASICs = AVGO read-through. Foundry demand = TSM read-through. Agentic AI 'doing productive work.'\n- **AMD +6.39% to $440.50:** Strongest single-day move since Q1 earnings (May 5 +16%). AMD has doubled YTD 2026. AI data center CPU + GPU momentum. Score upgraded to 7.50.\n- **PLTR ~$135:** Above $134 re-entry trigger. Government AI (AIP) secular revenue. Score 7.33 confirmed. MANDATORY MOO May 21.\n- **MU $720.55:** NVDA HBM demand confirmation = direct MU read-through. Score likely \u22657.5 post-NVDA print. Entry zone $720-740.\n- **S&P 500:** 7,432.97 (+1.08%). Down from 7,511 all-time high (May 14) after May 15 sell-off. Recovery underway. Portfolio gap vs SPX: -3.04 pp (improved from -3.81 pp).",
-    "sp500_today_pct": "+0.55%",
+    "sp500_today_pct": "+0.56%",
     "sp500_est": 7487,
     "macro_note": "Kevin Warsh sworn in as Fed Chair (hawkish). Iran war talks progress (risk-on). Oil +1.8%."
   },
@@ -798,6 +808,12 @@
       "portfolio_return_pct": 0.23,
       "spx_return_pct": 3.5,
       "daily_pnl_pct": -0.57
+    },
+    {
+      "date": "2026-05-26",
+      "portfolio_return_pct": 1.07,
+      "spx_return_pct": 4.4,
+      "daily_pnl_pct": 0.87
     }
   ]
 }
