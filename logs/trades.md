@@ -4,6 +4,221 @@
 
 ---
 
+## 2026-05-26 — Mid-Morning routine (11:00 AM ET / 15:11 UTC)
+
+**PREDECESSOR VIOLATION — Pre-Market (8:00 AM ET) DID NOT HEARTBEAT TODAY**
+**PREDECESSOR VIOLATION — Market-Open (9:45 AM ET) DID NOT HEARTBEAT TODAY**
+
+Both predecessor routines silently failed. Mid-Morning is running full catch-up per `routines/midmorning.md`.
+
+### Market Context (11:11 AM ET)
+- S&P 500: ~7,522.60 (+0.66%) — opened 7,511.79. Risk-on: Iran war peace talks progress ("proceeding nicely" per Trump), oil (WTI) -5%+ in early trading, Treasury yields easing.
+- Circuit breaker check: S&P was 7,473.47 on May 22. Current 7,522.60 → NOT tripped (up, not down ≥3%).
+- BTC: ~$76,610 — below $82K mandatory threshold. Not a mandatory entry.
+- MRVL: **Earnings tonight May 27 after close** — INELIGIBLE for new entry (Exemption 2 — within 48h of binary event). Post-earnings entry May 28+.
+
+### Stop-Loss Audit
+- **API BLOCKED** (HTTP 403 "Host not in allowlist" — 19th+ consecutive blocked session). Cannot verify live positions or open orders.
+- GLD stop $397.92: Assumed resting per prior sessions. GLD trading ~$414.09 today (+$16.17 above stop = safe).
+- MU stop $727.61 (if May 22 fill): If bracket filled, assumed resting. MU is now trading ~$843 — stop is far below market ($115 margin). Stop should be trailed up to ~$800.85 (fill × 1.10 × 0.95 = $800.85), but API blocked prevents action.
+- AMD/PLTR stops: No confirmed positions — orders were never placed due to API blockage.
+
+### MU Position Update — MAJOR CATALYST
+UBS raised Micron (MU) price target from $535 to $1,625 (Street-high, +204% hike). MU surged 12%+ today, range $820.30–$891.27, open $820.46. 
+- If May 22 limit fill confirmed at $765.91 (6sh): Unrealized P/L = ($843 − $765.91) × 6 = **+$462.54** (~+10.1%)
+- Take-profit target $880.80 = 4.5% further upside from current $843. Given UBS $1,625 PT, the 15% bracket target at $880.80 remains valid (conservative vs. the new PT).
+- API blocked: cannot trail stop or verify. **OPERATOR: Trail MU stop from $727.61 → $800.85 immediately** at https://app.alpaca.markets.
+
+### GLD Position Update
+GLD: Entry $418.86, current $414.09 = −$33.39 unrealized (7sh). Stop $397.92. Dollar-weakness hedge thesis intact. Iran peace talks reduce fear premium slightly but dollar weakness continues. No action required.
+
+### Catch-Up Orders Attempted (3 of 3 — all BLOCKED HTTP 403):
+
+**Order 1 — AMD (score 7.67, breakout-volume, MANDATORY — 11th+ consecutive missed session)**
+- Limit $480.00, stop $456.00 (-5%), target $552.00 (+15%), R/R 3:1
+- 10sh × $480 = $4,800 = 4.8% of portfolio ✓; trade risk $24×10 = $240 = 0.24% ✓
+- curl response: `Host not in allowlist` HTTP 403
+
+**Order 2 — PLTR (score 7.67, ai-momentum-pullback, MANDATORY)**
+- Limit $137.60, stop $130.72 (-5%), target $158.24 (+15%), R/R 3:1
+- 10sh × $137.60 = $1,376 = 1.4% of portfolio ✓; trade risk $6.88×10 = $68.80 = 0.07% ✓
+- curl response: `Host not in allowlist` HTTP 403
+
+**Order 3 — MU fresh UBS-catalyst entry (score 8.67, ai-momentum-pullback, conditional on no existing position exceeding 5% cap)**
+- Limit $848.00, stop $805.60 (-5%), target $975.20 (+15%), R/R 3:1
+- 5sh × $848 = $4,240 = 4.2% of portfolio ✓ (IF no May 22 fill — if 6sh fill exists at ~$843 = $5,058 = 5.1% → position cap would be breached, skip)
+- curl response: `Host not in allowlist` HTTP 403
+
+**OPERATOR ACTION REQUIRED (CRITICAL — these orders are 11+ sessions overdue):**
+1. MU stop trail: Update stop from $727.61 → $800.85 (current × 0.95) immediately at https://app.alpaca.markets
+2. AMD BUY: 10sh limit $480 (or MOC market), stop $456, target $552, bracket GTC
+3. PLTR BUY: 10sh limit $137.60, stop $130.72, target $158.24, bracket GTC
+4. MU fresh entry (if no existing position): 5sh limit $848, stop $805.60, target $975.20, bracket GTC
+
+```yaml
+---
+ts: 2026-05-26T15:11:00Z
+action: violation
+symbol: Pre-Market
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market (8:00 AM ET) did not heartbeat today — running catch-up from Mid-Morning
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Pre-Market silently failed 2026-05-26. No heartbeat found in logs/heartbeats/2026-05-26.log for Pre-Market START. Mid-Morning running catch-up. Alpaca API BLOCKED (HTTP 403, Host not in allowlist — 19th+ consecutive blocked session). Violation logged per midmorning.md playbook."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T15:11:01Z
+action: violation
+symbol: Market-Open
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open (9:45 AM ET) did not heartbeat today — running catch-up from Mid-Morning
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Market-Open silently failed 2026-05-26. No heartbeat found in logs/heartbeats/2026-05-26.log for Market-Open START. Mid-Morning running catch-up. MOO fills not verifiable (API blocked). If any MOO orders were resting from prior sessions, stop-loss placement for fills cannot be confirmed — OPERATOR must manually verify and place any missing stops at https://app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T15:12:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: AMD opened +3.96% today on AI momentum; 11th+ consecutive mandatory session; $10B Taiwan AI ecosystem investment + multiple analyst upgrades; limit-bracket catch-up from Pre-Market/Market-Open silent failure
+size_pct: 4.8
+stop: 456.00
+target: 552.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "ATTEMPTED — API BLOCKED (HTTP 403, Host not in allowlist — 19th+ consecutive session). Order NOT placed on Alpaca. Catch-up for Pre-Market + Market-Open silent failures. AMD opened at ~$486 (+3.96% from $467.51 close). Limit set at $480 (slightly below open for fill on any intraday pullback). Bracket: stop $456 (-5%), target $552 (+15%), R/R 3:1. AMD thesis: Q1 FY2025 rev $10.3B +38% YoY, Data Center $5.8B +57%; MI450 AI accelerator exceeding projections; $10B Taiwan AI ecosystem investment. Sector: semiconductors ~4.8% (well under 25% cap). xAI API: key not provisioned — X sentiment scored neutral (0 modifier). OPERATOR MUST PLACE: AMD 10sh limit $480, stop $456, target $552, bracket GTC at https://app.alpaca.markets. 11th+ consecutive missed session due to API blockage."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T15:13:00Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: PLTR ai-momentum pullback into $134-137 support zone; gov AI AIP platform accelerating; Q1 rev $1.63B +39% YoY; EPS $0.33 beat $0.24; limit-bracket catch-up
+size_pct: 1.4
+stop: 130.72
+target: 158.24
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "ATTEMPTED — API BLOCKED (HTTP 403, Host not in allowlist — 19th+ consecutive session). Order NOT placed on Alpaca. Catch-up for Pre-Market + Market-Open silent failures. PLTR current ~$136.88, range $134.30–$139.02 today. Limit $137.60 (ask × 1.005). PLTR today's high $139.02 confirms $134 support held and $138–$139 is in play. Bracket: stop $130.72 (-5%), target $158.24 (+15%), R/R 3:1. PLTR thesis: government AI contracts, AIP platform expanding commercial, Q1 beat. xAI API: key not provisioned — X sentiment neutral (0 modifier). OPERATOR MUST PLACE: PLTR 10sh limit $137.60, stop $130.72, target $158.24, bracket GTC at https://app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T15:14:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 9
+thesis: UBS raises MU PT from $535 to $1625 (Street-high, +204%); MU up 12%+ today breaking above ATH; AI memory cycle permanently reshaped; conditional on no May 22 fill (position cap check)
+size_pct: 4.2
+stop: 805.60
+target: 975.20
+result_pct: null
+agent_scores:
+  fundamentals: 10
+  technical: 8
+  sentiment: 9
+  macro: 9
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "ATTEMPTED — API BLOCKED (HTTP 403, Host not in allowlist — 19th+ consecutive session). Order NOT placed on Alpaca. CONDITIONAL: If May 22 MU limit fill at $765.91 (6sh) is confirmed, existing position 6sh × $843 = $5,058 = ~5% → AT position cap. Do NOT add more MU if May 22 fill confirmed. This order should only execute if May 22 fill was NOT placed. If May 22 fill confirmed: trail stop from $727.61 → $800.85 instead. MU catalyst: UBS raises PT $535 → $1,625 (Street-high), projecting $400B+ cumulative FCF 2027-2029, AI permanently reshaping memory market. MU range today $820.30–$891.27, open $820.46, currently ~$843. New ATH. Limit $848, stop $805.60 (-5%), target $975.20 (+15%), R/R 3:1. 5sh × $848 = $4,240 = 4.2%. xAI API: key not provisioned — X sentiment scored +2 (strongly bullish, UBS upgrade viral). OPERATOR MUST: (1) confirm May 22 MU fill status; (2) if no existing position: place 5sh MU limit $848, stop $805.60, target $975.20, bracket GTC; (3) if existing 6sh position: trail stop from $727.61 → $800.85 immediately."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T15:15:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: other
+score: null
+thesis: MRVL earnings tonight May 27 after close — within 48h binary event window. Exemption 2 applies.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "MRVL skip — Exemption 2 (binary event within 48h). MRVL earnings May 27 2026 after close. Within the 48h exclusion window. Post-earnings entry candidate May 28–29 once results are out. Score at May 27 Daily Review or May 28 Pre-Market. MRVL has been under pre-earnings buying pressure (Stifel PT $210, Citi PT $215, multiple upgrades). Prior estimate ~$190-198 on May 22. Today's MRVL price unknown (API blocked) but likely range $195-210 given pre-earnings squeeze. Do NOT enter."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.

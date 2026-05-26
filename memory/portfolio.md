@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-25 (Monday) — Memorial Day / Non-Trading Day, Midday heartbeat (16:31 UTC).** Markets CLOSED (Memorial Day US federal holiday). Alpaca API STILL BLOCKED ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed. Next trading day: **May 26, 2026 (Tuesday)**. Watchlist for May 26 is binding: AMD limit ~$470 (score 7.5, MANDATORY — 10th+ consecutive session), PLTR limit ~$138 (score 7.5, MANDATORY), MU confirm fill ($765.91), MRVL INELIGIBLE through May 27 earnings, GLD stop $397.92 to verify. Pre-Market, Market-Open correctly absent today (holiday); Mid-Morning fired 15:08Z confirming non-trading day; Midday fired 16:31Z. MRVL earnings May 27 AH — prepare 6-agent reanalysis for May 28 entry decision.
+**2026-05-26 (Tuesday) — Mid-Morning routine (11:00 AM ET / 15:11 UTC). First trading day after Memorial Day.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 19th+ consecutive blocked session). Pre-Market and Market-Open BOTH silently failed today (no heartbeats). Three orders attempted from Mid-Morning catch-up — all blocked (HTTP 403). **MAJOR CATALYST: UBS raised MU PT from $535 to $1,625 (Street-high, +204%). MU surged 12%+ today ($820–$891 range, open $820.46, current ~$843).** S&P 500 +0.66% (Iran peace talks, oil -5%+). AMD +3.96% open (~$486). PLTR ~$136.88. MRVL INELIGIBLE (earnings tonight May 27 AH). OPERATOR: must trail MU stop $727.61→$800.85, place AMD/PLTR limit brackets, and optionally add MU if no May 22 fill.
+
+**Prior Last Updated:** 2026-05-25 (Monday) — Memorial Day / Non-Trading Day, Midday heartbeat (16:31 UTC). Markets CLOSED (Memorial Day US federal holiday). Alpaca API STILL BLOCKED ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed. Next trading day: **May 26, 2026 (Tuesday)**. Watchlist for May 26 is binding: AMD limit ~$470 (score 7.5, MANDATORY — 10th+ consecutive session), PLTR limit ~$138 (score 7.5, MANDATORY), MU confirm fill ($765.91), MRVL INELIGIBLE through May 27 earnings, GLD stop $397.92 to verify. Pre-Market, Market-Open correctly absent today (holiday); Mid-Morning fired 15:08Z confirming non-trading day; Midday fired 16:31Z. MRVL earnings May 27 AH — prepare 6-agent reanalysis for May 28 entry decision.
 
 **Prior Last Updated:** 2026-05-23 (Saturday) — Non-Trading Day / Weekend Context Update (01:37 UTC). Pre-Market heartbeat fired on Saturday but markets are closed. Friday May 22 close data from web research: S&P 500 **7,473.47** (+0.37%, 8th consecutive weekly gain); AMD **$467.58** (+4% — 2nm AI ramp, multiple target hikes; our limit $449 NOT filled — gapped above at open); MU **~$771** (low $747.27 — limit $765.91 LIKELY FILLED on intraday dip; to confirm May 26); PLTR high **$139.02** (limit $140.35 NOT filled); GLD **$414.44** (stop $397.92 safe). MRVL ~$190-198 (pre-earnings squeeze; Stifel upgrade PT $210; INELIGIBLE through May 27 earnings). AVGO $414.14. BTC ~$77,447 (below $82K threshold). Goldman Sachs warned of correction risk (rising yields+inflation). Iran peace talks ongoing. Memorial Day May 25 = market holiday. Next trading day: **May 26, 2026 (Tuesday)**. Alpaca API STILL BLOCKED (HTTP 403) — 16th+ consecutive blocked session.
 
@@ -92,7 +94,23 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-05-23 Weekend — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-05-26 Mid-Morning ~11:11 AM ET — all estimates; API blocked)
+- **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
+- **Total Equity (estimated):** ~$100,600 (API blocked; MU catalyst today may add ~$400-450 if May 22 fill confirmed)
+- **Cash:** ~$85,550 (Scenario B: switch NOT executed) OR ~$97,280 (Scenario A: switch executed May 18)
+  - If MU filled May 22 at $765.91 × 6sh = $4,595: cash ~$92,685 (Scenario A) or ~$80,955 (Scenario B)
+- **Long Market Value (estimated):**
+  - GLD: 7sh × $414.09 = $2,899 (entry $418.86, unrealized −$33.39)
+  - MU (if May 22 fill confirmed): 6sh × $843 = $5,058 → **unrealized +$462.54** (entry $765.91, +10.1%)
+  - Scenario A after MU fill: ~$7,957 long + ~$92,685 cash = $100,642
+  - Scenario B (all LT still held + MU): ~$19,000+ long value
+- **NEW CATALYST TODAY:** UBS raised MU PT $535→$1,625 (Street-high, +204%). MU up 12%+ to ~$843. ATH broken. If bracket take-profit at $880.80 is resting, it's $37.80/share from current $843 — may hit this session.
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 19th+ consecutive blocked session.
+- **Orders attempted today:** AMD limit $480 bracket (10sh), PLTR limit $137.60 bracket (10sh), MU limit $848 bracket (5sh, conditional) — ALL BLOCKED.
+- **Daytrade Count:** 0
+- **3% Circuit Breaker:** NOT TRIGGERED (S&P +0.66% today, May 22 close 7,473.47 → today 7,522.60 = +0.66%)
+
+## Prior Account Snapshot (as of 2026-05-23 Weekend — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
 - **Total Equity (estimated):** ~$100,600 (S&P up 8 straight weeks; portfolio still ~85-97% cash due to API blockage)
 - **Cash:** ~$85,550 (Scenario B: switch NOT executed) OR ~$97,280 (Scenario A: switch executed May 18) — minus ~$4,595 if MU filled ($765.91 × 6)
@@ -178,6 +196,13 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 All well under 25% sector cap in either scenario. If both old semis (Scenario B) AND new entries (AMD+MU) exist simultaneously: ~18.8% semis — still under 25% cap.
 
 ## Performance vs S&P 500
+- **Portfolio total equity (est.):** ~$100,600 + MU unrealized gain ~$463 if filled → **~$101,063** (2026-05-26 mid-morning)
+- **Portfolio total return:** ~+1.1% (with MU gain) or ~+0.6% (without)
+- **S&P 500 today:** ~7,522.60 (+0.66% intraday). S&P 500 return since strategy start (~May 1): **+4.5%** (7,522.60 vs ~7,200 est.)
+- **Gap vs SPX:** **~-3.4 pp** (or ~-3.9 pp without MU fill). Unchanged root cause: API blockage prevents deployment. AMD alone +3.96% today vs zero portfolio exposure.
+- **Cumulative impact of AMD missed entries:** AMD was at ~$413 in early May. It's now ~$480. Missed gain per 10sh = ~$670 (+16.2%). Across 11+ sessions of blocked entries, this single position miss accounts for ~0.67% of portfolio opportunity cost.
+
+## Prior Performance vs S&P 500
 - **Portfolio total equity (est.):** ~$100,600 (May 23 weekend estimate)
 - **Portfolio total return:** ~+0.6%
 - **S&P 500 close May 22:** 7,473.47 (+0.37% from May 21 close 7,445.72). 8th consecutive weekly gain.
@@ -193,7 +218,18 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **Gap vs SPX:** **~-3.0 percentage points** (improved marginally — S&P down -0.26% today while portfolio estimated flat or tiny positive from GLD/NVDA if still held).
 - **Root cause unchanged:** 85-97% cash from persistent API blockage. 8+ consecutive entry blocks on AMD alone. Every market up-day widens the gap further. The only cure is operator manual execution OR Alpaca API allowlist fix.
 
-## Macro Context (as of 2026-05-23 Weekend — web research)
+## Macro Context (as of 2026-05-26 Mid-Morning ~11:11 AM ET — web research)
+- **S&P 500: ~7,522.60 (+0.66%)** opened 7,511.79. Continued 8-week rally post-Memorial Day.
+- **Iran war peace talks:** Trump says negotiations "proceeding nicely." WTI crude -5%+ (de-escalation = lower oil = lower inflation expectations = risk-on).
+- **Treasury yields easing:** Lower yields = expansion of growth stock multiples = positive for tech/AI names.
+- **MU UBS upgrade:** See catalyst note above. Semiconductor sector outperforming today (+MU +12%, AMD +3.96%).
+- **MRVL:** Earnings tonight (May 27 after close). Q1 FY2026 consensus: EPS $0.75, revenue $2.40B. Pre-earnings squeeze likely continues into close.
+- **BTC:** $76,610 at 9:30 AM ET. Below $82K threshold. ETF outflows continuing ($1.26B over 6 sessions). Whale accumulation at year's high. Not a mandatory entry.
+- **NVDA:** $215.33 (-1.90%) — slightly weak on a strong tape. AVGO $414.14 (-0.10%). Both underperforming today vs AMD (+3.96%) and MU (+12%).
+- **Kevin Warsh (Fed Chair):** No new commentary today. Hawkish stance unchanged. First FOMC June 16-17. Lower oil reduces pressure on rate path.
+- **Goldman Sachs correction warning:** Still standing. But today's session is ignoring it for now.
+
+## Prior Macro Context (as of 2026-05-23 Weekend — web research)
 - **S&P 500 May 22 close: 7,473.47** (+0.37%). Dow 50,579.70 (+0.58%, fresh record high). Nasdaq 26,343.97 (+0.19%). **8th consecutive weekly gain.**
 - **Memorial Day weekend:** US markets closed Monday May 25. Reopen Tuesday May 26.
 - **Goldman Sachs correction warning:** Rising yields + inflation = growing correction risk. Consumer sentiment (UMich) fell to new low (gas costs, inflation concerns). This creates a potential headwind for Tuesday's open.
@@ -340,6 +376,10 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **2026-05-22 — AMD limit too low; missed a $467 close after limit set at $449:** AMD limit order set at $449 (a slight pullback buy) was never in play — AMD opened up ~5.89% (~$474) and traded all day in the $455-$467 range. Lesson: for strong-momentum breakout stocks (AMD -ai-momentum), buying at a discount below the prior close is NOT the right strategy. The entry should be at ask+0.5% (momentum entry, not pullback entry), even if that feels aggressive. The prior limit was set too low and cost another full day of missed exposure. For May 26, limit set at $471 (ask+0.5%) to ensure execution.
 - **2026-05-22-23 — MRVL pre-earnings squeeze validated skip:** MRVL ran from ~$183-184 (mid-morning May 22) to ~$190-198 (by close May 22), then further pre-earnings excitement. The Exemption 2 skip was correct — the stock was being driven by earnings speculation, not a clean technical setup. Post-earnings entry (May 28-29) if results are strong will be a cleaner risk/reward. Note: had we entered MRVL at $184 on Friday, we'd be sitting on a 3-5% gain going into a binary event with no clean exit — exactly the scenario the exemption is designed to prevent.
 
+- **2026-05-26 — UBS MU upgrade ($535→$1,625) is a paradigm-shift catalyst:** The +204% PT hike driven by AI-driven permanent memory market reset is a rare "multiple rerating" call — UBS is saying MU deserves a fundamentally higher P/E going forward, not just higher estimates. This is precisely the type of fundamental catalyst that the 6-agent framework is designed to catch. MU scored 8.67 across agents — the highest fresh score this portfolio has seen. Missed the entry (API blocked) despite a 7-day prior watchlist positioning. The limit from May 22 at $765.91 may have caught some of this move if it filled — critical to confirm.
+- **2026-05-26 — AMD limit-entry strategy re-confirmed:** AMD gapped up +3.96% at open (~$486). Our limit at $480 (from today's catch-up attempt) targets an intraday pullback. AMD's strong momentum days often see a gap-up followed by a mid-morning consolidation or brief dip before continuation — the limit strategy is appropriate for a name with this momentum profile.
+- **2026-05-26 — Pre-Market AND Market-Open both silently failed:** This is the second time both predecessor routines have failed simultaneously. The pattern of silent failures is continuing despite heartbeat infrastructure. Each silent failure costs the portfolio a clean entry window (AMD/PLTR should have been entered at open, not attempted at limit from Mid-Morning).
+
 ## Setup Performance Tracker (updated 2026-05-22 Mid-Morning)
 | Setup type | Wins | Losses | 3-in-a-row | Status |
 |---|---|---|---|---|
@@ -389,6 +429,36 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 **Core guardrails: NO CHANGES.** Stop-losses, position size, sector caps, R/R minimum — all unchanged. Only the execution infrastructure needs fixing.
 
 ## Next Routine Plan
+
+**Midday May 26 (12:30 PM ET — NEXT SCHEDULED):**
+1. **Stop audit:** Re-attempt GET /v2/orders (API likely still blocked — log result).
+2. **MU check:** If MU continues toward $880.80 take-profit target, bracket should auto-execute. If still open and API unblocked, verify.
+3. **AMD/PLTR:** Re-attempt limit bracket orders if AMD has pulled back further into the $475-480 zone. PLTR ~$136-137 range.
+4. **MRVL:** Still INELIGIBLE. Earnings May 27 AH.
+5. **Circuit breaker:** S&P currently +0.66% — well above 3% drawdown threshold.
+6. **Macro:** Monitor oil (WTI down 5%+), Iran talks, any Fed comments.
+
+**Market Close May 26 (3:30 PM ET):**
+- If AMD/PLTR fills happen intraday: do NOT place MOC closes unless stop/target hit.
+- MU bracket may auto-execute at $880.80 take-profit if the 12% surge continues.
+- No new MOC orders planned.
+
+**Daily Review May 26 (4:30 PM ET):**
+- Confirm MU fill status from May 22 and today's price action.
+- Update performance vs S&P 500.
+- Prep MRVL 6-agent analysis for tonight's earnings (May 27 AH).
+- Score MRVL for May 28 entry decision at Daily Review.
+
+**Pre-Market May 27 (8:00 AM ET — CRITICAL):**
+- MRVL earnings results available (reporting May 27 AH — wait for tonight's print first).
+- Stop audit: All positions, all stops.
+- AMD/PLTR: Re-enter limit brackets if still unfilled from May 26.
+
+**After May 27 close:**
+- MRVL earnings print. Full 6-agent analysis.
+- Entry decision for May 28 if reaction is bullish.
+
+**Prior Next Routine Plan entries below:**
 
 **Weekend / Non-Trading Days May 23-25 (Saturday, Sunday, Memorial Day Monday):**
 - No routines. No orders. GTC limit orders from May 22 may be resting on Alpaca — AMD $449 (cancel on May 26), PLTR $140.35 (cancel on May 26), MU $765.91 (likely filled — verify on May 26).
