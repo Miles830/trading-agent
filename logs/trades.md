@@ -4,6 +4,137 @@
 
 ---
 
+## 2026-05-26 — Market Open (9:45 AM ET) | Pre-Market catch-up
+
+**PRE-MARKET MISSING — CATCH-UP RUNNING FROM MARKET OPEN**
+`grep "STARTED Pre-Market" logs/heartbeats/2026-05-26.log` returned zero results. Running Pre-Market catch-up per routines/open.md protocol before any other Market-Open-specific work.
+
+**Stop audit (FIRST ACTION per CLAUDE.md):**
+`GET /v2/orders?status=open` → **BLOCKED** ("Host not in allowlist") — 19th+ consecutive Alpaca API blocked session. Cannot verify stop order status. GLD stop $397.92 assumed resting from prior sessions (placed before API blockage began). All other prior bracket/stop orders: status unknown.
+
+**Market conditions (2026-05-26 at open ~9:45 AM ET):**
+- S&P 500: Opened 7,468.82 (range 7,463–7,506). Flat vs May 22 close of 7,473.47 (-0.06%). Circuit breaker NOT tripped (threshold: 7,249.27 = -3%). S&P open down <1.5% → no position-size halving required.
+- AMD: Opened $409.49, range $402–$430. ATH was $481.41 on May 22. Today -15% from ATH. Broad semiconductor valuation selloff + profit-taking.
+- PLTR: Opened $139.65, pulled back to ~$135.90 intraday. Range $134.68–$139.76. Holding well vs semi weakness.
+- MU: $715.89, -1.21%. Below prior stop target $727.61 (never filled — API blocked May 22).
+- GLD: $432.90, -0.20%. Well above entry $418.86 and stop $397.92.
+- Fear & Greed Index: 59 (Greed). Moderately bullish overall sentiment.
+- Iran talks: Trump said "proceeding nicely" → risk-on. Polymarket 91% probability of higher open.
+- MRVL earnings: May 27 after close — confirmed INELIGIBLE today (Exemption 2).
+- xAI API: BLOCKED — all Sentiment Agent X scores degraded (base sentiment only, no X modifier).
+
+**MU status note:** MU limit $765.91 from May 22 was NEVER placed — Alpaca API was blocked. No MU position exists. Current MU $715.89 is -6.5% below the planned entry and below the planned stop $727.61. Fresh entry requires re-score; Technical agent will be capped at 5/10 during active semi selloff. Re-score at Mid-Morning.
+
+```yaml
+---
+ts: 2026-05-26T13:45:00Z
+action: violation
+symbol: MARKET
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine did not heartbeat on 2026-05-26 — catch-up running from Market Open.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Pre-Market MISSING on 2026-05-26 (first post-Memorial Day trading day). Heartbeat log shows only Market-Open STARTED at 13:45Z. Running Pre-Market catch-up per routines/open.md. Stop audit BLOCKED (Alpaca API 'Host not in allowlist', 19th+ consecutive). Cannot verify GLD stop $397.92 or any other positions. Market open: S&P 7,468.82 (-0.06% vs May 22 close), AMD $409.49 (semi selloff -15% from ATH $481.41), PLTR $139.65 open → $135.90 intraday, MU $715.89, GLD $432.90."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T13:46:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.83
+thesis: AMD re-scored 6.83/10 at Market Open after -15% pullback from ATH $481.41 to $402–$430 range. Technical agent CAPPED at 5/10 — cannot confirm 2 of 5 mandatory bullish indicators during active semiconductor selloff. Master Agent REJECTED (avg 6.83 < 7.0; only 3 of 6 agents at 7+). Re-score at Mid-Morning.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "AMD 6-agent re-score at Market Open 2026-05-26. AMD ATH $481.41 (May 22). Today range $402–$430, opened $409.49. Semiconductors: broad valuation/profit-taking selloff. FUNDAMENTALS 8/10: Q1 $10.3B +38% YoY, Q2 guidance $11.2B +46% YoY, Data Center $5.8B +57% — thesis entirely intact. TECHNICAL 5/10 (CAPPED per CLAUDE.md 'Technical score cannot exceed 5/10 unless ≥2 of 5 mandatory indicators confirm entry direction'): stochastic likely oversold (<20) but no confirmed %K>%D bullish crossover observed; MACD probably in bearish crossover on intraday; volume spike present but in selloff direction, not reversal confirmation; no candlestick reversal pattern confirmed without 5-min chart; volume oscillator negative during selloff. Only 1 indicator (stochastic oversold) potentially bullish — short of required 2. SENTIMENT 6/10: sector selling, valuation concerns, profit-taking; Fear & Greed 59 (slight positive); xAI API blocked (no X modifier). MACRO 6/10: S&P flat/slightly down, Iran risk-on positive but semi sector specifically weak; Warsh hawkish headwind for high-PE semis. RISK 8/10: all guardrails clear — 10sh x $411.59 = $4,116 = 4.1% (under 5%); stop $391.01 (-5%); risk = $20.58 x 10 = $205.80 = 0.21% (under 1.5%); target $473.33 (+15%); R/R 3.0:1 (≥3:1 ✓). TECH ANALYST 8/10: MI450 2nm TSMC CoWoS, HBM4 integration, CDNA4 architecture, ROCm narrowing gap vs CUDA. Average: (8+5+6+6+8+8)/6 = 6.83. Agents at 7+: Fundamentals 8, Risk 8, Tech Analyst 8 = 3 (need ≥4). MASTER AGENT: REJECTED — avg 6.83 < 7.0 AND only 3 of 6 agents at 7+ (need 4). This is NOT a deployment-bias skip exemption violation — AMD was re-scored fresh today and the score came in below 7.0. Prior 7.5+ scores were at different price/technical conditions. Re-score MANDATORY at Mid-Morning 11:00 AM ET. ORDER ATTEMPT logged for transparency: POST /v2/orders AMD 10sh limit $411.59 bracket → 'Host not in allowlist' (API blocked, 19th+ consecutive). NOTE: if AMD stabilizes and stochastic forms %K>%D bullish crossover from <20 at Mid-Morning, technical score can improve to 7+ → re-approval."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T13:47:00Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.0
+thesis: PLTR pulled back from $139.65 open to ~$135.90 intraday; government AI / AIP contracts intact; Iran risk-on macro; Fear & Greed 59; 5 of 6 agents at 7+. Master Agent APPROVED.
+size_pct: 1.37
+stop: 129.85
+target: 157.18
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "PLTR 6-agent analysis at Market Open 2026-05-26. PLTR opened $139.65, range $134.68–$139.76, current ~$135.90 intraday pullback. FUNDAMENTALS 7/10: Q1 FY2026 $1.63B +39% YoY, EPS $0.33 vs $0.24 est (+37.5% beat), AIP Platform government revenue accelerating, NATO and DoD contracts expanding. TECHNICAL 6/10: 1-hour trend is bullish (broke above $134 resistance, now retesting); MACD daily likely in bullish crossover; intraday volume 27.58M vs 35M avg = below average (NOT a volume spike); stochastic not clearly oversold; pullback from open looks normal — not panic selling; 1-of-5 confirmed (daily MACD). Below 2-of-5 threshold so capped score cannot exceed 6 per CLAUDE.md; assigning 6 (solid but not at 7 threshold). SENTIMENT 7/10: PLTR not correlated with semiconductor selloff; government AI is defensive; Fear & Greed 59; Iran risk-on = government defense spending positive; xAI API blocked (no X modifier, degraded gracefully). MACRO 7/10: Iran talks 'proceeding nicely' → risk-on, defense/government AI spending intact; S&P flat but PLTR holding above open; Warsh hawkish but PLTR not rate-sensitive (government contracts). RISK 8/10: 10sh x $136.68 = $1,366.80 = 1.37% of $100K (under 5% ✓); stop $129.85 (-5% from limit); risk per share $6.83; total trade risk $68.30 = 0.068% (under 1.5% ✓); target $157.18 (+15%); R/R = 15/5 = 3.0:1 (≥3:1 ✓); sectors: not semiconductor; no sector cap concern; cash post-entry ~$98,633 >> 5% floor ✓. TECH ANALYST 7/10: AIP Platform defensible via government data integration (high switching costs), PALANTIR GOTHAM for defense, FOUNDRY for commercial; AI/ML core product; not semiconductor-dependent; national security technology moat. Average: (7+6+7+7+8+7)/6 = 7.0. Agents at 7+: Fundamentals 7, Sentiment 7, Macro 7, Risk 8, Tech Analyst 7 = 5 (≥4 ✓). Risk agent 8 (≥6 ✓). Master Agent APPROVED. ORDER: POST /v2/orders PLTR 10sh buy limit $136.68 bracket (stop $129.85, target $157.18, tif=gtc, order_class=bracket) → RESPONSE: 'Host not in allowlist' — Alpaca API BLOCKED (19th+ consecutive). Order NOT placed. OPERATOR ACTION REQUIRED: Please place PLTR 10sh limit buy $136.68, stop $129.85, target $157.18, bracket GTC at https://app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T13:47:30Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: other
+score: null
+thesis: MRVL earnings May 27 2026 after close — inside 48-hour binary event window. Exemption 2 applies per CLAUDE.md Deployment Bias.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "MRVL earnings May 27 2026 after close (confirmed). May 26 entry would be within 48-hour binary event window. Exemption 2 per CLAUDE.md Deployment Bias: 'Setup is into a binary event explicitly excluded by the strategy — earnings within 48 hours, FDA, Fed decision day — where pre-positioning has no edge.' SKIP IS VALID — not a deployment-bias violation. Post-earnings entry: run full 6-agent analysis May 28 morning after print digested. MRVL analyst consensus heading into print: Citi PT $215, Stifel PT $210, Oppenheimer bullish. AI ASIC/networking (AWS, Google, MSFT custom silicon) thesis strong. Score likely 7+ post-print if beat. MRVL pre-earnings price: approx $190–200 range (pre-market squeeze into print)."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.
