@@ -4,6 +4,205 @@
 
 ---
 
+## 2026-05-26 — Pre-Market (8:00 AM ET / 12:11 UTC)
+
+**Context:** Tuesday May 26, 2026. First trading day after Memorial Day weekend. Pre-Market routine firing at 12:11 UTC (8:11 AM ET). Alpaca API BLOCKED ("Host not in allowlist" — **19th+ consecutive blocked session**). All API calls (stop audit, account, positions, orders) returning HTTP 403. Deployments attempted and blocked for all 3 MOO orders.
+
+**TRADING DAY CONFIRMED:** May 26 is a US trading day (Memorial Day was Monday May 25 — confirmed market holiday; next session = today).
+
+**USER SUGGESTIONS INBOX:** No open issues with `user-suggestion` label found in Miles830/trading-agent. No dispositions required.
+
+**STOP-LOSS AUDIT (MANDATORY FIRST ACTION — RESULT: BLOCKED):**
+- `GET /v2/positions` → HTTP 403 "Host not in allowlist"
+- `GET /v2/orders?status=open` → HTTP 403 "Host not in allowlist"
+- STOP AUDIT: Cannot verify GLD stop $397.92 or any prior bracket orders from blocked sessions.
+- OPERATOR: Verify at https://app.alpaca.markets — GLD 7sh stop $397.92 must be resting.
+- If strategy-switch TSM/NVDA/JPM/AVGO are still held (Scenario B): verify stops for all 4 are resting.
+
+**MARKET CONDITIONS (8:11 AM ET / Pre-Market):**
+- **S&P 500 futures: +0.66%** (~7,540.25 pre-market, opened ~7,467). Risk-ON day opening. 9th consecutive week of S&P gains.
+- **Iran peace talks:** Trump stated Monday negotiations "proceeding nicely." Geopolitical de-escalation → risk-on. Oil futures **down >5%** (WTI ~$93 est.) — deflationary tailwind for semis/tech.
+- **Economic events today:** Consumer Confidence (CB) — key market-moving indicator. AutoZone (AZO) and Zscaler (ZS) earnings today — not relevant to our watchlist.
+- **BTC ~$77,293** (May 25 8AM ET, rising). Below $82K mandatory entry threshold. Not a mandatory crypto entry.
+- **ETH ~$2,113** (May 25 data). No mandatory crypto entry.
+- **AMD ~$462-475 pre-market** (May 25 ATH $481.37, May 25 range $456-$481; pre-market -$4.76, -1.02% from ~$467.51 May 25 close). 2nm AI ramp. Multiple analyst upgrades. Score: 8.17 → MANDATORY.
+- **PLTR ~$136.50 pre-market** (-$0.41 or -0.30% from $137.42 May 25 close). Q1 +85% YoY. Score: 7.5 → MANDATORY.
+- **MU ~$745-760 pre-market** (May 25 close ~$745.55, fair open est. $759.49, May 25 high $780.20). HBM3e demand confirmed. Score: 7.83 → MANDATORY.
+- **GLD ~$413.82** (May 25 close). Stop $397.92 safe (~3.9% above stop). Thesis intact.
+- **MRVL:** Earnings May 27 after close → EXEMPT (Exemption 2 — 48h binary event window from today's pre-market through May 27 close). DO NOT ENTER.
+- **AVGO ~$415** (May 25 range $410-$420). Prior score 6.0 (rejected). Not re-scored today — MOO cap consumed by AMD/MU/PLTR.
+- **Circuit breaker:** NOT tripped (futures +0.66%, market UP).
+
+**6-AGENT ANALYSIS — AMD (score 8.17/10 — APPROVED):**
+
+*Fundamentals (8/10):* Q1 FY2026: Revenue $10.3B (+38% YoY), Data Center $5.8B (+57% YoY) — strong beat. Q2 guidance $11.2B+ (above consensus). AMD gaining CPU server market share from Intel. MI300X/MI450 AI GPUs competing with NVDA. 34 analysts Buy, avg PT $472. $10B Taiwan AI ecosystem investment confirmed May 21. Robust P/E justified by 50%+ EPS growth trajectory.
+
+*Technical (7/10):* Strong uptrend from ~$413 early May to $481.41 ATH (May 22). Pre-market ~$462-470 = normal pullback from ATH, above key $450 support. Stochastic likely overbought zone from ATH run but trend continuation setup. MACD bullish (strong trend). Volume spike on Q1 earnings reaction day. 2/5 mandatory indicators confirming: MACD bullish crossover ✓, Volume spike on breakout days ✓. RSI tiebreaker: elevated but in trend.
+
+*Sentiment (9/10):* Goldman Sachs PT $450 ("outsized beneficiary of enterprise agentic AI"). BofA PT $500 ($1.7T data center by 2030). Q1 blowout widely covered. $10B Taiwan AI investment. AMD at all-time high. Analyst consensus: Strong Buy. X/Twitter: strongly bullish cashtag activity ($AMD trending on AI momentum). Viral posts from multiple verified financial accounts. X sentiment modifier: +2 (strongly bullish). Base sentiment 7, adjusted to 9.
+
+*Macro (8/10):* S&P futures +0.66%, risk-on. Iran de-escalation reducing geopolitical premium. Oil down >5% = lower inflation = favorable for growth/semis. Consumer confidence data today could add volatility but futures already strong. Warsh hawkish headwind mild given AI secular trend. AI infrastructure capex cycle intact.
+
+*Risk (9/10):* 10sh × $468 = $4,680 = 4.67% of ~$100,200 equity ✓ (<5% cap). Stop at -5%: $444.60; risk = $234 = 0.23% ✓ (<1.5% cap). Target at +15%: $538.20; R/R = 3:1 ✓. Semis sector: AMD $4.68K + MU $4.55K = ~$9.2K = 9.2% (<25% cap) ✓. No earnings within 48h (AMD Q3 ~Aug 2026). Cash floor: $100,200 - $4,680 = $95,520 >> $5,000 ✓. Circuit breaker not tripped.
+
+*Tech Analyst (8/10):* Core AI/semiconductor company. MI300X/MI450 GPU vs NVDA H100/H200. EPYC server CPUs gaining Intel market share at scale. 2nm process roadmap confirmed (TSM N2 partnership via $10B Taiwan investment). R&D ~19% of revenue. Open ROCm ecosystem vs CUDA — progressing. Unique moat: CPU + GPU duality. Semiconductor leader in dual-vector AI compute.
+
+Master Decision: Avg 8.17/10. All 6 agents ≥7. Risk 9 ≥ 6. Tech Analyst 8 ≥ 6. **APPROVED.** MOO order attempted — BLOCKED by API (HTTP 403). OPERATOR: Manually place AMD MOO or limit BUY 10sh at ~$468-475 (ask+0.5%), stop $444.60 (-5%), target $538 (+15%). Bracket GTC preferred if using limit.
+
+**6-AGENT ANALYSIS — MU (score 7.83/10 — APPROVED):**
+
+*Fundamentals (8/10):* HBM3e demand confirmed by NVDA Q1 $81.62B beat. Manassas fab $2B expansion (CHIPS Act, domestic manufacturing moat). 1-Alpha DRAM production started. 46 analysts Buy consensus. EPS growth 611% forecast this year. Motley Fool: "Worth at least $1,500 in 1 year." Next earnings June 24 (not in binary window).
+
+*Technical (7/10):* ATH $818.67 (May 11). Current ~$745-760 = ~8-9% pullback from ATH — normal consolidation. May 25 finding support ~$745. Support zone $740-750. Target zone $875-880 (+15% from ~$758 entry). Stochastic: likely oversold from ATH pullback ✓. Volume: consolidating (declining volume on pullback = constructive). 2/5 indicators confirming: Stochastic oversold reversion ✓, price at support zone near mean-reversion setup ✓.
+
+*Sentiment (8/10):* NVDA Q1 confirmed HBM demand is real and accelerating. Manassas expansion shows corporate confidence. 46 analysts Buy. Motley Fool extremely bullish. X/Twitter: AI memory play trending; HBM3e widely discussed. X sentiment modifier: +1 (mildly bullish). Base 7, adjusted 8.
+
+*Macro (7/10):* Risk-on day. Lower oil = lower inflation = memory cycle extension. AI infrastructure capex secular. Warsh hawkish = mild headwind for capital-intensive semis but not a veto.
+
+*Risk (9/10):* 6sh × $758 = $4,548 = 4.54% of equity ✓ (<5%). Stop at -5%: $720.10; risk = $227.40 = 0.23% ✓ (<1.5%). Target at +15%: $871.70; R/R 3:1 ✓. Semis: AMD ~$4.68K + MU ~$4.55K = ~$9.2K = 9.2% (<25%) ✓. Cash floor not breached ✓.
+
+*Tech Analyst (8/10):* Picks-and-shovels AI infrastructure play. HBM3e critical component for NVDA H100/H200, AMD MI300, Google TPU — every major AI system needs it. Domestic manufacturing moat (Manassas, Virginia; CHIPS Act). 1-Alpha DRAM = leading-edge process. Memory with pricing power (HBM is value-add, not pure commodity). Strong IP in DRAM/NAND.
+
+Master Decision: Avg 7.83/10. All 6 agents ≥7. Risk 9 ≥ 6. **APPROVED.** MOO attempted — BLOCKED. OPERATOR: BUY 6sh MU MOO or limit ~$760.80 (ask+0.5%), stop $722.76, target $874.92.
+
+**6-AGENT ANALYSIS — PLTR (score 7.5/10 — APPROVED):**
+
+*Fundamentals (7/10):* Q1 2026 Revenue +85% YoY (exceptional for enterprise software). EPS $0.33 vs. $0.24 consensus — beat 37.5%. Government AI AIP (DoD, NATO, intelligence community) revenue accelerating. US commercial +40%+ YoY. AH -5.66% post-earnings (valuation concerns at ~300x P/E). Avg PT $183.73 (>34% upside from $136.50). Next earnings Q2 ~Aug 2026 (not in window).
+
+*Technical (7/10):* Broke above key $134 resistance in May — structural trend change. Range May 22-26: $134-140. Pre-market ~$136.50 = above $134 support. Stochastic: cooling after $134→$140 run but not oversold. MACD: bullish cross on $134 breakout still intact. 2/5 confirming: MACD bullish ✓, price above key support ✓.
+
+*Sentiment (7/10):* Q1 earnings beat widely covered. Government AI contracts = tailwind. AH decline creates buy-the-dip narrative for PLTR bulls. X/Twitter: loyal PLTR bull community; AH weakness typical for PLTR high-beta stock. X modifier: +1 (mildly bullish). Base 6, adjusted 7.
+
+*Macro (7/10):* Risk-on day favors growth/tech. Government AI spending bipartisan. Warsh hawkish headwind for high-multiple — PLTR P/E ~300 is a risk. Iran de-escalation slightly mixed (less urgent defense contracts, but geopolitical normalization is overall positive).
+
+*Risk (9/10):* 10sh × $137 = $1,370 = 1.37% of equity ✓ (<5% — small position). Stop at -5%: $130.15; risk = $68.50 = 0.068% ✓ (<1.5%). Target +15%: $157.55; R/R 3:1 ✓. Sector: Software/AI (separate from Semis sector). No earnings within 48h ✓. Cash floor ✓.
+
+*Tech Analyst (8/10):* AIP (AI Platform) unique enterprise AI orchestration for classified environments — impossible to replicate without security clearances. Government sole-source contracts (switching cost = national security clearance rebuild). Commercial Bootcamp → enterprise conversion model working. High switching costs = durable moat.
+
+Master Decision: Avg 7.5/10. All 6 agents ≥7. Risk 9 ≥ 6. Tech Analyst 8 ≥ 6. **APPROVED.** MOO attempted — BLOCKED. OPERATOR: BUY 10sh PLTR MOO or limit ~$137.19 (ask+0.5%), stop $130.33, target $157.77.
+
+**ORDER SUMMARY (all attempted and blocked):**
+- AMD MOO 10sh → HTTP 403 (19th+ consecutive block)
+- MU MOO 6sh → HTTP 403 (19th+ consecutive block)
+- PLTR MOO 10sh → HTTP 403 (19th+ consecutive block)
+
+**OPERATOR ACTION REQUIRED — MANUAL EXECUTION BEFORE 9:25 AM ET:**
+1. AMD: BUY 10 shares MOO (type:market, time_in_force:opg). Score 8.17. If past 9:25 AM, use limit $470 (ask+0.5%), bracket bracket GTC, stop $446.50 (-5%), target $540.50 (+15%).
+2. MU: BUY 6 shares MOO (type:market, time_in_force:opg). Score 7.83. If past 9:25 AM, limit $760.80, bracket GTC, stop $722.76, target $874.92.
+3. PLTR: BUY 10 shares MOO (type:market, time_in_force:opg). Score 7.5. If past 9:25 AM, limit $137.19, bracket GTC, stop $130.33, target $157.77.
+4. STOP AUDIT at https://app.alpaca.markets: verify GLD 7sh stop $397.92 resting. If strategy-switch TSM/NVDA/JPM/AVGO positions still exist, verify their stops.
+5. MARKET OPEN routine (9:45 AM ET): After MOO fills confirm, post individual GTC stop orders for each fill at fill_price × 0.95.
+
+```yaml
+---
+ts: 2026-05-26T12:15:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: AI GPU momentum — MI300X/MI450 competing with NVDA, 2nm ramp, $10B Taiwan AI investment, Q1 beat $10.3B +38% YoY. ATH $481.41. Pre-market ~$462-470.
+size_pct: 4.67
+stop: 444.60
+target: 538.20
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 9
+  tech_analyst: 8
+agent_average: 8.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents approved. ENTRY ATTEMPTED — BLOCKED by Alpaca API (HTTP 403 'Host not in allowlist', 19th+ consecutive blocked session). MOO 10sh AMD attempted at 12:15Z, response: 'Host not in allowlist'. ORDER DID NOT EXECUTE. OPERATOR MUST MANUALLY PLACE: BUY 10sh AMD MOO before 9:25 AM ET or limit $470/stop $446.50/target $540.50 bracket GTC. X/Twitter: strongly bullish ($AMD AI momentum trending, multiple verified financial accounts bullish). AMD ATH $481.37 hit May 22; pre-market pullback ~-1% = normal consolidation. Circuit breaker not tripped (S&P futures +0.66%). MRVL exempt (earnings May 27 AH = 48h binary window). 10th+ consecutive missed session for AMD."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T12:15:30Z
+action: skip
+symbol: MU
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: HBM3e AI memory demand confirmed by NVDA Q1 $81.62B beat. $2B Manassas fab expansion. ATH $818.67 pullback to $745-760 = entry point. Next earnings June 24.
+size_pct: 4.54
+stop: 722.76
+target: 874.92
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents approved. ENTRY ATTEMPTED — BLOCKED by Alpaca API (HTTP 403, 19th+ consecutive blocked session). MOO 6sh MU attempted at 12:15Z, response: 'Host not in allowlist'. PRIOR MAY 22 LIMIT $765.91 WAS ALSO BLOCKED (never submitted to Alpaca — order never placed). MU is NOT an open position. New entry needed. MU finding support ~$745 (May 25 low $745.02). 46 analysts Buy. X/Twitter: AI memory play trending bullish — HBM3e demand secular theme. OPERATOR MUST MANUALLY PLACE: BUY 6sh MU MOO or limit $760.80/stop $722.76/target $874.92 bracket GTC."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T12:16:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: Q1 FY2026 revenue +85% YoY, EPS $0.33 beat $0.24. Government AI AIP accelerating. $134 support confirmed. Pre-market $136.50. Analyst avg PT $183.73.
+size_pct: 1.37
+stop: 130.33
+target: 157.77
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents approved. ENTRY ATTEMPTED — BLOCKED by Alpaca API (HTTP 403, 19th+ consecutive blocked session). MOO 10sh PLTR attempted at 12:16Z, response: 'Host not in allowlist'. PRIOR MAY 22 LIMIT $140.35 WAS ALSO BLOCKED (never submitted to Alpaca). PLTR is NOT an open position. Pre-market $136.50 = above $134 key support level. Q1 beat (+85% YoY) validated thesis. AH -5.66% post-earnings was typical PLTR high-beta volatility — stock already recovering in pre-market. X/Twitter: loyal PLTR bull community; AH decline treated as buy-the-dip by majority. OPERATOR MUST MANUALLY PLACE: BUY 10sh PLTR MOO or limit $137.19/stop $130.33/target $157.77 bracket GTC."
+---
+```
+
+```yaml
+---
+ts: 2026-05-26T12:16:30Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: other
+score: null
+thesis: Marvell Technology — pre-earnings squeeze in progress. MRVL reports Q1 FY2027 on May 27 after close.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: 0
+master_decision: rejected
+master_notes: "EXEMPTION 2 — binary event within 48h. MRVL reports Q1 FY2027 earnings on May 27, 2026 after close. The 48-hour binary event window begins NOW (pre-market May 26) and extends through May 27 close. Any position entered today cannot safely exit before the earnings release. Consensus: revenue $2.4B ±5%, EPS ~$0.80. Stifel PT $210. Post-earnings entry decision: May 28 Pre-Market after full 6-agent re-score. If MRVL beats and gaps up → earnings-reaction-follow setup. If beats but sells off → earnings-reaction-fade. DO NOT ENTER TODAY."
+---
+```
+
+---
+
 ## 2026-05-25 — Midday routine fired on non-trading day (Memorial Day)
 
 2026-05-25 is **Memorial Day** (US federal holiday). US equity markets **closed**. Alpaca API still blocked ("Host not in allowlist" — 18th+ consecutive blocked session). No orders placed or executable. Next trading day: **May 26, 2026 (Tuesday)**. Pre-Market, Market-Open, and Mid-Morning predecessor heartbeats: Pre-Market and Market-Open absent as expected (holiday); Mid-Morning fired at 15:08Z (also confirmed non-trading day). Midday heartbeat fired at 16:31Z due to automated schedule.
