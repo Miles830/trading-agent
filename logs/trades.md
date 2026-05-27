@@ -4,6 +4,360 @@
 
 ---
 
+## 2026-05-27 — Midday (12:30 PM ET / 16:35 UTC)
+
+**TRADING DAY.** US equity markets open. Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th consecutive blocked session). Pre-Market, Market Open, and Mid-Morning are ALL SILENT FAILURES today (no heartbeats recorded before 16:34Z). This routine is the FIRST to fire on May 27.
+
+---
+
+### HEARTBEAT TALLY — 2026-05-27
+
+| Routine | Expected UTC | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | ~12:00Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Market-Open | ~13:45Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Mid-Morning | ~15:00Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Midday | ~16:30Z | ✅ 16:34:34Z | in-progress | Running |
+
+---
+
+### VIOLATION — PRE-MARKET SILENT FAILURE
+
+```yaml
+---
+ts: 2026-05-27T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine (8:00 AM ET) produced zero heartbeat. No stop audit, no order placement, no watchlist execution.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Pre-Market routine did not fire. No heartbeat in logs/heartbeats/2026-05-27.log before 16:34Z. Binding watchlist (AMD 8.0, MU 8.5, PLTR 7.5) was NOT executed. MOO orders (max 3 for day) were MISSED entirely. API also blocked — 20th consecutive session.
+---
+```
+
+### VIOLATION — MARKET OPEN SILENT FAILURE
+
+```yaml
+---
+ts: 2026-05-27T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market Open routine (9:45 AM ET) produced zero heartbeat. No stop audit, no fills confirmed, no stop-loss placement for MOO fills.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Market Open routine did not fire. No heartbeat in logs. MOO fill confirmation step was missed. Stop-loss placement for any MOO fills was missed. Per CLAUDE.md, Market Open MUST place standalone GTC stops for any MOO fills — this obligation cannot be discharged.
+---
+```
+
+### VIOLATION — MID-MORNING SILENT FAILURE
+
+```yaml
+---
+ts: 2026-05-27T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Mid-Morning routine (11:00 AM ET) produced zero heartbeat. No stop audit, no intraday price review, no catch-up entries.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Mid-Morning routine did not fire. Three consecutive morning routines missed today. Combined with API blockage, all three mandatory watchlist entries (AMD 8.0, MU 8.5, PLTR 7.5) remain unexecuted with no valid exemption. Ongoing infrastructure failure — cloud scheduler NOT firing intraday sessions.
+---
+```
+
+---
+
+### MARKET CONTEXT — 2026-05-27 (12:30 PM ET)
+
+| Index | Intraday | Change | Note |
+|---|---|---|---|
+| Dow Jones | ~42,200+ | +224 pts | New all-time record |
+| S&P 500 | ~7,512 | −0.1% | Slight pullback from record |
+| Nasdaq | ~26,630 | −0.1% | Tech drag from ZS −23% |
+| Oil (WTI) | ~$91 | −3.0% | Iran Strait of Hormuz restoration |
+
+**Key movers today:**
+- **MU ~$970 (+6.4%):** Continuation rally from UBS $1,625 PT upgrade. Intraday range $901.88–$985. Institutional accumulation post-upgrade. Benzinga noted "key trading signal" intraday high. HBM4 sold-out thesis strengthening.
+- **AMD ~$512 (+3.7%):** ATH momentum continuing from Jensen Huang $200B CPU TAM catalyst. Intraday range $509.25–$512.38. Price discovery above prior ATH $493.79.
+- **PLTR ~$135 (−1.4%):** Slight pullback from $136.88 May 26 close. Intraday range $131.63–$135.73. ZS −23% on weak guidance is a mild headwind for software/AI names.
+- **GLD ~$415 (+0.2%):** Flat to slightly up. Iran Strait announcement = mild risk-on (slightly bearish gold), offset by oil drop. Stop $397.92 safe (+4.3% above).
+- **MRVL ~$196 (−5.4%):** Pre-earnings distribution, down from $207.28 close. Earnings TONIGHT (May 27 AH). EXEMPT from entry — Exemption 2 applies. Post-earnings entry decision tomorrow morning.
+- **ZS −23%:** Zscaler guided current-quarter below consensus. Cybersecurity sector drag. Minimal impact on portfolio thesis.
+
+**Stop audit (remote — unverifiable via API):** GLD 7sh at $415 is 4.3% above the $397.92 stop. Stop is estimated SAFE. Cannot verify via API. Operator should confirm at app.alpaca.markets.
+
+---
+
+### WATCHLIST EXECUTION CATCH-UP
+
+Binding watchlist from May 26 Daily Review: **AMD (8.0 MANDATORY), MU (8.5 MANDATORY), PLTR (7.5 MANDATORY)**. All three predecessors failed today. Catch-up analysis below.
+
+---
+
+### 6-AGENT RE-SCORE — AMD AT $512 (MIDDAY MAY 27)
+
+**Symbol:** AMD | **Price:** ~$512 | **Setup:** `breakout-volume` | **Prior Score:** 8.0 (May 26)
+
+Sub-Agent 1 — Fundamentals: Q1 FY2026 $7.4B +36% YoY, Data Center $5.8B +57%, FCF tripled. PE elevated but earnings accelerating. Jensen $200B CPU TAM = forward revenue expansion. Score: **7/10**
+
+Sub-Agent 2 — Technical: Day 2 of ATH breakout above $493.79. Price +$18 (+3.7%) today on continued volume. MACD bullish expansion. Volume spike (2+ days of elevated volume). Stochastic: overbought zone but in momentum burst — trend alignment sufficient. 2 of 5 confirmed (MACD bullish + volume spike). RSI >70 but in breakout context. Score: **8/10**
+
+Sub-Agent 3 — Sentiment: Jensen Huang $200B agentic CPU TAM statement continues to drive institutional and retail interest. ATH breakout = FOMO momentum. No negative X signals for AMD. Cathie Wood selling AMD historically precedes rallies. Score: **8/10**
+
+Sub-Agent 4 — Macro: Dow at new record. S&P flat to slightly negative — Nasdaq −0.1%. Oil −3% = mild positive for consumers, neutral for tech. ZS −23% drag on cybersecurity but AMD is not cyber. Iran peace = risk-on. Score: **7/10**
+
+Sub-Agent 5 — Risk: Reducing from 10sh to 9sh at $512 to stay under 5% cap. 9sh × $514 = $4,626 = 4.6% ✓. Stop $488.30 (−5%). Target $591.10 (+15%). Stop risk: $25.70 × 9 = $231 = 0.23% ✓. R/R 3:1 ✓. Semis sector: 0% currently (well under 25% cap). Score: **8/10**
+
+Sub-Agent 6 — Tech Analyst: EPYC market share expanding in data centers. MI300/MI400 AI accelerators competing with NVDA. 2nm roadmap with TSM confirmed. $10B Taiwan investment reinforces supply chain. Agentic AI CPU TAM is real and AMD-specific. Score: **8/10**
+
+**Master Agent — AMD:**
+- Fundamentals: 7 | Technical: 8 | Sentiment: 8 | Macro: 7 | Risk: 8 | Tech Analyst: 8
+- Average: **7.67/10** | Agents ≥7: **6/6**
+- **Decision: APPROVED** — all agents above 7, Risk 8 (no veto). Entry: 9sh limit $514.56, stop $488.83 (−5%), target $591.74 (+15%), bracket GTC. BUT API BLOCKED — cannot execute. Logging as deployment violation.
+
+---
+
+### 6-AGENT RE-SCORE — MU AT $970 (MIDDAY MAY 27)
+
+**Symbol:** MU | **Price:** ~$970 | **Setup:** `breakout-volume` | **Prior Score:** 8.5 (May 26)
+
+Sub-Agent 1 — Fundamentals: UBS $1,625 PT revalues MU's terminal value in AI memory cycle. HBM4 sold out through year-end. $1T market cap milestone. FY2027 revenue target $39B. AI demand permanently re-rates memory multiples. Score: **9/10**
+
+Sub-Agent 2 — Technical: Continuation breakout day 2 after +18% May 26 surge. Intraday high $985 = new ATH. Volume spike (2× avg minimum). MACD bullish expansion. 2 of 5 confirmed (volume spike + MACD). Slightly extended but institutional accumulation continues. Score: **7/10**
+
+Sub-Agent 3 — Sentiment: UBS upgrade still dominating financial media. $1T market cap coverage from mainstream outlets. Benzinga noted "key trading signal." X sentiment strongly bullish ($MU cashtag trending). Institutional non-deal roadshow conversations likely ongoing. Score: **9/10**
+
+Sub-Agent 4 — Macro: AI capex supercycle intact. NVDA $81.62B Q1 = HBM demand confirmed downstream. Tech sector has slight headwind today (S&P flat) but semis are outperforming. Score: **7/10**
+
+Sub-Agent 5 — Risk: 5sh × $975 = $4,875 = 4.9% ✓. Stop $926.25 (−5%). Target $1,121.25 (+15%). Stop risk: $48.75 × 5 = $244 = 0.24% ✓. R/R 3:1 ✓. Two-day surge of +25% is a momentum risk, but thesis-driven (UBS upgrade); not a purely technical chase. Score: **7/10**
+
+Sub-Agent 6 — Tech Analyst: HBM4 is the picks-and-shovels AI memory play. Stacked directly on NVDA/AMD GPU packages. MU ~35% HBM market share. HBM4 architecture proprietary and switching costs enormous. Score: **9/10**
+
+**Master Agent — MU:**
+- Fundamentals: 9 | Technical: 7 | Sentiment: 9 | Macro: 7 | Risk: 7 | Tech Analyst: 9
+- Average: **8.0/10** | Agents ≥7: **6/6**
+- **Decision: APPROVED** — all agents at 7+, Risk 7 (no veto). Entry: 5sh limit $974.85, stop $925.61 (−5%), target $1,121.08 (+15%), bracket GTC. BUT API BLOCKED — cannot execute. Logging as deployment violation.
+
+---
+
+### 6-AGENT RE-SCORE — PLTR AT $135 (MIDDAY MAY 27)
+
+**Symbol:** PLTR | **Price:** ~$134.94 | **Setup:** `ai-momentum-pullback` | **Prior Score:** 7.5 (May 26)
+
+Sub-Agent 1 — Fundamentals: Q1 FY2026 $1.63B +39% YoY, EPS $0.33 beat $0.24 by 37.5%. Government AI AIP contracts expanding. U.S. commercial revenue growing >60% YoY. Score: **7/10**
+
+Sub-Agent 2 — Technical: Pullback day (−1.4% from $136.88 close). Range $131.63–$135.73. Below $134 support zone at day low ($131.63). Stochastic turning down. MACD showing slight bearish divergence at midday. Volume oscillator negative (selling volume). 0 of 5 mandatory indicators confirming bullish entry. Score: **5/10**
+
+Sub-Agent 3 — Sentiment: ZS −23% on weak guidance = mild contagion risk for software/AI names. Enterprise AI thesis intact. No PLTR-specific negative news. Score: **6/10**
+
+Sub-Agent 4 — Macro: Nasdaq −0.1%, software/AI names slightly risk-off. ZS guidance miss → enterprise spending concern (minor headwind). Iran peace risk-on is positive but not PLTR-specific. Score: **6/10**
+
+Sub-Agent 5 — Risk: 10sh × $135 = $1,350 = 1.4% ✓. Stop $128.19 (−5%). Target $155.46 (+15%). Stop risk $6.75 × 10 = $67.50 = 0.07% ✓. R/R 3:1 ✓. Score: **8/10**
+
+Sub-Agent 6 — Tech Analyst: AIP platform with government contracts creates switching-cost moat. FedRAMP-authorized. Not directly comparable to ZS — different product category. Score: **7/10**
+
+**Master Agent — PLTR:**
+- Fundamentals: 7 | Technical: 5 | Sentiment: 6 | Macro: 6 | Risk: 8 | Tech Analyst: 7
+- Average: **6.50/10** | Agents ≥7: **3/6** (Fundamentals, Risk, Tech Analyst)
+- **Decision: REJECTED** — Average 6.50 < 7 threshold. Agents ≥7 = 3 (minimum 4 required). Technical 5 (0 of 5 mandatory indicators confirming bullish direction — fail). Today's conditions represent a material downgrade from yesterday's 7.5 score. Re-enter when PLTR reclaims $134 support on bullish volume. **This is a VALID SKIP — conditions changed, score dropped below threshold. NOT a deployment violation.**
+
+---
+
+### YAML DECISION ENTRIES
+
+```yaml
+---
+ts: 2026-05-27T16:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: AMD ATH breakout continuing at $512 (+3.7%). Jensen Huang $200B CPU TAM + AI EPYC demand. 6-agent approved (avg 7.67, all agents ≥7). BLOCKED: API returns HTTP 403 Host not in allowlist — 20th consecutive session. No valid skip exemption applies. This is a deployment violation.
+size_pct: 4.6
+stop: 488.83
+target: 591.74
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: AMD approved 7.67 avg, all 6 agents ≥7. 9sh (reduced from 10 to stay under 5% position cap at $512 price). Entry limit $514.56, stop $488.83 (-5%), target $591.74 (+15%), R/R 3:1. API BLOCKED — HTTP 403 for 20th consecutive session. NOT a valid exemption under CLAUDE.md Deployment Bias. Exemption 1 does NOT apply (reducing to 9sh resolves position cap). Exemption 2 does NOT apply (AMD has no binary event within 48h). Exemption 3 does NOT apply (circuit breaker not tripped). OPERATOR MUST MANUALLY EXECUTE: BUY 9sh AMD limit $514.56, stop $488.83, target $591.74, bracket GTC, at app.alpaca.markets. Catch-up for Pre-Market / Market Open / Mid-Morning silent failures.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T16:35:30Z
+action: skip
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 8.0
+thesis: MU continuing ATH breakout at $970 (+6.4%). UBS $1,625 PT upgrade + HBM4 sold out. 6-agent approved (avg 8.0, all agents ≥7). BLOCKED: API returns HTTP 403 — 20th consecutive session. No valid skip exemption. Deployment violation.
+size_pct: 4.9
+stop: 925.61
+target: 1121.08
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: MU approved 8.0 avg, all 6 agents ≥7. 5sh at $975. Stop $925.61 (-5%), target $1,121.08 (+15%), R/R 3:1. API BLOCKED — HTTP 403 for 20th consecutive session. NOT a valid exemption. No binary events within 48h (next earnings June 24). Circuit breaker not tripped. OPERATOR MUST MANUALLY EXECUTE: BUY 5sh MU limit $974.85, stop $925.61, target $1,121.08, bracket GTC, at app.alpaca.markets. This is the 12th+ consecutive session MU has been a MANDATORY entry. Cumulative missed gain from $765.91 (original target) to $970 current = $1,040 on 5sh. Catch-up for three missed morning routines.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T16:36:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.50
+thesis: PLTR re-scored at $135 (-1.4% from yesterday). Technical dropped to 5 (0 of 5 mandatory indicators confirming bullish direction). ZS -23% guidance miss creates mild enterprise AI headwind. Average 6.50 < 7 threshold. VALID SKIP based on material conditions change from yesterday's 7.5 score.
+size_pct: 0
+stop: 128.19
+target: 155.46
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 6.50
+agents_above_7: 3
+master_decision: rejected
+master_notes: PLTR re-scored 6.50 (was 7.5 yesterday). Rejected on master gate: avg < 7, agents ≥7 = 3 (minimum 4 required), Technical 5 with 0 of 5 mandatory indicators confirming. ZS -23% guidance miss = enterprise spending concern (mild contagion). PLTR at intraday low $131.63 threatened $134 support zone. This is a legitimate skip — not an API-blockage violation. Re-enter when PLTR reclaims $134 on volume with 2+ of 5 mandatory indicators confirming. Watch $131 as hard stop-check level.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T16:36:30Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: MRVL earnings TONIGHT (May 27 AH). Binary event exclusion applies. Post-earnings entry decision May 28 Pre-Market pending Q1 FY2027 print.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: rejected
+master_notes: "VALID SKIP — Exemption 2 applies: MRVL reports Q1 FY2027 earnings tonight (May 27 AH). Binary event exclusion per CLAUDE.md. MRVL at ~$196 (down -5.4% from $207.28 May 26 close — pre-earnings distribution). Options pricing ±13.6% move. May 28 Pre-Market: if beats consensus ($2.4B revenue, EPS $0.80) AND raises FY2027 guidance to $11B+, enter via MOO or limit bracket. If misses: skip. Note: MRVL trading -5% pre-earnings suggests some expectation risk. XPU custom silicon for AWS/Google/MSFT hyperscalers = defensible TAM."
+---
+```
+
+---
+
+### OVERALL VIOLATION — ZERO ORDERS PLACED ON TRADING DAY
+
+```yaml
+---
+ts: 2026-05-27T16:37:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Zero orders placed on May 27 trading day. Two MANDATORY watchlist names (AMD 7.67, MU 8.0) have approved master gates with no valid skip exemption. Alpaca API HTTP 403 blockage is infrastructure failure, NOT a valid exemption under CLAUDE.md Deployment Bias.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "20th consecutive blocked session. AMD (7.67) and MU (8.0) both approved but unexecutable. PLTR rejected on re-score (6.50 < 7). MRVL exempt (Exemption 2). Portfolio remains ~97% cash with only GLD open. Cumulative gap vs SPX now estimated -4.5 pp. Day 16 of potential 20-day underperformance streak — 4 more days until mandatory strategy review trigger. OPERATOR ACTION REQUIRED: Execute AMD and MU entries manually at https://app.alpaca.markets using the parameters above. Stop audit: GLD 7sh at $415 vs stop $397.92 (+4.3% above stop) — estimated safe but unverifiable via blocked API."
+---
+```
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+- **GLD 7sh:** HOLD. Stop $397.92 (estimated resting). MRVL earnings tonight — risk-on or risk-off outcome uncertain. GLD is a hedge; hold regardless of MRVL direction.
+- **AMD (not open):** If OPERATOR executes entry today before 3:50 PM ET, set bracket GTC. If not executed: watch for continued breakout tomorrow.
+- **MU (not open):** Same as AMD. If operator executes before close: bracket GTC. Note: MU is in an institutional accumulation phase — any intraday pullback below $950 is a buy opportunity at $950 × 1.005 = $954.75 limit.
+- **MRVL (not open):** Post-earnings decision tomorrow. Watching for: beat + guidance raise → MOO entry May 28. Options ±13.6% = price range ~$168–$224 on print. If gaps down >13%, let dust settle and re-evaluate.
+
+---
+
 ## 2026-05-26 — Daily Review (4:30 PM ET / 20:32 UTC)
 
 **Today is a TRADING DAY.** US equity markets were open. Alpaca API STILL BLOCKED ("Host not in allowlist" — 19th+ consecutive blocked session). ALL SIX intraday routines (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close) produced ZERO heartbeats today. This is the top operational issue.
