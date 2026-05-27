@@ -277,6 +277,172 @@ master_notes: |
 
 ---
 
+## 2026-05-27 — Daily Review (4:30 PM ET / 20:34 UTC)
+
+**TRADING DAY CONFIRMED.** S&P 500 closed 7,520.36 (+0.02%, new record — 17th record close of 2026). Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive session).
+
+---
+
+### HEARTBEAT TALLY — 2026-05-27
+
+| Routine | Expected UTC | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | ~12:00Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Market-Open | ~13:45Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Mid-Morning | ~15:00Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Midday | ~16:30Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Afternoon | ~18:00Z | ✅ 18:08:57Z | ✅ 18:18:24Z | Complete |
+| Market-Close | ~19:30Z | ❌ MISSING | ❌ MISSING | **SILENT FAILURE** |
+| Daily-Review | ~20:34Z | ✅ 20:34:37Z | (this session) | Running |
+
+**TOP OPERATIONAL ISSUE (Day 20+):** 5 of 7 sessions today are SILENT FAILURES. 4 of 6 intraday routines missed. Only the Afternoon and Daily-Review fired. Cloud scheduler has not triggered intraday sessions for 20+ consecutive trading days. Operator manual execution is the ONLY remediation path until sandbox egress allowlist is updated.
+
+---
+
+### MARKET RECAP — 2026-05-27
+
+| Asset | Close | Daily Δ | Notes |
+|---|---|---|---|
+| S&P 500 | 7,520.36 | +0.02% (new record) | Chip stocks "keeping gains in check" |
+| AMD | $512.30 | +3.74% | NOT HELD — 13th missed session; ATH territory |
+| MU | $915.69 | +2.21% | NOT HELD — 13th missed session; consolidating above $900 |
+| PLTR | $134.72 | −1.58% | NOT HELD — mild pullback, $134 support holding |
+| GLD | $408.46 | −1.36% | 7sh held — unrealized −$72.80; stop $397.92 safe (+2.6%) |
+| MRVL (AH) | $214.59 | AH −3.04% | Earnings beat; sell-the-news; see analysis below |
+| BTC | ~$75,740 | — | Below $82K threshold — not a mandatory entry |
+
+---
+
+### MRVL POST-EARNINGS 6-AGENT ANALYSIS
+
+**Q1 FY2027 Results (reported May 27 AH):**
+- Revenue: $2.418B (record, +28% YoY) — **BEAT** consensus $2.4B ✓
+- Non-GAAP EPS: $0.80 — **BEAT** consensus $0.75 (+6.67%) ✓
+- Q2 FY2027 Guidance: $2.7B (35% YoY, sequential acceleration) ✓
+- FY2027 Full-Year: ~$11B (>30% YoY), data center +40% YoY, Q4 exit >$3B ✓
+- AH Reaction: −3.04% to $214.59 (4th consecutive negative day-of-earnings move; within ±13.6% options range; net from May 26 close $207.28: +3.5%)
+
+**Pre-plan conditions:** Beat revenue ✓ | Beat EPS ✓ | FY2027 guidance raised to $11B ✓ → ALL CONDITIONS MET
+
+```yaml
+---
+ts: 2026-05-27T20:50:00Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Q1 FY2027 beat all 3 metrics (revenue $2.418B, EPS $0.80, FY2027 guide $11B >30% YoY); AH sell-the-news -3.04% creates entry below day-close; all pre-plan conditions from May 27 Afternoon fully met
+size_pct: 1.73
+stop: 205.20
+target: 248.40
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 4
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  Revenue $2.418B (beat $2.4B), EPS $0.80 non-GAAP (beat $0.75 by 6.67%), Q2 guide $2.7B (35% YoY), FY2027 ~$11B (>30% YoY, data center +40%, Q4 exit >$3B). All pre-plan conditions met.
+  AH: -3.04% to $214.59 — sell the news. 4th consecutive negative day-of-earnings move for MRVL (prior worst: -19.81% on a beat). AH -3.04% is within the ±13.6% options range. Net from May 26 close: +3.5%.
+  Fundamentals 9/10: record Q1, Q2 acceleration to 35% YoY, FY2027 $11B confirms AI ASIC hyperscaler thesis.
+  Technical 4/10: 5-indicator stack unconfirmable in AH. MRVL has 4 consecutive negative day-of-earnings moves. Score capped at <5 without Pre-Market bar data. Must check 2/5 indicators at Pre-Market May 28.
+  Sentiment 7/10: Beat all 3 metrics; Q2 $2.7B impresses; AH sell-the-news is now an established MRVL pattern.
+  Macro 7/10: AI data center build-out confirmed by $11B FY2027 guide; semiconductor sector showed fatigue today.
+  Risk 7/10: 8sh × $216 = $1,728 = 1.73% ✓; stop $205.20 (-5%); target $248.40 (+15%); R/R 3:1 ✓. Sized conservatively given sell-the-news risk.
+  Tech Analyst 9/10: custom silicon ASICs for AWS/Google/MSFT; electro-optics DSP; Q4 exit rate >$3B = massive scaling.
+  MASTER: avg 7.17, 5/6 agents ≥7, Risk 7 ✓, TA 9 ✓ → APPROVED. Only Technical (4/10) below threshold — acknowledged.
+  ORDER NOT PLACED (API blocked). MANDATORY entry Pre-Market May 28: 8sh MRVL limit $216 bracket GTC.
+  CATASTROPHIC FAIL-SAFE: If MRVL Pre-Market <$193 (>-10% from AH $214.59), abort entry and re-score. -19.81% prior earnings drop is a real tail risk.
+  Agreed: Fundamentals, Sentiment, Macro, Risk, Tech Analyst. Below 7: Technical (AH data insufficient + sell-the-news pattern).
+---
+```
+
+---
+
+### PERFORMANCE METRICS — 2026-05-27
+
+**Today:**
+| Metric | Value |
+|---|---|
+| Portfolio equity (est.) | ~$100,139 |
+| GLD unrealized P/L | −$72.80 (7sh × (−$10.40)) |
+| Daily portfolio return | −0.04% |
+| S&P 500 daily return | +0.02% |
+| Daily gap | **−0.06 pp** |
+
+**Rolling 20-day window:**
+| Metric | Value |
+|---|---|
+| Portfolio total return | ~+0.14% |
+| SPX total return (~May 5 to May 27) | ~+4.45% |
+| Cumulative gap vs SPX | **~−4.31 pp** |
+| Consecutive underperformance days | **Day 16 of 20** ⚠️ |
+| Win rate (active book closed trades) | N/A (0 closed trades ever) |
+| Profit factor | N/A |
+
+**⚠️ STREAK WARNING — Day 16 of 20:** CLAUDE.md triggers mandatory strategy full review after 20 consecutive underperformance days. 4 more days to trigger. Root cause: 100% API blockage — zero trades executed. Strategy itself is sound (AMD +24%, MU +27% missed). Missed opportunity cost: ~$1,739 in would-have-been unrealized gains.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+1. **MRVL Exemption 2 was correct.** AH −3.04% despite strong beat validates the "sell the news" pattern. We now enter at $214.59 AH (below day close ~$220.92) with full fundamental clarity — cleaner R/R than any pre-earnings entry would have offered.
+2. **PLTR $134 support holding.** Despite today's −1.58% pullback, PLTR closed $134.72, above the critical $134 support. Entry limit at $135.50 remains appropriate.
+3. **GLD stop discipline maintained.** GLD at $408.46 (−1.36%) remains $10.54 (2.58%) above the $397.92 stop. No knee-jerk adjustment warranted on a single risk-on compression day.
+
+### 3 THINGS TO IMPROVE TOMORROW
+1. **OPERATOR MUST execute 4 mandatory orders before 9:25 AM ET May 28.** MU MOO 5sh, AMD MOO 9sh, MRVL limit $216 bracket GTC, PLTR limit $135.50 bracket GTC. 16+ consecutive trading days of MANDATORY entries missed.
+2. **Update limit prices to reflect today's closes.** MU: $918→$920; AMD: $496.50→$515; PLTR: $137.50→$135.50; MRVL: new entry at $216 (AH ask+0.5%).
+3. **MRVL catastrophic gap-down watch at Pre-Market.** MRVL's prior worst post-earnings was −19.81% on a beat. If pre-market shows <$193 (>-10% from AH), abort entry and re-score.
+
+---
+
+### SETUP PERFORMANCE TRACKER — 2026-05-27 UPDATE
+
+| Setup type | Wins | Losses | 3-in-a-row | Status |
+|---|---|---|---|---|
+| breakout-volume | 0 | 0 | none | Active — MU (8.5, MANDATORY), AMD (7.83, MANDATORY) |
+| ai-momentum-pullback | 0 | 0 | none | Active — PLTR (7.5, MANDATORY) |
+| earnings-reaction-follow | 0 | 0 | none | Active — MRVL (7.17, APPROVED; MANDATORY May 28) |
+| macro-hedge | 0 | 0 | none | Active — GLD held, −$72.80 unrealized |
+| earnings-reaction-fade | — | — | — | No trades |
+| sector-rotation | — | — | — | No trades |
+| candlestick-reversal | — | — | — | No trades |
+| mean-reversion-oversold | — | — | — | No trades |
+| crypto-flush-rebound | — | — | — | BTC $75,740 — below $82K threshold |
+
+No 3-in-a-row rules triggered. Tracker cannot advance without confirmed filled-and-closed positions.
+
+---
+
+### BINDING WATCHLIST — MAY 28 PRE-MARKET (MANDATORY COMMITMENT)
+
+Per CLAUDE.md Deployment Bias: "A scored watchlist is a commitment, not a suggestion."
+
+| Priority | Symbol | Score | Setup | Action | Limit | Stop | Target | Size | R/R |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | **MU** | 8.5 | breakout-volume | MOO 5sh | ~$920 | fill×0.95 | fill×1.15 | 4.6% | 3:1 |
+| 2 | **AMD** | 7.83 | breakout-volume | MOO 9sh | ~$515 | fill×0.95 | fill×1.15 | 4.6% | 3:1 |
+| 3 | **MRVL** | 7.17 | earnings-reaction-follow | Limit $216 bracket GTC | $216.00 | $205.20 | $248.40 | 1.7% | 3:1 |
+| 4 | **PLTR** | 7.5 | ai-momentum-pullback | Limit $135.50 bracket GTC | $135.50 | $128.73 | $155.83 | 1.4% | 3:1 |
+
+**MANDATORY PRE-MARKET CHECKS (in this order):**
+1. STOP AUDIT: GLD 7sh stop $397.92 — verify resting on Alpaca ← FIRST ACTION
+2. CANCEL STALE ORDERS: AMD GTC $449.00 + PLTR GTC $140.35 — DELETE before placing new orders
+3. MRVL FAIL-SAFE: If pre-market price <$193 (>-10% from AH $214.59), abort MRVL entry and re-score
+4. CIRCUIT BREAKER: If S&P 500 opens ≥3% below 7,520.36 (→ below 7,295), halt all new entries
+
+**TOTAL NEW POSITION EXPOSURE (if all 4 fill):** ~$13,600 (13.6% of portfolio). Still leaves ~$83,680 (83.7%) in cash — well above 5% floor. Raises trading bucket from 2.9% to ~16.5%.
+
+**POST-MOO STOP PLACEMENT (Market Open 9:45 AM ET — MANDATORY per CLAUDE.md):** For MU and AMD MOO fills, immediately place GTC stop-loss orders at fill×0.95 before any other activity.
+
+---
+
 ## 2026-05-26 — Daily Review (4:30 PM ET / 20:32 UTC)
 
 **Today is a TRADING DAY.** US equity markets were open. Alpaca API STILL BLOCKED ("Host not in allowlist" — 19th+ consecutive blocked session). ALL SIX intraday routines (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close) produced ZERO heartbeats today. This is the top operational issue.
