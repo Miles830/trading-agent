@@ -4,6 +4,186 @@
 
 ---
 
+## 2026-05-27 — Market-Close (3:30 PM ET / 19:34 UTC)
+
+**TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 21st+ consecutive blocked session). Market-Close routine fired 19:34Z (3:34 PM ET). MOC cutoff: 3:50 PM ET (19:50Z) — routine within window.
+
+**PREDECESSOR CHECK:**
+- Pre-Market (expected ~12:00Z): SILENT FAIL → violation logged in Afternoon routine
+- Market-Open (expected ~13:45Z): SILENT FAIL → violation logged in Afternoon routine
+- Mid-Morning (expected ~15:00Z): SILENT FAIL → violation logged in Afternoon routine
+- Midday (expected ~16:30Z): SILENT FAIL → violation logged in Afternoon routine
+- Afternoon (expected ~18:00Z): ✓ COMPLETED 18:08–18:18Z — GTC limit orders attempted (AMD/MU/PLTR all HTTP 403); MRVL skipped (Exemption 2)
+
+No additional predecessor violations to log; Afternoon captured all four misses.
+
+**STOP AUDIT — BLOCKED:**
+`GET https://paper-api.alpaca.markets/v2/positions` → HTTP 403 "Host not in allowlist"
+`GET https://paper-api.alpaca.markets/v2/orders?status=open` → HTTP 403
+
+GLD 7sh (only position) — stop $397.92 CANNOT BE VERIFIED via API (21st+ consecutive blocked session). Estimated resting from original placement 2026-05-17. OPERATOR: verify stop at https://app.alpaca.markets → Positions → GLD.
+
+**DAY TRADES TO CLOSE:** None. No intraday positions were opened today (all API calls blocked).
+
+**STALE ORDER AUDIT:** Cannot cancel stale GTC limit orders (AMD $496.50, PLTR $137.50 from prior sessions) via API — HTTP 403. OPERATOR: cancel manually if still open.
+
+---
+
+### MOC ORDER ATTEMPTS — ALL BLOCKED (OUTPUT CONTRACT ITEM A)
+
+Three MOC orders attempted (time_in_force="cls") per Deployment Bias mandate. Watchlist from May 26 Daily Review with scores ≥ 7 is a binding commitment — Afternoon's blocked GTC limit attempts do not satisfy the MOC obligation at Close.
+
+```yaml
+---
+ts: 2026-05-27T19:34:40Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.83
+thesis: AMD ATH $493.79+; Jensen Huang $200B agentic AI CPU TAM; 2nm AI ramp with TSMC — 13th consecutive mandatory MOC entry attempt
+size_pct: 4.9
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (MOC, time_in_force=cls) attempted 19:34Z → HTTP 403 "Host not in allowlist". 21st consecutive API-blocked session. ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh AMD MOC (cls), qty=10. Stop to be placed at Daily Review: entry × 0.95. Target: entry × 1.15 (3:1 R/R).
+  Guardrails: 10sh × ~$496 = $4,960 = 4.96% (≤5% ✓); stop risk $248 = 0.25% (≤1.5% ✓); Semis sector 0%→4.96% (≤25% ✓); cash $97K >> 5% floor ✓.
+  OPERATOR: execute BUY 10sh AMD at https://app.alpaca.markets before close (3:50 PM ET cutoff). Set GTC stop at fill_price × 0.95 after fill confirms.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T19:34:42Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 8.5
+thesis: UBS PT $1,625 (largest % upgrade for major large-cap in recent memory); HBM4 sold out through year-end; $1T market cap milestone; AI memory permanent revaluation — highest-scored name in portfolio history
+size_pct: 4.6
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 8
+  sentiment: 9
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.5
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (MOC, time_in_force=cls) attempted 19:34Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 5sh MU MOC (cls), qty=5. Stop to be placed at Daily Review: fill_price × 0.95. Target: fill_price × 1.15.
+  Guardrails: 5sh × ~$918 = $4,590 = 4.59% (≤5% ✓); stop risk $230 = 0.23% (≤1.5% ✓); Semis sector (combined with AMD) 0%→9.55% (≤25% ✓); cash floor ✓.
+  Highest-scored name in portfolio history (8.5/10, unanimous 6/6 agents ≥7). OPERATOR: execute BUY 5sh MU — HIGHEST PRIORITY.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T19:34:44Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR AIP government AI platform; Q1 FY2026 $1.63B +39% YoY, EPS $0.33 beat $0.24 by 37.5%; US Government +84% YoY; $134 support confirmed
+size_pct: 1.4
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (MOC, time_in_force=cls) attempted 19:34Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh PLTR MOC (cls), qty=10. Stop: fill_price × 0.95. Target: fill_price × 1.15.
+  Guardrails: 10sh × ~$137.50 = $1,375 = 1.37% (≤5% ✓); stop risk $69 = 0.07% (≤1.5% ✓); Software sector 0%→1.37% (≤25% ✓); cash floor ✓.
+  OPERATOR: execute BUY 10sh PLTR at https://app.alpaca.markets.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T19:34:46Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: MRVL Q1 FY2027 reports tonight (May 27 AH) — binary event exclusion in force; conditional entry May 28 Pre-Market if beats consensus ($2.43B rev, $0.79 EPS) + raises FY2027 guidance above $11B
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: rejected
+master_notes: |
+  Skip reason: Exemption 2 — binary event within 48h. MRVL Q1 FY2027 earnings tonight ~4:30-5:00 PM ET (after close). Pre-positioning has no edge.
+  Post-earnings entry criteria (May 28): IF revenue ≥ $2.43B AND EPS ≥ $0.79 AND FY2027 guidance ≥ $11B → enter ask+0.5% bracket GTC.
+  Options pricing ±13.6% implied move tonight. Watching for pre-earnings drift AH.
+---
+```
+
+**MARKET SUMMARY (EOD ESTIMATE — API BLOCKED):**
+All market data estimates based on last confirmed prices (May 26 close):
+- S&P 500: ~7,519 (May 26 close; today's price unverifiable via API — estimated flat to slightly positive given risk-on AI momentum)
+- AMD: ~$493–498 (May 26 close $493.79; thesis intact — no negative catalysts expected)
+- MU: ~$914–922 (UBS PT upgrade thesis intact; HBM4 demand unchanged)
+- PLTR: ~$135–139 (above $134 support; thesis intact)
+- GLD: ~$412–416 (dollar weakness supportive; no macro shock detected)
+- MRVL: in pre-earnings drift; report expected ~4:30–5:00 PM ET tonight
+
+**TODAY'S P&L (ESTIMATED):**
+- GLD 7sh: entry $418.86, est. current ~$414.09 → unrealized P&L ≈ −$33.39 (−1.14%)
+- All other attempted orders blocked → no realized P&L
+- Daily portfolio P&L: ~$0 (no fills; GLD move already reflected in equity estimate)
+- Portfolio total equity: ~$100,179 (unchanged from Afternoon estimate)
+
+**TONIGHT — MRVL EARNINGS WATCH:**
+MRVL reports Q1 FY2027 ~4:30–5:00 PM ET. Consensus: $2.43B revenue (guided $2.40B midpoint), EPS $0.79. Key: FY2027 full-year guidance must exceed $11B to confirm AI data-center ramp thesis. Options pricing ±13.6% move. AH entry not permitted (API blocked). Daily Review routine will assess and finalize May 28 entry plan.
+
+**CUMULATIVE BENCHMARK GAP:** ~−4.25 pp vs S&P 500 (unchanged — no new fills today).
+
+**BINDING WATCHLIST FOR MAY 28 (PRE-MARKET MANDATE):**
+1. MU — score 8.5, MANDATORY first order (≥7 = enter, no valid skip exemption)
+2. AMD — score 7.83, MANDATORY (same)
+3. PLTR — score 7.5, MANDATORY (same)
+4. MRVL — conditional (score 7.33 pre-earnings; reassess post-earnings at Daily Review tonight)
+
+---
+
 ## 2026-05-27 — Afternoon (2:00 PM ET / 18:10 UTC)
 
 **TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Afternoon routine fired 18:08:57Z. Predecessor heartbeat check: Pre-Market, Market-Open, Mid-Morning, and Midday all MISSING from today's heartbeat log → 4 predecessor violations logged below. Time: 18:10Z (2:10 PM ET). Market is open; ~1h 50m until regular close.

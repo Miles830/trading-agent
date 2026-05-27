@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-27T18:10:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-05-27T19:34:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 100179,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.43,
     "benchmark_gap_pct": -4.25,
     "open_positions_count": 1,
-    "note": "May 27 Afternoon — API BLOCKED (HTTP 403, 20th+ consecutive). Three mandatory bracket GTC limit orders attempted and blocked: AMD 10sh limit $496.50 (score 7.83), MU 5sh limit $918.00 (score 8.5), PLTR 10sh limit $137.50 (score 7.5). MRVL skipped (Exemption 2 — earnings tonight May 27 AH). 4 predecessor violations logged (Pre-Market, Market-Open, Mid-Morning, Midday all silent failed). No day trades open. GLD 7sh only position; stop $397.92 estimated resting. OPERATOR: place AMD/MU/PLTR manually at https://app.alpaca.markets. MRVL earnings ~4:30-5:00 PM ET tonight — conditional entry May 28 if beat + guidance raise. Cumulative gap vs SPX: -4.25 pp.",
+    "note": "May 27 Market-Close — API BLOCKED (HTTP 403, 21st+ consecutive). Three MOC orders attempted (time_in_force=cls): AMD 10sh, MU 5sh, PLTR 10sh — all HTTP 403. MRVL skipped (Exemption 2 — earnings tonight May 27 AH ~4:30 PM ET). No day trades to flatten. GLD 7sh only position; stop $397.92 estimated resting (cannot verify via API). Afternoon COMPLETED 18:08-18:18Z (first routine of day); all prior routines silent-failed (4 violations). Cumulative gap vs SPX: -4.25 pp. MRVL Q1 FY2027 reports tonight — Daily Review will assess for May 28 conditional entry. OPERATOR: execute AMD/MU/PLTR manually at https://app.alpaca.markets BEFORE CLOSE (3:50 PM ET cutoff) or at May 28 open.",
     "buckets": [
       {
         "key": "active",
@@ -51,6 +51,86 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-27T19:34:46Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 7.33,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — Exemption 2 (Market Close): MRVL earnings tonight May 27 AH ~4:30 PM ET. Binary event exclusion. Conditional May 28 entry if beats $2.43B rev + $0.79 EPS + $11B+ FY2027 guidance."
+    },
+    {
+      "ts": "2026-05-27T19:34:44Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.5,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders MOC (time_in_force=cls) → HTTP 403 'Host not in allowlist'. 21st consecutive API-blocked session. ORDER NOT PLACED. Intended: BUY 10sh PLTR MOC. OPERATOR: execute manually."
+    },
+    {
+      "ts": "2026-05-27T19:34:42Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.5,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 8,
+        "sentiment": 9,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders MOC (time_in_force=cls) → HTTP 403. ORDER NOT PLACED. Intended: BUY 5sh MU MOC. HIGHEST PRIORITY. UBS $1,625 PT. OPERATOR: execute manually — first order."
+    },
+    {
+      "ts": "2026-05-27T19:34:40Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.83,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.83,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders MOC (time_in_force=cls) → HTTP 403. 13th consecutive AMD API-blocked entry. ORDER NOT PLACED. Intended: BUY 10sh AMD MOC. OPERATOR: execute manually."
+    },
     {
       "ts": "2026-05-27T18:10:07Z",
       "symbol": "MRVL",
@@ -428,10 +508,10 @@
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-27 15:30 ET",
-      "last_summary": "UPCOMING TODAY (~19:30Z). Action items: stop audit (GLD $397.92), cancel stale AMD $449 + PLTR $140.35 GTC orders, place AMD/MU/PLTR bracket GTC limits if not yet done. No day trades to flatten."
+      "status": "completed",
+      "last_run": "2026-05-27T19:34:00Z",
+      "next_run": "2026-05-28 15:30 ET",
+      "last_summary": "May 27 Market-Close: API BLOCKED (HTTP 403, 21st+ consecutive). No day trades to flatten. Three MOC orders attempted and blocked: AMD 10sh, MU 5sh, PLTR 10sh (all cls, all HTTP 403). MRVL skipped (Exemption 2 — earnings tonight). GLD 7sh stop $397.92 estimated resting (unverifiable). Cumulative gap vs SPX: -4.25 pp. MRVL Q1 FY2027 earnings AH tonight — Daily Review will assess. May 28 binding watchlist: MU 8.5, AMD 7.83, PLTR 7.5, MRVL conditional."
     },
     {
       "name": "Daily Review",
@@ -575,7 +655,7 @@
       "portfolio_return_pct": 0.18,
       "spx_return_pct": 4.43,
       "daily_pnl_pct": 0.0,
-      "note": "Afternoon snapshot. API blocked. No orders placed. GLD only position. 4 predecessor violations. Cumulative gap: -4.25 pp."
+      "note": "Market-Close snapshot. API blocked (21st+ consecutive). No orders placed (all blocked). GLD 7sh only position. 5 predecessor violations (Pre-Mkt, Mkt-Open, Mid-Morning, Midday all silent-failed; Afternoon completed). Three MOC attempts all HTTP 403. MRVL earnings AH tonight. Cumulative gap: -4.25 pp."
     },
     {
       "date": "2026-05-26",
