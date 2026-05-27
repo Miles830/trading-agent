@@ -1,26 +1,26 @@
 {
-  "last_updated": "2026-05-25T16:31:50Z",
-  "updated_by": "midday",
+  "last_updated": "2026-05-27T13:49:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 100200,
+    "total_equity": 100179,
     "starting_equity": 100000.0,
-    "cash": 85550,
-    "cash_pct": 85.4,
-    "buying_power": 171100,
-    "long_market_value": 14650,
+    "cash": 97280,
+    "cash_pct": 97.1,
+    "buying_power": 194560,
+    "long_market_value": 2899,
     "short_market_value": 0.0,
-    "daily_pnl": 100,
-    "daily_pnl_pct": 0.1,
-    "total_return_pct": 0.2,
-    "spx_return_pct": 3.24,
-    "benchmark_gap_pct": -3.04,
-    "open_positions_count": 5,
-    "note": "May 21 Pre-Market \u2014 API BLOCKED (HTTP 403), 13th+ consecutive session. NVDA post-earnings reaction day: ~$220.66 (range $216.25-$226.94), $80B buyback + 25c quarterly dividend. AMD pre-market $428.92 (-3.59%, no AMD-specific news \u2014 closed May 21 at $447.58). PLTR pre-market $134.01 (at $134 trigger). MU ~$720.55 (ATH $818.67 May 11). BTC $77,852 (below $82K \u2014 score 5.3, not mandatory entry). S&P futures +0.09%. 3 MOO orders attempted and BLOCKED: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). OPERATOR: manually place all 3 MOO orders before 9:25 AM ET. MRVL excluded (earnings binary event). Strategy switch STILL UNCONFIRMED.",
+    "daily_pnl": -2,
+    "daily_pnl_pct": -0.002,
+    "total_return_pct": 0.18,
+    "spx_return_pct": 4.43,
+    "benchmark_gap_pct": -4.25,
+    "open_positions_count": 1,
+    "note": "May 27 Market-Open \u2014 API BLOCKED (HTTP 403), 20th consecutive session. Pre-Market SILENTLY FAILED. Catch-up running. S&P +0.05% (flat open). AMD ~$512.30 (+3.7% from ATH $493.79). MU ~$895.88 (range $821-$916.80, consolidating post-UBS upgrade). PLTR ~$133.99 (-2.1%, at $134 support). MRVL earnings TONIGHT AH \u2014 Exemption 2. 3 bracket GTC orders attempted and BLOCKED: MU 5sh limit $900 (8.5), AMD 9sh limit $514.50 (8.0), PLTR 10sh limit $134.66 (7.0). OPERATOR: manually place all 3 at https://app.alpaca.markets before 3:50 PM ET. GLD only confirmed position (7sh, stop $397.92 est). Cash 97% \u2014 cumulative SPX gap -4.25 pp.",
     "buckets": [
       {
         "key": "active",
         "label": "Active Trading (target 85%)",
-        "value": 14650
+        "value": 2899
       },
       {
         "key": "crypto",
@@ -30,7 +30,7 @@
       {
         "key": "cash",
         "label": "Cash (5% floor)",
-        "value": 85550
+        "value": 97280
       }
     ]
   },
@@ -47,67 +47,103 @@
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD +1.25% today ($411.50\u2192$416.64). Cross-asset hedge \u2014 gold rising despite oil collapse and risk-on equity day. Dollar weakness component. Stop $397.92 (-4.9% from current). GLD confirmed active (only certain position)."
-    },
-    {
-      "symbol": "TSM",
-      "bucket": "LT-closing",
-      "qty": 7,
-      "entry_price": 401.47,
-      "current_price": 404.0,
-      "pnl": 17.71,
-      "pnl_pct": 0.44,
-      "stop_loss": 353.76,
-      "take_profit": 498.48,
-      "setup": "ai-momentum-pullback",
-      "agent_average": 7.7,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed (Scenario A). If still held: NVDA beat = TSM fab demand thesis strengthened. Close via strategy switch or let NVDA read-through lift price."
-    },
-    {
-      "symbol": "NVDA",
-      "bucket": "LT-closing",
-      "qty": 15,
-      "entry_price": 198.83,
-      "current_price": 217.91,
-      "pnl": 286.2,
-      "pnl_pct": 9.6,
-      "stop_loss": 175.6,
-      "take_profit": 247.44,
-      "setup": "ai-momentum-pullback",
-      "agent_average": 7.5,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed. IF STILL HELD: Binary event violation (held through earnings). NVDA reported TONIGHT \u2014 BEAT ($81.62B vs $79.19B) but AH -2.44% ($217.91). Unrealized P/L uses AH price. CLOSE AT OPEN May 21 if still held \u2014 do not carry AH weakness into open.",
-      "risk_flag": "EARNINGS VIOLATION: NVDA reported May 20 after close (not May 21 as documented). Held through binary event. Beat but selling off in AH. CLOSE AT MARKET OPEN MAY 21 if still in portfolio."
-    },
-    {
-      "symbol": "JPM",
-      "bucket": "LT-closing",
-      "qty": 9,
-      "entry_price": 308.3,
-      "current_price": 303.0,
-      "pnl": -47.7,
-      "pnl_pct": -1.72,
-      "stop_loss": 272.14,
-      "take_profit": 383.47,
-      "setup": "sector-rotation",
-      "agent_average": 7.3,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed. Oil collapse today (-5.66%) may restore rate-cut expectations, which would benefit JPM NIM thesis. However, close per strategy-switch directive."
-    },
-    {
-      "symbol": "AVGO",
-      "bucket": "LT-closing",
-      "qty": 7,
-      "entry_price": 418.59,
-      "current_price": 410.0,
-      "pnl": -60.13,
-      "pnl_pct": -2.05,
-      "stop_loss": 368.36,
-      "take_profit": 519.05,
-      "setup": "ai-momentum-pullback",
-      "agent_average": 7.0,
-      "note": "STRATEGY SWITCH UNCONFIRMED \u2014 may already be closed. NVDA beat = AVGO custom ASIC thesis strengthened (Google/Meta AI chip pipeline). If still held, NVDA read-through should push AVGO higher tomorrow. But close per strategy-switch directive."
+      "note": "May 27 Market Open \u2014 GLD est. ~$414 (flat from $414.09 May 26 close; S&P flat +0.05%). Stop $397.92 est. resting (-4.1% from current). API blocked \u2014 cannot verify stop or position. Thesis: dollar weakness hedge."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-27T13:49:00Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 7.33,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — Exemption 2: MRVL Q1 FY2027 earnings TONIGHT May 27 AH. Binary event exclusion. Options ±11.78% move. Post-earnings entry evaluated at Daily Review and May 28 Pre-Market. If beats + raises FY2027 guidance ($11B+): enter May 28 at ask+0.5%, earnings-reaction-follow."
+    },
+    {
+      "ts": "2026-05-27T13:48:00Z",
+      "symbol": "PLTR",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.0,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 6,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist' (HTTP 403, 20th consecutive). Bracket GTC BUY 10sh PLTR limit $134.66, stop $127.93, target $154.86 (R/R 3:1). PLTR at $133.99 (-2.1%), re-scored Technical 6 (at $134 support borderline). Average 7.0, 5/6 agents ≥7. OPERATOR: manually place at https://app.alpaca.markets."
+    },
+    {
+      "ts": "2026-05-27T13:47:00Z",
+      "symbol": "AMD",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.0,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.83,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist' (HTTP 403, 20th consecutive). Bracket GTC BUY 9sh AMD limit $514.50 (9sh not 10 — $514.50×10=$5,145=5.14% exceeds 5% cap; 9sh=$4,630.50=4.62%), stop $488.78, target $591.68 (R/R 3:1). AMD at $512.30 (+3.7% ATH). 12th consecutive mandatory AMD deployment failure. OPERATOR: manually place at https://app.alpaca.markets."
+    },
+    {
+      "ts": "2026-05-27T13:46:00Z",
+      "symbol": "MU",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.5,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 8,
+        "sentiment": 9,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — Alpaca API 'Host not in allowlist' (HTTP 403, 20th consecutive). Bracket GTC BUY 5sh MU limit $900.00, stop $855.00, target $1,035.00 (R/R 3:1). MU at $895.88 (range $821-$916.80). UBS PT $1,625. HBM4 sold out. OPERATOR: manually place at https://app.alpaca.markets. HIGHEST PRIORITY."
+    },
+    {
+      "ts": "2026-05-27T13:45:00Z",
+      "symbol": "PREMARKET",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Pre-Market routine (8:00 AM ET / 12:00 UTC) SILENTLY FAILED — no heartbeat. Market Open running catch-up. All API calls (stop audit, cancel stale orders, order placement) blocked HTTP 403. 20th consecutive blocked session."
+    },
     {
       "ts": "2026-05-21T12:04:00Z",
       "symbol": "AMD",
@@ -571,18 +607,18 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-05-21 08:02 ET",
-      "next_run": "2026-05-22 08:00 ET",
-      "last_summary": "May 21: S&P futures +0.09% (modest risk-on). NVDA $220.66 post-earnings ($80B buyback + 25c div). AMD pre-mkt $429 (-3.6% contagion). PLTR $134.01 (at trigger). MU ~$720. BTC $77,852 (<$82K, score 5.3). 3 MOO orders ATTEMPTED AND BLOCKED by API: AMD 10sh (7.67), PLTR 10sh (7.17), MU 6sh (7.67). MRVL excluded (earnings today). OPERATOR: manually place all 3 MOO before 9:25 AM ET. Market Open (9:45 AM): confirm fills, post GTC stops at fill\u00d70.95."
+      "status": "violation",
+      "last_run": "2026-05-27T08:00:00Z (SILENT FAILURE \u2014 no heartbeat)",
+      "next_run": "2026-05-28 08:00 ET",
+      "last_summary": "May 27 Pre-Market SILENTLY FAILED (no heartbeat found in logs/heartbeats/2026-05-27.log). No stop audit. No MOO orders. No stale order cancels. Catch-up executed by Market Open routine. This is the 20th consecutive session with API blockage and a pattern of intraday routine failures."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-21 09:45 ET",
-      "last_summary": "SILENT FAILURE May 20. Next May 21: (1) Confirm AMD/PLTR/MU fills, place stops (fill\u00d70.95 GTC) immediately. (2) Assess NVDA open gap \u2014 AH -2.44% on beat; if gap-down -3%+ with 2\u00d7 vol + 2/5 indicators: score earnings-reaction-fade. (3) Close NVDA if still held (binary event violation, exit at open). (4) Limit orders for AVGO, MRVL if score \u22657."
+      "status": "completed",
+      "last_run": "2026-05-27T13:49:00Z",
+      "next_run": "2026-05-28 09:45 ET",
+      "last_summary": "May 27: Pre-Market SILENTLY FAILED (catch-up). API BLOCKED (20th consecutive). S&P +0.05% (flat). AMD ~$512 (+3.7%), MU ~$896 (range $821-$917), PLTR ~$134. 3 mandatory bracket GTC orders ATTEMPTED AND BLOCKED: MU 5sh $900 (8.5), AMD 9sh $514.50 (8.0), PLTR 10sh $134.66 (7.0). MRVL skip Exemption 2 (earnings tonight AH). OPERATOR MUST MANUALLY PLACE all 3 at https://app.alpaca.markets before 3:50 PM ET."
     },
     {
       "name": "Mid-Morning",
