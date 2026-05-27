@@ -4,6 +4,279 @@
 
 ---
 
+## 2026-05-27 — Afternoon (2:00 PM ET / 18:10 UTC)
+
+**TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Afternoon routine fired 18:08:57Z. Predecessor heartbeat check: Pre-Market, Market-Open, Mid-Morning, and Midday all MISSING from today's heartbeat log → 4 predecessor violations logged below. Time: 18:10Z (2:10 PM ET). Market is open; ~1h 50m until regular close.
+
+**MRVL EARNINGS TONIGHT (May 27 AH):** MRVL reports Q1 FY2027 after close today. Binary event exclusion (Exemption 2) in effect for all MRVL entry attempts. Post-earnings conditional entry plan: May 28 Pre-Market if beats + raises guidance.
+
+---
+
+### PREDECESSOR VIOLATIONS
+
+```yaml
+---
+ts: 2026-05-27T18:10:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (expected ~12:00Z) produced zero heartbeat — AMD/MU/PLTR MOO commitment from May 26 Daily Review not executed
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  STARTED heartbeat absent from logs/heartbeats/2026-05-27.log. Cloud scheduler still not firing intraday sessions (20th+ consecutive day). Three MANDATORY orders (AMD score 8.0, MU score 8.5, PLTR score 7.5) from May 26 Daily Review binding commitment not placed. Alpaca API would have been HTTP 403 even if session had fired. OPERATOR must execute manually at https://app.alpaca.markets.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T18:10:01Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (expected ~13:45Z) produced zero heartbeat — MOO fill confirmations and GTC stop placements not executed
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: MARKET-OPEN silent failure. No MOO fill confirmations. No GTC stop placements. No stale-order cancellations (AMD $449 GTC stale, PLTR $140.35 GTC stale — both need cancellation).
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T18:10:02Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (expected ~15:00Z) produced zero heartbeat
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: MID-MORNING silent failure. No stop audit. No limit-order catch-up. Three of three predecessor routines have now missed today.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T18:10:03Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (expected ~16:30Z) produced zero heartbeat
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: MIDDAY silent failure. Four of four predecessor routines missed today. Afternoon is first firing routine of May 27.
+---
+```
+
+---
+
+### STOP AUDIT — BLOCKED
+
+`GET https://paper-api.alpaca.markets/v2/positions` → **HTTP 403 "Host not in allowlist"**
+
+GLD 7sh — stop $397.92 cannot be verified. Estimated resting (placed May 17, no API confirmation in 20+ sessions). OPERATOR: verify at https://app.alpaca.markets → Positions → GLD stop order.
+
+`GET https://paper-api.alpaca.markets/v2/orders?status=open` → **HTTP 403** (stale AMD $449 and PLTR $140.35 GTC orders cannot be cancelled via API — operator must cancel manually).
+
+---
+
+### MANDATORY ORDER ATTEMPTS — ALL BLOCKED (OUTPUT CONTRACT ITEM A)
+
+Three bracket GTC limit orders attempted per Deployment Bias mandate (score ≥ 7 = enter; API blockage is NOT a valid skip exemption):
+
+```yaml
+---
+ts: 2026-05-27T18:10:04Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.83
+thesis: AMD ATH breakout $493.79; Jensen Huang declared $200B agentic AI CPU TAM (AMD EPYC primary beneficiary); 2nm AI ramp with TSM — 12th consecutive mandatory entry attempt
+size_pct: 4.9
+stop: 471.68
+target: 570.98
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders attempted 18:10Z → HTTP 403 "Host not in allowlist". 12th consecutive API-blocked deployment. ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh AMD limit $496.50, stop $471.68 (-5%), target $570.98 (+15%), order_class:bracket, time_in_force:gtc.
+  Position check: 10sh × $496.50 = $4,965 = 4.97% (≤5% ✓). Stop risk: $24.83 × 10 = $248 = 0.25% (≤1.5% ✓). R/R: 15%/5% = 3:1 ✓. Semis sector 0% → 4.97% (≤25% ✓).
+  Scores from May 26 Daily Review 6-agent: F7/T7/S8/M8/R9/TA8 = avg 7.83. All 6 agents ≥7. OPERATOR: execute manually before May 28 open.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T18:10:05Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 8.5
+thesis: UBS PT $1,625 (from $535 — largest % upgrade for major large-cap in recent memory); HBM4 sold out through year-end; $1T market cap milestone; AI memory permanent revaluation
+size_pct: 4.6
+stop: 872.10
+target: 1055.70
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 8
+  sentiment: 9
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.5
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders attempted 18:10Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 5sh MU limit $918.00, stop $872.10 (-5%), target $1,055.70 (+15%), order_class:bracket, time_in_force:gtc.
+  Position check: 5sh × $918 = $4,590 = 4.59% (≤5% ✓). Stop risk: $45.90 × 5 = $230 = 0.23% (≤1.5% ✓). R/R: 3:1 ✓. Semis sector 0% → 4.59% (≤25% ✓).
+  Highest-scored name in portfolio history (8.5/10, unanimous 6/6 agents ≥7). Scores from May 26 Daily Review. OPERATOR: execute manually as highest-priority order before May 28 open.
+---
+```
+
+```yaml
+---
+ts: 2026-05-27T18:10:06Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR AIP government AI platform; Q1 FY2026 $1.63B +39% YoY, EPS $0.33 beat $0.24 by 37.5%; US Government +84% YoY; $134 support confirmed through multiple sessions
+size_pct: 1.4
+stop: 130.63
+target: 158.13
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders attempted 18:10Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh PLTR limit $137.50, stop $130.63 (-5%), target $158.13 (+15%), order_class:bracket, time_in_force:gtc.
+  Position check: 10sh × $137.50 = $1,375 = 1.38% (≤5% ✓). Stop risk: $6.88 × 10 = $69 = 0.07% (≤1.5% ✓). R/R: 3:1 ✓.
+  OPERATOR: execute manually. Note — last known PLTR price $136.88 (May 26 close); limit $137.50 is ask+0.5% → should fill at open.
+---
+```
+
+---
+
+### MRVL — SKIP (EXEMPTION 2)
+
+```yaml
+---
+ts: 2026-05-27T18:10:07Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: MRVL Q1 FY2027 earnings TONIGHT (May 27 AH) — binary event within 48 hours; conditional approval for May 28 entry pending beat + guidance raise
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: rejected
+master_notes: |
+  EXEMPTION 2 APPLIED: MRVL reports Q1 FY2027 tonight (May 27 AH, ~4:30-5:00 PM ET). Binary event within 48 hours per CLAUDE.md.
+  Pre-score from May 26 Daily Review: F8/T6/S8/M7/R7/TA8 = avg 7.33 (Technical 6 pending post-earnings chart read).
+  POST-EARNINGS PLAN (May 28 Pre-Market):
+    BEAT ($2.4B+ revenue, $0.79+ EPS) + GUIDANCE RAISED ($11B+ FY2027) → Enter at ask+0.5% limit bracket GTC (earnings-reaction-follow). Sizing: 8-10sh × ~$235 = $1,880-$2,350 = 1.9-2.4%.
+    MISS or IN-LINE ONLY → Re-score; do not force entry.
+    MASSIVE GAP-UP (+15%+ = above ~$238) → Wait for first 5-min pullback + 2/5 indicator confirmation before entry.
+  Note: MRVL closed $207.28 on May 26. Options priced ±13.6% move = range ~$178-$236 post-earnings.
+---
+```
+
+---
+
+### AFTERNOON MARKET SUMMARY (2:10 PM ET)
+
+**Market conditions** (estimated — API blocked, using May 26 close + sector context):
+- S&P 500 est.: ~7,519 (May 26 record close); tech sector elevated on AI capex cycle
+- MRVL: pre-earnings volume/sentiment likely elevated; price est. ~$207 (options priced ±13.6%)
+- AMD: est. ~$494 (ATH territory post-Jensen Huang $200B CPU TAM statement)
+- MU: est. ~$912 (post-+18% day on UBS $1,625 PT — possibly consolidating or extending)
+- PLTR: est. ~$137 (near $137.50 entry limit — likely within range)
+- GLD: est. ~$414 (flat to slightly up; dollar weakness bid)
+
+**No day trades open** — no intraday positions to close. GLD is swing position; stop $397.92 est. resting.
+
+**No MOC orders needed** — only swing positions held. GLD carries; no day trades to flatten before 3:30 PM ET.
+
+**Trailing stop consideration (GLD):** GLD $414.09 est. Entry $418.86. Stop currently $397.92 (−5.0% from entry). Since GLD is still below entry, trailing stop is not triggered. Maintain stop at $397.92 pending API access to verify.
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (May 28 Pre-Market)
+
+| Priority | Symbol | Score | Setup | Limit | Stop | Target | Notes |
+|---|---|---|---|---|---|---|---|
+| 1 | **MU** | 8.5 | breakout-volume | ~$918 | $872.10 | $1,055.70 | MANDATORY — UBS $1,625 PT; HBM4 sold out; highest score ever. OPERATOR: place FIRST. |
+| 2 | **AMD** | 7.83 | breakout-volume | ~$497 | $472.15 | $571.05 | MANDATORY — ATH breakout; $200B CPU TAM; 12th missed session. |
+| 3 | **PLTR** | 7.5 | ai-momentum-pullback | $137.50 | $130.63 | $158.13 | MANDATORY — AIP gov AI; near current price. |
+| 4 | **MRVL** | TBD | earnings-reaction-follow | ask+0.5% | fill×0.95 | fill×1.15 | CONDITIONAL on tonight's beat + guidance raise. Score 7.33 pre-earnings. |
+
+---
+
 ## 2026-05-26 — Daily Review (4:30 PM ET / 20:32 UTC)
 
 **Today is a TRADING DAY.** US equity markets were open. Alpaca API STILL BLOCKED ("Host not in allowlist" — 19th+ consecutive blocked session). ALL SIX intraday routines (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close) produced ZERO heartbeats today. This is the top operational issue.
