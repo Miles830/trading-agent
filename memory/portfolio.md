@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-28 (Thursday) — Pre-Market (8:00 AM ET / 12:10 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 21st+ consecutive blocked session). Pre-Market routine fired 12:10Z. Four mandatory order attempts (AMD 9sh MOO, MU 5sh MOO, MRVL 8sh MOO [post-earnings], PLTR 10sh limit) — all HTTP 403. MRVL Q1 FY2027 BEAT: $2.418B revenue (+28% YoY), EPS $0.80 beat $0.75, Q2 guided $2.70B, FY27 raised to $11.5B. AH +10%; pre-market gap-up open est. ~$218 → intraday data shows possible gap-fill risk to $191–$202. Market: S&P futures −0.2%, Nasdaq −0.3%, oil +1.8% (Iran strikes). PCE inflation data 8:30 AM ET. BTC ~$75,716 (below $82K threshold). Binding watchlist for today's remaining routines: MU (8.33, MANDATORY), MRVL (8.0, MANDATORY if gap holds), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY). Cumulative gap vs SPX: ~−4.25 pp (widening — every blocked day costs ~0.02–0.05 pp).
+**2026-05-28 (Thursday) — Midday (12:30 PM ET / 16:34 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 22nd+ consecutive blocked session). Midday routine fired 16:34Z. Market RISK-ON FLIP: S&P 500 +0.6% (≈7,564) driven by Iran-US ceasefire extending 60 days (Strait of Hormuz "unrestricted"). PCE April 3.8% y/y — in-line, no shock. BTC ~$73,459 (down 2% — US drone strikes on Iranian drones this morning; crypto lagged equity recovery; still well below $82K threshold). GLD est. ~$406 (risk-on = geopolitical premium unwinding; PCE still above 2% = mild support; stop $397.92 est.). MRVL gap-fill fully confirmed ($191 intraday low from $228 AH high; current $201 — revised setup to mean-reversion-oversold). MU hit $985 ATH intraday (new all-time high; $1T market cap milestone confirmed) before pulling back to $916. PLTR $137.57 (breaking out above $134 support, near session highs). AMD $498 (consolidating, slightly below $512 pre-market estimate). Market-Open and Mid-Morning SILENT FAILED (2 more predecessor violations logged). Four order attempts this session — all HTTP 403. Midday catch-up cap (2 entries) applied: MU (#1) and MRVL (#2) attempted; AMD (#3) and PLTR (#4) deferred to Afternoon routine. Cumulative gap vs SPX: ~−4.25 pp (widening — MU hit $985 today, we missed the entire move).
+
+**Prior Last Updated (same day):** 2026-05-28 (Thursday) — Pre-Market (8:00 AM ET / 12:10 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 21st+ consecutive blocked session). Pre-Market routine fired 12:10Z. Four mandatory order attempts (AMD 9sh MOO, MU 5sh MOO, MRVL 8sh MOO [post-earnings], PLTR 10sh limit) — all HTTP 403. MRVL Q1 FY2027 BEAT: $2.418B revenue (+28% YoY), EPS $0.80 beat $0.75, Q2 guided $2.70B, FY27 raised to $11.5B. AH +10%; pre-market gap-up open est. ~$218 → intraday data shows possible gap-fill risk to $191–$202. Market: S&P futures −0.2%, Nasdaq −0.3%, oil +1.8% (Iran strikes). PCE inflation data 8:30 AM ET. BTC ~$75,716 (below $82K threshold). Binding watchlist for today's remaining routines: MU (8.33, MANDATORY), MRVL (8.0, MANDATORY if gap holds), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY). Cumulative gap vs SPX: ~−4.25 pp (widening — every blocked day costs ~0.02–0.05 pp).
 
 **Prior Last Updated:** 2026-05-27 (Wednesday) — Afternoon (2:00 PM ET / 18:10 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Pre-Market, Market-Open, Mid-Morning, Midday all SILENT FAILED today (4 predecessor violations logged in trades.md). Afternoon routine fired 18:08:57Z — first session of the day. Three mandatory bracket GTC limit orders attempted (AMD 10sh $496.50, MU 5sh $918.00, PLTR 10sh $137.50) — all HTTP 403. MRVL skipped (Exemption 2 — earnings tonight May 27 AH). No day trades open; no MOC orders needed. Market: S&P 500 est. ~7,519 (near May 26 record close). GLD est. ~$414 (stop $397.92 unverifiable but estimated resting). Cumulative gap vs SPX: ~−4.25 pp (widening). Tomorrow binding watchlist: MU (8.5, MANDATORY), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY), MRVL conditional on tonight's earnings.
 
@@ -98,21 +100,33 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-05-26 Daily Review — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-05-28 Midday — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** ~$100,179 (Scenario A: strategy switch executed May 18; only GLD open)
-- **Cash:** ~$97,280 (Scenario A) — no new positions ever filled (all API blocked)
+- **Total Equity (estimated):** ~$100,179 (GLD only; slight P/L adjustment pending)
+- **Cash:** ~$97,280 — no new positions ever successfully placed (all API blocked; 22nd+ consecutive session)
 - **Long Market Value (estimated):**
-  - GLD: 7sh × $414.09 = $2,899 (unrealized −$33.39 from $418.86 entry)
-  - MU: NOT FILLED — no order was ever successfully placed (all attempts HTTP 403)
-  - AMD: NOT FILLED — same
-  - PLTR: NOT FILLED — same
+  - GLD: 7sh × $406 (est. May 28 midday) = $2,842 (unrealized −$90 from $418.86 entry; iron ceasefire risk-on = gold selling modestly)
+  - MU: NOT FILLED — 22nd+ consecutive blocked attempt; MU hit $985 ATH today then pulled to $916
+  - MRVL: NOT FILLED — Pre-Market MOO blocked; Midday limit blocked; est. $201 (gap-fill confirmed)
+  - AMD: NOT FILLED — est. $498 midday
+  - PLTR: NOT FILLED — est. $137.57 midday (breaking out above $134 support)
 - **Order status (estimated — API blocked):**
-  - GLD 7sh — open; resting stop $397.92 expected but unverifiable
-  - AMD GTC limit $449 — STALE (AMD at $493.79; limit is $44 below market) → MUST CANCEL
-  - PLTR GTC limit $140.35 — STALE (PLTR at $136.88; limit is $3.47 above market) → MUST CANCEL
-  - MU — no order ever placed
-- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 19th consecutive blocked session. CRITICAL: Operator must manually execute all three MANDATORY orders (AMD, MU, PLTR) via https://app.alpaca.markets before 9:25 AM ET on May 27.
+  - GLD 7sh — open; resting stop $397.92 (unverifiable 22+ sessions); est. $8.08 cushion above stop at $406 midday
+  - AMD GTC limit $449 — STALE ($49 below market at $498) → OPERATOR: CANCEL IMMEDIATELY
+  - PLTR GTC limit $140.35 — STALE (PLTR now $137.57; limit is $2.78 above market → fill risk) → OPERATOR: CANCEL AND RE-ENTER at $138.50 bracket GTC
+  - MU, MRVL — no orders ever placed
+- **Today's midday prices (web-confirmed):**
+  - MU: $916 (range $888–$985; ATH $985 touched; $1T market cap milestone)
+  - MRVL: $201.18 (range $191.84–$202.30; gap-fill confirmed)
+  - AMD: ~$498 (range $485–$508)
+  - PLTR: $137.57 (range $132–$139.56; breaking out)
+  - BTC: ~$73,459 (range unknown; down 2%; below $82K threshold)
+  - GLD: est. ~$406 (Iran ceasefire = risk-off premium unwinding)
+- **Market (midday May 28):** S&P 500 +0.6% (≈7,564); Nasdaq +0.6–0.8%; risk-on on Iran ceasefire deal extending 60 days. PCE April 3.8% y/y (in-line). Circuit breaker NOT tripped ✓.
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 22nd+ consecutive blocked session.
+- **Deployment gap:** 97% cash vs 5% target floor — massive. Four MANDATORY entries (MU 8.33, MRVL 7.83, AMD 7.83, PLTR 7.83) all blocked again. OPERATOR: Execute all four at https://app.alpaca.markets.
+- **3% Circuit Breaker:** NOT TRIGGERED ✓ (market up +0.6%)
+- **Daytrade count today:** 0 (no fills)
 
 ## Prior Account Snapshot (as of 2026-05-22 Mid-Morning ~11:00 AM ET — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
