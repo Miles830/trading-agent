@@ -277,6 +277,382 @@ master_notes: |
 
 ---
 
+## 2026-05-28 — Afternoon (2:00 PM ET / 18:08 UTC)
+
+**TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 22nd consecutive blocked session). Afternoon routine fired 18:08:50Z (2:08 PM ET). Time: ~1h 52m before regular close.
+
+**PREDECESSOR HEARTBEAT CHECK:** Pre-Market ✓ (12:07Z–12:23Z). Market-Open: MISSING. Mid-Morning: MISSING. Midday: MISSING. Three predecessor violations logged below.
+
+**MARKET CONDITIONS (2:08 PM ET, May 28, 2026):**
+- S&P 500: **+0.49%** — leaping higher on U.S.-Iran final peace deal rumors (oil benchmarks falling). Risk-ON.
+- Nasdaq: **+0.64%** — tech leading. Both indexes at new records.
+- PCE inflation (April): **3.8% y/y** headline — came in as expected (BofA forecast was 3.8%), no surprise shock. Market absorbed it with relief.
+- WTI crude oil: **FALLING** on Iran deal rumors — risk-on reversal from morning spike.
+- Circuit breaker check: S&P +0.49% vs threshold −3.0%. NOT TRIPPED ✓.
+
+**AFTERNOON PRICE ESTIMATES (web research):**
+- AMD: **~$501.25** (range $485.10–$507.90, +3.17% today) — ATH territory intact
+- MU: **~$942.36** (range $896.28–$949.49) — up from $905 open estimate; strong close
+- MRVL: **~$201.18** (range $191.84–$202.30) — BELOW pre-earnings close $207. Gap-up reversed.
+- PLTR: **~$137.93** (range $132.18–$139.56) — UP from $134.72 close; thesis intact
+- GLD: **~$408.49** (down from $414 May 26 close) — stop $397.92 → cushion ~2.6% ($10.57)
+- BTC: **~$81,000** — BELOW $82K threshold; slight risk-on recovery but not enough
+
+---
+
+### PREDECESSOR VIOLATIONS
+
+```yaml
+---
+ts: 2026-05-28T13:45:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Open routine (expected ~13:45Z / 9:45 AM ET) produced zero heartbeat — MOO fill confirmation and GTC stop placement for AMD/MU/MRVL fills were skipped; naked position risk unmitigated
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  No heartbeat log entry for Market Open (13:30-13:45Z window). Per CLAUDE.md: "Market Open routine (9:45 AM ET) MUST, immediately after confirming the MOO fill, post a separate stop-loss order." Without this routine, any MOO fills from Pre-Market (if operator manually placed them) have no confirmed stop-loss placement. Guardrail violation: naked position exposure window extends from MOO fill (9:30 AM ET) through next routine (Afternoon, 2:00 PM ET) = ~4.5 hours. This is a guardrail violation per CLAUDE.md stop-loss rules.
+---
+```
+
+```yaml
+---
+ts: 2026-05-28T15:08:00Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (expected ~15:00Z / 11:00 AM ET) produced zero heartbeat — no stop audit, no position monitoring, no indicator confirmation refresh executed
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  No heartbeat log entry for Mid-Morning (15:00-15:15Z window). Routine missed entirely. AMD +3.17% intraday would have been confirmable. MRVL gap reversal ($218→$201, below pre-earnings close) would have been caught at this routine, preventing further MRVL entry attempts at stale MOO price.
+---
+```
+
+```yaml
+---
+ts: 2026-05-28T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (expected ~16:30Z / 12:30 PM ET) produced zero heartbeat — no stop audit, no P/L review, no MRVL gap-fill monitoring
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  No heartbeat log entry for Midday (16:30-16:45Z window). Routine missed entirely. By midday MRVL had clearly failed its post-earnings gap-up thesis — at ~$195-201, well below $207 pre-earnings close. Midday routine would have logged this as a failed setup and removed MRVL from the afternoon entry queue.
+---
+```
+
+---
+
+### STOP AUDIT — BLOCKED
+
+`GET /v2/positions` → **HTTP 403 "Host not in allowlist"** (22nd consecutive)
+`GET /v2/orders?status=open` → **HTTP 403**
+
+GLD 7sh — stop $397.92 cannot be verified. GLD estimated at $408.49 (−2.5% today). Cushion from stop: $10.57 (2.6%). Stop still valid. OPERATOR: verify stop is resting at https://app.alpaca.markets. If AMD/MU/MRVL/PLTR were operator-placed as MOOs: their stops must also be resting (Market Open routine was a silent failure — no automated stop placement occurred).
+
+---
+
+### MRVL — RE-SCORE AND REJECT (Gap-Up Setup Failed)
+
+**CRITICAL UPDATE:** MRVL Pre-Market plan was `earnings-reaction-follow` with entry at ~$218 gap-up. Afternoon web research shows MRVL at **$201.18** (range $191.84–$202.30) — BELOW the pre-earnings close of $207. The gap has been COMPLETELY REVERSED. This is a "sell the news" event despite a strong earnings beat.
+
+**Re-scoring MRVL at $201.18 (afternoon):**
+- Fundamentals: 8/10 (earnings still strong — beat+raise unchanged)
+- Technical: 3/10 (gap-up fully reversed, below pre-earnings close; Stochastic overbought→bearish; distribution volume; <1 of 5 indicators bullish)
+- Sentiment: 5/10 (sell-the-news in progress; X: unavailable; despite strong beat, stock weak)
+- Macro: 5/10 (S&P +0.49% risk-on but MRVL showing severe relative weakness — bearish divergence)
+- Risk: 5/10 (R/R marginally 3:1 at $201 entry, but entering a falling knife situation; setup invalidated)
+- Tech Analyst: 9/10 (moat unchanged — Celestial AI, XConn, NVIDIA partnership all intact)
+
+**Average: 5.83/10 → REJECTED** (average <7; Risk=5 <6 auto-veto; only 1 of 6 agents ≥7)
+
+```yaml
+---
+ts: 2026-05-28T18:08:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 5.83
+thesis: MRVL gap-up setup failed — stock at $201.18, below $207 pre-earnings close. Gap-up reversed. Sell-the-news despite strong Q1 beat. Re-scored afternoon: 5.83/10 (below ≥7 threshold). Not a deployment bias skip — fresh re-score legitimately below entry threshold.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 3
+  sentiment: 5
+  macro: 5
+  risk: 5
+  tech_analyst: 9
+agent_average: 5.83
+agents_above_7: 1
+master_decision: rejected
+master_notes: |
+  MRVL pre-market plan was earnings-reaction-follow at ~$218 (gap-up from $207 close). Afternoon price: $201.18 — 7.8% BELOW intended entry, 2.8% below pre-earnings close. Gap fully reversed. "Sell the news" dynamic: beat + raised guidance but stock below pre-earnings level.
+  Technical score collapsed from 7 (pre-market) to 3 (afternoon): gap-up reversal, distribution volume, bearish candlestick structure (gap-and-fail = bearish engulfing at higher timeframe). <1 of 5 indicators confirming bullish entry.
+  Risk score: 5 (would be entering falling knife; pre-market stop $207.10 has already been breached intraday; new entry at $201 requires new stop $190.95, but momentum is bearish).
+  This is NOT a deployment bias violation — the original 8.0-score setup at $218 no longer exists. A fresh re-score at $201 = 5.83, below the ≥7 entry threshold. Exemption: setup condition changed fundamentally (not "wait for better setup" — the specific setup has failed).
+  MRVL LESSON: NVIDIA-style "sell the news" pattern. Despite $2.418B beat (+28% YoY), $2.70B Q2 guide, $11.5B FY27 raise — market selling. Watch for base formation over next 2-3 sessions before re-entering. Target entry on pullback to $191-195 with bullish reversal candlestick (Hammer or Bullish Engulfing on 5-min) + 2/5 indicator confirmation.
+  xAI/X API: unavailable (cloud runner) — degrading gracefully.
+---
+```
+
+---
+
+### ORDER ATTEMPTS — ALL BLOCKED BY HTTP 403
+
+**AMD — Limit Bracket GTC (carry-forward mandatory, 14th attempt)**
+
+Intended: BUY 9sh AMD limit $503.76 (ask+0.5% from $501.25), stop $478.57 (-5%), target $578.60 (+15%), bracket GTC.
+Sizing: 9sh × $503.76 = $4,534 = 4.53% (≤5% ✓). Trade risk: $25.19×9=$226.71=0.23% (≤1.5% ✓). R/R 3:1 ✓. Semis: 4.53% (≤25% ✓). Cash after: $97,280−$4,534=$92,746 >> $5,000 floor ✓.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"AMD","qty":9,"side":"buy","type":"limit","limit_price":"503.76",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"478.57"},
+  "take_profit":{"limit_price":"578.60"}
+}'
+```
+
+→ **HTTP 403 "Host not in allowlist"** — ORDER NOT PLACED.
+
+```yaml
+---
+ts: 2026-05-28T18:08:01Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.83
+thesis: AMD +3.17% to $501 today — ATH breakout confirmed; $200B agentic AI CPU TAM (Jensen Huang); Q1 $10.3B +38% YoY; 14th consecutive mandatory attempt; GTC limit bracket carry to next session
+size_pct: 4.53
+stop: 478.57
+target: 578.60
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 18:08Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 9sh AMD limit $503.76 (ask+0.5% from ~$501.25 afternoon), stop $478.57 (-5%), target $578.60 (+15%), bracket GTC.
+  Note: 9sh (not 10sh) — 10sh × $501 = $5,010 = 5.01% > 5% hard limit. 9sh = $4,534 = 4.53% ✓.
+  Macro score UPGRADED to 8 (was 7 at pre-market — Iran peace deal in progress, oil falling, risk-on, S&P +0.49%). AMD thesis strengthened by positive macro reversal.
+  Technical score maintained at 8: AMD +3.17% today, 3.17% gain confirms ATH breakout strength. Volume normal. Stochastic: approaching overbought but in uptrend = stay long. MACD: bullish histogram expanding. 3-4 of 5 indicators confirming.
+  GTC bracket will be active for next session (May 29 pre-market onward). Limit $503.76 is aggressive relative to current ~$501 price — fill probability high if AMD opens flat-to-up May 29.
+  OPERATOR: place manually at https://app.alpaca.markets — BUY AMD 9sh LIMIT $503.76, stop $478.57, target $578.60, bracket GTC.
+---
+```
+
+**MU — Limit Bracket GTC (carry-forward mandatory, 10th+ attempt)**
+
+Intended: BUY 5sh MU limit $947.08 (ask+0.5% from $942.36), stop $899.73 (-5%), target $1,089.33 (+15%), bracket GTC.
+Sizing: 5sh × $947.08 = $4,735 = 4.73% (≤5% ✓). Trade risk: $47.35×5=$236.75=0.24% (≤1.5% ✓). R/R 3:1 ✓. Semis cumulative (AMD+MU): 9.26% (≤25% ✓).
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"MU","qty":5,"side":"buy","type":"limit","limit_price":"947.08",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"899.73"},
+  "take_profit":{"limit_price":"1089.33"}
+}'
+```
+
+→ **HTTP 403 "Host not in allowlist"** — ORDER NOT PLACED.
+
+```yaml
+---
+ts: 2026-05-28T18:08:02Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 8.33
+thesis: MU at $942 (range $896-$949); UBS $1,625 PT; HBM4 sold out through year-end; $1T+ market cap; AI memory permanent revaluation; pullback from $985 high is constructive consolidation; GTC limit carry to next session
+size_pct: 4.73
+stop: 899.73
+target: 1089.33
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 9
+  tech_analyst: 9
+agent_average: 8.5
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 18:08Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 5sh MU limit $947.08 (ask+0.5% from $942.36), stop $899.73 (-5%), target $1,089.33 (+15%), bracket GTC.
+  MU performance today: range $896.28–$949.49, current $942.36. Higher than Pre-Market estimate of $905 — demand stronger than expected. Constructive consolidation above the $912 close from May 26 UBS-driven surge.
+  Macro score UPGRADED to 8 (was 7 at pre-market — Iran peace deal, oil falling, risk-on). MU benefits from risk-on environment and continued AI memory demand.
+  Technical score maintained at 7: above all moving averages, pullback from $985 high constructive, $896 intraday low held as new support; ~3 of 5 indicators confirming bullish continuation.
+  Agent average updated to 8.5 (Macro upgraded from 7→8 → average 8.5 vs 8.33 earlier).
+  OPERATOR: place manually — BUY MU 5sh LIMIT $947.08, stop $899.73, target $1,089.33, bracket GTC. HIGHEST PRIORITY.
+---
+```
+
+**PLTR — Limit Bracket GTC (carry-forward mandatory, 14th+ attempt)**
+
+Intended: BUY 10sh PLTR limit $138.62 (ask+0.5% from $137.93), stop $131.69 (-5%), target $159.41 (+15%), bracket GTC.
+Sizing: 10sh × $138.62 = $1,386 = 1.39% (≤5% ✓). Trade risk: $6.93×10=$69.30=0.07% (≤1.5% ✓). R/R 3:1 ✓.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"PLTR","qty":10,"side":"buy","type":"limit","limit_price":"138.62",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"131.69"},
+  "take_profit":{"limit_price":"159.41"}
+}'
+```
+
+→ **HTTP 403 "Host not in allowlist"** — ORDER NOT PLACED.
+
+```yaml
+---
+ts: 2026-05-28T18:08:03Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR at $137.93 (+2.4% today); recovered from $134.72 low; government AI AIP accelerating; US Gov revenue +84% YoY; above $134 support confirmed; GTC limit bracket carry to next session
+size_pct: 1.39
+stop: 131.69
+target: 159.41
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 18:08Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh PLTR limit $138.62 (ask+0.5% from $137.93), stop $131.69 (-5%), target $159.41 (+15%), bracket GTC.
+  PLTR performance today: range $132.18–$139.56, current $137.93 (+2.4%). Above $134 support — bullish recovery. Risk-on environment (Iran peace deal, oil falling, Nasdaq +0.64%) supports PLTR.
+  Macro score UPGRADED to 8 (was 7 at pre-market — Iran peace deal removes geopolitical risk premium that was weighing on defense/government AI names). PLTR's government contracts are now pure demand-driven, not geopolitical-hedge-driven.
+  Agent average updated: 7.67 (Macro upgrade).
+  Limit $138.62 is close to current $137.93 — very high fill probability at open or during May 29 session. GTC bracket survives overnight.
+  OPERATOR: place manually — BUY PLTR 10sh LIMIT $138.62, stop $131.69, target $159.41, bracket GTC.
+---
+```
+
+**BTC — SKIP (Below $82K Threshold)**
+
+```yaml
+---
+ts: 2026-05-28T18:08:04Z
+action: skip
+symbol: BTC
+bucket: crypto
+setup: crypto-flush-rebound
+score: 5.5
+thesis: BTC ~$81,000 — still BELOW $82K entry threshold despite slight risk-on recovery; crypto bucket 0% of 10% target; skip per CLAUDE.md threshold rule
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 5
+agent_average: 5.5
+agents_above_7: 1
+master_decision: rejected
+master_notes: |
+  BTC ~$81,000 (est. afternoon May 28). Below $82,000 CLAUDE.md entry threshold. Score 5.5/10.
+  Iran peace deal news is modestly risk-on for crypto but BTC still $1K below threshold. No mandatory entry.
+  Score 5.5 < 7: does not meet deployment bias entry requirement. Valid skip — setup condition (≥$82K) not met.
+  Macro score upgraded to 6 (risk-on improving) but insufficient to change overall score to ≥7.
+---
+```
+
+---
+
+### GLD POSITION UPDATE
+
+GLD estimated at **$408.49** (−$5.60 from $414 May 26 close; −$10.37 from $418.86 entry = −$72.59 unrealized on 7sh).
+
+Stop status: $397.92 estimated resting (cannot verify via API). Current cushion: $408.49 − $397.92 = **$10.57 (2.59%)**.
+
+**Stop trailing:** GLD is BELOW entry ($418.86). Per CLAUDE.md: "Trail stop-losses up on all winning swing and long-term positions." GLD is NOT a winning position (−$72.59 unrealized). No trailing stop warranted. Stop stays at $397.92.
+
+**Thesis check:** Dollar weakness / macro hedge. With Iran peace deal rumors (risk-on, oil falling), gold's geopolitical fear premium is deflating. Dollar likely strengthening slightly (risk-on = dollar bid). Both are headwinds for GLD. Thesis partially challenged. Stop at $397.92 provides downside protection.
+
+**Action:** No change. Hold GLD. Stop $397.92 intact (estimated resting).
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (May 29, 2026)
+
+Pre-scored via Multi-Agent Framework this afternoon:
+
+| Rank | Symbol | Score | Setup | Key Thesis |
+|------|--------|-------|-------|------------|
+| 1 | MU | 8.5 | breakout-volume | UBS $1,625 PT; $942 close; AI memory revaluation; MANDATORY |
+| 2 | AMD | 7.83 | breakout-volume | $501 ATH breakout; $200B CPU TAM; 14th mandatory |
+| 3 | PLTR | 7.67 | ai-momentum-pullback | $138 recovered; government AI AIP; MANDATORY |
+| 4 | MRVL | — | — | Re-evaluate at $191-195 support + bullish reversal candle (Hammer/Engulfing + 2/5 indicators) before re-entering; NOT a mandatory entry until fresh re-score ≥7 |
+| 5 | BTC | — | — | Monitor vs $82K threshold; currently $81K |
+
+**May 29 Pre-Market MANDATORY actions (binding):**
+1. STOP AUDIT (FIRST): Verify all open positions have resting GTC stops.
+2. MU: 5sh limit bracket GTC at ask+0.5% (est. ~$947). Stop -5%. Target +15%. HIGHEST PRIORITY.
+3. AMD: 9sh limit bracket GTC at ask+0.5% (est. ~$503). Stop -5%. Target +15%.
+4. PLTR: 10sh limit bracket GTC at ask+0.5% (est. ~$138.62). Stop -5%. Target +15%.
+5. MRVL: Fresh 6-agent re-score ONLY if MRVL has stabilized above $191-195 with bullish reversal signal. Do NOT force entry on a failing setup.
+6. Cancel stale AMD GTC $449 + PLTR GTC $140.35 (if not already done by operator).
+
+**API STATUS:** HTTP 403 "Host not in allowlist" — 22nd consecutive blocked session. All 3 order attempts above were blocked. OPERATOR MUST EXECUTE MANUALLY at https://app.alpaca.markets.
+
+---
+
 ## 2026-05-27 — Afternoon (2:00 PM ET / 18:10 UTC)
 
 **TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Afternoon routine fired 18:08:57Z. Predecessor heartbeat check: Pre-Market, Market-Open, Mid-Morning, and Midday all MISSING from today's heartbeat log → 4 predecessor violations logged below. Time: 18:10Z (2:10 PM ET). Market is open; ~1h 50m until regular close.
