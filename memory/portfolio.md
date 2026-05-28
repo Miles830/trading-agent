@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-27 (Wednesday) — Afternoon (2:00 PM ET / 18:10 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Pre-Market, Market-Open, Mid-Morning, Midday all SILENT FAILED today (4 predecessor violations logged in trades.md). Afternoon routine fired 18:08:57Z — first session of the day. Three mandatory bracket GTC limit orders attempted (AMD 10sh $496.50, MU 5sh $918.00, PLTR 10sh $137.50) — all HTTP 403. MRVL skipped (Exemption 2 — earnings tonight May 27 AH). No day trades open; no MOC orders needed. Market: S&P 500 est. ~7,519 (near May 26 record close). GLD est. ~$414 (stop $397.92 unverifiable but estimated resting). Cumulative gap vs SPX: ~−4.25 pp (widening). Tomorrow binding watchlist: MU (8.5, MANDATORY), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY), MRVL conditional on tonight's earnings.
+**2026-05-28 (Thursday) — Pre-Market (8:00 AM ET / 12:10 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 21st+ consecutive blocked session). Pre-Market routine fired 12:10Z. Four mandatory order attempts (AMD 9sh MOO, MU 5sh MOO, MRVL 8sh MOO [post-earnings], PLTR 10sh limit) — all HTTP 403. MRVL Q1 FY2027 BEAT: $2.418B revenue (+28% YoY), EPS $0.80 beat $0.75, Q2 guided $2.70B, FY27 raised to $11.5B. AH +10%; pre-market gap-up open est. ~$218 → intraday data shows possible gap-fill risk to $191–$202. Market: S&P futures −0.2%, Nasdaq −0.3%, oil +1.8% (Iran strikes). PCE inflation data 8:30 AM ET. BTC ~$75,716 (below $82K threshold). Binding watchlist for today's remaining routines: MU (8.33, MANDATORY), MRVL (8.0, MANDATORY if gap holds), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY). Cumulative gap vs SPX: ~−4.25 pp (widening — every blocked day costs ~0.02–0.05 pp).
+
+**Prior Last Updated:** 2026-05-27 (Wednesday) — Afternoon (2:00 PM ET / 18:10 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Pre-Market, Market-Open, Mid-Morning, Midday all SILENT FAILED today (4 predecessor violations logged in trades.md). Afternoon routine fired 18:08:57Z — first session of the day. Three mandatory bracket GTC limit orders attempted (AMD 10sh $496.50, MU 5sh $918.00, PLTR 10sh $137.50) — all HTTP 403. MRVL skipped (Exemption 2 — earnings tonight May 27 AH). No day trades open; no MOC orders needed. Market: S&P 500 est. ~7,519 (near May 26 record close). GLD est. ~$414 (stop $397.92 unverifiable but estimated resting). Cumulative gap vs SPX: ~−4.25 pp (widening). Tomorrow binding watchlist: MU (8.5, MANDATORY), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY), MRVL conditional on tonight's earnings.
 
 **Prior Last Updated:** 2026-05-26 (Tuesday) — Daily Review (4:30 PM ET / 20:32 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 19th+ consecutive blocked session). ALL SIX intraday routines SILENT FAILED today (no heartbeats for Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, or Market-Close). No orders placed. Market: S&P 500 +0.61% (7,519.12 new record), Nasdaq +1.19%, Russell 2000 +1.77%. MU +18% on UBS PT upgrade to $1,625 ($1T market cap). AMD +5% to $493.79 (new ATH, Jensen Huang $200B agentic CPU TAM). MRVL +5.58% to $207.28 pre-earnings. GLD −0.08% to $414.09. Portfolio ~$100,179 (GLD only; 97% cash). Cumulative gap vs SPX: −4.25 pp. Binding watchlist for May 27: MU limit ~$915 (score 8.5, MANDATORY), AMD limit ~$496 (score 8.0, MANDATORY), PLTR limit $137.50 (score 7.5, MANDATORY). MRVL earnings tonight (May 27 AH) — conditional entry May 28 if beats.
 
@@ -207,6 +209,14 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **Gap vs SPX:** **~-3.0 percentage points** (improved marginally — S&P down -0.26% today while portfolio estimated flat or tiny positive from GLD/NVDA if still held).
 - **Root cause unchanged:** 85-97% cash from persistent API blockage. 8+ consecutive entry blocks on AMD alone. Every market up-day widens the gap further. The only cure is operator manual execution OR Alpaca API allowlist fix.
 
+## Macro Context (as of 2026-05-28 Pre-Market — web research)
+- **S&P 500 futures: −0.2%** (mild risk-off). Nasdaq 100 futures −0.3%. Previous close (May 27): S&P +0.02%, Dow +0.36%, Nasdaq +0.07% (flat day).
+- **Oil: +1.8% WTI to ~$90/bbl** — US military conducted new strikes on Iranian military site (Reuters). Geopolitical risk spike. This is the biggest macro headwind today.
+- **PCE inflation at 8:30 AM ET:** Fed's preferred inflation gauge. BofA forecasts +0.4% m/m headline (3.8% y/y), Core +0.3% m/m (3.3% y/y). Running above 2% target. Kevin Warsh (Fed Chair) hawkish — 20-30% rate hike odds by Dec 2026. PCE could trigger intraday volatility.
+- **MRVL post-earnings:** Dominant story for semis today. Beat + raised guidance ($11.5B FY27). AH +10%, pre-market +5%. Potential gap-fill intraday.
+- **AI capex cycle intact:** MRVL results confirm AWS/Google/MSFT are ramping AI custom silicon spend. AMD and MU as read-throughs remain valid. Jensen Huang $200B CPU TAM (May 26) reinforces AMD thesis.
+- **BTC:** ~$75,716 — below $82K threshold. Slight risk-off (Iran) = crypto headwind.
+
 ## Macro Context (as of 2026-05-26 Daily Review — web research)
 - **S&P 500 May 26 close: 7,519.12** (+0.61%, new record). Nasdaq 26,656.18 (+1.19%). Dow 50,461.68 (−0.23%). Russell 2000 +1.77% (first close above 2,900 ever — breadth expanding).
 - **MU +18%:** UBS PT upgrade from $535 → $1,625. HBM4 sold out through year-end. MU crossed $1T market cap for first time. Largest analyst upgrade (%) in recent memory for a large-cap. Close ~$912. This is a permanent revaluation of memory market dynamics by AI.
@@ -337,7 +347,29 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **AVGO** (~7.5) — NVDA custom ASIC pipeline; score at Pre-Market May 21 via limit order
 - **BTC** (TBD) — check vs $82K threshold at Pre-Market May 21; risk-on environment favorable
 
-## Pending Actions — OPERATOR MUST EXECUTE (Updated May 27 Afternoon)
+## Pending Actions — OPERATOR MUST EXECUTE (Updated May 28 Pre-Market)
+
+**TODAY: May 28, 2026 (Thursday)**
+
+### PRE-MARKET (8:00–9:25 AM ET) — ALL BLOCKED BY API — OPERATOR MUST PLACE MANUALLY
+
+**STOP AUDIT (FIRST):** Verify at https://app.alpaca.markets → GLD 7sh stop $397.92 resting. Cancel stale: AMD GTC $449 (AMD at $512, $63 below market — DELETE), PLTR GTC $140.35 (PLTR $134.72, check if auto-filled or stale — DELETE if still live and unfilled).
+
+1. **MU — HIGHEST PRIORITY** (score 8.33, MANDATORY): BUY **5sh MOO** (`type:market, time_in_force:opg`). Stop: fill×0.95. Target: fill×1.15. R/R 3:1 ✓. Est. fill ~$905–$925. Bracket: after fill, post GTC stop at fill×0.95.
+
+2. **MRVL — HIGH PRIORITY** (score 8.0, earnings-reaction-follow): BUY **8sh MOO** (`type:market, time_in_force:opg`). Est. fill ~$215–$220 (gap-up from $207 close). Stop: fill×0.95. Target: fill×1.15. R/R 3:1 ✓. **RISK: gap-fill potential — if MRVL opens BELOW $207, do NOT enter (setup failed). If fills at $215+, let stop manage downside.** Post GTC stop at fill×0.95 via Market Open routine.
+
+3. **AMD — MANDATORY** (score 7.83, 13th session): BUY **9sh MOO** (`type:market, time_in_force:opg`). Est. fill ~$510–$515. Stop: fill×0.95. Target: fill×1.15. Note: 9sh (not 10sh) to stay ≤5% position limit at ~$512. Post GTC stop at fill×0.95.
+
+4. **PLTR — MANDATORY** (score 7.5): BUY **10sh LIMIT $135.50**, stop $128.73 (-5%), target $155.83 (+15%), `order_class:bracket, time_in_force:gtc`. If not filled pre-market, GTC carries through session.
+
+**Max 3 MOO orders: MU + MRVL + AMD = 3 used. PLTR as limit.**
+
+### MARKET OPEN (9:45 AM ET) — MANDATORY:
+5. Confirm all 3 MOO fills. For each filled MOO: POST individual GTC stop at fill×0.95 (since MOOs cannot use bracket). This is MANDATORY per CLAUDE.md.
+6. If MRVL MOO filled and stock immediately selling off toward stop: let stop execute (do not average down).
+
+### Pending Actions — OPERATOR MUST EXECUTE (Updated May 27 Afternoon)
 
 **REMAINING TODAY: May 27, 2026 (Wednesday) — Market Close at ~3:30 PM ET / 19:30 UTC**
 
