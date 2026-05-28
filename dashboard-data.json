@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-28T12:10:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-05-28T13:47:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 100179,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.43,
     "benchmark_gap_pct": -4.25,
     "open_positions_count": 1,
-    "note": "May 28 Pre-Market — API BLOCKED (HTTP 403, 21st+ consecutive). MRVL Q1 FY2027 BEAT: $2.418B rev (+28%), EPS $0.80 beat $0.75, Q2 guide $2.70B, FY27 raised to $11.5B. Four order attempts blocked: MU 5sh MOO (8.33), MRVL 8sh MOO (8.0 earnings-reaction-follow), AMD 9sh MOO (7.83), PLTR 10sh limit $135.50 (7.5). Market: S&P futures -0.2%, oil +1.8% Iran, PCE at 8:30 AM ET. BTC $75,716 below $82K. GLD only confirmed position. OPERATOR: place all 4 manually before 9:25 AM ET. Gap vs SPX: ~-4.25 pp.",
+    "note": "May 28 Market-Open — API BLOCKED (HTTP 403, 22nd consecutive). Market open ~17 min. PCE released 8:30 AM ET. Stop-loss audit blocked. MOO fills unverifiable. Four limit bracket GTC reattempts blocked: AMD 9sh $514.56 (7.83), MU 5sh $909.55 (8.33), MRVL 8sh $219.09 (8.0, ONLY if ≥$210), PLTR 10sh $135.50 (7.5). MRVL gap-fill risk: intraday $191-$202 possible. GLD only confirmed position. OPERATOR: execute all 4 manually + confirm GLD stop $397.92. Gap vs SPX: ~-4.25 pp.",
     "buckets": [
       {
         "key": "active",
@@ -51,6 +51,58 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-28T13:47:03Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.5,
+      "agent_scores": {"fundamentals": 7, "technical": 7, "sentiment": 7, "macro": 7, "risk": 9, "tech_analyst": 8},
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit bracket GTC) → HTTP 403. 14th+ consecutive. ORDER NOT PLACED. Intended: BUY 10sh PLTR limit $135.50, stop $128.73 (-5%), target $155.83 (+15%), bracket GTC. All 6 agents ≥7. OPERATOR: place manually."
+    },
+    {
+      "ts": "2026-05-28T13:47:02Z",
+      "symbol": "MRVL",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.0,
+      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 9},
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit bracket GTC) → HTTP 403. ORDER NOT PLACED. Intended: BUY 8sh MRVL limit $219.09, stop $208.14 (-5%), target $251.95 (+15%), bracket GTC. 5/6 agents ≥7 (Macro 6). GAP-FILL RISK: OPERATOR enter ONLY if MRVL ≥$210 at time of execution."
+    },
+    {
+      "ts": "2026-05-28T13:47:01Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.33,
+      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 9, "macro": 7, "risk": 9, "tech_analyst": 9},
+      "agent_average": 8.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit bracket GTC) → HTTP 403. 10th+ consecutive. ORDER NOT PLACED. Intended: BUY 5sh MU limit $909.55, stop $864.07 (-5%), target $1046.18 (+15%), bracket GTC. All 6 agents ≥7. OPERATOR: place — HIGHEST PRIORITY."
+    },
+    {
+      "ts": "2026-05-28T13:47:00Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.83,
+      "agent_scores": {"fundamentals": 7, "technical": 8, "sentiment": 8, "macro": 7, "risk": 9, "tech_analyst": 8},
+      "agent_average": 7.83,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit bracket GTC) → HTTP 403. 14th consecutive. ORDER NOT PLACED. Intended: BUY 9sh AMD limit $514.56, stop $488.83 (-5%), target $591.74 (+15%), bracket GTC. All 6 agents ≥7. OPERATOR: place manually."
+    },
     {
       "ts": "2026-05-28T12:10:04Z",
       "symbol": "BTC",
@@ -461,10 +513,10 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "violation",
-      "last_run": "unknown",
-      "next_run": "2026-05-28 09:45 ET",
-      "last_summary": "May 27: SILENT FAILURE. No MOO fill confirmations. No GTC stop placements. Stale order cancellations not executed."
+      "status": "completed",
+      "last_run": "2026-05-28T13:47:00Z",
+      "next_run": "2026-05-29 09:45 ET",
+      "last_summary": "May 28 Market-Open: API BLOCKED (HTTP 403, 22nd consecutive). Pre-Market heartbeat confirmed. Stop audit blocked. MOO fills unverifiable (MOOs also blocked). 4 limit bracket GTC reattempts blocked: AMD 9sh $514.56 (7.83), MU 5sh $909.55 (8.33), MRVL 8sh $219.09 (8.0, gap-fill risk), PLTR 10sh $135.50 (7.5). OPERATOR: execute all 4 + verify GLD stop $397.92."
     },
     {
       "name": "Mid-Morning",

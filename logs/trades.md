@@ -277,6 +277,219 @@ master_notes: |
 
 ---
 
+## 2026-05-28 — Market Open (9:45 AM ET / 13:47 UTC)
+
+**TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 22nd consecutive blocked instance). Market-Open routine fired 13:47Z (9:47 AM ET). Market has been open ~17 minutes. Pre-Market heartbeat: CONFIRMED (12:07Z STARTED → 12:23Z COMPLETED). No predecessor violation.
+
+**MARKET CONDITIONS (9:47 AM ET, May 28, 2026):**
+- Market open ~17 minutes. S&P futures pre-market were −0.2% → actual open direction unknown (API blocked).
+- PCE inflation data released at 8:30 AM ET. If hot (above 0.4% m/m) → risk-off; if in-line → neutral to slight relief rally. Cannot verify intraday price action.
+- WTI crude: +1.8% pre-market ($90/bbl) — Iran geopolitical risk. No change signal.
+- MRVL: Pre-market estimated open ~$218 (AH +10% from $207 close). Gap-fill risk flagged — possible intraday pullback to $191–$202 range.
+- Circuit breaker: Pre-market futures −0.2% vs −3.0% threshold. NOT TRIPPED ✓.
+
+---
+
+### STOP-LOSS AUDIT (First Action) — BLOCKED
+
+**GET /v2/positions → HTTP 403 "Host not in allowlist" (22nd consecutive)**
+**GET /v2/orders?status=open → HTTP 403 "Host not in allowlist" (22nd consecutive)**
+
+Cannot verify stop-loss status for any position. Estimated:
+- GLD 7sh: stop $397.92 expected resting from May 17 placement (unverifiable).
+- AMD/MU/MRVL/PLTR: no confirmed positions (all entry attempts blocked — no fills to protect).
+
+**OPERATOR: MANDATORY STOP AUDIT — verify all open positions have resting GTC stops at https://app.alpaca.markets before placing any new orders.**
+
+---
+
+### MOO FILL CONFIRMATION — BLOCKED
+
+**GET /v2/orders?status=filled&after=2026-05-28T13:30:00Z → HTTP 403**
+
+Pre-Market placed MOO orders for AMD (9sh), MU (5sh), MRVL (8sh) — all via `type:market, time_in_force:opg`. However those MOO orders were also blocked (HTTP 403) at 12:10Z, so NO MOO fills expected. No backfill stops needed (no fills to protect).
+
+If operator manually placed MOO orders before 9:25 AM ET and they filled:
+- AMD fill ~$512 → stop at $486.40 (fill × 0.95), target $588.80 (fill × 1.15)
+- MU fill ~$905–910 → stop at $860–865 (fill × 0.95), target $1,040–1,047 (fill × 1.15)
+- MRVL fill ~$215–228 → stop at ~$204–217 (fill × 0.95), target ~$247–262 (fill × 1.15)
+
+**OPERATOR: If any MOO fills occurred, immediately place GTC stop orders using the curl template in CLAUDE.md.**
+
+---
+
+### LIMIT BRACKET ORDER ATTEMPTS (Market-Open) — ALL BLOCKED
+
+Reattempting watchlist entries as intraday limit bracket GTC orders (backup for MOOs that were blocked at Pre-Market). Using current ask estimate × 1.005.
+
+**AMD (MANDATORY — 14th consecutive attempt)**
+
+```yaml
+---
+ts: 2026-05-28T13:47:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.83
+thesis: AMD ATH breakout territory ~$512; Jensen Huang $200B agentic AI CPU TAM; 2nm AI ramp confirmed; MRVL earnings beat confirms AI capex cycle intact (read-through); 14th consecutive mandatory entry attempt
+size_pct: 4.61
+stop: 488.83
+target: 591.74
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 13:47Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA. 14th consecutive blocked attempt.
+  Intended: BUY 9sh AMD type:limit limit_price:$514.56 (ask+0.5% from ~$512 est open), stop $488.83 (-5%), target $591.74 (+15%), order_class:bracket, time_in_force:gtc.
+  Sizing: 9sh × $514.56 = $4,631 = 4.62% (≤5% ✓). Stop distance: $25.73/sh. Trade risk: $25.73×9=$231.57=0.23% (≤1.5% ✓). R/R = 3:1 ✓. Semis: 4.62% (≤25% ✓).
+  All 6 agents at 7+. Unanimous approval.
+  xAI/X sentiment: API unavailable — degrading gracefully.
+  MRVL Q1 beat confirmed AI capex intact — AMD thesis reinforced as AI CPU play.
+  OPERATOR: place BUY AMD 9sh limit $514.56, stop $488.83, target $591.74, bracket GTC at https://app.alpaca.markets.
+---
+```
+
+**MU (MANDATORY — 10th+ consecutive attempt)**
+
+```yaml
+---
+ts: 2026-05-28T13:47:01Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 8.33
+thesis: MU ~$905 pullback from $985 high; UBS $1,625 PT upgrade; HBM4 sold out year-end; AI memory permanent revaluation; MRVL beat confirms AI custom silicon demand intact; constructive pullback entry at new support
+size_pct: 4.55
+stop: 864.07
+target: 1046.18
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 7
+  risk: 9
+  tech_analyst: 9
+agent_average: 8.33
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 13:47Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA. 10th+ consecutive blocked attempt.
+  Intended: BUY 5sh MU type:limit limit_price:$909.55 (ask+0.5% from ~$905 est), stop $864.07 (-5%), target $1,046.18 (+15%), order_class:bracket, time_in_force:gtc.
+  Sizing: 5sh × $909.55 = $4,548 = 4.54% (≤5% ✓). Stop distance: $45.48/sh. Trade risk: $45.48×5=$227.40=0.23% (≤1.5% ✓). R/R = 3:1 ✓. Semis cumulative: ~9.16% after AMD+MU (≤25% ✓).
+  All 6 agents at 7+. Unanimous approval. MRVL beat reinforces HBM demand thesis.
+  xAI/X sentiment: API unavailable — degrading gracefully.
+  OPERATOR: place BUY MU 5sh limit $909.55, stop $864.07, target $1,046.18, bracket GTC at https://app.alpaca.markets.
+---
+```
+
+**MRVL (MANDATORY earnings-reaction-follow — 1st limit attempt this routine)**
+
+NOTE: Gap-fill risk flagged in Pre-Market. Some data sources indicated possible intraday range $191–$202 on May 28 (well below $207 pre-earnings close, below estimated gap-up open $218). If MRVL has gapped DOWN to below $207 at Market Open, this is a failed setup — operator should NOT enter. Entry is only valid if MRVL opened at/above $207 (pre-earnings close).
+
+```yaml
+---
+ts: 2026-05-28T13:47:02Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 8.0
+thesis: MRVL Q1 FY2027 beat ($2.418B rev +28%, EPS $0.80 vs $0.75); Q2 guide $2.70B (+35%); FY27 raised $11.5B (+40%); AH +10%; NVIDIA partnership expansion; Celestial AI + XConn acquisitions; post-earnings follow-through
+size_pct: 1.75
+stop: 208.14
+target: 251.95
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 9
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 13:47Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 8sh MRVL type:limit limit_price:$219.09 (ask+0.5% from ~$218 est gap-up open), stop $208.14 (-5%), target $251.95 (+15%), order_class:bracket, time_in_force:gtc.
+  Sizing: 8sh × $219.09 = $1,753 = 1.75% (≤5% ✓). Stop distance: $10.95/sh. Trade risk: $10.95×8=$87.60=0.088% (≤1.5% ✓). R/R = 3:1 ✓. Semis cumulative: ~10.91% after AMD+MU+MRVL (≤25% ✓).
+  5 of 6 agents ≥7 (Macro = 6: only dissenting agent — Iran, PCE, oil +1.8%). Avg 8.0 ✓.
+  GAP-FILL RISK: Pre-Market flagged possible intraday pullback to $191–$202 range (well below entry stop $208.14). If MRVL opened below $207 at 9:30 AM ET, this is a failed setup — OPERATOR DO NOT ENTER if MRVL is below $207 at time of manual execution.
+  xAI/X sentiment: API unavailable — degrading gracefully.
+  OPERATOR: ONLY enter if MRVL current price ≥ $210 (comfortable above stop $208.14). BUY 8sh MRVL limit $219.09, stop $208.14, target $251.95, bracket GTC.
+---
+```
+
+**PLTR (MANDATORY — 14th+ consecutive attempt)**
+
+```yaml
+---
+ts: 2026-05-28T13:47:03Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR consolidating at $134 support; AIP government AI platform; Q1 FY2026 $1.63B +39% YoY, EPS $0.33 beat $0.24; US Government revenue +84% YoY; recession-resistant government contracts
+size_pct: 1.35
+stop: 128.73
+target: 155.83
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 13:47Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA. 14th+ consecutive blocked attempt.
+  Intended: BUY 10sh PLTR type:limit limit_price:$135.50 (ask+0.5%), stop $128.73 (-5%), target $155.83 (+15%), order_class:bracket, time_in_force:gtc.
+  Sizing: 10sh × $135.50 = $1,355 = 1.35% (≤5% ✓). Stop distance: $6.78/sh. Trade risk: $6.78×10=$67.80=0.068% (≤1.5% ✓). R/R = 3:1 ✓. PLTR is tech/defense — separate from semis.
+  All 6 agents ≥7. Unanimous approval.
+  xAI/X sentiment: API unavailable — degrading gracefully.
+  OPERATOR: place BUY PLTR 10sh limit $135.50, stop $128.73, target $155.83, bracket GTC at https://app.alpaca.markets.
+---
+```
+
+---
+
+### OUTPUT CONTRACT — FULFILLED (Item A)
+
+Four POST /v2/orders calls attempted at 13:47Z:
+1. AMD 9sh limit $514.56 bracket GTC → HTTP 403
+2. MU 5sh limit $909.55 bracket GTC → HTTP 403
+3. MRVL 8sh limit $219.09 bracket GTC → HTTP 403
+4. PLTR 10sh limit $135.50 bracket GTC → HTTP 403
+
+All four are mandatory watchlist entries with scores ≥7.0. All blocked by same "Host not in allowlist" infrastructure issue (22nd consecutive session). Orders are not placed at Alpaca. OPERATOR must manually execute all four at https://app.alpaca.markets. GLD stop ($397.92) cannot be verified — operator must confirm it is resting.
+
+**WATCHLIST STATUS FOR REMAINING ROUTINES:**
+
+| Rank | Symbol | Score | Next Action | Notes |
+|------|--------|-------|-------------|-------|
+| 1 | MU | 8.33 | Mid-Morning reattempt | $909.55 limit GTC if still unconfirmed |
+| 2 | MRVL | 8.0 | Mid-Morning reattempt | Only if price ≥$210 (above stop $208.14) |
+| 3 | AMD | 7.83 | Mid-Morning reattempt | $514.56 limit GTC if still unconfirmed |
+| 4 | PLTR | 7.5 | Mid-Morning reattempt | $135.50 limit GTC |
+| 5 | GLD | active | STOP VERIFY | Operator must confirm stop $397.92 resting |
+
+---
+
 ## 2026-05-27 — Afternoon (2:00 PM ET / 18:10 UTC)
 
 **TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Afternoon routine fired 18:08:57Z. Predecessor heartbeat check: Pre-Market, Market-Open, Mid-Morning, and Midday all MISSING from today's heartbeat log → 4 predecessor violations logged below. Time: 18:10Z (2:10 PM ET). Market is open; ~1h 50m until regular close.
