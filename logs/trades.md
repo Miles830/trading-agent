@@ -4,6 +4,218 @@
 
 ---
 
+## 2026-05-28 — Daily Review (4:30 PM ET / 20:34 UTC)
+
+**TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 22nd consecutive blocked session). Daily Review fired 20:34Z. Today's heartbeat log confirms Pre-Market STARTED/COMPLETED; Market-Open through Market-Close are all MISSING (5 of 6 intraday routines silently failed again). No fills today — all 4 Pre-Market order attempts (AMD MOO, MU MOO, MRVL MOO, PLTR limit) blocked by HTTP 403.
+
+**TODAY'S MARKET PERFORMANCE (May 28, 2026 — web research):**
+
+| Asset | Prior Close | May 28 Close | Change | Notes |
+|---|---|---|---|---|
+| S&P 500 | ~7,519 | 7,563.63 | **+0.58%** | NEW RECORD |
+| Nasdaq | ~26,800 | 26,917.47 | **+0.91%** | NEW RECORD |
+| SNOW | $175.26 | $238.37 | **+36.0%** | AI catalyst — Q1 beat + $6B AWS deal |
+| MU | ~$905 | $942.36 | **+4.1%** | High: $949.49, Low: $896.28 |
+| PLTR | $134.72 | $137.57 | **+2.1%** | Range $132.18–$139.56 |
+| MRVL | $198.70* | ~$202 | **+1.7%** | AH high $218.81 → gap-fill $191.84 → close $202 |
+| AMD | $512.30 | $501.25 | **−2.1%** | Range $485.10–$507.90; bearish divergence in up market |
+| GLD | ~$415 | ~$416 | **~flat** | Stop $397.92 presumed resting (unverifiable) |
+| BTC | ~$75,716 | ~$76K | **~flat** | Below $82K threshold — no entry |
+| SPY proxy | ~$751.90 | ~$756.27 | **+0.58%** | |
+
+*MRVL May 27 regular-hours close was $198.70 (chip pullback day). AH post-earnings: +10% to $218.81.
+
+**KEY MARKET DRIVERS:**
+- **PCE April core: +0.2% m/m** (below +0.3% consensus — cooler than expected; headline +0.4% m/m / +3.8% y/y). Market read: Warsh slightly less likely to hike. Relief rally.
+- **SNOW +36%:** Q1 FY27 revenue $1.39B (+34% YoY), EPS $0.39 beat $0.32; $6B AWS 5-year deal; AI products driving record sequential revenue growth. Largest SNOW single-day gain ever. NOT on our May 28 watchlist — missed.
+- **Iran ceasefire extended:** Geopolitical risk-off from yesterday's oil spike reversed. Risk-on pivot during session.
+- **MRVL gap-fill:** AH earnings pop (+10%) completely unwound intraday. Closed only +1.7% above pre-earnings (chip-pullback-day) close. Classic "sell the news" pattern (same as NVDA Q1 FY2027).
+
+---
+
+### ORDERS TODAY — ALL BLOCKED
+
+All 4 Pre-Market order attempts (12:10Z): HTTP 403 "Host not in allowlist." No fills.
+
+**Hypothetical analysis (if fills had executed at estimated open prices):**
+- **MU**: Open ~$905 → close $942.36 → +$186.80 unrealized (5sh × $37.36) ✓
+- **AMD**: Open ~$507 → stop = $481.65; low $485.10 > stop (not triggered) → unrealized −$51.75 (9sh × −$5.75) — mark-to-market loss, stop intact
+- **MRVL**: Open ~$218 → stop = $207.10; dropped to $191.84 → **STOP HIT** → −$87.20 realized (8sh × −$10.90)
+- **PLTR**: Limit $135.50 → filled during session (range included $132.18–$139.56) → close $137.57 → +$20.70 unrealized (10sh × +$2.07) ✓
+- **Net hypothetical P&L:** +$68.55 (MU carrying; MRVL stopped out as gap-fill risk predicted)
+
+---
+
+### PORTFOLIO EQUITY & BENCHMARK
+
+**Portfolio today:** ~$100,192 (GLD 7sh × ~$416 = $2,912; cash ~$97,280)
+**Portfolio return today:** ~0.00% (GLD ~flat, no other positions)
+**SPY return today:** +0.58%
+**Gap today:** −0.58 pp
+
+**Cumulative gap vs SPX (since ~May 1):**
+- Prior cumulative (May 26 Daily Review): −4.25 pp
+- May 27 gap: ~−0.02 pp (S&P +0.02%, portfolio flat)
+- May 28 gap: −0.58 pp
+- **Updated cumulative gap: ~−4.85 pp** (widening trend continues)
+
+**⚠️ UNDERPERFORMANCE STREAK: DAY 17 OF 20**
+CLAUDE.md mandates full strategy review at Day 20. Days remaining: 3 (May 29 = Day 18, June 2 = Day 19, June 3 = Day 20). ROOT CAUSE IS API BLOCKAGE, NOT STRATEGY FAILURE. Proposal: suspend streak counter while API is confirmed blocked; restart from Day 1 on first confirmed fill. Flagging for operator decision.
+
+---
+
+### ROLLING 20-DAY PERFORMANCE METRICS
+
+- **Closed trades:** 0 (no position has ever been opened and closed post-strategy-switch)
+- **Win rate / avg win / avg loss / profit factor:** N/A — no closed P&L
+- **Equity curve:** Flat line since May 18 (~$100,000 → ~$100,192, +0.19%)
+- **Primary metric:** Cumulative benchmark gap = −4.85 pp (entirely API-blockage attributable)
+
+---
+
+### HEARTBEAT TALLY — MAY 28
+
+| Routine | Expected | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | ~12:00Z | 12:07Z ✓ | 12:23Z ✓ | **PASS** |
+| Market-Open | ~13:45Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Mid-Morning | ~15:00Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Midday | ~16:30Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Afternoon | ~18:00Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Market-Close | ~19:30Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Daily Review | ~20:30Z | 20:34Z ✓ | In Progress | **RUNNING** |
+
+**TOP OPERATIONAL ISSUE (22nd consecutive day):** 5 of 6 intraday routines SILENTLY FAILED. Cloud scheduler reliably fires Pre-Market and Daily Review only. All 5 intraday sessions do not fire. Critical risk: without Market-Open routine, MOO fills cannot be confirmed and mandatory GTC stops cannot be posted — positions go naked overnight between routines.
+
+**Remediation (immediate → permanent):**
+1. *Immediate:* Operator sets manual calendar alarms for 9:45 AM, 11:00 AM, 12:30 PM, 2:00 PM, 3:30 PM ET. Execute stop audit and order check at each.
+2. *Short-term:* Inspect cloud scheduler trigger config — only Pre-Market and Daily Review appear to have active cron triggers. Add remaining 5 routine triggers.
+3. *Permanent:* Add `paper-api.alpaca.markets` + `data.alpaca.markets` to cloud runner egress allowlist.
+
+---
+
+### TODAY'S BEST AND WORST (HYPOTHETICAL)
+
+**Best: MU** — Closed $942.36 (+4.1%), daily high $949.49. Approaching $1,000 milestone (Motley Fool: split next?). UBS $1,625 PT anchoring institutional bids. MRVL earnings confirmed AI silicon supply chain strength (read-through positive for memory). If filled at $905 open, stop at $859.75 never threatened.
+
+**Worst: MRVL** — Textbook "sell the news" gap-fill. AH pop to $218.81 (+10%) completely reversed intraday; low $191.84 (−12.4% from AH peak). MOO entry at ~$218 would have triggered stop at $207.10 (fill×0.95). Loss: 8sh × −$10.90 = −$87.20. Pre-Market analysis correctly flagged the gap-fill risk.
+
+**Surprise: SNOW +36%** — Not on our watchlist. Q1 FY27 + $6B AWS deal drove the AI software narrative reset. Adding to May 29 watchlist as top candidate for earnings-reaction-follow entry.
+
+---
+
+### SETUP-TAG TALLY (rolling 5-day: May 22–28)
+
+All `result_pct` fields remain null across all YAML entries — no closed positions. Tracker cannot advance.
+
+| Setup tag | Wins | Losses | 3-in-a-row | Status |
+|---|---|---|---|---|
+| breakout-volume | 0 | 0 | none | Active — MU, AMD (MANDATORY) |
+| ai-momentum-pullback | 0 | 0 | none | Active — PLTR (MANDATORY) |
+| earnings-reaction-follow | 0 | 0 | none | Active — MRVL (WATCH), SNOW (NEW) |
+| macro-hedge | 0 | 0 | none | Active — GLD held |
+| All others | — | — | — | No trades |
+
+No 3-in-a-row halt or boost rules triggered.
+
+---
+
+### THREE THINGS THAT WORKED
+
+1. **MRVL gap-fill warning was accurate.** Pre-Market flagged "some data sources show MRVL intraday range $191–$202" — proved correct (actual low $191.84). The stop at fill×0.95 was specifically sized to protect against this. The analytical judgment was sound even though the order was blocked.
+2. **PCE read was accurate.** BofA's +0.4% headline / +0.3% core forecast was our assumption; core came in at +0.2% m/m (below consensus). Market rallied on the surprise. Our pre-market "potential intraday volatility catalyst" framing was correct; direction was positive as core decelerated.
+3. **BTC skip validated.** Despite Iran ceasefire (risk-on), BTC remained ~$76K. The $82K threshold prevented premature crypto deployment. No alpha lost by staying out.
+
+### THREE THINGS TO IMPROVE
+
+1. **SNOW was a blind spot.** AH earnings movers >+10% must be scanned every evening as part of Pre-Market prep — even without API access. SNOW reported May 27 AH, gap-up +36% on May 28. Adding: "Scan AH earnings movers >10% nightly; run abbreviated 6-agent on any name > +10% for next-day `earnings-reaction-follow` scoring."
+2. **5 intraday routines silently failed (again).** Market-Open absence means no confirmed fills, no stop placement, no position audits. Operator must manually execute 9:45 AM stop audit every trading day until scheduler is fixed.
+3. **AMD bearish divergence signals weakening technicals.** AMD −2.1% on a +0.58% S&P day = 2.69 pp underperformance. Reducing AMD technical score from 8→6 for May 29 (bearish divergence pattern; institutional selling signals). Overall score 7.83→7.5. Still MANDATORY entry, but watch for continued weakness.
+
+---
+
+### NEW LESSONS LEARNED
+
+- **"Sell the news" confirmed for high-multiple AI semis:** MRVL joins NVDA in this pattern. Rule added: after earnings-driven AH gap-up for MRVL/NVDA/similar, do NOT enter MOO on gap-up day. Wait for 1-2 session stabilization above pre-earnings close. Entry trigger: close above pre-earnings close for 1 full session + 2/5 indicators confirm.
+- **SNOW scan gap discovered:** Post-close AH earnings movers must be identified nightly as part of Pre-Market research scope. A +36% opening gap is the highest-conviction setup in the market; missing it entirely is a failure mode we can fix with a simple evening scan routine.
+- **PCE core m/m tiebreaker rule:** If core PCE m/m < consensus → market relief rally +0.3 to +0.6%. If core PCE m/m > consensus → market selloff −0.5 to −1.0%. File as macro input for future PCE-day pre-market assessments.
+
+---
+
+### MACRO EVENTS — TOMORROW AND NEXT WEEK
+
+**May 29 (Friday — LAST TRADING DAY OF MAY):**
+- No major scheduled data (PCE already released)
+- Monthly/quarterly window dressing possible (institutions rebalancing into month-end)
+- Watch SNOW post-earnings digest: profit-taking vs. momentum follow-through
+- Iran ceasefire monitoring: any reversal = oil spike and risk-off
+- Weekly close: S&P on track for 9th+ consecutive weekly gain
+
+**June 1-5 (next week):**
+- June 2 (Mon): ISM Manufacturing PMI
+- June 4 (Wed): ADP employment
+- June 5 (Thu): Jobless claims
+- June 6 (Fri): **May Non-Farm Payrolls** — major market catalyst
+- **⚠️ FOMC June 16-17:** Warsh's first press conference as Fed chair. PCE core cooling slightly may reduce rate hike probability. Watch Warsh commentary this week for signals.
+- **June 2-4 = Days 18-20 of underperformance streak** — operator decision needed on streak counter suspension
+
+**Note:** Friday May 29 Daily Review will include the WEEKLY EVOLUTION NOTE (per CLAUDE.md schedule).
+
+---
+
+### TOP-10 WATCHLIST FOR MAY 29 (FRIDAY) — BINDING COMMITMENT
+
+Per CLAUDE.md Deployment Bias: Pre-Market routine MUST place orders on all ≥7 names, subject to 3-MOO cap and guardrails.
+
+| Rank | Symbol | Est. Score | Setup | Priority | Thesis |
+|------|--------|-----------|-------|----------|--------|
+| 1 | MU | 8.5 | breakout-volume | MOO #1 — MANDATORY | $942 close approaching $1,000; UBS $1,625 PT; HBM4 sold out; AI memory supercycle intact |
+| 2 | AMD | 7.5 | breakout-volume | MOO #2 — MANDATORY (14th) | Bearish divergence today (score 7.83→7.5); pullback to $501 from ATH; re-score at open |
+| 3 | SNOW | 7.5 (est.) | earnings-reaction-follow | MOO #3 (run 6-agent first) | +36% on AI catalyst; if gap-holds or modest pullback, `earnings-reaction-follow`; if >+10% pullback, better setup |
+| 4 | PLTR | 7.5 | ai-momentum-pullback | LIMIT bracket GTC — MANDATORY | $135.50 limit (check if May 28 limit filled by operator; if not, re-enter same terms) |
+| 5 | MRVL | 6.5 | — | SKIP — wait for stabilization | Gap-fill complete; must close ABOVE pre-earnings close ($198.70) for 1 full session; then re-enter |
+| 6 | MSFT | 7.0 (est.) | ai-momentum-pullback | LIMIT if scored | Azure AI + SNOW AWS partnership = enterprise cloud AI spend accelerating |
+| 7 | NVDA | 6.5 | breakout-volume | WATCH | SNOW validates AI capex; re-score at Pre-Market; "sell the news" pattern caution |
+| 8 | AVGO | 6.5 | ai-momentum-pullback | WATCH | MRVL custom ASIC confirmation; need fresh 6-agent; score borderline |
+| 9 | SMCI | 6.5 | breakout-volume | WATCH | AI server infra; SNOW $6B AWS deal = server demand positive read-through |
+| 10 | BTC | 5.5 | crypto-flush-rebound | SKIP | Below $82K; PCE cooling + Iran risk-on improving; monitor intraday vs $82K |
+
+**3-MOO cap assignment:** MU (slot 1) + AMD (slot 2) + SNOW (slot 3, if 6-agent ≥7 at Pre-Market) = 3. PLTR as limit bracket GTC. If SNOW scores <7: PLTR limit GTC + MSFT limit GTC instead.
+
+**Special note on PLTR:** If May 28 PLTR limit ($135.50) was manually placed by operator and filled today (PLTR traded to $137.57), do NOT re-enter — hold existing position and check stop ($128.73) is resting. If not placed/not filled, execute fresh entry May 29.
+
+---
+
+```yaml
+---
+ts: 2026-05-28T20:34:00Z
+action: daily-review
+symbol: PORTFOLIO
+bucket: active
+setup: other
+score: null
+thesis: Daily Review May 28 — S&P +0.58% (new record 7,563.63); portfolio flat (GLD ~flat; API blocked 22nd session). Gap −4.85 pp cumulative. Day 17 of 20-day underperformance streak. SNOW +36% missed. MU +4.1% missed. MRVL gap-fill (stop would have triggered). PCE core +0.2% m/m (below est — market positive). 5/6 intraday routines silently failed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  MRVL "sell the news" gap-fill validated (AH $218 → intraday $191.84 → close ~$202). Stop would have triggered at $207.10. Lesson: do NOT MOO into earnings gap-up for high-multiple AI semis; wait 1-2 sessions for stabilization above pre-earnings close.
+  SNOW +36% ($175.26 → $238.37) not on watchlist — adding for May 29 (`earnings-reaction-follow`). Root cause: no AH earnings scan in Pre-Market routine when API is blocked.
+  AMD bearish divergence: −2.1% on +0.58% S&P day. Technical score reduced 8→6, overall score 7.83→7.5 for May 29.
+  PCE April core: +0.2% m/m (below +0.3% est.) → market relief rally. Pattern: core PCE m/m miss downside = +0.3–0.6% S&P.
+  xAI/X API unavailable — all Sentiment Agent scores used non-X baseline only. Noted in all YAML agent_scores blocks.
+  API blocked 22nd consecutive session. Underperformance streak Day 17/20. Operator decision requested: suspend streak counter while API blocked (root cause is infrastructure, not strategy).
+  Intraday routine silent failures: Market-Open (13:45Z), Mid-Morning (15:00Z), Midday (16:30Z), Afternoon (18:00Z), Market-Close (19:30Z) — ALL MISSING. Operator manual stop audit at 9:45 AM ET REQUIRED until scheduler is fixed.
+---
+```
+
+---
+
 ## 2026-05-28 — Pre-Market (8:00 AM ET / 12:10 UTC)
 
 **TRADING DAY.** Alpaca API STILL BLOCKED ("Host not in allowlist" — 21st+ consecutive blocked session). Pre-Market routine fired 12:10Z (8:10 AM ET). Time: pre-market, ~80 minutes before regular session open. No predecessor violations today (Pre-Market is the first scheduled routine). User suggestions inbox: 0 open GitHub issues tagged `user-suggestion`.
