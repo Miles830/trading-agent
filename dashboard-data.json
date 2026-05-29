@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-05-29T13:45:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-05-29T15:15:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
     "total_equity": 100148,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.21,
     "benchmark_gap_pct": -5.06,
     "open_positions_count": 1,
-    "note": "May 29 Market Open — API BLOCKED (HTTP 403, 22nd+ consecutive). Pre-Market SILENT FAILED today. Market-Open is first session firing May 29. 3 limit bracket GTC orders attempted (AMD 9sh $520.59, MU 5sh $928.14, MRVL 8sh $202.19) — ALL HTTP 403. PLTR deferred to Mid-Morning (3-entry cap). Market: S&P +0.16% (~7,575), VIX 15.83 (risk-ON). Iran ceasefire catalyst. PCE May 28 benign (+0.2% m/m core vs +0.3% est). BTC $73,642 below $82K. GLD ~$412.77. AMD $518 (+4.55% yesterday, Rocket One partnership). MU $923.52. MRVL re-scored 7.5 (gap-fill on May 28 — Technical 5/10). SPX return est. from May 1 ~5.21%; portfolio gap: ~-5.06 pp.",
+    "note": "May 29 Mid-Morning — API BLOCKED (HTTP 403, 23rd consecutive). DOMINANT CATALYST: Dell Q1 FY2027 — revenue $43.8B (+88%), AI server $16.1B (+292%), AI orders $24.4B, FY27 guide $60B (+144%). DELL +38%. Scores upgraded: PLTR 7.5->8.17 (ATH $143.34+), AMD 8.0->8.17 (Dell EPYC CPU demand), MU 8.17->8.5 (HBM4 demand confirmed), MRVL 7.5->8.0 (networking silicon demand). DELL itself REJECTED (score 6.83, Risk veto). 4 orders attempted: PLTR 10sh $144.06 + AMD 9sh $517.44 + MU 5sh $928.14 + MRVL 8sh $202.19 — ALL HTTP 403. Market: S&P near records, VIX ~15, risk-ON. Portfolio gap vs SPX: ~-5.1 pp. OPERATOR: 4 MANDATORY orders blocked — execute at https://app.alpaca.markets.",
     "buckets": [
       {
         "key": "active",
@@ -51,6 +51,71 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-05-29T15:15:00Z",
+      "symbol": "DELL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 6.83,
+      "agent_scores": {"fundamentals": 10, "technical": 4, "sentiment": 9, "macro": 8, "risk": 3, "tech_analyst": 7},
+      "agent_average": 6.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — Exemption 1: Risk Agent score 3/10 (auto-veto < 6). R/R below 3:1 minimum at +38% gap-up. Fundamentals exceptional but entry price too elevated. Monitor for 3-5 day consolidation."
+    },
+    {
+      "ts": "2026-05-29T15:14:00Z",
+      "symbol": "MRVL",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.0,
+      "agent_scores": {"fundamentals": 9, "technical": 6, "sentiment": 8, "macro": 8, "risk": 8, "tech_analyst": 9},
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "RETRY BLOCKED — POST /v2/orders -> HTTP 403. SCORE UPGRADED 7.5->8.0 (Dell AI server networking demand confirmed; Technical 5->6). CONDITIONAL: operator skip if MRVL < $191."
+    },
+    {
+      "ts": "2026-05-29T15:13:00Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.5,
+      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 9, "macro": 8, "risk": 9, "tech_analyst": 9},
+      "agent_average": 8.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "RETRY BLOCKED — POST /v2/orders -> HTTP 403. SCORE UPGRADED 8.17->8.5 (Dell $24.4B AI orders = HBM4 demand confirmed at scale; UBS $1,625 PT validated). BUY 5sh limit $928.14, stop $881.73, target $1,067.36, bracket GTC."
+    },
+    {
+      "ts": "2026-05-29T15:12:00Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.17,
+      "agent_scores": {"fundamentals": 8, "technical": 8, "sentiment": 8, "macro": 8, "risk": 9, "tech_analyst": 8},
+      "agent_average": 8.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "RETRY BLOCKED — POST /v2/orders -> HTTP 403. SCORE UPGRADED 8.0->8.17 (Dell EPYC CPU demand confirmed; Macro 7->8). UPDATED LIMIT: BUY 9sh $517.44, stop $491.57, target $595.06, bracket GTC."
+    },
+    {
+      "ts": "2026-05-29T15:11:00Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 8.17,
+      "agent_scores": {"fundamentals": 7, "technical": 8, "sentiment": 9, "macro": 8, "risk": 9, "tech_analyst": 8},
+      "agent_average": 8.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MANDATORY ATTEMPTED AND BLOCKED — POST /v2/orders -> HTTP 403 (23rd consecutive). SCORE UPGRADED 7.5->8.17 (ATH breakout $143.34, Dell AI catalyst). BUY 10sh limit $144.06, stop $136.86, target $165.67, bracket GTC. OPERATOR: MANDATORY."
+    },
     {
       "ts": "2026-05-29T13:45:05Z",
       "symbol": "BTC/USD",
@@ -224,10 +289,10 @@
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-22T15:09:00Z",
-      "next_run": "2026-05-29 11:00 ET",
-      "last_summary": "NEXT ROUTINE — PLTR MANDATORY ENTRY (was capped at Market Open). Stop audit. AMD/MU/MRVL GTC limit status check."
+      "status": "completed",
+      "last_run": "2026-05-29T15:15:00Z",
+      "next_run": "2026-06-01 11:00 ET",
+      "last_summary": "May 29 Mid-Morning: Stop audit blocked. PLTR MANDATORY entry attempted (HTTP 403) — score upgraded 7.5->8.17 (ATH breakout + Dell AI catalyst). AMD/MU/MRVL retried (all HTTP 403) with updated scores. DELL assessed — rejected (Risk veto, gap-up +38%). All 4 orders blocked. Dell Q1 FY2027 catalyst documented. Weekly evolution note due at today's Daily Review."
     },
     {
       "name": "Midday",
