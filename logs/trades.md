@@ -2,6 +2,138 @@
 
 > **Ordering:** newest trading date at the TOP. New entries are prepended directly under this header.
 
+## 2026-05-29 — Midday (12:30 PM ET / 16:35 UTC)
+
+**PREDECESSOR HEARTBEAT CHECK:**
+- Pre-Market 2026-05-29: SILENTLY FAILED ✗ (violation already logged at Market Open)
+- Market Open 2026-05-29: STARTED 13:45:40Z, COMPLETED 13:59:43Z ✓
+- Mid-Morning 2026-05-29: SILENTLY FAILED ✗ — no entry in logs/heartbeats/2026-05-29.log
+
+```yaml
+---
+ts: 2026-05-29T16:35:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) did not heartbeat on 2026-05-29. PLTR mandatory entry (score 7.5, deferred from Market-Open 3-entry cap) not executed at Mid-Morning. Executing PLTR as Midday catch-up entry #1 of 2.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Mid-Morning 2026-05-29 silently failed — grep "STARTED Mid-Morning" logs/heartbeats/2026-05-29.log → 0 results.
+  Today's violation count: Pre-Market (1) + Mid-Morning (1) = 2 silent failures.
+  PLTR (score 7.5, all 6 agents ≥7) mandatory from Market-Open 3-entry cap deferral.
+  Alpaca API: HTTP 403 "Host not in allowlist" — 23rd consecutive blocked session.
+  MU surged +4.1% to $961.11 midday (from $923.52 prev close) — standout session leader.
+---
+```
+
+---
+
+**MIDDAY MARKET CONDITIONS (12:30 PM ET / 16:35 UTC — web research):**
+- S&P 500: ~7,575 (+0.16%) sustained; Nasdaq +0.20%; Russell 2000 +0.57% (breadth broadening)
+- VIX: 15.74 — LOWER than 15.83 at open (risk-ON continuing to improve)
+- **MU: $961.11 (+4.1% today)** — session leader, AI memory thesis accelerating intraday
+- AMD: $514.87 (−0.6%; range $507.57–$522.00 — constructive pullback from ATH)
+- MRVL: $202.60 (range $199.20–$208.76 — consolidating above $191 support, limit valid)
+- PLTR: $137.57 (approx flat; $134 support intact; risk-ON environment supportive)
+- GLD: $412.77 (range $405.41–$414.51 — stable; oil −1.2% mild headwind offset by dollar)
+- Iran update: VP Vance "not there yet" but "very close" — slight backtrack vs AM "mostly agreed"; market absorbing calmly (VIX lower)
+- Circuit breaker: NOT TRIPPED ✓ (portfolio down only ~$43 total — GLD position only)
+
+---
+
+**STOP AUDIT — BLOCKED (Action 1 per CLAUDE.md):**
+`GET /v2/orders?status=open` → HTTP 403 (23rd consecutive)
+`GET /v2/positions` → HTTP 403
+
+GLD 7sh stop $397.92: cannot verify resting. GLD at $412.77 → stop is −3.6% below current price (within parameters). No urgent re-placement needed if stop is resting.
+
+OPERATOR: Verify GLD stop $397.92 resting at https://app.alpaca.markets. If any MOOs filled yesterday (AMD/MU/MRVL), post GTC stops at fill×0.95 immediately.
+
+---
+
+**WATCHLIST CATCH-UP — PLTR (Mid-Morning silent failure, catch-up #1 of 2):**
+
+PLTR $137.57 — score 7.5 (unchanged), all 6 agents unanimous ≥7. Nothing material changed since Market-Open analysis. AIP government contract revenue secular, risk-ON day supportive, $134 support intact.
+
+```bash
+# PLTR: 10sh limit $138.26, stop $131.35 (-5%), target $159.00 (+15%), bracket GTC
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"PLTR","qty":10,"side":"buy","type":"limit","limit_price":"138.26","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"131.35"},"take_profit":{"limit_price":"159.00"}}'
+# → HTTP 403 "Host not in allowlist"
+```
+
+```yaml
+---
+ts: 2026-05-29T16:35:01Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: PLTR $137.57 midday — AIP government AI contracts secular; $134 support holding; risk-ON environment; mandatory catch-up from Mid-Morning silent failure (15+ consecutive mandatory sessions)
+size_pct: 1.38
+stop: 131.35
+target: 159.00
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 16:35Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh PLTR limit $138.26 ($137.57×1.005), stop $131.35 (-5%), target $159.00 (+15%), order_class:bracket, time_in_force:gtc.
+  Guardrails: 1.38% ≤5% ✓ | trade risk $69.10=0.07% ≤1.5% ✓ | R/R 3.0:1 ✓ | Sector ≤25% ✓ | Cash $95,897 >> $5K floor ✓ | Max 5 positions (GLD+AMD+MU+MRVL+PLTR) ≤12 ✓.
+  Agent scores carried from Market-Open skip (ts: 2026-05-29T13:45:04Z) — no material change in PLTR since 9:45 AM.
+  xAI/X: API unavailable — degrading gracefully. No X modifier applied.
+  23rd consecutive API blockage. PLTR mandatory for 15+ sessions. Zero executions due to network restriction.
+  MU PRICE ALERT (mandatory update): MU surged +4.1% to $961.11. Market-Open limit $928.14 now $32.97 below market — stale. NEW MU ORDER: BUY 5sh limit $965.91 ($961.11×1.005), stop $917.61 (-5%), target $1,110.80 (+15%), bracket GTC. R/R 3:1 ✓. Position: 5×$965.91=$4,830=4.83% ≤5% ✓.
+  AMD PRICE NOTE: AMD $514.87. Market-Open limit $520.59 is $5.72 above market — would fill immediately if placed. Precision update: 9sh limit $517.24 ($514.87×1.005), stop $491.38 (-5%), target $594.83 (+15%). R/R 3:1 ✓.
+  MRVL PRICE NOTE: MRVL $202.60, range $199.20–$208.76. Limit $202.19 still valid — intraday low $199.20 > $191 threshold (setup NOT failed). Maintain $202.19.
+  OPERATOR — MANDATORY ORDERS (all 4 unexecuted as of midday May 29):
+  1. PLTR: BUY 10sh limit $138.26, stop $131.35, target $159.00, bracket GTC ← THIS ROUTINE
+  2. MU: BUY 5sh limit $965.91, stop $917.61, target $1,110.80, bracket GTC (UPDATED from $928.14 — MU at $961!)
+  3. AMD: BUY 9sh limit $517.24, stop $491.38, target $594.83, bracket GTC (updated from $520.59)
+  4. MRVL: BUY 8sh limit $202.19, stop $192.08, target $232.52, bracket GTC (unchanged; only if not already holding)
+---
+```
+
+---
+
+**GLD TRAILING STOP REVIEW:**
+GLD entry $418.86, current $412.77 → unrealized −$42.63 (−1.45%). Position is below entry — no trailing stop upward. Stop $397.92 at −3.6% from current / −5.0% from entry is correct. No adjustment.
+If GLD recovers above $418.86 (entry) in Afternoon session: trail stop to breakeven ($418.86) to protect capital.
+
+**POSITION P&L MIDDAY:**
+| Symbol | Entry | Midday | Unrealized P/L | Stop | Action |
+|---|---|---|---|---|---|
+| GLD | $418.86 | $412.77 | −$42.63 (−1.45%) | $397.92 | HOLD — stop intact; no adjustment |
+
+**NO OPEN DAY TRADES TO CLOSE.** All positions are swing holds (GLD) or pending limit orders. No MOC candidates at this time.
+
+**AFTERNOON / CLOSE PLAN:**
+- **MU:** If operator has not placed MU order, MUST execute before close at $965.91 limit bracket GTC. MU +4.1% today — momentum is strong.
+- **PLTR:** If this limit ($138.26) doesn't fill by 3:30 PM, attempt MOC or carry GTC to next session (Monday June 1).
+- **GLD:** Watch for Iran ceasefire confirmation (VP Vance "very close"). If confirmed formally, GLD may sell off toward $405–$408. Stop $397.92 provides protection. Consider MOC partial close if GLD breaks below $408.
+- **Weekly Evolution Note:** DUE at Daily Review (4:30 PM ET). Friday May 29 is the last session of the May 27–29 week.
+
 ---
 
 ## 2026-05-29 — Market Open (9:45 AM ET / 13:45 UTC)
