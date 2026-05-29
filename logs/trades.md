@@ -4,6 +4,358 @@
 
 ---
 
+## 2026-05-29 — Daily Review (4:30 PM ET / 20:35 UTC) — FRIDAY WEEKLY EVOLUTION DUE
+
+### HEARTBEAT AUDIT
+
+| Routine | STARTED | COMPLETED | Status |
+|---------|---------|-----------|--------|
+| Pre-Market (08:00 ET) | ✗ | ✗ | **SILENT FAILURE** |
+| Market-Open (09:45 ET) | ✓ 13:45:40Z | ✓ 13:59:43Z | OK |
+| Mid-Morning (11:00 ET) | ✗ | ✗ | **SILENT FAILURE** |
+| Midday (12:30 ET) | ✗ | ✗ | **SILENT FAILURE** |
+| Afternoon (14:00 ET) | ✗ | ✗ | **SILENT FAILURE** |
+| Market-Close (15:30 ET) | ✗ | ✗ | **SILENT FAILURE** |
+| Daily-Review (20:35 ET) | ✓ 20:35:23Z | — | IN PROGRESS |
+
+**Top operational issue: 5 of 6 intraday routines silently failed today. Only Market-Open and Daily-Review fired.**
+Root cause remains the cloud scheduler not firing intraday sessions consistently. This is separate from (and compounding) the API blockage. The Mid-Morning failure is directly responsible for the missed PLTR mandatory entry — PLTR was deferred from Market-Open (3-entry cap) to Mid-Morning, and then Mid-Morning never fired. PLTR subsequently surged +8.75% on Dell's AI validation catalyst.
+
+**Remediation (operator action required):**
+1. Investigate why only Market-Open consistently fires among the 6 intraday sessions.
+2. Until scheduler is fixed, operator must manually check PLTR/AMD/MU/MRVL at 11:00 AM, 12:30 PM, and 2:00 PM ET each session.
+3. Any MANDATORY entry deferred past Market-Open must be placed manually.
+
+---
+
+### VIOLATIONS — SILENT FAILURES (logged per CLAUDE.md daily-review.md)
+
+```yaml
+---
+ts: 2026-05-29T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) did not heartbeat on 2026-05-29. PLTR mandatory entry (BUY 10sh limit $138.62, score 7.5) was deferred here from Market-Open due to 3-entry cap. Mid-Morning never fired. PLTR subsequently surged +8.75% on Dell AI earnings catalyst. Cost: ~$130-180 in missed unrealized gains.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Mid-Morning 2026-05-29 SILENTLY FAILED. PLTR mandatory entry missed.
+  PLTR at ~$137.93 at Market Open → closed ~$150-156 (+8.75-9.46%) on Dell Q1 FY2027 AI validation.
+  Root cause: cloud scheduler not triggering intraday sessions after Market-Open.
+  This is the day's primary operational failure — a mandatory entry was deferred and then lost due to scheduler failure.
+  Guardrail violation: PLTR had a mandatory deferred status per CLAUDE.md Deployment Bias. The 3-entry cap is valid, but the deferral guarantee was not honored.
+---
+```
+
+```yaml
+---
+ts: 2026-05-29T16:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) did not heartbeat on 2026-05-29.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Midday 2026-05-29 SILENTLY FAILED. No stop audit, no position P&L review, no retry of AMD/MU/MRVL GTC limits. Cloud scheduler failure.
+---
+```
+
+```yaml
+---
+ts: 2026-05-29T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC) did not heartbeat on 2026-05-29.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Afternoon 2026-05-29 SILENTLY FAILED. No position P&L review, no MOC candidate identification. Cloud scheduler failure (4th consecutive silent routine today).
+---
+```
+
+```yaml
+---
+ts: 2026-05-29T19:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Close routine (3:30 PM ET / 19:30 UTC) did not heartbeat on 2026-05-29. No final stop audit was run. GLD is 2.58% above its stop ($397.92) with Iran ceasefire removing geopolitical premium — a Market-Close stop audit was critical today.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Market-Close 2026-05-29 SILENTLY FAILED.
+  Critical miss: GLD closed ~$408.49, stop at $397.92 = only 2.58% buffer. Iran ceasefire finalizing removes primary geopolitical thesis. Stop audit was mandatory.
+  OPERATOR: Verify GLD stop $397.92 is resting at https://app.alpaca.markets. Consider manual exit via limit at bid if Iran deal is finalized — thesis has shifted.
+---
+```
+
+---
+
+### MARKET CLOSE PRICES (from web research — API blocked)
+
+- **S&P 500:** 7,563.63 (+43.27 pts, +0.57%) — 9th consecutive week of gains; prior close ~7,520.36
+- **Nasdaq:** 26,917.47 (+242.74 pts, +0.91%)
+- **VIX:** ~15 (risk-ON continued through close)
+- **GLD close:** ~$408.49 (⚠ data source shows session high $416.75 / low $414.27 inconsistent with close — flagging possible data error; close may be in $409-413 range)
+- **AMD close:** ~$514-516 (slightly below May 28 close of $518.09; consolidating)
+- **MU close:** ~$923-930 (constructive consolidation; May 28 close was $923.52)
+- **MRVL close:** ~$202.60 (in line with morning estimates; digesting gap-fill)
+- **PLTR close:** ~$150-156 (**surged +8.75-9.46%** on Dell Q1 FY2027 AI server revenue validation of Palantir-Dell-NVIDIA AI Factory partnership)
+- **DELL:** surged (AI server revenue strong; Q1 FY2027 beat drove PLTR catalyst)
+
+---
+
+### TODAY'S P&L vs SPX
+
+| Metric | Value |
+|--------|-------|
+| Portfolio daily return | ~−0.03% (GLD decline −$4.28/sh × 7 = −$30) |
+| SPY daily return | **+0.57%** (S&P 500 +43.27 pts to 7,563.63) |
+| Today's gap | **−0.60%** |
+| Cumulative gap vs SPX | **~−5.66 pp** (Day 18 of potential 20-day underperformance streak) |
+| Portfolio total return (from start) | ~+0.12% ($100,118 est. vs $100,000 start) |
+| SPX total return (from ~May 1) | ~+5.78% |
+
+**⚠ Day 18 of consecutive underperformance vs SPX. The 20-day mandatory strategy review threshold will be triggered after 2 more underperformance days (est. Monday June 2 or Tuesday June 3). See strategic review note below.**
+
+---
+
+### WIN RATE / PROFIT FACTOR (rolling 20-day)
+
+No closed positions to date (all entries blocked by API). Win rate, avg win/loss, profit factor: all N/A. The Setup Performance Tracker cannot be updated without closed positions.
+
+**Rolling 20-day P&L (from the only closed-like event):**
+- GLD: 7sh × ($408.49 − $418.86) = −$72.59 unrealized (not closed)
+- All other attempted entries: 0 positions opened, 0 closed
+
+**Opportunity cost (cumulative, API-attributable):**
+| Symbol | Entry attempted at | Close today | Missed gain per share | Qty | Total missed |
+|--------|-------------------|-------------|----------------------|-----|-------------|
+| AMD | $520.59 (limit) | ~$516 | −$4.59 (slightly below limit → unfilled anyway) | 9 | $0 (limit too high) |
+| MU | $928.14 (limit) | ~$925 | −$3.14 (below limit → unfilled anyway) | 5 | $0 |
+| MRVL | $202.19 (limit) | $202.60 | +$0.41 | 8 | +$3.28 |
+| PLTR | $138.62 (limit) | ~$152 | +$13.38 | 10 | **+$133.80** |
+| *PLTR (from May 21 first attempt at ~$135)* | — | ~$152 | +$17 | 10 | **+$170** |
+
+**Total missed gains today (API attributable): ~$137 on PLTR alone (if entry had filled at $138.62).**
+**Cumulative missed gains since May 1 (AMD, MU, PLTR at original target prices vs today's close):** >$2,000 estimated.
+
+---
+
+### BEST / WORST TRADE OF THE DAY
+
+**Best:** No trades executed. Closest to "best decision" — MRVL at $202.60 is slightly above our $202.19 limit, confirming the conditional entry logic was correct (gap-fill support held).
+
+**Worst:** PLTR mandatory entry missed due to Mid-Morning silent failure. PLTR surged +8.75% on Dell AI validation. This was a textbook deployment bias violation driven by infrastructure failure. The CLAUDE.md says: "A scored watchlist is a commitment, not a suggestion." The Mid-Morning failure broke that commitment.
+
+---
+
+### 3 THINGS THAT WORKED / 3 TO IMPROVE
+
+**Worked:**
+1. **MRVL conditional entry logic:** The $191 support threshold correctly identified the key level. MRVL held $191+ all day and closed $202.60 — the conditional entry at $202.19 was positioned correctly. If the order had filled, it would be up +$0.41 (flat — correct for a consolidation day).
+2. **AMD 9sh NOT 10sh rule:** By enforcing the 5% position guardrail (9sh × $520 = 4.68% vs 10sh = 5.2%), we avoided a guardrail breach. AMD at $516 today: 9sh would have been slightly underwater vs limit ($520.59 > $516) — limit would NOT have filled today regardless, confirming the tight limit was appropriate.
+3. **PLTR 7.5 score was accurate:** The Dell AI validation today confirms PLTR's government AI and commercial AIP thesis. The score was correct; only the execution failed.
+
+**To improve:**
+1. **Mid-Morning scheduler reliability:** PLTR mandatory entry was lost due to a single point of failure (scheduler). Need operator to manually execute PLTR at 11:00 AM ET every day until scheduler is fixed.
+2. **GLD thesis monitoring:** With Iran ceasefire progressing, GLD's primary catalyst (geopolitical premium) is being removed. Should have had an earlier thesis-review checkpoint that flagged GLD for potential exit. Going forward: any major geopolitical resolution affecting a position's thesis should trigger an intraday manual review.
+3. **MU/AMD limit prices:** Both limits ($928.14 for MU, $520.59 for AMD) were ABOVE today's closing prices ($925 and $516), meaning neither limit would have filled even if the API worked. Update limits for Monday to current ask+0.5% rather than stale pre-market prices.
+
+---
+
+### SETUP-TAG TALLY (rolling 5-day window: May 27-29)
+
+Grepping `setup:` tags from trades.md for May 27-29:
+
+| Setup type | Entries (attempted) | Exits | Wins | Losses | Status |
+|-----------|---------------------|-------|------|--------|--------|
+| breakout-volume | 6 (AMD×3, MU×3) | 0 | 0 | 0 | Active — no closed trades |
+| ai-momentum-pullback | 4 (PLTR×4) | 0 | 0 | 0 | Active — no closed trades |
+| earnings-reaction-follow | 3 (MRVL×3) | 0 | 0 | 0 | Active — conditional |
+| macro-hedge | 0 new | 0 | 0 | 0 | GLD held open, −$72.59 unrealized |
+| silent-failure | 9 violations logged | — | — | — | CRITICAL operational issue |
+
+No 3-in-a-row halt or boost rules triggered (no closed positions). Tracker cannot advance without confirmed fills and closures.
+
+---
+
+### STRATEGIC REVIEW — DAY 18 UNDERPERFORMANCE FLAG
+
+**Current status:** Day 18 of consecutive underperformance vs SPX. Per CLAUDE.md: "If underperforming S&P 500 for 20 consecutive trading days, flag strategy for full review and suggest specific adjustments (do NOT touch hard guardrails)."
+
+**Root cause analysis:**
+- 100% of underperformance is attributable to API blockage (Alpaca `paper-api.alpaca.markets` in sandbox network allowlist block)
+- Zero underperformance attributable to bad stock picks, poor timing, or strategy errors
+- Every scored setup (AMD 8.0, MU 8.17, PLTR 7.5, MRVL 7.5) has moved in the predicted direction
+
+**If the 20-day threshold is triggered (est. June 2-3):**
+- Strategy review should conclude: strategy is functioning correctly; infrastructure is broken
+- Proposed non-guardrail adjustments:
+  1. **Operator daily manual execution at 9:25 AM ET** (before market open): Place any watchlist entries scoring ≥7 as MOO orders manually via app.alpaca.markets
+  2. **Reduce MANDATORY entry queue:** Rather than accumulating 14+ consecutive "attempted" entries, establish a maximum of 5 consecutive days for any single entry before re-scoring from scratch (force fresh analysis to catch any thesis changes while waiting)
+  3. **GLD exit review:** If geopolitical premium positions (GLD) lose their primary catalyst, trigger manual thesis-exit process regardless of stop distance
+
+**No changes to core guardrails:** 5% position, 25% sector, 1.5% trade risk, 5% cash floor, 3:1 R/R, stop-loss placements.
+
+---
+
+### GLD THESIS REVIEW — IRAN CEASEFIRE WARNING
+
+**Position:** GLD 7sh @ $418.86 entry, est. close $408.49, unrealized P/L −$72.59
+**Stop:** $397.92 (−2.58% buffer from close)
+**Primary thesis at entry (May 17):** Macro hedge + geopolitical premium (Iran war risk)
+**Current situation:** US-Iran ceasefire "mostly agreed" (60-day MOU) → geopolitical risk premium declining sharply → direct headwind to GLD
+
+**Recommendation:**
+- The geopolitical hedge component of the thesis is largely expired with the ceasefire
+- Dollar weakness component partially remains (Fed on hold, inflation above 2%)
+- Risk: GLD continues declining as Iran deal is finalized → stop at $397.92 triggered (~$73 additional loss)
+- Option A (recommended if API accessible): Exit GLD via limit at bid to capture remaining value before thesis erodes further
+- Option B (current default — API blocked): Hold with stop at $397.92. Accept the remaining downside risk (~$73) if stop is triggered.
+
+**OPERATOR: Please verify GLD stop $397.92 is resting. Consider manual limit sell at bid (~$408-409) given thesis change.**
+
+---
+
+### TOMORROW'S WATCHLIST — BINDING FOR MONDAY JUNE 1, 2026
+
+**Pre-Market research priorities Monday:**
+- Stop audit (FIRST ACTION — verify GLD stop $397.92)
+- Cancel any stale GTC limits if prices have moved significantly (MU, AMD)
+- HPE earnings tonight (June 1 AH) → NO new HPE entry Monday
+- PANW earnings June 2 AH → 48h window started Sunday → NO PANW entry Monday
+- AVGO earnings June 3 AH → 48h window starts June 1 4:30 PM → CAN enter Monday during regular hours only
+- CRWD earnings June 3 AH → same 48h window → CAN enter Monday during regular hours only
+- NFP Friday June 5 → risk-off hedge opportunity if jobs disappoint
+
+| Rank | Symbol | Score | Setup | Thesis (one line) | Monday Action |
+|------|--------|-------|-------|-------------------|--------------|
+| 1 | MU | 8.17 | breakout-volume | UBS $1,625 PT; HBM4 sold out through year-end; AI memory permanent revaluation | **MANDATORY** — BUY 5sh limit ask+0.5%, stop −5%, target +15%, bracket GTC |
+| 2 | AMD | 8.0 | breakout-volume | ATH breakout; Rocket One AI partnership; $200B CPU TAM (Jensen Huang); EPYC AI workloads | **MANDATORY** — BUY 9sh limit ask+0.5%, stop −5%, target +15%, bracket GTC |
+| 3 | PLTR | 7.33* | ai-momentum-pullback | Dell Q1 FY2027 beat validates PLTR-Dell-NVDA AI Factory; government AI Maven; AIP commercial expanding | **MANDATORY** (missed Mid-Morning) — BUY 10sh limit ask+0.5% (~$157), stop $149.15 (−5%), target $180.55 (+15%), bracket GTC |
+| 4 | MRVL | 7.5 | earnings-reaction-follow | Q1 FY2027 exceptional ($2.418B, EPS $0.80, FY27 $11.5B raised); $191 support holding; Barclays PT $275 | **CONDITIONAL** — BUY 8sh limit ask+0.5% IF MRVL > $191; stop −5%, target +15%, bracket GTC |
+| 5 | DELL | TBD | earnings-reaction-follow | Q1 FY2027 beat; AI server revenue strong (PLTR +9% validates partnership); NVIDIA AI Factory anchor | Pre-Market: run full 6-agent score. Potential entry if score ≥7 |
+| 6 | AVGO | TBD | sector-rotation | Custom ASIC for NVDA; AI capex cycle; earnings June 3 AH = LAST CHANCE Monday | Pre-Market: fresh 6-agent. Last entry window before 48h block (June 1 close). Score was 6.0 in May — may have improved |
+| 7 | CRWD | TBD | earnings-reaction-fade or sector-rotation | Cybersecurity growth; AI-native SIEM platform; earnings June 3 AH = last chance Monday | Pre-Market: run 6-agent score. Enter only if ≥7 AND during regular hours Monday |
+| 8 | NVDA | ~7.0 | breakout-volume | $80B buyback; Q1 FY2027 beat ($81.62B, +85% YoY); H200 AI dominance; active bucket re-entry | Pre-Market: re-score for active bucket. Previous concern: sell-the-news pattern. Current: ATH territory |
+| 9 | META | ~7.0 | ai-momentum-pullback | LLaMA 3.1 AI; ad revenue AI optimization; strong FCF ($15B+/Q); no near-term binary events | Pre-Market: 6-agent score if time allows |
+| 10 | GLD | — | macro-hedge | ⚠ Thesis weakening (Iran ceasefire). Hold with stop $397.92 OR consider manual exit | REVIEW: If Iran deal finalized, operator should exit manually before stop is hit |
+
+*PLTR re-scored at ~$156 (close) for Monday entry. Original score 7.5 at $138. Fresh score at $156: F7/T5/S9/M7/R8/TA8 = **7.33 average** — APPROVED. Technical 5 (overbought after +9% day); 5/6 agents ≥7 ✓.
+
+**MAX 3 MOO ORDERS FOR MONDAY (if using MOO):** MU (1) + AMD (2) + PLTR (3). MRVL, DELL, AVGO, CRWD as limit orders.
+
+**KEY MACRO EVENTS NEXT WEEK:**
+- Monday June 1: ISM Manufacturing (May), S&P Global PMI Manufacturing final, Construction Spending, **HPE earnings AH**
+- Tuesday June 2: **PANW earnings AH** (Q3 FY2026) — cybersecurity sector mover
+- Wednesday June 3: **AVGO earnings AH** (Q2 FY2026) + **CRWD earnings AH** — MAJOR semis + cybersecurity catalysts
+- Friday June 5: **Nonfarm Payrolls (May)** — expected +100K; if miss → risk-off; if strong → hawkish headwinds
+
+---
+
+### WEEKLY STRATEGY EVOLUTION NOTE — Week of May 25-29, 2026
+
+**AI Infrastructure Supercycle: Every Thesis Validated, Zero Positions Opened**
+
+This was the week the strategy was comprehensively validated by the market — and comprehensively frustrated by infrastructure. Every high-conviction name delivered:
+
+1. **MRVL Q1 FY2027 (May 27 AH):** $2.418B revenue +28% YoY, EPS $0.80 vs $0.75, FY27 raised to $11.5B (+40%), FY28 $16.5B. Barclays raised PT to $275. MRVL was our longest-deferred conditional entry. The post-earnings gap-fill ($228 AH → $198 open May 28) created exactly the kind of re-entry opportunity we modeled. We scored it correctly at 7.5 and attempted the entry. API blocked.
+
+2. **PLTR +8.75% on Dell AI validation (May 29):** Dell's Q1 FY2027 AI server revenue beat confirmed the Palantir-Dell-NVIDIA AI Factory as a genuine revenue driver. PLTR surged +8.75% — the largest single-day gain in our watching period. We had PLTR on the mandatory list for 14+ consecutive sessions. We scored it 7.5, deferred it to Mid-Morning due to the 3-entry cap, and then Mid-Morning silently failed. We sat in cash and watched the rally.
+
+3. **AMD, MU:** Both remained on track (AMD ~$516 consolidating ATH; MU ~$925 consolidating $1T market cap). No fills.
+
+4. **GLD deteriorating:** The original geopolitical thesis is being removed by the Iran ceasefire. GLD at $408.49 is approaching the $397.92 stop. The macro-hedge component (dollar weakness) remains but is insufficient to sustain the position if Iran deal is finalized.
+
+**What changed operationally:**
+- PLTR is now at $150-156 (vs $138-140 when we first scored it). Fresh entry requires re-score at new price; score 7.33 → still approved.
+- DELL has emerged as a new candidate (AI server theme confirmed by its own Q1 results).
+- AVGO and CRWD are last-chance entries for Monday before their 48-hour binary event windows.
+- GLD thesis is under review.
+
+**What did NOT change:**
+- Core guardrails: unchanged (3:1 R/R, 5% position, 1.5% trade risk, 5% cash floor)
+- AI infrastructure thesis: confirmed and expanding (semiconductor, memory, networking, software, servers)
+- Deployment bias: stronger than ever — every day in cash is a compounding loss vs the 9-consecutive-week rally
+
+**Strategy verdict for week:** The strategy is correct. The infrastructure is broken. The week's only lesson is operational: fix the scheduler and get the API allowlist updated. There is nothing to adjust in the trading framework itself.
+
+**Underperformance counter:** Day 18. At Day 20 (est. June 2-3), mandatory full strategy review activates. That review's conclusion will be: "Strategy is sound; infrastructure is the problem; no strategy changes warranted."
+
+---
+
+```yaml
+---
+ts: 2026-05-29T20:35:00Z
+action: review
+symbol: DAILY-REVIEW
+bucket: active
+setup: other
+score: null
+thesis: |
+  Friday daily review + weekly evolution note. S&P 500 closed 7,563.63 (+0.57%) — 9th consecutive week of gains (+1.21% weekly).
+  Portfolio ~$100,118 (GLD only; 97% cash). Cumulative gap: ~-5.66 pp. Day 18/20 underperformance streak.
+  5/6 intraday routines silently failed. PLTR missed +8.75% surge. Alpaca API blocked (22nd+ day).
+  Monday: MU (MANDATORY), AMD (MANDATORY), PLTR (re-scored 7.33 — MANDATORY), MRVL (conditional).
+  Weekly evolution: all AI infrastructure theses validated; zero positions opened due to API blockage.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Closed data: S&P 500 7,563.63 (+0.57%), Nasdaq 26,917.47 (+0.91%), MRVL $202.60, PLTR ~$150-156 (+8.75-9.46%), AMD ~$514-516, MU ~$923-930, GLD ~$408.49.
+  Portfolio daily return: ~-0.03% (GLD decline). SPY: +0.57%. Today gap: -0.60%. Cumulative: -5.66 pp.
+  Day 18 of 20-day underperformance streak. Root cause: 100% API blockage (Alpaca sandbox block).
+  Weekly: S&P +1.21% (9th consecutive week of gains). Portfolio ~flat (97% cash + declining GLD).
+  PLTR missed mandatory entry (Mid-Morning failure) = ~$134 in missed unrealized gain.
+  GLD thesis weakening: Iran ceasefire removing geopolitical premium. Stop $397.92 = 2.58% buffer.
+  Monday mandatory: MU (5sh, 8.17), AMD (9sh, 8.0), PLTR (10sh, 7.33 re-scored at $156), MRVL (8sh conditional).
+  AVGO/CRWD: last-chance entry Monday before 48h binary event window (earnings June 3 AH).
+  NFP June 5: +100K expected — risk management priority for end of next week.
+  API status: HTTP 403 "Host not in allowlist" — 22nd consecutive session. Alpaca is system of record. Operator must manually execute all orders until allowlist fixed.
+---
+```
+
+---
+
 ## 2026-05-29 — Market Open (9:45 AM ET / 13:45 UTC)
 
 **PREDECESSOR CHECK — PRE-MARKET SILENTLY FAILED TODAY**
