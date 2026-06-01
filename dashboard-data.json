@@ -1,26 +1,26 @@
 {
-  "last_updated": "2026-05-29T13:45:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-01T19:35:00Z",
+  "updated_by": "market-close",
   "portfolio": {
-    "total_equity": 100148,
+    "total_equity": 100187,
     "starting_equity": 100000.0,
     "cash": 97280,
     "cash_pct": 97.1,
     "buying_power": 194560,
-    "long_market_value": 2868,
+    "long_market_value": 2928,
     "short_market_value": 0.0,
-    "daily_pnl": -31,
-    "daily_pnl_pct": -0.03,
-    "total_return_pct": 0.15,
-    "spx_return_pct": 5.21,
-    "benchmark_gap_pct": -5.06,
+    "daily_pnl": 39,
+    "daily_pnl_pct": 0.039,
+    "total_return_pct": 0.187,
+    "spx_return_pct": 5.49,
+    "benchmark_gap_pct": -5.3,
     "open_positions_count": 1,
-    "note": "May 29 Market Open — API BLOCKED (HTTP 403, 22nd+ consecutive). Pre-Market SILENT FAILED today. Market-Open is first session firing May 29. 3 limit bracket GTC orders attempted (AMD 9sh $520.59, MU 5sh $928.14, MRVL 8sh $202.19) — ALL HTTP 403. PLTR deferred to Mid-Morning (3-entry cap). Market: S&P +0.16% (~7,575), VIX 15.83 (risk-ON). Iran ceasefire catalyst. PCE May 28 benign (+0.2% m/m core vs +0.3% est). BTC $73,642 below $82K. GLD ~$412.77. AMD $518 (+4.55% yesterday, Rocket One partnership). MU $923.52. MRVL re-scored 7.5 (gap-fill on May 28 — Technical 5/10). SPX return est. from May 1 ~5.21%; portfolio gap: ~-5.06 pp.",
+    "note": "June 1 Market Close \u2014 API BLOCKED (HTTP 403, 23rd consecutive). ALL 5 intraday routines (Pre-Market through Afternoon) SILENT FAILED. Market-Close is first session today. NVDA Computex 2026: RTX Spark AI PC chip (+4.99%). MU +12.8% to $1,040. PLTR +13.5% to $156.54. MRVL $204 (tested $199.83 support, held). AMD ~$516 (flat). GLD ~$418.30 (+1.34%, near entry). S&P 500 new record est. +0.2%. 4 MOC order attempts (AMD 9sh, MU 4sh, MRVL 8sh, PLTR 10sh) \u2014 ALL HTTP 403. Stale GTC orders to cancel: AMD $520.59, MU $928.14, PLTR $138.62. OPERATOR: execute manually at https://app.alpaca.markets. SPX return est. from May 1 ~5.49%; portfolio gap: ~-5.30 pp.",
     "buckets": [
       {
         "key": "active",
         "label": "Active Trading (target 85%)",
-        "value": 2868
+        "value": 2928
       },
       {
         "key": "crypto",
@@ -40,17 +40,117 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 412.77,
-      "pnl": -42.63,
-      "pnl_pct": -1.45,
+      "current_price": 418.3,
+      "pnl": -3.92,
+      "pnl_pct": -0.13,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD est. ~$412.77 (May 29 market open estimate — oil falling on Iran ceasefire reduces geopolitical risk premium). Stop $397.92 (-3.6% from current — safe cushion). Cannot verify stop is resting via API (blocked 22+ sessions). Operator: verify stop at https://app.alpaca.markets. Dollar weakness bid partially offsets the Iran-ceasefire gold headwind."
+      "note": "GLD est. ~$418.30 (June 1 close \u2014 gold +1.34% to $4,593/oz; oil spike reversed Iran ceasefire decline). Approaching entry $418.86 \u2014 essentially break-even. Stop $397.92 (-4.9% from current = safe). Cannot verify stop resting via API (blocked 23+ sessions). Operator: verify stop at https://app.alpaca.markets."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-01T19:35:01Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.0,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 8
+      },
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC BLOCKED \u2014 HTTP 403. BUY 9sh AMD MOC cls @ ~$516.10. Stop $490.30 (-5%). Target $593.52 (+15%). OPERATOR: place manually."
+    },
+    {
+      "ts": "2026-06-01T19:35:02Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.0,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 9,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC BLOCKED \u2014 HTTP 403. BUY 4sh MU MOC cls @ ~$1,040.92 (4sh not 5sh \u2014 5% guardrail). Stop $988.87 (-5%). Target $1,197.06 (+15%). OPERATOR: place manually."
+    },
+    {
+      "ts": "2026-06-01T19:35:03Z",
+      "symbol": "MRVL",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.17,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC BLOCKED \u2014 HTTP 403. BUY 8sh MRVL MOC cls @ ~$204. Stop $193.80 (-5%). Target $234.60 (+15%). Upgraded score 7.5\u21928.17 (Technical 5\u21927: $199.83 support held; Macro 7\u21928: NVDA AI PC optical interconnect demand). OPERATOR: place manually."
+    },
+    {
+      "ts": "2026-06-01T19:35:04Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.17,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 9,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 8
+      },
+      "agent_average": 8.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC BLOCKED \u2014 HTTP 403. BUY 10sh PLTR MOC cls @ ~$156.54. Stop $148.71 (-5%). Target $180.02 (+15%). Setup re-tagged ai-momentum-pullback\u2192breakout-volume (ATH breakout). OPERATOR: place manually."
+    },
+    {
+      "ts": "2026-06-01T19:35:05Z",
+      "symbol": "BTC/USD",
+      "action": "skip",
+      "bucket": "crypto",
+      "setup": "crypto-flush-rebound",
+      "score": 5.33,
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 5,
+        "sentiment": 5,
+        "macro": 6,
+        "risk": 7,
+        "tech_analyst": 5
+      },
+      "agent_average": 5.33,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP \u2014 BTC est. below $82K threshold. Score 5.33 < 7. No entry."
+    },
     {
       "ts": "2026-05-29T13:45:05Z",
       "symbol": "BTC/USD",
@@ -58,11 +158,18 @@
       "bucket": "crypto",
       "setup": "crypto-flush-rebound",
       "score": 5.33,
-      "agent_scores": {"fundamentals": 5, "technical": 5, "sentiment": 5, "macro": 5, "risk": 7, "tech_analyst": 5},
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 5,
+        "sentiment": 5,
+        "macro": 5,
+        "risk": 7,
+        "tech_analyst": 5
+      },
       "agent_average": 5.33,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "SKIP — BTC ~$73,642 below $82K threshold. Score 5.33 < 7. ETF outflows $223M reported. No entry."
+      "order_status": "SKIP \u2014 BTC ~$73,642 below $82K threshold. Score 5.33 < 7. ETF outflows $223M reported. No entry."
     },
     {
       "ts": "2026-05-29T13:45:04Z",
@@ -71,11 +178,18 @@
       "bucket": "active",
       "setup": "ai-momentum-pullback",
       "score": 7.5,
-      "agent_scores": {"fundamentals": 7, "technical": 7, "sentiment": 7, "macro": 7, "risk": 9, "tech_analyst": 8},
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 8
+      },
       "agent_average": 7.5,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "DEFERRED — 3-entry cap reached this routine (AMD + MU + MRVL = 3). PLTR is MANDATORY at Mid-Morning routine (11:00 AM ET / 15:00 UTC). Intended: BUY 10sh limit $138.62, stop $131.69, target $159.41, bracket GTC."
+      "order_status": "DEFERRED \u2014 3-entry cap reached this routine (AMD + MU + MRVL = 3). PLTR is MANDATORY at Mid-Morning routine (11:00 AM ET / 15:00 UTC). Intended: BUY 10sh limit $138.62, stop $131.69, target $159.41, bracket GTC."
     },
     {
       "ts": "2026-05-29T13:45:03Z",
@@ -84,11 +198,18 @@
       "bucket": "active",
       "setup": "earnings-reaction-follow",
       "score": 7.5,
-      "agent_scores": {"fundamentals": 9, "technical": 5, "sentiment": 7, "macro": 7, "risk": 8, "tech_analyst": 9},
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 5,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 9
+      },
       "agent_average": 7.5,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 'Host not in allowlist'. ORDER NOT PLACED. Intended: BUY 8sh MRVL limit $202.19, stop $192.08 (-5%), target $232.52 (+15%), bracket GTC. CONDITIONAL: operator must verify MRVL > $191 before placing. If already holding MRVL from May 28 MOO, do NOT place duplicate."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders \u2192 HTTP 403 'Host not in allowlist'. ORDER NOT PLACED. Intended: BUY 8sh MRVL limit $202.19, stop $192.08 (-5%), target $232.52 (+15%), bracket GTC. CONDITIONAL: operator must verify MRVL > $191 before placing. If already holding MRVL from May 28 MOO, do NOT place duplicate."
     },
     {
       "ts": "2026-05-29T13:45:02Z",
@@ -97,11 +218,18 @@
       "bucket": "active",
       "setup": "breakout-volume",
       "score": 8.17,
-      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 8, "macro": 7, "risk": 9, "tech_analyst": 9},
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 9
+      },
       "agent_average": 8.17,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403. ORDER NOT PLACED. Intended: BUY 5sh MU limit $928.14, stop $881.73 (-5%), target $1,067.36 (+15%), bracket GTC. MANDATORY — 10th+ consecutive. UBS $1,625 PT."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders \u2192 HTTP 403. ORDER NOT PLACED. Intended: BUY 5sh MU limit $928.14, stop $881.73 (-5%), target $1,067.36 (+15%), bracket GTC. MANDATORY \u2014 10th+ consecutive. UBS $1,625 PT."
     },
     {
       "ts": "2026-05-29T13:45:01Z",
@@ -110,11 +238,18 @@
       "bucket": "active",
       "setup": "breakout-volume",
       "score": 8.0,
-      "agent_scores": {"fundamentals": 8, "technical": 8, "sentiment": 8, "macro": 7, "risk": 9, "tech_analyst": 8},
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 8,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 8
+      },
       "agent_average": 8.0,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403. ORDER NOT PLACED. Intended: BUY 9sh AMD limit $520.59, stop $494.56 (-5%), target $598.68 (+15%), bracket GTC. MANDATORY — 14th consecutive. Rocket One AI partnership. Score upgraded to 8.0."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders \u2192 HTTP 403. ORDER NOT PLACED. Intended: BUY 9sh AMD limit $520.59, stop $494.56 (-5%), target $598.68 (+15%), bracket GTC. MANDATORY \u2014 14th consecutive. Rocket One AI partnership. Score upgraded to 8.0."
     },
     {
       "ts": "2026-05-29T13:45:00Z",
@@ -127,7 +262,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "Pre-Market 2026-05-29 SILENTLY FAILED — no heartbeat found in logs/heartbeats/2026-05-29.log. Market-Open is first routine to fire today. Full catch-up executed per open.md protocol."
+      "order_status": "Pre-Market 2026-05-29 SILENTLY FAILED \u2014 no heartbeat found in logs/heartbeats/2026-05-29.log. Market-Open is first routine to fire today. Full catch-up executed per open.md protocol."
     },
     {
       "ts": "2026-05-28T12:10:04Z",
@@ -136,11 +271,18 @@
       "bucket": "crypto",
       "setup": "crypto-flush-rebound",
       "score": 5.5,
-      "agent_scores": {"fundamentals": 5, "technical": 5, "sentiment": 6, "macro": 5, "risk": 7, "tech_analyst": 5},
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 5,
+        "sentiment": 6,
+        "macro": 5,
+        "risk": 7,
+        "tech_analyst": 5
+      },
       "agent_average": 5.5,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "SKIP — BTC ~$75,716 below $82K threshold. Score 5.5 < 7. Risk-off today (Iran, oil +1.8%). No crypto entry."
+      "order_status": "SKIP \u2014 BTC ~$75,716 below $82K threshold. Score 5.5 < 7. Risk-off today (Iran, oil +1.8%). No crypto entry."
     },
     {
       "ts": "2026-05-28T12:10:03Z",
@@ -149,11 +291,18 @@
       "bucket": "active",
       "setup": "ai-momentum-pullback",
       "score": 7.5,
-      "agent_scores": {"fundamentals": 7, "technical": 7, "sentiment": 7, "macro": 7, "risk": 9, "tech_analyst": 8},
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 8
+      },
       "agent_average": 7.5,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 'Host not in allowlist'. 13th+ consecutive. ORDER NOT PLACED."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders \u2192 HTTP 403 'Host not in allowlist'. 13th+ consecutive. ORDER NOT PLACED."
     },
     {
       "ts": "2026-05-28T12:10:02Z",
@@ -162,11 +311,18 @@
       "bucket": "active",
       "setup": "earnings-reaction-follow",
       "score": 8.0,
-      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 9},
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 6,
+        "risk": 9,
+        "tech_analyst": 9
+      },
       "agent_average": 8.0,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO) → HTTP 403. ORDER NOT PLACED."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (MOO) \u2192 HTTP 403. ORDER NOT PLACED."
     },
     {
       "ts": "2026-05-28T12:10:01Z",
@@ -175,11 +331,18 @@
       "bucket": "active",
       "setup": "breakout-volume",
       "score": 8.33,
-      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 9, "macro": 7, "risk": 9, "tech_analyst": 9},
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 9,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 9
+      },
       "agent_average": 8.33,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO) → HTTP 403. ORDER NOT PLACED."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (MOO) \u2192 HTTP 403. ORDER NOT PLACED."
     },
     {
       "ts": "2026-05-28T12:10:00Z",
@@ -188,11 +351,18 @@
       "bucket": "active",
       "setup": "breakout-volume",
       "score": 7.83,
-      "agent_scores": {"fundamentals": 7, "technical": 8, "sentiment": 8, "macro": 7, "risk": 9, "tech_analyst": 8},
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 8,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 8
+      },
       "agent_average": 7.83,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO) → HTTP 403. 13th consecutive. ORDER NOT PLACED."
+      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (MOO) \u2192 HTTP 403. 13th consecutive. ORDER NOT PLACED."
     }
   ],
   "trade_stats": {
@@ -210,56 +380,56 @@
       "schedule": "08:00 ET daily",
       "status": "violation",
       "last_run": "2026-05-28 08:10 ET",
-      "next_run": "2026-06-01 08:00 ET",
-      "last_summary": "May 29: SILENTLY FAILED — no heartbeat. May 28: API BLOCKED. MRVL Q1 BEAT. 4 orders attempted and blocked (AMD MOO, MU MOO, MRVL MOO, PLTR limit)."
+      "next_run": "2026-06-02 08:00 ET",
+      "last_summary": "Jun 1: SILENTLY FAILED (no heartbeat). Jun 2 MANDATORY: MU 4sh MOO, PLTR 10sh MOO, AMD 9sh MOO (3 cap). MRVL + NVDA as limits if cap hit."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "completed",
+      "status": "violation",
       "last_run": "2026-05-29T13:45:00Z",
-      "next_run": "2026-06-01 09:45 ET",
-      "last_summary": "May 29 Market Open: Pre-Market predecessor SILENTLY FAILED. Catch-up executed. 3 limit bracket GTC orders attempted and blocked (AMD 8.0, MU 8.17, MRVL 7.5). PLTR deferred to Mid-Morning (3-entry cap). Stop audit blocked (HTTP 403). GLD only confirmed position. Market: S&P +0.16%, VIX 15.83, Iran ceasefire risk-on."
+      "next_run": "2026-06-02 09:45 ET",
+      "last_summary": "Jun 1: SILENTLY FAILED. Jun 2: Confirm MOO fills, place GTC stops immediately after fills."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "pending",
+      "status": "violation",
       "last_run": "2026-05-22T15:09:00Z",
-      "next_run": "2026-05-29 11:00 ET",
-      "last_summary": "NEXT ROUTINE — PLTR MANDATORY ENTRY (was capped at Market Open). Stop audit. AMD/MU/MRVL GTC limit status check."
+      "next_run": "2026-06-02 11:00 ET",
+      "last_summary": "Jun 1: SILENTLY FAILED. Jun 2: stop audit + confirm entries filled."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "pending",
+      "status": "violation",
       "last_run": "2026-05-25T16:31:50Z",
-      "next_run": "2026-05-29 12:30 ET",
-      "last_summary": "UPCOMING. Stop audit. Position P&L review. Retry any unfilled orders."
+      "next_run": "2026-06-02 12:30 ET",
+      "last_summary": "Jun 1: SILENTLY FAILED. Jun 2: P&L review, trailing stop assessment."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "pending",
+      "status": "violation",
       "last_run": "2026-05-27T18:10:00Z",
-      "next_run": "2026-05-29 14:00 ET",
-      "last_summary": "UPCOMING. P&L review. MOC candidates review."
+      "next_run": "2026-06-02 14:00 ET",
+      "last_summary": "Jun 1: SILENTLY FAILED. Jun 2: MOC candidates review."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-29 15:30 ET",
-      "last_summary": "UPCOMING. MOC orders for any day trades. Final stop audit."
+      "status": "completed",
+      "last_run": "2026-06-01T19:35:00Z",
+      "next_run": "2026-06-02 15:30 ET",
+      "last_summary": "Jun 1 Market Close: 5 predecessor violations logged. NVDA Computex AI PC +4.99%. MU +12.8% to $1,040. PLTR +13.5% to $156.54. MRVL $204 (support held). AMD flat $516. GLD +1.34% to $418.30. 4 MOC attempts (AMD 9sh, MU 4sh, MRVL 8sh, PLTR 10sh) ALL HTTP 403. Daily P&L: +$38.71 (+0.039%). Benchmark gap: -5.30 pp. OPERATOR: cancel stale GTC orders, execute MOC entries manually before 3:50 PM ET."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
       "status": "pending",
       "last_run": "2026-05-26 20:32 ET",
-      "next_run": "2026-05-29 20:30 ET",
-      "last_summary": "UPCOMING. WEEKLY EVOLUTION NOTE DUE (Friday). Confirm any fills. Setup tracker. Benchmark update. Monday watchlist."
+      "next_run": "2026-06-01 20:30 ET",
+      "last_summary": "UPCOMING TODAY (4:30 PM ET). Confirm MOC fills. Place GTC stops. NVDA 6-agent. Weekly evolution note (week May 25-Jun 1 overdue). Binding Jun 2 watchlist."
     },
     {
       "name": "Weekly Review",
@@ -271,8 +441,8 @@
     }
   ],
   "agent_scorecard": {
-    "trades_scored": 20,
-    "most_accurate": "—",
+    "trades_scored": 25,
+    "most_accurate": "\u2014",
     "most_accurate_note": "Hit-rate tracking begins after first exit.",
     "most_conservative": "Technical Sub-Agent",
     "most_conservative_note": "Technical consistently lowest scorer. MRVL gap-fill confirmed Technical 5/10 was correct caution (AH pop fully given back). AMD/MU Technical 7-8 = momentum continuation (overbought but trend intact).",
@@ -282,35 +452,35 @@
         "calls_above_7": 17,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Consistently highest. MU 9/10 (UBS $1,625 PT). MRVL 9/10 (beat + guidance raise). AMD 8/10 (AI CPU TAM). PLTR 7/10."
+        "note": "Consistently highest. MU 9/10 (UBS $1,625 PT). MRVL 9/10 (Barclays $275, exceptional beat). AMD 8/10 (AI CPU TAM). PLTR 8/10 (AIP gov AI). MU/MRVL tech moat stories well-captured."
       },
       "technical": {
         "avg_score": 6.9,
         "calls_above_7": 12,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Most conservative. MRVL re-scored 5/10 (gap-fill bearish signal — AH pop fully given back on open May 28). AMD 8/10 (ATH breakout momentum). MU 7/10 (consolidation above breakout)."
+        "note": "Most conservative. MU Jun 1: 6/10 (entering near daily high after +12.8%; overbought). MRVL Jun 1: 7/10 (upgraded \u2014 $199.83 support test-and-hold is constructive). PLTR 7/10 (ATH breakout overbought but 3/5 momentum). AMD 7/10 (flat consolidation at ATH)."
       },
       "sentiment": {
         "avg_score": 7.5,
         "calls_above_7": 14,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "xAI Grok API blocked (sandbox). MRVL 7/10 (institutional sell-the-news on gap-fill, Barclays PT $275 bullish). AMD 8/10 (ATH, Rocket One). MU 8/10 (UBS + CNBC coverage)."
+        "note": "xAI Grok API blocked (sandbox). PLTR 9/10 (viral AI demand boom; fxleaders ATH article). MU 9/10 (institutional +12.8% buying). MRVL 8/10 (Barclays $275 PT). AMD 8/10 (ATH narrative)."
       },
       "macro": {
         "avg_score": 7.2,
         "calls_above_7": 15,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Iran ceasefire (risk-on). PCE benign (+0.2% m/m core). VIX 15.83. S&P near records. Oil falling. AI capex secular = macro-insensitive demand for semis."
+        "note": "NVDA Computex AI PC = new positive macro catalyst for all AI names. MU 7/10 (oil spike mild headwind). AMD 8/10 (NVDA AI PC = AMD data center unaffected, ecosystem positive). MRVL 8/10 (optical interconnect demand). PLTR 8/10 (enterprise AI deployment expanding)."
       },
       "risk": {
         "avg_score": 8.7,
         "calls_above_7": 19,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "AMD 9/10 (4.69%, 0.23% risk, 3:1 R/R). MU 9/10 (4.64%, 0.23% risk, 3:1 R/R). MRVL 8/10 (1.62%, 0.08% risk, 3:1 R/R — small size for gap-fill risk). All guardrails satisfied."
+        "note": "All June 1 entries within guardrails. MU 8/10 (4sh not 5sh \u2014 guardrail at $1,040 price level; entering near daily high). AMD 9/10 (4.64%). MRVL 8/10 (1.63%). PLTR 9/10 (1.56%)."
       },
       "tech_analyst": {
         "avg_score": 8.4,
@@ -322,83 +492,90 @@
     }
   },
   "memory": {
-    "recent_lessons_md": "### 2026-05-29 — Market Open Catch-Up (Pre-Market Silent Failure)\n\nPre-Market routine did not fire today (no heartbeat). Market-Open is first session of May 29. Three limit bracket GTC orders attempted and blocked (AMD 8.0, MU 8.17, MRVL 7.5). PLTR deferred by 3-entry cap to Mid-Morning.\n\n**MRVL gap-fill lesson (May 28):** MRVL AH hit $228 after Q1 beat. Opened May 28 at $198 (below pre-earnings close $207 = gap-fill, 'sell the news'). Full AH gain given back at open. Re-scored Technical 5/10. This is similar to NVDA Q1 pattern. Lesson: for stocks with 'priced for perfection' narratives, even strong beats can produce gap-fills. The 8sh × $218 MOO estimate in yesterday's plan was too optimistic on the fill price — actual fill would have been $198 (vs $228 AH peak). Stop at fill×0.95=$188 would still be protective.\n\n**AMD Rocket One catalyst (May 29):** New AI cloud provider Rocket One announced AMD infrastructure deal. This is a customer diversification catalyst — AMD gaining AI cloud revenue beyond just Meta/Microsoft/Google. Score upgraded from 7.83 to 8.0.\n\n**API block day 22:** Same root cause (Anthropic sandbox TLS proxy not allowing egress to paper-api.alpaca.markets). Operator manual execution is the only path to trade execution. All routine decisions are correct but execution requires operator intervention."
+    "recent_lessons_md": "### 2026-06-01 \u2014 Market Close (23rd consecutive API-blocked session)\n\n**NVDA Computex AI PC chip (RTX Spark):** New demand vector for entire AI ecosystem. MU +12.8% (AI PC DRAM + HBM), PLTR +13.5% (AI demand boom ATH), MRVL +1.4% (Celestial AI optical), AMD flat. Lesson: Computex (annually, late May-early June) is a must-watch catalyst window for AI hardware names.\n\n**PLTR setup retag:** Changed from `ai-momentum-pullback` to `breakout-volume` at $156.54. When a stock breaks to ATH from a pullback entry zone, the setup tag MUST be updated to reflect actual entry context. Using wrong setup tag corrupts the 3-in-a-row performance tracker.\n\n**MU position sizing at $1,040:** 5sh \u00d7 $1,040.92 = $5,204.60 = 5.2% \u2192 violates 5% guardrail. Reduced to 4sh = $4,163.68 = 4.15% \u2713. Lesson: when a target stock appreciates significantly from the original sizing calculation, RECALCULATE position size. Never assume a prior qty is still within guardrails when price has moved 12%.\n\n**GLD approaching break-even:** GLD at $418.30 vs entry $418.86 = \u2212$0.56/sh (essentially break-even). Oil spike reversed the Iran ceasefire decline in gold. Macro-hedge thesis working \u2014 GLD is both a geopolitical hedge and dollar weakness hedge."
   },
   "market": {
-    "mode": "Risk-ON — S&P +0.16%, VIX 15.83. Iran ceasefire optimism. Oil falling. PCE benign. AI capex secular.",
+    "mode": "Risk-ON \u2014 S&P new record. NVDA Computex AI PC catalyst. Oil spike (energy strong). Tech + Energy leading.",
     "fear_greed": null,
-    "fear_greed_label": "Neutral-Bullish — VIX 15.83, markets at/near records, Iran ceasefire reducing geopolitical risk premium. Slightly risk-on.",
-    "spx": "May 29: ~7,575 (+0.16% from May 28 close 7,561-7,563). Near record highs. Iran ceasefire driving equity bid. No major data today.",
-    "btc": "BTC ~$73,642 (+1.14% 24h). Below $82K threshold. ETF outflows $223M = institutional net selling despite stable price. No entry. Crypto bucket 0% deployed (target 10%).",
+    "fear_greed_label": "Bullish \u2014 S&P new record, NVDA Computex AI PC catalyst, tech leading. Oil spike limits broader breadth but AI names not affected.",
+    "spx": "Jun 1: ~7,596 est (+0.2% from May 29 close 7,580.06). New record. Tech (NVDA +5%, MU +12.8%, PLTR +13.5%) and Energy (Marathon +4%) leading. Dow flat.",
+    "btc": "BTC est. below $82K threshold (price unconfirmed \u2014 API blocked, last known $73,642 May 29). Risk-on may have lifted BTC. Check at Daily Review.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
-        "change_pct": 0.2,
-        "note": "May 29 AM: Semis broadly flat-to-slight positive. AMD $518 (May 28 +4.55%). MU $923.52. MRVL $201 (digesting earnings gap-fill). SOX intact. AI capex cycle: MRVL Q1 confirms hyperscaler custom silicon spend accelerating."
+        "change_pct": 2.31,
+        "note": "NVDA +4.99% (Computex RTX Spark). MU +12.8% (AI memory). PLTR +13.5% (AI demand). AMD flat. MRVL +1.4%. SOX strongly positive."
       },
       {
         "name": "Energy",
-        "change_pct": -1.2,
-        "note": "Oil falling -1.2% (Brent $92.56) on Iran ceasefire hopes. Strait of Hormuz naval blockade extended but ceasefire optimism crushing risk premium."
+        "change_pct": 3.0,
+        "note": "Oil SPIKED (Iran ceasefire optimism faded). Marathon +4%, Exxon +2%, Chevron +2%. Gold +1.34% ($4,593/oz)."
       },
       {
         "name": "Precious Metals",
-        "change_pct": -0.5,
-        "note": "GLD ~$412.77. Iran ceasefire reducing geopolitical risk premium = mild gold headwind. Dollar weakness bid partially offsetting. Stop $397.92 (-3.6% from current = safe)."
+        "change_pct": 1.34,
+        "note": "GLD ~$418.30 (+1.34%). Oil spike = geopolitical risk premium returning. GLD recovering toward entry $418.86. Stop $397.92 safe."
       },
       {
         "name": "Defense / Gov AI",
-        "change_pct": null,
-        "note": "PLTR ~$137.93. AIP government AI. Score 7.5. MANDATORY entry at Mid-Morning."
+        "change_pct": 13.5,
+        "note": "PLTR $156.54 (+13.5% from May 29). AI demand boom. ATH breakout. MANDATORY entry."
       }
     ],
     "macro_notes_md": "- **US-Iran ceasefire (dominant):** Reports of 60-day MOU 'mostly agreed.' Pending Trump approval. Oil -1.2% (Brent $92.56). Equities supported. Risk-ON.\n- **PCE (released May 28):** Core +0.2% m/m (below +0.3% estimate). Headline +3.8% y/y. Less inflationary than feared. Fed on hold. Kevin Warsh hawkish but market absorbing PCE beat.\n- **No major data today (May 29).** Light calendar. Market driven by Iran ceasefire headlines.\n- **AMD Rocket One partnership (May 29):** New AI cloud provider using AMD infrastructure. Customer diversification catalyst. AMD at ATH $518.\n- **MRVL earnings reaction (May 28):** Beat Q1 ($2.418B rev, EPS $0.80), gap-fill at open ($198 vs $228 AH). Closed $206. Today $201. 'Sell the news' pattern.\n- **AI capex intact:** MRVL results confirm AWS/Google/MSFT ramping custom silicon. HBM demand (MU), CPU demand (AMD), custom ASIC demand (MRVL) all validated.\n- **VIX 15.83:** Risk-ON, normal/moderate band. No fear-driven selling.\n- **API blockage (22nd consecutive day):** Only fix: (a) add paper-api.alpaca.markets to egress allowlist OR (b) operator manual execution at https://app.alpaca.markets.",
-    "sp500_today_pct": "+0.16%",
-    "sp500_est": 7575,
-    "macro_note": "Risk-ON. Iran ceasefire. PCE benign. Oil falling. VIX 15.83. S&P near records. AI capex secular tailwind intact."
+    "sp500_today_pct": "+0.2% est.",
+    "sp500_est": 7596,
+    "macro_note": "Risk-ON. NVDA Computex AI PC chip (RTX Spark) = new AI ecosystem demand vector. MU +12.8% (HBM demand + AI PC DRAM). PLTR +13.5% (AI demand boom ATH breakout). Oil SPIKED (reversing Iran ceasefire decline) \u2014 energy strong, GLD +1.34%. S&P 500 new record. Juneteenth holiday June 19. Next FOMC June 16-17."
   },
   "watchlist": [
     {
-      "symbol": "AMD",
-      "bucket": "active",
-      "score": 8.0,
-      "action": "MANDATORY — limit $520.59 GTC attempted (blocked). OPERATOR: BUY 9sh AMD limit $520.59, stop $494.56, target $598.68, bracket GTC. If AMD has moved, use current ask×1.005.",
-      "notes": "AMD ~$518 (May 28 closed $518.09, +4.55%). Rocket One AI partnership. ATH breakout. Jensen Huang $200B CPU TAM. Score 8.0/10 (all 6 agents ≥7). 14th consecutive mandatory entry. 9sh NOT 10sh (10sh > 5% limit)."
-    },
-    {
       "symbol": "MU",
       "bucket": "active",
-      "score": 8.17,
-      "action": "MANDATORY — limit $928.14 GTC attempted (blocked). OPERATOR: BUY 5sh MU limit $928.14, stop $881.73, target $1,067.36, bracket GTC.",
-      "notes": "MU ~$923.52. UBS $1,625 PT. HBM4 sold out through year-end. $1T market cap. MRVL beat confirms AI custom silicon demand = HBM demand. Score 8.17/10 (all 6 agents ≥7)."
-    },
-    {
-      "symbol": "MRVL",
-      "bucket": "active",
-      "score": 7.5,
-      "action": "CONDITIONAL — limit $202.19 GTC attempted (blocked). OPERATOR: BUY 8sh MRVL limit $202.19, stop $192.08, target $232.52, bracket GTC. ONLY IF MRVL > $191. If already holding from May 28 MOO, do NOT place.",
-      "notes": "MRVL ~$201.18. Exceptional fundamentals (Q1 beat, FY27 $11.5B). Gap-fill on May 28 (Technical 5/10 — bearish near-term). Re-scored 7.5. Small position (1.62%). Stop at $192 manages gap-fill risk. $191 = key support."
+      "score": 8.0,
+      "action": "MANDATORY MOO Jun 2 \u2014 4sh @ ~$1,040. Stop $988.87. Target $1,197.06. Cancel stale GTC $928.14 first.",
+      "notes": "MU $1,040.92 (+12.8% Jun 1). UBS $1,625 PT. HBM4 sold out. AI PC = new DRAM demand. 4sh (not 5sh \u2014 5% guardrail at this price). 11th+ consecutive mandatory attempt."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
-      "score": 7.5,
-      "action": "MANDATORY at Mid-Morning — 3-entry cap hit this routine. OPERATOR: BUY 10sh PLTR limit $138.62, stop $131.69, target $159.41, bracket GTC.",
-      "notes": "PLTR ~$137.93. AIP government AI. Q1 US Gov +84% YoY. $134 support holding. Score 7.5/10 (all 6 agents ≥7)."
+      "score": 8.17,
+      "action": "MANDATORY MOO Jun 2 \u2014 10sh @ ~$157. Stop $149. Target $181. Cancel stale GTC $138.62 first.",
+      "notes": "PLTR $156.54 (+13.5%). AI demand boom. ATH breakout. AIP gov AI platform. Score upgraded 7.5\u21928.17. Re-tagged breakout-volume."
+    },
+    {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": 8.0,
+      "action": "MANDATORY MOO Jun 2 \u2014 9sh @ ~$516. Stop $490. Target $594. Cancel stale GTC $520.59 first.",
+      "notes": "AMD ~$516 (flat Jun 1). NVDA AI PC = AMD EPYC data center thesis intact. ATH territory. 15th consecutive mandatory attempt."
+    },
+    {
+      "symbol": "MRVL",
+      "bucket": "active",
+      "score": 8.17,
+      "action": "MANDATORY MOO or limit Jun 2 \u2014 8sh @ ~$204. Stop $193.80. Target $234.60.",
+      "notes": "MRVL $204 (+1.4% Jun 1). $199.83 support tested and held. NVDA AI PC optical interconnects (Celestial AI). Barclays PT $275. Score upgraded 7.5\u21928.17."
+    },
+    {
+      "symbol": "NVDA",
+      "bucket": "active",
+      "score": null,
+      "action": "PRE-SCORE at Jun 2 Pre-Market \u2014 Computex AI PC catalyst; RTX Spark; potential 15sh @ ~$222",
+      "notes": "NVDA +4.99% Jun 1 on RTX Spark AI PC chip (Computex 2026). Not on prior watchlist. Run 6-agent Jun 2 Pre-Market. If \u22657: BUY 15sh MOO."
     },
     {
       "symbol": "GLD",
       "bucket": "active",
       "score": null,
-      "action": "HOLD — verify stop $397.92 resting. GLD ~$412.77. Iran ceasefire = mild gold headwind (oil falling, risk premium down). Dollar weakness partially offsetting.",
-      "notes": "GLD 7sh, entry $418.86, current ~$412.77, est. P/L -$42.63. Stop $397.92 (-3.6% cushion from current). Macro-hedge thesis still valid (dollar weakness, inflation above target)."
+      "action": "HOLD \u2014 verify stop $397.92 resting. GLD ~$418.30 (approaching entry $418.86).",
+      "notes": "GLD 7sh, entry $418.86, current ~$418.30, est. P/L -$3.92. Stop $397.92 (-4.9% from current). Oil spike bid + dollar weakness hedge intact."
     },
     {
       "symbol": "BTC",
       "bucket": "crypto",
       "score": 5.33,
-      "action": "SKIP — below $82K threshold ($73,642). ETF outflows. Score 5.33 < 7.",
-      "notes": "BTC consolidating $73K-$74K. ETF outflows $223M. No entry until $82K threshold crossed."
+      "action": "SKIP unless >$82K \u2014 check at Daily Review",
+      "notes": "BTC last known $73,642 (May 29). NVDA AI PC = risk-on environment may have lifted BTC. Operator: check current BTC price at Daily Review."
     }
   ],
   "history": [
@@ -429,6 +606,12 @@
       "spx_return_pct": 4.43,
       "daily_pnl_pct": -0.002,
       "note": "All 6 routines silent failed. MU +18% missed. AMD +5% missed. API blocked."
+    },
+    {
+      "date": "2026-06-01",
+      "portfolio_return_pct": 0.187,
+      "spx_return_pct": 5.49,
+      "daily_pnl_pct": 0.039
     }
   ]
 }
