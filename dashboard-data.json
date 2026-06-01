@@ -1,26 +1,26 @@
 {
-  "last_updated": "2026-05-29T13:45:00Z",
+  "last_updated": "2026-06-01T13:46:00Z",
   "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 100148,
+    "total_equity": 100200,
     "starting_equity": 100000.0,
     "cash": 97280,
     "cash_pct": 97.1,
     "buying_power": 194560,
-    "long_market_value": 2868,
+    "long_market_value": 2920,
     "short_market_value": 0.0,
-    "daily_pnl": -31,
-    "daily_pnl_pct": -0.03,
-    "total_return_pct": 0.15,
-    "spx_return_pct": 5.21,
+    "daily_pnl": 0,
+    "daily_pnl_pct": 0.0,
+    "total_return_pct": 0.20,
+    "spx_return_pct": 5.26,
     "benchmark_gap_pct": -5.06,
     "open_positions_count": 1,
-    "note": "May 29 Market Open — API BLOCKED (HTTP 403, 22nd+ consecutive). Pre-Market SILENT FAILED today. Market-Open is first session firing May 29. 3 limit bracket GTC orders attempted (AMD 9sh $520.59, MU 5sh $928.14, MRVL 8sh $202.19) — ALL HTTP 403. PLTR deferred to Mid-Morning (3-entry cap). Market: S&P +0.16% (~7,575), VIX 15.83 (risk-ON). Iran ceasefire catalyst. PCE May 28 benign (+0.2% m/m core vs +0.3% est). BTC $73,642 below $82K. GLD ~$412.77. AMD $518 (+4.55% yesterday, Rocket One partnership). MU $923.52. MRVL re-scored 7.5 (gap-fill on May 28 — Technical 5/10). SPX return est. from May 1 ~5.21%; portfolio gap: ~-5.06 pp.",
+    "note": "June 1 Market Open — API BLOCKED (HTTP 403, 23rd+ consecutive). Pre-Market SILENT FAILED today. May 29 Mid-Morning/Midday/Afternoon/Market-Close/Daily-Review ALL silently failed. Market-Open June 1 is first session since May 29 13:45Z. 3 limit bracket GTC orders attempted (MU 5sh $975.86, PLTR 10sh $157.32, AMD 9sh $518.68) — ALL HTTP 403. MRVL deferred to Mid-Morning (3-entry cap). Market: S&P −0.08% (7,579 open, turned slightly lower). Iran situation reversed — US+Iran traded fire over weekend; oil +4% WTI $91. MU at $971 (+5.14%, +303% YTD, UBS $1,625 PT). PLTR at $156.54 (+13.7% in 5 days, AI Demand Boom breakout, re-scored 8.0). AMD ~$516 (minor pullback from $518 ATH). GLD ~$417.12 (Iran re-escalation = geo premium returning; stop $397.92 safe). VIX 15.32. FOMC June 16-17. SPX return est. ~5.26%; portfolio gap: ~-5.06 pp. WARNING: ~Day 19/20 underperformance streak.",
     "buckets": [
       {
         "key": "active",
         "label": "Active Trading (target 85%)",
-        "value": 2868
+        "value": 2920
       },
       {
         "key": "crypto",
@@ -40,17 +40,82 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 412.77,
-      "pnl": -42.63,
-      "pnl_pct": -1.45,
+      "current_price": 417.12,
+      "pnl": -12.18,
+      "pnl_pct": -0.42,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD est. ~$412.77 (May 29 market open estimate — oil falling on Iran ceasefire reduces geopolitical risk premium). Stop $397.92 (-3.6% from current — safe cushion). Cannot verify stop is resting via API (blocked 22+ sessions). Operator: verify stop at https://app.alpaca.markets. Dollar weakness bid partially offsets the Iran-ceasefire gold headwind."
+      "note": "GLD ~$417.12 (June 1 — Iran re-escalation over weekend = geopolitical risk premium returning; GLD up from $412.77 on May 29). Stop $397.92 (-4.8% from current — safe cushion). Cannot verify stop resting via API (blocked 23+ sessions). Operator: verify stop at https://app.alpaca.markets."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-01T13:46:05Z",
+      "symbol": "BTC/USD",
+      "action": "skip",
+      "bucket": "crypto",
+      "setup": "crypto-flush-rebound",
+      "score": 5.0,
+      "agent_scores": null,
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — BTC inferred below $82K threshold (was $73,642 May 29; Iran re-escalation over weekend = risk-off). Score ~5. No entry."
+    },
+    {
+      "ts": "2026-06-01T13:46:04Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 7.5,
+      "agent_scores": {"fundamentals": 9, "technical": 5, "sentiment": 7, "macro": 7, "risk": 8, "tech_analyst": 9},
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "DEFERRED — 3-entry cap reached (MU+PLTR+AMD=3). MRVL $204 (above $191 support). MANDATORY at Mid-Morning. BUY 8sh limit ~$205, stop -5%, target +15%, bracket GTC. CANCEL if MRVL <$191."
+    },
+    {
+      "ts": "2026-06-01T13:46:03Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 8},
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403. ORDER NOT PLACED. Intended: BUY 9sh AMD limit $518.68, stop $492.75 (-5%), target $596.48 (+15%), bracket GTC. MANDATORY — 15th consecutive. 9sh MAX (5% cap)."
+    },
+    {
+      "ts": "2026-06-01T13:46:02Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.0,
+      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 9},
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403. ORDER NOT PLACED. Intended: BUY 10sh PLTR limit $157.32, stop $149.45 (-5%), target $180.92 (+15%), bracket GTC. Re-scored 8.0 at new price ($156.54 from $138 = +13.7% breakout). MANDATORY."
+    },
+    {
+      "ts": "2026-06-01T13:46:01Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8.17,
+      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 9, "macro": 6, "risk": 9, "tech_analyst": 9},
+      "agent_average": 8.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403. ORDER NOT PLACED. Intended: BUY 5sh MU limit $975.86, stop $927.07 (-5%), target $1,122.24 (+15%), bracket GTC. MANDATORY — 11th+ consecutive. MU at $971 (+5.14%). HIGHEST PRIORITY."
+    },
     {
       "ts": "2026-05-29T13:45:05Z",
       "symbol": "BTC/USD",
@@ -217,17 +282,17 @@
       "name": "Market Open",
       "schedule": "09:45 ET daily",
       "status": "completed",
-      "last_run": "2026-05-29T13:45:00Z",
-      "next_run": "2026-06-01 09:45 ET",
-      "last_summary": "May 29 Market Open: Pre-Market predecessor SILENTLY FAILED. Catch-up executed. 3 limit bracket GTC orders attempted and blocked (AMD 8.0, MU 8.17, MRVL 7.5). PLTR deferred to Mid-Morning (3-entry cap). Stop audit blocked (HTTP 403). GLD only confirmed position. Market: S&P +0.16%, VIX 15.83, Iran ceasefire risk-on."
+      "last_run": "2026-06-01T13:46:00Z",
+      "next_run": "2026-06-02 09:45 ET",
+      "last_summary": "June 1 Market Open: Pre-Market + May 29 all routines SILENTLY FAILED. Catch-up executed. Stop audit blocked (HTTP 403, 23rd consecutive). No MOO backfill needed. 3 limit bracket GTC orders attempted and blocked (MU 5sh $975.86, PLTR 10sh $157.32, AMD 9sh $518.68). MRVL deferred to Mid-Morning (3-entry cap). GLD only confirmed position (~$417.12). Market: S&P -0.08% (Iran re-escalation, oil +4%). MU +5.14% to $971. PLTR breakout to $156.54 (+13.7% in 5 days)."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
       "status": "pending",
       "last_run": "2026-05-22T15:09:00Z",
-      "next_run": "2026-05-29 11:00 ET",
-      "last_summary": "NEXT ROUTINE — PLTR MANDATORY ENTRY (was capped at Market Open). Stop audit. AMD/MU/MRVL GTC limit status check."
+      "next_run": "2026-06-01 11:00 ET",
+      "last_summary": "NEXT ROUTINE — MRVL MANDATORY ENTRY (capped at Market Open). Also: PLTR/MU/AMD GTC retry. Stop audit. Circuit breaker check."
     },
     {
       "name": "Midday",
