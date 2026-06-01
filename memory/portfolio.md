@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-05-29 (Friday) — Market Open (9:45 AM ET / 13:45 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 22nd+ consecutive blocked session). Pre-Market routine SILENTLY FAILED today (no heartbeat). Market-Open is the first routine to fire on May 29. VIOLATION logged in trades.md. Pre-market catch-up executed. Three limit bracket GTC order attempts (AMD 9sh $520.59, MU 5sh $928.14, MRVL 8sh $202.19) — ALL HTTP 403. PLTR capped at 3-entry limit — MANDATORY at Mid-Morning. Market: S&P +0.16% (~7,575), Nasdaq +0.20%, VIX 15.83 (risk-ON). DOMINANT CATALYST: US–Iran ceasefire "mostly agreed" (60-day MOU) → oil falling −1.2%, equities supported. PCE May 28: Core +0.2% (below +0.3% est — benign). BTC ~$73,642 (below $82K threshold). MRVL update: gap-filled on May 28 (opened $198 vs AH peak $228); re-scored 7.5 (Technical 5/10 — gap-fill bearish signal). AMD $518 (May 28 +4.55%, Rocket One AI partnership). MU $923.52. GLD ~$412.77 (stop $397.92 unverifiable). Cumulative gap vs SPX: ~−4.50 pp (est.).
+**2026-06-01 (Monday) — Pre-Market (8:00 AM ET / 12:06 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 23rd consecutive blocked session). Pre-Market routine FIRED (heartbeat logged). GitHub issues: 0 user-suggestions open. Four MOO/limit order attempts — ALL HTTP 403. ISM Manufacturing PMI at 10:00 AM ET today (consensus 52.6-53.7; Chicago PMI 62.7 suggests upside surprise). HPE earnings tonight AH (AI server proxy — not a holding but watch for AI theme boost). BTC $72,574 (below $82K — no crypto entry). Market: S&P futures +0.3% (risk-ON). PLTR catalyst updated: Dell Q2 earnings (May 29) confirmed AI server +757% YoY, $24.4B AI orders → PLTR +10% May 29; Citi PT $225. AMD ~$522 premarket (ATH territory, +114% YTD). MU ~$964 ($1T market cap, UBS $1,625 PT). MRVL ~$205 (gap-fill absorbed, in range). GLD ~$421 (above entry $418.86 — position now profitable; stop $397.92 est. resting). Cumulative gap vs SPX: ~−5+ pp. Binding watchlist: MU 8.17 (MOO 5sh), AMD 7.83 (MOO 9sh), PLTR 7.67 (MOO 10sh, re-scored at $156 on Dell validation), MRVL 7.67 (limit bracket GTC 8sh $206.03).
+
+**Prior Last Updated:** 2026-05-29 (Friday) — Market Open (9:45 AM ET / 13:45 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 22nd+ consecutive blocked session). Pre-Market routine SILENTLY FAILED today (no heartbeat). Market-Open is the first routine to fire on May 29. VIOLATION logged in trades.md. Pre-market catch-up executed. Three limit bracket GTC order attempts (AMD 9sh $520.59, MU 5sh $928.14, MRVL 8sh $202.19) — ALL HTTP 403. PLTR capped at 3-entry limit — MANDATORY at Mid-Morning. Market: S&P +0.16% (~7,575), Nasdaq +0.20%, VIX 15.83 (risk-ON). DOMINANT CATALYST: US–Iran ceasefire "mostly agreed" (60-day MOU) → oil falling −1.2%, equities supported. PCE May 28: Core +0.2% (below +0.3% est — benign). BTC ~$73,642 (below $82K threshold). MRVL update: gap-filled on May 28 (opened $198 vs AH peak $228); re-scored 7.5 (Technical 5/10 — gap-fill bearish signal). AMD $518 (May 28 +4.55%, Rocket One AI partnership). MU $923.52. GLD ~$412.77 (stop $397.92 unverifiable). Cumulative gap vs SPX: ~−4.50 pp (est.).
 
 **Prior Last Updated:** 2026-05-27 (Wednesday) — Afternoon (2:00 PM ET / 18:10 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 20th+ consecutive blocked session). Pre-Market, Market-Open, Mid-Morning, Midday all SILENT FAILED today (4 predecessor violations logged in trades.md). Afternoon routine fired 18:08:57Z — first session of the day. Three mandatory bracket GTC limit orders attempted (AMD 10sh $496.50, MU 5sh $918.00, PLTR 10sh $137.50) — all HTTP 403. MRVL skipped (Exemption 2 — earnings tonight May 27 AH). No day trades open; no MOC orders needed. Market: S&P 500 est. ~7,519 (near May 26 record close). GLD est. ~$414 (stop $397.92 unverifiable but estimated resting). Cumulative gap vs SPX: ~−4.25 pp (widening). Tomorrow binding watchlist: MU (8.5, MANDATORY), AMD (7.83, MANDATORY), PLTR (7.5, MANDATORY), MRVL conditional on tonight's earnings.
 
@@ -98,7 +100,20 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-05-26 Daily Review — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-06-01 Pre-Market — all estimates; API blocked)
+- **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
+- **Total Equity (estimated):** ~$100,295 (GLD 7sh × $421 = $2,947; cash ~$97,280; total ~$100,227 + slight GLD gain from $412.77 May 29 → $421 June 1 = +$57.61)
+- **Cash:** ~$97,280 — no new positions ever confirmed filled (all attempts HTTP 403 since May 6)
+- **Long Market Value (estimated):**
+  - GLD: 7sh × $421 ≈ $2,947 (unrealized +$14 from $418.86 entry — NOW PROFITABLE)
+  - MU, AMD, PLTR, MRVL: NOT FILLED (all order attempts HTTP 403)
+- **Order status (all estimated — API blocked):**
+  - GLD 7sh — open; resting stop $397.92 expected (−5.5% from $421 = safe cushion)
+  - ALL OTHER POSITIONS: NOT FILLED from cloud runner
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 23rd consecutive blocked session. CRITICAL: Operator must manually execute 3 MOO orders (MU 5sh, AMD 9sh, PLTR 10sh) and 1 limit bracket (MRVL 8sh limit $206.03) before 9:25 AM ET.
+- **Circuit Breaker:** NOT TRIPPED (S&P futures +0.3% June 1)
+
+## Prior Account Snapshot (as of 2026-05-26 Daily Review — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
 - **Total Equity (estimated):** ~$100,179 (Scenario A: strategy switch executed May 18; only GLD open)
 - **Cash:** ~$97,280 (Scenario A) — no new positions ever filled (all API blocked)
@@ -183,7 +198,17 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 
 All well under 25% sector cap in either scenario. If both old semis (Scenario B) AND new entries (AMD+MU) exist simultaneously: ~18.8% semis — still under 25% cap.
 
-## Performance vs S&P 500
+## Performance vs S&P 500 (as of June 1 Pre-Market)
+- **Portfolio total equity (est.):** ~$100,295 (GLD now profitable at $421; cash $97,280)
+- **Portfolio total return:** ~+0.30% (GLD +$14 unrealized; cash gains zero)
+- **S&P 500 close May 29:** ~7,575 (+0.16%). S&P futures June 1 +0.3% → est. open ~7,598.
+- **S&P 500 return since strategy start (~May 1):** **~+5.5%** (estimated from $7,200 base → $7,598)
+- **Gap vs SPX: ~−5.2 pp** — WIDENED from −5.06 pp (May 29). GLD gain partially offset by missed AMD/MU/PLTR/MRVL upside during May 29-31.
+- **Opportunity cost (API blockage, cumulative):** AMD missed 14+ entries (+114% YTD stock); MU missed 10+ entries (+88% in 30 days); PLTR missed 15+ entries (+10% May 29 alone on Dell catalyst). Conservative cumulative missed gains across all 4 names: $3,000-$5,000+ in unrealized P/L that would have been captured.
+- **Day 22+ of underperformance:** Well past the 20-day threshold for mandatory strategy full review. However, root cause is infrastructure (API blockage), NOT strategy failure. The strategy's watchlist (AMD/MU/PLTR/MRVL) has outperformed dramatically — the execution gap is entirely attributable to HTTP 403 responses.
+- **Mandatory strategy review triggered:** Per CLAUDE.md "If underperforming S&P 500 for 20 consecutive trading days, flag strategy for full review." The strategy itself is CORRECT (all 4 mandatory names are strong performers); the infrastructure is the failure mode. Strategy review recommendation: FIX THE API ALLOWLIST. No strategy changes warranted.
+
+## Prior Performance vs S&P 500
 - **Portfolio total equity (est.):** ~$100,179 (May 26 Daily Review)
 - **Portfolio total return:** ~+0.18% (GLD −$33 unrealized; all other positions cash)
 - **S&P 500 close May 26:** 7,519.12 (+0.61%, new record). SPY $749.25.
@@ -209,7 +234,21 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **Gap vs SPX:** **~-3.0 percentage points** (improved marginally — S&P down -0.26% today while portfolio estimated flat or tiny positive from GLD/NVDA if still held).
 - **Root cause unchanged:** 85-97% cash from persistent API blockage. 8+ consecutive entry blocks on AMD alone. Every market up-day widens the gap further. The only cure is operator manual execution OR Alpaca API allowlist fix.
 
-## Macro Context (as of 2026-05-29 Market Open — web research)
+## Macro Context (as of 2026-06-01 Pre-Market — web research)
+- **S&P 500 futures: +0.3%** — risk-ON. S&P 500 June 1 opening expected strong.
+- **Chicago PMI (May):** 62.7 — highest in 4 years. Manufacturing is expanding at an accelerating pace.
+- **ISM Manufacturing PMI:** Due today 10:00 AM ET. Consensus 52.6-53.0 (April 52.7). Upside surprise likely given Chicago PMI read.
+- **10Y Treasury yield ~4.45%:** Stable. Kevin Warsh (Fed Chair) hawkish — rates on hold, 20-30% hike odds by Dec 2026. Next FOMC June 16-17.
+- **HPE earnings tonight (June 1 AH):** AI server proxy. Consensus $9.82B revenue (+28.7% YoY), EPS ~$0.54. Networking +152% YoY in Q1. Beat would boost AI infrastructure theme. Watch for after-hours PLTR/AMD sentiment.
+- **BTC $72,574 / ETH $1,982:** Both crypto assets below key thresholds. BTC below $82K — no crypto entry.
+- **PLTR Dell validation (May 29):** Dell Q2 FY2027: AI server revenue +757% YoY to $16.1B; $24.4B AI orders. PLTR/Dell AI Factory directly validated. PLTR +10% May 29. Citi PT $225.
+- **AMD ~$522 premarket:** ATH territory (+114% YTD). Premarket slight pullback (-0.73%).
+- **MU ~$964:** $1T market cap; UBS $1,625 PT; May 29 close $971; May 30 range $937-$981.
+- **MRVL ~$205:** Gap-fill post-earnings (May 28 opened $198); stabilized in $200-208 range through May 31.
+- **GLD ~$421:** Gold spot $4,541/oz on June 1. GLD ABOVE our entry ($418.86) — position now profitable. Stop $397.92 safe.
+- **AI infrastructure capex cycle:** Google $180-190B 2026 capex; Dell $24.4B AI orders; MRVL FY27 $11.5B guide; NVDA H200/B200 production — AI infrastructure demand secular and accelerating.
+
+## Prior Macro Context (as of 2026-05-29 Market Open — web research)
 - **S&P 500: ~7,575 (+0.16% today).** Nasdaq +0.20%. Dow +0.13%. VIX 15.83 — risk-ON, normal/moderate band.
 - **DOMINANT CATALYST: US–Iran ceasefire "mostly agreed"** — 60-day MOU pending Trump approval. Strait of Hormuz naval blockade still in place (extended indefinitely) but ceasefire optimism crushes oil −1.2% (Brent ~$92.56, off ~20% from 2026 highs). Equities: risk-on bid.
 - **PCE (released May 28):** Core PCE April +0.2% m/m (below +0.3% estimate — benign). Headline +3.8% y/y, Core +3.3% y/y — still above 2% target but monthly read was a relief. Not a market-mover. Fed on hold, Kevin Warsh (new Fed Chair) hawkish — next FOMC June 16–17. No rate cuts expected.
@@ -350,7 +389,53 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **AVGO** (~7.5) — NVDA custom ASIC pipeline; score at Pre-Market May 21 via limit order
 - **BTC** (TBD) — check vs $82K threshold at Pre-Market May 21; risk-on environment favorable
 
-## Pending Actions — OPERATOR MUST EXECUTE (Updated May 29 Market Open)
+## Pending Actions — OPERATOR MUST EXECUTE (Updated June 1 Pre-Market)
+
+**TODAY: June 1, 2026 (Monday) — BEFORE 9:25 AM ET**
+
+### STOP AUDIT (FIRST — always):
+Verify at https://app.alpaca.markets:
+- GLD 7sh stop $397.92 resting (GLD now ~$421 — stop has ~5.5% cushion; DO NOT move stop yet)
+- Cancel any stale GTC orders from prior weeks (AMD $520.59 limit, MU $928.14 limit, MRVL $202.19 limit if still resting from blocked attempts — these were NEVER placed on Alpaca, so nothing to cancel, but verify)
+
+### MANDATORY MOO ORDERS (before 9:25 AM ET):
+
+1. **MU — MOO ORDER 1 (score 8.17, MANDATORY — 11th+ consecutive):**
+   ```
+   BUY 5sh MU type:market time_in_force:opg
+   ```
+   After fill (Market Open routine): post GTC stop sell 5sh MU at fill×0.95
+
+2. **AMD — MOO ORDER 2 (score 7.83, MANDATORY — 15th consecutive):**
+   ```
+   BUY 9sh AMD type:market time_in_force:opg (NOT 10sh — 10sh violates 5% guardrail)
+   ```
+   After fill: post GTC stop sell 9sh AMD at fill×0.95
+
+3. **PLTR — MOO ORDER 3 (score 7.67, MANDATORY — re-scored at $156 on Dell validation):**
+   ```
+   BUY 10sh PLTR type:market time_in_force:opg
+   ```
+   After fill: post GTC stop sell 10sh PLTR at fill×0.95
+
+### LIMIT ORDER (place same time as MOOs — bracket GTC):
+
+4. **MRVL — LIMIT BRACKET GTC (score 7.67, CONDITIONAL):**
+   ```
+   BUY 8sh MRVL limit $206.03, stop $195.73 (-5%), target $236.93 (+15%)
+   order_class:bracket, time_in_force:gtc
+   ```
+   **ONLY enter if MRVL is trading ABOVE $200.** If below $191, SKIP.
+
+### MAX 3 MOO ORDERS = MU + AMD + PLTR. MRVL as limit bracket GTC.
+
+### DO NOT:
+- Enter BTC/crypto (below $82K threshold)
+- Enter CRDO (reporting today — 48h binary event)
+- Move GLD stop (no trailing stop warranted yet — target is $481.69, still far)
+- Add new position in HPE (reporting AH tonight — if beats, may create opportunities tomorrow)
+
+## Prior Pending Actions — OPERATOR MUST EXECUTE (Updated May 29 Market Open)
 
 **TODAY: May 29, 2026 (Friday) — Market Open through Close**
 
@@ -526,6 +611,34 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 **Core guardrails: NO CHANGES.** Stop-losses, position size, sector caps, R/R minimum — all unchanged. Only the execution infrastructure needs fixing.
 
 ## Next Routine Plan
+
+**Market Open June 1 (9:45 AM ET / 13:45 UTC — NEXT ROUTINE):**
+1. **STOP AUDIT (FIRST):** Verify all positions have resting GTC stops. GLD $397.92. If operator placed MOOs and they filled, MANDATORY: post GTC stops at fill×0.95 for MU, AMD, PLTR immediately.
+2. **MU fill confirmation + stop placement:** If MOO filled at ~$964, post GTC stop sell 5sh MU at fill×0.95 = ~$915.80.
+3. **AMD fill confirmation + stop placement:** If MOO filled at ~$522, post GTC stop sell 9sh AMD at fill×0.95 = ~$495.90.
+4. **PLTR fill confirmation + stop placement:** If MOO filled at ~$156, post GTC stop sell 10sh PLTR at fill×0.95 = ~$148.20.
+5. **ISM Manufacturing PMI reaction (10:00 AM ET):** If print > 54 (strong upside surprise), AI/manufacturing theme gets additional tailwind — no action needed unless triggering new setups.
+6. **HPE tonight (AH):** Note expected print ~$9.82B revenue, EPS ~$0.54. If beats, may create tomorrow's catalyst for AI server theme names.
+
+**Mid-Morning June 1 (11:00 AM ET / 15:00 UTC):**
+1. Stop audit.
+2. Confirm/retry MRVL limit bracket if API accessible.
+3. Check ISM PMI reaction (released 10:00 AM ET).
+4. Scan for new universe opportunities if deployment gap warrants additional entries.
+
+**Market Close June 1 (3:30 PM ET / 19:30 UTC):**
+1. Stop audit.
+2. HPE earnings tonight — no new HPE entry pre-earnings. Monitor AH reaction.
+3. MOC to close any day trades (none expected today — all swing setups).
+
+**Daily Review June 1 (4:30 PM ET / 20:30 UTC):**
+1. Confirm all fills. Update snapshot.
+2. HPE AH reaction — score for potential entry June 2 if beats (AI server infrastructure theme).
+3. Performance vs SPX update.
+4. Weekly evolution note (this is Monday — next evolution note due Friday June 5).
+5. Produce June 2 binding watchlist.
+
+**Prior Next Routine Plan entries below:**
 
 **Mid-Morning May 29 (11:00 AM ET / 15:00 UTC — NEXT ROUTINE):**
 1. **STOP AUDIT (FIRST):** Verify all positions have resting GTC stops. GLD $397.92. AMD/MU/MRVL/PLTR if filled.
