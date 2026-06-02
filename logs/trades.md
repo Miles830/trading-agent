@@ -4,6 +4,317 @@
 
 ---
 
+## 2026-06-02 — Afternoon (2:00 PM ET / 18:09 UTC)
+
+**PREDECESSOR CHECK — ALL 4 PREDECESSORS SILENTLY FAILED TODAY**
+
+`grep "STARTED" logs/heartbeats/2026-06-02.log` → Only `STARTED Afternoon` at 18:08:29Z present. Pre-Market, Market-Open, Mid-Morning, Midday all absent. Logging 4 violations.
+
+---
+
+```yaml
+---
+ts: 2026-06-02T18:09:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (8:00 AM ET / 12:00 UTC) did not heartbeat today 2026-06-02. 4 predecessor routines absent — Afternoon is first routine to fire.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Pre-Market 2026-06-02 silently failed. Alpaca API BLOCKED (HTTP 403, 24th+ consecutive session). Watchlist from May 29 carry-forward: AMD (8.0), MU (8.17), MRVL (7.5→re-score needed), PLTR (7.5→re-score needed at $158). MRVL massive Computex catalyst today (+28.9%) detected in Afternoon. All stop-audit, catch-up, and entry attempts deferred to Afternoon routine.
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:09:01Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET / 13:45 UTC) did not heartbeat today 2026-06-02.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Market-Open 2026-06-02 silently failed. No stop-loss audit executed at open. No MOO backfill check. Per CLAUDE.md: every routine must verify open positions have resting stops as its FIRST ACTION. Failure to audit this morning means GLD stop $397.92 unverified since May 29. Operator must check https://app.alpaca.markets.
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:09:02Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) did not heartbeat today 2026-06-02.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Mid-Morning 2026-06-02 silently failed. Mandatory PLTR catch-up entry (from prior session's 3-order cap) was not attempted. AMD, MU, PLTR limit bracket GTC order attempts all blocked or never attempted. MRVL at $283 today (+28.9%) — had Mid-Morning fired, MRVL would have been entered near $219 on the Computex open gap or on intraday momentum.
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:09:03Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) did not heartbeat today 2026-06-02.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Midday 2026-06-02 silently failed. 4th consecutive intraday routine failure today. MRVL was still rising mid-session (Jensen Huang "next trillion-dollar company" at Computex — Teralynx T100 launch). A Midday entry at $250+ would have captured remaining upside.
+---
+```
+
+---
+
+**MARKET CONDITIONS (2:00 PM ET, June 2, 2026 — web research):**
+- S&P 500: ~7,585 (−0.19% from June 1 close 7,599.96; June 1 itself was a new record +0.26%)
+- Nasdaq: −0.10% · Dow: −0.41%
+- VIX: Not pulled but estimated ~16 (slightly elevated vs Monday's record highs — profit-taking)
+- **DOMINANT CATALYST — MRVL +28.9% today (~$282.92):** Jensen Huang at Computex 2026 declared Marvell the "next trillion-dollar company." Marvell also launched the Teralynx T100 — the world's first 102.4 Tbps AI-optimized switch chip. MRVL market cap ~$247B → path to $1T is now a credible roadmap per NVDA CEO.
+- **HPE +15% today:** HPE reported Q2 FY2026 AH June 1 — record revenue +40% YoY driven by AI server demand. Confirms AI capex cycle intact.
+- **AMD: ~$510.13 (−1.16%)** — pulling back modestly from May 29 close ~$518. Normal consolidation in a slightly down market. Thesis intact.
+- **MU: ~$1,036.11 (+0.06%, ATH territory)** — at or near all-time high. UBS $1,625 PT intact. AI memory demand cycle confirmed by MRVL results.
+- **PLTR: ~$158.15** — significant move from our $138 target area. No specific catalyst found; likely riding the AI equity tailwind + institutional accumulation.
+- **GLD: ~$413.33 (range $412.14–$416.23)** — recovering slightly from recent oil-driven pressure. Stop $397.92 safe (+3.7% buffer from current price).
+- **BTC: ~$67,468–$69,350 (−6% today)** — sliding BELOW $70K for first time since April. Rotating capital from crypto into AI equities. WAY below $82K threshold.
+- **3% circuit breaker check:** SPX June 2 open from June 1 close 7,599.96. 3% down = 7,371.96. Current ~7,585 >> threshold. NOT TRIPPED. ✓
+
+---
+
+### STOP AUDIT — BLOCKED (FIRST ACTION per CLAUDE.md)
+
+`GET /v2/orders?status=open` → **HTTP 403 "Host not in allowlist"** (24th+ consecutive)
+`GET /v2/positions` → **HTTP 403**
+
+- **GLD 7sh stop $397.92** — cannot verify resting. Estimated resting from May 17 placement. Price is $413.33 → stop provides 3.7% buffer. No gap-stop risk.
+- **AMD/MU/MRVL/PLTR** — zero confirmed fills (all order attempts blocked since May 6).
+- **Action:** OPERATOR must verify all stops at https://app.alpaca.markets TODAY. Specifically: GLD stop $397.92 must be resting GTC.
+
+---
+
+### GLD POSITION REVIEW
+
+- Entry: $418.86 · Current: ~$413.33 · P/L: 7 × (−$5.53) = **−$38.71 (−1.32%)**
+- Stop $397.92: 3.7% below current price (protecting against further downside)
+- Trail stop? Current stop $397.92 is already SET. 5% trail from $413.33 = $392.66 → LOWER than existing stop. **Do NOT trail down. Existing stop is superior.**
+- Thesis: Dollar weakness hedge + macro uncertainty. Iran ceasefire removes geopolitical risk premium but dollar weakness component keeps GLD bid.
+- **Decision: HOLD. No action needed.** GLD is not up >15% (down −1.3%), so no partial profit consideration.
+
+---
+
+### ACTIVE WATCHLIST NAME ASSESSMENT (Afternoon — no new entries per routine rules)
+
+Per afternoon.md: "Active-trading catch-up: do NOT initiate new active-bucket entries this routine — too close to close." All watchlist skips cite Exemption: afternoon proximity-to-close.
+
+```yaml
+---
+ts: 2026-06-02T18:10:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.67
+thesis: MRVL +28.9% today to ~$283 on Jensen Huang "next trillion-dollar company" + Teralynx T100 launch. Pre-scored 7.67 for Pre-Market June 3. Skip today: afternoon proximity-to-close + technically overbought after 28.9% single-session gap.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 9
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: rejected
+master_notes: |
+  SKIP — afternoon proximity-to-close rule (afternoon.md: no new active entries this routine). Jensen Huang Computex 2026 catalyst is exceptional: "next trillion-dollar company" + Teralynx T100 (102.4 Tbps AI-optimized switch = world's first). MRVL has moved from $201 (May 29 target) to $283 — a 40.8% gain since our last routine. This is the single largest missed gain in this portfolio's history.
+  
+  Technical = 5 (Stochastic >90; MACD extended; RSI ~85+; overbought across all timeframes after 28.9% single-day). However the catalyst is real and structural: Jensen's endorsement + MRVL's custom ASIC hyperscaler pipeline means institutional FOMO is rational.
+  
+  Pre-Market June 3: Full fresh 6-agent re-score. Entry approach: (1) if MRVL pulls back to $265–$270 support zone overnight/pre-market, enter 5sh there with standard -5% stop. (2) if MRVL holds $275+ at open with 2/5 indicator confirmation, enter 5sh at ask+0.5%. (3) if MRVL selling off hard (<$255), skip — setup broken.
+  
+  Sizing at $283: 5sh × $283 = $1,415 = 1.41% ≤5% ✓. Stop: $268.85 (-5%). Target: $325.45 (+15%). R/R 3:1 ✓. Trade risk: $14.15 × 5 = $70.75 = 0.07% ✓.
+  
+  API BLOCKED (HTTP 403) — order would have been blocked regardless. X sentiment: not callable (API unavailable), inferred as EXTREMELY BULLISH given Jensen Huang's direct endorsement from Computex stage.
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:10:01Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 8.0
+thesis: AMD ~$510.13 (−1.16% today). Prior score 8.0 unchanged. 15th consecutive mandatory entry. Skipping per afternoon proximity-to-close rule.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  SKIP — afternoon proximity-to-close. Score 8.0, APPROVED. AMD pulling back −1.16% in a slightly down market (normal consolidation after ATH run). Thesis fully intact: Rocket One AI partnership; Jensen Huang $200B agentic CPU TAM; EPYC market share gains.
+  Pre-Market June 3: 9sh limit at ask+0.5% (~$512.55 from ~$510), stop $487.16 (-5%), target $589.43 (+15%), bracket GTC. Position: 9×$512 = $4,608 = 4.61% ✓. Risk: $25.39×9 = $228.51 = 0.23% ✓. API BLOCKED regardless (HTTP 403, 24th+ session).
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:10:02Z
+action: skip
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 8.0
+thesis: MU ~$1,036 (ATH, +0.06% today). Prior score 8.17. Re-sized to 4sh (5sh × $1,040 = $5,200 = 5.2% exceeds 5% guardrail). Skipping per afternoon proximity-to-close rule.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  SKIP — afternoon proximity-to-close. Score 8.0, APPROVED. MU at ATH ~$1,036, up from $923 target (missed +12.2%). UBS $1,625 PT intact. AI memory demand cycle confirmed by MRVL Q1 beat + HPE +40% AI server revenue.
+  Pre-Market June 3: MANDATORY SIZE ADJUSTMENT — 4sh (not 5sh, which would be $5,200 = 5.2% > 5% limit). Entry: 4sh limit at ask+0.5% (~$1,041.18), stop $988.95 (-5%), target $1,197.36 (+15%), bracket GTC. Position: 4×$1,041 = $4,164 = 4.16% ✓. Risk: $52.23×4 = $208.92 = 0.21% ✓. API BLOCKED regardless.
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:10:03Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.0
+thesis: PLTR ~$158.15 (+14.1% above prior $138.62 entry target). Some thesis may be priced in. Pre-scored 7.0 (reduced from 7.5 due to elevated price and partial momentum priced in). Full re-score needed at Pre-Market June 3.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  SKIP — afternoon proximity-to-close. Pre-scored 7.0 (borderline — reduced from prior 7.5 at $138 because +14.1% of thesis priced in, technical elevated). Still meets ≥7 threshold.
+  Pre-Market June 3: Full 6-agent re-score with fresh data at $158 price level. If confirmed ≥7: 10sh limit at ask+0.5% (~$159.74), stop $151.75 (-5%), target $183.71 (+15%), bracket GTC. Position: 10×$159 = $1,590 = 1.59% ✓. Risk: $7.99×10 = $79.90 = 0.08% ✓. API BLOCKED regardless.
+---
+```
+
+```yaml
+---
+ts: 2026-06-02T18:10:04Z
+action: skip
+symbol: BTC/USD
+bucket: crypto
+setup: crypto-flush-rebound
+score: 4.5
+thesis: BTC ~$67,468–$69,350 (DOWN ~6% today, below $70K for first time since April). WAY below $82K mandatory entry threshold. Capital rotating from crypto into AI equities.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 4
+  technical: 4
+  sentiment: 3
+  macro: 4
+  risk: 7
+  tech_analyst: 5
+agent_average: 4.5
+agents_above_7: 1
+master_decision: rejected
+master_notes: |
+  REJECTED — BTC ~$68K, down ~6% today. Below $70K for first time since April. $82K threshold not met. Score 4.5 << 7 minimum. Institutional flows rotating FROM crypto INTO AI equities (MRVL, NVDA, HPE all surging on Computex AI spend confirmation). ETH also under pressure. No crypto entry. Crypto bucket remains 0% deployed. Re-evaluate if BTC recovers above $75K with technical confirmation.
+---
+```
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (June 3, 2026)
+
+**BINDING PRE-MARKET COMMITMENT — ALL THREE MUST BE ATTEMPTED UNLESS GUARDRAIL APPLIES:**
+
+| # | Symbol | Setup | Pre-Score | Entry Plan | Notes |
+|---|---|---|---|---|---|
+| 1 | MRVL | earnings-reaction-follow | **7.67** | 5sh @ ask+0.5% (~$285 if holds), stop −5%, target +15% | Fresh 6-agent at Pre-Market. If pulled back to $265–$270, enter there. If <$255, SKIP. |
+| 2 | AMD | breakout-volume | **8.0** | 9sh @ ~$512, stop $487, target $589 | 15th mandatory entry. MUST enter unless guardrail breach. |
+| 3 | MU | breakout-volume | **8.0** | 4sh @ ~$1,041, stop $989, target $1,197 | SIZE CHANGE: 4sh (not 5sh — 5sh at ~$1,041 = $5,205 = 5.21% > 5% limit). |
+| 4 | PLTR | ai-momentum-pullback | **7.0** | 10sh @ ~$160, stop $152, target $184 | Full re-score at Pre-Market with $158 price. Only enter if confirmed ≥7. |
+
+**Key risks for June 3:**
+- MRVL could face profit-taking after 28.9% surge — watch $265 support
+- AMD + MU sector concentration: combined semis = ~8.8% after both filled (≤25% cap ✓)
+- BTC: Do NOT enter crypto bucket until BTC recaptures $82K
+- HPE: Not in watchlist but confirms AI server spend — supportive macro for all names
+- Earnings to watch: No watchlist names reporting near-term. MU next earnings: June 24 → 48h window opens June 22 (do not enter new MU after June 22 close)
+
+---
+
 ## 2026-05-29 — Market Open (9:45 AM ET / 13:45 UTC)
 
 **PREDECESSOR CHECK — PRE-MARKET SILENTLY FAILED TODAY**
