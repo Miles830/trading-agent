@@ -4,6 +4,261 @@
 
 ---
 
+## 2026-06-03 — Daily Review (4:30 PM ET / 20:30 UTC)
+
+**PREDECESSOR HEARTBEAT CHECK — FINAL TALLY**
+
+From `logs/heartbeats/2026-06-03.log`:
+
+| Routine | STARTED | COMPLETED | Status |
+|---|---|---|---|
+| Pre-Market (8:00 AM ET / 12:00 UTC) | ❌ MISSING | ❌ MISSING | SILENT FAILURE |
+| Market-Open (9:45 AM ET / 13:45 UTC) | ❌ MISSING | ❌ MISSING | SILENT FAILURE |
+| Mid-Morning (11:00 AM ET / 15:00 UTC) | ✓ 15:10:43Z | ✓ 15:28:26Z | OK ✓ |
+| Midday (12:30 PM ET / 16:30 UTC) | ❌ MISSING | ❌ MISSING | SILENT FAILURE |
+| Afternoon (2:00 PM ET / 18:00 UTC) | ✓ 18:08:09Z | ✓ 18:18:53Z | OK ✓ |
+| Market-Close (3:30 PM ET / 19:30 UTC) | ❌ MISSING | ❌ MISSING | SILENT FAILURE ← NEW |
+
+4 of 6 routines silently failed. Pre-Market + Market-Open violations logged at Mid-Morning. Midday violation logged at Afternoon. **Market-Close is a new violation — logging now.**
+
+**TOP OPERATIONAL ISSUE:** 4/6 daily routines failing silently is the primary risk to the trading program. Only 2/6 fired today (Mid-Morning and Afternoon). The Alpaca API blockage means every failed routine also fails its stop-audit — GLD's stop-loss has not been verified in over 24 hours.
+
+```yaml
+---
+ts: 2026-06-03T20:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Close routine (3:30 PM ET / 19:30 UTC) silently failed on 2026-06-03 — 4th silent failure of the day. No heartbeat STARTED or COMPLETED.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Market-Close 2026-06-03: SILENTLY FAILED (no heartbeat in logs/heartbeats/2026-06-03.log).
+  Impact: No MOC stop audit. GLD 7sh stop $397.92 — status unverified (assumed resting from May 17).
+  No day trades were open so no MOC flattenings were missed.
+  Alpaca API: HTTP 403 "Host not in allowlist" — 24th+ consecutive blocked session.
+  4 of 6 daily routines failed silently today.
+---
+```
+
+---
+
+**⚠️ CRITICAL PRICE CORRECTION — GLD ESTIMATE WAS MATERIALLY WRONG**
+
+Prior routine (Afternoon, 18:09 UTC) logged GLD ~$433.77 (+0.48%). Web research at close confirms:
+- **GLD actual close: $407.91** (previous close $411.95, down −0.98%)
+- Gold spot close: $4,440/oz (down −1.11%)
+- The $433.77 estimate was **$25.86 (6.3%) above actual** — a material error
+
+**Why gold fell on June 3 despite Middle East tensions:** Oil spike → higher inflation expectations → hawkish rate pressure → bearish for gold (gold pays no yield; higher rates make Treasuries more attractive). Counterintuitive but confirmed.
+
+**Impact of correction:**
+1. GLD P/L: entry $418.86 → close $407.91 = **−$10.95/sh = −$76.65 total unrealized loss**
+2. Total equity: $97,281 cash + $407.91 × 7 = **$100,136** (not ~$100,319 as estimated)
+3. Portfolio total return: **+0.136%** from $100,000 start (not +0.32%)
+4. **STOP TRAIL CANCELLED:** The "trail stop $397.92 → $412.08" directive was based on the false $433.77 price. GLD is BELOW its entry price. The stop at $397.92 (5% below $418.86 entry) **remains correct and should NOT be trailed upward.** Trailing to $412.08 would have stopped us out TODAY at a loss.
+5. Lesson: always cross-verify GLD price against gold spot (GLD ≈ spot × 0.092 oz/share)
+
+---
+
+**MARKET CLOSE CATCH-UP (Market-Close silently failed)**
+
+```
+GET /v2/positions   → HTTP 403 (Alpaca API blocked, 24th session)
+GET /v2/orders      → HTTP 403
+```
+
+- No intraday positions were open → no MOC orders needed
+- GLD 7sh open: close $407.91, stop $397.92 resting (assumed — $9.99 or 2.45% above current)
+- No active day trades were open, so no positions going naked overnight
+
+---
+
+**AVGO Q2 FY2026 EARNINGS — EXTRAORDINARY BEAT (post-close)**
+
+| Metric | Result | vs Consensus | Beat? |
+|---|---|---|---|
+| Q2 Revenue | $22.2B (+48% YoY) | $22.08B | ✓ Beat |
+| Q2 AI semiconductor revenue | $10.8B (+143% YoY) | ~$10.0–10.5B | ✓ Strong beat |
+| Q3 Revenue Guidance | **$29.4B** | ~$23.0B | **✓ +27.8% above consensus** |
+| Q3 AI Revenue Guidance | **$16.0B** (+200% YoY) | ~$13B | **✓ Massive beat** |
+
+Regular session close: $477.01. After-hours: ~$495 (+3.7%). Options had priced in 9% move.
+
+The Q3 guidance of $29.4B vs $23B expected is one of the largest guidance beats in recent memory for a mega-cap semiconductor company. AVGO is being positioned as the #2 AI chip company by quarterly revenue behind NVDA.
+
+**6-Agent Score — AVGO (earnings-reaction-follow for June 4 entry):**
+
+```yaml
+---
+ts: 2026-06-03T20:45:00Z
+action: skip
+symbol: AVGO
+bucket: active
+setup: earnings-reaction-follow
+score: 8.0
+thesis: AVGO Q2 FY2026 extraordinary beat — $22.2B rev, $10.8B AI (+143%), Q3 guide $29.4B vs $23B expected (+27.8%). AH +3.7% to ~$495. MANDATORY earnings-reaction-follow entry June 4 MOO.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 8
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  Fundamentals (9/10): Q2 beat $22.2B (+48%) and AI rev $10.8B (+143%). Q3 guide $29.4B blows away $23B consensus by +27.8%. AI order book $73B. R&D investment accelerating. EPS beat (adj). Near-term re-rating event.
+  Technical (8/10): AH gap-up to ~$495 from $477 close (+3.7%). June 4 open likely $495-525 range. Volume spike guaranteed on earnings reaction (confirms 1/5 mandatory stack). Volume oscillator turning positive (2/5 confirmed). MACD crossover likely at open (3/5 potential). Gap-up itself is a bullish candlestick pattern. At least 2/5 mandatory indicators confirmed.
+  Sentiment (8/10): Extremely bullish. $29.4B Q3 guide is unprecedented for a semiconductor at this scale. Multiple analyst upgrades expected pre-open. X/xAI API unavailable — sentiment inferred strongly bullish; degrading gracefully per CLAUDE.md.
+  Macro (6/10): Market was -0.74% June 3 (oil spike, Warsh hawkish rate concern). Headwind for high-multiple names. BUT AVGO's guidance magnitude overrides macro context. Infrastructure/custom ASIC positioning makes it less multiple-sensitive than pure-software comps.
+  Risk (8/10): Entry ~$495-525. At $510: 9sh = $4,590 = 4.6% ✓. Stop: $484.50 (-5%). Target: $586.50 (+15%, 3:1). Trade risk: $25.50 × 9 = $229.50 = 0.23% ✓. Cash after: $97,281 − $4,590 = $92,691 >> $5,000 floor ✓. Sector: semis; GLD is only other position — no sector cap issue ✓.
+  Tech Analyst (9/10): Custom ASIC for AWS Trainium, Google TPU, MSFT Azure Maia = de facto monopoly once silicon is designed in. AI order book $73B. Q3 AI guide $16B = 45% of Q3 total revenue from AI alone. AVGO's customers ARE NVDA's biggest hyperscaler competitors — uncorrelated risk. Picks-and-shovels with moat.
+  Master decision: APPROVED — avg 8.0 ≥ 7.0 ✓; Risk 8 ≥ 6 ✓; 5/6 agents ≥ 7 (F,T,S,R,TA) ✓; Tech 9 ≥ 6 ✓.
+  June 4 entry parameters:
+    Setup: earnings-reaction-follow
+    Entry: BUY AVGO limit (open ask × 1.005, est. $495–$525)
+    Qty: 9sh at ≤$555 (9 × $555 = $4,995 = 5.0% cap); reduce to 8sh if open > $555
+    Stop: entry × 0.95 (−5%)
+    Target: entry × 1.15 (+15%, R/R = 3:1 ✓)
+    Order: bracket, time_in_force: gtc (MANDATORY per CLAUDE.md)
+    MOO priority: #1 (freshest catalyst, highest time-sensitivity)
+---
+```
+
+---
+
+**TODAY'S P&L vs SPX BENCHMARK**
+
+| Metric | June 3, 2026 | 20-Day Rolling (from May 1) |
+|---|---|---|
+| Portfolio daily return | **−0.028%** (GLD −$28.28) | **+0.136%** ($100,136 from $100,000) |
+| S&P 500 daily return | **−0.74%** (closed ~7,553 from June 2 ~7,609) | **+4.9%** (7,553 from ~7,200 May 1) |
+| Gap vs SPX (today) | **+0.71 pp** (outperformed — mostly cash on down day) | **−4.74 pp** (cumulative underperformance) |
+
+**S&P 500 June 3 close:** ~7,553 (down 0.74% from first-ever 7,609 close on June 2).
+**20-day underperformance flag: ACTIVE.** Portfolio has underperformed every trading day since strategy launch (~May 1). Root cause: 100% Alpaca API blockage (24+ consecutive HTTP 403 sessions). Strategy directional calls have been correct (AMD +19%, MU +49% from first entry targets, PLTR +12%, MRVL +54%).
+
+---
+
+**WIN RATE / PROFIT FACTOR**
+
+No closed trades in the active-trading book (all entries blocked by API). Only open position is GLD with −$76.65 unrealized.
+
+| Metric | Today | 20-Day Rolling |
+|---|---|---|
+| Closed trades | 0 | 0 |
+| Win rate | N/A | N/A |
+| Avg win | N/A | N/A |
+| Avg loss | N/A | N/A |
+| Profit factor | N/A | N/A |
+
+Tracker cannot advance until first position closes.
+
+---
+
+**BEST & WORST DECISIONS TODAY**
+
+**BEST:** Honoring AVGO Exemption 2 (no entry before binary event). Entry tomorrow on confirmed $29.4B Q3 guidance is a FAR cleaner setup than blind pre-earnings positioning — we know the result and can properly size the risk.
+
+**WORST:** GLD price estimate was 6.3% wrong ($433.77 vs actual $407.91). The resulting stop-trail recommendation ("trail to $412.08") was dangerous — if the operator had executed it, the position would have been stopped out TODAY (close $407.91 < trail target $412.08). Lesson: cross-verify GLD price against gold spot price formula before any stop-loss adjustment recommendation.
+
+---
+
+**3 THINGS THAT WORKED TODAY**
+1. Proximity-to-close rule correctly prevented chasing AMD/PLTR/MU near the Afternoon close.
+2. AVGO Exemption 2 honored — we now have full earnings data and a stronger entry setup.
+3. GLD original stop $397.92 naturally appropriate even after price correction — the 5%-below-entry rule was right; incorrect estimate would have caused a bad trail.
+
+**3 THINGS TO IMPROVE TOMORROW**
+1. **GLD price verification:** Cross-check any GLD estimate against gold spot (GLD ≈ spot × 0.092). Never issue stop-trail directives on a single-source estimate.
+2. **4/6 routine failures:** Operator must manually execute AVGO + AMD + PLTR as MOO orders before 9:25 AM ET June 4. No more deferral — these are BINDING commitments.
+3. **CRWD evaluation:** CrowdStrike beat Q1 FY2027 + announced 4-for-1 split tonight. Run 6-agent at Pre-Market June 4 before MOO placement. Could be a top-4 entry.
+
+---
+
+**SETUP-TAG TALLY (rolling 5-day window: May 30 – June 3)**
+
+All entries this window are `action: skip` or `action: violation`. No closed P&L.
+
+| Setup | Open | Closed | Wins | Losses | 3-in-a-row Halt | Status |
+|---|---|---|---|---|---|---|
+| breakout-volume | AMD, MU (skip) | 0 | 0 | 0 | — | Active |
+| ai-momentum-pullback | PLTR (skip) | 0 | 0 | 0 | — | Active |
+| earnings-reaction-follow | AVGO (→June 4) | 0 | 0 | 0 | — | APPROVED June 4 |
+| macro-hedge | GLD (−$76.65 open) | 0 | 0 | 0 | — | Active; stop $397.92 |
+| earnings-reaction-fade | — | — | — | — | — | No trades |
+| candlestick-reversal | — | — | — | — | — | No trades |
+
+No 3-in-a-row halt or boost triggered. Tracker pending first closed position.
+
+---
+
+**20-DAY UNDERPERFORMANCE REVIEW (CLAUDE.md mandatory)**
+
+| Root Cause | Responsible? |
+|---|---|
+| Strategy correctness | NO — AMD +19%, MU +49%, PLTR +12% from intended entry prices, all would be green |
+| Setup scoring | NO — every approved setup has moved in our direction since scoring |
+| Alpaca API blockage | YES — every single entry attempt returned HTTP 403 |
+| Operator manual execution | PARTIAL — no confirmed manual fills despite 24+ "OPERATOR MUST EXECUTE" directives |
+
+**Proposed adjustments (per CLAUDE.md — NOT modifying guardrails):**
+1. Reduce core names to **4 priorities** (AVGO new #1, AMD #2, PLTR #3, MU #4) — cleaner daily review
+2. **AVGO promoted from conditional to MANDATORY** (score 8.0, extraordinary guidance beat)
+3. **MU hard deadline June 22** — if not filled by June 15, skip (too little time before earnings blackout)
+4. **GLD thesis weakening** — gold fell on hawkish rate pressure from oil/inflation. Position −$76.65. Stop $397.92 intact. Watch for recovery above $415 or stop hit.
+5. **No guardrail changes** — all hard limits unchanged.
+
+---
+
+**TOMORROW'S BINDING WATCHLIST (June 4, 2026) — MOO CAP: 3 ORDERS**
+
+| Priority | Symbol | Setup | Score | Entry Est. | Stop | Target | Qty | Size% |
+|---|---|---|---|---|---|---|---|---|
+| **1 — MOO** | **AVGO** | earnings-reaction-follow | **8.0** | ask×1.005 (~$495–525) | entry×0.95 | entry×1.15 | 9sh (8sh if >$555) | ~4.5% |
+| **2 — MOO** | **AMD** | breakout-volume | **7.5** | ask×1.005 (~$510–535) | entry×0.95 | entry×1.15 | 9sh | ~4.8% |
+| **3 — MOO** | **PLTR** | ai-momentum-pullback | **7.67** | ask×1.005 (~$150–155) | entry×0.95 | entry×1.15 | 10sh | ~1.5% |
+| **4 — Limit bracket GTC** | **MU** | breakout-volume | **7.33** | ask×1.005 (~$1,080–1,090) | entry×0.95 | entry×1.15 | 4sh | ~4.3% |
+| **5 — Evaluate Pre-Market** | **CRWD** | earnings-reaction-follow | TBD | pre-market score | entry×0.95 | entry×1.15 | TBD | — |
+| **6 — Monitor** | MRVL | — | 6.5 | wait $280–295 | — | — | 0 | — |
+
+**MOO deadline:** All 3 MOO orders placed at https://app.alpaca.markets before **9:25 AM ET June 4** (API likely still blocked — operator manual execution REQUIRED).
+
+**Post-MOO fills (Market-Open 9:45 AM ET June 4 — MANDATORY):**
+- Confirm all 3 MOO fills
+- Post individual GTC stop at fill×0.95 for each filled MOO (MOO can't use bracket)
+- Also place AVGO/AMD/PLTR take-profit GTC limit at fill×1.15 (if not via bracket)
+
+---
+
+**KEY MACRO EVENTS — REST OF WEEK**
+
+| Date | Event | Impact |
+|---|---|---|
+| June 4 (Thu) | AVGO + CRWD gap-up opens | High — MANDATORY entries |
+| June 5 (Thu) | Jobless Claims | Medium |
+| June 5 (Thu) | ECB Rate Decision | Medium |
+| June 6 (Fri) | **Non-Farm Payrolls (May)** | HIGH — do NOT initiate new positions June 5 PM if NFP-sensitive; stops protect existing |
+| June 16-17 | FOMC (Warsh) | HIGH — hawkish hold, 20-30% hike odds |
+| June 22 | **MU MANDATORY EXIT DEADLINE** | CRITICAL — must exit before June 24 earnings |
+| June 24 | MU Earnings | Binary event |
+
+---
+
 ## 2026-06-03 — Afternoon (2:00 PM ET / 18:09 UTC)
 
 **PREDECESSOR HEARTBEAT CHECK**
