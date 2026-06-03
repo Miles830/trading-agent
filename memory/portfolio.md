@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-03 (Wednesday) — Afternoon (2:00 PM ET / 18:09 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 24th consecutive blocked session). Midday SILENTLY FAILED (new violation logged). Market: S&P ~7,545 (est. −0.60% from June 1-2 records). AMD hit new ATH $533.82 (vs $524.15 limit at Mid-Morning — would have filled if API not blocked). PLTR ~$149–$150 (pullback from $159.52 high). MU ~$1,010–$1,040 (consolidating). GLD ~$433.77 (+0.48% — oil/Iran bid). AVGO reporting earnings TONIGHT after close (Q2 FY2026; consensus $22.08B rev, $2.39 EPS) — full 6-agent assessment at Pre-Market June 4. No new active entries this routine (proximity-to-close rule). GLD stop must trail $397.92 → $412.08. Cumulative gap vs SPX: ~−5.5 pp (est.). Tomorrow binding watchlist: AMD ($533.82 ATH, MANDATORY — 17th attempt), AVGO (conditional on tonight's print), PLTR (MANDATORY), MU (MANDATORY).**
+**2026-06-03 (Wednesday) — Market Close (3:30 PM ET / 19:37 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 25th consecutive blocked session). Pre-Market, Market-Open, Midday all SILENTLY FAILED (all violations logged). Market: S&P ~7,545 close est. (−0.60% from June 2 record close ~7,601). AMD close ~$533-534 (ATH $533.82 — Barclays $665 + TD Cowen $600 — 17th attempt blocked via MOC). PLTR close ~$149.50 (pulled back from $159.52 intraday high). MU close ~$1,020 (consolidating below ATH $1,064). GLD ~$433.77 (+0.48% — oil/Iran bid). AVGO earnings TONIGHT after close (conf call 5 PM ET) — 6-agent at Daily Review + Pre-Market June 4. Three MOC orders attempted (AMD 9sh, PLTR 10sh, MU 4sh) — all HTTP 403. GLD stop at $397.92 (MUST TRAIL TO $412.08 — OPERATOR CRITICAL). Cumulative gap vs SPX: ~−4.5 pp. Tomorrow binding watchlist: AVGO (conditional), AMD (MANDATORY — 18th attempt), PLTR (MANDATORY), MU (MANDATORY, exit by June 22).**
+
+**Prior Last Updated:** 2026-06-03 (Wednesday) — Afternoon (2:00 PM ET / 18:09 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 24th consecutive blocked session). Midday SILENTLY FAILED (new violation logged). Market: S&P ~7,545 (est. −0.60% from June 1-2 records). AMD hit new ATH $533.82 (vs $524.15 limit at Mid-Morning — would have filled if API not blocked). PLTR ~$149–$150 (pullback from $159.52 high). MU ~$1,010–$1,040 (consolidating). GLD ~$433.77 (+0.48% — oil/Iran bid). AVGO reporting earnings TONIGHT after close (Q2 FY2026; consensus $22.08B rev, $2.39 EPS) — full 6-agent assessment at Pre-Market June 4. No new active entries this routine (proximity-to-close rule). GLD stop must trail $397.92 → $412.08. Cumulative gap vs SPX: ~−5.5 pp (est.). Tomorrow binding watchlist: AMD ($533.82 ATH, MANDATORY — 17th attempt), AVGO (conditional on tonight's print), PLTR (MANDATORY), MU (MANDATORY).**
 
 **Prior Last Updated:** 2026-06-03 (Wednesday) — Mid-Morning (11:00 AM ET / 15:10 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 23rd+ consecutive blocked session). Pre-Market and Market-Open BOTH silently failed today. June 1 and June 2 also had ALL routines silently fail (June 1: heartbeat log empty; June 2: no heartbeat log). Two violations logged. Full catch-up with fresh 6-agent analysis executed. Three limit bracket GTC order attempts (AMD 9sh $524.15, PLTR 10sh $150.74, MU 4sh $1,033.14) — ALL HTTP 403. MRVL REJECTED (Risk auto-veto: stop $295 within today's intraday low $294; avg 6.83 < 7; only 3/6 agents ≥7). Market: S&P −0.14% (~7,590 — pulling back from June 1-2 record highs), Dow −0.56%, Nasdaq +0.01%. OIL SPIKE: back toward $100 (US-Iran ceasefire in doubt — heavy fire overnight). ADP May: +122K (above +117K est.). GLD: ~$434 (strongly bid on oil/Iran geopolitical premium — up 5.2% from May 29). AMD $521 (Strong Buy upgrade June 3, Barclays PT $665). MU ~$1,028 (ATH $1,064 June 2; earnings June 24 — exit by June 22). MRVL $309 (Jensen Huang "next trillion" + Teralynx T100 — +33% single day June 2; skipped — too extended). PLTR $149 (Q1 beat EPS $0.33 vs $0.27; NVDA partnership). BTC $67K (−7% 24h, below $82K). Cumulative gap vs SPX: ~−5.2 pp (est.).
 
@@ -602,12 +604,12 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 
 ## Next Routine Plan
 
-**Market Close June 3 (3:30 PM ET / 19:30 UTC — NEXT TODAY):**
-1. **Stop audit:** Verify GLD stop resting. Trail from $397.92 → $412.08 (OPERATOR).
-2. **No day trades to close** — no intraday positions open.
-3. **AVGO earnings watch:** Report expected ~4:30 PM ET (after close). Monitor for beat/miss.
-4. **No MOC orders needed** — no open day trades.
-5. **Stale order audit:** If any resting GTC orders from May 29 remain (AMD $520.59, MU $928.14, MRVL $202.19), cancel immediately.
+**Market Close June 3 (3:30 PM ET / 19:37 UTC — COMPLETED):**
+1. Stop audit: BLOCKED (API HTTP 403 — 25th consecutive). GLD stop unverifiable — estimated $397.92, MUST TRAIL to $412.08 (OPERATOR).
+2. No day trades to close — no intraday positions open.
+3. THREE MOC ENTRY ATTEMPTS: AMD 9sh, PLTR 10sh, MU 4sh — all HTTP 403. Mandatory output contract fulfilled. Responses captured in trades.md.
+4. AVGO binary event (Exemption 2) — no entry. Earnings report expected 4:30–5:00 PM ET tonight.
+5. Stale GTC cancellations: BLOCKED by API. OPERATOR must delete AMD $520.59, MU $928.14, MRVL $202.19 at https://app.alpaca.markets.
 
 **Daily Review June 3 (4:30 PM ET / 20:30 UTC):**
 1. **AVGO post-earnings assessment:** Run full 6-agent on actual Q2 FY2026 results.

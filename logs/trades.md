@@ -4,6 +4,230 @@
 
 ---
 
+## 2026-06-03 — Market Close (3:30 PM ET / 19:37 UTC)
+
+**PREDECESSOR HEARTBEAT CHECK**
+
+```
+grep "STARTED Pre-Market"   logs/heartbeats/2026-06-03.log → 0 results (SILENT FAILURE — logged at Mid-Morning)
+grep "STARTED Market-Open"  logs/heartbeats/2026-06-03.log → 0 results (SILENT FAILURE — logged at Mid-Morning)
+grep "STARTED Mid-Morning"  logs/heartbeats/2026-06-03.log → FOUND 15:10Z ✓ (completed 15:28Z)
+grep "STARTED Midday"       logs/heartbeats/2026-06-03.log → 0 results (SILENT FAILURE — logged at Afternoon)
+grep "STARTED Afternoon"    logs/heartbeats/2026-06-03.log → FOUND 18:08Z ✓ (completed 18:18Z)
+grep "STARTED Market-Close" logs/heartbeats/2026-06-03.log → FOUND 19:34Z ✓ (this routine)
+```
+
+All predecessor violations already logged (Pre-Market + Market-Open at Mid-Morning; Midday at Afternoon). No new violations to log.
+
+---
+
+**STOP AUDIT — BLOCKED (FIRST ACTION per CLAUDE.md)**
+
+```
+GET /v2/positions     → HTTP 403 "Host not in allowlist" (25th consecutive blocked session)
+GET /v2/orders?status=open → HTTP 403
+```
+
+GLD 7sh stop **$397.92** — unverifiable (estimated resting from May 17). Current GLD ~$433.77 = stop is −8.8% below market. CLAUDE.md requires −5% = $412.08. **GUARDRAIL VIOLATION: GLD stop not trailed.** OPERATOR: cancel $397.92 stop, place 7sh GLD stop GTC at $412.08 IMMEDIATELY at https://app.alpaca.markets.
+
+---
+
+**DAY TRADES TO CLOSE: NONE** — GLD is an overnight swing hold. No day trades opened today. No MOC close orders required for existing positions.
+
+---
+
+**MOC ENTRY ATTEMPTS — MANDATORY (Deployment Bias, MANDATORY OUTPUT CONTRACT)**
+
+Current time 19:37 UTC = 3:37 PM ET — before 3:50 PM MOC deadline. AMD (7.5), PLTR (7.67), MU (7.33) all scored ≥7. No valid Exemption 1/2/3 applies to these three names. Per CLAUDE.md "Deployment Bias" and the MANDATORY OUTPUT CONTRACT, POST /v2/orders must be attempted. All three attempts resulted in HTTP 403 "Host not in allowlist" (25th consecutive blocked session). Responses captured below.
+
+---
+
+**MOC ATTEMPT 1 — AMD (score 7.5 — MANDATORY 17th attempt)**
+
+```
+POST /v2/orders
+{"symbol":"AMD","qty":9,"side":"buy","type":"market","time_in_force":"cls"}
+→ HTTP 403: "Host not in allowlist"
+```
+
+Note: MOC fills at market close (~$532–534 est). Stop-loss must be placed at Market Open June 4 at fill × 0.95 per MOO workflow (MOC cannot use bracket). Est. stop ~$506.15, est. target ~$613.10 (3:1 R/R).
+
+```yaml
+---
+ts: 2026-06-03T19:37:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD ATH $533.82 June 3. Barclays PT $665, TD Cowen PT $600 Strong Buy. MOC entry attempted at market close — 17th consecutive session. HTTP 403 blocked.
+size_pct: 4.8
+stop: 506.15
+target: 613.10
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  MOC BUY 9sh AMD time_in_force=cls attempted 19:37 UTC (3:37 PM ET) — before 3:50 PM MOC deadline.
+  API RESPONSE: HTTP 403 "Host not in allowlist" — 25th consecutive blocked session.
+  Estimated MOC fill price: ~$533 (close near ATH $533.82). Stop: $533 × 0.95 = $506.35. Target: $533 × 1.15 = $612.95. R/R 3:1 ✓.
+  Position size: 9sh × $533 = $4,797 = 4.8% ✓ (10sh = $5,330 = 5.33% > 5% cap — correctly 9sh).
+  Trade risk: ($533 − $506.35) × 9 = $239.85 = 0.24% ✓.
+  Sector: semiconductors. After AMD + PLTR + MU: est. semis/tech ~$10.4K = 10.4% << 25% cap ✓.
+  Cash after 3 entries: $97,281 − $4,797 − $1,495 − $4,080 = $86,909 = 86.9% >> 5% floor ✓.
+  OPERATOR MUST PLACE: BUY 9sh AMD limit at open ask × 1.005 (tomorrow June 4 Pre-Market) with bracket GTC stop −5% / target +15%.
+  xAI/X: API unavailable. X sentiment strongly bullish inferred (ATH, $665 PT, Strong Buy upgrade).
+---
+```
+
+---
+
+**MOC ATTEMPT 2 — PLTR (score 7.67 — MANDATORY)**
+
+```
+POST /v2/orders
+{"symbol":"PLTR","qty":10,"side":"buy","type":"market","time_in_force":"cls"}
+→ HTTP 403: "Host not in allowlist"
+```
+
+```yaml
+---
+ts: 2026-06-03T19:37:01Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: PLTR ~$149.50 close est. (pulled back from $159.52 intraday high). Q1 EPS $0.33 vs $0.27 beat, FY2026 guide $7.65B (+71% YoY), NVDA partnership. MOC entry attempted — HTTP 403 blocked.
+size_pct: 1.5
+stop: 142.03
+target: 171.93
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  MOC BUY 10sh PLTR time_in_force=cls attempted 19:37 UTC — before 3:50 PM MOC deadline.
+  API RESPONSE: HTTP 403 "Host not in allowlist" — 25th consecutive blocked session.
+  Estimated MOC fill: ~$149.50. Stop: $149.50 × 0.95 = $142.03. Target: $149.50 × 1.15 = $171.93. R/R 3:1 ✓.
+  Position size: 10sh × $149.50 = $1,495 = 1.5% ✓. Trade risk: $7.47 × 10 = $74.70 = 0.07% ✓.
+  Intraday pullback $159.52 → $149.50 = healthy consolidation in uptrend; confirms bullish thesis.
+  Stop-loss must be placed at Market Open June 4 at fill × 0.95 per MOC workflow.
+  OPERATOR MUST PLACE: BUY 10sh PLTR limit at open ask × 1.005 (tomorrow June 4) bracket GTC stop −5% / target +15%.
+  xAI/X: API unavailable. Bullish inferred (Q1 beat, NVDA partnership, government AI narrative).
+---
+```
+
+---
+
+**MOC ATTEMPT 3 — MU (score 7.33 — MANDATORY)**
+
+```
+POST /v2/orders
+{"symbol":"MU","qty":4,"side":"buy","type":"market","time_in_force":"cls"}
+→ HTTP 403: "Host not in allowlist"
+```
+
+```yaml
+---
+ts: 2026-06-03T19:37:02Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: MU ~$1,020 close est. Consolidating below ATH $1,064. UBS $1,625 PT, HBM4 sold out, AI memory supercycle. MOC entry attempted — HTTP 403 blocked. MANDATORY EXIT by June 22 (48h before June 24 earnings).
+size_pct: 4.1
+stop: 969.00
+target: 1173.00
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  MOC BUY 4sh MU time_in_force=cls attempted 19:37 UTC — before 3:50 PM MOC deadline.
+  API RESPONSE: HTTP 403 "Host not in allowlist" — 25th consecutive blocked session.
+  Estimated MOC fill: ~$1,020. Stop: $1,020 × 0.95 = $969.00. Target: $1,020 × 1.15 = $1,173.00. R/R 3:1 ✓.
+  Position size: 4sh × $1,020 = $4,080 = 4.1% ✓ (5sh = $5,100 = 5.1% > 5% cap — correctly 4sh).
+  Trade risk: $51 × 4 = $204 = 0.20% ✓. ⚠️ MANDATORY EXIT by June 22 (48h before June 24 earnings).
+  Stop-loss must be placed at Market Open June 4 at fill × 0.95 per MOC workflow.
+  OPERATOR MUST PLACE: BUY 4sh MU limit at open ask × 1.005 (tomorrow June 4) bracket GTC stop −5% / target +15%.
+  xAI/X: API unavailable. Strongly bullish inferred (ATH territory, UBS $1,625 PT, AI memory demand).
+---
+```
+
+---
+
+**AVGO BINARY EVENT — NO MOC ENTRY (Exemption 2, previously logged)**
+
+AVGO Q2 FY2026 earnings report tonight after close (conf call 5 PM ET). Exemption 2 logged at Afternoon routine. No new AVGO entry today. Full 6-agent assessment at Daily Review and Pre-Market June 4 based on actual print.
+
+---
+
+**STALE GTC ORDER STATUS — BLOCKED (cannot cancel via API)**
+
+Orders from May 29 that may still be resting on Alpaca (all unverifiable — API blocked):
+- AMD GTC limit $520.59 (May 29) — STALE (AMD now ~$533.82). OPERATOR: DELETE.
+- MU GTC limit $928.14 (May 29) — STALE (MU now ~$1,020). OPERATOR: DELETE.
+- MRVL GTC limit $202.19 (May 29) — CRITICALLY STALE (MRVL now ~$309). OPERATOR: DELETE IMMEDIATELY.
+- AMD GTC limit $524.15 (June 3 Mid-Morning) — STALE (price moved; superseded by today's MOC attempt).
+
+---
+
+**MARKET CLOSE SUMMARY — June 3, 2026**
+
+- **S&P 500 close est.:** ~7,545 (−0.60% from June 2 record close ~7,601). Nasdaq −0.20%, Dow −0.56%. Market consolidating after June 1–2 ATH records.
+- **AMD close:** ~$533–534 (near ATH $533.82). Barclays $665 + TD Cowen $600 Strong Buy drove intraday breakout. 17th blocked entry.
+- **PLTR close:** ~$149.50 (pulled back from $159.52 intraday high — healthy consolidation).
+- **MU close:** ~$1,020 (below ATH $1,064 — constructive consolidation ahead of June 24 earnings).
+- **GLD close:** ~$433.77 (+0.48% — oil/Iran geopolitical bid sustained).
+- **AVGO:** ~$413–420 heading into close. Earnings report tonight AH (~5 PM ET conf call). Key metrics: revenue vs $22.08B est., AI chip rev vs $10.5B est., FY2026 guidance.
+- **BTC:** ~$67,000 (below $82K threshold — no crypto entry).
+- **Circuit breaker:** NOT TRIPPED. S&P ~7,545 vs threshold ~7,373 (3% below ~7,601).
+
+**TODAY'S P&L:**
+- GLD unrealized: +$104.37 (+3.56% from $418.86 entry)
+- All new entries: BLOCKED (HTTP 403 — 25th consecutive session)
+- Total portfolio equity: ~$100,324
+- Daily P&L: +~$104 (~+0.10% on portfolio)
+- S&P 500 today: −0.60%; Portfolio today: ~+0.10% → **+0.70 pp relative today**
+- Cumulative gap vs SPX: ~**−4.5 pp** (portfolio +0.32% vs SPX +4.79% since ~May 1)
+
+**OVERNIGHT POSITIONS:**
+| Symbol | Qty | Entry | Stop (Alpaca — unverifiable) | Req Stop | Est. Price | Est. P/L |
+|---|---|---|---|---|---|---|
+| GLD | 7 | $418.86 | $397.92 (⚠️ TRAIL TO $412.08) | $412.08 | ~$433.77 | +$104.37 |
+
+**TOMORROW PRE-MARKET June 4 — BINDING WATCHLIST:**
+1. **AVGO** — assess post-print (5 PM ET call tonight). MANDATORY if beats ($22B+ rev, $10.5B+ AI rev, guidance raise). MOO or limit bracket GTC, 5–7sh, `earnings-reaction-follow`.
+2. **AMD** — MANDATORY (18th attempt). Limit = open ask × 1.005. 9sh bracket GTC. Stop −5%, target +15%.
+3. **PLTR** — MANDATORY. Limit = open ask × 1.005. 10sh bracket GTC. Stop −5%, target +15%.
+4. **MU** — MANDATORY. Limit = open ask × 1.005. 4sh bracket GTC. Stop −5%, target +15%. EXIT by June 22.
+
+---
+
 ## 2026-06-03 — Afternoon (2:00 PM ET / 18:09 UTC)
 
 **PREDECESSOR HEARTBEAT CHECK**
