@@ -4,6 +4,170 @@
 
 ---
 
+## 2026-06-03 — Midday (12:30 PM ET / 16:34 UTC)
+
+**PREDECESSOR CHECK — MID-MORNING FIRED ✓**
+
+```
+grep "STARTED Midday" logs/heartbeats/2026-06-03.log → 2026-06-03T16:34:28Z STARTED Midday ✓
+grep "COMPLETED Mid-Morning" logs/heartbeats/2026-06-03.log → 2026-06-03T15:28:26Z COMPLETED Mid-Morning ✓
+```
+Mid-Morning ran and completed (15:10–15:28Z). No predecessor violation. Full 6-agent analysis was completed in Mid-Morning for all watchlist names (AMD 7.5 APPROVED, PLTR 7.67 APPROVED, MU 7.33 APPROVED, MRVL 6.83 REJECTED, BTC 4.17 REJECTED). All three approved orders blocked by HTTP 403.
+
+**STOP AUDIT — BLOCKED (Action 1 per CLAUDE.md)**
+
+`GET /v2/orders?status=open` → **HTTP 403 "Host not in allowlist"** (24th consecutive session)
+`GET /v2/positions` → **HTTP 403**
+
+GLD 7sh stop status: Cannot verify — estimated resting from May 17 placement at $397.92. GLD ~$434 (oil/Iran tensions bid). Stop MUST be trailed to $412.30 (5% below current $434). Operator: update at https://app.alpaca.markets.
+
+**MIDDAY MARKET ASSESSMENT (12:30 PM ET, ~16:34 UTC)**
+- S&P 500: ~7,585-7,595 (est. −0.1% to −0.2% vs prior close of ~7,601). Mild intraday drift. No circuit breaker — SPX would need to fall to ~7,373 to trigger 3% halt.
+- Oil: Spiking toward $100 (WTI). Iran tensions persist (ceasefire fragile). GLD bid continues.
+- Dow: −0.5% to −0.6% (large-cap financials soft). Nasdaq: flat to −0.1%. Russell 2000: +0.7% to +1.0% (small-cap rotation outperforming large cap).
+- AMD: ~$521-525 (est.) — strong AI CPU thesis; outperforming market today. Barclays $665 PT (raised June 1).
+- PLTR: ~$148-153 (est.) — Q1 beat, NVDA partnership; intraday pullback from $159.52 high = healthy profit-taking; thesis intact.
+- MU: ~$1,020-1,040 (est.) — ATH $1,064 (June 2); consolidating; HBM4 sold out; earnings June 24.
+- GLD: ~$433-436 (est.) — geopolitical bid on Iran/oil spike.
+- BTC: ~$66,000-68,000 (est.) — well below $82K threshold; no entry.
+
+**MIDDAY ORDER RE-ATTEMPTS — ALL BLOCKED HTTP 403**
+
+Same GTC bracket orders from Mid-Morning re-attempted at Midday. No price revision needed (all limits are GTC brackets; thesis unchanged since 11:10 AM):
+
+```bash
+# AMD re-attempt 16:35Z:
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" ... -d '{"symbol":"AMD","qty":9,...}' → HTTP 403
+# PLTR re-attempt 16:35Z:
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" ... -d '{"symbol":"PLTR","qty":10,...}' → HTTP 403
+# MU re-attempt 16:35Z:
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" ... -d '{"symbol":"MU","qty":4,...}' → HTTP 403
+```
+
+```yaml
+---
+ts: 2026-06-03T16:35:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD ~$521-525 (midday est.) — ATH continuation; analyst Strong Buy upgrade June 3; Barclays PT $665; Jensen Huang $200B agentic CPU TAM; EPYC primary beneficiary; outperforming market; 16th consecutive MANDATORY attempt
+size_pct: 4.72
+stop: 497.94
+target: 602.77
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) re-attempted 16:35Z → HTTP 403 "Host not in allowlist". 24th consecutive blocked session.
+  ORDER NOT PLACED ON ALPACA. Intended: BUY 9sh AMD limit $524.15, stop $497.94, target $602.77, order_class:bracket, time_in_force:gtc.
+  6-agent scores from Mid-Morning (15:13Z) remain valid — thesis unchanged since mid-morning.
+  Midday price estimate ~$521-525 — limit $524.15 may be in range if AMD has pulled back slightly from morning high. GTC bracket remains valid.
+  OPERATOR: MANDATORY — place BUY AMD 9sh limit $524.15, stop $497.94 (-5%), target $602.77 (+15%), bracket GTC. 9sh NOT 10sh.
+---
+```
+
+```yaml
+---
+ts: 2026-06-03T16:35:01Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: PLTR ~$148-153 (midday est.) — Q1 2026 EPS $0.33 beat; FY2026 guide $7.65B (+71% YoY); NVDA partnership; intraday hammer reversal from session high $159.52 → $149 low = mean-reversion entry; MANDATORY since May 29
+size_pct: 1.51
+stop: 143.20
+target: 173.35
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) re-attempted 16:35Z → HTTP 403 "Host not in allowlist". 24th consecutive blocked session.
+  ORDER NOT PLACED ON ALPACA. Intended: BUY 10sh PLTR limit $150.74, stop $143.20, target $173.35, order_class:bracket, time_in_force:gtc.
+  Midday assessment: PLTR intraday pullback from $159.52 → $149.99 (mid-morning) likely continuing or stabilizing at $148-152. This is healthy profit-taking on earnings gap-up. Q1 beat + 71% revenue growth + NVDA partnership = thesis intact.
+  The $150.74 limit is RIGHT at the day's low zone — excellent entry point if it fills. GTC bracket valid for remainder of session and carry to June 4 if needed.
+  OPERATOR: MANDATORY — place BUY PLTR 10sh limit $150.74, stop $143.20 (-5%), target $173.35 (+15%), bracket GTC.
+---
+```
+
+```yaml
+---
+ts: 2026-06-03T16:35:02Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: MU ~$1,020-1,040 (midday est.) — ATH territory (June 2 ATH $1,064); UBS $1,625 PT; HBM4 sold out; Raymond James PT $1,100; consolidating near ATH = healthy; earnings June 24 (mandatory exit June 22)
+size_pct: 4.13
+stop: 981.48
+target: 1188.11
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) re-attempted 16:35Z → HTTP 403 "Host not in allowlist". 24th consecutive blocked session.
+  ORDER NOT PLACED ON ALPACA. Intended: BUY 4sh MU limit $1,033.14, stop $981.48, target $1,188.11, order_class:bracket, time_in_force:gtc.
+  Midday estimate: MU range today $1,009.50-$1,046.97. If MU has pulled back toward $1,020-$1,033 at noon, the limit bracket may be close to in-range.
+  EARNINGS CONSTRAINT: Earnings June 24. MANDATORY EXIT by June 22. ~18 trading-day window.
+  OPERATOR: MANDATORY — place BUY MU 4sh limit $1,033.14, stop $981.48 (-5%), target $1,188.11 (+15%), bracket GTC. Plan exit June 22.
+---
+```
+
+**INTRADAY SETUPS — NONE IDENTIFIED (MIDDAY)**
+
+- **MRVL ($309, est.):** Still in reject status from mid-morning. 13% intraday swing ($294-$333) confirms uncontrolled price discovery. Risk veto stands. No re-score until $280-295 consolidation.
+- **Sector rotation play (Russell 2000 +0.9%):** Small-cap rotation outperforming today. No specific small-cap ticker meets the liquidity floor (price >$5, ADV >1M) and score ≥7 based on available data. File for afternoon routine research.
+- **Energy/oil sector:** Oil spiking toward $100. XLE would be a candidate but sector was previously closed (strategy switch). Macro hedge allocation already filled by GLD. Not adding a duplicate macro hedge without specific name analysis.
+- **GLD trail:** GLD ~$434 (est.). Stop $397.92 (resting, unverified). Trail to $412.30 (5% below $434). OPERATOR action required — cannot place stop trail via blocked API.
+
+**OVERNIGHT HOLD PLAN**
+
+| Symbol | Hold? | Reason | Action needed |
+|---|---|---|---|
+| GLD 7sh | YES — hold | Oil/Iran geopolitical bid; thesis intact; stop $397.92 est. resting | Operator: trail stop $397.92 → $412.30 |
+| AMD (pending) | YES — hold if filled | ATH continuation, $665 PT; overnight swing thesis | GTC bracket self-managing if placed |
+| PLTR (pending) | YES — hold if filled | 71% revenue growth; NVDA partnership; GTC bracket | GTC bracket self-managing if placed |
+| MU (pending) | YES — hold if filled | HBM4 structural demand; June 24 earnings catalyst | GTC bracket; mandatory exit June 22 |
+
+**API STATUS:** HTTP 403 "Host not in allowlist" — 24th consecutive blocked session (began May 6). Alpaca is inaccessible from cloud runner. All paper trades exist only as documented intentions. Portfolio remains: GLD 7sh (only confirmed position) + ~$97,281 cash.
+
+**OPERATOR ACTION REQUIRED:**
+1. Cancel stale orders (May 29 AMD $520.59, MU $928.14, MRVL $202.19 — all superseded by June 3 prices)
+2. Place AMD 9sh limit $524.15, stop $497.94, target $602.77, bracket GTC
+3. Place PLTR 10sh limit $150.74, stop $143.20, target $173.35, bracket GTC
+4. Place MU 4sh limit $1,033.14, stop $981.48, target $1,188.11, bracket GTC
+5. Trail GLD stop: cancel $397.92, place new GTC stop-sell 7sh GLD at $412.30
+6. Confirm GLD stop is resting (any stop)
+
+---
+
 ## 2026-06-03 — Mid-Morning (11:00 AM ET / 15:10 UTC)
 
 **PREDECESSOR CHECK — PRE-MARKET AND MARKET-OPEN BOTH SILENTLY FAILED TODAY**

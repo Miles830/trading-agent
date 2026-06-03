@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-03T15:13:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-06-03T16:35:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 100319,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.4,
     "benchmark_gap_pct": -5.08,
     "open_positions_count": 1,
-    "note": "June 3 Mid-Morning — API BLOCKED (HTTP 403, 23rd+ consecutive). Pre-Market AND Market-Open BOTH SILENT FAILED today. June 1 and June 2 also had ALL routines silent fail (2 additional days missed). 3 limit bracket GTC orders attempted (AMD 9sh $524.15, PLTR 10sh $150.74, MU 4sh $1,033.14) — ALL HTTP 403. MRVL REJECTED (Risk auto-veto: stop $295 within today's intraday low $294; avg 6.83). Market: S&P -0.14% (~7,590 — record highs June 1-2 now pulling back). OIL SPIKE toward $100 (Iran tensions). GLD ~$434 (+5.2% from May 29, strongly bid). AMD $521 (Strong Buy upgrade, Barclays $665 PT). MU ~$1,028 (ATH was $1,064 June 2; earnings June 24 — exit by June 22). MRVL $309 (Jensen Huang 'next trillion' +33% June 2 — too extended). PLTR $149 (Q1 beat, NVDA partnership). BTC $67K (below $82K). Portfolio gap vs SPX: ~-5.1 pp.",
+    "note": "June 3 Midday — API BLOCKED (HTTP 403, 24th consecutive). Mid-Morning completed ✓ (15:10-15:28Z). 3 GTC bracket order re-attempts (AMD 9sh $524.15, PLTR 10sh $150.74, MU 4sh $1,033.14) — ALL HTTP 403. MRVL still rejected (Risk veto, avg 6.83). Market ~12:30 PM ET: S&P ~7,590 (-0.14%), Dow -0.56%, Nasdaq flat, Russell 2000 +0.9% (small-cap rotation). OIL SPIKE toward $100 (Iran/ceasefire fragile). GLD ~$434 (oil/Iran bid). AMD ~$521-525 (strong, Barclays $665 PT). PLTR consolidating $148-153 (thesis intact). MU ~$1,020-1,040 (ATH $1,064 June 2). No new intraday setups. Overnight: GLD holds. Portfolio gap vs SPX: ~-5.1 pp. OPERATOR: cancel stale orders, place AMD/PLTR/MU manually, trail GLD stop $397.92→$412.30.",
     "buckets": [
       {
         "key": "active",
@@ -51,6 +51,45 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-03T16:35:02Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.33,
+      "agent_scores": {"fundamentals": 9, "technical": 5, "sentiment": 8, "macro": 6, "risk": 7, "tech_analyst": 9},
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MIDDAY RE-ATTEMPT BLOCKED — POST /v2/orders → HTTP 403 (24th consecutive). GTC bracket $1,033.14 / stop $981.48 / target $1,188.11 still pending operator placement. MANDATORY EXIT by June 22 (earnings June 24)."
+    },
+    {
+      "ts": "2026-06-03T16:35:01Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.67,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 8},
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MIDDAY RE-ATTEMPT BLOCKED — POST /v2/orders → HTTP 403 (24th consecutive). Thesis intact: intraday $159→$150 pullback is healthy profit-taking on Q1 beat; $150.74 limit at day's low = excellent entry if it fills. GTC bracket still pending operator placement."
+    },
+    {
+      "ts": "2026-06-03T16:35:00Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 8, "tech_analyst": 8},
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MIDDAY RE-ATTEMPT BLOCKED — POST /v2/orders → HTTP 403 (24th consecutive). 16th consecutive mandatory attempt. GTC bracket $524.15 / stop $497.94 / target $602.77 still pending operator placement. AMD outperforming market today (+3.41% mid-morning)."
+    },
     {
       "ts": "2026-06-03T15:13:04Z",
       "symbol": "BTC/USD",
