@@ -4,6 +4,287 @@
 
 ---
 
+## 2026-06-03 — Afternoon (2:00 PM ET / 18:09 UTC)
+
+**PREDECESSOR HEARTBEAT CHECK**
+
+```
+grep "STARTED Pre-Market"    logs/heartbeats/2026-06-03.log → 0 results (SILENT FAILURE)
+grep "STARTED Market-Open"   logs/heartbeats/2026-06-03.log → 0 results (SILENT FAILURE — logged at Mid-Morning)
+grep "STARTED Mid-Morning"   logs/heartbeats/2026-06-03.log → FOUND 15:10Z ✓
+grep "STARTED Midday"        logs/heartbeats/2026-06-03.log → 0 results (SILENT FAILURE — new violation)
+grep "STARTED Afternoon"     logs/heartbeats/2026-06-03.log → FOUND 18:08Z ✓ (this routine)
+```
+
+Pre-Market and Market-Open violations already logged at Mid-Morning. **Midday (12:30 PM ET / 16:30 UTC) is a new silent failure** — logging violation now.
+
+```yaml
+---
+ts: 2026-06-03T18:09:30Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) silently failed on 2026-06-03. No heartbeat. Afternoon is logging this predecessor violation per CLAUDE.md protocol. Alpaca API: HTTP 403 24th consecutive blocked session.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Midday 2026-06-03: SILENTLY FAILED (no heartbeat in logs/heartbeats/2026-06-03.log).
+  All 4 predecessor routines today (Pre-Market, Market-Open, Midday, and later Market-Close) are silent fails.
+  Only Mid-Morning (15:10Z) and Afternoon (18:08Z) fired.
+  Alpaca API: HTTP 403 "Host not in allowlist" — 24th consecutive blocked session.
+  Stop audit: GET /v2/orders?status=open → HTTP 403. GET /v2/positions → HTTP 403.
+  GLD 7sh stop $397.92 — cannot verify resting. Operator must check at https://app.alpaca.markets.
+---
+```
+
+---
+
+**MARKET CONDITIONS (2:00 PM ET, June 3, 2026 — web research)**
+
+- **S&P 500:** ~7,545–7,560 (est. −0.60% from records set June 1–2). Dow −0.56%, Nasdaq −0.20% from earlier. Tech slide pulling indexes off records.
+- **AMD ATH $533.82** — broke new all-time high during the session (vs $521.54 at Mid-Morning open, vs prior ATH ~$527.20). Barclays PT $665 / TD Cowen $600 Strong Buy upgrade catalysts driving continuation. If our $524.15 GTC limit were placed, it would have ALREADY FILLED today.
+- **PLTR:** ~$149–$150 range (pulled back from session high $159.52; holding at mid-morning low)
+- **MU:** ~$1,010–$1,040 range (modestly below ATH $1,064 — constructive consolidation)
+- **GLD:** ~$433.77 (up 0.48% — oil/Iran geopolitical bid steady; stop $397.92 still −8.8% below market)
+- **BTC:** ~$67,000 — below $82K threshold, no entry
+- **AVGO: Reporting earnings TONIGHT after close** (Q2 FY2026, conf call 5 PM ET). Consensus: $22.08B revenue, $2.39 adj EPS. AI custom chip revenue focus. **BINARY EVENT — no AVGO entry today.**
+- **CRWD (CrowdStrike):** Also reporting tonight. Not in watchlist — note for tomorrow screener.
+- **Circuit breaker:** S&P 3% down threshold ~7,373 (3% below June 2 record close ~7,601). Current ~7,545 >> threshold. NOT TRIPPED ✓
+
+---
+
+**STOP AUDIT — BLOCKED (Action 1 per CLAUDE.md)**
+
+```
+GET /v2/positions  → HTTP 403 "Host not in allowlist" (24th consecutive)
+GET /v2/orders?status=open → HTTP 403
+```
+
+GLD 7sh stop $397.92 — cannot verify resting. Estimated resting from May 17.
+**TRAIL URGENT:** GLD now ~$433.77. Stop $397.92 is −8.8% below current. CLAUDE.md requires 5% stop. Target trail: $412.08 (5% below $433.77).
+**OPERATOR: Update GLD stop at https://app.alpaca.markets — cancel $397.92, place $412.08 GTC stop on 7sh GLD.**
+
+No positions confirmed beyond GLD. All Mid-Morning bracket GTC orders (AMD $524.15, PLTR $150.74, MU $1,033.14) were blocked at HTTP 403.
+
+---
+
+**AMD UPDATE — ATH CONTINUATION (NOT re-attempting this routine)**
+
+AMD hit new ATH $533.82 during session (vs $521.54 at Mid-Morning). Our $524.15 GTC limit set at Mid-Morning would have filled at $524.15 and potentially reached $533+ intraday. The position was blocked by HTTP 403 for the 16th consecutive time.
+
+Per afternoon routine playbook: "Active-trading catch-up: do NOT initiate new active-bucket entries this routine — too close to close." Not re-attempting. Tomorrow Pre-Market MUST update limit to ~$534.20 (current ask × 1.005) for the 17th mandatory attempt.
+
+```yaml
+---
+ts: 2026-06-03T18:10:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD hit ATH $533.82 today (vs $524.15 mid-morning limit). Not re-attempting new active entry this routine — Afternoon proximity-to-close rule. Mid-Morning GTC bracket blocked HTTP 403. Update limit to $534.20+ for Pre-Market June 4.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  SKIP REASON: Afternoon proximity-to-close rule (routines/afternoon.md — "do NOT initiate new active-bucket entries this routine").
+  Not a guardrail exemption — this is routine-stage discipline.
+  Mid-Morning entry (approved score 7.5) was blocked HTTP 403. AMD ran from $524.15 limit to ATH $533.82 without our fill.
+  New entry parameters for June 4 Pre-Market:
+    Limit: ~$534.20 (ask × 1.005 at tomorrow's open)
+    Stop: ~$507.49 (−5%)
+    Target: ~$614.33 (+15%)
+    Qty: 9sh (10sh would be $5,342 = 5.34% > 5% guardrail; 9sh = $4,808 = 4.8% ✓)
+    R/R: 3:1 ✓ | Trade risk: ~$240 = 0.24% ✓
+  OPERATOR: MANDATORY — place BUY AMD 9sh limit ~$534 (update to tomorrow's open ask+0.5%) bracket GTC.
+  xAI/X: API unavailable. Strongly bullish inferred (ATH, $665 PT, Strong Buy upgrade June 3).
+---
+```
+
+---
+
+**PLTR UPDATE — NOT re-attempting this routine**
+
+PLTR holding ~$149–$150 (pulled back from $159.52 high, near mid-morning low $149). Thesis intact. Mid-Morning GTC bracket at $150.74 was blocked.
+
+```yaml
+---
+ts: 2026-06-03T18:10:01Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: PLTR ~$149-150 holding mid-morning low. Proximity-to-close rule prevents new active entry this routine. Mid-Morning GTC bracket $150.74 blocked. Tomorrow Pre-Market re-attempt at current ask+0.5%.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  SKIP REASON: Afternoon proximity-to-close rule (routines/afternoon.md).
+  PLTR thesis unchanged: Q1 beat $0.33 vs $0.27, FY2026 guide $7.65B (+71% YoY), NVDA partnership.
+  Intraday pullback to $149 from $159.52 high = potential hammer setup. Confirms bullish thesis.
+  Tomorrow Pre-Market: update limit to current ask × 1.005 (~$150–$152 depending on open). Stop −5%, target +15%.
+  OPERATOR: MANDATORY — place BUY PLTR 10sh limit (ask+0.5% at tomorrow's open) bracket GTC.
+  xAI/X: API unavailable. Bullish inferred.
+---
+```
+
+---
+
+**MU UPDATE — NOT re-attempting this routine**
+
+MU ~$1,010–$1,040 range, consolidating below June 2 ATH $1,064. Thesis intact. Mid-Morning GTC bracket at $1,033.14 was blocked. Earnings June 24 — mandatory exit by June 22.
+
+```yaml
+---
+ts: 2026-06-03T18:10:02Z
+action: skip
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: MU ~$1,010-1,040 range (consolidating below ATH $1,064). Proximity-to-close rule prevents new active entry this routine. Mid-Morning GTC bracket $1,033.14 blocked. Tomorrow Pre-Market re-attempt.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  SKIP REASON: Afternoon proximity-to-close rule (routines/afternoon.md).
+  MU thesis unchanged: UBS $1,625 PT, HBM4 sold out, AI memory supercycle intact.
+  Consolidation below ATH $1,064 may be healthier entry than chasing ATH. Tomorrow: re-score Technical (may improve from 5 if 1-hour shows accumulation pattern).
+  ⚠️ MANDATORY EXIT by June 22 (48h before June 24 earnings blackout).
+  Tomorrow Pre-Market: update limit to current ask × 1.005. Stop −5%, target +15%.
+  OPERATOR: MANDATORY — place BUY MU 4sh limit (ask+0.5% at tomorrow's open) bracket GTC.
+  xAI/X: API unavailable. Strongly bullish inferred (ATH territory, AI memory demand).
+---
+```
+
+---
+
+**AVGO EARNINGS WATCH (Tonight after close — pre-score for tomorrow)**
+
+Broadcom (AVGO) Q2 FY2026 results due tonight after close. Conference call 5 PM ET. Consensus: $22.08B revenue, $2.39 adj EPS. AI custom chip revenue is the key metric (Q1: $8.4B AI rev, +106% YoY; analysts want Q2 at $10.5B+).
+
+**No entry today** — binary event within 48h (the Close routine ending today = position cannot be safely managed through overnight earnings binary). Exemption 2 applies.
+
+**Post-earnings entry assessment (tomorrow Pre-Market):**
+- If AVGO BEATS ($22B+ revenue, $2.39+ EPS, $10B+ AI revenue) AND raises FY2026 guidance:
+  - Setup: `earnings-reaction-follow`
+  - Run full 6-agent at Pre-Market June 4
+  - Estimated entry: AVGO last traded ~$413–$420. Gap-up on beat could push $430–$450+
+  - Size: 5–7sh × ~$440 = $2,200–$3,080 = 2.2–3.1% (within 5% cap)
+  - Stop: −5%, Target: +15%, R/R: 3:1 ✓
+  - Predicted scores if strong beat: Fundamentals 9, Technical TBD (depends on gap), Sentiment 8+, Macro 6, Risk 8, Tech Analyst 8 → est. average 7.5+
+- If MISSES or IN-LINE only:
+  - Setup: reassess. If gap-down on volume, may be `earnings-reaction-fade` short-side (not in active strategy scope) or skip.
+  - More likely: skip or wait for 48h re-stabilization
+
+**AVGO binary event skip:**
+```yaml
+---
+ts: 2026-06-03T18:10:03Z
+action: skip
+symbol: AVGO
+bucket: active
+setup: earnings-reaction-follow
+score: null
+thesis: AVGO Q2 FY2026 earnings tonight after close. Binary event — Exemption 2 applies. Will run full 6-agent at Pre-Market June 4 based on actual print. If beats $22B rev + $10.5B AI rev + guidance raise: MANDATORY entry at open.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  SKIP REASON: Exemption 2 — binary event within 48 hours (AVGO reports tonight June 3 after close; any position entered today carries through the binary event overnight).
+  Will score tomorrow Pre-Market June 4 using actual Q2 results.
+  Prior AVGO context: scored 6.0 on May 22 (bearish divergence in up market). Tonight's earnings could reset the thesis entirely.
+  Key metrics to watch: (1) Revenue vs $22.08B estimate; (2) AI chip revenue vs $10.5B est. (Q1 was $8.4B); (3) FY2026 guidance update; (4) Custom accelerator (AWS Trainium, Google TPU) shipment trajectory.
+  If strong beat: `earnings-reaction-follow` setup. Estimated 7.5+ score if AI revenue hits $10.5B+.
+  xAI/X: API unavailable. Cannot pre-assess X sentiment ahead of print.
+---
+```
+
+---
+
+**GLD POSITION UPDATE — STOP TRAIL URGENT**
+
+GLD position:
+- Entry: $418.86 × 7sh = $2,932.02 cost basis
+- Current est: $433.77 × 7sh = $3,036.39
+- Unrealized P/L: +$104.37 (+3.56%)
+- Required stop (5% below current): $433.77 × 0.95 = **$412.08**
+- Current stop (estimated): $397.92 (resting from May 17)
+- TRAIL GAP: $412.08 − $397.92 = **$14.16 behind** where stop should be
+
+**OPERATOR: Cancel GLD stop $397.92. Place GTC stop-sell 7sh GLD at $412.08.**
+
+No GLD sells — position thesis intact (oil/Iran geopolitical bid, dollar hedge).
+
+---
+
+**TOMORROW'S PRE-MARKET WATCHLIST (June 4, 2026 — BINDING)**
+
+| Rank | Symbol | Setup | Score | Key Catalyst | Action |
+|---|---|---|---|---|---|
+| 1 | AMD | breakout-volume | 7.5 | ATH $533.82; Barclays $665 PT; Strong Buy June 3 | MANDATORY — 17th attempt. Limit ~$534+ |
+| 2 | AVGO | earnings-reaction-follow | TBD | Q2 earnings tonight — run 6-agent at open based on print | MANDATORY if beats + raises guidance |
+| 3 | PLTR | ai-momentum-pullback | 7.67 | Q1 EPS beat; 71% YoY guide; NVDA partnership; pullback to $149 | MANDATORY — limit at ask+0.5% |
+| 4 | MU | breakout-volume | 7.33 | UBS $1,625 PT; HBM4 sold out; consolidating below ATH | MANDATORY — 4sh limit at ask+0.5%. Exit by June 22 |
+| 5 | MRVL | other | WATCH | Monitor $280–$295 consolidation (too extended today at $309) | Score only if reaches $295 range |
+
+**Pre-Market June 4 action sequence:**
+1. Stop audit (first) — verify GLD stop is resting, get AMD/PLTR/MU fill status
+2. AVGO earnings reaction — run full 6-agent on actual Q2 results if strong beat
+3. AMD: Re-score Technical (ATH momentum), place limit at ask+0.5% (~$534 or market open price)
+4. PLTR: Place limit at ask+0.5% (~$150–$152)
+5. MU: Place limit at ask+0.5% (~$1,020–$1,035)
+6. Max 3 MOO orders cap: if using MOOs for any of the above, AMD > AVGO > PLTR priority
+
+---
+
 ## 2026-06-03 — Mid-Morning (11:00 AM ET / 15:10 UTC)
 
 **PREDECESSOR CHECK — PRE-MARKET AND MARKET-OPEN BOTH SILENTLY FAILED TODAY**
