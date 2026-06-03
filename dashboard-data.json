@@ -1,21 +1,21 @@
 {
-  "last_updated": "2026-05-29T13:45:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-03T15:13:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 100148,
+    "total_equity": 100319,
     "starting_equity": 100000.0,
-    "cash": 97280,
-    "cash_pct": 97.1,
-    "buying_power": 194560,
-    "long_market_value": 2868,
+    "cash": 97281,
+    "cash_pct": 96.9,
+    "buying_power": 194562,
+    "long_market_value": 3038,
     "short_market_value": 0.0,
-    "daily_pnl": -31,
-    "daily_pnl_pct": -0.03,
-    "total_return_pct": 0.15,
-    "spx_return_pct": 5.21,
-    "benchmark_gap_pct": -5.06,
+    "daily_pnl": 106,
+    "daily_pnl_pct": 0.11,
+    "total_return_pct": 0.32,
+    "spx_return_pct": 5.4,
+    "benchmark_gap_pct": -5.08,
     "open_positions_count": 1,
-    "note": "May 29 Market Open — API BLOCKED (HTTP 403, 22nd+ consecutive). Pre-Market SILENT FAILED today. Market-Open is first session firing May 29. 3 limit bracket GTC orders attempted (AMD 9sh $520.59, MU 5sh $928.14, MRVL 8sh $202.19) — ALL HTTP 403. PLTR deferred to Mid-Morning (3-entry cap). Market: S&P +0.16% (~7,575), VIX 15.83 (risk-ON). Iran ceasefire catalyst. PCE May 28 benign (+0.2% m/m core vs +0.3% est). BTC $73,642 below $82K. GLD ~$412.77. AMD $518 (+4.55% yesterday, Rocket One partnership). MU $923.52. MRVL re-scored 7.5 (gap-fill on May 28 — Technical 5/10). SPX return est. from May 1 ~5.21%; portfolio gap: ~-5.06 pp.",
+    "note": "June 3 Mid-Morning — API BLOCKED (HTTP 403, 23rd+ consecutive). Pre-Market AND Market-Open BOTH SILENT FAILED today. June 1 and June 2 also had ALL routines silent fail (2 additional days missed). 3 limit bracket GTC orders attempted (AMD 9sh $524.15, PLTR 10sh $150.74, MU 4sh $1,033.14) — ALL HTTP 403. MRVL REJECTED (Risk auto-veto: stop $295 within today's intraday low $294; avg 6.83). Market: S&P -0.14% (~7,590 — record highs June 1-2 now pulling back). OIL SPIKE toward $100 (Iran tensions). GLD ~$434 (+5.2% from May 29, strongly bid). AMD $521 (Strong Buy upgrade, Barclays $665 PT). MU ~$1,028 (ATH was $1,064 June 2; earnings June 24 — exit by June 22). MRVL $309 (Jensen Huang 'next trillion' +33% June 2 — too extended). PLTR $149 (Q1 beat, NVDA partnership). BTC $67K (below $82K). Portfolio gap vs SPX: ~-5.1 pp.",
     "buckets": [
       {
         "key": "active",
@@ -40,17 +40,95 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 412.77,
-      "pnl": -42.63,
-      "pnl_pct": -1.45,
-      "stop_loss": 397.92,
+      "current_price": 434.05,
+      "pnl": 106.33,
+      "pnl_pct": 3.6,
+      "stop_loss": 412.30,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD est. ~$412.77 (May 29 market open estimate — oil falling on Iran ceasefire reduces geopolitical risk premium). Stop $397.92 (-3.6% from current — safe cushion). Cannot verify stop is resting via API (blocked 22+ sessions). Operator: verify stop at https://app.alpaca.markets. Dollar weakness bid partially offsets the Iran-ceasefire gold headwind."
+      "note": "GLD ~$434.05 (June 3 mid-morning — oil spiking toward $100 on Iran tensions = strong geopolitical bid). Unrealized +$106.33 (+3.6% from $418.86 entry). Stop MUST BE TRAILED from $397.92 → $412.30 (5% below $434). Operator: update stop at https://app.alpaca.markets. GLD is performing its portfolio hedge role."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-03T15:13:04Z",
+      "symbol": "BTC/USD",
+      "action": "skip",
+      "bucket": "crypto",
+      "setup": "crypto-flush-rebound",
+      "score": 4.17,
+      "agent_scores": {"fundamentals": 4, "technical": 3, "sentiment": 4, "macro": 5, "risk": 5, "tech_analyst": 4},
+      "agent_average": 4.17,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — BTC ~$67,000, down 7% in 24h. Well below $82K threshold. Score 4.17 << 7. Oil spike and Iran tensions = risk-off headwind for crypto. No entry."
+    },
+    {
+      "ts": "2026-06-03T15:13:03Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.33,
+      "agent_scores": {"fundamentals": 9, "technical": 5, "sentiment": 8, "macro": 6, "risk": 7, "tech_analyst": 9},
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 'Host not in allowlist' (23rd consecutive). ORDER NOT PLACED. Intended: BUY 4sh MU limit $1,033.14, stop $981.48 (-5%), target $1,188.11 (+15%), bracket GTC. MANDATORY EXIT by June 22 (earnings June 24). OPERATOR: place manually at https://app.alpaca.markets."
+    },
+    {
+      "ts": "2026-06-03T15:13:02Z",
+      "symbol": "PLTR",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.67,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 8},
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 (23rd consecutive). ORDER NOT PLACED. Intended: BUY 10sh PLTR limit $150.74, stop $143.20 (-5%), target $173.35 (+15%), bracket GTC. MANDATORY since May 29. Intraday pullback $159→$149 = attractive entry at day's low. OPERATOR: place manually."
+    },
+    {
+      "ts": "2026-06-03T15:13:01Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 8, "tech_analyst": 8},
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 (23rd consecutive). ORDER NOT PLACED. Intended: BUY 9sh AMD limit $524.15, stop $497.94 (-5%), target $602.77 (+15%), bracket GTC. MANDATORY — 15th consecutive attempt. Analyst upgraded Strong Buy June 3. Barclays PT $665. OPERATOR: place 9sh (NOT 10sh — 5% guardrail)."
+    },
+    {
+      "ts": "2026-06-03T15:13:00Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 6.83,
+      "agent_scores": {"fundamentals": 9, "technical": 4, "sentiment": 8, "macro": 6, "risk": 5, "tech_analyst": 9},
+      "agent_average": 6.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED — Risk auto-veto (5/10 < 6). Stop at $295.14 is within today's intraday low $294.01. Technical 4/10 (1/5 indicators, 13.2% intraday swing — uncontrolled price discovery). Average 6.83 < 7. Only 3/6 agents ≥7. Monitor for $280-295 consolidation before re-scoring."
+    },
+    {
+      "ts": "2026-06-03T15:10:43Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Pre-Market AND Market-Open 2026-06-03 BOTH SILENTLY FAILED. June 1 all routines failed. June 2 all routines failed. Mid-Morning is first session to fire on June 3. Full catch-up executed. 3 orders attempted and blocked (AMD, PLTR, MU). MRVL rejected."
+    },
     {
       "ts": "2026-05-29T13:45:05Z",
       "symbol": "BTC/USD",
@@ -210,64 +288,64 @@
       "schedule": "08:00 ET daily",
       "status": "violation",
       "last_run": "2026-05-28 08:10 ET",
-      "next_run": "2026-06-01 08:00 ET",
-      "last_summary": "May 29: SILENTLY FAILED — no heartbeat. May 28: API BLOCKED. MRVL Q1 BEAT. 4 orders attempted and blocked (AMD MOO, MU MOO, MRVL MOO, PLTR limit)."
+      "next_run": "2026-06-04 08:00 ET",
+      "last_summary": "June 3: SILENTLY FAILED — no heartbeat. June 2: SILENTLY FAILED. June 1: SILENTLY FAILED. May 29: SILENTLY FAILED. Last actual run: May 28 (API blocked). 4+ consecutive days with no Pre-Market routine."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "completed",
+      "status": "violation",
       "last_run": "2026-05-29T13:45:00Z",
-      "next_run": "2026-06-01 09:45 ET",
-      "last_summary": "May 29 Market Open: Pre-Market predecessor SILENTLY FAILED. Catch-up executed. 3 limit bracket GTC orders attempted and blocked (AMD 8.0, MU 8.17, MRVL 7.5). PLTR deferred to Mid-Morning (3-entry cap). Stop audit blocked (HTTP 403). GLD only confirmed position. Market: S&P +0.16%, VIX 15.83, Iran ceasefire risk-on."
+      "next_run": "2026-06-04 09:45 ET",
+      "last_summary": "June 3: SILENTLY FAILED. June 2: SILENTLY FAILED. June 1: SILENTLY FAILED. Last actual run: May 29 Market Open (first session to fire that day). API blocked all sessions."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-22T15:09:00Z",
-      "next_run": "2026-05-29 11:00 ET",
-      "last_summary": "NEXT ROUTINE — PLTR MANDATORY ENTRY (was capped at Market Open). Stop audit. AMD/MU/MRVL GTC limit status check."
+      "status": "completed",
+      "last_run": "2026-06-03T15:13:00Z",
+      "next_run": "2026-06-04 11:00 ET",
+      "last_summary": "June 3 Mid-Morning: Both predecessors (Pre-Market, Market-Open) silent failed. Full catch-up. Stop audit: API blocked (23rd consecutive). GLD $434 (trail stop $397.92→$412.30 needed). 3 orders attempted and blocked (AMD $524.15, PLTR $150.74, MU $1,033.14). MRVL rejected (Risk veto). PLTR mandatory since May 29 — still unexecuted. AMD 15th consecutive blocked attempt."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "pending",
       "last_run": "2026-05-25T16:31:50Z",
-      "next_run": "2026-05-29 12:30 ET",
-      "last_summary": "UPCOMING. Stop audit. Position P&L review. Retry any unfilled orders."
+      "next_run": "2026-06-03 12:30 ET",
+      "last_summary": "UPCOMING. Stop audit. Retry AMD, PLTR, MU. Check GLD stop trail. MRVL monitoring."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
       "status": "pending",
       "last_run": "2026-05-27T18:10:00Z",
-      "next_run": "2026-05-29 14:00 ET",
-      "last_summary": "UPCOMING. P&L review. MOC candidates review."
+      "next_run": "2026-06-03 14:00 ET",
+      "last_summary": "UPCOMING. P&L review. MOC candidates. MU exit planning (June 22 mandatory)."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
       "status": "pending",
       "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-05-29 15:30 ET",
-      "last_summary": "UPCOMING. MOC orders for any day trades. Final stop audit."
+      "next_run": "2026-06-03 15:30 ET",
+      "last_summary": "UPCOMING. Final stop audit. MOC orders if any. GLD stop trail verification."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
       "status": "pending",
       "last_run": "2026-05-26 20:32 ET",
-      "next_run": "2026-05-29 20:30 ET",
-      "last_summary": "UPCOMING. WEEKLY EVOLUTION NOTE DUE (Friday). Confirm any fills. Setup tracker. Benchmark update. Monday watchlist."
+      "next_run": "2026-06-03 20:30 ET",
+      "last_summary": "UPCOMING. Weekly evolution note due. Setup tracker. 20-day SPX underperformance assessment. MRVL revaluation (was $201 → now $309). Tomorrow watchlist."
     },
     {
       "name": "Weekly Review",
       "schedule": "Friday 16:30 ET",
       "status": "pending",
       "last_run": "never completed",
-      "next_run": "2026-05-29 16:30 ET",
-      "last_summary": "Due today (Friday May 29). Week of May 27-29: MRVL Q1 beat + gap-fill, AMD ATH +4.55%, MU $923, API blocked 22nd consecutive day."
+      "next_run": "2026-06-06 16:30 ET",
+      "last_summary": "Next due: Friday June 6. Week of June 2-6: S&P records June 1-2, MRVL +33% (Jensen Huang), MU ATH $1,064, AMD Strong Buy upgrade, oil spike Iran tensions. API blocked 23rd consecutive day."
     }
   ],
   "agent_scorecard": {

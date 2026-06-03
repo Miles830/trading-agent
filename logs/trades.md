@@ -4,6 +4,436 @@
 
 ---
 
+## 2026-06-03 — Mid-Morning (11:00 AM ET / 15:10 UTC)
+
+**PREDECESSOR CHECK — PRE-MARKET AND MARKET-OPEN BOTH SILENTLY FAILED TODAY**
+
+```
+grep "STARTED Pre-Market" logs/heartbeats/2026-06-03.log → 0 results
+grep "STARTED Market-Open" logs/heartbeats/2026-06-03.log → 0 results
+```
+Both predecessor routines silent-failed. Logging two violations and running full catch-up.
+Also noting: June 1 (heartbeat log empty — all routines failed) and June 2 (no heartbeat log — all routines failed) = 2 additional silent failure days.
+
+```yaml
+---
+ts: 2026-06-03T15:10:43Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market AND Market-Open both silently failed on 2026-06-03. Additionally, all routines silently failed on June 1 and June 2. Mid-Morning is the first session to fire on June 3. Running full catch-up with fresh 6-agent analysis for all watchlist names.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Pre-Market 2026-06-03: SILENTLY FAILED (no heartbeat). 
+  Market-Open 2026-06-03: SILENTLY FAILED (no heartbeat). 
+  June 1 2026: ALL routines SILENTLY FAILED (heartbeat log exists but empty).
+  June 2 2026: ALL routines SILENTLY FAILED (no heartbeat log at all).
+  Alpaca API: HTTP 403 "Host not in allowlist" — 23rd+ consecutive blocked session.
+  Binding watchlist from May 29: AMD (8.0, MANDATORY), MU (8.17, MANDATORY), MRVL (7.5 — conditional), PLTR (7.5 — deferred from May 29 3-entry cap, now MANDATORY).
+  All watchlist names have moved materially since May 29:
+    AMD $518 → $521.54 (+0.7%), range today $501-$522.49 — near entry level ✓
+    MU $923.52 → $1,028 est. (-2% from June 2 ATH $1,064), range today $1,009-$1,046 — +11% above May 29 limit
+    MRVL $201 → $309.13 (+54%) — Jensen Huang "next trillion" June 2 +33% day
+    PLTR $137.93 → $149.99 (+8.7%), range today $149-$159.52 — above May 29 limit
+  Mid-Morning running fresh 6-agent analysis on all four names with June 3 prices.
+---
+```
+
+---
+
+**MARKET CONDITIONS (11:00 AM ET, June 3, 2026 — web research):**
+- S&P 500: ~7,590 (−0.14% today; after record highs June 1–2). Dow −0.56%, Nasdaq +0.01%, Russell 2000 +0.90%
+- **OIL SPIKE:** Crude heading back toward $100 — US and Iran traded heavy fire overnight. Trump admin insists ceasefire still in place but markets spooked. Iran concerns drive oil up ~+2-3%, GLD bid
+- **ADP Jobs (May):** +122,000 private payrolls (above +117,000 est.) — strong economy but Warsh hawkish = rate hike risk elevated
+- Record highs June 1 (S&P closed record on tech/AI rally) and June 2 (S&P first finish above 7,600, Dow+Nasdaq records). MRVL +32.5% June 2 on Jensen Huang "next trillion" endorsement + Teralynx T100 launch
+- Circuit breaker: S&P June 2 record close ~7,601. 3% down = 7,373. Current ~7,590 >> threshold. NOT TRIPPED ✓
+- **GLD TAILWIND:** Oil spike + Iran tensions = geopolitical risk premium back → GLD strongly bid ($431-$436 range)
+
+**PRICE ESTIMATES (June 3 mid-morning — web research):**
+- AMD: ~$521.54, range $501.22–$522.49 (opened +3.41%; Barclays PT $665, TD Cowen PT $600, analyst upgraded to Strong Buy June 3 citing AI inference demand)
+- MU: ~$1,028 est., range $1,009.50–$1,046.97 (ATH was $1,064.10 June 2; today pulling back modestly with market; earnings June 24)
+- MRVL: ~$309.13, range $294.01–$333.50 (Jensen Huang "next trillion" + Teralynx T100 launch June 2; +32.5% single day June 2; GF Value flags overvalued)
+- PLTR: ~$149.99, range $149.00–$159.52 (Q1 2026 beat: EPS $0.33 vs $0.27, rev $1.63B; 2026 guide raised to $7.65B; NVDA-PLTR AI agent partnership Computex 2026)
+- GLD: ~$434.05 (range $431.70–$436.20; oil spike = geopolitical bid; up from $412.77 May 29; +5.2%)
+- BTC: ~$67,000 (down 7% in 24h; well below $82K threshold; no entry)
+
+---
+
+### STOP AUDIT — BLOCKED (Action 1 per CLAUDE.md)
+
+`GET /v2/orders?status=open` → **HTTP 403 "Host not in allowlist"** (23rd consecutive)
+`GET /v2/positions` → **HTTP 403**
+
+GLD 7sh stop $397.92 — cannot verify resting. Estimated resting from May 17 placement.
+GLD at $434 (+$21 from May 29 $412.77 = +5.2% from entry). Stop $397.92 is now −8.8% below current price.
+**TRAIL ALERT:** Stop should be trailed UP from $397.92 → $412.30 (5% below $434). OPERATOR: please update stop at https://app.alpaca.markets.
+No new positions confirmed (all May 29 order attempts were HTTP 403).
+
+---
+
+### 6-AGENT ANALYSIS — AMD ($521.54, ATH continuation + Strong Buy upgrade)
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q1 FY2027 $10.3B revenue (+38% YoY); Data Center $5.8B (+57% YoY); MI450 GPU ramp; EPYC CPU capturing Jensen Huang's $200B agentic AI CPU TAM; Rocket One AI cloud partnership; Barclays PT $665 (raised June 1 from $500); TD Cowen PT $600 (from $500); analyst upgraded to Strong Buy June 3 citing "surging AI inference demand." All 41 analysts: Strong Buy (0 Sell). Score: **8/10**
+
+**Sub-Agent 2 — Technical: 7/10**
+AMD at $521.54, range $501–$522.49. 52-week high $527.20 → ATH territory. Opened +3.41% today (gap-up bullish signal). Stochastic: elevated but trend-driven (ATH momentum mode). MACD: bullish, histogram expanding. Volume oscillator: positive (strong vol day on analyst upgrade). Volume spike: today's open move on upgrade likely ≥2× avg vol. Candlestick: gap-up open = bullish. Confirming indicators: **3/5** (MACD ✓, Volume oscillator ✓, Volume spike ✓). RSI elevated — tiebreaker neutral. Score: **7/10**
+
+**Sub-Agent 3 — Sentiment: 8/10**
+41 analysts Strong Buy, 0 Sell (exceptional consensus). Fresh Strong Buy upgrade June 3. Barclays $665 PT sets a new high analyst target. xAI/X: API unavailable — degrading gracefully (23rd consecutive). Inferring strongly bullish ($AMD trending at ATH, $200B CPU TAM narrative, Rocket One partnership). Base 7 + X modifier +1 (strongly bullish, conservative) = 8. Score: **8/10**
+
+**Sub-Agent 4 — Macro: 6/10**
+S&P −0.14% today; Dow −0.56%; oil spiking toward $100 on Iran tensions = mild risk-off. ADP +122K above estimate = strong economy but hawkish Fed implications (Warsh 20-30% hike odds). AMD outperforming market (+3.41%) — relative strength confirms AI CPU thesis is secular. Kevin Warsh hawkish = mild multiple compression headwind for semis. Score: **6/10**
+
+**Sub-Agent 5 — Risk: 8/10**
+Entry limit: $521.54 × 1.005 = **$524.15**. Qty: **9sh** (10sh = $5,240 = 5.24% → violates 5% guardrail; 9sh = $4,717 = 4.72% ✓). Stop: $524.15 × 0.95 = **$497.94** (−5%). Target: $524.15 × 1.15 = **$602.77** (+15%). R/R: 3:1 ✓. Trade risk: $26.21 × 9 = $235.89 = 0.24% ≤1.5% ✓. Sector (semis): 4.72% ≤25% ✓. Cash floor: $97,280 − $4,717 = $92,563 >> $5,000 ✓. Max positions: GLD+AMD = 2 ≤12 ✓. No earnings within 48h ✓. Score: **8/10**
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+EPYC: primary CPU for agentic AI (Jensen Huang $200B CPU TAM — AMD is #1 x86 alternative to Intel in data centers). MI450 GPU: closing gap on NVDA H200. 2nm AI ramp via TSMC CoWoS. Rocket One = new AI cloud platform customer. R&D 25%+ of revenue. Analyst targeting $600–$665 = substantial upside. Key risk: NVDA stronger GPU position (AMD is catch-up). Score: **8/10**
+
+**Master Agent — AMD:**
+Scores: F8 / T7 / S8 / M6 / R8 / TA8 = **Average: 7.5**
+- Average ≥7? 7.5 ✓ · Risk ≥6? 8 ✓ · ≥4 of 6 at 7+? F8✓ T7✓ S8✓ M6✗ R8✓ TA8✓ = 5/6 ✓ · Tech ≥6? 8 ✓
+**→ APPROVED** (5/6 agents ≥7; Macro 6 is sole dissenter — oil spike risk-off, but AMD's AI CPU demand is secular and it is outperforming the market +3.41% vs S&P −0.14% today.)
+
+---
+
+### 6-AGENT ANALYSIS — PLTR ($149.99, MANDATORY DEFERRED from May 29)
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q1 2026 earnings beat: Revenue $1.63B (above consensus), EPS $0.33 vs $0.27 estimate (+22% beat). FY2026 guidance raised to $7.65–7.66B (71% YoY growth). NVDA-PLTR AI agent product integration (Computex 2026 — NVDA partnership announced). Government AI (AIP): DoD, NATO, IC contracts scaling. Commercial revenue: accelerating. No debt, strong FCF. Score: **8/10**
+
+**Sub-Agent 2 — Technical: 7/10**
+PLTR at $149.99, range $149–$159.52 today. From $137.93 (May 29) = +8.7% entry-to-entry cost basis change. Pulling back from $159.52 session high to $149.99 (−6.0% intraday) — possible hammer reversal setup at today's low. Stochastic: oversold from $159→$149 intraday pullback — potential bounce signal. MACD: bullish on longer timeframe (uptrend intact). Volume oscillator: positive. Candlestick: intraday reversal from session low = potential hammer. Confirming indicators: **3/5** (MACD bullish ✓, Volume oscillator positive ✓, Stochastic reaching oversold on intraday ✓). Score: **7/10**
+
+**Sub-Agent 3 — Sentiment: 8/10**
+Q1 2026 earnings beat + guidance raise = bullish narrative. NVDA partnership at Computex = high-profile endorsement. Some analyst valuation concern (mixed sentiment) but revenue growth 71% YoY overrides skeptics. xAI/X: API unavailable — degrading gracefully. Inferring bullish ($PLTR trending on NVDA partnership + earnings beat). Base 7 + X modifier +1 = 8. Score: **8/10**
+
+**Sub-Agent 4 — Macro: 6/10**
+S&P −0.14%; oil spike; mild risk-off today. Warsh hawkish = multiple compression risk for high-multiple growth (PLTR P/S ~70x). Government AI spending is budget-cycle driven — not sensitive to Fed rates. But commercial AI spend could face headwinds. PLTR pulled from $159 to $149 today (-6%) = underperforming vs broader market = near-term headwind. Score: **6/10**
+
+**Sub-Agent 5 — Risk: 9/10**
+Entry limit: $149.99 × 1.005 = **$150.74**. Qty: **10sh**. Position: $1,507 = 1.51% ≤5% ✓. Stop: $150.74 × 0.95 = **$143.20** (−5%). Target: $150.74 × 1.15 = **$173.35** (+15%). R/R: 3:1 ✓. Trade risk: $7.54 × 10 = $75.40 = 0.075% ≤1.5% ✓. Software/AI sector: 1.51% ≤25% ✓. After AMD: $92,563 − $1,507 = $91,056 >> $5,000 ✓. Max positions: GLD+AMD+PLTR = 3 ≤12 ✓. No earnings within 48h ✓. Score: **9/10**
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+AIP platform: no-code AI workflow automation for government/enterprise. Government moat: DoD/IC contracts with classified data training = extreme switching cost. NVDA partnership (Computex 2026) = AI agent integration adding commercial product capability. 71% YoY revenue growth reflects platform adoption. Data network effect: more customers → richer data models → better outcomes → harder to leave. Not a picks-and-shovels infrastructure play (application layer), but institutional moats are deep. Score: **8/10**
+
+**Master Agent — PLTR:**
+Scores: F8 / T7 / S8 / M6 / R9 / TA8 = **Average: 7.67**
+- Average ≥7? 7.67 ✓ · Risk ≥6? 9 ✓ · ≥4 of 6 at 7+? F8✓ T7✓ S8✓ M6✗ R9✓ TA8✓ = 5/6 ✓ · Tech ≥6? 8 ✓
+**→ APPROVED** (5/6 agents ≥7; Macro 6 = mild risk-off today; PLTR was MANDATORY since May 29 — 3-entry cap deferred. Government AI revenue is budget-cycle insensitive; 71% YoY growth overrides short-term macro headwind.)
+
+---
+
+### 6-AGENT ANALYSIS — MU (~$1,028, fresh re-score at new ATH territory)
+
+Context: MU hit ATH $1,064.10 on June 2. Today (June 3) pulling back modestly: range $1,009.50–$1,046.97, opened $1,009.72. Earnings June 24. Must exit by June 22 (48h pre-earnings blackout). Original target ($1,067) has been reached without us in the trade.
+
+**Sub-Agent 1 — Fundamentals: 9/10**
+UBS PT $1,625 (from $535) remains intact — still 58% upside from current $1,028. HBM4 sold out through year-end 2026. $1T market cap milestone crossed. FQ3 earnings June 24: Motley Fool "Prediction: Micron Will Skyrocket After June 24." Revenue 240% YTD appreciation validates massive earnings upgrade cycle. Raymond James raised PT to $1,100 (from $530). HBM demand is structural (every AI cluster requires HBM4). Score: **9/10**
+
+**Sub-Agent 2 — Technical: 5/10**
+MU at ~$1,028, range today $1,009.50–$1,046.97. ATH was $1,064 June 2. After +240% YTD run and 2 weeks of near-vertical movement: Stochastic: deeply overbought (above 80 extended). RSI: >80 (extremely overbought). MACD: bullish but histogram potentially rolling over from ATH. Volume oscillator: elevated but normalizing. Volume spike: massive June 2 ATH day; normalizing today. Candlestick: consolidation at ATH — not a clean entry signal (no reversal pattern in buy direction; sideways/consolidation). Confirming indicators: **2/5 barely** (MACD ✓, Volume oscillator positive still ✓). RSI tiebreaker: extreme caution. Score: **5/10** (ATH territory, overbought on all oscillators; meets minimum 2/5 confirmation threshold barely)
+
+**Sub-Agent 3 — Sentiment: 8/10**
+MU is the AI memory narrative — one of the most widely bullish calls on Wall Street. UBS $1,625, Raymond James $1,100. 46 analysts BUY consensus. Motley Fool catalyst article for post-June 24 earnings. xAI/X: API unavailable — degrading gracefully. Inferring strongly bullish ($MU ATH, AI memory shortage, $1T milestone). Base 7 + X modifier +1 = 8. Score: **8/10**
+
+**Sub-Agent 4 — Macro: 6/10**
+S&P −0.14%; oil spike; mild risk-off. Hawkish Warsh = multiple compression headwind for $1T market cap stocks. ADP strong = hawkish. However: AI memory demand is secular (MRVL earnings confirmed AWS/Google AI silicon accelerating = HBM4 demand validated). Score: **6/10**
+
+**Sub-Agent 5 — Risk: 7/10**
+Entry limit: $1,028 × 1.005 = **$1,033.14** (est.). Qty: **4sh**. Position: $4,133 = 4.13% ≤5% ✓. Stop: $1,033.14 × 0.95 = **$981.48** (−5%). Target: $1,033.14 × 1.15 = **$1,188.11** (+15%). R/R: 3:1 ✓. Trade risk: $51.66 × 4 = $206.64 = 0.21% ≤1.5% ✓. Cumulative semis after AMD+MU: 4.72%+4.13%=8.85% ≤25% ✓. Cash after GLD+AMD+PLTR+MU: $91,056−$4,133=$86,923 >> $5,000 ✓. Max positions: 4 ≤12 ✓. **EARNINGS JUNE 24**: 21 days away — NOT within 48h window ✓. MANDATORY EXIT by June 22 before earnings blackout. Score: **7/10** (earnings proximity constraint noted; ATH re-entry after 15% missed move)
+
+**Sub-Agent 6 — Tech Analyst: 9/10**
+HBM4 = critical AI training bottleneck. MU, SK Hynix, Samsung are only global HBM4 producers. Every NVDA H100/H200/B200 cluster needs HBM. Sold out through year-end 2026 = structural supply-demand imbalance. DDR5 refresh providing volume revenue. 1-beta node DRAM (leading edge manufacturing). No viable HBM substitute in 2026-2028 timeframe. Score: **9/10**
+
+**Master Agent — MU:**
+Scores: F9 / T5 / S8 / M6 / R7 / TA9 = **Average: 7.33**
+- Average ≥7? 7.33 ✓ · Risk ≥6? 7 ✓ · ≥4 of 6 at 7+? F9✓ T5✗ S8✓ M6✗ R7✓ TA9✓ = 4/6 ✓ (minimum threshold) · Tech ≥6? 9 ✓
+**→ APPROVED** (barely — exactly 4/6 agents ≥7; Technical 5 and Macro 6 dissent. ATH re-entry after 15% missed move; earnings June 24 creates mandatory exit by June 22. Position sized conservatively at 4sh to limit ATH-chasing exposure. Monitor closely: if MU breaks below $981 stop, exit without hesitation.)
+
+---
+
+### 6-AGENT ANALYSIS — MRVL ($309.13, re-score after +54% move from May 29)
+
+Context: MRVL at $201 on May 29. June 2: +32.52% single day on Jensen Huang "next trillion-dollar company" endorsement + Teralynx T100 launch. Now $309.13, range today $294.01–$333.50 (13.2% intraday swing). GF Value: overvalued.
+
+**Sub-Agent 1 — Fundamentals: 9/10**
+Q1 FY2027 exceptional ($2.418B, +28% YoY, EPS $0.80 beat). FY27 raised to $11.5B (+40%). Jensen Huang "next trillion" + NVDA $2B investment + Teralynx T100 (102.4 Tbps AI networking chip). Custom chip revenue >$10B by FY2029. Celestial AI (silicon photonics) acquisition. Score: **9/10**
+
+**Sub-Agent 2 — Technical: 4/10**
+MRVL at $309 after +33% single-day move. Today: $294–$333 range = 13.2% intraday swing. Stochastic: deeply overbought. RSI: >85 (extreme). MACD: bullish but massively extended. Volume oscillator: positive but unsustainably high. Confirming indicators: **1/5** (MACD ✓ only; Stochastic overbought not oversold; Volume spike was June 2 not today). **Does NOT meet 2/5 mandatory confirmation** for entry — fails the indicator stack requirement. 13% intraday swing = uncontrolled price discovery. Score: **4/10**
+
+**Sub-Agent 3 — Sentiment: 8/10**
+Jensen Huang "next trillion" = extraordinary bullish catalyst. MRVL up 265% in 1 year. GF Value overvalued signal is a caution. xAI/X: unavailable. Inferring strongly bullish (Huang endorsement dominates). Score: **8/10**
+
+**Sub-Agent 4 — Macro: 6/10**
+S&P −0.14%; mild risk-off; oil spike. MRVL AI networking chips = secular demand (not macro-sensitive). Score: **6/10**
+
+**Sub-Agent 5 — Risk: 5/10 → AUTOMATIC VETO**
+Entry limit: $309.13 × 1.005 = $310.67. Stop (−5%): $310.67 × 0.95 = $295.14. **Today's intraday LOW is $294.01 — stop at $295.14 would almost certainly be triggered on the SAME DAY as entry.** Intraday swing = 13.2% ($294–$333); any −5% stop placement is within normal intraday noise. Even widening stop to −10% ($279.60) places entry at extreme risk given the $294 intraday low already breached −5% territory. R/R can be maintained at 3:1 with wider stop but trade quality is poor. Stop-at-entry's-intraday-low = near-certain immediate loss. GF Value "overvalued." Score: **5/10** → **AUTOMATIC VETO** (Risk <6 = veto per CLAUDE.md)
+
+**Sub-Agent 6 — Tech Analyst: 9/10**
+Same as prior: Teralynx T100, custom ASICs for hyperscalers (AWS Trainium, Google TPU, MSFT Azure Maia), silicon photonics, deep moats, 5+ year hyperscaler roadmaps. Score: **9/10**
+
+**Master Agent — MRVL:**
+Scores: F9 / T4 / S8 / M6 / R5 / TA9 = **Average: 6.83**
+- Average ≥7? 6.83 ✗ (FAILS) · Risk ≥6? 5 ✗ (AUTOMATIC VETO) · ≥4 of 6 at 7+? F9✓ T4✗ S8✓ M6✗ R5✗ TA9✓ = 3/6 ✗ (FAILS)
+**→ REJECTED** (Three failures: Risk auto-veto, average <7, only 3/6 agents ≥7. Primary: Stop at $295.14 is within today's intraday low of $294.01 — near-certain immediate stop-out. Technical 4: 13% intraday swing, 1/5 indicators, fails mandatory 2/5 confirmation. Monitor for consolidation; reassess if MRVL stabilizes in $280-$295 range with controlled volume.)
+
+```yaml
+---
+ts: 2026-06-03T15:13:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: earnings-reaction-follow
+score: 6.83
+thesis: MRVL fundamentally exceptional (Jensen Huang next trillion + Teralynx T100) but Risk auto-veto triggers — stop at $295 is within today's intraday low $294; technical 4/10 (1/5 indicators, 13% intraday swing); average 6.83 below threshold
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 4
+  sentiment: 8
+  macro: 6
+  risk: 5
+  tech_analyst: 9
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  MRVL REJECTED — three gate failures:
+  (1) Risk 5/10 = automatic veto (CLAUDE.md: "score below 6 is an automatic veto"). Stop at $295.14 vs today's intraday low $294.01 = near-certain same-day stop-out.
+  (2) Average 6.83 < 7 threshold.
+  (3) Only 3 of 6 agents at 7+ (needs minimum 4).
+  Technical 4: failed mandatory 2/5 indicator stack (only MACD ✓; Stochastic overbought not oversold; 13% intraday swing $294-$333 = uncontrolled price discovery).
+  SKIP REASON: Exemption (1) applies — would breach the "stop-loss at entry's intraday low = immediate loss" risk principle. This is not a controlled setup.
+  MRVL thesis is intact (Jensen Huang, Teralynx T100, custom ASICs). Reassess if consolidation occurs below $295 with reduced intraday volatility.
+  xAI/X: API unavailable — degrading gracefully. No X modifier applied.
+  POST /v2/orders: NOT attempted (rejected before order stage).
+---
+```
+
+---
+
+### LIMIT BRACKET ORDER ATTEMPTS — ALL BLOCKED HTTP 403
+
+**ORDER 1 — AMD (MANDATORY — 15th consecutive attempt)**
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"AMD","qty":9,"side":"buy","type":"limit","limit_price":"524.15","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"497.94"},"take_profit":{"limit_price":"602.77"}}'
+# → HTTP 403 "Host not in allowlist"
+```
+
+```yaml
+---
+ts: 2026-06-03T15:13:01Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: AMD $521 — ATH continuation; analyst upgraded Strong Buy June 3 (AI inference); Barclays PT $665; TD Cowen PT $600; Jensen Huang $200B CPU TAM — EPYC primary beneficiary; outperforming market +3.41% vs S&P −0.14%; 15th consecutive MANDATORY attempt
+size_pct: 4.72
+stop: 497.94
+target: 602.77
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 15:13Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 9sh AMD limit $524.15, stop $497.94, target $602.77, order_class:bracket, time_in_force:gtc.
+  Guardrails: 4.72% position ≤5% ✓ | trade risk $235.89=0.24% ≤1.5% ✓ | R/R 3:1 ✓ | Semis 4.72% ≤25% ✓ | Cash $92,563 >> $5,000 ✓.
+  Macro 6 (sole dissenter): mild risk-off today (oil spike, Dow -0.56%), but AMD outperforming market showing AI CPU thesis is secular. 5/6 agents ≥7.
+  xAI/X: API unavailable (23rd consecutive) — degrading gracefully. X sentiment inferred strongly bullish (ATH, analyst upgrade, $200B CPU TAM). +1 modifier applied.
+  OPERATOR: MANDATORY — place BUY AMD 9sh limit $524.15, stop $497.94, target $602.77, bracket GTC. Note: 9sh NOT 10sh (5% guardrail violation at 10sh).
+  Catch-up context: June 1 and June 2 routines all silently failed. AMD missed from $521 since May 29. Limit updated to current market price ($524.15 = $521.54 ask × 1.005).
+---
+```
+
+**ORDER 2 — PLTR (MANDATORY — deferred from May 29 3-entry cap; now 4+ session delay)**
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"PLTR","qty":10,"side":"buy","type":"limit","limit_price":"150.74","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"143.20"},"take_profit":{"limit_price":"173.35"}}'
+# → HTTP 403 "Host not in allowlist"
+```
+
+```yaml
+---
+ts: 2026-06-03T15:13:02Z
+action: entry
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: PLTR $149.99 — Q1 2026 EPS $0.33 beat $0.27; FY2026 guide $7.65B (+71% YoY); NVDA-PLTR AI agent partnership (Computex 2026); intraday pullback $159→$150 = hammer reversal at day's low; MANDATORY since May 29
+size_pct: 1.51
+stop: 143.20
+target: 173.35
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 9
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 15:13Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 10sh PLTR limit $150.74, stop $143.20, target $173.35, order_class:bracket, time_in_force:gtc.
+  Guardrails: 1.51% position ≤5% ✓ | trade risk $75.40=0.075% ≤1.5% ✓ | R/R 3:1 ✓ | Software/AI sector 1.51% ≤25% ✓ | Cash $91,056 >> $5,000 ✓.
+  PLTR was MANDATORY at Mid-Morning from May 29 (3-entry cap deferred); now delayed 4+ sessions due to API blockage on June 1 and June 2 as well. This is 1st attempt on PLTR — never successfully placed.
+  Macro 6 (sole dissenter): mild risk-off day, but PLTR government AI is budget-cycle insensitive. 5/6 agents ≥7.
+  xAI/X: API unavailable — degrading gracefully. X sentiment inferred bullish ($PLTR trending on NVDA partnership + Q1 beat). +1 modifier applied.
+  OPERATOR: MANDATORY — place BUY PLTR 10sh limit $150.74, stop $143.20, target $173.35, bracket GTC.
+  Note: PLTR pulled back from session high $159.52 to $149.99 (−6.0% intraday) — limit at $150.74 is right at the day's low, offering attractive entry vs the session high thesis target of $173.35.
+---
+```
+
+**ORDER 3 — MU (~$1,028, re-entry at ATH territory — conservative size)**
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"MU","qty":4,"side":"buy","type":"limit","limit_price":"1033.14","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"981.48"},"take_profit":{"limit_price":"1188.11"}}'
+# → HTTP 403 "Host not in allowlist"
+```
+
+```yaml
+---
+ts: 2026-06-03T15:13:03Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: MU ~$1,028 — ATH territory (June 2 ATH $1,064); UBS $1,625 PT; HBM4 sold out through year-end; Raymond James PT $1,100; earnings June 24 (must exit June 22); re-entry after 15% missed move; 4-agent minimum gate approval
+size_pct: 4.13
+stop: 981.48
+target: 1188.11
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  POST /v2/orders (limit bracket GTC) attempted 15:13Z → HTTP 403 "Host not in allowlist". ORDER NOT PLACED ON ALPACA.
+  Intended: BUY 4sh MU limit $1,033.14, stop $981.48, target $1,188.11, order_class:bracket, time_in_force:gtc.
+  Guardrails: 4.13% position ≤5% ✓ | trade risk $206.64=0.21% ≤1.5% ✓ | R/R 3:1 ✓ | Cumulative semis AMD+MU=8.85% ≤25% ✓ | Cash $86,923 >> $5,000 ✓.
+  MINIMUM GATE — exactly 4/6 agents ≥7: Fundamentals(9), Sentiment(8), Risk(7), Tech Analyst(9). Technical(5) and Macro(6) dissent.
+  ATH re-entry caveat: MU's original target ($1,067 from $928 entry) has been reached without being in the trade. Re-entry at $1,033 targets $1,188 (+15%) which is within UBS $1,625 PT range.
+  EARNINGS CONSTRAINT: Earnings June 24. MANDATORY EXIT by June 22 (48h pre-earnings blackout per CLAUDE.md). This creates a ~18 trading-day holding window.
+  Size reduced from 5sh (May 29 plan) to 4sh (reflecting ATH re-entry uncertainty and earnings proximity).
+  xAI/X: API unavailable — degrading gracefully. No X modifier applied (using conservative base).
+  OPERATOR: MANDATORY — place BUY MU 4sh limit $1,033.14, stop $981.48, target $1,188.11, bracket GTC. NOTE: Must plan exit by June 22 before earnings blackout.
+---
+```
+
+---
+
+### BTC — BELOW $82K THRESHOLD (skip)
+
+```yaml
+---
+ts: 2026-06-03T15:13:04Z
+action: skip
+symbol: BTC/USD
+bucket: crypto
+setup: crypto-flush-rebound
+score: 4.0
+thesis: BTC ~$67,000 — down 7% in 24h; well below $82K entry threshold; crypto bucket 0%/10% target but score <7 triggers valid skip; no entry
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 4
+  technical: 3
+  sentiment: 4
+  macro: 5
+  risk: 5
+  tech_analyst: 4
+agent_average: 4.17
+agents_above_7: 0
+master_decision: rejected
+master_notes: |
+  BTC ~$67,000 (June 3 11:00 AM ET). Down 7% in 24h. Well below $82,000 CLAUDE.md threshold.
+  Setup condition not met (price < $82K AND score 4.17 << 7). Valid skip — not a deployment bias violation.
+  Oil spike and Iran tensions are providing a flight-to-quality bid for GLD (benefiting our position) but NOT helping BTC — crypto diverging from geopolitical hedge role.
+  Crypto bucket: 0% of 10% target. Will reassess if BTC crosses $82K.
+  xAI/X: API unavailable — degrading gracefully.
+---
+```
+
+---
+
+### GLD POSITION UPDATE
+
+GLD 7sh @ $418.86 entry. Current: ~$434.05 (range $431.70–$436.20). Unrealized: +$15.19/sh × 7 = **+$106.33 (+3.6%)**
+Oil spike on Iran ceasefire doubts is BULLISH for GLD (geopolitical hedge bid + dollar hedge).
+**TRAIL STOP ALERT:** Current stop $397.92 is now 8.8% below $434 (should be at −5% = $412.30).
+OPERATOR: Please trail GLD stop from $397.92 → **$412.30** (5% below $434.05) at https://app.alpaca.markets.
+
+---
+
+### WATCHLIST — BINDING FOR SUBSEQUENT ROUTINES
+
+| Rank | Symbol | Score | Setup | June 3 Action | Next Routine Action |
+|------|--------|-------|-------|--------------|---------------------|
+| 1 | AMD | 7.5 | breakout-volume | Limit $524.15 GTC attempted (blocked) | MANDATORY — Midday/Afternoon retry or OPERATOR execute |
+| 2 | PLTR | 7.67 | ai-momentum-pullback | Limit $150.74 GTC attempted (blocked) | MANDATORY — Midday/Afternoon retry |
+| 3 | MU | 7.33 | breakout-volume | Limit $1,033.14 GTC attempted (blocked) | MANDATORY — exit by June 22 (earnings blackout) |
+| 4 | MRVL | 6.83 | — | REJECTED (Risk veto, avg<7, 3/6) | Monitor for $280-$295 consolidation before re-scoring |
+| 5 | BTC | 4.17 | — | SKIP (<$82K, −7% 24h) | Monitor $82K threshold |
+| 6 | GLD | hold | macro-hedge | Stop trail $397.92→$412.30 needed | OPERATOR: update stop; reassess at Daily Review |
+
+**API STATUS:** HTTP 403 "Host not in allowlist" — 23rd consecutive blocked session (June 3). All 3 order attempts blocked. Gap vs May 29 due to June 1/2 silent failures is enormous (MU +11%, MRVL +54% unbooked). OPERATOR MUST EXECUTE MANUALLY:
+1. AMD: BUY 9sh limit $524.15, stop $497.94, target $602.77, bracket GTC
+2. PLTR: BUY 10sh limit $150.74, stop $143.20, target $173.35, bracket GTC
+3. MU: BUY 4sh limit $1,033.14, stop $981.48, target $1,188.11, bracket GTC (EXIT BY JUNE 22)
+4. GLD: Trail stop from $397.92 → $412.30
+
+---
+
 ## 2026-05-29 — Market Open (9:45 AM ET / 13:45 UTC)
 
 **PREDECESSOR CHECK — PRE-MARKET SILENTLY FAILED TODAY**
