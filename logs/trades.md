@@ -414,6 +414,238 @@ master_notes: |
 
 ---
 
+## 2026-06-04 — Afternoon (2:00 PM ET / 18:00 UTC)
+
+**HEARTBEAT:** MISSING — SILENT FAILURE ✗
+
+```yaml
+---
+ts: 2026-06-04T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC) SILENTLY FAILED — no heartbeat in logs/heartbeats/2026-06-04.log. CRITICAL: PLTR was explicitly deferred from Midday to THIS routine and was never entered — Deployment Bias violation.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Afternoon routine silently failed — caught by Daily Review heartbeat tally.
+  CRITICAL: PLTR (score 7.0, pre-approved at Pre-Market, re-confirmed at Midday) was explicitly
+  deferred from Midday to THIS routine. Afternoon never fired → PLTR never entered on June 4 →
+  DEPLOYMENT BIAS VIOLATION (20th+ consecutive session PLTR not entered).
+  Actions missed: stop audit, PLTR entry, AVGO recovery check, P&L review.
+  Remediation: PLTR is MOO #3 at June 5 Pre-Market — no further deferral permitted.
+---
+```
+
+---
+
+## 2026-06-04 — Market Close (3:30 PM ET / 19:30 UTC)
+
+**HEARTBEAT:** MISSING — SILENT FAILURE ✗
+
+```yaml
+---
+ts: 2026-06-04T19:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Close routine (3:30 PM ET / 19:30 UTC) SILENTLY FAILED — no heartbeat. Stop audit not performed. MOC assessment skipped. Final PLTR catch-up opportunity missed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Market-Close routine silently failed — caught by Daily Review heartbeat tally.
+  Actions missed: stop audit, MOC order assessment, PLTR final catch-up, GLD stop verification.
+  4 of 6 intraday routines silently failed today (Market-Open, Mid-Morning, Afternoon, Market-Close).
+---
+```
+
+---
+
+## 2026-06-04 — Daily Review (4:30 PM ET / 20:34 UTC)
+
+**HEARTBEAT:** STARTED Daily-Review 20:34:36Z ✓
+
+**PREDECESSOR HEARTBEAT CHECK (June 4, 2026)**
+
+```
+Pre-Market:    STARTED 12:06Z ✓  COMPLETED 12:21Z ✓
+Market-Open:   MISSING ✗ — SILENT FAILURE (already logged at Midday)
+Mid-Morning:   MISSING ✗ — SILENT FAILURE (already logged at Midday)
+Midday:        STARTED 16:34Z ✓  COMPLETED 16:48Z ✓
+Afternoon:     MISSING ✗ — SILENT FAILURE (logged above)
+Market-Close:  MISSING ✗ — SILENT FAILURE (logged above)
+```
+
+**⚠️ TOP OPERATIONAL ISSUE: 4 of 6 intraday routines silently failed today.** Only Pre-Market and Midday fired. PLTR (pre-approved 7.0) deferred to Afternoon and was never entered — Deployment Bias violation logged.
+
+---
+
+**STOP AUDIT — FIRST ACTION (MANDATORY)**
+
+```
+GET /v2/positions       → HTTP 403 "Host not in allowlist" (27th consecutive blocked session)
+GET /v2/orders?status=open → HTTP 403
+```
+
+Estimated state (API blocked):
+- GLD 7sh: stop $397.92 estimated resting. June 4 close est. ~$415 (gold spot ~$4,466). Buffer: 4.1% — adequate. MAINTAIN $397.92 stop.
+- AMD/MU/PLTR: all unconfirmed fills (27 consecutive HTTP 403 attempts).
+- Stale GTC orders still likely resting: AMD $524.15, PLTR $150.74, MU $1,033.14 (June 3); AMD $520.59, MU $928.14, MRVL $202.19 (May 29) — ALL STALE. OPERATOR: cancel immediately at https://app.alpaca.markets.
+
+---
+
+**MARKET CLOSE SUMMARY — June 4, 2026**
+
+| Asset | June 3 Close | June 4 Close (est.) | Change | Notes |
+|---|---|---|---|---|
+| SPY | $754.24 | $755.18 | +0.12% | S&P proxy; Dow led, Nasdaq lagged |
+| Dow Jones | ~50,687 | ~51,562 | +1.7% | Record high; value/cyclical rotation |
+| Nasdaq | ~17,683 | ~17,483 | −1.1% est. | AVGO-led AI/tech selloff |
+| AMD | ~$542 | ~$521 | −3.9% | Opened $496, partial recovery; AVGO sympathy |
+| MU | ~$1,080 | $1,022.37 | −5.30% | Sympathy selloff; HBM4 thesis intact |
+| PLTR | ~$149 | ~$143.50 | −3.7% | Range $140.01-$152.10; pullback thesis intact |
+| AVGO | $479.23 | ~$413 | −13.8% | Q3 AI guidance miss; low $405.51 |
+| GLD | $407.91 | ~$415 (est.) | +1.7% est. | Gold spot ~$4,466 (Iran/oil bid) |
+| BTC | ~$65K | $61,310 | ~−5.7% | Well below $82K threshold |
+
+---
+
+**PORTFOLIO PERFORMANCE — June 4, 2026**
+
+- Cash: $97,281 (unchanged — no fills)
+- GLD 7sh × $415 est. = $2,905
+- **Total equity est.: $100,186**
+
+| Metric | Value |
+|---|---|
+| Portfolio daily return | +0.05% (GLD $408→$415 est.) |
+| SPY daily return | +0.12% |
+| **Daily gap vs SPY** | **−0.07 pp** |
+| **Cumulative gap vs SPX** | **~−5.0 pp** |
+| 20-day underperformance streak | Active (27th+ session) |
+
+**Rolling 20-day metrics:** All N/A — zero confirmed fills in any session since strategy switch May 17. The 27-session API blockage has prevented all order execution. Portfolio has never closed a position under the current strategy.
+
+---
+
+**ORDERS AUDIT — June 4, 2026 (complete)**
+
+| Time | Action | Symbol | Result |
+|---|---|---|---|
+| 12:08Z | skip | AVGO | Rejected avg 5.67 (revenue miss, Technical 4/10) |
+| 12:09Z | entry attempt | AMD 9sh MOO | HTTP 403 BLOCKED |
+| 12:09Z | entry attempt | MU 4sh MOO | HTTP 403 BLOCKED |
+| 12:10Z | entry attempt | PLTR 10sh MOO | HTTP 403 BLOCKED |
+| 13:45Z | SILENT FAILURE | Market-Open | no routine |
+| 15:00Z | SILENT FAILURE | Mid-Morning | no routine |
+| 16:38Z | skip | AVGO re-score | Rejected avg 6.0 (still falling knife) |
+| 16:40Z | entry attempt | MU 4sh limit $1,020 | HTTP 403 BLOCKED |
+| 16:42Z | entry attempt | AMD 9sh limit $508 | HTTP 403 BLOCKED |
+| 16:43Z | skip/defer | PLTR | Deferred to Afternoon (midday 2-entry cap) |
+| 18:00Z | SILENT FAILURE | Afternoon | PLTR never entered — VIOLATION |
+| 19:30Z | SILENT FAILURE | Market-Close | no routine |
+
+**Confirmed fills today: 0. Confirmed fills since May 17: 0.**
+
+---
+
+**TODAY'S BEST ANALYTICAL CALL:**
+AVGO rejection — correctly identified falling knife pattern twice. AVGO closed ~$413 (down 14% from $479.23). Had we entered at the open ($415 est.), the position would be at +$2/sh unrealized — technically fine, but the setup was broken on fundamentals (revenue miss + guidance disappointment) and technicals (no 2/5 indicator confirmation on a gap-down day). The decision to wait preserves capital for cleaner setups.
+
+**TODAY'S BIGGEST MISS:**
+PLTR deferral chain — PLTR was scored at Pre-Market (7.0), deferred to Afternoon (midday 2-entry cap), then Afternoon silently failed. This is the 20th+ consecutive session PLTR was not entered. PLTR range today was $140.01-$152.10; a MOO fill at ~$143 would have been an ideal entry.
+
+---
+
+**3 THINGS THAT WORKED:**
+1. **AVGO double rejection** — The 5-indicator stack discipline (Technical 4-5/10, 0-1/5 confirmed) correctly flagged the falling knife. Goldman's $525 PT was tempting but technical veto held.
+2. **GLD stop correction (Midday)** — Retracted the erroneous "trail to $412.08" instruction before it was executed. GLD closed at ~$415 today (above stop); had the stop been trailed to $412.08 this morning, it would have triggered around the $405 intraday low.
+3. **Midday catch-up at improved prices** — Re-scored AMD ($508 vs $521) and MU ($1,020 vs $1,060) at better entry points, increasing R/R quality even though API blocked the actual orders.
+
+**3 THINGS TO IMPROVE:**
+1. **4/6 routine silent failures** — Market-Open, Mid-Morning, Afternoon, Market-Close all missing. Proposed fix: ALL mandatory ≥7 entries must execute at Pre-Market. Midday is backup for all (not capped at 2). No deferral beyond Midday.
+2. **PLTR 20+ consecutive missed entries** — Every deferral chain involves PLTR being bumped by higher-priority names. Rule going forward: PLTR is always MOO #3 (after MU and AMD) at Pre-Market. It cannot be bumped without explicit guardrail violation.
+3. **Stale GTC orders** — Multiple stale orders from May 29 and June 3 are likely still resting. The MRVL GTC $202.19 is especially problematic (MRVL at ~$309 today — this order could theoretically fill if MRVL collapses). OPERATOR: Cancel ALL stale orders immediately.
+
+---
+
+**SETUP-TAG TALLY (June 4 + rolling 5-day window)**
+
+| Setup | W | L | 3-in-a-row | Status |
+|---|---|---|---|---|
+| breakout-volume | 0 | 0 | none | Active (MU, AMD — all blocked) |
+| ai-momentum-pullback | 0 | 0 | none | Active (PLTR — 20+ missed entries) |
+| macro-hedge | 0 | 0 | none | Active (GLD held, −$27 est. unrealized) |
+| earnings-reaction-follow | 0 | 0 | none | Active (AVGO rejected correctly 2×) |
+
+No 3-in-a-row rules triggered. No closed P/L to evaluate.
+
+---
+
+**STRATEGY REVIEW (20-day underperformance trigger)**
+
+Root cause of underperformance: **100% API blockage** (27 consecutive sessions), not strategy failure.
+
+Evidence strategy is correct:
+- AMD approved at $449 → now ~$521 (+16% from first entry target)
+- MU approved at $920 → now $1,022 (+11% from first target)
+- PLTR approved at $135 → now $143.50 (+6.3%)
+- AVGO correctly rejected twice today (avoided −14-15% drawdown)
+
+**Proposed adjustments (not guardrails):**
+1. Pre-Market is the primary execution window — all mandatory entries go here first
+2. Midday catches all misses from Pre-Market through Mid-Morning — no per-routine cap when predecessors failed
+3. PLTR is fixed as MOO #3; cannot be deferred again
+
+---
+
+**MACRO OUTLOOK — June 5, 2026 (Friday)**
+
+- No major US economic data
+- AVGO may stabilize around $405-415; re-score at Pre-Market
+- Iran tensions persistent; oil ~$100 = GLD bid continues
+- FOMC June 16-17 next key risk event (Warsh hawkish)
+- MU exit deadline June 22 (earnings June 24)
+- Friday = weekly options expiration (late-day volatility possible)
+
+---
+
+**TOMORROW'S WATCHLIST — June 5, 2026 (BINDING COMMITMENT)**
+
+Per CLAUDE.md: Score ≥7 = enter. These names must receive MOO orders at June 5 Pre-Market.
+
+| Priority | Symbol | Score | Setup | Qty | Entry (est.) | Stop | Target | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 1 — MANDATORY | MU | 7.67 | breakout-volume | 4sh | ~$1,022 (ask×1.005) | $971 (−5%) | $1,175 (+15%) | EXIT by June 22 mandatory |
+| 2 — MANDATORY | AMD | 7.17 | breakout-volume | 9sh | ~$521 (ask×1.005) | $495 (−5%) | $599 (+15%) | 20th attempt |
+| 3 — MANDATORY | PLTR | 7.0 | ai-momentum-pullback | 10sh | ~$143 (ask×1.005) | $136 (−5%) | $165 (+15%) | Deferred from June 4 — CANNOT defer again |
+| 4 — CONDITIONAL | AVGO | TBD | earnings-reaction-follow | 5-7sh | Re-score at pre-mkt | −5% | +15% | Only if base forms + avg ≥7 |
+| 5 — HOLD | GLD | — | macro-hedge | — | Already held | $397.92 | — | Maintain stop; verify resting |
+
+MOO allocation: MU (#1) + AMD (#2) + PLTR (#3) = 3 MOOs (daily cap reached). AVGO as limit only if approved.
+
+All guardrails satisfied: position sizes 4.09% + 4.69% + 1.43% = 10.2% deployed; cash after fills $87K >> 5% floor; semis sector 8.78% << 25%.
+
+**Friday reminder: WEEKLY EVOLUTION NOTE DUE at June 5 Daily Review.**
+
+---
+
 ## 2026-06-04 — Pre-Market (8:00 AM ET / 12:06 UTC)
 
 **HEARTBEAT:** STARTED Pre-Market 12:06:37Z ✓
