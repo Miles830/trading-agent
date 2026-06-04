@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-03 (Wednesday) — Afternoon (2:00 PM ET / 18:09 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 24th consecutive blocked session). Midday SILENTLY FAILED (new violation logged). Market: S&P ~7,545 (est. −0.60% from June 1-2 records). AMD hit new ATH $533.82 (vs $524.15 limit at Mid-Morning — would have filled if API not blocked). PLTR ~$149–$150 (pullback from $159.52 high). MU ~$1,010–$1,040 (consolidating). GLD ~$433.77 (+0.48% — oil/Iran bid). AVGO reporting earnings TONIGHT after close (Q2 FY2026; consensus $22.08B rev, $2.39 EPS) — full 6-agent assessment at Pre-Market June 4. No new active entries this routine (proximity-to-close rule). GLD stop must trail $397.92 → $412.08. Cumulative gap vs SPX: ~−5.5 pp (est.). Tomorrow binding watchlist: AMD ($533.82 ATH, MANDATORY — 17th attempt), AVGO (conditional on tonight's print), PLTR (MANDATORY), MU (MANDATORY).**
+**2026-06-04 (Thursday) — Pre-Market (8:00 AM ET / 12:06 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 25th consecutive blocked session). AVGO Q2 FY2026 REPORTED: Revenue $22.19B (missed $22.72B, -2.3%), AI revenue $10.8B (+143% YoY, beat), EPS $2.44 (beat $2.32). Stock down 12-14% pre-market — SKIP (Master Agent avg 5.67, revenue miss). AMD pre-market ~$519.80 (-4.19% in AVGO sympathy — 18th mandatory MOO attempt — BLOCKED HTTP 403). MU ~$1,060 (new ATH $1,089 June 3 — MOO attempt — BLOCKED). PLTR ~$143.50 (pulled back 9.8% from $159.52 ATH — MOO attempt — BLOCKED). All 3 MOO orders (AMD 9sh, MU 4sh, PLTR 10sh) approved by Master Agent (scores 7.17, 7.5, 7.0 respectively) but ALL blocked HTTP 403. BTC $63,649 (-13% week, below $82K threshold — no crypto entry). S&P futures -0.43%, risk-off. Cumulative gap vs SPX: ~-5.5 pp (est.). GLD stop still needs trail to $412.08 (CRITICAL OPERATOR ACTION). OPERATOR: Execute AMD/MU/PLTR MOOs manually at https://app.alpaca.markets BEFORE 9:25 AM ET.**
+
+**Prior Last Updated:** 2026-06-03 (Wednesday) — Afternoon (2:00 PM ET / 18:09 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 24th consecutive blocked session). Midday SILENTLY FAILED (new violation logged). Market: S&P ~7,545 (est. −0.60% from June 1-2 records). AMD hit new ATH $533.82 (vs $524.15 limit at Mid-Morning — would have filled if API not blocked). PLTR ~$149–$150 (pullback from $159.52 high). MU ~$1,010–$1,040 (consolidating). GLD ~$433.77 (+0.48% — oil/Iran bid). AVGO reporting earnings TONIGHT after close (Q2 FY2026; consensus $22.08B rev, $2.39 EPS) — full 6-agent assessment at Pre-Market June 4. No new active entries this routine (proximity-to-close rule). GLD stop must trail $397.92 → $412.08. Cumulative gap vs SPX: ~−5.5 pp (est.). Tomorrow binding watchlist: AMD ($533.82 ATH, MANDATORY — 17th attempt), AVGO (conditional on tonight's print), PLTR (MANDATORY), MU (MANDATORY).**
 
 **Prior Last Updated:** 2026-06-03 (Wednesday) — Mid-Morning (11:00 AM ET / 15:10 UTC).** TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 23rd+ consecutive blocked session). Pre-Market and Market-Open BOTH silently failed today. June 1 and June 2 also had ALL routines silently fail (June 1: heartbeat log empty; June 2: no heartbeat log). Two violations logged. Full catch-up with fresh 6-agent analysis executed. Three limit bracket GTC order attempts (AMD 9sh $524.15, PLTR 10sh $150.74, MU 4sh $1,033.14) — ALL HTTP 403. MRVL REJECTED (Risk auto-veto: stop $295 within today's intraday low $294; avg 6.83 < 7; only 3/6 agents ≥7). Market: S&P −0.14% (~7,590 — pulling back from June 1-2 record highs), Dow −0.56%, Nasdaq +0.01%. OIL SPIKE: back toward $100 (US-Iran ceasefire in doubt — heavy fire overnight). ADP May: +122K (above +117K est.). GLD: ~$434 (strongly bid on oil/Iran geopolitical premium — up 5.2% from May 29). AMD $521 (Strong Buy upgrade June 3, Barclays PT $665). MU ~$1,028 (ATH $1,064 June 2; earnings June 24 — exit by June 22). MRVL $309 (Jensen Huang "next trillion" + Teralynx T100 — +33% single day June 2; skipped — too extended). PLTR $149 (Q1 beat EPS $0.33 vs $0.27; NVDA partnership). BTC $67K (−7% 24h, below $82K). Cumulative gap vs SPX: ~−5.2 pp (est.).
 
@@ -102,24 +104,25 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-03 Afternoon — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-06-04 Pre-Market — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** ~$100,324 (only GLD open; all other orders blocked)
+- **Total Equity (estimated):** ~$100,319 (only GLD open; all 25 sessions of orders blocked)
 - **Cash:** ~$97,281 (unchanged — no new positions filled since May 17 strategy switch)
 - **Long Market Value (estimated):**
-  - GLD: 7sh × $433.77 = $3,036 (unrealized +$104.37 from $418.86 entry; oil/Iran bid sustained)
-  - AMD: NOT FILLED — all 16 attempts HTTP 403. AMD hit ATH $533.82 today without our fill. Limit updates to ~$534 for June 4.
-  - PLTR: NOT FILLED — all attempts HTTP 403. PLTR ~$149–$150. Limit updates to ask+0.5% for June 4.
-  - MU: NOT FILLED — all attempts HTTP 403. MU ~$1,010–$1,040. Limit updates to ask+0.5% for June 4.
-  - MRVL: REJECTED June 3 (Risk auto-veto: stop $295 within intraday low $294). Monitor $280–$295.
-  - AVGO: NOT SCORED — earnings tonight June 3 AH. Full 6-agent at Pre-Market June 4.
+  - GLD: 7sh × ~$432 (est. June 4 pre-market) = ~$3,024 (unrealized ~+$92 from $418.86 entry; oil/Iran bid persists but slight pullback from June 3 high)
+  - AMD: NOT FILLED — all 18 attempts HTTP 403. AMD pre-market ~$519.80 (-4.19% AVGO sympathy). 18th consecutive blocked attempt.
+  - MU: NOT FILLED — all attempts HTTP 403. MU ~$1,060 (new ATH $1,089 June 3). 
+  - PLTR: NOT FILLED — all attempts HTTP 403. PLTR ~$143.50 (pulled back 9.8% from ATH $159.52).
+  - AVGO: REJECTED June 4 Pre-Market (Master Agent avg 5.67 — revenue miss, Technical 4/10 gap-down). Monitor $405-415 for stabilization.
+  - MRVL: REJECTED June 3 (Risk auto-veto). Monitor $280-295.
 - **Order status (estimated — API blocked):**
   - GLD 7sh — open; resting stop $397.92 estimated resting from May 17. **TRAIL TO $412.08 CRITICAL (OPERATOR).**
-  - All prior GTC limit orders (AMD $524.15, PLTR $150.74, MU $1,033.14) — BLOCKED June 3. STALE (prices moved; update at June 4 Pre-Market to ask+0.5%)
-  - Prior AMD limit $520.59 (May 29) — STALE → cancel
-  - Prior MU limit $928.14 (May 29) — STALE → cancel
-  - Prior MRVL limit $202.19 (May 29) — STALE → cancel (MRVL now $309)
-- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 24th consecutive blocked session.
+  - All stale GTC limit orders (AMD $524.15, PLTR $150.74, MU $1,033.14, AMD $520.59, MU $928.14, MRVL $202.19) — STALE → CANCEL ALL
+- **Today's MOO orders (all blocked HTTP 403):**
+  - AMD: 9sh MOO — BLOCKED (18th consecutive, approved score 7.17)
+  - MU: 4sh MOO — BLOCKED (approved score 7.5, highest conviction)
+  - PLTR: 10sh MOO — BLOCKED (approved score 7.0, borderline)
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403, Anthropic sandbox TLS proxy). 25th consecutive blocked session.
 
 ## Prior Account Snapshot (as of 2026-05-22 Mid-Morning ~11:00 AM ET — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
@@ -229,6 +232,18 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **Gap vs SPX:** **~-3.0 percentage points** (improved marginally — S&P down -0.26% today while portfolio estimated flat or tiny positive from GLD/NVDA if still held).
 - **Root cause unchanged:** 85-97% cash from persistent API blockage. 8+ consecutive entry blocks on AMD alone. Every market up-day widens the gap further. The only cure is operator manual execution OR Alpaca API allowlist fix.
 
+## Macro Context (as of 2026-06-04 Pre-Market — web research)
+- **S&P 500 futures:** −0.43% (86% probability of down open per prediction markets). Iran tensions, oil near $100, AVGO -14% headwind dominating.
+- **AVGO SELLOFF (DOMINANT):** Broadcom Q2 FY2026 down 12-14% pre-market. Revenue $22.19B (missed $22.72B). AI revenue $10.8B (+143% YoY, beat). "Wall Street wanted more than perfection" — FY2027 AI target reaffirmed ($100B+) not raised. Stock range ~$405-420 pre-market vs ATH $481 (June 2). Sets negative tone for all AI/tech.
+- **AMD SYMPATHY SELLOFF:** AMD pre-market ~$519.80 (-4.19%). AVGO AI capex confirmation ($10.8B) is actually bullish for AMD long-term — but short-term sentiment = risk-off.
+- **IRAN TENSIONS PERSIST:** Heavy fire exchange overnight; ceasefire fragile. Oil supported (~$98-100 WTI). 6.8M barrel inventory draw adds supply pressure. Hawkish inflation signal.
+- **BTC WEAK:** $63,649 (-13% week, down 50% from Oct 2025 ATH $128,198). ETF outflow streak $3.45B. Below $82K threshold — no crypto entry.
+- **MU RESILIENT:** New ATH $1,089 on June 3. AI memory demand secular and contract-based (less macro-sensitive). Morgan Stanley PT $1,050 (raised). UBS $1,625. Earnings June 24.
+- **GLD:** ~$430-435 est. (oil/Iran bid persists). Stop trail still needed ($397.92 → $412.08).
+- **PLTR:** ~$143.50 (9.8% pullback from $159.52 ATH — healthy correction; thesis intact).
+- **Fed/Rates:** Warsh hawkish. 10-year yield ~4.45%. No FOMC today. June 16-17 FOMC next.
+- **OECD:** Global growth 2.8% (2026), US 2.0% — economy expanding but not accelerating.
+
 ## Macro Context (as of 2026-06-03 Mid-Morning — web research)
 - **S&P 500: ~7,590 (−0.14% today).** Dow −0.56%, Nasdaq +0.01%, Russell 2000 +0.90%. Pulling back from June 1-2 record highs (Dow, S&P 500, Nasdaq all hit ATH on June 1-2).
 - **OIL SPIKE / IRAN TENSIONS (DOMINANT CATALYST):** US and Iran traded heavy fire overnight. Trump admin says ceasefire still holds (negotiations progressing) but markets skeptical. Oil heading back toward $100 (WTI ~$97-98). Direct GLD bid: geopolitical risk premium returning after May-end easing.
@@ -298,47 +313,44 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 6. **Oil/Iran geopolitical risk** — Ceasefire uncertainty driving oil toward $100. Headwind for growth stocks (hawkish inflation implications). Tailwind for GLD and energy sector. AMD/PLTR/MU theses are secular — not directly impacted by oil.
 7. **AVGO earnings tonight (NEW)** — Broadcom Q2 FY2026 after close. Consensus: $22.08B rev, $2.39 EPS. Key: AI custom chip revenue (Q1 = $8.4B; expect $10.5B+). If beats + guidance raise: strong `earnings-reaction-follow` setup for June 4. Prior score: 6.0 (May 22) — tonight's print could reset to 8.0+ if AI revenue is strong. AVGO is the "picks and shovels" for AWS Trainium, Google TPU, MSFT Azure Maia.
 
-## Pending Actions — OPERATOR MUST EXECUTE (Updated June 3 Afternoon)
+## Pending Actions — OPERATOR MUST EXECUTE (Updated June 4 Pre-Market)
 
-### CRITICAL — ALPACA ORDERS (all blocked by HTTP 403; API blocked 24th session)
+### CRITICAL — ALPACA ORDERS (all blocked by HTTP 403; API blocked 25th session)
 
-**EXECUTE AT https://app.alpaca.markets IMMEDIATELY:**
+**EXECUTE AT https://app.alpaca.markets BEFORE 9:25 AM ET TODAY (June 4):**
 
-1. **CANCEL STALE ORDERS (URGENT):**
-   - AMD GTC $524.15 (June 3 attempt, blocked — AMD now $533.82; price stale). Cancel.
-   - PLTR GTC $150.74 (June 3 attempt, blocked — still within range; can carry or update to tomorrow's ask+0.5%)
-   - MU GTC $1,033.14 (June 3 attempt, blocked — still within range; can carry or update)
-   - AMD GTC $520.59 (May 29) — STALE. Cancel.
-   - MU GTC $928.14 (May 29) — STALE. Cancel.
-   - MRVL GTC $202.19 (May 29) — STALE (MRVL now $309). **CANCEL IMMEDIATELY.**
+1. **CANCEL ALL STALE ORDERS (URGENT — do this first):**
+   - AMD GTC $524.15 (June 3, stale — AMD pre-market $519.80, price moved)
+   - PLTR GTC $150.74 (June 3, stale — PLTR now ~$143, price moved significantly)
+   - MU GTC $1,033.14 (June 3, stale — MU now $1,060, check if higher)
+   - AMD GTC $520.59 (May 29) — STALE → cancel
+   - MU GTC $928.14 (May 29) — STALE → cancel
+   - MRVL GTC $202.19 (May 29) — STALE (MRVL ~$309) → **CANCEL IMMEDIATELY**
 
-2. **GLD stop trail (MOST URGENT — guardrail violation if not done):**
+2. **GLD stop trail (MOST URGENT — guardrail violation since ~May 22):**
    - Cancel existing GTC stop at $397.92 (GLD 7sh)
-   - Place new GTC stop-sell **7sh GLD at $412.08** (5% below $433.77)
-   - Current stop is $14.16 below required level — naked exposure if GLD drops
+   - Place new GTC stop-sell **7sh GLD at $412.08** (5% below ~$433-435 est.)
 
-3. **AMD (MANDATORY — 17th consecutive attempt, score 7.5/10):**
-   - Wait for June 4 open price — AMD closed ~$533.82 today (ATH)
-   - Tomorrow: BUY 9sh AMD **limit = tomorrow's ask × 1.005** (est. ~$534–$540)
-   - Stop: limit × 0.95 (−5%), Target: limit × 1.15 (+15%), order_class: bracket, time_in_force: gtc
-   - NOTE: 9sh only (10sh would be $5,340 = 5.34% > 5% position cap)
+3. **AMD (MANDATORY — 18th consecutive, score 7.17/10, approved):**
+   - BUY **9sh AMD MOO** (time_in_force: opg) — fills at open ~$519-525
+   - OR if after 9:25 AM: BUY 9sh AMD limit = current ask × 1.005, bracket GTC
+   - Stop: fill × 0.95 (≈$494-498), Target: fill × 1.15 (≈$597-604), order_class: bracket, gtc
+   - Note: 9sh only (10sh would be ~$5,200 = 5.2% > 5% cap)
 
-4. **AVGO (CONDITIONAL — depends on tonight's earnings print):**
-   - AVGO Q2 FY2026 earnings tonight after close (5 PM ET call)
-   - **IF beats ($22B+ rev, $10.5B+ AI rev, guidance raise):** BUY 5–7sh AVGO at tomorrow's open ask+0.5% via MOO or limit bracket GTC
-   - **IF misses or inline:** SKIP — wait for re-stabilization
-   - Pre-assess from CNBC/Bloomberg at 5–6 PM ET. Decide before Pre-Market June 4 fires.
-
-5. **PLTR (MANDATORY — 5th+ attempt, score 7.67/10):**
-   - Tomorrow: BUY 10sh PLTR **limit = tomorrow's ask × 1.005** (est. ~$150–$155)
-   - Stop: −5%, Target: +15%, order_class: bracket, time_in_force: gtc
-
-6. **MU (MANDATORY — score 7.33/10):**
-   - Tomorrow: BUY 4sh MU **limit = tomorrow's ask × 1.005** (est. ~$1,020–$1,045)
-   - Stop: −5%, Target: +15%, order_class: bracket, time_in_force: gtc
+4. **MU (MANDATORY — score 7.5/10, highest conviction, approved):**
+   - BUY **4sh MU MOO** (time_in_force: opg) — fills at open ~$1,050-1,070
+   - OR if after 9:25 AM: BUY 4sh MU limit = current ask × 1.005, bracket GTC
+   - Stop: fill × 0.95 (≈$1,000-$1,017), Target: fill × 1.15 (≈$1,208-$1,231), bracket gtc
    - **⚠️ CRITICAL: MANDATORY EXIT by June 22 (48h before June 24 earnings)**
 
-**MOO cap for June 4:** Max 3 MOO orders. Priority: AMD (1) + AVGO if beats (2) + PLTR (3). MU as limit if cap hit.
+5. **PLTR (MANDATORY — score 7.0/10, borderline approved):**
+   - BUY **10sh PLTR MOO** (time_in_force: opg) — fills at open ~$140-148
+   - OR if after 9:25 AM: BUY 10sh PLTR limit = current ask × 1.005, bracket GTC
+   - Stop: fill × 0.95 (≈$133-141), Target: fill × 1.15 (≈$161-170), bracket gtc
+
+6. **AVGO — DO NOT ENTER TODAY.** AVGO down 12-14% on earnings miss. Master Agent avg 5.67. Skip. Monitor $405-415 for stabilization. Re-score at Mid-Morning or Daily Review June 4 once bottom forms.
+
+7. **MAX 3 MOO ORDERS TODAY:** AMD (1) + MU (2) + PLTR (3) = 3 used. AVGO = skip.
 
 ### PRIOR PENDING ACTIONS (Updated May 23 Weekend)
 
@@ -602,27 +614,25 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 
 ## Next Routine Plan
 
-**Market Close June 3 (3:30 PM ET / 19:30 UTC — NEXT TODAY):**
-1. **Stop audit:** Verify GLD stop resting. Trail from $397.92 → $412.08 (OPERATOR).
-2. **No day trades to close** — no intraday positions open.
-3. **AVGO earnings watch:** Report expected ~4:30 PM ET (after close). Monitor for beat/miss.
-4. **No MOC orders needed** — no open day trades.
-5. **Stale order audit:** If any resting GTC orders from May 29 remain (AMD $520.59, MU $928.14, MRVL $202.19), cancel immediately.
+**Market Open June 4 (9:45 AM ET / 13:45 UTC — NEXT REQUIRED):**
+1. **Stop audit (FIRST):** Verify GLD stop. Check any MOO fills.
+2. **If AMD/MU/PLTR MOOs filled:** Place individual GTC stop orders at fill × 0.95 (MANDATORY per CLAUDE.md MOO workflow).
+3. **If MOOs blocked again:** Attempt limit bracket GTC orders at ask+0.5% for each.
+4. **AVGO stabilization check:** Is AVGO finding support at $405-415? If stable with 2/5 technical indicators, re-score.
+5. **GLD trail:** Verify stop is trailed to $412.08.
 
-**Daily Review June 3 (4:30 PM ET / 20:30 UTC):**
-1. **AVGO post-earnings assessment:** Run full 6-agent on actual Q2 FY2026 results.
-2. **Produce binding June 4 watchlist:** AMD (MANDATORY), AVGO (conditional), PLTR (MANDATORY), MU (MANDATORY).
-3. **Benchmark update:** SPX close June 3 vs portfolio.
-4. **Setup tracker update:** Still no closed P&L positions — tracker cannot advance.
-5. **20-day underperformance flag:** Formally note per CLAUDE.md protocol (root cause = API, not strategy).
+**Mid-Morning June 4 (11:00 AM ET / 15:00 UTC):**
+1. **Stop audit.**
+2. **Confirm/retry AMD, MU, PLTR entries if not yet open.**
+3. **MRVL watch:** Still monitoring $280-295 consolidation. If settled at $295-300 with stable technicals, re-score.
 
-**Pre-Market June 4 (8:00 AM ET / 12:00 UTC — NEXT MORNING):**
-1. **Stop audit (FIRST ACTION):** GLD stop $412.08 resting? Any AMD/PLTR/MU fills?
-2. **AVGO earnings reaction:** If strong beat → run 6-agent → MOO or limit bracket GTC (earnings-reaction-follow)
-3. **AMD (MANDATORY — 17th attempt):** Limit at open ask × 1.005 (~$534+). Stop −5%, target +15%. 9sh bracket GTC.
-4. **PLTR (MANDATORY):** Limit at open ask × 1.005. Stop −5%, target +15%. 10sh bracket GTC.
-5. **MU (MANDATORY):** Limit at open ask × 1.005. Stop −5%, target +15%. 4sh bracket GTC. MUST EXIT by June 22.
-6. **Max 3 MOO orders:** AMD + AVGO (if beats) + PLTR priority. MU as limit if cap hit.
+**Pre-Market June 4 (8:00 AM ET / 12:06 UTC — COMPLETED THIS ROUTINE):**
+1. ✓ Stop audit — BLOCKED (HTTP 403, 25th session)
+2. ✓ AVGO 6-agent: REJECTED (avg 5.67, revenue miss, Technical 4/10)
+3. ✓ AMD MOO 9sh: APPROVED (avg 7.17) → HTTP 403
+4. ✓ MU MOO 4sh: APPROVED (avg 7.5) → HTTP 403
+5. ✓ PLTR MOO 10sh: APPROVED (avg 7.0) → HTTP 403
+6. ✓ Violation logged (25th consecutive blocked session)
 
 **Prior Next Routine Plan entries below:**
 
