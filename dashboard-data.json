@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-04T12:10:30Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-06-04T13:47:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 100311,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": -12,
     "daily_pnl_pct": -0.01,
     "total_return_pct": 0.31,
-    "spx_return_pct": 4.4,
-    "benchmark_gap_pct": -4.1,
+    "spx_return_pct": 4.5,
+    "benchmark_gap_pct": -4.2,
     "open_positions_count": 1,
-    "note": "June 4 Pre-Market — API BLOCKED (HTTP 403, 25th consecutive). AVGO Q2 FY2026 DOWN 12-14% after earnings miss on revenue ($22.19B vs $22.72B). AVGO rejected (Master Agent avg 5.67, Technical 4/10 gap-down). AMD pre-market ~$519.80 (-4.19% AVGO sympathy). MU ~$1,060 (new ATH $1,089 June 3). PLTR ~$143.50 (9.8% pullback from ATH). All 3 MOOs (AMD 9sh, MU 4sh, PLTR 10sh) approved but BLOCKED HTTP 403 (18th, 1st, 7th+ consecutive blocks). BTC $63,649 (-13% week) — no crypto entry. GLD est. ~$432. S&P futures -0.43% (86% prob down open). Gap vs SPX: ~-4.1 pp (S&P slightly down today, narrowing the gap).",
+    "note": "June 4 Market Open 9:45 AM ET — API BLOCKED (HTTP 403, 26th consecutive). Stop audit: blocked. MOO fills: 0 (all 3 Pre-Market MOOs also blocked). Limit bracket GTC orders attempted: AMD 9sh $525 — BLOCKED; MU 4sh $1,060 — BLOCKED; PLTR 10sh $143.50 — BLOCKED. GLD 7sh only confirmed position (est. ~$430-435). S&P opening ~-0.44% (circuit breaker NOT tripped). Cumulative gap vs SPX: ~-4.2 pp. OPERATOR: Execute AMD/MU/PLTR bracket orders + trail GLD stop at https://app.alpaca.markets",
     "buckets": [
       {
         "key": "active",
@@ -268,10 +268,10 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-29T13:45:00Z",
-      "next_run": "2026-06-04 09:45 ET",
-      "last_summary": "PENDING. Must: (1) confirm MOO fills, (2) place GTC stops for any fills, (3) attempt limit bracket GTC if MOOs were blocked again. AVGO watch — is -14% finding support?"
+      "status": "completed",
+      "last_run": "2026-06-04 09:45 ET",
+      "next_run": "2026-06-05 09:45 ET",
+      "last_summary": "June 4: API BLOCKED (26th consecutive). 0 MOO fills to backfill (all Pre-Market MOOs also blocked). Limit bracket GTC attempts: AMD 9sh $525 BLOCKED, MU 4sh $1,060 BLOCKED, PLTR 10sh $143.50 BLOCKED. GLD only open position (est. ~$432). S&P -0.44% (circuit breaker NOT tripped). 3 new YAML trade entries logged."
     },
     {
       "name": "Mid-Morning",

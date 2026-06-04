@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-04 (Thursday) — Pre-Market (8:00 AM ET / 12:06 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 25th consecutive blocked session). AVGO Q2 FY2026 REPORTED: Revenue $22.19B (missed $22.72B, -2.3%), AI revenue $10.8B (+143% YoY, beat), EPS $2.44 (beat $2.32). Stock down 12-14% pre-market — SKIP (Master Agent avg 5.67, revenue miss). AMD pre-market ~$519.80 (-4.19% in AVGO sympathy — 18th mandatory MOO attempt — BLOCKED HTTP 403). MU ~$1,060 (new ATH $1,089 June 3 — MOO attempt — BLOCKED). PLTR ~$143.50 (pulled back 9.8% from $159.52 ATH — MOO attempt — BLOCKED). All 3 MOO orders (AMD 9sh, MU 4sh, PLTR 10sh) approved by Master Agent (scores 7.17, 7.5, 7.0 respectively) but ALL blocked HTTP 403. BTC $63,649 (-13% week, below $82K threshold — no crypto entry). S&P futures -0.43%, risk-off. Cumulative gap vs SPX: ~-5.5 pp (est.). GLD stop still needs trail to $412.08 (CRITICAL OPERATOR ACTION). OPERATOR: Execute AMD/MU/PLTR MOOs manually at https://app.alpaca.markets BEFORE 9:25 AM ET.**
+**2026-06-04 (Thursday) — Market Open (9:45 AM ET / 13:47 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 26th consecutive blocked session). Stop audit blocked. MOO fills: 0 (Pre-Market MOOs AMD/MU/PLTR all blocked). Market Open limit bracket GTC attempts: AMD 9sh $525 → BLOCKED; MU 4sh $1,060 → BLOCKED; PLTR 10sh $143.50 → BLOCKED. S&P opening ~-0.44% (circuit breaker NOT tripped; no 50% size reduction needed). AMD est. open ~$520-526, MU ~$1,050-1,070, PLTR ~$143-146, GLD ~$430-435. Only GLD 7sh confirmed open. Cumulative gap vs SPX: ~-4.2 pp. OPERATOR: Execute AMD/MU/PLTR limit bracket GTC + trail GLD stop $397.92→$412.08 at https://app.alpaca.markets NOW.**
+
+**Prior Last Updated:** 2026-06-04 (Thursday) — Pre-Market (8:00 AM ET / 12:06 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 25th consecutive blocked session). AVGO Q2 FY2026 REPORTED: Revenue $22.19B (missed $22.72B, -2.3%), AI revenue $10.8B (+143% YoY, beat), EPS $2.44 (beat $2.32). Stock down 12-14% pre-market — SKIP (Master Agent avg 5.67, revenue miss). AMD pre-market ~$519.80 (-4.19% in AVGO sympathy — 18th mandatory MOO attempt — BLOCKED HTTP 403). MU ~$1,060 (new ATH $1,089 June 3 — MOO attempt — BLOCKED). PLTR ~$143.50 (pulled back 9.8% from $159.52 ATH — MOO attempt — BLOCKED). All 3 MOO orders (AMD 9sh, MU 4sh, PLTR 10sh) approved by Master Agent (scores 7.17, 7.5, 7.0 respectively) but ALL blocked HTTP 403. BTC $63,649 (-13% week, below $82K threshold — no crypto entry). S&P futures -0.43%, risk-off. Cumulative gap vs SPX: ~-5.5 pp (est.). GLD stop still needs trail to $412.08 (CRITICAL OPERATOR ACTION). OPERATOR: Execute AMD/MU/PLTR MOOs manually at https://app.alpaca.markets BEFORE 9:25 AM ET.**
 
 **Prior Last Updated:** 2026-06-03 (Wednesday) — Afternoon (2:00 PM ET / 18:09 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 24th consecutive blocked session). Midday SILENTLY FAILED (new violation logged). Market: S&P ~7,545 (est. −0.60% from June 1-2 records). AMD hit new ATH $533.82 (vs $524.15 limit at Mid-Morning — would have filled if API not blocked). PLTR ~$149–$150 (pullback from $159.52 high). MU ~$1,010–$1,040 (consolidating). GLD ~$433.77 (+0.48% — oil/Iran bid). AVGO reporting earnings TONIGHT after close (Q2 FY2026; consensus $22.08B rev, $2.39 EPS) — full 6-agent assessment at Pre-Market June 4. No new active entries this routine (proximity-to-close rule). GLD stop must trail $397.92 → $412.08. Cumulative gap vs SPX: ~−5.5 pp (est.). Tomorrow binding watchlist: AMD ($533.82 ATH, MANDATORY — 17th attempt), AVGO (conditional on tonight's print), PLTR (MANDATORY), MU (MANDATORY).**
 
@@ -614,12 +616,20 @@ No 3-in-a-row halt or boost rules triggered. No closed P&L to evaluate. Tracker 
 
 ## Next Routine Plan
 
-**Market Open June 4 (9:45 AM ET / 13:45 UTC — NEXT REQUIRED):**
-1. **Stop audit (FIRST):** Verify GLD stop. Check any MOO fills.
-2. **If AMD/MU/PLTR MOOs filled:** Place individual GTC stop orders at fill × 0.95 (MANDATORY per CLAUDE.md MOO workflow).
-3. **If MOOs blocked again:** Attempt limit bracket GTC orders at ask+0.5% for each.
-4. **AVGO stabilization check:** Is AVGO finding support at $405-415? If stable with 2/5 technical indicators, re-score.
-5. **GLD trail:** Verify stop is trailed to $412.08.
+**Mid-Morning June 4 (11:00 AM ET / 15:00 UTC — NEXT REQUIRED):**
+1. **Stop audit (FIRST):** Still blocked (HTTP 403). Log result. Operator must act.
+2. **AMD/MU/PLTR:** If still no fills, re-attempt limit bracket GTC orders (prices may have moved). Update limits to ask+0.5%.
+3. **AVGO stabilization check:** Is AVGO finding support at $405-415? If closed near $412+ with reduced volume and any 2/5 indicators, re-score (needs avg ≥7 to enter).
+4. **GLD trail:** Operator must trail to $412.08 urgently.
+5. **MRVL monitor:** $280-295 consolidation range. Don't enter yet.
+
+**Market Open June 4 (9:45 AM ET — COMPLETED THIS ROUTINE):**
+1. ✓ Stop audit — BLOCKED (HTTP 403, 26th session)
+2. ✓ MOO fill backfill — 0 fills (all Pre-Market MOOs blocked)
+3. ✓ AMD limit bracket GTC 9sh $525.00 → BLOCKED
+4. ✓ MU limit bracket GTC 4sh $1,060.00 → BLOCKED
+5. ✓ PLTR limit bracket GTC 10sh $143.50 → BLOCKED
+6. ✓ Circuit breaker check: S&P -0.44% (NOT tripped)
 
 **Mid-Morning June 4 (11:00 AM ET / 15:00 UTC):**
 1. **Stop audit.**
