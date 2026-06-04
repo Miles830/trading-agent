@@ -1,38 +1,21 @@
 {
-  "last_updated": "2026-06-04T12:10:30Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-06-04T16:44:00Z",
+  "updated_by": "midday",
   "portfolio": {
-    "total_equity": 100311,
+    "total_equity": 100137,
     "starting_equity": 100000.0,
     "cash": 97281,
-    "cash_pct": 97.0,
+    "cash_pct": 97.1,
     "buying_power": 194562,
-    "long_market_value": 3024,
+    "long_market_value": 2856,
     "short_market_value": 0.0,
-    "daily_pnl": -12,
-    "daily_pnl_pct": -0.01,
-    "total_return_pct": 0.31,
-    "spx_return_pct": 4.4,
-    "benchmark_gap_pct": -4.1,
+    "daily_pnl": -76,
+    "daily_pnl_pct": -0.08,
+    "total_return_pct": 0.14,
+    "spx_return_pct": 5.1,
+    "benchmark_gap_pct": -5.0,
     "open_positions_count": 1,
-    "note": "June 4 Pre-Market — API BLOCKED (HTTP 403, 25th consecutive). AVGO Q2 FY2026 DOWN 12-14% after earnings miss on revenue ($22.19B vs $22.72B). AVGO rejected (Master Agent avg 5.67, Technical 4/10 gap-down). AMD pre-market ~$519.80 (-4.19% AVGO sympathy). MU ~$1,060 (new ATH $1,089 June 3). PLTR ~$143.50 (9.8% pullback from ATH). All 3 MOOs (AMD 9sh, MU 4sh, PLTR 10sh) approved but BLOCKED HTTP 403 (18th, 1st, 7th+ consecutive blocks). BTC $63,649 (-13% week) — no crypto entry. GLD est. ~$432. S&P futures -0.43% (86% prob down open). Gap vs SPX: ~-4.1 pp (S&P slightly down today, narrowing the gap).",
-    "buckets": [
-      {
-        "key": "active",
-        "label": "Active Trading (target 85%)",
-        "value": 3024
-      },
-      {
-        "key": "crypto",
-        "label": "Crypto (target 10%)",
-        "value": 0.0
-      },
-      {
-        "key": "cash",
-        "label": "Cash (5% floor)",
-        "value": 97281
-      }
-    ]
+    "note": "⚠️ June 4 Midday CORRECTION: GLD at ~$408 (NOT $432 as prior estimates). Position UNDERWATER -$76 (-2.6% from $418.86 entry). Stop $397.92 MAINTAIN — do NOT trail. Market: Dow +1.8%, S&P +0.3%, Nasdaq -0.2%. AVGO -15% (guidance miss, Goldman raised PT $525 — still below 7 threshold). AMD ~$505-510 (sympathy, better entry). MU ~$1,015 (down 6.7% from ATH, better entry). PLTR $143.50. Both AMD + MU midday catch-up limits BLOCKED (26th consecutive). PLTR deferred to Afternoon. API blocked (26th session). Gap vs SPX: ~-5.0 pp."
   },
   "positions": [
     {
@@ -40,17 +23,108 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 432.00,
-      "pnl": 92.0,
-      "pnl_pct": 3.14,
-      "stop_loss": 412.08,
+      "current_price": 408.00,
+      "pnl": -75.62,
+      "pnl_pct": -2.58,
+      "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "GLD est. ~$432 (June 4 pre-market — oil/Iran bid persists). Unrealized ~+$92 (+3.14% from $418.86 entry). STOP TRAIL CRITICAL: Resting $397.92 — MUST trail to $412.08 (5% below $432). Operator: cancel $397.92, place $412.08 GTC stop at https://app.alpaca.markets."
+      "note": "⚠️ GLD CORRECTED to ~$408 (June 3 close $407.91; prior $432-435 estimates were WRONG). Position UNDERWATER -$76 from $418.86 entry. Stop $397.92 = 2.4% buffer — MAINTAIN (do NOT trail to $412.08; that would immediately trigger since GLD < $412). Oil/Iran thesis mixed. Dow +1.8% rotation may provide modest safe-haven bid for gold on June 4."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-04T16:44:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "api-blocked",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "API BLOCKED HTTP 403 — 26th consecutive session. MU limit $1,020 bracket GTC BLOCKED. AMD limit $508 bracket GTC BLOCKED. ⚠️ GLD CORRECTED to ~$408 (not $432). Stop $397.92 MAINTAIN. OPERATOR: Execute at https://app.alpaca.markets"
+    },
+    {
+      "ts": "2026-06-04T16:43:00Z",
+      "symbol": "PLTR",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.0,
+      "agent_scores": {"fundamentals": 8, "technical": 6, "sentiment": 7, "macro": 5, "risk": 8, "tech_analyst": 8},
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "DEFERRED — midday 2-entry cap (MU #1, AMD #2 used). PLTR $143.50 midday (range $140-$152). MANDATORY at Afternoon routine. 10sh limit ask×1.005 bracket GTC."
+    },
+    {
+      "ts": "2026-06-04T16:42:00Z",
+      "symbol": "AMD",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.17,
+      "agent_scores": {"fundamentals": 8, "technical": 6, "sentiment": 7, "macro": 5, "risk": 8, "tech_analyst": 9},
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit 9sh AMD $508 bracket GTC) → HTTP 403 (26th consecutive). 19th mandatory attempt. Improved entry vs $521 pre-market est. AVGO AI rev $10.8B confirms AMD demand. Stop $482.60 (-5%), target $584.20 (+15%). OPERATOR: BUY 9sh AMD limit $508 bracket GTC."
+    },
+    {
+      "ts": "2026-06-04T16:40:00Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "agent_scores": {"fundamentals": 9, "technical": 7, "sentiment": 8, "macro": 5, "risk": 8, "tech_analyst": 9},
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit 4sh MU $1,020 bracket GTC stop $969 target $1,173) → HTTP 403 (26th consecutive). HIGHEST CONVICTION (7.67 avg, 5/6≥7, improved from 7.5 pre-market). Down 6.7% from ATH = better entry. HBM4 sold out. ⚠️ EXIT by June 22. OPERATOR: BUY 4sh MU limit $1,020 bracket GTC."
+    },
+    {
+      "ts": "2026-06-04T16:38:00Z",
+      "symbol": "AVGO",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 6.0,
+      "agent_scores": {"fundamentals": 7, "technical": 5, "sentiment": 6, "macro": 4, "risk": 6, "tech_analyst": 8},
+      "agent_average": 6.0,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED (MIDDAY RE-SCORE) — Goldman $525 PT noted but avg 6.0 < 7. Technical 5/10 (gap-down day, no confirmed reversal). Still a falling knife. Re-score at Daily Review once support forms at $405-415."
+    },
+    {
+      "ts": "2026-06-04T15:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Mid-Morning 2026-06-04 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat. Catch-up running at Midday. AMD/MU catch-up limits blocked."
+    },
+    {
+      "ts": "2026-06-04T13:45:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Market Open 2026-06-04 (9:45 AM ET / 13:45 UTC) SILENTLY FAILED — no heartbeat. MOO fill confirmations and GTC stop placements missed. Catch-up running at Midday."
+    },
     {
       "ts": "2026-06-04T12:10:30Z",
       "symbol": "N/A",
@@ -62,7 +136,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "API BLOCKED HTTP 403 — 25th consecutive session. All 3 MOO orders blocked (AMD 9sh, MU 4sh, PLTR 10sh). All API endpoints blocked. OPERATOR: Execute at https://app.alpaca.markets BEFORE 9:25 AM ET."
+      "order_status": "API BLOCKED HTTP 403 — 25th consecutive session. All 3 MOO orders blocked (AMD 9sh, MU 4sh, PLTR 10sh). All API endpoints blocked. OPERATOR: Execute at https://app.alpaca.markets"
     },
     {
       "ts": "2026-06-04T12:10:00Z",
@@ -75,7 +149,7 @@
       "agent_average": 7.0,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 10sh PLTR) → HTTP 403 'Host not in allowlist' (25th consecutive). ORDER NOT PLACED. Approved: avg 7.0, Risk 8≥6, 4/6 agents≥7, TA 8≥6. Borderline approval — Technical 6/10 (MACD daily bullish, stochastic normalizing from overbought). PLTR pulled back 9.8% from $159.52 ATH to ~$143.50. Est. stop: fill×0.95 (~$136.80). Est. target: fill×1.15 (~$165.60). R/R: 3:1. OPERATOR: BUY 10sh PLTR MOO or limit ask+0.5%."
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 10sh PLTR) → HTTP 403 (25th consecutive). Borderline 7.0 avg. OPERATOR: BUY 10sh PLTR limit ask+0.5% bracket GTC."
     },
     {
       "ts": "2026-06-04T12:09:30Z",
@@ -88,7 +162,7 @@
       "agent_average": 7.5,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 4sh MU) → HTTP 403 (25th consecutive). HIGHEST CONVICTION today (7.5 avg, 5/6 agents≥7). ATH $1,089 June 3 breakout. UBS $1,625 PT (52% upside). HBM4 sold out. Est. fill ~$1,060. Stop: fill×0.95 (~$1,007). Target: fill×1.15 (~$1,219). R/R: 3:1. ⚠️ MANDATORY EXIT by June 22 (earnings June 24). OPERATOR: BUY 4sh MU MOO or limit ask+0.5%."
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 4sh MU) → HTTP 403 (25th). HIGHEST CONVICTION. Updated to limit at midday. EXIT by June 22."
     },
     {
       "ts": "2026-06-04T12:09:00Z",
@@ -101,7 +175,7 @@
       "agent_average": 7.17,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 9sh AMD) → HTTP 403 (25th consecutive). 18th mandatory attempt. AMD pre-market ~$519.80 (-4.19% AVGO sympathy, not AMD-specific). Barclays PT $665, data center +57% YoY. Est. fill ~$521. Stop: fill×0.95 (~$495). Target: fill×1.15 (~$599). R/R: 3:1. 9sh only (5% cap). OPERATOR: BUY 9sh AMD MOO or limit ask+0.5%."
+      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 9sh AMD) → HTTP 403 (25th). 18th attempt. Updated to limit at midday."
     },
     {
       "ts": "2026-06-04T12:08:00Z",
@@ -114,141 +188,11 @@
       "agent_average": 5.67,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "REJECTED — Master Agent avg 5.67 < 7.0; only 2/6 agents≥7 (need 4). AVGO Q2 FY2026: revenue $22.19B missed $22.72B consensus (-2.3%), down 12-14% pre-market. Revenue miss triggers prior plan skip clause. Technical 4/10 (gap-down -14% from ATH, 0/5 indicators confirming). Wait 1-2 sessions for stabilization. Watch $405-415 support."
-    },
-    {
-      "ts": "2026-06-03T18:10:03Z",
-      "symbol": "AVGO",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "SKIP — Exemption 2: AVGO Q2 FY2026 earnings tonight June 3 after close. Binary event. Full 6-agent at Pre-Market June 4 — COMPLETED (rejected, avg 5.67)."
-    },
-    {
-      "ts": "2026-06-03T18:10:02Z",
-      "symbol": "MU",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.33,
-      "agent_scores": {"fundamentals": 9, "technical": 5, "sentiment": 8, "macro": 6, "risk": 7, "tech_analyst": 9},
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP — Afternoon proximity-to-close rule. Re-scored June 4 Pre-Market: 7.5 (Technical upgraded to 7/10 on ATH breakout + MACD + volume spike). MOO attempted June 4 — blocked."
-    },
-    {
-      "ts": "2026-06-03T18:10:01Z",
-      "symbol": "PLTR",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.67,
-      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 8},
-      "agent_average": 7.67,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP — Afternoon proximity-to-close rule. Re-scored June 4 Pre-Market: 7.0 (Technical dropped to 6/10 — 9.8% pullback from ATH requires fresh confirmation). MOO attempted June 4 — blocked."
-    },
-    {
-      "ts": "2026-06-03T18:10:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.5,
-      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 8, "tech_analyst": 8},
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP — Afternoon proximity-to-close rule. Re-scored June 4 Pre-Market: 7.17 (Macro dropped to 5 — AVGO -14% headwind, risk-off day). MOO attempted June 4 — blocked."
-    },
-    {
-      "ts": "2026-06-03T18:09:30Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Midday routine 2026-06-03 (12:30 PM ET / 16:30 UTC) SILENTLY FAILED — no heartbeat. Logged by Afternoon routine. API blocked (24th consecutive). Stop audit: HTTP 403."
-    },
-    {
-      "ts": "2026-06-03T15:13:04Z",
-      "symbol": "BTC/USD",
-      "action": "skip",
-      "bucket": "crypto",
-      "setup": "crypto-flush-rebound",
-      "score": 4.17,
-      "agent_scores": {"fundamentals": 4, "technical": 3, "sentiment": 4, "macro": 5, "risk": 5, "tech_analyst": 4},
-      "agent_average": 4.17,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "SKIP — BTC ~$67,000, down 7% in 24h. Well below $82K threshold. Score 4.17 << 7. No entry."
-    },
-    {
-      "ts": "2026-06-03T15:13:03Z",
-      "symbol": "MU",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.33,
-      "agent_scores": {"fundamentals": 9, "technical": 5, "sentiment": 8, "macro": 6, "risk": 7, "tech_analyst": 9},
-      "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 (23rd consecutive). ORDER NOT PLACED. Intended: BUY 4sh MU limit $1,033.14, stop $981.48 (-5%), target $1,188.11 (+15%), bracket GTC."
-    },
-    {
-      "ts": "2026-06-03T15:13:02Z",
-      "symbol": "PLTR",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.67,
-      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 9, "tech_analyst": 8},
-      "agent_average": 7.67,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 (23rd consecutive). ORDER NOT PLACED."
-    },
-    {
-      "ts": "2026-06-03T15:13:01Z",
-      "symbol": "AMD",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.5,
-      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 6, "risk": 8, "tech_analyst": 8},
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders → HTTP 403 (23rd consecutive). ORDER NOT PLACED. 15th consecutive attempt."
-    },
-    {
-      "ts": "2026-06-03T15:13:00Z",
-      "symbol": "MRVL",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 6.83,
-      "agent_scores": {"fundamentals": 9, "technical": 4, "sentiment": 8, "macro": 6, "risk": 5, "tech_analyst": 9},
-      "agent_average": 6.83,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED — Risk auto-veto (5/10 < 6). Stop at $295.14 within intraday low $294.01. Average 6.83 < 7. Only 3/6 agents ≥7."
+      "order_status": "REJECTED (pre-market) — Revenue miss, Technical 4/10 gap-down. Reconfirmed at midday (6.0). Wait for base."
     }
   ],
   "trade_stats": {
-    "total": 30,
+    "total": 32,
     "wins": 0,
     "losses": 0,
     "win_rate_pct": null,
@@ -263,31 +207,31 @@
       "status": "completed",
       "last_run": "2026-06-04 08:06 ET",
       "next_run": "2026-06-05 08:00 ET",
-      "last_summary": "June 4: AVGO Q2 FY2026 rejected (avg 5.67 — revenue miss -2.3%, down 12-14%, Technical 4/10 gap-down). AMD MOO 9sh approved (7.17) — BLOCKED HTTP 403 (18th). MU MOO 4sh approved (7.5 — highest conviction) — BLOCKED. PLTR MOO 10sh approved (7.0 borderline) — BLOCKED. BTC $63,649 below $82K — no crypto. S&P futures -0.43% risk-off. All 3 orders blocked (25th consecutive API blockage)."
+      "last_summary": "June 4: AVGO Q2 rejected (5.67). AMD/MU/PLTR MOOs approved but blocked. BTC $63,649 below threshold."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "pending",
+      "status": "silent-failure",
       "last_run": "2026-05-29T13:45:00Z",
-      "next_run": "2026-06-04 09:45 ET",
-      "last_summary": "PENDING. Must: (1) confirm MOO fills, (2) place GTC stops for any fills, (3) attempt limit bracket GTC if MOOs were blocked again. AVGO watch — is -14% finding support?"
+      "next_run": "2026-06-05 09:45 ET",
+      "last_summary": "SILENT FAILED June 4 (no heartbeat). MOO fill confirmation and GTC stop placement missed. Violation logged."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "pending",
+      "status": "silent-failure",
       "last_run": "2026-06-03T15:13:00Z",
-      "next_run": "2026-06-04 11:00 ET",
-      "last_summary": "PENDING. AMD, MU, PLTR follow-up if not yet open. AVGO re-score if stabilizing. MRVL monitor $280-295."
+      "next_run": "2026-06-05 11:00 ET",
+      "last_summary": "SILENT FAILED June 4 (no heartbeat). AMD/MU/PLTR follow-up missed. Violation logged."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-25T16:31:50Z",
-      "next_run": "2026-06-04 12:30 ET",
-      "last_summary": "PENDING. Stop audit. Confirm/retry entries. GLD trail."
+      "status": "completed",
+      "last_run": "2026-06-04 12:30 ET",
+      "next_run": "2026-06-05 12:30 ET",
+      "last_summary": "June 4: 2 violations logged (Market Open + Mid-Morning). GLD CORRECTED to ~$408 (underwater from $418.86; stop $397.92 MAINTAIN, do NOT trail). AVGO re-score 6.0 (still below threshold). MU 4sh limit $1,020 bracket GTC APPROVED 7.67 — BLOCKED API. AMD 9sh limit $508 bracket GTC APPROVED 7.17 — BLOCKED API. PLTR deferred to Afternoon. Market: Dow +1.8%, S&P +0.3%, Nasdaq -0.2% rotation day."
     },
     {
       "name": "Afternoon",
@@ -295,7 +239,7 @@
       "status": "pending",
       "last_run": "2026-06-03T18:09:00Z",
       "next_run": "2026-06-04 14:00 ET",
-      "last_summary": "PENDING. P/L review, trailing stops, MOC candidates."
+      "last_summary": "PENDING. MANDATORY: PLTR 10sh limit catch-up. AMD/MU fill confirmation. GLD stop verification."
     },
     {
       "name": "Market Close",
@@ -311,7 +255,7 @@
       "status": "pending",
       "last_run": "2026-05-26 20:32 ET",
       "next_run": "2026-06-04 20:30 ET",
-      "last_summary": "PENDING. AVGO re-assessment. AMD/MU/PLTR fill confirmation. Setup tracker. Weekly evolution note."
+      "last_summary": "PENDING. AVGO base confirmation. AMD/MU/PLTR fills. Setup tracker. GLD reassessment. Gap vs SPX update."
     },
     {
       "name": "Weekly Review",
@@ -319,175 +263,154 @@
       "status": "pending",
       "last_run": "never completed",
       "next_run": "2026-06-06 16:30 ET",
-      "last_summary": "Next due: Friday June 6. Week of June 2-6: S&P records, AVGO -14% post-earnings, AMD pullback, MRVL +33%, MU ATH $1,089, PLTR NVDA partnership."
+      "last_summary": "Next due: Friday June 6. Week of June 2-6: S&P records, AVGO -15% post-earnings, AMD sympathy pullback, MU ATH $1,089, PLTR stable, GLD corrected lower than expected."
     }
   ],
   "agent_scorecard": {
-    "trades_scored": 25,
+    "trades_scored": 27,
     "most_accurate": "—",
     "most_accurate_note": "Hit-rate tracking begins after first exit.",
     "most_conservative": "Technical Sub-Agent",
-    "most_conservative_note": "Technical consistently lowest scorer. June 4: AVGO Technical 4/10 (gap-down -14% — correctly cautious). AMD 6/10, PLTR 6/10 (pullbacks from ATH, 2/5 indicators on daily). MU 7/10 (ATH breakout with MACD + volume spike = 2/5 confirmed).",
+    "most_conservative_note": "Technical consistently lowest scorer. Midday: AVGO 5/10 (gap-down, no reversal confirmed). AMD 6/10 (MACD+stochastic 2/5). MU 7/10 (ATH breakout, MACD+vol spike 2/5). PLTR 6/10.",
     "per_agent": {
       "fundamentals": {
         "avg_score": 8.1,
-        "calls_above_7": 20,
+        "calls_above_7": 22,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Consistently highest. MU 9/10. AVGO 7/10 (revenue miss hurt). AMD 8/10. PLTR 8/10."
+        "note": "Consistently highest. MU 9/10 (midday). AMD 8/10. PLTR 8/10. AVGO 7/10."
       },
       "technical": {
         "avg_score": 5.8,
         "calls_above_7": 10,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Most conservative. June 4 AVGO: 4/10 (gap-down, 0/5 confirmed). AMD 6/10, PLTR 6/10 (MACD daily + stochastic normalizing = 2/5). MU 7/10 (ATH breakout, MACD + volume spike = 2/5)."
+        "note": "Most conservative. AVGO 5/10 midday (gap-down still). AMD 6/10. PLTR 6/10. MU 7/10 (best, ATH breakout confirmed)."
       },
       "sentiment": {
-        "avg_score": 6.8,
-        "calls_above_7": 12,
+        "avg_score": 6.9,
+        "calls_above_7": 13,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "xAI Grok API blocked (sandbox — all runs). AVGO 5/10 (revenue miss narrative, bearish x inferred). AMD 7/10, MU 8/10, PLTR 7/10 (bullish inferred +1 modifier)."
+        "note": "xAI Grok API blocked all runs. MU 8/10 (HBM4 supercycle + bullish inferred). AMD 7/10. PLTR 7/10. AVGO 6/10."
       },
       "macro": {
-        "avg_score": 5.2,
+        "avg_score": 5.1,
         "calls_above_7": 8,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "June 4: risk-off day (AVGO -14%, S&P futures -0.43%, Iran tensions, oil). All 4 entries scored Macro 4-5/10. AVGO 4/10."
+        "note": "Midday: Dow +1.8%, S&P +0.3%, Nasdaq -0.2%. Rotation day. AVGO 4/10 (IS the headwind). AMD/MU 5/10 (secular demand insulates vs macro). PLTR 5/10."
       },
       "risk": {
-        "avg_score": 7.6,
-        "calls_above_7": 19,
+        "avg_score": 7.7,
+        "calls_above_7": 21,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "AMD 8/10, MU 7/10, PLTR 8/10 (all guardrails satisfied, 3:1 R/R). AVGO 6/10 (met guardrails but entry timing uncertain on gap-down). Risk agent correctly vetoed MRVL June 3."
+        "note": "MU midday 8/10 (improved entry — lower price → better R/R). AMD 8/10. PLTR 8/10. All guardrails satisfied. Risk correctly vetoed MRVL June 3."
       },
       "tech_analyst": {
         "avg_score": 8.3,
-        "calls_above_7": 22,
+        "calls_above_7": 23,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "AVGO 8/10 (custom ASIC hyperscaler moat despite earnings). AMD 9/10 (EPYC agentic AI, MI350X). MU 9/10 (HBM4 bottleneck). PLTR 8/10 (AIP gov AI moat)."
+        "note": "AMD 9/10. MU 9/10. PLTR 8/10. AVGO 8/10 (custom ASIC moat intact despite earnings miss)."
       }
     }
   },
   "memory": {
-    "recent_lessons_md": "### 2026-06-04 Pre-Market\n\n**AVGO 'beat but disappoint' pattern — same as NVDA Q1:** AVGO Q2 FY2026 AI revenue $10.8B (+143% YoY) was a beat but guidance was only reaffirmed ($100B FY2027), not raised. Market down 14%. This mirrors NVDA Q1 pattern ('sell the news' when perfection was priced in). Lesson: for AI bellwethers with stretched valuations, the market requires guidance RAISES not just reaffirmations. A beat on current-quarter metrics is insufficient if the forward guide doesn't surprise positively. For AVGO, re-entry once stock stabilizes ($405-415 support).\n\n**AMD sympathy selloff = opportunity:** AMD -4.19% pre-market on AVGO news. AVGO AI rev $10.8B (+143%) is actually bullish for AMD (confirms hyperscaler AI capex spending). AMD pullback to $519 is better entry than $533 ATH. If not filled today (25th API block), AMD would be ~1.3% better entry.\n\n**Technical scoring for MOO orders:** MOO orders fill at open — can't confirm 5-min candlestick patterns pre-market. Using daily indicators (MACD, stochastic trend direction) to assess 2/5 indicator confirmation for pre-market MOO scoring. Daily MACD + stochastic normalization from overbought = 2/5 for AMD and PLTR today."
+    "recent_lessons_md": "### 2026-06-04 Midday\n\n**GLD price estimate was significantly wrong:** Prior portfolio.md had GLD at $432-435 based on 'oil/Iran bid' narrative. Actual GLD June 3 close: $407.91. Position is UNDERWATER from $418.86 entry (-2.6%). Stop $397.92 is only 2.4% away. LESSON: Always use confirmed data for price estimates. The $432-435 figure was never verified against actual market data — it was an assumption built on an oil/Iran thesis that didn't translate to actual gold buying. Going forward: treat all price estimates as provisional until verified via API or confirmed market close data.\n\n**Do NOT trail GLD stop to a level above current price:** The 'trail to $412.08' instruction was generated when GLD was incorrectly estimated at $433. Since GLD is actually at $408, a stop at $412 would immediately trigger the position close. LESSON: Always cross-check stop levels against confirmed price before issuing trail instructions.\n\n**AVGO post-earnings structure:** Even with Goldman raising PT to $525 (29% upside), the stock requires technical confirmation before entry. 'Buy the dip' calls on gap-down days can be correct but timing is key. Wait for: (1) stock to form a multi-session base at $405-415, (2) 2/5 technical indicators to confirm reversal direction, (3) overall market to stabilize. Goldman PT alone is not sufficient.\n\n**Sympathy selloffs improve entries:** AMD down 5.44% and MU down 6-7% due to AVGO news — neither has AMD-specific or MU-specific negative catalysts. AVGO AI rev $10.8B (+143%) actually confirms the AI silicon demand thesis that supports both AMD and MU. The catchup entries at lower prices ($508 vs $521 for AMD; $1,020 vs $1,060 for MU) improve R/R and provide better bracket brackets."
   },
   "market": {
-    "mode": "Risk-OFF — AVGO -14% post-earnings dominant sentiment; Iran tensions; oil near $100; S&P futures -0.43%",
+    "mode": "ROTATION — Dow +1.8%, S&P +0.3%, Nasdaq -0.2%. AI/semis selling off (AVGO -15%), value/cyclicals rallying.",
     "fear_greed": null,
-    "fear_greed_label": "Bearish short-term — AVGO miss triggers AI sector repricing. AMD/tech down in sympathy. BTC -13% week. Iran tensions persistent.",
-    "spx": "June 4 pre-market: S&P 500 futures -0.43% (~7,513 est.). 86% probability of down open (prediction markets). AVGO -14% headwind dominates. Iran tensions + oil near $100 + 10-yr yield 4.45%.",
-    "btc": "BTC $63,649 (-13% week, -50% from Oct 2025 ATH $128,198). ETF outflow streak $3.45B (11 days). Below $82K threshold — no crypto entry. Way too weak.",
+    "fear_greed_label": "Mixed — AI sector bearish from AVGO miss; broader market nearly flat; Dow at fresh records.",
+    "spx": "June 4 midday: S&P 500 +0.3% (~7,568 est.). Dow +1.8% (+911 pts, new record). Nasdaq -0.2%. Rotation from AI/tech into value/cyclicals.",
+    "btc": "BTC $63,649 (-13% week, -50% from Oct 2025 ATH $128,198). $1.5B liquidations. 11-day ETF outflow streak $3.45B. Below $82K threshold — no crypto entry.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
         "change_pct": -3.5,
-        "note": "June 4 pre-market: AVGO -14% (earnings miss + guidance reaffirm not raise). AMD -4.19% sympathy. Sector repricing AI expectations. MU resilient (new ATH $1,089 June 3). PLTR -4% sympathy pullback."
+        "note": "AVGO -15% (guidance disappointment). AMD -5% sympathy. MU -6.7% sympathy. PLTR relatively stable ($143.50). Rotation day."
+      },
+      {
+        "name": "Industrials / Dow Components",
+        "change_pct": 1.8,
+        "note": "Dow +1.8% (+911 pts) — rotation from AI/tech into value. Fresh Dow record high."
       },
       {
         "name": "Energy",
-        "change_pct": 1.5,
-        "note": "Oil supported near $100 (WTI). 6.8M barrel inventory draw. Iran tensions persistent. GLD bid."
+        "change_pct": 0.8,
+        "note": "Oil supported near $100. Iran tensions. GLD flat-to-slight bid on safe-haven from Dow rotation."
       },
       {
         "name": "Precious Metals",
-        "change_pct": 0.2,
-        "note": "GLD est. ~$432 (oil/Iran bid persists). Stop trail still needed: $397.92 → $412.08. Slight pullback from June 3 high ~$433.77."
-      },
-      {
-        "name": "Defense / Gov AI",
-        "change_pct": -2.5,
-        "note": "PLTR ~$143.50 (9.8% pullback from $159.52 ATH). Risk-off environment. Thesis intact (Q1 beat, NVDA partnership)."
+        "change_pct": -0.5,
+        "note": "GLD ~$408 (CORRECTED — was $432-435 estimate). June 3 close $407.91. Slight rotation headwind as dollar bid competes with geopolitical support."
       }
     ],
-    "macro_notes_md": "- **AVGO Q2 FY2026 (dominant):** Revenue $22.19B (missed $22.72B), AI rev $10.8B (+143% YoY, beat), EPS $2.44 (beat). But FY2027 AI target only reaffirmed ($100B+), not raised. Stock -12-14% pre-market. 'Wall Street wanted more than perfection.' Sets negative tone for AI/tech sector.\n- **AMD sympathy pullback (-4.19%):** AVGO AI rev confirmation ($10.8B) is actually BULLISH for AMD long-term (confirms hyperscaler AI capex). Pullback to $519 = better entry opportunity.\n- **Iran tensions persist:** Ceasefire fragile. Oil near $100 (WTI). 6.8M barrel inventory draw adds supply support. Hawkish inflation signal for Fed.\n- **BTC -13% week:** $63,649. ETF outflows $3.45B (11 consecutive days). -50% from Oct 2025 ATH. Below $82K threshold — no crypto entry.\n- **S&P futures -0.43%:** 86% probability of down open. Risk-off mode.\n- **10-year Treasury yield ~4.45%:** Hawkish. Kevin Warsh Fed Chair. No FOMC until June 16-17.\n- **OECD:** Global growth 2.8% (2026), US 2.0%. Economy expanding but not accelerating.",
-    "sp500_today_pct": "-0.43% (futures, pre-market)",
-    "sp500_est": 7513,
-    "macro_note": "Risk-OFF. AVGO -14% post-earnings reset AI sector expectations. AMD -4.19% sympathy. Iran tensions, oil near $100. BTC $63,649 (-13% week). S&P futures -0.43%."
+    "macro_notes_md": "- **ROTATION DAY:** Dow +1.8% while Nasdaq -0.2%. AVGO -15% weighing on AI/semiconductor complex.\n- **AVGO (dominant):** Goldman raised PT to $525. Still gap-down day. Technical not confirming reversal. Average 6.0 at midday re-score — still below 7 threshold.\n- **AMD ~$505-510:** Opened $496 (down 5.44%); partial recovery intraday. Better entry than $521 pre-market. Thesis intact.\n- **MU ~$1,015:** Down 6.7% from $1,089 ATH. AVGO AI rev $10.8B confirms HBM demand. Better entry.\n- **GLD ~$408:** CORRECTED. Prior estimates were wrong. Stop $397.92 MAINTAIN (2.4% buffer). Position underwater.\n- **Iran tensions:** Ceasefire fragile. Oil near $100. Hawkish inflation signal.\n- **BTC $63,649:** $1.5B liquidations. Well below $82K threshold.",
+    "sp500_today_pct": "+0.3% (midday)",
+    "sp500_est": 7568,
+    "macro_note": "Rotation day. Dow record high (+1.8%), Nasdaq down (-0.2%). AVGO -15% dominant. AMD/MU sympathy selloff = better entries. GLD corrected lower than estimates."
   },
   "watchlist": [
+    {
+      "symbol": "MU",
+      "bucket": "active",
+      "score": 7.67,
+      "action": "MANDATORY — limit 4sh $1,020 bracket GTC BLOCKED (19th consecutive). Score IMPROVED to 7.67 (better entry). OPERATOR: BUY 4sh MU limit $1,020 bracket GTC (stop $969, target $1,173). EXIT by June 22.",
+      "notes": "MU down 6.7% from $1,089 ATH to ~$1,015. AVGO AI rev $10.8B confirms HBM4 demand. Better entry than $1,060 pre-market. UBS $1,625 PT (60% upside). Score 7.67 (F9/T7/S8/M5/R8/TA9, 5/6≥7). Highest conviction."
+    },
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": 7.17,
-      "action": "MANDATORY — MOO 9sh BLOCKED (18th consecutive). OPERATOR: BUY 9sh AMD MOO BEFORE 9:25 AM ET. Stop fill×0.95, target fill×1.15, GTC stop post-fill.",
-      "notes": "AMD pre-market ~$519.80 (-4.19% AVGO sympathy). AVGO AI rev $10.8B actually confirms AMD thesis. Barclays PT $665. Data center +57% YoY. Score 7.17 (F8/T6/S7/M5/R8/TA9). 18th consecutive blocked attempt. AVGO selloff is opportunity not threat for AMD long-term."
-    },
-    {
-      "symbol": "MU",
-      "bucket": "active",
-      "score": 7.5,
-      "action": "MANDATORY — MOO 4sh BLOCKED. OPERATOR: BUY 4sh MU MOO BEFORE 9:25 AM ET. Stop fill×0.95, target fill×1.15, GTC stop post-fill. EXIT by June 22.",
-      "notes": "MU new ATH $1,089 June 3. ~$1,060 est. June 4 pre-market. UBS $1,625 PT (52% upside). HBM4 sold out. Highest conviction today (7.5 avg, 5/6≥7). Score F9/T7/S8/M5/R7/TA9. ⚠️ MANDATORY EXIT by June 22 (earnings June 24)."
+      "action": "MANDATORY — limit 9sh $508 bracket GTC BLOCKED (19th consecutive). OPERATOR: BUY 9sh AMD limit $508 bracket GTC (stop $482.60, target $584.20).",
+      "notes": "AMD opened $496 (down 5.44%), partial recovery to ~$505-510. Better entry than $521 pre-market. AVGO AI rev $10.8B = confirms AMD data center demand. Barclays PT $665. Score 7.17 (F8/T6/S7/M5/R8/TA9)."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
       "score": 7.0,
-      "action": "MANDATORY — MOO 10sh BLOCKED. OPERATOR: BUY 10sh PLTR MOO BEFORE 9:25 AM ET. Stop fill×0.95, target fill×1.15, GTC stop post-fill.",
-      "notes": "PLTR ~$143.50 (9.8% pullback from $159.52 ATH). Q1 beat, FY2026 $7.65B guide (+71% YoY), NVDA partnership. Borderline 7.0 avg. F8/T6/S7/M5/R8/TA8. Tech pullback = better entry than ATH."
+      "action": "MANDATORY at Afternoon — deferred from midday 2-entry cap. OPERATOR: BUY 10sh PLTR limit ask+0.5% bracket GTC.",
+      "notes": "PLTR $143.50 midday (range $140.01-$152.10). Borderline 7.0 avg. Thesis intact (Q1 beat, NVDA partnership, FY2026 $7.65B guide). Score F8/T6/S7/M5/R8/TA8. Afternoon routine MUST enter."
     },
     {
       "symbol": "AVGO",
       "bucket": "active",
-      "score": 5.67,
-      "action": "SKIP — rejected June 4 Pre-Market. Monitor $405-415 for stabilization. Re-score at Midday or Daily Review once bottom forms.",
-      "notes": "AVGO Q2 FY2026: revenue $22.19B (missed $22.72B, -2.3%). Down 12-14% pre-market. Technical 4/10 (gap-down, 0/5 indicators). Master Agent avg 5.67. Revenue miss + 'beat but disappoint' pattern. AI business excellent ($10.8B +143% YoY) but software miss + no guidance raise = near-term headwind. Reassess in 1-2 sessions."
+      "score": 6.0,
+      "action": "SKIP — midday re-score 6.0 (Goldman PT $525 insufficient). Monitor $405-415 base formation. Re-score at Daily Review.",
+      "notes": "AVGO ~$407 midday (-15% from $481 ATH). Goldman $525 PT (29% upside). Still technical gap-down (0-1/5 indicators). Avg 6.0 < 7 threshold. Need 2-session base formation + 2/5 technical confirmation before entry."
     },
     {
       "symbol": "GLD",
       "bucket": "active",
       "score": null,
-      "action": "HOLD — TRAIL STOP CRITICAL. Cancel $397.92 → place $412.08 GTC stop (7sh). Oil/Iran bid persists.",
-      "notes": "GLD 7sh entry $418.86, est. ~$432 (June 4 pre-market). Est. P/L +$92 (+3.14%). Oil/Iran tensions sustained = GLD bid. Stop $397.92 is WAY below required 5% trail. OPERATOR: trail immediately."
-    },
-    {
-      "symbol": "MRVL",
-      "bucket": "active",
-      "score": 6.83,
-      "action": "WATCH — rejected June 3 (Risk veto). Monitor for $280-295 consolidation entry.",
-      "notes": "MRVL ~$309 (June 3). Risk veto: stop $295 within intraday low $294. Too extended. Wait for $280-295 range with stable 1-hour technicals. Jensen Huang 'next trillion' thesis intact but entry timing wrong."
+      "action": "HOLD — MAINTAIN stop $397.92 (do NOT trail to $412 — would trigger immediately). Position underwater from $418.86 entry.",
+      "notes": "⚠️ GLD CORRECTED to ~$408 (June 3 close $407.91). Entry $418.86 → -$76 unrealized (-2.6%). Stop $397.92 = 2.4% buffer. Prior trail instruction to $412 was WRONG (GLD < $412). Let stop manage the exit if thesis fails."
     }
   ],
   "history": [
+    {
+      "date": "2026-06-04",
+      "portfolio_return_pct": 0.14,
+      "spx_return_pct": 5.1,
+      "daily_pnl_pct": -0.08,
+      "note": "Midday. API blocked (26th). Market Open + Mid-Morning silent failed. GLD CORRECTED to $408 (underwater from $418.86). AVGO re-scored 6.0 (Goldman PT $525 noted; still below threshold). MU limit $1,020 blocked. AMD limit $508 blocked. PLTR deferred to Afternoon."
+    },
     {
       "date": "2026-06-03",
       "portfolio_return_pct": 0.32,
       "spx_return_pct": 4.8,
       "daily_pnl_pct": 0.10,
-      "note": "Afternoon snapshot. API blocked (24th). Midday violation. AMD hit ATH $533.82 without fill. AVGO earnings tonight. GLD +$104. S&P -0.60% from records."
+      "note": "Afternoon snapshot. API blocked (24th). Midday violation. AMD hit ATH $533.82 without fill. AVGO earnings tonight. GLD est. +$104 (WAS WRONG — GLD actually at $408 not $432)."
     },
     {
       "date": "2026-05-29",
       "portfolio_return_pct": 0.15,
       "spx_return_pct": 5.21,
       "daily_pnl_pct": -0.03,
-      "note": "Market Open catch-up. API blocked. 3 orders attempted/blocked. PLTR deferred. Pre-Market silent failure. GLD only confirmed position."
-    },
-    {
-      "date": "2026-05-28",
-      "portfolio_return_pct": 0.18,
-      "spx_return_pct": 5.05,
-      "daily_pnl_pct": 0.0,
-      "note": "Pre-Market only fired. API blocked. MRVL Q1 beat. Gap-fill on open. 4 orders blocked."
-    },
-    {
-      "date": "2026-05-27",
-      "portfolio_return_pct": 0.18,
-      "spx_return_pct": 4.87,
-      "daily_pnl_pct": 0.0,
-      "note": "Afternoon snapshot. API blocked. 4 predecessor violations. 3 orders blocked. MRVL skip (Exemption 2)."
-    },
-    {
-      "date": "2026-05-26",
-      "portfolio_return_pct": 0.18,
-      "spx_return_pct": 4.43,
-      "daily_pnl_pct": -0.002,
-      "note": "All 6 routines silent failed. MU +18% missed. AMD +5% missed. API blocked."
+      "note": "Market Open catch-up. API blocked. 3 orders attempted/blocked. PLTR deferred. Pre-Market silent failure."
     }
   ]
 }
