@@ -386,6 +386,286 @@ master_notes: |
 
 ---
 
+## 2026-06-04 — Mid-Morning (11:00 AM ET / 15:10 UTC)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:10:40Z ✓
+
+**PREDECESSOR HEARTBEAT CHECK**
+
+```
+grep "STARTED Pre-Market"  logs/heartbeats/2026-06-04.log → FOUND 12:06Z ✓ (COMPLETED 12:21Z ✓)
+grep "STARTED Market-Open" logs/heartbeats/2026-06-04.log → NOT FOUND — VIOLATION
+```
+
+Market-Open (9:45 AM ET / 13:45 UTC) silently failed on 2026-06-04. Logging violation and running catch-up.
+
+```yaml
+---
+ts: 2026-06-04T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET / 13:45 UTC) silently failed on 2026-06-04. No heartbeat found between Pre-Market COMPLETE (12:21Z) and Mid-Morning START (15:10Z).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  VIOLATION: Market-Open (9:45 AM ET / 13:45 UTC) SILENTLY FAILED June 4, 2026.
+  Pre-Market completed 12:21Z. Mid-Morning started 15:10Z. No Market-Open heartbeat.
+  Impact: All 3 Pre-Market MOO orders (AMD 9sh, MU 4sh, PLTR 10sh) were HTTP 403 blocked — no fills
+  to verify, no stops to place from fills. Catch-up proceeds via Mid-Morning limit bracket orders.
+  26th consecutive Alpaca API blocked session.
+---
+```
+
+---
+
+**STOP-LOSS AUDIT (FIRST ACTION — MANDATORY)**
+
+```bash
+GET /v2/positions       → HTTP 403 "Host not in allowlist" (26th consecutive)
+GET /v2/orders?status=open → HTTP 403
+```
+
+API still blocked. Estimated state (gold spot research: $4,438–4,508/oz → GLD ~$415–420):
+- **GLD 7sh:** stop estimated $397.92 resting (since May 17; unverifiable). GLD ~$415–420 (gold spot ×0.094). Entry $418.86 — approx at/near breakeven. Stop $397.92 is ~4.5–5.5% below current. Iran escalation (ceasefire halted) strengthens gold thesis. No trail needed — not materially above entry. OPERATOR: verify stop is still resting at Alpaca.
+- All stale GTC limits (AMD $524.15, PLTR $150.74, MU $1,033.14 from June 3; AMD $520.59, MU $928.14 from May 29) — likely unfilled; OPERATOR must cancel.
+
+No naked positions detected (GLD is only estimated open position; stop assumed resting).
+
+---
+
+**MARKET CONDITIONS (Mid-Morning, June 4, 2026 ~11:10 AM ET)**
+
+- **S&P 500:** −0.14% (AVGO −13% drag; CRWD −10% guidance miss). **Dow +1.08%** = sector rotation value/energy
+- **Iran:** Halted ceasefire talks → US strikes Qeshm Island; Iran strikes Kuwait airport. Full escalation. Oil near $100 Brent (some estimates $116+)
+- **Gold:** Spot $4,438–4,508/oz (safe-haven bid; Iran escalation supportive). GLD est. $415–420
+- **AMD:** $537.39 (+3.04%) — exceptional relative strength vs AVGO −13%, Nasdaq −0.76%
+- **MU:** $1,066–1,079 (+1.45%) — holding near ATH $1,089 (June 3). AVGO $10.8B AI rev = bullish confirmation
+- **PLTR:** Range $140–152 intraday; ~$143.50 (+2.11%). CEO Karp sold $54.1M May 20; $132.8M total insider selling
+- **BTC:** ~$63,649 (below $82K threshold — no crypto entry)
+- **Circuit breaker:** NOT TRIPPED. SPX ~7,530; 3% threshold ~7,305 ✓
+
+---
+
+**WATCHLIST EXECUTION CATCH-UP (Market-Open missed)**
+
+No MOO fills to confirm (all Pre-Market MOO attempts were HTTP 403). Placing Mid-Morning limit bracket GTC orders for approved names. Running updated 6-agent re-scores at current intraday prices.
+
+---
+
+**RE-SCORE: AMD at $537.39 (+3.04%)**
+
+AMD showed exceptional relative strength: AVGO −13% yet AMD recovered from pre-market −4.19% to +3.04% intraday. AVGO's $10.8B AI revenue (+143% YoY) is BULLISH confirmation for AMD AI silicon demand. Helios platform (EPYC Venice + MI450 GPU + Pensando networking) repositions AMD as full-stack AI infrastructure. Barclays PT $665.
+
+- **Fundamentals: 8/10** — Data center +57% YoY; Q2 rev guide $11.2B (+46%); Barclays PT $665; Helios full-stack AI positioning
+- **Technical: 7/10** — MACD daily bullish ✓ (1/5); volume increasing on intraday reversal from $519 low ✓ (2/5); 2/5 met. ATH $542.52 June 3; today's pullback-and-recovery = bullish intraday action
+- **Sentiment: 8/10** — AMD outperforming AVGO on AI-confirmation day = strongest relative-strength signal. Multiple analyst upgrades. xAI unavailable, strongly bullish inferred (+1; base 7→8)
+- **Macro: 5/10** — Nasdaq −0.76% risk-off; AMD secular AI theme partially insulates
+- **Risk: 8/10** — 9sh × $541 = $4,869 = 4.85% ✓; stop $513.95 (−5%), target $622.15 (+15%); trade risk $27×9=$243=0.24% ✓; semis sector 4.85% ✓; cash after AMD ~$92,412 ✓; R/R 3:1 ✓
+- **Tech Analyst: 9/10** — EPYC Venice beats Intel Xeon; MI450 only real NVDA alternative at scale; ROCm AI stack improving; TSMC 2nm secured; Helios full-stack repositioning
+
+**Master Agent: F8, T7, S8, M5, R8, TA9 → Average 7.50 ✓ | 5/6 agents ≥7 ✓ | Risk 8 ≥6 ✓ | APPROVED**
+
+```bash
+# Mid-Morning limit bracket GTC: entry $541, stop $513.95, target $622.15, qty 9
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"buy","type":"limit","limit_price":"541.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"513.95"},"take_profit":{"limit_price":"622.15"}}'
+→ HTTP 403 "Host not in allowlist" (26th consecutive blocked session)
+```
+
+```yaml
+---
+ts: 2026-06-04T15:15:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: AMD bounced from AVGO-sympathy pre-market low $519.80 to $537.39 (+3.04%). AVGO $10.8B AI revenue confirms AI silicon demand. Helios full-stack AI repositioning. Barclays PT $665. Mid-Morning catch-up limit bracket GTC — API BLOCKED HTTP 403 (26th session).
+size_pct: 4.85
+stop: 513.95
+target: 622.15
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 5
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  AMD Mid-Morning re-score 7.50 (improved from Pre-Market 7.17).
+  Exceptional relative strength: AMD +3.04% while AVGO −13%, Nasdaq −0.76%.
+  Technical upgraded 6→7: MACD daily bullish ✓ + volume on intraday reversal ✓ = 2/5 confirmed.
+  Limit bracket GTC: limit $541, stop $513.95 (-5%), target $622.15 (+15%). R/R 3:1 ✓.
+  9sh × $541 = $4,869 = 4.85% equity ✓.
+  ORDER STATUS: HTTP 403 — 26th consecutive blocked session.
+  OPERATOR MANDATORY: BUY 9sh AMD limit $541 (or ask+0.5%) bracket GTC. Stop $513.95, target $622.15.
+  xAI: API unavailable. Strongly bullish inferred (+1; AMD outperforming on AVGO AI-confirmation day).
+  Catch-up for Market-Open silent failure.
+---
+```
+
+---
+
+**RE-SCORE: MU at $1,073 (+1.45%)**
+
+MU holding near ATH $1,089 (June 3). AVGO's $10.8B AI revenue (+143% YoY) directly confirms HBM memory demand acceleration — more AI compute cycles = more memory bandwidth required. HBM4 sold out through year-end. UBS PT $1,625 (52% upside from current). MANDATORY exit by June 22 (48h before June 24 earnings).
+
+- **Fundamentals: 8/10** — HBM4 sold out YE 2026; UBS $1,625 PT; AI memory demand structural; $1.22T market cap
+- **Technical: 6/10** — MACD bullish trend ✓ (1/5); volume steady near ATH consolidation ✓ (2/5); 2/5 met. Post-ATH consolidation is constructive
+- **Sentiment: 8/10** — AI memory supercycle narrative; AVGO AI confirmation = direct positive catalyst for MU. xAI unavailable, bullish inferred (+1; base 7→8)
+- **Macro: 5/10** — Risk-off day; but HBM contracts are multi-year with hyperscalers = less macro-sensitive
+- **Risk: 7/10** — 4sh × $1,080 = $4,320 = 4.31% ✓; stop $1,026 (−5%), target $1,242 (+15%); trade risk $54×4=$216=0.22% ✓; R/R 3:1 ✓; HARD EXIT DEADLINE June 22
+- **Tech Analyst: 8/10** — HBM3E/HBM4 leader with SK Hynix; 3D stacking moat; new Manassas fab; sole AI memory producer at scale
+
+**Master Agent: F8, T6, S8, M5, R7, TA8 → Average 7.0 ✓ | 4/6 agents ≥7 ✓ | Risk 7 ≥6 ✓ | APPROVED**
+
+```bash
+# Mid-Morning limit bracket GTC: entry $1,080, stop $1,026, target $1,242, qty 4
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MU","qty":4,"side":"buy","type":"limit","limit_price":"1080.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1026.00"},"take_profit":{"limit_price":"1242.00"}}'
+→ HTTP 403 "Host not in allowlist" (26th consecutive blocked session)
+```
+
+```yaml
+---
+ts: 2026-06-04T15:18:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: MU $1,073 (+1.45%), near ATH $1,089. AVGO $10.8B AI rev confirms HBM demand. HBM4 sold out YE 2026, UBS $1,625 PT. Must exit by June 22. Mid-Morning catch-up limit bracket GTC — API BLOCKED HTTP 403 (26th session).
+size_pct: 4.31
+stop: 1026.00
+target: 1242.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  MU Mid-Morning re-score 7.0 (was 7.5 at Pre-Market; Technical 7→6 — slight consolidation below ATH).
+  4/6 agents ≥7 (F8✓, T6✗, S8✓, M5✗, R7✓, TA8✓). Exactly at threshold.
+  Limit bracket GTC: limit $1,080, stop $1,026 (-5%), target $1,242 (+15%). R/R 3:1 ✓.
+  4sh × $1,080 = $4,320 = 4.31% equity ✓.
+  AVGO $10.8B AI revenue = direct bullish confirmation: more AI compute = more HBM bandwidth needed.
+  EARNINGS HARD DEADLINE: Must close position by June 22 (48h before June 24 earnings).
+  ORDER STATUS: HTTP 403 — 26th consecutive blocked session.
+  OPERATOR MANDATORY: BUY 4sh MU limit $1,080 (or ask+0.5%) bracket GTC. Stop $1,026, target $1,242. EXIT by June 22.
+  xAI: API unavailable. Bullish inferred (+1).
+  Catch-up for Market-Open silent failure.
+---
+```
+
+---
+
+**RE-SCORE: PLTR at $143.50 (+2.11%) — REJECTED**
+
+Material new information since Pre-Market 7.0 score: $132.8M total insider selling past 3 months confirmed. CEO Karp sold $54.1M on May 20. Directors offloaded $45M triggering 5% stock drop. CTO Sankar sold $22.5M in February. Co-founder Cohen offloaded $310M in March. This is massive executive selling at ATH levels — not routine compensation program sales.
+
+- **Fundamentals: 7/10** — Q1 beat (+22%); FY2026 guide $7.65B (+71%); Google Cloud partnership. Elevated P/E (200x+) + insider selling at ATH dampens.
+- **Technical: 5/10** — −9.8% from ATH $159.52; intraday range $140–152 (wide = high volatility/indecision); only stochastic approaching oversold (1/5 confirmed). Need ≥2/5 for Technical >5/10 — minimum not met.
+- **Sentiment: 5/10** — $132.8M insider selling in 3 months is strongly bearish signal. CEO $54.1M, CTO $22.5M, co-founder $310M — all at or near ATH prices. xAI unavailable, infer neutral/bearish (0 modifier). Base 5/10.
+- **Macro: 5/10** — Nasdaq −0.76% risk-off; high-multiple growth stocks underperform
+- **Risk: 7/10** — 10sh × $143.50 = $1,435 = 1.43% ✓; stop $136.33, target $165.03; R/R 3:1 ✓; all guardrails met
+- **Tech Analyst: 7/10** — AIP moat; government + Google Cloud + NVDA partnerships; Bootcamp model
+
+**Master Agent: F7, T5, S5, M5, R7, TA7 → Average 6.0 ✗ | 3/6 agents ≥7 ✗ | REJECTED**
+
+```yaml
+---
+ts: 2026-06-04T15:20:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.0
+thesis: PLTR re-scored 6.0 at Mid-Morning (from Pre-Market 7.0) on material new info post-Pre-Market: CEO Karp sold $54.1M May 20; $132.8M total insider selling 3 months; directors offloaded $45M triggering 5% drop. Technical 5/10 (only 1/5 confirmed; ≥2/5 not met). Average 6.0 < 7.0 threshold; 3/6 agents ≥7 (need 4). Not entering.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 5
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.0
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  PLTR RE-SCORED 6.0 — REJECTED. Pre-Market scored 7.0 before insider selling data was available.
+  NEW MATERIAL INFO (post-Pre-Market 12:06Z → mid-morning 15:10Z):
+    - CEO Karp: sold $54.1M on May 20, 2026
+    - Director Stat: sold $505K on May 29-June 1 at $150-160
+    - CTO Sankar: sold $22.5M in February
+    - Co-founder Cohen: offloaded $310M in March
+    - Total: $132.8M insider selling past 3 months
+    - Stock tumbled 5% as directors offloaded $45M (parameter.io report)
+  Sentiment 7→5 (−2 for strongly bearish insider selling pattern at ATH levels).
+  Technical 5/10: only 1/5 stack confirmed (stochastic approaching oversold); need 2/5 for score >5.
+  3/6 agents ≥7 (F7✓, T5✗, S5✗, M5✗, R7✓, TA7✓) — need 4/6.
+  DEPLOYMENT BIAS COMPLIANCE: This is a legitimate re-score on material new information (not "wait for a better setup"). Pre-Market 7.0 was based on incomplete sentiment data. New data materially changes the case.
+  WATCH: If insider selling pattern completes and Technical recovers to ≥2/5 (MACD bullish cross + stochastic >20), re-score at Afternoon.
+---
+```
+
+---
+
+**GLD POSITION UPDATE**
+
+- Gold spot today: $4,438–4,508/oz (safe-haven bid from Iran escalation: ceasefire halted, US strikes Qeshm Island)
+- GLD estimated price: ~$415–420 (gold spot × ~0.094 oz/share)
+- Entry: $418.86 — position approx at/slightly above breakeven
+- Stop: $397.92 estimated resting (API blocked; unverifiable). 4.5–5.5% below current → within bounds ✓
+- Iran escalation (ceasefire talks halted) = BULLISH for gold thesis
+- No trailing: not materially above entry; trail would be only $401.85 (5% below $420) vs current $397.92
+- OPERATOR: Verify GLD stop $397.92 is resting. No trail needed at current prices.
+
+---
+
+**API BLOCKAGE — 26th CONSECUTIVE SESSION**
+
+Both Mid-Morning entries blocked HTTP 403 (same as all 25 prior sessions):
+- AMD 9sh limit $541 bracket GTC → HTTP 403
+- MU 4sh limit $1,080 bracket GTC → HTTP 403
+
+OPERATOR MANDATORY at https://app.alpaca.markets:
+1. CANCEL all stale GTC limits: AMD $524.15, PLTR $150.74, MU $1,033.14 (June 3); AMD $520.59, MU $928.14 (May 29)
+2. BUY AMD: 9sh limit $541 bracket GTC — stop $513.95, target $622.15
+3. BUY MU: 4sh limit $1,080 bracket GTC — stop $1,026, target $1,242. Hard exit June 22.
+4. SKIP PLTR: Re-scored 6.0 (insider selling; await stabilization)
+5. VERIFY GLD: Confirm stop $397.92 resting; no trail needed
+
+---
+
 ## 2026-06-03 — Afternoon (2:00 PM ET / 18:09 UTC)
 
 **PREDECESSOR HEARTBEAT CHECK**
