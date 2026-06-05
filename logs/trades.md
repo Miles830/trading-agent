@@ -4,6 +4,500 @@
 
 ---
 
+## 2026-06-05 — Afternoon (2:00 PM ET / 18:08 UTC)
+
+**HEARTBEAT:** STARTED Afternoon 18:07:57Z ✓
+
+**PREDECESSOR HEARTBEAT CHECK (June 5 + June 4 post-Midday catch-up)**
+
+```
+logs/heartbeats/2026-06-05.log contents:
+  2026-06-05T18:07:57Z STARTED Afternoon  ← only entry
+
+logs/heartbeats/2026-06-04.log contents:
+  2026-06-04T12:06:37Z STARTED Pre-Market  ✓
+  2026-06-04T12:21:38Z COMPLETED Pre-Market ✓
+  2026-06-04T16:34:37Z STARTED Midday      ✓
+  2026-06-04T16:48:26Z COMPLETED Midday    ✓
+  (Afternoon, Market Close, Daily Review — NOT PRESENT)
+```
+
+**June 5 silent failures:** Pre-Market, Market Open, Mid-Morning, Midday — 4 violations
+**June 4 silent failures (post-Midday, not yet logged):** Afternoon, Market Close, Daily Review — 3 violations
+Total catch-up violations: 7
+
+---
+
+**CATCH-UP VIOLATIONS — JUNE 4 POST-MIDDAY**
+
+```yaml
+---
+ts: 2026-06-04T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine 2026-06-04 (2:00 PM ET / 18:00 UTC) SILENTLY FAILED — no heartbeat in logs/heartbeats/2026-06-04.log. MANDATORY: PLTR catch-up entry (10sh limit bracket GTC) not attempted. AMD/MU fill confirmation not performed. GLD stop audit not performed. 27th consecutive API-blocked session.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: June 4 Afternoon silently failed. PLTR 10sh mandatory catch-up deferred again. Caught up by June 5 Afternoon (this routine — re-score below 7 due to June 5 market conditions).
+---
+```
+
+```yaml
+---
+ts: 2026-06-04T19:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Close routine 2026-06-04 (3:30 PM ET / 19:30 UTC) SILENTLY FAILED — no heartbeat. Stop audit not performed. MOC order review not performed. GLD stop $397.92 verification missed. No day trades to close but audit was required.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: June 4 Market Close silently failed. GLD stop verification missed for one routine cycle. Catch-up audit running now (Afternoon June 5).
+---
+```
+
+```yaml
+---
+ts: 2026-06-04T20:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Daily Review routine 2026-06-04 (4:30 PM ET / 20:30 UTC) SILENTLY FAILED — no heartbeat. Setup performance tracker not updated. Binding watchlist for June 5 not formally produced (prior commitment AMD/MU/PLTR still outstanding). AVGO re-score not performed. S&P 500 benchmark gap not updated. Weekly evolution note NOT written (Friday equivalent — carries to this Afternoon routine). This is the 7th missed Daily Review in the Anthropic cloud runner environment.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  June 4 Daily Review silently failed. Weekly evolution note overdue (week of June 1-5).
+  Abbreviated weekly evolution note incorporated into June 5 Afternoon routine below.
+  BINDING WATCHLIST from prior routines: AMD 7.17, MU 7.67, PLTR 7.0 — all re-scored at June 5 Afternoon.
+---
+```
+
+---
+
+**CATCH-UP VIOLATIONS — JUNE 5 PREDECESSORS**
+
+```yaml
+---
+ts: 2026-06-05T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine 2026-06-05 (8:00 AM ET / 12:00 UTC) SILENTLY FAILED — no heartbeat in logs/heartbeats/2026-06-05.log. MOO orders (AMD/MU/PLTR — per binding commitment) not attempted. Stop audit not performed. Market opened down sharply (tech sector -5%, jobs report shock). 27th consecutive API blockage.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Pre-Market June 5 silently failed. Catch-up running at Afternoon (this routine). AMD/MU/PLTR re-scored below 7 at this Afternoon routine due to materially worsened market conditions.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market Open routine 2026-06-05 (9:45 AM ET / 13:45 UTC) SILENTLY FAILED — no heartbeat. MOO fill confirmations missed. If any MOOs were placed by operator manually, GTC stops not verified. GLD stop audit missed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Market Open June 5 silently failed. No operator-placed MOOs known (all prior API calls blocked). Catch-up running at Afternoon.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine 2026-06-05 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat. AMD/MU/PLTR catch-up limit orders not attempted. GLD stop audit missed. Tech sector selloff underway by this point (AMD -6%+ intraday).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Mid-Morning June 5 silently failed. Catch-up running at Afternoon (this routine).
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T16:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine 2026-06-05 (12:30 PM ET / 16:30 UTC) SILENTLY FAILED — no heartbeat. AMD/MU/PLTR catch-up limit orders not attempted. Stop audit missed. GLD stop unverified for 4th consecutive intraday routine today.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Midday June 5 silently failed. Catch-up running at Afternoon (this routine). This Afternoon routine is the FIRST that has fired today and since June 4 Midday — 7 consecutive routine silent failures.
+---
+```
+
+---
+
+**STOP AUDIT — FIRST ACTION (MANDATORY)**
+
+```
+GET /v2/positions       → HTTP 403 "Host not in allowlist" (27th consecutive blocked session)
+GET /v2/orders?status=open → HTTP 403
+```
+
+Estimated state (API blocked, all estimates):
+- **GLD 7sh:** entry $418.86; today's price ~$411.27 (day range $409.01-$414.37; June 4 close $411.27 per web data). Stop ESTIMATED at $397.92 (unchanged since May 17). Buffer: $411.27 - $397.92 = $13.35 = **3.25%** — SAFE. Position UNDERWATER: ($411.27 - $418.86) × 7 = **-$53.13** unrealized (-1.81%).
+- AMD/MU/PLTR: Still no fills (API blocked 27 sessions; all prior GTC limits blocked before submission)
+- Stale GTC orders (previously flagged): AMD $524.15, PLTR $150.74, MU $1,033.14 (June 3); AMD $520.59, MU $928.14, MRVL $202.19 (May 29) — OPERATOR must cancel at https://app.alpaca.markets
+
+**OPERATOR: Verify GLD stop $397.92 is STILL RESTING at https://app.alpaca.markets**
+
+---
+
+**JUNE 5 MARKET SUMMARY (2:00 PM ET)**
+
+⚠️ SIGNIFICANT DOWN DAY — Semiconductor/tech sector rout driven by May jobs report shock:
+- **Non-farm payrolls May 2026:** +172,000 (vs +86,000 expected, ~2× expectations). Unemployment 4.3%.
+- **Market reaction:** Rate hike fears surged. 10-year yield hit highest level since May 21. Tech stocks sold off sharply.
+- **S&P 500:** -1.89% (est. ~7,425 from ~7,568)
+- **Nasdaq:** -2.61%
+- **Technology sector:** -5.0% (worst session YTD for semiconductors)
+- **Global chip rout:** Samsung -6.4%, SK Hynix -10%, ASML -3.8%, Infineon -6%. MRVL -8%.
+- **AMD:** $490.22 (range $484.26-$505.62; prev close $523.20) = **-6.3% today**
+- **MU:** $939.69 (range $914.30-$969.82; prev close $996.00) = **-5.6% today**
+- **PLTR:** $141.51 (range $140.27-$146.82) = relatively stable vs semis
+- **AVGO:** ~$395-413 (further -5% from June 4 ~$407; now -17% from ATH $481)
+- **GLD:** $411.27 (range $409.01-$414.37) = **UP from June 4 close ($407.91)** — safe-haven bid partially offsetting dollar strength
+- **BTC:** ~$62,875 (record 13-day ETF outflow streak $4.4B; below $82K threshold)
+
+**Circuit breaker check:** Portfolio daily P&L ≈ +$23 (GLD: 7sh × ($411.27 - $407.91) = +$23.52). Portfolio NOT down 3%. Circuit breaker NOT triggered. ✓
+
+---
+
+**API BLOCKAGE VIOLATION — 27th CONSECUTIVE SESSION**
+
+```yaml
+---
+ts: 2026-06-05T18:08:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: api-blocked
+score: null
+thesis: Alpaca API HTTP 403 "Host not in allowlist" — 27th consecutive blocked session. All Alpaca endpoints (positions, orders, new orders) blocked. Paper-api.alpaca.markets not in Anthropic cloud runner egress allowlist. Effective since ~2026-05-06.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  27th consecutive blocked session. Root cause: Anthropic TLS proxy sandbox does not allow egress to paper-api.alpaca.markets.
+  OPERATOR ACTION REQUIRED (https://app.alpaca.markets):
+  1. VERIFY GLD stop $397.92 GTC still resting (7sh sell stop). GLD at $411.27 — buffer 3.25% — SAFE. DO NOT TRAIL.
+  2. CANCEL STALE GTC ORDERS: AMD $524.15, PLTR $150.74, MU $1,033.14 (June 3); AMD $520.59, MU $928.14, MRVL $202.19 (May 29). All stale — prices moved significantly.
+  3. NO NEW ENTRIES TODAY: June 5 Afternoon fresh re-scores show AMD 5.83, MU 6.0, PLTR 6.17, AVGO 5.33 — all below 7 threshold. Do not enter any positions today.
+  4. PREPARE FOR MONDAY (June 8): Re-score AMD/MU/PLTR at Pre-Market if market stabilizes. If scores recover to 7+ with 2+ conditions improved, enter.
+  Cumulative missed opportunity (27 sessions): $4,000+ unrealized across AMD, MU, PLTR.
+---
+```
+
+---
+
+**FRESH 6-AGENT RE-SCORES — JUNE 5 AFTERNOON CONDITIONS**
+
+Context: Market conditions are MATERIALLY WORSE than the June 4 approvals (AMD 7.17, MU 7.67, PLTR 7.0). Today's conditions: tech -5%, S&P -1.89%, global semiconductor rout, rate hike fears from 172K jobs print. Fresh scores below supersede prior approvals per CLAUDE.md — prior approvals were conditional on those conditions.
+
+---
+
+**RE-SCORE: AMD ($490.22 — down 6.3% today)**
+
+- **Fundamentals: 8/10** — EPYC Zen 5, MI350X, Barclays PT $665, $200B agentic CPU TAM (Jensen). Thesis unchanged. No AMD-specific negative news — today's decline is sector contagion from AVGO + jobs report. Score: 8/10.
+- **Technical: 4/10** — AMD down 6.3% today; -7.9% from June 3 close $523. Breaking below $490 support. Global semiconductor selloff: Samsung -6.4%, SK Hynix -10%. No 2/5 mandatory indicator confirmation (technical score capped at 5 without 2/5 confirmation; no positive signals in this environment — score 4/10). Daily MACD bearish divergence forming.
+- **Sentiment: 4/10** — "AMD Stock Falls Again Today as the Semiconductor Selloff Spreads" (TipRanks). Broad sector fear. Jobs report adds rate hike narrative = bearish for high-multiple tech. xAI API blocked. Strongly bearish inferred (−2 modifier from strongly bearish X sentiment estimated; base 6 → 4). Score: 4/10.
+- **Macro: 3/10** — May non-farm payrolls +172K (vs +86K expected) → rate hike probability surging → 10-year yield new multi-week high → direct multiple compression for high-growth tech. Nasdaq -2.61%. Tech sector -5%. Hawkish macro is the DOMINANT market driver today. Score: 3/10.
+- **Risk: 7/10** — Guardrails technically satisfied: 9sh × $492 (ask×1.005) = $4,428 = 4.43% ✓; stop $467.40 (-5%); target $565.80 (+15%); R/R 3:1 ✓; trade risk $220 = 0.22% ✓; cash after: $92,853 ✓. But entering in a broad sector rout on rate hike day carries elevated execution risk vs established support. Score: 7/10.
+- **Tech Analyst: 9/10** — Competitive moat unchanged. EPYC market share gains vs Intel. MI350X vs H200. 2nm TSMC ramp confirmed. ROCm improving. Score: 9/10.
+
+Master Agent:
+- Scores: F8, T4, S4, M3, R7, TA9
+- Average: (8+4+4+3+7+9)/6 = 35/6 = **5.83** ✗ (< 7 threshold)
+- Agents ≥7: F8✓, T4✗, S4✗, M3✗, R7✓, TA9✓ = **3/6** ✗ (need 4/6)
+- Risk ≥6: ✓ (7). But average < 7 → REJECTED.
+- **DECISION: REJECTED** — macro/technical/sentiment all deteriorated vs June 4 conditions
+
+```yaml
+---
+ts: 2026-06-05T18:10:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 5.83
+thesis: AMD fresh re-score on June 5. Down 6.3% today ($490) from $523 June 3 close. Global semiconductor selloff driven by AVGO overhang + May jobs 172K (vs 86K) → rate hike fears → macro score 3/10. Technical 4/10 (no 2/5 confirmations, sector rout). Prior approval (7.17 on June 4) was conditional on June 4 conditions; today's materially worse conditions yield 5.83. NOT a guardrail-exempted skip — a genuine re-score below threshold.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 4
+  macro: 3
+  risk: 7
+  tech_analyst: 9
+agent_average: 5.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  AMD re-scored 5.83 (below 7 threshold). Agents ≥7: only 3/6 (F8✓, R7✓, TA9✓; T4✗, S4✗, M3✗).
+  Root cause of score drop vs June 4 (7.17): Macro 3/10 (was 5) — jobs 172K shock, rate hike fears.
+  Technical 4/10 (was 6) — sector rout, Samsung -6.4%, SK Hynix -10%, ASML -3.8%; AMD breaking below $490.
+  Sentiment 4/10 (was 7) — "AMD Stock Falls Again Today"; global chip selloff narratives dominant.
+  Fundamental thesis (EPYC, MI350X, Barclays $665) remains intact — no AMD-specific negative catalyst.
+  MONDAY WATCH: If market stabilizes and semiconductor fear eases, AMD could return to 7+ quickly.
+  Key level: Hold $484 (intraday low) and recover above $500 as prerequisite for bullish technical reset.
+  xAI Grok API unavailable — strongly bearish inferred (−2 modifier applied).
+---
+```
+
+---
+
+**RE-SCORE: MU ($939.69 — down 5.6% today)**
+
+- **Fundamentals: 9/10** — UBS $1,625 PT (72% upside from $940). HBM4 sold out through year-end. AI memory demand secular + multi-year contract (not macro-sensitive). Morgan Stanley $1,050 PT. Earnings June 24 (exit by June 22 mandatory). Score: 9/10.
+- **Technical: 4/10** — MU at $940, down from ATH $1,089 = -13.7% total pullback. Today -5.6%. Korean peer SK Hynix -10% (direct MU analog). No 2/5 mandatory indicator confirmation in this sell-off environment. Score capped at 4/10.
+- **Sentiment: 4/10** — Global HBM selloff (SK Hynix -10%). Rate hike fears compress memory multiples. xAI unavailable; strongly bearish inferred (−2 modifier; base 6 → 4). Score: 4/10.
+- **Macro: 3/10** — Same jobs shock as AMD. Rate hike headwind. Semiconductor index worst session YTD. Score: 3/10.
+- **Risk: 7/10** — 4sh × $945 (est. ask×1.005) = $3,780 = 3.78% ✓; stop $897.75 (-5%); target $1,087 (+15%); R/R 3:1 ✓; trade risk $188 = 0.19% ✓. Guardrails clear. Execution risk elevated given sector rout. Score: 7/10.
+- **Tech Analyst: 9/10** — HBM4 sole large-scale producer. 3D stacking process moat (5+ year lead). AI training/inference memory demand grows with model scale. Score: 9/10.
+
+Master Agent:
+- Scores: F9, T4, S4, M3, R7, TA9
+- Average: (9+4+4+3+7+9)/6 = 36/6 = **6.0** ✗ (< 7 threshold)
+- Agents ≥7: F9✓, T4✗, S4✗, M3✗, R7✓, TA9✓ = **3/6** ✗
+- **DECISION: REJECTED**
+
+```yaml
+---
+ts: 2026-06-05T18:12:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 6.0
+thesis: MU fresh re-score June 5. Down 5.6% ($940 from $996 June 4 close; -13.7% from $1,089 ATH). SK Hynix -10% (direct peer) pulling MU lower. Jobs 172K shock → rate hike fears → macro 3/10. Technical 4/10 (no 2/5 confirmations). Average 6.0 < 7. Prior approval 7.67 (June 4) was based on June 4 conditions. Fresh re-score rejects.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 4
+  sentiment: 4
+  macro: 3
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.0
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  MU re-scored 6.0 (below 7 threshold). Agents ≥7: only 3/6 (F9✓, R7✓, TA9✓; T4✗, S4✗, M3✗).
+  Root cause of score drop vs June 4 (7.67): Macro 3/10 (was 5). Technical 4/10 (was 7). Sentiment 4/10 (was 8).
+  SK Hynix -10% today = direct HBM peer under severe selling. The HBM demand thesis is intact (contracts are multi-year) but the Korean comp selloff creates technical headwinds.
+  UBS $1,625 PT (72% upside from $940) strengthens fundamental case but macro/technical override today.
+  MONDAY WATCH: If semiconductor fear stabilizes over weekend, MU could see strong recovery bid. HBM4 thesis unchanged — contract demand doesn't care about jobs report.
+  ⚠️ REMINDER: MANDATORY EXIT by June 22 (48h before June 24 earnings). Entry deadline is approximately June 17 to allow position to develop.
+  xAI Grok API unavailable — strongly bearish inferred (−2 modifier applied).
+---
+```
+
+---
+
+**RE-SCORE: PLTR ($141.51 — range $140.27-$146.82)**
+
+- **Fundamentals: 8/10** — Q1 2026 EPS $0.33 (vs $0.27 est., +22% beat). FY2026 guidance $7.65B (+71% YoY). NVDA-PLTR AI agent partnership (Computex 2026). Government AI monetization accelerating. Score: 8/10.
+- **Technical: 5/10** — PLTR $141.51, range $140-$147. Relatively stable vs semiconductor names (-11% from ATH $159 vs AMD -7.9% today). Volume ~40.8M vs avg 44.5M — normal (not a panic selloff for PLTR). No clear technical reversal signal but also not breaking down. Score: 5/10.
+- **Sentiment: 5/10** — Broad market selling creates headwind. But PLTR is a government/defense AI name — less exposed to semiconductor-specific fears or rate-hike-driven tech multiple compression (government contracts are budget-driven, not rate-sensitive). Score: 5/10.
+- **Macro: 4/10** — Rate hike fears from jobs report = general headwind for high-multiple stocks. However, PLTR government contract revenue is politically-mandated spending (defense AI, AIP deployments) = not rate-sensitive. Partial insulation vs pure AI/tech names. Score: 4/10.
+- **Risk: 7/10** — 10sh × $142 (ask×1.005) = $1,420 = 1.42% ✓; stop $134.90 (-5%); target $163.30 (+15%); R/R 3:1 ✓; trade risk $72 = 0.07% ✓. Guardrails clear. Score: 7/10.
+- **Tech Analyst: 8/10** — AIP platform moat (government procurement lock-in). Foundry revenue diversifying. NVDA partnership for AI inference at edge. Score: 8/10.
+
+Master Agent:
+- Scores: F8, T5, S5, M4, R7, TA8
+- Average: (8+5+5+4+7+8)/6 = 37/6 = **6.17** ✗ (< 7 threshold)
+- Agents ≥7: F8✓, T5✗, S5✗, M4✗, R7✓, TA8✓ = **3/6** ✗
+- **DECISION: REJECTED**
+
+```yaml
+---
+ts: 2026-06-05T18:14:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.17
+thesis: PLTR fresh re-score June 5. $141.51 (range $140-$147). Most defensible of the three watchlist names in rate-hike environment (government contracts not rate-sensitive). However 6.17 < 7 threshold (macro 4/10, technical 5/10, sentiment 5/10 all below minimum needed). Prior approval 7.0 (June 4) based on June 4 conditions. Fresh re-score rejects.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 5
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  PLTR re-scored 6.17 (below 7 threshold). Agents ≥7: only 3/6 (F8✓, R7✓, TA8✓; T5✗, S5✗, M4✗).
+  Root cause of score drop vs June 4 (7.0): Macro 4/10 (was 5). Sentiment 5/10 (was 7). Technical borderline.
+  PLTR is the MOST DEFENSIBLE watchlist name in the current environment. Government AI contracts are rate-insensitive. PLTR is holding up better than AMD (-6.3%) or MU (-5.6%).
+  If macro score recovers to 5/10 on Monday (market digests jobs report) and sentiment recovers to 6/10, score would be: (8+5+6+5+7+8)/6 = 6.5 — still below 7. Would need technical improvement to 6+ to reach 7.
+  MONDAY WATCH: Highest probability of returning to 7+ first if market stabilizes. Key: PLTR needs to reclaim $145+ to reset technical from 5 to 6.
+  Proximity-to-close (this is 2 PM ET) also informs the skip — swing trade entry at this hour on a down day with no monitoring until Monday 8 AM = 65+ hour unmonitored window. While bracket GTC covers overnight, the weekend gap risk is elevated on a semiconductor panic Friday.
+  xAI Grok API unavailable — mildly bearish inferred (−1 modifier; base 6 → 5 sentiment).
+---
+```
+
+---
+
+**AVGO STATUS CHECK ($395-413 today — further decline)**
+
+```yaml
+---
+ts: 2026-06-05T18:15:00Z
+action: skip
+symbol: AVGO
+bucket: active
+setup: earnings-reaction-follow
+score: 5.33
+thesis: AVGO fresh re-score June 5. Day range $395.02-$413.80 (further -5% from June 4 close ~$407). Goldman $525 PT noted (29% upside). Still no confirmed technical bottom after -17% from ATH $481. Average 5.33 < 7. Rejected for 3rd consecutive routine.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 4
+  macro: 3
+  risk: 6
+  tech_analyst: 8
+agent_average: 5.33
+agents_above_7: 2
+master_decision: rejected
+master_notes: |
+  AVGO scores: F7/T4/S4/M3/R6/TA8 → avg 5.33. Risk 6/10 (technically satisfies the ≥6 veto condition but overall avg 5.33 < 7 → rejected).
+  Technical 4/10: -17% from ATH $481. Day range $395-$413 (AVGO is still defining the low). No 2/5 indicators confirming reversal. Sell-pressure from global semiconductor rout continuing.
+  MONDAY WATCH: Need 2-session base formation at $395-405 zone PLUS 2/5 technical indicator confirmation BEFORE re-scoring above 7. Goldman $525 PT (29% upside) would support a 7+ score once technical confirms. Do not enter falling-knife; wait for base.
+  xAI API unavailable. Bearish inferred (−2 modifier applied for strongly negative sector narrative).
+---
+```
+
+---
+
+**GLD POSITION REVIEW**
+
+- **Entry:** $418.86 (7 shares)
+- **Today's price:** $411.27 (day range $409.01-$414.37; up from June 4 close $407.91)
+- **Unrealized P&L:** ($411.27 - $418.86) × 7 = **-$53.13** (-1.81%) — improving from -$76 at June 4 midday
+- **Stop:** $397.92 (GTC, estimated resting at Alpaca). Buffer: $411.27 - $397.92 = $13.35 = **3.25%** — SAFE
+- **Today's action:** GLD is UP in today's risk-off environment (safe-haven bid offsetting dollar strength from jobs report). Consistent with macro-hedge thesis.
+- **Trail stop?** NO. GLD at $411 is still BELOW entry $418.86. Do NOT trail stop upward — position must recover to entry before stop trail is warranted.
+- **Stop action:** MAINTAIN $397.92. No change.
+
+---
+
+**WEEKLY EVOLUTION NOTE — Week of June 1-5, 2026 (abbreviated — Daily Review failed)**
+
+(Carried here since Daily Review June 4 silently failed. Full version due at next firing Daily Review.)
+
+1. **AVGO Earnings Shock (June 3 AH):** Revenue $22.19B missed $22.72B consensus. FY2027 AI target reaffirmed (not raised). -15% June 4, additional -5% June 5 = total -19% from ATH $481. We correctly rejected AVGO at pre-market June 4 (5.67) and again at Midday (6.0). AMD and MU suffered sympathy selloffs: AMD -11% from ATH $533 to $490, MU -14% from ATH $1,089 to $940.
+2. **June 5 Jobs Report Shock:** May non-farm payrolls +172K (vs 86K expected). Rate hike fears surged → worst tech/semiconductor session YTD (-5%). Portfolio impact: minimal (97% cash). Gap vs SPX narrowed slightly as market sold off too.
+3. **S&P 500 vs Portfolio (updated):** S&P 500 est. close ~7,424 (from ~7,568 × (1-0.0189)). SPX return since start (~7,200): +3.1%. Portfolio return: ~+0.16% (GLD slightly positive, rest cash). **Gap vs SPX: ~-2.9 pp** (improved from -5.0 pp as market corrected).
+4. **API blockage: 27th consecutive session.** Root cause unchanged. All order attempts blocked. Cumulative missed opportunity: AMD missed ATH $533 × 9sh, MU missed ATH $1,089 × 4sh, PLTR partial moves ≈ $4,000+ unrealized P&L never captured.
+5. **GLD corrected lower:** GLD was incorrectly estimated at $432-435 in prior notes. Actual range this week: $407-414. Entry $418.86 → still underwater. Stop $397.92 maintained.
+6. **Core guardrails: NO CHANGES.** Stop-losses, position size, sector caps, R/R minimum all intact.
+
+---
+
+**TOMORROW'S PRELIMINARY WATCHLIST (Monday June 8, 2026 Pre-Market)**
+
+Context: Weekend gap + market digestion of jobs report. Semiconductor selloff may continue or stabilize depending on bond market reaction over weekend. No scheduled binary events Monday (no FOMC, no major earnings in watchlist names).
+
+| Symbol | Current | Prior Score | Est. Monday Score | Priority | Notes |
+|--------|---------|------------|------------------|----------|-------|
+| MU | $940 | 7.67 (June 4) | 6.5-7.5 | HIGHEST | HBM4 demand secular; if semis stabilize, macro recovers to 5 → avg could reach 7+. ⚠️ MANDATORY EXIT by June 22. |
+| PLTR | $141.51 | 7.0 (June 4) | 6.5-7.0 | HIGH | Most insulated from rate hike fears. If PLTR recovers to $145+ Monday, technical improves. |
+| AMD | $490 | 7.17 (June 4) | 5.5-7.0 | HIGH | Needs macro fear to ease. AMD-specific thesis intact — no company-specific bad news. |
+| AVGO | $395-413 | 6.0 (June 4) | 5.5-6.5 | MONITOR | Need 2-session base confirmation at $395-405. Goldman $525 PT supports eventual entry. |
+| GLD | $411 | — | HOLD | HOLD | Macro-hedge position. Rate hike fears (dollar strength) vs safe-haven bid. Maintain stop $397.92. |
+
+**Monday Pre-Market scoring conditions:**
+- If S&P 500 futures ≥ flat AND Nasdaq futures ≥ flat AND 10Y yield stabilizes → raise macro scores back to 5/10 → AMD/MU/PLTR likely recover to 7+ range
+- If S&P 500 futures continue -1%+ AND 10Y yield rises further → maintain below-7 rejection
+- Monitor FOMC June 16-17 (11 days away) — rate hike probability from 172K jobs print will be key to macro score all week
+
+---
+
+*Routine complete. Updated memory/portfolio.md and dashboard-data.json below. Commit and push pending.*
+
+---
+
 ## 2026-06-04 — Midday (12:30 PM ET / 16:34 UTC)
 
 **HEARTBEAT:** STARTED Midday 16:34:37Z ✓
