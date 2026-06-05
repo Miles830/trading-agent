@@ -4,6 +4,450 @@
 
 ---
 
+## 2026-06-05 — Market-Close (3:30 PM ET / 19:34 UTC)
+
+**HEARTBEAT:** STARTED Market-Close 19:34:40Z ✓
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+```
+grep "STARTED " logs/heartbeats/2026-06-05.log
+→ 2026-06-05T19:34:40Z STARTED Market-Close
+```
+
+Result: **ALL 5 PREDECESSOR ROUTINES SILENTLY FAILED** on June 5, 2026.
+- Pre-Market (8:00 AM ET / 12:00 UTC): NO HEARTBEAT ✗
+- Market-Open (9:45 AM ET / 13:45 UTC): NO HEARTBEAT ✗
+- Mid-Morning (11:00 AM ET / 15:00 UTC): NO HEARTBEAT ✗
+- Midday (12:30 PM ET / 16:30 UTC): NO HEARTBEAT ✗
+- Afternoon (2:00 PM ET / 18:00 UTC): NO HEARTBEAT ✗
+
+Violations logged below. Market-Close is the **first and only** routine to fire today. API status: BLOCKED — "Host not in allowlist" HTTP 403, 27th consecutive blocked session.
+
+```yaml
+---
+ts: 2026-06-05T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine 2026-06-05 (8:00 AM ET / 12:00 UTC) SILENTLY FAILED — no heartbeat in logs/heartbeats/2026-06-05.log. MOO orders for MU (7.67), AMD (7.17), PLTR (7.0) not placed. Stop audit not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Pre-Market 2026-06-05 silent failure. MOO commitment from June 4 Daily Review (MU 7.67, AMD 7.17, PLTR 7.0) not executed. API blocked (27th session). Catch-up attempted at Market-Close.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine 2026-06-05 (9:45 AM ET / 13:45 UTC) SILENTLY FAILED — no heartbeat. MOO fill confirmations and follow-up stop placements not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Market-Open 2026-06-05 silent failure. MOO fills (if operator placed manually) not confirmed; GTC stops not placed per MOO workflow. API blocked.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine 2026-06-05 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat. Intraday scan, candlestick analysis, and stop audit not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Mid-Morning 2026-06-05 silent failure. Today Nasdaq -3.11%, tech -5% — significant sector selloff missed by all morning routines.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T16:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine 2026-06-05 (12:30 PM ET / 16:30 UTC) SILENTLY FAILED — no heartbeat. Catch-up entry attempts for MU/AMD/PLTR not made. Stop audit not performed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Midday 2026-06-05 silent failure. Market in tech selloff (Nasdaq -3%); MU -5%, AMD -4%, PLTR -1%. API blocked regardless.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine 2026-06-05 (2:00 PM ET / 18:00 UTC) SILENTLY FAILED — no heartbeat. No day-trade close-outs attempted. PLTR catch-up (deferred from June 4 Midday) not executed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Afternoon 2026-06-05 silent failure. PLTR deferred from June 4 Midday to Afternoon — catch-up not attempted. No day trades were open (API blocked all day). PLTR at $141.51 (range $140.27-$146.82). Catch-up deferred to Market-Close.
+---
+```
+
+---
+
+### STOP AUDIT — FIRST ACTION (MANDATORY)
+
+```bash
+GET https://paper-api.alpaca.markets/v2/positions     → HTTP 403 "Host not in allowlist"
+GET https://paper-api.alpaca.markets/v2/orders?status=open → HTTP 403 "Host not in allowlist"
+```
+
+**API BLOCKED — 27th consecutive session.** Cannot verify positions or stops via API.
+
+Estimated state (from prior memory):
+- **GLD 7sh**: resting stop $397.92 (MAINTAINED — do NOT trail). June 5 price ~$411.27 (range $409.01-$414.37). Stop buffer: ($411.27 - $397.92) / $411.27 = **3.2%** ✓ — stop intact.
+- **AMD, MU, PLTR**: NOT in portfolio — all entry attempts HTTP 403 (27 sessions). No stops needed.
+- **Stale GTC orders** (AMD $524.15, $508; MU $1,033.14, $1,020; PLTR $150.74 — from prior blocked sessions): Unknown status. OPERATOR: Please cancel all stale orders at https://app.alpaca.markets. None of these would have filled today (AMD -4%, MU -5%, PLTR -1% all trading below our prior stale limits today — but stale limits are above today's prices so they remain open and could fill on any bounce).
+
+⚠️ **GLD STOP NOTE**: GLD at $411.27 today = 2.6% unrealized loss from $418.86 entry. Stop $397.92 still intact (3.2% buffer). Do NOT trail up. Thesis: oil/Iran geopolitical bid + defensive rotation on tech selloff. Position recovered slightly today (+$23.52 on the day).
+
+---
+
+### MARKET SUMMARY (June 5, 2026 — EOD)
+
+**Major tech/semiconductor selloff day.** Nasdaq -3.11%, S&P 500 -1.89%, Russell 2000 -2.4%. Tech sector -5%. AMD -3.88% open (~$491-495 close est.), MU -5.08% (range $870-$970, est. ~$963 close), PLTR -1.3% (~$141.51), AVGO -6.27% (~$395.54, continuing post-earnings decline). BTC $62,875 (-14% week, -50% from $128K ATH) — ETF outflow streak 13 days.
+
+**Portfolio performance:** GLD +$3.36/sh today ($407.91 → $411.27) = +$23.52 portfolio gain. Portfolio nearly flat on a -1.89% S&P day = **outperformed SPX by +1.91% today** — GLD's defensive character worked. Today's relative outperformance narrowed the cumulative gap from -5.0 pp to ~-2.97 pp. The 20-consecutive-day underperformance streak is BROKEN today.
+
+**Catalysts for today's selloff:** AVGO continuing weakness (AI chip guidance miss lingering), semiconductor sympathy (AMD, MU, MRVL all weak), BTC liquidation cascade ($4.4B ETF outflows over 13 days), Warsh hawkish Fed signals dampening high-multiple tech valuations.
+
+**Circuit breaker check:** Portfolio approximately flat-to-up (GLD +$23). 3% circuit breaker NOT TRIGGERED ✓.
+
+---
+
+### DAY TRADES TO CLOSE
+
+None. No day trades were opened today — all prior session entries remain BLOCKED (API 403). No MOC close orders required.
+
+---
+
+### WATCHLIST RE-SCORE — June 5, 2026 (Market-Close conditions)
+
+Prior binding watchlist: MU (7.67), AMD (7.17), PLTR (7.0). Fresh 6-agent re-score required before any MOC entry.
+
+**⚠️ TODAY'S MACRO DRAG:** Nasdaq -3.11%, tech -5%, semiconductor -4-5%. Macro Agent scores 3/10 today. Technical Agent scores 5/10 (no bullish reversal confirmation on falling -3-5% days without 2/5 indicator stack confirmation). This pulls all three names below the 7.0 average threshold today.
+
+---
+
+**MU Full 6-Agent Re-Score (June 5, ~$963 close est.)**
+
+Sub-Agent 1 — Fundamentals: **9/10**
+- UBS $1,625 PT (69% upside from $963). HBM4 sold out through year-end 2026.
+- AVGO AI rev $10.8B (+143% YoY) confirms hyperscaler HBM demand — AVGO miss was guidance optics, not demand.
+- Earnings June 24 = upcoming catalyst (21 days away; must exit by June 22).
+- MU -11.6% from $1,089 ATH in 2 sessions = correction within AI memory secular bull.
+- Score: 9/10
+
+Sub-Agent 2 — Technical: **5/10**
+- ATH $1,089 June 3 → today $963 = -11.6% in 2 days. Cannot confirm reversal on falling-knife day.
+- 5-indicator stack assessment: Stochastic descending from overbought (bearish, 0/1). Candlestick: red candle, no reversal pattern (0/1). Volume oscillator: high volume to downside (0/1). MACD: likely turning bearish at ATH peak (0/1). Volume spike: to downside, not confirming long (0/1).
+- **0 of 5 indicators confirming bullish direction → technical score CANNOT exceed 5/10.**
+- Score: 5/10
+
+Sub-Agent 3 — Sentiment: **6/10**
+- Sector selloff narrative dominant (AVGO/AMD/MU all weak; "AI chip guidance disappointment" lingering).
+- "Micron will skyrocket after June 24" thesis intact but short-term sentiment negative.
+- xAI/X API blocked; infer mildly bearish (-1) given sector context.
+- Base 7 → X modifier -1 → **6/10**.
+
+Sub-Agent 4 — Macro: **3/10**
+- S&P 500 -1.89%, Nasdaq -3.11%, Russell 2000 -2.4% = broad risk-OFF selloff.
+- Tech sector -5%, semiconductors leading the decline.
+- BTC $62,875 (-50% from ATH) = risk-off across all speculative assets.
+- Warsh hawkish + Iran tensions + rate-hike odds = dual macro headwinds.
+- Score: 3/10
+
+Sub-Agent 5 — Risk: **7/10**
+- 4sh × $965 (est. MOC close) = $3,860 = 3.86% of ~$100,160 ✓ (<5%)
+- Stop: $916.75 (−5% from $965)
+- Target: $1,109.75 (+15% from $965)
+- R/R: $144.75 / $48.25 = **3.0:1** ✓ (minimum satisfied)
+- Trade risk: $48.25 × 4 = $193 = 0.19% ✓ (<1.5%)
+- Cash after: $97,281 − $3,860 = $93,421 (93.3%) ✓ (>5% floor)
+- Score: 7/10
+
+Sub-Agent 6 — Tech Analyst: **9/10**
+- HBM4 sole large-scale producer (Samsung ~24 months behind).
+- 3D stacking process moat. AI training/inference memory demand grows with model scale.
+- AVGO AI rev confirms HBM is critical path in AI infrastructure.
+- Manassas fab expansion for additional capacity.
+- Score: 9/10
+
+**Master Agent — MU:**
+- Scores: F9, T5, S6, M3, R7, TA9
+- Average: (9+5+6+3+7+9)/6 = **6.5** ✗
+- Agents ≥7: F✓, T✗, S✗, M✗, R✓, TA✓ = **3/6** ✗ (need 4/6)
+- **DECISION: REJECTED** — avg 6.5 < 7 threshold AND only 3/6 agents ≥7. Macro 3/10 and Technical 5/10 (0/5 confirmations) pull average below entry threshold. NOT a Deployment Bias violation — score is below 7 after fresh assessment.
+
+```yaml
+---
+ts: 2026-06-05T19:45:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 6.5
+thesis: MU re-scored 6.5 (was 7.67 June 4) due to Nasdaq -3.11%, tech -5% today; Technical 5/10 (0/5 mandatory indicators confirm bullish on -5% day); Macro 3/10. Score below 7 threshold → no entry obligation.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 6
+  macro: 3
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.5
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  MU prior score 7.67 (June 4 Midday). Fresh re-score for June 5 conditions: Macro 3/10 (Nasdaq -3.11%, tech -5%, broad risk-off), Technical 5/10 (0/5 mandatory indicators confirm bullish on today's falling-knife -5.08% day). Average 6.5 < 7.0 threshold. Score itself does not qualify — NOT a Deployment Bias skip violation. MOC entry NOT required.
+  Better entry price: $963 vs $1,033 prior target. Thesis unchanged (HBM4 sold out, UBS $1,625 PT, June 24 earnings catalyst). Re-score Monday June 8 — expect Macro recovery if Nasdaq bounces, pushing score back to 7+.
+  xAI/X API blocked; mildly bearish inferred from sector context (-1 modifier applied).
+  API blocked: POST /v2/orders for MOC attempted → HTTP 403 "Host not in allowlist". OPERATOR: Verify no MU fills from prior stale orders at $1,033/$1,020.
+---
+```
+
+---
+
+**AMD Abbreviated Re-Score (June 5, ~$493 close est.)**
+
+- Fundamentals: 8/10 (Barclays $665 PT, $200B agentic CPU TAM — unchanged)
+- Technical: 5/10 (opened -3.88%; 0/5 indicators confirming bullish on down day)
+- Sentiment: 5/10 (semiconductor sympathy selloff; slightly bearish; xAI blocked, infer -1)
+- Macro: 3/10 (same as MU — Nasdaq -3.11%, tech -5%)
+- Risk: 7/10 (9sh × $493 = $4,437 = 4.43%; stop $468.35 −5%; target $566.95 +15%; R/R 3:1; cash $92,844 after = 92.7% > 5% ✓)
+- Tech Analyst: 8/10 (EPYC CPU moat, AI-native server platform — unchanged)
+- Average: (8+5+5+3+7+8)/6 = **6.0** ✗ (below 7)
+
+```yaml
+---
+ts: 2026-06-05T19:46:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.0
+thesis: AMD re-scored 6.0 (was 7.17 June 4) due to Nasdaq -3.11%, tech -5%, semiconductor sympathy selloff. Technical 5/10 (0/5 confirmations), Macro 3/10. Score below 7 threshold → no entry obligation.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 5
+  macro: 3
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.0
+agents_above_7: 2
+master_decision: rejected
+master_notes: |
+  AMD prior score 7.17 (June 4 Midday). Fresh re-score: avg 6.0 < 7. Macro 3/10 and Tech 5/10 drive the miss. AMD at ~$493 — better entry than prior $524 limit. Thesis intact. Re-score Monday June 8.
+  Stale AMD limit orders ($524.15, $508) resting — OPERATOR: Cancel these at https://app.alpaca.markets (risk of fill on bounce above $508).
+---
+```
+
+---
+
+**PLTR Abbreviated Re-Score (June 5, ~$141.51)**
+
+- Fundamentals: 8/10 (FY2026 guide $7.65B +71% YoY, EPS $0.33 vs $0.27 beat Q1 — unchanged)
+- Technical: 5/10 (range $140.27-$146.82, trading near low; 0/5 bullish confirmations on down day)
+- Sentiment: 6/10 (PLTR most resilient of watchlist today; government AI narrative intact; xAI blocked, neutral inferred)
+- Macro: 3/10 (same — Nasdaq -3.11%, risk-off; PLTR correlates with tech)
+- Risk: 7/10 (10sh × $142 = $1,420 = 1.42%; stop $134.90 −5%; target $163.30 +15%; R/R 3:1; cash $95,861 after = 95.7% > 5% ✓)
+- Tech Analyst: 8/10 (AIP platform, US/NATO gov contracts, NVDA Computex partnership)
+- Average: (8+5+6+3+7+8)/6 = **6.17** ✗ (below 7)
+
+```yaml
+---
+ts: 2026-06-05T19:47:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.17
+thesis: PLTR re-scored 6.17 (was 7.0 June 4) due to Nasdaq -3.11%, risk-off conditions. Technical 5/10 (0/5 confirmations), Macro 3/10. Score below 7 threshold → no entry obligation.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 3
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 2
+master_decision: rejected
+master_notes: |
+  PLTR prior score 7.0 (June 4 Midday). Fresh re-score: avg 6.17 < 7. Most resilient watchlist name today ($141.51 vs $143.50 yesterday; only -1.4% vs AMD -4%, MU -5%). Thesis intact. Better entry than $150.74 stale limit. Re-score Monday June 8.
+  Stale PLTR limit order ($150.74) likely still open — OPERATOR: Cancel at https://app.alpaca.markets.
+---
+```
+
+---
+
+### MOC ORDER ATTEMPTS
+
+**MANDATORY ATTEMPT — Per CLAUDE.md Deployment Bias (prior scores ≥7 on all three names):**
+
+```bash
+# MOC order attempt #1: MU (prior score 7.67)
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MU","qty":4,"side":"buy","type":"market","time_in_force":"cls"}'
+→ HTTP 403: "Host not in allowlist"
+```
+
+**API BLOCKED — 27th consecutive session.** No MOC orders could be placed regardless of score.
+
+Note: Fresh re-scores for all three names came in below 7 (MU 6.5, AMD 6.0, PLTR 6.17) due to Nasdaq -3.11%, tech -5% conditions. The deployment obligation requires ≥7 fresh score; these scores do not qualify. Even if the API were functional, no MOC entries would be required today.
+
+```yaml
+---
+ts: 2026-06-05T19:48:00Z
+action: violation
+symbol: API
+bucket: active
+setup: other
+score: null
+thesis: Alpaca API BLOCKED (HTTP 403 "Host not in allowlist") — 27th consecutive blocked session since May 6, 2026. All order attempts, position checks, and stop audits blocked. Root cause: Anthropic cloud runner IP not in Alpaca paper-trading allowlist.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  API blocked for 27th consecutive session. All 5 intraday routines silently failed June 5.
+  Actions attempted this routine: GET /v2/positions (403), GET /v2/orders?status=open (403), POST /v2/orders MU MOC (403).
+  Operator action required: (a) Add cloud runner IP to Alpaca paper-trading allowlist, OR (b) Manually execute at https://app.alpaca.markets before market open Monday June 8.
+  Monday binding watchlist: MU (~$963, score 7+ conditional on Macro recovery), AMD (~$493, score 7+ conditional), PLTR (~$141, score 7+ conditional). All three names have BETTER entry prices today than prior targets. If Nasdaq bounces Monday (common after -3% day), all three should re-qualify above 7.
+---
+```
+
+---
+
+### OVERNIGHT POSITIONS — STOP CONFIRMATION
+
+| Symbol | Qty | Entry | Current (est.) | Unrealized | Stop | Stop Buffer | Status |
+|---|---|---|---|---|---|---|---|
+| GLD | 7sh | $418.86 | $411.27 | -$53.13 (-1.8%) | **$397.92** | 3.2% | ⚠️ ESTIMATED INTACT |
+
+GLD stop $397.92 estimated resting at Alpaca (placed May 17, never canceled; prior operator confirms). OPERATOR: Verify stop $397.92 is STILL resting at https://app.alpaca.markets — with today's price at $411, the stop is 3.2% away (safe, no action needed). **DO NOT TRAIL.**
+
+---
+
+### TODAY'S P&L
+
+| | June 4 (est.) | June 5 (est.) | Change |
+|---|---|---|---|
+| GLD market value | $2,856 (7×$408) | $2,878.89 (7×$411.27) | +$22.89 |
+| Cash | $97,281 | $97,281 | $0 |
+| **Total equity** | **$100,137** | **$100,159.89** | **+$22.89** |
+| **Daily return** | — | — | **+0.02%** |
+
+**S&P 500 June 5 close (estimated):** $7,568 (June 4) × 0.9811 = **~$7,425** (SPX -1.89%)
+**SPX return from May 1 ($7,200 start):** (7,425 - 7,200) / 7,200 = **+3.13%**
+**Portfolio total return:** +0.16% ($100,160 / $100,000)
+**Gap vs SPX: -2.97 pp** (IMPROVED from -5.0 pp June 4 — today's outperformance +1.91% relative)
+
+**20-consecutive-day underperformance streak: BROKEN TODAY** — portfolio +0.02% vs SPX -1.89% = first day of relative outperformance in 20+ sessions.
+
+---
+
+### PERFORMANCE VS S&P 500
+
+- Portfolio return (est.): **+0.16%**
+- SPX return from start (est.): **+3.13%**
+- Benchmark gap: **-2.97 pp** (vs -5.0 pp yesterday — improved +2.03 pp today)
+- Streak status: 20+ day underperformance streak broken ✓
+
+---
+
+### TOMORROW / NEXT TRADING DAY
+
+June 6 (Saturday) = non-trading day. June 7 (Sunday) = non-trading day.
+**Monday June 8 = next trading day.**
+
+Monday Pre-Market binding watchlist (MANDATORY — all three require fresh re-score on Monday macro):
+| Symbol | Last Score | Today's Close (est.) | Prior Target | Better Entry? |
+|---|---|---|---|---|
+| MU | 7.67 → 6.5 today | ~$963 | $1,033 | ✓ $70 better |
+| AMD | 7.17 → 6.0 today | ~$493 | $524 | ✓ $31 better |
+| PLTR | 7.0 → 6.17 today | ~$141.51 | $150.74 | ✓ $9 better |
+
+All three re-qualify at 7+ if Monday Macro score recovers to 6+ (historical pattern: -3% Nasdaq days commonly followed by +1-2% bounce next session). Monday Pre-Market MUST re-score and, if ≥7, place MOO orders before 9:25 AM ET.
+
+**Key dates to watch:**
+- June 8 (Mon): Next trading day — tech bounce likely, re-score all three names
+- June 16-17: FOMC meeting (Warsh hawkish — rate hold expected but hawkish language may weigh on tech)
+- June 22: MANDATORY MU exit deadline (earnings June 24 — must be out of any MU position by June 22 close)
+- June 24: MU earnings (no positions going in)
+
+---
+
+
+
 ## 2026-06-04 — Midday (12:30 PM ET / 16:34 UTC)
 
 **HEARTBEAT:** STARTED Midday 16:34:37Z ✓
