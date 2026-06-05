@@ -4,6 +4,324 @@
 
 ---
 
+## 2026-06-05 — Mid-Morning (11:00 AM ET / 15:09 UTC)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:09:58Z ✓
+
+**PREDECESSOR HEARTBEAT CHECK**
+
+```
+grep "STARTED Pre-Market"   logs/heartbeats/2026-06-05.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Market-Open"  logs/heartbeats/2026-06-05.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Mid-Morning"  logs/heartbeats/2026-06-05.log → 15:09:58Z ✓ (this routine)
+```
+
+Pre-Market (8:00 AM ET / 12:00 UTC) SILENTLY FAILED — no heartbeat. Violation logged below.
+Market-Open (9:45 AM ET / 13:45 UTC) SILENTLY FAILED — no heartbeat. Violation logged below.
+Result: This is the first routine to fire today. Running catch-up for two missing predecessors. 3-entry cap applies (catch-up entries count toward daily limit). Priority: MU (7.0 re-score), AMD (6.5 re-score — rejected), PLTR (6.67 re-score — rejected).
+
+```yaml
+---
+ts: 2026-06-05T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine 2026-06-05 (8:00 AM ET / 12:00 UTC) SILENTLY FAILED — no heartbeat in logs/heartbeats/2026-06-05.log. API blocked (27th consecutive session). Stop audit not performed. MOO orders for AMD/MU/PLTR watchlist not attempted.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Pre-Market 2026-06-05 silent failure. Caught up by Mid-Morning. AMD/MU/PLTR rescored fresh below.
+---
+```
+
+```yaml
+---
+ts: 2026-06-05T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine 2026-06-05 (9:45 AM ET / 13:45 UTC) SILENTLY FAILED — no heartbeat. Mandatory MOO fill confirmations not performed. GTC stop placements for any MOO fills not executed. Catch-up running at Mid-Morning.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Market-Open silent failure. Two mandatory actions missed:
+  1. Confirm any MOO fills (none expected — API blocked, no MOO placed)
+  2. Stop audit — verify GLD stop $397.92 resting (API blocked, cannot confirm)
+  Catch-up running at Mid-Morning.
+---
+```
+
+---
+
+**STOP AUDIT — FIRST ACTION (MANDATORY)**
+
+```
+GET /v2/positions           → HTTP 403 "Host not in allowlist" (27th consecutive blocked session)
+GET /v2/orders?status=open  → HTTP 403
+```
+
+Cannot verify positions or orders. Estimated state:
+- GLD 7sh: stop ESTIMATED at $397.92 (resting since ~May 17). GLD today: ~$411 (range $409-$414). Stop buffer: ~3.2% — intact.
+- AMD/MU/PLTR: NOT FILLED — all prior order attempts blocked (HTTP 403). No open positions for these names.
+- Stale GTC orders on Alpaca (if any were successfully placed before blocking): unknown. All known orders since May 6 were HTTP 403.
+- OPERATOR: Please verify at https://app.alpaca.markets that GLD stop $397.92 is still resting. Cancel any stale orders.
+
+---
+
+**JUNE 5 MARKET SUMMARY (Mid-Morning ~11:00 AM ET)**
+
+DOMINANT CATALYST — MAY JOBS REPORT (RATE HIKE TRIGGER):
+- Nonfarm payrolls May: **+172,000** (vs +85,000 expected — 2× forecast)
+- Rate hike probability: traders NOW FULLY priced in at least 1 hike by year-end. ~60% odds of 25bps at December 8-9 FOMC.
+- 10-year yield: **4.54%** (up from ~4.45%) — tech valuation headwind
+- Market reaction: "good news = bad news" — Nasdaq -1.13%, S&P -0.63%, Dow +0.07%, Russell 2000 +1.45%
+- Sector rotation: value/cyclicals/small cap UP; AI/tech/semis DOWN
+
+KEY PRICES (11:00 AM ET):
+- AMD: **~$490** (prev close $523.20, down -6.3% from AVGO contagion + jobs/rate fears). ATH $527.20.
+- MU: **~$940** (range $914-$970 today; prev close est. ~$995, down ~-5.5% to -6.4%). ATH $1,089 (June 3).
+- PLTR: **~$141** (range $140.27-$146.82; prev close ~$143.50, down ~-1.5%). ATH $159.52.
+- GLD: **~$411** (range $409-$414; prev close $407.91, +0.8% today on safe-haven bid from rate hike uncertainty)
+- BTC: **$61,914** (-3.52% today) — far below $82K threshold. No crypto entry.
+- S&P 500: ~**7,520** (est. from -0.63% on June 4 close ~7,568)
+
+Circuit breaker check: S&P -0.63% today. NOT TRIGGERED ✓
+GLD stop check: $397.92 vs $411 = 3.2% buffer. Safe. Do NOT trail (position underwater from $418.86).
+
+---
+
+**6-AGENT RE-SCORE: AMD (~$490, down 6.3%)**
+
+Context: AMD is day 2 of a semiconductor selloff triggered by AVGO earnings miss. Today's jobs report (172K vs 85K) added rate-hike fears, further pressuring high-multiple tech. AMD has pulled from ATH $527.20 to $490 (-7.1%).
+
+- **Fundamentals: 8/10** — Barclays PT $665 (36% upside from $490). Q1 $10.3B +38% YoY. Data Center $5.8B +57%. EPYC agentic AI $200B CPU TAM (Jensen Huang). OQC Quantum-AI partnership. Thesis intact. Score: 8/10.
+- **Technical: 5/10** — AMD at $490, below ATH $527.20 and below May 28-29 support zone ($510-520). Testing May 26 breakout level (~$493.79). Stochastic coming down from overbought (not yet at oversold <20). MACD: bearish crossover forming on today's -6.3% candle (0/5). Volume Oscillator: selling volume, negative (0/5). Volume Spike: high volume but DOWN direction — not bullish confirmation (0/5). Candlestick: large bearish candle today, no reversal pattern on 5-min. Stochastic approaching 50 zone (not <20 oversold yet). **0/5 mandatory indicators confirming bullish direction → Technical score capped at 5/10 per CLAUDE.md.**
+- **Sentiment: 6/10** — Barclays/TD Cowen PTs intact. But today's macro narrative (rate hike = tech selloff) = broadly bearish for high-multiple names. xAI API unavailable; infer moderately bearish today (-1 modifier). Base 7 → 6. Score: 6/10.
+- **Macro: 4/10** — Jobs +172K (2× expected) → rate hike bets to 60% → direct PE multiple headwind for high-multiple semis. Nasdaq -1.13%. AVGO contagion day 2. Rate hike increases cost of capital for growth companies. AMD P/S ~17× → compressed if rates rise. Score: 4/10.
+- **Risk: 7/10** — 9sh × $492.45 (est. $490 × 1.005) = $4,432 = 4.43% ✓. Stop: $467.83 (-5%). Target: $566.32 (+15%). R/R: $73.87/$24.62 = 3.0:1 ✓. Trade risk: $221/0.22% ✓. Cash post-entry: ~$92,849 >> 5% floor ✓. But entering a name down -6.3% with no technical bottom confirmed = elevated execution risk → 7/10.
+- **Tech Analyst: 9/10** — EPYC Zen 5 dominant, MI350X only real H100 alternative at scale, 2nm TSMC ramp confirmed, ROCm improving, $200B agentic CPU TAM. Score: 9/10.
+
+Master Agent AMD:
+- Scores: F8, T5, S6, M4, R7, TA9
+- Average: (8+5+6+4+7+9)/6 = 39/6 = **6.50**
+- Agents ≥7: F8✓, T5✗, S6✗, M4✗, R7✓, TA9✓ = **3/6** ✗ (need ≥4)
+- **DECISION: REJECTED** — avg 6.50 < 7 threshold; only 3/6 agents ≥7 (need 4). Technical capped by 0/5 indicator confirmation. Macro headwind from rate-hike print.
+
+```yaml
+---
+ts: 2026-06-05T15:12:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 6.5
+thesis: AMD re-scored 6.5/10 on June 5 fresh analysis. Jobs +172K (2× exp) → rate hike 60% → Macro 4/10 headwind. Technical 5/10 (capped — 0/5 mandatory indicators bullish on -6.3% day; no reversal confirmed). Only 3/6 agents ≥7. Master Agent gate fails.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 4
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.5
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  AMD fresh 6-agent June 5 re-score. Two fresh inputs changed scores vs June 4:
+  (1) Jobs report +172K (2× expected) → rate hike 60% → Macro drops 5→4
+  (2) AMD down 6.3% with no confirmed 5-min/1-hr technical reversal → 0/5 indicators → Technical stays 5/10 (capped)
+  Only 3/6 agents ≥7 (need ≥4): F8✓, R7✓, TA9✓; T5✗, S6✗, M4✗.
+  This is a Master Agent gate failure, NOT a Deployment Bias skip exemption.
+  Gate correctly preventing entry into -6.3% falling knife with no technical bottom.
+  AMD remains a conviction name — re-score at Daily Review once technical bottom confirmed.
+  xAI/X: API unavailable. Bearish inferred on jobs/rate headline (-1 sentiment modifier applied).
+---
+```
+
+---
+
+**6-AGENT RE-SCORE: MU (~$940, down ~5.5%)**
+
+Context: MU pulled from ATH $1,089 (June 3) to ~$940 today (-13.7% from ATH, -5.5% today) on AVGO contagion + jobs/rate fears. This is a substantially improved entry vs the prior $1,020 limit. HBM4 demand thesis is STRUCTURAL (multi-year contracts) — not rate-sensitive.
+
+- **Fundamentals: 9/10** — UBS $1,625 PT (73% upside from $940). HBM4 sold out through year-end 2026. AVGO AI revenue $10.8B (+143% YoY) CONFIRMS hyperscaler HBM demand (AVGO miss was FY2027 guidance, not demand). Morgan Stanley $1,050 PT (already near current). Earnings June 24 = confirmed catalyst (Motley Fool: "Micron will skyrocket after June 24"). Score: 9/10.
+- **Technical: 5/10** — MU down -13.7% from ATH $1,089 to $940. Today's range: $914.30-$969.82. At $940, MU is approaching/testing the May 26 breakout level (~$912 close on the UBS upgrade day). A backtest of the breakout level is a known support zone. BUT: Stochastic coming down from overbought, not yet at <20 oversold. MACD: bearish crossover forming (0/5). Volume Oscillator: selling pressure (0/5). Volume Spike: high volume but DOWN direction (0/5). Candlestick: intraday hammer potentially forming at $914 low, but 1-hour trend still down. **0-1/5 indicators → Technical capped at 5/10.**
+- **Sentiment: 7/10** — "Micron will skyrocket after June 24" dominant thesis. UBS $1,625 intact. AVGO AI rev confirms HBM demand = bullish MU. Selloff is macro-driven, not MU-specific. xAI unavailable; infer modestly bullish (+0 modifier on mixed market). Score: 7/10.
+- **Macro: 4/10** — Jobs +172K → rate hike bets → Nasdaq -1.13% headwind. BUT: MU's HBM4 demand is driven by multi-year hyperscaler contracts (not rate-sensitive). Rate hike creates PE multiple headwind but not near-term revenue risk. Slightly better macro score than AMD (structural demand insulation). Score: 4/10.
+- **Risk: 8/10** — IMPROVED entry vs prior $1,020 limit:
+  - 4sh × $945 (est. ask $940 × 1.005) = $3,780 = 3.78% ✓ (< 5%)
+  - Stop: $897.75 (-5% from $945)
+  - Target: $1,086.75 (+15% from $945) — remarkably close to prior ATH $1,089 ✓
+  - R/R: ($1,086.75 - $945) / ($945 - $897.75) = $141.75 / $47.25 = **3.0:1** ✓
+  - Trade risk: $47.25 × 4 = $189 = 0.19% ✓ (< 1.5%)
+  - Semis sector: 3.78% (< 25%) ✓
+  - Cash after: ~$97,281 − $3,780 = ~$93,501 (93.5%) >> 5% floor ✓
+  - ⚠️ MANDATORY EXIT by June 22 (48h before June 24 earnings)
+  - Score: 8/10.
+- **Tech Analyst: 9/10** — HBM4 sole large-scale producer (Samsung 12-18 months behind). 3D stacking process moat. AI training/inference memory scales with model size (trillion-parameter = TB of HBM). Manassas fab expansion adds domestic supply security. Score: 9/10.
+
+Master Agent MU:
+- Scores: F9, T5, S7, M4, R8, TA9
+- Average: (9+5+7+4+8+9)/6 = 42/6 = **7.00**
+- Agents ≥7: F9✓, T5✗, S7✓, M4✗, R8✓, TA9✓ = **4/6** ✓
+- Risk ≥6: ✓ (8). Tech ≥6: ✓ (9).
+- **DECISION: APPROVED** — avg exactly 7.0; all three gate criteria pass; R/R 3:1 ✓
+
+**ORDER ATTEMPT — MU CATCH-UP LIMIT BRACKET GTC:**
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "symbol": "MU",
+    "qty": 4,
+    "side": "buy",
+    "type": "limit",
+    "limit_price": "945.00",
+    "time_in_force": "gtc",
+    "order_class": "bracket",
+    "stop_loss": {"stop_price": "897.75"},
+    "take_profit": {"limit_price": "1086.75"}
+  }'
+→ HTTP 403 "Host not in allowlist" (27th consecutive blocked session)
+```
+
+```yaml
+---
+ts: 2026-06-05T15:14:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: MU June 5 catch-up. Pulled -13.7% from ATH $1,089 to $940 (AVGO contagion + jobs/rate hike fears). Entry at $945 = 8% below prior $1,020 limit (BETTER entry). HBM4 sold out, AVGO AI rev $10.8B confirms demand. UBS $1,625 PT. Earnings June 24 catalyst. 4sh limit bracket GTC $945/$897.75/$1,086.75. API BLOCKED HTTP 403.
+size_pct: 3.78
+stop: 897.75
+target: 1086.75
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 7
+  macro: 4
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  MU June 5 catch-up at improved entry ($945 vs prior $1,020 limit).
+  AVGO AI rev $10.8B (+143% YoY) = direct confirmation of hyperscaler HBM4 demand.
+  Jobs report pullback = macro-driven selloff, not MU-specific. HBM4 contracts are structural.
+  Technical 5/10 (capped — 0-1/5 indicators on down day; $914 intraday low near May 26 breakout support $912).
+  Macro headwind 4/10 (rate hike bets rising on jobs beat; but MU demand not rate-sensitive).
+  Target $1,086.75 nearly exactly at prior ATH $1,089 — clean level.
+  ⚠️ MANDATORY EXIT by June 22 (48h before June 24 earnings blackout).
+  ORDER STATUS: HTTP 403 "Host not in allowlist" (27th consecutive blocked session).
+  OPERATOR MANDATORY: BUY 4sh MU limit $945 bracket GTC (stop $897.75, target $1,086.75) at https://app.alpaca.markets
+  If MU has moved: limit = current ask × 1.005, stop = limit × 0.95, target = limit × 1.15.
+  catch-up for Pre-Market + Market-Open silent failures.
+  xAI/X: API unavailable. Modestly bullish inferred (structural thesis intact, +0 modifier).
+---
+```
+
+---
+
+**6-AGENT RE-SCORE: PLTR (~$141, down ~1.5%)**
+
+Context: PLTR relatively stable today vs semiconductors (Nasdaq -1.13% vs PLTR -1.5% — broadly in line). Software/analytics company with government contracts — less exposed to semiconductor selloff and somewhat rate-insensitive. Testing $140 support.
+
+- **Fundamentals: 8/10** — Q1 2026 EPS $0.33 vs $0.27 (+22%). FY2026 guide $7.65B (+71% YoY). NVDA-PLTR AI agent partnership. US Government AIP contracts expanding. Thesis very intact. Score: 8/10.
+- **Technical: 5/10** — PLTR at $141, -11.5% from ATH $159.52. Today's range $140.27-$146.82. Testing $140 support (intraday low $140.27). RSI pulling back from 70+ overbought. Stochastic heading toward middle (not oversold). MACD: slightly bearish on -1.5% day. Volume: relatively light selling today (positive vs AMD/MU heavy selloff). But cannot confirm 2/5 mandatory indicators bullish. **Capped at 5/10.**
+- **Sentiment: 7/10** — Q1 beat + NVDA partnership dominant. "Buy the dip" thesis for PLTR widely held. Less exposed to rate-hike narrative (government contracts, not PE-driven SAAS). xAI unavailable; infer moderately bullish (+0 modifier). Score: 7/10.
+- **Macro: 5/10** — PLTR is a non-cyclical government analytics platform. US government AI spending is not rate-sensitive. PLTR's Q1 revenue was 67% US government. Rate hike = headwind for PE multiple (PLTR trades at high EV/Sales) but revenue is insulated. Score: 5/10 (better than AMD/MU due to government revenue insulation).
+- **Risk: 8/10** —
+  - 10sh × $141.71 (est. $141 × 1.005) = $1,417 = 1.42% ✓ (< 5%)
+  - Stop: $134.62 (-5% from $141.71)
+  - Target: $162.97 (+15% from $141.71)
+  - R/R: ($162.97 - $141.71) / ($141.71 - $134.62) = $21.26 / $7.09 = **3.0:1** ✓
+  - Trade risk: $70.90 = 0.07% ✓ (< 1.5%)
+  - Cash: ~$97,281 − $1,417 = ~$95,864 >> 5% floor ✓
+  - Score: 8/10.
+- **Tech Analyst: 7/10** — AIP platform (AI analytics with classified data pipelines) = genuine moat in government AI. Foundry enterprise platform. NVDA partnership extends AI orchestration. Defensible but not pure hardware moat. Score: 7/10.
+
+Master Agent PLTR:
+- Scores: F8, T5, S7, M5, R8, TA7
+- Average: (8+5+7+5+8+7)/6 = 40/6 = **6.67**
+- Agents ≥7: F8✓, T5✗, S7✓, M5✗, R8✓, TA7✓ = **4/6** ✓
+- Average 6.67 < 7 ✗ — gate fails on average criterion.
+- **DECISION: REJECTED** — avg 6.67 < 7 threshold. Technical 5/10 (0/5 indicators on down-trend day) and Macro 5/10 (rate hike PE headwind) pull average below gate.
+
+```yaml
+---
+ts: 2026-06-05T15:16:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.67
+thesis: PLTR re-scored 6.67/10 on June 5 fresh analysis. Technical 5/10 (capped — 0/5 mandatory indicators bullish on down-trend day; $140 support testing but not confirmed). Macro 5/10 (rate hike PE headwind even if revenue insulated). Avg 6.67 < 7 threshold. Master Agent gate fails.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 5
+  risk: 8
+  tech_analyst: 7
+agent_average: 6.67
+agents_above_7: 4
+master_decision: rejected
+master_notes: |
+  PLTR fresh 6-agent June 5 re-score. Key changes vs prior 7.0 score:
+  (1) Jobs +172K → rate hike 60% probability → PE multiple headwind persists (Macro 5/10 same)
+  (2) -1.5% today with no bullish technical confirmation → Technical 5/10 capped (0/5 indicators)
+  4/6 agents ≥7 (passes count test) but avg 6.67 < 7 (fails average test).
+  This is a Master Agent gate failure, NOT a Deployment Bias skip exemption.
+  PLTR fundamental thesis is intact (Q1 beat, NVDA partnership, gov AI expansion).
+  Re-score at Daily Review once $140 support confirmed holding and/or technical reversal forms.
+  xAI/X: API unavailable. Modestly bullish inferred (+0 modifier).
+---
+```
+
+---
+
+**CIRCUIT BREAKER CHECK:** S&P -0.63% today. NOT TRIGGERED ✓
+
+**GLD POSITION UPDATE:**
+- GLD current: ~$411.27 (range $409.01-$414.37). Up ~$3 from June 3 close $407.91.
+- Jobs report → rate hike fears → dollar strengthening = mild GLD headwind. BUT geopolitical uncertainty (Iran, hawkish regime) = safe-haven bid. Net: GLD roughly flat-to-modestly-up.
+- Entry $418.86. Unrealized: ($411.27 - $418.86) × 7 = **-$53.13** (improved from -$76 at June 4 midday; GLD up slightly today)
+- Stop $397.92 = 3.2% below $411.27 — MAINTAIN, do NOT trail
+- No trailing or exit action warranted.
+
+**API STATUS:** HTTP 403 "Host not in allowlist" — 27th consecutive blocked session (June 5 Mid-Morning).
+
+---
+
 ## 2026-06-04 — Midday (12:30 PM ET / 16:34 UTC)
 
 **HEARTBEAT:** STARTED Midday 16:34:37Z ✓
