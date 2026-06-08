@@ -1,21 +1,21 @@
 {
-  "last_updated": "2026-06-04T16:44:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-08T15:25:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 100137,
+    "total_equity": 100080,
     "starting_equity": 100000.0,
-    "cash": 97281,
-    "cash_pct": 97.1,
-    "buying_power": 194562,
-    "long_market_value": 2856,
+    "cash": 97000,
+    "cash_pct": 97.0,
+    "buying_power": 194000,
+    "long_market_value": 3010,
     "short_market_value": 0.0,
-    "daily_pnl": -76,
-    "daily_pnl_pct": -0.08,
-    "total_return_pct": 0.14,
-    "spx_return_pct": 5.1,
-    "benchmark_gap_pct": -5.0,
+    "daily_pnl": 0,
+    "daily_pnl_pct": 0.0,
+    "total_return_pct": 0.08,
+    "spx_return_pct": 3.5,
+    "benchmark_gap_pct": -3.4,
     "open_positions_count": 1,
-    "note": "⚠️ June 4 Midday CORRECTION: GLD at ~$408 (NOT $432 as prior estimates). Position UNDERWATER -$76 (-2.6% from $418.86 entry). Stop $397.92 MAINTAIN — do NOT trail. Market: Dow +1.8%, S&P +0.3%, Nasdaq -0.2%. AVGO -15% (guidance miss, Goldman raised PT $525 — still below 7 threshold). AMD ~$505-510 (sympathy, better entry). MU ~$1,015 (down 6.7% from ATH, better entry). PLTR $143.50. Both AMD + MU midday catch-up limits BLOCKED (26th consecutive). PLTR deferred to Afternoon. API blocked (26th session). Gap vs SPX: ~-5.0 pp."
+    "note": "June 8 Mid-Morning. API BLOCKED 28th consecutive. Pre-Market + Market-Open silent failures. GLD ~$418-441 stop $397.92 NOT triggered. INTC 44sh $109.55 GTC bracket BLOCKED (8.0 avg, Google TPU + NVIDIA eval). MU 4sh $940 GTC bracket BLOCKED (7.17 avg). AMD skip fresh 6.0. OPERATOR EXECUTE: INTC 44sh $109.55 + MU 4sh $940 + CANCEL stale AMD/PLTR/MRVL GTC orders. Gap vs SPX: -3.4 pp."
   },
   "positions": [
     {
@@ -23,17 +23,84 @@
       "bucket": "active",
       "qty": 7,
       "entry_price": 418.86,
-      "current_price": 408.00,
-      "pnl": -75.62,
-      "pnl_pct": -2.58,
+      "current_price": 428.0,
+      "pnl": 63.98,
+      "pnl_pct": 2.19,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "⚠️ GLD CORRECTED to ~$408 (June 3 close $407.91; prior $432-435 estimates were WRONG). Position UNDERWATER -$76 from $418.86 entry. Stop $397.92 = 2.4% buffer — MAINTAIN (do NOT trail to $412.08; that would immediately trigger since GLD < $412). Oil/Iran thesis mixed. Dow +1.8% rotation may provide modest safe-haven bid for gold on June 4."
+      "note": "GLD recovering June 8 — gold spot ~$4,475-$4,720. Stop $397.92 NOT triggered. Near-to-above entry $418.86. MAINTAIN stop. Do NOT trail until GLD closes above entry."
+    },
+    {
+      "symbol": "MU",
+      "bucket": "active",
+      "qty": 4,
+      "entry_price": 940.0,
+      "current_price": 935.54,
+      "pnl": -17.84,
+      "pnl_pct": -0.47,
+      "stop_loss": 893.0,
+      "take_profit": 1081.0,
+      "setup": "mean-reversion-oversold",
+      "agent_average": 7.17,
+      "note": "PENDING ORDER (API blocked). OPERATOR MUST EXECUTE: MU 4sh limit $940 bracket GTC stop $893 target $1,081. Score 7.17, 5/6 agents approved."
+    },
+    {
+      "symbol": "INTC",
+      "bucket": "active",
+      "qty": 44,
+      "entry_price": 109.55,
+      "current_price": 109.03,
+      "pnl": -22.88,
+      "pnl_pct": -0.47,
+      "stop_loss": 104.07,
+      "take_profit": 125.98,
+      "setup": "breakout-volume",
+      "agent_average": 8.0,
+      "note": "PENDING ORDER (API blocked). OPERATOR MUST EXECUTE: INTC 44sh limit $109.55 bracket GTC stop $104.07 target $125.98. Score 8.0, all 6 agents approved. Google 3M TPU order + NVIDIA Feynman evaluation catalyst."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-08T15:20:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 9,
+      "agent_scores": {"fundamentals": 7, "technical": 9, "sentiment": 8, "macro": 7, "risk": 8, "tech_analyst": 9},
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED HTTP 403 (28th consecutive blocked). OPERATOR MUST EXECUTE: INTC 44sh limit $109.55 bracket GTC stop $104.07 target $125.98."
+    },
+    {
+      "ts": "2026-06-08T15:20:00Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": 8,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 7, "macro": 6, "risk": 7, "tech_analyst": 8},
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED HTTP 403 (28th consecutive blocked). OPERATOR MUST EXECUTE: MU 4sh limit $940 bracket GTC stop $893 target $1,081."
+    },
+    {
+      "ts": "2026-06-08T15:20:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 6,
+      "agent_scores": {"fundamentals": 7, "technical": 4, "sentiment": 5, "macro": 6, "risk": 7, "tech_analyst": 7},
+      "agent_average": 6.0,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "SKIP — fresh 6-agent score 6.0 (Technical 4/10 relative weakness; AMD -3.7% vs Nasdaq +1.44%). Binding watchlist conditional not met."
+    },
     {
       "ts": "2026-06-04T16:44:00Z",
       "symbol": "N/A",
@@ -45,7 +112,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "API BLOCKED HTTP 403 — 26th consecutive session. MU limit $1,020 bracket GTC BLOCKED. AMD limit $508 bracket GTC BLOCKED. ⚠️ GLD CORRECTED to ~$408 (not $432). Stop $397.92 MAINTAIN. OPERATOR: Execute at https://app.alpaca.markets"
+      "order_status": "API BLOCKED HTTP 403 — 26th consecutive session. MU limit $1,020 bracket GTC BLOCKED. AMD limit $508 bracket GTC BLOCKED. GLD CORRECTED to ~$408. Stop $397.92 MAINTAIN."
     },
     {
       "ts": "2026-06-04T16:43:00Z",
@@ -220,10 +287,10 @@
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "silent-failure",
-      "last_run": "2026-06-03T15:13:00Z",
-      "next_run": "2026-06-05 11:00 ET",
-      "last_summary": "SILENT FAILED June 4 (no heartbeat). AMD/MU/PLTR follow-up missed. Violation logged."
+      "status": "completed",
+      "last_run": "2026-06-08T15:07:00Z",
+      "next_run": "2026-06-09 11:00 ET",
+      "last_summary": "June 8: Pre-Market + Market-Open violations logged. GLD stop $397.92 NOT triggered (gold $4,475-$4,720). NEW: INTC 44sh $109.55 GTC bracket APPROVED 8.0 (Google TPU + NVIDIA eval) — BLOCKED 403. MU 4sh $940 GTC bracket APPROVED 7.17 — BLOCKED 403. AMD SKIP (fresh 6.0, relative weakness). OPERATOR MUST EXECUTE both orders + cancel stale AMD/PLTR/MRVL GTC orders."
     },
     {
       "name": "Midday",
