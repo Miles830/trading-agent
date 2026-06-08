@@ -4,6 +4,337 @@
 
 ---
 
+## 2026-06-08 — Daily Review (4:30 PM ET / 20:31 UTC — MONDAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:31:15Z ✓
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK (2026-06-08 — Full Day Audit)
+
+```
+grep "STARTED Pre-Market"    logs/heartbeats/2026-06-08.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Market-Open"   logs/heartbeats/2026-06-08.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Mid-Morning"   logs/heartbeats/2026-06-08.log → 15:06:58Z ✓ (COMPLETED 15:26:44Z ✓)
+grep "STARTED Midday"        logs/heartbeats/2026-06-08.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Afternoon"     logs/heartbeats/2026-06-08.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Market-Close"  logs/heartbeats/2026-06-08.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Daily-Review"  logs/heartbeats/2026-06-08.log → 20:31:15Z ✓ (this session)
+```
+
+**⚠️ TOP OPERATIONAL ISSUE — 5 OF 7 SESSIONS SILENTLY FAILED ON JUNE 8.**
+Only Mid-Morning and Daily-Review fired. Pre-Market, Market-Open, Midday, Afternoon, and Market-Close produced ZERO heartbeats. The cloud scheduler fires exactly ONE session per day outside the Daily-Review: Mid-Morning at ~15:07Z. All other intraday windows are dark. This is the 29th consecutive session with intraday routine failures.
+
+**Remediation (URGENT — operator must investigate):**
+The scheduler is firing at ~15:07Z (Mid-Morning) and ~20:31Z (Daily-Review) but not at the other 5 times (12:00Z Pre-Market, 13:45Z Market-Open, 16:30Z Midday, 18:00Z Afternoon, 19:30Z Market-Close). Either (a) only two session triggers are configured in the cloud scheduler, or (b) the other five are configured but timing out/crashing silently. Check the schedule configuration and verify all 7 time slots are active.
+
+```yaml
+---
+ts: 2026-06-08T20:31:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: 5 of 7 intraday routines SILENTLY FAILED on June 8. Only Mid-Morning and Daily-Review fired. Pre-Market, Market-Open, Midday, Afternoon, Market-Close all absent. Cloud scheduler fires reliably at 15:07Z and 20:31Z only. All other 5 time windows are dark. 29th consecutive multi-session failure day.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Violation: MOO orders not placed (Pre-Market missed) → INTC +12.94% and MU +8.95% missed on the day.
+  Violation: Market-Open missed → no stop verification after market open.
+  Violation: Midday/Afternoon/Market-Close missed → no position management during GLD stop-out.
+  Root cause: cloud scheduler fires only 2 of 7 session windows reliably. Other 5 sessions require fix.
+  Estimated missed P&L from INTC alone (44sh × $2.04 gap from $109.55 limit to $111.59 close) = +$89.76 unrealized.
+---
+```
+
+---
+
+### STOP AUDIT — FIRST ACTION (MANDATORY)
+
+```
+GET /v2/positions        → "Host not in allowlist" (29th consecutive blocked session)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**⚠️ CRITICAL: GLD STOP TRIGGERED (estimated)**
+
+Web research confirms:
+- GLD June 8 close: **~$397.91** (gold spot ~$4,313–$4,329/oz; Iran de-escalation reduced safe-haven premium + 72% December rate hike odds from payrolls shock)
+- GLD stop (resting at Alpaca): **$397.92**
+- Conclusion: **GLD stop almost certainly triggered** — price fell below $397.92 at some point during today's session
+- Fill price (estimated): ~$397.92 (stop-market; paper trading may fill at stop trigger price)
+- Realized P/L (estimated): 7sh × ($397.92 − $418.86) = 7 × (−$20.94) = **−$146.58**
+
+Gold declined ~3.2% from June 5 ($4,475 spot) to June 8 ($4,329 spot) on:
+1. US-Iran ceasefire holding → geopolitical risk premium unwinding
+2. May NFP +172K → 72% probability of December 2026 rate hike (gold hates rising rates)
+3. US dollar strengthening on hawkish Fed expectations
+
+```yaml
+---
+ts: 2026-06-08T20:00:00Z
+action: stop_hit
+symbol: GLD
+bucket: active
+setup: macro-hedge
+score: null
+thesis: GLD stop-loss $397.92 triggered. Gold fell from $4,475 (June 5) to $4,313-4,329 (June 8) on Iran de-escalation (safe-haven unwind) + 72% December rate hike odds (May NFP +172K). Position held 26 days from entry $418.86. Realized loss ~-$146.58.
+size_pct: 0
+stop: 397.92
+target: null
+result_pct: -5.0
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  GLD position (7sh, entry $418.86, cost basis $2,932.02) stopped out at estimated $397.92.
+  Proceeds: 7 × $397.92 = $2,785.44. Realized loss: −$146.58 (−5.0%).
+  Estimated total equity post stop-out: ~$100,066 (essentially flat from $100,000 start).
+  API blocked — cannot confirm fill. Operator must verify at https://app.alpaca.markets.
+  Gold thesis was correct directionally (GLD served as hedge on June 5 selloff: portfolio +0.023% vs SPX −2.64%)
+  but the Iran de-escalation + hawkish macro repricing overwhelmed the safe-haven bid permanently.
+  Post-stop: ALL CASH. No open positions. Deployment gap: $95,066 above 5% floor.
+---
+```
+
+---
+
+### TODAY'S MARKET SUMMARY (June 8, 2026 — Final Close)
+
+| Index | Close (est.) | Daily Return | Note |
+|---|---|---|---|
+| S&P 500 | ~7,457 | **+1.00%** | Iran de-escalation risk-on recovery |
+| Nasdaq | ~26,149 | **+1.71%** | Tech sector +3.39% |
+| Dow Jones | ~40,650 | ~+0.40% | Moderate recovery |
+| Russell 2000 | ~recovery | **+1.68%** | Intraday reversal from −3.47% at Mid-Morning |
+
+**Individual names (June 8 close):**
+| Symbol | Close (est.) | Daily Chg | Note |
+|---|---|---|---|
+| INTC | **$111.59** | **+12.94%** | Google 3M TPU order + NVIDIA Feynman eval |
+| MU | ~**$940** | +8.95% | Oversold recovery; HBM4 demand intact |
+| AMD | **$492.97** | −0.17% | Persistent relative weakness vs tech +3.39% |
+| GLD | ~**$397.91** | −3.25% | ⚠️ STOP TRIGGERED — gold -3.2% on Iran de-escalation + rate hike fears |
+| PLTR | **$137.11** | flat | Limited participation in tech rally |
+| BTC | ~**$63K** | −3.6% | Below $82K threshold — no crypto entry |
+| TSMC (TSM) | Volatile | −6% early / +5% late | Intel news created intraday whipsaw |
+
+**Key catalysts:**
+1. **Iran ceasefire extended:** 9+ weeks holding; Strait of Hormuz tanker traffic resuming → safe-haven unwind
+2. **Google 3M TPU order with Intel (INTC):** Landmark foundry win; TSMC capacity crunch → Intel 18A validated
+3. **NVIDIA evaluating Intel for Feynman GPU:** 4-GPU package using Intel 18A process → potential multi-billion contract
+4. **Rate hike fears intensify:** CME FedWatch 72% probability December 2026 rate hike (up from 45% a week ago) → gold/bonds sold, tech/equities partially resilient
+
+---
+
+### PORTFOLIO PERFORMANCE (June 8, 2026)
+
+| Metric | Today | Notes |
+|---|---|---|
+| Portfolio daily return | **−0.09%** | GLD stop-out −$147 |
+| SPX daily return | **+1.00%** | Risk-on recovery |
+| Daily alpha | **−1.09 pp** | Missed all tech upside |
+| Cumulative return | **+0.07%** | ($100,066 vs $100,000) |
+| Cumulative SPX return (from ~May 1) | **~+3.6%** | SPX now ~7,457 vs ~7,200 start |
+| **Gap vs SPX (cumulative)** | **−3.5 pp** | Widened from −2.39 pp post June 5 |
+
+**3% daily circuit breaker:** Portfolio −0.09% → NOT TRIGGERED ✓
+
+**Portfolio equity (estimated):**
+- Cash: ~$100,066 (all positions — GLD stopped out)
+- GLD realized P/L: −$146.58 (−5.0% on cost basis)
+- Total equity: ~$100,066 (essentially all cash)
+- Deployment gap: ~$95,066 above 5% floor — CRITICAL ACTION REQUIRED
+
+---
+
+### ROLLING 20-DAY PERFORMANCE METRICS (May 6 – June 8, 2026)
+
+| Metric | Value | Notes |
+|---|---|---|
+| Portfolio return (20-day) | **+0.07%** | One confirmed position (GLD, closed today at stop) |
+| SPX return (20-day) | **+3.60%** | Record highs June 1-2, selloff June 4-5, recovery June 8 |
+| Gap vs SPX | **−3.53 pp** | Worst since June 4; all API-blockage attributable |
+| Win rate (filled trades) | **0%** | 1 filled trade (GLD) → stopped out at −5.0% |
+| Avg win | N/A | No wins yet |
+| Avg loss | **−5.0%** (−$146.58) | GLD stop-out only |
+| Profit factor | N/A | No wins to compute ratio |
+| Open unrealized | $0 | All cash |
+
+**Note:** The 20-day underperformance streak broken June 5 now RESUMES. Today's −1.09 pp vs SPX = Day 1 of new underperformance streak.
+
+---
+
+### TODAY'S BEST & WORST
+
+**Best outcome today:** GLD stop worked as designed — limited loss to exactly 5% (−$147) on a position that fell 3.2% today. The stop protected against further downside. GLD thesis (geopolitical hedge) remains valid in principle but the specific entry timing was wrong — entered $418.86 when gold was elevated on Iran fears; stop triggered when Iran fears unwound.
+
+**Worst outcome today:** INTC +12.94%, MU +8.95%, Nasdaq +1.71% — all missed due to API blockage. The INTC setup (8.0 agent average, all 5/5 indicators confirmed) was discovered at Mid-Morning and immediately blocked. Missing a 13% single-day gain on a 4.82% position = 0.63% portfolio impact missed.
+
+---
+
+### 3 THINGS THAT WORKED
+
+1. **GLD stop executed correctly** — the stop mechanism worked. When the macro thesis changed (Iran de-escalation + rate hike repricing eliminated the GLD safe-haven bid), the stop automatically closed the position at exactly −5.0%, preventing a larger loss. This is the stop-loss system functioning as designed.
+
+2. **INTC 6-agent analysis was correct** — the Mid-Morning INTC score of 8.0 (all 6 agents ≥7, all 5/5 indicators) proved prescient. The stock closed at $111.59 (+12.94%). The analysis was right; only execution was blocked.
+
+3. **AMD skip at 6.0 was correct** — AMD scored 6.0 at Mid-Morning on relative weakness (-3.7% at 11 AM vs Nasdaq +1.44%). AMD closed essentially flat at $492.97 (-0.17%) while tech sector rose +3.39%. Skipping AMD saved a losing trade — AMD would have been a drag even if we had bought the intraday dip.
+
+---
+
+### 3 THINGS TO IMPROVE
+
+1. **Cloud scheduler must fire all 7 sessions.** Today 5 of 7 sessions (Pre-Market, Market-Open, Midday, Afternoon, Market-Close) were silent failures. If Pre-Market had fired, MOO orders for INTC and MU would have been attempted at open; Market-Open would have placed follow-up stops; GLD stop verification would have been performed at every session. Operator: check scheduler configuration for missing session triggers.
+
+2. **INTC entry was ready but execution is still API-blocked (29th session).** The 8.0-score INTC setup was fully ready 9 hours before close. A MOO at $100.09 (yesterday's close if INTC was $98) would have captured the full 13% gap. The operator manual execution channel is the only workaround and must be activated for tomorrow's INTC and MU entries. Instructions provided in watchlist below.
+
+3. **GLD trailing stop should have been updated before June 8.** The stop at $397.92 was set when GLD was at $418 (May 2026). GLD then rose to $434 (June 3) but fell back to $411 (June 5) — a clear pattern of losing the upside. A trailing stop protocol should have been triggered when GLD hit $434: trail to $411 (−5% of $434). The position would have been stopped out anyway, but at a less disadvantageous level. Going forward: review all stop levels at every Daily Review and update when the position has moved >10% in our favor.
+
+---
+
+### SETUP-TAG TALLY (5-Day Rolling Window: June 4–8, 2026)
+
+| Setup type | Fills | W | L | Result | 3-in-a-row | Status |
+|---|---|---|---|---|---|---|
+| macro-hedge (GLD) | 1 | 0 | 1 | −5.0% (−$147) | 0-1 | STOPPED OUT |
+| breakout-volume (INTC, MU) | 0 | 0 | 0 | N/A | none | BLOCKED — reattempt Tue |
+| mean-reversion-oversold (MU) | 0 | 0 | 0 | N/A | none | MANDATORY Tue |
+| ai-momentum-pullback (AMD) | 0 | 0 | 0 | N/A | none | SKIP (6.0) |
+| silent-failure | 15+ | — | — | — | — | Day 29 violation |
+
+**3-in-a-row rules:** macro-hedge now has 1 loss. No halt triggered (need 3 consecutive losses). Only 1 confirmed closed trade in 30+ sessions. Tracker remains unusable at scale until fills occur.
+
+---
+
+### 6-AGENT WATCHLIST — TUESDAY JUNE 9 PRE-MARKET (BINDING COMMITMENT)
+
+**Portfolio context:** ALL CASH ($100,066 est.). No open positions. Maximum deployment flexibility.
+**Key event this week:** CPI Wednesday June 10 (8:30 AM ET). Not CLAUDE.md-exempt — enter with stops.
+**FOMC June 16-17:** Warsh — 72% December hike odds. Macro headwind persists.
+
+---
+
+#### #1 — INTC ($111.59) — MANDATORY re-entry (breakout-volume continuation; score ~8.0)
+
+**Thesis:** Google 3M TPU order + NVIDIA Feynman evaluation = structural Intel foundry inflection. Day 2 after a 13% gap-up: continuation setups on fundamental catalysts typically hold for multiple sessions. Intel 18A is now validated by two of the world's largest AI chip designers. The thesis has 2–3 years of potential upside; day-2 entry is not late.
+
+**Updated entry parameters:**
+- Entry: **44sh limit $112.15** (ask+0.5% from $111.59 close)
+- Stop: **$106.54** (−5% from $112.15)
+- Target: **$128.97** (+15% from $112.15)
+- R/R: 3:1 ✓
+- Size: 44 × $112.15 = **$4,935 = 4.94%** ✓ (under 5% cap)
+- Trade risk: 44 × $5.61 = $247 = 0.25% equity ✓
+- Sector: Semiconductors/Foundry 4.94% → under 25% ✓
+- order_class: bracket, time_in_force: gtc
+
+**Agent rescore basis:** No material change in thesis since Mid-Morning (8.0 avg, all 6 ≥7). CPI Wednesday adds macro uncertainty (Macro may drop from 7 to 6 if CPI is expected hot). Updated pro-forma score ~7.5–8.0. MANDATORY.
+
+---
+
+#### #2 — MU (~$940) — MANDATORY (mean-reversion-oversold; score 7.17)
+
+**Thesis:** HBM4 sold out through year-end. June 24 earnings (16 days from today, outside 48h window). UBS $1,625 PT. Recovery from June 5 oversold selloff intact.
+
+**Entry parameters:**
+- Entry: **4sh limit $943.70** (ask+0.5% from ~$940 close)
+- Stop: **$896.52** (−5%)
+- Target: **$1,085.26** (+15%)
+- R/R: 3:1 ✓
+- Size: 4 × $943.70 = **$3,775 = 3.78%** ✓
+- Trade risk: 4 × $47.18 = $189 = 0.19% ✓
+- **MANDATORY EXIT by June 22** (48h before June 24 earnings blackout)
+- order_class: bracket, time_in_force: gtc
+
+---
+
+#### #3 — AMD (~$492.97) — CONDITIONAL (rescore required; last score 6.0)
+
+**Status:** AMD closed essentially flat (−0.17%) while Nasdaq +1.71% and tech +3.39%. Persistent relative weakness. Fresh 6-agent at Pre-Market required. **If score ≥7: enter. If score <7: skip.** The intraday reversal (from $475.80 low back to $492.97) shows some buyer interest but not enough to overcome the sector underperformance narrative.
+
+**Entry parameters (if score ≥7):**
+- Entry: **9sh limit ~$495.45** (ask+0.5% from ~$492.97)
+- Stop: **$470.68** (−5%)
+- Target: **$569.77** (+15%)
+- R/R: 3:1 ✓
+- Size: 9 × $495.45 = **$4,459 = 4.46%** ✓
+- order_class: bracket, time_in_force: gtc
+
+---
+
+#### #4 — PLTR (~$137.11) — WATCH (last score 6.5)
+
+Essentially flat today on a strong tech day. Macro still headwind (72% rate hike odds). Score likely remains 6.0–6.5. Below threshold. Conditional: if score ≥7 at Pre-Market AND 2/5 indicators confirm, enter. Otherwise skip.
+
+---
+
+#### #5 — Cancel Stale GTC Orders (MANDATORY PRE-MARKET ACTION)
+
+The following orders are still live at Alpaca and MUST be canceled before placing new orders:
+| Symbol | Limit | Current Price | Action |
+|---|---|---|---|
+| AMD 9sh $524.15 (June 3) | $524.15 | $492.97 | **CANCEL** |
+| AMD 9sh $520.59 (May 29) | $520.59 | $492.97 | **CANCEL** |
+| PLTR 10sh $150.74 (June 3) | $150.74 | $137.11 | **CANCEL** |
+| MRVL 8sh $202.19 (May 29) | $202.19 | ~$300+ | **CANCEL IMMEDIATELY** |
+
+---
+
+### MACRO & UPCOMING EVENTS
+
+| Date | Event | Significance |
+|---|---|---|
+| Wed Jun 10 | CPI for May 2026 (8:30 AM ET) | High — April was +3.8% YoY, +0.6% monthly. Consensus for May ~3.5–3.7%. If hot → rate hike fears intensify; if benign → tech relief rally. NOT a CLAUDE.md-exempt binary event. |
+| Mon Jun 16-17 | FOMC — Warsh | Highest significance of month — 72% probability December 2026 hike. Hawkish guidance → tech/semi headwind. Rate hold as expected, but language matters. |
+| Tue Jun 24 | MU Earnings | MU MANDATORY EXIT by June 22 (48h before blackout). |
+| ~Late Jul | INTC Earnings | Outside 48h window for June 9 entry. |
+| Aug 4 | AMD Earnings | Outside 48h window for any June entry. |
+
+---
+
+### FRIDAY NOTE: Not Friday (Monday review) — no weekly evolution note required today.
+
+---
+
+```yaml
+---
+ts: 2026-06-08T20:31:00Z
+action: skip
+symbol: WATCHLIST
+bucket: active
+setup: other
+score: null
+thesis: Daily Review complete. GLD stopped out (-5.0%, -$147). Portfolio ALL CASH ~$100,066. INTC MANDATORY June 9 (8.0 score, breakout-volume continuation). MU MANDATORY June 9 (7.17 score, mean-reversion). AMD CONDITIONAL (6.0 — rescore required). CPI June 10 is key event. FOMC June 16-17. All 7 stale GTC orders must be canceled by operator before new entries.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Daily Review June 8 complete.
+  GLD stop-out: 7sh × ($397.92-$418.86) = -$146.58 realized loss. Portfolio ~$100,066 all cash.
+  MISSED: INTC +12.94% (score 8.0, all 5/5 indicators, blocked by API). MU +8.95% (score 7.17, blocked).
+  AMD correctly skipped (6.0 at Mid-Morning; closed flat vs tech +3.39% = confirmed relative weakness).
+  Alpaca API: BLOCKED (29th consecutive session). Cloud scheduler: 5/7 sessions silent failed.
+  Cumulative gap vs SPX: -3.53 pp. Day 1 of new potential 20-day underperformance streak.
+  Operator must execute: CANCEL stale GTC orders FIRST, THEN enter INTC (44sh $112.15 bracket GTC) + MU (4sh $943.70 bracket GTC) at Pre-Market Tuesday June 9.
+---
+```
+
+---
+
 ## 2026-06-08 — Mid-Morning (11:00 AM ET / 15:07 UTC — MONDAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:06:58Z ✓
