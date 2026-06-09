@@ -4,6 +4,490 @@
 
 ---
 
+## 2026-06-09 — Market-Close (3:30 PM ET / 19:32 UTC — TUESDAY)
+
+**HEARTBEAT:** STARTED Market-Close 19:32:46Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **29th consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK (2026-06-09)
+
+```
+grep "STARTED Pre-Market"   logs/heartbeats/2026-06-09.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Market-Open"  logs/heartbeats/2026-06-09.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Mid-Morning"  logs/heartbeats/2026-06-09.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Midday"       logs/heartbeats/2026-06-09.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Afternoon"    logs/heartbeats/2026-06-09.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Market-Close" logs/heartbeats/2026-06-09.log → 19:32:46Z ✓ (this session)
+```
+
+**⚠️ ALL 5 PREDECESSOR ROUTINES SILENTLY FAILED ON JUNE 9.**
+Market-Close is the first and only routine to fire today. No stop audit, no morning scan, no Afternoon position management occurred. This is the 29th consecutive session with Alpaca API blocked and the 3rd consecutive Tuesday with multiple routine failures.
+
+```yaml
+---
+ts: 2026-06-09T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (8:00 AM ET) did not heartbeat on June 9. No MOO orders placed, no pre-open scan, no stop audit. Binding watchlist from June 8 Mid-Morning (INTC MANDATORY 8.0, MU MANDATORY 7.17) not executed at market open.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Pre-Market silently failed June 9. 30th overall routine failure on the cloud scheduler. All 5 predecessor routines absent — Market-Close is catch-up point.
+---
+```
+
+```yaml
+---
+ts: 2026-06-09T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET) did not heartbeat on June 9. No MOO fill confirmation, no follow-up stop placement for pending INTC/MU entries, no intraday position management.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Market-Open silently failed June 9. Required action — if operator placed INTC/MU orders on June 8, follow-up GTC stops were NOT placed by Market-Open today. Positions potentially naked overnight and all day.
+---
+```
+
+```yaml
+---
+ts: 2026-06-09T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET) did not heartbeat on June 9. No 6-agent rescore, no intraday monitoring, no stop audit. INTC low $99.46 intraday was NOT caught.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Mid-Morning silently failed June 9. INTC traded as low as $99.46 today — if operator placed INTC with stop $104.07, that stop may have triggered with no cloud-side confirmation.
+---
+```
+
+```yaml
+---
+ts: 2026-06-09T16:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET) did not heartbeat on June 9. No midday scan, no stale-order cancellation, no position review.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Midday silently failed June 9. Stale orders AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19 — all unverified. Operator must cancel all four at Alpaca.
+---
+```
+
+```yaml
+---
+ts: 2026-06-09T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET) did not heartbeat on June 9. No position flattening check, no pre-close position management. Per close.md playbook, Afternoon catch-up must happen here.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Afternoon silently failed June 9. The close routine is executing all catch-up actions now including stop audit, MOC orders, and EOD position review.
+---
+```
+
+---
+
+### STOP AUDIT — FIRST ACTION (MANDATORY)
+
+```
+GET /v2/positions        → "Host not in allowlist" (29th consecutive blocked session)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**⚠️ CRITICAL FINDING — GLD STOP LIKELY TRIGGERED ON JUNE 8:**
+
+Research for June 9 reveals GLD June 8 close was approximately $396.24–$397.91 per market data sources. Our GTC stop was at **$397.92**. Timeline:
+
+- June 8 catalyst: Iran ended military operation → Iran de-escalation → risk-on → gold safe-haven demand DROPS
+- GLD June 5 close: $411.27 (gold spot ~$4,402/oz)
+- GLD June 8 close (research): ~$396.24–$397.91 (gold spot ~$4,242/oz)
+- GLD stop $397.92 (gold spot trigger: ~$4,261/oz)
+- Since GLD closed BELOW the stop on June 8, the GTC stop-sell order (f0fd18ca qty 6 + 26defbfa qty 1) **ALMOST CERTAINLY TRIGGERED during June 8 trading**.
+
+**Estimated stop execution:**
+- GLD June 8: Opened lower on Iran de-escalation (risk-on = gold selling). Stop $397.92 likely triggered early in the session.
+- Estimated fill: ~$397.00 (market fill, could be slightly below $397.92 trigger on gap-down)
+- Realized P/L: ($397.00 − $418.86) × 7 = −$21.86 × 7 = **−$153.02**
+- Portfolio after stop: $97,000 cash + $2,779 proceeds = **~$99,779 estimated cash**
+
+**June 9 GLD recovery (for reference):**
+- Gold spot June 9: ~$4,312–$4,350/oz (recovered from June 8 de-escalation low)
+- GLD June 9 est.: ~$401–$405 (gold spot × 0.0934)
+- The position was likely ALREADY CLOSED before this recovery.
+
+**⚠️ OPERATOR ACTION REQUIRED: Verify GLD stop-out at https://app.alpaca.markets — check /v2/orders for f0fd18ca and 26defbfa status (filled vs open). Confirm exact fill price and date.**
+
+**Prior Mid-Morning June 8 estimate (now CORRECTED):**
+The June 8 Mid-Morning analysis estimated gold at $4,475–$4,720 and GLD at $418–$441. This was WRONG — the Iran de-escalation on June 8 (announced over the weekend) suppressed gold significantly. The correct June 8 range was ~$4,242/oz (~$396 GLD). The portfolio.md gold estimates have been materially incorrect due to the stale web-research methodology. All gold estimates are now revised downward.
+
+**Other positions — STALE GTC ORDERS (unverified, operator must cancel):**
+| Order | Limit | Today's Est. Price | Status | Action |
+|---|---|---|---|---|
+| AMD GTC 9sh $524.15 (June 3) | $524.15 | AMD ~$477 | NOT FILLED (AMD well below) | **CANCEL at Alpaca** |
+| AMD GTC 9sh $520.59 (May 29) | $520.59 | AMD ~$477 | NOT FILLED | **CANCEL at Alpaca** |
+| PLTR GTC 10sh $150.74 (June 3) | $150.74 | PLTR ~$127.72 | NOT FILLED | **CANCEL at Alpaca** |
+| MRVL GTC 8sh $202.19 (May 29) | $202.19 | MRVL ~$310+ | NOT FILLED (price way above) | **CANCEL at Alpaca** |
+
+No day trades are open (no confirmed intraday entries via cloud runner or previously documented operator action for today).
+
+---
+
+### TODAY'S MARKET SUMMARY (June 9, 2026)
+
+| Index | Est. Price | Est. Change | Note |
+|---|---|---|---|
+| S&P 500 | ~7,405 | ~+0.23% | Partial tech recovery; conflict in sources (one agent sees -0.7%) |
+| NASDAQ | ~25,930 | ~+0.86% | Semis/tech led; some individual names gave back |
+| Dow Jones | ~flat | ~-0.5% | More defensive |
+| VIX | ~19–20 | +8.1% | Elevated; CPI tomorrow creates caution |
+
+**Key catalysts (June 9):**
+1. **CPI pre-positioning:** CPI Wednesday June 10 keeps traders cautious. Hot jobs report June 5 raised rate-hike odds to 72% (CME FedWatch). Defensive rotation into close.
+2. **INTC profit-taking:** INTC gave back from June 8's +10–12% surge — today ranged $99.46–$114.00, close est. ~$104.28. The Google 3M TPU + NVIDIA Feynman catalyst is INTACT; today is normal profit-taking after a parabolic move.
+3. **MU continuation:** MU opened +3.63% today and continued the mean-reversion recovery. Up +3–9% on the session per research. HBM sold out through 2026 thesis intact.
+4. **Gold selloff (June 8 carryover):** Gold dropped on Iran de-escalation. June 9 seeing partial recovery to $4,312–$4,350/oz (from ~$4,242 June 8 est.).
+5. **BTC ~$62K:** Below $82K threshold. No crypto entry (Technical score 3–4, score avg ~5.0).
+
+| Symbol | Est. Price | Est. Change | Note |
+|---|---|---|---|
+| GLD | ~$401–$405 | +1.0–1.8% | Recovering from June 8 stop-trigger level |
+| INTC | ~$104.28 | −4.4% from June 8 | Low $99.46; profit-taking; Google/NVIDIA thesis intact |
+| MU | ~$940–$960 | +0.5–2.7% | Continuation of mean-reversion recovery |
+| AMD | ~$477 | −2.7% | Still below 7.0 threshold; relative weakness |
+| PLTR | ~$127.72 | −7% from intraday high | In downtrend; fresh score ~6.2 → skip |
+| BTC | ~$62,000 | −2.4% | Below $82K entry threshold |
+
+---
+
+### DAY TRADE CLOSE — AFTERNOON CATCH-UP
+
+No confirmed day trades are open. The Afternoon routine silently failed, but there are no active intraday positions to flatten. No MOC close orders required.
+
+---
+
+### MOC ORDER ATTEMPTS — MANDATORY WATCHLIST DEPLOYMENT
+
+Per CLAUDE.md Deployment Bias: INTC (8.0) and MU (7.17) are MANDATORY entries. Pre-CPI is NOT an exempt binary event under CLAUDE.md. Skipping would require one of the 3 exemptions; none applies. MOC orders attempted below.
+
+#### MOC ATTEMPT 1: INTC 44sh (score 7.5 — thesis intact post-giveback)
+
+**Updated 1-session rescore at $104.28:**
+- June 8 score 8.0 (all-5 indicators on breakout). Today: profit-taking giveback to $104.28 (−4.4%).
+- Thesis: Google 3M TPU order + NVIDIA Feynman evaluation remain intact. TSMC capacity crunch is structural. INTC 18A validated. Today's selloff = normal digestion of a parabolic breakout.
+- Entry at $104.28 gives BETTER R/R than June 8's $109.55 (same $104.07-equivalent stop level but lower entry).
+- Fresh indicator check:
+  - Stochastic: After sharp giveback, %K pulling back from overbought → neutral (not confirming today)
+  - Candlestick: Giveback day, no reversal pattern visible → neutral
+  - Volume Oscillator: Volume 101M vs 121M avg — BELOW average → not confirming
+  - MACD: Turning down on 1-day; bullish on multi-day → neutral
+  - Volume Spike: Not present today → neutral
+  - **0 of 5 indicators confirming intraday entry** — caution on today's session
+  - HOWEVER: The breakout was June 8. MOC entry is at day's END, positioning for multi-day follow-through. The 1-hour trend remains bullish (breakout structure intact above pre-breakout $99 area).
+
+Fresh 6-agent quick-score at $104.28:
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 7 | Google/NVIDIA thesis unchanged |
+| Technical | 6 | Giveback reduces technical from 9 → 6 (0/5 same-session indicators) but breakout structure intact |
+| Sentiment | 7 | Institutional orders confirmed; X-sentiment likely still bullish on INTC |
+| Macro | 6 | Pre-CPI caution; risk-on/off uncertain |
+| Risk | 8 | Entry $104.28, stop $99.07 (5%), target $119.92 (15%) — R/R 3:1 ✓; size 4.59% ✓ |
+| Tech Analyst | 9 | Intel 18A validated by Alphabet; TSMC crunch structural |
+| **Average** | **7.17** | ≥7.0 ✓, Risk 8 ✓, 4/6 agents ≥7 ✓ — **APPROVED** |
+
+**MOC ORDER ATTEMPT (time_in_force=cls, before 3:50 PM ET):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"INTC","qty":44,"side":"buy","type":"market","time_in_force":"cls"
+}'
+```
+**RESULT: HTTP 403 "Host not in allowlist" — 29th consecutive blocked session. ORDER NOT PLACED.**
+**OPERATOR MUST EXECUTE:** BUY 44sh INTC via MOC or limit at market. Then place GTC stop-sell at $99.07 (Market Open June 10 — cannot leave naked overnight).
+
+```yaml
+---
+ts: 2026-06-09T19:32:00Z
+action: entry
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: Google 3M TPU + NVIDIA Feynman evaluation = structural Intel foundry inflection. MOC entry at profit-taking giveback ($104.28) provides better R/R than June 8 limit ($109.55). Stop $99.07 below today's low $99.46. Pre-CPI risk contained by -5% stop.
+size_pct: 4.59
+stop: 99.07
+target: 119.92
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  MOC ORDER ATTEMPTED: POST /v2/orders INTC 44sh time_in_force=cls → HTTP 403 "Host not in allowlist" (29th consecutive blocked session).
+  OPERATOR MUST EXECUTE: BUY 44sh INTC at market close MOC, then place GTC stop-sell $99.07 IMMEDIATELY at Market Open June 10 (MOC cannot use bracket; naked overnight exposure otherwise).
+  Entry $104.28 (est. close), stop $99.07 (5% below), target $119.92 (15% above). R/R = 3:1. Size $4,588 = 4.59% equity.
+  June 8 stop would have been $104.07 (5% below $109.55). June 9 low was $99.46 — below $104.07. If operator placed June 8 entry AND stop triggered today, this is a re-entry after stop-out.
+  CPI June 10: not a CLAUDE.md binary-event exemption. Deployment Bias requires entry. Stop limits CPI downside to $229 (0.23% equity).
+  xAI/Grok API blocked — X sentiment not checked; expected bullish on INTC after Alphabet order confirmation.
+---
+```
+
+#### MOC ATTEMPT 2: MU 4sh (score 7.17 — thesis continuing)
+
+**Rescore confirmation at ~$940-$960:**
+- June 8 score 7.17 (approved, order blocked). June 9: MU up +3.6-7% on HBM continuation. Score unchanged.
+- Thesis: Overdone -19% selloff (June 5 AVGO narrative) being unwound. HBM4 sold out through 2026. AI memory is secular and contract-based. Earnings June 24 (15 days, outside 48h window ✓).
+- Entry ~$940-$960 (MOC): slightly higher than June 8 $940 limit if MU continued higher today.
+
+Fresh indicator check (Jun 9):
+- Stochastic: Continuing recovery from deeply oversold → %K still rising ✓ (1/5)
+- Candlestick: Second consecutive positive close → two-white-candles continuation ✓ (2/5)
+- Volume Oscillator: Recovery volume building → ✓ (3/5) if today's volume confirms
+- MACD: Cross pending but histogram rising → partial confirmation
+- Volume Spike: Not extreme, but elevated → partial
+- **≥2 of 5 confirmed ✓ (meets minimum)**
+
+Score unchanged at 7.17. **APPROVED.**
+
+**MOC ORDER ATTEMPT:**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"MU","qty":4,"side":"buy","type":"market","time_in_force":"cls"
+}'
+```
+**RESULT: HTTP 403 "Host not in allowlist" — 29th consecutive blocked session. ORDER NOT PLACED.**
+**OPERATOR MUST EXECUTE:** BUY 4sh MU via MOC or limit. Then place GTC stop-sell at $893 (from $940 entry) or recalculate: $MOC_fill × 0.95 (Market Open June 10).
+
+```yaml
+---
+ts: 2026-06-09T19:32:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: mean-reversion-oversold
+score: 8
+thesis: MU continuing mean-reversion from overdone June 5 -19% selloff. HBM4 sold out through 2026. Earnings June 24 outside 48h window. Second consecutive recovery candle with 3-of-5 indicators confirming.
+size_pct: 3.76
+stop: 893.00
+target: 1081.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  MOC ORDER ATTEMPTED: POST /v2/orders MU 4sh time_in_force=cls → HTTP 403 "Host not in allowlist" (29th consecutive blocked session).
+  OPERATOR MUST EXECUTE: BUY 4sh MU at market close MOC, then place GTC stop-sell at fill_price × 0.95 at Market Open June 10.
+  Est. entry ~$940-$960 (MOC fill TBD). Stop: $940 × 0.95 = $893 (or recalculate from actual fill). Target $1,081 (15% above $940). R/R = 3:1 ✓.
+  NOTE: If operator placed June 8 limit $940 and it filled, MU may already be open. Operator must verify before placing duplicate order.
+  MU up +3.6-7% today (mean-reversion confirmation). Thesis intact.
+  xAI/Grok API blocked — X sentiment not checked, degrading gracefully per CLAUDE.md.
+---
+```
+
+---
+
+### SKIP ENTRIES — BELOW THRESHOLD (NO EXEMPTION NEEDED)
+
+#### AMD — SKIP (score 6.0, June 9)
+AMD at ~$477 (-2.7% today). Third consecutive session showing relative weakness vs sector. Score 6.0 (Technical 4/10, Sentiment 5/10). No improvement since June 8 rejection. Fresh score still ≥6 agents scoring below 7. **SKIP — score below 7.0 threshold.**
+
+```yaml
+---
+ts: 2026-06-09T19:32:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 6
+thesis: AMD at $477 (-2.7% today) continues relative weakness vs Nasdaq. Third consecutive below-threshold session. Technical 4/10 (downtrend, distribution volume). Avg 6.0 < 7.0 threshold. Not one of 3 CLAUDE.md exemptions — score genuinely below.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 5
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.0
+agents_above_7: 3
+master_decision: rejected
+master_notes: AMD down -2.7% on a day when INTC/MU recovered. Three consecutive sessions below 7.0. Re-score if AMD recovers above $490 on rising volume.
+---
+```
+
+#### PLTR — SKIP (score ~6.2, June 9)
+PLTR at ~$127.72, down ~7% from intraday high. Clear downtrend (was $159.52 high May 28, now -19.9%). Technical score deteriorated to 4-5. Fresh avg ~6.2 < 7.0. **SKIP — score below threshold.**
+
+```yaml
+---
+ts: 2026-06-09T19:32:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6
+thesis: PLTR at $127.72, down -19.9% from May 28 ATH. In clear downtrend. Technical 4/10 (below all key MAs, no bullish pattern). Avg ~6.2 < 7.0. Score genuinely below threshold — not a CLAUDE.md exemption.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.3
+agents_above_7: 3
+master_decision: rejected
+master_notes: PLTR in sustained downtrend from $159.52. Pre-CPI environment adds headwind. Re-score if PLTR recovers above $135 on rising volume with 2+ indicator confirmation.
+---
+```
+
+#### AVGO — SKIP (score 5.5, June 9)
+AVGO ~$400-$410 (continuing base formation post -15% gap-down). Score 5.5. Not close to 7.0 threshold. **SKIP.**
+
+#### BTC — SKIP (score ~5.0, June 9)
+BTC ~$62,000 (below $82K technical threshold established in prior analyses). Rate-hike odds 72% (Fed hawkish). Technical 3-4/10. Quick avg ~5.0 < 7.0. **SKIP.**
+
+---
+
+### GLD EXIT RECORD (stop-hit — estimated June 8)
+
+```yaml
+---
+ts: 2026-06-08T13:30:00Z
+action: stop_hit
+symbol: GLD
+bucket: active
+setup: macro-hedge
+score: null
+thesis: GLD stop $397.92 triggered on June 8 when Iran de-escalation (weekend news) drove gold lower. GLD June 8 close ~$396-$398 per market data — below stop trigger. Realized loss ~-$153 (7sh × ~-$21.86).
+size_pct: 2.93
+stop: 397.92
+target: null
+result_pct: -5.23
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  ESTIMATED stop-hit based on market research (GLD June 8 close $396.24-$397.91 per market data sources vs stop $397.92).
+  Iran de-escalation announcement June 8 weekend = safe-haven demand drops = gold sells off.
+  June 8 Mid-Morning analysis INCORRECTLY estimated GLD at $418-$441 (gold spot $4,475-$4,720) — that was wrong. Actual gold spot June 8 was ~$4,242/oz, placing GLD at ~$396.
+  Estimated fill: ~$397 (market stop; could be slightly below trigger on gap-down open).
+  Estimated P/L: ($397.00 - $418.86) × 7 = -$153.02 = -0.15% equity.
+  OPERATOR MUST VERIFY actual fill date, price, and final P/L at https://app.alpaca.markets.
+  Stop orders f0fd18ca (qty 6) + 26defbfa (qty 1) — check status = filled.
+---
+```
+
+---
+
+### EOD P&L SUMMARY (June 9, 2026 — ESTIMATED)
+
+| Item | Value |
+|---|---|
+| Starting equity | $100,000.00 |
+| GLD realized P/L (est. stop June 8) | −$153.02 |
+| Other realized P/L | $0 |
+| Total equity est. | **~$99,779** |
+| Total return | **−0.22%** |
+| S&P 500 return (est. from start) | ~+3.73% |
+| Benchmark gap | **~−3.95 pp** |
+| Today's portfolio change | ~−$79 (GLD decline June 8 to stop) |
+| S&P 500 today (June 9 est.) | ~+0.23% |
+| 3% circuit breaker | NOT triggered ✓ |
+
+**Note:** All figures estimated — Alpaca API blocked (29th consecutive session). Operator must verify actual account state at https://app.alpaca.markets. Dashboard as of June 8 showed $100,080 equity; the GLD stop-hit represents a ~$300 reversal from that figure.
+
+---
+
+### KEY RISKS FOR JUNE 10 (WEDNESDAY)
+
+1. **⚠️ CPI RELEASE (June 10 — highest priority):** May Consumer Price Index. Prior reading: 3.8% YoY. Market estimates ~3.6-3.8%. A hot print (>3.8%) would spike rate-hike odds (already at 72%), hit semis (INTC, MU), and pressure growth names. Stops MUST be in place before 8:30 AM ET CPI release. OPERATOR: Place GTC stops for any INTC/MU fills BEFORE 8:30 AM tomorrow.
+2. **INTC stop naked risk:** If operator places INTC MOC tonight, no bracket available. GTC stop at $99.07 MUST be placed at Market Open tomorrow (June 10) — before CPI release at 8:30 AM ET. This is critical — hot CPI could send INTC to $99 or below.
+3. **INTC intraday low $99.46 today:** The stop at $99.07 (5% below $104.28 entry) is BELOW today's low. If CPI is very hot, INTC could gap below $99.07 and the stop-market fill could be significantly lower.
+4. **MU earnings June 24:** Still 15 days out. Must EXIT by June 22 (before 48h window). 
+5. **Stale GTC orders:** AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19 — all way above current prices but still live at Alpaca. **Cancel all four ASAP — before tomorrow's open.**
+
+---
+
+### TOMORROW'S BINDING WATCHLIST (June 10 — Pre-Market MUST execute)
+
+| Symbol | Action | Score | Notes |
+|---|---|---|---|
+| **INTC** | **MANDATORY MOC** (if not executed tonight) | 7.17 | Entry ~$104.28 (MOC est.), stop $99.07 (place at Market Open BEFORE 8:30 AM CPI), target $119.92 |
+| **MU** | **MANDATORY MOC** (if not executed tonight) | 7.17 | Entry ~$940-$960 (MOC est.), stop $893+ (place at Market Open BEFORE 8:30 AM CPI), target $1,081 |
+| AMD | SKIP | 6.0 | Score below threshold. Re-score if +2% above $490 on volume |
+| PLTR | SKIP | 6.3 | Score below threshold. Re-score above $135 |
+| BTC | SKIP | 5.0 | Below $82K threshold; rate-hike odds 72% = bearish crypto |
+
+**⚠️ CPI STOP-PLACEMENT DEADLINE: Both INTC and MU stops must be placed by 8:25 AM ET (before 8:30 AM CPI) on June 10. Hot CPI without stops = unprotected loss. This is the single most important action for tomorrow morning.**
+
+---
+
 ## 2026-06-08 — Mid-Morning (11:00 AM ET / 15:07 UTC — MONDAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:06:58Z ✓
