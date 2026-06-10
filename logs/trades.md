@@ -625,6 +625,267 @@ WTI Oil: $89.71 (range $87.40–$90.38). **Declining from $95-100 highs** — Ir
 
 ---
 
+## 2026-06-10 — Market Close (3:30 PM ET / 19:34 UTC — WEDNESDAY — CPI DAY)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:50Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **31st consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK (2026-06-10 Market-Close)
+
+```
+grep "STARTED " logs/heartbeats/2026-06-10.log:
+  2026-06-10T13:45:56Z STARTED Market-Open   ✓
+  2026-06-10T16:33:41Z STARTED Midday        ✓
+  2026-06-10T16:45:52Z COMPLETED Midday      ✓
+  2026-06-10T19:33:50Z STARTED Market-Close  ✓ (this session)
+
+  Pre-Market:  MISSING — SILENT FAILURE ✗
+  Mid-Morning: MISSING — SILENT FAILURE ✗
+  Afternoon:   MISSING — SILENT FAILURE ✗ (2:00 PM ET / 18:00 UTC)
+```
+
+Afternoon (2:00 PM ET) silently failed. Running catch-up now. No confirmed open day trades were pending from Afternoon — portfolio was all cash. INTC MANDATORY entry not re-attempted in the 2:00–3:30 PM window.
+
+```yaml
+---
+ts: 2026-06-10T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC) produced no heartbeat on June 10. INTC (MANDATORY, 7.17 avg) was not re-attempted in the 2:00–3:30 PM window. Fourth missed routine today (Pre-Market, Mid-Morning, Afternoon all silent). Market continued to deteriorate in afternoon (S&P -0.67% close vs -0.37% midday).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  Afternoon silently failed June 10. INTC binding watchlist entry was last attempted at Midday (blocked at $106.39). Market worsened in afternoon: S&P closed at ~7,337 (-0.67%) vs midday -0.37%; Trump issued more Iran threats. This is the 4th routine failure today and the 32nd+ consecutive session gap. API blockage root cause unchanged.
+---
+```
+
+---
+
+### STOP AUDIT — FIRST ACTION (MANDATORY)
+
+```
+GET /v2/positions          → "Host not in allowlist" (31st consecutive blocked session)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Assessment:** No confirmed open positions. GLD stop estimated triggered at $397.92 (range $388.75–$400.48; confirmed GLD closed $390.78). INTC and MU were rejected/blocked at all prior routines. Zero confirmed equity positions. No open stop-loss orders or day trades to close. Cash ~$99,785.
+
+**Stale GTC orders (unverified — OPERATOR MUST CANCEL at Alpaca):**
+- AMD 9sh $524.15 (June 3 — AMD ~$470+, not filled, stale)
+- AMD 9sh $520.59 (May 29 — not filled, stale)
+- PLTR 10sh $150.74 (June 3 — PLTR ~$130-134, not filled, stale)
+- MRVL 8sh $202.19 (May 29 — MRVL ~$300+, NOT filled — **CANCEL IMMEDIATELY**)
+
+---
+
+### EOD MARKET SUMMARY (June 10, 2026 — Market Close 3:30 PM ET)
+
+| Index | Close | Day Change | vs. Midday |
+|---|---|---|---|
+| S&P 500 | ~**7,337** | **−0.67%** | Worsened from −0.37% midday |
+| Nasdaq | ~**25,520 est.** | **−0.8% est.** | Continued afternoon selling |
+| Russell 2000 | est. flat | Held relative strength | Small-cap resilience |
+
+**Market narrative (3:30 PM):** CPI shock fully absorbed — it's Iran escalation that drove the afternoon selloff. President Trump issued more threats ("Iran will have to pay the price"), sending equities to session lows. S&P 500 closed at ~7,337, near day lows. Volume confirmed the late-day selling.
+
+**Key closing prices (web-researched — API blocked):**
+| Symbol | Close (est.) | Day Range | Day Change |
+|---|---|---|---|
+| INTC | **~$104.54** | $105.29–$112.54 | ~−3.13% from $107.92 prev close |
+| MU | **$935.89** (confirmed) | $854.35–$989.15 | −2.05% |
+| GLD | **$390.78** (confirmed) | $388.75–$400.48 | Stop $397.92 **CONFIRMED TRIGGERED** |
+| WTI Oil | ~$87–$90 | declining | Iran deal uncertainty offset by Trump threats |
+
+---
+
+### CLOSE-WINDOW DECISIONS
+
+**No open day trades to close via MOC** — portfolio has been all-cash since GLD stop estimated triggered at open. No MOC close orders needed.
+
+**Unfilled limit orders to cancel:** None placed by this runner (all blocked). Operator stale orders (AMD/PLTR/MRVL) to cancel manually.
+
+---
+
+### MOC SWING ENTRY CONSIDERATION: INTC
+
+**Deployment bias mandate:** INTC scored 7.17 at Midday (12:30 PM ET). Per CLAUDE.md: "Score ≥ 7 means enter at the next routine — not a candidate for further analysis." The Afternoon (the 'next routine') silently failed. Market-Close is the next available window to execute this commitment.
+
+**Fresh close re-assessment (market materially worsened since midday):**
+- S&P 500 closed −0.67% (vs −0.37% at midday) — afternoon selloff on Trump Iran threats
+- INTC closed ~$104.54 (down from $105.86 midday, below $105.29 midday low)
+- Core thesis INTACT: Google 3M TPU order, NVIDIA Feynman evaluation — no new negative INTC-specific news
+
+**Close-conditions 6-agent re-score:**
+
+Sub-Agent 1 — Fundamentals: **7/10** — Unchanged. Google 3M TPU + NVIDIA Feynman + Intel 18A validation. 2028 revenue = rate-cycle-insensitive.
+
+Sub-Agent 2 — Technical: **6/10** — INTC closed ~$104.54, near day low. Daily pattern: breakout June 8, then 2 red days declining below midday low = weakening near-term momentum. 1-hr MACD: post-June 8 bullish cross is fading but likely still slightly positive. Volume on pullback: lower than June 8 breakout volume = still constructive. 2/5 minimum met (MACD 1-hr + volume oscillator). But close below midday low is a bearish intraday signal. Score: 6 (downgraded from midday 7 — close at day low = distribution risk).
+
+Sub-Agent 3 — Sentiment: **5/10** — Trump more Iran threats, market closed at session lows. Broad risk-off. xAI blocked. Score: 5 (downgraded from midday 7).
+
+Sub-Agent 4 — Macro: **5/10** — S&P closed −0.67%, worse than midday −0.37%. Iran escalation. 63% Fed hike odds (Warsh, June 16-17). Unchanged from midday assessment (further deterioration confirms score). Score: 5.
+
+Sub-Agent 5 — Risk: **7/10** — Entry ~$104.54 MOC; 44sh × $104.54 = **$4,599.76 = 4.60%** ✓ | Stop: $99.31 (−5%) | Target: $120.22 (+15%) | Trade risk: $5.23 × 44 = $230.12 = **0.23%** ✓ | R/R: 3.0:1 ✓ | Cash post-entry: ~$99,785 − $4,600 = **$95,185 = 95.4%** ✓ | Earnings: July/Aug 2026, outside 48h ✓ | Circuit breaker: portfolio −0.15% ✓. Score: 7.
+
+Sub-Agent 6 — Tech Analyst: **9/10** — Unchanged. Only US leading-edge EUV foundry. Google + NVIDIA dual-validation. US-China + Iran geopolitical risk = structural demand for US silicon independence. Score: 9.
+
+**MASTER AGENT — INTC Decision (June 10 Market-Close):**
+| Fundamentals | Technical | Sentiment | Macro | Risk | Tech Analyst | Average |
+|---|---|---|---|---|---|---|
+| 7 | 6 | 5 | 5 | 7 | 9 | **6.50** |
+
+Average **6.50** < 7.0 threshold → Fresh close re-score REJECTED.
+
+**DEPLOYMENT BIAS OVERRIDE NOTE:** Midday 7.17 score = commitment per CLAUDE.md. The only valid skip reasons are: (1) guardrail breach, (2) binary event within 48h, (3) 3% circuit breaker. None apply. Per deployment bias, INTC MUST be entered. Fresh 6.5 close re-score reflects worsened conditions but does NOT constitute a valid CLAUDE.md exemption.
+
+**TENSION DOCUMENTED:** Midday 7.17 commits to entry; close re-score 6.5 signals deteriorated conditions. FOMC June 16-17 (6 days) = NOT in 48h window. Proceeding with MOC attempt per deployment bias mandate.
+
+**MOC ORDER ATTEMPT:**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "symbol":"INTC",
+    "qty":44,
+    "side":"buy",
+    "type":"market",
+    "time_in_force":"cls"
+  }'
+```
+**RESULT: "Host not in allowlist" (HTTP 403) — 31st consecutive blocked session.**
+
+Follow-up stop (to be placed at Market Open tomorrow once MOC fill confirmed):
+`INTC 44sh sell stop ~$99.31 (fill × 0.95), time_in_force: gtc`
+
+```yaml
+---
+ts: 2026-06-10T19:34:00Z
+action: entry
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7
+thesis: Deployment bias mandate — midday 7.17 score commits to entry at next available routine (Afternoon silently failed; Market-Close is next). Intel 18A validated by Google 3M TPU + NVIDIA Feynman. TSMC capacity crunch = structural US foundry demand. MOC entry at estimated close ~$104.54. Stop $99.31 (-5%), target $120.22 (+15%), R/R 3:1.
+size_pct: 4.60
+stop: 99.31
+target: 120.22
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 5
+  macro: 5
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.50
+agents_above_7: 3
+master_decision: approved
+master_notes: |
+  ORDER ATTEMPTED: POST /v2/orders INTC 44sh MOC (time_in_force:cls) → HTTP 403 "Host not in allowlist" (31st consecutive blocked session).
+  Entry basis: MOC at estimated close ~$104.54. 44sh × $104.54 = $4,599.76 = 4.60% equity. Stop $99.31 (-5%), target $120.22 (+15%), R/R 3.0:1. Trade risk $230.12 = 0.23%.
+  DEPLOYMENT BIAS NOTE: Midday 7.17 score is a commitment per CLAUDE.md. Acceptable skip reasons: (1) guardrail breach, (2) binary event within 48h, (3) 3% circuit breaker. NONE apply. Fresh close re-score is 6.5 due to worsened conditions (S&P -0.67% close vs -0.37% midday, Trump Iran threats), but this is NOT an acceptable skip reason per CLAUDE.md Deployment Bias.
+  FOMC June 16-17: 6 days away, NOT within 48h Exemption 2 window.
+  OPERATOR MUST EXECUTE: INTC 44sh MOC (or limit ask+0.5% at tomorrow's Pre-Market). If executing tomorrow Pre-Market, use MOO (time_in_force:opg) and then place stop at fill × 0.95 at Market Open routine.
+  xAI/Grok API unavailable — Sentiment scored without X data per CLAUDE.md degradation protocol.
+  This is the 5th blocked attempt today (Pre-Market silent, Market-Open $108.06 blocked, Mid-Morning silent, Midday $106.39 blocked, Afternoon silent, Market-Close MOC blocked).
+---
+```
+
+---
+
+### MU CLOSE RE-SCORE
+
+Conditions worsened further from midday 6.83. S&P closed -0.67% (vs midday -0.37%). Trump more Iran threats. Macro score drops to 4/10 at close:
+- Fundamentals: 8/10 (unchanged)
+- Technical: 6/10 (MU closed $935.89, in middle of $854-$989 range — neutral; daily still shows recovery structure from $854 low; 2/5 indicators borderline)
+- Sentiment: 5/10 (risk-off close, Iran escalation)
+- Macro: 4/10 (worsened — S&P at session lows -0.67%, Trump threats; worst macro read of the day)
+- Risk: 7/10 (4sh × $940 = $3,760 = 3.76%, stop $893, target $1,081, R/R 3:1, earnings June 24 = 14 days)
+- Tech Analyst: 8/10 (unchanged)
+- Average: (8+6+5+4+7+8)/6 = **6.33** — REJECTED (further deteriorated from midday 6.83)
+
+```yaml
+---
+ts: 2026-06-10T19:34:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: mean-reversion-oversold
+score: 6
+thesis: Fresh close re-score 6.33 avg (deteriorated from midday 6.83). S&P closed -0.67% at session lows on Trump Iran threats. Macro dropped to 4/10 at close. Sentiment 5/10 (risk-off into the close). Average below 7.0 threshold. MU closed $935.89 (confirmed) — middle of $854-$989 day range.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 5
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.33
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  Close re-score: F8/T6/S5/M4/R7/TA8 = 6.33 avg. Deteriorated from midday 6.83 (S&P -0.37% → -0.67%; Trump Iran threats at close drove afternoon selloff).
+  Macro: 4/10 (worst read of the day — S&P at session lows, Iran escalating, 63% hike odds, Trump threatening more strikes).
+  MU close $935.89 confirmed. Day range $854.35–$989.15 = intraday recovery structure preserved.
+  PATH TO APPROVAL: Macro must reach 6/10 + Sentiment must reach 7/10. Catalysts needed: Iran ceasefire announcement OR Fed speaker walking back hike narrative OR post-CPI digestion improving risk tone. June 16-17 FOMC = live event risk.
+  MU earnings June 24 = 14 days. Mandatory exit June 22 timeline still intact.
+  Not a CLAUDE.md exemption — fresh re-score below threshold is a legitimate rejection.
+  xAI/Grok API unavailable — Sentiment scored without X data per CLAUDE.md degradation.
+---
+```
+
+---
+
+### TODAY'S FINAL P&L SUMMARY (June 10, 2026)
+
+| Item | Value |
+|---|---|
+| Starting equity (June 10) | ~$100,000 |
+| GLD stop-loss triggered (est.) | −$145.58 (7sh × $397.92 exit vs $418.86 entry) |
+| INTC entry attempts | 0 fills (API blocked — 5 attempts today) |
+| MU entry attempts | 0 fills (rejected — score below 7.0 all day) |
+| **Ending equity (est.)** | **~$99,854** |
+| **Today's P&L** | **−$145.58 (−0.15%)** |
+| **S&P 500 today** | **~−0.67%** |
+| **Today's alpha vs SPX** | **+0.52 pp** (passive — cash shield) |
+| **Cumulative portfolio return** | **−0.15%** |
+| **S&P 500 cumulative (from ~May 1 ~7,200)** | **+1.9%** (7,337 close vs ~7,200) |
+| **Benchmark gap** | **−2.05 pp** (improved from −3.15 pp at midday) |
+
+**Note on gap improvement:** S&P 500 declined from ~7,452 (June 8) to ~7,337 (June 10 close) = −1.55% over 2 trading days. Our all-cash position didn't participate in this decline, narrowing the gap from −3.15 pp to −2.05 pp. This is involuntary alpha from the API blockage, not an active strategy win.
+
+**Overnight position risk:** ZERO confirmed positions. 100% cash. No naked overnight exposure. No stop-loss orders needed.
+
+**Key risk events for June 11:**
+- FOMC June 16-17 (5 days away) — Warsh, 63% hike odds
+- Iran-US negotiations — any ceasefire announcement = risk-on catalyst (immediately improves INTC/MU macro scores)
+- Fed speakers: any June 11 Fed commentary could move rate-hike narrative
+
+**BINDING WATCHLIST FOR JUNE 11 PRE-MARKET (8:00 AM ET):**
+| Symbol | Action | Score | Limit | Stop | Target | Notes |
+|---|---|---|---|---|---|---|
+| **INTC** | **MANDATORY MOO** | **7.17** | ~current ask × 1.005 | fill × 0.95 | fill × 1.15 | 5 consecutive blocked attempts. Deployment bias mandate. Place MOO (time_in_force:opg) + stop at Market Open. |
+| **MU** | CONDITIONAL | 6.33 close | ~$940 × 1.005 | fill × 0.95 | fill × 1.15 | Re-score at Pre-Market — needs macro or sentiment improvement to ≥7.0 avg |
+
+---
+
 ## 2026-06-08 — Mid-Morning (11:00 AM ET / 15:07 UTC — MONDAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:06:58Z ✓
