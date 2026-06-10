@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-10T16:34:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-10T18:09:33Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99853,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.0,
     "benchmark_gap_pct": -3.15,
     "open_positions_count": 0,
-    "note": "June 10 Midday (12:30 PM ET). CPI DAY. API BLOCKED 30th session. Mid-Morning SILENTLY FAILED (violation logged). Market recovering: S&P -0.37% (from -0.48%), Nasdaq -0.42% (from -0.62%). 62.7% US issues advancing = rotation, not panic. INTC midday price $105.86 (range $105.29-$111.50). INTC 44sh limit $106.39 bracket GTC BLOCKED (7.17 score, MANDATORY). MU midday re-score 6.83 (improved from 6.5) but still REJECTED (macro 5/10 + sentiment 6/10 drag avg below 7.0). MU $935.89 (range $854-$989, intraday hammer recovery). XLE SKIP — oil declining to $89.71, flat sector. OPERATOR: (1) Verify GLD stop at Alpaca, (2) Execute INTC 44sh $106.39 bracket GTC, (3) Cancel stale AMD/PLTR/MRVL GTC orders."
+    "note": "June 10 Afternoon (2:09 PM ET). CPI DAY. API BLOCKED 31st session. KEY UPDATE: Fed hike odds June 16-17 = 0.9% (hold virtually certain — morning's 63% estimate overstated). INTC re-scored 7.33 (unanimous 6/6 agents ≥7, best score of the day). INTC 44sh limit $106.39 bracket GTC BLOCKED (5th attempt today). MU afternoon re-score 6.83 (Macro improved 5→6 but Technical weakened 7→6 on price giving up midday recovery $935→$896-919). MU STILL REJECTED (6.83 avg, only 3/6 agents ≥7). WTI $88 (declining). VIX 20-22. F&G 29 (Fear). OPERATOR: (1) Verify GLD stop at Alpaca, (2) Execute INTC 44sh $106.39 bracket GTC (MANDATORY), (3) Cancel stale AMD/PLTR/MRVL GTC orders. TOMORROW PRE-MARKET MANDATORY: INTC MOO or limit bracket GTC (FIFTH consecutive day)."
   },
   "positions": [
     {
@@ -36,15 +36,15 @@
       "symbol": "MU",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 940.62,
-      "current_price": 935.89,
+      "entry_price": 915.00,
+      "current_price": 910.00,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 893.59,
-      "take_profit": 1081.71,
+      "stop_loss": 869.25,
+      "take_profit": 1052.25,
       "setup": "mean-reversion-oversold",
       "agent_average": 6.83,
-      "note": "REJECTED Midday re-score 6.83 (improved from 6.5 at Market-Open). Technical improved to 7/10 (intraday hammer $854→$989 recovery, 2/5 indicators). Macro 5/10 + Sentiment 6/10 hold average below 7.0. MU $935.89 midday (range $854.35-$989.15). Re-score at Afternoon. Earnings June 24 — exit by June 22 mandatory."
+      "note": "REJECTED Afternoon re-score 6.83 (unchanged from Midday). Macro improved 5→6 (Fed hold near-certain) but Technical weakened 7→6 (afternoon price $896-919 gives back midday $935 recovery). Net unchanged at 6.83, only 3/6 agents ≥7. Re-score at June 11 Pre-Market. Earnings June 24 — mandatory exit by June 22. Needs T≥7 (hold $935+ with volume) or S≥7 for avg ≥7.0."
     },
     {
       "symbol": "INTC",
@@ -57,8 +57,8 @@
       "stop_loss": 101.07,
       "take_profit": 122.35,
       "setup": "breakout-volume",
-      "agent_average": 7.17,
-      "note": "PENDING ORDER — MIDDAY ATTEMPT BLOCKED (30th consecutive API block). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 (or current ask × 1.005) bracket GTC stop $101.07 (-5%) target $122.35 (+15%). Score 7.17. Price updated to $105.86 midday (better entry than $107.52 Market-Open estimate). Google 3M TPU + NVIDIA Feynman catalysts intact. 3:1 R/R confirmed."
+      "agent_average": 7.33,
+      "note": "PENDING ORDER — AFTERNOON ATTEMPT BLOCKED (31st consecutive API block, 5th attempt today). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 (or current ask × 1.005) bracket GTC stop $101.07 (-5%) target $122.35 (+15%). Score IMPROVED to 7.33 afternoon (unanimous 6/6 agents ≥7). Google 3M TPU + NVIDIA Feynman + Foxconn AI rackscale catalysts intact. Fed hold near-certain June 16-17 = macro tailwind. 3:1 R/R confirmed."
     }
   ],
   "market": {
@@ -69,15 +69,91 @@
       "breadth": "62.7% of US issues advancing — broad participation despite index declines"
     }
   },
-  "routines": {
-    "midday": {
+  "routines": [
+    {
+      "name": "Pre-Market",
+      "schedule": "08:00 ET daily",
+      "status": "silent-failure",
+      "last_run": "never on June 10",
+      "next_run": "2026-06-11 08:00 ET",
+      "last_summary": "SILENT FAILED June 10. No heartbeat. INTC+MU binding watchlist not executed at pre-open."
+    },
+    {
+      "name": "Market Open",
+      "schedule": "09:45 ET daily",
+      "status": "completed",
+      "last_run": "2026-06-10T13:46:00Z",
+      "next_run": "2026-06-11 09:45 ET",
+      "last_summary": "GLD stop estimated triggered at $397.92 (−$145.58). INTC 44sh $108.06 BLOCKED 29th session. MU rejected 6.5."
+    },
+    {
+      "name": "Mid-Morning",
+      "schedule": "11:00 ET daily",
+      "status": "silent-failure",
+      "last_run": "never on June 10",
+      "next_run": "2026-06-11 11:00 ET",
+      "last_summary": "SILENT FAILED June 10. INTC mandatory not re-attempted 11:00-12:30 window. Violation logged."
+    },
+    {
+      "name": "Midday",
+      "schedule": "12:30 ET daily",
       "status": "completed",
       "last_run": "2026-06-10T16:34:00Z",
-      "next_run": "2026-06-10T18:00:00Z",
-      "last_summary": "Mid-Morning violation logged. INTC re-attempt at $106.39 blocked (30th consecutive API block — MANDATORY). MU re-scored 6.83 (improved from 6.5) but still below 7.0 threshold (macro 5/10 drag). XLE skipped (oil declining to $89.71, flat sector). No open positions. Afternoon: re-attempt INTC, re-score MU if conditions improve."
+      "next_run": "2026-06-11 12:30 ET",
+      "last_summary": "Mid-Morning violation logged. INTC 44sh $106.39 BLOCKED (30th session, score 7.17). MU re-score 6.83 REJECTED (macro 5/10). XLE skipped (oil declining). 62.7% US issues advancing = rotation not panic."
+    },
+    {
+      "name": "Afternoon",
+      "schedule": "14:00 ET daily",
+      "status": "completed",
+      "last_run": "2026-06-10T18:09:33Z",
+      "next_run": "2026-06-11 14:00 ET",
+      "last_summary": "KEY UPDATE: Fed hike odds June 16-17 = 0.9% (hold near-certain). INTC re-scored 7.33 (unanimous 6/6 agents ≥7, best score of the day). INTC 44sh $106.39 BLOCKED (31st session, 5th attempt today). MU re-score 6.83 still REJECTED (Technical weakened 7→6 on afternoon price pullback $935→$896-919, offsetting Macro improvement 5→6). No new setups ≥7 identified. Tomorrow INTC MANDATORY Pre-Market MOO."
+    },
+    {
+      "name": "Market Close",
+      "schedule": "15:30 ET daily",
+      "status": "pending",
+      "last_run": "2026-05-13 15:36 ET",
+      "next_run": "2026-06-10 15:30 ET",
+      "last_summary": "PENDING. No day trades to close. No positions to trail. GLD status verify."
+    },
+    {
+      "name": "Daily Review",
+      "schedule": "16:30 ET daily",
+      "status": "pending",
+      "last_run": "2026-06-05 20:34 ET",
+      "next_run": "2026-06-10 20:30 ET",
+      "last_summary": "PENDING. Full day recap. Setup tacker update. Tomorrow watchlist finalized. Gap vs SPX update."
     }
-  },
+  ],
   "trades": [
+    {
+      "ts": "2026-06-10T18:09:33Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8,
+      "agent_scores": {"fundamentals": 7, "technical": 7, "sentiment": 7, "macro": 7, "risk": 7, "tech_analyst": 9},
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED HTTP 403 BLOCKED (31st consecutive — 5th attempt today). Afternoon score IMPROVED to 7.33 (unanimous 6/6 agents ≥7). Macro upgraded 6→7 (Fed hike odds 0.9% at June 16-17). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 bracket GTC stop $101.07 target $122.35."
+    },
+    {
+      "ts": "2026-06-10T18:09:33Z",
+      "symbol": "MU",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": 7,
+      "agent_scores": {"fundamentals": 8, "technical": 6, "sentiment": 6, "macro": 6, "risk": 7, "tech_analyst": 8},
+      "agent_average": 6.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED afternoon re-score 6.83 unchanged. Macro improved 5→6 (Fed hold) but Technical weakened 7→6 (price gave up midday recovery $935→$896-919). Only 3/6 agents ≥7. Re-score June 11 Pre-Market."
+    },
     {
       "ts": "2026-06-10T16:34:00Z",
       "symbol": "INTC",
@@ -549,6 +625,42 @@
       "score": null,
       "action": "HOLD — MAINTAIN stop $397.92 (do NOT trail to $412 — would trigger immediately). Position underwater from $418.86 entry.",
       "notes": "⚠️ GLD CORRECTED to ~$408 (June 3 close $407.91). Entry $418.86 → -$76 unrealized (-2.6%). Stop $397.92 = 2.4% buffer. Prior trail instruction to $412 was WRONG (GLD < $412). Let stop manage the exit if thesis fails."
+    }
+  ],
+  "watchlist": [
+    {
+      "symbol": "INTC",
+      "score": 7.33,
+      "status": "MANDATORY",
+      "entry": "~$106 (ask × 1.005)",
+      "stop": "~$101 (-5%)",
+      "target": "~$122 (+15%)",
+      "size_pct": 4.68,
+      "notes": "5th consecutive day blocked. MOO or limit bracket GTC June 11. Unanimous 6/6 agents ≥7 (best score this cycle). Google 3M TPU + NVIDIA Feynman + Foxconn AI rackscale. FOMC June 16-17 hold near-certain = macro tailwind.",
+      "catalysts": "Intel 18A foundry validated by Google + NVIDIA. Foxconn AI rackscale partnership. US semiconductor independence urgency.",
+      "risks": "168% YTD run. Stock above analyst consensus $92.17. FOMC dot plot June 17 = tail risk.",
+      "agent_scores": {"fundamentals": 7, "technical": 7, "sentiment": 7, "macro": 7, "risk": 7, "tech_analyst": 9}
+    },
+    {
+      "symbol": "MU",
+      "score": 6.83,
+      "status": "conditional — re-score at Pre-Market",
+      "entry": "~$915 (ask × 1.005)",
+      "stop": "~$869 (-5%)",
+      "target": "~$1,052 (+15%)",
+      "size_pct": 3.66,
+      "notes": "Needs T≥7 (hold $935+ with volume confirmation) OR S≥7 (improved market tone post-FOMC). Earnings June 24 — mandatory exit by June 22 EOD.",
+      "catalysts": "HBM4 sold out through end-2026. UBS $1,625 PT. Multiple PTs to $1,750. Earnings June 24 = potential large catalyst.",
+      "risks": "Technical weakening (afternoon $896-919 vs $935 midday). Macro uncertainty (FOMC dot plot June 17). High volatility (day range $135 today).",
+      "agent_scores": {"fundamentals": 8, "technical": 6, "sentiment": 6, "macro": 6, "risk": 7, "tech_analyst": 8}
+    },
+    {
+      "symbol": "XLE",
+      "score": 6.0,
+      "status": "watch — Iran escalation trigger",
+      "entry": "conditional on WTI > $92",
+      "notes": "Only enter if new Iran escalation drives WTI firmly above $92. Currently WTI $88 declining. Energy sector flat despite CPI energy component. Not a setup today.",
+      "agent_scores": null
     }
   ],
   "history": [

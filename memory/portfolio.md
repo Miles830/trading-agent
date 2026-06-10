@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-10 (Wednesday) — Midday (12:30 PM ET / 16:34 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 30th consecutive blocked session). Mid-Morning SILENTLY FAILED (violation logged). Market recovering: S&P −0.37% (improved from −0.48%), Nasdaq −0.42% (from −0.62%). 62.7% of US issues ADVANCING = rotation day, not panic. INTC ENTRY RE-ATTEMPTED (Midday): 44sh limit $106.39 bracket GTC (stop $101.07, target $122.35, score 7.17) → HTTP 403 BLOCKED. INTC current $105.86 (range $105.29-$111.50) — BETTER entry price than Market-Open $108.06 attempt. MU RE-SCORED: 6.83 avg midday (improved from 6.5 at Market-Open; Technical improved to 7 on intraday hammer recovery from $854 low; BUT macro 5/10 + sentiment 6/10 → avg 6.83 < 7.0 = STILL REJECTED). MU current $935.89 (range $854.35–$989.15). Oil at $89.71 (declining from $95-100 = XLE not a setup). WTI declining → energy sector flat → no new sector-rotation entry. BINDING WATCHLIST FOR NEXT ROUTINE (Afternoon): INTC (MANDATORY, 7.17 avg), MU (conditional — needs macro or sentiment improvement to 7.0+ avg).**
+**2026-06-10 (Wednesday) — Afternoon (2:00 PM ET / 18:09 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 31st consecutive blocked session). KEY MACRO UPDATE: Fed hike odds June 16-17 clarified to ~0.9% (hold virtually certain; core CPI +0.2% m/m below estimate; energy-driven headline = supply shock = transitory). INTC RE-SCORED: 7.33 avg afternoon (IMPROVED from 7.17 at Midday; unanimous 6/6 agents ≥7 first time today; Macro upgraded 6→7 on Fed hold clarity). INTC ORDER RE-ATTEMPTED (5th attempt today): 44sh limit $106.39 bracket GTC (stop $101.07, target $122.35, score 7.33) → HTTP 403 BLOCKED. INTC ~$105.86 (range $105.29-$111.50). MU RE-SCORED: 6.83 avg afternoon (UNCHANGED from Midday; Macro improved 5→6 but Technical weakened 7→6 as afternoon price $896-919 gives back midday $935 recovery). MU STILL REJECTED (6.83 < 7.0; only 3/6 agents ≥7). WTI crude $88 (declining from morning $92-95). VIX ~20-22. Fear & Greed 29 (Fear). BINDING WATCHLIST FOR TOMORROW PRE-MARKET (June 11): INTC (MANDATORY, 7.33 avg — 5th consecutive day), MU (conditional — re-score at Pre-Market; needs T≥7 or S≥7 for avg ≥7.0). FOMC June 16-17 (hold near-certain; dot plot = tail risk). MU earnings June 24 — exit by June 22 mandatory if long.**
+
+**Prior Last Updated:** 2026-06-10 (Wednesday) — Midday (12:30 PM ET / 16:34 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 30th consecutive blocked session). Mid-Morning SILENTLY FAILED (violation logged). Market recovering: S&P −0.37% (improved from −0.48%), Nasdaq −0.42% (from −0.62%). 62.7% of US issues ADVANCING = rotation day, not panic. INTC ENTRY RE-ATTEMPTED (Midday): 44sh limit $106.39 bracket GTC (stop $101.07, target $122.35, score 7.17) → HTTP 403 BLOCKED. INTC current $105.86 (range $105.29-$111.50) — BETTER entry price than Market-Open $108.06 attempt. MU RE-SCORED: 6.83 avg midday (improved from 6.5 at Market-Open; Technical improved to 7 on intraday hammer recovery from $854 low; BUT macro 5/10 + sentiment 6/10 → avg 6.83 < 7.0 = STILL REJECTED). MU current $935.89 (range $854.35–$989.15). Oil at $89.71 (declining from $95-100 = XLE not a setup). WTI declining → energy sector flat → no new sector-rotation entry. BINDING WATCHLIST FOR NEXT ROUTINE (Afternoon): INTC (MANDATORY, 7.17 avg), MU (conditional — needs macro or sentiment improvement to 7.0+ avg).**
 
 **Prior Last Updated:** 2026-06-10 (Wednesday) — Market Open (9:45 AM ET / 13:46 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 29th+ consecutive blocked session). Pre-Market SILENTLY FAILED; ALL June 9 routines also silently failed (no heartbeat file). CPI MAY 2026: +4.2% headline YoY (highest since April 2023; energy +23.5% YoY = Iran war). Core CPI +2.9% YoY benign (+0.2% m/m below +0.3% estimate). Fed hike odds 63% (Warsh). Iran-US military strikes escalating. Market: S&P −0.48%, Nasdaq −0.62%, Dow −0.59%, Russell 2000 +0.41%. GLD STOP ESTIMATED TRIGGERED: GLD range $388.75–$400.48, stop $397.92 — LIKELY HIT. Est. realized loss: −$145.58 (−0.15% equity). INTC ENTRY ATTEMPTED (7.17 avg re-score): 44sh limit $108.06 bracket GTC (stop $102.66, target $124.27) → HTTP 403 BLOCKED. MU REJECTED on fresh re-score 6.5 (CPI/Iran macro headwinds — was 7.17 June 8 under risk-on conditions; today macro 5/10 sentiment 5/10). BINDING WATCHLIST FOR NEXT ROUTINE (Midday): INTC (MANDATORY, 7.17 avg), MU (conditional re-score if conditions improve).**
 
@@ -112,7 +114,7 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-10 Market Open — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-06-10 Afternoon — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
 - **Total Equity (estimated):** **~$99,853** (GLD stop estimated triggered at $397.92 → −$145.58 realized; no other confirmed positions)
 - **Cash:** **~$99,785** (base $97,000 + GLD stop proceeds $2,785.44 = $99,785; est.)
@@ -175,12 +177,18 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - MU: HOLD for Midday re-score (6.5 today — rejected; conditions may improve)
 - GLD: VERIFY stop status immediately (est. stop-hit at $397.92 today)
 
-**NEXT ROUTINE BINDING WATCHLIST (June 10 Afternoon — 2:00 PM ET):**
+**NEXT ROUTINE BINDING WATCHLIST (June 11 Pre-Market — 8:00 AM ET — MANDATORY):**
 | Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Notes |
 |---|---|---|---|---|---|---|---|
-| INTC | 44sh | current ask × 1.005 (~$106) | fill×0.95 | fill×1.15 | ~4.68% | **7.17** | **MANDATORY** — Midday blocked at $106.39 (4th attempt today) |
-| MU | 4sh | ~$940 (current ask × 1.005) | ~$893 | ~$1,082 | ~3.76% | **6.83 (REJECTED MIDDAY)** | Re-score at Afternoon — needs macro or sentiment to 7/10 for avg ≥7.0 |
-| AMD | — | — | — | — | — | **<6.0** | SKIP — no entry |
+| INTC | 44sh | current ask × 1.005 (~$106) | fill×0.95 | fill×1.15 | ~4.68% | **7.33 MANDATORY** | 5th consecutive day blocked. Place MOO or limit bracket GTC. Score IMPROVED to 7.33 afternoon (unanimous 6/6 agents ≥7). |
+| MU | 4sh | ~$915 (current ask × 1.005) | ~$869 | ~$1,052 | ~3.65% | **6.83 (REJECTED)** | Re-score at Pre-Market. Needs T≥7 (hold $935+ with volume) OR S≥7 (improved market tone). |
+| AMD | — | — | — | — | — | **~5.5** | SKIP — below threshold |
+
+**Pre-Market June 11 MUST-DO checklist:**
+1. Cancel stale GTC orders: AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19 (OPERATOR — execute at Alpaca)
+2. INTC MOO order (before 9:25 AM ET) OR limit bracket GTC if price has gapped significantly
+3. Re-score MU at opening conditions
+4. FOMC June 16-17 dot-plot risk monitor
 
 ## Open Positions (as of 2026-06-10 Market Open — estimates; API blocked)
 | Symbol | Bucket | Qty | Entry | Stop | Target | Cost Basis | June 10 Est. | Est. P/L | Sector |
