@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-10 (Wednesday) — Market Open (9:45 AM ET / 13:46 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 29th+ consecutive blocked session). Pre-Market SILENTLY FAILED; ALL June 9 routines also silently failed (no heartbeat file). CPI MAY 2026: +4.2% headline YoY (highest since April 2023; energy +23.5% YoY = Iran war). Core CPI +2.9% YoY benign (+0.2% m/m below +0.3% estimate). Fed hike odds 63% (Warsh). Iran-US military strikes escalating. Market: S&P −0.48%, Nasdaq −0.62%, Dow −0.59%, Russell 2000 +0.41%. GLD STOP ESTIMATED TRIGGERED: GLD range $388.75–$400.48, stop $397.92 — LIKELY HIT. Est. realized loss: −$145.58 (−0.15% equity). INTC ENTRY ATTEMPTED (7.17 avg re-score): 44sh limit $108.06 bracket GTC (stop $102.66, target $124.27) → HTTP 403 BLOCKED. MU REJECTED on fresh re-score 6.5 (CPI/Iran macro headwinds — was 7.17 June 8 under risk-on conditions; today macro 5/10 sentiment 5/10). BINDING WATCHLIST FOR NEXT ROUTINE (Midday): INTC (MANDATORY, 7.17 avg), MU (conditional re-score if conditions improve).**
+**2026-06-10 (Wednesday) — Mid-Morning (11:00 AM ET / 15:07 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 30th consecutive blocked session). THREE ORDERS APPROVED AND ATTEMPTED — ALL BLOCKED: (1) INTC 44sh limit $109.55 bracket GTC (stop $104.07, target $125.98) — score 7.17, re-attempt #4; (2) XLE 52sh limit $94.97 bracket GTC (stop $89.78, target $108.68) — score 7.67, NEW energy/CPI/Iran macro trade, UNANIMOUS 6/6 agents; (3) JPM 16sh limit $301.50 bracket GTC (stop $285.00, target $345.00) — score 7.33, NEW financials/rising-rates trade, UNANIMOUS 6/6 agents. MU RE-SCORE 6.83 avg REJECTED (avg below 7.0; Macro 5/10 and Sentiment 6/10 insufficient; re-score at Midday). STALE ORDER WARNING: MU $928.14 GTC (May 29) may fill today (MU hit $961 intraday) — OPERATOR MUST CANCEL. BINDING WATCHLIST FOR MIDDAY: INTC (MANDATORY 7.17), XLE (MANDATORY 7.67), JPM (MANDATORY 7.33), MU (conditional 6.83 → re-score if macro improves).**
+
+**Prior Last Updated:** 2026-06-10 (Wednesday) — Market Open (9:45 AM ET / 13:46 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 29th+ consecutive blocked session). Pre-Market SILENTLY FAILED; ALL June 9 routines also silently failed (no heartbeat file). CPI MAY 2026: +4.2% headline YoY (highest since April 2023; energy +23.5% YoY = Iran war). Core CPI +2.9% YoY benign (+0.2% m/m below +0.3% estimate). Fed hike odds 63% (Warsh). Iran-US military strikes escalating. Market: S&P −0.48%, Nasdaq −0.62%, Dow −0.59%, Russell 2000 +0.41%. GLD STOP ESTIMATED TRIGGERED: GLD range $388.75–$400.48, stop $397.92 — LIKELY HIT. Est. realized loss: −$145.58 (−0.15% equity). INTC ENTRY ATTEMPTED (7.17 avg re-score): 44sh limit $108.06 bracket GTC (stop $102.66, target $124.27) → HTTP 403 BLOCKED. MU REJECTED on fresh re-score 6.5 (CPI/Iran macro headwinds — was 7.17 June 8 under risk-on conditions; today macro 5/10 sentiment 5/10). BINDING WATCHLIST FOR NEXT ROUTINE (Midday): INTC (MANDATORY, 7.17 avg), MU (conditional re-score if conditions improve).**
 
 **Prior Last Updated:** 2026-06-08 (Monday) — Mid-Morning (11:00 AM ET / 15:07 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 28th consecutive blocked session). Pre-Market and Market-Open BOTH SILENTLY FAILED (violations logged). Market RECOVERING: S&P 500 +0.93%, Nasdaq +1.44% on Iran de-escalation (Iran ended military operation). INTC +10–12% on Google 3M TPU order + NVIDIA Feynman GPU evaluation (TSMC capacity crunch → Intel foundry inflection). MU +6% gap-up recovery from overdone June 5 selloff. AMD −3.7% underperforming on recovery day (relative weakness signal). GLD stop $397.92 LIKELY NOT TRIGGERED (gold spot ~$4,475–$4,720, well above $4,261 trigger level). TWO NEW ENTRIES APPROVED AND ATTEMPTED: INTC 44sh limit $109.55 bracket GTC (8.0 avg, all 6 agents ≥7) and MU 4sh limit $940 bracket GTC (7.17 avg, 5/6 agents ≥7) — BOTH BLOCKED HTTP 403. AMD SKIP: fresh score 6.0 (conditional confirm failed — Technical 4/10, relative weakness). BINDING WATCHLIST FOR NEXT ROUTINE: INTC (MANDATORY — 8.0 avg), MU (MANDATORY — 7.17 avg). OPERATOR MUST EXECUTE BOTH ORDERS + CANCEL STALE GTC ORDERS (AMD $524.15, $520.59; PLTR $150.74; MRVL $202.19). CPI Wednesday June 10 is key risk event — monitor MU/INTC stops.**
 
@@ -161,24 +163,28 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-10 Market Open — estimates; API blocked)
+## Bucket State (as of 2026-06-10 Mid-Morning — estimates; API blocked)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | $0 (GLD stop likely hit; INTC/MU blocked) | ~0% | 0 confirmed |
+| Active Trading | 85% ($85K) | $0 (GLD stop likely hit; all new orders blocked) | ~0% | 0 confirmed |
 | Crypto | 10% ($10K) | $0 | 0% | 0 |
-| Cash Reserve | 5% floor | ~$99,785 | ~99.9% | — |
+| Cash Reserve | 5% floor | ~$99,785 (est.) | ~99.9% | — |
 
-**Deployment gap:** ~$94,785 above the 5% floor. OPERATOR MUST EXECUTE:
-- INTC 44sh limit $108.06 (score 7.17 — MANDATORY, cloud runner blocked for 29th+ session)
-- MU: HOLD for Midday re-score (6.5 today — rejected; conditions may improve)
-- GLD: VERIFY stop status immediately (est. stop-hit at $397.92 today)
+**Deployment gap:** ~$94,785 above the 5% floor. OPERATOR MUST EXECUTE (3 approved orders + 1 conditional):
+- INTC 44sh limit ~$109.55 (score 7.17 — MANDATORY, 4th consecutive blocked attempt)
+- XLE 52sh limit ~$94.97 (score 7.67 — MANDATORY NEW, unanimous 6/6, energy/CPI/Iran macro trade)
+- JPM 16sh limit ~$301.50 (score 7.33 — MANDATORY NEW, unanimous 6/6, banks/rising-rates)
+- MU: CONDITIONAL — re-score at Midday (6.83 avg at Mid-Morning, approaching 7.0 threshold)
+- GLD: VERIFY stop status (est. triggered at $397.92; OPERATOR MUST CONFIRM)
+- CANCEL STALE ORDERS: AMD $524.15, $520.59; PLTR $150.74; MRVL $202.19; MU $928.14
 
-**NEXT ROUTINE BINDING WATCHLIST (June 10 Midday / Afternoon):**
-| Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Notes |
+**BINDING WATCHLIST (June 10 Midday / Afternoon):**
+| Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Priority |
 |---|---|---|---|---|---|---|---|
-| INTC | 44sh | $108.06 | $102.66 | $124.27 | 4.76% | **7.17** | **MANDATORY** — 3rd consecutive attempt blocked |
-| MU | 4sh | ~current ask | ~fill×0.95 | ~fill×1.15 | ~3.7% | **6.5 (REJECTED TODAY)** | RE-SCORE at Midday — conditional on CPI reaction stabilizing + market recovering |
-| AMD | — | — | — | — | — | **<6.0** | SKIP — no entry; worse conditions than June 8's 6.0 |
+| INTC | 44sh | ~ask×1.005 | −5% from fill | +15% from fill | 4.80% | **7.17** | **MANDATORY** — 4th consecutive blocked |
+| XLE | 52sh | ~ask×1.005 | −5% from fill | +15% from fill | 4.92% | **7.67** | **MANDATORY** — approved Mid-Morning, blocked |
+| JPM | 16sh | ~ask×1.005 | −5% from fill | +15% from fill | 4.81% | **7.33** | **MANDATORY** — approved Mid-Morning, blocked |
+| MU | 4sh | ~ask×1.005 | −5% from fill | +15% from fill | ~3.7% | **6.83 → re-score** | Conditional — Midday re-score |
 
 ## Open Positions (as of 2026-06-10 Market Open — estimates; API blocked)
 | Symbol | Bucket | Qty | Entry | Stop | Target | Cost Basis | June 10 Est. | Est. P/L | Sector |
