@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-10T13:46:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-10T16:34:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99853,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.0,
     "benchmark_gap_pct": -3.15,
     "open_positions_count": 0,
-    "note": "June 10 Market Open. CPI DAY. API BLOCKED 29th+ session. Pre-Market + June 9 ALL ROUTINES silent failures. GLD STOP ESTIMATED TRIGGERED at $397.92 (range $388.75-$400.48) — est. loss -$145.58. INTC 44sh limit $108.06 bracket GTC BLOCKED (7.17 avg re-score). MU REJECTED fresh 6.5 (CPI 4.2% macro headwind). Gap vs SPX: -3.15 pp. OPERATOR: (1) Verify GLD stop at Alpaca, (2) Execute INTC 44sh $108.06 bracket GTC, (3) Cancel stale AMD/PLTR/MRVL GTC orders."
+    "note": "June 10 Midday (12:30 PM ET). CPI DAY. API BLOCKED 30th session. Mid-Morning SILENTLY FAILED (violation logged). Market recovering: S&P -0.37% (from -0.48%), Nasdaq -0.42% (from -0.62%). 62.7% US issues advancing = rotation, not panic. INTC midday price $105.86 (range $105.29-$111.50). INTC 44sh limit $106.39 bracket GTC BLOCKED (7.17 score, MANDATORY). MU midday re-score 6.83 (improved from 6.5) but still REJECTED (macro 5/10 + sentiment 6/10 drag avg below 7.0). MU $935.89 (range $854-$989, intraday hammer recovery). XLE SKIP — oil declining to $89.71, flat sector. OPERATOR: (1) Verify GLD stop at Alpaca, (2) Execute INTC 44sh $106.39 bracket GTC, (3) Cancel stale AMD/PLTR/MRVL GTC orders."
   },
   "positions": [
     {
@@ -36,32 +36,87 @@
       "symbol": "MU",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 940.0,
-      "current_price": 920.0,
+      "entry_price": 940.62,
+      "current_price": 935.89,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 877.0,
-      "take_profit": 1058.0,
+      "stop_loss": 893.59,
+      "take_profit": 1081.71,
       "setup": "mean-reversion-oversold",
-      "agent_average": 6.5,
-      "note": "REJECTED June 10 fresh score 6.5 (was 7.17 June 8). CPI 4.2%+Iran → Macro 5/10, Sentiment 5/10. Re-score at Midday if conditions improve. MU range today $886-$961, volatile. Earnings June 24 — still eligible if score recovers."
+      "agent_average": 6.83,
+      "note": "REJECTED Midday re-score 6.83 (improved from 6.5 at Market-Open). Technical improved to 7/10 (intraday hammer $854→$989 recovery, 2/5 indicators). Macro 5/10 + Sentiment 6/10 hold average below 7.0. MU $935.89 midday (range $854.35-$989.15). Re-score at Afternoon. Earnings June 24 — exit by June 22 mandatory."
     },
     {
       "symbol": "INTC",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 108.06,
-      "current_price": 107.52,
+      "entry_price": 106.39,
+      "current_price": 105.86,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 102.66,
-      "take_profit": 124.27,
+      "stop_loss": 101.07,
+      "take_profit": 122.35,
       "setup": "breakout-volume",
       "agent_average": 7.17,
-      "note": "PENDING ORDER (API blocked — 29th+ session). OPERATOR MUST EXECUTE: INTC 44sh limit $108.06 (updated price) bracket GTC stop $102.66 target $124.27. Score 7.17 re-score (was 8.0 June 8; re-scored at $107.52 today). Google 3M TPU order + NVIDIA Feynman evaluation catalyst intact."
+      "note": "PENDING ORDER — MIDDAY ATTEMPT BLOCKED (30th consecutive API block). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 (or current ask × 1.005) bracket GTC stop $101.07 (-5%) target $122.35 (+15%). Score 7.17. Price updated to $105.86 midday (better entry than $107.52 Market-Open estimate). Google 3M TPU + NVIDIA Feynman catalysts intact. 3:1 R/R confirmed."
     }
   ],
+  "market": {
+    "sectors": {
+      "leaders": ["Small-cap (Russell 2000 +0.41%)", "Value/Defensive rotation", "Industrials"],
+      "laggards": ["Nasdaq mega-cap tech (-0.42%)", "Large-cap Dow (-0.78%)", "Semiconductors (CPI/rate-hike headwind)"],
+      "energy_note": "XLE flat ($57.65); oil declining to $89.71 WTI — Iran deal uncertainty easing oil spike; energy NOT a leadership setup despite CPI headline",
+      "breadth": "62.7% of US issues advancing — broad participation despite index declines"
+    }
+  },
+  "routines": {
+    "midday": {
+      "status": "completed",
+      "last_run": "2026-06-10T16:34:00Z",
+      "next_run": "2026-06-10T18:00:00Z",
+      "last_summary": "Mid-Morning violation logged. INTC re-attempt at $106.39 blocked (30th consecutive API block — MANDATORY). MU re-scored 6.83 (improved from 6.5) but still below 7.0 threshold (macro 5/10 drag). XLE skipped (oil declining to $89.71, flat sector). No open positions. Afternoon: re-attempt INTC, re-score MU if conditions improve."
+    }
+  },
   "trades": [
+    {
+      "ts": "2026-06-10T16:34:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 8,
+      "agent_scores": {"fundamentals": 7, "technical": 7, "sentiment": 7, "macro": 6, "risk": 7, "tech_analyst": 9},
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED HTTP 403 BLOCKED (30th consecutive). Updated limit $106.39 (from $108.06 at Market-Open — actual midday price $105.86). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 bracket GTC stop $101.07 target $122.35."
+    },
+    {
+      "ts": "2026-06-10T16:34:00Z",
+      "symbol": "MU",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": 7,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 6, "macro": 5, "risk": 7, "tech_analyst": 8},
+      "agent_average": 6.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED midday 6.83 avg (improved from 6.5). Technical improved to 7 on intraday $854→$989 recovery. Macro 5/10 + Sentiment 6/10 hold avg below 7.0. Re-score at Afternoon."
+    },
+    {
+      "ts": "2026-06-10T15:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Mid-Morning 2026-06-10 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat. INTC MANDATORY not re-attempted 11:00-12:30 window."
+    },
     {
       "ts": "2026-06-10T13:46:00Z",
       "symbol": "GLD",
