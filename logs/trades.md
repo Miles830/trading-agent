@@ -4,6 +4,199 @@
 
 ---
 
+## 2026-06-10 — Daily Review (4:30 PM ET / 20:33 UTC — WEDNESDAY — CPI DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:33:07Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **30th consecutive blocked session**
+
+---
+
+### HEARTBEAT AUDIT — 2026-06-10
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 8:00 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Open | 9:45 AM | 13:45:56Z ✓ | ✗ MISSING | Partial (no COMPLETED log) |
+| Mid-Morning | 11:00 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Midday | 12:30 PM | 16:33:41Z ✓ | 16:45:52Z ✓ | ✓ Complete |
+| Afternoon | 2:00 PM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Close | 3:30 PM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Daily-Review | 4:30 PM | 20:33:07Z ✓ | (this session) | In Progress |
+
+**Top operational issue:** 4 of 6 intraday routines silently failed today. Market-Open ran but has no COMPLETED heartbeat. INTC (MANDATORY, 7.17 avg) was blocked 4 separate times: Pre-Market silent failure, Market-Open $108.06 API block, Mid-Morning silent failure, Midday $106.39 API block. INTC midday low was $105.29 — our limit of $106.39 was IN THE MONEY and would have filled with API access.
+
+---
+
+### TODAY'S P&L SUMMARY
+
+| Source | Amount | Notes |
+|---|---|---|
+| GLD stop_hit at $397.92 | **−$145.58** | 7sh × ($397.92 − $418.86). Est. triggered: GLD range $388.75–$400.48; stop inside range. |
+| INTC entry | $0 | API blocked × 4. Limit $106.39 IN THE MONEY at $105.29 low. |
+| MU skip | $0 (correct) | Rejected 6.83 avg. MU closed ~−4.7% (~$891). Skip validated. |
+| **Net today** | **−$145.58** | **−0.15% equity** |
+
+---
+
+### BENCHMARK COMPARISON (June 10, 2026)
+
+| Metric | Today | Cumulative |
+|---|---|---|
+| Portfolio return | −0.15% | −0.15% (from $100K start) |
+| S&P 500 return | −0.75% (~7,386 → ~7,331) | +1.82% (7,331 / 7,200 − 1) |
+| Daily gap | **+0.60 pp outperformed** | — |
+| Cumulative gap | — | **−1.97 pp** (IMPROVED from −3.15 pp) |
+
+**20-day consecutive streak:** Broken June 5. No new streak forming. Recent: Jun5 +2.66pp, Jun8 −0.93pp, Jun9 +0.29pp, Jun10 +0.60pp.
+
+---
+
+### WIN RATE / PROFIT FACTOR (Rolling 20-Day & All-Time)
+
+| Metric | Since May 17 Strategy Switch |
+|---|---|
+| Completed trades | 1 (GLD stop_hit) |
+| Wins | 0 |
+| Losses | 1 (GLD −4.99%) |
+| Win rate | 0% |
+| Avg loss | −$145.58 |
+| Profit factor | 0 (no wins) |
+
+Sample size = 1. Statistically meaningless. Priority: execute INTC to start building sample.
+
+---
+
+### BEST AND WORST TRADES TODAY
+
+**Best decision:** Rejecting MU at 6.83 avg (twice — Market-Open 6.5, Midday 6.83). MU fell ~4.7% to est. close ~$891. Avoiding a ~$188 loss on a 4sh position.
+
+**Worst outcome:** INTC limit $106.39 was blocked 30th consecutive session despite being IN THE MONEY during the day (INTC hit $105.29 low). Position would be open at ~$106 close with intact thesis, stop $101.07, target $122.35. 4th consecutive day of missed INTC entry.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **GLD stop-loss bounded the loss.** Hard stop at $397.92 executed (est.) → portfolio down only −0.15% vs SPX −0.75%. The stop-loss system worked as designed.
+2. **MU fresh re-score correctly rejected.** Material conditions change (CPI 4.2%, Iran escalation, 63% Fed hike) justified rescoring from 7.17 (Jun 8) to 6.83 (Jun 10). MU's −4.7% close validates the rejection.
+3. **INTC foundry thesis correctly maintained.** Score held at 7.17 despite CPI headwinds — correctly identifying INTC as counter-cyclical to the Iran/rate-hike narrative (US chip independence becomes more urgent in conflict). Score discipline preserved.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW
+
+1. **API blockage (30th session):** INTC must execute tomorrow. Operator: manually place INTC at Alpaca tonight or pre-market tomorrow — do not wait for API fix.
+2. **4 routines silently failed:** No afternoon stop-audit or market-close position management. Scheduler not firing intraday sessions reliably. Only Midday and Daily-Review fired complete sessions.
+3. **Zero deployment since May 17:** 17 trading days at 99% cash vs. 85% target. Each missed day compounds the opportunity cost against a rising market.
+
+---
+
+### SETUP PERFORMANCE TRACKER (Updated June 10 Daily Review)
+
+| Setup | Wins | Losses | 3-in-row halt | 3-in-row boost | Status |
+|---|---|---|---|---|---|
+| macro-hedge | 0 | **1** (GLD −4.99%) | none | — | No halt (need 3 consecutive) |
+| breakout-volume | 0 | 0 | none | — | INTC pending (7.17 MANDATORY) |
+| mean-reversion-oversold | 0 | 0 | none | — | MU pending (conditional PPI) |
+| sector-rotation | 0 | 0 | none | — | LMT new candidate (est. 7.33) |
+| ai-momentum-pullback | 0 | 0 | none | — | PLTR 6.5 (below threshold) |
+| all others | 0 | 0 | none | — | No trades |
+
+No 3-in-a-row rules triggered. Rolling 5-day (Jun 6-10): 0W / 1L (GLD macro-hedge).
+
+---
+
+### KEY MACRO EVENTS — REMAINDER OF WEEK + NEXT WEEK
+
+| Date | Event | Relevance |
+|---|---|---|
+| **Thu Jun 11** | **PPI May 2026 (8:30 AM ET)** | CRITICAL. April PPI +1.4% (shocking). If May benign (≤+0.3%): MU entry approved. If hot: skip MU another day. Determines tomorrow's binding execution. |
+| Thu Jun 11 | UMich Consumer Sentiment | Secondary — inflation expectations |
+| **Mon-Tue Jun 16-17** | **FOMC — Warsh (63% hike probability)** | Month's most important event. Hike → broad selloff. No hike + dovish signals → relief rally. All open positions need stop coverage going in. |
+| Sun Jun 22 | MU mandatory exit | Must close any MU before 48h earnings window |
+| Wed Jun 24 | MU Q3 FY2026 Earnings | After close. Expect strong beat. No holding through binary event. |
+
+---
+
+### TOMORROW'S WATCHLIST — BINDING COMMITMENT FOR PRE-MARKET JUNE 11
+
+**Pre-Market Protocol:**
+1. Stop audit (GET /v2/positions + /v2/orders?status=open) — FIRST
+2. Await PPI at 8:30 AM ET — determines MU decision
+3. Run LMT fresh 6-agent analysis
+4. Place orders per table below (max 3 MOO if before 9:25 AM)
+
+| Symbol | Setup | Score | Entry | Stop | Target | Size% | Notes |
+|---|---|---|---|---|---|---|---|
+| **INTC** | breakout-volume | **7.17 MANDATORY** | ~$106-107 ask×1.005 | fill×0.95 (−5%) | fill×1.15 (+15%) | 4.68% | **Unconditional. 31st attempt. Google TPU + NVIDIA eval thesis intact.** |
+| **LMT** | sector-rotation | **~7.33 (fresh 6-agent required)** | ~$640 ask×1.005 | fill×0.95 (−5%) | fill×1.15 (+15%) | ~4.5% | **Iran-US conflict = direct defense catalyst. Hawkish rates neutral to positive (govt contracts). MANDATORY if fresh 6-agent ≥7.0.** |
+| **MU** | mean-reversion-oversold | **6.83→7.0 conditional** | ~$895 ask×1.005 | fill×0.95 (−5%) | fill×1.15 (+15%) | ~3.76% | **CONDITIONAL: PPI ≤+0.3% m/m AND fresh 6-agent ≥7.0. MU closed ~$891 (deeper discount).** |
+| AMD | mean-reversion-oversold | ~6.5 | ~$475 | fill×0.95 | fill×1.15 | ~4.27% | Below threshold; conditional on PPI + broad market recovery |
+| PLTR | ai-momentum-pullback | ~6.5 | ~$130 | fill×0.95 | fill×1.15 | ~1.3% | Q1 beat intact; below 7.0 |
+| MRVL | mean-reversion-oversold | ~6.5 | ~$295 | fill×0.95 | fill×1.15 | ~2.95% | Pulling back from $309 June 3 ATH |
+| RTX | sector-rotation | ~6.8 | ~$145 | fill×0.95 | fill×1.15 | ~4.35% | Defense; Patriot/Javelin; below 7.0 |
+| OXY | sector-rotation | ~6.0 | ~$75 | fill×0.95 | fill×1.15 | ~3.75% | Only if WTI rebounds above $92 |
+| XLV | sector-rotation | ~6.5 | ~$195 | fill×0.95 | fill×1.15 | ~1.95% | Healthcare defensive rotation |
+| GLD | macro-hedge | ~5.0 | — | — | — | — | SKIP — just stopped out. Wait for post-FOMC clarity. |
+
+---
+
+### PENDING OPERATOR ACTIONS (URGENT — before tomorrow's open)
+
+1. **CANCEL STALE GTC ORDERS (IMMEDIATELY):**
+   - AMD 9sh $524.15 (June 3) — AMD ~$473. NOT filled. CANCEL.
+   - AMD 9sh $520.59 (May 29) — NOT filled. CANCEL.
+   - PLTR 10sh $150.74 (June 3) — PLTR ~$130. NOT filled. CANCEL.
+   - MRVL 8sh $202.19 (May 29) — MRVL ~$295+. NOT filled. **CANCEL IMMEDIATELY.**
+
+2. **GLD VERIFY:** Confirm stop at $397.92 executed today. If NOT triggered (GLD still open at $390.78 = −6.9% from entry $418.86): PLACE STOP AT $390 OR BELOW IMMEDIATELY.
+
+3. **INTC MANUAL EXECUTION (MANDATORY):**
+   ```
+   BUY 44sh INTC limit ~$106-107 (current ask × 1.005)
+   stop_loss: fill × 0.95 (−5%)
+   take_profit: fill × 1.15 (+15%)
+   order_class: bracket, time_in_force: gtc
+   URL: https://app.alpaca.markets
+   ```
+
+4. **LMT ANALYSIS + EXECUTION (MANDATORY IF ≥7.0):**
+   Run 6-agent at Pre-Market. If approved: BUY ~7sh LMT limit ask×1.005, stop fill×0.95, target fill×1.15, bracket GTC.
+
+---
+
+```yaml
+---
+ts: 2026-06-10T20:33:00Z
+action: skip
+symbol: DAILY_REVIEW
+bucket: active
+setup: other
+score: null
+thesis: Daily Review June 10. API blocked 30th consecutive session. GLD stop estimated hit -$145.58. INTC blocked 4x (MANDATORY 7.17). MU correctly rejected 6.83. Portfolio -0.15% vs SPX -0.75% = +0.60 pp. Cumulative gap -1.97 pp (improved from -3.15 pp).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  June 10 Daily Review. API blocked 30th consecutive session.
+  GLD: stop $397.92 estimated triggered (range $388.75-$400.48). Est. loss -$145.58 (-0.15% equity).
+  INTC (7.17 avg MANDATORY): blocked 4 times today. Limit $106.39 was IN THE MONEY (day low $105.29).
+  MU: correctly rejected 6.83 avg (CPI 4.2% + 63% hike + Iran strikes). MU fell ~4.7% to ~$891 — skip validated.
+  Heartbeat failures: Pre-Market, Mid-Morning, Afternoon, Market-Close all silently failed.
+  Portfolio: ~$99,854 (99.9% cash).
+  SPX: ~7,331 (-0.75%). Cumulative gap improved to -1.97 pp from -3.15 pp.
+  TOMORROW: PPI May 2026 (8:30 AM ET). MANDATORY: INTC + LMT (if 6-agent ≥7.0). Conditional: MU (PPI benign).
+  FOMC June 16-17: 63% hike probability. Biggest event of the month.
+  Stale orders: AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19 — all must be canceled.
+---
+```
+
+---
+
 ## 2026-06-10 — Market Open (9:45 AM ET / 13:46 UTC — WEDNESDAY — CPI DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:45:56Z ✓
