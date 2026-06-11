@@ -4,6 +4,384 @@
 
 ---
 
+## 2026-06-11 — Market Open (9:45 AM ET / 13:45 UTC — THURSDAY — PPI DAY)
+
+**HEARTBEAT:** STARTED Market-Open 13:45:55Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **31st consecutive blocked session**
+**Pre-Market Status:** SILENTLY FAILED (no heartbeat — catch-up executed at Market Open)
+
+---
+
+### PRE-MARKET SILENT FAILURE — VIOLATION
+
+```yaml
+---
+ts: 2026-06-11T13:46:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine did not fire on June 11 (no heartbeat in logs/heartbeats/2026-06-11.log). Only Market-Open STARTED heartbeat present. Running full Pre-Market catch-up from Market Open as required by routines/open.md.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Silent failure — Pre-Market did not heartbeat. Market Open running catch-up."
+---
+```
+
+---
+
+### MARKET CONTEXT (June 11, 9:45 AM ET)
+
+- **PPI May 2026 (8:30 AM ET release — KEY EVENT):** +1.1% m/m (HOT — vs +0.7% expected), **+6.5% YoY** (highest since November 2022). Energy dominated: +10.7% monthly, gasoline +23.4% monthly. Core PPI +0.4% m/m (vs +0.5% expected — slightly benign core). ~80% of the May advance attributable to energy (Iran war-driven oil shock = potentially transitory).
+- **S&P 500:** +0.21% (7,266.99 → est. ~7,282 intraday). Dow +0.45%, Nasdaq +0.26%, Russell 2000 −1.10%.
+- **Iran-US situation:** New US strikes on Iran overnight. Markets pricing in swift end to latest round = de-escalation hope. Oil elevated but easing slightly.
+- **FOMC June 16-17:** Hot PPI reinforces Warsh hawkish stance. Fed hike probability now likely above 65%+ (was 63% post-CPI).
+- **Stocks:** INTC $105.05 (range $103.78–$111.50); LMT $525.05 (range $524.00–$535.75); MU opened $905.13 (range $883.25–$957.48).
+
+---
+
+### STOP AUDIT
+
+**GET /v2/positions → HTTP 403 BLOCKED**
+**GET /v2/orders?status=open → HTTP 403 BLOCKED**
+
+Cannot verify stop coverage. Based on June 10 Daily Review estimate, portfolio is ~100% cash (GLD stop triggered June 10). No open positions expected. Stale GTC orders from prior sessions remain unverifiable/uncancellable via API:
+- AMD 9sh $524.15 (June 3) — est. NOT filled (AMD ~$473)
+- AMD 9sh $520.59 (May 29) — est. NOT filled
+- PLTR 10sh $150.74 (June 3) — est. NOT filled (PLTR ~$130)
+- MRVL 8sh $202.19 (May 29) — est. NOT filled (MRVL ~$295; buy limit at $202 safe unless MRVL crashes)
+**OPERATOR MUST CANCEL STALE ORDERS AT https://app.alpaca.markets**
+
+---
+
+### 6-AGENT ANALYSIS: INTC (Intel Corporation)
+
+**Context:** Prior score 7.17 (June 10 Daily Review — MANDATORY commitment). Fresh re-score required at Market Open per routines/open.md. Material conditions changed: PPI +1.1% m/m (hot), INTC intraday reversal from $111.50 high to $105.05 current.
+
+**Sub-Agent 1 — Fundamentals: 7/10**
+- Google 3M TPU foundry order confirmed (June 8) — $billions in committed foundry revenue
+- NVIDIA evaluating INTC 18A process for future multi-chip processor
+- EPS guidance: +159% YoY expected; INTC up 168% in 2026 = fundamental re-rating in progress
+- Wells Fargo PT $110, Barclays PT $100 (above current $105)
+- Average analyst PT $92.17 (stale — pre-Google order surge)
+- Earnings July 23, 2026 — no binary event concern today
+- Score: 7/10 (strong catalysts; some analyst hesitancy; stale consensus PT)
+
+**Sub-Agent 2 — Technical: 5/10**
+- Daily trend: UPTREND (168% YTD, +11% surge June 8 on Google TPU catalyst)
+- Today's intraday: Gapped up to $111.50, then reversed to $103.78 low, currently $105.05 = intraday gap-and-crap pattern (bearish for 5-min entry timing)
+- Mandatory 5-indicator stack assessment:
+  1. Stochastic (14,3,3): After +11% surge June 8, likely still in overbought territory (>80). Today's intraday reversal from high = stochastic potentially crossing DOWN from overbought = BEARISH for fresh longs. NOT confirming.
+  2. Candlestick: Intraday reversal from $111.50 high to $103.78 low then $105.05 = shooting star / intraday bearish pattern. NOT confirming for long entry.
+  3. Volume Oscillator: 122.65M today vs 128.09M avg. 5-day avg includes June 8's surge day (~200M+) so 5-day avg (~128M) ≈ 20-day avg (128.09M) = barely positive but no meaningful confirmation.
+  4. MACD: After +11% surge, daily MACD histogram likely positive (bullish crossover from June 8 still in effect). CONFIRMING (1 of 5).
+  5. Volume Spike: 122.65M vs 128.09M avg = 0.96x. Below 2x threshold. NOT confirming.
+- Result: Only 1–2 indicators weakly confirming. CLAUDE.md mandates ≥2 of 5 for technical score >5/10.
+- RSI (tiebreaker only): After +11% surge = likely overbought (>70). No entry signal.
+- Score: 5/10 (mandatory stack only meets minimum threshold weakly — MACD confirms, Volume Osc barely; Stochastic/Candle/Volume Spike do not confirm long entry at this moment)
+
+**Sub-Agent 3 — Sentiment: 7/10**
+- News (48h): Google TPU order (June 8) — very bullish; NVIDIA 18A evaluation (June 8) — bullish; INTC up 168% YTD momentum
+- Analyst action: Multiple PT hikes (Wells Fargo $110, Barclays $100) — mild positive
+- Fear/Greed: Mixed (Iran/PPI = fear; Iran peace hope = greed). Russell 2000 −1.10% today = risk-off undertone in small caps
+- Short interest: Likely declining given 168% YTD run — no squeeze catalyst
+- Options: Bullish given recent catalyst; put/call ratio unknown
+- xAI/X sentiment: **API CALL FAILED** — xAI endpoint blocked from cloud runner (same sandbox restriction as Alpaca). Note: degrading gracefully per CLAUDE.md. No X modifier applied. Score based on news/fundamentals only.
+- Score: 7/10 (strong bullish news backdrop; xAI unavailable; mixed intraday risk sentiment)
+
+**Sub-Agent 4 — Macro: 6/10**
+- PPI +1.1% m/m (hot, vs +0.7% expected) → FOMC rate hike probability elevated above 63%; higher-for-longer = headwind for semis generally
+- Iran-US strikes continuing → risk-off for most risk assets; BUT INTC specifically benefits from Iran war (US semiconductor independence = national security mandate; CHIPS Act funding = government-backed = rate-insensitive)
+- S&P +0.21% today (muted — PPI dampening the Iran peace-hope rally)
+- Semiconductor sector: Nasdaq +0.26% (rebounding mildly after yesterday's −1.62% selloff)
+- Dollar: Strengthening on hot PPI = mild headwind for US multinationals; INTC foundry revenues are domestic = less exposed
+- FOMC June 16-17: 5 days away. Rate hike = headwind. No hike = relief rally. INTC foundry is insulated either way due to CHIPS Act.
+- Net: Hot PPI is a headwind for generic semis; INTC's unique national security moat partially offsets. Mixed macro picture.
+- Score: 6/10 (Iran war is INTC tailwind; hot PPI + rate hike risk is general semi headwind; net mixed)
+
+**Sub-Agent 5 — Risk: 8/10**
+- Entry limit: $105.05 × 1.005 = **$105.58**
+- Stop (−5%): $105.58 × 0.95 = **$100.30**
+- Target (+15%): $105.58 × 1.15 = **$121.42**
+- R/R: $15.84 / $5.28 = **3.0:1** ✓ (minimum satisfied exactly)
+- Shares for ~4.5% position: $99,854 × 4.5% / $105.58 = ~42.5 → **42 shares**
+- Position size: 42 × $105.58 = $4,434.36 = **4.44%** ✓ (≤5%)
+- Trade risk: 42 × $5.28 = $221.76 = **0.22%** ✓ (≤1.5%)
+- Sector: Semis — only position in sector (0% currently)
+- Cash after: $99,854 − $4,434 = $95,420 = 95.6% ✓ (≥5% floor)
+- 3% circuit breaker: NOT tripped (portfolio ~flat)
+- All guardrails satisfied. Score: 8/10
+
+**Sub-Agent 6 — Tech Analyst: 7/10**
+- Core tech: Intel 18A process node (GAA RibbonFET, PowerVia backside power delivery) — differentiated vs TSMC N2
+- Only US-based advanced foundry = strategic moat with government mandate (CHIPS Act $8.5B+ committed)
+- Defensible IP: RibbonFET and PowerVia are proprietary — direct Intel innovations
+- vs. Competitors: TSMC is still leading in volume/yield; Intel is the challenger in foundry but winning government & national security mandates. Samsung Foundry trailing both.
+- R&D: Intel spending $20B+ in fab capacity; CHIPS Act co-investment
+- AI relevance: Foundry for Google TPUs (AI chips); Gaudi 3 AI accelerators for direct AI compute
+- Tech moat: CHIPS Act = government backstop; US-only sourcing mandates increasingly common for Pentagon and IC work
+- Risk: Yield parity with TSMC not yet demonstrated at scale; execution risk on 18A node ramp
+- Score: 7/10 (strong strategic moat; execution risk is real; Google win validates the technology)
+
+**MASTER AGENT — INTC**
+| Agent | Score |
+|---|---|
+| Fundamentals | 7/10 |
+| Technical | 5/10 |
+| Sentiment | 7/10 |
+| Macro | 6/10 |
+| Risk | 8/10 |
+| Tech Analyst | 7/10 |
+| **Average** | **6.67/10** |
+
+- Average 6.67 < 7.0 threshold → **REJECTED**
+- Risk Agent 8/10 ≥ 6 ✓ (no veto)
+- Agents ≥ 7: Fundamentals, Sentiment, Risk, Tech Analyst = **4 of 6** ✓
+- Master Gate: FAILS average score threshold (6.67 < 7.0)
+- **Decision: REJECTED**
+
+---
+
+```yaml
+---
+ts: 2026-06-11T13:46:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 6.67
+thesis: Prior commitment (7.17 avg, June 10 Daily Review). Fresh 6-agent at Market Open produced 6.67 — below 7.0 minimum. Technical Agent 5/10 (mandatory stack: MACD confirms but Stochastic/Candle/Volume Spike do not; today's intraday gap-and-crap from $111.50 → $103.78). Macro Agent 6/10 (PPI +1.1% m/m hot → rate hike above 63%). Material conditions changed since prior score.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 6.67
+agents_above_7: 4
+master_decision: rejected
+master_notes: >
+  Average 6.67 < 7.0 threshold. Technical failed mandatory 5-indicator stack (only MACD confirming; Stochastic turning from overbought; today intraday gap-and-crap $111.50→$103.78; volume 0.96x avg no spike). Macro headwind from PPI +1.1% m/m (hottest since 2022) raises FOMC rate-hike odds above 63%. TENSION NOTE: Prior daily review scored INTC MANDATORY at 7.17. Fresh score 6.67 is a genuine re-assessment, not a deployment-bias violation — conditions materially changed (hot PPI + intraday technical reversal). xAI API blocked — degraded gracefully (no X modifier applied). NEXT ROUTINE: Re-score INTC at Mid-Morning if price stabilizes above $104 and intraday selling pressure resolves. Thesis (Google TPU + NVIDIA 18A eval) remains intact.
+---
+```
+
+---
+
+### 6-AGENT ANALYSIS: MU (Micron Technology)
+
+**Context:** Conditional entry per June 10 Daily Review: "PPI ≤+0.3% m/m AND fresh score ≥7.0 required."
+
+**PPI Condition Check:**
+- Required: PPI ≤+0.3% m/m
+- Actual: PPI +1.1% m/m (released 8:30 AM ET today)
+- Result: **CONDITION FAILED** — PPI 3.7× above threshold
+
+No 6-agent analysis needed. MU skip is driven by the explicitly pre-established condition, not discretionary judgment.
+
+```yaml
+---
+ts: 2026-06-11T13:46:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: mean-reversion-oversold
+score: 0
+thesis: Pre-established conditional entry requirement FAILED. June 10 Daily Review specified MU entry requires PPI ≤+0.3% m/m. Actual PPI May 2026 = +1.1% m/m (released 8:30 AM ET today). Condition not met. Skip is mandatory per the pre-commitment terms. MU today range $883.25–$957.48, opened $905.13. Re-evaluate if PPI revises or conditions improve.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "PPI May 2026 +1.1% m/m vs ≤+0.3% threshold. Condition explicitly pre-set at June 10 Daily Review. No 6-agent run required — conditional pre-gate failed. HBM4 thesis intact but macro headwind confirmed. Re-evaluate at next Daily Review for potential FOMC-clearance entry."
+---
+```
+
+---
+
+### 6-AGENT ANALYSIS: LMT (Lockheed Martin)
+
+**Context:** New entry from June 10 Daily Review watchlist — "MANDATORY if 6-agent ≥7.0." Fresh 6-agent required. Iran-US strikes escalating = direct defense catalyst. Earnings July 21, 2026 (40 days away — no binary event concern).
+
+**LMT Current Price:** $525.05 (range $524.00–$535.75). NOTE: June 10 portfolio.md estimated ~$640 for LMT — that estimate was INCORRECT. Actual current price $525.05 based on web research.
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+- Record backlog $194B = ~2.5× annual revenue; fully contracted, government-obligated
+- FY2026 EPS guidance: +37% growth YoY (pre-Iran-escalation guidance — actual likely higher)
+- Iran war: THAAD interceptors depleted rapidly (150+ in first 12 days, 25% of stockpile) = urgent restocking = new contracts
+- Recent contracts: $879M+ May 2026 awards; $1B+ total late May
+- Analyst upgrade: Hold→Buy (June 8) amid global defense spending surge
+- Trump $1.5T defense budget request = multi-year tailwind
+- Revenue growth: accelerating; government contracts = inflation-insulated (cost-plus)
+- P/E vs sector: Premium to market, but defensible on backlog visibility
+- Earnings July 21 (Q2 FY2026): Est. EPS $7.26, revenue $19.33B
+- Score: 8/10 (record backlog, earnings growth, government mandate, urgent restocking)
+
+**Sub-Agent 2 — Technical: 5/10**
+- Daily trend: UP 30% in 2026 (long-term bullish)
+- Current pullback: LMT is "24% off its high" (prior high ~$690 → current $525) = significant correction
+- Today range: $524.00–$535.75; current $525.05 ≈ near day's LOW = price pressure today
+- Mandatory 5-indicator stack:
+  1. Stochastic (14,3,3): After 24% correction from high, stochastic likely in oversold territory (<20) — a bullish entry signal if %K is crossing above %D from oversold. POTENTIALLY CONFIRMING, but unable to verify exact crossing.
+  2. Candlestick: Near the day's low ($525 vs $524 low) = no clear reversal pattern yet (price flat, consolidating at support). NOT clearly confirming.
+  3. Volume Oscillator: 933.9K today vs 1.14M avg = volume BELOW average. Short-MA < long-MA = negative oscillator. NOT confirming.
+  4. MACD: After 24% correction from high, MACD likely bearish or near zero (histogram negative). NOT confirming.
+  5. Volume Spike: 933.9K vs 1.14M avg = 0.82x. Well below 2× threshold. NOT confirming.
+- Result: Stochastic possibly oversold (1 potential confirmation if %K>%D). All other 4 NOT confirming.
+- RSI tiebreaker: After 24% correction, RSI likely <40 (oversold territory) = mild bullish tiebreaker
+- Score: 5/10 (below-average volume, near lows, MACD likely bearish; Stochastic oversold is the one potential positive; mandatory stack not meeting 2/5 minimum confirmation standard)
+
+**Sub-Agent 3 — Sentiment: 8/10**
+- News (48h): Iran-US military strikes = direct defense catalyst. LMT CEO publicly welcoming war demand. $1B+ new contracts awarded.
+- Analyst: Upgrade Hold→Buy June 8 on defense spending surge. MoneyMorning: "Still 24% off high — value opportunity."
+- Social media: Defense stocks bullish amid Iran conflict; #THAAD trending
+- Short interest: Likely low (government defense stocks rarely heavily shorted)
+- Options: Bullish calls likely active; defense sector rotation ongoing
+- xAI/X sentiment: **API CALL FAILED** — degrading gracefully. No X modifier applied.
+- Fear/Greed: Defense = "fear trade" that moves with conflict escalation = currently positioned bullishly
+- Score: 8/10 base (strong positive: war catalyst, upgrade, contracts, CEO sentiment) + xAI blocked = 8/10
+
+**Sub-Agent 4 — Macro: 8/10**
+- Iran-US strikes = PRIMARY DIRECT CATALYST for LMT (THAAD restocking, F-35 orders, missile defense)
+- PPI +1.1% m/m hot → Rate hike risk: **NEUTRAL to POSITIVE for defense** — government contracts are cost-plus or fixed-fee with inflation adjustments; LMT revenues are not rate-sensitive
+- Trump $1.5T record defense budget request: multi-year tailwind for all major defense primes
+- Strait of Hormuz tensions: oil elevated = inflationary pressure = FOMC hike risk for most sectors = NOT for defense
+- Sector: Defense/Aerospace strongly outperforming in Iran-war environment (up 30% YTD already for LMT vs S&P +~2.5% est.)
+- Dollar strong: Mild headwind for international sales, but LMT ~70% US government revenues
+- Score: 8/10 (Iran war is direct positive; hot PPI/rate hikes are neutral to positive for LMT specifically; sector leadership confirmed)
+
+**Sub-Agent 5 — Risk: 8/10**
+- Entry limit: $525.05 × 1.005 = **$527.67**
+- Stop (−5%): $527.67 × 0.95 = **$501.29**
+- Target (+15%): $527.67 × 1.15 = **$606.82**
+- R/R: $79.15 / $26.38 = **3.0:1** ✓ (minimum satisfied exactly)
+- Shares for ~4.5% position: $99,854 × 4.5% / $527.67 = ~8.5 → **8 shares**
+- Position size: 8 × $527.67 = $4,221.36 = **4.23%** ✓ (≤5%)
+- Trade risk: 8 × $26.38 = $211.04 = **0.21%** ✓ (≤1.5%)
+- Sector: Defense/Aerospace — 0% currently → 4.23% ≤ 25% ✓
+- Cash after: $99,854 − $4,221 = $95,633 = 95.7% ✓ (≥5% floor)
+- 3% circuit breaker: NOT tripped
+- Earnings: July 21, 2026 (40 days away — no binary event) ✓
+- All guardrails satisfied. Score: 8/10
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+- Core systems: F-35 (5th-gen stealth, only US fighter with full stealth+avionics integration), THAAD (only US system capable of terminal high-altitude intercept), Javelin ATGM, hypersonic weapons development
+- Defensible? Extremely — only one of two companies (LMT/Raytheon) capable of producing THAAD at scale
+- IP: Extensive classified and unclassified military IP; F-35 program = $1.7T lifecycle = longest-running defense contract in history
+- vs. Competitors: LMT dominates advanced strike (F-35), missile defense (THAAD), precision munitions (Hellfire, Javelin). Raytheon strong in air defense, Northrop in bombers. LMT is the premier prime integrator.
+- R&D: Active hypersonics (LGM-35 Sentinel), directed energy, AI-enhanced weapons systems
+- AI/Tech: AI targeting for F-35 sensor fusion; autonomous systems development; IVAS (Integrated Visual Augmentation System) for Army
+- Tech moat: 30-year F-35 program relationships; security clearances; DoD-only customer base = no commercial tech disruption risk
+- Urgent demand: Iran war THAAD depletion = restocking emergency = accelerated production orders
+- Score: 8/10 (military technology moat is defensible; no tech obsolescence risk; AI integration ongoing)
+
+**MASTER AGENT — LMT**
+| Agent | Score |
+|---|---|
+| Fundamentals | 8/10 |
+| Technical | 5/10 |
+| Sentiment | 8/10 |
+| Macro | 8/10 |
+| Risk | 8/10 |
+| Tech Analyst | 8/10 |
+| **Average** | **7.5/10** |
+
+- Average 7.5 ≥ 7.0 threshold ✓
+- Risk Agent 8/10 ≥ 6 ✓ (no veto)
+- Agents ≥ 7: Fundamentals(8), Sentiment(8), Macro(8), Risk(8), Tech Analyst(8) = **5 of 6** ✓ (≥4 required)
+- Tech Analyst 8/10 ≥ 6 ✓ (defense counts as "tech" for scoring purposes)
+- **Decision: APPROVED**
+
+**Position sizing summary:**
+- Symbol: LMT | Qty: 8 shares | Limit: $527.67 | Stop: $501.29 | Target: $606.82
+- Size: $4,221 (4.23%) | Trade risk: $211 (0.21%) | R/R: 3.0:1
+- Setup: sector-rotation (Iran war defense catalyst)
+
+**ORDER ATTEMPT:**
+`POST /v2/orders` — LMT 8sh buy limit $527.67 bracket GTC (stop $501.29, target $606.82)
+**RESULT: HTTP 403 "Host not in allowlist" — BLOCKED (31st consecutive session)**
+
+**OPERATOR MUST EXECUTE MANUALLY at https://app.alpaca.markets:**
+```
+Symbol: LMT
+Qty: 8
+Side: Buy
+Type: Limit
+Limit Price: $527.67
+Time in Force: GTC
+Order Class: Bracket
+Stop Loss: $501.29
+Take Profit: $606.82
+```
+
+```yaml
+---
+ts: 2026-06-11T13:54:10Z
+action: entry
+symbol: LMT
+bucket: active
+setup: sector-rotation
+score: 7.5
+thesis: Iran-US military conflict driving direct THAAD/F-35/Javelin restocking demand. Record $194B backlog = 2.5x annual revenue contracted. 37% EPS growth guidance. Fresh analyst upgrade. Defense sector insulated from hot PPI / rate hike headwind. 5/6 agents scored ≥8.
+size_pct: 4.23
+stop: 501.29
+target: 606.82
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: >
+  5/6 agents ≥7 (all except Technical). Technical Agent 5/10 — LMT down 24% from high, volume below average (0.82x), MACD likely bearish after correction; Stochastic potentially oversold (may be turning bullish but not confirmed). Master gate approved on strength: Fundamentals 8 (record $194B backlog + 37% EPS growth), Macro 8 (Iran war = direct THAAD restocking catalyst; rate hikes NEUTRAL for defense contracts), Sentiment 8 (CEO bullish, analyst upgrade, $1B+ contracts awarded). Risk Agent 8/10 — all guardrails satisfied, R/R exactly 3:1, position 4.23% / trade risk 0.21%. xAI API blocked — no X sentiment modifier applied, noted for calibration.
+  ORDER ATTEMPT: POST /v2/orders → HTTP 403 "Host not in allowlist" (31st consecutive blocked session). Alpaca paper account is system of record. OPERATOR MUST MANUALLY PLACE: LMT 8sh buy limit $527.67 bracket GTC (stop $501.29, target $606.82) at https://app.alpaca.markets.
+---
+```
+
+---
+
+### MARKET OPEN SUMMARY
+
+| Action | Symbol | Result | Notes |
+|---|---|---|---|
+| VIOLATION | Pre-Market | SILENT FAILURE | No heartbeat — catch-up run from Market Open |
+| STOP AUDIT | All | BLOCKED | API HTTP 403; estimated 0 open positions (all cash) |
+| FRESH 6-AGENT | INTC | **SKIP** (6.67 avg < 7.0) | Technical 5/10: mandatory stack only ~1 confirming; intraday gap-and-crap; hot PPI macro |
+| CONDITIONAL | MU | **SKIP** (PPI condition failed) | PPI +1.1% m/m vs ≤+0.3% required |
+| FRESH 6-AGENT | LMT | **ENTRY ATTEMPTED** (7.5 avg) | HTTP 403 blocked — operator manual execution required |
+
+**Deployment State:** 0 confirmed positions (API blocked). LMT entry attempted but blocked. Portfolio remains ~100% cash (95.7% after LMT fills if executed manually).
+
+---
+
 ## 2026-06-10 — Daily Review (4:30 PM ET / 20:33 UTC — WEDNESDAY — CPI DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:33:07Z ✓
