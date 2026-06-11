@@ -4,6 +4,208 @@
 
 ---
 
+## 2026-06-11 — Pre-Market (8:00 AM ET / 12:09 UTC — THURSDAY — PPI DAY)
+
+**HEARTBEAT:** STARTED Pre-Market 12:08:55Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **31st consecutive blocked session**
+**User Suggestions:** 0 open issues (checked GitHub Issues with `user-suggestion` label)
+
+---
+
+### MARKET CONDITIONS SUMMARY (8:09 AM ET)
+
+| Item | Value | Direction |
+|---|---|---|
+| S&P 500 Futures | ~7,303.50 (+0.34%) | ↑ Slightly risk-on |
+| Nasdaq Futures | Rising | ↑ |
+| Oil (Brent) | $94.73 (+1.75%) | ↑ Iran war |
+| BTC | $62,543 (+2.11%) | ↑ Below $82K threshold |
+| Iran-US conflict | US strikes Iran — Iran retaliating vs Gulf countries | ⚠️ Escalating |
+| PPI May 2026 | **8:30 AM ET — NOT YET RELEASED** | Critical data point |
+| FOMC June 16-17 | 63% hike probability (Warsh) | ⚠️ Headwind |
+
+**Macro read:** Cautiously risk-on — futures recovering from yesterday's −1.62% (estimated). Iran war escalating but market starting to price in "prolonged conflict" steady-state. PPI release in ~20 minutes is the session's key catalyst. BofA double upgrade of INTC is the dominant pre-market catalyst.
+
+---
+
+### INTC — MANDATORY ENTRY (31st Attempt)
+
+**ENTRY APPROVED — Score 7.33/10**
+
+**Catalyst:** Bank of America analyst Vivek Arya (top-1% Wall Street) double-upgraded INTC from Underperform (Sell) to Buy, raising PT from $96 → $135. Based on "higher confidence in INTC foundry opportunity" — Apple M-series wafers, MediaTek TPU, broader edge AI expansion. INTC pre-market +4.8% at ~$112.90. Stock +168% YTD.
+
+**Order attempted:** MOO 43sh INTC, time_in_force: opg
+**Response:** `Host not in allowlist` — HTTP 403 — BLOCKED
+
+**Order details (for Market Open routine to re-attempt as limit):**
+- Symbol: INTC, Qty: 43sh
+- Entry (MOO): fills at open ~$110-115 (pre-market $112.90)
+- Stop (to place at Market Open after fill): fill × 0.95 (−5%)
+- Target (bracket): fill × 1.15 (+15%) — BofA PT $135 ~+19% from $112.90, so +15% is conservative
+- Estimated entry $113.46 (ask×1.005) → stop $107.79, target $130.48
+- Position size: 43 × $113.46 = **$4,878.78 (4.88% of ~$99,854)** ✓ under 5%
+- Stop risk: $5.67 × 43 = $243.81 = **0.244% of equity** ✓ under 1.5%
+- R/R: 15% / 5% = **3:1** ✓ meets minimum
+- Sector: Technology/Semiconductors, 4.88% < 25% ✓
+- Cash post-fill: ~$94,975 = 95.0% — well above 5% floor ✓
+
+```yaml
+---
+ts: 2026-06-11T12:14:21Z
+action: entry
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: BofA double upgrade Underperform→Buy PT $96→$135 (Vivek Arya top-1%); Google 3M TPU + NVIDIA Feynman 18A validation; pre-market +4.8% gap-up breakout; 168% YTD; US reshoring CHIPS Act moat
+size_pct: 4.88
+stop: pending_moo_fill
+target: pending_moo_fill
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "5/6 agents ≥7 (Fundamentals 8, Technical 7, Sentiment 8, Risk 7, Tech Analyst 8). Macro 6/10: FOMC 63% hike risk is real headwind but CHIPS Act/reshoring makes INTC less rate-sensitive than pure growth tech. BofA Vivek Arya double upgrade from Underperform→Buy is a major sentiment reset — Apple M-series, MediaTek, NVIDIA Feynman potential all cited. Technical: gap-up on upgrade with elevated volume; 2/5 indicators (volume spike on upgrade + candlestick gap continuation). X sentiment: API unavailable, but BofA upgrade is market-moving news. API BLOCKED 31st consecutive session — order ATTEMPTED, response: Host not in allowlist. Market Open routine MUST: (1) re-attempt as limit $113.46 bracket GTC, or (2) confirm fill if API opens."
+---
+```
+
+**Market Open MANDATORY ACTION:** Place INTC 43sh limit $113.46 bracket GTC (stop $107.79, target $130.48, time_in_force: gtc). If INTC open price has moved significantly (>+5% from $112.90), re-score before executing.
+
+---
+
+### LMT — FRESH 6-AGENT ANALYSIS — REJECTED
+
+**Prior estimate was 7.33; fresh analysis score: 5.33/10 — REJECTED (fails master gate)**
+
+Fresh research revealed the prior estimate was based on outdated price data ($640 estimate vs actual $525) and ignored critical sector data:
+- Defense stocks (ITA ETF) **down 12% since Iran war began** in March 2026 — "buy the anticipation, sell the war" dynamic confirmed
+- LMT specifically **tumbled 13%+ on Q1 earnings miss** and is **24% off its highs**
+- Trading $524-$535 today (not $640)
+- Sector underperformance despite ongoing Iran conflict removes the "sector-rotation" thesis catalyst
+
+**Agent Scores:**
+- Fundamentals 5/10 (Q1 miss, high P/E at 22-25x, defense sector underperforming)
+- Technical 4/10 (established downtrend, 24% off highs, no reversal confirmation)
+- Sentiment 5/10 (defense no longer a "trade" — widely noted that Iran war has not lifted defense stocks)
+- Macro 5/10 (Iran war escalating but rate-hike risk is negative for dividend/high-P/E names like LMT)
+- Risk 6/10 (guardrails OK but weak setup reduces conviction)
+- Tech Analyst 7/10 (auto-score: non-tech company)
+- **Average: 5.33/10** — fails master gate threshold of 7.0
+
+```yaml
+---
+ts: 2026-06-11T12:14:21Z
+action: skip
+symbol: LMT
+bucket: active
+setup: sector-rotation
+score: 5.33
+thesis: Iran-US conflict defense catalyst (thesis INVALIDATED by sector performance data)
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 4
+  sentiment: 5
+  macro: 5
+  risk: 6
+  tech_analyst: 7
+agent_average: 5.33
+agents_above_7: 1
+master_decision: rejected
+master_notes: "REJECTED — avg 5.33 < 7.0 threshold; only 1/6 agents ≥7. Fresh research invalidated prior June 10 estimate: (1) ITA defense ETF −12% since Iran war began March 2026; (2) LMT Q1 earnings miss, −13% on print, 24% off 52wk highs; (3) LMT actual price $525 vs estimated $640; (4) Defense stocks priced the war in anticipation — conflict onset confirmed 'sell the news' dynamic. SCORE-BASED skip (5.33 < 7.0) — no named CLAUDE.md exemption required. Remove from watchlist. Re-evaluate post-Q2 earnings recovery."
+---
+```
+
+---
+
+### MU — CONDITIONAL DEFERRAL (PPI PENDING 8:30 AM ET)
+
+**Status: DEFERRED to Market Open routine — PPI data not yet released**
+
+MU pre-market: ~$918.50 (−3% from $957 intraday high June 10)
+June 10 daily review condition: "PPI ≤+0.3% m/m AND fresh 6-agent ≥7.0 required"
+April PPI: +1.4% m/m (extremely hot)
+
+Current agent scores with unknown PPI:
+- Fundamentals 8/10 (HBM4 sold out through year-end; UBS $1,625 PT; earnings June 24)
+- Technical 7/10 (oversold recovery from June 5 selloff; hammer formation; above $882 support)
+- Sentiment 6/10 (rate hike fears weigh on semi sentiment; but HBM4 demand narrative intact)
+- **Macro: conditional** — 5/10 if PPI hot (>+0.4%), 7/10 if benign (≤+0.3%)
+- Risk 7/10 (4sh × $918.50 = $3,674 = 3.67%; stop $872.58 −5%; target $1,056.28 +15%; R/R 3:1 ✓)
+- Tech Analyst 8/10 (HBM4 proprietary; only at-scale AI memory producer)
+
+**If PPI ≤+0.3% m/m:** Average = (8+7+6+7+7+8)/6 = 7.17 → APPROVED → Market Open places limit bracket GTC
+**If PPI >+0.4% m/m:** Average = (8+7+6+5+7+8)/6 = 6.83 → REJECTED (below 7.0)
+**If PPI +0.3-0.4%:** Borderline — Market Open re-scores with fresh data
+
+```yaml
+---
+ts: 2026-06-11T12:14:21Z
+action: skip
+symbol: MU
+bucket: active
+setup: mean-reversion-oversold
+score: 6.83
+thesis: HBM4 demand secular; June 24 earnings runway; pre-market $918.50 oversold bounce candidate
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "DEFERRED pending PPI May 2026 (8:30 AM ET). Score 6.83 (baseline, macro=5). IF PPI ≤+0.3% m/m: macro upgrades to 7/10, avg→7.17, APPROVED → Market Open places 4sh MU limit bracket GTC (entry ~$921, stop ~$875, target ~$1,059, size 3.67%). IF PPI >+0.4% m/m: macro stays 5/10, avg 6.83 < 7.0 → skip confirmed. Market Open OWNS this decision. NOT a named CLAUDE.md exemption. Current Deployment Bias requirement: if score conditional on data releasing in <30 min, defer to next routine — not a skip, not a guardrail violation. MU pre-market $918.50 (June 10 close ~$891, pre-market recovery +3%)."
+---
+```
+
+---
+
+### STALE ORDER CANCELLATIONS (CRITICAL — STILL PENDING)
+
+**API BLOCKED — Cannot cancel. OPERATOR MUST EXECUTE IMMEDIATELY:**
+- AMD 9sh GTC $524.15 (June 3) — AMD ~$475. NOT filled. **CANCEL.**
+- AMD 9sh GTC $520.59 (May 29) — NOT filled. **CANCEL.**
+- PLTR 10sh GTC $150.74 (June 3) — PLTR ~$130. NOT filled. **CANCEL.**
+- MRVL 8sh GTC $202.19 (May 29) — MRVL ~$295. **CANCEL IMMEDIATELY** (fills if MRVL crashes to $202).
+
+---
+
+### PRE-MARKET WATCHLIST — JUNE 11, 2026
+
+| Symbol | Score | Setup | Action | Price | Notes |
+|---|---|---|---|---|---|
+| **INTC** | **7.33** | breakout-volume | **MOO 43sh BLOCKED → Market Open limit** | ~$112.90 | BofA double upgrade; Google TPU; NVIDIA Feynman |
+| **MU** | **6.83→7.17** | mean-reversion-oversold | **Conditional: Market Open if PPI ≤+0.3%** | ~$918.50 | HBM4; June 24 earnings |
+| AMAT | ~7.0 est | breakout-volume | **WATCH** — up 4.6% pre-market on Intel/semi capex | ~$489-504 | Cantor PT $650; semi equipment upcycle; needs fresh 6-agent |
+| LRCX | ~7.0 est | breakout-volume | **WATCH** — up 4.6% pre-market on semi capex | ~$320-330 | +86% in 6 months; needs fresh 6-agent |
+| LMT | 5.33 | sector-rotation | **REJECTED** | ~$525 | Defense underperformed; Q1 miss; sector downtrend |
+| AMD | ~6.5 | mean-reversion-oversold | SKIP (below 7.0) | ~$475 | FOMC headwind |
+| PLTR | ~6.5 | ai-momentum-pullback | SKIP (below 7.0) | ~$130 | Stale order $150.74 needs cancel |
+| BTC | N/A | crypto-flush-rebound | SKIP (below $82K threshold) | $62,543 | No entry below $82K |
+
+**NEW candidates flagged (run full 6-agent at Market Open):**
+- **AMAT**: Cantor PT raised $575→$650 (+30% upside); "early innings of multi-year upcycle"; +4.6% pre-market. Semiconductor equipment picks-and-shovels play — avoids direct chip competition risk.
+- **LRCX**: +86% in 6 months; 4.6% pre-market; 32% EPS growth projection. Same semi-equipment cycle thesis.
+
+---
+
 ## 2026-06-10 — Daily Review (4:30 PM ET / 20:33 UTC — WEDNESDAY — CPI DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:33:07Z ✓
