@@ -1,21 +1,21 @@
 {
-  "last_updated": "2026-06-10T16:34:00Z",
+  "last_updated": "2026-06-12T16:45:00Z",
   "updated_by": "midday",
   "portfolio": {
-    "total_equity": 99853,
+    "total_equity": 99854,
     "starting_equity": 100000.0,
-    "cash": 99785,
+    "cash": 99854,
     "cash_pct": 99.9,
-    "buying_power": 199570,
+    "buying_power": 199708,
     "long_market_value": 0,
     "short_market_value": 0.0,
-    "daily_pnl": -146,
-    "daily_pnl_pct": -0.15,
+    "daily_pnl": 0,
+    "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 3.0,
-    "benchmark_gap_pct": -3.15,
+    "spx_return_pct": 3.22,
+    "benchmark_gap_pct": -3.37,
     "open_positions_count": 0,
-    "note": "June 10 Midday (12:30 PM ET). CPI DAY. API BLOCKED 30th session. Mid-Morning SILENTLY FAILED (violation logged). Market recovering: S&P -0.37% (from -0.48%), Nasdaq -0.42% (from -0.62%). 62.7% US issues advancing = rotation, not panic. INTC midday price $105.86 (range $105.29-$111.50). INTC 44sh limit $106.39 bracket GTC BLOCKED (7.17 score, MANDATORY). MU midday re-score 6.83 (improved from 6.5) but still REJECTED (macro 5/10 + sentiment 6/10 drag avg below 7.0). MU $935.89 (range $854-$989, intraday hammer recovery). XLE SKIP — oil declining to $89.71, flat sector. OPERATOR: (1) Verify GLD stop at Alpaca, (2) Execute INTC 44sh $106.39 bracket GTC, (3) Cancel stale AMD/PLTR/MRVL GTC orders."
+    "note": "June 12 Midday (12:30 PM ET). IRAN DEAL DAY. API BLOCKED 31st session. June 11 FULL BLACKOUT — missed SOXX +8%, INTC +7%, MU +11.66%. June 12 Pre-Market/Market-Open/Mid-Morning all silently failed. FOMC hike prob collapsed 63%→2.2%. INTC fresh score 7.33 (APPROVED at $123.69) — ORDER BLOCKED 31st. LMT rejected 5.5 (ceasefire inverts thesis). MU rejected 6.67 (PPI +1.1% failed condition). OPERATOR: (1) Execute INTC 40sh $123.69 bracket GTC TODAY before FOMC window, (2) Cancel stale AMD/PLTR/MRVL GTC orders."
   },
   "positions": [
     {
@@ -30,54 +30,106 @@
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "ESTIMATED STOP-HIT June 10. GLD range $388.75-$400.48, stop $397.92 TRIGGERED. Est. exit 7sh at $397.92 = $2,785.44. Realized loss est. -$145.58. CPI 4.2% + Fed hike 63% → dollar strength overwhelmed Iran safe-haven bid. OPERATOR MUST VERIFY fill at Alpaca."
-    },
-    {
-      "symbol": "MU",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 940.62,
-      "current_price": 935.89,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 893.59,
-      "take_profit": 1081.71,
-      "setup": "mean-reversion-oversold",
-      "agent_average": 6.83,
-      "note": "REJECTED Midday re-score 6.83 (improved from 6.5 at Market-Open). Technical improved to 7/10 (intraday hammer $854→$989 recovery, 2/5 indicators). Macro 5/10 + Sentiment 6/10 hold average below 7.0. MU $935.89 midday (range $854.35-$989.15). Re-score at Afternoon. Earnings June 24 — exit by June 22 mandatory."
+      "note": "ESTIMATED STOP-HIT June 10 at $397.92. Iran deal now further depressing gold. No re-entry planned. Realized loss est. -$145.58 (-4.99%)."
     },
     {
       "symbol": "INTC",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 106.39,
-      "current_price": 105.86,
+      "entry_price": 123.69,
+      "current_price": 123.07,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 101.07,
-      "take_profit": 122.35,
+      "stop_loss": 117.51,
+      "take_profit": 142.24,
       "setup": "breakout-volume",
-      "agent_average": 7.17,
-      "note": "PENDING ORDER — MIDDAY ATTEMPT BLOCKED (30th consecutive API block). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 (or current ask × 1.005) bracket GTC stop $101.07 (-5%) target $122.35 (+15%). Score 7.17. Price updated to $105.86 midday (better entry than $107.52 Market-Open estimate). Google 3M TPU + NVIDIA Feynman catalysts intact. 3:1 R/R confirmed."
+      "agent_average": 7.33,
+      "note": "PENDING ORDER — June 12 Midday BLOCKED (31st consecutive). Fresh 6-agent 7.33 APPROVED. F=6 T=6 S=8 M=8 R=8 TA=8. OPERATOR MUST EXECUTE: 40sh INTC limit $123.69 bracket GTC stop $117.51 target $142.24 R/R 3:1 BEFORE SUNDAY (FOMC window). Today range $115.20-$123.60."
+    },
+    {
+      "symbol": "MU",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 996.0,
+      "current_price": 996.0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": 946.20,
+      "take_profit": 1145.40,
+      "setup": "mean-reversion-oversold",
+      "agent_average": 6.67,
+      "note": "REJECTED June 12 score 6.67. PPI +1.1% failed condition (required ≤+0.3%). Extended after +11.66% June 11. Re-evaluate post-FOMC June 18 if score ≥7.0. Exit by June 22 mandatory."
     }
   ],
   "market": {
     "sectors": {
-      "leaders": ["Small-cap (Russell 2000 +0.41%)", "Value/Defensive rotation", "Industrials"],
-      "laggards": ["Nasdaq mega-cap tech (-0.42%)", "Large-cap Dow (-0.78%)", "Semiconductors (CPI/rate-hike headwind)"],
-      "energy_note": "XLE flat ($57.65); oil declining to $89.71 WTI — Iran deal uncertainty easing oil spike; energy NOT a leadership setup despite CPI headline",
-      "breadth": "62.7% of US issues advancing — broad participation despite index declines"
+      "leaders": ["Semiconductors/Tech (chips +5%; SOXX +8% June 11)", "Consumer Discretionary (oil falling)", "Industrials"],
+      "laggards": ["Energy (oil -3%+ on Iran deal imminent)", "Gold/GLD (safe-haven premium unwinding)", "Defense (LMT/RTX ceasefire headwind)"],
+      "energy_note": "Oil falling -3%+ on Iran deal. Strait of Hormuz expected to reopen. Energy sector selling off.",
+      "breadth": "S&P 500 +0.52% midday June 12. SOXX +8% June 11. SpaceX IPO at $150 (+11%). FOMC hold 97.8% probability."
     }
   },
   "routines": {
     "midday": {
       "status": "completed",
-      "last_run": "2026-06-10T16:34:00Z",
-      "next_run": "2026-06-10T18:00:00Z",
-      "last_summary": "Mid-Morning violation logged. INTC re-attempt at $106.39 blocked (30th consecutive API block — MANDATORY). MU re-scored 6.83 (improved from 6.5) but still below 7.0 threshold (macro 5/10 drag). XLE skipped (oil declining to $89.71, flat sector). No open positions. Afternoon: re-attempt INTC, re-score MU if conditions improve."
+      "last_run": "2026-06-12T16:45:00Z",
+      "next_run": "2026-06-12T18:00:00Z",
+      "last_summary": "June 11 full blackout + June 12 Pre-Market/Market-Open/Mid-Morning violations logged. INTC fresh 7.33 (APPROVED at $123.69) blocked 31st time. LMT rejected 5.5 (ceasefire). MU rejected 6.67 (PPI). Operator MUST execute INTC before Sunday FOMC window."
     }
   },
   "trades": [
+    {
+      "ts": "2026-06-12T16:33:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7,
+      "agent_scores": {"fundamentals": 6, "technical": 6, "sentiment": 8, "macro": 8, "risk": 8, "tech_analyst": 8},
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "ATTEMPTED HTTP 403 BLOCKED (31st consecutive). Fresh score at $123 (was $106 June 10). FOMC hike prob 63%→2.2%. ORDER: 40sh limit $123.69 bracket GTC stop $117.51 target $142.24. OPERATOR MUST EXECUTE before Sunday FOMC window."
+    },
+    {
+      "ts": "2026-06-12T16:35:00Z",
+      "symbol": "LMT",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 5,
+      "agent_scores": {"fundamentals": 6, "technical": 4, "sentiment": 5, "macro": 4, "risk": 7, "tech_analyst": 7},
+      "agent_average": 5.5,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 5.5 avg. Iran deal INVERTS defense catalyst. Thesis invalidated. Technical 4 (overbought, 1/5 indicators)."
+    },
+    {
+      "ts": "2026-06-12T16:36:00Z",
+      "symbol": "MU",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": 6,
+      "agent_scores": {"fundamentals": 8, "technical": 5, "sentiment": 8, "macro": 6, "risk": 7, "tech_analyst": 6},
+      "agent_average": 6.67,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 6.67 avg. PPI +1.1% m/m failed condition (required ≤+0.3%). Technical 5 (extended +11.66% June 11). Only 3/6 ≥7."
+    },
+    {
+      "ts": "2026-06-11T12:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "June 11 FULL DAY BLACKOUT. No heartbeat file. SOXX +8%, INTC +7%, MU +11.66%, S&P +1.75% — entire day missed."
+    },
     {
       "ts": "2026-06-10T16:34:00Z",
       "symbol": "INTC",

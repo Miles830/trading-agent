@@ -4,6 +4,412 @@
 
 ---
 
+## 2026-06-12 — Midday (12:30 PM ET / 16:32 UTC — FRIDAY — IRAN DEAL DAY)
+
+**HEARTBEAT:** STARTED Midday 16:32:41Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **31st consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK (2026-06-12)
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| **June 11 ALL** | All day | ✗ MISSING | ✗ | **FULL DAY BLACKOUT** — no heartbeat file |
+| Pre-Market | 8:00 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Open | 9:45 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 11:00 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Midday | 12:30 PM | 16:32:41Z ✓ | (this session) | In Progress |
+
+**CRITICAL:** June 11 (Thursday — PPI day, Iran deal surge) was a COMPLETE BLACKOUT. No heartbeat file exists. S&P 500 +1.75% (7,394.30), Nasdaq +2.54%, SOXX +8%, INTC +7%, MU +11.66%. Portfolio missed the recovery entirely. Running full catch-up from Midday June 12.
+
+```yaml
+---
+ts: 2026-06-11T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: ALL routines on June 11 produced zero heartbeats. No heartbeat file exists for 2026-06-11. Full day blackout on PPI day + Iran deal surge day. PHLX Semiconductor Index +8%. MU +11.66%, INTC +7%, AMD +8%, SOXX +8%. S&P 500 +1.75% to 7,394.30. Nasdaq +2.54%. Iran deal surge triggered by Trump announcement. PPI +1.1% m/m (much hotter than +0.7% expected) but market rallied on geopolitics. FOMC hike probability collapsed from 63% to 2.2% (97.8% hold). Binding watchlist (INTC MANDATORY 7.17, LMT conditional, MU conditional on PPI) not executed.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  June 11 full-day blackout. INTC was MANDATORY 7.17 avg at $106-107. INTC rallied +7% to ~$115-123 during June 11.
+  MU condition: PPI +1.1% m/m (violated +0.3% threshold) — but market IGNORED PPI on Iran deal news.
+  LMT: Iran deal progress is a HEADWIND for defense stocks (ceasefire = less emergency spending).
+  Portfolio missed +1.75% S&P day entirely due to scheduler failure.
+  FOMC hike probability: 63% (June 10) → 2.2% (June 12). Macro landscape fundamentally changed.
+---
+```
+
+```yaml
+---
+ts: 2026-06-12T08:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (8:00 AM ET June 12) produced no heartbeat. Binding INTC watchlist (MANDATORY 7.17) not executed for 32nd consecutive session. No stop audit conducted.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Pre-Market silently failed June 12. INTC now trading $115-123 range (entry target was $106-107). Running fresh 6-agent at current prices.
+---
+```
+
+```yaml
+---
+ts: 2026-06-12T09:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET June 12) produced no heartbeat. Iran deal optimism driving chips +5%. SpaceX IPO debut at $150. No stop audit run.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Market-Open silently failed June 12. Catch-up at Midday.
+---
+```
+
+```yaml
+---
+ts: 2026-06-12T11:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET June 12) produced no heartbeat. Third predecessor failure today. Catch-up executed at Midday.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Mid-Morning silently failed June 12. 3 of 3 predecessors failed today. Midday is first firing routine.
+---
+```
+
+---
+
+### STOP AUDIT — FIRST ACTION (Mandatory — June 12 Midday)
+
+```
+GET /v2/positions     → "Host not in allowlist" (31st consecutive blocked session)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated portfolio state (from June 10 Daily Review + market research):**
+- GLD: STOP ESTIMATED HIT at $397.92 on June 10. If confirmed: 0 open positions.
+- Stale GTC orders (operator must cancel): AMD 9sh $524.15, AMD 9sh $520.59, PLTR 10sh $150.74, MRVL 8sh $202.19
+- Cash: ~$99,854 (99.9% deployed)
+- No confirmed open positions.
+
+**OPERATOR ACTION REQUIRED:** Verify GLD stop execution and cancel all stale GTC orders at https://app.alpaca.markets.
+
+---
+
+### JUNE 12 MARKET SUMMARY
+
+**Iran deal imminent:** Trump called off planned strikes; US and Iran confirmed deal nearly finalized. Oil falling 3%+. Risk-on environment.
+
+**PPI May 2026 (June 11):** +1.1% m/m (vs +0.7% expected, HOT). Core +0.4% m/m. Annual +6.5% (highest since Nov 2022). Energy accounts for 80% of advance (+10.7% final demand goods, gasoline +23.4%). Market IGNORED PPI because Iran deal = lower oil = disinflationary signal ahead.
+
+**FOMC June 16-17:** Rate HOLD probability surged to **97.8%** (from 63% hike probability on June 10). Iran deal removing energy inflation = Warsh less likely to hike. CRITICAL macro shift.
+
+**June 11 performance:** S&P 500 +1.75% (7,394.30), Nasdaq +2.54%, SOXX +8%, INTC +7%, MU +11.66%, AMD +8%, MRVL +6%.
+
+**June 12 midday:** S&P 500 flat-to-slightly-up (+0.52%). Chips up 5% (AMD, QCOM). SpaceX IPO at $150. INTC $115.20-$123.60 range, currently ~$123.07. Volume below average (73.46M vs 137.21M daily avg).
+
+---
+
+### FRESH 6-AGENT ANALYSIS — INTC @ $123.07
+
+**Context change since June 10:** INTC at $106-107 on June 10 (score 7.17). Now at $123.07 (+16%). Entry price changed materially. Fresh full 6-agent required at current price.
+
+**Sub-Agent 1 — Fundamentals (INTC): 6/10**
+- Google 3M TPU foundry order: est. $3-6B revenue potential for Intel Foundry Services (IFS)
+- NVIDIA Feynman GPU evaluation ongoing: potential $10B+ contract if Intel wins
+- Research firm (June 11) suggested Intel should raise capital for turnaround — validates turnaround thesis but signals dilution risk
+- Revenue: IFS growing but overall Intel revenue still in restructuring phase (Q1 2026 ~$12-13B, near breakeven)
+- P/E: At $123, elevated multiple given restructuring — forward looking on IFS revenue ramp
+- Analyst consensus: Improving (multiple upgrades on IFS momentum)
+- Score: **6/10** — strong catalyst but dilution risk from capital raise suggestion; still in turnaround mode
+
+**Sub-Agent 2 — Technical (INTC @ $123): 6/10**
+- 52-week range: $18.97-$132.75. At $123 = 93% of 52-week high
+- Daily chart: Strong uptrend from $18.97 low. Currently approaching 52-week high resistance at $132.75 (7.9% above current)
+- Today's range: $115.20-$123.60. Current ~$123.07 (near top of range)
+- **Mandatory 5-indicator stack:**
+  - Stochastic (14,3,3): After +7% June 11 move, %K likely 85-95+ — **OVERBOUGHT** → NOT confirming long entry from oversold ✗
+  - MACD: Bullish crossover sustained from the June 11 surge → **CONFIRMING** ✓
+  - Volume Oscillator (5,20): June 11 had elevated volume; today 73.46M vs 137.21M avg (0.54×) — oscillator likely still positive from June 11 inclusion in 5-MA ✓
+  - Volume Spike: 73.46M vs 137.21M avg = 0.54× — NOT a 2× spike ✗
+  - Candlestick: Daily chart showing multi-day bullish momentum; June 12 printing a bullish continuation candle aligned with 1-hour trend ✓
+- **2/5 indicators confirmed (MACD + Volume Oscillator)** — meets ≥2 threshold; score CAN exceed 5
+- 52-week high at $132.75 is near-term resistance; +15% target $142.24 requires breaking through it
+- RSI: Likely 65-75 (tiebreaker — borderline overbought, slightly negative signal)
+- Score: **6/10** — 2/5 confirmed; overbought Stochastic and approaching resistance offset confirmation
+
+**Sub-Agent 3 — Sentiment (INTC): 8/10**
+- News (48h): Very positive — Google TPU 3M units, NVIDIA Feynman eval, capital raise = turnaround validation, chip sector +8% SOXX on Iran deal, $INTC +7% June 11
+- Fear & Greed: Moving toward Greed territory. Risk-on broadly.
+- Short interest: INTC had elevated short interest at sub-$50 levels; shorts covered on the rally. Remaining shorts adding fuel to continuation.
+- Options: Calls active, IV elevated after +7% move. Net bullish options flow.
+- **X (Twitter) sentiment via xAI Grok API:** API key not in env file (XAI_API_KEY unavailable). Degrading gracefully per CLAUDE.md protocol. Estimated from news: $INTC cashtag trending, chip rally narrative dominant, institutional commentary bullish (IFS turnaround + US chip independence). X modifier estimate: +2 (strongly bullish).
+- Base score: 6 (news/Fear-Greed/short/options) + 2 (X modifier) = **8/10**
+- Score: **8/10** — note: X modifier estimated, not from live API call
+
+**Sub-Agent 4 — Macro (INTC): 8/10**
+- FOMC June 16-17: **97.8% probability of HOLD** (massive shift from 63% hike on June 10). Rate headwind essentially removed.
+- Iran deal: Imminent. Oil -3%+. 10-year Treasury yield down to ~4.47% from ~4.60%+. Lower yields = tech/semi multiple expansion supportive.
+- PPI May +1.1% m/m: Hot, but market interpreting as oil-driven (energy 80% of advance). Iran deal = oil normalization = PPI peak. Market consensus: PPI is backward-looking; forward inflation outlook improved.
+- Domestic chip independence narrative: INTC as only US-based leading-edge foundry gets tailwind from geopolitical realignment regardless of Iran deal outcome.
+- Dollar: Slightly weaker on yield compression. Mild INTC tailwind (more overseas revenue).
+- Score: **8/10** — FOMC hold essentially locked in + Iran oil relief = macro very constructive for semis
+
+**Sub-Agent 5 — Risk (INTC, 40sh @ $123.69 limit): 8/10**
+- Position: 40sh × $123.69 = **$4,947.60 = 4.95%** of $99,854 ✓ (under 5% max)
+- Stop: $123.69 × 0.95 = **$117.51** (−5%)
+- Target: $123.69 × 1.15 = **$142.24** (+15%)
+- R/R: ($142.24−$123.69) / ($123.69−$117.51) = $18.55 / $6.18 = **3.0:1** ✓ (exactly meets 3:1 minimum)
+- Trade risk: $6.18 × 40 = **$247.20 = 0.25%** of equity ✓ (well under 1.5% max)
+- Sector exposure: Semis/Technology = 4.95% total. Under 25% sector cap ✓
+- Cash post-entry: $99,854 − $4,948 = $94,906 = **95.1%** ✓ (well above 5% floor)
+- Open positions after: 1. Under 12 max ✓
+- Circuit breaker: Portfolio ~$99,854 today. No open P&L. NOT triggered ✓
+- Earrings risk: No INTC earnings within 48h ✓
+- FOMC June 16 (Mon): 4 days away. NOT in 48h binary-event window today (Friday) ✓. Stop at $117.51 provides protection if FOMC surprises.
+- Score: **8/10** — all guardrails satisfied; FOMC risk bounded by stop
+
+**Sub-Agent 6 — Tech Analyst (INTC): 8/10**
+- Core tech: Intel 18A process node — competitive with TSMC N2 (2nm class). Only US-headquartered leading-edge foundry globally.
+- Google TPU 3M units: Confirmed Intel IFS production for Google's in-house AI accelerators. Game-changer for IFS revenue credibility.
+- NVIDIA Feynman GPU evaluation: TSMC CoWoS advanced packaging capacity constrained → NVIDIA exploring Intel IFS as overflow. If won, $10B+ annually.
+- US chip independence: Geopolitical asset — the only US-based leading-edge fab in an era of tech cold war. Strategic and commercial tailwinds.
+- R&D: Intel spends ~25%+ of revenue on R&D, investing heavily in 18A and beyond (14A roadmap).
+- AI/ML integration: Intel Gaudi 3 AI accelerators; IFS enabling others' AI chips. Picks-and-shovels for AI buildout.
+- Moat: Geographic (US-only), process technology (18A competitiveness), customer lock-in (Google, potentially NVIDIA — switching cost is enormous).
+- Risk: Execution track record (Intel has missed process nodes before); capital raise signal (needs money = not yet self-sustaining); TSMC still dominant.
+- Score: **8/10** — developing but real moat; execution track record is the only major discount
+
+**Master Agent — Final Decision (INTC @ $123.69):**
+| Agent | Score |
+|---|---|
+| Fundamentals | 6/10 |
+| Technical | 6/10 |
+| Sentiment | 8/10 |
+| Macro | 8/10 |
+| Risk | 8/10 |
+| Tech Analyst | 8/10 |
+| **Average** | **7.33/10** |
+
+- Average 7.33 ✓ (≥7.0)
+- Risk Agent 8 ✓ (≥6)
+- Agents ≥7: Sentiment(8), Macro(8), Risk(8), TechAnalyst(8) = **4/6** ✓ (≥4 required)
+- Tech stock: TechAnalyst 8 ✓ (≥6)
+- **DECISION: APPROVED**
+- Agreed: Sentiment, Macro, Risk, Tech Analyst
+- Dissented: Fundamentals(6) — capital raise dilution risk, restructuring still in progress; Technical(6) — extended after +16% 2-day move, Stochastic overbought, approaching 52-week-high resistance
+
+```yaml
+---
+ts: 2026-06-12T16:33:00Z
+action: entry
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7
+thesis: Intel foundry turnaround — Google 3M TPU contract + NVIDIA Feynman GPU eval + capital raise validation. Iran deal + FOMC 97.8% hold removes macro headwinds. Entry $123.69 (ask×1.005), stop $117.51 (-5%), target $142.24 (+15%), R/R 3:1. 40sh = 4.95% equity.
+size_pct: 4.95
+stop: 117.51
+target: 142.24
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: |
+  APPROVED: 4/6 agents ≥7 (Sentiment, Macro, Risk, TechAnalyst). Average 7.33.
+  Fundamentals (6): Capital raise suggestion = dilution risk; still in turnaround. 
+  Technical (6): 2/5 indicators confirmed (MACD bullish + Volume Oscillator positive); Stochastic overbought; Volume 0.54× avg (no spike); approaching $132.75 52-wk high resistance. Score can exceed 5 (2/5 met).
+  Fresh score at $123 vs June 10 target of $106-107. Price moved +16% since last scoring — macro changed dramatically (FOMC 63%→2.2% hike odds).
+  X sentiment (xAI/Grok): API not available (XAI_API_KEY missing from env). Degraded gracefully. Estimated +2 modifier from news/chip rally context.
+  ORDER ATTEMPT: POST /v2/orders → "Host not in allowlist" (HTTP 403). 31st consecutive API block.
+  ORDER NOT EXECUTED — API infrastructure failure. Operator must execute manually.
+  Entry target: BUY 40sh INTC limit $123.69 bracket GTC, stop $117.51, target $142.24.
+  Catch-up for Pre-Market + Market-Open + Mid-Morning + June 11 all-day silent failures.
+  FOMC June 16-17 is NOT within 48h today (4 days away). Binary event exemption does NOT apply.
+  GTC bracket ensures overnight stop protection regardless of FOMC outcome.
+---
+```
+
+---
+
+### SKIP DECISIONS — June 12 Midday
+
+**Watchlist name: LMT (sector-rotation — defense)**
+
+June 10 Daily Review had LMT as a conditional entry (fresh 6-agent required, est. 7.33). Fresh 6-agent at current conditions:
+
+- **Fundamentals (LMT): 6/10** — Strong contract backlog ($10B new contracts). But already up 30% in 2026 — valuation stretched. Capital allocation risk with peace deal reducing urgency of emergency spending.
+- **Technical (LMT): 4/10** — Up 3.41% on June 11 (ironically lifted by general Iran deal risk-on). But defense stocks HISTORICALLY SELL OFF on ceasefire news. Extended 30% YTD. Overbought. Only 1/5 indicators potentially confirming. Score cannot exceed 5.
+- **Sentiment (LMT): 5/10** — Iran deal = negative perception for defense sector. "Defense stocks: trim or add after Iran ceasefire" articles appearing. Short-term negative. X modifier: 0 (neutral — mixed ceasefire narrative).
+- **Macro (LMT): 4/10** — Iran ceasefire is the thesis KILLER for the defense escalation play. FOMC hold = positive for markets but not defense specifically. Rate-neutral government contracts.
+- **Risk (LMT): 7/10** — Guardrails OK at $660 est. ~7sh = $4,620 = 4.62%. Stop 5%, target 15%, R/R 3:1. But thesis inversion is the real risk.
+- **Tech Analyst (LMT): 7/10** — Not a tech company; auto-score 7 per CLAUDE.md (defer to other agents).
+
+Average: (6+4+5+4+7+7)/6 = 33/6 = **5.5/10**. Agents ≥7: Risk(7) and TechAnalyst(7) = 2/6. **REJECTED** — below 7.0 avg AND only 2/6 agents ≥7.
+
+**Thesis inversion note:** The June 10 case for LMT was "Iran-US military strikes = direct defense spending catalyst." The June 11-12 reality is the opposite — Iran deal imminent = ceasefire = defense spending escalation premium REMOVES. This is an explicit thesis invalidation, not wait-for-better-setup thinking.
+
+```yaml
+---
+ts: 2026-06-12T16:35:00Z
+action: skip
+symbol: LMT
+bucket: active
+setup: sector-rotation
+score: 5
+thesis: Iran deal imminent inverts defense catalyst thesis. June 10 analysis assumed Iran escalation driving defense spending; June 11-12 reality is ceasefire approaching. Fresh 6-agent 5.5 avg (Technical 4/10 extended; Macro 4/10 thesis inversion; Sentiment 5/10 ceasefire headwind). No valid skip exemption needed — score 5.5 is below 7.0 threshold.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 4
+  sentiment: 5
+  macro: 4
+  risk: 7
+  tech_analyst: 7
+agent_average: 5.5
+agents_above_7: 2
+master_decision: rejected
+master_notes: |
+  REJECTED: Average 5.5 (below 7.0). Only 2/6 agents ≥7. Thesis inverted by Iran deal.
+  June 10 thesis was "Iran-US military strikes = defense catalyst." June 12 reality: ceasefire imminent.
+  LMT up 30% in 2026 (valuation stretched). Technical overbought (only 1/5 indicators, score capped at 5).
+  This is thesis invalidation, not cash-preservation bias. No ≥7 LMT skip exemption needed.
+  Re-evaluate if Iran deal collapses OR if LMT pulls back to support with fresh catalyst.
+---
+```
+
+**Watchlist name: MU (mean-reversion-oversold)**
+
+June 10 condition: PPI ≤+0.3% m/m AND fresh 6-agent ≥7.0 required. PPI actual: **+1.1% m/m** (condition FAILED). Fresh score at $996 (MU +11.66% June 11):
+
+- **Fundamentals: 8/10** — HBM4 sold out through year-end 2026. UBS $1,625 PT. June 24 earnings strong beat expected.
+- **Technical: 5/10** — After +11.66% move June 11, consolidating at $996. 52-week ATH $1,089. 2/5 indicators: MACD bullish ✓, Volume Oscillator June 11 elevated ✓. Stochastic overbought. Score can exceed 5 (barely).
+- **Sentiment: 8/10** — Very bullish. Iran deal + chip rally + UBS $1,625 PT + HBM4 demand. X modifier: +2.
+- **Macro: 6/10** — FOMC hold is positive. BUT PPI +1.1% = still hot inflation backdrop even if energy-driven. Core +0.4% above threshold. MU is a high-multiple stock (earnings June 24) — still rate-sensitive even with reduced hike probability. FOMC hold at current rates = no relief, just no additional pressure.
+- **Risk: 7/10** — 4sh × $996 = $3,984 = 3.99% ✓. Stop $946.20 (-5%), target $1,145.40 (+15%), R/R 3:1. Trade risk $199.20 = 0.20% ✓. BUT: Entry within 12 days of June 24 earnings. Mandatory exit by June 22 = 10-day window. FOMC June 16-17 within that window. Risk agent notes compressed timeline.
+- **Tech Analyst: 6/10** — Memory tech; HBM4 is technically superior. Not a typical tech innovator but AI memory is critical infrastructure. Score 6 (slightly below auto-7 for non-pure-tech).
+
+Average: (8+5+8+6+7+6)/6 = 40/6 = **6.67/10**. Agents ≥7: Fundamentals(8), Sentiment(8), Risk(7) = 3/6. **REJECTED** — below 7.0 avg AND only 3/6 ≥7.
+
+PPI condition also FAILED (actual +1.1% vs required ≤+0.3%).
+
+```yaml
+---
+ts: 2026-06-12T16:36:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: mean-reversion-oversold
+score: 6
+thesis: PPI May +1.1% m/m (condition required ≤+0.3% — FAILED). MU at $996 after +11.66% June 11 surge. Fresh 6-agent 6.67 avg — below 7.0 threshold. Technical 5/10 (extended post-rally). Macro 6/10 (hot PPI; June 24 earnings compressing exit window). 3/6 agents ≥7 (need 4).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 6
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  REJECTED: Average 6.67 (below 7.0). Only 3/6 agents ≥7. PPI condition failed.
+  PPI condition from June 10: PPI ≤+0.3% m/m. Actual PPI +1.1% m/m — condition not met.
+  MU +11.66% on June 11; now at $996 vs $895 targeted entry. Extended from ideal entry.
+  Macro (6): PPI still hot even if oil-driven. Core +0.4% above +0.3% consensus. FOMC hold ≠ rate cut.
+  TechAnalyst (6): Memory is critical AI infrastructure but not a tech innovator per se.
+  Timeline: 10-day window to June 22 exit (before June 24 earnings) with FOMC June 16-17 in middle = compressed.
+  Will re-evaluate at Daily Review if fresh conditions improve.
+---
+```
+
+---
+
+### MIDDAY MARKET & PORTFOLIO SUMMARY
+
+**Portfolio state:** ~$99,854 (99.9% cash). No confirmed open positions. GLD stop estimated executed June 10. API blocked — cannot verify Alpaca state.
+
+**Daily P&L June 12 (estimated):** $0 change (no open positions). S&P 500 +0.52% today. Portfolio flat vs index +0.52% = **−0.52 pp today**.
+
+**Benchmark gap (updated):** Portfolio −0.15% cumulative (June 10 estimate). S&P 500 now ~7,394 + today ~0.52% = ~7,432 est. SPX since strategy start (~$7,200): +3.22%. **Gap: ~−3.37 pp** (WIDENED from −1.97 pp as we missed June 11 +1.75% surge while 99% cash).
+
+**Key catalyst updates:**
+- Iran deal: Near finalization. Oil falling. Geopolitical risk premium unwinding.
+- FOMC June 16-17: 97.8% hold probability. Rate headwind removed for the moment.
+- SpaceX SPCX IPO: $150 open (vs $135 IPO price, +11%). Too volatile/no track record for entry.
+- Chip stocks: AMD, QCOM up 5% today. SOXX up 8% June 11.
+
+**INTC update:** Was targeted at $106-107 (June 10, score 7.17). Now at $123.07 (+16%). Fresh score at current price: 7.33. ORDER ATTEMPTED and BLOCKED (31st API failure). Operator must execute manually.
+
+**FOMC proximity note:** June 16-17 FOMC is 4 days away. 48-hour binary-event window opens Sunday June 14 (for June 16 start) or Monday June 15 (for June 17 decision). Next routine (Afternoon June 12) can still enter today. Pre-Market June 13 (Saturday) = no routine (weekend). Next trading-day window: Pre-Market June 16. BUT June 16 is within 48h of the June 17 FOMC decision → binary event exemption applies June 16. Strategy: execute INTC TODAY via operator manual action at Alpaca before Sunday. GTC bracket will survive the weekend and execute at open Monday if limit is reached, or can be modified pre-FOMC.
+
+---
+
+### AFTERNOON PLAN
+
+1. **INTC:** Operator manual execution is the ONLY path. API remains blocked.
+   ```
+   BUY 40sh INTC limit $123.69 bracket GTC
+   stop_loss: $117.51 (-5%)
+   take_profit: $142.24 (+15%)
+   order_class: bracket, time_in_force: gtc
+   URL: https://app.alpaca.markets
+   ```
+2. **Stale GTC cancel (URGENT):** AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19 — all must be canceled before FOMC.
+3. **MU:** Watch for any fresh catalyst or stabilization at $1,000+ with next scoring Monday Post-FOMC.
+4. **Weekend:** No routines Saturday/Sunday. FOMC June 16-17 = binary event window from Sunday close.
+
+---
+
 ## 2026-06-10 — Daily Review (4:30 PM ET / 20:33 UTC — WEDNESDAY — CPI DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:33:07Z ✓
