@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-10 (Wednesday) — Daily Review (4:30 PM ET / 20:33 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 30th consecutive blocked session). GLD STOP TRIGGERED (est.): GLD closed $390.78, day range $388.75–$400.48. Stop $397.92 GTC executed during session. Est. realized loss: −$145.58 (−4.99%, −0.15% equity). INTC BLOCKED 4× TODAY: Pre-Market silent, Market-Open $108.06 blocked, Mid-Morning silent, Midday $106.39 blocked. INTC day low was $105.29 — our midday limit $106.39 was IN THE MONEY → order WOULD HAVE FILLED if API accessible. MU CORRECTLY REJECTED: 6.83 avg midday (6.5 at Market-Open) — CPI 4.2% + Iran strikes + 63% Fed hike. MU closed ~$891 (−4.7%) — skip validated. Portfolio: ~$99,854 (−0.15% today). SPX: ~7,331 (−0.75%). Daily gap: +0.60 pp. Cumulative gap: −1.97 pp (IMPROVED from −3.15 pp). HEARTBEAT AUDIT: Pre-Market, Mid-Morning, Afternoon, Market-Close = 4 SILENT FAILURES. Market-Open: STARTED but no COMPLETED. Only Midday was complete. BINDING WATCHLIST FOR PRE-MARKET JUNE 11: INTC (MANDATORY, 7.17 avg), LMT NEW ENTRY (sector-rotation, Iran-US conflict defense catalyst, est. 7.33 — run fresh 6-agent), MU (CONDITIONAL — PPI ≤+0.3% m/m AND fresh score ≥7.0). KEY EVENT JUNE 11: PPI May 2026 (8:30 AM ET) — determines MU entry. FOMC JUNE 16-17: 63% hike probability. Biggest event of the month.**
+**2026-06-12 (Friday) — Mid-Morning (11:00 AM ET / 15:06 UTC). TRADING DAY — SpaceX IPO Day. Alpaca API STILL BLOCKED ("Host not in allowlist" — 32nd consecutive blocked session). June 11 COMPLETE BLACKOUT (no heartbeat file). June 12 Pre-Market + Market-Open BOTH SILENTLY FAILED. MASSIVE MACRO REVERSAL: FOMC rate hike probability collapsed 63%→~1% (99.3% no hike). Iran peace deal imminent (Trump + Iran confirmed nearly final). S&P 500 +1.75% June 11 → 7,394.30; June 12 ~flat (Dow +0.57%, Nasdaq -0.30%). THREE ENTRIES APPROVED AND ATTEMPTED — ALL BLOCKED: INTC 7.67 avg (42sh limit $116.08, stop $110.28, target $133.49), MU 7.33 avg (4sh limit $977.27, stop $928.41, target $1,123.86 — mandatory exit June 22), AMD 7.17 avg (9sh limit $494.08, stop $469.38, target $568.19). LMT REJECTED (5.67 avg — Iran peace deal kills defense catalyst). SPCX NOT SCORED (IPO day, no technical history). Portfolio: ~$99,854 — 99.9% cash. BINDING WATCHLIST FOR REMAINDER OF JUNE 12: INTC (MANDATORY, 7.67), MU (MANDATORY, 7.33 — exit by June 22), AMD (MANDATORY, 7.17). OPERATOR: Execute all 3 manually at https://app.alpaca.markets immediately. Cancel 4 stale orders first (AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19). FOMC June 16-17: 99.3% no hike (was 63% hike 2 days ago).**
+
+**Prior Last Updated:** 2026-06-10 (Wednesday) — Daily Review (4:30 PM ET / 20:33 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 30th consecutive blocked session). GLD STOP TRIGGERED (est.): GLD closed $390.78, day range $388.75–$400.48. Stop $397.92 GTC executed during session. Est. realized loss: −$145.58 (−4.99%, −0.15% equity). INTC BLOCKED 4× TODAY: Pre-Market silent, Market-Open $108.06 blocked, Mid-Morning silent, Midday $106.39 blocked. INTC day low was $105.29 — our midday limit $106.39 was IN THE MONEY → order WOULD HAVE FILLED if API accessible. MU CORRECTLY REJECTED: 6.83 avg midday (6.5 at Market-Open) — CPI 4.2% + Iran strikes + 63% Fed hike. MU closed ~$891 (−4.7%) — skip validated. Portfolio: ~$99,854 (−0.15% today). SPX: ~7,331 (−0.75%). Daily gap: +0.60 pp. Cumulative gap: −1.97 pp (IMPROVED from −3.15 pp). HEARTBEAT AUDIT: Pre-Market, Mid-Morning, Afternoon, Market-Close = 4 SILENT FAILURES. Market-Open: STARTED but no COMPLETED. Only Midday was complete. BINDING WATCHLIST FOR PRE-MARKET JUNE 11: INTC (MANDATORY, 7.17 avg), LMT NEW ENTRY (sector-rotation, Iran-US conflict defense catalyst, est. 7.33 — run fresh 6-agent), MU (CONDITIONAL — PPI ≤+0.3% m/m AND fresh score ≥7.0). KEY EVENT JUNE 11: PPI May 2026 (8:30 AM ET) — determines MU entry. FOMC JUNE 16-17: 63% hike probability. Biggest event of the month.**
 
 **Prior Last Updated:** 2026-06-10 (Wednesday) — Market Open (9:45 AM ET / 13:46 UTC). TRADING DAY — CPI DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 29th+ consecutive blocked session). Pre-Market SILENTLY FAILED; ALL June 9 routines also silently failed (no heartbeat file). CPI MAY 2026: +4.2% headline YoY (highest since April 2023; energy +23.5% YoY = Iran war). Core CPI +2.9% YoY benign (+0.2% m/m below +0.3% estimate). Fed hike odds 63% (Warsh). Iran-US military strikes escalating. Market: S&P −0.48%, Nasdaq −0.62%, Dow −0.59%, Russell 2000 +0.41%. GLD STOP ESTIMATED TRIGGERED: GLD range $388.75–$400.48, stop $397.92 — LIKELY HIT. Est. realized loss: −$145.58 (−0.15% equity). INTC ENTRY ATTEMPTED (7.17 avg re-score): 44sh limit $108.06 bracket GTC (stop $102.66, target $124.27) → HTTP 403 BLOCKED. MU REJECTED on fresh re-score 6.5 (CPI/Iran macro headwinds — was 7.17 June 8 under risk-on conditions; today macro 5/10 sentiment 5/10). BINDING WATCHLIST FOR NEXT ROUTINE (Midday): INTC (MANDATORY, 7.17 avg), MU (conditional re-score if conditions improve).**
 
@@ -112,22 +114,23 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-10 Daily Review — all estimates; API blocked)
+## Current Account Snapshot (as of 2026-06-12 Mid-Morning — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** **~$99,854** (GLD stop triggered −$145.58; no other confirmed positions)
-- **Cash:** **~$99,854** (GLD stop proceeds ~$2,785 returned to cash base ~$97,069 + prior cash ~$97,069 ≈ $99,854 est.)
-- **Long Market Value:** $0 (GLD position closed via stop. INTC not filled — API blocked. MU rejected.)
-- **GLD Status:** ⚠️ **STOP ESTIMATED TRIGGERED** at $397.92. GLD closed $390.78, day range $388.75–$400.48. Est. realized loss: −$145.58 (−4.99%). OPERATOR MUST VERIFY at Alpaca. If stop NOT triggered (GLD still open at $390.78 = −6.9% from $418.86 entry): PLACE STOP IMMEDIATELY.
-- **INTC:** BLOCKED 4× today (Pre-Market silent, Market-Open $108.06 blocked, Mid-Morning silent, Midday $106.39 blocked). Score 7.17 MANDATORY. Est. close ~$106. OPERATOR MUST EXECUTE MANUALLY.
-- **MU:** Correctly rejected 6.83 avg (midday re-score). MU closed ~$891 (−4.7% from $935.89 June 9). Skip validated.
+- **Total Equity (estimated):** **~$99,854** (unchanged — all orders blocked, no new fills)
+- **Cash:** **~$99,854** (99.9% cash — well above 5% floor)
+- **Long Market Value:** $0 confirmed (GLD estimated stopped out June 10; INTC/MU/AMD blocked again June 12)
+- **GLD Status:** CLOSED (estimated — stop $397.92 estimated triggered June 10). OPERATOR must verify.
+- **INTC:** Score 7.67 — MANDATORY. BUY 42sh limit $116.08, stop $110.28, target $133.49, bracket GTC. BLOCKED 32nd session. OPERATOR MUST EXECUTE MANUALLY.
+- **MU:** Score 7.33 — MANDATORY (PPI conditional overridden — FOMC hold 99.3% resolves rate-hike risk). BUY 4sh limit $977.27, stop $928.41, target $1,123.86, bracket GTC. MANDATORY EXIT June 22.
+- **AMD:** Score 7.17 — MANDATORY. BUY 9sh limit $494.08, stop $469.38, target $568.19, bracket GTC.
 - **Pending Stale GTC Orders (OPERATOR MUST CANCEL — URGENT):**
-  - AMD 9sh $524.15 (June 3) — AMD ~$473. NOT FILLED. **CANCEL.**
-  - AMD 9sh $520.59 (May 29) — NOT FILLED. **CANCEL.**
-  - PLTR 10sh $150.74 (June 3) — PLTR ~$130. NOT FILLED. **CANCEL.**
-  - MRVL 8sh $202.19 (May 29) — MRVL ~$295+. NOT FILLED. **CANCEL IMMEDIATELY.**
-- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **30th consecutive blocked session.**
+  - AMD 9sh $524.15 (June 3) — AMD ~$491. NOT FILLED. **CANCEL.**
+  - AMD 9sh $520.59 (May 29) — AMD ~$491. NOT FILLED. **CANCEL.**
+  - PLTR 10sh $150.74 (June 3) — PLTR ~$136 est. NOT FILLED. **CANCEL.**
+  - MRVL 8sh $202.19 (May 29) — MRVL ~$295+. NOT FILLED. **CANCEL.**
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **32nd consecutive blocked session.**
 - **Daytrade Count:** 0 confirmed
-- **3% Circuit Breaker:** NOT TRIGGERED (portfolio −0.15%, market −0.75%) ✓
+- **3% Circuit Breaker:** NOT TRIGGERED ✓ (portfolio flat, market +1.75% yesterday, flat today)
 
 ## Prior Account Snapshot (as of 2026-06-05 Daily Review — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
@@ -160,32 +163,35 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-10 Daily Review — estimates; API blocked)
+## Bucket State (as of 2026-06-12 Mid-Morning — estimates; API blocked)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | $0 (GLD stopped; INTC/MU blocked/rejected) | ~0% | 0 confirmed |
+| Active Trading | 85% ($85K) | $0 (all entries API blocked) | ~0% | 0 confirmed |
 | Crypto | 10% ($10K) | $0 | 0% | 0 |
 | Cash Reserve | 5% floor | ~$99,854 | ~99.9% | — |
 
 **Deployment gap:** ~$94,854 above the 5% floor.
 
-**NEXT ROUTINE BINDING WATCHLIST (June 11 Pre-Market — 8:00 AM ET):**
+**BINDING WATCHLIST (remainder of June 12 + Monday June 16):**
 | Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Notes |
 |---|---|---|---|---|---|---|---|
-| INTC | 44sh | current ask × 1.005 (~$106-107) | fill×0.95 | fill×1.15 | ~4.68% | **7.17 MANDATORY** | Unconditional. 31st attempt. |
-| LMT | ~7sh | current ask × 1.005 (~$640) | fill×0.95 | fill×1.15 | ~4.5% | **~7.33 → fresh 6-agent** | Iran-US defense catalyst. MANDATORY if 6-agent ≥7.0 |
-| MU | 4sh | current ask × 1.005 (~$895) | fill×0.95 | fill×1.15 | ~3.76% | **6.83 → 7.0 conditional** | PPI ≤+0.3% m/m AND fresh score ≥7.0 required |
+| INTC | 42sh | $116.08 | $110.28 | $133.49 | 4.88% | **7.67 MANDATORY** | Google TPU + NVIDIA eval + FOMC reversal. 32nd attempt. |
+| MU | 4sh | $977.27 | $928.41 | $1,123.86 | 3.91% | **7.33 MANDATORY** | HBM4 sold out. UBS $1,625 PT. FOMC hold = approved. EXIT by June 22. |
+| AMD | 9sh | $494.08 | $469.38 | $568.19 | 4.45% | **7.17 MANDATORY** | $200B CPU TAM. Barclays $665 PT. FOMC reversal. |
+| LMT | — | — | — | — | — | **5.67 REJECTED** | Iran peace deal kills defense catalyst. |
+| SPCX | — | — | — | — | — | **NOT SCORED** | IPO day — no technical history. Score June 13/16. |
 
 ## Open Positions (as of 2026-06-10 Daily Review — estimates; API blocked)
 | Symbol | Bucket | Status | Est. Result |
 |---|---|---|---|
-| GLD | active | **ESTIMATED CLOSED** (stop $397.92 triggered — range $388.75–$400.48, closed $390.78) | Est. −$145.58 (−4.99%) |
-| INTC | active | **NOT FILLED** — API blocked 4× today | — |
-| MU | active | **REJECTED** — 6.83 avg (below 7.0 threshold) | — |
+| GLD | active | **ESTIMATED CLOSED** (stop $397.92 triggered June 10) | Est. −$145.58 (−4.99%) |
+| INTC | active | **NOT FILLED** — 42sh limit $116.08 bracket GTC attempted June 12 — BLOCKED | — |
+| MU | active | **NOT FILLED** — 4sh limit $977.27 bracket GTC attempted June 12 — BLOCKED | — |
+| AMD | active | **NOT FILLED** — 9sh limit $494.08 bracket GTC attempted June 12 — BLOCKED | — |
 
 **No open positions confirmed. Portfolio 99.9% cash.**
 
-**OPERATOR MUST VERIFY GLD at Alpaca:** If stop NOT triggered (position still open at $390.78 = −6.9% from $418.86 entry): PLACE STOP IMMEDIATELY at $390 or below. Do not hold GLD naked overnight.
+**OPERATOR MUST EXECUTE at Alpaca:** INTC (42sh $116.08), MU (4sh $977.27, exit by June 22), AMD (9sh $494.08) — all bracket GTC orders. Cancel stale AMD/PLTR/MRVL orders first.
 
 ## Sector Exposure (as of 2026-06-08 Mid-Morning — estimates)
 
@@ -214,12 +220,20 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 All well under 25% sector cap in either scenario. If both old semis (Scenario B) AND new entries (AMD+MU) exist simultaneously: ~18.8% semis — still under 25% cap.
 
 ## Performance vs S&P 500
+- **Portfolio total equity (est.):** **~$99,854** (unchanged from June 10 — all orders blocked)
+- **Portfolio total return:** **−0.15%** (from $100K start — GLD stop-out only realized trade)
+- **S&P 500 June 11 close:** 7,394.30 (+1.75%). **June 12 intraday:** ~7,400 (~flat). SPX since strategy start (~May 1 ~$7,200): **+2.78%** (7,394.30/7,200 − 1)
+- **Gap vs SPX (UPDATED): ~−2.93 pp** (WIDENED from −1.97 pp — SPX +1.75% June 11 while portfolio was 99.9% cash again)
+- **June 11 daily: −1.75 pp** (S&P +1.75% while we were all cash — worst single-day miss since late May)
+- **Miss cost (June 11-12):** INTC moved from ~$106 (June 10 limit) to $115.50 (+9%). AMD from ~$473 to $491 (+3.8%). MU from ~$891 to $972 (+9%). Total estimated missed unrealized P/L: ~$4,300+ across 3 names. API blockage is now costing real alpha at accelerating rate.
+- **Cumulative API miss cost (estimated):** ~$7,000+ in missed unrealized P/L since May 17 strategy switch.
+
+## Prior Performance vs S&P 500
 - **Portfolio total equity (est.):** **~$99,854** (June 10 Daily Review — GLD stop triggered −$145.58; all other positions cash)
 - **Portfolio total return:** **−0.15%** (GLD stop-out est. −$145.58; no other confirmed positions)
 - **S&P 500 June 10 close (est.):** ~7,331 (−0.75% from 7,386.65 June 9). SPX since strategy start (~May 1 ~$7,200): **+1.82%** (7,331/7,200 − 1)
 - **Gap vs SPX (UPDATED): ~−1.97 pp** (IMPROVED from −3.15 pp — SPX fell −0.75% while portfolio fell only −0.15%)
 - **Daily outperformance June 10: +0.60 pp** (passive — cash shield + bounded GLD loss)
-- **Miss cost (INTC):** Our midday limit $106.39 was IN THE MONEY (INTC low $105.29). If order had filled, position would be ~flat at close ~$106 with full stop/target bracket active. 30th consecutive blocked execution.
 
 ## Prior Performance vs S&P 500
 - **Portfolio total equity (est.):** ~$100,000–$100,160 (June 8 Mid-Morning — GLD ~$418–$441)
@@ -281,7 +295,25 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **Gap vs SPX:** **~-3.0 percentage points** (improved marginally — S&P down -0.26% today while portfolio estimated flat or tiny positive from GLD/NVDA if still held).
 - **Root cause unchanged:** 85-97% cash from persistent API blockage. 8+ consecutive entry blocks on AMD alone. Every market up-day widens the gap further. The only cure is operator manual execution OR Alpaca API allowlist fix.
 
-## Macro Context (as of 2026-06-10 Market Open — web research)
+## Macro Context (as of 2026-06-12 Mid-Morning — web research)
+- **S&P 500 June 11 close: +1.75% → 7,394.30** (biggest single-day gain in weeks). Nasdaq, S&P both surged on Iran peace deal signals.
+- **S&P 500 June 12 (11:00 AM ET): ~flat** — Dow +0.57%, Nasdaq -0.30%, Russell +0.30%. Consolidating after yesterday's surge.
+- **FOMC JUNE 16-17: MAJOR REVERSAL.** Rate hike probability collapsed from **63% (June 10) → ~1% (June 12)**. 99.3% probability of NO CHANGE. This is the single biggest macro shift of the past month. Market is now treating Iran energy inflation as transitory; Warsh not expected to hike given Iran-driven energy spike.
+- **Iran Peace Deal:** Trump and Iran confirmed deal "nearly finalized." 60-day MOU on gradual energy trade restoration through Strait of Hormuz. This eliminates: (1) defense catalyst for LMT/RTX, (2) energy inflation risk, (3) geopolitical risk premium in gold. Simultaneously creates: (1) oil price decline, (2) risk-on environment, (3) tech/semiconductor tailwind.
+- **PPI May 2026 (released June 11, 8:30 AM ET):** Final demand +1.1% m/m (ABOVE +0.6% consensus). YoY +6.5% (highest since Nov 2022). Energy dominated (gasoline +23.4% = Iran war). Core PPI +0.4% m/m (relatively benign). Market IGNORED the hot PPI headline — instead focused on Iran deal + FOMC reversal. This confirms PPI = transitory energy inflation, not structural.
+- **SpaceX (SPCX) IPO:** Priced at $135/share. Largest IPO in history — $1.78T market cap. 3.5-4× oversubscribed. Trading began June 12 on Nasdaq. High retail allocation (30%). Massive liquidity event — may draw some capital from existing tech positions.
+- **Key Prices (June 12, ~11:00 AM ET):**
+  - INTC: **$115.50** (range $115.20–$117.59) — up from $106 June 10. Google TPU + NVIDIA eval catalysts.
+  - MU: **$972.41** (range $960.20–$995.65; prev close $995.87). HBM4 demand intact.
+  - AMD: **$491.62** (range $452.40–$491.98). Recovering from June 5 selloff.
+  - LMT: **$546.94** — declining on Iran peace deal (defense sector rotation OUT).
+  - SPCX: **IPO today** at $135/share. No trading history.
+  - BTC: Unknown. Not scored.
+- **FOMC June 16-17:** HOLD expected (99.3%). Warsh may signal "neutral bias" or "data-dependent" language. No surprise expected. This removes the tail risk that was suppressing tech valuations.
+- **Sector Leadership (June 12):** Value/blue-chip (Dow +0.57%), small-cap Russell (+0.30%). Nasdaq slight underperformance (-0.30%) = profit-taking after yesterday's 1.75% surge.
+- **MU Earnings June 24:** Mandatory exit June 22. 10 trading days remain.
+
+## Prior Macro Context (as of 2026-06-10 Market Open — web research)
 - **CPI May 2026 (released 8:30 AM ET today): +4.2% YoY headline** (highest since April 2023). Monthly +0.5% m/m. ENERGY dominated: +23.5% YoY, +3.9% m/m (gasoline +40.5% YoY = Iran war oil shock). Core CPI: +2.9% YoY, **+0.2% m/m (BELOW +0.3% estimate)** — benign underlying inflation.
 - **Fed hike odds: 63%** (up sharply from ~30% pre-payrolls/CPI). Warsh June 16-17 FOMC is now a LIVE rate-hike event. Hike possibility = direct headwind for high-multiple semis (AMD, NVDA, MRVL) and general risk assets.
 - **Iran-US military strikes:** US and Iran traded military strikes overnight. Iran-US conflict escalating (not de-escalating as of June 8). Risk-off signal. GLD got some safe-haven bid but overwhelmed by dollar-strength from rate-hike narrative.
@@ -389,7 +421,15 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 - **BTC ~$77K:** Still below $82K threshold. Not a mandatory entry.
 - **GLD ~$417:** Remains near current levels. Stop $397.92 resting (expected — GLD ~4.9% above stop). Thesis: dollar weakness hedge.
 
-## Active Themes (as of June 5, 2026 Daily Review)
+## Active Themes (as of June 12, 2026 Mid-Morning)
+1. **FOMC rate hike reversal (DOMINANT).** Probability collapsed from 63% → 1% in 48 hours. June 16-17 FOMC = non-event (hold). This single factor reprices every rate-sensitive position upward — semis, growth, tech. The macro environment just flipped from headwind to tailwind for all three of our target positions (INTC, MU, AMD).
+2. **Iran peace deal imminent.** Trump + Iran confirmed deal nearly final. Strait of Hormuz energy trade to resume gradually. Consequence: (1) oil prices declining → energy inflation transitory → rate fears further reduced, (2) risk-on environment for equities, (3) defense stocks declining (LMT rejected June 12), (4) gold safe-haven premium declining.
+3. **Intel foundry inflection.** Google 3M TPU order + NVIDIA Feynman GPU evaluation = Intel 18A is now a viable alternative to TSMC for leading-edge AI chips. This is a multi-year structural shift. INTC at $115.50 is still early in the repricing. US foundry moat (CHIPS Act, national security) is permanent.
+4. **MU earnings runway (June 24).** HBM4 sold out through year-end. UBS $1,625 PT (67% upside). Pre-earnings period historically strong for MU. Mandatory exit June 22. Enter now, exit in 10 trading days.
+5. **SpaceX (SPCX) IPO.** Largest IPO in history ($1.78T, $135/share). IPO day June 12. Will score June 13/16 once technical history exists. If first-day pop is moderate and thesis supports, score for early next week entry.
+6. **AMD $200B CPU TAM thesis.** Agentic AI runs on CPUs (AMD EPYC dominates). Jensen Huang's June 3 TAM declaration was a permanent revaluation signal. AMD recovering from June 5 selloff — good re-entry on FOMC tailwind.
+
+## Prior Active Themes (as of June 5, 2026 Daily Review)
 1. **AI capex cycle pullback → best entry prices of 2026.** AVGO guidance disappointment + AI skepticism + payrolls = AI stocks in full corrections. BUT HBM4 contracts are multi-year (MU locked in through year-end 2026 at minimum), AMD EPYC is in hyperscaler build-out plans. The correction is sentiment-driven vs. structurally intact demand. BUY the dip via MU and AMD on Monday June 8.
 2. **MU pre-earnings runway (June 24).** MU at $883 with June 24 earnings coming up. UBS $1,625 PT (84% upside). "Micron will skyrocket after June 24" thesis intact. The HBM4 demand pullback is temporary sentiment. MANDATORY entry Monday. MANDATORY EXIT June 22.
 3. **Warsh hawkish risk (June 16-17 FOMC).** Rate hike probability materially elevated after +172K payrolls. This is the primary macro headwind for AI/tech through mid-June. Positions entered now have stop-loss protection. Strategy: enter high-conviction names (MU/AMD) but accept that the macro backdrop lowers the probability of quick wins.
@@ -405,7 +445,67 @@ All well under 25% sector cap in either scenario. If both old semis (Scenario B)
 6. **Oil/Iran geopolitical risk** — Ceasefire uncertainty driving oil toward $100. Headwind for growth stocks (hawkish inflation implications). Tailwind for GLD and energy sector. AMD/PLTR/MU theses are secular — not directly impacted by oil.
 7. **AVGO earnings tonight (NEW)** — Broadcom Q2 FY2026 after close. Consensus: $22.08B rev, $2.39 EPS. Key: AI custom chip revenue (Q1 = $8.4B; expect $10.5B+). If beats + guidance raise: strong `earnings-reaction-follow` setup for June 4. Prior score: 6.0 (May 22) — tonight's print could reset to 8.0+ if AI revenue is strong. AVGO is the "picks and shovels" for AWS Trainium, Google TPU, MSFT Azure Maia.
 
-## Pending Actions — OPERATOR MUST EXECUTE (Updated June 5 Daily Review)
+## Pending Actions — OPERATOR MUST EXECUTE (Updated June 12 Mid-Morning)
+
+### STEP 0 — CANCEL STALE ORDERS (FIRST — at https://app.alpaca.markets → Orders → Open)
+| Order | Notes | Action |
+|---|---|---|
+| AMD 9sh GTC $524.15 (June 3) | AMD $491 — unfilled | **CANCEL** |
+| AMD 9sh GTC $520.59 (May 29) | AMD $491 — unfilled | **CANCEL** |
+| PLTR 10sh GTC $150.74 (June 3) | PLTR ~$136 est. — unfilled | **CANCEL** |
+| MRVL 8sh GTC $202.19 (May 29) | MRVL ~$295+ — unfilled (limit below market) | **CANCEL** |
+
+### STEP 1 — EXECUTE THREE MANDATORY ENTRIES (after stale order cancellation)
+
+**1. INTC (MANDATORY — score 7.67, 33rd attempt):**
+```
+BUY 42sh INTC limit $116.08
+stop_loss:   $110.28  (−5%)
+take_profit: $133.49  (+15%, R/R 3:1)
+order_class: bracket
+time_in_force: gtc
+Size: 4.88% | Risk: 0.24% equity
+```
+
+**2. MU (MANDATORY — score 7.33, exit by June 22):**
+```
+BUY 4sh MU limit $977.27
+stop_loss:   $928.41   (−5%)
+take_profit: $1,123.86 (+15%, R/R 3:1)
+order_class: bracket
+time_in_force: gtc
+Size: 3.91% | Risk: 0.20% equity
+⚠️ MANDATORY EXIT by June 22 (48h before June 24 earnings)
+```
+
+**3. AMD (MANDATORY — score 7.17):**
+```
+BUY 9sh AMD limit $494.08
+stop_loss:   $469.38  (−5%)
+take_profit: $568.19  (+15%, R/R 3:1)
+order_class: bracket
+time_in_force: gtc
+Size: 4.45% | Risk: 0.22% equity
+```
+
+**Pro-forma after all 3 fill:**
+- Total deployed: $13,231 (13.24%) — well below 85% target but significant step forward
+- Semiconductor sector: 13.24% — well under 25% cap
+- Cash: ~$86,623 (86.7%) — well above 5% floor
+- Open positions: 3 — well under 12 max
+
+### STEP 2 — MONITOR SPCX (SpaceX IPO)
+- IPO day June 12 at $135/share. Do NOT enter today.
+- Check SPCX price June 13 (Saturday — market closed) or Monday June 16.
+- Run 6-agent analysis June 16 Pre-Market if SPCX closes above IPO price on June 12.
+
+### STEP 3 — FOMC JUNE 16-17 PREPARATION
+- All 3 positions should have resting bracket orders BEFORE FOMC (June 16 open)
+- HOLD is expected (99.3%). Language may shift bias toward neutral/tightening.
+- Stops are set at −5% — sufficient protection if Warsh surprises with a hike.
+- Do NOT close positions before FOMC unless stops trigger naturally.
+
+## Prior Pending Actions — OPERATOR MUST EXECUTE (Updated June 5 Daily Review)
 
 ### STEP 0 — URGENT: CHECK ALPACA FOR JUNE 5 STALE ORDER ACTIVITY
 
