@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-12T16:45:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-12T19:42:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 3.22,
-    "benchmark_gap_pct": -3.37,
+    "spx_return_pct": 3.28,
+    "benchmark_gap_pct": -3.43,
     "open_positions_count": 0,
-    "note": "June 12 Midday (12:30 PM ET). IRAN DEAL DAY. API BLOCKED 31st session. June 11 FULL BLACKOUT — missed SOXX +8%, INTC +7%, MU +11.66%. June 12 Pre-Market/Market-Open/Mid-Morning all silently failed. FOMC hike prob collapsed 63%→2.2%. INTC fresh score 7.33 (APPROVED at $123.69) — ORDER BLOCKED 31st. LMT rejected 5.5 (ceasefire inverts thesis). MU rejected 6.67 (PPI +1.1% failed condition). OPERATOR: (1) Execute INTC 40sh $123.69 bracket GTC TODAY before FOMC window, (2) Cancel stale AMD/PLTR/MRVL GTC orders."
+    "note": "June 12 Market-Close (3:30 PM ET). IRAN DEAL DAY — EOD. API BLOCKED 32nd session. All 5 intraday routines failed today (Pre-Market, Market-Open, Mid-Morning, Afternoon) + June 11 full blackout. MOC INTC 40sh attempted at 3:36 PM ET → HTTP 403 (32nd block). NO positions. Portfolio flat $99,854. SPX EOD est. +0.61% (7,438). Daily gap: -0.61pp. Cumulative gap: -3.43pp. FOMC BINARY EVENT WINDOW OPENS SUNDAY JUNE 14. Post-FOMC first clean entry June 18. OPERATOR: (1) Cancel stale AMD/PLTR/MRVL GTC orders NOW, (2) INTC 40sh limit if possible today/Saturday AH (20sh max AH), (3) Fresh 6-agent on INTC/MU/AMD/MRVL June 18 Pre-Market."
   },
   "positions": [
     {
@@ -73,11 +73,43 @@
     "midday": {
       "status": "completed",
       "last_run": "2026-06-12T16:45:00Z",
-      "next_run": "2026-06-12T18:00:00Z",
-      "last_summary": "June 11 full blackout + June 12 Pre-Market/Market-Open/Mid-Morning violations logged. INTC fresh 7.33 (APPROVED at $123.69) blocked 31st time. LMT rejected 5.5 (ceasefire). MU rejected 6.67 (PPI). Operator MUST execute INTC before Sunday FOMC window."
+      "next_run": "2026-06-16T16:30:00Z",
+      "last_summary": "June 11 full blackout + June 12 Pre-Market/Market-Open/Mid-Morning violations logged. INTC fresh 7.33 (APPROVED at $123.69) blocked 31st time. LMT rejected 5.5 (ceasefire). MU rejected 6.67 (PPI)."
+    },
+    "market-close": {
+      "status": "completed",
+      "last_run": "2026-06-12T19:42:00Z",
+      "next_run": "2026-06-16T19:30:00Z",
+      "last_summary": "EOD June 12. Afternoon violation logged. MOC INTC 40sh attempted → HTTP 403 (32nd block). No day trades to close. No open positions. P&L: $0. SPX est. +0.61% (7,438). Gap: -3.43pp. FOMC window opens Sun June 14. Post-FOMC watchlist: INTC/MU/AMD/MRVL re-score June 18."
     }
   },
   "trades": [
+    {
+      "ts": "2026-06-12T19:36:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7,
+      "agent_scores": {"fundamentals": 6, "technical": 6, "sentiment": 8, "macro": 8, "risk": 8, "tech_analyst": 8},
+      "agent_average": 7.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC ATTEMPTED 3:36 PM ET → HTTP 403 BLOCKED (32nd consecutive). 40sh market time_in_force:cls. Score 7.33 from Midday analysis. FOMC window opens Sun June 14. OPERATOR: execute INTC today/Saturday AH or June 18 post-FOMC."
+    },
+    {
+      "ts": "2026-06-12T18:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Afternoon routine (2:00 PM ET June 12) SILENTLY FAILED. 4th predecessor failure today. Market-Close is catch-up."
+    },
     {
       "ts": "2026-06-12T16:33:00Z",
       "symbol": "INTC",
@@ -604,6 +636,34 @@
     }
   ],
   "history": [
+    {
+      "date": "2026-06-12",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 3.28,
+      "daily_pnl_pct": 0.0,
+      "note": "Market-Close EOD. API blocked 32nd session. ALL 5 intraday routines failed + June 11 full blackout. INTC MOC blocked. No fills. Portfolio flat. SPX est. +0.61% (7,438 from June 11 close 7,394). Cumulative gap: -3.43pp. FOMC window opens Sunday June 14. Post-FOMC first clean entry June 18."
+    },
+    {
+      "date": "2026-06-10",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 1.82,
+      "daily_pnl_pct": -0.15,
+      "note": "Daily Review. CPI +4.2% YoY (Iran war oil). GLD stop $397.92 ESTIMATED TRIGGERED (-$145.58). INTC blocked 30th. MU rejected 6.83 (Macro 5, Sentiment 6). SPX -0.75% (7,331). Gap: -1.97pp."
+    },
+    {
+      "date": "2026-06-08",
+      "portfolio_return_pct": 0.0,
+      "spx_return_pct": 3.5,
+      "daily_pnl_pct": 0.0,
+      "note": "Mid-Morning catch-up. API blocked 28th. INTC 8.0 avg (all 6 ≥7) blocked. MU 7.17 blocked. AMD rejected 6.0 (relative weakness). SPX +0.93% (7,452 est.)."
+    },
+    {
+      "date": "2026-06-05",
+      "portfolio_return_pct": 0.16,
+      "spx_return_pct": 2.55,
+      "daily_pnl_pct": 0.02,
+      "note": "Daily Review. Major selloff: Nasdaq -4.18%, SPX -2.64% (7,383). Semis crushed (AMD -5.6%, MU -19% from ATH). GLD +0.8% — hedge working. Portfolio +0.023% (cash shield). Gap improved to -2.39pp."
+    },
     {
       "date": "2026-06-04",
       "portfolio_return_pct": 0.14,
