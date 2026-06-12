@@ -1,21 +1,21 @@
 {
-  "last_updated": "2026-06-10T16:34:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-12T13:55:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 99853,
+    "total_equity": 99854,
     "starting_equity": 100000.0,
-    "cash": 99785,
+    "cash": 99854,
     "cash_pct": 99.9,
-    "buying_power": 199570,
+    "buying_power": 199708,
     "long_market_value": 0,
     "short_market_value": 0.0,
-    "daily_pnl": -146,
-    "daily_pnl_pct": -0.15,
+    "daily_pnl": 0,
+    "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 3.0,
-    "benchmark_gap_pct": -3.15,
+    "spx_return_pct": 3.24,
+    "benchmark_gap_pct": -3.39,
     "open_positions_count": 0,
-    "note": "June 10 Midday (12:30 PM ET). CPI DAY. API BLOCKED 30th session. Mid-Morning SILENTLY FAILED (violation logged). Market recovering: S&P -0.37% (from -0.48%), Nasdaq -0.42% (from -0.62%). 62.7% US issues advancing = rotation, not panic. INTC midday price $105.86 (range $105.29-$111.50). INTC 44sh limit $106.39 bracket GTC BLOCKED (7.17 score, MANDATORY). MU midday re-score 6.83 (improved from 6.5) but still REJECTED (macro 5/10 + sentiment 6/10 drag avg below 7.0). MU $935.89 (range $854-$989, intraday hammer recovery). XLE SKIP — oil declining to $89.71, flat sector. OPERATOR: (1) Verify GLD stop at Alpaca, (2) Execute INTC 44sh $106.39 bracket GTC, (3) Cancel stale AMD/PLTR/MRVL GTC orders."
+    "note": "June 12 Market Open (9:45 AM ET). API BLOCKED 31st session. June 11 ALL ROUTINES SILENT (PPI day). INTC 7.33 avg (ALL 6 AGENTS AT 7+) — APPROVED. Order attempted: 42sh limit $117.07 bracket GTC stop $111.22 target $134.63 → HTTP 403 BLOCKED. INTC catalysts: BofA double-upgrade (UP→Buy PT $135), Google confirmed 3M+ TPU 2028, NVIDIA backup mfr. FOMC hike probability collapsed to 0.6% (from 63%). Iran peace deal imminent. MU REJECTED: PPI +1.1% m/m (conditional not met), score 6.33. LMT REJECTED: Iran peace deal removes catalyst, score 6.17. OPERATOR: (1) Execute INTC 42sh $117.07 bracket GTC, (2) Cancel stale AMD/PLTR/MRVL GTC orders, (3) Verify GLD closed."
   },
   "positions": [
     {
@@ -30,35 +30,35 @@
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "ESTIMATED STOP-HIT June 10. GLD range $388.75-$400.48, stop $397.92 TRIGGERED. Est. exit 7sh at $397.92 = $2,785.44. Realized loss est. -$145.58. CPI 4.2% + Fed hike 63% → dollar strength overwhelmed Iran safe-haven bid. OPERATOR MUST VERIFY fill at Alpaca."
-    },
-    {
-      "symbol": "MU",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 940.62,
-      "current_price": 935.89,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 893.59,
-      "take_profit": 1081.71,
-      "setup": "mean-reversion-oversold",
-      "agent_average": 6.83,
-      "note": "REJECTED Midday re-score 6.83 (improved from 6.5 at Market-Open). Technical improved to 7/10 (intraday hammer $854→$989 recovery, 2/5 indicators). Macro 5/10 + Sentiment 6/10 hold average below 7.0. MU $935.89 midday (range $854.35-$989.15). Re-score at Afternoon. Earnings June 24 — exit by June 22 mandatory."
+      "note": "ESTIMATED STOP-HIT June 10. GLD range $388.75-$400.48, stop $397.92 TRIGGERED. Est. exit 7sh at $397.92 = $2,785.44. Realized loss est. -$145.58. OPERATOR MUST VERIFY at Alpaca."
     },
     {
       "symbol": "INTC",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 106.39,
-      "current_price": 105.86,
+      "entry_price": 117.07,
+      "current_price": 116.50,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 101.07,
-      "take_profit": 122.35,
+      "stop_loss": 111.22,
+      "take_profit": 134.63,
       "setup": "breakout-volume",
-      "agent_average": 7.17,
-      "note": "PENDING ORDER — MIDDAY ATTEMPT BLOCKED (30th consecutive API block). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 (or current ask × 1.005) bracket GTC stop $101.07 (-5%) target $122.35 (+15%). Score 7.17. Price updated to $105.86 midday (better entry than $107.52 Market-Open estimate). Google 3M TPU + NVIDIA Feynman catalysts intact. 3:1 R/R confirmed."
+      "agent_average": 7.33,
+      "note": "PENDING ORDER — MARKET-OPEN JUNE 12 ATTEMPT BLOCKED (31st consecutive API block). Score UPGRADED to 7.33 (all 6 agents at 7+). BofA double-upgrade (Underperform→Buy PT $135) + Google confirmed 3M+ TPU 2028 + NVIDIA backup mfr. New params: 42sh limit $117.07 bracket GTC stop $111.22 (-5%) target $134.63 (+15%). OPERATOR MUST EXECUTE IMMEDIATELY."
+    },
+    {
+      "symbol": "MU",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 995.87,
+      "current_price": 995.87,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": null,
+      "take_profit": null,
+      "setup": "mean-reversion-oversold",
+      "agent_average": 6.33,
+      "note": "REJECTED June 12 Market Open. PPI conditional NOT MET: +1.1% m/m vs ≤+0.3% required. Fresh score 6.33 avg (Macro 5/10 dominant headwind). MU +5.37% today to $995.87. Earnings June 24 — exit by June 22. Re-score post-FOMC June 16-17."
     }
   ],
   "market": {
@@ -70,11 +70,11 @@
     }
   },
   "routines": {
-    "midday": {
+    "market_open": {
       "status": "completed",
-      "last_run": "2026-06-10T16:34:00Z",
-      "next_run": "2026-06-10T18:00:00Z",
-      "last_summary": "Mid-Morning violation logged. INTC re-attempt at $106.39 blocked (30th consecutive API block — MANDATORY). MU re-scored 6.83 (improved from 6.5) but still below 7.0 threshold (macro 5/10 drag). XLE skipped (oil declining to $89.71, flat sector). No open positions. Afternoon: re-attempt INTC, re-score MU if conditions improve."
+      "last_run": "2026-06-12T13:55:00Z",
+      "next_run": "2026-06-13T13:45:00Z",
+      "last_summary": "API blocked 31st session. June 11 all routines silent. INTC 7.33 avg approved — order blocked HTTP 403 (42sh $117.07 bracket GTC). LMT rejected 6.17 (Iran peace deal). MU rejected 6.33 (PPI conditional not met). FOMC hike odds collapsed to 0.6%. OPERATOR: execute INTC manually."
     }
   },
   "trades": [

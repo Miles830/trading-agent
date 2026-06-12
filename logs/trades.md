@@ -4,6 +4,425 @@
 
 ---
 
+## 2026-06-12 — Market Open (9:45 AM ET / 13:45 UTC — FRIDAY)
+
+**HEARTBEAT:** STARTED Market-Open 13:45:50Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **31st consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK (2026-06-12)
+
+```
+grep "STARTED Pre-Market" logs/heartbeats/2026-06-12.log → 0 results — SILENT FAILURE ✗
+grep "STARTED Market-Open" logs/heartbeats/2026-06-12.log → 13:45:50Z ✓ (this session)
+ls logs/heartbeats/2026-06-11.log → FILE NOT FOUND — ALL JUNE 11 ROUTINES SILENT
+```
+
+**Pre-Market June 12 silently failed. June 11 (Thursday): zero heartbeat file — all 7 routines silently failed (PPI day).**
+Running catch-up from Market Open covering both June 11 and June 12 obligations.
+
+```yaml
+---
+ts: 2026-06-12T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (8:00 AM ET) produced no heartbeat on June 12. ALL June 11 routines also silently failed (no heartbeat file). PPI May 2026 was released June 11 (8:30 AM ET, +6.5% YoY — hottest since 2022) with zero routine coverage. INTC MANDATORY entry missed again.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  June 11 ALL ROUTINES SILENT FAILURE. June 12 Pre-Market SILENT FAILURE.
+  PPI May 2026 (released June 11): +6.5% YoY (+1.1% m/m) — MASSIVELY HOT. Largest annual PPI rise since Nov 2022.
+  Core PPI: +5.1% YoY, +0.8% m/m (biggest since March 2022).
+  MU conditional (PPI ≤+0.3%) NOT MET. MU entry remains rejected.
+  INTC: binding mandatory entry from June 10 Daily Review not executed (June 11 or June 12 Pre-Market).
+  INTC NEWS June 11: BofA double-upgrade (Underperform→Buy, PT $96→$135). Google confirmed 3M+ TPU orders for Intel Foundry by 2028. NVIDIA using Intel as backup manufacturer. INTC gapped +9-10% to ~$116.
+  Market: SPX June 11 +1.75% to 7,394.30 on Iran peace deal signals. SpaceX Nasdaq IPO ($75B raise, $1.77T valuation).
+  LMT: June 11 +3.41% on $10B new defense contracts. June 12 ~$546 (flat on Iran peace deal).
+  31st consecutive API blocked session. Routine catch-up running from Market Open.
+---
+```
+
+---
+
+### MARKET CONTEXT (June 12, 2026 — 9:45 AM ET)
+
+| Factor | Status | Notes |
+|---|---|---|
+| S&P 500 | +0.52% (~7,432) | Iran peace deal optimism + SpaceX IPO |
+| Market open direction | UP | +0.52% — does NOT trigger ≥2% chase guard |
+| INTC | ~$115.50 (range $115.20–$117.59) | +0% today (consolidating after +9-10% June 11) |
+| LMT | ~$546 (flat) | Iran peace deal reducing war premium |
+| MU | ~$995.87 (+5.37%) | Recovering; PPI conditional STILL NOT MET |
+| AMD | ~$470 est. | Below 7.0 threshold |
+| BTC | Below $82K | No crypto entry |
+| PPI May 2026 | **+6.5% YoY / +1.1% m/m** | MASSIVELY HOT — energy-driven (gasoline +23.4%). MU conditional FAILS. |
+| FOMC June 16-17 | **≈0.6% hike probability** | DRAMATICALLY changed from 63% (June 10). Iran peace + oil falling = energy inflation transitory. Market expects HOLD. |
+| Iran Peace Deal | Trump signaling deal close | Risk-on. Oil falling. FOMC hike risk collapsing. Defense sector losing war premium. |
+| SpaceX IPO | Nasdaq debut today ($1.77T val) | Positive market sentiment. |
+
+**3% circuit breaker:** NOT triggered (portfolio estimated −0.15%, market +0.52%). ✓
+
+---
+
+### STOP-LOSS AUDIT
+
+```
+GET /v2/orders?status=open → HTTP 403 (API blocked)
+GET /v2/positions → HTTP 403 (API blocked)
+```
+
+**Cannot verify open positions or stops. Per June 10 Daily Review: NO confirmed open positions (GLD stop estimated triggered at $397.92, portfolio ~99.9% cash). No naked positions to cover.**
+
+Expected state (unverifiable): 0 positions, ~$99,854 cash.
+Stale GTC orders (June 10 memo — MUST BE CANCELED by operator):
+- AMD 9sh $524.15 (June 3) — CANCEL
+- AMD 9sh $520.59 (May 29) — CANCEL
+- PLTR 10sh $150.74 (June 3) — CANCEL
+- MRVL 8sh $202.19 (May 29) — **CANCEL IMMEDIATELY**
+
+---
+
+### 6-AGENT ANALYSIS — INTC (June 12, fresh re-score at $116.50)
+
+**Context:** INTC was binding mandatory watchlist (7.17 avg, June 8). Price has moved from ~$107 to ~$116.50 (+8.9%) due to BofA double-upgrade + Google 3M TPU foundry confirmation + NVIDIA backup manufacturer news (June 11). Fresh 6-agent required per CLAUDE.md.
+
+#### Sub-Agent 1 — Fundamentals: 8/10
+- BofA double-upgrade: Underperform→Buy (skipped Hold), PT $96→$135 (+40% target revision)
+- Google confirmed 3M+ TPU orders for Intel Foundry by 2028 = multi-year revenue visibility
+- NVIDIA using Intel as backup manufacturer = process quality validation
+- Intel Foundry losses narrowing; Lip-Bu Tan restructuring on track
+- Q1 FY2026 beat estimates; revenue $12.7B+; Intel 18A process in qualification
+- P/E discount vs. TSMC, NVDA — still room to re-rate on foundry credibility
+- Score: **8/10**
+
+#### Sub-Agent 2 — Technical: 7/10
+- Daily chart: clear uptrend from $95 (May 2026) → $116 (June 12)
+- June 11: MASSIVE Bullish Engulfing candle (+9-10%), confirmed on above-average volume
+- June 12: consolidating at new highs ($115.20–$117.59 range), holding most of gains
+- 1-hour chart trend: strong uptrend
+- **Mandatory 5-indicator stack (2-of-5 required):**
+  1. Stochastic (14,3,3): Overbought (>80) post-gap — NOT confirming long entry ❌
+  2. Candlestick: Bullish Engulfing on daily June 11 + 1-hour uptrend → **CONFIRMING** ✓
+  3. Volume oscillator (5,20): June 12 volume light vs June 11 spike — oscillator turning negative ❌
+  4. MACD: Bullish crossover in place, histogram expanding → **CONFIRMING** ✓
+  5. Volume spike: June 12 early volume low (3.04M vs 137M avg) — NOT a spike ❌
+- **2 of 5 confirming (Candlestick + MACD) → technical score may exceed 5** ✓
+- RSI: likely 70+ (overbought) — tiebreaker suggests caution but not a blocker
+- Score: **7/10**
+
+#### Sub-Agent 3 — Sentiment: 8/10
+- BofA double-upgrade: institutional sentiment catalyst (Underperform→Buy = most bullish possible action)
+- Cramer "Number One Name" and "More Important Than NVIDIA" — broadly positive (mild contrarian caution)
+- Google confirming 3M+ TPU orders = major customer validation
+- NVIDIA endorsement = peer validation
+- Short squeeze component: prior bears (BofA was Underperform) now covering
+- xAI Grok API: NOT ACCESSIBLE (no XAI_API_KEY; API call skipped — degrading gracefully)
+- Scoring without X input: +2 strongly bullish catalyst environment → base 8/10
+- Score: **8/10** (xAI failure noted; cannot include X modifier)
+
+#### Sub-Agent 4 — Macro: 7/10
+- Iran peace deal signals: Trump says deal "imminent" → oil falling → energy inflation transitory
+- FOMC June 16-17: **hike probability collapsed to ~0.6%** (from 63% on June 10). HOLD expected. Rate headwind removed.
+- PPI May 2026: +6.5% YoY (+1.1% m/m) — hot, BUT energy-driven (+10.7% energy). If Iran deal signed → energy reverses → PPI likely tame in June/July.
+- S&P 500 +0.52% today — mild risk-on. SpaceX IPO providing additional sentiment lift.
+- INTC-specific macro: US chip independence becoming MORE critical in geopolitical uncertainty — Intel foundry = strategic national asset
+- Dollar: Iran deal → oil falling → dollar neutral to slightly weak (positive for US exports)
+- Score: **7/10** (FOMC risk resolved, Iran peace creates energy tailwind)
+
+#### Sub-Agent 5 — Risk: 7/10
+- Position size: 42 shares × $117.07 = **$4,917 = 4.92%** ✓ (under 5%)
+- Trade risk: 42 × ($117.07 − $111.22) = 42 × $5.85 = **$245.70 = 0.246% equity** ✓ (under 1.5%)
+- Sector (Technology/Semis): 0 existing positions → 4.92% ✓ (under 25%)
+- Cash floor post-fill: $99,854 − $4,917 = $94,937 = **95.1%** ✓ (above 5%)
+- Open positions: 0 + 1 = **1** ✓ (under 12)
+- R/R: Stop −5% ($111.22), Target +15% ($134.63) = **3:1** ✓
+- FOMC June 16-17 (not within 48h — 4 days away, not an Exemption 2 binary event)
+- BofA PT $135 = 15.3% upside from $117 — aligns with 3:1 R/R target ✓
+- Score: **7/10**
+
+#### Sub-Agent 6 — Tech Analyst: 7/10
+- Intel 18A process: competitive with TSMC N2 on certain workloads; Google qualification validates
+- Defensible IP: x86 architecture, Foveros 3D packaging, EMIB chiplet interconnects
+- Gaudi 3 AI accelerator: competing directly with NVIDIA H100/B100
+- R&D investment: heavy spend on 18A → 14A roadmap; Intel Foundry Services IFS expansion
+- Foundry clients: Google (3M TPU 2028), NVIDIA (backup GPU), US government contracts
+- Technical moats: leading-edge process node credibility (re-establishing after 10A/7A struggles)
+- Risks: 18A yield ramp (still uncertain in production), TSMC still the preferred option for most
+- Developer/ecosystem: x86 dominant in enterprise; Gaudi gaining ISV traction
+- Score: **7/10**
+
+#### Master Agent — INTC Decision
+| Agent | Score |
+|---|---|
+| Fundamentals | 8/10 |
+| Technical | 7/10 |
+| Sentiment | 8/10 |
+| Macro | 7/10 |
+| Risk | 7/10 |
+| Tech Analyst | 7/10 |
+| **Average** | **7.33/10** |
+
+- Average 7.33 ≥ 7.0 ✓
+- Risk 7 ≥ 6 ✓
+- All 6 agents at 7+ ✓ (6 of 6)
+- Tech Analyst 7 ≥ 6 ✓
+- **MASTER AGENT: APPROVED**
+
+---
+
+### 6-AGENT ANALYSIS — LMT (June 12, fresh analysis)
+
+**Context:** June 10 Daily Review estimated LMT at ~$640 (estimate was wrong — actual is ~$546). Iran peace deal catalyst WEAKENING (peace = less near-term military demand). Need fresh assessment.
+
+**Fundamentals (7/10):** LMT Q1 2026 beat; $10B new defense contracts (June 11); F-35/PAC-3/Seahawk diversified. Up 30% YTD = premium valuation. Goldman Sachs Sell (aeronautics growth concerns). Structural global rearmament thesis holds.
+
+**Technical (5/10):** After 30% YTD run, LMT June 12 ~$546 essentially flat (Iran peace deal = war premium deflating). Only 1 of 5 indicators likely confirming (MACD). No fresh bullish entry signal on 5-min on peace-deal day.
+
+**Sentiment (6/10):** Mixed — $10B contracts positive, Goldman Sell negative, peace deal = defense bears emerging, 30% YTD = already well-owned. xAI API not accessible.
+
+**Macro (5/10):** Iran peace deal = direct headwind for defense premium. Oil falling = energy-heavy LMT contractors less relevant. FOMC hold = neutral for LMT (defense = non-rate-sensitive). Peace deal removes the Iran-conflict catalyst that drove June 10 estimate.
+
+**Risk (7/10):** No guardrail violations (~9sh × $546 = $4,914 = 4.92%; stop −5% = $518.70; risk $245 = 0.25%; R/R 3:1). But peace deal creates asymmetric downside risk if war premium fully deflates.
+
+**Tech Analyst (7/10):** Auto-score (non-tech company).
+
+**Master Agent — LMT:**
+| Agent | Score |
+|---|---|
+| Fundamentals | 7/10 |
+| Technical | 5/10 |
+| Sentiment | 6/10 |
+| Macro | 5/10 |
+| Risk | 7/10 |
+| Tech Analyst | 7/10 |
+| **Average** | **6.17/10** |
+
+**MASTER AGENT: REJECTED** — Average 6.17 < 7.0. Only 3 of 6 agents ≥7. Iran peace deal removes primary catalyst; technical score capped at 5 (only 1 of 5 indicators confirming).
+
+---
+
+### 6-AGENT QUICK SCORE — MU (June 12)
+
+**Context:** MU conditional (June 10): PPI ≤+0.3% m/m AND fresh score ≥7.0. PPI was +1.1% m/m — FAILS CONDITION. Quick check confirms score would be <7 even without conditional.
+
+MU at ~$995 today (+5.37%). Quick scores: Fundamentals 7, Technical 6 (volume recovering but overbought), Sentiment 6 (hot PPI headwind vs Iran peace positive), Macro 5 (PPI +6.5% YoY = dominant signal even if FOMC holds), Risk 7, Tech Auto 7.
+Average: 6.33/10 — REJECTED (below 7.0 threshold, conditional not met, score confirms rejection).
+
+---
+
+### ORDERS ATTEMPTED
+
+```
+INTC bracket GTC order (42sh, limit $117.07, stop $111.22, target $134.63):
+POST https://paper-api.alpaca.markets/v2/orders
+→ HTTP 403: "Host not in allowlist: paper-api.alpaca.markets"
+
+STOP-LOSS AUDIT (GET /v2/orders?status=open): HTTP 403 (blocked)
+POSITIONS AUDIT (GET /v2/positions): HTTP 403 (blocked)
+```
+
+**32nd consecutive API blocked execution.** Orders are the MANDATORY action; they cannot be fulfilled from this execution environment. Operator MUST execute manually at https://app.alpaca.markets.
+
+---
+
+### TRADE LOG YAML ENTRIES
+
+```yaml
+---
+ts: 2026-06-12T13:55:00Z
+action: entry
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: BofA double-upgrade (Underperform→Buy, PT $135) + Google confirmed 3M+ TPU orders 2028 + NVIDIA backup mfr = foundry thesis validated. 6-agent 7.33 avg; all 6 at 7+. Enter at ask+0.5% bracket GTC.
+size_pct: 4.92
+stop: 111.22
+target: 134.63
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 6
+master_decision: approved
+master_notes: |
+  APPROVED — all 6 agents at 7+. Average 7.33. API BLOCKED HTTP 403 (31st consecutive session).
+  Order NOT placed at Alpaca. OPERATOR MUST EXECUTE MANUALLY.
+  Entry parameters: 42 shares INTC limit $117.07 GTC bracket, stop $111.22 (-5%), target $134.63 (+15%).
+  New catalysts since June 10 score (7.17 avg): BofA double-upgrade (Underperform→Buy, PT $96→$135),
+  Google confirmed 3M+ TPU by 2028, NVIDIA using Intel as backup mfr. These catalysts STRENGTHEN the thesis.
+  Price moved from ~$107 (June 10) to ~$116.50 today (+8.9%). Stock consolidating after +9% June 11 gap.
+  FOMC risk collapsed: hike probability ~0.6% (from 63% June 10) — Iran peace deal driving oil lower → transitory energy inflation.
+  2 of 5 indicator stack confirming: Bullish Engulfing (June 11 daily) + MACD bullish crossover.
+  Stochastic overbought (>80), volume oscillator declining, volume spike absent June 12 — caution on timing.
+  xAI Grok API not accessible — sentiment scored without X modifier. Failure noted.
+  R/R: 15%/5% = 3:1. BofA PT $135 = 15.4% upside from entry — aligns with target.
+  Guardrails: pos 4.92% ✓, trade risk 0.25% ✓, sector 4.92% ✓, cash 95.1% ✓, positions 0+1=1 ✓.
+  MANDATORY OPERATOR ACTION: BUY 42 INTC limit $117.07 bracket GTC stop $111.22 target $134.63.
+---
+```
+
+```yaml
+---
+ts: 2026-06-12T13:55:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: mean-reversion-oversold
+score: 6.33
+thesis: PPI May 2026 +1.1% m/m (conditional required ≤+0.3%) — entry condition NOT MET. Fresh 6-agent 6.33 avg confirms rejection independent of conditional.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.33
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  REJECTED — two independent reasons:
+  1. Conditional not met: June 10 watchlist required PPI ≤+0.3% m/m. Actual PPI May 2026: +1.1% m/m (MASSIVELY HOT).
+  2. Fresh 6-agent 6.33 avg < 7.0 threshold (Macro 5/10 = dominant CPI/PPI signal).
+  MU at ~$995 today (+5.37% recovery). HBM4 demand thesis intact but macro headwind overwhelming.
+  FOMC hold now likely (0.6% hike probability), which marginally helps. But PPI +6.5% YoY = inflationary signal
+  that Fed cannot ignore — eventual tightening risk remains. Semis = rate-sensitive.
+  MU earnings June 24 (12 days away) — 48h window June 22. Any position must exit by June 22.
+  Re-score MU if: FOMC June 16-17 holds AND delivers dovish guidance AND PPI June print improves.
+  xAI Grok API not accessible — sentiment scored without X modifier.
+  Skip exemption basis: score below 7.0 (not a guardrail/binary-event/circuit-breaker skip — this is a LEGITIMATE score rejection, not a "wait for better setup" excuse).
+---
+```
+
+```yaml
+---
+ts: 2026-06-12T13:55:00Z
+action: skip
+symbol: LMT
+bucket: active
+setup: sector-rotation
+score: 6.17
+thesis: Fresh 6-agent 6.17 avg — Iran peace deal removes primary catalyst. Technical 5/10 (only 1 of 5 indicators confirming). Macro 5/10 (peace deal = defense war premium deflating). Average below 7.0 threshold.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.17
+agents_above_7: 3
+master_decision: rejected
+master_notes: |
+  REJECTED — avg 6.17 < 7.0. Only 3 of 6 agents ≥7 (Fundamentals, Risk, Tech Auto).
+  June 10 watchlist estimated LMT at ~$640 — was an incorrect estimate (actual June 11/12 price ~$546).
+  LMT +3.41% June 11 on $10B new defense contracts (PAC-3, F-35, Seahawk).
+  BUT Iran peace deal (Trump signaling imminent agreement): removes war premium catalyst from defense sector.
+  LMT up 30% YTD = premium valuation already priced in structural rearmament.
+  Technical score capped at 5 (only MACD confirming; no 5-min candlestick entry signal on peace-deal consolidation day).
+  Macro headwind: peace = oil falling = less urgency for PAC-3/missile defense near-term procurement.
+  Goldman Sachs Sell rating (aeronautics growth concerns) adds downside risk.
+  Re-evaluate LMT if: peace deal falls through, Iran conflict re-escalates, OR consolidation forms clean technical entry.
+  xAI Grok API not accessible.
+---
+```
+
+---
+
+### WATCHLIST UPDATE FOR NEXT ROUTINE (Mid-Morning 11:00 AM ET / 15:00 UTC)
+
+| Symbol | Setup | Score | Notes |
+|---|---|---|---|
+| **INTC** | breakout-volume | **7.33 MANDATORY** | API blocked. Operator MUST manually execute: 42sh limit $117.07 bracket GTC stop $111.22 target $134.63 |
+| MU | mean-reversion-oversold | 6.33 → 7.0 if FOMC dovish | Re-score after FOMC June 16-17. PPI conditional cleared if June PPI improves. |
+| AMD | ai-momentum-pullback | ~6.5 | Below threshold |
+| PLTR | ai-momentum-pullback | ~6.5 | Below threshold; needs fresh catalyst |
+| LMT | sector-rotation | 6.17 | Re-score if Iran deal fails |
+
+---
+
+### PENDING OPERATOR ACTIONS (CRITICAL — IMMEDIATELY)
+
+1. **INTC MANUAL EXECUTION (32nd MANDATORY attempt — MUST DO TODAY):**
+   ```
+   https://app.alpaca.markets → Trade → INTC
+   BUY 42 shares INTC
+   Order type: Limit — $117.07
+   Stop-loss: $111.22 (bracket GTC)
+   Take-profit: $134.63 (bracket GTC)
+   time_in_force: GTC
+   order_class: bracket
+   ```
+
+2. **CANCEL ALL STALE GTC ORDERS (IMMEDIATELY):**
+   - AMD 9sh $524.15 (June 3) — CANCEL
+   - AMD 9sh $520.59 (May 29) — CANCEL
+   - PLTR 10sh $150.74 (June 3) — CANCEL
+   - MRVL 8sh $202.19 (May 29) — **CANCEL IMMEDIATELY**
+
+3. **GLD STATUS VERIFICATION:** Confirm GLD stop at $397.92 executed and position is closed. If GLD still open: PLACE STOP AT $390 OR BELOW IMMEDIATELY.
+
+---
+
+## 2026-06-11 — ALL ROUTINES SILENT (No heartbeat file — complete blackout — PPI DAY)
+
+```yaml
+---
+ts: 2026-06-11T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: ALL 2026-06-11 routines silently failed. No heartbeat file for June 11. PPI May 2026 released 8:30 AM ET — zero coverage. INTC gapped +9-10% on BofA double-upgrade + Google TPU confirmation. SpaceX IPO debut. S&P 500 +1.75% to 7,394.30.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  June 11 complete blackout. No routine fired. Major events missed:
+  - PPI May 2026: +6.5% YoY (+1.1% m/m) — hottest since Nov 2022. Energy +10.7% m/m.
+  - INTC +9-10% gap: BofA double-upgrade (Underperform→Buy PT $135), Google 3M TPU orders confirmed.
+  - NVIDIA confirmed using Intel as backup mfr for advanced processors.
+  - Iran peace deal: Trump signaled "deal imminent" → SPX +1.75%.
+  - SpaceX Nasdaq IPO: $75B raise, $1.77T valuation — largest IPO in history.
+  - FOMC hike probability collapsed: from 63% to ~0.6% on Iran peace/oil falling.
+  - LMT +3.41% on $10B new defense contracts.
+  - MU recovering from June 10 selloff.
+  No orders placed. No stop audits. 7th silent-failure day in a row counting partial June 10 failures.
+---
+```
+
+---
+
 ## 2026-06-10 — Daily Review (4:30 PM ET / 20:33 UTC — WEDNESDAY — CPI DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:33:07Z ✓
