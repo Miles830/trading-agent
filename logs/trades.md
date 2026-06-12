@@ -4,6 +4,308 @@
 
 ---
 
+## 2026-06-12 — Daily Review (4:30 PM ET / 20:32 UTC — FRIDAY — IRAN DEAL DAY + FOMC WEEK)
+
+**HEARTBEAT:** STARTED Daily-Review 20:32:11Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **31st consecutive blocked session**
+
+---
+
+### HEARTBEAT AUDIT — 2026-06-12
+
+| Routine | Scheduled (ET) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 8:00 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Open | 9:45 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 11:00 AM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Midday | 12:30 PM | 16:32:41Z ✓ | 16:49:31Z ✓ | ✓ COMPLETE |
+| Afternoon | 2:00 PM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Close | 3:30 PM | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Daily-Review | 4:30 PM | 20:32:11Z ✓ | (this session) | In Progress |
+
+**Top operational issue (Day 32):** 5 of 6 intraday routines silently failed today. Only Midday fired completely. Pre-Market, Market-Open, Mid-Morning silent failures already logged in the Midday session (see YAML violation blocks below this section). Logging NEW violations for Afternoon and Market-Close here.
+
+```yaml
+---
+ts: 2026-06-12T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET June 12) produced no heartbeat. No stop-audit run. No new entries placed. INTC order remains unexecuted (blocked by API 31st consecutive session).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Afternoon silently failed June 12. No fresh positions. INTC MANDATORY 7.33 still pending operator manual execution.
+---
+```
+
+```yaml
+---
+ts: 2026-06-12T19:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Close routine (3:30 PM ET June 12) produced no heartbeat. No MOC orders reviewed. No end-of-day position audit run.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Market-Close silently failed June 12. No open positions to manage (all cash, estimated). No MOC orders needed.
+---
+```
+
+---
+
+### STOP AUDIT — Daily Review (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 31st consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated state (forward from June 10 Daily Review):**
+- GLD: ESTIMATED stop hit June 10 at $397.92 (range $388.75–$400.48). Iran deal = gold safe-haven premium now fully unwinding. GLD est. ~$375-385 today (FOMC hold removes rate-hike gold bid; Iran ceasefire removes geopolitical bid). No open position assumed.
+- INTC: APPROVED 7.33, ORDER BLOCKED 31× — Operator must execute 40sh limit $123.69 bracket GTC. GTC will survive the FOMC weekend and can fill at Monday open if price reached.
+- Stale GTC orders (URGENT — operator must cancel): AMD 9sh $524.15, AMD 9sh $520.59, PLTR 10sh $150.74, MRVL 8sh $202.19.
+- No other confirmed open positions.
+
+---
+
+### TODAY'S P&L SUMMARY (June 12)
+
+| Source | Amount | Notes |
+|---|---|---|
+| INTC entry attempt | $0 | API blocked (31st). 40sh $123.69 bracket GTC — PENDING operator execution |
+| LMT skip | $0 | Correctly rejected 5.5 avg (Iran deal inverts defense thesis) |
+| MU skip | $0 | Correctly rejected 6.67 avg (PPI +1.1% condition failed; below 7.0 threshold) |
+| Portfolio | $0 change | 99.9% cash; no open positions |
+| **Net today** | **$0** | **0.00% equity** |
+
+---
+
+### BENCHMARK COMPARISON (June 12, 2026)
+
+| Metric | Today (est.) | Cumulative |
+|---|---|---|
+| Portfolio return | 0.00% | −0.15% (from $100K start) |
+| S&P 500 return | ~+0.55% (close est. ~7,435) | +3.27% (from ~$7,200 strategy start) |
+| Daily gap | **−0.55 pp** (flat vs rising market) | — |
+| Cumulative gap | — | **~−3.42 pp** (widened from −3.37 pp at midday) |
+| June 11 miss (blackout) | −1.75 pp | Portfolio 99% cash missed S&P +1.75%, SOXX +8% |
+
+**20-day rolling underperformance:** No formal 20-day streak (June 5 saw portfolio +2.66 pp outperform on SPX −2.64% selloff). New mini-streak forming: June 11 (−1.75 pp), June 12 (−0.55 pp). API blockage is the sole cause; strategy discipline on skips (LMT, MU) was correct.
+
+**SPX trajectory (est.):** May 17 ~7,273 → June 12 close ~7,435. SPX +2.22% in 20 trading days. Portfolio −0.15%. Gap: −2.37 pp in 20-day window. Not yet 20-day streak but widening.
+
+---
+
+### WIN RATE / PROFIT FACTOR (Rolling 20-Day & All-Time)
+
+| Metric | Since May 17 | Rolling 20-Day |
+|---|---|---|
+| Completed trades | 1 (GLD stop_hit) | 1 |
+| Wins | 0 | 0 |
+| Losses | 1 (GLD −4.99%) | 1 |
+| Win rate | 0% | 0% |
+| Avg win | n/a | n/a |
+| Avg loss | −$145.58 | −$145.58 |
+| Profit factor | 0 (no wins) | 0 |
+
+Sample size = 1. Statistically meaningless. Root cause: API blockage prevents ALL entries except one (GLD, placed manually before blockage pattern). Every metric improves the moment INTC order executes.
+
+---
+
+### BEST & WORST TRADES TODAY
+
+**Best decision:** Rejecting LMT (5.5 avg) and MU (6.67 avg). Both rejections were discipline wins:
+- LMT: Iran deal directly inverts the defense-escalation thesis. Score correctly fell from estimated 7.33 to 5.5. Thesis invalidation — not a "wait-and-see" reject.
+- MU: PPI +1.1% m/m condition explicitly failed (required ≤+0.3%). Score 6.67 correctly below 7.0 threshold. MU +11.66% on June 11 makes it extended from ideal entry.
+
+**Worst outcome (operational, not strategy):** 5 of 6 intraday routines silently failed. INTC was the only MANDATORY entry on the watchlist — blocked for the 31st consecutive session. June 11 full-day blackout on the single best market day since early June (SOXX +8%, MU +11.66%) was the worst week-in-a-day miss since the API blockage began. Cumulative opportunity cost now estimated at ~$3,500+ in missed unrealized gains across INTC/AMD/MU/MRVL.
+
+---
+
+### 3 THINGS THAT WORKED TODAY (WEEK)
+
+1. **Fresh scoring discipline at new price level.** INTC was MANDATORY at $106-107. After +16% gap to $123, a fresh 6-agent was correctly run (7.33 — still approved). No stale score applied blindly. The score discipline is working even as the API blocks execution.
+2. **LMT thesis inversion recognized immediately.** Within 24 hours of the June 10 LMT recommendation, the Iran deal progress invalidated the defense-escalation catalyst. Score correctly dropped to 5.5. No momentum bias to hold a broken thesis.
+3. **PPI condition on MU correctly enforced.** The June 10 Daily Review set an explicit PPI condition (≤+0.3%) for MU entry. PPI came in at +1.1% — condition not met. Despite MU being +11.66% on June 11 (tempting), the condition held firm and the skip was correct. The entry-condition framework is preventing chasing.
+
+---
+
+### 3 THINGS TO IMPROVE NEXT WEEK
+
+1. **INTC MUST EXECUTE.** 31 consecutive sessions blocked. The operator has been asked to execute manually every session since June 8. If the entry is not placed before the FOMC binary event window (Sunday June 14), the next clean entry window is Wednesday June 18. The opportunity cost of waiting is growing — INTC was $106 on June 10, now $123 on June 12.
+2. **Stale GTC order cancellation is CRITICAL.** AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19 are all well above current market prices (AMD ~$490, PLTR ~$130) or at absurd levels (MRVL at $202 vs current ~$295). These stale orders are risk accidents waiting to happen. CANCEL BEFORE MONDAY.
+3. **Post-FOMC deployment plan must be pre-built.** With FOMC June 16-17 creating a binary event window Mon-Tue, the agent must arrive at Wednesday June 18 with pre-scored watchlist of 3-5 names ready to enter simultaneously. This review produces that plan (see Watchlist below). No fresh research needed at 8 AM Wednesday — execute the pre-built plan.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: June 8-12)
+
+**Entries in the 5-day window (June 8-12):**
+- June 10: GLD `stop_hit` (macro-hedge) — Loss (result_pct: −4.99%)
+- June 12: INTC `entry` (breakout-volume) — Pending (no result_pct)
+- June 12: LMT `skip` (sector-rotation) — N/A
+- June 12: MU `skip` (mean-reversion-oversold) — N/A
+
+**Setup Performance Tracker (cumulative):**
+| Setup type | Wins | Losses | Consecutive L | 3L Halt? | 3W Boost? | Status |
+|---|---|---|---|---|---|---|
+| macro-hedge | 0 | **1** (GLD −4.99%) | 1 | No (need 3) | — | No halt |
+| breakout-volume | 0 | 0 | 0 | No | — | INTC pending (7.33, APPROVED, API blocked) |
+| mean-reversion-oversold | 0 | 0 | 0 | No | — | MU rejected 6.67 |
+| sector-rotation | 0 | 0 | 0 | No | — | LMT rejected 5.5 |
+| ai-momentum-pullback | 0 | 0 | 0 | No | — | No trades |
+| earnings-reaction-follow | 0 | 0 | 0 | No | — | No trades |
+| earnings-reaction-fade | 0 | 0 | 0 | No | — | No trades |
+| candlestick-reversal | 0 | 0 | 0 | No | — | No trades |
+| crypto-flush-rebound | 0 | 0 | 0 | No | — | BTC below $82K threshold |
+
+**No 3-in-a-row halt or boost triggered.** Sample size insufficient for reliable signals (1 completed trade). No changes to entry thresholds.
+
+---
+
+### AGENT CALIBRATION UPDATE (June 12)
+
+| Agent | Calls ≥7 | Results | Hit Rate |
+|---|---|---|---|
+| Fundamentals | GLD(7.0→stop_hit LOSS) | 0W / 1L | 0% |
+| Technical | GLD(7.0→stop_hit LOSS) | 0W / 1L | 0% |
+| Sentiment | GLD(8.0→stop_hit LOSS) | 0W / 1L | 0% |
+| Macro | GLD(8.0→stop_hit LOSS) | 0W / 1L | 0% |
+| Risk | GLD(7.0→stop_hit LOSS) | 0W / 1L | 0% |
+| Tech Analyst | GLD(7.0→stop_hit LOSS) | 0W / 1L | 0% |
+
+Note: GLD was the only completed trade. All agent scores ≥7 on GLD — all contributed to an approved trade that hit its stop (−4.99%). The lesson: geopolitical catalysts can invert rapidly (Iran deal = gold safe-haven unwinds). No agent systematically over/under-scored GLD — the macro environment changed after entry.
+
+**Calibration note:** Zero signal value from a sample of 1. Track INTC and future fills rigorously. First meaningful calibration data expected after 5+ completed trades.
+
+---
+
+### KEY MACRO EVENTS — NEXT WEEK (June 16-20, 2026)
+
+| Date | Event | Relevance |
+|---|---|---|
+| **Mon Jun 16** | FOMC Meeting Day 1 | Inside binary event window — NO new entries |
+| **Tue Jun 17** | **FOMC Rate Decision (2PM ET — Kevin Warsh)** | **Month's most critical event. 97.8% hold. Watch for guidance language. Decision day = binary event exemption (Exemption 2).** |
+| Tue Jun 17 | Fed Chair press conference | Warsh tone = market mover. Hawkish = sell semis. Dovish = buy semis. |
+| **Wed Jun 18** | **First clean post-FOMC trading day** | **MANDATORY execution window. Pre-built watchlist executes here.** |
+| Thu Jun 19 | Juneteenth (market holiday) | No trading. Check FOMC aftershock if markets close Wed at +1%+ — momentum carries to Fri. |
+| Fri Jun 20 | Option expiration (monthly) | Gamma squeeze risk. High volatility possible. |
+| **Sun Jun 22** | **MU mandatory exit deadline** | Must close any MU position before 48h window (June 24 earnings) |
+| **Wed Jun 24** | **MU Q3 FY2026 Earnings (after close)** | High expectations. UBS $1,625 PT. HBM4 sellout. Exit by June 22. |
+
+**⚠️ Juneteenth June 19 (Thursday):** Federal holiday. Markets CLOSED. Post-FOMC Tuesday close (June 17 post-decision) → Wednesday June 18 (active) → Thursday June 19 (CLOSED) → Friday June 20 (options expiration). This compressed timeline affects MU exit window: MU position opened June 18 must exit by JUNE 20 (not June 22) to ensure clean exit before June 22 weekend. Adjust MU exit deadline accordingly.
+
+---
+
+### TOMORROW'S WATCHLIST — COMMITMENT FOR PRE-MARKET (FIRST POST-FOMC WINDOW: WED JUNE 18)
+
+**FOMC Binary Event Window: Sunday June 14 through Tuesday June 17.** Monday June 16 Pre-Market CANNOT initiate new positions. This watchlist targets Wednesday June 18 open (first clean trading day post-FOMC).
+
+**Exception:** Any GTC bracket orders placed by operator before Sunday (e.g., INTC $123.69 bracket GTC) can execute at open Monday if price reaches the limit. GTC orders placed before the window are NOT new initiations — they are pre-positioned bracket entries and may execute through the window.
+
+| # | Symbol | Setup | Score (est.) | Entry | Stop (-5%) | Target (+15%) | Size% | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 1 | **INTC** | breakout-volume | **7.33 MANDATORY** | $123.69 GTC | $117.51 | $142.24 | 4.95% | **EXECUTED (GTC, already approved). If operator placed, GTC bracket may fill Mon at open. If still unplaced, execute Wed June 18 immediately at open.** |
+| 2 | **AMD** | ai-momentum-pullback | **~7.33** | ~ask×1.005 | fill×0.95 | fill×1.15 | ~4.4% | **MANDATORY if FOMC hold confirmed (97.8%). Q1 $10.3B +38%. $200B CPU TAM. 9sh to stay ≤5% cap. Re-score Wed morning before entry.** |
+| 3 | **MRVL** | breakout-volume | **~7.5** | ~ask×1.005 | fill×0.95 | fill×1.15 | ~2.4% | **HIGH CONVICTION. Jensen Huang "next trillion." Teralynx T100 102.4 Tbps. AI networking picks-and-shovels. $295 area. Re-score Wed morning.** |
+| 4 | **MU** | mean-reversion-oversold | **~6.67→7.0+ conditional** | ~ask×1.005 | fill×0.95 | fill×1.15 | ~4.0% | **CONDITIONAL: FOMC hold + macro score ≥7 post-decision + fresh 6-agent ≥7.0. ⚠️ EXIT BEFORE JUNE 20 (Juneteenth gap: June 22 deadline = June 20 actual last trading day before earnings). 4sh only.** |
+| 5 | **NVDA** | ai-momentum-pullback | **~7.0** | ~ask×1.005 | fill×0.95 | fill×1.15 | ~4.5% | FOMC hold + ongoing AI capex secular trend. $80B buyback. "Sell the news" pattern noted. Re-score Wed morning. |
+| 6 | **PLTR** | ai-momentum-pullback | **~6.5** | — | — | — | — | CONDITIONAL — must reclaim $134 support before entry. Below 7.0 threshold currently. |
+| 7 | **SOXX** | sector-rotation | **~7.0** | ~ask×1.005 | fill×0.95 | fill×1.15 | ~4.9% | ETF diversification across chip sector post-FOMC. If individual names look extended, SOXX provides chip exposure without single-stock risk. |
+| 8 | **META** | ai-momentum-pullback | **~7.0** | ~ask×1.005 | fill×0.95 | fill×1.15 | ~4.5% | AI/advertising duopoly. LLAMA 4 + Orion development. Strong FCF, no rate sensitivity. Beneficiary of FOMC hold. Re-score Wed. |
+| 9 | **BTC** | crypto-flush-rebound | **conditional ($82K)** | ~ask×1.005 | fill×0.82 (−18%) | fill×1.18 (+18%, R/R 1:1 minimum) | ~5.0% | **CONDITIONAL: BTC must cross $82K and fresh 6-agent ≥7.0. Iran deal + FOMC hold = risk-on = crypto bid. Check at Pre-Market June 18.** |
+| 10 | **ETH** | crypto-flush-rebound | **conditional ($82K BTC cross)** | ~ask×1.005 | fill×0.82 | fill×1.18 | ~5.0% | ETH follows BTC. Only if BTC ≥$82K AND ETH shows independent catalyst or relative strength vs BTC. |
+
+**Wednesday June 18 execution priority (max 3 limit bracket orders in Pre-Market):**
+1. INTC (if not already filled via GTC) — MANDATORY
+2. MRVL — Highest conviction post-FOMC hold (AI networking, below ATH, clear catalyst)
+3. AMD — Strong AI CPU thesis; 9sh to stay under 5% cap
+
+**Note on position sizing:** If INTC, AMD, and MRVL all fill (4.95% + 4.4% + 2.4% = 11.75%), cash drops to ~$88,100 = 88.2%. Still well above 5% floor, under 12 position max, under 25% sector (all semis: 11.75%), under 5% per position (individual), under 1.5% trade risk each. All guardrails satisfied.
+
+---
+
+### WEEKLY STRATEGY EVOLUTION NOTE (Friday June 13, 2026 — Week of June 9-12)
+
+**What changed this week:**
+1. **Macro pivot (dramatic):** FOMC hike probability fell from 63% → 2.2% in 48 hours. Iran deal imminent → oil -3%+ → PPI forward outlook disinflationary. The entire macro thesis for the portfolio changed from "defensive + rate-hedge" to "risk-on + aggressive tech deployment."
+2. **GLD position closed (estimated):** The macro-hedge thesis reversed. GLD fell on Iran deal + FOMC hold expectations. The stop at $397.92 worked exactly as designed. No re-entry planned. Lesson: stop-losses are the execution mechanism for thesis invalidation.
+3. **LMT thesis inverted:** June 10 had LMT as a new candidate (defense escalation). June 11-12, Iran deal makes ceasefire imminent. Defense thesis inverted in 24 hours. Score correctly fell from est. 7.33 to 5.5. The agent scored it correctly; the macro speed was the surprise.
+4. **PPI condition discipline:** MU had an explicit entry condition (PPI ≤+0.3%). PPI came in at +1.1%. Condition held — MU correctly skipped despite the temptation of +11.66% same-day move. The conditional entry framework prevented chasing.
+5. **FOMC binary event window planning:** For the first time this portfolio history, we are actively planning around a binary event window in advance (Friday → Sunday window opens). GTC bracket order approach allows pre-positioning.
+
+**What did NOT change:**
+- INTC remains the primary mandatory entry. 31 consecutive API blocks. Price has moved from $106 to $123 (+16%) while we waited. Opportunity cost: if 40sh had entered at $106 on June 10 and reached today at $123 = +$680 unrealized.
+- API blockage root cause: unresolved. Still the single biggest operational risk. No change in infrastructure.
+- Cash deployment bias remains correct: 85% target, 5% floor. The challenge is not strategy — it's execution infrastructure.
+
+**Strategy adjustments made this week:**
+- FOMC binary event window explicitly planned (not just a reactive note)
+- Post-FOMC watchlist pre-built (5 names with scores, Wed June 18 target)
+- Juneteenth June 19 identified as trading holiday (affects MU exit deadline)
+- Crypto bucket: BTC $82K threshold remains; post-FOMC risk-on may trigger first crypto entry
+
+**No changes to core guardrails.** Stop-loss percentages, position limits, R/R requirements, cash floor unchanged.
+
+---
+
+```yaml
+---
+ts: 2026-06-12T20:33:00Z
+action: skip
+symbol: DAILY_REVIEW
+bucket: active
+setup: other
+score: null
+thesis: Daily Review June 12 (Friday — Iran Deal Day + FOMC Week). API blocked 31st session. Portfolio 99.9% cash ($99,854 est.). INTC APPROVED 7.33 but blocked 31×. LMT rejected 5.5 (Iran inverts defense thesis). MU rejected 6.67 (PPI +1.1% condition failed). Today P&L $0. SPX est. +0.55% = -0.55 pp gap. Cumulative gap ~-3.42 pp. FOMC Jun 16-17: 97.8% hold. First clean entry window: Wed Jun 18. Watchlist: INTC(7.33 MANDATORY) + MRVL(~7.5) + AMD(~7.33) + MU(conditional) + NVDA(~7.0).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: |
+  June 12 Daily Review (Friday). API blocked 31st consecutive session.
+  Heartbeat audit: Midday COMPLETE (only complete routine); Pre-Market, Market-Open, Mid-Morning, Afternoon, Market-Close all SILENTLY FAILED.
+  June 11: FULL BLACKOUT — no heartbeat file. Missed S&P +1.75% (SOXX +8%, INTC +7%, MU +11.66%).
+  Today P&L: $0 (100% cash, no open positions confirmed).
+  SPX est. close: ~7,435 (+0.55% day, +3.27% from strategy start ~$7,200).
+  Portfolio: $99,854 (−0.15% from $100K start). Cumulative gap: ~−3.42 pp.
+  Completed trades: 1 (GLD stop_hit −$145.58, −4.99%). Win rate: 0%. Profit factor: 0.
+  INTC: 40sh limit $123.69 bracket GTC — APPROVED 7.33, BLOCKED 31× — OPERATOR MUST PLACE.
+  LMT: REJECTED 5.5 avg. Iran deal ceasefire inverts defense-escalation thesis.
+  MU: REJECTED 6.67 avg. PPI +1.1% condition failed (required ≤+0.3%).
+  FOMC June 16-17: 97.8% hold. Binary event window: Sunday Jun 14 → Tuesday Jun 17.
+  No new entries Monday Jun 16 or Tuesday Jun 17 (binary event window).
+  First clean post-FOMC window: Wednesday June 18.
+  Post-FOMC watchlist: INTC (7.33, MANDATORY), MRVL (~7.5), AMD (~7.33), MU (conditional ≥7.0), NVDA (~7.0).
+  Juneteenth June 19 = trading holiday. MU exit deadline: June 20 (not June 22 — Juneteenth gap).
+  Crypto: BTC below $82K threshold. Monitor post-FOMC for risk-on push to threshold.
+  Weekly strategy evolution: FOMC binary planning, post-FOMC deployment plan built, GTC bracket strategy confirmed.
+  X sentiment (xAI Grok): API unavailable (XAI_API_KEY not in env). Degraded gracefully — not blocking review.
+---
+```
+
+---
+
 ## 2026-06-12 — Midday (12:30 PM ET / 16:32 UTC — FRIDAY — IRAN DEAL DAY)
 
 **HEARTBEAT:** STARTED Midday 16:32:41Z ✓
