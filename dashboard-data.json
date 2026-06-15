@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-12T20:35:00Z",
-  "updated_by": "daily-review",
+  "last_updated": "2026-06-15T13:50:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.27,
     "benchmark_gap_pct": -3.42,
     "open_positions_count": 0,
-    "note": "June 12 Daily Review (4:30 PM ET). API BLOCKED 31st session. 5/6 routines silently failed (only Midday complete). INTC 7.33 APPROVED — ORDER BLOCKED 31x. LMT REJECTED 5.5. MU REJECTED 6.67. Portfolio $0 P&L today vs SPX ~+0.55%. Cum gap ~-3.42 pp. FOMC BINARY EVENT WINDOW opens Sunday Jun 14 — NO NEW ENTRIES Mon Jun 16 / Tue Jun 17. FIRST CLEAN ENTRY: Wed Jun 18. OPERATOR ACTIONS BEFORE SUNDAY: (1) INTC 40sh $123.69 GTC bracket — EXECUTE, (2) Cancel AMD $524/$520 + PLTR $150 + MRVL $202 stale orders. MU EXIT DEADLINE: Jun 20 (Juneteenth Jun 19 = market holiday)."
+    "note": "June 15 Market Open (9:45 AM ET). API BLOCKED 32nd session. Pre-Market silently failed. IRAN PEACE DEAL SIGNED — Strait of Hormuz reopening, Brent oil -10.4% to $103. Semis rallying: AMD +4%, QCOM +4%. INTC gapped to ~$124.57 (+6.5%) — ABOVE our $123.69 GTC bracket limit (order unfilled). FOMC binary event window ACTIVE (meeting June 16-17; decision June 17 2PM ET; 99.6% hold probability). All watchlist names SKIP today per Exemption 2. FIRST CLEAN POST-FOMC WINDOW: THURSDAY June 18 (CORRECTION: June 15=Mon, June 18=Thu, not Wed). INTC fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). STALE GTCs UNRESOLVED: AMD $524/$520 + PLTR $150 + MRVL $202 — OPERATOR MUST CANCEL."
   },
   "positions": [
     {
@@ -37,14 +37,14 @@
       "bucket": "active",
       "qty": 0,
       "entry_price": 123.69,
-      "current_price": 123.07,
+      "current_price": 124.57,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": 117.51,
       "take_profit": 142.24,
       "setup": "breakout-volume",
-      "agent_average": 7.33,
-      "note": "PENDING ORDER — June 12 Midday BLOCKED (31st consecutive). Fresh 6-agent 7.33 APPROVED. F=6 T=6 S=8 M=8 R=8 TA=8. OPERATOR MUST EXECUTE: 40sh INTC limit $123.69 bracket GTC stop $117.51 target $142.24 R/R 3:1 BEFORE SUNDAY (FOMC window). Today range $115.20-$123.60."
+      "agent_average": 7.0,
+      "note": "PENDING ORDER — June 15 Market Open. Fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). SKIP per Exemption 2 (FOMC binary event June 16-17). INTC GAPPED to $124.57 (+6.5% from $116.96 June 12 close) on Iran peace deal SIGNED. GTC bracket at $123.69 (if operator placed) HAS NOT FILLED — INTC opened ABOVE limit price. Will fill on intraday pullback to $123.69. POST-FOMC: Thursday June 18, place 39sh at ask x1.005 if GTC still unfilled. BofA PT $135. 40sh at $125+ = 5.01% = guardrail violation; use 39sh."
     },
     {
       "symbol": "MU",
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON — Iran deal imminent (ceasefire nearly finalized). FOMC hike odds 97.8% HOLD. Oil -3%+. S&P +0.55% est. Chip sector +5% June 12 (SOXX +8% June 11). SpaceX SPCX IPO $150.",
-    "fear_greed": "Greed (risk-on, Iran deal + FOMC hold = dual tailwinds)",
-    "fear_greed_label": "Greed — geopolitical de-escalation + rate headwind removed",
-    "spx": "June 12 est. close ~7,435 (+0.55%). SPX since strategy start (~$7,200): +3.27%. June 11: +1.75% (7,394.30). SOXX +8% June 11. FOMC June 16-17: 97.8% hold.",
-    "btc": "BTC est. ~$75-80K. Below $82K threshold. Post-FOMC risk-on may push toward threshold. Monitor at Wed Jun 18 Pre-Market.",
+    "mode": "RISK-ON SURGE — Iran peace deal SIGNED June 15. Strait of Hormuz reopening. Brent -10.4% to $103. Semis leading: AMD +4%, QCOM +4%, ADI/NXPI/TXN +3%. FOMC June 16-17: 99.6% hold. S&P 500 futures strong.",
+    "fear_greed": "Greed (maximum risk-on — Iran deal signed, oil collapsing, FOMC hold near-certain)",
+    "fear_greed_label": "Greed — Iran deal signed + oil -10% + 99.6% FOMC hold = triple tailwind",
+    "spx": "June 15 open: S&P 500 futures strongly positive on Iran peace deal. June 12 close est. ~7,435 (+0.55%). INTC ~$124.57 (+6.5%). AMD ~$472 (+4%). SPX since strategy start (~$7,200): +3.27% (est; will widen today on large Iran deal rally).",
+    "btc": "BTC est. ~$80-85K. Possible push through $82K threshold on Iran deal risk-on. Verify at Thursday June 18 Pre-Market for crypto entry decision.",
     "sectors": {
       "leaders": ["Semiconductors (SOXX +8% June 11; chips +5% June 12)", "AI/Tech (Nasdaq +2.54% June 11)", "Industrials", "Consumer Discretionary (oil relief)"],
       "laggards": ["Energy (oil -3%+ on Iran deal)", "Gold/GLD (safe-haven premium unwinding)", "Defense (ceasefire headwind — LMT/RTX selling)"],
@@ -86,10 +86,10 @@
       "last_summary": "SILENT FAILURE June 12. No heartbeat. NOTE: June 16 Pre-Market is inside FOMC binary event window — no new entries permitted."
     },
     "market_open": {
-      "status": "silent-failure",
-      "last_run": "2026-06-10T13:46:00Z",
+      "status": "completed",
+      "last_run": "2026-06-15T13:45:00Z",
       "next_run": "2026-06-16T13:45:00Z",
-      "last_summary": "SILENT FAILURE June 12. No heartbeat. No MOO fill confirmations. INTC GTC bracket (if placed by operator) may fill at Jun 16 open."
+      "last_summary": "June 15 Market Open: Iran peace deal SIGNED (Brent -10.4%, semis +3-4%). INTC gapped to $124.57 (+6.5%) — above $123.69 GTC limit (not filled). Fresh 6-agent INTC 7.0 — APPROVED but SKIP Exemption 2 (FOMC binary event June 16-17). AMD/MRVL also skip Exemption 2. Pre-Market silent failure logged. API blocked 32nd session. No naked positions (portfolio 100% cash). Next clean entry: Thursday June 18."
     },
     "midmorning": {
       "status": "silent-failure",
@@ -123,6 +123,58 @@
     }
   },
   "trades": [
+    {
+      "ts": "2026-06-15T13:45:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Pre-Market silently failed June 15. No heartbeat. Market-Open running catch-up (first routine to fire today)."
+    },
+    {
+      "ts": "2026-06-15T13:47:00Z",
+      "symbol": "INTC",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 7},
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "SKIP per Exemption 2 (FOMC binary event June 16-17). Gate APPROVED 7.0 avg. INTC gapped to $124.57 (+6.5%) above $123.69 GTC limit. 40sh at $125.11 = 5.01% = violates 5% cap. Maintain existing GTC bracket at $123.69 if operator placed. API blocked 32nd session. Next entry: Thursday June 18 at 39sh ask×1.005."
+    },
+    {
+      "ts": "2026-06-15T13:48:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.0,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 7},
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "SKIP per Exemption 2 (FOMC binary event). AMD ~$472 (+4% on Iran deal). Stale GTCs at $524.15/$520.59 not in danger (AMD well below). CANCEL stale orders at Alpaca."
+    },
+    {
+      "ts": "2026-06-15T13:49:00Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.17,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 8},
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "SKIP per Exemption 2 (FOMC binary event). MRVL ~$285+ (est.). Stale GTC $202.19 not in danger (MRVL $285 >> $202). CANCEL stale order at Alpaca. Post-FOMC: MANDATORY entry Thursday June 18."
+    },
     {
       "ts": "2026-06-12T16:33:00Z",
       "symbol": "INTC",
@@ -615,23 +667,23 @@
     {
       "symbol": "INTC",
       "bucket": "active",
-      "score": 7.33,
-      "action": "MANDATORY — GTC bracket order approved. If not already placed by operator, execute FIRST at Wed Jun 18 open. 40sh limit $123.69 bracket GTC stop $117.51 target $142.24.",
-      "notes": "FOMC binary event window (Sun Jun 14 - Tue Jun 17): GTC bracket placed before window can fill at Mon open. Fresh 6-agent 7.33 (F6/T6/S8/M8/R8/TA8). Google 3M TPU + NVIDIA Feynman eval. R/R 3:1. 4.95% position size."
+      "score": 7.0,
+      "action": "MANDATORY — Fresh 6-agent 7.0 (June 15). GTC bracket at $123.69 (if placed) may fill intraday June 16-17 on pullback from $124.57 gap. If unfilled: execute THU Jun 18 at 39sh ask×1.005 (NOT 40sh — 40sh at $125+ = 5.01% = guardrail violation). BofA PT $135.",
+      "notes": "June 15 fresh score: F=7 T=6 S=8 M=7 R=7 TA=7. Avg 7.0. Gate APPROVED. SKIP today per Exemption 2. INTC gapped $116.96→$124.57 (+6.5%) on Iran peace deal. GTC bracket at $123.69 NOT FILLED (opened above limit). Post-FOMC (Thu Jun 18): 39sh limit ask×1.005 bracket GTC stop fill×0.95 target fill×1.15."
     },
     {
       "symbol": "MRVL",
       "bucket": "active",
-      "score": 7.5,
-      "action": "HIGH CONVICTION — re-score Wed Jun 18 pre-market. 8sh limit ask×1.005 (~$297) bracket GTC stop fill×0.95 target fill×1.15.",
-      "notes": "Jensen Huang 'next trillion.' Teralynx T100 (102.4 Tbps AI networking). AI networking picks-and-shovels. $295 area = pullback from $309 ATH. Post-FOMC entry Wed Jun 18. Est. score ~7.5."
+      "score": 7.17,
+      "action": "HIGH CONVICTION — re-score THU Jun 18 pre-market. 8sh limit ask×1.005 (~$286) bracket GTC stop fill×0.95 target fill×1.15. CANCEL stale GTC $202.19 FIRST.",
+      "notes": "Jensen Huang 'next trillion.' Teralynx T100 (102.4 Tbps AI networking). AI networking picks-and-shovels. Est. ~$285+ today. Post-FOMC entry Thu Jun 18. Est. score ~7.5."
     },
     {
       "symbol": "AMD",
       "bucket": "active",
-      "score": 7.33,
-      "action": "MANDATORY post-FOMC — re-score Wed Jun 18. 9sh limit ask×1.005 (~$492) bracket GTC stop fill×0.95 target fill×1.15.",
-      "notes": "AI CPU TAM $200B (Jensen Huang). AMD EPYC + Instinct MI300X. 9sh to stay under 5% cap at ~$492. Post-FOMC hold confirms no rate headwind. Est. avg ~7.33."
+      "score": 7.0,
+      "action": "MANDATORY post-FOMC — re-score THU Jun 18. 9sh limit ask×1.005 (~$476) bracket GTC stop fill×0.95 target fill×1.15. CANCEL stale GTCs $524/$520 FIRST.",
+      "notes": "AI CPU TAM $200B (Jensen Huang). AMD EPYC + Instinct MI300X. Iran deal + FOMC hold = maximum AI-capex tailwind. AMD ~$472 today (+4%). Est. avg ~7.33 post-FOMC."
     },
     {
       "symbol": "MU",
