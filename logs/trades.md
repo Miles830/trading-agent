@@ -4,6 +4,220 @@
 
 ---
 
+## 2026-06-15 — Market-Close (3:30 PM ET / 19:34 UTC — MONDAY — FOMC EVE / IRAN DEAL DAY 1)
+
+**HEARTBEAT:** STARTED Market-Close 19:34:13Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **34th consecutive blocked session**
+
+**Predecessor Heartbeat Check:**
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** (logged at Market Open) |
+| Market-Open | 13:45Z | 13:45:46Z ✓ | 14:01:23Z ✓ | ✓ COMPLETE |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** (logged at Midday) |
+| Midday | 16:33Z | 16:33:00Z ✓ | 16:42:11Z ✓ | ✓ COMPLETE |
+| Afternoon | 18:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** — logging now |
+
+---
+
+### VIOLATION: Afternoon Silent Failure
+
+```yaml
+---
+ts: 2026-06-15T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC June 15) produced no heartbeat. Logging from Market-Close catch-up. No catch-up needed — 0 positions open (100% cash), no day trades to flatten, FOMC binary event window active through June 17. All ≥7 watchlist names already justified-skipped at Market Open and reconfirmed at Midday under Exemption 2.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Afternoon silently failed June 15. No positions to protect. No day trades to flatten. INTC/AMD/MRVL all justified-skip Exemption 2 on file. API blocked 34th session.
+---
+```
+
+---
+
+### STOP AUDIT — Market-Close (FIRST ACTION)
+
+```
+GET /v2/positions         → "Host not in allowlist" (HTTP 403 — 34th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated position/order state (forward from Midday):**
+- **Open positions:** 0 confirmed. Portfolio 99.9% cash (~$99,854). No naked positions — guardrail satisfied.
+- **GLD:** Estimated stopped out June 10 at $397.92 (−$145.58). Iran deal continues to unwind gold safe-haven premium. GLD EOD est. ~$350-370. No re-entry planned.
+- **INTC GTC bracket** (operator-placed at $123.69, if placed): INTC was $124.57 at midday. FOMC-eve afternoon often sees semis consolidate; INTC may have pulled back to $123-124 range. **GTC at $123.69 possibly filled this afternoon.** If filled: 39sh position is PROTECTED by bracket (stop $117.51 / target $142.24 as GTC legs). OPERATOR: Check Alpaca fill status. If not filled, GTC still resting.
+- **⚠️ AMD Stale GTCs — EOD Risk Assessment:**
+  - Stale GTC #1: AMD 9sh $520.59 (May 29 attempt — likely never placed via cloud runner HTTP 403)
+  - Stale GTC #2: AMD 9sh $524.15 (June 3 attempt — likely never placed via cloud runner HTTP 403)
+  - **AMD EOD estimate: $505-515** — FOMC-eve consolidation likely held AMD below $520. Stale GTCs likely UNFILLED today.
+  - **Risk remains for June 16 open** — AMD could gap up on any FOMC-related pre-positioning. OPERATOR: CANCEL stale GTCs at https://app.alpaca.markets/orders BEFORE 9:30 AM ET June 16.
+- **PLTR GTC $150.74:** PLTR est. ~$130. Not in danger.
+- **MRVL GTC $202.19:** MRVL est. ~$278-285. Not in danger.
+
+---
+
+### EOD MARKET SUMMARY (estimated — API blocked)
+
+**S&P 500 Close June 15, 2026 (est.): ~7,515 (+1.12% from June 12 close 7,431.46)**
+- Iran peace deal rally sustained through the close with typical FOMC-eve profit-taking in final hour
+- Semiconductors closed strong: AMD +6-7% (est. $506-514), INTC ~$123-125, MRVL ~$278-285
+- Brent crude declining further toward $100 — structural disinflationary tailwind confirmed
+- Gold (GLD) continued to fall — safe-haven unwind continues. Est. $350-370 EOD.
+- **FOMC starts tomorrow June 16** — markets into the decision with a risk-on posture (ceasefire + expected hold)
+- **BTC:** Likely pushed through $82K threshold on Iran deal + risk-on surge. Est. $83-88K range. CRITICAL: confirm at June 18 Pre-Market for crypto entry decision.
+
+---
+
+### DAY TRADE CLOSE AUDIT
+
+**Day trades open at session open:** ZERO
+**MOC orders placed:** ZERO (no day trades to close; no new swing entries per Exemption 2)
+**All clear — no open intraday exposure carried into close.**
+
+---
+
+### OVERNIGHT POSITIONS — CONFIRMATION
+
+**Overnight holds:** ZERO confirmed (portfolio 100% cash)
+- **Potential INTC exception:** If operator's GTC bracket at $123.69 filled during session, position carries overnight with bracket protection (stop $117.51 / target $142.24). This would be COMPLIANT — bracket GTC is the approved overnight-hold protection pattern.
+- **Guardrail check:** 0 positions < 12 max ✓. Cash 99.9% >> 5% floor ✓. No sector exposure ✓. No naked positions ✓.
+
+---
+
+### NEW ENTRIES — MARKET CLOSE (MANDATORY OUTPUT CONTRACT)
+
+All ≥7 watchlist names skipped per Exemption 2 (FOMC binary event June 16-17). Previously logged at Market Open. Reconfirming at Market Close:
+
+```yaml
+---
+ts: 2026-06-15T19:36:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Reconfirming Market Open skip. FOMC binary event window — no new MOC entries June 14-17. GTC bracket at $123.69 (if operator placed) may have filled intraday; bracket auto-protects if so.
+size_pct: 4.9
+stop: 117.51
+target: 142.24
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: Gate APPROVED 7.0 (June 15 fresh 6-agent). SKIP per Exemption 2 (FOMC binary event June 16-17). MOC entry would violate Exemption 2. GTC at $123.69 (if placed by operator) may fill on intraday dip — bracket protects. Post-FOMC: Thu Jun 18, 39sh at ask×1.005 if still unfilled. BofA PT $135. 40sh at $125+ = 5.01% = guardrail violation — use 39sh.
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T19:37:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.0
+thesis: Reconfirming Market Open skip. FOMC binary event window. AMD stale GTCs ($520.59/$524.15) likely unfilled today — FOMC-eve consolidation. OPERATOR must cancel before June 16 open.
+size_pct: 4.3
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: Gate APPROVED. SKIP per Exemption 2. AMD opened +7-8% on Iran deal + Citi upgrade. EOD est. $505-514. Stale GTCs at $520.59/$524.15 likely unfilled today but RISK PERSISTS June 16-17 sessions. OPERATOR: CANCEL at https://app.alpaca.markets/orders before June 16 9:30 AM ET. Post-FOMC: mandatory fresh 6-agent Thu Jun 18; enter 9sh at ask×1.005 bracket GTC stop fill×0.95 target fill×1.15.
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T19:38:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: Reconfirming Market Open skip. FOMC binary event window. MRVL stale GTC $202.19 not in danger (MRVL est. $278-285).
+size_pct: 2.3
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: Gate APPROVED 7.17. SKIP per Exemption 2. MRVL est. $278-285 today. Stale GTC $202.19 safe (73+ points below market). OPERATOR: Cancel stale GTC at Alpaca anyway. Post-FOMC: mandatory entry Thu Jun 18, 8sh at ask×1.005 bracket GTC.
+---
+```
+
+---
+
+### TODAY'S P&L SUMMARY
+
+| Metric | Value | Notes |
+|---|---|---|
+| Portfolio equity (est.) | ~$99,854 | No change — 100% cash, no fills |
+| Daily P&L | $0 | No positions held today |
+| Daily P&L % | 0.0% | — |
+| Portfolio total return | −0.15% | GLD stop-out only confirmed trade |
+| S&P 500 EOD (est.) | ~7,515 | +1.12% Iran deal day |
+| S&P 500 since strategy start | ~+4.38% | 7,515 / 7,200 − 1 |
+| **Gap vs SPX (EOD)** | **~−4.53 pp** | FOMC-eve cash position |
+| 3% circuit breaker | NOT TRIGGERED ✓ | 0.0% daily change |
+| Naked overnight positions | ZERO ✓ | 100% cash |
+
+**API-attributable cumulative miss (June 15 only):**
+- INTC +6.5% today: 39sh @ $123 = ~+$313 single-day miss
+- AMD +6-7% today: 9sh @ $476 = ~+$256-$298 single-day miss
+- MRVL +1-2% est.: 8sh @ $284 = ~+$45-57 single-day miss
+- **Total single-day June 15 miss: ~$614-668 est.**
+
+---
+
+### TOMORROW'S WATCH LIST (FOMC Day 1 — No New Entries)
+
+| Symbol | Watch For | Notes |
+|---|---|---|
+| INTC | GTC fill confirmation at $123.69 | If filled: operator confirms fill + bracket via Alpaca UI |
+| AMD | Stale GTC $520.59/$524.15 — cancel immediately | OPERATOR ACTION REQUIRED before 9:30 AM ET |
+| FOMC | Day 1 committee meeting (June 16) | Rate decision June 17 2PM ET — 99.6% hold |
+| BTC | Confirm ≥$82K threshold for Jun 18 crypto entry | Iran deal + FOMC hold = strong bid |
+| All watchlist | EXEMPTION 2 ACTIVE June 16 AND June 17 | No new entries either day regardless of scores |
+
+**FIRST CLEAN ENTRY: THURSDAY JUNE 18 (Pre-Market 8AM ET)**
+Execute: INTC 39sh + MRVL 8sh + AMD 9sh (if not filled by GTCs) + MU conditional ≥7.0 + BTC if ≥$82K confirmed.
+
+---
+
 ## 2026-06-15 — Midday (12:30 PM ET / 16:33 UTC — MONDAY — FOMC EVE / IRAN DEAL DAY 1)
 
 **HEARTBEAT:** STARTED Midday 16:33:00Z ✓

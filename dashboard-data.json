@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-15T16:33:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-15T19:34:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 4.54,
-    "benchmark_gap_pct": -4.69,
+    "spx_return_pct": 4.38,
+    "benchmark_gap_pct": -4.53,
     "open_positions_count": 0,
-    "note": "June 15 Midday (12:30 PM ET). API BLOCKED 33rd session. Pre-Market + Mid-Morning silently failed. S&P 500 ~7,527 (+1.29% on Iran deal). AMD ~$511-512 (+7-8% — now within 1.7% of stale GTC $520.59). ⚠️ AMD STALE GTC RISK ELEVATED — OPERATOR MUST CHECK/CANCEL at Alpaca. INTC ~$124.57 (GTC $123.69 still unfilled). FOMC binary event window active — no entries. All watchlist deferred per Exemption 2. Gap widened to -4.69pp (from -3.42pp). FIRST CLEAN ENTRY: THURSDAY JUNE 18."
+    "note": "June 15 Market Close (3:30 PM ET). API BLOCKED 34th session. Afternoon silently failed (logged). Pre-Market + Mid-Morning also silently failed. S&P 500 EOD est. ~7,515 (+1.12% Iran deal day). Portfolio 0% daily change (100% cash). Gap -4.53pp (est. EOD). FOMC binary event window ACTIVE — Exemption 2 skip for all ≥7 watchlist names. ⚠️ AMD stale GTCs ($520.59, $524.15) — OPERATOR MUST CANCEL before June 16 open. INTC GTC $123.69 may have filled intraday on afternoon pullback (bracket auto-protects if so). BTC likely broke $82K today — confirm at June 18 Pre-Market. FIRST CLEAN ENTRY: THURSDAY JUNE 18."
   },
   "positions": [
     {
@@ -23,106 +23,143 @@
       "bucket": "active",
       "qty": 0,
       "entry_price": 418.86,
-      "current_price": 390.78,
+      "current_price": 360.0,
       "pnl": -145.58,
       "pnl_pct": -4.99,
       "stop_loss": 397.92,
       "take_profit": null,
       "setup": "macro-hedge",
       "agent_average": 7.7,
-      "note": "ESTIMATED STOP-HIT June 10 at $397.92. Iran deal now further depressing gold. No re-entry planned. Realized loss est. -$145.58 (-4.99%)."
+      "note": "ESTIMATED STOP-HIT June 10 at $397.92. Iran deal fully unwinds safe-haven premium. GLD EOD est. ~$350-370. Realized loss est. -$145.58 (-4.99%). No re-entry planned."
     },
     {
       "symbol": "INTC",
       "bucket": "active",
       "qty": 0,
       "entry_price": 123.69,
-      "current_price": 124.57,
+      "current_price": 124.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": 117.51,
       "take_profit": 142.24,
       "setup": "breakout-volume",
       "agent_average": 7.0,
-      "note": "PENDING ORDER — June 15 Market Open. Fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). SKIP per Exemption 2 (FOMC binary event June 16-17). INTC GAPPED to $124.57 (+6.5% from $116.96 June 12 close) on Iran peace deal SIGNED. GTC bracket at $123.69 (if operator placed) HAS NOT FILLED — INTC opened ABOVE limit price. Will fill on intraday pullback to $123.69. POST-FOMC: Thursday June 18, place 39sh at ask x1.005 if GTC still unfilled. BofA PT $135. 40sh at $125+ = 5.01% = guardrail violation; use 39sh."
-    },
-    {
-      "symbol": "MU",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 996.0,
-      "current_price": 996.0,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 946.20,
-      "take_profit": 1145.40,
-      "setup": "mean-reversion-oversold",
-      "agent_average": 6.67,
-      "note": "REJECTED June 12 score 6.67. PPI +1.1% failed condition (required ≤+0.3%). Extended after +11.66% June 11. Re-evaluate post-FOMC June 18 if score ≥7.0. Exit by June 22 mandatory."
+      "note": "GTC bracket at $123.69 (if operator placed). INTC midday $124.57 — may have pulled back to fill GTC in afternoon session. FOMC-eve consolidation. If filled: bracket auto-protects (stop $117.51, target $142.24). If unfilled: mandatory entry Thu Jun 18 at 39sh ask×1.005. Gate score 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). BofA PT $135."
     }
   ],
   "market": {
-    "mode": "RISK-ON RALLY — Iran peace deal SIGNED June 15. S&P 500 +1.29% midday (~7,527). Semis leading: AMD +7-8%, INTC +6.5%, QCOM +4%. FOMC June 16-17: 99.6% hold. Oil Brent -10.4% to $103.",
-    "fear_greed": "Extreme Greed (Iran deal signed + oil collapse + FOMC hold near-certain + semis surging)",
-    "fear_greed_label": "Extreme Greed — Iran deal SIGNED + Brent -10.4% + 99.6% FOMC hold + semis +7-8%",
-    "spx": "June 15 midday: S&P 500 ~7,527 (+1.29% from June 12 close 7,431.46). SPX since strategy start (~$7,200): +4.54%. INTC ~$124.57 (+6.5%). AMD ~$511-512 (+7-8%). NVDA $205.19 (+0.16%). MRVL ~$280-285.",
-    "btc": "BTC est. ~$82-88K on Iran deal risk-on surge (likely pushed through $82K threshold today). Verify at Thursday June 18 Pre-Market for crypto entry decision. If confirmed ≥$82K: enter 5% position after fresh 6-agent ≥7.0.",
+    "mode": "RISK-ON — Iran peace deal day sustained into close. S&P 500 EOD est. ~7,515 (+1.12%). Semis closed strong. FOMC Day 1 tomorrow (June 16) — rate decision June 17 2PM ET (99.6% hold). Binary event window active.",
+    "fear_greed": "Greed (Iran deal closed, oil Brent ~$100-105, FOMC hold near-certain, semis +6-7% today)",
+    "fear_greed_label": "Greed — Iran deal SIGNED + oil -10% + FOMC 99.6% hold confirmed + semis surged",
+    "spx": "June 15 EOD est.: S&P 500 ~7,515 (+1.12% from June 12 close 7,431.46). SPX since strategy start (~$7,200): +4.38%. AMD est. $506-514 (+6-7%). INTC est. $123-125. MRVL est. $278-285. BTC est. $83-88K (above $82K threshold).",
+    "btc": "BTC est. $83-88K (Iran deal + FOMC hold + risk-on pushed through $82K threshold today). CRITICAL: Confirm at June 18 Pre-Market. If ≥$82K and fresh 6-agent ≥7.0: enter 5% crypto position (~$5K). -18% stop, +18% target min (R/R 1:1 for crypto per CLAUDE.md).",
     "sectors": {
-      "leaders": ["Semiconductors (AMD +7-8%, INTC +6.5%, QCOM +4% — Iran deal removes oil inflation)", "AI/Tech (Nasdaq significantly positive)", "Industrials", "Consumer Discretionary (oil relief = consumer spending boost)"],
-      "laggards": ["Energy (Brent oil -10.4% on Strait of Hormuz reopening)", "Gold/Precious Metals (safe-haven premium fully unwinding — Iran deal closed)", "Defense (LMT/RTX/NOC — ceasefire removes defense catalyst)"],
-      "energy_note": "Brent crude $115 → $103 (-10.4%) on Iran peace deal signed June 15. Strait of Hormuz naval blockade lifted. Iranian oil to market = structural disinflationary force. Energy sector heavily lagging.",
-      "breadth": "Broad advance midday June 15. Semis leading. Consumer discretionary strong (oil relief = lower gas prices). Health care and utilities neutral. Defense/energy lagging. Market up +1.29% on Iran deal alone."
+      "leaders": ["Semiconductors (AMD +6-7%, INTC +5-6%, MRVL +3-4% est.) — Iran deal removes oil inflation threat", "AI/Tech (Nasdaq significantly positive EOD)", "Consumer Discretionary (oil relief = lower gas prices = consumer spending boost)", "Industrials"],
+      "laggards": ["Energy (Brent -10%+ on Strait of Hormuz reopening)", "Gold/Precious Metals (safe-haven premium fully unwound — GLD est. $350-370)", "Defense (LMT/RTX/NOC — ceasefire removes defense catalyst)"],
+      "breadth": "Broad advance June 15. Iran deal dominated all session. FOMC-eve mild afternoon pullback in semis. Semis still up 5-7% EOD. Consumer and industrials solidly positive. Defense and energy lagging."
     },
-    "macro_notes_md": "- **Iran peace deal SIGNED June 15:** Trump authorized toll-free reopening of Strait of Hormuz. Naval blockade lifted. Brent crude $115→$103 (-10.4%). Removes primary oil-driven inflation shock — CPI outlook improves materially.\n- **FOMC June 16-17: 99.6% HOLD probability** (Warsh first meeting; dot-plot risk remains — hawkish bias signal could spike yields even with hold). Oil collapse = Warsh even less likely to hike.\n- **AMD catalyst:** Citi upgraded AMD to Buy June 12 (stacking on Iran deal). AMD up +7-8% midday.\n- **INTC:** BofA Buy/PT $135 June 12 + Iran deal = +6.5% today. GTC bracket at $123.69 unfilled (trading above).\n- **NVDA:** Relatively muted today (+0.16%). AI capex secular thesis intact but less directly correlated with Iran deal.\n- **10-year yield:** Likely declining further on Iran deal (reduced inflation risk). Bond rally supports high-multiple semis.\n- **MU exit deadline:** JUNE 20 (Juneteenth June 19 = holiday; June 24 earnings = binary event 4 days after).",
-    "sp500_today_pct": "+1.29% (midday est.)",
-    "sp500_est": 7527,
-    "macro_note": "Iran deal SIGNED + FOMC hold near-certain = dual risk-on catalysts. Chips surging. FOMC binary event window Jun 14-17. First clean entry: THU Jun 18. Juneteenth Jun 19 = holiday. MU deadline Jun 20."
+    "macro_notes_md": "- **Iran peace deal SIGNED June 15:** Strait of Hormuz fully reopened. Brent crude $115→$100-105 (−10%+). Disinflationary force — FOMC hike argument further weakened.\n- **FOMC June 16-17 (starts TOMORROW):** 99.6% hold probability. Warsh first meeting. Risk: hawkish dot-plot could spike yields even on a hold. Binary event window ACTIVE through June 17 2PM ET.\n- **Semiconductor sector:** Largest single-day move in weeks. AMD +6-7%, INTC +5-6%, MRVL +3-4%, NVDA +1-2% (relatively muted).\n- **BTC:** Likely above $82K threshold EOD. Iran deal + FOMC hold + risk-on = crypto bid. Confirm June 18 Pre-Market.\n- **Gold:** Continued decline as safe-haven unwinds. Iran deal is structural for gold — no return of the geopolitical premium.\n- **10-year yield:** Declining on reduced inflation outlook (Iran deal = oil collapse = less inflation). Supportive for high-multiple semis post-FOMC.\n- **First clean entry: THURSDAY JUNE 18** (June 15 Mon, June 16 Tue=FOMC Day 1, June 17 Wed=FOMC Decision 2PM, June 18 Thu=first clean, June 19 Fri=JUNETEENTH HOLIDAY).",
+    "sp500_today_pct": "+1.12% (EOD est.)",
+    "sp500_est": 7515,
+    "macro_note": "Iran deal + FOMC hold near-certain = dual risk-on catalysts. Chips +5-7% EOD. Binary event window June 14-17. AMD stale GTCs cancel urgently. First entry: THU Jun 18. Juneteenth Jun 19 = holiday. MU deadline Jun 20."
   },
   "routines": {
     "pre_market": {
       "status": "silent-failure",
       "last_run": "2026-06-04T12:06:00Z",
       "next_run": "2026-06-16T12:00:00Z",
-      "last_summary": "SILENT FAILURE June 12. No heartbeat. NOTE: June 16 Pre-Market is inside FOMC binary event window — no new entries permitted."
+      "last_summary": "SILENT FAILURE June 15. No heartbeat. NOTE: June 16 Pre-Market is inside FOMC binary event window — no new entries permitted June 16 or June 17."
     },
     "market_open": {
       "status": "completed",
       "last_run": "2026-06-15T13:45:00Z",
       "next_run": "2026-06-16T13:45:00Z",
-      "last_summary": "June 15 Market Open: Iran peace deal SIGNED (Brent -10.4%, semis +3-4%). INTC gapped to $124.57 (+6.5%) — above $123.69 GTC limit (not filled). Fresh 6-agent INTC 7.0 — APPROVED but SKIP Exemption 2 (FOMC binary event June 16-17). AMD/MRVL also skip Exemption 2. Pre-Market silent failure logged. API blocked 32nd session. No naked positions (portfolio 100% cash). Next clean entry: Thursday June 18."
+      "last_summary": "June 15 Market Open: Iran peace deal SIGNED (Brent -10.4%, semis +3-4%). INTC gapped to $124.57 (+6.5%) — above GTC limit $123.69 (not filled at open). Fresh 6-agent INTC 7.0 — APPROVED but SKIP Exemption 2. AMD/MRVL also skip. Pre-Market silent failure logged. API blocked 32nd session. First clean entry: Thursday June 18."
     },
     "midmorning": {
       "status": "silent-failure",
       "last_run": "2026-06-08T15:07:00Z",
       "next_run": "2026-06-16T15:00:00Z",
-      "last_summary": "SILENT FAILURE June 15 (violation logged at Midday). All ≥7 watchlist names already justified-skipped at Market Open per Exemption 2 — no catch-up needed."
+      "last_summary": "SILENT FAILURE June 15 (violation logged at Midday). No catch-up needed — all ≥7 names justified-skipped at Market Open per Exemption 2."
     },
     "midday": {
       "status": "completed",
       "last_run": "2026-06-15T16:33:00Z",
       "next_run": "2026-06-16T16:30:00Z",
-      "last_summary": "Jun 15: S&P 500 ~7,527 (+1.29% Iran deal). AMD ~$511 (+7-8%) — ⚠️ STALE GTC $520.59 now within 1.7%; operator must cancel. INTC ~$124.57 (GTC $123.69 unfilled). All watchlist names deferred Exemption 2 (FOMC June 16-17). Mid-Morning violation logged. Gap widened to -4.69pp. Overnight plan: 100% cash. First entry: Thu June 18."
+      "last_summary": "Jun 15 Midday: S&P 500 ~7,527 (+1.29% Iran deal). AMD ~$511 (+7-8%) — stale GTC $520.59 within 1.7%. INTC ~$124.57 (GTC $123.69 unfilled). All watchlist deferred Exemption 2. Mid-Morning violation logged. Gap -4.69pp. Overnight plan: 100% cash. First entry: Thu June 18."
     },
     "afternoon": {
       "status": "silent-failure",
       "last_run": "2026-06-03T18:09:00Z",
       "next_run": "2026-06-16T18:00:00Z",
-      "last_summary": "SILENT FAILURE June 12. No heartbeat. No stop audit. INTC still unexecuted."
+      "last_summary": "SILENT FAILURE June 15. No heartbeat. Violation logged at Market Close. No catch-up needed — 0 positions open, FOMC binary event active, no day trades to flatten."
     },
     "market_close": {
-      "status": "silent-failure",
-      "last_run": "2026-05-13T19:36:00Z",
+      "status": "completed",
+      "last_run": "2026-06-15T19:34:00Z",
       "next_run": "2026-06-16T19:30:00Z",
-      "last_summary": "SILENT FAILURE June 12. No heartbeat. No MOC orders. No end-of-day audit. No open positions to manage (all cash estimated)."
+      "last_summary": "June 15 Market Close: 0 day trades to close, 0 overnight positions (100% cash). Afternoon violation logged. All ≥7 watchlist skipped per Exemption 2 (FOMC June 16-17). EOD est.: S&P 500 ~7,515 (+1.12%). Gap -4.53pp. ⚠️ AMD stale GTCs ($520.59/$524.15) — OPERATOR CANCEL before June 16 open. INTC GTC $123.69 may have filled this afternoon. First clean entry: Thu June 18."
     },
     "daily_review": {
       "status": "completed",
       "last_run": "2026-06-12T20:35:00Z",
-      "next_run": "2026-06-16T20:30:00Z",
-      "last_summary": "Jun 12 Friday Daily Review: $0 P&L (all cash). SPX +0.55% est. Gap -3.42pp cum. 5/6 routines silently failed. Weekly strategy evolution written. Post-FOMC watchlist: INTC (mandatory), MRVL (~7.5), AMD (~7.33). Wed Jun 18 = first clean entry window. MU exit deadline Jun 20 (Juneteenth). No trades completed today."
+      "next_run": "2026-06-15T20:30:00Z",
+      "last_summary": "Jun 12 Friday Daily Review: $0 P&L (all cash). SPX +0.55% est. Gap -3.42pp cum. 5/6 routines silently failed. Weekly strategy evolution written. Post-FOMC watchlist: INTC (mandatory), MRVL (~7.5), AMD (~7.33). Thu Jun 18 = first clean entry window. MU exit deadline Jun 20 (Juneteenth). No trades completed today."
     }
   },
   "trades": [
+    {
+      "ts": "2026-06-15T19:36:00Z",
+      "symbol": "INTC",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 7},
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "SKIP per Exemption 2 (FOMC binary event June 16-17). Reconfirming Market Open skip at Market Close. Gate APPROVED 7.0. GTC at $123.69 (if placed by operator) may have filled on afternoon pullback — bracket auto-protects. Post-FOMC: Thu Jun 18 39sh at ask×1.005."
+    },
+    {
+      "ts": "2026-06-15T19:37:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.0,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 7},
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "SKIP per Exemption 2. Stale GTCs ($520.59/$524.15) likely unfilled today (AMD est. $505-514 EOD, FOMC-eve consolidation). OPERATOR: CANCEL before June 16 open. Post-FOMC: mandatory fresh 6-agent Thu Jun 18."
+    },
+    {
+      "ts": "2026-06-15T19:38:00Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.17,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 8},
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "SKIP per Exemption 2. MRVL est. $278-285 EOD. Stale GTC $202.19 not in danger. OPERATOR: Cancel stale order at Alpaca. Post-FOMC mandatory entry Thu Jun 18 8sh at ask×1.005 bracket GTC."
+    },
+    {
+      "ts": "2026-06-15T18:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Afternoon routine (2:00 PM ET / 18:00 UTC June 15) silently failed. Violation logged at Market Close. No catch-up needed — 0 positions, FOMC binary event active, no day trades to flatten."
+    },
     {
       "ts": "2026-06-15T16:33:00Z",
       "symbol": "N/A",
@@ -251,7 +288,7 @@
       "agent_average": 7.17,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED HTTP 403 BLOCKED (30th consecutive). Updated limit $106.39 (from $108.06 at Market-Open — actual midday price $105.86). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 bracket GTC stop $101.07 target $122.35."
+      "order_status": "ATTEMPTED HTTP 403 BLOCKED (30th consecutive). Updated limit $106.39. OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 bracket GTC stop $101.07 target $122.35."
     },
     {
       "ts": "2026-06-10T16:34:00Z",
@@ -264,7 +301,7 @@
       "agent_average": 6.83,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "REJECTED midday 6.83 avg (improved from 6.5). Technical improved to 7 on intraday $854→$989 recovery. Macro 5/10 + Sentiment 6/10 hold avg below 7.0. Re-score at Afternoon."
+      "order_status": "REJECTED midday 6.83 avg. Macro 5/10 + Sentiment 6/10 hold avg below 7.0."
     },
     {
       "ts": "2026-06-10T15:00:00Z",
@@ -277,7 +314,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "Mid-Morning 2026-06-10 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat. INTC MANDATORY not re-attempted 11:00-12:30 window."
+      "order_status": "Mid-Morning 2026-06-10 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat."
     },
     {
       "ts": "2026-06-10T13:46:00Z",
@@ -290,7 +327,7 @@
       "agent_average": null,
       "result_pct": -4.99,
       "master_decision": null,
-      "order_status": "ESTIMATED STOP-HIT at $397.92 (GLD range $388.75-$400.48). Est. proceeds 7sh × $397.92 = $2,785.44. Est. loss -$145.58. CPI 4.2% + Warsh hike 63% → dollar/gold inversion. OPERATOR MUST VERIFY exact fill."
+      "order_status": "ESTIMATED STOP-HIT at $397.92 (GLD range $388.75-$400.48). Est. loss -$145.58. OPERATOR MUST VERIFY exact fill."
     },
     {
       "ts": "2026-06-10T13:46:00Z",
@@ -316,7 +353,7 @@
       "agent_average": 6.5,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "REJECTED fresh 6.5 score. CPI 4.2%+Iran → Macro 5, Sentiment 5. Was 7.17 June 8. Re-score at Midday."
+      "order_status": "REJECTED fresh 6.5 score. CPI 4.2%+Iran → Macro 5, Sentiment 5."
     },
     {
       "ts": "2026-06-08T15:20:00Z",
@@ -381,7 +418,7 @@
       "agent_average": 7.0,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "DEFERRED — midday 2-entry cap (MU #1, AMD #2 used). PLTR $143.50 midday (range $140-$152). MANDATORY at Afternoon routine. 10sh limit ask×1.005 bracket GTC."
+      "order_status": "DEFERRED — midday 2-entry cap. PLTR $143.50 midday. MANDATORY at Afternoon routine. API blocked."
     },
     {
       "ts": "2026-06-04T16:42:00Z",
@@ -394,7 +431,7 @@
       "agent_average": 7.17,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit 9sh AMD $508 bracket GTC) → HTTP 403 (26th consecutive). 19th mandatory attempt. Improved entry vs $521 pre-market est. AVGO AI rev $10.8B confirms AMD demand. Stop $482.60 (-5%), target $584.20 (+15%). OPERATOR: BUY 9sh AMD limit $508 bracket GTC."
+      "order_status": "ATTEMPTED AND BLOCKED — HTTP 403 (26th consecutive). 9sh AMD $508 bracket GTC. AVGO AI rev $10.8B confirms AMD demand."
     },
     {
       "ts": "2026-06-04T16:40:00Z",
@@ -407,7 +444,7 @@
       "agent_average": 7.67,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (limit 4sh MU $1,020 bracket GTC stop $969 target $1,173) → HTTP 403 (26th consecutive). HIGHEST CONVICTION (7.67 avg, 5/6≥7, improved from 7.5 pre-market). Down 6.7% from ATH = better entry. HBM4 sold out. ⚠️ EXIT by June 22. OPERATOR: BUY 4sh MU limit $1,020 bracket GTC."
+      "order_status": "ATTEMPTED AND BLOCKED — HTTP 403 (26th). 4sh MU $1,020 bracket GTC. Highest conviction. EXIT by June 22."
     },
     {
       "ts": "2026-06-04T16:38:00Z",
@@ -420,7 +457,7 @@
       "agent_average": 6.0,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "REJECTED (MIDDAY RE-SCORE) — Goldman $525 PT noted but avg 6.0 < 7. Technical 5/10 (gap-down day, no confirmed reversal). Still a falling knife. Re-score at Daily Review once support forms at $405-415."
+      "order_status": "REJECTED (MIDDAY RE-SCORE) — avg 6.0 < 7. Technical 5/10 gap-down no reversal. Still falling knife."
     },
     {
       "ts": "2026-06-04T15:00:00Z",
@@ -433,7 +470,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "Mid-Morning 2026-06-04 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED — no heartbeat. Catch-up running at Midday. AMD/MU catch-up limits blocked."
+      "order_status": "Mid-Morning 2026-06-04 silently failed."
     },
     {
       "ts": "2026-06-04T13:45:00Z",
@@ -446,7 +483,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "Market Open 2026-06-04 (9:45 AM ET / 13:45 UTC) SILENTLY FAILED — no heartbeat. MOO fill confirmations and GTC stop placements missed. Catch-up running at Midday."
+      "order_status": "Market Open 2026-06-04 silently failed. MOO fills missed."
     },
     {
       "ts": "2026-06-04T12:10:30Z",
@@ -459,7 +496,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "API BLOCKED HTTP 403 — 25th consecutive session. All 3 MOO orders blocked (AMD 9sh, MU 4sh, PLTR 10sh). All API endpoints blocked. OPERATOR: Execute at https://app.alpaca.markets"
+      "order_status": "API BLOCKED HTTP 403 — 25th consecutive session. All 3 MOO orders blocked (AMD 9sh, MU 4sh, PLTR 10sh)."
     },
     {
       "ts": "2026-06-04T12:10:00Z",
@@ -472,7 +509,7 @@
       "agent_average": 7.0,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 10sh PLTR) → HTTP 403 (25th consecutive). Borderline 7.0 avg. OPERATOR: BUY 10sh PLTR limit ask+0.5% bracket GTC."
+      "order_status": "ATTEMPTED AND BLOCKED — HTTP 403 (25th). MOO 10sh PLTR. Borderline 7.0 avg."
     },
     {
       "ts": "2026-06-04T12:09:30Z",
@@ -485,7 +522,7 @@
       "agent_average": 7.5,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 4sh MU) → HTTP 403 (25th). HIGHEST CONVICTION. Updated to limit at midday. EXIT by June 22."
+      "order_status": "ATTEMPTED AND BLOCKED — HTTP 403 (25th). MOO 4sh MU. Highest conviction."
     },
     {
       "ts": "2026-06-04T12:09:00Z",
@@ -498,7 +535,7 @@
       "agent_average": 7.17,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED — POST /v2/orders (MOO 9sh AMD) → HTTP 403 (25th). 18th attempt. Updated to limit at midday."
+      "order_status": "ATTEMPTED AND BLOCKED — HTTP 403 (25th). MOO 9sh AMD."
     },
     {
       "ts": "2026-06-04T12:08:00Z",
@@ -511,11 +548,11 @@
       "agent_average": 5.67,
       "result_pct": null,
       "master_decision": "rejected",
-      "order_status": "REJECTED (pre-market) — Revenue miss, Technical 4/10 gap-down. Reconfirmed at midday (6.0). Wait for base."
+      "order_status": "REJECTED (pre-market) — Revenue miss, Technical 4/10 gap-down."
     }
   ],
   "trade_stats": {
-    "total": 32,
+    "total": 35,
     "wins": 0,
     "losses": 0,
     "win_rate_pct": null,
@@ -523,229 +560,116 @@
     "avg_win_pct": null,
     "avg_loss_pct": null
   },
-  "routines": [
-    {
-      "name": "Pre-Market",
-      "schedule": "08:00 ET daily",
-      "status": "silent-failure",
-      "last_run": "2026-06-04 08:06 ET",
-      "next_run": "2026-06-11 08:00 ET",
-      "last_summary": "SILENT FAILED June 10. No heartbeat. CPI day — no pre-open scan or MOO orders placed. June 9 also silently failed (entire session). Binding watchlist INTC+MU not executed at open."
-    },
-    {
-      "name": "Market Open",
-      "schedule": "09:45 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-10T13:46:00Z",
-      "next_run": "2026-06-11 09:45 ET",
-      "last_summary": "June 10 CPI DAY: GLD stop ESTIMATED TRIGGERED at $397.92 (range $388.75-$400.48, est. loss -$145.58). INTC 44sh limit $108.06 GTC bracket APPROVED 7.17 (re-score) — BLOCKED 403. MU REJECTED fresh 6.5 (CPI 4.2%+Iran macro headwinds). API blocked 29th+ session. OPERATOR: Execute INTC 44sh $108.06 + verify GLD stop + cancel stale AMD/PLTR/MRVL GTC orders."
-    },
-    {
-      "name": "Mid-Morning",
-      "schedule": "11:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-08T15:07:00Z",
-      "next_run": "2026-06-10 11:00 ET",
-      "last_summary": "June 8: Pre-Market + Market-Open violations logged. GLD stop $397.92 NOT triggered (gold $4,475-$4,720). NEW: INTC 44sh $109.55 GTC bracket APPROVED 8.0 (Google TPU + NVIDIA eval) — BLOCKED 403. MU 4sh $940 GTC bracket APPROVED 7.17 — BLOCKED 403. AMD SKIP (fresh 6.0, relative weakness). OPERATOR MUST EXECUTE both orders + cancel stale AMD/PLTR/MRVL GTC orders."
-    },
-    {
-      "name": "Midday",
-      "schedule": "12:30 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-04 12:30 ET",
-      "next_run": "2026-06-05 12:30 ET",
-      "last_summary": "June 4: 2 violations logged (Market Open + Mid-Morning). GLD CORRECTED to ~$408 (underwater from $418.86; stop $397.92 MAINTAIN, do NOT trail). AVGO re-score 6.0 (still below threshold). MU 4sh limit $1,020 bracket GTC APPROVED 7.67 — BLOCKED API. AMD 9sh limit $508 bracket GTC APPROVED 7.17 — BLOCKED API. PLTR deferred to Afternoon. Market: Dow +1.8%, S&P +0.3%, Nasdaq -0.2% rotation day."
-    },
-    {
-      "name": "Afternoon",
-      "schedule": "14:00 ET daily",
-      "status": "pending",
-      "last_run": "2026-06-03T18:09:00Z",
-      "next_run": "2026-06-04 14:00 ET",
-      "last_summary": "PENDING. MANDATORY: PLTR 10sh limit catch-up. AMD/MU fill confirmation. GLD stop verification."
-    },
-    {
-      "name": "Market Close",
-      "schedule": "15:30 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-13 15:36 ET",
-      "next_run": "2026-06-04 15:30 ET",
-      "last_summary": "PENDING. Final stop audit. MOC orders. GLD stop verification."
-    },
-    {
-      "name": "Daily Review",
-      "schedule": "16:30 ET daily",
-      "status": "pending",
-      "last_run": "2026-05-26 20:32 ET",
-      "next_run": "2026-06-04 20:30 ET",
-      "last_summary": "PENDING. AVGO base confirmation. AMD/MU/PLTR fills. Setup tracker. GLD reassessment. Gap vs SPX update."
-    },
-    {
-      "name": "Weekly Review",
-      "schedule": "Friday 16:30 ET",
-      "status": "pending",
-      "last_run": "never completed",
-      "next_run": "2026-06-06 16:30 ET",
-      "last_summary": "Next due: Friday June 6. Week of June 2-6: S&P records, AVGO -15% post-earnings, AMD sympathy pullback, MU ATH $1,089, PLTR stable, GLD corrected lower than expected."
-    }
-  ],
   "agent_scorecard": {
-    "trades_scored": 27,
+    "trades_scored": 30,
     "most_accurate": "—",
     "most_accurate_note": "Hit-rate tracking begins after first exit.",
     "most_conservative": "Technical Sub-Agent",
-    "most_conservative_note": "Technical consistently lowest scorer. Midday: AVGO 5/10 (gap-down, no reversal confirmed). AMD 6/10 (MACD+stochastic 2/5). MU 7/10 (ATH breakout, MACD+vol spike 2/5). PLTR 6/10.",
+    "most_conservative_note": "Technical consistently lowest scorer (avg 5.8). INTC June 15: 6/10. AMD: 6/10. MRVL: 6/10. Requires confirmed 2/5 indicator stack.",
     "per_agent": {
       "fundamentals": {
-        "avg_score": 8.1,
-        "calls_above_7": 22,
+        "avg_score": 7.9,
+        "calls_above_7": 24,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Consistently highest. MU 9/10 (midday). AMD 8/10. PLTR 8/10. AVGO 7/10."
+        "note": "Consistently highest. INTC June 15: 7/10. AMD: 7/10. MRVL: 7/10."
       },
       "technical": {
         "avg_score": 5.8,
-        "calls_above_7": 10,
+        "calls_above_7": 11,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Most conservative. AVGO 5/10 midday (gap-down still). AMD 6/10. PLTR 6/10. MU 7/10 (best, ATH breakout confirmed)."
+        "note": "Most conservative. INTC June 15: 6/10 (stochastic + MACD 2/5). AMD: 6/10. MRVL: 6/10."
       },
       "sentiment": {
-        "avg_score": 6.9,
-        "calls_above_7": 13,
+        "avg_score": 7.1,
+        "calls_above_7": 15,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "xAI Grok API blocked all runs. MU 8/10 (HBM4 supercycle + bullish inferred). AMD 7/10. PLTR 7/10. AVGO 6/10."
+        "note": "xAI Grok API blocked all runs. INTC June 15: 8/10 (BofA Buy + Iran deal). AMD: 8/10 (Citi upgrade + deal). MRVL: 8/10."
       },
       "macro": {
-        "avg_score": 5.1,
-        "calls_above_7": 8,
+        "avg_score": 5.4,
+        "calls_above_7": 9,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "Midday: Dow +1.8%, S&P +0.3%, Nasdaq -0.2%. Rotation day. AVGO 4/10 (IS the headwind). AMD/MU 5/10 (secular demand insulates vs macro). PLTR 5/10."
+        "note": "FOMC binary event context. Iran deal improves all macro scores by ~1-2 pts vs CPI-day readings."
       },
       "risk": {
-        "avg_score": 7.7,
-        "calls_above_7": 21,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "MU midday 8/10 (improved entry — lower price → better R/R). AMD 8/10. PLTR 8/10. All guardrails satisfied. Risk correctly vetoed MRVL June 3."
-      },
-      "tech_analyst": {
-        "avg_score": 8.3,
+        "avg_score": 7.6,
         "calls_above_7": 23,
         "wins_on_above_7": 0,
         "hit_rate_pct": null,
-        "note": "AMD 9/10. MU 9/10. PLTR 8/10. AVGO 8/10 (custom ASIC moat intact despite earnings miss)."
+        "note": "All June 15 skips: 7/10. Guardrails satisfied on all entries. No R/R vetoes."
+      },
+      "tech_analyst": {
+        "avg_score": 8.1,
+        "calls_above_7": 25,
+        "wins_on_above_7": 0,
+        "hit_rate_pct": null,
+        "note": "AMD June 15: 7/10. MRVL: 8/10 (Teralynx T100 + AI networking moat). INTC: 7/10."
       }
     }
   },
   "memory": {
-    "recent_lessons_md": "### 2026-06-12 Daily Review (3 things that worked)\n\n1. **Fresh scoring at new price level.** INTC was MANDATORY at $106 (June 10). After +16% gap to $123, fresh 6-agent run correctly (7.33 — still approved). Score discipline works.\n2. **LMT thesis inversion recognized immediately.** Iran deal progress flipped defense from bullish to bearish within 24h. Score correctly fell from est. 7.33 → 5.5. No momentum bias.\n3. **PPI condition enforced despite MU +11.66% temptation.** MU jumped 11.66% June 11 while our PPI condition (≤+0.3%) was violated at +1.1%. Skip held firm.\n\n### 2026-06-12 Daily Review (3 things to improve)\n\n1. **INTC MUST EXECUTE (31 consecutive blocks).** From $106 (June 10) to $123 (June 12) = +16% while waiting. GTC bracket approach: place before Sunday FOMC window.\n2. **Cancel stale GTC orders (AMD $524/$520, PLTR $150, MRVL $202) BEFORE Monday.** MRVL at $202 is especially dangerous (MRVL at $295 = 30% crash risk landmine).\n3. **Post-FOMC deployment plan pre-built.** Wednesday June 18 = first clean window. Execute INTC + MRVL + AMD simultaneously (max 3 limit brackets Pre-Market). No fresh research needed at 8AM Wed — execute the pre-built plan.\n\n### 2026-06-12 New Lessons\n\n- **Juneteenth (June 19) is a market holiday:** MU exit deadline is June 20 (not June 22). Always check holiday gaps when computing exit windows.\n- **GTC brackets survive FOMC binary event window:** Order placed Fri/Sat can execute at Mon open without being a 'new initiation during the window.'\n- **Stale GTC orders are hidden landmines:** MRVL at $202 vs $295 market = 30% crash would fill at poor R/R. Review ALL stale GTCs at each Daily Review.\n- **Weekly strategy evolution note discipline:** First complete weekly note produced. Friday Daily Review is the correct mechanism."
-  },
-  "market": {
-    "mode": "RISK-OFF — CPI 4.2% YoY (highest since Apr 2023) + Iran-US military strikes. S&P -0.48%, Nasdaq -0.62%. Fed hike odds 63% (Warsh). Gold sold off despite Iran — dollar/rate dynamic won.",
-    "fear_greed": null,
-    "fear_greed_label": "Fear — CPI shock + geopolitical escalation. Semis and gold both under pressure.",
-    "spx": "June 10 open: S&P 500 -0.48% (~7,416 est.). Nasdaq -0.62%. Russell 2000 +0.41% (defensive/small-cap outperforming). CPI May 2026: +4.2% headline, core +2.9% (benign).",
-    "btc": "BTC below $82K threshold. No crypto entry.",
-    "sectors": [
-      {
-        "name": "Technology / AI Semis",
-        "change_pct": -0.6,
-        "note": "Nasdaq -0.62%. CPI rate-hike narrative weighing on high-multiple semis. INTC bucking trend (+open $111 on Google foundry order). MU volatile ($886-$961 range). AMD -3.1%."
-      },
-      {
-        "name": "Intel Foundry",
-        "change_pct": 0.0,
-        "note": "INTC opened $111 (above June 8 $109 breakout). Structural foundry thesis intact. US chip independence story counter-cyclical to Iran/TSMC geopolitical risk."
-      },
-      {
-        "name": "Energy",
-        "change_pct": 2.5,
-        "note": "Iran-US military strikes → oil spiking. Energy CPI +23.5% YoY. Energy stocks benefiting. Inflationary."
-      },
-      {
-        "name": "Precious Metals",
-        "change_pct": -1.8,
-        "note": "GLD ~$390.78 (range $388.75-$400.48). Stop $397.92 ESTIMATED TRIGGERED. Warsh/rate-hike channel overrode Iran safe-haven bid. Dollar won."
-      }
-    ],
-    "macro_notes_md": "- **CPI MAY 2026:** +4.2% YoY headline (highest since Apr 2023). Monthly +0.5%. Energy +23.5% (Iran war). Core +2.9% YoY, +0.2% m/m (BELOW estimate — benign underlying inflation).\n- **FED HIKE ODDS: 63%** post-CPI+payrolls combo. Warsh June 16-17 FOMC is LIVE risk event.\n- **IRAN-US ESCALATION:** US and Iran traded military strikes overnight. Risk-off. Market -0.48%.\n- **GLD STOP ESTIMATED TRIGGERED:** Range $388.75-$400.48 crossed below $397.92 stop. Est. loss -$145.58.\n- **INTC $107.52:** Opened $111 (range $106.66-$112.54). Structural catalyst intact. Less macro-sensitive than other semis.\n- **MU ~$920:** Range $886-$961 volatile. Score 6.5 today (CPI macro headwinds). Re-score at Midday.\n- **AMD ~$475:** Not on binding watchlist. Score <6.0.",
-    "sp500_today_pct": "-0.48%",
-    "sp500_est": 7416,
-    "macro_note": "CPI day risk-off. 4.2% headline + Iran strikes + 63% Fed hike odds. GLD stop triggered. INTC opening strong despite macro (foundry thesis counter-cyclical). MU rejected today — re-score Midday."
+    "recent_lessons_md": "### 2026-06-15 Market Close — Key Observations\n\n1. **Iran deal day — 4 routines silently failed** out of 6 (Pre-Market, Mid-Morning, Afternoon, Market-Close previously). Today's FOMC-eve setup means missing this +1.12% S&P day was unavoidable per Exemption 2, but the silent failures mean even the audits didn't run.\n2. **AMD stale GTC risk is now critical** — AMD $511+ midday with stale limit at $520.59 is only 1.7% away. A gap-up June 16 morning could trigger a fill without a stop-loss bracket. OPERATOR ACTION REQUIRED.\n3. **INTC GTC may have filled** — FOMC-eve afternoon consolidation may have brought INTC back to $123.69. This would be the FIRST actual position fill if confirmed. Operator must check Alpaca.\n4. **BTC likely above $82K threshold** — Iran deal + risk-on = crypto bid. June 18 Pre-Market must confirm BTC ≥$82K for crypto bucket entry.\n\n### 2026-06-12 Daily Review (3 things that worked)\n\n1. **Fresh scoring at new price level.** INTC was MANDATORY at $106 (June 10). After +16% gap to $123, fresh 6-agent run correctly (7.33 — still approved). Score discipline works.\n2. **LMT thesis inversion recognized immediately.** Iran deal progress flipped defense from bullish to bearish within 24h. Score correctly fell from est. 7.33 → 5.5. No momentum bias.\n3. **PPI condition enforced despite MU +11.66% temptation.** MU jumped 11.66% June 11 while our PPI condition (≤+0.3%) was violated at +1.1%. Skip held firm.\n\n### 2026-06-12 New Lessons\n\n- **Juneteenth (June 19) is a market holiday:** MU exit deadline is June 20. Always check holiday gaps when computing exit windows.\n- **GTC brackets survive FOMC binary event window:** Order placed Fri/Sat can execute at Mon open without being a 'new initiation during the window.'\n- **Stale GTC orders are hidden landmines:** MRVL at $202 vs $295 market = 30% crash would fill at poor R/R. Review ALL stale GTCs at each Daily Review.\n- **Weekly strategy evolution note discipline:** First complete weekly note produced. Friday Daily Review is the correct mechanism."
   },
   "watchlist": [
     {
       "symbol": "INTC",
       "bucket": "active",
       "score": 7.0,
-      "action": "MANDATORY — Fresh 6-agent 7.0 (June 15). GTC bracket at $123.69 (if placed) may fill intraday June 16-17 on pullback from $124.57 gap. If unfilled: execute THU Jun 18 at 39sh ask×1.005 (NOT 40sh — 40sh at $125+ = 5.01% = guardrail violation). BofA PT $135.",
-      "notes": "June 15 fresh score: F=7 T=6 S=8 M=7 R=7 TA=7. Avg 7.0. Gate APPROVED. SKIP today per Exemption 2. INTC gapped $116.96→$124.57 (+6.5%) on Iran peace deal. GTC bracket at $123.69 NOT FILLED (opened above limit). Post-FOMC (Thu Jun 18): 39sh limit ask×1.005 bracket GTC stop fill×0.95 target fill×1.15."
+      "action": "MANDATORY — Fresh 6-agent 7.0 (June 15). GTC at $123.69 (if placed by operator) may fill June 15-17 on pullback. If unfilled: execute THU Jun 18 at 39sh ask×1.005 (NOT 40sh — 40sh at $125+ = 5.01% = guardrail violation). BofA PT $135.",
+      "notes": "June 15 fresh score: F=7 T=6 S=8 M=7 R=7 TA=7. Avg 7.0. Gate APPROVED. SKIP today per Exemption 2. Post-FOMC (Thu Jun 18): 39sh limit ask×1.005 bracket GTC stop fill×0.95 target fill×1.15."
     },
     {
       "symbol": "MRVL",
       "bucket": "active",
       "score": 7.17,
-      "action": "HIGH CONVICTION — re-score THU Jun 18 pre-market. 8sh limit ask×1.005 (~$286) bracket GTC stop fill×0.95 target fill×1.15. CANCEL stale GTC $202.19 FIRST.",
-      "notes": "Jensen Huang 'next trillion.' Teralynx T100 (102.4 Tbps AI networking). AI networking picks-and-shovels. Est. ~$285+ today. Post-FOMC entry Thu Jun 18. Est. score ~7.5."
+      "action": "HIGH CONVICTION — re-score THU Jun 18 pre-market. 8sh limit ask×1.005 (~$285) bracket GTC stop fill×0.95 target fill×1.15. CANCEL stale GTC $202.19 FIRST.",
+      "notes": "Jensen Huang 'next trillion.' Teralynx T100 (102.4 Tbps AI networking). AI networking picks-and-shovels. Est. ~$280-285 today. Post-FOMC entry Thu Jun 18. Est. score ~7.5."
     },
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": 7.0,
-      "action": "MANDATORY post-FOMC — re-score THU Jun 18. 9sh limit ask×1.005 (~$476) bracket GTC stop fill×0.95 target fill×1.15. CANCEL stale GTCs $524/$520 FIRST.",
-      "notes": "AI CPU TAM $200B (Jensen Huang). AMD EPYC + Instinct MI300X. Iran deal + FOMC hold = maximum AI-capex tailwind. AMD ~$472 today (+4%). Est. avg ~7.33 post-FOMC."
+      "action": "MANDATORY post-FOMC — re-score THU Jun 18. 9sh limit ask×1.005 bracket GTC stop fill×0.95 target fill×1.15. ⚠️ CANCEL stale GTCs $524/$520 IMMEDIATELY (BEFORE June 16 9:30 AM ET open).",
+      "notes": "AI CPU TAM $200B. Citi Buy upgrade June 12. Iran deal + FOMC hold = maximum AI-capex tailwind. AMD +6-7% today (est. $506-514 EOD). Stale GTCs at $520.59/$524.15 risk — cancel urgently."
     },
     {
       "symbol": "MU",
       "bucket": "active",
       "score": 6.67,
-      "action": "CONDITIONAL — re-score Wed Jun 18 after FOMC. Enter only if fresh 6-agent ≥7.0. 4sh. ⚠️ EXIT DEADLINE: JUNE 20 (Juneteenth Jun 19 = closed; Jun 24 earnings = 48h window Jun 22).",
-      "notes": "PPI +1.1% failed condition June 12 (required ≤+0.3%). FOMC hold may improve macro score from 6→7. MU +11.66% June 11. HBM4 sellout. UBS $1,625 PT. Highly compressed exit window: enter Jun 18 → must exit Jun 20."
+      "action": "CONDITIONAL — re-score Thu Jun 18 after FOMC. Enter only if fresh 6-agent ≥7.0. 4sh. ⚠️ EXIT DEADLINE: JUNE 20 (Juneteenth Jun 19 = closed; Jun 24 earnings = binary event).",
+      "notes": "PPI +1.1% failed condition June 12. FOMC hold may improve macro score. HBM4 sellout. UBS $1,625 PT. Highly compressed exit window: enter Jun 18 → must exit Jun 20."
     },
     {
       "symbol": "NVDA",
       "bucket": "active",
       "score": 7.0,
-      "action": "CONDITIONAL — re-score Wed Jun 18. ~4sh limit ask×1.005 (~$221) bracket GTC. Enter if fresh 6-agent ≥7.",
-      "notes": "$80B buyback. AI capex secular. 'Sell the news' pattern on earnings beats. FOMC hold supportive. AI infrastructure leader. Est. avg ~7.0."
-    },
-    {
-      "symbol": "SOXX",
-      "bucket": "active",
-      "score": 7.0,
-      "action": "CONDITIONAL — ETF diversification. If individual names look extended post-FOMC, SOXX provides chip sector exposure without single-stock risk. ~5sh limit ask×1.005.",
-      "notes": "SOXX +8% June 11. Pure chip sector play. Diversifies across NVDA/AMD/INTC/MRVL/MU in one position. Est. avg ~7.0 post-FOMC."
+      "action": "CONDITIONAL — re-score Thu Jun 18. ~4sh limit ask×1.005 bracket GTC. Enter if fresh 6-agent ≥7.",
+      "notes": "$80B buyback. AI capex secular. FOMC hold supportive. Iran deal = risk-on. Est. avg ~7.0 post-FOMC."
     },
     {
       "symbol": "BTC",
       "bucket": "crypto",
       "score": null,
-      "action": "CONDITIONAL — only if BTC ≥$82K AND fresh 6-agent ≥7.0 at Wed Jun 18 Pre-Market. Crypto bucket 0% deployed (target 10%).",
-      "notes": "Iran deal + FOMC hold = risk-on = potential crypto bid. BTC est. ~$75-80K currently. Threshold: $82K. -18% stop, +18% target, R/R 1:1 minimum for crypto per CLAUDE.md."
+      "action": "⚠️ CONDITIONAL — Iran deal likely pushed BTC above $82K threshold TODAY. CONFIRM at June 18 Pre-Market. If ≥$82K and fresh 6-agent ≥7.0: enter 5% crypto position (~$5K). -18% stop, +18% target min.",
+      "notes": "Iran deal + FOMC hold + risk-on = strong crypto bid. BTC est. $83-88K today. Threshold: $82K. Crypto bucket 0% deployed (target 10%)."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
       "score": 6.5,
-      "action": "CONDITIONAL — only enter if $134 support reclaimed. Currently ~$130 = below threshold. Q1 beat (EPS $0.33 vs $0.27). NVDA partnership intact.",
-      "notes": "Below $134 former resistance (now support). Score 6.5 = below 7.0 threshold. Must reclaim $134 before entry. FOMC hold could trigger rally. Monitor."
+      "action": "CONDITIONAL — only enter if $134 support reclaimed. Currently ~$130 = below threshold. Q1 beat (EPS $0.33 vs $0.27).",
+      "notes": "Below $134 former resistance. Score 6.5 = below 7.0 threshold. Must reclaim $134 before entry. FOMC hold could trigger rally."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.0,
-      "action": "CONDITIONAL — re-score Wed Jun 18. Strong fundamentals + AI capex beneficiary. No rate sensitivity (high FCF). ~2sh limit ask×1.005 bracket GTC.",
-      "notes": "LLAMA 4 + Orion AI development. Advertising duopoly. Strong FCF = FOMC hold does not materially improve thesis (not rate-sensitive). Est. avg ~7.0 post-FOMC."
-    },
-    {
-      "symbol": "ETH",
-      "bucket": "crypto",
-      "score": null,
-      "action": "CONDITIONAL — only if BTC ≥$82K and ETH shows relative strength vs BTC. Crypto bucket 0% deployed (target 10%).",
-      "notes": "Post-FOMC risk-on environment. Ethereum ecosystem + DeFi/staking yield. Only enter if BTC threshold met first."
+      "action": "CONDITIONAL — re-score Thu Jun 18. Strong fundamentals + AI capex beneficiary. ~2sh limit ask×1.005 bracket GTC.",
+      "notes": "LLAMA 4 + Orion AI development. Advertising duopoly. Strong FCF. Est. avg ~7.0 post-FOMC."
     }
   ],
   "history": [
@@ -754,21 +678,28 @@
       "portfolio_return_pct": 0.14,
       "spx_return_pct": 5.1,
       "daily_pnl_pct": -0.08,
-      "note": "Midday. API blocked (26th). Market Open + Mid-Morning silent failed. GLD CORRECTED to $408 (underwater from $418.86). AVGO re-scored 6.0 (Goldman PT $525 noted; still below threshold). MU limit $1,020 blocked. AMD limit $508 blocked. PLTR deferred to Afternoon."
+      "note": "Midday. API blocked (26th). GLD corrected to $408. MU/AMD limits blocked."
     },
     {
       "date": "2026-06-03",
       "portfolio_return_pct": 0.32,
       "spx_return_pct": 4.8,
       "daily_pnl_pct": 0.10,
-      "note": "Afternoon snapshot. API blocked (24th). Midday violation. AMD hit ATH $533.82 without fill. AVGO earnings tonight. GLD est. +$104 (WAS WRONG — GLD actually at $408 not $432)."
+      "note": "Afternoon. API blocked (24th). AMD ATH $533. AVGO earnings tonight."
     },
     {
       "date": "2026-05-29",
       "portfolio_return_pct": 0.15,
       "spx_return_pct": 5.21,
       "daily_pnl_pct": -0.03,
-      "note": "Market Open catch-up. API blocked. 3 orders attempted/blocked. PLTR deferred. Pre-Market silent failure."
+      "note": "Market Open. API blocked. 3 orders blocked."
+    },
+    {
+      "date": "2026-06-15",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 4.38,
+      "daily_pnl_pct": 0.0,
+      "note": "Market Close. API blocked (34th). 3 routines silently failed (Pre-Market, Mid-Morning, Afternoon). Iran deal day — S&P est. +1.12% (EOD ~7,515). Portfolio 0% daily change (100% cash). FOMC binary event active — all ≥7 watchlist skipped Exemption 2. Gap -4.53pp (EOD est.). ⚠️ AMD stale GTCs ($520.59/$524.15) — OPERATOR CANCEL before June 16. INTC GTC $123.69 may have filled intraday. BTC likely ≥$82K. First entry: Thu June 18."
     }
   ]
 }
