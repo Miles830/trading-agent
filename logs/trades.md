@@ -4,6 +4,174 @@
 
 ---
 
+## 2026-06-15 — Pre-Market (8:00 AM ET / 12:09 UTC — MONDAY — FOMC BINARY EVENT WINDOW)
+
+**HEARTBEAT:** STARTED Pre-Market 12:07:08Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **32nd consecutive blocked session**
+
+---
+
+### STOP AUDIT (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 32nd consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+Estimated state forward from June 12 Daily Review:
+- GLD: CLOSED (stop $397.92 hit est. June 10). No re-entry.
+- INTC: GTC bracket at $123.69 resting (if operator placed). INTC June 12 close $124.57 — ORDER NOT YET FILLED (price above limit → waiting for pullback). Pre-market June 15 ~$127 (+2% est.) — still above limit.
+- Stale GTC orders (AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19): OPERATOR MUST CANCEL — URGENT. AMD +4% today = stale AMD orders now more than 5% above market ($517 vs $524.15/$520.59). MRVL $202.19 = dangerous (MRVL at ~$285; crash to $202 possible on FOMC surprise).
+- No confirmed open positions.
+
+---
+
+### USER SUGGESTIONS (GitHub)
+
+GET /repos/Miles830/trading-agent/issues?labels=user-suggestion&state=open → **0 open issues**. No action needed.
+
+---
+
+### MARKET RESEARCH — June 15, 2026
+
+**Iran Peace Deal — CONFIRMED Sunday June 14:**
+- US–Iran ceasefire formally agreed. Strait of Hormuz reopening confirmed. Official signing: Switzerland June 19.
+- Oil: Brent ~$93/bbl (down from $118+ during conflict). Removes the primary inflationary/geopolitical headwind since February 2026.
+- Market impact: S&P 500 futures +1.2% (~7,524 est.), Nasdaq 100 futures +1.9%. MAJOR risk-on gap-up.
+
+**FOMC (June 16–17 — Confirmed):**
+- Rate decision: Wednesday June 17 at 2 PM ET
+- Probability: 98.3–99.6% HOLD (near-certainty no change)
+- Risk: Possible "bias shift" language from Warsh toward tightening. Mild hawkish at margin only.
+- Note: CALENDAR CORRECTION from prior portfolio notes — June 16 = TUESDAY (not Monday), June 17 = WEDNESDAY (not Tuesday), June 18 = THURSDAY (not Wednesday, first clean entry day).
+
+**Semiconductor Pre-Market Performance:**
+| Symbol | June 12 Close | Pre-Mkt % | Est. Pre-Mkt $ | Catalyst |
+|---|---|---|---|---|
+| MU | ~$998 est. | +8% | ~$1,078 | Q3 earnings June 24 (EPS est. $19.29 / Rev $33.88B — 8 consec. beats) |
+| AMD | $496.88 | +4% | ~$517 | Citi Buy upgrade (June 12). Barclays PT $665. Venice CPU. $200B agentic TAM. |
+| INTC | $124.57 | +2% | ~$127 | Iran deal = foundry demand recovery. Q1 EPS $0.29 (crushed $0.02 est.) |
+| NVDA | ~$222 est. | +2% | ~$226 | AI capex secular. $80B buyback. |
+| MRVL | $279.70 | +2-3% | ~$285-290 | AI networking. Teralynx T100. 9.5% pullback from peak = better entry. |
+
+**Bitcoin:** $65,695 (+2.08%). ETF inflows +$85.8M. SpaceX Bitcoin treasury holding revealed. Still **below $82K threshold** — no crypto entry.
+
+**FOMC Binary Event Window Assessment:**
+- 48h before FOMC start (June 16 Tue) = Sunday June 14 (window opened yesterday)
+- Today (Monday June 15) = INSIDE the binary event window
+- **EXEMPTION 2 APPLIES: No new entries permitted today**
+- Every watchlist name scoring ≥7 is skipped under this exemption
+
+---
+
+### SKIP LOG — FOMC EXEMPTION 2 (Binary Event Within 48h)
+
+```yaml
+---
+ts: 2026-06-15T12:09:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7
+thesis: Prior score 7.33 MANDATORY. FOMC binary event within 48h (meeting June 16-17). Exemption 2 prevents entry.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: skipped
+master_notes: "Exemption 2 — FOMC June 16 (Tue)–June 17 (Wed) = binary event within 48h. No new entries permitted. INTC pre-market ~$127 (+2% from $124.57 close). GTC bracket $123.69 resting (if operator placed) — NOT filled (price above limit). Iran deal confirmed = positive INTC catalyst (foundry demand recovery). Q1 EPS $0.29 vs $0.02 est. Barclays Analyst raised PT $96→$135. Re-score MANDATORY at June 18 Pre-Market (Thursday — first clean post-FOMC day). XAI API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T12:09:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7
+thesis: Citi Buy upgrade. Barclays PT $665. Venice CPU launch. $200B agentic TAM. Pre-market +4% ($517). Score ~7.67. FOMC Exemption 2 prevents entry.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: skipped
+master_notes: "Exemption 2 — FOMC June 16-17 binary event. AMD $496.88 June 12 → ~$517 pre-market (+4%). Citi upgrade to Buy (June 12). Barclays PT $665. ⚠️ Stale AMD GTC orders $524.15 and $520.59 MUST BE CANCELLED by operator — AMD now $517, both limits are above market (risky if AMD spikes). Fresh entry June 18: 9sh × ~$520 = $4,680 = 4.68% equity, stop -5% = $494, target +15% = $598, R/R 3:1. XAI API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T12:09:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 7
+thesis: Jensen Huang 'next trillion.' Teralynx T100. AI networking secular. Pulled back to $279.70 from $309 peak. Better entry. FOMC Exemption 2.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: skipped
+master_notes: "Exemption 2 — FOMC June 16-17 binary event. MRVL June 12 close $279.70 (down -2.3%; was -6.2% pre-market June 12). 9.5% pullback from $309 peak = better entry than prior $295 target. ⚠️ Stale MRVL GTC at $202.19 MUST BE CANCELLED — this is the most dangerous stale order (if MRVL sells off to $202, order fills into a large down-move). Fresh entry June 18: 8sh × ~$285 = $2,280 = 2.28%, stop -5% = $270.75, target +15% = $327.75, R/R 3:1. XAI API blocked."
+---
+```
+
+---
+
+### POST-FOMC BINDING WATCHLIST (THURSDAY JUNE 18 — First Clean Day)
+
+**CALENDAR CORRECTION:** Prior notes had wrong day-of-week. Actual calendar:
+- June 16 = TUESDAY (FOMC Day 1)
+- June 17 = WEDNESDAY (FOMC Decision 2 PM ET)
+- June 18 = THURSDAY (First clean post-FOMC entry day — NOT Wednesday as prior notes said)
+- June 19 = FRIDAY = JUNETEENTH (markets closed)
+- June 22 = MONDAY (next trading day after Juneteenth)
+- June 23 = TUESDAY ← **MU EXIT DEADLINE** (last trading day before 48h earnings window opens Jun 22 EOD; NOT June 20 as prior notes said — June 20 is Saturday)
+- June 24 = WEDNESDAY = MU EARNINGS
+
+| Symbol | Qty | Est. Entry | Stop (−5%) | Target (+15%) | Size% | Score | Priority | Notes |
+|---|---|---|---|---|---|---|---|---|
+| **INTC** | **39sh** | ~$128 | ~$121.60 | ~$147.20 | **~4.96%** | **7.33+ MANDATORY** | 1 | GTC $123.69 resting (if operator placed — may fill on dip). If not filled by June 18 open, place fresh limit at ask×1.005. Iran deal = foundry demand. |
+| **AMD** | **9sh** | ~$520 | ~$494 | ~$598 | ~4.68% | **~7.67 re-score** | 2 | Cancel stale $524/$520 GTC first. Citi Buy + Barclays $665. Venice CPU. |
+| **MRVL** | **8sh** | ~$285 | ~$270.75 | ~$327.75 | ~2.28% | **~7.67 re-score** | 3 | Cancel stale $202.19 GTC first (URGENT). 9.5% pullback = better entry. |
+| **MU** | **3sh** | ~$1,080 | ~$1,026 | ~$1,242 | ~3.24% | ~7.0+ re-score | 4 | ⚠️ VERY TIGHT: Enter June 18 (Thu) only window before Juneteenth. Exit by June 23 (Tue). EPS est. $19.29 — 8 consec. beats. |
+| BTC | — | ≥$82K ONLY | — | — | ~5% | conditional | — | $65,695 today — $16.3K below threshold. Monitor June 18. |
+
+**Total deployed if all 4 active entries fill June 18:** ~15.16% of equity. Semis sector: ~15.16% < 25% cap ✓. All positions < 5% ✓.
+
+---
+
 ## 2026-06-12 — Daily Review (4:30 PM ET / 20:32 UTC — FRIDAY — IRAN DEAL DAY + FOMC WEEK)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:11Z ✓
