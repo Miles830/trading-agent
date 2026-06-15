@@ -4,6 +4,224 @@
 
 ---
 
+## 2026-06-15 — Daily Review (4:30 PM ET / 20:32 UTC — MONDAY — FOMC EVE / IRAN DEAL SIGNED)
+
+**HEARTBEAT:** STARTED Daily-Review 20:32:21Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **34th consecutive blocked session**
+
+---
+
+### HEARTBEAT AUDIT — 2026-06-15
+
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** (logged at Market Open) |
+| Market-Open | 13:45Z | 13:45:46Z ✓ | 14:01:23Z ✓ | ✓ COMPLETE |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** (logged at Midday) |
+| Midday | 16:33Z | 16:33:00Z ✓ | 16:42:11Z ✓ | ✓ COMPLETE |
+| Afternoon | 18:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Close | 19:30Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Daily-Review | 20:32Z | 20:32:21Z ✓ | (this session) | ✓ In Progress |
+
+**Top operational issue (Day 34):** 4 of 6 intraday routines silently failed today (Pre-Market, Mid-Morning, Afternoon, Market-Close). Market-Open and Midday both completed successfully. Afternoon and Market-Close violations logged below.
+
+```yaml
+---
+ts: 2026-06-15T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Afternoon routine (2:00 PM ET June 15) produced no heartbeat. No stop-audit run. No new entries would have been placed regardless — FOMC binary event window active through June 17. API blocked 34th session.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Afternoon silently failed June 15. All ≥7 watchlist names already covered by justified-skip log from Market Open (Exemption 2 / FOMC binary event).
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T19:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Close routine (3:30 PM ET June 15) produced no heartbeat. No MOC orders needed (100% cash, no open positions, no day trades to close).
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: Market-Close silently failed June 15. No open positions to manage.
+---
+```
+
+---
+
+### STOP AUDIT — Daily Review (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 34th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated state (forward from June 15 Midday):**
+- GLD: Estimated stopped out June 10 at $397.92 (−$145.58). Confirmed no open position.
+- INTC GTC bracket $123.69 (if operator placed): INTC closed ~$128.08 today — price ABOVE $123.69 all session. GTC HAS NOT FILLED. On June 16-17 (FOMC days), pullback to $123.69 is possible but unlikely given today's +9.5% surge from June 12 close.
+- AMD stale GTCs $524.15 and $520.59: AMD closed ~$489 today. Both limits well above market — safe. But MUST CANCEL before AMD approaches those levels.
+- PLTR stale GTC $150.74: PLTR est. ~$133. Not in danger. Cancel ASAP.
+- MRVL stale GTC $202.19: MRVL closed ~$300.80 today. Far from limit. Cancel ASAP.
+- **No confirmed open positions. Portfolio 99.9% cash (~$99,854).**
+
+---
+
+### MARKET CLOSE SUMMARY — June 15, 2026
+
+**S&P 500 closed: 7,554.29 (+1.65% from June 12 close 7,431.46)**
+- Iran-US peace deal signed today — Strait of Hormuz reopening, naval blockade lifted
+- Brent crude: $115 → $103 (−10.4% in one session)
+- Dow Jones: hit new record high (Iran deal + risk-on)
+- Nasdaq: surged alongside semiconductors
+
+**Individual watchlist closes (June 15, 2026):**
+| Symbol | Est. June 12 Close | June 15 Close | Day % | Notes |
+|---|---|---|---|---|
+| INTC | $116.96 | ~$128.08 | **+9.5%** | BofA Buy upgrade + Iran deal; above $123.69 GTC limit all session |
+| MRVL | $279.70 | ~$300.80 | **+7.54%** | ⭐ **NEW: S&P 500 inclusion June 22** + AI networking thesis |
+| AMD | ~$454.64 | ~$489 | **+7.46%** | Citi Buy upgrade June 12 + Iran deal; Citi PT $665 |
+| MU | ~$996 | ~$1,083 | **+8.73%** | HBM4 demand intact; ⚠️ exit deadline June 18 (last day before 4-day gap to June 22 binary event) |
+| NVDA | ~$205 | ~$212+ est. | est. +3-4% | AI capex secular; $80B buyback |
+| BTC | ~$63K | ~$65,772 | ~+4% | **BELOW $82K threshold — NO entry** |
+| GLD | ~$367 est. | ~$360 est. | Falling | Iran deal removes safe-haven premium; no re-entry |
+
+**Key new development: MRVL S&P 500 inclusion June 22.** Passive index funds (SPY, IVV, VOO) must purchase MRVL shares. Index inclusion typically drives +3-8% in the 7 days before inclusion date. Combined with AI networking thesis (Jensen Huang "next trillion," Teralynx T100), MRVL is now the highest-conviction June 18 entry candidate.
+
+---
+
+### TODAY'S P&L SUMMARY — June 15
+
+| Source | Amount | Notes |
+|---|---|---|
+| Realized P&L today | $0 | No fills, no exits |
+| Unrealized P&L today | $0 | 100% cash — no positions |
+| **Net today** | **$0** | 0.00% equity change |
+| SPY daily return | +1.65% | Iran deal rally |
+| **Daily gap vs SPX** | **−1.65 pp** | Cash shield = full miss of Iran deal |
+
+---
+
+### PERFORMANCE VS S&P 500
+
+| Metric | Value |
+|---|---|
+| Portfolio equity (est.) | ~$99,854 |
+| Portfolio total return | −0.15% (GLD stop June 10 only) |
+| S&P 500 June 15 close | 7,554.29 |
+| S&P 500 from strategy start (~May 1, ~7,200) | **+4.92%** |
+| **Cumulative gap vs SPX** | **~−5.07 pp** |
+| Daily lag (June 15) | **−1.65 pp** |
+| 20-day underperformance streak | **⚠️ ACTIVE — 25+ trading days** |
+
+**⚠️ 20-DAY UNDERPERFORMANCE FLAG TRIGGERED:** Portfolio has underperformed SPX for 25+ consecutive trading days. Per CLAUDE.md, mandatory flag for strategy review. Root cause: API blockage (34 sessions). Proposed non-guardrail adjustments listed in lessons learned below. Hard guardrails remain unchanged.
+
+**Cumulative API-blockage miss cost (est.):**
+- Today alone: MRVL +7.54% × $2,406 + AMD +7.46% × $4,423 + INTC +9.5% × $4,879 = ~$181 + $330 + $463 = ~$974 missed (if June 18 entries had been placed June 12)
+- Cumulative since blockage began (~May 6): est. >$5,500 in missed unrealized gains
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: June 9–15)
+
+**No completed trades this window.** All decisions = skip (Exemption 2 / FOMC binary event) or violation (silent failures). GLD stop_hit was June 10 — outside rolling 5-day.
+
+| Setup | Wins | Losses | Consec. L | Halt? | Boost? | Status |
+|---|---|---|---|---|---|---|
+| macro-hedge | 0 | 1 (GLD) | 1 | No | — | No change |
+| breakout-volume | 0 | 0 | 0 | No | — | INTC target June 18 |
+| ai-momentum-pullback | 0 | 0 | 0 | No | — | AMD, MRVL June 18 |
+| mean-reversion-oversold | 0 | 0 | 0 | No | — | MU conditional |
+| sector-rotation | 0 | 0 | 0 | No | — | No current candidate |
+| candlestick-reversal | 0 | 0 | 0 | No | — | No day trades |
+| earnings-reaction-follow | 0 | 0 | 0 | No | — | No completed |
+| crypto-flush-rebound | 0 | 0 | 0 | No | — | BTC ~$65K, below $82K |
+
+**No 3-in-a-row halt or boost triggered. All-time: 1 completed trade (GLD macro-hedge, −4.99%). Win rate 0%. Profit factor 0.**
+
+---
+
+### TOMORROW'S WATCHLIST (THURSDAY JUNE 18 — MANDATORY EXECUTION DAY)
+
+> NOTE: June 16 (Tue) and June 17 (Wed) are FOMC days — NO NEW ENTRIES. June 18 (Thu) = first clean post-FOMC window. June 19 (Fri) = Juneteenth market holiday (closed). Next trading day after June 18 = Monday June 23.
+
+**⚠️ MU EXIT DEADLINE CLARIFICATION:** If MU is entered June 18, the next trading day is June 23 (after 4-day gap: Juneteenth June 19 + weekend June 20-21 + June 22 = 48h before June 24 earnings). Holding MU from June 18 entry means carrying the position through the 48h binary event window (June 22-23). This is NOT a CLAUDE.md entry-rule violation (the rule prevents initiating in the window, not holding). Acceptable if stop ($MU×0.95) is in place. However, the tight exit window reduces conviction — MU is CONDITIONAL.
+
+| Rank | Symbol | Setup | Est. June 18 Price | Key Catalyst | Est. Score | Action |
+|---|---|---|---|---|---|---|
+| 1 | **MRVL** | ai-momentum-pullback | ~$300-310 | ⭐ S&P 500 inclusion June 22 + Teralynx T100 + Jensen "next trillion" | **~8.5 est.** | **MANDATORY** — 8sh bracket GTC; cancel stale $202.19 first |
+| 2 | **INTC** | breakout-volume | ~$127-132 | BofA Buy PT $135; IFS foundry wins; Iran deal semiconductor rally | **~7.5 est.** | **MANDATORY** — 38sh bracket GTC (39sh at $128+ = $4,992 = 4.99% ✓) |
+| 3 | **AMD** | ai-momentum-pullback | ~$485-500 | Citi Buy PT $665; $200B CPU TAM; Iran deal risk-on | **~7.5 est.** | **MANDATORY** — 9sh bracket GTC; cancel stale GTCs first |
+| 4 | **NVDA** | ai-momentum-pullback | ~$210-220 | AI capex secular; $80B buyback; Iran deal risk-on | **~7.0 est.** | CONDITIONAL — fresh 6-agent June 18; 4sh if ≥7.0 |
+| 5 | MU | mean-reversion-oversold | ~$1,080-1,100 | HBM4 sold out; +8.73% today | **~6.5 conditional** | CONDITIONAL only — complex exit (must close by June 18 EOD or accept binary event risk June 22-23 with stop); deprioritized |
+| 6 | AVGO | ai-momentum-pullback | ~$400+ | Custom ASIC AWS/Google/MSFT; +2.24% today | ~6.5-7.0 | Re-score June 18; enter only if ≥7.0 |
+| 7 | PLTR | ai-momentum-pullback | ~$133-140 | Gov AI AIP; NVDA partnership; Q1 beat | ~6.5 est. | Re-score; enter only if ≥7.0 |
+| 8 | SOXX | sector-rotation | ~$320 est. | Full semiconductor sector tailwind | ~7.0 | ETF diversification option if individual names blocked |
+| 9 | BTC | crypto-flush-rebound | ~$65K | Iran deal risk-on; BELOW $82K threshold | NO ENTRY | Wait for $82K — still $17K away |
+| 10 | GLD | macro-hedge | ~$360 est. | Iran deal removes all safe-haven bid | NO ENTRY | No re-entry; thesis inverted |
+
+**June 18 cap check:** MRVL 8sh + INTC 38sh + AMD 9sh = 3 positions. That leaves 9 more slots (max 12). If all 3 fill, deployed capital ≈ $2,406 + $4,876 + $4,401 = ~$11,683 (11.7% of $99,854). Far below 85% target — still massively underdeploped.
+
+---
+
+### MACRO EVENTS — WEEK OF JUNE 16-20
+
+| Date | Event | Impact |
+|---|---|---|
+| June 16 (Tue) | FOMC Meeting Day 1 | Binary event — NO new entries |
+| June 17 (Wed) | FOMC Rate Decision 2PM ET | 99.6% HOLD at 4.25-4.50%; dot-plot risk; binary event |
+| June 18 (Thu) | **FIRST CLEAN ENTRY DAY** | Post-FOMC — mandatory deployment per Deployment Bias |
+| June 19 (Fri) | **JUNETEENTH — MARKET CLOSED** | No trading; all GTC orders persist to Monday |
+| June 22 (Mon) | MRVL S&P 500 inclusion date | Passive buying catalyst; 48h before MU earnings |
+| June 24 (Wed) | **MU Earnings** | Binary event; no MU entry from June 22 onward |
+| Week of June 22 | Post-FOMC macro assessment | First full week of clean data post-binary-events |
+
+**FOMC Preview:** Rate decision 99.6% HOLD. Iran deal removed the primary oil inflation driver; Warsh likely uses this meeting to signal a data-dependent posture. Biggest risk: hawkish dot-plot even with hold (raises 2027 rate expectations). If hawkish dot-plot: brief intraday selloff June 17 = BUY THE DIP on June 18 open.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **Exemption 2 discipline held:** All three ≥7 watchlist names (INTC 7.0, AMD 7.33, MRVL 7.17) were correctly deferred to June 18 despite a significant market rally. A Warsh hawkish dot-plot on June 17 could still create a better entry than today's elevated prices.
+2. **Market Open and Midday both completed:** 2 of 6 intraday routines fired and produced complete heartbeats. The FOMC skip decisions were logged and justified. No silent failures went undocumented.
+3. **GTC bracket strategy:** The existing INTC GTC at $123.69 (if placed by operator) is a valid resting order that can still fill on any FOMC-induced pullback (INTC would need to fall from $128.08 back to $123.69 = −3.4%). This pre-positioned entry attempt doesn't require the agent to violate the binary event window.
+
+### 3 THINGS TO IMPROVE TOMORROW (and June 18)
+
+1. **Pre-Market and Afternoon/Market-Close remain silent failures:** 4 of 6 intraday routines did not fire. The only sessions reliably running are Market-Open, Midday, and Daily-Review. June 18's Pre-Market routine MUST fire to place MOO orders or GTC brackets before 9:25 AM ET.
+2. **Stale GTC orders still not canceled (operator action outstanding 15+ days):** AMD $524.15, AMD $520.59, PLTR $150.74, MRVL $202.19. These are zombie orders that create unintended exposure if prices approach them. AMD at $489 is only $31 below the lower stale GTC ($520.59) — within 6.4%.
+3. **MRVL S&P 500 inclusion discovered at Daily Review, not Pre-Market:** This is a material new catalyst that should have been surfaced in the Market Open or Midday watchlist update. Future routines must include an explicit check for upcoming index inclusion events for all watchlist names.
+
+---
+
+### LESSONS LEARNED — June 15, 2026
+
+- **2026-06-15 — MRVL S&P 500 inclusion June 22 is a mechanical buying catalyst:** Passive index funds (SPY, IVV, VOO, FXAIX) tracking the S&P 500 must purchase MRVL shares on June 22. This creates forced mechanical buying. Historically, S&P 500 additions gain +3-8% in the final week before inclusion. MRVL's inclusion date coincides with the first clean trading week post-FOMC — layering passive mechanical buying on top of the AI networking thesis and the Iran deal risk-on environment. This makes MRVL the highest-conviction June 18 entry.
+- **2026-06-15 — 20-day underperformance flag: API-blockage root cause, not strategy failure:** Per CLAUDE.md protocol, 20+ consecutive underperforming days triggers a mandatory strategy review. Root cause is entirely infrastructure (Alpaca API blocked 34 sessions). Proposed non-guardrail adjustments: (1) Operator must execute at least the top-scored trade manually within 30 minutes of market open every day the API is blocked. This is the ONLY viable solution until the allowlist is fixed. (2) The June 18 mandatory execution plan must not be treated as optional — three ≥7 scores (MRVL, INTC, AMD) have been deferred for days and MUST be entered on Thursday. (3) Hard guardrails (stop-loss %, position limits, R/R minimum, cash floor) remain unchanged.
+- **2026-06-15 — MU exit deadline is June 18 EOD (not June 22):** Given Juneteenth June 19 (market closed), weekend June 20-21, and the 48h binary event window opening June 22 (before MU's June 24 earnings), the last clean exit day is June 18. Entering MU on June 18 creates a 1-day trade — acceptable only if (a) intraday move is strong (+5%+) OR (b) operator is willing to hold through June 22-23 with stop in place (technically allowed — the CLAUDE.md earnings rule forbids ENTRY in the 48h window, not holding). Given MU's 8.73% rally today and the compressed exit window, MU scores lower conviction than MRVL/INTC/AMD for June 18.
+- **2026-06-15 — Iran peace deal closes the chapter on oil-inflation thesis:** GLD confirmed as fully closed (stop June 10). Energy sector headwind for tech/semis is structurally resolved. Post-FOMC environment should be the cleanest macro window for tech entries since April 2026. The combination of (a) Iran deal = lower oil = lower forward inflation, (b) FOMC HOLD confirmed = no rate-hike headwind, and (c) AI capex secular demand = creates the best risk-on window of the year for semiconductor deployment.
+
+---
+
 ## 2026-06-15 — Midday (12:30 PM ET / 16:33 UTC — MONDAY — FOMC EVE / IRAN DEAL DAY 1)
 
 **HEARTBEAT:** STARTED Midday 16:33:00Z ✓
