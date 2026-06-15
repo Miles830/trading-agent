@@ -298,6 +298,150 @@ master_notes: |
 
 ---
 
+## 2026-06-15 — Mid-Morning (11:00 AM ET / 15:06 UTC — MONDAY — FOMC EVE)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:06:16Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **32nd consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+| Predecessor | Scheduled (ET) | Heartbeat | Status |
+|---|---|---|---|
+| Pre-Market | 8:00 AM | ✗ MISSING | **SILENT FAILURE** — violation already logged in Market Open catch-up |
+| Market Open | 9:45 AM | ✓ STARTED 13:45:46Z / COMPLETED 14:01:23Z | ✓ COMPLETE |
+
+Pre-Market violation was logged at Market Open (ts 2026-06-15T12:00:00Z). Market Open catch-up covered all watchlist names — INTC/AMD/MRVL each received a today-dated `action: skip` citing Exemption 2 (FOMC binary event window active June 14–17). No additional catch-up entries needed here.
+
+---
+
+### STOP-LOSS AUDIT (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 32nd consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist" (HTTP 403)
+```
+
+**Estimated state (forward from Market Open):** No confirmed open positions. However — **⚠️ CRITICAL FLAG** below.
+
+---
+
+### ⚠️ CRITICAL: INTC GTC BRACKET — POSSIBLE INTRADAY FILL + STOP-OUT
+
+**Context:** June 12 Daily Review (binding operator instruction) directed operator to place GTC bracket on INTC before Sunday June 14 (before FOMC binary window opened): 40sh limit buy $123.69, stop at $117.51 (−5%), take-profit $142.24 (+15%). `time_in_force: gtc`, `order_class: bracket`.
+
+**INTC intraday data June 15 (web research):**
+- Open (~9:45 AM ET): ~$124.57 (above $123.69 limit → order NOT filled at open)
+- Intraday high: **$127.60**
+- Intraday low: **$115.33** ← $115.33 << $123.69 = GTC buy WOULD HAVE FILLED if placed
+- Stop at $117.51: $115.33 < $117.51 → **STOP WOULD HAVE TRIGGERED**
+
+**Scenario analysis (API blocked — cannot verify):**
+
+| Scenario | Condition | Outcome |
+|---|---|---|
+| A: Operator DID place GTC bracket | INTC dipped below $123.69 intraday | Buy filled ~$123.69; stop triggered ~$117.51; est. loss −$247.20 (−0.25% equity) |
+| B: Operator DID NOT place GTC bracket | No order live | No change; portfolio ~$99,854 (99.9% cash) |
+
+**Estimated P&L if Scenario A:**
+- Entry: 40sh × $123.69 = $4,947.60
+- Stop hit: 40sh × $117.51 = $4,700.40
+- Loss: −$247.20 (−5.0% on position; −0.25% total equity)
+- 3% circuit breaker: −0.25% << −3.0% ✓ NOT triggered
+- Trade risk: −0.25% equity — under 1.5% cap ✓ (stop functioned correctly)
+- New estimated equity: ~$99,606.80
+
+**OPERATOR ACTION — URGENT:**
+1. Log into **https://app.alpaca.markets** immediately
+2. Check Orders tab → INTC orders for June 15
+3. If filled + stopped: Record actual fill prices; update this YAML block's `result_pct`
+4. If NOT filled (Scenario B): Confirm GTC bracket status or place fresh bracket for June 18
+
+```yaml
+---
+ts: 2026-06-15T15:10:00Z
+action: stop_hit
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: ESTIMATED — UNCONFIRMED (API blocked 32nd session). INTC day range $115.33-$127.60. GTC bracket at $123.69 (if operator placed per June 12 Daily Review instruction) would have filled intraday and stop at $117.51 would have triggered (day low $115.33 < $117.51). Estimated loss -$247.20. OPERATOR MUST VERIFY AND UPDATE result_pct WITH ACTUAL FILLS.
+size_pct: 4.95
+stop: 117.51
+target: 142.24
+result_pct: -5.0
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: |
+  ESTIMATED STOP-OUT — UNCONFIRMED. API blocked 32nd consecutive session.
+  INTC intraday June 15: opened ~$124.57 (gap-up on Iran peace deal), ran to $127.60,
+  reversed to $115.33 day low ("buy the rumor, sell the news" pattern post peace deal).
+  GTC bracket (if placed by operator Jun 13-14 per June 12 Daily Review binding instruction):
+    Entry limit $123.69 → fills when price < $123.69 (occurred intraday after open)
+    Stop child $117.51 → triggered since day low $115.33 < $117.51
+    Estimated loss: 40sh × ($117.51 - $123.69) = -$247.20
+  IF SCENARIO B (bracket NOT placed by operator): This entry is VOID — no trade occurred.
+  GTC bracket was intended to be placed BEFORE June 14 FOMC binary event window opened —
+  pre-window placement executing during the window is permitted per the plan; stop was
+  already attached so position had managed risk throughout.
+  INTC -9.7% intraday range: Iran deal "buy the rumor sell the news" + FOMC jitters (Warsh
+  hawkish; dot plot uncertainty). Typical post-catalyst gap-fill behavior.
+  xAI Grok query: FAILED (XAI_API_KEY not configured in environment). Degraded gracefully.
+  POST-FOMC PLAN (June 18): Re-score INTC fresh. If entry valid, bracket at ask×1.005 at
+  price ≤39sh (5% cap). Stop -5%; target +15% (3:1 R/R). FOMC hold expected (99.4%).
+---
+```
+
+---
+
+### MARKET CONDITIONS UPDATE — Mid-Morning
+
+**Key developments since Market Open (9:45 AM ET):**
+1. **INTC reversal:** Opened $124.57, ran to $127.60, sold off sharply to $115.33 (−9.7% intraday range). Classic post-catalyst gap-fill. "Buy the rumor, sell the news" on Iran peace deal.
+2. **FOMC eve positioning:** Market de-risking before Kevin Warsh's first FOMC (June 16–17). Warsh hawkish; 70% probability of ≥1 hike by year-end (CME FedWatch). Dot plot = key risk.
+3. **MRVL catalyst:** New CFO Dan Durn appointed, effective June 15. Neutral/positive corporate governance signal. MRVL est. ~$279–285.
+4. **Economic data (June 15 morning releases):** Empire State Index, Capacity Utilization, Industrial Production, NAHB Housing Index. Results could influence FOMC narrative.
+5. **Oil:** Brent ~$103 (Iran deal = Strait of Hormuz reopening). Energy sector under pressure.
+6. **Semiconductors:** SOXX up ~11% for the week (June 9–13). Today: profit-taking emerging after peace-deal gap-up.
+
+---
+
+### INTRADAY SCAN — New Setup Opportunities
+
+**⛔ FOMC BINARY EVENT WINDOW ACTIVE — All new entries exempt per Exemption 2 through June 17 close.**
+
+Watchlist for June 18 post-FOMC entry (no action today):
+
+| Symbol | Theme | Est. Score | Notes |
+|---|---|---|---|
+| INTC | Semicond. / reassess post-stop | TBD | Re-score June 18; post-FOMC direction determines re-entry level |
+| AMD | AI momentum pullback | ~7.33 | Stale GTCs $524.15/$520.59 MUST be cancelled before June 18 |
+| MRVL | AI networking + new CFO | ~7.5 | Stale GTC $202.19 MUST be cancelled; MANDATORY June 18 entry |
+| MU | Macro re-score | TBD | Exit deadline June 20 (earnings June 24; Juneteenth June 19 = holiday) |
+| BTC | Crypto / risk-on | TBD | Entry only if ≥$82K AND 6-agent ≥7.0 on June 18 |
+
+---
+
+### TODAY'S P&L SUMMARY (Mid-Morning Update)
+
+| Source | Amount (est.) | Notes |
+|---|---|---|
+| INTC GTC bracket | −$247.20 est. OR $0 | UNCONFIRMED — Scenario A vs B per operator verification |
+| AMD skip | $0 | Exemption 2 (FOMC binary event) |
+| MRVL skip | $0 | Exemption 2 (FOMC binary event) |
+| **Net today (est.)** | **−$247.20 or $0** | **OPERATOR MUST VERIFY AT app.alpaca.markets** |
+
+---
+
 ## 2026-06-12 — Daily Review (4:30 PM ET / 20:32 UTC — FRIDAY — IRAN DEAL DAY + FOMC WEEK)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:11Z ✓

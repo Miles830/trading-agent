@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-15T13:50:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-15T15:12:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.27,
     "benchmark_gap_pct": -3.42,
     "open_positions_count": 0,
-    "note": "June 15 Market Open (9:45 AM ET). API BLOCKED 32nd session. Pre-Market silently failed. IRAN PEACE DEAL SIGNED — Strait of Hormuz reopening, Brent oil -10.4% to $103. Semis rallying: AMD +4%, QCOM +4%. INTC gapped to ~$124.57 (+6.5%) — ABOVE our $123.69 GTC bracket limit (order unfilled). FOMC binary event window ACTIVE (meeting June 16-17; decision June 17 2PM ET; 99.6% hold probability). All watchlist names SKIP today per Exemption 2. FIRST CLEAN POST-FOMC WINDOW: THURSDAY June 18 (CORRECTION: June 15=Mon, June 18=Thu, not Wed). INTC fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). STALE GTCs UNRESOLVED: AMD $524/$520 + PLTR $150 + MRVL $202 — OPERATOR MUST CANCEL."
+    "note": "⚠️ CRITICAL: June 15 Mid-Morning (11:00 AM ET). API BLOCKED 32nd session. INTC INTRADAY RANGE: $115.33-$127.60. If operator placed GTC bracket at $123.69 (per June 12 Daily Review instruction): BRACKET HAS FILLED (price crossed below $123.69 intraday) and STOP AT $117.51 HAS TRIGGERED (day low $115.33 < $117.51). Est. loss -$247.20 (-0.25% equity). OPERATOR MUST VERIFY AT app.alpaca.markets IMMEDIATELY. FOMC binary event window ACTIVE (June 16-17; Warsh first meeting; 99.4% hold; dot plot uncertainty). All new entries deferred to June 18 Thursday. Post-Iran-deal 'buy the rumor sell the news' reversal in INTC. MRVL: new CFO Dan Durn effective today (neutral/positive). Watchlist for June 18: INTC (re-score post-stop), MRVL (MANDATORY ~7.5), AMD (~7.33), MU (conditional ≥7.0). CANCEL stale GTCs: AMD $524/$520 + PLTR $150 + MRVL $202 before June 18."
   },
   "positions": [
     {
@@ -44,7 +44,7 @@
       "take_profit": 142.24,
       "setup": "breakout-volume",
       "agent_average": 7.0,
-      "note": "PENDING ORDER — June 15 Market Open. Fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). SKIP per Exemption 2 (FOMC binary event June 16-17). INTC GAPPED to $124.57 (+6.5% from $116.96 June 12 close) on Iran peace deal SIGNED. GTC bracket at $123.69 (if operator placed) HAS NOT FILLED — INTC opened ABOVE limit price. Will fill on intraday pullback to $123.69. POST-FOMC: Thursday June 18, place 39sh at ask x1.005 if GTC still unfilled. BofA PT $135. 40sh at $125+ = 5.01% = guardrail violation; use 39sh."
+      "note": "⚠️ CRITICAL: ESTIMATED STOP-OUT June 15. INTC day range $115.33-$127.60. GTC bracket at $123.69 (if operator placed per June 12 instruction): FILLED intraday (price dipped below $123.69), then STOP at $117.51 TRIGGERED (day low $115.33). Est. loss -$247.20 on 40sh (-5.0% position, -0.25% equity). OPERATOR MUST VERIFY at app.alpaca.markets. Post-FOMC plan: Re-score INTC fresh June 18 at then-current price. If ≥7.0, re-enter 39sh at ask×1.005 bracket GTC (stop -5%, target +15%)."
     },
     {
       "symbol": "MU",
@@ -62,10 +62,10 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON SURGE — Iran peace deal SIGNED June 15. Strait of Hormuz reopening. Brent -10.4% to $103. Semis leading: AMD +4%, QCOM +4%, ADI/NXPI/TXN +3%. FOMC June 16-17: 99.6% hold. S&P 500 futures strong.",
-    "fear_greed": "Greed (maximum risk-on — Iran deal signed, oil collapsing, FOMC hold near-certain)",
-    "fear_greed_label": "Greed — Iran deal signed + oil -10% + 99.6% FOMC hold = triple tailwind",
-    "spx": "June 15 open: S&P 500 futures strongly positive on Iran peace deal. June 12 close est. ~7,435 (+0.55%). INTC ~$124.57 (+6.5%). AMD ~$472 (+4%). SPX since strategy start (~$7,200): +3.27% (est; will widen today on large Iran deal rally).",
+    "mode": "RISK-ON with MID-MORNING PROFIT-TAKING — Iran peace deal SIGNED June 15 (Brent -10.4% to $103). Semis gap-up then reversal: INTC $127.60→$115.33 (-9.7% intraday range, 'buy rumor sell news'). FOMC eve positioning underway (Kevin Warsh June 16-17; 99.4% hold but hawkish dot plot risk). Economic data: Empire State Index, Cap Util, Industrial Production, NAHB all released this AM. MRVL new CFO Dan Durn effective today.",
+    "fear_greed": "Cautious Greed / Fading (gap-up fading on FOMC eve)",
+    "fear_greed_label": "Cautious Greed — Iran deal positive but profit-taking + FOMC eve positioning creating mid-morning reversals",
+    "spx": "June 15 mid-morning: S&P 500 holding positive (Iran deal) but off session highs as FOMC-eve positioning begins. INTC -9.7% intraday range ($115.33-$127.60). AMD est. ~$465-475. MRVL est. ~$279-285.",
     "btc": "BTC est. ~$80-85K. Possible push through $82K threshold on Iran deal risk-on. Verify at Thursday June 18 Pre-Market for crypto entry decision.",
     "sectors": {
       "leaders": ["Semiconductors (SOXX +8% June 11; chips +5% June 12)", "AI/Tech (Nasdaq +2.54% June 11)", "Industrials", "Consumer Discretionary (oil relief)"],
@@ -92,10 +92,10 @@
       "last_summary": "June 15 Market Open: Iran peace deal SIGNED (Brent -10.4%, semis +3-4%). INTC gapped to $124.57 (+6.5%) — above $123.69 GTC limit (not filled). Fresh 6-agent INTC 7.0 — APPROVED but SKIP Exemption 2 (FOMC binary event June 16-17). AMD/MRVL also skip Exemption 2. Pre-Market silent failure logged. API blocked 32nd session. No naked positions (portfolio 100% cash). Next clean entry: Thursday June 18."
     },
     "midmorning": {
-      "status": "silent-failure",
-      "last_run": "2026-06-08T15:07:00Z",
+      "status": "completed",
+      "last_run": "2026-06-15T15:06:00Z",
       "next_run": "2026-06-16T15:00:00Z",
-      "last_summary": "SILENT FAILURE June 12."
+      "last_summary": "June 15: ⚠️ CRITICAL — INTC intraday range $115.33-$127.60. GTC bracket at $123.69 (if placed by operator) LIKELY FILLED and STOP $117.51 LIKELY TRIGGERED (day low $115.33). Est. loss -$247.20. OPERATOR MUST VERIFY. No new entries (FOMC binary window active June 14-17). All watchlist names (INTC/AMD/MRVL) already have today-dated Exemption 2 skips from Market Open. MRVL new CFO effective today. First clean post-FOMC window: June 18 Thursday. API blocked 32nd session."
     },
     "midday": {
       "status": "completed",
@@ -123,6 +123,19 @@
     }
   },
   "trades": [
+    {
+      "ts": "2026-06-15T15:10:00Z",
+      "symbol": "INTC",
+      "action": "stop_hit",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "agent_scores": {"fundamentals": 7, "technical": 6, "sentiment": 8, "macro": 7, "risk": 7, "tech_analyst": 7},
+      "agent_average": 7.0,
+      "result_pct": -5.0,
+      "master_decision": "approved",
+      "order_status": "ESTIMATED STOP-OUT — UNCONFIRMED (API blocked). INTC day range $115.33-$127.60. GTC bracket at $123.69 (if placed by operator): filled intraday + stop $117.51 triggered (day low $115.33 < $117.51). Est. loss -$247.20 on 40sh. OPERATOR MUST VERIFY AND UPDATE WITH ACTUAL FILLS. If bracket was never placed: this entry is VOID."
+    },
     {
       "ts": "2026-06-15T13:45:00Z",
       "symbol": "N/A",
@@ -531,9 +544,9 @@
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
       "status": "completed",
-      "last_run": "2026-06-08T15:07:00Z",
-      "next_run": "2026-06-10 11:00 ET",
-      "last_summary": "June 8: Pre-Market + Market-Open violations logged. GLD stop $397.92 NOT triggered (gold $4,475-$4,720). NEW: INTC 44sh $109.55 GTC bracket APPROVED 8.0 (Google TPU + NVIDIA eval) — BLOCKED 403. MU 4sh $940 GTC bracket APPROVED 7.17 — BLOCKED 403. AMD SKIP (fresh 6.0, relative weakness). OPERATOR MUST EXECUTE both orders + cancel stale AMD/PLTR/MRVL GTC orders."
+      "last_run": "2026-06-15T15:06:00Z",
+      "next_run": "2026-06-16 11:00 ET",
+      "last_summary": "June 15: ⚠️ CRITICAL — INTC day range $115.33-$127.60. GTC bracket at $123.69 (if placed by operator per June 12 Daily Review) LIKELY FILLED and STOP $117.51 LIKELY TRIGGERED (day low $115.33 < stop). Est. loss -$247.20 (-0.25% equity). OPERATOR MUST VERIFY at app.alpaca.markets. No new entries (FOMC binary window active). Predecessors: Pre-Market = silent failure (violation logged at Market Open); Market Open = completed. API blocked 32nd session. Post-FOMC first clean window: June 18 Thursday."
     },
     {
       "name": "Midday",
