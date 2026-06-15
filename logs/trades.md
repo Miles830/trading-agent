@@ -4,6 +4,176 @@
 
 ---
 
+## 2026-06-15 — Afternoon (2:00 PM ET / 18:04 UTC — MONDAY — FOMC EVE / IRAN DEAL DAY 1)
+
+**HEARTBEAT:** STARTED Afternoon 18:03:52Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **34th consecutive blocked session**
+
+**Predecessor Heartbeat Check:**
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** (logged at Market Open + Midday) |
+| Market-Open | 13:45Z | 13:45:46Z ✓ | 14:01:23Z ✓ | ✓ COMPLETE |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** (logged at Midday) |
+| Midday | 16:33Z | 16:33:00Z ✓ | 16:42:11Z ✓ | ✓ COMPLETE |
+
+---
+
+### STOP AUDIT — Afternoon (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 34th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated position/order state (forward from Midday):**
+- **Open positions:** 0 confirmed (portfolio 99.9% cash ~$99,854).
+- **GLD:** Confirmed stopped out ~June 10 at $397.92. Iran deal continues to suppress gold. No re-entry.
+- **INTC GTC** (if operator-placed): INTC was trading ~$124.57 at midday, above the $123.69 GTC limit — NOT FILLED. Any afternoon pullback to $123.69 could trigger fill. If filled, stop at $117.51 and target $142.24 would be in place via bracket.
+- **AMD stale GTCs** ($520.59 / $524.15): AMD was ~$511–$512 at midday. If it rallied past $520 in afternoon, a stale GTC could have filled WITHOUT a stop-loss bracket. **OPERATOR: check Alpaca immediately at https://app.alpaca.markets/orders.** If AMD GTC filled with no stop — PLACE STOP NOW at $430 or below.
+- **MRVL GTC $202.19:** MRVL est. $280–285 — still ~40% above limit. No fill risk.
+- **PLTR GTC $150.74:** PLTR est. ~$133 — still >13% below limit. No fill risk.
+
+---
+
+### AFTERNOON MARKET SUMMARY (Estimated — API blocked, extrapolating from Midday)
+
+**Afternoon June 15, 2026 (~2:00 PM ET)**
+
+Iran peace deal continues to dominate afternoon tape. Oil (Brent) hovering ~$103 (−10% from pre-deal $115); semiconductor sector sustaining gains as AI-capex beneficiary. S&P 500 estimated to maintain ~+1.1–1.3% range into close (~7,510–7,540). AMD estimated ~$505–$515 after early morning surge (Iran deal + Citi Buy upgrade June 12). INTC estimated ~$124–125. NVDA relatively quiet at ~$205–207. FOMC meeting begins **tomorrow (June 16)** — decision Wednesday June 17. Market has priced 99.6%+ hold; risk is hawkish dot-plot or Warsh tone surprise. Binary event window is active — no new entries today or tomorrow.
+
+**Key Afternoon Catalysts / Risks:**
+- FOMC begins June 16 (tomorrow) — 48h binary event window ACTIVE as of ~noon today
+- Oil down ~10% = relief rally for consumer/tech, headwind for energy names
+- Gold (GLD) continuing to fall — safe-haven unwind on Iran deal
+- Semiconductors / AI capex names continuing to lead but cooling from morning highs
+- No after-hours earnings catalysts expected for current watchlist names tonight
+
+**No day trades to close.** Portfolio has been 100% cash since GLD stop-out ~June 10. No positions to trail or MOC-flatten.
+
+---
+
+### WATCHLIST SKIP LOG — All ≥7 Entries Deferred (Exemption 2)
+
+All active watchlist names scoring ≥7 continue to be deferred under **Exemption 2 (binary event within 48h — FOMC June 16–17 decision)**. Per the afternoon playbook, new active-bucket entries are also prohibited this routine due to proximity to close (< 2 hours to market close).
+
+```yaml
+---
+ts: 2026-06-15T18:04:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: INTC fresh 6-agent 7.0 (June 15 Market Open). Breakout: +6.5% gap on Iran deal. BofA PT $135. GTC bracket $123.69 unfilled (opened above limit).
+size_pct: null
+stop: 117.51
+target: 142.24
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: |
+  Exemption 2 — FOMC binary event June 16-17. 48h window active. Additionally: afternoon proximity-to-close (< 2h remaining). Next entry window: THU June 18 Pre-Market (39sh, not 40sh — 40sh at $125+ = 5.01% guardrail violation). Already logged at Market Open under Exemption 2; confirming continued deferral at Afternoon routine. API blocked (34th session).
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T18:04:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.0
+thesis: AMD est. ~$505-512 (+6-8%). Iran deal + Citi Buy June 12. AI CPU TAM $200B. FOMC hold expected. Stale GTC risk ($520.59/$524.15) elevated.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: rejected
+master_notes: |
+  Exemption 2 — FOMC binary event June 16-17. Additionally: stale GTCs ($520.59/$524.15) must be canceled BEFORE any fresh AMD entry to avoid naked long if they filled on today's rally. OPERATOR ACTION REQUIRED: cancel stale GTCs at https://app.alpaca.markets/orders. Next clean entry: THU June 18. 9sh bracket GTC. API blocked (34th session).
+---
+```
+
+```yaml
+---
+ts: 2026-06-15T18:04:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: MRVL est. $280-285. Jensen Huang 'next trillion.' Teralynx T100 (102.4 Tbps AI networking). Post-FOMC AI capex tailwind.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: rejected
+master_notes: |
+  Exemption 2 — FOMC binary event June 16-17. MRVL stale GTC $202.19 is ~40% below current price (~$285) — no fill risk, but cancel it before June 18 entry to avoid confusion. Next entry: THU June 18, 8sh, limit ask×1.005, bracket GTC. API blocked (34th session).
+---
+```
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (June 16 — FOMC Day 1)
+
+⚠️ **June 16 is FOMC Day 1. June 17 is FOMC Decision Day.** ALL entries continue deferred. Watchlist is pre-scored so Pre-Market June 18 (Thursday) only rescores deltas.
+
+**FIRST CLEAN ENTRY: THURSDAY JUNE 18**
+
+| Symbol | Score | Action | Rationale |
+|---|---|---|---|
+| **MRVL** | 7.17 | MOO June 18 (8sh ~$286) | Jensen Huang AI networking thesis. Teralynx T100 AI switch. Highest conviction. |
+| **AMD** | ~7.33 | MOO June 18 (9sh) | AFTER canceling stale GTCs. Iran deal + Citi Buy + EPYC/MI300X. |
+| **INTC** | 7.0 | Limit June 18 (39sh) | BofA $135 PT. Gap reclaim. If GTC unfilled by open, fresh 39sh at ask×1.005. |
+| NVDA | ~7.0 | Limit June 18 (4sh ~$207) | $80B buyback. AI leader. Re-score before entry. |
+| META | ~7.0 | Limit June 18 (2sh ~$748) | Llama/AI. FCF strength. Less rate-sensitive. Re-score before entry. |
+
+**Cap at 3 MOO orders on June 18 Pre-Market per CLAUDE.md.** Priority: MRVL > AMD > INTC (INTC via GTC may already be queued if operator placed it).
+
+**MU deadline:** Must enter by June 18 and EXIT by June 20 (Juneteenth June 19 = holiday; June 22 = earnings 48h window). Only enter MU if June 18 rescore reaches 7.0+.
+
+**Crypto:** BTC threshold $82K+. If Iran deal + FOMC hold produces risk-on bid to crypto, check BTC at June 18 Pre-Market.
+
+---
+
+### AMD STALE GTC — URGENT OPERATOR ALERT (AFTERNOON UPDATE)
+
+⚠️ **AMD was ~$511–$512 at 12:30 PM ET. AMD stale GTC is at $520.59.** Given afternoon momentum, AMD may approach $520 this afternoon. If it reached $520.59, the operator-placed GTC would have FILLED creating a NAKED LONG (no stop-loss bracket). **OPERATOR: CHECK ALPACA NOW:**
+- Go to https://app.alpaca.markets/orders
+- If AMD GTC at $520.59 or $524.15 filled: **immediately place stop-loss sell at $430 and cancel any duplicates**
+- If AMD GTC still open and unfilled: **CANCEL BOTH** before June 18 re-entry
+
+---
+
 ## 2026-06-15 — Midday (12:30 PM ET / 16:33 UTC — MONDAY — FOMC EVE / IRAN DEAL DAY 1)
 
 **HEARTBEAT:** STARTED Midday 16:33:00Z ✓
