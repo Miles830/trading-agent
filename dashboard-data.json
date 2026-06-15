@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-15T13:50:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-15T16:33:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 3.27,
-    "benchmark_gap_pct": -3.42,
+    "spx_return_pct": 4.54,
+    "benchmark_gap_pct": -4.69,
     "open_positions_count": 0,
-    "note": "June 15 Market Open (9:45 AM ET). API BLOCKED 32nd session. Pre-Market silently failed. IRAN PEACE DEAL SIGNED — Strait of Hormuz reopening, Brent oil -10.4% to $103. Semis rallying: AMD +4%, QCOM +4%. INTC gapped to ~$124.57 (+6.5%) — ABOVE our $123.69 GTC bracket limit (order unfilled). FOMC binary event window ACTIVE (meeting June 16-17; decision June 17 2PM ET; 99.6% hold probability). All watchlist names SKIP today per Exemption 2. FIRST CLEAN POST-FOMC WINDOW: THURSDAY June 18 (CORRECTION: June 15=Mon, June 18=Thu, not Wed). INTC fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). STALE GTCs UNRESOLVED: AMD $524/$520 + PLTR $150 + MRVL $202 — OPERATOR MUST CANCEL."
+    "note": "June 15 Midday (12:30 PM ET). API BLOCKED 33rd session. Pre-Market + Mid-Morning silently failed. S&P 500 ~7,527 (+1.29% on Iran deal). AMD ~$511-512 (+7-8% — now within 1.7% of stale GTC $520.59). ⚠️ AMD STALE GTC RISK ELEVATED — OPERATOR MUST CHECK/CANCEL at Alpaca. INTC ~$124.57 (GTC $123.69 still unfilled). FOMC binary event window active — no entries. All watchlist deferred per Exemption 2. Gap widened to -4.69pp (from -3.42pp). FIRST CLEAN ENTRY: THURSDAY JUNE 18."
   },
   "positions": [
     {
@@ -62,21 +62,21 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON SURGE — Iran peace deal SIGNED June 15. Strait of Hormuz reopening. Brent -10.4% to $103. Semis leading: AMD +4%, QCOM +4%, ADI/NXPI/TXN +3%. FOMC June 16-17: 99.6% hold. S&P 500 futures strong.",
-    "fear_greed": "Greed (maximum risk-on — Iran deal signed, oil collapsing, FOMC hold near-certain)",
-    "fear_greed_label": "Greed — Iran deal signed + oil -10% + 99.6% FOMC hold = triple tailwind",
-    "spx": "June 15 open: S&P 500 futures strongly positive on Iran peace deal. June 12 close est. ~7,435 (+0.55%). INTC ~$124.57 (+6.5%). AMD ~$472 (+4%). SPX since strategy start (~$7,200): +3.27% (est; will widen today on large Iran deal rally).",
-    "btc": "BTC est. ~$80-85K. Possible push through $82K threshold on Iran deal risk-on. Verify at Thursday June 18 Pre-Market for crypto entry decision.",
+    "mode": "RISK-ON RALLY — Iran peace deal SIGNED June 15. S&P 500 +1.29% midday (~7,527). Semis leading: AMD +7-8%, INTC +6.5%, QCOM +4%. FOMC June 16-17: 99.6% hold. Oil Brent -10.4% to $103.",
+    "fear_greed": "Extreme Greed (Iran deal signed + oil collapse + FOMC hold near-certain + semis surging)",
+    "fear_greed_label": "Extreme Greed — Iran deal SIGNED + Brent -10.4% + 99.6% FOMC hold + semis +7-8%",
+    "spx": "June 15 midday: S&P 500 ~7,527 (+1.29% from June 12 close 7,431.46). SPX since strategy start (~$7,200): +4.54%. INTC ~$124.57 (+6.5%). AMD ~$511-512 (+7-8%). NVDA $205.19 (+0.16%). MRVL ~$280-285.",
+    "btc": "BTC est. ~$82-88K on Iran deal risk-on surge (likely pushed through $82K threshold today). Verify at Thursday June 18 Pre-Market for crypto entry decision. If confirmed ≥$82K: enter 5% position after fresh 6-agent ≥7.0.",
     "sectors": {
-      "leaders": ["Semiconductors (SOXX +8% June 11; chips +5% June 12)", "AI/Tech (Nasdaq +2.54% June 11)", "Industrials", "Consumer Discretionary (oil relief)"],
-      "laggards": ["Energy (oil -3%+ on Iran deal)", "Gold/GLD (safe-haven premium unwinding)", "Defense (ceasefire headwind — LMT/RTX selling)"],
-      "energy_note": "Oil falling sharply on Iran deal imminent. Strait of Hormuz naval blockade expected to lift. Iran deal = disinflationary for PPI.",
-      "breadth": "S&P +0.55% June 12 close est. Broad advance. Semi sector leading. SpaceX SPCX IPO $150 (vs $135 offer). Musk first trillionaire."
+      "leaders": ["Semiconductors (AMD +7-8%, INTC +6.5%, QCOM +4% — Iran deal removes oil inflation)", "AI/Tech (Nasdaq significantly positive)", "Industrials", "Consumer Discretionary (oil relief = consumer spending boost)"],
+      "laggards": ["Energy (Brent oil -10.4% on Strait of Hormuz reopening)", "Gold/Precious Metals (safe-haven premium fully unwinding — Iran deal closed)", "Defense (LMT/RTX/NOC — ceasefire removes defense catalyst)"],
+      "energy_note": "Brent crude $115 → $103 (-10.4%) on Iran peace deal signed June 15. Strait of Hormuz naval blockade lifted. Iranian oil to market = structural disinflationary force. Energy sector heavily lagging.",
+      "breadth": "Broad advance midday June 15. Semis leading. Consumer discretionary strong (oil relief = lower gas prices). Health care and utilities neutral. Defense/energy lagging. Market up +1.29% on Iran deal alone."
     },
-    "macro_notes_md": "- **Iran deal IMMINENT:** Trump called off June 11 strikes. US-Iran ceasefire nearly finalized. Oil -3%+. Strait of Hormuz naval blockade expected to lift.\n- **FOMC June 16-17: 97.8% HOLD probability** (vs 63% HIKE on June 10 — massive 65pp swing in 48 hours). Warsh less hawkish with energy inflation declining.\n- **PPI May 2026 (June 11):** +1.1% m/m (hot — energy 80% of advance). BUT market IGNORED it because Iran deal = lower oil = PPI peak. Forward inflation outlook improved.\n- **10-year yield:** ~4.47% (down from ~4.60% June 10). Treasury rally on FOMC hold expectations.\n- **SpaceX SPCX IPO:** $135 offer → $150 open (+11%). Musk first trillionaire. AI/space theme but no entry (volatile, no track record).\n- **Semiconductor sector:** SOXX +8% June 11 (largest single-day gain in years). AMD +8%, MU +11.66%, INTC +7%, MRVL +6% June 11.",
-    "sp500_today_pct": "+0.55% (est.)",
-    "sp500_est": 7435,
-    "macro_note": "Iran deal + FOMC hold = dual risk-on catalysts. Oil falling. Chips surging. FOMC binary event window Jun 14-17. First clean entry: Wed Jun 18."
+    "macro_notes_md": "- **Iran peace deal SIGNED June 15:** Trump authorized toll-free reopening of Strait of Hormuz. Naval blockade lifted. Brent crude $115→$103 (-10.4%). Removes primary oil-driven inflation shock — CPI outlook improves materially.\n- **FOMC June 16-17: 99.6% HOLD probability** (Warsh first meeting; dot-plot risk remains — hawkish bias signal could spike yields even with hold). Oil collapse = Warsh even less likely to hike.\n- **AMD catalyst:** Citi upgraded AMD to Buy June 12 (stacking on Iran deal). AMD up +7-8% midday.\n- **INTC:** BofA Buy/PT $135 June 12 + Iran deal = +6.5% today. GTC bracket at $123.69 unfilled (trading above).\n- **NVDA:** Relatively muted today (+0.16%). AI capex secular thesis intact but less directly correlated with Iran deal.\n- **10-year yield:** Likely declining further on Iran deal (reduced inflation risk). Bond rally supports high-multiple semis.\n- **MU exit deadline:** JUNE 20 (Juneteenth June 19 = holiday; June 24 earnings = binary event 4 days after).",
+    "sp500_today_pct": "+1.29% (midday est.)",
+    "sp500_est": 7527,
+    "macro_note": "Iran deal SIGNED + FOMC hold near-certain = dual risk-on catalysts. Chips surging. FOMC binary event window Jun 14-17. First clean entry: THU Jun 18. Juneteenth Jun 19 = holiday. MU deadline Jun 20."
   },
   "routines": {
     "pre_market": {
@@ -95,13 +95,13 @@
       "status": "silent-failure",
       "last_run": "2026-06-08T15:07:00Z",
       "next_run": "2026-06-16T15:00:00Z",
-      "last_summary": "SILENT FAILURE June 12."
+      "last_summary": "SILENT FAILURE June 15 (violation logged at Midday). All ≥7 watchlist names already justified-skipped at Market Open per Exemption 2 — no catch-up needed."
     },
     "midday": {
       "status": "completed",
-      "last_run": "2026-06-12T16:49:31Z",
+      "last_run": "2026-06-15T16:33:00Z",
       "next_run": "2026-06-16T16:30:00Z",
-      "last_summary": "Jun 12: INTC 7.33 APPROVED, blocked 31st. LMT rejected 5.5. MU rejected 6.67. June 11 blackout violations logged. FOMC window noted."
+      "last_summary": "Jun 15: S&P 500 ~7,527 (+1.29% Iran deal). AMD ~$511 (+7-8%) — ⚠️ STALE GTC $520.59 now within 1.7%; operator must cancel. INTC ~$124.57 (GTC $123.69 unfilled). All watchlist names deferred Exemption 2 (FOMC June 16-17). Mid-Morning violation logged. Gap widened to -4.69pp. Overnight plan: 100% cash. First entry: Thu June 18."
     },
     "afternoon": {
       "status": "silent-failure",
@@ -123,6 +123,19 @@
     }
   },
   "trades": [
+    {
+      "ts": "2026-06-15T16:33:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Mid-Morning routine (11:00 AM ET / 15:00 UTC June 15) produced no heartbeat. Silent failure logged at Midday. No catch-up entries needed — all ≥7 watchlist names justified-skipped at Market Open per Exemption 2 (FOMC binary event). API blocked 33rd session."
+    },
     {
       "ts": "2026-06-15T13:45:00Z",
       "symbol": "N/A",
@@ -160,7 +173,7 @@
       "agent_average": 7.0,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2 (FOMC binary event). AMD ~$472 (+4% on Iran deal). Stale GTCs at $524.15/$520.59 not in danger (AMD well below). CANCEL stale orders at Alpaca."
+      "order_status": "SKIP per Exemption 2 (FOMC binary event). AMD MIDDAY ~$511-512 (+7-8% on Iran deal + Citi upgrade). ⚠️ STALE GTC RISK ELEVATED: AMD now only ~1.7% below stale limit $520.59. IF OPERATOR PLACED MANUALLY: CANCEL IMMEDIATELY at Alpaca. Fresh 6-agent needed June 18."
     },
     {
       "ts": "2026-06-15T13:49:00Z",
