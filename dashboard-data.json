@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-16T12:07:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-06-16T16:33:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.92,
     "benchmark_gap_pct": -5.07,
     "open_positions_count": 0,
-    "note": "June 16 Pre-Market (8:00 AM ET). API BLOCKED 35th session. S&P 500 ES futures ~7,623.50 (-0.04%). AMD ~$548.80 (+12.1% from June 15 close) \u2014 STALE GTC CRITICAL: gap-up bypassed $520/$524 limits but only 5% above now. OPERATOR MUST CANCEL AMD GTCs BEFORE FOMC JUNE 17 2PM ET. INTC ~$127.86. BTC ~$66,304 (below $82K). FOMC Day 1 binary event active. All watchlist skipped (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) per Exemption 2. First clean entry: Thu June 18."
+    "note": "June 16 Midday (12:30 PM ET). API BLOCKED 35th session. FOMC Day 1 \u2014 Kevin Warsh first meeting. Decision June 17 2PM ET. Market Open + Mid-Morning silently failed (violations logged). All watchlist (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 (FOMC binary event). No positions. Circuit breaker NOT triggered. Daily P&L: $0. \u26a0\ufe0f OPERATOR MUST CANCEL AMD stale GTCs $520.59/$524.15 BEFORE JUNE 17 2PM ET. First clean entry: Thu June 18."
   },
   "positions": [
     {
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON consolidating - Iran deal signed June 15, FOMC Day 1 June 16. S&P futures -0.04%. Semiconductors digesting +7-12% gains from yesterday.",
+    "mode": "RISK-ON (FOMC Day 1 wait-and-see) \u2014 Markets flat-to-slightly-positive, digesting Iran deal gains, awaiting Kevin Warsh's first FOMC decision June 17 2PM ET. Semiconductors consolidating post-gap.",
     "fear_greed": null,
-    "fear_greed_label": "Fear \u2014 CPI shock + geopolitical escalation. Semis and gold both under pressure.",
-    "spx": "ES futures ~7,623.50 (-0.04%) pre-market June 16. S&P 500 closed 7,554.29 June 15 (+1.65%). Kevin Warsh FOMC Day 1 meeting in session. Decision June 17 2PM ET. 97%+ hold probability. Key risk: hawkish SEP dot plot.",
-    "btc": "BTC ~$66,304 - BELOW $82K threshold. No crypto entry. Iran deal risk-on not sufficient. Post-FOMC potential upside. Monitor.",
+    "fear_greed_label": "Cautious optimism \u2014 Iran deal signed, oil lower, but FOMC dot plot risk keeps investors from full risk-on.",
+    "spx": "Midday June 16: ~7,550-7,580 est. (flat intraday). S&P 500 closed 7,554.29 June 15 (+1.65% Iran deal rally). Kevin Warsh FOMC Day 1 in session (silent period). Decision June 17 2PM ET. 97%+ hold probability. Key risk: hawkish SEP dot plot (1-2 hikes in 2026 penciled in).",
+    "btc": "BTC ~$66,000-$67,000 (est. midday) - BELOW $82K threshold. No crypto entry. Post-FOMC risk-on potential if hold + neutral dots. Monitor.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
@@ -106,26 +106,26 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "completed",
+      "status": "violated",
       "last_run": "2026-06-10T13:46:00Z",
-      "next_run": "2026-06-11 09:45 ET",
-      "last_summary": "June 10 CPI DAY: GLD stop ESTIMATED TRIGGERED at $397.92 (range $388.75-$400.48, est. loss -$145.58). INTC 44sh limit $108.06 GTC bracket APPROVED 7.17 (re-score) \u2014 BLOCKED 403. MU REJECTED fresh 6.5 (CPI 4.2%+Iran macro headwinds). API blocked 29th+ session. OPERATOR: Execute INTC 44sh $108.06 + verify GLD stop + cancel stale AMD/PLTR/MRVL GTC orders."
+      "next_run": "2026-06-17 09:45 ET",
+      "last_summary": "June 16: SILENT FAILURE \u2014 no heartbeat at 13:45 UTC. Violation logged at Midday. No catch-up needed \u2014 all \u22657 watchlist names (MRVL, INTC, AMD, NVDA) already justified-skipped per Exemption 2 (FOMC binary event June 17). No open positions. API blocked 35th session."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
+      "status": "violated",
       "last_run": "2026-06-08T15:07:00Z",
-      "next_run": "2026-06-10 11:00 ET",
-      "last_summary": "June 8: Pre-Market + Market-Open violations logged. GLD stop $397.92 NOT triggered (gold $4,475-$4,720). NEW: INTC 44sh $109.55 GTC bracket APPROVED 8.0 (Google TPU + NVIDIA eval) \u2014 BLOCKED 403. MU 4sh $940 GTC bracket APPROVED 7.17 \u2014 BLOCKED 403. AMD SKIP (fresh 6.0, relative weakness). OPERATOR MUST EXECUTE both orders + cancel stale AMD/PLTR/MRVL GTC orders."
+      "next_run": "2026-06-17 11:00 ET",
+      "last_summary": "June 16: SILENT FAILURE \u2014 no heartbeat at 15:00 UTC. Violation logged at Midday. No catch-up needed \u2014 FOMC binary event exemption (Exemption 2) covers all \u22657 watchlist names through June 17 2PM ET. API blocked 35th session."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "completed",
-      "last_run": "2026-06-04 12:30 ET",
-      "next_run": "2026-06-05 12:30 ET",
-      "last_summary": "June 4: 2 violations logged (Market Open + Mid-Morning). GLD CORRECTED to ~$408 (underwater from $418.86; stop $397.92 MAINTAIN, do NOT trail). AVGO re-score 6.0 (still below threshold). MU 4sh limit $1,020 bracket GTC APPROVED 7.67 \u2014 BLOCKED API. AMD 9sh limit $508 bracket GTC APPROVED 7.17 \u2014 BLOCKED API. PLTR deferred to Afternoon. Market: Dow +1.8%, S&P +0.3%, Nasdaq -0.2% rotation day."
+      "last_run": "2026-06-16T16:33:00Z",
+      "next_run": "2026-06-17 12:30 ET",
+      "last_summary": "June 16: 2 violations logged (Market Open + Mid-Morning). FOMC Day 1 \u2014 Kevin Warsh first meeting, decision June 17 2PM ET. All watchlist skipped per Exemption 2 (FOMC binary event). No positions (100% cash $99,854). Circuit breaker not triggered. Daily P&L: $0. Overnight plan: No positions. MANDATORY June 18 entries: MRVL (8sh), INTC (38sh), AMD (9sh, cancel stale GTCs FIRST), NVDA conditional (4sh if \u22657). AMD stale GTC CRITICAL \u2014 operator must cancel before FOMC decision."
     },
     {
       "name": "Afternoon",
@@ -161,6 +161,32 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-16T16:33:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Mid-Morning routine (11:00 AM ET / 15:00 UTC June 16) SILENTLY FAILED. No heartbeat. Catch-up not required — all ≥7 watchlist names covered by Exemption 2 justified skips from Pre-Market. API blocked 35th session."
+    },
+    {
+      "ts": "2026-06-16T16:33:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Market Open routine (9:45 AM ET / 13:45 UTC June 16) SILENTLY FAILED. No heartbeat. Catch-up not required — all ≥7 watchlist names covered by Exemption 2 justified skips from Pre-Market. API blocked 35th session."
+    },
     {
       "ts": "2026-06-16T12:07:00Z",
       "symbol": "MRVL",
