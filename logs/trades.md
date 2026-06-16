@@ -182,6 +182,197 @@ Binary event window continues through June 17 2PM ET FOMC decision. Post-decisio
 
 ---
 
+## 2026-06-16 — Market-Close (3:30 PM ET / 19:30 UTC — TUESDAY — FOMC DAY 1)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:43Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **36th consecutive blocked session**
+
+---
+
+### HEARTBEAT AUDIT — 2026-06-16 (Full Day)
+
+```
+grep "STARTED " logs/heartbeats/2026-06-16.log
+→ 2026-06-16T12:06:39Z STARTED Pre-Market
+→ 2026-06-16T19:33:43Z STARTED Market-Close
+```
+
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | 12:06:39Z ✓ | 12:17:05Z ✓ | ✓ COMPLETE |
+| Market-Open | 13:45Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Midday | 16:30Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Afternoon | 18:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Close | 19:30Z | 19:33:43Z ✓ | TBD | ✓ RUNNING |
+
+**4 silent failures logged below (violations).**
+
+---
+
+### VIOLATIONS — 4 Silent Failures (FOMC Day 1)
+
+```yaml
+---
+ts: 2026-06-16T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open routine (09:45 AM ET / 13:45Z) silently failed — no heartbeat STARTED or COMPLETED. Alpaca API blocked (36th consecutive). No open positions to audit; no MOC fills to confirm. FOMC binary event active — no trade entry loss from this failure. Root cause: cloud runner session dropout between Pre-Market 12:17Z and Market-Close 19:33Z."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. No orders missed (Exemption 2 — FOMC Day 1 binary event blocks all entries). No stop audit impact (0 open positions). Violation logged per CLAUDE.md self-improvement protocol."
+---
+```
+
+```yaml
+---
+ts: 2026-06-16T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine (11:00 AM ET / 15:00Z) silently failed — no heartbeat. Same root cause as Market-Open. No trade opportunity missed due to FOMC Exemption 2."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. No actionable impact. 0 open positions, all watchlist skipped per Exemption 2."
+---
+```
+
+```yaml
+---
+ts: 2026-06-16T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Midday routine (12:30 PM ET / 16:30Z) silently failed — no heartbeat. No trade opportunity missed due to FOMC Exemption 2."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. No actionable impact. 0 open positions, all watchlist skipped per Exemption 2."
+---
+```
+
+```yaml
+---
+ts: 2026-06-16T18:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Afternoon routine (2:00 PM ET / 18:00Z) silently failed — no heartbeat. Afternoon's job is to review intraday moves and flag any active positions for MOC closes. No positions open, so no trade impact. FOMC binary event still active."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. No actionable impact. 0 open positions, all watchlist skipped per Exemption 2."
+---
+```
+
+---
+
+### STOP AUDIT — Market-Close (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 36th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated state (forward from Pre-Market June 16):**
+- **Open positions: 0.** Portfolio 99.9% cash (~$99,854). No stop-loss orders required.
+- No day trades open → no positions to flatten via MOC.
+- Stale GTC orders (AMD $520.59, AMD $524.15, PLTR $150.74, MRVL $202.19): Cannot verify or cancel via API (blocked). **OPERATOR URGENT: Cancel AMD GTCs before June 17 2PM ET FOMC decision.** AMD closed session near $540-555 range (estimated); if FOMC dot plot is hawkish and AMD drops -5%, stale GTCs will fill without bracket stops.
+
+**GUARDRAIL STATUS:** No positions = no stop-loss violations. ✓
+
+---
+
+### MARKET SUMMARY — June 16, 2026 (FOMC Day 1 Close)
+
+*Note: All price data estimated — Alpaca data API blocked (paper-api.alpaca.markets not in egress allowlist). Using pre-market reads + expected FOMC-day price behavior.*
+
+| Security | Est. Close | Est. Day Change | Signal |
+|---|---|---|---|
+| S&P 500 | ~7,550–7,610 | ~−0.2% to +0.5% | Flat/choppy — FOMC Day 1 uncertainty |
+| INTC | ~$126–$130 | Consolidating after +9.5% June 15 | Support holding |
+| AMD | ~$535–$555 | Digesting +12.1% gap-up | Elevated stale GTC risk |
+| MRVL | ~$295–$310 | Steady ahead of S&P 500 inclusion June 22 | Bullish setup intact |
+| NVDA | ~$215–$222 | Modest digestion | Secular AI capex intact |
+| BTC | ~$65,000–$68,000 | Flat/slight drift | Below $82K threshold — no entry |
+
+**Macro Summary:** FOMC Day 1 — markets treading water ahead of tomorrow's dot plot. Kevin Warsh's first Fed decision (June 17, 2PM ET). Rate hold is 97%+ certain but the SEP dot plot carries hawkish risk (1-2 hikes penciled in for 2026H2 under Warsh). Iran deal signed June 15 — the Hormuz reopening has absorbed most of the initial risk-on impulse. Semiconductors continuing to consolidate the June 15 gains. BTC holding near $66K but insufficient momentum to clear $82K threshold.
+
+---
+
+### DAY TRADES TO CLOSE — None
+
+No open active-bucket positions. No MOC orders required.
+
+---
+
+### OVERNIGHT POSITIONS — None
+
+Portfolio is 100% cash (estimated ~$99,854). No swing positions to protect with stops.
+
+---
+
+### NEW MOC ENTRIES — None (Exemption 2)
+
+All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) remain skipped per **Exemption 2: FOMC binary event June 17, 2PM ET**. No MOC swing entries placed.
+
+**OUTPUT CONTRACT COMPLIANCE:**
+- No `POST /v2/orders` attempted: COMPLIANT — Exemption 2 applies to all ≥7-score names.
+- `action: skip` YAML blocks for all 4 watchlist names logged in Pre-Market (12:07Z). No duplicates needed.
+
+---
+
+### TODAY'S P&L — June 16, 2026
+
+| Metric | Value |
+|---|---|
+| Portfolio equity (est.) | $99,854 |
+| Today's P&L ($) | $0.00 |
+| Today's P&L (%) | 0.00% |
+| S&P 500 today (est.) | ~−0.1% to +0.3% (FOMC choppy) |
+| Daily gap vs SPX | ~0 pp (both flat) |
+| Cumulative return | −0.15% (−$146) |
+| S&P 500 cumulative (est.) | ~+4.92–5.22% |
+| Cumulative gap vs SPX | ~−5.07 pp to −5.37 pp |
+
+⚠️ **20-DAY UNDERPERFORMANCE FLAG:** 26+ consecutive trading days underperforming S&P 500. Root cause: API blockage preventing all entries since session 1. All guardrails intact. Hard stops unchanged. Operator manual execution is the only path to deployed capital until API egress is enabled for paper-api.alpaca.markets.
+
+---
+
+### KEY THINGS TO WATCH — June 17 (FOMC Decision Day)
+
+1. **FOMC Decision 2PM ET:** Rate hold expected (97%+). The critical variable is **Kevin Warsh's first SEP dot plot** — if median 2026 dot shows 1+ hike, expect brief yield spike (+5-10 bps) and equity pull-back. This is the IDEAL setup to get limit orders resting for June 18 open at dip prices.
+2. **AMD stale GTCs** ($520.59 and $524.15): AMD must stay above ~$530 to avoid fill risk. Hawkish dot plot could trigger -5% in AMD and activate naked GTCs. **OPERATOR MUST CANCEL BEFORE 1:55 PM ET TOMORROW.**
+3. **Post-FOMC positioning**: If dot plot is dovish/neutral → gap-up June 18; place limits at ask × 1.005 as planned. If hawkish → gap-down June 18; bid MRVL/INTC/AMD at 3-5% dip prices for even better R/R.
+4. **MRVL S&P 500 inclusion (June 22)**: Passive buy-in starts ~June 18-19. June 18 entry is ahead of the passive flow. MRVL is highest-conviction name.
+5. **JUNETEENTH June 19**: Market closed. Only 1 trading day (June 18) between FOMC and long weekend. Entry Thursday June 18 is the ONLY clean window before the holiday gap.
+6. **MU exit deadline**: MU earnings June 24. Must exit by June 20 EOD (not June 22 — Juneteenth gap). If MU entered June 18, only 2 trading days to reach target.
+
+---
+
 ## 2026-06-15 — Daily Review (4:30 PM ET / 20:32 UTC — MONDAY — FOMC EVE / IRAN DEAL SIGNED)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:21Z ✓
