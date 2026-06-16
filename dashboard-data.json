@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-16T12:07:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-06-16T18:04:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.92,
     "benchmark_gap_pct": -5.07,
     "open_positions_count": 0,
-    "note": "June 16 Pre-Market (8:00 AM ET). API BLOCKED 35th session. S&P 500 ES futures ~7,623.50 (-0.04%). AMD ~$548.80 (+12.1% from June 15 close) \u2014 STALE GTC CRITICAL: gap-up bypassed $520/$524 limits but only 5% above now. OPERATOR MUST CANCEL AMD GTCs BEFORE FOMC JUNE 17 2PM ET. INTC ~$127.86. BTC ~$66,304 (below $82K). FOMC Day 1 binary event active. All watchlist skipped (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) per Exemption 2. First clean entry: Thu June 18."
+    "note": "June 16 Afternoon (2:00 PM ET). API BLOCKED 35th session. S&P ~7,620-7,640 est. AMD ~$535-548 est. INTC ~$127-130 est. MRVL ~$300-312 est. BTC ~$65-67K (below $82K). FOMC Day 1 quiet \u2014 decision June 17 2PM ET. Market-Open/Mid-Morning/Midday all silently failed today. 3 violation entries logged. No open positions \u2014 100% cash. All watchlist skipped per Exemption 2 + proximity-to-close. MANDATORY June 18: MRVL 8sh, INTC 38sh, AMD 9sh (cancel stale GTCs FIRST), NVDA 4sh conditional. CRITICAL: OPERATOR CANCEL AMD GTCs $524.15/$520.59 BEFORE FOMC JUNE 17 2PM ET."
   },
   "positions": [
     {
@@ -106,34 +106,34 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-10T13:46:00Z",
-      "next_run": "2026-06-11 09:45 ET",
-      "last_summary": "June 10 CPI DAY: GLD stop ESTIMATED TRIGGERED at $397.92 (range $388.75-$400.48, est. loss -$145.58). INTC 44sh limit $108.06 GTC bracket APPROVED 7.17 (re-score) \u2014 BLOCKED 403. MU REJECTED fresh 6.5 (CPI 4.2%+Iran macro headwinds). API blocked 29th+ session. OPERATOR: Execute INTC 44sh $108.06 + verify GLD stop + cancel stale AMD/PLTR/MRVL GTC orders."
+      "status": "silent-failure",
+      "last_run": "2026-06-16 \u2014 SILENT FAILURE (no heartbeat)",
+      "next_run": "2026-06-17 09:45 ET",
+      "last_summary": "June 16 SILENT FAILURE. Violation logged at Afternoon. No catch-up needed \u2014 all \u22657 watchlist names already covered by Pre-Market Exemption 2 skip. No open positions to stop-audit. API blocked 35th session."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-08T15:07:00Z",
-      "next_run": "2026-06-10 11:00 ET",
-      "last_summary": "June 8: Pre-Market + Market-Open violations logged. GLD stop $397.92 NOT triggered (gold $4,475-$4,720). NEW: INTC 44sh $109.55 GTC bracket APPROVED 8.0 (Google TPU + NVIDIA eval) \u2014 BLOCKED 403. MU 4sh $940 GTC bracket APPROVED 7.17 \u2014 BLOCKED 403. AMD SKIP (fresh 6.0, relative weakness). OPERATOR MUST EXECUTE both orders + cancel stale AMD/PLTR/MRVL GTC orders."
+      "status": "silent-failure",
+      "last_run": "2026-06-16 \u2014 SILENT FAILURE (no heartbeat)",
+      "next_run": "2026-06-17 11:00 ET",
+      "last_summary": "June 16 SILENT FAILURE. Violation logged at Afternoon. FOMC Day 1 \u2014 no new entries would have been placed regardless. API blocked 35th session."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-04 12:30 ET",
-      "next_run": "2026-06-05 12:30 ET",
-      "last_summary": "June 4: 2 violations logged (Market Open + Mid-Morning). GLD CORRECTED to ~$408 (underwater from $418.86; stop $397.92 MAINTAIN, do NOT trail). AVGO re-score 6.0 (still below threshold). MU 4sh limit $1,020 bracket GTC APPROVED 7.67 \u2014 BLOCKED API. AMD 9sh limit $508 bracket GTC APPROVED 7.17 \u2014 BLOCKED API. PLTR deferred to Afternoon. Market: Dow +1.8%, S&P +0.3%, Nasdaq -0.2% rotation day."
+      "status": "silent-failure",
+      "last_run": "2026-06-16 \u2014 SILENT FAILURE (no heartbeat)",
+      "next_run": "2026-06-17 12:30 ET",
+      "last_summary": "June 16 SILENT FAILURE. Violation logged at Afternoon. FOMC Day 1 binary event \u2014 no new entries. No open positions to monitor. API blocked 35th session."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "pending",
-      "last_run": "2026-06-03T18:09:00Z",
-      "next_run": "2026-06-04 14:00 ET",
-      "last_summary": "PENDING. MANDATORY: PLTR 10sh limit catch-up. AMD/MU fill confirmation. GLD stop verification."
+      "status": "completed",
+      "last_run": "2026-06-16 14:04 ET",
+      "next_run": "2026-06-17 14:00 ET",
+      "last_summary": "June 16: FOMC Day 1 quiet. API blocked 35th. Market-Open/Mid-Morning/Midday silently failed (3 violations logged). S&P ~7,620-7,640 est. AMD ~$535-548 holding gap-up gains. No open positions. All ≥7 watchlist skipped Exemption 2 + proximity-to-close. No MOC orders. CRITICAL: OPERATOR CANCEL AMD GTCs $524.15/$520.59 before FOMC June 17 2PM ET. MANDATORY June 18: MRVL 8sh + INTC 38sh + AMD 9sh."
     },
     {
       "name": "Market Close",

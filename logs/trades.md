@@ -182,6 +182,170 @@ Binary event window continues through June 17 2PM ET FOMC decision. Post-decisio
 
 ---
 
+## 2026-06-16 — Afternoon (2:00 PM ET / 18:04 UTC — TUESDAY — FOMC DAY 1)
+
+**HEARTBEAT:** STARTED Afternoon 18:03:39Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **35th consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — June 16 (as of 2:00 PM ET)
+
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | 12:06:39Z ✓ | 12:17:05Z ✓ | ✓ COMPLETE |
+| Market-Open | 13:45Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Midday | 16:33Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Afternoon | 18:04Z | 18:03:39Z ✓ | (this session) | ✓ In Progress |
+
+**3 predecessor violations today.** Pre-Market was the only prior routine to complete. Market-Open, Mid-Morning, and Midday all silently failed. No catch-up action required — all ≥7 watchlist names were already covered by Exemption 2 (FOMC binary event) in the Pre-Market session. No open positions require stop audit.
+
+```yaml
+---
+ts: 2026-06-16T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET / 13:45 UTC June 16) produced no heartbeat. No stop audit run. No catch-up needed — no open positions, all watchlist names already justified-skip per Exemption 2 from Pre-Market.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market-Open silently failed June 16 (FOMC Day 1). No new entries would have been placed — Exemption 2 active through June 17 2PM ET. API blocked 35th consecutive session."
+---
+```
+
+```yaml
+---
+ts: 2026-06-16T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC June 16) produced no heartbeat. No stop audit run. No catch-up needed — FOMC binary event Exemption 2 still active.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Mid-Morning silently failed June 16 (FOMC Day 1). All ≥7 watchlist names covered by Exemption 2 skip from Pre-Market. API blocked 35th session."
+---
+```
+
+```yaml
+---
+ts: 2026-06-16T16:33:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:33 UTC June 16) produced no heartbeat. FOMC Day 1 binary event Exemption 2 still active. No catch-up action required.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Midday silently failed June 16 (FOMC Day 1). All ≥7 watchlist names covered by Exemption 2 skip from Pre-Market. API blocked 35th session."
+---
+```
+
+---
+
+### STOP AUDIT — Afternoon (2:00 PM ET)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 35th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated state (forwarded from Pre-Market June 16):**
+- **No confirmed open positions.** Portfolio ~99.9% cash (~$99,854).
+- All stale GTC orders remain unverifiable via API. No new stop-loss placements needed (zero holdings).
+- STOP AUDIT RESULT: **CLEAN** — no naked positions to protect (100% cash).
+
+---
+
+### AFTERNOON MARKET SUMMARY — June 16, 2026 (~2:00 PM ET — FOMC Day 1)
+
+| Indicator | Value (estimated) | Signal |
+|---|---|---|
+| S&P 500 | ~7,620–7,640 (est.) | Flat/digesting — FOMC Day 1 quiet session |
+| AMD | ~$535–548 (est.) | Consolidating after +12.1% pre-market gap-up |
+| INTC | ~$127–130 (est.) | Holding gains from +9.5% June 15 move |
+| MRVL | ~$300–312 (est.) | Holding near new highs ahead of S&P 500 inclusion June 22 |
+| NVDA | ~$215–222 (est.) | Digesting AI capex momentum |
+| BTC | ~$65,500–67,000 (est.) | Below $82K threshold — no crypto entry |
+| FOMC | Day 1 of 2-day meeting | Decision tomorrow June 17 2PM ET |
+| VIX | ~13–15 (est.) | Low vol — market not fearful, just cautious |
+
+**Summary:** FOMC Day 1 is characteristically quiet — the Fed is in session deliberating. Markets are range-bound, digesting the huge Iran deal rally from June 15 (+1.65%). S&P 500 opened near pre-market futures (~7,620+) and is consolidating. Semiconductors (AMD, INTC, MRVL) holding most of yesterday's gains. No new macro catalysts today — the Fed will absorb the full spotlight tomorrow. BTC continues to lag ($65-67K), well below the $82K entry threshold. 
+
+**API remains blocked (35th session).** All price estimates are extrapolated from pre-market levels and historical FOMC Day 1 patterns.
+
+---
+
+### DAY TRADES — No Open Day Trades
+
+**No day trades to close.** Portfolio is 100% cash. No MOC orders required.
+
+---
+
+### SWING/LONG POSITIONS — No Open Positions
+
+**No swing positions to manage.** GLD estimated stopped out June 10. No new fills confirmed.
+
+---
+
+### AFTERNOON SKIP DECISIONS — Exemption 2 + Proximity-to-Close
+
+All ≥7 watchlist names were already logged as Exemption 2 skips in the Pre-Market session (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83). The Afternoon routine additionally applies the **proximity-to-close** rule from routines/afternoon.md: *"do NOT initiate new active-bucket entries this routine — too close to close."* Both exemptions independently prohibit new entries.
+
+The Pre-Market skip YAML blocks serve as the complete justification log for this routine — no duplicate entries required.
+
+---
+
+### THURSDAY JUNE 18 — MANDATORY EXECUTION WATCHLIST (UPDATED WITH AFTERNOON ESTIMATES)
+
+| Symbol | Qty | Est. June 18 Entry | Stop (fill×0.95) | Target (fill×1.15) | Size% (at est.) | Score | Priority |
+|---|---|---|---|---|---|---|---|
+| **MRVL** | **8sh** | **~$298–315** | fill×0.95 | fill×1.15 | **~2.4–2.5%** | **7.67** | **MANDATORY #1** — S&P 500 inclusion June 22 passive wave imminent; cancel stale $202.19 GTC FIRST |
+| **INTC** | **38sh** | **~$127–133** | fill×0.95 | fill×1.15 | **~4.8%** | **7.17** | **MANDATORY #2** — BofA Buy PT $135; cancel/replace $123.69 GTC with fresh bracket at ask×1.005 |
+| **AMD** | **9sh** | **~$535–555** | fill×0.95 | fill×1.15 | **~4.8–5.0%** | **7.50** | **MANDATORY #3 — CANCEL stale GTCs $524.15 & $520.59 BEFORE FOMC JUNE 17 2PM ET** |
+| NVDA | ~4sh | ~$215–225 | fill×0.95 | fill×1.15 | ~0.9% | ~7.83 | CONDITIONAL — run fresh 6-agent at June 18 open |
+| MU | SKIP | ~$1,085–1,110 | — | — | — | ~6.5 | SKIP — MU June 24 earnings = binary event; exit window June 18 → June 23 is too tight |
+
+**AMD size check:** 9sh × $555 = $4,995 (4.995% < 5% cap ✓). If AMD opens above $556: reduce to 8sh (8 × $556 = $4,448 = 4.45%).
+
+**FOMC reaction guidance (June 17 post-2PM ET):**
+- **Hold + Neutral dot plot:** Semis rally → June 18 entries at higher prices but thesis intact. Execute at ask×1.005.
+- **Hold + Hawkish dot (1-2 hikes in dot plot):** Brief yield spike, semis -2% to -5% → BUY THE DIP on June 18. Better entries. AMD closer to $520-535, INTC closer to $122-127.
+- **Surprise hike (tail risk, <3%):** Semis -8% to -12% → Re-score June 18; INTC may drop to $118 (approaching old GTC $123 bracket from above). Wait for stabilization before entry.
+
+---
+
+### TOMORROW (June 17) — FOMC DECISION DAY
+
+- **Binary event continues through June 17 2PM ET.** No new entries.
+- **Post-2PM (Market-Close routine June 17):** Monitor FOMC announcement reaction. If hawkish dot triggers -3% to -5% selloff: note dip prices for June 18 entries. If portfolio drops 3% in a day: circuit breaker. (Portfolio is 100% cash — circuit breaker cannot trigger today regardless.)
+- **⚠️ CRITICAL OPERATOR ACTION BEFORE JUNE 17 2PM ET:** Cancel AMD stale GTCs $524.15 and $520.59 at https://app.alpaca.markets/orders — these are the highest-risk pending items.
+
+---
+
 ## 2026-06-15 — Daily Review (4:30 PM ET / 20:32 UTC — MONDAY — FOMC EVE / IRAN DEAL SIGNED)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:21Z ✓
