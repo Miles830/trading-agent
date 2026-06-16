@@ -182,6 +182,107 @@ Binary event window continues through June 17 2PM ET FOMC decision. Post-decisio
 
 ---
 
+## 2026-06-16 — Mid-Morning (11:06 AM ET / 15:06 UTC — TUESDAY — FOMC DAY 1)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:06:05Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **36th consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+| Routine | Expected (UTC) | Heartbeat Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ✓ STARTED 12:06:39Z / COMPLETED 12:17:05Z |
+| Market-Open | 13:45Z | ✗ **MISSING — SILENT FAILURE** |
+
+**Market-Open missed today.** Logging violation entry and running catch-up per midmorning.md playbook.
+
+```yaml
+---
+ts: 2026-06-16T13:45:00Z
+action: violation
+symbol: PORTFOLIO
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine did not heartbeat today — no entry at expected 13:45Z in logs/heartbeats/2026-06-16.log. Catch-up running from Mid-Morning.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market-Open SILENT FAILURE — no heartbeat at expected 13:45Z. Catch-up from Mid-Morning: all ≥7 watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) already have today-dated action:skip entries per Exemption 2 (FOMC binary event June 17 2PM ET). No MOO fills requiring stop backfill (no MOO orders placed in Pre-Market — all skipped per Exemption 2). Market-Open catch-up: confirmed satisfied. API BLOCKED — Alpaca stop audit cannot be performed."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — Mid-Morning (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 36th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist"
+```
+
+**Estimated portfolio state (carried forward from Pre-Market):**
+- Portfolio: ~99.9% cash (~$99,854) — no confirmed open positions
+- Stale GTC orders resting on Alpaca (estimated — operator must verify and cancel):
+  - ⚠️ AMD GTC buy limits $520.59 and $524.15 — **CRITICAL**: AMD currently ~$547; stale GTCs only ~$27 (5%) below current price
+  - PLTR GTC ~$150.74 — PLTR est. ~$130; not in immediate danger
+  - INTC GTC $123.69 — INTC ~$127.86; above limit; GTC unfilled
+  - MRVL GTC $202.19 — MRVL ~$308.88; far above limit; safe but stale
+- Stop-loss audit: **GUARDRAIL VIOLATION ACKNOWLEDGED** — API block (36th session) prevents live verification. No new naked positions created (no entries placed). Only stale GTC exposure remains.
+
+---
+
+### MARKET CONDITIONS — Mid-Morning June 16, 2026 (11:06 AM ET)
+
+| Indicator | Value | Signal |
+|---|---|---|
+| S&P 500 | +0.13% | Flat — waiting on FOMC Day 2 (June 17 2PM ET) |
+| Dow Jones | +0.78% | Slight uptick; value rotation |
+| Nasdaq | +0.02% | Essentially flat |
+| MRVL | ~$308.88 (+10.43%) | **Surging — S&P 500 inclusion June 22 + AI networking catalyst** |
+| AMD | ~$547.26 (+6.98%) | Still elevated from Iran deal surge; stale GTC danger zone |
+| INTC | ~$127.86 (flat) | Consolidating; 52-wk range high at $132.75; range today $126.66–$132.61 |
+| NVDA | ~$212.45 (−1.4% est.) | Slight pullback — digesting Iran deal gains |
+| BTC | ~$66,304 (last known) | Below $82K threshold — no crypto entry |
+| FOMC | Day 1 of 2 (96% hold probability) | Rate decision + dot plot June 17 2PM ET (Kevin Warsh first SEP) |
+
+**Macro Summary:** Markets treading water ahead of the FOMC Day 2 decision. Semis are the standout today — MRVL +10.43% is the session's biggest watchlist mover, driven by S&P 500 inclusion run-up and continued AI data center confidence. AMD still running from yesterday's Iran deal surge. INTC flat. NVDA slight pullback. Broad market flat with 96% probability of hold priced in; all eyes on the dot plot tomorrow for any hawkish surprise. No new macro catalysts beyond FOMC positioning.
+
+---
+
+### WATCHLIST EXECUTION CATCH-UP (Market-Open missed)
+
+All ≥7 watchlist names confirmed to have **today-dated `action: skip` entries** in the Pre-Market section citing Exemption 2 (FOMC binary event June 17). No additional YAML entries required. Catch-up complete.
+
+**MRVL Price Revision Flag — June 18 Entry:**
+MRVL has surged to ~$308.88 today (+10.43% intraday). Pre-Market planned entry around $295–310. The $310 upper bound is essentially at today's mid-morning price. June 18 entry will need to be executed at market price, likely $305–$320 depending on post-FOMC move. At $315 × 8sh = $2,520 (2.52% of $99,854) — still well inside the 5% position cap. Stop: fill×0.95. Target: fill×1.15 (3:1 R/R maintained). Entry thesis unchanged — S&P 500 inclusion passive buying wave starts this week.
+
+---
+
+### DECISIONS — Mid-Morning
+
+**No new entries.** FOMC binary event window (Exemption 2) active through June 17 2PM ET. All watchlist names confirmed valid skips. No new ≥7 setups identified in mid-morning scan outside existing watchlist. Market flat — no breakout triggers.
+
+**⚠️ STALE GTC WARNING — OPERATOR ACTION REQUIRED BEFORE 2PM ET JUNE 17:**
+AMD GTC buy limits ($520.59 and $524.15) are approximately 5% below current price (~$547). FOMC dot plot could trigger -5% to -8% sell-off in semis tomorrow. If AMD drops to $520, both stale GTCs fill as naked buy orders (no bracket stops) = immediate guardrail violation. **OPERATOR: Log into https://app.alpaca.markets/orders and cancel both AMD GTCs NOW.**
+
+---
+
+### NEXT ROUTINE: Midday (12:30 PM ET / 16:30 UTC)
+- Re-confirm FOMC binary event window status (still active through June 17 2PM ET)
+- No new entries
+- Monitor MRVL for continued run-up (S&P inclusion buyers stepping in)
+- Monitor AMD for any FOMC-related sell-off approaching the stale GTC zone
+
+---
+
 ## 2026-06-15 — Daily Review (4:30 PM ET / 20:32 UTC — MONDAY — FOMC EVE / IRAN DEAL SIGNED)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:21Z ✓
