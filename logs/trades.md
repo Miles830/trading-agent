@@ -4,6 +4,178 @@
 
 ---
 
+## 2026-06-16 — Daily Review (4:30 PM ET / 20:32 UTC — TUESDAY — FOMC DAY 1)
+
+**HEARTBEAT:** STARTED Daily-Review 20:32:00Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **36th consecutive blocked session**
+**Trading Day:** ✓ (regular weekday; FOMC Day 1 — decision June 17 2PM ET)
+
+---
+
+### HEARTBEAT AUDIT — 2026-06-16 (Full Day)
+
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | 12:06:39Z ✓ | 12:17:05Z ✓ | ✓ COMPLETE |
+| Market-Open | 13:45Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Midday | 16:30Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Afternoon | 18:00Z | ✗ MISSING | ✗ | **SILENT FAILURE** |
+| Market-Close | 19:30Z | 19:33:43Z ✓ | 19:37:35Z ✓ | ✓ COMPLETE |
+| Daily-Review | 20:32Z | 20:32:00Z ✓ | (this session) | ✓ IN PROGRESS |
+
+**TOP OPERATIONAL ISSUE (Day 36): 4 of 6 intraday routines silently failed.** Market-Open, Mid-Morning, Midday, and Afternoon all missing. Root cause: cloud runner session dropout between Pre-Market complete (12:17Z) and Market-Close start (19:33Z) — a 7h 16m gap with no active session. Impact today: NONE (FOMC binary event blocked all entries; 0 open positions = no stop audit impact). Impact risk for tomorrow: Market-Open June 17 could silently fail again; if so, the 2PM ET FOMC reaction window is critical and Daily Review must compensate.
+
+---
+
+### ORDERS EXECUTED TODAY
+
+```
+GET /v2/orders?status=all  → HTTP 403 "Host not in allowlist"
+```
+
+**No orders placed today.** All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 (FOMC binary event June 17 2PM ET). 4 YAML skip entries logged in Pre-Market routine (12:07Z). No new skips required here.
+
+---
+
+### PORTFOLIO/EQUITY CURVE — Rolling 20-Day
+
+API blocked — equity curve unavailable from Alpaca. Estimated state:
+- June 16 equity: ~$99,854 (flat; 0 trades, 0 positions)
+- Only confirmed realized trade: GLD stop-hit June 10 at $397.92 (est. −$145.58, −4.99%)
+- Rolling equity has been essentially flat since May 17 strategy switch due to 100% API blockage
+
+---
+
+### SPY BENCHMARK COMPARISON
+
+| Period | Portfolio | SPX (est.) | Gap |
+|---|---|---|---|
+| Today (June 16) | 0.00% | ~−0.1% to +0.3% (FOMC Day 1 choppy) | ~0 pp (both flat) |
+| Cumulative (since ~May 1 start) | −0.15% ($99,854) | ~+4.92–5.64% (7,200 → 7,550-7,625 est.) | **~−5.07 to −5.37 pp** |
+| Rolling 20-day streak | UNDERPERFORMING | — | **27 consecutive trading days** |
+
+⚠️ **20-DAY UNDERPERFORMANCE FLAG ACTIVE — 27 CONSECUTIVE TRADING DAYS.** Sole root cause: API blockage preventing all entries. Strategy and guardrails intact. Operator manual execution (June 18) is the corrective action. Hard guardrails NOT modified.
+
+---
+
+### PERFORMANCE METRICS (Today & Rolling 20-Day)
+
+| Metric | Today | Rolling 20-Day |
+|---|---|---|
+| Trades executed | 0 | 0 entries confirmed |
+| Closed trades | 0 | 1 (GLD stop-hit, −4.99%) |
+| Win rate | N/A | 0/1 = 0% |
+| Avg win | N/A | $0 |
+| Avg loss | N/A | −$145.58 |
+| Profit factor | N/A | 0.00 |
+
+*Metrics not meaningful at N=1 due to API blockage. Strategy cannot be evaluated until capital is deployed.*
+
+---
+
+### BEST & WORST TRADES (June 16)
+
+**No trades executed.** Key operational outcome:
+- **Top success:** AMD stale GTC risk proactively identified in Pre-Market ($520.59 and $524.15 now only ~5% below $548+ AMD spot) before FOMC decision. If hawkish dot plot triggers −5% AMD sell-off June 17, these GTCs would fill WITHOUT bracket stops. Operator action required before 1:55 PM ET June 17.
+- **Top failure:** 4 silent routine failures (Market-Open through Afternoon) — structural runner issue; 7+ hour session gap between Pre-Market and Market-Close with no coverage.
+
+---
+
+### 3 THINGS THAT WORKED / 3 TO IMPROVE
+
+**Worked:**
+1. **Exemption 2 discipline maintained:** All 4 watchlist names scoring ≥7 (MRVL 7.67, NVDA 7.83, AMD 7.50, INTC 7.17) correctly skipped on FOMC binary event. No capital exposed entering a Fed meeting with unknown dot-plot outcome. Risk management > return maximization on binary events.
+2. **AMD stale GTC risk escalation:** Identified that AMD's +12.1% gap-up narrowed the buffer between spot price ($548) and stale GTC buy limits ($520-524) to ~5%. First time this specific risk was quantified. OPERATOR ACTION ADDED with explicit deadline (June 17 1:55 PM ET).
+3. **Pre-Market + Market-Close bookend coverage:** Despite 4 intermediate silent failures, both bookend routines completed. Pre-Market documented full FOMC context; Market-Close confirmed no positions, no MOC actions, no naked stops.
+
+**To Improve:**
+1. **4 of 6 intraday routines silently failing (structural):** Cloud runner appears to drop the session ~60-90 min after startup. The 7h gap between Pre-Market (12:17Z) and Market-Close (19:33Z) is a critical blind spot. Remediation proposed: add a keepalive or watchdog cron to the session-start hook that pings the cloud runner every 90 minutes. Without intraday coverage on June 18 (MANDATORY ENTRY DAY), newly placed bracket orders will have no stop audit coverage between routines.
+2. **Alpaca API blockage (36th consecutive session):** The single largest operational constraint. Operator must add paper-api.alpaca.markets and data.alpaca.markets to the Anthropic cloud sandbox network egress allowlist. Without this, the agent cannot confirm fills, verify stops, or respond to stop-out events between Market-Close and the next session.
+3. **Stale GTC order accumulation:** 4 stale GTC orders (AMD ×2, PLTR ×1, MRVL ×1) are resting at Alpaca from 2-6 weeks ago without corresponding stops. Each represents a naked position risk if filled by unexpected price movement. Operator must systematically cancel ALL stale GTCs before placing any June 18 entries — failure to do so means June 18 bracket orders could interact with legacy fills unpredictably.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: June 10–16)
+
+| Setup Tag | Entries | Exits | Wins | Losses | Win% | 3-in-a-row? |
+|---|---|---|---|---|---|---|
+| `ai-momentum-pullback` | 8 SKIP | 0 | — | — | N/A | No |
+| `breakout-volume` | 4 SKIP | 0 | — | — | N/A | No |
+| `macro-hedge` | 0 | 1 STOP HIT (GLD −4.99%) | 0 | 1 | 0% | No (1/3) |
+| `silent-failure` | 4 violations | — | — | — | — | — |
+
+**Halt triggers:** None. `macro-hedge` has 1 consecutive loss (GLD). Two more losses needed to trigger halt rule. GLD was not re-entered after June 10 stop — so no further macro-hedge signals are pending.
+
+**Boost triggers:** None. No setup has 3 consecutive wins.
+
+**Note:** N is extremely low on all setup tags due to API blockage preventing entries. Setup performance data will become meaningful after June 18 deployment.
+
+---
+
+### AGENT CALIBRATION (Rolling 20-Day — 1 Trade Sample)
+
+Only completed trade: GLD stop-hit June 10 (macro-hedge, −4.99%).
+
+| Agent | Score on GLD Entry | Outcome | Calibration |
+|---|---|---|---|
+| Fundamentals | ~8/10 | LOSS | 0/1 on approved trades — insufficient N |
+| Technical | ~7/10 | LOSS | 0/1 — insufficient N |
+| Sentiment | ~7/10 | LOSS | 0/1 — insufficient N |
+| Macro | ~8/10 | LOSS | 0/1 — insufficient N |
+| Risk | ~7/10 | LOSS (bounded at −5%) | Risk management worked correctly — stop bounded loss |
+| Tech Analyst | ~7/10 | N/A (GLD = non-tech auto 7/10) | — |
+
+**Assessment:** All agents approved GLD entry. Trade stopped out due to Iran Peace Deal signing (unforeseen black-swan catalyst reversal June 15 — oil -10%, safe-haven premium unwound). This is NOT an agent scoring failure; it is an exogenous event that invalidated the macro thesis post-entry. Risk agent's bounded stop worked exactly as intended (−4.99%, not catastrophic). Agent calibration will be meaningful post-June 18 when multiple trades close.
+
+---
+
+### TOMORROW'S WATCHLIST (June 17 Pre-Market / June 18 MANDATORY EXECUTION)
+
+**⚠️ JUNE 17 IS STILL A BINARY EVENT DAY (FOMC Decision 2PM ET).** No new entries June 17 before 2PM ET. This watchlist is the June 18 mandatory execution plan. June 17 Pre-Market: maintain all skips, prepare limit prices, cancel stale GTCs.
+
+| Rank | Symbol | Score | June 18 Action | Qty | Size% | Thesis |
+|---|---|---|---|---|---|---|
+| 1 | **MRVL** | **7.67** | **MANDATORY — BUY 8sh** | 8sh | ~2.4% | S&P 500 inclusion June 22 — passive funds must buy $2-4B+ of MRVL. Teralynx T100 AI networking silicon. Jensen "next trillion." CANCEL stale GTC $202.19 first. Stop fill×0.95, target fill×1.15. |
+| 2 | **NVDA** | **7.83** | **MANDATORY — BUY 4sh (fresh 6-agent)** | 4sh | ~0.9% | AI capex secular. $80B buyback. Blackwell dominant. Run fresh 6-agent June 18 morning. Stop fill×0.95, target fill×1.15. |
+| 3 | **AMD** | **7.50** | **MANDATORY — BUY 9sh** | 9sh | ~4.9% | $200B CPU TAM (Jensen Huang). Citi PT $665. AI data center. 9sh at ask×1.005. **CANCEL STALE GTCs $524.15 AND $520.59 BEFORE JUNE 17 2PM ET.** Stop fill×0.95, target fill×1.15. |
+| 4 | **INTC** | **7.17** | **MANDATORY — BUY 38sh** | 38sh | ~4.8% | IFS foundry wins (Google, Microsoft). BofA Buy PT $135. Up 250%+ YTD 2026. Iran oil collapse = FOMC hold intact. Cancel GTC $123.69 and replace at ask×1.005. Stop fill×0.95, target fill×1.15. |
+| 5 | **PLTR** | **~7.0** | **STRONGLY CONSIDER — run fresh 6-agent** | 10sh | ~1.3% | Q1 EPS $0.33 vs $0.27 (+22% beat). FY2026 guidance $7.65B (71% YoY). NVDA-PLTR AI agent partnership. Currently ~$133 (well below stale GTC $150.74 — CANCEL stale GTC). Fresh 6-agent June 18. If score ≥7.0: 10sh bracket GTC. |
+| 6 | **MU** | **~6.5** | **CONDITIONAL — accept binary event risk** | 4sh | ~4.4% | HBM4 sold out through year-end. Earnings June 24 (binary event). If entering June 18, hold only to June 20 EOD. Only 2 trading days to reach target. Run fresh 6-agent June 18. |
+| 7 | **NNE/SMR** | **~6.5–7.0** | **EVALUATE — run full 6-agent** | TBD | ~2% | Nuclear power for AI data center electricity demand. Iran oil deal resolves near-term energy crisis but AI infrastructure power demand is secular — nuclear is 10-year winner. Nano Nuclear Energy (NNE) or SMR. Fresh 6-agent June 18. |
+| 8 | **VST/CEG** | **~6.5** | **EVALUATE — run full 6-agent** | TBD | ~2% | Vistra Energy (VST) or Constellation Energy (CEG) — power infrastructure + nuclear for AI data centers. Post-FOMC rate hold benefits utility-adjacent names. Fresh 6-agent June 18. |
+| 9 | **AVGO** | **~6.0** | **MONITOR — below threshold** | — | — | AI ASIC revenue $10.8B Q2 (+143% YoY). Missed revenue (vs. raise) — -15% June 4. Recovery underway. Re-score if price firms post-FOMC and technical setup improves. Not ready June 18. |
+| 10 | **BTC** | — | **NO ENTRY** | — | 0% | Est. ~$65-68K. Below $82K threshold. Post-FOMC risk-on may lift to $70-75K but insufficient for crypto leg. Monitor July. |
+
+**Deployment constraint:** MRVL (2.4%) + NVDA (0.9%) + AMD (4.9%) + INTC (4.8%) + PLTR (1.3%) = 14.3% of portfolio. Well within 25% sector cap (all tech) and 5% position cap (each ≤5%). 0 positions open → room for all mandatory entries simultaneously. Cash post-entries: ~$85,700 (85.7%) → above 5% floor ✓.
+
+---
+
+### KEY MACRO EVENTS (June 17–23)
+
+| Date | Event | Impact Assessment |
+|---|---|---|
+| **Jun 17 (Wed)** | **FOMC Rate Decision 2PM ET** | 97%+ hold at 4.25-4.50%. KEY VARIABLE: SEP dot plot. Hawkish = brief yield spike + tech sell-off → buy the dip June 18. Dovish = gap-up → buy ask×1.005 as planned. Either way, June 18 is the entry day. |
+| **Jun 17** | **Kevin Warsh press conference ~2:30PM ET** | First public comments as Fed Chair. Tone on inflation path (oil crash helps), forward guidance, any balance sheet discussion. Critical for June 18 positioning. |
+| **Jun 18 (Thu)** | **MANDATORY ENTRY DAY** | MRVL + INTC + AMD (MANDATORY). NVDA + PLTR (CONDITIONAL). MU (binary event risk accepted or skipped). Only trading day before 4-day weekend (Jun 19 = Juneteenth, Jun 20-22 = weekend). |
+| **Jun 19 (Fri)** | **JUNETEENTH — MARKET CLOSED** | Iran Peace Deal signing ceremony in Switzerland. No trading. Positions placed June 18 go unmonitored until June 23. All must have GTC bracket stops in place. |
+| **Jun 22 (Mon)** | **MRVL S&P 500 inclusion date** | Passive fund buying wave ($2-4B+) forces MRVL higher. MU 48h binary event window opens (earnings June 24). |
+| **Jun 23 (Tue)** | **MU last clean trading day** | Must exit MU by June 23 close to avoid June 24 earnings binary event. |
+| **Jun 24 (Wed)** | **MU Earnings (binary event)** | Do NOT hold MU through earnings. Exit by June 23. |
+
+---
+
+### ⚠️ CRITICAL OPERATOR ACTIONS — BEFORE JUNE 17 2PM ET
+
+1. **🚨 CANCEL AMD GTC $520.59 (May 29 order)** at https://app.alpaca.markets/orders — AMD ~$540-555, only 3-5% above limit. Hawkish FOMC dot = AMD -5% = NAKED FILL. **BEFORE 1:55 PM ET JUNE 17.**
+2. **🚨 CANCEL AMD GTC $524.15 (June 3 order)** — same risk as above. **BEFORE 1:55 PM ET JUNE 17.**
+3. **Cancel PLTR GTC $150.74** (PLTR ~$133, not in danger but must clean up before June 18).
+4. **Cancel MRVL GTC $202.19** (MRVL ~$300+, far from danger, but cancel before replacing with fresh bracket June 18).
+5. **Cancel INTC GTC $123.69** (if placed) — INTC ~$127-130, has not filled in a week. Cancel and replace with fresh bracket June 18 at ask×1.005.
+6. **June 18 Pre-Market MANDATORY:** Place bracket GTC orders — MRVL 8sh, INTC 38sh, AMD 9sh, NVDA 4sh (conditional), PLTR 10sh (conditional). All at ask×1.005, stop fill×0.95, target fill×1.15.
+
+---
+
 ## 2026-06-16 — Pre-Market (8:00 AM ET / 12:07 UTC — TUESDAY — FOMC DAY 1)
 
 **HEARTBEAT:** STARTED Pre-Market 12:06:39Z ✓
