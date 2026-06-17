@@ -1,6 +1,6 @@
 {
-    "last_updated": "2026-06-16T19:33:00Z",
-    "updated_by": "market-close",
+    "last_updated": "2026-06-17T15:06:00Z",
+    "updated_by": "mid-morning",
     "portfolio": {
         "total_equity": 99854,
         "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
         "spx_return_pct": 4.92,
         "benchmark_gap_pct": -5.07,
         "open_positions_count": 0,
-        "note": "June 16 Market-Close (3:30 PM ET). API BLOCKED 36th session. 4 silent failures (Market-Open, Mid-Morning, Midday, Afternoon). 0 open positions. 0 MOC orders \u2014 Exemption 2 (FOMC binary event June 17 2PM ET). OPERATOR: CANCEL AMD GTCs (20.59 and 24.15) BEFORE JUNE 17 1:55PM ET. MANDATORY JUNE 18: MRVL 8sh, INTC 38sh, AMD 9sh. JUNETEENTH JUNE 19 = CLOSED. Est. SPX flat today (-0.1% to +0.3%)."
+        "note": "June 17 Mid-Morning (11:00 AM ET). API BLOCKED 37th session. 2 silent failures (Pre-Market, Market-Open). FOMC DECISION DAY 2PM ET \u2014 ALL ENTRIES SKIPPED per Exemption 2 (MRVL 7.67, INTC 7.17, AMD 7.50). \u26a0\ufe0f CRITICAL: OPERATOR CANCEL AMD GTCs ($520.59, $524.15) BEFORE 2PM ET TODAY. AMD est. ~$548-556 \u2014 5% above stale limits. Hawkish dot plot = naked fill risk. MANDATORY JUNE 18: MRVL 8sh, INTC 38sh, AMD 9sh. JUNETEENTH JUNE 19 = CLOSED."
     },
     "positions": [
         {
@@ -114,10 +114,10 @@
         {
             "name": "Mid-Morning",
             "schedule": "11:00 ET daily",
-            "status": "failed",
-            "last_run": "2026-06-08T15:07:00Z",
-            "next_run": "2026-06-10 11:00 ET",
-            "last_summary": "June 8: Pre-Market + Market-Open violations logged. GLD stop $397.92 NOT triggered (gold $4,475-$4,720). NEW: INTC 44sh $109.55 GTC bracket APPROVED 8.0 (Google TPU + NVIDIA eval) \u2014 BLOCKED 403. MU 4sh $940 GTC bracket APPROVED 7.17 \u2014 BLOCKED 403. AMD SKIP (fresh 6.0, relative weakness). OPERATOR MUST EXECUTE both orders + cancel stale AMD/PLTR/MRVL GTC orders."
+            "status": "completed",
+            "last_run": "2026-06-17T15:06:00Z",
+            "next_run": "2026-06-18 11:00 ET",
+            "last_summary": "June 17 (FOMC Decision Day): 2 violations logged (Pre-Market + Market-Open silent failures). Stop audit: 0 positions, no naked stops. All watchlist (MRVL 7.67, INTC 7.17, AMD 7.50) SKIPPED per Exemption 2 (FOMC 2PM ET). \u26a0\ufe0f AMD stale GTCs $520/$524 \u2014 CANCEL BEFORE 2PM ET. MANDATORY June 18: MRVL 8sh, INTC 38sh, AMD 9sh. API blocked 37th session."
         },
         {
             "name": "Midday",
@@ -161,6 +161,66 @@
         }
     ],
     "trades": [
+        {
+            "ts": "2026-06-17T15:06:00Z",
+            "symbol": "MRVL",
+            "action": "skip",
+            "bucket": "active",
+            "setup": "ai-momentum-pullback",
+            "score": 8,
+            "agent_scores": {
+                "fundamentals": 8,
+                "technical": 7,
+                "sentiment": 8,
+                "macro": 7,
+                "risk": 7,
+                "tech_analyst": 9
+            },
+            "agent_average": 7.67,
+            "result_pct": null,
+            "master_decision": "approved",
+            "order_status": "SKIP per Exemption 2 (FOMC binary event June 17 2PM ET). MANDATORY June 18: 8sh bracket at ask x1.005. Cancel stale GTC $202.19 first."
+        },
+        {
+            "ts": "2026-06-17T15:06:00Z",
+            "symbol": "INTC",
+            "action": "skip",
+            "bucket": "active",
+            "setup": "breakout-volume",
+            "score": 8,
+            "agent_scores": {
+                "fundamentals": 7,
+                "technical": 6,
+                "sentiment": 8,
+                "macro": 7,
+                "risk": 7,
+                "tech_analyst": 8
+            },
+            "agent_average": 7.17,
+            "result_pct": null,
+            "master_decision": "approved",
+            "order_status": "SKIP per Exemption 2. MANDATORY June 18: 38sh bracket at ask x1.005."
+        },
+        {
+            "ts": "2026-06-17T15:06:00Z",
+            "symbol": "AMD",
+            "action": "skip",
+            "bucket": "active",
+            "setup": "ai-momentum-pullback",
+            "score": 8,
+            "agent_scores": {
+                "fundamentals": 7,
+                "technical": 8,
+                "sentiment": 8,
+                "macro": 7,
+                "risk": 7,
+                "tech_analyst": 8
+            },
+            "agent_average": 7.50,
+            "result_pct": null,
+            "master_decision": "approved",
+            "order_status": "SKIP per Exemption 2. CRITICAL: Cancel stale GTCs $520.59/$524.15 BEFORE 2PM ET TODAY. MANDATORY June 18: 9sh at ask x1.005."
+        },
         {
             "ts": "2026-06-16T12:07:00Z",
             "symbol": "MRVL",

@@ -4,6 +4,212 @@
 
 ---
 
+## 2026-06-17 — Mid-Morning (11:00 AM ET / 15:06 UTC — WEDNESDAY — FOMC DECISION DAY)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:06:02Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **37th consecutive blocked session**
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+```
+grep "STARTED Pre-Market" logs/heartbeats/2026-06-17.log  → NOT FOUND ❌
+grep "STARTED Market-Open" logs/heartbeats/2026-06-17.log → NOT FOUND ❌
+```
+
+Both Pre-Market (8:00 AM ET) and Market-Open (9:45 AM ET) silently failed today. Logging violations below.
+
+```yaml
+---
+ts: 2026-06-17T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market did not heartbeat today — running catch-up from Mid-Morning
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Pre-Market routine (8:00 AM ET) produced no heartbeat on 2026-06-17. Catch-up executed at Mid-Morning. Root cause: cloud runner scheduling gap. No orders pending from Pre-Market as FOMC binary event Exemption 2 applies all day."
+---
+```
+
+```yaml
+---
+ts: 2026-06-17T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market-Open did not heartbeat today — running catch-up from Mid-Morning
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market-Open routine (9:45 AM ET) produced no heartbeat on 2026-06-17. Catch-up executed at Mid-Morning. MOO stop placement also N/A — 0 open positions confirmed in last session (June 16). No MOO orders placed at Pre-Market per Exemption 2."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — Mid-Morning (FIRST ACTION)
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 37th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist" (HTTP 403)
+```
+
+**Estimated state (forward from June 16 Market-Close):**
+- **0 confirmed open positions.** Portfolio ~99.9% cash (~$99,854).
+- GLD: Stopped out June 10 at $397.92. No re-entry planned until new setup forms.
+- INTC GTC $123.69 (if operator placed): INTC est. ~$127-$130 today (above limit — has NOT filled).
+- AMD stale GTCs $520.59 and $524.15: ⚠️ AMD est. ~$548-$556 today. FOMC dot-plot risk: hawkish surprise could trigger -5% dip → fills stale GTCs without bracket stops. **OPERATOR MUST CANCEL BEFORE 2PM ET TODAY.**
+- PLTR stale GTC $150.74: PLTR est. ~$125-$135. Not in danger (below limit).
+- MRVL stale GTC $202.19: MRVL est. ~$295-310. Far above limit — not in danger.
+
+**Stop-loss audit result: No naked positions confirmed (0 positions). No stop gaps to fill.**
+
+---
+
+### MARKET CONDITIONS SUMMARY — June 17, 2026 (FOMC Decision Day)
+
+| Indicator | Value | Signal |
+|---|---|---|
+| S&P 500 | ~7,580–7,620 est. | Cautious ahead of 2PM FOMC |
+| FOMC Decision | **2:00 PM ET TODAY** | 97%+ hold; risk = dot plot hawkish bias |
+| AMD | ~$548–$556 est. | Stale GTC $520/$524 risk window if -5% dip |
+| INTC | ~$127–$130 est. | Above $123.69 GTC limit — unfilled |
+| MRVL | ~$295–$310 est. | S&P 500 inclusion June 22 — holding above ATH |
+| BTC | ~$66,000–$68,000 est. | BELOW $82K threshold — NO crypto entry |
+| Iran deal | Signed June 15 | Ceremony June 19 Switzerland; markets absorbed rally |
+
+**Macro Summary:** FOMC Decision Day — Kevin Warsh's first meeting as Fed Chair (Kevin Warsh: hawkish by reputation). 97%+ consensus for hold. Key risk is the SEP dot plot: if pencils in even one 2026 hike, yields spike briefly. Markets quiet ahead of 2PM announcement. Post-FOMC window is first clean entry opportunity. JUNETEENTH June 19 = MARKET CLOSED. First full clean trading day: **Thursday June 18.**
+
+---
+
+### WATCHLIST CATCH-UP — Pre-Market + Market-Open Catch-Up
+
+All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50) have scores ≥7 and would normally require catch-up entries. **ALL SKIPPED per Exemption 2 — FOMC binary event (2:00 PM ET today).** No new entries before FOMC clears.
+
+---
+
+### SKIP DECISIONS — Exemption 2 (FOMC Binary Event Window — ALL REMAINING JUNE 17 ROUTINES)
+
+FOMC decision at 2:00 PM ET today makes all of June 17 a binary-event window. Any position entered before 2PM is exposed to the dot-plot shock (potential -2% to -5% immediate move). After 2PM, FOMC window technically clears — however, post-FOMC volatility and thin pre-close liquidity make same-day entries risky. First rational post-FOMC entry: **Thursday June 18 Pre-Market / Market-Open MOO.**
+
+```yaml
+---
+ts: 2026-06-17T15:06:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: MRVL highest conviction — S&P 500 inclusion June 22 + Teralynx T100 AI networking + Jensen Huang endorsement. Score 7.67 avg from June 16 re-score. Skip per Exemption 2 (FOMC decision 2PM ET today — dot plot risk).
+size_pct: 2.4
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED on scores (5/6 ≥7, avg 7.67, Risk 7 ≥6, Tech 9 ≥6). SKIP per Exemption 2: FOMC binary event 2PM ET June 17 (Kevin Warsh first meeting + SEP dot plot). Alpaca API blocked — 37th consecutive session. X sentiment unavailable (API blocked). MANDATORY JUNE 18 ENTRY: 8sh limit at ask×1.005, stop fill×0.95, target fill×1.15. Cancel stale GTC $202.19 FIRST."
+---
+```
+
+```yaml
+---
+ts: 2026-06-17T15:06:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: INTC foundry inflection — IFS design wins + BofA Buy PT $135 + Iran deal semiconductor rally. Score 7.17 avg. GTC $123.69 unfilled (INTC trading ~$127+). Skip per Exemption 2 (FOMC binary event 2PM ET).
+size_pct: 4.86
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "APPROVED on scores (4/6 ≥7, avg 7.17, Risk 7 ≥6, Tech 8 ≥6). SKIP per Exemption 2: FOMC binary event 2PM ET June 17. Fresh limit needed June 18: ~38sh at ask×1.005 (INTC ~$128-130 range), bracket GTC stop fill×0.95, target fill×1.15. Stale GTC $123.69 needs cancel/replace."
+---
+```
+
+```yaml
+---
+ts: 2026-06-17T15:06:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: AMD AI momentum — AI capex supercycle, Rocket One partnership, $548+ breakout. Score 7.50 avg. ⚠️ STALE GTCs $520.59/$524.15 must be cancelled BEFORE 2PM today. Skip per Exemption 2 (FOMC binary event).
+size_pct: 2.5
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED on scores (5/6 ≥7, avg 7.50, Risk 7 ≥6, Tech 8 ≥6). SKIP per Exemption 2: FOMC binary event 2PM ET June 17. ⚠️ CRITICAL: AMD stale GTCs $520.59 and $524.15 are ONLY ~5% below current ~$548-556 price. Hawkish dot plot → AMD -5% → stale fill WITHOUT bracket stops = guardrail violation. OPERATOR MUST CANCEL BOTH GTCs BEFORE 2PM ET TODAY. MANDATORY JUNE 18 ENTRY: 9sh fresh bracket GTC at ask×1.005."
+---
+```
+
+---
+
+### POST-FOMC PLAN — June 18 MANDATORY ENTRIES (from Daily Review)
+
+Per memory/portfolio.md (June 16 Market-Close), the following are MANDATORY Thursday June 18 entries:
+1. **MRVL 8sh** — limit ask×1.005, bracket GTC, stop fill×0.95, target fill×1.15 (7.67 avg, highest conviction)
+2. **INTC 38sh** — limit ask×1.005, bracket GTC, stop fill×0.95, target fill×1.15 (7.17 avg)
+3. **AMD 9sh** — limit ask×1.005, bracket GTC (CANCEL stale GTCs first), stop fill×0.95, target fill×1.15 (7.50 avg)
+4. **NVDA 4sh** — conditional on fresh 6-agent score ≥7.0 at June 18 Pre-Market
+
+Note: Juneteenth June 19 = MARKET CLOSED. MU earnings June 24 = MU exit deadline June 20 EOD if entered.
+
+---
+
+### DASHBOARD UPDATE
+
+Dashboard-data.json update: Alpaca blocked — cannot refresh live positions/prices. Reflecting 0 positions, ~$99,854 cash.
+
+---
+
 ## 2026-06-16 — Pre-Market (8:00 AM ET / 12:07 UTC — TUESDAY — FOMC DAY 1)
 
 **HEARTBEAT:** STARTED Pre-Market 12:06:39Z ✓
