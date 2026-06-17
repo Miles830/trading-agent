@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-17T16:33:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-17T19:35:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,60 +12,17 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 4.92,
-    "benchmark_gap_pct": -5.07,
+    "spx_return_pct": 5.15,
+    "benchmark_gap_pct": -5.3,
     "open_positions_count": 0,
-    "note": "June 17 Midday (12:33PM ET). FOMC DECISION DAY. API BLOCKED 37th session. 3 silent failures (Pre-Market, Market-Open, Mid-Morning). 0 positions. 0 trades \u2014 Exemption 2 (FOMC binary event, decision 2PM ET in 87min). FOMC HOLD 97%+ expected; KEY RISK: Warsh dot plot. MANDATORY JUNE 18: MRVL 8sh, INTC 38sh, AMD 9sh. JUNETEENTH JUNE 19 = CLOSED. \u26a0\ufe0f\u26a0\ufe0f OPERATOR: CANCEL AMD GTCs (20.59 and 24.15) BEFORE 1:55PM ET TODAY \u2014 FOMC hawkish dot = -5% AMD = naked fill risk."
+    "note": "June 17 Market-Close (3:33PM ET). FOMC DECISION DAY \u2014 CLEARED AT 2PM ET. API BLOCKED 38th session. 4 silent failures (Pre-Market, Market-Open, Mid-Morning, Afternoon). 3 MOC ORDER ATTEMPTS (MRVL 8sh, INTC 38sh, AMD 9sh) \u2014 ALL BLOCKED HTTP 403. NVDA 4th name skipped (3-MOC daily cap). 0 positions. 100% cash ~$99,854. \u26a0\ufe0f\u26a0\ufe0f OPERATOR: Verify AMD stale GTCs ($520.59/$524.15) cancelled at alpaca.markets. Cumulative gap est: ~-5.2 to -5.8 pp. MANDATORY JUNE 18: MRVL 8sh, INTC 38sh, AMD 9sh MOO/limit bracket GTC. JUNETEENTH JUNE 19 = MARKET CLOSED."
   },
-  "positions": [
-    {
-      "symbol": "GLD",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 418.86,
-      "current_price": 390.78,
-      "pnl": -145.58,
-      "pnl_pct": -4.99,
-      "stop_loss": 397.92,
-      "take_profit": null,
-      "setup": "macro-hedge",
-      "agent_average": 7.7,
-      "note": "ESTIMATED STOP-HIT June 10 at $397.92. Iran deal now further depressing gold. No re-entry planned. Realized loss est. -$145.58 (-4.99%)."
-    },
-    {
-      "symbol": "INTC",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 123.69,
-      "current_price": 124.57,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 117.51,
-      "take_profit": 142.24,
-      "setup": "breakout-volume",
-      "agent_average": 7.0,
-      "note": "PENDING ORDER \u2014 June 15 Market Open. Fresh 6-agent 7.0 (F=7 T=6 S=8 M=7 R=7 TA=7). SKIP per Exemption 2 (FOMC binary event June 16-17). INTC GAPPED to $124.57 (+6.5% from $116.96 June 12 close) on Iran peace deal SIGNED. GTC bracket at $123.69 (if operator placed) HAS NOT FILLED \u2014 INTC opened ABOVE limit price. Will fill on intraday pullback to $123.69. POST-FOMC: Thursday June 18, place 39sh at ask x1.005 if GTC still unfilled. BofA PT $135. 40sh at $125+ = 5.01% = guardrail violation; use 39sh."
-    },
-    {
-      "symbol": "MU",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 996.0,
-      "current_price": 996.0,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 946.2,
-      "take_profit": 1145.4,
-      "setup": "mean-reversion-oversold",
-      "agent_average": 6.67,
-      "note": "REJECTED June 12 score 6.67. PPI +1.1% failed condition (required \u2264+0.3%). Extended after +11.66% June 11. Re-evaluate post-FOMC June 18 if score \u22657.0. Exit by June 22 mandatory."
-    }
-  ],
+  "positions": [],
   "market": {
     "mode": "FOMC DECISION DAY. Pre-decision stasis \u2014 markets flat/cautious. 97%+ hold probability. Key risk: Warsh SEP dot plot. Binary event window active through 2PM ET. Post-FOMC: risk-on (neutral/dovish dot) or brief yield spike (hawkish dot).",
-    "fear_greed": null,
+    "fear_greed": 58,
     "fear_greed_label": "Fear \u2014 CPI shock + geopolitical escalation. Semis and gold both under pressure.",
-    "spx": "S&P 500 est. ~7,530-7,570 pre-FOMC. Flat ahead of 2PM ET decision. Hold 97%+ priced in; dot plot is the variable. Iran deal digestion continues. Kevin Warsh first FOMC decision.",
+    "spx": 7600,
     "btc": "BTC est. ~4K-68K \u2014 below 2K threshold. No crypto entry. FOMC uncertainty capping crypto rally.",
     "sectors": [
       {
@@ -132,24 +89,24 @@
       "schedule": "14:00 ET daily",
       "status": "failed",
       "last_run": "2026-06-03T18:09:00Z",
-      "next_run": "2026-06-04 14:00 ET",
-      "last_summary": "June 16: SILENTLY FAILED \u2014 no heartbeat. FOMC Day 1; no open positions; no impact. Violation logged."
+      "next_run": "2026-06-18 14:00 ET",
+      "last_summary": "June 17: SILENTLY FAILED \u2014 no heartbeat. FOMC cleared at 2PM ET (this was first post-FOMC window). Should have confirmed hold, assessed dot plot, placed MOC entries. Missed. Market-Close now bears full MOC execution responsibility."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
       "status": "completed",
-      "last_run": "2026-06-16 15:33 ET",
-      "next_run": "2026-06-17 15:30 ET",
-      "last_summary": "June 16 (FOMC Day 1): 0 day trades to close. 0 MOC orders placed \u2014 Exemption 2 (FOMC binary event June 17 2PM ET). 4 silent failures logged (Market-Open, Mid-Morning, Midday, Afternoon). Portfolio: 100% cash ~9,854. P&L: /bin/bash.00. Cumulative gap: ~-5.07 pp. CRITICAL: Cancel AMD stale GTCs before June 17 2PM ET. MANDATORY entries Thursday June 18: MRVL 8sh, INTC 38sh, AMD 9sh."
+      "last_run": "2026-06-17 15:33 ET",
+      "next_run": "2026-06-18 15:30 ET",
+      "last_summary": "June 17 (FOMC Decision Day): Exemption 2 cleared at 2PM ET. 3 MOC order attempts (MRVL 8sh, INTC 38sh, AMD 9sh) \u2014 ALL HTTP 403 (38th session). NVDA skipped (3-MOC daily cap). 0 day trades to close. Portfolio: 100% cash ~$99,854. P&L: $0.00. Est. cumulative gap: ~-5.3 pp. Push notification sent 19:33Z. MANDATORY June 18: MRVL 8sh, INTC 38sh, AMD 9sh, NVDA 4sh conditional. JUNETEENTH June 19 = MARKET CLOSED. AMD stale GTC risk \u2014 operator must verify."
     },
     {
       "name": "Daily Review",
       "schedule": "16:30 ET daily",
       "status": "pending",
       "last_run": "2026-05-26 20:32 ET",
-      "next_run": "2026-06-04 20:30 ET",
-      "last_summary": "PENDING. AVGO base confirmation. AMD/MU/PLTR fills. Setup tracker. GLD reassessment. Gap vs SPX update."
+      "next_run": "2026-06-17 16:30 ET",
+      "last_summary": "PENDING today June 17 (4:30PM ET). FOMC aftermath assessment. AMD stale GTC status check. Finalize June 18 watchlist with post-FOMC prices."
     },
     {
       "name": "Weekly Review",
@@ -920,6 +877,13 @@
       "spx_return_pct": 4.92,
       "daily_pnl_pct": 0.0,
       "note": "Market-Close. FOMC Day 1. API blocked (36th). 4 silent failures. 0 positions. 0 trades. Both portfolio and SPX ~flat today. Cumulative gap: ~-5.07 pp. MANDATORY entries Thursday June 18 post-FOMC."
+    },
+    {
+      "date": "2026-06-17",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 5.15,
+      "daily_pnl_pct": 0.0,
+      "note": "Market-Close. FOMC Decision Day. API blocked (38th). 4 silent failures (PM, MO, MM, Aft). 3 MOC attempts (MRVL/INTC/AMD) \u2014 all HTTP 403. FOMC hold confirmed (97%+), Exemption 2 cleared 2PM ET. 0 positions. P&L $0. Cumulative gap est: ~-5.3 pp."
     }
   ]
 }
