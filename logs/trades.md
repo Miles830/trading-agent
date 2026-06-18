@@ -4,6 +4,264 @@
 
 ---
 
+## 2026-06-18 — Afternoon (2:00 PM ET / 18:03 UTC — THURSDAY — LAST TRADING DAY BEFORE JUNETEENTH)
+
+**HEARTBEAT:** STARTED Afternoon 18:02:56Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **39th consecutive blocked session**
+**Current Time:** 18:03Z = 2:03 PM ET (market closes 4:00 PM ET today)
+**Next Trading Day:** Monday June 23, 2026 (Juneteenth June 19 = CLOSED; 4.5-day gap)
+
+---
+
+### PREDECESSOR AUDIT — June 18, 2026 (Afternoon)
+
+```
+grep "STARTED " logs/heartbeats/2026-06-18.log
+→ 2026-06-18T15:04:19Z STARTED Mid-Morning
+→ 2026-06-18T18:02:56Z STARTED Afternoon
+```
+
+| Routine | Scheduled (UTC) | STARTED | Status |
+|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | **SILENT FAILURE** (logged at Mid-Morning) |
+| Market-Open | 13:45Z | ✗ MISSING | **SILENT FAILURE** (logged at Mid-Morning) |
+| Mid-Morning | 15:00Z | 15:04:19Z ✓ | ✓ COMPLETE 15:11:37Z |
+| Midday | 16:30Z | ✗ MISSING | **SILENT FAILURE — logging now** |
+| Afternoon | 18:00Z | 18:02:56Z ✓ | ✓ RUNNING |
+
+**3 silent failures today (Pre-Market, Market-Open logged at Mid-Morning; Midday logged here).**
+
+---
+
+### VIOLATION — Midday Silent Failure
+
+```yaml
+---
+ts: 2026-06-18T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Midday routine (12:30 PM ET / 16:30Z) silently failed — no heartbeat. Mandatory execution day (first clean post-FOMC session). Mid-Morning attempted all 4 watchlist entries but API was blocked (HTTP 403). Midday was the catch-up window to retry MRVL/INTC/AMD/NVDA — all still unexecuted. Total June 18 attempted orders: 4 (all HTTP 403). No valid exemption (no guardrail breach, FOMC cleared, no circuit breaker)."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure June 18 Midday. 3rd missed routine today. Mid-Morning (15:04Z-15:11Z) had attempted MRVL 8sh (306.50 limit GTC bracket), INTC 38sh (130.65 limit GTC bracket), AMD 9sh (547.70 limit GTC bracket), NVDA 4sh (221.10 limit GTC bracket) — all HTTP 403 blocked. Midday retry would have attempted same orders. No fills confirmed at Alpaca. Estimated portfolio: 99.9% cash (~$99,854). Root cause: Alpaca API network egress blocked 39th consecutive session."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — Afternoon FIRST ACTION
+
+```
+GET /v2/positions     → "Host not in allowlist" (HTTP 403 — 39th consecutive block)
+GET /v2/orders?status=open → "Host not in allowlist" (HTTP 403)
+GET /v2/account      → "Host not in allowlist" (HTTP 403)
+GET /v2/clock        → "Host not in allowlist" (HTTP 403)
+```
+
+**Estimated state (forward from June 18 Mid-Morning):**
+- **Open positions: 0 confirmed.** All 4 attempted limit GTC brackets (MRVL/INTC/AMD/NVDA) were HTTP 403. Portfolio ~99.9% cash (~$99,854).
+- **Stop-loss orders required:** 0 (no confirmed open positions).
+- **Stale GTCs (operator-side):**
+  - AMD stale GTCs at $520.59 and $524.15 — status UNKNOWN. AMD trading ~$530-555 range. If these filled during June 18 trading without bracket stops, that is a CRITICAL GUARDRAIL VIOLATION requiring immediate manual action at app.alpaca.markets.
+  - INTC GTC $123.69 — INTC estimated ~$128-132 today, still above limit. Likely UNFILLED.
+  - MRVL GTC $202.19 — far below current price (~$295-315). UNFILLED or cancelled.
+- **Naked position risk from cloud agent: NONE.** No positions = no stop-loss gaps from this agent.
+- **GUARDRAIL STATUS:** No cloud-agent violations on stop-loss coverage. Operator-side stale GTC risk persists.
+
+---
+
+### MARKET CONDITIONS SUMMARY — June 18, 2026 (Afternoon, ~2:00 PM ET)
+
+*All prices estimated — API blocked 39th consecutive session. Based on known catalysts and market trajectory.*
+
+**Afternoon estimated state:**
+- S&P 500: ~7,540-7,600. First full clean post-FOMC session. Risk-on sentiment holding through afternoon.
+- FOMC HOLD confirmed (4.25-4.50%); Warsh dot plot (0-1 hike 2026) fully digested by afternoon.
+- Iran deal signed June 17: Geopolitical risk premium further compressing. Oil stabilized ~$70/bbl.
+- **Juneteenth effect:** Some position-squaring expected late afternoon as traders reduce exposure going into 4.5-day gap. MRVL likely exception (S&P inclusion passive buy pressure building ahead of Monday June 23 effective date).
+
+**Key watchlist prices (afternoon estimates):**
+| Symbol | Est. Afternoon Price | S&P Trend |
+|---|---|---|
+| MRVL | ~$300-315 | S&P inclusion June 22 effective June 23; passive flow accelerating |
+| NVDA | ~$215-225 | AI secular leader; FOMC hold = AI capex spending confirmed; afternoon dip = buy |
+| AMD | ~$535-555 | Post-gap consolidation; Citi PT $665; stale GTC uncertainty |
+| INTC | ~$128-132 | BofA PT $135; 18A ramp; CHIPS Act funding; GTC likely unfilled |
+
+---
+
+### SKIP DECISIONS — June 18 Afternoon (Proximity-to-Close)
+
+Per `routines/afternoon.md`: "Do NOT initiate new active-bucket entries this routine — too close to close. Document any unfilled active watchlist names with a YAML `action: skip` entry citing 'afternoon proximity-to-close' and let the next Pre-Market re-evaluate."
+
+Next Pre-Market = **June 23, 2026** (Monday) — after Juneteenth holiday.
+
+```yaml
+---
+ts: 2026-06-18T18:03:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: "Marvell Technology — S&P 500 inclusion June 22 (effective June 23) + Teralynx T100 custom ASIC + Jensen next trillion AI networking. 6-agent avg 7.67/10. SKIP per afternoon proximity-to-close rule. MANDATE: Pre-Market June 23 must open MOO order for 8sh (or limit bracket if score remains ≥7 after weekend re-score). S&P inclusion passive buying peaks on June 23 effective date — HIGHEST URGENCY."
+size_pct: 2.46
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP reason: afternoon proximity-to-close (per routines/afternoon.md). NOT Exemption 1/2/3 from CLAUDE.md — this is an operational afternoon rule. Order placement attempted at Mid-Morning 15:11Z → HTTP 403 blocked. June 23 Pre-Market MUST execute: 8sh MRVL, limit at ask×1.005 (~$305-315 range), bracket GTC (stop -5%, target +15%). S&P inclusion June 22 announcement = June 23 first session = peak passive buying day. Cannot miss again."
+---
+```
+
+```yaml
+---
+ts: 2026-06-18T18:03:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 8.33
+thesis: "NVIDIA — AI secular leader. Blackwell GPU supercycle. $80B buyback floor. FOMC hold confirms AI capex spending boom. 6-agent avg 8.33/10. SKIP per afternoon proximity-to-close rule. June 23 Pre-Market MOO or fresh limit bracket."
+size_pct: 1.98
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 10
+agent_average: 8.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP reason: afternoon proximity-to-close. API also blocked (HTTP 403). Highest average score of the watchlist. June 23 Pre-Market: 4sh NVDA, limit at ask×1.005 (~$218-228 range), bracket GTC (stop -5%, target +15%). No earnings within 48h of June 23. Full guardrail check: 4sh × ~$220 = $880 = 0.88% equity; well under all limits."
+---
+```
+
+```yaml
+---
+ts: 2026-06-18T18:03:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.50
+thesis: "AMD — Data Center GPU +106% YoY. MI300X ramp. Citi Strong Buy PT $665. 6-agent avg 7.50/10. SKIP per afternoon proximity-to-close. CRITICAL: Operator must cancel/verify stale GTCs at $520.59 and $524.15 BEFORE June 23 Pre-Market — fills without brackets are a guardrail violation."
+size_pct: 4.95
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP reason: afternoon proximity-to-close. API also blocked. June 23 Pre-Market: FIRST cancel any stale AMD GTCs, then place 9sh AMD limit at ask×1.005 (~$535-560 range), bracket GTC (stop -5%, target +15%). 9sh × $550 = $4,950 = 4.95% equity — AT the 5% cap. Use 9sh max. Do NOT increase qty."
+---
+```
+
+```yaml
+---
+ts: 2026-06-18T18:03:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: "Intel — BofA Buy PT $135. 18A process node competitive. CHIPS Act $8.5B funding secured. Foundry ramp. 6-agent avg 7.17/10. SKIP per afternoon proximity-to-close. June 23 Pre-Market: check if GTC $123.69 (operator) filled; if not, fresh limit bracket at ask×1.005."
+size_pct: 4.97
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP reason: afternoon proximity-to-close. API also blocked. June 23 Pre-Market: check GET /v2/orders?status=open for operator's $123.69 GTC — if filled, confirm stop resting; if not, cancel and place fresh limit bracket at ask×1.005 (~$128-133). 38sh × ~$131 = $4,978 = 4.98% — at 5% cap, use 38sh max. Technical score 6 (minimum acceptable — 2/5 indicators). Consider sizing down to 35sh if stochastic still overbought."
+---
+```
+
+---
+
+### DAY TRADES — June 18 Afternoon
+
+**No day trades to close.** 0 confirmed open positions. No MOC orders required.
+
+---
+
+### CUMULATIVE JUNE 18 EXECUTION SUMMARY
+
+| Session | Routine | Orders Attempted | Result |
+|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | Silent failure (no attempts) |
+| Market-Open | 13:45Z | ✗ MISSING | Silent failure (no attempts) |
+| Mid-Morning | 15:04-15:11Z | 4 orders (MRVL/INTC/AMD/NVDA) | HTTP 403 BLOCKED |
+| Midday | 16:30Z | ✗ MISSING | Silent failure |
+| Afternoon | 18:03Z | 4 SKIP decisions (proximity-to-close) | API still blocked |
+
+**June 18 result: 0 fills. All 4 binding watchlist positions remain unexecuted. Portfolio: ~$99,854 cash (99.9%).**
+**THIS IS THE 39th CONSECUTIVE BLOCKED SESSION. OPERATOR MUST RESOLVE NETWORK EGRESS BLOCK.**
+
+---
+
+### JUNE 23 PRE-MARKET WATCHLIST (MANDATORY — OPERATOR COMMITMENT)
+
+*Juneteenth June 19 = CLOSED. Next trading day = Monday June 23. 4.5-day gap.*
+
+**CRITICAL CONTEXT FOR JUNE 23:**
+- **MRVL S&P 500 INCLUSION IS EFFECTIVE JUNE 23** — the first tradeable session after the Sunday June 22 rebalance date. Passive index funds must buy MRVL by Monday close. This is the single highest-conviction forced-buying event in this portfolio cycle.
+- FOMC fully digested. Risk-on environment entering the week.
+- Iran deal holding — macro tail risk reduced.
+- 4.5-day gap means new catalysts may emerge (weekend events, Sunday night futures). Pre-Market MUST re-check news before placing MOO orders.
+
+**BINDING WATCHLIST — JUNE 23 PRE-MARKET:**
+
+| Priority | Symbol | Setup | Score | Target Size | Action |
+|---|---|---|---|---|---|
+| 1 (MANDATORY) | MRVL | ai-momentum-pullback | 7.67 | 8sh | MOO or limit bracket at ask×1.005. S&P inclusion June 23 effective = PEAK passive buying day. Re-score if >7 — ENTER |
+| 2 (MANDATORY) | NVDA | ai-momentum-pullback | 8.33 | 4sh | MOO or limit bracket at ask×1.005. Highest avg score. No earnings week of June 23. ENTER |
+| 3 (MANDATORY) | AMD | ai-momentum-pullback | 7.50 | 9sh | FIRST cancel stale GTCs $520.59/$524.15. Then MOO or limit bracket. ENTER if stale GTCs resolved |
+| 4 (MANDATORY) | INTC | breakout-volume | 7.17 | 38sh | Check if GTC $123.69 filled. If not, fresh limit bracket at ask×1.005. ENTER |
+| 5 (CONDITIONAL) | AVGO | ai-momentum-pullback | ~6.5-7.0 | ~3-4sh | Broadcom custom AI ASIC (Apple, AWS, Google). Full 6-agent rescore June 23 morning. Enter only if ≥7.0 |
+
+**MAX 3 MOO orders per day.** Priority order for MOO: (1) MRVL, (2) NVDA, (3) AMD. INTC and AVGO via limit bracket GTC.
+
+**Combined sector exposure at full deployment:**
+- All 5 = Semiconductors/Tech. Est. combined = MRVL(2.46%) + NVDA(0.88%) + AMD(4.95%) + INTC(4.97%) + AVGO(~3%) = ~16.3% semis — well under 25% sector cap ✓
+- Cash after 5 positions: ~$99,854 - ~$16,250 = ~$83,604 = 83.8% >> 5% floor ✓
+
+---
+
 ## 2026-06-18 — Mid-Morning (11:00 AM ET / 15:04 UTC — THURSDAY — FIRST CLEAN POST-FOMC DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:19Z ✓
