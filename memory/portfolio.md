@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-17 (Wednesday) — Midday (12:33 PM ET / 16:33 UTC). TRADING DAY — FOMC DECISION DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 37th consecutive blocked session). 3 silent failures today (Pre-Market, Market-Open, Mid-Morning — all no heartbeat; violations logged). Midday ✓ RUNNING. FOMC DECISION AT 2PM ET (18:00Z) — 87 MINUTES FROM NOW. ⚠️⚠️ CRITICAL: AMD STALE GTCs ($520.59 and $524.15) STILL UNVERIFIED — OPERATOR MUST CANCEL AT alpaca.markets BEFORE 1:55PM ET. 0 open positions, 100% cash (~$99,854). All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 — FOMC binary event active through 2PM ET. FOMC HOLD EXPECTED (97%+). KEY RISK: Kevin Warsh SEP dot plot (hawkish = brief yield spike = buying opportunity for June 18 entry). POST-FOMC: Afternoon (2PM) and Market-Close (3:30PM) routines may place MOC entries if binary event clears cleanly. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp. ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days (API blockage root cause).**
+**2026-06-18 (Thursday) — Market Open (9:45 AM ET / 13:46 UTC). TRADING DAY — FIRST POST-FOMC CLEAN ENTRY DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 38th consecutive blocked session). Pre-Market silently failed (violation logged). Market-Open ✓ RUNNING. FOMC OUTCOME: HELD at 3.50–3.75%. Hawkish dot plot: 9/18 officials want ≥1 hike in 2026 (Scenario B). Markets recovering today: SPX +0.11%. MRVL +3.90% ($289.54), INTC +3.46% ($121.10), AMD +1.02% ($512.48), NVDA flat (~$207.75). Three mandatory entry orders ATTEMPTED — all HTTP 403 BLOCKED: MRVL 8sh limit $291.00 bracket GTC, NVDA 20sh limit $208.79 bracket GTC, INTC 38sh limit $121.71 bracket GTC. AMD SKIPPED — Exemption 1: AMD dropped ~7.3% on June 16 FOMC sell-off to ~$508-510, passing through stale GTCs at $520.59 and $524.15 — if those orders exist on Alpaca, 18sh AMD naked positions may be live; fresh entry deferred to Mid-Morning pending operator confirmation. ⚠️⚠️ CRITICAL: OPERATOR MUST CHECK ALPACA FOR AMD POSITIONS IMMEDIATELY — if 18sh AMD exists, place stop at fill_price × 0.95 NOW. 0 confirmed open positions. Portfolio ~$99,854 cash. Juneteenth June 19 = closed. Next trading: Monday June 23. Cumulative gap: ~−5.07 pp (unchanged — all API blocked). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 28+ consecutive trading days (API blockage root cause).**
+
+**Prior Last Updated:** 2026-06-17 (Wednesday) — Midday (12:33 PM ET / 16:33 UTC). TRADING DAY — FOMC DECISION DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 37th consecutive blocked session). 3 silent failures today (Pre-Market, Market-Open, Mid-Morning — all no heartbeat; violations logged). Midday ✓ RUNNING. FOMC DECISION AT 2PM ET (18:00Z) — 87 MINUTES FROM NOW. ⚠️⚠️ CRITICAL: AMD STALE GTCs ($520.59 and $524.15) STILL UNVERIFIED — OPERATOR MUST CANCEL AT alpaca.markets BEFORE 1:55PM ET. 0 open positions, 100% cash (~$99,854). All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 — FOMC binary event active through 2PM ET. FOMC HOLD EXPECTED (97%+). KEY RISK: Kevin Warsh SEP dot plot (hawkish = brief yield spike = buying opportunity for June 18 entry). POST-FOMC: Afternoon (2PM) and Market-Close (3:30PM) routines may place MOC entries if binary event clears cleanly. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp. ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days (API blockage root cause).**
 
 **Prior Last Updated:** 2026-06-16 (Tuesday) — Market-Close (3:30 PM ET / 19:30 UTC). TRADING DAY — FOMC DAY 1 CLOSE / IRAN DEAL POST-RALLY DIGESTION. Alpaca API STILL BLOCKED ("Host not in allowlist" — 36th consecutive blocked session). 4 silent failures today (Market-Open, Mid-Morning, Midday, Afternoon — all no heartbeat; violations logged). Pre-Market ✓ COMPLETED. Market-Close ✓ RUNNING. FOMC Day 1 closed with markets choppy and flat (est. S&P 500 −0.1% to +0.3% from 7,554 June 15 close). 0 open positions, 100% cash (~$99,854). No MOC orders placed — Exemption 2 (FOMC binary event June 17 2PM ET). CRITICAL REMINDER: ⚠️⚠️ OPERATOR MUST CANCEL AMD STALE GTCs ($520.59 and $524.15) BEFORE JUNE 17 1:55PM ET. AMD est. $535-555 — only ~5% above limits. Hawkish dot plot + -5% AMD move = naked fill. FOMC DECISION JUNE 17 2PM ET: 97%+ hold; dot plot is the risk. If hawkish dot-plot dip: prepare lower limit prices for June 18 entries. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent), MU (fresh 6-agent, accept binary risk to June 24). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp (approx unchanged — both portfolio and SPX flat today). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days.**
 
@@ -128,22 +130,27 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-16 Pre-Market — all estimates; API blocked 35th session)
+## Current Account Snapshot (as of 2026-06-18 Market Open 9:46 AM ET — all estimates; API blocked 38th session)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** **~$99,854** (no new fills; GLD stop June 10 est. −$145.58 baked in; no positions)
-- **Cash:** **~$99,854** (99.9% cash — entire portfolio in cash)
-- **Long Market Value:** $0 estimated (no confirmed open positions)
-- **INTC Status:** ~$127.86 today (range $126.66–$132.61). Slight pullback from $128.08 June 15 close. GTC bracket at $123.69 (if operator placed): STILL NOT FILLED (INTC above limit all session). Post-FOMC June 18: fresh bracket 38sh at ask×1.005 (~$128-132). BofA PT $135. Stop fill×0.95, target fill×1.15.
-- **⚠️⚠️ AMD STALE GTC — CRITICAL UPGRADE:** AMD gapped from $489 (June 15 close) to ~$548 today (+12.1%). Stale GTC buy limits at $520.59 and $524.15 were BYPASSED on the gap-up (buy limits don't fill on price rising through limit levels). BUT AMD is now only ~5% above the stale limits. **If FOMC dot plot June 17 is hawkish and AMD corrects -5%: GTCs FILL at $520-524 WITHOUT bracket stops = naked position.** OPERATOR MUST CANCEL BOTH AMD GTCs BEFORE JUNE 17 2PM ET. Fresh 6-agent June 18: 9sh at ask×1.005.
-- **⭐ MRVL STATUS:** Est. ~$300-310 today. S&P 500 inclusion June 22 still the highest-conviction catalyst. Cancel stale GTC $202.19 first. June 18 MANDATORY entry — 8sh bracket GTC.
-- **GLD Status:** Estimated stopped out June 10 at $397.92 (−$145.58). Closed chapter. No re-entry.
-- **MU Status:** Est. ~$1,083-1,100 range today. Complex exit window — entering June 18 means holding through Juneteenth+weekend to June 23 (within 48h of June 24 earnings binary event). CONDITIONAL on operator accepting binary event hold risk with stop.
-- **NVDA Status:** Est. ~$215-220 today. Re-score June 18. AI capex secular intact. 4sh conditional (fresh 6-agent at ≥7.0).
-- **BTC Status:** ~$66,304 today. **BELOW $82K threshold — NO ENTRY.** Post-FOMC risk-on could push BTC but unlikely to reach $82K threshold. Monitor.
-- **Pending Stale GTC Orders (OPERATOR MUST CANCEL — CRITICAL BEFORE JUNE 17 2PM ET FOMC DECISION):**
-  - ⚠️⚠️ AMD 9sh $524.15 (June 3 attempt): AMD now ~$548 = only 4.4% above limit. **CANCEL BEFORE FOMC JUNE 17 2PM ET. CRITICAL.**
-  - ⚠️⚠️ AMD 9sh $520.59 (May 29 attempt): AMD now ~$548 = only 5.0% above limit. **CANCEL BEFORE FOMC JUNE 17 2PM ET. CRITICAL.**
-  - PLTR 10sh $150.74 (June 3 attempt): PLTR ~$133. Not in danger. Cancel by June 18.
+- **Total Equity (estimated):** **~$99,854** (no confirmed fills — all API blocked; GLD stop June 10 −$145.58 is only realized trade)
+- **Cash:** **~$99,854** (99.9% cash — entire portfolio in cash, no confirmed open positions)
+- **Long Market Value:** $0 confirmed (no API access; see AMD stale GTC concern below)
+- **MRVL STATUS:** $289.54 (+3.90% June 18). S&P 500 inclusion June 22 = HIGHEST CONVICTION. Order ATTEMPTED: 8sh limit $291.00 bracket GTC, stop $276.45, target $334.65 — BLOCKED HTTP 403. Operator must execute. Score 7.83.
+- **NVDA STATUS:** ~$207.75 (flat June 18 recovery). AI capex secular intact. Order ATTEMPTED: 20sh limit $208.79 bracket GTC, stop $198.35, target $240.11 — BLOCKED HTTP 403. Operator must execute. Score 8.17. [Sized up from original 4sh to 20sh = 4.18%]
+- **INTC STATUS:** $121.10 (+3.46% June 18). Recovering from FOMC sell-off low $117.05 (June 16). BofA PT $135. Order ATTEMPTED: 38sh limit $121.71 bracket GTC, stop $115.62, target $139.97 — BLOCKED HTTP 403. Operator must execute. Score 7.17. NOTE: Operator GTC $123.69 (if placed) likely filled AND stopped out on June 16 (INTC hit $117.05 < stop $117.51). INTC clean for fresh entry.
+- **⚠️⚠️ AMD STALE GTC — CRITICAL STATUS UPDATE (June 18):** AMD dropped ~7.3% on June 16 FOMC sell-off to ~$508-510. Stale GTC buy limits at $520.59 and $524.15 WERE PASSED on the way down. If these orders exist on Alpaca (possibly operator-placed), both FILLED June 16 WITHOUT bracket stops. AMD today at $512.48 = 18sh AMD potentially naked at avg ~$520-524 = $9,400 = 9.41% of equity = GUARDRAIL BREACH. Fresh entry (9sh) SKIPPED per Exemption 1 — deferred to Mid-Morning after operator confirms AMD position status. OPERATOR: CHECK ALPACA POSITIONS NOW.
+- **GLD Status:** Estimated stopped out June 10 at $397.92 (−$145.58). Chapter closed.
+- **MU Status:** ~$1,085-1,110 est. CONDITIONAL entry CANCELLED — entering today (June 18) means holding through Juneteenth+weekend to June 23, then only 1 trading day before June 24 earnings binary event (48h window opens June 22). Too complex exit window. Skip MU this cycle. Monitor for July re-entry.
+- **BTC Status:** ~$64,000-68,000 est. BELOW $82K threshold — NO ENTRY.
+- **FOMC Outcome:** HELD at 3.50–3.75%. Hawkish dot: 9/18 officials want ≥1 hike in 2026. Scenario B realized — markets sold off June 16-17, recovering June 18. **FOMC BINARY EVENT CLEARED — all entries now permitted.**
+- **Pending Stale GTC Orders (status as of June 18):**
+  - ⚠️⚠️ AMD 9sh $524.15 and AMD 9sh $520.59: LIKELY FILLED June 16 (AMD passed through on sell-off). OPERATOR MUST VERIFY. If filled without stops: place standalone GTC stop at fill_price × 0.95 IMMEDIATELY.
+  - PLTR 10sh $150.74: PLTR ~$130-135. NOT FILLED. Cancel when convenient.
+  - MRVL 8sh $202.19: MRVL ~$289.54. FAR above limit. Not a risk. Cancel and replace with June 18 order at $291.00.
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **38th consecutive blocked session.**
+- **Daytrade Count:** 0 confirmed
+- **3% Circuit Breaker:** NOT TRIGGERED (SPX +0.11% today) ✓
+- **Juneteenth reminder:** June 19 = MARKET CLOSED. Next trading after June 18 = Monday June 23.
   - MRVL 8sh $202.19 (May 29 attempt): MRVL ~$300+. Far from limit. Cancel and replace June 18.
   - INTC $123.69 GTC (if operator placed): INTC ~$128 = above limit = NOT FILLED. Options: (a) leave it and hope for pullback June 17 on hawkish dot, or (b) cancel and replace with fresh bracket June 18 at ask×1.005.
 - **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **35th consecutive blocked session.**
@@ -218,12 +225,23 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-16 Pre-Market — estimates; API blocked 35th session)
-| Bucket | Target | Current $ (est.) | Current % | Positions |
+## Bucket State (as of 2026-06-18 Market Open — estimates; API blocked 38th session)
+| Bucket | Target | Current $ (est.) | Current % | Positions | Attempted Today |
+|---|---|---|---|---|---|
+| Active Trading | 85% ($85K) | $0 confirmed | ~0% | 0 confirmed | MRVL 8sh $291.00, NVDA 20sh $208.79, INTC 38sh $121.71 — all blocked HTTP 403 |
+| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$65K, below $82K threshold | None |
+| Cash Reserve | 5% floor | ~$99,854 | ~99.9% | — | — |
+
+**If 3 pending orders all filled (hypothetical):**
+| Symbol | Qty | Est. Fill | Value | % Equity |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | $0 (all skipped — FOMC binary event window Day 1) | ~0% | 0 confirmed |
-| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$66,304, below $82K threshold |
-| Cash Reserve | 5% floor | ~$99,854 | ~99.9% | — |
+| MRVL | 8sh | $291.00 | $2,328 | 2.33% |
+| NVDA | 20sh | $208.79 | $4,175.80 | 4.18% |
+| INTC | 38sh | $121.71 | $4,624.98 | 4.63% |
+| **Total Active** | — | — | **$11,128.78** | **11.14%** |
+| Cash remaining | — | — | $88,725 | 88.8% |
+
+**Deployment gap:** ~$73,871 below 85% target. AMD entry pending operator AMD position confirmation (Mid-Morning). Additional names for Mid-Morning: AMD (9sh if clear), additional positions to close the deployment gap.
 
 **Deployment gap:** ~$94,854 above the 5% floor.
 

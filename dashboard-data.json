@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-17T16:33:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-18T13:46:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 4.92,
-    "benchmark_gap_pct": -5.07,
+    "spx_return_pct": 5.03,
+    "benchmark_gap_pct": -5.18,
     "open_positions_count": 0,
-    "note": "June 17 Midday (12:33PM ET). FOMC DECISION DAY. API BLOCKED 37th session. 3 silent failures (Pre-Market, Market-Open, Mid-Morning). 0 positions. 0 trades \u2014 Exemption 2 (FOMC binary event, decision 2PM ET in 87min). FOMC HOLD 97%+ expected; KEY RISK: Warsh dot plot. MANDATORY JUNE 18: MRVL 8sh, INTC 38sh, AMD 9sh. JUNETEENTH JUNE 19 = CLOSED. \u26a0\ufe0f\u26a0\ufe0f OPERATOR: CANCEL AMD GTCs (20.59 and 24.15) BEFORE 1:55PM ET TODAY \u2014 FOMC hawkish dot = -5% AMD = naked fill risk."
+    "note": "June 18 Market Open (9:46 AM ET). POST-FOMC FIRST CLEAN ENTRY DAY. API BLOCKED 38th session. Pre-Market silent failure. 3 mandatory entry orders ATTEMPTED but BLOCKED: MRVL 8sh $291.00, NVDA 20sh $208.79, INTC 38sh $121.71. AMD SKIPPED Exemption 1 (stale GTC naked position risk \u2014 AMD dropped 7.3% June 16, GTCs at $520.59 and $524.15 may have filled without stops). JUNETEENTH JUNE 19 = CLOSED. Next trading June 23. \u26a0\ufe0f\u26a0\ufe0f OPERATOR: CHECK ALPACA FOR AMD POSITIONS (may have 18sh naked). Execute MRVL/NVDA/INTC orders manually."
   },
   "positions": [
     {
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "FOMC DECISION DAY. Pre-decision stasis \u2014 markets flat/cautious. 97%+ hold probability. Key risk: Warsh SEP dot plot. Binary event window active through 2PM ET. Post-FOMC: risk-on (neutral/dovish dot) or brief yield spike (hawkish dot).",
+    "mode": "POST-FOMC RECOVERY. FOMC held at 3.50-3.75%. Hawkish dot (9/18 members want \u22651 hike in 2026). Markets recovering June 18: SPX +0.11%, Semis leading. Scenario B realized \u2014 June 16-17 sell-off absorbed. First clean entry day. Juneteenth June 19 = closed.",
     "fear_greed": null,
-    "fear_greed_label": "Fear \u2014 CPI shock + geopolitical escalation. Semis and gold both under pressure.",
-    "spx": "S&P 500 est. ~7,530-7,570 pre-FOMC. Flat ahead of 2PM ET decision. Hold 97%+ priced in; dot plot is the variable. Iran deal digestion continues. Kevin Warsh first FOMC decision.",
-    "btc": "BTC est. ~4K-68K \u2014 below 2K threshold. No crypto entry. FOMC uncertainty capping crypto rally.",
+    "fear_greed_label": "Neutral-to-Fear. Post-FOMC hawkish dot = residual uncertainty, but hold = relief rally underway.",
+    "spx": "S&P 500 June 18: +0.11% (recovering from June 16-17 FOMC sell-off). Semis outperforming: MRVL +3.90%, INTC +3.46%. FOMC held rates at 3.50-3.75%. Hawkish dot: 9/18 want \u22651 hike 2026. S&P 500 est. ~7,565.",
+    "btc": "BTC est. ~$65K \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on may push toward $70K but below threshold.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
@@ -106,10 +106,10 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-10T13:46:00Z",
-      "next_run": "2026-06-18 09:45 ET",
-      "last_summary": "June 17: SILENTLY FAILED. No heartbeat. Violation logged. FOMC binary event active. No MOO fills to confirm (0 positions)."
+      "status": "completed",
+      "last_run": "2026-06-18T13:46:00Z",
+      "next_run": "2026-06-23 09:45 ET",
+      "last_summary": "June 18 (Post-FOMC): Pre-Market silent failure caught up. Stop audit: API blocked (38th), 0 confirmed positions, AMD stale GTC CRITICAL (may have 18sh naked from June 16 fill — operator must verify). 3 limit bracket GTC orders ATTEMPTED (MRVL 8sh $291, NVDA 20sh $208.79, INTC 38sh $121.71) — all HTTP 403. AMD SKIPPED Exemption 1 (stale GTC naked risk). Juneteenth June 19 = closed. Next: Mid-Morning (no scheduled routine June 19 = holiday)."
     },
     {
       "name": "Mid-Morning",
