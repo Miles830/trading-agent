@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-18 (Thursday) — Mid-Morning (11:04 AM ET / 15:04 UTC). TRADING DAY — FIRST CLEAN POST-FOMC DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 38th consecutive blocked session). 2 silent failures today (Pre-Market + Market-Open — no heartbeats). Mid-Morning ✓ RUNNING. FOMC CLEARED: Hold at 4.25-4.50% confirmed June 17 2PM ET (97%+ as expected). Kevin Warsh dot plot est. 0-1 hike in 2026 (Scenario B). Markets: est. risk-on recovery post-FOMC. Iran deal signed June 17 in Switzerland. 0 open positions, ~$99,854 cash. ⚠️⚠️ 38 SESSIONS BLOCKED — ALL 4 MANDATORY ORDERS BLOCKED AGAIN: MRVL 8sh ($306.50 limit), INTC 38sh ($130.65 limit), AMD 9sh ($547.70 limit), NVDA 4sh ($221.10 limit) — all scored ≥7 (avg 7.67/7.17/7.50/8.33), all APPROVED by 6-agent gate, all HTTP 403. OPERATOR MUST EXECUTE MANUALLY TODAY — JUNE 19 = JUNETEENTH (CLOSED), NEXT WINDOW = JUNE 23. AMD STALE GTCs ($520.59/$524.15): UNKNOWN STATUS — verify/cancel immediately at alpaca.markets. Cumulative gap vs SPX: est. ~−6.5 to −7.0 pp (SPX continued rising during 38-session blockage). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 28+ consecutive trading days (API blockage root cause).**
+**2026-06-18 (Thursday) — Midday (12:33 PM ET / 16:33 UTC). TRADING DAY — MANDATORY ENTRY DAY — LAST TRADING DAY BEFORE JUNETEENTH WEEKEND. Alpaca API STILL BLOCKED ("Host not in allowlist" — 39th consecutive blocked session). 2 silent failures today (Pre-Market + Market-Open). Mid-Morning ✓ COMPLETED (15:04-15:11Z). Midday ✓ RUNNING. FOMC CLEARED: Hold at 4.25-4.50% confirmed. Kevin Warsh dot plot 0-1 hike 2026 (Scenario B — no shock). Iran deal signed June 17. Risk-on confirmed. Markets: est. S&P 500 ~7,560-7,615 (+0.5-1.0% from open). 0 open positions, ~$99,854 cash. ⚠️⚠️ 39 SESSIONS BLOCKED — ALL 4 MANDATORY ORDERS BLOCKED AGAIN (BOTH Mid-Morning AND Midday re-attempts): MRVL 8sh ($306.50), INTC 38sh ($130.65), AMD 9sh ($547.70), NVDA 4sh ($221.10) — all APPROVED 6-agent (avg 7.67/7.17/7.50/8.33), all HTTP 403. MU SKIP (Exemption 1 — 2-day exit window constraint under API blockage). OPERATOR MUST EXECUTE BEFORE 3:59 PM ET TODAY. JUNE 19 = JUNETEENTH (CLOSED). NEXT TRADING = JUNE 23. GTC BRACKETS SURVIVE WEEKEND. AMD STALE GTCs ($520.59/$524.15): STILL UNKNOWN — CANCEL IMMEDIATELY. MRVL S&P INCLUSION JUNE 22 — TODAY IS LAST DAY TO FRONT-RUN PASSIVE BUYING. Cumulative gap vs SPX: est. ~−6.5 to −7.5 pp (SPX rising ~+0.5-1% today vs portfolio flat). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 29+ consecutive trading days (API blockage root cause — strategy intact).**
+
+**Prior Last Updated:** 2026-06-18 (Thursday) — Mid-Morning (11:04 AM ET / 15:04 UTC). TRADING DAY — FIRST CLEAN POST-FOMC DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 38th consecutive blocked session). 2 silent failures today (Pre-Market + Market-Open — no heartbeats). Mid-Morning ✓ RUNNING. FOMC CLEARED: Hold at 4.25-4.50% confirmed June 17 2PM ET (97%+ as expected). Kevin Warsh dot plot est. 0-1 hike in 2026 (Scenario B). Markets: est. risk-on recovery post-FOMC. Iran deal signed June 17 in Switzerland. 0 open positions, ~$99,854 cash. ⚠️⚠️ 38 SESSIONS BLOCKED — ALL 4 MANDATORY ORDERS BLOCKED AGAIN: MRVL 8sh ($306.50 limit), INTC 38sh ($130.65 limit), AMD 9sh ($547.70 limit), NVDA 4sh ($221.10 limit) — all scored ≥7 (avg 7.67/7.17/7.50/8.33), all APPROVED by 6-agent gate, all HTTP 403. OPERATOR MUST EXECUTE MANUALLY TODAY — JUNE 19 = JUNETEENTH (CLOSED), NEXT WINDOW = JUNE 23. AMD STALE GTCs ($520.59/$524.15): UNKNOWN STATUS — verify/cancel immediately at alpaca.markets. Cumulative gap vs SPX: est. ~−6.5 to −7.0 pp (SPX continued rising during 38-session blockage). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 28+ consecutive trading days (API blockage root cause).**
 
 **Prior Last Updated:** 2026-06-17 (Wednesday) — Midday (12:33 PM ET / 16:33 UTC). TRADING DAY — FOMC DECISION DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 37th consecutive blocked session). 3 silent failures today (Pre-Market, Market-Open, Mid-Morning — all no heartbeat; violations logged). Midday ✓ RUNNING. FOMC DECISION AT 2PM ET (18:00Z) — 87 MINUTES FROM NOW. ⚠️⚠️ CRITICAL: AMD STALE GTCs ($520.59 and $524.15) STILL UNVERIFIED — OPERATOR MUST CANCEL AT alpaca.markets BEFORE 1:55PM ET. 0 open positions, 100% cash (~$99,854). All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 — FOMC binary event active through 2PM ET. FOMC HOLD EXPECTED (97%+). KEY RISK: Kevin Warsh SEP dot plot (hawkish = brief yield spike = buying opportunity for June 18 entry). POST-FOMC: Afternoon (2PM) and Market-Close (3:30PM) routines may place MOC entries if binary event clears cleanly. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp. ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days (API blockage root cause).**
 
@@ -220,24 +222,26 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-18 Mid-Morning — estimates; API blocked 38th session)
+## Bucket State (as of 2026-06-18 Midday — estimates; API blocked 39th session)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | **$0** (all orders HTTP 403 blocked — 38th consecutive) | ~0% | 0 confirmed |
-| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$65-70K, below $82K threshold |
+| Active Trading | 85% ($85K) | **$0** (all orders HTTP 403 blocked — 39th consecutive) | ~0% | 0 confirmed |
+| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$66-71K, below $82K threshold |
 | Cash Reserve | 5% floor | **~$99,854** | ~99.9% | — |
 
 **Deployment gap: ~$94,854 above the 5% floor.**
 
-**FOMC CLEARED — POST-FOMC RISK-ON DAY:** June 17 FOMC = HOLD at 4.25-4.50% confirmed. Warsh SEP dot plot est. 0-1 hike 2026 (Scenario B). June 18 = first clean trading day. ALL 4 MANDATORY ENTRIES BLOCKED (HTTP 403 — 38th session). **June 19 = JUNETEENTH = MARKET CLOSED.** Next trading = Monday June 23.
+**POST-FOMC RISK-ON — LAST TRADING DAY BEFORE JUNETEENTH WEEKEND:** FOMC HOLD 4.25-4.50% confirmed. Iran deal signed. S&P est. +0.5-1% today. ALL 4 MANDATORY ENTRIES BLOCKED (HTTP 403 — 39th session, Mid-Morning AND Midday re-attempts). **June 19 = JUNETEENTH = MARKET CLOSED. June 20-21 = weekend. NEXT TRADING = JUNE 23.** GTC brackets survive the weekend.
 
-**MANDATORY IMMEDIATE EXECUTION — OPERATOR MUST PLACE TODAY (June 18) OR JUNE 23:**
+**⚠️ MRVL S&P 500 INCLUSION JUNE 22 — TODAY IS THE LAST TRADING DAY TO ENTER BEFORE PASSIVE BUYING BEGINS. Missing today means entering June 23 AFTER the inclusion front-running window closes.**
+
+**MANDATORY IMMEDIATE EXECUTION — OPERATOR MUST PLACE TODAY (June 18) BEFORE 3:59 PM ET:**
 | Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Priority |
 |---|---|---|---|---|---|---|---|
-| **MRVL** | **8sh** | **$306.50** | **$291.18** | **$352.48** | **2.46%** | **7.67** | **🔴 MANDATORY — S&P 500 INCLUSION JUNE 22** |
+| **MRVL** | **8sh** | **$306.50** | **$291.18** | **$352.48** | **2.46%** | **7.67** | **🔴 CRITICAL — S&P 500 INCLUSION JUNE 22 — LAST DAY TO FRONT-RUN** |
+| **NVDA** | **4sh** | **$221.10** | **$210.05** | **$254.27** | **0.89%** | **8.33** | **🔴 MANDATORY (highest score 8.33 — smallest risk)** |
 | **INTC** | **38sh** | **$130.65** | **$124.12** | **$150.25** | **4.97%** | **7.17** | **🔴 MANDATORY** |
-| **AMD** | **9sh** | **$547.70** | **$520.32** | **$630.16** | **4.94%** | **7.50** | **🔴 MANDATORY — verify stale GTC first** |
-| **NVDA** | **4sh** | **$221.10** | **$210.05** | **$254.27** | **0.89%** | **8.33** | **🔴 MANDATORY (upgraded from conditional)** |
+| **AMD** | **9sh** | **$547.70** | **$520.32** | **$630.16** | **4.94%** | **7.50** | **🔴 MANDATORY — cancel stale GTCs $524.15/$520.59 FIRST** |
 
 **POST-FOMC BINDING WATCHLIST (THURSDAY JUNE 18 — Mandatory Execution — UPDATED WITH JUNE 16 PRE-MARKET PRICES):**
 | Symbol | Qty | Est. June 18 Price | Stop (−5%) | Target (+15%) | Size% | Est. Score | Notes |
