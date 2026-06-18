@@ -896,6 +896,188 @@ Today (June 18) was the first clean trading day post-FOMC. With the hold at 4.25
 
 ---
 
+## 2026-06-18 — Daily Review (4:30 PM ET / 20:32 UTC — THURSDAY — POST-FOMC / LAST DAY BEFORE JUNETEENTH)
+
+**HEARTBEAT:** STARTED Daily-Review 20:32:23Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **39th consecutive blocked session**
+
+---
+
+### PORTFOLIO STATE
+
+```
+Total Equity: ~$99,854 (estimated — API blocked 39th session)
+Cash: ~$99,854 (99.9%) — 5% floor ✓
+Trading bucket: $0 (0%) — 0 confirmed positions — target 85%
+Crypto bucket: $0 (0%) — 0 confirmed positions — target 10%
+```
+
+---
+
+### HEARTBEAT TALLY — June 18, 2026
+
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | 15:04:19Z ✓ | 15:11:37Z ✓ | ✓ COMPLETED |
+| Midday | 16:30Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Afternoon | 18:00Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Market-Close | 19:30Z | 19:33:43Z ✓ | 19:44:02Z ✓ | ✓ COMPLETED |
+| Daily-Review | 20:30Z | 20:32:23Z ✓ | IN PROGRESS | ✓ RUNNING |
+
+**Routines completed: 2/6 intraday (Mid-Morning + Market-Close). Silent failures: 4 (Pre-Market, Market-Open, Midday, Afternoon).**
+
+⭐ **TOP OPERATIONAL ISSUE — DAY:** 4 silent failures on the mandatory post-FOMC first clean entry day. With 0 valid exemptions (FOMC cleared June 17, no circuit breaker, no guardrail breach on any of the 4 names), all 4 entries (MRVL 7.67 / INTC 7.17 / AMD 7.50 / NVDA 8.33) should have been placed at Pre-Market MOO or Market-Open limit. Instead the first firing session was Mid-Morning (11:00 AM ET). Every order attempt across Mid-Morning and Market-Close was HTTP 403 blocked.
+
+**Proposed remediation:** Operator should audit agent run logs at code.claude.com to identify which sessions are being triggered vs. completing. The pattern (Mid-Morning and Market-Close fire; Pre-Market, Market-Open, Midday, Afternoon often miss) suggests the scheduler may be rate-limited to 2 concurrent sessions per day or that the first 2-3 time slots have a startup-failure mode. A potential fix: configure the Pre-Market session to run 10 minutes later (12:10Z) to avoid any system contention at the market-open boundary.
+
+---
+
+### TODAY'S FILLS AND ORDERS
+
+**Total fills today: 0.** All 8 attempts blocked (HTTP 403).
+
+| Routine | Symbol | Order Type | Qty | Limit | Result |
+|---|---|---|---|---|---|
+| Mid-Morning | MRVL | limit bracket GTC | 8sh | $306.50 | HTTP 403 BLOCKED |
+| Mid-Morning | INTC | limit bracket GTC | 38sh | $130.65 | HTTP 403 BLOCKED |
+| Mid-Morning | AMD | limit bracket GTC | 9sh | $547.70 | HTTP 403 BLOCKED |
+| Mid-Morning | NVDA | limit bracket GTC | 4sh | $221.10 | HTTP 403 BLOCKED |
+| Market-Close | MRVL | MOC (cls) | 8sh | market | HTTP 403 BLOCKED |
+| Market-Close | INTC | MOC (cls) | 38sh | market | HTTP 403 BLOCKED |
+| Market-Close | AMD | MOC (cls) | 9sh | market | HTTP 403 BLOCKED |
+| Market-Close | NVDA | MOC (cls) | 4sh | market | HTTP 403 BLOCKED |
+
+**39th consecutive API blocked session. 0 trades ever executed via cloud agent.**
+
+---
+
+### PERFORMANCE vs S&P 500
+
+**Today (June 18, 2026):**
+- Portfolio return: $0.00 (0.00%) — 0 positions, 100% cash
+- S&P 500 estimated close: **~7,600** (+0.60% from June 15 close 7,554.29)
+- Daily gap: **−0.60 pp**
+
+**Cumulative (strategy start ~May 1, SPX base ~$7,200):**
+- Portfolio total return: **−0.15%** (GLD stop-out June 10 = −$145.58 only completed trade; $99,854 / $100,000 − 1)
+- S&P 500 total return: **+5.56%** (7,600 / 7,200 − 1)
+- **Cumulative gap: −5.71 pp** (widened from −5.07 pp; SPX +0.60% today, portfolio flat)
+
+**Rolling 20-day:**
+- Portfolio: −0.15% (no fills)
+- SPX 20-day (est. June 18 vs ~7,300 20 days ago): +4.1%
+- 20-day lag: ~−4.25 pp
+- **⚠️ 20-DAY UNDERPERFORMANCE FLAG: 29+ consecutive trading days.** Root cause = API blockage (39 sessions). Strategy is correct; execution layer is broken. Hard guardrails UNCHANGED.
+
+---
+
+### WIN/LOSS METRICS
+
+| Window | Wins | Losses | Win Rate | Avg Win | Avg Loss | Profit Factor |
+|---|---|---|---|---|---|---|
+| Today | 0 | 0 | N/A | N/A | N/A | N/A |
+| Rolling 5-day (Jun 12-18) | 0 | 0 | N/A | N/A | N/A | N/A |
+| All-time | 0 | 1 (GLD −4.99%) | 0% | N/A | −$145.58 | 0.00 |
+
+**Best trade today:** N/A
+**Worst miss today:** MRVL — S&P 500 inclusion June 22. Today was the final pre-inclusion entry window. June 22 entry (inclusion date itself) is the last viable entry to capture passive forced buying at June 22 close. June 23+ is fully post-inclusion.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-day: June 12-18)
+
+| Setup type | 5-Day W | 5-Day L | Cumul. W | Cumul. L | Consec. L | Rule triggered | Status |
+|---|---|---|---|---|---|---|---|
+| macro-hedge | 0 | 0 | 0 | 1 (GLD −4.99%) | 1 | None | No halt |
+| breakout-volume | 0 | 0 | 0 | 0 | 0 | None | INTC MANDATORY June 22/23 |
+| ai-momentum-pullback | 0 | 0 | 0 | 0 | 0 | None | MRVL/AMD/NVDA MANDATORY June 22 |
+| mean-reversion-oversold | 0 | 0 | 0 | 0 | 0 | None | No active candidate |
+| sector-rotation | 0 | 0 | 0 | 0 | 0 | None | No candidate |
+| earnings-reaction-follow | 0 | 0 | 0 | 0 | 0 | None | MU candidate June 25 (post June 24 earnings) |
+| earnings-reaction-fade | 0 | 0 | 0 | 0 | 0 | None | MU candidate June 25 |
+| candlestick-reversal | 0 | 0 | 0 | 0 | 0 | None | No trades |
+| crypto-flush-rebound | 0 | 0 | 0 | 0 | 0 | None | BTC ~$66K — below $82K threshold |
+
+**No 3-in-a-row halt or boost triggered.** Only 1 completed trade (GLD macro-hedge loss). No calibration data for agent accuracy yet — all meaningful data arrives after June 22-23 entries fill and result.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **6-Agent gate maintained score discipline.** All 4 mandatory names rescored ≥7 on independent multi-agent analysis without anchoring to prior scores. No guardrail violations from the cloud agent.
+2. **Both operational sessions (Mid-Morning + Market-Close) attempted all 4 entries.** Despite API blockage, the Mid-Morning session ran full 6-agent analysis (documented in trades.md) and Market-Close retried via MOC — the execution logic was correct.
+3. **No naked positions created.** 0 open positions = 0 stop-loss audit failures. AMD stale GTC risk (operator-side) was escalated clearly in every routine today.
+
+---
+
+### 3 THINGS TO IMPROVE (JUNE 22/23)
+
+1. **MRVL inclusion window: escalate earlier.** The S&P 500 inclusion June 22 was known since June 2. A 48-hour "last window" alert should have triggered no later than June 16 (2 trading days before June 18) with explicit operator notification. The miss was not from insufficient analysis — it was from insufficient urgency escalation while the window closed.
+2. **AMD stale GTC cancellation — 7 weeks unresolved.** The $520.59 (May 29) and $524.15 (June 3) GTCs have been a mandatory cancellation action in every single routine since June 3. The Juneteenth 4-day gap (June 19-22) creates maximum exposure: if AMD opens June 22 at $520 or below, naked fills happen. The escalation mechanism has failed to produce action. Operator must treat this as fire-level urgency.
+3. **Scheduler pattern: identify why Pre-Market and Market-Open systematically fail.** Mid-Morning and Market-Close have higher reliability. If the pattern is deterministic, restructure the strategy to treat Mid-Morning as the primary execution window and place GTC brackets (which survive overnight) rather than relying on MOO orders.
+
+---
+
+### KEY MACRO EVENTS — WEEK OF JUNE 23, 2026
+
+| Date | Day | Event | Signal |
+|---|---|---|---|
+| June 22 | Monday | **MRVL S&P 500 INCLUSION EFFECTIVE** | Forced index buying at June 22 close. Enter MRVL before 3:30 PM ET. |
+| June 22 | Monday | First post-Juneteenth trading day | Risk-on continuation expected; post-FOMC, post-Iran deal tailwind |
+| June 23 | Tuesday | Regular trading day | NVDA/INTC/AMD entries (if not done June 22) |
+| June 24 | Wednesday | **MU Q2 FY2026 EARNINGS** | Binary event — 48h window open June 22 close. NO MU entry June 22-23. |
+| June 25 | Thursday | MU post-earnings reaction | `earnings-reaction-follow` or `earnings-reaction-fade` setup. Score at Pre-Market. |
+| Week | — | Fed speakers (Warsh) est. | Monitor for any deviation from June 17 HOLD messaging. |
+
+---
+
+### TOP-10 WATCHLIST FOR JUNE 22-23, 2026
+
+*All scores carry forward from June 18 6-agent analysis. Fresh 6-agent required at June 22 Pre-Market (8:00 AM ET) before entry — prices will have moved.*
+
+| # | Symbol | Carry Score | Priority | Entry Date | Notes |
+|---|---|---|---|---|---|
+| 1 | **NVDA** | 8.33/10 | 🔴 MANDATORY | June 22 | Strongest score; 4sh bracket GTC at ask×1.005. No time-bounded catalyst — June 22 or 23 fine. |
+| 2 | **AMD** | 7.50/10 | 🔴 MANDATORY | June 22 (post-cancel) | ⚠️ CANCEL $520.59 and $524.15 FIRST. Then 9sh bracket GTC at ask×1.005. |
+| 3 | **INTC** | 7.17/10 | 🔴 MANDATORY | June 22 | 38sh bracket GTC. Cancel GTC $123.69 first. BofA PT $135. |
+| 4 | **MRVL** | 7.67→~7.0-7.33 | 🟡 CONDITIONAL June 22 | June 22 | Run fresh 6-agent. Inclusion today (June 22) = last pre-close forced-buy. Enter if ≥7. |
+| 5 | **MU** | N/A | ⛔ DO NOT ENTER | June 25 | 48h binary event (June 24 earnings). Trade June 25 post-earnings. |
+| 6 | **PLTR** | est. 6.5-7.0 | 🟡 CONDITIONAL | June 23 | AI government contracts + NVDA partnership. Re-score at current price. |
+| 7 | **AVGO** | est. 6.5-7.0 | 🟡 CONDITIONAL | June 23 | Post-correction consolidation. AI ASIC picks-and-shovels. Re-score if ≥7. |
+| 8 | **META** | est. 6.5 | 🟡 CONDITIONAL | June 23 | Heavy AI CapEx confirmed; Iran deal = supply chain relief. Re-score. |
+| 9 | **SMH** | N/A | Sector backup | June 23 | Semiconductor ETF — broad AI capex exposure if individual names fail scoring. |
+| 10 | Gap-up scan | N/A | Intraday | June 23 | Scan top % gainers >$5 and >1M ADV at June 23 open for fresh catalysts. |
+
+**JUNE 22 BINDING COMMITMENT (per CLAUDE.md Deployment Bias):**
+The June 22 Pre-Market routine MUST place entries for NVDA, AMD (post-cancel), and INTC as its first actions. MRVL entry before June 22 close is the highest-priority of the week (time-bounded). Failure to place these on June 22 without a named guardrail-based exemption is a Deployment Bias violation.
+
+---
+
+### DAILY REVIEW YAML ENTRY
+
+```yaml
+---
+ts: 2026-06-18T20:32:00Z
+action: daily-review
+symbol: PORTFOLIO
+bucket: null
+setup: null
+score: null
+thesis: "39th consecutive blocked API session. 4 silent failures on mandatory post-FOMC entry day. 8 orders attempted (4 GTC Mid-Morning + 4 MOC Market-Close) — all HTTP 403. MRVL S&P 500 inclusion June 22 — today was last pre-inclusion entry window. Portfolio: 0 positions, ~$99,854 cash."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Daily P&L: $0 (0 positions). SPX est. +0.60%. Daily gap: −0.60 pp. Cumulative gap: −5.71 pp (from −5.07 pp). Silent failures: Pre-Market, Market-Open, Midday, Afternoon (4/7 routines). Completed: Mid-Morning ✓ (15:04-15:11Z), Market-Close ✓ (19:33-19:44Z), Daily-Review ✓. Setup tally: 0 new trades; only 1 all-time completed trade (GLD macro-hedge loss June 10). June 22 BINDING WATCHLIST: NVDA MANDATORY, AMD MANDATORY (cancel stale GTCs first), INTC MANDATORY, MRVL conditional (fresh 6-agent, enter before June 22 close). MU: DO NOT ENTER June 22-23 (48h binary event — earnings June 24). ⚠️⚠️ OPERATOR MUST CANCEL AMD GTCs $520.59 and $524.15 BEFORE JUNE 22 OPEN — naked position risk over Juneteenth weekend. xAI API blocked — X sentiment estimated strongly bullish for all 4 names."
+---
+```
+
+---
+
 ## 2026-06-17 — Midday (12:30 PM ET / 16:30 UTC — WEDNESDAY — FOMC DECISION DAY)
 
 **HEARTBEAT:** STARTED Midday 16:33:12Z ✓
