@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-17 (Wednesday) — Midday (12:33 PM ET / 16:33 UTC). TRADING DAY — FOMC DECISION DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 37th consecutive blocked session). 3 silent failures today (Pre-Market, Market-Open, Mid-Morning — all no heartbeat; violations logged). Midday ✓ RUNNING. FOMC DECISION AT 2PM ET (18:00Z) — 87 MINUTES FROM NOW. ⚠️⚠️ CRITICAL: AMD STALE GTCs ($520.59 and $524.15) STILL UNVERIFIED — OPERATOR MUST CANCEL AT alpaca.markets BEFORE 1:55PM ET. 0 open positions, 100% cash (~$99,854). All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 — FOMC binary event active through 2PM ET. FOMC HOLD EXPECTED (97%+). KEY RISK: Kevin Warsh SEP dot plot (hawkish = brief yield spike = buying opportunity for June 18 entry). POST-FOMC: Afternoon (2PM) and Market-Close (3:30PM) routines may place MOC entries if binary event clears cleanly. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp. ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days (API blockage root cause).**
+**2026-06-18 (Thursday) — Mid-Morning (11:04 AM ET / 15:04 UTC). TRADING DAY — FIRST CLEAN POST-FOMC DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 38th consecutive blocked session). 2 silent failures today (Pre-Market + Market-Open — no heartbeats). Mid-Morning ✓ RUNNING. FOMC CLEARED: Hold at 4.25-4.50% confirmed June 17 2PM ET (97%+ as expected). Kevin Warsh dot plot est. 0-1 hike in 2026 (Scenario B). Markets: est. risk-on recovery post-FOMC. Iran deal signed June 17 in Switzerland. 0 open positions, ~$99,854 cash. ⚠️⚠️ 38 SESSIONS BLOCKED — ALL 4 MANDATORY ORDERS BLOCKED AGAIN: MRVL 8sh ($306.50 limit), INTC 38sh ($130.65 limit), AMD 9sh ($547.70 limit), NVDA 4sh ($221.10 limit) — all scored ≥7 (avg 7.67/7.17/7.50/8.33), all APPROVED by 6-agent gate, all HTTP 403. OPERATOR MUST EXECUTE MANUALLY TODAY — JUNE 19 = JUNETEENTH (CLOSED), NEXT WINDOW = JUNE 23. AMD STALE GTCs ($520.59/$524.15): UNKNOWN STATUS — verify/cancel immediately at alpaca.markets. Cumulative gap vs SPX: est. ~−6.5 to −7.0 pp (SPX continued rising during 38-session blockage). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 28+ consecutive trading days (API blockage root cause).**
+
+**Prior Last Updated:** 2026-06-17 (Wednesday) — Midday (12:33 PM ET / 16:33 UTC). TRADING DAY — FOMC DECISION DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 37th consecutive blocked session). 3 silent failures today (Pre-Market, Market-Open, Mid-Morning — all no heartbeat; violations logged). Midday ✓ RUNNING. FOMC DECISION AT 2PM ET (18:00Z) — 87 MINUTES FROM NOW. ⚠️⚠️ CRITICAL: AMD STALE GTCs ($520.59 and $524.15) STILL UNVERIFIED — OPERATOR MUST CANCEL AT alpaca.markets BEFORE 1:55PM ET. 0 open positions, 100% cash (~$99,854). All watchlist names (MRVL 7.67, INTC 7.17, AMD 7.50, NVDA 7.83) skipped per Exemption 2 — FOMC binary event active through 2PM ET. FOMC HOLD EXPECTED (97%+). KEY RISK: Kevin Warsh SEP dot plot (hawkish = brief yield spike = buying opportunity for June 18 entry). POST-FOMC: Afternoon (2PM) and Market-Close (3:30PM) routines may place MOC entries if binary event clears cleanly. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp. ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days (API blockage root cause).**
 
 **Prior Last Updated:** 2026-06-16 (Tuesday) — Market-Close (3:30 PM ET / 19:30 UTC). TRADING DAY — FOMC DAY 1 CLOSE / IRAN DEAL POST-RALLY DIGESTION. Alpaca API STILL BLOCKED ("Host not in allowlist" — 36th consecutive blocked session). 4 silent failures today (Market-Open, Mid-Morning, Midday, Afternoon — all no heartbeat; violations logged). Pre-Market ✓ COMPLETED. Market-Close ✓ RUNNING. FOMC Day 1 closed with markets choppy and flat (est. S&P 500 −0.1% to +0.3% from 7,554 June 15 close). 0 open positions, 100% cash (~$99,854). No MOC orders placed — Exemption 2 (FOMC binary event June 17 2PM ET). CRITICAL REMINDER: ⚠️⚠️ OPERATOR MUST CANCEL AMD STALE GTCs ($520.59 and $524.15) BEFORE JUNE 17 1:55PM ET. AMD est. $535-555 — only ~5% above limits. Hawkish dot plot + -5% AMD move = naked fill. FOMC DECISION JUNE 17 2PM ET: 97%+ hold; dot plot is the risk. If hawkish dot-plot dip: prepare lower limit prices for June 18 entries. MANDATORY JUNE 18 ENTRIES: MRVL 8sh, INTC 38sh, AMD 9sh. CONDITIONAL: NVDA 4sh (fresh 6-agent), MU (fresh 6-agent, accept binary risk to June 24). JUNETEENTH JUNE 19 = MARKET CLOSED. MU EXIT DEADLINE: JUNE 20 EOD. Cumulative gap: ~−5.07 pp (approx unchanged — both portfolio and SPX flat today). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 27 consecutive trading days.**
 
@@ -218,16 +220,24 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-16 Pre-Market — estimates; API blocked 35th session)
+## Bucket State (as of 2026-06-18 Mid-Morning — estimates; API blocked 38th session)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | $0 (all skipped — FOMC binary event window Day 1) | ~0% | 0 confirmed |
-| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$66,304, below $82K threshold |
-| Cash Reserve | 5% floor | ~$99,854 | ~99.9% | — |
+| Active Trading | 85% ($85K) | **$0** (all orders HTTP 403 blocked — 38th consecutive) | ~0% | 0 confirmed |
+| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$65-70K, below $82K threshold |
+| Cash Reserve | 5% floor | **~$99,854** | ~99.9% | — |
 
-**Deployment gap:** ~$94,854 above the 5% floor.
+**Deployment gap: ~$94,854 above the 5% floor.**
 
-**⚠️ FOMC BINARY EVENT WINDOW ACTIVE — TODAY IS DAY 1:** June 16 = FOMC Day 1 (meeting in session). June 17 = FOMC Decision 2PM ET (97%+ HOLD at 4.25-4.50%). Kevin Warsh first meeting as Fed Chair. Key risk: hawkish SEP dot plot even with hold — could show 1-2 hikes in 2026. **First clean post-FOMC window: THURSDAY JUNE 18.** June 19 = JUNETEENTH = MARKET CLOSED. Next trading after June 18 = MONDAY JUNE 23.
+**FOMC CLEARED — POST-FOMC RISK-ON DAY:** June 17 FOMC = HOLD at 4.25-4.50% confirmed. Warsh SEP dot plot est. 0-1 hike 2026 (Scenario B). June 18 = first clean trading day. ALL 4 MANDATORY ENTRIES BLOCKED (HTTP 403 — 38th session). **June 19 = JUNETEENTH = MARKET CLOSED.** Next trading = Monday June 23.
+
+**MANDATORY IMMEDIATE EXECUTION — OPERATOR MUST PLACE TODAY (June 18) OR JUNE 23:**
+| Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Priority |
+|---|---|---|---|---|---|---|---|
+| **MRVL** | **8sh** | **$306.50** | **$291.18** | **$352.48** | **2.46%** | **7.67** | **🔴 MANDATORY — S&P 500 INCLUSION JUNE 22** |
+| **INTC** | **38sh** | **$130.65** | **$124.12** | **$150.25** | **4.97%** | **7.17** | **🔴 MANDATORY** |
+| **AMD** | **9sh** | **$547.70** | **$520.32** | **$630.16** | **4.94%** | **7.50** | **🔴 MANDATORY — verify stale GTC first** |
+| **NVDA** | **4sh** | **$221.10** | **$210.05** | **$254.27** | **0.89%** | **8.33** | **🔴 MANDATORY (upgraded from conditional)** |
 
 **POST-FOMC BINDING WATCHLIST (THURSDAY JUNE 18 — Mandatory Execution — UPDATED WITH JUNE 16 PRE-MARKET PRICES):**
 | Symbol | Qty | Est. June 18 Price | Stop (−5%) | Target (+15%) | Size% | Est. Score | Notes |
