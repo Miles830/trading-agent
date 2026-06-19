@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T13:45:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-19T16:33:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.56,
     "benchmark_gap_pct": -5.71,
     "open_positions_count": 0,
-    "note": "June 19 Market-Open (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 40th consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. NEXT TRADING DAY: JUNE 22 (Monday). BINDING: MRVL 8sh + NVDA 4sh + AMD 9sh + INTC 38sh brackets. OPERATOR: Cancel AMD GTCs $520.59/$524.15 BEFORE June 22 open."
+    "note": "June 19 Midday (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 41st consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor: Market-Open completed 13:48Z, Mid-Morning absent (expected-holiday). NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 BEFORE June 22 open."
   },
   "positions": [
     {
@@ -122,10 +122,10 @@
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-17 12:33 ET",
+      "status": "holiday",
+      "last_run": "2026-06-19T16:33:00Z",
       "next_run": "2026-06-22 12:30 ET",
-      "last_summary": "June 18: SILENTLY FAILED \u2014 no heartbeat. On MANDATORY ENTRY DAY with 4 watchlist names \u22657. No valid exemption. Violation logged at Market-Close."
+      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open completed 13:48Z, Mid-Morning absent (expected). Next: June 22 Midday \u2014 confirm June 22 MOO/GTC fills, trail stops on new positions."
     },
     {
       "name": "Afternoon",
