@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T13:45:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-19T15:04:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.56,
     "benchmark_gap_pct": -5.71,
     "open_positions_count": 0,
-    "note": "June 19 Market-Open (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 40th consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. NEXT TRADING DAY: JUNE 22 (Monday). BINDING: MRVL 8sh + NVDA 4sh + AMD 9sh + INTC 38sh brackets. OPERATOR: Cancel AMD GTCs $520.59/$524.15 BEFORE June 22 open."
+    "note": "June 19 Mid-Morning (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Stop-loss audit: PASS (0 positions). Alpaca API blocked (HTTP 403 \u2014 40th consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. NEXT TRADING DAY: JUNE 22 (Monday). BINDING: MRVL 8sh (7.67) + NVDA 4sh (8.33) + AMD 9sh (7.50) + INTC 38sh (7.17). OPERATOR: Cancel AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
   },
   "positions": [
     {
@@ -114,10 +114,10 @@
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-18T15:11:37Z",
+      "status": "holiday",
+      "last_run": "2026-06-19T15:04:00Z",
       "next_run": "2026-06-22 11:00 ET",
-      "last_summary": "June 18: 4 GTC limit bracket orders attempted (MRVL 8sh $306.50, INTC 38sh $130.65, AMD 9sh $547.70, NVDA 4sh $221.10) \u2014 ALL HTTP 403 BLOCKED (38th). 6-agent analysis completed for all 4 names (avg 7.67/7.17/7.50/8.33 \u2014 all APPROVED). 2 predecessor violations logged (Pre-Market, Market-Open)."
+      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 no trading. Stop-loss audit: PASS (0 positions). API blocked (HTTP 403 \u2014 40th consecutive). 0 positions, $99,854 cash. Next: June 22 (MRVL/NVDA/AMD/INTC all \u22657 \u2014 MANDATORY execution)."
     },
     {
       "name": "Midday",
