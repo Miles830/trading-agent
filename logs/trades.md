@@ -4,6 +4,50 @@
 
 ---
 
+## 2026-06-19 — Market-Open (9:45 AM ET / 13:45 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
+
+**HEARTBEAT:** STARTED Market-Open 13:45:27Z ✓
+**Market Status:** CLOSED — Juneteenth National Independence Day (US Federal Holiday). NYSE/NASDAQ do not trade today.
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **40th consecutive blocked session**
+**Predecessor Check:** Pre-Market — NO heartbeat found for 2026-06-19 (EXPECTED — market holiday; no MOO orders warranted)
+
+**NON-TRADING DAY:** June 19 = Juneteenth. No orders to place, no positions to manage, no stop-loss audit required (0 confirmed open positions).
+
+### KEY REMINDERS FOR MONDAY JUNE 22 (Next Trading Day)
+
+⭐ **MRVL S&P 500 INCLUSION EFFECTIVE JUNE 22** — entry window opens at market open Monday.
+⚠️ **AMD STALE GTCs ($520.59 / $524.15):** OPERATOR MUST CANCEL BOTH before June 22 market open to prevent naked fills on any gap-down.
+⚠️ **STALE GTCs TO CANCEL:** MRVL $202.19 and PLTR $150.74 — prices far from current market; cancel and replace if re-entering.
+
+**BINDING JUNE 22 WATCHLIST (scores from June 18 daily review — all ≥7, no valid exemptions):**
+| Symbol | Score | Action | Size | Notes |
+|--------|-------|--------|------|-------|
+| MRVL | 7.67 | MOO + bracket stop | 8 sh | S&P 500 inclusion buyer flow; last window before inclusion premium fades |
+| NVDA | 8.33 | Bracket limit GTC | 4 sh | AI infrastructure leader, highest score |
+| AMD | 7.50 | Bracket limit GTC | 9 sh | After operator cancels stale GTCs |
+| INTC | 7.17 | Bracket limit GTC | 38 sh | Turnaround catalyst, deep value |
+
+```yaml
+---
+ts: 2026-06-19T13:45:00Z
+action: skip
+symbol: null
+bucket: null
+setup: other
+score: null
+thesis: "June 19 = Juneteenth National Independence Day. NYSE/NASDAQ closed. No trading activity. Non-trading day — all routines are no-ops."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Non-trading day (Juneteenth). Pre-Market also correctly absent — holiday. Alpaca API blocked (HTTP 403 — 40th consecutive session). 0 open positions, 0 stop-loss gaps. Next trading day: June 22 (Monday). BINDING ACTIONS FOR JUNE 22: (1) Operator must cancel AMD GTCs $520.59/$524.15 before open; (2) Cancel MRVL $202.19/PLTR $150.74 stale GTCs; (3) Agent MUST place MRVL 8sh + NVDA 4sh + AMD 9sh + INTC 38sh brackets on June 22."
+---
+```
+
+---
+
 ## 2026-06-18 — Mid-Morning (11:00 AM ET / 15:04 UTC — THURSDAY — FIRST CLEAN POST-FOMC DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:19Z ✓

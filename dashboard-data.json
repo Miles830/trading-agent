@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-18T19:33:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-06-19T13:45:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.56,
     "benchmark_gap_pct": -5.71,
     "open_positions_count": 0,
-    "note": "June 18 Market-Close (3:33PM ET). POST-FOMC FIRST CLEAN DAY \u2014 LAST DAY BEFORE JUNETEENTH. API BLOCKED 39th session. 4 silent failures (Pre-Market, Market-Open, Midday, Afternoon). 0 positions. 4 MOC orders attempted (MRVL 8sh, INTC 38sh, AMD 9sh, NVDA 4sh) \u2014 ALL HTTP 403 BLOCKED. SPX est. +0.6% today (~7,600). Portfolio 0%. Cumulative gap: ~-5.71 pp. MRVL S&P 500 INCLUSION JUNE 22 \u2014 TODAY WAS LAST ENTRY WINDOW. AMD STALE GTCs: OPERATOR MUST CANCEL BOTH ($520.59 / $524.15) BEFORE JUNE 22 OPEN. Next trading: JUNE 22 (Monday). BINDING: MRVL 8sh + INTC 38sh + AMD 9sh + NVDA 4sh on June 22."
+    "note": "June 19 Market-Open (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 40th consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. NEXT TRADING DAY: JUNE 22 (Monday). BINDING: MRVL 8sh + NVDA 4sh + AMD 9sh + INTC 38sh brackets. OPERATOR: Cancel AMD GTCs $520.59/$524.15 BEFORE June 22 open."
   },
   "positions": [
     {
@@ -89,7 +89,7 @@
         "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
       }
     ],
-    "macro_notes_md": "- **CPI MAY 2026:** +4.2% YoY headline (highest since Apr 2023). Monthly +0.5%. Energy +23.5% (Iran war). Core +2.9% YoY, +0.2% m/m (BELOW estimate \u2014 benign underlying inflation).\n- **FED HIKE ODDS: 63%** post-CPI+payrolls combo. Warsh June 16-17 FOMC is LIVE risk event.\n- **IRAN-US ESCALATION:** US and Iran traded military strikes overnight. Risk-off. Market -0.48%.\n- **GLD STOP ESTIMATED TRIGGERED:** Range $388.75-$400.48 crossed below $397.92 stop. Est. loss -$145.58.\n- **INTC $107.52:** Opened $111 (range $106.66-$112.54). Structural catalyst intact. Less macro-sensitive than other semis.\n- **MU ~$920:** Range $886-$961 volatile. Score 6.5 today (CPI macro headwinds). Re-score at Midday.\n- **AMD ~$475:** Not on binding watchlist. Score <6.0.",
+    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data available\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%, markets expected to remain risk-on\n- SPX estimated ~7,600 as of June 18 close\n- **June 22 Catalysts:** MRVL S&P 500 index inclusion effective Monday; tracker/ETF inflows expected\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 may fill on any dip \u2014 operator must cancel",
     "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
     "sp500_est": 7550,
     "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
@@ -98,18 +98,18 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "failed",
+      "status": "holiday",
       "last_run": "2026-06-16 08:07 ET",
       "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 18: SILENTLY FAILED (39th consecutive API block). No heartbeat. Violation logged at Mid-Morning. MANDATORY ENTRY DAY \u2014 MOO orders for MRVL/INTC/AMD/NVDA should have been placed. All blocked."
+      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 correctly absent. June 22 Pre-Market MUST place MOO orders for MRVL 8sh + NVDA 4sh (cap 3 MOO)."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-10T13:46:00Z",
+      "status": "holiday",
+      "last_run": "2026-06-19T13:45:00Z",
       "next_run": "2026-06-22 09:45 ET",
-      "last_summary": "June 18: SILENTLY FAILED (39th consecutive API block). No heartbeat. Violation logged. No MOO fills to confirm (0 positions). MANDATORY ENTRY DAY."
+      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 no trading. API blocked (HTTP 403 \u2014 40th consecutive). 0 positions, $99,854 cash. Next: June 22 MANDATORY ENTRY (MRVL/NVDA/AMD/INTC all \u22657)."
     },
     {
       "name": "Mid-Morning",
@@ -179,7 +179,7 @@
       "agent_average": 7.67,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z (within 3:50PM ET window) — HTTP 403 BLOCKED (39th consecutive). MRVL S&P 500 inclusion JUNE 22 — today was LAST ENTRY WINDOW before inclusion. June 23 entry post-inclusion (premium gone). GTC bracket also blocked at Mid-Morning. OPERATOR MUST ENTER June 22."
+      "order_status": "MOC cls ATTEMPTED at 19:33Z (within 3:50PM ET window) \u2014 HTTP 403 BLOCKED (39th consecutive). MRVL S&P 500 inclusion JUNE 22 \u2014 today was LAST ENTRY WINDOW before inclusion. June 23 entry post-inclusion (premium gone). GTC bracket also blocked at Mid-Morning. OPERATOR MUST ENTER June 22."
     },
     {
       "ts": "2026-06-18T19:33:00Z",
@@ -199,7 +199,7 @@
       "agent_average": 7.17,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z — HTTP 403 BLOCKED (39th consecutive). GTC bracket $130.65 also blocked. Thesis intact for June 22 entry. BofA Buy PT $135."
+      "order_status": "MOC cls ATTEMPTED at 19:33Z \u2014 HTTP 403 BLOCKED (39th consecutive). GTC bracket $130.65 also blocked. Thesis intact for June 22 entry. BofA Buy PT $135."
     },
     {
       "ts": "2026-06-18T19:33:00Z",
@@ -207,7 +207,7 @@
       "action": "violation",
       "bucket": "active",
       "setup": "ai-momentum-pullback",
-      "score": 7.50,
+      "score": 7.5,
       "agent_scores": {
         "fundamentals": 8,
         "technical": 7,
@@ -216,10 +216,10 @@
         "risk": 6,
         "tech_analyst": 9
       },
-      "agent_average": 7.50,
+      "agent_average": 7.5,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z — HTTP 403 BLOCKED (39th consecutive). ⚠️ STALE GTC NAKED RISK: AMD $520.59 and $524.15 stale GTCs may fill on June 22 open if AMD corrects. OPERATOR MUST CANCEL BOTH BEFORE JUNE 22 OPEN. Fresh bracket at ask×1.005 on June 22."
+      "order_status": "MOC cls ATTEMPTED at 19:33Z \u2014 HTTP 403 BLOCKED (39th consecutive). \u26a0\ufe0f STALE GTC NAKED RISK: AMD $520.59 and $524.15 stale GTCs may fill on June 22 open if AMD corrects. OPERATOR MUST CANCEL BOTH BEFORE JUNE 22 OPEN. Fresh bracket at ask\u00d71.005 on June 22."
     },
     {
       "ts": "2026-06-18T19:33:00Z",
@@ -239,7 +239,7 @@
       "agent_average": 8.33,
       "result_pct": null,
       "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z — HTTP 403 BLOCKED (39th consecutive). Best score of the 4 (8.33 avg, all 6 agents ≥7, TA 10/10). GTC bracket $221.10 also blocked. June 22 entry viable — no time-bounded catalyst. MANDATORY per deployment bias."
+      "order_status": "MOC cls ATTEMPTED at 19:33Z \u2014 HTTP 403 BLOCKED (39th consecutive). Best score of the 4 (8.33 avg, all 6 agents \u22657, TA 10/10). GTC bracket $221.10 also blocked. June 22 entry viable \u2014 no time-bounded catalyst. MANDATORY per deployment bias."
     },
     {
       "ts": "2026-06-18T16:30:00Z",
@@ -252,7 +252,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "Midday routine (12:30 PM ET / 16:30Z) SILENTLY FAILED June 18 — no heartbeat. MANDATORY ENTRY DAY. 4 watchlist names ≥7. No valid exemption. Violation logged."
+      "order_status": "Midday routine (12:30 PM ET / 16:30Z) SILENTLY FAILED June 18 \u2014 no heartbeat. MANDATORY ENTRY DAY. 4 watchlist names \u22657. No valid exemption. Violation logged."
     },
     {
       "ts": "2026-06-18T18:00:00Z",
@@ -265,7 +265,7 @@
       "agent_average": null,
       "result_pct": null,
       "master_decision": null,
-      "order_status": "Afternoon routine (2:00 PM ET / 18:00Z) SILENTLY FAILED June 18 — no heartbeat. MANDATORY ENTRY DAY. MOC swing entries should have been primary tool at 2PM ET. Violation logged."
+      "order_status": "Afternoon routine (2:00 PM ET / 18:00Z) SILENTLY FAILED June 18 \u2014 no heartbeat. MANDATORY ENTRY DAY. MOC swing entries should have been primary tool at 2PM ET. Violation logged."
     },
     {
       "ts": "2026-06-16T12:07:00Z",
@@ -968,7 +968,7 @@
     {
       "symbol": "AMD",
       "bucket": "active",
-      "score": 7.50,
+      "score": 7.5,
       "action": "\ud83d\udd34 MANDATORY JUNE 22 \u2014 CANCEL STALE GTCs ($520.59 / $524.15) BEFORE JUNE 22 OPEN FIRST. Then 9sh bracket GTC at ask\u00d71.005. Stop -5%, target +15%.",
       "notes": "\u26a0\ufe0f STALE GTC NAKED RISK: AMD $520.59 and $524.15 stale GTCs. If AMD opens below these levels June 22, naked fills occur. CANCEL IMMEDIATELY. Citi PT $665. AI GPU MI300X. Est. $530-555 June 22.",
       "setup": "ai-momentum-pullback"
@@ -1004,7 +1004,7 @@
       "portfolio_return_pct": -0.15,
       "spx_return_pct": 5.56,
       "daily_pnl_pct": 0.0,
-      "note": "Market-Close. POST-FOMC first clean day — last before Juneteenth. API blocked (39th). 4 silent failures (Pre-Market, Market-Open, Midday, Afternoon). Mid-Morning + Market-Close completed. 8 orders attempted (4 GTC limit + 4 MOC) — all HTTP 403. 0 positions, 0 P&L. SPX est. +0.6% (~7,600). Cumulative gap: ~-5.71 pp. MRVL S&P inclusion June 22 — missed last entry window. AMD stale GTC naked risk warning issued."
+      "note": "Market-Close. POST-FOMC first clean day \u2014 last before Juneteenth. API blocked (39th). 4 silent failures (Pre-Market, Market-Open, Midday, Afternoon). Mid-Morning + Market-Close completed. 8 orders attempted (4 GTC limit + 4 MOC) \u2014 all HTTP 403. 0 positions, 0 P&L. SPX est. +0.6% (~7,600). Cumulative gap: ~-5.71 pp. MRVL S&P inclusion June 22 \u2014 missed last entry window. AMD stale GTC naked risk warning issued."
     },
     {
       "date": "2026-06-04",
