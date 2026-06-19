@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T16:33:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-19T18:03:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.56,
     "benchmark_gap_pct": -5.71,
     "open_positions_count": 0,
-    "note": "June 19 Midday (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 41st consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor: Market-Open completed 13:48Z, Mid-Morning absent (expected-holiday). NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 BEFORE June 22 open."
+    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
   },
   "positions": [
     {
@@ -89,7 +89,7 @@
         "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
       }
     ],
-    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data available\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%, markets expected to remain risk-on\n- SPX estimated ~7,600 as of June 18 close\n- **June 22 Catalysts:** MRVL S&P 500 index inclusion effective Monday; tracker/ETF inflows expected\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 may fill on any dip \u2014 operator must cancel",
+    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data today\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%; markets remain risk-on into June 22\n- SPX estimated ~7,600 as of June 18 close (+5.56% from strategy start ~$7,200)\n- **June 22 Primary Catalyst:** MRVL S&P 500 index inclusion effective Monday; index tracker/ETF inflows must execute June 22 close buy \u2014 predictable intraday demand\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before June 22 open\n- **BTC:** ~$66K\u201370K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact; oil stabilizing; risk-on environment persisting into June 22",
     "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
     "sp500_est": 7550,
     "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
@@ -130,10 +130,10 @@
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-03T18:09:00Z",
+      "status": "holiday",
+      "last_run": "2026-06-19T18:03:00Z",
       "next_run": "2026-06-22 14:00 ET",
-      "last_summary": "June 18: SILENTLY FAILED \u2014 no heartbeat. 4th missed routine on mandatory entry day. MOC swing entries should have been attempted at 2PM ET. Violation logged at Market-Close."
+      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open 13:48Z \u2713, Midday 16:35Z \u2713, Mid-Morning absent (expected). Next: June 22 Afternoon \u2014 trail stops on new positions, manage MOO fills, assess partial profits if MRVL spikes >5% on inclusion-day ETF inflow."
     },
     {
       "name": "Market Close",
@@ -951,51 +951,87 @@
   "watchlist": [
     {
       "symbol": "MRVL",
-      "bucket": "active",
       "score": 7.67,
-      "action": "\ud83d\udd34 MANDATORY JUNE 22 (MRVL INCLUSION DATE) \u2014 8sh bracket GTC at ask\u00d71.005. Cancel stale GTC $202.19 FIRST. ENTER BEFORE JUNE 22 CLOSE to capture forced passive buying. June 23 entry is post-inclusion (misses premium).",
-      "notes": "S&P 500 INCLUSION EFFECTIVE JUNE 22. Teralynx T100 AI ASIC. Jensen Huang 'next trillion' AI networking. Forced passive buying by SPY/IVV/VOO at June 22 close. Est. $305-325 June 22.",
-      "setup": "ai-momentum-pullback"
-    },
-    {
-      "symbol": "INTC",
-      "bucket": "active",
-      "score": 7.17,
-      "action": "\ud83d\udd34 MANDATORY JUNE 22 \u2014 38sh bracket GTC at ask\u00d71.005. Cancel stale GTC $123.69 FIRST. Stop -5%, target +15%.",
-      "notes": "BofA Buy PT $135. Intel 18A foundry ramp. CHIPS Act $8.5B. Est. $128-135 June 22.",
-      "setup": "breakout-volume"
-    },
-    {
-      "symbol": "AMD",
-      "bucket": "active",
-      "score": 7.5,
-      "action": "\ud83d\udd34 MANDATORY JUNE 22 \u2014 CANCEL STALE GTCs ($520.59 / $524.15) BEFORE JUNE 22 OPEN FIRST. Then 9sh bracket GTC at ask\u00d71.005. Stop -5%, target +15%.",
-      "notes": "\u26a0\ufe0f STALE GTC NAKED RISK: AMD $520.59 and $524.15 stale GTCs. If AMD opens below these levels June 22, naked fills occur. CANCEL IMMEDIATELY. Citi PT $665. AI GPU MI300X. Est. $530-555 June 22.",
-      "setup": "ai-momentum-pullback"
+      "order_type": "MOO",
+      "qty": 8,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 2.46,
+      "priority": "MANDATORY",
+      "notes": "\u2b50 S&P 500 inclusion June 22 \u2014 ETF forced buying at close. Cancel stale GTC $202.19 first. Highest time-sensitivity.",
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.67
     },
     {
       "symbol": "NVDA",
-      "bucket": "active",
       "score": 8.33,
-      "action": "\ud83d\udd34 MANDATORY JUNE 22 \u2014 4sh bracket GTC at ask\u00d71.005. Upgraded from CONDITIONAL. Stop -5%, target +15%.",
-      "notes": "AI monopoly. $81.62B Q1 FY2027 (+85% YoY). $80B buyback. CUDA moat. All hyperscalers buying. Est. $218-228 June 22.",
-      "setup": "ai-momentum-pullback"
+      "order_type": "MOO",
+      "qty": 4,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 0.89,
+      "priority": "MANDATORY",
+      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market.",
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 8,
+        "sentiment": 9,
+        "macro": 9,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.33
     },
     {
-      "symbol": "MU",
-      "bucket": "active",
-      "score": 6.5,
-      "action": "SKIP \u2014 June 24 earnings binary event. Entry June 22 would require holding through June 23 (within 48h window). Too complex. Monitor post-June 24.",
-      "notes": "HBM4 supercycle thesis intact. June 24 earnings = binary event. No clean entry window until after earnings. Re-score post-June 24.",
-      "setup": "mean-reversion-oversold"
+      "symbol": "AMD",
+      "score": 7.5,
+      "order_type": "Limit GTC bracket",
+      "qty": 9,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 4.99,
+      "priority": "MANDATORY",
+      "notes": "\u26a0\ufe0f CANCEL stale GTCs $520.59 + $524.15 BEFORE market open. 9sh @~$555 = ~$4,995 \u2248 4.99% \u2713. Citi PT $665.",
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 8,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.5
     },
     {
-      "symbol": "BTC/USD",
-      "bucket": "crypto",
-      "score": 0,
-      "action": "NO ENTRY - below $82K threshold. Monitor post-FOMC risk-on push June 22.",
-      "notes": "BTC est. ~$66K-70K. $12K+ below $82K entry threshold. Post-FOMC risk-on + Iran deal not enough. Monitor June 22.",
-      "setup": "crypto-flush-rebound"
+      "symbol": "INTC",
+      "score": 7.17,
+      "order_type": "Limit GTC bracket",
+      "qty": 38,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 4.95,
+      "priority": "MANDATORY",
+      "notes": "BofA Buy PT $135. 38sh @~$130 = ~$4,940 \u2248 4.94% \u2713. Foundry + AI chip cycle. Cancel stale $123.69 GTC first, replace at ask\u00d71.005.",
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.17
     }
   ],
   "history": [
