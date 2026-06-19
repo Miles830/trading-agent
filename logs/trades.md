@@ -4,6 +4,74 @@
 
 ---
 
+## 2026-06-19 — Market-Close (3:30 PM ET / 19:33 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:41Z ✓
+**Market Status:** CLOSED — Juneteenth National Independence Day (US Federal Holiday). NYSE/NASDAQ do not trade today.
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd consecutive blocked session**
+
+### Predecessor Audit — June 19, 2026
+
+| Routine | Scheduled (UTC) | Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ABSENT — expected (market holiday, no MOO warranted) |
+| Market-Open | 13:45Z | ✓ COMPLETED 13:48Z |
+| Mid-Morning | 15:00Z | ABSENT — expected (market holiday) |
+| Midday | 16:30Z | ✓ COMPLETED 16:35Z |
+| Afternoon | 18:00Z | ✓ COMPLETED 18:05Z |
+| Market-Close | 19:30Z | ✓ RUNNING NOW |
+
+**No violations.** All absent routines are justified by the Juneteenth market holiday.
+
+### Market-Close Actions — NONE (Market Holiday)
+
+- **Day trade closures:** N/A — 0 open positions, no day trades to close
+- **MOC orders:** N/A — market closed (would be `time_in_force: cls`)
+- **Stop-loss audit:** N/A — 0 open positions, 0 stop gaps
+- **Stale order cancellations:** N/A — cannot reach Alpaca (API blocked). Stale GTCs (AMD $520.59/$524.15, MRVL $202.19, PLTR $150.74) remain unverified — OPERATOR MUST CANCEL before June 22 open.
+- **Position trailing:** N/A — no positions
+- **3% circuit breaker:** NOT TRIGGERED (portfolio flat, no positions, no P&L today)
+
+### End-of-Day Summary — June 19, 2026
+
+**Market:** NYSE/NASDAQ closed — Juneteenth National Independence Day. No price action to report.
+
+**Day Trades Closed:** None (no positions)
+
+**Overnight Positions with Stops:** None confirmed.
+
+**Today's P&L:** $0.00 (0.00%) — non-trading day
+
+**Today vs S&P 500:** $0.00 vs ~$0.00 (market closed) — N/A gap
+
+**Key Things to Watch June 22 (Next Trading Day):**
+1. **MRVL S&P 500 INCLUSION EFFECTIVE JUNE 22** — index trackers and ETFs MUST buy MRVL at the June 22 close. Predictable intraday demand. Pre-Market MUST place MRVL 8sh MOO + NVDA 4sh MOO.
+2. **OPERATOR MUST CANCEL before June 22 open:** AMD GTCs $520.59 + $524.15 (naked-fill risk on gap-down), MRVL $202.19 (stale), PLTR $150.74 (stale)
+3. **Market-Open June 22:** AMD 9sh + INTC 38sh GTC limit brackets
+4. **BTC:** Monitor for post-FOMC risk-on push toward $82K threshold
+5. **AMD open:** Watch for gap behavior — if AMD gapped down overnight and stale GTCs filled nakedly, audit immediately
+
+```yaml
+---
+ts: 2026-06-19T19:33:00Z
+action: skip
+symbol: null
+bucket: null
+setup: other
+score: null
+thesis: "June 19 = Juneteenth National Independence Day. NYSE/NASDAQ closed. Non-trading day — Market-Close routine is a no-op."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Non-trading day (Juneteenth). Market-Close routine completed as holiday no-op. Alpaca API blocked (HTTP 403 — 43rd consecutive session). 0 open positions. No day trades to close, no MOC orders placed, no stop-loss gaps. Predecessor audit: Pre-Market absent (expected), Market-Open completed 13:48Z, Mid-Morning absent (expected), Midday completed 16:35Z, Afternoon completed 18:05Z. Full routine day: all 3 non-holiday routines completed with no violations. BINDING PRE-MARKET JUNE 22: (1) OPERATOR MUST cancel AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 before June 22 open; (2) Place MRVL 8sh + NVDA 4sh as MOO orders (Pre-Market June 22); (3) Place AMD 9sh + INTC 38sh as GTC limit brackets (Market-Open June 22). MRVL S&P 500 inclusion effective June 22 — ETF forced-buying at June 22 close is primary catalyst — missing this is a deployment-bias violation."
+---
+```
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓

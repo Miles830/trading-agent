@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-19T19:33:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -138,10 +138,10 @@
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-18T19:33:43Z",
+      "status": "holiday",
+      "last_run": "2026-06-19T19:33:00Z",
       "next_run": "2026-06-22 15:30 ET",
-      "last_summary": "June 18 (POST-FOMC / LAST DAY BEFORE JUNETEENTH): 0 day trades to close (0 positions). 4 MOC orders attempted (MRVL 8sh, INTC 38sh, AMD 9sh, NVDA 4sh cls) \u2014 ALL HTTP 403 BLOCKED (39th consecutive). 2 violations logged (Midday, Afternoon). Cumulative gap: ~-5.71 pp. MRVL S&P 500 inclusion effective JUNE 22 \u2014 today was last entry window. AMD stale GTC naked risk over Juneteenth weekend \u2014 OPERATOR MUST CANCEL. Next trading: June 22 (MRVL inclusion date)."
+      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. 0 positions, 0 day trades, no MOC orders placed (market closed). Alpaca API blocked (HTTP 403 \u2014 43rd consecutive). Predecessor audit clean: Market-Open 13:48Z \u2713, Midday 16:35Z \u2713, Afternoon 18:05Z \u2713. ALL June 19 routines completed with zero violations. Cumulative gap vs SPX: ~-5.71 pp. Next trading: June 22 (MRVL S&P 500 inclusion date). BINDING: MRVL 8sh + NVDA 4sh MOO (Pre-Market June 22) + AMD 9sh + INTC 38sh GTC (Market-Open June 22). OPERATOR MUST CANCEL stale GTCs before June 22 open."
     },
     {
       "name": "Daily Review",
@@ -1069,6 +1069,13 @@
       "spx_return_pct": 4.92,
       "daily_pnl_pct": 0.0,
       "note": "Market-Close. FOMC Day 1. API blocked (36th). 4 silent failures. 0 positions. 0 trades. Both portfolio and SPX ~flat today. Cumulative gap: ~-5.07 pp. MANDATORY entries Thursday June 18 post-FOMC."
+    },
+    {
+      "date": "2026-06-19",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 5.56,
+      "daily_pnl_pct": 0.0,
+      "note": "Market-Close. Juneteenth — NYSE/NASDAQ CLOSED. Non-trading day. 0 positions, 0 P&L. API blocked (43rd consecutive). All 3 non-holiday June 19 routines completed with zero violations (Market-Open 13:48Z, Midday 16:35Z, Afternoon 18:05Z, Market-Close 19:33Z). Cumulative gap: ~-5.71 pp. NEXT TRADING: June 22 — MRVL S&P 500 inclusion effective. BINDING: MRVL 8sh + NVDA 4sh MOO + AMD 9sh + INTC 38sh GTC. Operator must cancel stale GTCs before June 22 open."
     }
   ]
 }
