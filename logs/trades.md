@@ -4,6 +4,68 @@
 
 ---
 
+## 2026-06-19 — Pre-Market (8:00 AM ET / 12:04 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
+
+**HEARTBEAT:** STARTED Pre-Market 12:04:15Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **40th consecutive blocked session**
+**Market Status:** ❌ MARKET CLOSED — Juneteenth (June 19) is a US federal holiday. NYSE, NASDAQ, and all US equity markets are closed today.
+**Per CLAUDE.md:** "Routines run on trading days only. No routines on weekends or market holidays." — No trade decisions required.
+
+---
+
+### NON-TRADING DAY LOG
+
+```yaml
+---
+ts: 2026-06-19T12:04:00Z
+action: skip
+symbol: null
+bucket: null
+setup: other
+score: null
+thesis: "June 19, 2026 is Juneteenth — a US federal holiday. US equity markets (NYSE, NASDAQ) are closed. No trading activity. Per CLAUDE.md routines run on trading days only."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: |
+  MARKET HOLIDAY — NO TRADING. Juneteenth (June 19) = federal holiday, markets closed.
+  API also blocked (40th consecutive session — HTTP 403 'Host not in allowlist').
+  No user suggestions pending (GitHub issues = 0 open with label user-suggestion).
+
+  === PORTFOLIO STATE (as of June 18 close) ===
+  Total Equity (est.): ~$99,854
+  Cash: ~$99,854 (99.9%)
+  Positions: 0 confirmed open
+  Cumulative gap vs SPX: ~-5.71 pp
+
+  === NEXT TRADING DAY: MONDAY JUNE 22 ===
+  ⭐ MRVL S&P 500 INCLUSION EFFECTIVE JUNE 22 — HIGHEST URGENCY ENTRY
+  OPERATOR MUST COMPLETE BEFORE JUNE 22 MARKET OPEN (or agent must execute if API is unblocked):
+    (1) CANCEL AMD stale GTC buy at $520.59 (May 29 attempt) — AMD ~$548 = only ~5% above limit; hawkish surprise = naked fill
+    (2) CANCEL AMD stale GTC buy at $524.15 (June 3 attempt) — same risk
+    (3) CANCEL MRVL stale GTC buy at $202.19 (May 29 attempt) — MRVL ~$300+ = far from limit but must clean up
+    (4) CANCEL PLTR stale GTC buy at $150.74 (June 3 attempt) — PLTR ~$130, not in danger
+    (5) CANCEL INTC stale GTC at $123.69 (if operator placed) — INTC ~$128, not filling; replace with fresh bracket
+
+  JUNE 22 MANDATORY ORDERS (scores from last weekly review — all ≥7, no exemptions apply):
+    MRVL  8sh  limit ask×1.005  stop fill×0.95  target fill×1.15  (~2.5% position)  score 7.67  ⭐ S&P 500 inclusion
+    INTC  38sh limit ask×1.005  stop fill×0.95  target fill×1.15  (~4.9% position)  score 7.17  BofA Buy PT $135
+    AMD   9sh  limit ask×1.005  stop fill×0.95  target fill×1.15  (~4.9% position)  score 7.50  Citi Buy PT $665
+    NVDA  4sh  limit ask×1.005  stop fill×0.95  target fill×1.15  (~0.9% position)  score 8.33  AI capex secular
+
+  All four entries use bracket GTC orders (time_in_force=gtc) per CLAUDE.md Stop-Loss Placement rules.
+  Combined deployment: ~$13,250 est. (~13.3% of equity) — well within 85% active target.
+  Sector check: all 4 are semiconductors/tech. Combined ~13.3% — under 25% cap ✓
+  Cash after all 4: ~$86,600 (~86.6%) — above 5% floor ✓
+  Max positions after all 4: 4 — under 12 cap ✓
+---
+```
+
+---
+
 ## 2026-06-18 — Mid-Morning (11:00 AM ET / 15:04 UTC — THURSDAY — FIRST CLEAN POST-FOMC DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:19Z ✓

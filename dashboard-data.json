@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-18T19:33:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-06-19T12:04:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.56,
     "benchmark_gap_pct": -5.71,
     "open_positions_count": 0,
-    "note": "June 18 Market-Close (3:33PM ET). POST-FOMC FIRST CLEAN DAY \u2014 LAST DAY BEFORE JUNETEENTH. API BLOCKED 39th session. 4 silent failures (Pre-Market, Market-Open, Midday, Afternoon). 0 positions. 4 MOC orders attempted (MRVL 8sh, INTC 38sh, AMD 9sh, NVDA 4sh) \u2014 ALL HTTP 403 BLOCKED. SPX est. +0.6% today (~7,600). Portfolio 0%. Cumulative gap: ~-5.71 pp. MRVL S&P 500 INCLUSION JUNE 22 \u2014 TODAY WAS LAST ENTRY WINDOW. AMD STALE GTCs: OPERATOR MUST CANCEL BOTH ($520.59 / $524.15) BEFORE JUNE 22 OPEN. Next trading: JUNE 22 (Monday). BINDING: MRVL 8sh + INTC 38sh + AMD 9sh + NVDA 4sh on June 22."
+    "note": "June 19 JUNETEENTH \u2014 MARKET CLOSED (US federal holiday). API BLOCKED 40th session. 0 positions. No trades. No user suggestions. Portfolio unchanged from June 18 close. Next trading: MONDAY JUNE 22 (MRVL S&P 500 INCLUSION DATE). OPERATOR CRITICAL ACTIONS BEFORE JUNE 22 OPEN: (1) Cancel AMD stale GTCs $520.59/$524.15, (2) Cancel MRVL $202.19 + PLTR $150.74 stale GTCs, (3) Cancel INTC $123.69 GTC (if placed). MANDATORY JUNE 22 ENTRIES: MRVL 8sh + INTC 38sh + AMD 9sh + NVDA 4sh bracket GTC."
   },
   "positions": [
     {
@@ -98,10 +98,10 @@
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-16 08:07 ET",
+      "status": "completed",
+      "last_run": "2026-06-19 08:04 ET",
       "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 18: SILENTLY FAILED (39th consecutive API block). No heartbeat. Violation logged at Mid-Morning. MANDATORY ENTRY DAY \u2014 MOO orders for MRVL/INTC/AMD/NVDA should have been placed. All blocked."
+      "last_summary": "June 19 JUNETEENTH \u2014 market closed. Non-trading day confirmed. Portfolio state: 0 positions, $99,854 cash (99.9%). Watchlist unchanged. Next trading June 22 (MRVL S&P 500 inclusion date). API blocked 40th session."
     },
     {
       "name": "Market Open",
