@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-22T12:10:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 5.56,
     "benchmark_gap_pct": -5.71,
     "open_positions_count": 0,
-    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
+    "note": "June 22 Pre-Market (8:00 AM ET). TRADING DAY \u2014 MRVL S&P 500 INCLUSION DAY. Alpaca API blocked (HTTP 403 \u2014 43rd consecutive session). 2 MOO orders attempted and blocked: MRVL 8sh + NVDA 4sh. AMD deferred (stale GTC double-fill risk). INTC rejected (fresh score 5.50 at $134). MU skipped (earnings June 24 AH). OPERATOR MUST EXECUTE: (1) Cancel AMD GTCs $520.59/$524.15, (2) BUY MRVL 8sh MOO before 9:25 AM ET, (3) BUY NVDA 4sh MOO before 9:25 AM ET. After open: place bracket stops. Pre-market MRVL ~$313 (+8%), NVDA $210 (flat), AMD $537, INTC $134, MU $1,168."
   },
   "positions": [
     {
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "POST-FOMC RISK-ON. FOMC HOLD confirmed June 17 at 4.25-4.50%. Iran peace deal signed June 17 in Switzerland. First clean trading day \u2014 AI/semis led. JUNETEENTH June 19 = market CLOSED. Next trading = June 22 (MRVL S&P 500 inclusion effective date).",
+    "mode": "NEUTRAL TO SLIGHT RISK-ON. SPX futures -0.1% (flat). Iran deal progress continuing \u2014 oil easing. AI/semis outperforming (+2-4%). MRVL S&P 500 INCLUSION DAY \u2014 index forced buying through close. PCE Thursday is week's key risk.",
     "fear_greed": null,
-    "fear_greed_label": "Neutral to Greedy \u2014 post-FOMC relief, Iran deal risk reduction, AI capex theme intact.",
-    "spx": "S&P 500 est. ~7,600 June 18 close (+0.6% from 7,554 June 15). SPX total return since ~May 1: +5.56% (7,600/7,200-1). Post-FOMC relief rally + Iran deal digestion. AI/semis led.",
-    "btc": "BTC est. ~66,000-70,000 \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on insufficient to push BTC to threshold. Monitor June 22.",
+    "fear_greed_label": "Neutral \u2014 flat futures, Iran deal ongoing, PCE Thursday uncertainty.",
+    "spx": "S&P 500 futures -0.1% as of June 22 8AM ET. Prior close est. ~7,600. SPX total return since ~May 1: +5.56%. PCE Thursday June 25 is week's key inflation data.",
+    "btc": "BTC est. below $82K threshold (no specific premarket data). No crypto entry. Monitor post-PCE.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
@@ -89,19 +89,19 @@
         "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
       }
     ],
-    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data today\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%; markets remain risk-on into June 22\n- SPX estimated ~7,600 as of June 18 close (+5.56% from strategy start ~$7,200)\n- **June 22 Primary Catalyst:** MRVL S&P 500 index inclusion effective Monday; index tracker/ETF inflows must execute June 22 close buy \u2014 predictable intraday demand\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before June 22 open\n- **BTC:** ~$66K\u201370K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact; oil stabilizing; risk-on environment persisting into June 22",
-    "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
-    "sp500_est": 7550,
-    "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
+    "macro_notes_md": "**2026-06-22 (Monday \u2014 Pre-Market)**\n- SPX futures: \u22120.1% (flat/slightly negative)\n- Nasdaq-100 futures: ~flat, hovering above zero\n- Iran deal progress: oil prices easing \u2014 slight risk-on for equities\n- **MRVL S&P 500 inclusion EFFECTIVE TODAY** \u2014 index funds must buy by June 22 close\n- MU +3% premarket to ~$1,168 \u2014 earnings Wednesday June 24 AH (binary event)\n- Semiconductors sector leadership: AMD +2-4%, MU +3%, MRVL +8%\n- No major economic data today\n- **Key event this week: PCE Thursday June 25** \u2014 Fed's preferred inflation gauge\n- FOMC hold at 4.25-4.50% confirmed June 17; next FOMC not until July\n- AMD stale GTC orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before open",
+    "sp500_today_pct": "-0.1% (futures, pre-market June 22)",
+    "sp500_est": 7600,
+    "macro_note": "MRVL S&P 500 INCLUSION DAY. Flat futures. Iran deal risk-on. AI semis outperforming. Key risk: PCE Thursday June 25. 2 MOO orders attempted (MRVL+NVDA) \u2014 HTTP 403 blocked (43rd session). Operator must execute manually."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-16 08:07 ET",
-      "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 correctly absent. June 22 Pre-Market MUST place MOO orders for MRVL 8sh + NVDA 4sh (cap 3 MOO)."
+      "status": "completed",
+      "last_run": "2026-06-22 08:04 ET",
+      "next_run": "2026-06-23 08:00 ET",
+      "last_summary": "June 22: MRVL S&P 500 inclusion day. MRVL 8sh MOO + NVDA 4sh MOO attempted \u2192 HTTP 403 BLOCKED (43rd consecutive). AMD deferred (stale GTC double-fill risk). INTC rejected (fresh score 5.50 at $134). MU skipped (June 24 earnings). Operator must execute MRVL + NVDA MOO manually before 9:25 AM ET."
     },
     {
       "name": "Market Open",
@@ -951,87 +951,116 @@
   "watchlist": [
     {
       "symbol": "MRVL",
-      "score": 7.67,
-      "order_type": "MOO",
+      "score": 7.50,
+      "order_type": "MOO (attempted \u2014 HTTP 403)",
       "qty": 8,
       "limit_price": null,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 2.46,
-      "priority": "MANDATORY",
-      "notes": "\u2b50 S&P 500 inclusion June 22 \u2014 ETF forced buying at close. Cancel stale GTC $202.19 first. Highest time-sensitivity.",
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.67
-    },
-    {
-      "symbol": "NVDA",
-      "score": 8.33,
-      "order_type": "MOO",
-      "qty": 4,
-      "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 0.89,
-      "priority": "MANDATORY",
-      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market.",
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 8,
-        "sentiment": 9,
-        "macro": 9,
-        "risk": 8,
-        "tech_analyst": 9
-      },
-      "agent_average": 8.33
-    },
-    {
-      "symbol": "AMD",
-      "score": 7.5,
-      "order_type": "Limit GTC bracket",
-      "qty": 9,
-      "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 4.99,
-      "priority": "MANDATORY",
-      "notes": "\u26a0\ufe0f CANCEL stale GTCs $520.59 + $524.15 BEFORE market open. 9sh @~$555 = ~$4,995 \u2248 4.99% \u2713. Citi PT $665.",
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 8,
-        "sentiment": 7,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.5
-    },
-    {
-      "symbol": "INTC",
-      "score": 7.17,
-      "order_type": "Limit GTC bracket",
-      "qty": 38,
-      "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 4.95,
-      "priority": "MANDATORY",
-      "notes": "BofA Buy PT $135. 38sh @~$130 = ~$4,940 \u2248 4.94% \u2713. Foundry + AI chip cycle. Cancel stale $123.69 GTC first, replace at ask\u00d71.005.",
+      "size_pct": 2.51,
+      "priority": "MANDATORY \u2014 OPERATOR EXECUTE BEFORE 9:25 AM ET",
+      "premarket_price": 313.0,
+      "est_stop": 297.35,
+      "est_target": 359.95,
+      "notes": "\u2b50 S&P 500 inclusion EFFECTIVE TODAY \u2014 forced index/ETF buying through close. Pre-market +8% to ~$313. MOO attempted \u2192 HTTP 403 blocked (43rd session). Operator must BUY 8sh MOO at app.alpaca.markets.",
       "agent_scores": {
         "fundamentals": 7,
         "technical": 6,
         "sentiment": 8,
         "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
+        "risk": 9,
+        "tech_analyst": 8
       },
-      "agent_average": 7.17
+      "agent_average": 7.50
+    },
+    {
+      "symbol": "NVDA",
+      "score": 8.00,
+      "order_type": "MOO (attempted \u2014 HTTP 403)",
+      "qty": 4,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 0.84,
+      "priority": "MANDATORY \u2014 OPERATOR EXECUTE BEFORE 9:25 AM ET",
+      "premarket_price": 210.10,
+      "est_stop": 199.50,
+      "est_target": 241.50,
+      "notes": "AI infrastructure leader. $81.6B Q1 revenue +85% YoY. 95% bullish analysts, target $257. Consolidating at $210 base. MOO attempted \u2192 HTTP 403 blocked. Operator must BUY 4sh MOO.",
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.00
+    },
+    {
+      "symbol": "AMD",
+      "score": 7.50,
+      "order_type": "Limit GTC bracket (DEFERRED \u2014 stale GTC risk)",
+      "qty": 9,
+      "limit_price": 539.70,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 4.84,
+      "priority": "DEFERRED \u2014 cancel stale GTCs $520.59/$524.15 first",
+      "premarket_price": 537.37,
+      "est_stop": 510.15,
+      "est_target": 617.55,
+      "notes": "\u26a0\ufe0f DEFERRED per Exemption 1: stale GTC buy limits at $520.59 + $524.15 (9sh each) unverified cancelled. Double-fill risk = 18sh = ~9.5% position \u2192 5% cap breach. OPERATOR: (1) Cancel stale GTCs, (2) then BUY 9sh AMD GTC limit bracket at ~$539.70, stop ~$510, target ~$617.",
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.50
+    },
+    {
+      "symbol": "INTC",
+      "score": 5.50,
+      "order_type": "REJECTED",
+      "qty": 0,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 0,
+      "priority": "REJECTED \u2014 removed from watchlist",
+      "premarket_price": 134.16,
+      "est_stop": null,
+      "est_target": null,
+      "notes": "Fresh 6-agent at $134 = 5.50 avg (was 7.33 at $123). Stock +14.7% in 9 days. BofA PT $135 = 0.7% upside from current. Analyst SELL PT $103. Setup exhausted. Re-score if: (a) BofA upgrades PT >$155 + INTC pulls back to $125-128, or (b) fresh 18A foundry contract catalyst.",
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 5,
+        "sentiment": 5,
+        "macro": 7,
+        "risk": 6,
+        "tech_analyst": 5
+      },
+      "agent_average": 5.50
+    },
+    {
+      "symbol": "MU",
+      "score": null,
+      "order_type": "SKIP \u2014 binary event",
+      "qty": 0,
+      "limit_price": null,
+      "stop_pct": null,
+      "target_pct": null,
+      "size_pct": 0,
+      "priority": "SKIP \u2014 re-score June 25 post-earnings",
+      "premarket_price": 1168.0,
+      "est_stop": null,
+      "est_target": null,
+      "notes": "MU +3% premarket to $1,168. Earnings Wednesday June 24 AH. Options pricing 17% move. Post-earnings entry (June 25): if beats+guides up \u2192 earnings-reaction-follow; if gap-down \u2192 potential fade entry. Re-score June 25.",
+      "agent_scores": null,
+      "agent_average": null
     }
   ],
   "history": [
