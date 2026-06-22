@@ -4,6 +4,350 @@
 
 ---
 
+## 2026-06-22 — Midday (12:30 PM ET / 16:33 UTC — MONDAY — MRVL S&P 500 INCLUSION DAY)
+
+**HEARTBEAT:** STARTED Midday 16:33:02Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd consecutive blocked session**
+**Current Time:** 16:33Z = 12:33 PM ET
+**Market Status:** OPEN. S&P 500 down ~0.35% (opening ~7,487). Semiconductors outperforming.
+
+---
+
+### PREDECESSOR AUDIT — June 22, 2026
+
+```
+grep "STARTED" logs/heartbeats/2026-06-22.log
+→ 2026-06-22T16:33:02Z STARTED Midday
+(No Pre-Market, Market-Open, or Mid-Morning heartbeats found)
+```
+
+| Routine | Scheduled (UTC) | STARTED | Status |
+|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | **SILENT FAILURE — VIOLATION** |
+| Market-Open | 13:45Z | ✗ MISSING | **SILENT FAILURE — VIOLATION** |
+| Mid-Morning | 15:00Z | ✗ MISSING | **SILENT FAILURE — VIOLATION** |
+| Midday | 16:33Z | 16:33:02Z ✓ | ✓ RUNNING |
+
+**3 silent failures on MANDATORY ENTRY DAY (MRVL S&P 500 inclusion). Violations logged below.**
+
+---
+
+### VIOLATIONS — 3 Silent Failures
+
+```yaml
+---
+ts: 2026-06-22T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market routine silently failed on MRVL S&P 500 inclusion day. No heartbeat found."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "June 22 Pre-Market (12:00Z) produced no heartbeat. This was a mandatory routine — Pre-Market should have placed MOO orders for MRVL 8sh and NVDA 4sh (per June 19 Afternoon binding watchlist). Alpaca API is blocked (43rd consecutive session), so orders would have failed regardless, but the routine itself did not fire. Catchup executing at Midday."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open routine silently failed on MRVL S&P 500 inclusion day. No heartbeat found."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "June 22 Market-Open (13:45Z) produced no heartbeat. Should have (a) confirmed MOO fills and placed follow-up stops, (b) placed AMD 9sh + INTC 38sh bracket GTC entries. Alpaca API blocked — all would have been HTTP 403. Routine did not fire."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine silently failed on MRVL S&P 500 inclusion day. No heartbeat found."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "June 22 Mid-Morning (15:00Z) produced no heartbeat. Should have (a) performed stop-loss audit, (b) run catchup entries on any ≥7 watchlist names still unfilled. Alpaca API blocked — all would have been HTTP 403. Routine did not fire."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT
+
+- **GET /v2/positions** → HTTP 403 (Host not in allowlist)
+- **GET /v2/orders?status=open** → HTTP 403 (Host not in allowlist)
+- **Estimated positions:** 0 open positions (no fills ever confirmed via API)
+- **Estimated open orders:** Unknown — stale GTCs (AMD $520.59/$524.15, MRVL $202.19, PLTR $150.74) may still be live
+- **Stop gaps:** N/A — 0 confirmed positions → 0 naked stops to fill
+- **⚠️ AMD STALE GTC RISK:** AMD trading ~$545-548 today. Stale buy limit GTCs at $520.59 and $524.15 are ~4-5% below current price. If AMD corrects, these naked orders could fill. OPERATOR MUST CANCEL AT alpaca.markets.
+
+---
+
+### MARKET CONTEXT — June 22 Midday
+
+**S&P 500:** ~7,461 (opening 7,487.36, -0.35% today). Quarterly rebalance day — Nasdaq-100 adding Astera Labs, CoreWeave, Nebius Group, Rocket Lab, Teradyne.
+**Iran:** "Encouraging progress" in peace talks; 60-day roadmap to final deal. Risk-on tone.
+**FOMC:** Hold confirmed June 17 at 4.25-4.50% — binary event fully cleared.
+**Semis:** Outperforming broad market. AI capex narrative intact.
+
+**Watchlist prices (June 22 midday):**
+- MRVL: ~$310 (day range $298.77–$314.17; S&P 500 inclusion day — ETF closing buy expected)
+- NVDA: ~$210.69 (range $208.62–$213.99; pulled back ~5% from $221 June 18)
+- AMD: ~$545 (range $535.71–$562.99; up ~4% today; +150% YTD)
+- INTC: ~$139.45 (range ~$135–$142; up ~4% from prior close $133.99; Apple foundry deal catalyst)
+
+---
+
+### 6-AGENT ANALYSIS — CATCHUP EXECUTION
+
+#### MRVL — 8 shares | Limit $313.56 | Stop $297.88 (-5%) | Target $360.59 (+15%)
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q4 FY2026 beat (revenue $1.96B, +61% YoY). AI custom silicon (Teralynx T100) dominant growth driver. Multiple PT upgrades: KeyBanc $385, B. Riley $345. New CFO Dan Durn (ex-Adobe). P/E elevated but justified by AI ASIC secular ramp. S&P 500 inclusion confirms institutional legitimacy.
+
+**Sub-Agent 2 — Technical: 6/10**
+Inclusion day price action mixed — trading below June 18 close ($310.58) at $298-$314 range. Stochastic: approaching overbought territory after 265% YTD run. MACD: bullish ✓. Volume Oscillator: positive ✓. Volume Spike: heavy inclusion day volume ✓. Candlestick: intraday consolidation, not a clean reversal pattern. 3/5 indicators confirm direction (MACD, Volume Oscillator, Volume Spike). 5-min trend aligned with 1-hour uptrend. (Technical score capped below 7 due to overbought risk and stock below prior close.)
+
+**Sub-Agent 3 — Sentiment: 9/10**
+X/Twitter: Strongly bullish — $MRVL trending on inclusion day + AI custom silicon narrative. Multiple viral posts from semiconductor analysts. KeyBanc $385 PT widely shared. 38 analysts Buy, 1 Sell. S&P 500 forced buying confirms smart money positioning. X modifier: +2 (strongly bullish). Base 7/10 + X +2 = 9/10.
+
+**Sub-Agent 4 — Macro: 7/10**
+FOMC cleared. Iran deal progress = risk-on. Market slightly down (-0.35%) but AI/tech bid. Semiconductor super-cycle ongoing. Inclusion day = specific mechanical demand from ETFs at close. Dollar moderate.
+
+**Sub-Agent 5 — Risk: 8/10**
+8sh × $313.56 = $2,509 = 2.51% equity ✓ (max 5%). Stop risk: 8×$313.56×5% = $125 = 0.13% equity ✓ (max 1.5%). Sector: Semis at 0% now → 2.51% → well under 25% ✓. R/R: (+15% $360.59) / (-5% $297.88) = 3.0:1 ✓. Cash after entry: $99,854 - $2,509 = $97,345 (97.5%) ✓. Position count: 0+1=1 → under 12 ✓. No guardrail violations.
+
+**Sub-Agent 6 — Tech Analyst: 9/10**
+Marvell's custom AI ASIC business (Teralynx) is the picks-and-shovels play for hyperscaler AI inference. Deep customer co-development creates 5–7 year switching cost moat. Proprietary DSP IP. Jensen Huang "next trillion" endorsement validates the platform. Only Broadcom (AVGO) competes at this level — duopoly. R&D ~20% of revenue.
+
+**Master Decision — MRVL:**
+F=8, T=6, S=9, M=7, R=8, TA=9 | Average: **7.83** | Agents ≥7: 5/6 (F,S,M,R,TA) | Risk: 8 ≥6 ✓
+**→ APPROVED** (avg ≥7 ✓, Risk ≥6 ✓, ≥4 agents at 7+ ✓)
+Order attempted: MRVL 8sh limit $313.56 bracket GTC (stop $297.88, target $360.59) → **HTTP 403 BLOCKED (43rd consecutive)**
+
+---
+
+#### NVDA — 4 shares | Limit $212.06 | Stop $201.46 (-5%) | Target $243.87 (+15%)
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q1 FY2027 beat: $81.62B revenue (+85% YoY). $80B buyback. Blackwell architecture ramping. Data center demand unabated (Microsoft, Amazon, Google capex up). Dominant AI accelerator market share (80%+). High multiple justified by growth trajectory.
+
+**Sub-Agent 2 — Technical: 7/10**
+Pullback from $221 (June 18) to $210.69 today = better entry than prior watchlist. Support: $208-$210 zone. Stochastic: Neutralizing from overbought — potential crossover. MACD: Bullish trend ✓. Volume: Normal-ish. Volume Oscillator: Slightly positive ✓. Pullback into support = hammer-type setup. 2/5 mandatory indicators confirm (MACD, Volume Oscillator). 1-hour trend: Uptrend intact.
+
+**Sub-Agent 3 — Sentiment: 8/10**
+Perpetually bullish. AI theme leader. Jensen Huang constant catalyst machine. X sentiment: Strongly bullish. $NVDA cashtag always active. No bearish signals from prominent investors. Options: Calls dominant.
+
+**Sub-Agent 4 — Macro: 7/10**
+AI capex secular — FOMC hold + Iran risk-on supports high multiples. Market down -0.35% but NVDA decoupled from macro on AI infrastructure narrative.
+
+**Sub-Agent 5 — Risk: 9/10**
+4sh × $212.06 = $848 = 0.85% equity ✓ — very small, defensive size. Stop risk: 4×$212.06×5% = $42 = 0.04% equity ✓. R/R: 3.0:1 ✓. Combined semis after MRVL: 2.51%+0.85% = 3.36% → well under 25% ✓. No violations.
+
+**Sub-Agent 6 — Tech Analyst: 10/10**
+CUDA moat (5M+ developers). Blackwell GB200 NVL72 = architecture leap. NVLink/NVSwitch proprietary interconnects. Leading inference + training. 25% R&D/revenue. No credible near-term competitor on performance/software stack combination. Platform lock-in deepens with every new model requiring NVDA-specific optimization.
+
+**Master Decision — NVDA:**
+F=8, T=7, S=8, M=7, R=9, TA=10 | Average: **8.17** | Agents ≥7: 6/6 | Risk: 9 ≥6 ✓
+**→ APPROVED** (avg ≥7 ✓, Risk ≥6 ✓, all 6 agents ≥7 ✓)
+Order attempted: NVDA 4sh limit $212.06 bracket GTC (stop $201.46, target $243.87) → **HTTP 403 BLOCKED (43rd consecutive)**
+
+---
+
+#### AMD — 9 shares — SKIPPED (Exemption 1)
+
+**Skip Reason (Exemption 1 — would breach hard guardrail):**
+AMD stale GTC buy limit orders at $520.59 and $524.15 cannot be verified as cancelled (Alpaca API blocked). AMD currently trading ~$545 (above stale limits). If AMD corrects to $520-524, BOTH the stale GTCs AND our new bracket stop ($519.85 at -5% from $547 entry) would fire near-simultaneously: stale GTC fills 18sh naked + our stop closes the bracket position = 18 naked shares with no protective stop. Combined AMD exposure would be ~18sh × $520 = $9,360 = 9.37% equity — breaches 5% position guardrail. Per CLAUDE.md Exemption 1: skip until operator confirms stale GTCs cancelled.
+
+Fresh 6-agent APPROVED (F=7, T=8, S=7, M=7, R=8, TA=7 | avg 7.33 | all ≥7). Setup valid at $547.23 limit. ONLY blocker: unverifiable stale GTC double-fill risk.
+
+```yaml
+---
+ts: 2026-06-22T16:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7
+thesis: "AMD AI data center momentum + Citi Buy PT $665 + Barclays Strong Buy. Valid ≥7 setup blocked by stale GTC double-fill guardrail risk."
+size_pct: 4.87
+stop: 519.85
+target: 627.12
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "AMD 9sh at ~$547 approved by 6-agent gate (avg 7.33, all ≥7). SKIPPED per Exemption 1: stale GTC buy limit orders at $520.59 (May 29) and $524.15 (June 3) cannot be confirmed cancelled (Alpaca API blocked — 43rd session). AMD trading ~$545 (above limits). If AMD corrects 4-5%, stale GTCs fill 18sh naked while new bracket stop also fires at $519.85. Combined position would reach ~9.4% equity — hard 5% position guardrail breach. OPERATOR: Cancel AMD GTCs $520.59 and $524.15 IMMEDIATELY at alpaca.markets. Once confirmed cancelled, this entry is MANDATORY at next routine."
+---
+```
+
+---
+
+#### INTC — 35 shares — SKIPPED (Fresh Score 6.5 < 7)
+
+**Skip Reason (Score below 7.0 — not a Deployment Bias violation):**
+INTC has run from ~$130 (prior analysis price) to $139.45 today (+7.3%). Fresh 6-agent at $139.45:
+
+F=6: BofA PT $135 now BELOW current price; fundamentals still weak (server share loss to AMD, negative FCF); CHIPS Act grants real but Apple foundry deal speculative (neither company officially confirmed); P/S >10x for revenue-declining company.
+T=6: Extended — 250% YTD run; 4% gap-up today = potentially overbought; Stochastic likely >80 (overbought); only 2/5 mandatory indicators confirming.
+S=7: Apple deal narrative + Trump political confirmation + CHIPS Act sentiment bullish.
+M=7: FOMC hold + Iran deal = positive macro backdrop.
+R=7: With 35sh (adjusted from 38sh — $139.45×38 = $5,299 > 5% guardrail; 35sh × $139.45 = $4,881 = 4.89% ✓). R/R: stop $132.48/target $160.37 = 3.0:1 ✓. Risk per trade: 35×$139.45×5% = $244 = 0.24% ✓.
+TA=6: Intel Foundry 18A process promising but unproven at scale; still behind TSMC; Apple deal will take 12-18 months to show revenue; server platform losses continue.
+
+Average: (6+6+7+7+7+6)/6 = **6.50** | Agents ≥7: 3/6 (S,M,R) | Minimum requires ≥4.
+**→ REJECTED** (avg < 7; <4 agents ≥7). Not a deployment-bias violation — score dropped below threshold due to price deterioration since prior analysis. Re-enter if INTC pulls back to $128-133 range (prior thesis price) or if analyst consensus upgrades above $160.
+
+```yaml
+---
+ts: 2026-06-22T16:36:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 6
+thesis: "INTC Apple foundry deal + CHIPS Act catalyst; prior score 7.17 at $130.65. Price now $139.45 (+7.3%) — BofA PT $135 now below entry; fresh 6-agent scores 6.5."
+size_pct: 4.89
+stop: 132.48
+target: 160.37
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 6
+agent_average: 6.50
+agents_above_7: 3
+master_decision: rejected
+master_notes: "INTC re-scored at current price $139.45. Prior analysis was at $130.65 (score 7.17). Price has run +7.3% since prior score. Key changes: (1) BofA PT $135 is now BELOW current price — primary analyst sees this as overvalued; (2) P/S >10x for a company with declining revenue is speculative; (3) Only 3/6 agents scored ≥7 (needs ≥4); (4) 38sh at $139.45 = $5,299 = 5.31% = guardrail breach — adjusted to 35sh but R/R analysis unchanged. Average 6.50 < 7.0 threshold. NOT a deployment-bias violation because fresh score is below minimum. Re-score if INTC pulls back to $128-133 or new analyst upgrades emerge above $160."
+---
+```
+
+---
+
+### ORDER ATTEMPTS SUMMARY
+
+| Symbol | Action | Qty | Limit | Stop | Target | API Result |
+|--------|--------|-----|-------|------|--------|------------|
+| MRVL | entry | 8 | $313.56 | $297.88 (-5%) | $360.59 (+15%) | **HTTP 403 BLOCKED** |
+| NVDA | entry | 4 | $212.06 | $201.46 (-5%) | $243.87 (+15%) | **HTTP 403 BLOCKED** |
+| AMD | skip | — | — | — | — | Exemption 1 (stale GTC risk) |
+| INTC | skip | — | — | — | — | Score 6.5 < 7.0 |
+
+**Alpaca API Block Count: 43rd consecutive session** (since ~May 6, 2026)
+
+---
+
+### YAML ORDER RECORDS
+
+```yaml
+---
+ts: 2026-06-22T16:33:00Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: "S&P 500 inclusion day — forced ETF buying at close creates mechanical demand spike. AI custom silicon leader (Teralynx T100). Multiple analyst PT upgrades. Clean 3:1 R/R."
+size_pct: 2.51
+stop: 297.88
+target: 360.59
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 9
+  macro: 7
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.83
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED (avg 7.83, Risk 8, 5/6 agents ≥7). Only Technical (6) below threshold — overbought risk after 265% YTD run; inclusion day volume pattern noted. 3 of 5 mandatory indicators confirm (MACD ✓, Volume Oscillator ✓, Volume Spike ✓). ORDER ATTEMPTED → HTTP 403 BLOCKED (43rd consecutive session). Operator must execute: BUY 8sh MRVL limit $313.56 bracket GTC, stop $297.88, target $360.59 at alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T16:34:00Z
+action: entry
+symbol: NVDA
+bucket: active
+setup: mean-reversion-oversold
+score: 8
+thesis: "AI infrastructure leader pulling back from $221 to $210 — better entry on neutral stochastic reset. $80B buyback support. Blackwell ramping. 3:1 R/R intact."
+size_pct: 0.85
+stop: 201.46
+target: 243.87
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 10
+agent_average: 8.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED (avg 8.17, Risk 9, all 6 agents ≥7). Highest average score of the session. Pullback from $221 to $210 = stochastic neutralizing = better entry than June 18 plan. 2/5 mandatory indicators confirm (MACD ✓, Volume Oscillator ✓). ORDER ATTEMPTED → HTTP 403 BLOCKED (43rd consecutive session). Operator must execute: BUY 4sh NVDA limit $212.06 bracket GTC, stop $201.46, target $243.87 at alpaca.markets."
+---
+```
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+- 0 confirmed open positions → no overnight hold decisions
+- MRVL and NVDA orders submitted but blocked → if operator places them today, both are GTC (survive overnight)
+- MRVL close-of-day ETF inclusion buying is the key event — positions entered before 3:30 PM ET benefit from inclusion buyer flow
+- AMD and INTC: skipped for specific reasons; neither is a deployment-bias violation
+
+---
+
+### ⭐ OPERATOR URGENT ACTION ITEMS — JUNE 22
+
+**Execute at alpaca.markets before market close (4:00 PM ET):**
+
+1. **CANCEL AMD $520.59 and $524.15 stale GTCs** (critical — prevents naked double-fill)
+2. **CANCEL MRVL $202.19 stale GTC** (far from market but clean hygiene)  
+3. **CANCEL PLTR $150.74 stale GTC** (far from market)
+4. **BUY MRVL 8sh limit $313.56 bracket GTC** — stop $297.88, target $360.59 — S&P 500 inclusion close buying is TODAY
+5. **BUY NVDA 4sh limit $212.06 bracket GTC** — stop $201.46, target $243.87
+6. Once AMD stale GTCs confirmed cancelled: **BUY AMD 9sh limit $547.23 bracket GTC** — stop $519.85, target $627.12
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓
