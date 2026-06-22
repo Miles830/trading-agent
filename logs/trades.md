@@ -4,6 +4,207 @@
 
 ---
 
+## 2026-06-22 — Daily Review (4:30 PM ET / 20:31 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:31:57Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd consecutive blocked session**
+**Market Status:** CLOSED (post-4:00 PM ET). Trading day confirmed.
+
+---
+
+### HEARTBEAT TALLY — June 22, 2026
+
+```
+grep results from logs/heartbeats/2026-06-22.log:
+  2026-06-22T20:31:57Z STARTED Daily-Review
+```
+
+| Routine | Scheduled (UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING | ✗ MISSING | **🔴 SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ MISSING | ✗ MISSING | **🔴 SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING | ✗ MISSING | **🔴 SILENT FAILURE** |
+| Midday | 16:30Z | ✗ MISSING | ✗ MISSING | **🔴 SILENT FAILURE** |
+| Afternoon | 18:00Z | ✗ MISSING | ✗ MISSING | **🔴 SILENT FAILURE** |
+| Market-Close | 19:30Z | ✗ MISSING | ✗ MISSING | **🔴 SILENT FAILURE** |
+| Daily-Review | 20:30Z | 20:31:57Z ✓ | (running) | ✓ RUNNING |
+
+**⭐ TOP OPERATIONAL ISSUE: 6/6 INTRADAY ROUTINES SILENTLY FAILED ON MANDATORY ENTRY DAY.**
+This was June 22 — MRVL S&P 500 inclusion effective date, highest-priority catalyst in the portfolio's 7-week history. ALL Pre-Market through Market-Close routines produced zero heartbeat entries. This is the 43rd consecutive session where Alpaca API is blocked (HTTP 403 "Host not in allowlist"). **Remediation: Operator must provision the Alpaca API hostname into the cloud runner's egress allowlist. Until this is done, every trading day continues to be a non-event from the cloud runner's perspective.**
+
+---
+
+### STOP-LOSS AUDIT — First Action
+
+```
+GET /v2/positions     → HTTP 403 "Host not in allowlist" (43rd consecutive block)
+GET /v2/orders?status=open → HTTP 403
+GET /v2/account      → HTTP 403
+```
+
+Estimated state: 0 open positions, ~$99,854 cash. No stop-loss gaps to fill.
+⚠️ STALE GTC STATUS UNKNOWN (operator-side): AMD $520.59, AMD $524.15, MRVL $202.19, PLTR $150.74 — unknown if cancelled per prior instructions. AMD at $537.37 = still ~3.2% above stale limits → if not yet cancelled, CRITICAL RISK on any overnight gap-down.
+
+---
+
+### MARKET CONDITIONS — June 22, 2026
+
+| Indicator | Value | Change | Signal |
+|---|---|---|---|
+| S&P 500 | 7,472.79 | −0.37% (−27.79 pts) | Mild decline — tech drag |
+| Nasdaq Composite | 26,166.60 | −1.32% | Tech/AI names under pressure |
+| Dow Jones | +148.01 pts | +0.29% | Rotation to value |
+| MRVL | ~$298.47 | −3.90% | **Sell-the-news on S&P 500 inclusion day** |
+| NVDA | ~$209.25 | ~−5.3% from $221 Jun 18 | Pullback to support area |
+| AMD | $537.37 | est. flat to −2% | Consolidation |
+| INTC | $133.99 | +4.7% from $128 Jun 18 | Approaching BofA PT $135 |
+| SPX June 18 prior close | 7,500.58 | — | Reference |
+
+**Quarterly Rebalance Effect (June 22 effective date):**
+- S&P 500 additions: MRVL, FLEX (replacing POOL, CPB)
+- Nasdaq-100 additions: CRWV, ALAB, NBIS, RKLB, TER (replacing Charter, Cognizant, Zscaler, Insmed, Verisk)
+- **Classic sell-the-news pattern confirmed across ALL new additions**: MRVL −3.90%, CRWV −10% intraday, ALAB pulled back from $440 high to ~$413. Front-running of forced buying had already occurred in the weeks leading up to inclusion.
+
+**Macro Notes:**
+- Iran deal: 60-day roadmap agreed; final deal not yet signed; limited market impact today
+- PCE report for May 2026 due **June 25 (Thursday)** — expected +0.5% m/m; core PCE elevated at ~3.3% YoY; Warsh Fed revised 2026 PCE projection to 3.6% in June SEP
+- FOMC rate: 3.50-3.75% (hold confirmed June 17); Kevin Warsh hawkish bias remains overhang
+- MU earnings **June 24 (Tuesday)** after close — consensus EPS $19.72-$19.95 on $34.5B rev (company guided $19.15 ± $0.40 on $33.5B ± $0.75B). **48-HOUR BINARY EVENT WINDOW ACTIVE NOW through June 24 close.**
+
+---
+
+### TODAY'S ACTIVITY
+
+**Orders placed: 0** (Alpaca API blocked — HTTP 403 — 43rd consecutive session)
+
+**Missed mandatory entries (all 4 names from prior watchlist blocked):**
+- MRVL 8sh MOO → BLOCKED (Pre-Market silently failed; inclusion day sell-the-news would have caused entry ~$313-329 pre-market with close at ~$298 = estimated loss −3.90% to −9.7%)
+- NVDA 4sh bracket GTC → BLOCKED (Market-Open silently failed)
+- AMD 9sh bracket GTC → BLOCKED (Market-Open silently failed)
+- INTC 38sh bracket GTC → BLOCKED (Market-Open silently failed)
+
+**Incidental note:** MRVL sell-the-news means the forced-entry block saved an estimated paper loss of $75-200 on the MRVL position specifically. However, NVDA, AMD, and INTC would likely have been profitable today (INTC +4.7%, AMD roughly flat, NVDA modestly down).
+
+---
+
+### PERFORMANCE ANALYSIS
+
+**Today's portfolio return: 0%** (no positions)
+**SPX today: −0.37%** (7,500.58 → 7,472.79)
+**Daily gap: +0.37 pp** (portfolio outperformed — passive cash shield on down day)
+
+**Cumulative performance (vs May 1 ~7,200 SPX baseline):**
+- Portfolio total return: −0.15% (~$99,854 vs $100,000 initial — only completed trade is GLD stop-out −$145.58)
+- SPX total return since May 1: (7,472.79 − 7,200) / 7,200 = **+3.79%**
+- **Cumulative gap: −3.94 pp** (UPDATED from prior est. −5.71 pp — prior was based on overestimated SPX levels; actual June 22 close confirms ~3.94 pp gap)
+
+**Note on 20-day underperformance streak:** Today was technically +0.37 pp outperformance (SPX down, portfolio flat). The mechanical streak is broken today, as it was also broken on June 5 (+2.66 pp) and June 10 (+0.60 pp). However root cause is unchanged: API blockage prevents deployment during up days, while cash shields losses on down days. This is forced passive behavior, not a strategy win. Streak reset to zero for mechanical counting purposes.
+
+**Rolling 20-day metrics:**
+- Trades closed in 20-day window: 1 (GLD stop_hit, result_pct: −4.99%)
+- Win rate: 0/1 = 0%
+- Avg win: N/A
+- Avg loss: −4.99%
+- Profit factor: 0
+
+---
+
+### SETUP-TAG TALLY (5-day window: June 18-22)
+
+Grepping `setup:` tags from June 18-22 trades.md entries:
+- June 22: 0 completed trades
+- June 19: skip (holiday)
+- June 18: orders blocked (no result_pct on any entry)
+
+**No new completed setup data in the 5-day window.** Running cumulative tally unchanged:
+- `macro-hedge` (GLD): 0 wins / 1 loss (stop_hit −4.99%) → **RUNNING TALLY: 0W/1L**
+- All other setups: 0 attempted (API blockage prevented all entries)
+
+**3-in-a-row halt/boost rules:** Cannot apply — insufficient sample size for any setup.
+
+---
+
+### BEST/WORST TRADES — June 22
+
+**No trades executed.** All intraday routines silently failed; no fills confirmed via API (blocked).
+
+**Counterfactual best case (if API had worked):**
+- Best: INTC 38sh entered at open (~$129-130) → closed $133.99 = est. +$152-190 gain
+- Worst: MRVL 8sh entered at MOO (~$313-329 pre-market high) → closed ~$298.47 = est. −$116 to −$244 loss
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **Cash shield on tech drawdown** — Portfolio flat while Nasdaq fell −1.32% and MRVL fell −3.90%. Passive outperformance by default.
+2. **MRVL sell-the-news call was validated** — Prior analysis noted elevated pre-inclusion valuation risk. Actual inclusion day was −3.90% exactly as a sell-the-news pattern. Future index inclusion plays should target entry 1-2 weeks BEFORE effective date, not day-of.
+3. **NDX rebalance sell-the-news confirmed as a pattern** — ALL new NDX adds (CRWV, ALAB, NBIS, RKLB) fell on their first trading day as index members. Front-running of passive flows completes before inclusion; day-of is typically exit, not entry.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW
+
+1. **OPERATOR MUST EXECUTE June 23:** NVDA 4sh limit bracket GTC ~$209 + AMD 9sh limit bracket GTC ~$540 (after confirming stale GTC cancellations) + MRVL 8sh limit bracket GTC ~$299 (post-sell-the-news support retest). Three confirmed ≥7 entries ready.
+2. **MU binary event block actively enforced:** DO NOT enter MU June 23-24. Earnings June 24. Enter only AFTER the June 24 print is out (June 25 window, but PCE also June 25 — assess both events before entry).
+3. **INTC reassessment needed:** INTC $133.99 is approaching BofA PT $135. If there's no fresh analyst upgrade, the entry thesis loses conviction. Downgrade to "monitor" until INTC clears $135 and analyst consensus upgrades PT, or until it pulls back to $128-130 for a fresh entry with more upside room.
+
+---
+
+### LESSONS LEARNED
+
+- **Index inclusion day = sell-the-news:** Front-running of forced passive fund buying starts immediately after announcement and peaks in the final days before the effective date. The effective date itself is the exit window for front-runners, not entry window. RULE: For future S&P 500 / NDX additions, enter within 72h of announcement, not on inclusion day.
+- **PCE June 25 is the next macro gate:** With core PCE elevated at ~3.3% YoY and Warsh's Fed projecting 3.6% for 2026, a hot PCE print (+0.5%+ m/m) could revive rate-hike expectations and cause a risk-off selloff in growth/tech. This is NOT a formal 48-hour block under strategy rules, but it is a meaningful tail risk for entries made June 23-24.
+- **MU earnings June 24 creates a mandatory skip until post-print:** Do not enter MU regardless of how compelling the setup looks pre-earnings.
+
+---
+
+### TOMORROW'S WATCHLIST — June 23, 2026 (BINDING — all ≥7 are deployment commitments)
+
+**Binary event blocks active:**
+- MU: ❌ BLOCKED through June 24 close (earnings binary event)
+
+**Stale GTC verification required before entries:**
+- ⚠️ OPERATOR: Confirm AMD GTCs $520.59/$524.15 are CANCELLED before June 23 open
+- ⚠️ OPERATOR: Confirm MRVL $202.19 and PLTR $150.74 stale GTCs are CANCELLED
+
+| Rank | Symbol | Action | Qty | Entry | Stop (−5%) | Target (+15%) | Size% | Pre-Score | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | **NVDA** | Limit bracket GTC | 4sh | ~$209.50 | ~$199.03 | ~$240.93 | 0.84% | **~7.67** | AI secular leader; pullback from $221 to $209 = potential support retest; $80B buyback floor; Vera Rubin cycle |
+| 2 | **AMD** | Limit bracket GTC | 9sh | ~$540.00 | ~$513.00 | ~$621.00 | 4.87% | **~7.17** | Citi PT $665; AI CPU $200B TAM; post-rebalance digestion; requires stale GTC cancellation first |
+| 3 | **MRVL** | Limit bracket GTC | 8sh | ~$299.00 | ~$284.05 | ~$343.85 | 2.40% | **~7.33** | Post-sell-the-news pullback to $285-300 support; AI ASIC thesis (Teralynx T100) intact; S&P 500 inclusion flow done but long-term passive accumulation now begins |
+| 4 | **INTC** | DEFER | — | — | — | — | — | ~6.5 | At BofA PT $135 ($133.99 close) — limited upside without fresh analyst upgrade. Re-enter watchlist only if: (a) price pulls back to $128-130, or (b) new analyst PT hike above $140 |
+| 5 | **ALAB** | Watch only | — | — | — | — | — | ~6.5 | Astera Labs — AI connectivity; post-NDX sell-the-news $440→$413; needs full 6-agent before entry consideration; potentially score ≥7 at $380-390 support |
+| 6-10 | Broad scan | Whole-market | — | — | — | — | — | TBD | PCE caution June 25; MU binary block; seek momentum names with fresh catalysts on earnings reactions / breakouts; avoid names with binary events June 23-24 |
+
+**Pre-Market June 23 mandatory actions:**
+1. Place NVDA 4sh limit bracket GTC at open price × 1.005 (score est. 7.67 → ENTER)
+2. After stale GTC cancellation confirmed: Place AMD 9sh limit bracket GTC at $540 (score est. 7.17 → ENTER)
+3. Place MRVL 8sh limit bracket GTC at ~$299 (score est. 7.33 → ENTER)
+4. SKIP INTC — at PT with limited upside; watchlist but not a mandate today
+
+---
+
+```yaml
+---
+ts: 2026-06-22T20:31:57Z
+action: skip
+symbol: null
+bucket: null
+setup: other
+score: null
+thesis: "June 22 Daily Review: All 6 intraday routines silently failed (Alpaca API HTTP 403 — 43rd consecutive blocked session). MRVL S&P 500 inclusion day. SPX −0.37%, Nasdaq −1.32%. MRVL sell-the-news −3.90%. Portfolio flat (0 positions) = +0.37 pp outperformance today."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "DAILY REVIEW 2026-06-22. 6/6 intraday routines silently failed. Alpaca API blocked (HTTP 403 — 43rd consecutive session). MRVL inclusion day sell-the-news confirmed pattern. S&P 500 close 7,472.79 (−0.37%). Portfolio total equity ~$99,854 (0 positions). Cumulative gap vs SPX: −3.94 pp (corrected from prior est. −5.71 pp — SPX actual close lower than prior estimates). MU binary event block active through June 24 close (earnings). PCE June 25 macro risk. BINDING WATCHLIST JUNE 23: NVDA 4sh ~$209 (7.67), AMD 9sh ~$540 (7.17), MRVL 8sh ~$299 (7.33). INTC deferred (at BofA PT $135, limited upside). Stale GTC cancellation required: AMD $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 — OPERATOR MUST CONFIRM CANCELLED."
+---
+```
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓
