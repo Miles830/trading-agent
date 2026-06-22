@@ -4,6 +4,273 @@
 
 ---
 
+## 2026-06-22 — Market-Close (3:30 PM ET / 19:33 UTC — MONDAY — MRVL S&P 500 INCLUSION DAY)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:43Z ✓
+**Market Status:** TRADING DAY. June 22 = MRVL S&P 500 effective inclusion date — forced ETF rebalancing at today's close.
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd consecutive blocked session**
+**Current Time:** 19:33Z = 3:33 PM ET (within 3:50 PM MOC deadline)
+
+### Predecessor Audit — June 22, 2026
+
+| Routine | Scheduled (UTC) | Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ MISSING — **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Midday | 16:30Z | ✗ MISSING — **SILENT FAILURE** |
+| Afternoon | 18:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Market-Close | 19:30Z | ✓ RUNNING NOW |
+
+**5 silent failures on the single most important day of the month (MRVL S&P 500 inclusion day).** No intraday entries placed. Full MOC catch-up attempted — all 4 orders blocked.
+
+```yaml
+---
+ts: 2026-06-22T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market routine failed to fire on June 22 (MRVL S&P 500 inclusion day). No heartbeat. MRVL 8sh (MOO) + NVDA 4sh (MOO) were binding."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure — Pre-Market 12:00Z on June 22. No heartbeat recorded. MRVL 8sh (7.67) + NVDA 4sh (8.33) MOO orders were binding per Deployment Bias (June 18 Daily Review). API blocked (43rd session) would have prevented execution, but routine itself did not fire. Deployment-bias violation on the day of MRVL S&P 500 inclusion."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open routine failed to fire on June 22. No heartbeat. AMD 9sh + INTC 38sh bracket GTC entries were binding."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure — Market-Open 13:45Z on June 22. No heartbeat. AMD 9sh (7.50) + INTC 38sh (7.17) bracket GTC entries were binding per Deployment Bias. Stop-loss audit N/A (0 positions). API blocked (43rd session)."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine failed to fire on June 22. No heartbeat. Catch-up bracket limit GTC entries were mandatory for all 4 binding names."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure — Mid-Morning 15:00Z on June 22. No heartbeat. All 4 watchlist names (MRVL, NVDA, AMD, INTC) had no valid exemptions. API blocked (43rd session)."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Midday routine failed to fire on June 22. No heartbeat. Catch-up bracket limit GTC entries mandatory."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure — Midday 16:30Z on June 22. No heartbeat. API blocked (43rd session)."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T18:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Afternoon routine failed to fire on June 22. No heartbeat. 0 open day trades to close. MRVL inclusion catalyst window approaching close."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure — Afternoon 18:00Z on June 22. No heartbeat. 0 open positions so no MOC closures needed. MRVL forced-ETF-buying window closes at today's 4 PM ET close — this is the final intraday routine before that catalyst is permanently exhausted. API blocked (43rd session)."
+---
+```
+
+### Market-Close Actions — MOC Entry Attempts (19:33 UTC = 3:33 PM ET — within 3:50 PM deadline)
+
+**Stop-loss audit:** 0 open positions — N/A (trivially satisfied).
+**Day trade closures:** 0 open day trades — N/A.
+**3% circuit breaker:** NOT TRIGGERED (portfolio flat ~$99,854, 0 positions).
+**Stale order audit:** Cannot verify via API (blocked). Operator must confirm AMD $520.59/$524.15 GTCs cancelled.
+
+All 4 binding watchlist names scored ≥7 (June 18 Daily Review). No valid exemptions on June 22:
+- Exemption 1 (guardrail breach): Not triggered — position sizes are 2.4%/0.9%/4.9%/4.9%, well within 5% cap; sectors far from 25%; cash floor 5% maintained.
+- Exemption 2 (binary event): No earnings within 48h for MRVL, NVDA, AMD, or INTC.
+- Exemption 3 (3% circuit breaker): Not triggered.
+
+**MOC ORDER ATTEMPTS (all attempted before 3:50 PM ET deadline):**
+1. MRVL 8sh MOC: `POST /v2/orders {symbol:MRVL, qty:8, side:buy, type:market, time_in_force:cls}` → **HTTP 403 BLOCKED**
+2. NVDA 4sh MOC: `POST /v2/orders {symbol:NVDA, qty:4, side:buy, type:market, time_in_force:cls}` → **HTTP 403 BLOCKED**
+3. AMD 9sh MOC: `POST /v2/orders {symbol:AMD, qty:9, side:buy, type:market, time_in_force:cls}` → **HTTP 403 BLOCKED**
+4. INTC 38sh MOC: `POST /v2/orders {symbol:INTC, qty:38, side:buy, type:market, time_in_force:cls}` → **HTTP 403 BLOCKED**
+
+Error on all: `Host not in allowlist: paper-api.alpaca.markets. Add this host to your network egress settings to allow access.`
+
+⭐ **MRVL INCLUSION WINDOW CLOSES TODAY.** After 4 PM ET close, the S&P 500 forced-ETF-rebalancing catalyst for MRVL is permanently exhausted. All index trackers (SPY, QQQ, SOXX, XLK, sector ETFs) must complete rebalancing at today's close. Post-close, the inclusion premium is baked in. This was the single highest-conviction mechanical catalyst of the month. Missing it due to 43 consecutive API-blocked sessions represents the peak opportunity cost of the infrastructure issue.
+
+```yaml
+---
+ts: 2026-06-22T19:33:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: "MRVL S&P 500 inclusion effective June 22 — forced ETF rebalancing at close creates mechanical buying demand; AI networking catalyst; Teralynx T100 modem."
+size_pct: 2.4
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED — avg 7.67, Risk 7≥6, 6/6 agents ≥7. MOC attempted 19:33Z: POST /v2/orders {symbol:MRVL, qty:8, side:buy, type:market, time_in_force:cls} → HTTP 403 BLOCKED (43rd consecutive session). DEPLOYMENT BIAS VIOLATION — no valid exemption. MRVL S&P 500 inclusion catalyst window PERMANENTLY CLOSED after today's close. Post-close the forced-buy premium is baked in; June 23 entry must be re-scored (catalyst consumed; score may drop below 7). Operator: cancel stale MRVL GTC $202.19 if still resting."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T19:33:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 8.33
+thesis: "NVDA highest score 8.33 — AI infrastructure leader, datacenter demand, Blackwell ramp, post-FOMC risk-on tailwind."
+size_pct: 0.9
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED — avg 8.33, Risk 8≥6, 6/6 agents ≥7. MOC attempted 19:33Z: POST /v2/orders {symbol:NVDA, qty:4, side:buy, type:market, time_in_force:cls} → HTTP 403 BLOCKED (43rd consecutive session). DEPLOYMENT BIAS VIOLATION. No valid exemption. Scores from June 18 Daily Review still valid — AI capex thesis intact, no binary events."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T19:33:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: "AMD AI/semis momentum, Barclays Strong Buy PT $665, broke above $548 on June 16, 7.50 avg agent score."
+size_pct: 4.9
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED — avg 7.50, Risk 7≥6, 6/6 agents ≥7. MOC attempted 19:33Z: POST /v2/orders {symbol:AMD, qty:9, side:buy, type:market, time_in_force:cls} → HTTP 403 BLOCKED (43rd consecutive session). DEPLOYMENT BIAS VIOLATION. No valid exemption. Operator must verify/cancel stale AMD GTCs $520.59/$524.15 if still resting at Alpaca."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T19:33:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: "INTC Intel foundry turnaround — BofA Buy PT $135, Google 3M TPU order, AI inference demand, TSMC capacity crunch inflection."
+size_pct: 4.9
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED — avg 7.0, Risk 7≥6, 5/6 agents ≥7 (Technical 6/10 is the outlier; gate requires 4+ which is satisfied). MOC attempted 19:33Z: POST /v2/orders {symbol:INTC, qty:38, side:buy, type:market, time_in_force:cls} → HTTP 403 BLOCKED (43rd consecutive session). DEPLOYMENT BIAS VIOLATION. No valid exemption."
+---
+```
+
+### End of Day — June 22, 2026
+
+| Metric | Value |
+|---|---|
+| Open Positions | 0 (no fills possible — API blocked) |
+| Day Trades Closed | 0 (none open) |
+| New MOC Entries | 0 (4 attempted, all HTTP 403) |
+| Today P&L | $0 (est.) |
+| SPX Performance (est.) | +0.3–0.6% (MRVL inclusion-driven demand, post-FOMC risk-on) |
+| Portfolio vs SPX | ~−0.3 to −0.6 pp today |
+| Cumulative Benchmark Gap | ~−6.0 to −6.3 pp (est., widening) |
+| SPX Consecutive Underperformance | 38+ trading days (⚠️ flag) |
+| Cash Floor Maintained | ✓ (99.9% cash) |
+
+**Tomorrow June 23 binding actions:**
+1. Re-score MRVL — inclusion catalyst exhausted; score may fall <7; re-assess fresh 6-agent
+2. NVDA 4sh, AMD 9sh, INTC 38sh remain binding (scores still ≥7, no binary events through June 24)
+3. Operator: cancel stale AMD GTCs $520.59/$524.15 IMMEDIATELY if not already done
+4. **ESCALATE API BLOCKAGE** — 43 consecutive sessions is catastrophic for a trading strategy; operator must resolve network egress policy or this account never trades
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓

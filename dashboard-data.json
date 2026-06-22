@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-22T19:33:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 5.56,
-    "benchmark_gap_pct": -5.71,
+    "spx_return_pct": 5.86,
+    "benchmark_gap_pct": -6.01,
     "open_positions_count": 0,
-    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
+    "note": "June 22 Market-Close (MRVL S&P 500 INCLUSION DAY). Alpaca API blocked (HTTP 403 \u2014 43rd consecutive session). 5 SILENT FAILURES (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon). All 5 predecessor routines absent on single most important day of month. 4 MOC orders attempted (MRVL 8sh, NVDA 4sh, AMD 9sh, INTC 38sh) \u2014 all HTTP 403. MRVL inclusion catalyst window PERMANENTLY CLOSED after today 4PM ET close. 0 positions, 99.9% cash ($99,854). Daily P&L: $0. SPX est. +0.3% today, cumulative +5.86% from start. Benchmark gap: ~-6.01 pp (widening). \u26a0\ufe0f 38+ consecutive days underperformance (API blockage root cause). BINDING JUNE 23: NVDA 4sh (8.33), AMD 9sh (7.50), INTC 38sh (7.17). MRVL must be re-scored (inclusion catalyst exhausted). OPERATOR: cancel AMD $520.59/$524.15 stale GTCs IMMEDIATELY."
   },
   "positions": [
     {
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "POST-FOMC RISK-ON. FOMC HOLD confirmed June 17 at 4.25-4.50%. Iran peace deal signed June 17 in Switzerland. First clean trading day \u2014 AI/semis led. JUNETEENTH June 19 = market CLOSED. Next trading = June 22 (MRVL S&P 500 inclusion effective date).",
+    "mode": "MRVL S&P 500 INCLUSION DAY. Post-FOMC risk-on continues. FOMC HOLD at 4.25-4.50% June 17. Iran peace deal intact. AI/semis leading. MRVL index inclusion forced ETF rebalancing at today June 22 close \u2014 mechanical demand catalyst (one-time event, window closes 4PM ET).",
     "fear_greed": null,
-    "fear_greed_label": "Neutral to Greedy \u2014 post-FOMC relief, Iran deal risk reduction, AI capex theme intact.",
-    "spx": "S&P 500 est. ~7,600 June 18 close (+0.6% from 7,554 June 15). SPX total return since ~May 1: +5.56% (7,600/7,200-1). Post-FOMC relief rally + Iran deal digestion. AI/semis led.",
-    "btc": "BTC est. ~66,000-70,000 \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on insufficient to push BTC to threshold. Monitor June 22.",
+    "fear_greed_label": "Neutral to Greedy \u2014 post-FOMC relief, Iran deal risk reduction, MRVL S&P 500 inclusion excitement, AI capex intact.",
+    "spx": "S&P 500 est. ~7,620-7,640 June 22 (est. +0.3-0.5% from 7,600 June 18 close). SPX total return since ~May 1: ~+5.86% est. MRVL inclusion-day demand + continued risk-on. API blocked \u2014 no confirmed close price.",
+    "btc": "BTC est. ~66,000-70,000 \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on present but insufficient to push BTC past entry threshold. Monitor June 23.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
@@ -89,59 +89,59 @@
         "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
       }
     ],
-    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data today\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%; markets remain risk-on into June 22\n- SPX estimated ~7,600 as of June 18 close (+5.56% from strategy start ~$7,200)\n- **June 22 Primary Catalyst:** MRVL S&P 500 index inclusion effective Monday; index tracker/ETF inflows must execute June 22 close buy \u2014 predictable intraday demand\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before June 22 open\n- **BTC:** ~$66K\u201370K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact; oil stabilizing; risk-on environment persisting into June 22",
-    "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
-    "sp500_est": 7550,
-    "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
+    "macro_notes_md": "**2026-06-22 (Monday \u2014 MRVL S&P 500 Inclusion Day)**\n- NYSE/NASDAQ OPEN \u2014 first trading day after Juneteenth\n- **MRVL S&P 500 effective inclusion:** All index ETFs (SPY, QQQ, XLK, SOXX, sector ETFs) must complete rebalancing at today's 4PM ET close \u2014 mechanical buying demand for MRVL all day\n- Post-FOMC: June 17 Hold confirmed 4.25\u20134.50%; Kevin Warsh dot plot \u2014 0-1 hike 2026 (Scenario B); markets risk-on\n- Iran peace deal still intact; oil stabilizing ~$95-100 Brent; Hormuz tensions fading\n- SPX est. ~7,620-7,640 today close (+0.3-0.5% from June 18 ~7,600)\n- AI/semis continuing leadership: NVDA, AMD, MRVL, INTC all supported\n- **API blocked (43rd session):** No confirmed prices available \u2014 all estimates\n- BTC est. ~$66K-70K; below $82K entry threshold\n- **5 routine silent failures today:** Pre-Market through Afternoon all absent on MRVL inclusion day",
+    "sp500_today_pct": "est. +0.3-0.5% (MRVL inclusion demand + post-FOMC risk-on)",
+    "sp500_est": 7630,
+    "macro_note": "June 22 \u2014 MRVL S&P 500 inclusion day. Post-FOMC risk-on. Iran deal intact. FOMC hold June 17 confirmed. AI/semis leading. API blocked (43rd session). 5 silent failures. All 4 MOC orders blocked (MRVL 8sh, NVDA 4sh, AMD 9sh, INTC 38sh). MRVL inclusion window closes 4PM ET today \u2014 catalyst permanently exhausted post-close."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "holiday",
+      "status": "silent-failure",
       "last_run": "2026-06-16 08:07 ET",
-      "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 correctly absent. June 22 Pre-Market MUST place MOO orders for MRVL 8sh + NVDA 4sh (cap 3 MOO)."
+      "next_run": "2026-06-23 08:00 ET",
+      "last_summary": "June 22: SILENT FAILURE on MRVL S&P 500 inclusion day. No heartbeat. MRVL 8sh MOO + NVDA 4sh MOO were binding \u2014 not placed. Violation logged. API blocked (43rd session). June 23: NVDA 4sh + AMD 9sh + INTC 38sh as MOO/brackets. MRVL re-score needed (inclusion catalyst exhausted)."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "holiday",
+      "status": "silent-failure",
       "last_run": "2026-06-19T13:45:00Z",
-      "next_run": "2026-06-22 09:45 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 no trading. API blocked (HTTP 403 \u2014 40th consecutive). 0 positions, $99,854 cash. Next: June 22 MANDATORY ENTRY (MRVL/NVDA/AMD/INTC all \u22657)."
+      "next_run": "2026-06-23 09:45 ET",
+      "last_summary": "June 22: SILENT FAILURE on MRVL S&P 500 inclusion day. No heartbeat. AMD 9sh + INTC 38sh bracket GTC entries were binding \u2014 not placed. Violation logged. API blocked (43rd session). Stop-loss audit N/A (0 positions)."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
+      "status": "silent-failure",
       "last_run": "2026-06-18T15:11:37Z",
-      "next_run": "2026-06-22 11:00 ET",
-      "last_summary": "June 18: 4 GTC limit bracket orders attempted (MRVL 8sh $306.50, INTC 38sh $130.65, AMD 9sh $547.70, NVDA 4sh $221.10) \u2014 ALL HTTP 403 BLOCKED (38th). 6-agent analysis completed for all 4 names (avg 7.67/7.17/7.50/8.33 \u2014 all APPROVED). 2 predecessor violations logged (Pre-Market, Market-Open)."
+      "next_run": "2026-06-23 11:00 ET",
+      "last_summary": "June 22: SILENT FAILURE. No heartbeat. Catch-up bracket limit GTC entries were mandatory for all 4 names \u2014 not attempted. Violation logged. API blocked (43rd session)."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "holiday",
+      "status": "silent-failure",
       "last_run": "2026-06-19T16:33:00Z",
-      "next_run": "2026-06-22 12:30 ET",
-      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open completed 13:48Z, Mid-Morning absent (expected). Next: June 22 Midday \u2014 confirm June 22 MOO/GTC fills, trail stops on new positions."
+      "next_run": "2026-06-23 12:30 ET",
+      "last_summary": "June 22: SILENT FAILURE on MRVL inclusion day. No heartbeat. All 4 watchlist names had no valid exemptions. Violation logged. API blocked (43rd session)."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "holiday",
+      "status": "silent-failure",
       "last_run": "2026-06-19T18:03:00Z",
-      "next_run": "2026-06-22 14:00 ET",
-      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open 13:48Z \u2713, Midday 16:35Z \u2713, Mid-Morning absent (expected). Next: June 22 Afternoon \u2014 trail stops on new positions, manage MOO fills, assess partial profits if MRVL spikes >5% on inclusion-day ETF inflow."
+      "next_run": "2026-06-23 14:00 ET",
+      "last_summary": "June 22: SILENT FAILURE. No heartbeat. 0 open day trades so no MOC closures needed. MRVL inclusion window closing \u2014 no action taken. Violation logged. API blocked (43rd session)."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
       "status": "completed",
-      "last_run": "2026-06-18T19:33:43Z",
-      "next_run": "2026-06-22 15:30 ET",
-      "last_summary": "June 18 (POST-FOMC / LAST DAY BEFORE JUNETEENTH): 0 day trades to close (0 positions). 4 MOC orders attempted (MRVL 8sh, INTC 38sh, AMD 9sh, NVDA 4sh cls) \u2014 ALL HTTP 403 BLOCKED (39th consecutive). 2 violations logged (Midday, Afternoon). Cumulative gap: ~-5.71 pp. MRVL S&P 500 inclusion effective JUNE 22 \u2014 today was last entry window. AMD stale GTC naked risk over Juneteenth weekend \u2014 OPERATOR MUST CANCEL. Next trading: June 22 (MRVL inclusion date)."
+      "last_run": "2026-06-22T19:33:43Z",
+      "next_run": "2026-06-23 15:30 ET",
+      "last_summary": "June 22 (MRVL S&P 500 INCLUSION DAY): 5 silent failures logged (Pre-Market through Afternoon). 0 day trades to close (0 positions). 4 MOC orders attempted (MRVL 8sh, NVDA 4sh, AMD 9sh, INTC 38sh cls) \u2014 ALL HTTP 403 BLOCKED (43rd consecutive). MRVL inclusion catalyst PERMANENTLY CLOSED after today's close. Cumulative gap: ~-6.01 pp. 0 positions, 99.9% cash. BINDING JUNE 23: NVDA 4sh (8.33), AMD 9sh (7.50), INTC 38sh (7.17). MRVL re-score needed."
     },
     {
       "name": "Daily Review",
@@ -161,6 +161,151 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-22T19:33:00Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC cls ATTEMPTED 19:33Z (within 3:50PM ET deadline) — HTTP 403 BLOCKED (43rd consecutive). DEPLOYMENT BIAS VIOLATION. No valid exemption. MRVL S&P 500 inclusion catalyst window PERMANENTLY CLOSED after today 4PM ET close. June 23 entry must be re-scored (catalyst consumed). Cancel stale GTC $202.19 if resting."
+    },
+    {
+      "ts": "2026-06-22T19:33:00Z",
+      "symbol": "NVDA",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 8.33,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 8,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.33,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC cls ATTEMPTED 19:33Z — HTTP 403 BLOCKED (43rd consecutive). DEPLOYMENT BIAS VIOLATION. No valid exemption. Highest score (8.33), AI infrastructure leader. Remains MANDATORY June 23."
+    },
+    {
+      "ts": "2026-06-22T19:33:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.5,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 8,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC cls ATTEMPTED 19:33Z — HTTP 403 BLOCKED (43rd consecutive). DEPLOYMENT BIAS VIOLATION. No valid exemption. OPERATOR: cancel stale AMD GTCs $520.59/$524.15 IMMEDIATELY. Remains MANDATORY June 23."
+    },
+    {
+      "ts": "2026-06-22T19:33:00Z",
+      "symbol": "INTC",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 7.17,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC cls ATTEMPTED 19:33Z — HTTP 403 BLOCKED (43rd consecutive). DEPLOYMENT BIAS VIOLATION. No valid exemption. BofA Buy PT $135. Remains MANDATORY June 23."
+    },
+    {
+      "ts": "2026-06-22T12:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Pre-Market 12:00Z SILENTLY FAILED June 22 (MRVL S&P 500 inclusion day). No heartbeat. MRVL 8sh MOO + NVDA 4sh MOO were binding. API blocked (43rd session). Deployment-bias violation."
+    },
+    {
+      "ts": "2026-06-22T13:45:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Market-Open 13:45Z SILENTLY FAILED June 22. No heartbeat. AMD 9sh + INTC 38sh bracket GTC entries were binding. API blocked (43rd session). Violation logged."
+    },
+    {
+      "ts": "2026-06-22T15:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Mid-Morning 15:00Z SILENTLY FAILED June 22. No heartbeat. Catch-up entries mandatory — not placed. API blocked (43rd session). Violation logged."
+    },
+    {
+      "ts": "2026-06-22T16:30:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Midday 16:30Z SILENTLY FAILED June 22. No heartbeat. All 4 names had no valid exemptions. API blocked (43rd session). Violation logged."
+    },
+    {
+      "ts": "2026-06-22T18:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Afternoon 18:00Z SILENTLY FAILED June 22. No heartbeat. 0 open positions so no MOC closures needed. MRVL inclusion window approaching close — no action taken. API blocked (43rd session). Violation logged."
+    },
     {
       "ts": "2026-06-18T19:33:00Z",
       "symbol": "MRVL",
@@ -952,14 +1097,14 @@
     {
       "symbol": "MRVL",
       "score": 7.67,
-      "order_type": "MOO",
+      "order_type": "RE-SCORE REQUIRED",
       "qty": 8,
       "limit_price": null,
       "stop_pct": -5.0,
       "target_pct": 15.0,
       "size_pct": 2.46,
-      "priority": "MANDATORY",
-      "notes": "\u2b50 S&P 500 inclusion June 22 \u2014 ETF forced buying at close. Cancel stale GTC $202.19 first. Highest time-sensitivity.",
+      "priority": "CONDITIONAL \u2014 Re-score June 23 Pre-Market",
+      "notes": "\u26a0\ufe0f S&P 500 inclusion catalyst EXHAUSTED after June 22 close. Forced ETF rebalancing completed \u2014 mechanical buying demand is gone. Re-score fresh 6-agent June 23: may fall below 7.0 without inclusion catalyst. If score \u22657, enter with bracket; if <7, skip. Cancel stale GTC $202.19 first.",
       "agent_scores": {
         "fundamentals": 8,
         "technical": 7,
@@ -980,7 +1125,7 @@
       "target_pct": 15.0,
       "size_pct": 0.89,
       "priority": "MANDATORY",
-      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market.",
+      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market. MANDATORY June 23 — no catalyst window expiry, AI capex thesis durable.",
       "agent_scores": {
         "fundamentals": 8,
         "technical": 8,
@@ -1001,7 +1146,7 @@
       "target_pct": 15.0,
       "size_pct": 4.99,
       "priority": "MANDATORY",
-      "notes": "\u26a0\ufe0f CANCEL stale GTCs $520.59 + $524.15 BEFORE market open. 9sh @~$555 = ~$4,995 \u2248 4.99% \u2713. Citi PT $665.",
+      "notes": "\u26a0\ufe0f OPERATOR: CANCEL stale GTCs $520.59 + $524.15 IMMEDIATELY if not done. 9sh at market/MOO est. ~$555-570 = ~4.9-5.0% \u2713. Barclays PT $665. MANDATORY June 23.",
       "agent_scores": {
         "fundamentals": 7,
         "technical": 8,
@@ -1022,7 +1167,7 @@
       "target_pct": 15.0,
       "size_pct": 4.95,
       "priority": "MANDATORY",
-      "notes": "BofA Buy PT $135. 38sh @~$130 = ~$4,940 \u2248 4.94% \u2713. Foundry + AI chip cycle. Cancel stale $123.69 GTC first, replace at ask\u00d71.005.",
+      "notes": "BofA Buy PT $135. 38sh at market/MOO est. ~$129-132 = ~4.9-5.0% \u2713. Intel foundry + AI inference cycle. MANDATORY June 23. Cancel stale $123.69 GTC first (if resting), replace at ask\u00d71.005 bracket GTC.",
       "agent_scores": {
         "fundamentals": 7,
         "technical": 6,
@@ -1069,6 +1214,13 @@
       "spx_return_pct": 4.92,
       "daily_pnl_pct": 0.0,
       "note": "Market-Close. FOMC Day 1. API blocked (36th). 4 silent failures. 0 positions. 0 trades. Both portfolio and SPX ~flat today. Cumulative gap: ~-5.07 pp. MANDATORY entries Thursday June 18 post-FOMC."
+    },
+    {
+      "date": "2026-06-22",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 5.86,
+      "daily_pnl_pct": 0.0,
+      "note": "Market-Close. MRVL S&P 500 INCLUSION DAY. API blocked (43rd). 5 silent failures (Pre-Market through Afternoon). 4 MOC orders attempted (MRVL 8sh, NVDA 4sh, AMD 9sh, INTC 38sh) — all HTTP 403. MRVL inclusion catalyst window permanently closed after 4PM ET. 0 positions, 0 P&L. SPX est. +0.3% today (~7,630). Benchmark gap: ~-6.01 pp. 38+ consecutive underperformance days."
     }
   ]
 }
