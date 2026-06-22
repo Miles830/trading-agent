@@ -4,6 +4,248 @@
 
 ---
 
+## 2026-06-22 — Afternoon (2:00 PM ET / 18:02 UTC — MONDAY — TRADING DAY — MRVL S&P 500 INCLUSION DAY)
+
+**HEARTBEAT:** STARTED Afternoon 18:02:42Z ✓
+**Market Status:** OPEN — Regular trading day. MRVL effective S&P 500 inclusion date. Market closes 4:00 PM ET.
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd consecutive blocked session**
+
+### Predecessor Audit — June 22, 2026
+
+| Routine | Scheduled (UTC) | Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ❌ ABSENT — SILENT FAILURE — VIOLATION |
+| Market Open | 13:45Z | ❌ ABSENT — SILENT FAILURE — VIOLATION |
+| Mid-Morning | 15:00Z | ❌ ABSENT — SILENT FAILURE — VIOLATION |
+| Midday | 16:30Z | ❌ ABSENT — SILENT FAILURE — VIOLATION |
+| Afternoon | 18:00Z | ✓ RUNNING NOW |
+
+**⚠️ 4 PREDECESSOR VIOLATIONS — JUNE 22 MANDATORY ENTRY DAY FULLY MISSED BY CLOUD RUNNER.**
+
+This is the critical MRVL S&P 500 inclusion day. All 4 prior routines today silently failed (no heartbeats). Only the Afternoon routine fired. All watchlist names (MRVL/NVDA/AMD/INTC, all score ≥7) have missed their intended entry window today. Alpaca API remains blocked (43rd consecutive session).
+
+```yaml
+---
+ts: 2026-06-22T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market routine silently failed on June 22 (MRVL S&P 500 inclusion day — MANDATORY MOO entries for MRVL 8sh + NVDA 4sh). No heartbeat. No orders placed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Pre-Market SILENT FAILURE June 22. Deployment bias violation — binding watchlist had MRVL 8sh + NVDA 4sh as MOO orders for this routine. Alpaca API blocked (HTTP 403 — 43rd session). Cloud runner session did not fire. Root cause: cloud scheduler dropout. No orders placed. MRVL opened at ~$289-295 (est.) on S&P 500 inclusion day — now $310.58 (+7.27%) at afternoon. Missed +$168 estimated on 8sh position."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open routine silently failed on June 22. Should have confirmed MOO fills and placed GTC bracket stops for MRVL/NVDA, plus placed AMD 9sh + INTC 38sh limit bracket GTC orders."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Market-Open SILENT FAILURE June 22. Deployment bias violation — would have confirmed MOO fills + placed stop orders (MRVL fill×0.95, NVDA fill×0.95) + placed AMD 9sh bracket GTC + INTC 38sh bracket GTC. Alpaca API blocked (HTTP 403 — 43rd). Market-Open estimated at: MRVL ~$289-300, NVDA ~$209, AMD ~$512, INTC ~$122. All 4 had no-binary-event, no circuit breaker, no guardrail conflict at open prices — zero valid skip exemptions."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine silently failed on June 22. Should have confirmed open position fills, audited stops, and managed MRVL intraday on inclusion-day momentum."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Mid-Morning SILENT FAILURE June 22. Had positions been entered at open, Mid-Morning would have: confirmed all 4 fills, verified stops resting at Alpaca, and assessed whether to trail MRVL stop given +7% intraday move on inclusion-day ETF inflow demand."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Midday routine silently failed on June 22. Should have assessed midday positions and potential partial MRVL profit-taking."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Midday SILENT FAILURE June 22. Fourth consecutive silent failure today. This is the third occasion (after June 10 and June 18) where all intraday routines except one have failed. Pattern suggests cloud scheduler is dropping sessions intermittently — operator must verify scheduling configuration."
+---
+```
+
+### Afternoon Actions — June 22, 2026
+
+**Market Snapshot (2:00 PM ET):**
+- S&P 500: +0.12% (est. ~7,609 from 7,600 June 18 close)
+- Nasdaq: −0.27%
+- Dow: +0.44%
+- Russell 2000: +2.12%
+- MRVL: **$310.58 (+7.27%)** ⭐ S&P 500 inclusion day rally — ETF inflow demand driving
+- NVDA: $209.25 (range $208.62–$213.99, ~flat)
+- AMD: $537.37 (+4.86%)
+- INTC: **$133.99 (+10.64%)** — semiconductor sector strength
+- BTC: est. ~$68,000–$72,000 (below $82K threshold)
+
+**Stop-Loss Audit:** 0 open positions — no stops to verify. Alpaca API blocked (no remote verification possible).
+
+**Day Trades to Close:** None (no open positions).
+
+**Circuit Breaker Check:** NOT triggered. Portfolio equity ~$99,854 (flat). Daily P&L 0% — no circuit breaker.
+
+**New Entries (Afternoon):** PROHIBITED per proximity-to-close rule (routines/afternoon.md: "Do NOT initiate new active-bucket entries this routine — too close to close"). Skip entries logged below for all 4 binding watchlist names.
+
+```yaml
+---
+ts: 2026-06-22T18:02:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: "MRVL S&P 500 inclusion effective today — ETF forced-buy inflow at close. Strong AI infrastructure moat (custom ASIC, XPU). Score 7.67 per June 18 6-agent analysis (all 6 agents ≥7). Afternoon proximity-to-close rule prohibits new active entries."
+size_pct: 2.46
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP reason: Afternoon proximity-to-close rule (routines/afternoon.md explicit prohibition on new active-bucket entries this late in session). SECONDARY: Alpaca API blocked HTTP 403 (43rd session) — order execution impossible regardless of rule. Had Pre-Market or Market-Open fired, MRVL 8sh MOO would have been placed. Current price $310.58 (+7.27% on inclusion day) — missed +$168 estimated gain on 8sh. BINDING for tomorrow Pre-Market: re-score MRVL; if still ≥7 and not overextended from +7% today, enter as first order. MRVL target at $310.58 + 15% = ~$357; stop $310.58 × 0.95 = $295.05. X (Twitter) sentiment: xAI API blocked — unavailable. Based on known context: strongly bullish (Jensen Huang 'next trillion-dollar stock' + S&P 500 inclusion day)."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T18:02:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 8.33
+thesis: "NVDA highest-score watchlist name (8.33). AI infrastructure mega-cap. Trading ~$209 today — slightly below June 18 estimate of $221. This makes entry MORE attractive. Afternoon proximity-to-close rule prohibits new active entries."
+size_pct: 0.89
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 9
+  macro: 9
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP reason: Afternoon proximity-to-close rule. SECONDARY: Alpaca API blocked HTTP 403. NVDA at $209.25 today — lower than the $221 June 18 estimate, which IMPROVES the entry setup. Target $209.25 × 1.15 = $240.64; stop $209.25 × 0.95 = $198.79. R/R = 15%/5% = 3:1 minimum met. BINDING for tomorrow Pre-Market: NVDA 4sh MOO remains highest priority (score 8.33, 4sh × $209 = $836 ≈ 0.84% equity — well within 5% limit). xAI API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T18:02:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: "AMD up +4.86% to $537.37 today. Citi PT $665. AI inference CPU + ROCm gains. Entry at $537 puts 9sh = $4,833 = 4.84% equity (within 5% limit). Afternoon proximity-to-close rule prohibits new active entries."
+size_pct: 4.84
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 4
+master_decision: approved
+master_notes: "SKIP reason: Afternoon proximity-to-close rule. SECONDARY: Alpaca API blocked. AMD now $537.37 (was $547.70 June 18 limit estimate). CAUTION: AMD had a +4.86% day today — entry tomorrow needs re-evaluation for overextension. 6-agent re-score recommended at Pre-Market tomorrow: if up more than 10% from binding watchlist entry (~$555), reduce to 8sh or defer. Target $537.37 × 1.15 = $618.00; stop $537.37 × 0.95 = $510.50. R/R 3:1 exactly met. xAI API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T18:02:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: "INTC up +10.64% to $133.99 today — semiconductor sector surge on AI spend narrative. BofA PT $135. Entry at $134 puts 38sh = $5,092 = 5.10% equity — GUARDRAIL VIOLATION (>5%). Must reduce to 37sh ($4,958 = 4.97%) at tomorrow's open. Afternoon proximity-to-close rule prohibits new active entries."
+size_pct: 5.10
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP reason: Afternoon proximity-to-close rule. SECONDARY: Alpaca API blocked. INTC at $133.99 — BofA PT $135 is NOW ONLY 0.75% away from current price, which significantly reduces the near-term target. Must re-score INTC at tomorrow's Pre-Market with updated R/R: entry $134, stop $127.29 (-5%), target $154.09 (+15%). R/R still 3:1. BUT BofA PT $135 is too close — if that's the consensus target, real R/R may be compressed. MANDATE: Run fresh 6-agent at Pre-Market tomorrow, particularly re-check Technical Agent (was 6/10; with +10.64% today the stock may be overextended, RSI >70 likely) and Risk Agent (R/R validity at new price). Reduce to 37sh. xAI API blocked."
+---
+```
+
+### Tomorrow's Preliminary Watchlist (June 23, 2026 Pre-Market)
+
+Re-evaluation required after today's significant moves. Key concerns:
+- **INTC** at $133.99 is at BofA PT $135 (0.75% away) — R/R compression. Must re-score. Likely reduce size to 37sh. Potentially score drops below 7 on Technical (overbought after +10.64%).
+- **MRVL** at $310.58 (+7.27%) — overextension risk. Fresh 6-agent needed. ETF inclusion demand was TODAY's close — does momentum continue Tuesday?
+- **NVDA** at $209.25 — actually slightly lower than June 18 estimate ($221) — BEST setup of the group, cleaner entry.
+- **AMD** at $537.37 (+4.86%) — must re-evaluate Technical Agent (momentum vs overextension).
+
+| Symbol | Today's Close | % Change | Re-Score Priority | Notes |
+|--------|--------------|----------|-------------------|-------|
+| **NVDA** | ~$209.25 | ~flat | MANDATORY | Highest score 8.33. Price actually improved vs June 18 est. No binary events. 4sh MOO or limit. |
+| **MRVL** | $310.58 | +7.27% | CONDITIONAL | ETF inclusion demand was June 22 CLOSE — key Q: does Tuesday see follow-through or hangover? Fresh 6-agent required. |
+| **AMD** | $537.37 | +4.86% | CONDITIONAL | Up 4.86% today — check Technical/Stochastic for overbought. 9sh still within 5% limit. |
+| **INTC** | $133.99 | +10.64% | HIGH-CAUTION | BofA PT $135 = 0.75% away. R/R severely compressed. May score below 7 at Pre-Market. Reduce to 37sh if enters. |
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓

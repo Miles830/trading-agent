@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
+  "last_updated": "2026-06-22T18:02:00Z",
   "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99854,
@@ -13,9 +13,9 @@
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
     "spx_return_pct": 5.56,
-    "benchmark_gap_pct": -5.71,
+    "benchmark_gap_pct": -5.83,
     "open_positions_count": 0,
-    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
+    "note": "June 22 Afternoon (MRVL S&P 500 Inclusion Day \u2014 MISSED). Alpaca API blocked (HTTP 403 \u2014 43rd consecutive). 4 SILENT FAILURES today: Pre-Market, Market-Open, Mid-Morning, Midday all absent. MRVL +7.27% ($310.58), AMD +4.86% ($537.37), INTC +10.64% ($133.99), NVDA ~flat ($209.25). Est. missed P&L: ~$800-1,000+ on full watchlist. 0 positions, 99.9% cash ($99,854). SPX +0.12% today. Cumulative gap: ~-5.83 pp. JUNE 23 MANDATORY: NVDA 4sh (8.33 \u2014 best entry, lower than est.), re-score MRVL/AMD/INTC."
   },
   "positions": [
     {
@@ -62,9 +62,9 @@
     }
   ],
   "market": {
-    "mode": "POST-FOMC RISK-ON. FOMC HOLD confirmed June 17 at 4.25-4.50%. Iran peace deal signed June 17 in Switzerland. First clean trading day \u2014 AI/semis led. JUNETEENTH June 19 = market CLOSED. Next trading = June 22 (MRVL S&P 500 inclusion effective date).",
+    "mode": "RISK-ON. Post-FOMC + Iran deal intact. S&P 500 quarterly rebalance day (MRVL added). Semis outperforming. S&P 500 +0.12%, Nasdaq -0.27%, Dow +0.44%. MRVL inclusion day rally +7.27%. BTC ~$68-72K (below $82K threshold \u2014 no crypto entry).",
     "fear_greed": null,
-    "fear_greed_label": "Neutral to Greedy \u2014 post-FOMC relief, Iran deal risk reduction, AI capex theme intact.",
+    "fear_greed_label": "Greedy \u2014 post-FOMC relief + Iran deal + AI capex secular intact",
     "spx": "S&P 500 est. ~7,600 June 18 close (+0.6% from 7,554 June 15). SPX total return since ~May 1: +5.56% (7,600/7,200-1). Post-FOMC relief rally + Iran deal digestion. AI/semis led.",
     "btc": "BTC est. ~66,000-70,000 \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on insufficient to push BTC to threshold. Monitor June 22.",
     "sectors": [
@@ -89,51 +89,51 @@
         "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
       }
     ],
-    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data today\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%; markets remain risk-on into June 22\n- SPX estimated ~7,600 as of June 18 close (+5.56% from strategy start ~$7,200)\n- **June 22 Primary Catalyst:** MRVL S&P 500 index inclusion effective Monday; index tracker/ETF inflows must execute June 22 close buy \u2014 predictable intraday demand\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before June 22 open\n- **BTC:** ~$66K\u201370K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact; oil stabilizing; risk-on environment persisting into June 22",
-    "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
-    "sp500_est": 7550,
+    "macro_notes_md": "**2026-06-22 (Monday \u2014 MRVL S&P 500 Inclusion Day)**\n- S&P 500: +0.12% (~7,609), Nasdaq: -0.27%, Dow: +0.44%, Russell 2000: +2.12%\n- MRVL joined S&P 500 effective today \u2014 ETF forced-buying at close drove +7.27% inclusion-day rally\n- Semiconductor sector broadly strong: INTC +10.64%, AMD +4.86%\n- NVDA ~flat ($209.25) \u2014 below prior estimates ($221), creating better entry point\n- BTC est. ~$68-72K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact, post-FOMC risk-on environment persisting\n- \u26a0\ufe0f ALL 4 cloud routines silently failed today \u2014 Alpaca blocked 43rd session\n- MU earnings est. ~June 24 \u2014 within binary event window, do not enter",
+    "sp500_today_pct": "+0.12%",
+    "sp500_est": 7609,
     "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-16 08:07 ET",
-      "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 correctly absent. June 22 Pre-Market MUST place MOO orders for MRVL 8sh + NVDA 4sh (cap 3 MOO)."
+      "status": "violation",
+      "last_run": "2026-06-22T12:00:00Z (SILENT FAILURE)",
+      "next_run": "2026-06-23 08:00 ET",
+      "last_summary": "June 22: SILENT FAILURE \u2014 no heartbeat. MANDATORY MOO for NVDA 4sh + MRVL 8sh not placed. Alpaca API blocked (43rd). JUNE 23 MANDATORY: NVDA 4sh MOO (8.33 score, best entry price at $209)."
     },
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-19T13:45:00Z",
-      "next_run": "2026-06-22 09:45 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 no trading. API blocked (HTTP 403 \u2014 40th consecutive). 0 positions, $99,854 cash. Next: June 22 MANDATORY ENTRY (MRVL/NVDA/AMD/INTC all \u22657)."
+      "status": "violation",
+      "last_run": "2026-06-22T13:45:00Z (SILENT FAILURE)",
+      "next_run": "2026-06-23 09:45 ET",
+      "last_summary": "June 22: SILENT FAILURE. AMD 9sh + INTC 38sh bracket GTC not placed. All 4 watchlist entries missed. June 23 Market-Open: confirm MOO fills + place stop orders + re-score AMD/INTC after today's moves."
     },
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-18T15:11:37Z",
-      "next_run": "2026-06-22 11:00 ET",
-      "last_summary": "June 18: 4 GTC limit bracket orders attempted (MRVL 8sh $306.50, INTC 38sh $130.65, AMD 9sh $547.70, NVDA 4sh $221.10) \u2014 ALL HTTP 403 BLOCKED (38th). 6-agent analysis completed for all 4 names (avg 7.67/7.17/7.50/8.33 \u2014 all APPROVED). 2 predecessor violations logged (Pre-Market, Market-Open)."
+      "status": "violation",
+      "last_run": "2026-06-22T15:00:00Z (SILENT FAILURE)",
+      "next_run": "2026-06-23 11:00 ET",
+      "last_summary": "June 22: SILENT FAILURE. 3rd consecutive silent failure today. Would have managed MRVL positions on inclusion-day intraday."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-19T16:33:00Z",
-      "next_run": "2026-06-22 12:30 ET",
-      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open completed 13:48Z, Mid-Morning absent (expected). Next: June 22 Midday \u2014 confirm June 22 MOO/GTC fills, trail stops on new positions."
+      "status": "violation",
+      "last_run": "2026-06-22T16:30:00Z (SILENT FAILURE)",
+      "next_run": "2026-06-23 12:30 ET",
+      "last_summary": "June 22: SILENT FAILURE. 4th consecutive silent failure. Missed entire MRVL inclusion-day management window."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-19T18:03:00Z",
-      "next_run": "2026-06-22 14:00 ET",
-      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open 13:48Z \u2713, Midday 16:35Z \u2713, Mid-Morning absent (expected). Next: June 22 Afternoon \u2014 trail stops on new positions, manage MOO fills, assess partial profits if MRVL spikes >5% on inclusion-day ETF inflow."
+      "status": "completed",
+      "last_run": "2026-06-22T18:02:00Z",
+      "next_run": "2026-06-23 14:00 ET",
+      "last_summary": "June 22 (MRVL Inclusion Day): Only routine to fire today. Alpaca blocked (43rd). 4 predecessor violations logged. 0 positions, 0 day trades. Proximity-to-close rule prohibits new active entries this routine. 4 skip entries logged (MRVL/NVDA/AMD/INTC \u2014 all affirmed \u22657 via prior scoring). June 23 preliminary watchlist: NVDA 4sh (8.33 \u2014 MANDATORY), MRVL/AMD (re-score), INTC (HIGH CAUTION \u2014 BofA PT 0.75% away)."
     },
     {
       "name": "Market Close",
@@ -950,37 +950,16 @@
   },
   "watchlist": [
     {
-      "symbol": "MRVL",
-      "score": 7.67,
-      "order_type": "MOO",
-      "qty": 8,
-      "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 2.46,
-      "priority": "MANDATORY",
-      "notes": "\u2b50 S&P 500 inclusion June 22 \u2014 ETF forced buying at close. Cancel stale GTC $202.19 first. Highest time-sensitivity.",
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.67
-    },
-    {
       "symbol": "NVDA",
       "score": 8.33,
-      "order_type": "MOO",
+      "order_type": "MOO or Limit GTC",
       "qty": 4,
-      "limit_price": null,
+      "limit_price": 210.3,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 0.89,
+      "size_pct": 0.84,
       "priority": "MANDATORY",
-      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market.",
+      "notes": "Highest score 8.33. June 22 close ~$209.25 \u2014 LOWER than June 18 estimate ($221). Better entry than expected. No binary events. 4sh \u00d7 $209 = $836 (0.84% equity). MOO preferred.",
       "agent_scores": {
         "fundamentals": 8,
         "technical": 8,
@@ -992,16 +971,37 @@
       "agent_average": 8.33
     },
     {
+      "symbol": "MRVL",
+      "score": 7.67,
+      "order_type": "Limit GTC bracket",
+      "qty": 8,
+      "limit_price": 312.13,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": 2.5,
+      "priority": "CONDITIONAL \u2014 re-score required",
+      "notes": "+7.27% on inclusion day. ETF forced-buying at June 22 CLOSE completed. Key Q: Tuesday follow-through or hangover? Technical Agent may score lower (overbought). Re-score at Pre-Market before entry. If score still \u22657: limit at $310.58 \u00d7 1.005 = $312.13.",
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.67
+    },
+    {
       "symbol": "AMD",
       "score": 7.5,
       "order_type": "Limit GTC bracket",
       "qty": 9,
-      "limit_price": null,
+      "limit_price": 539.77,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 4.99,
-      "priority": "MANDATORY",
-      "notes": "\u26a0\ufe0f CANCEL stale GTCs $520.59 + $524.15 BEFORE market open. 9sh @~$555 = ~$4,995 \u2248 4.99% \u2713. Citi PT $665.",
+      "size_pct": 4.86,
+      "priority": "CONDITIONAL \u2014 re-score required",
+      "notes": "+4.86% today. Stochastic likely overbought on 5-min. Re-score at Pre-Market. If approved: 9sh at $537.37 \u00d7 1.005 = $539.77. Watch stale AMD GTCs ($520.59/$524.15) \u2014 OPERATOR MUST CANCEL if not done.",
       "agent_scores": {
         "fundamentals": 7,
         "technical": 8,
@@ -1015,14 +1015,14 @@
     {
       "symbol": "INTC",
       "score": 7.17,
-      "order_type": "Limit GTC bracket",
-      "qty": 38,
-      "limit_price": null,
+      "order_type": "Limit GTC bracket \u2014 REDUCED SIZE",
+      "qty": 37,
+      "limit_price": 134.54,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 4.95,
-      "priority": "MANDATORY",
-      "notes": "BofA Buy PT $135. 38sh @~$130 = ~$4,940 \u2248 4.94% \u2713. Foundry + AI chip cycle. Cancel stale $123.69 GTC first, replace at ask\u00d71.005.",
+      "size_pct": 4.97,
+      "priority": "HIGH CAUTION \u2014 mandatory re-score",
+      "notes": "+10.64% today \u2014 $133.99. BofA PT $135 = only 0.75% above current price. R/R severely compressed at new price. Risk Agent may auto-veto (3:1 R/R hard minimum). Target $133.99 \u00d7 1.15 = $154.09. Stop $133.99 \u00d7 0.95 = $127.29. R/R still 3:1 technically, but consensus PT creates a ceiling risk. 37sh (not 38sh) to stay under 5% guardrail at this price.",
       "agent_scores": {
         "fundamentals": 7,
         "technical": 6,
@@ -1035,6 +1035,13 @@
     }
   ],
   "history": [
+    {
+      "date": "2026-06-22",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 5.68,
+      "daily_pnl_pct": 0.0,
+      "note": "Afternoon (MRVL S&P 500 Inclusion Day). Alpaca blocked (43rd). 4 silent failures (Pre-Market, Market-Open, Mid-Morning, Midday). Only Afternoon fired. 0 positions. 0 trades. MRVL +7.27% ($310.58), AMD +4.86% ($537.37), INTC +10.64% ($133.99), NVDA ~flat ($209.25). Est. missed P&L: ~$800-1,000 on 4 watchlist positions. SPX +0.12% (~7,609). Cumulative gap: ~-5.83 pp."
+    },
     {
       "date": "2026-06-18",
       "portfolio_return_pct": -0.15,
