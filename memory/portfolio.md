@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-19 (Friday) — Afternoon / Juneteenth (2:00 PM ET / 18:03 UTC). MARKET HOLIDAY — NYSE/NASDAQ CLOSED (Juneteenth National Independence Day). Alpaca API STILL BLOCKED ("Host not in allowlist" — 42nd consecutive blocked session). Non-trading day — no orders placed, no positions managed. Predecessor audit: Market-Open ✓ 13:48Z, Mid-Morning absent (expected), Midday ✓ 16:35Z. Portfolio unchanged: 0 positions, 99.9% cash (~$99,854). NEXT TRADING DAY: JUNE 22 (Monday). ⭐⭐ MRVL S&P 500 INCLUSION EFFECTIVE JUNE 22 — BINDING WATCHLIST: MRVL 8sh (7.67), NVDA 4sh (8.33), AMD 9sh (7.50), INTC 38sh (7.17). ⚠️⚠️ OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE JUNE 22 MARKET OPEN. Cumulative gap vs SPX: est. ~−5.71 pp (unchanged — no trading). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 32+ consecutive trading days (API blockage root cause). June 22 is the MANDATORY ENTRY DAY — all 4 watchlist names score ≥7, no valid exemptions on Monday. ROUTINE ORDER JUNE 22: Pre-Market → MRVL 8sh MOO + NVDA 4sh MOO; Market-Open → AMD 9sh bracket GTC + INTC 38sh bracket GTC.**
+**2026-06-22 (Monday) — Mid-Morning (11:04 AM ET / 15:04 UTC). TRADING DAY — MRVL S&P 500 INCLUSION DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 43rd consecutive blocked session). Both Pre-Market and Market-Open SILENTLY FAILED (2 violations logged). 3 orders APPROVED and ATTEMPTED → all HTTP 403 blocked: MRVL 8sh limit $312.13 (avg 8.0), NVDA 4sh limit $209.04 (avg 7.83), AMD 9sh limit $540.06 (avg 7.33). INTC 37sh REJECTED on fresh score (6.67 — stock +16% in 2 days to AT original BofA PT $135; stochastic overbought; pre-committed 7.17 was scored at $128; conditions materially changed). Market: S&P −0.3%, Nasdaq −1.1%, Dow +167pts; semis outperforming (MRVL +7.27%, AMD +4.86%, INTC +3.74% after +10.64% yesterday, NVDA ~flat-to-+1% vs market). MRVL S&P 500 inclusion forced ETF buying at close = key catalyst. INTC NEW CATALYST: Apple foundry partnership confirmed by Trump + NVDA/Google backup fab. Portfolio unchanged: 0 positions, 99.9% cash (~$99,854). OPERATOR MUST EXECUTE 3 APPROVED ORDERS MANUALLY: MRVL 8sh limit $312 bracket GTC + NVDA 4sh limit $209 bracket GTC + AMD 9sh limit $540 bracket GTC (cancel stale AMD GTCs $520.59/$524.15 first). Cumulative gap vs SPX: est. ~−5.85 pp (widening — missed MRVL +7.27%, AMD +4.86% this morning). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 33+ consecutive trading days (API blockage root cause).**
+
+**Prior Last Updated:** 2026-06-19 (Friday) — Afternoon / Juneteenth (2:00 PM ET / 18:03 UTC). MARKET HOLIDAY — NYSE/NASDAQ CLOSED (Juneteenth National Independence Day). Alpaca API STILL BLOCKED ("Host not in allowlist" — 42nd consecutive blocked session). Non-trading day — no orders placed, no positions managed. Predecessor audit: Market-Open ✓ 13:48Z, Mid-Morning absent (expected), Midday ✓ 16:35Z. Portfolio unchanged: 0 positions, 99.9% cash (~$99,854). NEXT TRADING DAY: JUNE 22 (Monday). ⭐⭐ MRVL S&P 500 INCLUSION EFFECTIVE JUNE 22 — BINDING WATCHLIST: MRVL 8sh (7.67), NVDA 4sh (8.33), AMD 9sh (7.50), INTC 38sh (7.17). ⚠️⚠️ OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE JUNE 22 MARKET OPEN. Cumulative gap vs SPX: est. ~−5.71 pp (unchanged — no trading). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 32+ consecutive trading days (API blockage root cause). June 22 is the MANDATORY ENTRY DAY — all 4 watchlist names score ≥7, no valid exemptions on Monday. ROUTINE ORDER JUNE 22: Pre-Market → MRVL 8sh MOO + NVDA 4sh MOO; Market-Open → AMD 9sh bracket GTC + INTC 38sh bracket GTC.**
 
 **Prior Last Updated:** 2026-06-19 (Friday) — Midday / Juneteenth (12:33 PM ET / 16:33 UTC). MARKET HOLIDAY — NYSE/NASDAQ CLOSED (Juneteenth National Independence Day). Alpaca API STILL BLOCKED ("Host not in allowlist" — 41st consecutive blocked session). Non-trading day — no orders placed, no positions managed. Predecessor audit: Market-Open completed at 13:48Z (holiday confirmed), Mid-Morning absent (expected). Portfolio unchanged: 0 positions, 99.9% cash (~$99,854). NEXT TRADING DAY: JUNE 22 (Monday). ⭐⭐ MRVL S&P 500 INCLUSION EFFECTIVE JUNE 22 — BINDING WATCHLIST: MRVL 8sh (7.67), NVDA 4sh (8.33), AMD 9sh (7.50), INTC 38sh (7.17). ⚠️⚠️ OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 BEFORE JUNE 22 MARKET OPEN — stale orders from weeks ago risk naked fills on any gap-down. Also cancel stale MRVL $202.19 / PLTR $150.74 GTCs. Cumulative gap vs SPX: est. ~−5.71 pp (unchanged — no trading). ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 31+ consecutive trading days (API blockage root cause). June 22 is the MANDATORY ENTRY DAY — all 4 watchlist names score ≥7, no valid exemptions on Monday.**
 
@@ -138,27 +140,30 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-18 Market-Close — all estimates; API blocked 39th session)
+## Current Account Snapshot (as of 2026-06-22 Mid-Morning — estimates; API blocked 43rd session)
+- **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
+- **Total Equity (estimated):** **~$99,854** (no new fills; GLD stop June 10 est. −$145.58 baked in; no positions since)
+- **Cash:** **~$99,854** (99.9% cash — entire portfolio in cash)
+- **Long Market Value:** $0 estimated (no confirmed open positions)
+- **MRVL Status:** ~$310.58 (+7.27% today). **S&P 500 inclusion DAY — ETF forced buying at close.** B. Riley PT raised to $345 (from $240). NVDA $2B investment. Jensen Huang "next trillion" comment. Order APPROVED (avg 8.0) → BLOCKED HTTP 403 (43rd). Limit $312.13, stop $296.52, target $358.95. **OPERATOR MUST EXECUTE: MRVL 8sh bracket GTC at ~$310-315.**
+- **NVDA Status:** ~$208-213 today (relative strength vs Nasdaq −1.1%). Order APPROVED (avg 7.83) → BLOCKED HTTP 403. Limit $209.04, stop $198.59, target $240.40. **OPERATOR MUST EXECUTE: NVDA 4sh bracket GTC at ~$208-210.**
+- **AMD Status:** ~$537.37 (+4.86% today). Near ATH $558.37 (3.9% below ATH). 42 analysts Strong Buy, 0 Sell. Citi PT $665. Order APPROVED (avg 7.33) → BLOCKED HTTP 403. Limit $540.06, stop $513.06, target $621.07. **OPERATOR MUST EXECUTE: AMD 9sh bracket GTC at ~$537-545. CANCEL STALE GTCs $520.59 + $524.15 FIRST.**
+- **INTC Status:** ~$133.99 (+3.74% today, +10.64% yesterday = +16% in 2 days). NEW CATALYST: Apple foundry partnership confirmed by Trump. NVDA/Google backup fab. 18A-P in risk production. HOWEVER: fresh 6-agent score 6.67 (below 7.0 threshold) — stock is AT original BofA PT $135, stochastic overbought after +16% run, Technical 6/10, only 3/6 agents ≥7. **REJECTED on Master Agent gate. Will re-score if INTC pulls back to $128-130 and stochastic normalizes.**
+- **GLD Status:** Estimated stopped out June 10 at $397.92 (−$145.58). Closed chapter. No re-entry.
+- **Pending Stale GTC Orders (OPERATOR MUST CANCEL — BEFORE PLACING FRESH AMD ORDER):**
+  - ⚠️ AMD 9sh $524.15 (June 3) — AMD now ~$537, only 2.4% above limit. **CANCEL IMMEDIATELY before placing fresh $540 bracket.**
+  - ⚠️ AMD 9sh $520.59 (May 29) — AMD now ~$537, only 3.1% above limit. **CANCEL IMMEDIATELY.**
+  - PLTR 10sh $150.74 (June 3) — PLTR ~$130-133. Below limit. Cancel when possible.
+  - MRVL 8sh $202.19 (May 29) — MRVL ~$310. Far above limit. Cancel and replace with $312.13 bracket.
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **43rd consecutive blocked session.**
+- **Daytrade Count:** 0 confirmed
+- **3% Circuit Breaker:** NOT TRIGGERED (portfolio 0% daily change — no open positions) ✓
+
+## Prior Account Snapshot (as of 2026-06-18 Market-Close — all estimates; API blocked 39th session)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
 - **Total Equity (estimated):** **~$99,854** (no new fills; GLD stop June 10 est. −$145.58 baked in; no positions)
 - **Cash:** **~$99,854** (99.9% cash — entire portfolio in cash)
 - **Long Market Value:** $0 estimated (no confirmed open positions)
-- **INTC Status:** ~$127.86 today (range $126.66–$132.61). Slight pullback from $128.08 June 15 close. GTC bracket at $123.69 (if operator placed): STILL NOT FILLED (INTC above limit all session). Post-FOMC June 18: fresh bracket 38sh at ask×1.005 (~$128-132). BofA PT $135. Stop fill×0.95, target fill×1.15.
-- **⚠️⚠️ AMD STALE GTC — CRITICAL UPGRADE:** AMD gapped from $489 (June 15 close) to ~$548 today (+12.1%). Stale GTC buy limits at $520.59 and $524.15 were BYPASSED on the gap-up (buy limits don't fill on price rising through limit levels). BUT AMD is now only ~5% above the stale limits. **If FOMC dot plot June 17 is hawkish and AMD corrects -5%: GTCs FILL at $520-524 WITHOUT bracket stops = naked position.** OPERATOR MUST CANCEL BOTH AMD GTCs BEFORE JUNE 17 2PM ET. Fresh 6-agent June 18: 9sh at ask×1.005.
-- **⭐ MRVL STATUS:** Est. ~$300-310 today. S&P 500 inclusion June 22 still the highest-conviction catalyst. Cancel stale GTC $202.19 first. June 18 MANDATORY entry — 8sh bracket GTC.
-- **GLD Status:** Estimated stopped out June 10 at $397.92 (−$145.58). Closed chapter. No re-entry.
-- **MU Status:** Est. ~$1,083-1,100 range today. Complex exit window — entering June 18 means holding through Juneteenth+weekend to June 23 (within 48h of June 24 earnings binary event). CONDITIONAL on operator accepting binary event hold risk with stop.
-- **NVDA Status:** Est. ~$215-220 today. Re-score June 18. AI capex secular intact. 4sh conditional (fresh 6-agent at ≥7.0).
-- **BTC Status:** ~$66,304 today. **BELOW $82K threshold — NO ENTRY.** Post-FOMC risk-on could push BTC but unlikely to reach $82K threshold. Monitor.
-- **Pending Stale GTC Orders (OPERATOR MUST CANCEL — CRITICAL BEFORE JUNE 17 2PM ET FOMC DECISION):**
-  - ⚠️⚠️ AMD 9sh $524.15 (June 3 attempt): AMD now ~$548 = only 4.4% above limit. **CANCEL BEFORE FOMC JUNE 17 2PM ET. CRITICAL.**
-  - ⚠️⚠️ AMD 9sh $520.59 (May 29 attempt): AMD now ~$548 = only 5.0% above limit. **CANCEL BEFORE FOMC JUNE 17 2PM ET. CRITICAL.**
-  - PLTR 10sh $150.74 (June 3 attempt): PLTR ~$133. Not in danger. Cancel by June 18.
-  - MRVL 8sh $202.19 (May 29 attempt): MRVL ~$300+. Far from limit. Cancel and replace June 18.
-  - INTC $123.69 GTC (if operator placed): INTC ~$128 = above limit = NOT FILLED. Options: (a) leave it and hope for pullback June 17 on hawkish dot, or (b) cancel and replace with fresh bracket June 18 at ask×1.005.
-- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **35th consecutive blocked session.**
-- **Daytrade Count:** 0 confirmed
-- **3% Circuit Breaker:** NOT TRIGGERED (portfolio $0 daily change — no open positions) ✓
 
 ## Prior Account Snapshot (as of 2026-06-12 Daily Review — all estimates; API blocked)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
@@ -228,24 +233,24 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-18 Mid-Morning — estimates; API blocked 38th session)
+## Bucket State (as of 2026-06-22 Mid-Morning — estimates; API blocked 43rd session)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | **$0** (all orders HTTP 403 blocked — 38th consecutive) | ~0% | 0 confirmed |
-| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$65-70K, below $82K threshold |
+| Active Trading | 85% ($85K) | **$0** (all orders HTTP 403 blocked — 43rd consecutive) | ~0% | 0 confirmed |
+| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC est. ~$65-70K, below $82K threshold |
 | Cash Reserve | 5% floor | **~$99,854** | ~99.9% | — |
 
 **Deployment gap: ~$94,854 above the 5% floor.**
 
-**FOMC CLEARED — POST-FOMC RISK-ON DAY:** June 17 FOMC = HOLD at 4.25-4.50% confirmed. Warsh SEP dot plot est. 0-1 hike 2026 (Scenario B). June 18 = first clean trading day. ALL 4 MANDATORY ENTRIES BLOCKED (HTTP 403 — 38th session). **June 19 = JUNETEENTH = MARKET CLOSED.** Next trading = Monday June 23.
+**MRVL S&P 500 INCLUSION DAY (JUNE 22):** ETF forced buying at close is TODAY. 3 orders APPROVED by Master Agent, all blocked HTTP 403. OPERATOR MUST EXECUTE MANUALLY RIGHT NOW.
 
-**MANDATORY IMMEDIATE EXECUTION — OPERATOR MUST PLACE TODAY (June 18) OR JUNE 23:**
+**MANDATORY IMMEDIATE EXECUTION — OPERATOR MUST EXECUTE TODAY (June 22):**
 | Symbol | Qty | Limit | Stop (−5%) | Target (+15%) | Size% | Score | Priority |
 |---|---|---|---|---|---|---|---|
-| **MRVL** | **8sh** | **$306.50** | **$291.18** | **$352.48** | **2.46%** | **7.67** | **🔴 MANDATORY — S&P 500 INCLUSION JUNE 22** |
-| **INTC** | **38sh** | **$130.65** | **$124.12** | **$150.25** | **4.97%** | **7.17** | **🔴 MANDATORY** |
-| **AMD** | **9sh** | **$547.70** | **$520.32** | **$630.16** | **4.94%** | **7.50** | **🔴 MANDATORY — verify stale GTC first** |
-| **NVDA** | **4sh** | **$221.10** | **$210.05** | **$254.27** | **0.89%** | **8.33** | **🔴 MANDATORY (upgraded from conditional)** |
+| **MRVL** | **8sh** | **$312.13** | **$296.52** | **$358.95** | **2.50%** | **8.0** | **🔴 MANDATORY — S&P 500 INCLUSION TODAY (ETF forced buying at close)** |
+| **AMD** | **9sh** | **$540.06** | **$513.06** | **$621.07** | **4.87%** | **7.33** | **🔴 MANDATORY — cancel stale GTCs $520.59+$524.15 FIRST** |
+| **NVDA** | **4sh** | **$209.04** | **$198.59** | **$240.40** | **0.84%** | **7.83** | **🔴 MANDATORY — relative strength vs weak Nasdaq** |
+| INTC | SKIP | ~$134 | — | — | — | 6.67 | REJECTED: +16% in 2 days → AT BofA PT $135; stochastic overbought; fresh score 6.67 < 7.0. Re-score if pullback to $128-130. |
 
 **POST-FOMC BINDING WATCHLIST (THURSDAY JUNE 18 — Mandatory Execution — UPDATED WITH JUNE 16 PRE-MARKET PRICES):**
 | Symbol | Qty | Est. June 18 Price | Stop (−5%) | Target (+15%) | Size% | Est. Score | Notes |
@@ -296,7 +301,16 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 
 All well under 25% sector cap in either scenario. If both old semis (Scenario B) AND new entries (AMD+MU) exist simultaneously: ~18.8% semis — still under 25% cap.
 
-## Performance vs S&P 500 (as of 2026-06-15 Daily Review)
+## Performance vs S&P 500 (as of 2026-06-22 Mid-Morning)
+- **Portfolio total equity (est.):** **~$99,854** (no fills; GLD stop June 10 only completed trade; 0 positions)
+- **Portfolio total return:** **−0.15%** (GLD stop-out est. −$145.58; no other confirmed fills)
+- **S&P 500 June 22 mid-morning (est.):** ~7,531 (7,554.29 June 15 close × ~−0.3% today). SPX since strategy start (~May 1 ~$7,200): **+4.60%** est.
+- **Gap vs SPX (UPDATED): ~−4.75 to −5.85 pp** (SPX -0.3% today reduces gap slightly from −5.07 pp; HOWEVER missed MRVL +7.27% and AMD +4.86% morning moves = additional ~$365 theoretical miss today alone)
+- **Daily miss cost June 22 so far:** MRVL +7.27% (8sh @ $310 = ~+$181), AMD +4.86% (9sh @ $537 = ~+$235), NVDA ~flat. Total today's miss est. ~$416.
+- **Cumulative API-attributable miss: est. >$6,000** (43 sessions × avg ~$140/session theoretical)
+- **⚠️ 20-DAY UNDERPERFORMANCE FLAG ACTIVE:** Portfolio has underperformed SPX for 33+ consecutive trading days. Root cause: API blockage (43 sessions). Hard guardrails unchanged. June 22 mandatory execution plan is the corrective action — OPERATOR MUST PLACE 3 ORDERS MANUALLY TODAY.
+
+## Prior Performance vs S&P 500 (as of 2026-06-15 Daily Review)
 - **Portfolio total equity (est.):** **~$99,854** (June 15 close — no fills; GLD stop June 10 only completed trade)
 - **Portfolio total return:** **−0.15%** (GLD stop-out est. −$145.58; no other confirmed fills)
 - **S&P 500 June 15 CLOSE:** **7,554.29** (+1.65% from June 12 close 7,431.46). SPX since strategy start (~May 1 ~$7,200): **+4.92%** (7,554/7,200 − 1)

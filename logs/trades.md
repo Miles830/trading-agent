@@ -4,6 +4,288 @@
 
 ---
 
+## 2026-06-22 — Mid-Morning (11:00 AM ET / 15:04 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:04:33Z ✓
+**Market Status:** OPEN — Regular trading day (first day after Juneteenth weekend)
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd consecutive blocked session**
+**Time (ET):** 11:04 AM ET
+
+### Predecessor Heartbeat Audit — June 22, 2026
+
+| Routine | Scheduled (UTC) | Heartbeat Status |
+|---|---|---|
+| Pre-Market | 12:00Z | **ABSENT — SILENT FAILURE** ⚠️ |
+| Market-Open | 13:45Z | **ABSENT — SILENT FAILURE** ⚠️ |
+| Mid-Morning | 15:00Z | ✓ STARTED 15:04:33Z |
+
+**2 predecessor violations.** Both Pre-Market and Market-Open silently failed today (no heartbeat entries in logs/heartbeats/2026-06-22.log). Running full catch-up from Mid-Morning per routines/midmorning.md.
+
+```yaml
+---
+ts: 2026-06-22T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market routine did not heartbeat on 2026-06-22 — silent failure."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Pre-Market (12:00Z) absent — no heartbeat found in logs/heartbeats/2026-06-22.log. Catch-up running from Mid-Morning. This was MANDATORY today: MRVL S&P 500 inclusion effective June 22 — Pre-Market should have placed MRVL 8sh + NVDA 4sh as MOO orders. Both orders missed at open. 43rd consecutive API-blocked session."
+---
+```
+
+```yaml
+---
+ts: 2026-06-22T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open routine did not heartbeat on 2026-06-22 — silent failure."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Market-Open (13:45Z) absent — no heartbeat found in logs/heartbeats/2026-06-22.log. Catch-up running from Mid-Morning. Market-Open should have: (1) confirmed MOO fills for MRVL/NVDA and placed their stop-loss orders; (2) placed AMD 9sh + INTC 37sh limit brackets. All missed. 43rd consecutive API-blocked session."
+---
+```
+
+### Market Context (11:00 AM ET — June 22, 2026)
+
+**Macro:**
+- S&P 500: −0.3% (Big Tech drag — GOOGL −6%, AMZN −4%, META −2%, SpaceX −8%)
+- Nasdaq Composite: −1.1%
+- Dow Jones: +167 pts (+0.3%)
+- Semiconductor sector: **strongly outperforming** (+3-11% names) despite broad tech weakness
+- Iran peace talks: progressing (oil easing — mild risk-on)
+- PCE Thursday: key inflation data this week
+
+**Individual Prices (estimated from web data ~11:00 AM ET):**
+| Symbol | Est. Price | Change | Catalyst |
+|---|---|---|---|
+| MRVL | ~$310.58 | +7.27% | **S&P 500 inclusion DAY** — forced ETF buying at close; B. Riley PT $345 (raised from $240); NVDA $2B investment |
+| NVDA | ~$208–$213 | flat/+1% | AI infrastructure secular bull; relative strength vs Nasdaq −1.1% |
+| AMD | ~$537.37 | +4.86% | Strong Buy consensus (42 analysts, 0 sells); Citi PT $665; near ATH |
+| INTC | ~$133.99 | +3.74% today (+10.64% yesterday) | **NEW: Apple foundry partnership (Trump confirmed); NVDA/Google backup fab; 18A-P in risk production** |
+
+### Stop-Loss Audit
+
+Portfolio: 0 confirmed open positions (API blocked — cannot verify). No stop gaps to fill based on June 19 state.
+
+### 6-Agent Analysis — Catch-Up Entries
+
+---
+
+#### MRVL — 8 shares (catch-up for missed Pre-Market MOO)
+
+**Market context at scoring:** $310.58 (+7.27%). S&P 500 inclusion DAY — index ETF managers must buy MRVL before/at close. Additional catalysts: NVDA $2B investment, Jensen Huang "next trillion" comment, B. Riley PT $345 (raised from $240), Teralynx T100 platform.
+
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 8/10 | AI custom ASIC revenue growing; NVDA anchor customer ($2B); hyperscaler ASIC pipeline; defensible moat |
+| Technical | 8/10 | Breaking out on inclusion-day volume (forced buying); 5/5 mandatory indicators confirmed (MACD bullish, vol oscillator strongly positive, vol spike ≥2×, stochastic moving up from oversold, bullish engulfing on inclusion day); aligned with 1h uptrend |
+| Sentiment | 9/10 | S&P 500 inclusion = massive institutional buying mandate; B. Riley PT hike to $345; Jensen Huang endorsement; X sentiment strongly bullish; inclusion momentum = multi-day tailwind; viral MRVL posts from institutional accounts |
+| Macro | 7/10 | Semiconductor sector leading; Iran peace talks = mild risk-on; but broad tech soft (PCE Thursday risk) |
+| Risk | 8/10 | 8sh × $312.13 = $2,497 (2.50% equity ✓); stop −5% = $296.52; target +15% = $358.95; R/R = 3:1 ✓; per-trade risk = 0.125% equity ✓; sector exposure ~2.5% cumulative ✓ |
+| Tech Analyst | 8/10 | Custom ASIC platform for hyperscalers (Google, Microsoft); 3nm+ node advantage; NVDA partnership deepening; switching costs high; AI inference ASICs vs GPU tradeoff = growing TAM |
+
+**Master Agent:** Avg 8.0, 6/6 agents ≥7, Risk = 8 ≥ 6. **APPROVED.**
+
+**Order attempted:** POST /v2/orders — MRVL 8sh limit bracket GTC, limit $312.13, stop $296.52, target $358.95
+**HTTP Response:** 403 — "Host not in allowlist: paper-api.alpaca.markets"
+**Status:** BLOCKED (43rd consecutive session). Order not placed at Alpaca.
+
+```yaml
+---
+ts: 2026-06-22T15:05:00Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: "S&P 500 inclusion day — forced ETF buying at close creates predictable intraday demand; NVDA $2B investment + B. Riley PT $345 + Jensen Huang 'next trillion' compound the catalyst."
+size_pct: 2.50
+stop: 296.52
+target: 358.95
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 9
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7. Avg 8.0. ORDER ATTEMPTED — HTTP 403 BLOCKED (43rd consecutive session — paper-api.alpaca.markets not in allowlist). Order would have been MRVL 8sh limit $312.13 bracket GTC, stop $296.52 (−5%), target $358.95 (+15%), R/R 3:1. X sentiment strongly bullish — S&P inclusion forcing index funds to buy at close; B. Riley PT raised to $345; Jensen Huang 'next trillion' comment viral. This is the highest-conviction trade of the session — OPERATOR MUST EXECUTE MANUALLY if possible. Catch-up for missed Pre-Market MOO and Market-Open bracket."
+---
+```
+
+---
+
+#### NVDA — 4 shares (catch-up for missed Pre-Market MOO)
+
+**Market context at scoring:** ~$208–$213. Nasdaq −1.1% but NVDA showing relative strength (semiconductor sector outperforming vs broad tech). AI infrastructure secular bull intact.
+
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 8/10 | Q1 FY27 beat ($81.62B, +85% YoY); $80B buyback; AI capex secular leader |
+| Technical | 7/10 | Relative strength vs −1.1% Nasdaq = bullish divergence; MACD bullish; volume oscillator positive; volume spike on inclusion-day semi flows; stochastic mid-range; RSI tiebreaker neutral; ≥3/5 indicators confirming |
+| Sentiment | 7/10 | AI demand in focus today; semiconductor sector leading; $80B buyback provides floor; X sentiment bullish on AI infrastructure |
+| Macro | 7/10 | Semiconductor sector outperforming despite Big Tech weakness; Iran peace = mild risk-on; semi sector defensive vs rate-sensitive tech |
+| Risk | 9/10 | 4sh × $209.04 = $836 (0.84% equity ✓ — very small); stop −5% = $198.59; target +15% = $240.40; R/R = 3:1 ✓; per-trade risk = 0.042% ✓ |
+| Tech Analyst | 9/10 | Dominant GPU market; Blackwell architecture; AI data center moat; $80B buyback = capital discipline signal |
+
+**Master Agent:** Avg 7.83, 6/6 agents ≥7, Risk = 9 ≥ 6. **APPROVED.**
+
+**Order attempted:** POST /v2/orders — NVDA 4sh limit bracket GTC, limit $209.04, stop $198.59, target $240.40
+**HTTP Response:** 403 — "Host not in allowlist: paper-api.alpaca.markets"
+**Status:** BLOCKED (43rd consecutive session).
+
+```yaml
+---
+ts: 2026-06-22T15:06:00Z
+action: entry
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: "Semiconductor relative strength vs -1.1% Nasdaq; AI capex secular bull; NVDA holding at support while Nasdaq sells off — classic relative strength entry; $80B buyback provides floor."
+size_pct: 0.84
+stop: 198.59
+target: 240.40
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 9
+  tech_analyst: 9
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7. Avg 7.83. ORDER ATTEMPTED — HTTP 403 BLOCKED (43rd consecutive session). Order would have been NVDA 4sh limit $209.04 bracket GTC, stop $198.59 (−5%), target $240.40 (+15%), R/R 3:1. Very small position (0.84%) designed to initiate NVDA exposure with low portfolio risk. X sentiment bullish on AI infrastructure demand. Catch-up for missed Pre-Market MOO. OPERATOR MUST EXECUTE MANUALLY."
+---
+```
+
+---
+
+#### AMD — 9 shares
+
+**Market context at scoring:** $537.37 (+4.86%). Near ATH $558.37 (hit June 15 = 3.9% below ATH). Strong Buy consensus (42 analysts, 0 sells). Semiconductor sector leadership today.
+
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 8/10 | Q1 2026 blowout; AI server GPU market share gains; Citi PT $665; 42 Buy / 0 Sell = consensus conviction |
+| Technical | 7/10 | Uptrend intact; 3.9% below ATH = room to run; MACD bullish; volume oscillator positive today (+4.86%); stochastic mid-range (room from ATH); ≥3/5 indicators confirming |
+| Sentiment | 7/10 | Strong Buy consensus; semiconductor sector leadership day; X sentiment bullish; Citi PT $665 = 24% upside from entry |
+| Macro | 7/10 | Semiconductor sector outperforming; Iran peace progress = mild risk-on; dollar weakness supportive |
+| Risk | 7/10 | 9sh × $540.06 = $4,861 (4.87% equity ✓); stop −5% = $513.06; target +15% = $621.07; R/R = 3:1 ✓; per-trade risk = 0.243% ✓ |
+| Tech Analyst | 8/10 | MI300X inference GPU gaining HPC market; CDNA platform for AI; x86 market share vs Intel ongoing; R&D moat |
+
+**Master Agent:** Avg 7.33, 6/6 agents ≥7, Risk = 7 ≥ 6. **APPROVED.**
+
+**Order attempted:** POST /v2/orders — AMD 9sh limit bracket GTC, limit $540.06, stop $513.06, target $621.07
+**HTTP Response:** 403 — "Host not in allowlist: paper-api.alpaca.markets"
+**Status:** BLOCKED (43rd consecutive session).
+
+```yaml
+---
+ts: 2026-06-22T15:07:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7
+thesis: "Semiconductor sector leader with AI GPU momentum; 3.9% below ATH with room to run; Citi PT $665 = 24% upside; 42 analysts Strong Buy, 0 Sell; sector outperforming vs -1.1% Nasdaq today."
+size_pct: 4.87
+stop: 513.06
+target: 621.07
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7. Avg 7.33. ORDER ATTEMPTED — HTTP 403 BLOCKED (43rd consecutive session). Order would have been AMD 9sh limit $540.06 bracket GTC, stop $513.06 (−5%), target $621.07 (+15%), R/R 3:1. Pre-committed from June 19 watchlist (7.50); fresh score 7.33 (slight downgrade due to proximity to ATH, but all agents still ≥7 — deployment bias confirmed). Stale GTCs $520.59 and $524.15 status unknown — OPERATOR MUST CANCEL BOTH before placing fresh order. Catch-up for missed Market-Open bracket. OPERATOR MUST EXECUTE MANUALLY."
+---
+```
+
+---
+
+#### INTC — REJECTED on fresh score (pre-committed 7.17 → fresh 6.67 today)
+
+**Market context at scoring:** ~$133.99 (+3.74% today, +10.64% yesterday = +14% in 2 days). NEW catalyst: Apple foundry partnership confirmed by President Trump. NVDA and Google evaluating Intel as backup AI chip manufacturer. 18A-P node in risk production. BUT: stock now AT the original BofA PT of $135. Technically extended after +16% in 2 days.
+
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 7/10 | Apple foundry deal = transformational IF confirmed; NVDA/Google backup fab; 18A-P node validates roadmap; BUT server market share losses to AMD ongoing; EPS still weak |
+| Technical | 6/10 | MACD strongly bullish ✓; volume oscillator strongly positive ✓; volume spike on Apple news ≥2× ✓ (3/5 confirming); HOWEVER Stochastic >80 (overbought ≥80 = NOT a long entry signal); RSI >70 (tiebreaker = cautionary); stock extended +16% in 2 days — stochastic overbought is a mandatory indicator that FAILS long confirmation; net: 3/5 confirm, but stochastic overbought flag reduces conviction |
+| Sentiment | 8/10 | Apple deal = very bullish; Trump confirmation adds legitimacy; Intel "comeback 250% YTD" narrative; X very bullish; multiple analyst PT hikes likely to follow BofA |
+| Macro | 7/10 | US onshoring/foundry = geopolitical tailwind; Iran peace = mild positive; but broad tech soft today |
+| Risk | 6/10 | 37sh × $134.65 = $4,982 (4.99% ✓); stop −5% = $127.92; target +15% = $154.85; R/R = 3:1 ✓; HOWEVER: stock AT original BofA PT $135 = technical resistance; 15% target $154.85 requires fresh analyst PT upgrades to materialize |
+| Tech Analyst | 6/10 | Apple anchor customer would validate 18A-P commercially; NVDA/Google backup = legitimacy signals; BUT yield/quality vs TSMC still unproven; server market share losses ongoing; 18A-P in "risk production" = not yield-proven at scale |
+
+**Master Agent:** Avg 6.67, 3/6 agents ≥7 (F=7, S=8, M=7; T=6, R=6, TA=6 fail threshold). Need 4/6 ≥7 and avg ≥7. **REJECTED.**
+
+**Skip reason:** Fresh 6-agent score at today's price ($133.99) = 6.67, below 7.0 threshold. Only 3/6 agents at ≥7 (need 4). Stock has risen +16% in 2 days to AT the original BofA PT $135. Technical score 6/10 — stochastic overbought (≥80) fails mandatory long-confirmation signal after +16% run. Pre-committed score was 7.17 at ~$128; conditions have materially changed. This constitutes a Master Agent gate failure (not a hard exemption violation). Per CLAUDE.md entry criteria, average ≥7 AND ≥4/6 agents at 7+ are BOTH mandatory.
+
+```yaml
+---
+ts: 2026-06-22T15:08:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 6.67
+thesis: "INTC fresh 6-agent score 6.67 at $133.99 — fails Master Agent gate (avg < 7.0, only 3/6 agents ≥7). Stock +16% in 2 days to AT original BofA PT $135; stochastic overbought; 18A-P yield unproven at scale. Pre-committed 7.17 was scored at ~$128 — conditions materially changed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 6
+  tech_analyst: 6
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — avg 6.67 < 7.0; only 3/6 agents at ≥7 (need 4). Failing agents: Technical 6 (stochastic overbought ≥80 fails long-confirmation; RSI >70 tiebreaker cautionary; stock +16% in 2 days = technically extended), Risk 6 (stock AT original BofA PT $135 = resistance layer), Tech Analyst 6 (18A-P yield/quality unproven at scale; server market share losses to AMD ongoing). Fresh catalyst (Apple foundry deal confirmed by Trump) is significant but stock already priced in initial move. Re-score valid IF stock consolidates below $130 (stochastic normalizes). INTC pre-committed at 7.17 at ~$128 — conditions at $134 are materially different. This override is a Master Agent gate failure, not a deployment-bias violation. X sentiment strongly bullish but already reflected in +16% price action. Will re-score if INTC pulls back to $128–$130."
+---
+```
+
+### Summary of Mid-Morning Actions
+
+| Symbol | Action | Score | Reason |
+|---|---|---|---|
+| MRVL | Entry attempted → HTTP 403 | 8.0 | APPROVED by Master Agent; S&P 500 inclusion day + NVDA $2B investment |
+| NVDA | Entry attempted → HTTP 403 | 7.83 | APPROVED by Master Agent; relative strength vs weak Nasdaq |
+| AMD | Entry attempted → HTTP 403 | 7.33 | APPROVED by Master Agent; sector leader with AI GPU momentum |
+| INTC | SKIP — fresh score rejected | 6.67 | Master Agent gate failed (avg < 7.0, 3/6 agents ≥7); stock at BofA PT after +16% in 2 days |
+
+**Deployment gap:** 3 APPROVED orders blocked (HTTP 403). 44th consecutive session unable to deploy capital. Estimated missed entry: MRVL $2,497 + NVDA $836 + AMD $4,861 = $8,194 capital. **OPERATOR MUST EXECUTE ALL 3 MANUALLY at https://app.alpaca.markets.**
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓
