@@ -4,6 +4,206 @@
 
 ---
 
+## 2026-06-23 — Afternoon (2:00 PM ET / 18:03 UTC — TUESDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **44th consecutive blocked session**
+**Current Time:** 18:03Z = 2:03 PM ET
+**Market Status:** OPEN — regular trading session. Markets recovering from morning lows.
+
+---
+
+### PREDECESSOR AUDIT — June 23, 2026 (Afternoon)
+
+| Routine | Scheduled (UTC) | Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING — violation logged in Midday entry |
+| Market-Open | 13:45Z | ✗ MISSING — violation logged in Midday entry |
+| Mid-Morning | 15:00Z | ✗ MISSING — violation logged in Midday entry |
+| Midday | 16:32Z | ✓ COMPLETED 16:48Z |
+| **Afternoon** | **18:03Z** | **✓ RUNNING NOW** |
+
+No new violations to log — all June 23 predecessor failures already documented in Midday entry.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 "Host not in allowlist" (44th block)
+GET /v2/orders?status=open → HTTP 403 "Host not in allowlist"
+GET /v2/account            → HTTP 403 "Host not in allowlist"
+```
+
+---
+
+### ⚠️⚠️⚠️ EMERGENCY — AMD STALE GTC FILL CONFIRMED (HIGH PROBABILITY)
+
+**Situation (18:03 UTC / 2:03 PM ET):**
+
+- **Stale GTC #1 (June 3 attempt):** BUY AMD 9sh limit $524.15 — no bracket, no stop
+- **Stale GTC #2 (May 29 attempt):** BUY AMD 9sh limit $520.59 — no bracket, no stop
+- **AMD afternoon price: $523.77**
+- **Verdict on GTC #1 ($524.15):** AMD FELL BELOW $524.15 during today's session. This limit buy **FILLS when price ≤ limit**. AMD is now AT $523.77, confirming it traded through $524.15 at some point. **GTC #1 IS ALMOST CERTAINLY FILLED.**
+- **Verdict on GTC #2 ($520.59):** AMD at $523.77 = $3.18 ABOVE limit = NOT YET FILLED. If AMD drops $3.18 further, this fills too (18sh total naked).
+
+**If GTC #1 filled:**
+- Position: 9sh AMD @ ~$524.15 = $4,717 exposure
+- Stop: NONE (stale order, no bracket)
+- Current unrealized P&L: 9 × ($523.77 − $524.15) = −$3.42 (near breakeven, but trend is DOWN)
+- AMD is down ~5.46% on the day from its ATH area ($562.99 June 22 ATH)
+- AMD intraday range minimum today: ~$523 (per web data)
+- **A continued drop to $520.59 fills GTC #2 for ANOTHER 9sh naked**
+- Risk if both fill and AMD hits 5% stop equivalent: 18sh × ($524.15 × 0.05) = ~$471 max loss
+
+**OPERATOR MUST CHECK ALPACA APP IMMEDIATELY (alpaca.markets/orders):**
+1. If GTC #1 ($524.15) filled → place GTC stop at $497.94 (5% below $524.15) ASAP
+2. Cancel GTC #2 ($520.59) IMMEDIATELY before AMD drops further
+3. Once stale GTCs resolved → re-enter AMD 9sh bracket GTC at current ask (~$524 × 1.005 ≈ $526.64, stop $499.30, target $604.63) if thesis still valid
+
+---
+
+### AFTERNOON MARKET SUMMARY — JUNE 23, 2026
+
+**2:03 PM ET** — Global AI/semiconductor selloff is recovering from morning lows:
+- S&P 500: **~−1.0%** (recovering from −1.53% morning low)
+- Nasdaq: **~−1.6%** (recovering from −2.3% morning low)
+- AMD: **$523.77** (−4.8% from prior close area; down from $537 at Midday)
+- INTC: **~$133.99** (−5.3% from ATH $141.45; Apple partnership intact; pulling back)
+- MRVL: **~$285** (−7.4% sell-the-news post-inclusion)
+- NVDA: **~$203** (AI trade selloff; holding $200 support)
+- MU: **~−9.1%** pre-earnings pressure (earnings tonight June 24 AH)
+
+Market recovering from lows but remains risk-OFF. Small-cap Russell 2000 +0.83% (defensive rotation visible). No Fed announcements or macro data today.
+
+---
+
+### INTC — RE-SCORE (afternoon recovery check)
+
+Condition from Midday: "Re-score at Afternoon if market stabilizes and INTC holds $132+"
+
+INTC at ~$133.99 (above $132 ✓), market partially recovering (+0.5 pp on Nasdaq from lows):
+
+| Agent | Score | Reasoning |
+|---|---|---|
+| Fundamentals | 8/10 | Apple foundry partnership (Trump Truth Social post); Q2 guidance beat ($14.8B rev, $0.20 EPS); Data Center +22% YoY; Mizuho raised PT to $135 |
+| Technical | 5/10 | ATH $141.45 hit June 22; today's pullback continuing; stochastic overbought from ATH; can't confirm indicator stack (API blocked) |
+| Sentiment | 7/10 | Apple deal narrative dominant; "Intel validation" bull thesis intact; pullback = buyable for swing traders |
+| Macro | 5/10 | Markets recovering off lows (SPX −1.0% vs −1.53% earlier); still risk-OFF but improving; Nasdaq recovering |
+| Risk | 7/10 | 37sh × $134 = $4,958 (4.96% ✓); stop $127.30 (−5%); risk $248 (0.248% ✓); target $154.10 (+15%); R/R 3:1 ✓; cash ≥5% floor ✓ |
+| Tech Analyst | 8/10 | 18A manufacturing process; Apple partnership = industry validation of foundry capability; DC +22% secular tailwind |
+
+**Average: (8+5+7+5+7+8)/6 = 6.67 < 7.0 → REJECTED**
+
+Macro improved from 4→5 but average still below 7 gate. Additionally, this is the Afternoon routine — no new active entries per routines/afternoon.md proximity-to-close rule.
+
+```yaml
+---
+ts: 2026-06-23T18:03:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 6.67
+thesis: "Apple foundry partnership + Q2 beat driving ATH recovery thesis; afternoon re-score shows macro improved (4→5) but avg 6.67 still below 7 gate. Also afternoon proximity-to-close rule bars new active entries."
+size_pct: 4.96
+stop: 127.30
+target: 154.10
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 5
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "Rejected on two grounds: (1) 6-agent avg 6.67 < 7.0 gate; (2) afternoon proximity-to-close bars new active entries per routines/afternoon.md. If market recovers tomorrow and INTC holds $132+, re-score at Pre-Market June 24. Key risk: ATH pullback from $141.45 may have further to run before finding support. Wait for Technical confirmation (stochastic cool-off, MACD crossover). Macro agent improved 4→5 as markets recover from morning lows."
+---
+```
+
+---
+
+### AMD — AFTERNOON SKIP (proximity-to-close + emergency GTC situation)
+
+AMD scored 7.17 at Midday (APPROVED, MANDATORY entry), order attempted → HTTP 403 blocked. Afternoon routine does NOT initiate new active entries (routines/afternoon.md: "do NOT initiate new active-bucket entries this routine — too close to close"). Additionally, AMD stale GTC emergency (see above) requires operator resolution before any new AMD order can be cleanly placed.
+
+AMD afternoon price: $523.77 (down from $537 at Midday). Thesis intact (quantum computing + Rackspace + MEXT + analyst upgrades) but entry price updated.
+
+```yaml
+---
+ts: 2026-06-23T18:03:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: "AMD quantum computing + Rackspace 30MW + MEXT + analyst cycle (Citi $575, BofA $560, Baird $625). Approved 7.17 at Midday. Skip at Afternoon: (1) proximity-to-close per routines/afternoon.md; (2) stale GTC $524.15 LIKELY FILLED — operator must resolve naked position before new bracket can be placed. AMD has fallen from $537 (Midday) to $523.77 (Afternoon) — stale GTC fill almost certain."
+size_pct: 4.86
+stop: 497.94
+target: 604.63
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 5
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED at Midday 7.17. Afternoon skip per proximity-to-close rule. CRITICAL: AMD crossed below stale GTC $524.15 during afternoon session — stale order ALMOST CERTAINLY FILLED. Operator must: (1) Check alpaca.markets/orders NOW; (2) If GTC $524.15 filled: place stop at $497.94 GTC immediately; (3) Cancel $520.59 GTC before AMD drops further; (4) If no GTC filled: note AMD now below Midday limit $540 — June 24 Pre-Market entry should use current ask ~$524-526. CARRY-FORWARD: AMD remains #1 MANDATORY on June 24 Pre-Market watchlist. Re-entry limit: current ask × 1.005; stop: entry × 0.95; target: entry × 1.15 (3:1 R/R)."
+---
+```
+
+---
+
+### MU — EXEMPTION 2 (Binary Event — Earnings Tonight)
+
+MU earnings: **June 24, 2026 AH** (tonight). Options pricing ±17% move ($940–$1,327 range). Consensus EPS ~$20, revenue $34.7B. MU HBM supply entirely sold out for 2026. Exemption 2 hard applies through tomorrow's close. **Post-earnings trade June 25**: watch for either follow-through (beat + raised guidance → mean-reversion-oversold or earnings-reaction-follow) or fade (guidance disappointment → earnings-reaction-fade). Pre-score at June 24 Market-Close or Daily Review once print is out.
+
+```yaml
+---
+ts: 2026-06-23T18:03:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: null
+thesis: "MU earnings June 24 AH. Exemption 2 applies — no position within 48h of scheduled earnings release. Post-earnings entry possible June 25."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: rejected
+master_notes: "Exemption 2: MU reports Q3 FY2026 June 24 AH. Options ±17% move priced ($940–$1,327 range). Consensus EPS ~$20, revenue $34.7B. HBM sold out for 2026 = bullish setup for beat+raise. IF BEAT+RAISED GUIDANCE: pre-score earnings-reaction-follow for June 25 Pre-Market entry. IF MISS: earnings-reaction-fade (short/put) or avoid. MU +244% YTD — bar is high for guidance surprise to move stock further. Watch for June 24 Daily Review to catch the print and pre-score."
+---
+```
+
+---
+
+### TOMORROW'S PRE-MARKET WATCHLIST — June 24, 2026
+
+**MANDATORY:**
+1. **AMD** (score 7.17, MANDATORY carry-forward) — operator must first cancel/resolve stale GTCs. Entry: limit at current ask ×1.005 (~$525–528), stop: −5%, target: +15% (3:1). Max 9sh.
+2. **MU POST-EARNINGS** (conditional — only after June 24 AH print) — beat+raise = earnings-reaction-follow entry at Pre-Market; score fresh 6-agent June 25.
+
+**CONDITIONAL (re-score at Pre-Market if setup improves):**
+3. **NVDA** (~$203) — if $200 support holds and AI selloff stops, re-score for breakout-volume or mean-reversion-oversold. Was 5.83 at Midday; need 1+ pp improvement across Technical/Macro/Sentiment.
+4. **INTC** (~$133.99) — if ATH pullback finds support at $132 and macro recovers, re-score. Was 6.67 Afternoon; need Technical 6+ (stochastic cool) and Macro 6+.
+5. **SpaceX (SPCE?)** — up 5% in afternoon trading; check if publicly traded vehicle exists and whether momentum setup qualifies for full 6-agent gate.
+
+**DO NOT ENTER June 24:**
+- MU before earnings close (Exemption 2 through June 24 close)
+- MRVL (5.33 — sell-the-news breakdown; wait for base formation)
+- Any new sector unless fresh catalyst
+
+---
+
 ## 2026-06-23 — Midday (12:30 PM ET / 16:32 UTC — TUESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Midday 16:32:50Z ✓

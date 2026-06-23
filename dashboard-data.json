@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-23T16:32:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-23T18:03:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 3.31,
     "benchmark_gap_pct": -5.5,
     "open_positions_count": 0,
-    "note": "June 23 Midday (12:32 PM ET). TRADING DAY. API blocked (HTTP 403 \u2014 44th consecutive). June 22 FULL-DAY BLACKOUT (all 7 routines failed \u2014 MRVL inclusion day). June 23: Pre-Market/Market-Open/Mid-Morning all silently failed. Market: SPX -1.53%, Nasdaq -2.3% (global AI/chip selloff; Korea Kospi -9.99%). AMD +4.86% (quantum + Rackspace 30MW + MEXT + upgrades) \u2014 6-agent APPROVED 7.17 \u2014 ORDER ATTEMPTED \u2192 HTTP 403 BLOCKED. INTC 6.5 REJECTED. MRVL 5.33 REJECTED. NVDA 5.83 REJECTED. MU Exemption 2 (earnings June 24). CRITICAL: Stale AMD GTCs $524.15/$520.59 only 2.4-3.1% below spot \u2014 NAKED FILL RISK. OPERATOR: (1) Cancel AMD stale GTCs; (2) BUY AMD 9sh limit $540 bracket GTC stop $513 target $621."
+    "note": "June 23 Afternoon (2:00 PM ET). TRADING DAY. API blocked (HTTP 403 \u2014 44th consecutive). EMERGENCY: AMD at $523.77 crossed below stale GTC $524.15 \u2014 STALE ORDER ALMOST CERTAINLY FILLED (naked 9sh AMD position). OPERATOR CHECK ALPACA NOW: (1) If $524.15 GTC filled \u2192 place stop $497.94 GTC; (2) Cancel $520.59 GTC before AMD drops $3.18 more. Markets recovering: SPX -1.0% (was -1.53%), Nasdaq -1.6% (was -2.3%). INTC re-score 6.67 (REJECTED). No new entries \u2014 afternoon proximity-to-close. MU earnings tonight June 24 AH. June 24 Pre-Market: AMD MANDATORY (after GTC cleanup), MU post-earnings conditional (June 25 earliest)."
   },
   "positions": [
     {
@@ -130,10 +130,10 @@
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-19T18:03:00Z",
-      "next_run": "2026-06-22 14:00 ET",
-      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open 13:48Z \u2713, Midday 16:35Z \u2713, Mid-Morning absent (expected). Next: June 22 Afternoon \u2014 trail stops on new positions, manage MOO fills, assess partial profits if MRVL spikes >5% on inclusion-day ETF inflow."
+      "status": "completed",
+      "last_run": "2026-06-23T18:03:00Z",
+      "next_run": "2026-06-24 14:00 ET",
+      "last_summary": "June 23 Afternoon (2:03 PM ET): API blocked (HTTP 403 \u2014 44th). EMERGENCY: AMD $523.77 crossed below stale GTC $524.15 \u2014 STALE ORDER ALMOST CERTAINLY FILLED. OPERATOR: check alpaca.markets/orders NOW. (1) If $524.15 GTC filled: place stop $497.94 GTC; (2) Cancel $520.59 GTC before AMD drops further. Midday predecessor confirmed completed 16:48Z. INTC re-scored 6.67 (REJECTED \u2014 still below 7 gate despite macro improving to -1.0%). No new entries \u2014 proximity-to-close. MU earnings tonight (June 24 AH). June 24 Pre-Market: AMD MANDATORY (resolve GTCs first), MU post-earnings conditional (June 25 earliest), NVDA conditional ($200 support), INTC conditional ($132 support)."
     },
     {
       "name": "Market Close",
@@ -950,88 +950,81 @@
   },
   "watchlist": [
     {
-      "symbol": "MRVL",
-      "score": 7.67,
-      "order_type": "MOO",
-      "qty": 8,
-      "limit_price": null,
+      "symbol": "AMD",
+      "score": 7.17,
+      "order_type": "Limit GTC bracket",
+      "qty": 9,
+      "limit_price": 526.64,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 2.46,
+      "size_pct": 4.73,
       "priority": "MANDATORY",
-      "notes": "\u2b50 S&P 500 inclusion June 22 \u2014 ETF forced buying at close. Cancel stale GTC $202.19 first. Highest time-sensitivity.",
+      "notes": "\u26a0\ufe0f\u26a0\ufe0f EMERGENCY: AMD at $523.77 crossed below stale GTC $524.15 \u2014 stale order ALMOST CERTAINLY FILLED. OPERATOR MUST: (1) Check alpaca.markets/orders NOW; (2) If $524.15 GTC filled \u2192 place stop $497.94 GTC; (3) Cancel $520.59 GTC IMMEDIATELY. Once resolved: entry at ask\u00d71.005 (~$526.64), stop $499.30, target $604.63. Score: 7.17 (Midday June 23 \u2014 quantum + Rackspace + MEXT + analyst upgrades). Citi $575, BofA $560, Baird $625.",
       "agent_scores": {
         "fundamentals": 8,
         "technical": 7,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 7,
+        "sentiment": 7,
+        "macro": 5,
+        "risk": 8,
         "tech_analyst": 8
       },
-      "agent_average": 7.67
+      "agent_average": 7.17
+    },
+    {
+      "symbol": "MU",
+      "score": null,
+      "order_type": "Limit GTC bracket (post-earnings)",
+      "qty": null,
+      "limit_price": null,
+      "stop_pct": -5.0,
+      "target_pct": 15.0,
+      "size_pct": null,
+      "priority": "CONDITIONAL \u2014 June 25 earliest (after June 24 AH print)",
+      "notes": "MU earnings tonight June 24 AH. Options pricing \u00b117% move ($940\u2013$1,327). Consensus EPS ~$20, revenue $34.7B. HBM supply sold out 2026. IF BEAT+RAISED GUIDANCE: earnings-reaction-follow entry June 25 Pre-Market. Score fresh 6-agent at June 24 Daily Review once print is out. Exemption 2 hard through June 24 close.",
+      "agent_scores": null,
+      "agent_average": null
     },
     {
       "symbol": "NVDA",
-      "score": 8.33,
-      "order_type": "MOO",
+      "score": 5.83,
+      "order_type": "Limit GTC bracket",
       "qty": 4,
       "limit_price": null,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 0.89,
-      "priority": "MANDATORY",
-      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market.",
+      "size_pct": 0.82,
+      "priority": "CONDITIONAL \u2014 re-score June 24 Pre-Market if $200 holds",
+      "notes": "Was 5.83 at Midday June 23 (AI selloff; Nasdaq -2.3%). Need Technical/Sentiment/Macro improvement to reach 7.0. Re-score at June 24 Pre-Market if $200 support intact and AI selloff stabilizes.",
       "agent_scores": {
         "fundamentals": 8,
-        "technical": 8,
-        "sentiment": 9,
-        "macro": 9,
-        "risk": 8,
-        "tech_analyst": 9
-      },
-      "agent_average": 8.33
-    },
-    {
-      "symbol": "AMD",
-      "score": 7.5,
-      "order_type": "Limit GTC bracket",
-      "qty": 9,
-      "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 4.99,
-      "priority": "MANDATORY",
-      "notes": "\u26a0\ufe0f CANCEL stale GTCs $520.59 + $524.15 BEFORE market open. 9sh @~$555 = ~$4,995 \u2248 4.99% \u2713. Citi PT $665.",
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 8,
-        "sentiment": 7,
-        "macro": 8,
+        "technical": 4,
+        "sentiment": 4,
+        "macro": 4,
         "risk": 7,
         "tech_analyst": 8
       },
-      "agent_average": 7.5
+      "agent_average": 5.83
     },
     {
       "symbol": "INTC",
-      "score": 7.17,
+      "score": 6.67,
       "order_type": "Limit GTC bracket",
-      "qty": 38,
+      "qty": 37,
       "limit_price": null,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 4.95,
-      "priority": "MANDATORY",
-      "notes": "BofA Buy PT $135. 38sh @~$130 = ~$4,940 \u2248 4.94% \u2713. Foundry + AI chip cycle. Cancel stale $123.69 GTC first, replace at ask\u00d71.005.",
+      "size_pct": 4.96,
+      "priority": "CONDITIONAL \u2014 re-score June 24 Pre-Market if ATH pullback finds $132 support",
+      "notes": "Afternoon re-score 6.67 (REJECTED \u2014 below 7). Technical 5/10 (ATH pullback from $141.45); Macro 5/10 (still risk-OFF). Apple partnership + Q2 beat + Mizuho PT $135 keep fundamentals strong. Re-score June 24 Pre-Market if market recovers and stochastic cools from overbought. Entry: ask\u00d71.005, stop: \u22125%, target: +15% (3:1).",
       "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
+        "fundamentals": 8,
+        "technical": 5,
+        "sentiment": 7,
+        "macro": 5,
         "risk": 7,
-        "tech_analyst": 7
+        "tech_analyst": 8
       },
-      "agent_average": 7.17
+      "agent_average": 6.67
     }
   ],
   "history": [
