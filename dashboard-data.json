@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-23T12:07:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 5.56,
-    "benchmark_gap_pct": -5.71,
+    "spx_return_pct": 3.85,
+    "benchmark_gap_pct": -4.0,
     "open_positions_count": 0,
-    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
+    "note": "June 23 Pre-Market (8:07 UTC). TRADING DAY \u2014 SEMICONDUCTOR SECTOR PANIC. Alpaca API blocked (HTTP 403 \u2014 43rd consecutive). June 22 FULL-DAY BLACKOUT \u2014 all 7 routines silently failed. MRVL S&P 500 inclusion occurred without orders; MRVL -3.90% sell-the-news. Fresh 6-agent: all names scored below 7 (MRVL 4.83, NVDA 5.83, AMD 5.0, INTC 4.33, MU Exemption-2, GLD averaging-down ban). 0 orders placed. NEXT: Market Open 9:45AM ET \u2014 re-score NVDA/AMD after open."
   },
   "positions": [
     {
@@ -62,46 +62,46 @@
     }
   ],
   "market": {
-    "mode": "POST-FOMC RISK-ON. FOMC HOLD confirmed June 17 at 4.25-4.50%. Iran peace deal signed June 17 in Switzerland. First clean trading day \u2014 AI/semis led. JUNETEENTH June 19 = market CLOSED. Next trading = June 22 (MRVL S&P 500 inclusion effective date).",
-    "fear_greed": null,
-    "fear_greed_label": "Neutral to Greedy \u2014 post-FOMC relief, Iran deal risk reduction, AI capex theme intact.",
-    "spx": "S&P 500 est. ~7,600 June 18 close (+0.6% from 7,554 June 15). SPX total return since ~May 1: +5.56% (7,600/7,200-1). Post-FOMC relief rally + Iran deal digestion. AI/semis led.",
-    "btc": "BTC est. ~66,000-70,000 \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on insufficient to push BTC to threshold. Monitor June 22.",
+    "mode": "SEMICONDUCTOR SECTOR PANIC \u2014 RISK-OFF. KOSPI -9.99% (Samsung/SK Hynix DRAM warnings). SOXX -5.9%. Nasdaq futures -2.70% premarket. Semiconductor names in free-fall. MRVL S&P 500 inclusion June 22 was 'sell the news' (-3.90%). MU down -8.4% premarket (earnings June 24 concern + DRAM sympathy). Iran deal intact but chip panic overrides risk-on thesis. June 22 = full-day blackout \u2014 all 7 routines failed.",
+    "fear_greed": 35,
+    "fear_greed_label": "Fear \u2014 chip sector panic, DRAM warnings, risk-off tone.",
+    "spx": "S&P 500 est. ~7,477 (June 23 premarket \u2014 falling on chip panic). SPX total return since ~May 1: ~+3.85% (7,477/7,200-1). Semiconductor selloff weighing on index.",
+    "btc": "BTC est. ~$63,000-65,000 \u2014 well below $82K threshold. No crypto entry. Risk-off chip panic suppressing crypto bids.",
     "sectors": [
       {
         "name": "Technology / AI Semis",
-        "change_pct": 0.0,
-        "note": "Flat/cautious FOMC day. AMD digesting +12% June 16 gap. INTC/MRVL/NVDA consolidating Iran deal gains. Awaiting dot plot at 2PM ET."
+        "change_pct": -5.9,
+        "note": "SOXX -5.9% premarket. KOSPI -9.99% leading the drop (Samsung/SK Hynix DRAM warnings). MRVL -3.90% June 22 sell-the-news. NVDA, AMD, INTC all under pressure. Semiconductor panic — no entries until sector stabilizes."
       },
       {
-        "name": "Intel Foundry / Semis",
-        "change_pct": 0.2,
-        "note": "INTC ~26-132. Foundry thesis intact. BofA Buy PT 35. S&P inclusion announcement for MRVL June 22 continuing to attract interest."
+        "name": "Memory / DRAM",
+        "change_pct": -8.4,
+        "note": "MU -8.4% premarket on DRAM sector sympathy. MU earnings June 24 AH — Exemption 2 applies. Samsung/SK Hynix warnings spreading. Avoid all DRAM names through earnings."
       },
       {
         "name": "Precious Metals",
-        "change_pct": -0.5,
-        "note": "GLD est. 65-385. Iran deal lowering geopolitical risk premium. Dollar firming ahead of FOMC. No re-entry planned."
+        "change_pct": 0.5,
+        "note": "GLD est. ~$383-385. Iran deal intact = lower safe-haven premium. GLD re-entry prohibited — averaging-down rule triggered (stopped out at $397.92 June 10). No re-entry planned."
       },
       {
         "name": "Energy",
-        "change_pct": -1.0,
-        "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
+        "change_pct": -0.5,
+        "note": "Iran Hormuz deal intact. Oil stable. Not a target sector currently."
       }
     ],
-    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data today\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%; markets remain risk-on into June 22\n- SPX estimated ~7,600 as of June 18 close (+5.56% from strategy start ~$7,200)\n- **June 22 Primary Catalyst:** MRVL S&P 500 index inclusion effective Monday; index tracker/ETF inflows must execute June 22 close buy \u2014 predictable intraday demand\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before June 22 open\n- **BTC:** ~$66K\u201370K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact; oil stabilizing; risk-on environment persisting into June 22",
-    "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
-    "sp500_est": 7550,
-    "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
+    "macro_notes_md": "**2026-06-23 (Tuesday \u2014 Trading Day)**\n- **SEMICONDUCTOR SECTOR PANIC:** KOSPI -9.99% (Samsung/SK Hynix DRAM capacity warnings). SOXX -5.9% premarket. Nasdaq futures -2.70%.\n- **June 22 Full-Day Blackout Confirmed:** No heartbeat file for June 22 \u2014 all 7 routines silently failed.\n- **MRVL Catalyst Expired:** S&P 500 inclusion effective June 22. MRVL closed -3.90% (sell-the-news). Primary catalyst gone \u2014 MRVL scored 4.83 fresh today.\n- **MU -8.4% premarket** on DRAM sympathy (Samsung warnings). MU earnings June 24 AH \u2014 Exemption 2 blocks entry.\n- **Fresh 6-agent scores (all below 7):** MRVL 4.83 | NVDA 5.83 | AMD 5.0 | INTC 4.33 | MU Exemption-2 | GLD banned (averaging-down rule)\n- **NVDA best candidate for Market Open** \u2014 if Nasdaq stabilizes and confirms hammer/reversal with \u22652 of 5 indicators, re-score may reach ~6.5-7.0\n- **GLD banned:** Re-entry below prior stop-out ($397.92) violates CLAUDE.md averaging-down prohibition\n- **Iran deal intact** \u2014 Hormuz open, oil stable, geopolitical premium faded\n- **BTC ~$63K-65K** \u2014 well below $82K threshold. No crypto entry.\n- **SPX est. ~7,477** \u2014 falling on chip panic. Benchmark gap improving (SPX falling, cash flat).",
+    "sp500_today_pct": "~-1.5% to -2.5% est. (chip panic, KOSPI contagion)",
+    "sp500_est": 7477,
+    "macro_note": "June 23 Pre-Market. SEMICONDUCTOR SECTOR PANIC. KOSPI -9.99% (Samsung/SK Hynix DRAM capacity warnings). SOXX -5.9% premarket. Nasdaq futures -2.70%. MU -8.4% premarket. MRVL catalyst expired (inclusion occurred June 22 with -3.90% sell-the-news). June 22 FULL BLACKOUT (all 7 routines). MU earnings June 24 \u2014 binary event active. Cash preserved. Re-score NVDA/AMD at Market Open 9:45 AM ET."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-16 08:07 ET",
-      "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 correctly absent. June 22 Pre-Market MUST place MOO orders for MRVL 8sh + NVDA 4sh (cap 3 MOO)."
+      "status": "completed",
+      "last_run": "2026-06-23 08:07 ET",
+      "next_run": "2026-06-24 08:00 ET",
+      "last_summary": "June 23: SEMICONDUCTOR PANIC (KOSPI -9.99%, SOXX -5.9%, Nasdaq -2.70%). June 22 full blackout confirmed. MRVL catalyst expired. Fresh 6-agent: all 6 names scored below 7 (best: NVDA 5.83). 0 MOO orders placed. API blocked (43rd). Re-score NVDA/AMD at Market Open if sector stabilizes."
     },
     {
       "name": "Market Open",
@@ -161,6 +161,152 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-23T12:05:00Z",
+      "symbol": "GLD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "macro-hedge",
+      "score": 4.5,
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 4,
+        "sentiment": 4,
+        "macro": 4,
+        "risk": 3,
+        "tech_analyst": 7
+      },
+      "agent_average": 4.5,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 4.50 avg. Risk 3/10 — CLAUDE.md 'never average down more than once' prohibits re-entry below prior stop-out $397.92. Iran deal removed safe-haven premium. GLD in downtrend."
+    },
+    {
+      "ts": "2026-06-23T12:05:00Z",
+      "symbol": "MU",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "SKIP per Exemption 2 — MU earnings June 24 AH. MU -8.4% premarket (DRAM sector sympathy: Samsung/SK Hynix warnings). Binary event window active. No entry until post-earnings June 25."
+    },
+    {
+      "ts": "2026-06-23T12:05:00Z",
+      "symbol": "INTC",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": 4.33,
+      "agent_scores": {
+        "fundamentals": 6,
+        "technical": 2,
+        "sentiment": 4,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 5
+      },
+      "agent_average": 4.33,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 4.33 avg — lowest score of all candidates. Technical 2/10: chip sector panic, 0 of 5 indicators confirming. Macro 3/10: KOSPI -9.99%, SOXX -5.9%. Avg <7, <4 agents ≥7 (0 of 6). No order placed."
+    },
+    {
+      "ts": "2026-06-23T12:05:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 5.0,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 3,
+        "sentiment": 4,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 7
+      },
+      "agent_average": 5.0,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 5.0 avg. Technical 3/10: SOXX -5.9% drags entire chip sector. Macro 3/10: KOSPI systemic risk. Only 2 of 6 agents ≥7 (Fundamentals 7, Tech Analyst 7). Master gate requires 4 of 6 ≥7. No order placed."
+    },
+    {
+      "ts": "2026-06-23T12:05:00Z",
+      "symbol": "NVDA",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 5.83,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 4,
+        "sentiment": 5,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 9
+      },
+      "agent_average": 5.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 5.83 avg. Best score of the day but still below 7. Technical 4/10: SOXX -5.9%, chip panic, 1 of 5 indicators confirming (Fundamentals strong but no price action confirmation). Macro 3/10: KOSPI systemic. Only 3 of 6 ≥7 (F=8, TA=9, Risk=6-borderline). NVDA MOO API attempt → HTTP 403 (43rd block). BEST CANDIDATE for Market Open re-score if sector stabilizes."
+    },
+    {
+      "ts": "2026-06-23T12:05:00Z",
+      "symbol": "MRVL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 4.83,
+      "agent_scores": {
+        "fundamentals": 6,
+        "technical": 3,
+        "sentiment": 4,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 7
+      },
+      "agent_average": 4.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "REJECTED 4.83 avg. S&P 500 inclusion catalyst EXPIRED June 22. MRVL -3.90% sell-the-news. Technical 3/10: stock sold off on inclusion day itself. Macro 3/10: KOSPI systemic. Only 1 of 6 agents ≥7 (Tech Analyst 7). No order placed. Do not re-enter MRVL — catalyst gone."
+    },
+    {
+      "ts": "2026-06-22T12:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "JUNE 22 FULL DAY BLACKOUT — ALL 7 ROUTINES SILENTLY FAILED. No heartbeat file found for 2026-06-22. MRVL S&P 500 inclusion effective June 22 — passive ETF forced buying occurred without any agent participation. MRVL closed -3.90% (sell the news). Binding watchlist had 4 names ≥7 (MRVL 7.67, NVDA 8.33, AMD 7.50, INTC 7.17). No valid exemptions existed. Root cause: cloud session dropped — Alpaca still blocked HTTP 403 (42nd consecutive)."
+    },
+    {
+      "ts": "2026-06-22T12:01:00Z",
+      "symbol": "MRVL",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.67,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 9
+      },
+      "agent_average": 7.67,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "June 22 MRVL S&P 500 inclusion day — no agent fired. All 7 routines silently failed. MRVL MOO (score 7.67, MANDATORY from June 18 binding watchlist) not placed. MRVL closed -3.90% sell-the-news. Catalyst expired. Primary missed-trade day of the entire API-blocked period."
+    },
     {
       "ts": "2026-06-18T19:33:00Z",
       "symbol": "MRVL",
@@ -950,88 +1096,123 @@
   },
   "watchlist": [
     {
-      "symbol": "MRVL",
-      "score": 7.67,
-      "order_type": "MOO",
-      "qty": 8,
-      "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 2.46,
-      "priority": "MANDATORY",
-      "notes": "\u2b50 S&P 500 inclusion June 22 \u2014 ETF forced buying at close. Cancel stale GTC $202.19 first. Highest time-sensitivity.",
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.67
-    },
-    {
       "symbol": "NVDA",
-      "score": 8.33,
-      "order_type": "MOO",
-      "qty": 4,
+      "score": 5.83,
+      "order_type": "WATCH \u2014 no order",
+      "qty": null,
       "limit_price": null,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 0.89,
-      "priority": "MANDATORY",
-      "notes": "Highest score 8.33. AI infrastructure leader. Small size (4sh = ~0.9%). MOO pre-market.",
+      "size_pct": null,
+      "priority": "MONITOR \u2014 re-score at Market Open",
+      "notes": "Best score today (5.83) despite chip panic. Strong fundamentals (8) and Tech Analyst (9). If Nasdaq stabilizes at open + hammer/reversal candle with \u22652 of 5 indicators confirmed, macro may improve from 3\u21925 and score could reach ~6.5-7. Watch for MOO/limit entry at Market Open routine.",
       "agent_scores": {
         "fundamentals": 8,
-        "technical": 8,
-        "sentiment": 9,
-        "macro": 9,
-        "risk": 8,
+        "technical": 4,
+        "sentiment": 5,
+        "macro": 3,
+        "risk": 6,
         "tech_analyst": 9
       },
-      "agent_average": 8.33
+      "agent_average": 5.83
     },
     {
       "symbol": "AMD",
-      "score": 7.5,
-      "order_type": "Limit GTC bracket",
-      "qty": 9,
+      "score": 5.0,
+      "order_type": "WATCH \u2014 no order",
+      "qty": null,
       "limit_price": null,
       "stop_pct": -5.0,
       "target_pct": 15.0,
-      "size_pct": 4.99,
-      "priority": "MANDATORY",
-      "notes": "\u26a0\ufe0f CANCEL stale GTCs $520.59 + $524.15 BEFORE market open. 9sh @~$555 = ~$4,995 \u2248 4.99% \u2713. Citi PT $665.",
+      "size_pct": null,
+      "priority": "MONITOR \u2014 secondary to NVDA",
+      "notes": "AMD scored 5.0 today. Strong fundamentals (7) and Tech Analyst (7) but technical (3) and macro (3) destroyed by SOXX -5.9%. Re-score at Market Open if chip panic subsides. Secondary to NVDA.",
       "agent_scores": {
         "fundamentals": 7,
-        "technical": 8,
-        "sentiment": 7,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
+        "technical": 3,
+        "sentiment": 4,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 7
       },
-      "agent_average": 7.5
+      "agent_average": 5.0
+    },
+    {
+      "symbol": "MRVL",
+      "score": 4.83,
+      "order_type": "DO NOT ENTER",
+      "qty": null,
+      "limit_price": null,
+      "stop_pct": null,
+      "target_pct": null,
+      "size_pct": null,
+      "priority": "REMOVED \u2014 catalyst expired",
+      "notes": "S&P 500 inclusion occurred June 22 without agent participation. MRVL -3.90% sell-the-news. Primary catalyst EXPIRED. Score 4.83 \u2014 well below threshold. Do not re-enter. Remove from watchlist.",
+      "agent_scores": {
+        "fundamentals": 6,
+        "technical": 3,
+        "sentiment": 4,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 7
+      },
+      "agent_average": 4.83
+    },
+    {
+      "symbol": "MU",
+      "score": null,
+      "order_type": "BLOCKED \u2014 Exemption 2",
+      "qty": null,
+      "limit_price": null,
+      "stop_pct": null,
+      "target_pct": null,
+      "size_pct": null,
+      "priority": "EXEMPTION 2 \u2014 earnings June 24 AH",
+      "notes": "MU earnings June 24 AH. Binary event window active \u2014 no entry. MU -8.4% premarket on DRAM sector sympathy (Samsung/SK Hynix capacity warnings). Re-score post-earnings June 25 if reaction is strong.",
+      "agent_scores": {},
+      "agent_average": null
     },
     {
       "symbol": "INTC",
-      "score": 7.17,
-      "order_type": "Limit GTC bracket",
-      "qty": 38,
+      "score": 4.33,
+      "order_type": "DO NOT ENTER",
+      "qty": null,
       "limit_price": null,
-      "stop_pct": -5.0,
-      "target_pct": 15.0,
-      "size_pct": 4.95,
-      "priority": "MANDATORY",
-      "notes": "BofA Buy PT $135. 38sh @~$130 = ~$4,940 \u2248 4.94% \u2713. Foundry + AI chip cycle. Cancel stale $123.69 GTC first, replace at ask\u00d71.005.",
+      "stop_pct": null,
+      "target_pct": null,
+      "size_pct": null,
+      "priority": "REJECTED \u2014 chip panic",
+      "notes": "INTC scored 4.33 \u2014 lowest of all candidates. Technical 2/10 (chip sector panic, 0 of 5 indicators). Foundry thesis intact long-term but not entering during semiconductor sector selloff. Monitor for sector recovery.",
       "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
+        "fundamentals": 6,
+        "technical": 2,
+        "sentiment": 4,
+        "macro": 3,
+        "risk": 6,
+        "tech_analyst": 5
+      },
+      "agent_average": 4.33
+    },
+    {
+      "symbol": "GLD",
+      "score": 4.5,
+      "order_type": "BANNED \u2014 averaging-down rule",
+      "qty": null,
+      "limit_price": null,
+      "stop_pct": null,
+      "target_pct": null,
+      "size_pct": null,
+      "priority": "PROHIBITED by CLAUDE.md",
+      "notes": "GLD re-entry below prior stop-out ($397.92, June 10) violates CLAUDE.md 'never average down into a losing position more than once.' Iran deal removed safe-haven premium. GLD est. ~$383-385. Risk scored 3/10 (averaging-down auto-veto). Do not re-enter.",
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 4,
+        "sentiment": 4,
+        "macro": 4,
+        "risk": 3,
         "tech_analyst": 7
       },
-      "agent_average": 7.17
+      "agent_average": 4.5
     }
   ],
   "history": [
