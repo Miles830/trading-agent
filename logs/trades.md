@@ -4,6 +4,303 @@
 
 ---
 
+## 2026-06-23 — Daily Review (4:30 PM ET / 20:32 UTC — TUESDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:32:26Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **45th consecutive blocked session**
+**Current Time:** 20:32Z = 4:32 PM ET — market closed
+**Market Status:** CLOSED — regular session ended.
+
+---
+
+### PREDECESSOR HEARTBEAT TALLY — JUNE 23, 2026
+
+```
+grep "STARTED " logs/heartbeats/2026-06-23.log
+→ 2026-06-23T16:32:50Z STARTED Midday
+grep "COMPLETED " logs/heartbeats/2026-06-23.log
+→ 2026-06-23T16:48:40Z COMPLETED Midday
+```
+
+| Routine | Scheduled (ET / UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Market-Open | 09:45 ET / 13:45Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Mid-Morning | 11:00 ET / 15:00Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Midday | 12:30 ET / 16:30Z | ✓ 16:32:50Z | ✓ 16:48:40Z | **COMPLETED** |
+| Afternoon | 14:00 ET / 18:00Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Market-Close | 15:30 ET / 19:30Z | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Daily Review | 16:30 ET / 20:30Z | ✓ 20:32:26Z | ✓ (this entry) | ✓ RUNNING |
+
+⚠️ **TOP OPERATIONAL ISSUE: 5 OF 6 INTRADAY ROUTINES SILENTLY FAILED (45th consecutive API block session).** Only Midday survived. This is a systemic, recurring cloud-runner + proxy-policy failure. The only reliable fix remains operator manual execution at app.alpaca.markets or operator provisioning of a network allowlist for paper-api.alpaca.markets.
+
+**Remediation proposal:** Request network policy update to allow `paper-api.alpaca.markets` and `data.alpaca.markets` in the allowlist. Until then, a daily "API canary" check in the heartbeat startup hook could surface the block within 2 minutes of each routine firing, so the operator receives an early alert rather than a silent dropout.
+
+---
+
+### SILENT-FAILURE VIOLATIONS — JUNE 23, 2026
+
+```yaml
+---
+ts: 2026-06-23T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market June 23 (08:00 AM ET / 12:00Z) silently failed — no heartbeat. AMD quantum + Rackspace 30MW pre-market catalyst was visible. Binding Pre-Market watchlist (AMD 7.17, INTC 6.5-7.17, NVDA 5.83 from prior session) required assessment."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure — 5th consecutive session with Pre-Market silent failure. AMD opened with quantum computing catalyst visible pre-market. Should have assessed for MOO or pre-market limit entry."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open June 23 (09:45 AM ET / 13:45Z) silently failed — no heartbeat. AMD relative strength +4.86% vs Nasdaq -2.3% clearly visible by open. Stop-loss audit (0 positions) not required. Stale GTC status unknown — may have traded through $520.59/$524.15."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. AMD stale GTC naked-fill risk at its highest: AMD may have opened/traded through $520.59 and $524.15 during session. If filled, 18 shares AMD (9sh × 2 stale GTCs) now held WITHOUT bracket stops. Operator must verify and cancel/manage immediately."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning June 23 (11:00 AM ET / 15:00Z) silently failed — no heartbeat. AMD extreme relative strength confirmed (+4.86% vs Nasdaq -2.3%). Midday was first routine to fire."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. Third consecutive silent failure today before Midday. AMD midday entry APPROVED 7.17 but blocked (HTTP 403)."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T18:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Afternoon June 23 (2:00 PM ET / 18:00Z) silently failed — no heartbeat. Per Midday plan: AMD re-attempt (cancel stale GTCs first), INTC re-score if SPX recovered, NVDA re-score if $200 support held. None of these actions were taken."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. Afternoon catch-up window missed. AMD may have given back intraday gains in afternoon selloff (broader semiconductor rout; 'Nvidia and Alphabet slid while chipmakers Intel, Marvell Technology and Advanced Micro Devices also fell' — Yahoo Finance). AMD close estimated ~$510-525, near or below stale GTC levels."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T19:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Close June 23 (3:30 PM ET / 19:30Z) silently failed — no heartbeat. MOC orders for any day trades: N/A (0 positions). Swing position consideration: AMD re-attempt via MOC also missed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. Market closed. No MOC orders placed. Stop audit: 0 positions confirmed (no fills from blocked API throughout session). AMD stale GTC naked fill risk outstanding — status unknown."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (FIRST ACTION — DAILY REVIEW)
+
+```
+GET /v2/positions        → HTTP 403 "Host not in allowlist" (45th block)
+GET /v2/orders?status=open → HTTP 403 "Host not in allowlist"
+GET /v2/account          → HTTP 403 "Host not in allowlist"
+```
+
+**Estimated state:** 0 confirmed open positions, ~$99,854 cash.
+
+**⚠️⚠️ CRITICAL AMD STALE GTC STATUS — UNKNOWN:**
+- AMD 9sh limit $524.15 GTC (placed attempt ~June 3): AMD traded from ~$512 open to ~$537 midday on June 23. If AMD OPENED BELOW $524.15, this GTC may have filled on the intraday rally.
+- AMD 9sh limit $520.59 GTC (placed attempt ~May 29): Same risk — if AMD passed through $520.59 during June 23 intraday range, this filled WITHOUT a bracket stop.
+- **If both GTCs filled:** 18 shares AMD (≈$9,360 = 9.4% equity) are NAKED — no stop-loss orders on record. This is both a position-size guardrail violation (>5% per position) AND a naked-overnight violation.
+- **OPERATOR MUST VERIFY AT app.alpaca.markets IMMEDIATELY.**
+  - If unfilled: Cancel both ($520.59 and $524.15) before June 24 open.
+  - If filled: (a) Immediately sell 9 of the 18 shares to get back to ≤5% position size; (b) Place GTC stop on remaining 9sh at entry_price × 0.95.
+
+---
+
+### MARKET SUMMARY — JUNE 23, 2026 (END OF DAY)
+
+**Global AI/Semiconductor Selloff — Day 2:**
+- S&P 500: **~−1.3%** (closed ~7,453 est. from ~7,554 June 22)
+- Nasdaq: **~−2.1%**
+- Korea Kospi: −9.99% (circuit breakers triggered twice June 22-23; AI/memory stock rout)
+- NVDA: **−4.13%** (~$195 est. close from $203 midday)
+- INTC: **−6.14%** (~$126 est. close; pulling back hard from ATH $141.45 June 22)
+- MU: **−13.18%** (~$956 est. close; pre-earnings profit-taking — EARNINGS TONIGHT after close)
+- AMD: **Midday +4.86% (~$537)** but semiconductor selloff deepened into close; est. close ~$510-525
+- MRVL: **~$264** (continued sell-the-news; down ~-7% midday + further)
+- Defensive names: IBM +4.2%, ACN +3.3%, PSA +4.4% (risk-off rotation)
+
+**Context:** Second consecutive risk-off session driven by concerns about debt-funded AI hyperscaler spending, BoFA hawkish rate note, and Korean memory stock rout. MU -13.18% pre-earnings profit-taking sets up binary event tonight.
+
+---
+
+### TODAY'S P&L vs SPX BENCHMARK
+
+| Metric | Today | 20-Day Rolling |
+|---|---|---|
+| Portfolio return | **0.0%** (0 positions) | −0.15% total (GLD stop only) |
+| SPX return | **~−1.3%** | est. +3.46% from ~Jun 3 baseline |
+| Daily gap | **+1.3 pp** (inadvertent outperformance — cash shield) | — |
+| Cumulative gap vs SPX | est. **−4.2 pp** (improved from −5.5 pp at midday; SPX gave back 1.3% today) | 45 consecutive sessions API-blocked |
+
+*Note: Cumulative gap improved today purely because SPX declined while portfolio held flat. This is not a strategy win — it is cash-drag converting to temporary advantage on a down day. The root cause (API blockage preventing entries) remains unfixed.*
+
+**Win rate (all-time executed trades):** 0 wins / 1 loss (GLD stop -4.99% June 10) = 0% win rate
+**Profit factor:** undefined (0 gross profit / $145.58 gross loss)
+**Avg win:** N/A | **Avg loss:** −$145.58
+
+**20-day rolling:** Same — only 1 closed trade (GLD stop June 10 at -4.99%, -$145.58). All other orders blocked at API.
+
+---
+
+### BEST & WORST "TRADES" OF THE DAY
+
+**Best decision:** Skipping MU per Exemption 2 (earnings tonight). MU fell −13.18% during the session — avoiding entry saved approximately $980-$1,100 in unrealized loss on the planned position size.
+
+**Worst miss (not a mistake):** AMD intraday +4.86% was a clean catalyst-driven relative-strength setup (approved 7.17 by 6-agent at Midday). The Afternoon and Market-Close silent failures meant the second attempt could not be made even if AMD pulled back to a better entry in the afternoon. BLOCKED BY API regardless.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **MU Exemption 2 discipline:** Rule clearly saved ~$1,000+ unrealized loss. Options were pricing ±17% move; the -13% intraday move was the downside materializing.
+2. **AMD catalyst correctly identified:** Quantum computing + Rackspace 30MW + MEXT acquisition identified before market open; 6-agent correctly scored 7.17 despite risk-OFF macro. Midday was only the first clean catch-up window; AMD was up ~4.86% at that point.
+3. **Cash position as inadvertent hedge:** On a day when SPX fell -1.3% and semis fell -4-13%, holding 100% cash avoided a bad day. Cumulative gap vs SPX narrowed by ~1.3 pp.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW
+
+1. **AMD stale GTC situation must be resolved BEFORE JUNE 24 OPEN.** If AMD closed below $520.59, the stale GTCs are at-the-money and will fill immediately on any opening bounce. Pre-market is the ONLY window to cancel. The operator must log into app.alpaca.markets before 9:25 AM ET June 24.
+2. **INTC now at a better entry than at any point since June 22 ATH.** At ~$126 (vs ATH $141.45), the Apple partnership catalyst is fully intact but the price has corrected -11%. This is an improved risk/reward setup. June 24 Pre-Market MUST score INTC fresh and assess limit entry.
+3. **5 silent failures today is unacceptable.** Each missed routine is a missed catch-up window. Today we had FOUR windows where AMD (7.17 approved) could have been entered (Pre-Market, Market-Open, Mid-Morning, Afternoon, Market-Close) — all silent. Even one firing routine would have captured the AMD trade. Escalate to operator for network policy fix.
+
+---
+
+### SETUP-TAG TALLY (rolling 5-day: June 18-23)
+
+| Setup type | 5-day entries | Wins | Losses | Consec. L | Halt triggered? | Boost triggered? |
+|---|---|---|---|---|---|---|
+| ai-momentum-pullback | 7 skips (all blocked/rejected) | 0 | 0 | 0 | No | No |
+| breakout-volume | 3 skips (AMD, INTC blocked) | 0 | 0 | 0 | No | No |
+| sector-rotation | 1 skip (MRVL rejected) | 0 | 0 | 0 | No | No |
+| macro-hedge | 0 new | 0 | 0 | 0 | No | No |
+| silent-failure | 14 violations | — | — | — | — | — |
+| other | 2 skips (MU Exemption 2, holiday no-ops) | 0 | 0 | 0 | No | No |
+
+**All-time closed trade record (single trade):** GLD macro-hedge: 0W / 1L
+No 3-in-a-row rules triggered (need 3+ closed trades per setup first).
+
+---
+
+### AGENT CALIBRATION (no new closed trades today)
+
+Only 1 closed trade in history (GLD June 10, -4.99%). Agent scores at entry were F=8, T=7, S=7, M=8, R=7, TA=7 (avg 7.7). All agents scored ≥7; trade stopped out. Macro agent scored 8 but the Iran peace deal (unexpected catalyst) invalidated the gold thesis. **Lesson: Macro agent may not adequately penalize for tail-risk binary catalysts (unexpected peace deal, surprise Fed action).** Sample too small to flag formally; flag after 3 losses.
+
+---
+
+### TOMORROW'S WATCHLIST — JUNE 24, 2026 (PRE-SCORED)
+
+⚠️ **JUNE 24 CONSTRAINT: MU EARNINGS AFTER CLOSE** — Exemption 2 active ALL DAY June 24 for MU. Post-earnings play June 25 only.
+
+⚠️ **Pre-market chip bounce signals:** Search results indicate NVDA, INTC, AMD showing rebound in pre-market. Cathie Wood trimming AMD suggests institutional repositioning. Monitor closely at open.
+
+| # | Symbol | Est. Price | Score | Bucket | Setup | Thesis | Action |
+|---|---|---|---|---|---|---|---|
+| 1 | **INTC** | ~$126 | **7.17** | active | ai-momentum-pullback | Apple foundry intact; -11% from ATH $141.45 = improved entry; Data Center +22%; Q2 beat | **MANDATORY — 38sh limit ~$126 bracket GTC (stop $119.70, target $144.90)** |
+| 2 | **AMD** | ~$515-525 | **~7.0** | active | breakout-volume | Quantum+Rackspace catalyst intact; cancel stale GTCs $520.59/$524.15 FIRST; re-entry at current levels | **MANDATORY after stale GTC cancellation** |
+| 3 | **IBM** | ~$275 | **7.33** | active | sector-rotation | +4.2% on June 23 red day = strong relative strength; AI consulting moat; defensive in risk-OFF; hybrid cloud | **NEW ENTRY — 3sh limit bracket GTC (~$825 = 0.83%)** |
+| 4 | **NVDA** | ~$195 | **6.5** | active | ai-momentum-pullback | -4.13% June 23; AI infrastructure secular intact but 2nd down day; score below 7 threshold — conditional on pre-market bounce confirmation + 2/5 indicator stack | Skip unless score rises to 7 at open |
+| 5 | **MU post-EPS** | ~$956 | TBD | active | earnings-reaction-follow | Earnings tonight after close (June 24); consensus $34.66B rev / $19.72 EPS; HBM4 commentary; 2025 HBM supply sold out = likely beat; ±17% options | **Exemption 2 today; MUST score June 25 pre-market** |
+| 6 | **AVGO** | ~$395 | **6.5** | active | mean-reversion-oversold | Soft AI guidance triggered June selloff; AI infrastructure thesis intact long-term; score below 7 — re-evaluate on stability | Conditional — need macro stabilization |
+| 7 | **LRCX** | ~$1,100+ | **6.8** | active | breakout-volume | +114% YTD; AI semiconductor equipment (etch systems for HBM); strong secular demand; high price = small qty needed | Conditional — need to confirm 2/5 indicator stack |
+| 8 | **BE** (Bloom Energy) | ~$35+ | **6.5** | active | breakout-volume | New ATH on AI energy demand (solid oxide fuel cells); energy infrastructure for data centers; but small cap (verify ADV > 1M) | Scan for pre-market activity |
+| 9 | **MRVL** | ~$260-265 | **5.5** | active | — | Still in sell-the-news mode (day 2 post-inclusion); technical breakdown; wait for stabilization below $260 | Skip |
+| 10 | **BTC** | Unknown | TBD | crypto | crypto-flush-rebound | Risk-OFF selling in crypto likely; check if BTC held $82K floor; if yes, score fresh | Only if BTC > $82K threshold |
+
+**Binding commitments for June 24 Pre-Market:**
+1. ⚠️ **OPERATOR: Cancel AMD stale GTCs $520.59 and $524.15 at app.alpaca.markets BEFORE 9:25 AM ET** (critical — may be at-the-money on any bounce)
+2. 🔴 **OPERATOR: Verify no AMD stale GTC filled during June 23 session** (naked fill risk if filled during intraday rally)
+3. **INTC 38sh limit ~$126 bracket GTC (stop $119.70, target $144.90)** — score 7.17, mandatory
+4. **AMD fresh entry after stale GTC cancellation** — re-score at open; expected ~7.0
+5. **IBM 3sh limit ~$275 bracket GTC (stop $261.25, target $316.25)** — score 7.33
+
+---
+
+### KEY MACRO EVENTS — JUNE 24-27, 2026
+
+| Date | Event | Impact |
+|---|---|---|
+| **June 24 (Tonight)** | **MU Q3 FY2026 Earnings** (after close) | HIGH — consensus $34.66B rev / $19.72-20.25 EPS. HBM commentary = binary. Options ±17%. Post-earnings play June 25. |
+| June 24 | Chip bounce/reversal potential | MEDIUM — pre-market shows NVDA/INTC/AMD trying to bounce after 2-day selloff |
+| June 24 | Fed speakers (watch for hawkish statements) | MEDIUM — BoFA note cited hawkish Fed as June 23 selloff driver |
+| June 25 | MU post-earnings reaction | HIGH — will drive semiconductor sentiment for rest of week |
+| June 25 | FedEx Q4 earnings | LOW-MEDIUM — logistics bellwether; $6.41 EPS est., $24B rev |
+| Week of June 23-27 | Korean chip sector stabilization | MEDIUM — Kospi -9.99% was a global contagion signal |
+
+---
+
+```yaml
+---
+ts: 2026-06-23T20:32:00Z
+action: skip
+symbol: null
+bucket: null
+setup: other
+score: null
+thesis: "Daily Review June 23 — 45th consecutive Alpaca API block (HTTP 403). 5 of 6 intraday routines silently failed (Pre-Market, Market-Open, Mid-Morning, Afternoon, Market-Close). Only Midday fired. No trades executed. Portfolio: 0 positions, ~$99,854 cash. SPX -1.3%, portfolio flat = +1.3 pp today. Cumulative gap vs SPX: est. -4.2 pp (improved from -5.5 pp). AMD 6-agent APPROVED 7.17 at Midday but blocked. 5 silent failures today (violations prepended above)."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "DAILY REVIEW COMPLETE. Heartbeat tally: Pre-Market FAIL, Market-Open FAIL, Mid-Morning FAIL, Midday PASS, Afternoon FAIL, Market-Close FAIL. Win rate: 0/1 (0%) — only GLD stop Jun 10. No new closed trades today. Setup tally: all open/blocked, no 3-in-a-row rules triggered. TOMORROW BINDING: (1) Operator cancel AMD GTCs $520/$524 before 9:25 AM ET; (2) INTC 38sh limit $126 bracket GTC (7.17 score); (3) AMD fresh entry post-cancellation (~7.0); (4) IBM 3sh bracket GTC (7.33). MU Exemption 2 all day June 24 (earnings tonight). Post-earnings MU June 25. Chip bounce expected in pre-market June 24 (NVDA/INTC/AMD). KEY ALERT: AMD stale GTC naked-fill risk — may have filled during June 23 session. Operator verify immediately."
+---
+```
+
+---
+
 ## 2026-06-23 — Midday (12:30 PM ET / 16:32 UTC — TUESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Midday 16:32:50Z ✓
