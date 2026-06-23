@@ -4,6 +4,299 @@
 
 ---
 
+## 2026-06-23 — Market-Open (9:45 AM ET / 13:45 UTC — TUESDAY — GLOBAL CHIP SELLOFF)
+
+**HEARTBEAT:** STARTED Market-Open 13:45:29Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **43rd+ consecutive blocked session**
+**Current Time:** 13:45Z = 9:45 AM ET
+**Market Status:** OPEN. Global semiconductor selloff in progress — KOSPI −9.99%, Samsung/SK Hynix each −12% (exchange trading halts triggered), Nasdaq opened −2%, S&P 500 opened ~7,500 (est. −1.1%). Micron (MU) −10% premarket ahead of earnings Thursday June 24 (48h binary event).
+
+---
+
+### PREDECESSOR AUDIT — June 23, 2026
+
+| Routine | Scheduled | STARTED | Status |
+|---|---|---|---|
+| June 22 Pre-Market | 12:00Z Mon | ✗ NO HEARTBEAT LOG | **FULL DAY BLACKOUT** |
+| June 22 Market-Open | 13:45Z Mon | ✗ NO HEARTBEAT LOG | **FULL DAY BLACKOUT** |
+| June 22 Mid-Morning | 15:00Z Mon | ✗ NO HEARTBEAT LOG | **FULL DAY BLACKOUT** |
+| June 22 Midday | 16:30Z Mon | ✗ NO HEARTBEAT LOG | **FULL DAY BLACKOUT** |
+| June 22 Afternoon | 18:00Z Mon | ✗ NO HEARTBEAT LOG | **FULL DAY BLACKOUT** |
+| June 22 Market-Close | 19:30Z Mon | ✗ NO HEARTBEAT LOG | **FULL DAY BLACKOUT** |
+| June 23 Pre-Market | 12:00Z | ✗ MISSING | **SILENT FAILURE** |
+| June 23 Market-Open | 13:45Z | ✓ 13:45:29Z | ✓ RUNNING NOW |
+
+**7 violations: June 22 full day blackout (6 routines) + June 23 Pre-Market silent failure.**
+
+---
+
+### VIOLATIONS
+
+```yaml
+---
+ts: 2026-06-22T20:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "June 22 FULL DAY BLACKOUT — all 6 routines silently failed. No heartbeat log for 2026-06-22. June 22 was MRVL S&P 500 inclusion day — highest-priority session of the month."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "CRITICAL BLACKOUT on MRVL S&P 500 inclusion day. No heartbeat log exists for 2026-06-22 — all 6 routines silently failed. Market actual June 22: MRVL −3.90% on inclusion day (sell-the-news; institutional front-running pre-inclusion absorbed most forced ETF demand). NVDA closed ~$208.65; AMD closed $537.37 (+4.86%); INTC closed ~$134 (+10.64% — foundry/AI PC catalyst). S&P 500 est. close ~7,583 (mixed — Dow up, Nasdaq/tech dragged lower). Counterfactual: MRVL MOO fill ~$295-305 → sell-the-news −3.90% would have triggered stop at fill×0.95 (~$280-290). Full blackout inadvertently avoided that stop-out, but this was a system failure not a strategic decision. AMD at $537 was above our prior stale GTC limits ($524.15/$520.59) — unknown if operator cancelled them. Root cause: cloud runner session dropout (KNOWN issue, 43rd+ Alpaca API blocked). No orders placed. No positions opened."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "June 23 Pre-Market (08:00 AM ET / 12:00Z) silently failed — no heartbeat. Catch-up executing at Market-Open."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Pre-Market silent failure June 23. Binding watchlist: MRVL 8sh (7.67), NVDA 4sh (8.33), AMD 9sh (7.50), INTC 38sh (7.17). Pre-Market should have placed MOO orders for MRVL and NVDA (highest scoring). However: global chip selloff today (KOSPI −9.99%, Samsung −12%, MU −10% premarket ahead of June 24 earnings) requires fresh 6-agent gate before committing to any entry. Market-Open catch-up analysis executed below."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (FIRST ACTION — per CLAUDE.md)
+
+0 open confirmed positions (portfolio.md — API blocked, cannot verify directly). 0 stop-loss gaps. No MOO fills to backfill (Pre-Market silently failed). 0 naked positions. Audit complete.
+
+---
+
+### MARKET CONTEXT — June 23, 9:45 AM ET
+
+**Global Semiconductor Selloff:**
+- **KOSPI:** −9.99% (largest single-day drop in 3+ months)
+- **Samsung Electronics:** −12% | **SK Hynix:** −12% (automatic 20-min trading halt on each)
+- **Trigger:** Regulatory signals that sector rally overheated + AI capex sustainability concerns + Micron earnings June 24 triggering sector-wide profit-taking
+- **Nasdaq:** opened −2% | **S&P 500:** opened ~7,500 (est. −1.1% from June 22 close)
+- **Micron (MU):** −10% premarket — June 24 earnings = 48h binary event (NOT on our watchlist, but driving sector sentiment)
+- **NVDA:** $202.91 (−2.78% from $208.65 June 22 close)
+- **AMD:** est. ~$520-525 (June 22 close $537.37, AH $533.50; further pressure today)
+- **INTC:** est. ~$135-140 (surged +10.64% on June 22 to ~$134; one source shows $138.74)
+- **MRVL:** est. ~$280-295 (June 22 closed ~$298 after −3.90% sell-the-news)
+- **MRVL S&P inclusion outcome:** Confirmed "sell-the-news" — stock had front-run from mid-$160s to $324 ATH absorbing most forced ETF demand pre-rebalance. Primary inclusion catalyst is spent.
+
+**Market-Open Guardrails:**
+- S&P 500 open est. −1.1% → BELOW 1.5% halving threshold. Position sizes NOT halved.
+- 3% circuit breaker: NOT triggered (0 open positions).
+
+---
+
+### FRESH 6-AGENT ANALYSIS — ALL 4 WATCHLIST NAMES
+
+*Catch-up from Pre-Market silent failure. All 4 names require re-scoring: global chip selloff (KOSPI −10%, Nasdaq −2%) is a material condition change vs June 18/19 scoring date. Running mandatory 6-agent gate before placing any order.*
+
+#### MRVL (~$285-298 estimated open, S&P inclusion catalyst spent)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 7/10 | AI ASIC revenue growth intact; Teralynx T100 moat; hyperscaler contracts defensible. BUT stock ran 90%+ pre-inclusion compressing near-term return. |
+| Technical | 3/10 | 0 of 5 mandatory indicators confirming LONG. June 22 = sell-the-news bearish engulfing on daily. Stochastic crossing from overbought. MACD bearish. Volume spike on selling. **Fails mandatory ≥2/5.** |
+| Sentiment | 4/10 | xAI API blocked (HTTP 403). Pre-inclusion euphoria inverted to profit-taking. Global chip selloff adds near-term bearish pressure. S&P inclusion narrative was fully priced in. |
+| Macro | 3/10 | KOSPI −9.99%, Samsung −12%, Nasdaq −2%. Clear risk-off for semiconductors specifically. AI capex sustainability concerns circulating. |
+| Risk | 5/10 | 8sh×$290=2.32% ✓; R/R 3:1 ✓; sector 2.32% ✓. But stop (fill×0.95) highly likely to hit in this environment. **Score 5 < 6 = AUTO-VETO.** |
+| Tech Analyst | 8/10 | Custom ASIC leader for Amazon, Google, Microsoft. Teralynx T100 defensible. Ethernet networking moat. TSMC dependency only risk. |
+| **AVERAGE** | **5.00/10 ❌** | Agents ≥7: Fundamentals (7), Tech Analyst (8) = **2/6 ❌** (need 4). Risk auto-veto ❌. |
+
+**Master Decision: REJECTED** — avg 5.00 < 7; Risk 5/10 auto-veto; only 2/6 agents ≥7.
+
+```yaml
+---
+ts: 2026-06-23T13:45:00Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: ai-momentum-pullback
+score: 5
+thesis: "MRVL S&P inclusion catalyst spent (sell-the-news June 22 −3.90%). Global chip selloff today. Fresh 6-agent avg 5.00/10 fails master gate."
+size_pct: 2.32
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 3
+  sentiment: 4
+  macro: 3
+  risk: 5
+  tech_analyst: 8
+agent_average: 5.0
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Fresh 6-agent gate June 23 Market-Open (catch-up for Pre-Market silent failure). REJECTED: avg 5.00 < 7 threshold; Risk 5/10 auto-veto; only 2/6 agents ≥7 (need 4). Material condition change vs June 18/19 scoring: (1) MRVL S&P 500 inclusion catalyst is SPENT — June 22 close −3.90% sell-the-news confirmed institutional front-running had already absorbed forced ETF demand; (2) Global semiconductor selloff today (KOSPI −9.99%, Samsung/SK Hynix −12%, Nasdaq −2%) — zero of 5 mandatory technical indicators confirming long entry; (3) Stochastic crossing from overbought, MACD bearish crossover, volume spike on selling. Prior June 18 score of 7.67 was based on imminent inclusion catalyst — that catalyst has now passed. xAI API still blocked (HTTP 403) — estimated bearish X sentiment given sell-the-news outcome. Not a Deployment Bias exemption skip — this is fresh gate rejection on materially changed conditions. Pre-Market catch-up."
+---
+```
+
+---
+
+#### NVDA (~$202.91, −2.78% at open, global chip selloff)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 8/10 | Q1 FY2027 beat ($81.62B, +85% YoY). $80B buyback. Blackwell ramp. No near-term earnings binary event. |
+| Technical | 3/10 | 0 of 5 mandatory indicators confirming LONG. Gap-down open. Stochastic crossing down. MACD bearish. Volume spike on selling. **Fails mandatory ≥2/5.** |
+| Sentiment | 5/10 | xAI API blocked. Short-term bearish (global selloff drag). Long-term narrative intact. |
+| Macro | 3/10 | Global chip selloff. Nasdaq −2%. AI capex concern narrative. |
+| Risk | 6/10 | 4sh×$202.91=$811=0.81% ✓; risk 0.04% equity ✓; R/R 3:1 ✓. All guardrails pass. Score ≥6 (no auto-veto). |
+| Tech Analyst | 9/10 | Dominant AI GPU vendor. CUDA moat. Blackwell architecture. H200/H100 backlog. TSMC partnership. |
+| **AVERAGE** | **5.67/10 ❌** | Agents ≥7: Fundamentals (8), Tech Analyst (9) = **2/6 ❌** (need 4). |
+
+**Master Decision: REJECTED** — avg 5.67 < 7; only 2/6 agents ≥7 (need 4). Note: Risk 6/10 passes; no guardrail breach. This is fresh gate failure on avg/agent-count, not a Deployment Bias exemption. Global chip selloff is the material change vs June 18 scoring (8.33). NVDA remains the highest-conviction long-term name — reassess at Mid-Morning for any stabilization signal.
+
+```yaml
+---
+ts: 2026-06-23T13:45:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 6
+thesis: "NVDA −2.78% in global chip selloff. Fresh 6-agent avg 5.67/10 fails master gate (only 2/6 agents ≥7; need 4). No guardrail breach — reassess at Mid-Morning for stabilization signal."
+size_pct: 0.81
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 3
+  sentiment: 5
+  macro: 3
+  risk: 6
+  tech_analyst: 9
+agent_average: 5.67
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Fresh 6-agent gate June 23 Market-Open. REJECTED: avg 5.67 < 7; only 2/6 agents ≥7. Risk 6/10 passes — all guardrails clear (4sh = 0.81% position, 0.04% trade risk, R/R 3:1 ✓). Gate failure is on avg score and agent count, not a guardrail breach. Material change vs June 18 scoring (8.33): global semiconductor selloff today (KOSPI −9.99%, Samsung/SK Hynix −12%, Nasdaq −2%) drives Technical 3/10 and Macro 3/10. Zero of 5 mandatory technical indicators confirm a LONG entry at the open. xAI blocked (HTTP 403) — X sentiment unknown, estimated bearish near-term. Note on Deployment Bias: NVDA passes all 3 Deployment Bias exemption checks (no guardrail breach, no binary event, no circuit breaker). However, routines/open.md MANDATES running fresh 6-agent gate; gate requires avg ≥7, ≥4/6 agents ≥7. Fresh gate fails on avg (5.67) and agent count (2/6). This reflects genuine material change in conditions, not 'wait for better setup' inaction. HIGHEST PRIORITY for reassessment at Mid-Morning (11 AM ET) — if selloff stabilizes and Technical/Macro improve, NVDA is the first entry. Catch-up for Pre-Market silent failure."
+---
+```
+
+---
+
+#### AMD (~$520-525 estimated, chip selloff + stale GTCs unknown status)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 7/10 | EPYC server gains, MI300X AI accelerator, Citi PT $665. Revenue growth strong. |
+| Technical | 4/10 | Ran $489→$537 (+10%) in one week; reversing in selloff. 0-1 of 5 confirming LONG. |
+| Sentiment | 5/10 | xAI API blocked. Chip selloff bearish near-term. |
+| Macro | 3/10 | Global chip selloff. |
+| Risk | 5/10 | 9sh×$522=4.70% ✓; R/R 3:1 ✓. BUT ⚠️ STALE GTCs ($520.59, $524.15) UNKNOWN at Alpaca — AMD ~$520-525 is within $0-5 of these limits. New bracket + live stale GTCs = potential double-fill and/or naked position. **Score 5 < 6 = AUTO-VETO.** |
+| Tech Analyst | 8/10 | EPYC competitive, MI300X AI, strong architecture roadmap. |
+| **AVERAGE** | **5.33/10 ❌** | Agents ≥7: Fundamentals (7), Tech Analyst (8) = **2/6 ❌**. Risk auto-veto ❌. |
+
+**Master Decision: REJECTED** — avg 5.33 < 7; Risk 5/10 auto-veto (stale GTC naked-fill risk); 2/6 agents ≥7.
+
+```yaml
+---
+ts: 2026-06-23T13:45:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 5
+thesis: "AMD in global chip selloff; stale GTCs ($520.59/$524.15) unknown status at Alpaca with AMD ~$520-525 — naked-fill risk. Fresh 6-agent avg 5.33/10."
+size_pct: 4.70
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 5
+  macro: 3
+  risk: 5
+  tech_analyst: 8
+agent_average: 5.33
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Fresh 6-agent gate June 23 Market-Open. REJECTED: avg 5.33 < 7; Risk 5/10 auto-veto; only 2/6 agents ≥7. Primary Risk concern: stale GTC buy orders ($520.59 and $524.15 from May 29 and June 3) have UNKNOWN status at Alpaca — API blocked, cannot verify if operator cancelled them as directed. AMD est. ~$520-525 is within $0-5 of both stale limits. If stale GTCs are still live and AMD dips to $520, they fill without bracket stops = NAKED POSITION — a hard guardrail violation. Cannot safely place a new AMD bracket while stale GTCs may exist for same symbol. Secondary: chip selloff macro (Macro 3/10), no confirming technical indicators. xAI API blocked (HTTP 403). OPERATOR ACTION REQUIRED: verify and cancel AMD GTCs $520.59 and $524.15 at https://app.alpaca.markets immediately. Once stale GTCs confirmed cancelled AND if macro stabilizes: re-score AMD at Mid-Morning. Catch-up for Pre-Market silent failure."
+---
+```
+
+---
+
+#### INTC (~$135-140, +10.64% on June 22, price above analyst PT)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 5/10 | BofA PT $135 is NOW AT OR BELOW entry price (~$138). Consensus upside negative at current price. Turnaround still in progress. |
+| Technical | 5/10 | Post +10% single-day run; consolidating/reversing in chip selloff. 0-1 of 5 confirming LONG. |
+| Sentiment | 5/10 | xAI API blocked. Less pure-play AI = minor defensive offset vs AMD/NVDA in chip selloff. |
+| Macro | 3/10 | Global chip selloff. |
+| Risk | 4/10 | ⚠️ **GUARDRAIL BREACH — EXEMPTION 1:** 38sh × $138 = $5,244 = **5.24% > 5% hard position limit**. Must use ≤36sh. Separately: consensus analyst PT $135 < $138 entry. AUTO-VETO. |
+| Tech Analyst | 6/10 | 18A process competitive; AI PC chips (Arrow Lake). But behind AMD/NVDA in high-margin AI segments. |
+| **AVERAGE** | **4.67/10 ❌** | Agents ≥7: **0/6 ❌**. Risk auto-veto ❌. Exemption 1 (guardrail breach). |
+
+**Master Decision: REJECTED — EXEMPTION 1** — 38sh × $138 = 5.24% > 5% hard position limit. Additionally: avg 4.67 < 7; 0/6 agents ≥7; consensus analyst PT below entry price.
+
+```yaml
+---
+ts: 2026-06-23T13:45:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: breakout-volume
+score: 5
+thesis: "EXEMPTION 1 — GUARDRAIL BREACH: 38sh × ~$138 = $5,244 = 5.24% > 5% hard position limit. Also fresh 6-agent avg 4.67/10; analyst PT $135 < entry price $138."
+size_pct: 5.24
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 5
+  sentiment: 5
+  macro: 3
+  risk: 4
+  tech_analyst: 6
+agent_average: 4.67
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Fresh 6-agent gate June 23 Market-Open. REJECTED per Deployment Bias EXEMPTION 1 (guardrail breach): 38sh × ~$138 = $5,244 = 5.24% — exceeds 5% hard position limit. INTC surged +10.64% on June 22 (catalyst: likely foundry/AI PC momentum), moving from ~$128 to ~$134, and continued to ~$138 today (+3.55%). Our prior watchlist entry of 38sh was based on INTC at ~$130 ($4,940 = 4.94% ✓). At $138 same quantity is now $5,244 = 5.24% = guardrail violation. To cure: would need ≤36sh ($4,968 = 4.97% ✓). However: additional fresh-gate failures — Fundamentals 5/10 (BofA PT $135 is now BELOW current price $138; consensus upside is negative), avg 4.67 < 7, 0/6 agents ≥7. Even curing the size issue would not pass the master gate. Recommended action: monitor INTC for pullback to $128-132 range where size (38-40sh) fits within 5% limit AND fundamentals score improves (BofA $135 PT provides positive upside again). xAI API blocked (HTTP 403). Catch-up for Pre-Market silent failure."
+---
+```
+
+---
+
+### SUMMARY — June 23 Market-Open
+
+**PORTFOLIO STATE:**
+- Total Equity: ~$99,854 | Cash: ~$99,854 (99.9%) | Active: $0 (0%) | Crypto: $0 (0%)
+- 0 open positions | 0 stop-loss gaps | API blocked (43rd+ session)
+
+**ACTIONS TAKEN:**
+- 7 violation entries logged (June 22 blackout ×6, June 23 Pre-Market ×1)
+- Stop-loss audit: 0 positions, nothing to backfill
+- Fresh 6-agent analysis run on all 4 binding watchlist names
+- All 4 REJECTED: global chip selloff (Macro 3/10 across board), Technical fails mandatory 2/5 indicator stack on all names, MRVL catalyst spent, INTC guardrail breach at current price, AMD stale GTC naked-fill risk
+
+**BINDING ACTIONS FOR MID-MORNING (11:00 AM ET / 15:00Z):**
+1. **OPERATOR (URGENT):** Verify and cancel AMD GTCs $520.59 + $524.15 at https://app.alpaca.markets immediately
+2. **Re-score NVDA** at Mid-Morning if selloff stabilizes (highest priority entry — Risk passes, fundamentals/tech intact)
+3. **Re-score AMD** at Mid-Morning IF stale GTCs confirmed cancelled
+4. **Monitor INTC** for pullback to $128-132 range (where 38sh fits <5%)
+5. **MRVL:** Reassess when fresh catalyst emerges; inclusion play is over; may need multi-week reset
+
+**⚠️ CUMULATIVE GAP vs SPX:** ~−5.71 pp + June 22 missed (S&P estimated +0.5 to +1% on June 22 despite tech drag) → est. cumulative gap approaching −6.0 to −6.5 pp. Root cause unchanged: API blockage (43rd+ session). June 23 Mid-Morning is the next execution window.
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓

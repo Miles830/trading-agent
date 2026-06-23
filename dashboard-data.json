@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-23T13:45:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 5.56,
-    "benchmark_gap_pct": -5.71,
+    "spx_return_pct": 6.25,
+    "benchmark_gap_pct": -6.4,
     "open_positions_count": 0,
-    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
+    "note": "June 23 Market-Open (9:45 AM ET). GLOBAL CHIP SELLOFF DAY. Alpaca API blocked (HTTP 403 \u2014 43rd+ consecutive session). June 22 full day blackout (all 6 routines). June 23 Pre-Market silently failed. 0 positions, 99.9% cash. All 4 watchlist names (MRVL/NVDA/AMD/INTC) REJECTED on fresh 6-agent gate: KOSPI \u22129.99%, Samsung/SK Hynix \u221212%, Nasdaq \u22122%, MU \u221210% premarket. MRVL inclusion catalyst spent (sell-the-news Jun 22 \u22123.90%). INTC guardrail breach at $138 (38sh=5.24%>5%). AMD stale GTC naked-fill risk. OPERATOR: Cancel AMD GTCs $520.59/$524.15 at alpaca.markets NOW. Next priority: NVDA re-score at Mid-Morning if selloff stabilizes."
   },
   "positions": [
     {
@@ -106,10 +106,10 @@
     {
       "name": "Market Open",
       "schedule": "09:45 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-19T13:45:00Z",
-      "next_run": "2026-06-22 09:45 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 no trading. API blocked (HTTP 403 \u2014 40th consecutive). 0 positions, $99,854 cash. Next: June 22 MANDATORY ENTRY (MRVL/NVDA/AMD/INTC all \u22657)."
+      "status": "completed",
+      "last_run": "2026-06-23T13:45:00Z",
+      "next_run": "2026-06-24 09:45 ET",
+      "last_summary": "June 23: GLOBAL CHIP SELLOFF (KOSPI -9.99%, Nasdaq -2%). June 22 full day blackout + Pre-Market silent failure logged. All 4 watchlist names (MRVL/NVDA/AMD/INTC) REJECTED on fresh 6-agent gate \u2014 avg scores 5.00/5.67/5.33/4.67. API blocked (43rd+ session). OPERATOR: cancel AMD GTCs $520.59/$524.15 NOW. Next: Mid-Morning re-score if selloff stabilizes."
     },
     {
       "name": "Mid-Morning",
