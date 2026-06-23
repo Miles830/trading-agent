@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-19T18:03:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-23T16:32:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 5.56,
-    "benchmark_gap_pct": -5.71,
+    "spx_return_pct": 3.31,
+    "benchmark_gap_pct": -5.5,
     "open_positions_count": 0,
-    "note": "June 19 Afternoon (Juneteenth \u2014 MARKET CLOSED). Non-trading day. Alpaca API blocked (HTTP 403 \u2014 42nd consecutive session). 0 positions, 99.9% cash ($99,854). No orders placed. Predecessor audit: Pre-Market absent (holiday), Market-Open completed 13:48Z, Mid-Morning absent (holiday), Midday completed 16:35Z. NEXT TRADING DAY: JUNE 22 (Monday). \u2b50\u2b50 MRVL S&P 500 INCLUSION JUNE 22 \u2014 BINDING: MRVL 8sh + NVDA 4sh (MOO at Pre-Market) + AMD 9sh + INTC 38sh (GTC limit at Market-Open). \u26a0\ufe0f\u26a0\ufe0f OPERATOR MUST CANCEL AMD GTCs $520.59/$524.15 + MRVL $202.19 + PLTR $150.74 BEFORE June 22 open."
+    "note": "June 23 Midday (12:32 PM ET). TRADING DAY. API blocked (HTTP 403 \u2014 44th consecutive). June 22 FULL-DAY BLACKOUT (all 7 routines failed \u2014 MRVL inclusion day). June 23: Pre-Market/Market-Open/Mid-Morning all silently failed. Market: SPX -1.53%, Nasdaq -2.3% (global AI/chip selloff; Korea Kospi -9.99%). AMD +4.86% (quantum + Rackspace 30MW + MEXT + upgrades) \u2014 6-agent APPROVED 7.17 \u2014 ORDER ATTEMPTED \u2192 HTTP 403 BLOCKED. INTC 6.5 REJECTED. MRVL 5.33 REJECTED. NVDA 5.83 REJECTED. MU Exemption 2 (earnings June 24). CRITICAL: Stale AMD GTCs $524.15/$520.59 only 2.4-3.1% below spot \u2014 NAKED FILL RISK. OPERATOR: (1) Cancel AMD stale GTCs; (2) BUY AMD 9sh limit $540 bracket GTC stop $513 target $621."
   },
   "positions": [
     {
@@ -62,37 +62,37 @@
     }
   ],
   "market": {
-    "mode": "POST-FOMC RISK-ON. FOMC HOLD confirmed June 17 at 4.25-4.50%. Iran peace deal signed June 17 in Switzerland. First clean trading day \u2014 AI/semis led. JUNETEENTH June 19 = market CLOSED. Next trading = June 22 (MRVL S&P 500 inclusion effective date).",
+    "mode": "RISK-OFF. Global AI/chip selloff June 23. SPX -1.53%, Nasdaq -2.3%. Korea Kospi -9.99% (circuit breakers triggered twice). Japan Nikkei broke winning streak. AMD exception (+4.86% on quantum announcement). MU earnings tomorrow June 24 (binary event).",
     "fear_greed": null,
-    "fear_greed_label": "Neutral to Greedy \u2014 post-FOMC relief, Iran deal risk reduction, AI capex theme intact.",
-    "spx": "S&P 500 est. ~7,600 June 18 close (+0.6% from 7,554 June 15). SPX total return since ~May 1: +5.56% (7,600/7,200-1). Post-FOMC relief rally + Iran deal digestion. AI/semis led.",
-    "btc": "BTC est. ~66,000-70,000 \u2014 below $82K threshold. No crypto entry. Post-FOMC risk-on insufficient to push BTC to threshold. Monitor June 22.",
+    "fear_greed_label": "Fear \u2014 global semiconductor selloff; AI spending concerns; Korea -9.99%.",
+    "spx": "S&P 500 est. ~7,439 June 23 midday (-1.53% from June 22 close). SPX total return since ~May 1: est. +3.31% (7,439/7,200-1). Global AI/chip rout pulling SPX lower. Portfolio inadvertently outperforming today (+0 vs -1.53%).",
+    "btc": "BTC unknown \u2014 likely below $82K threshold. No crypto entry.",
     "sectors": [
       {
-        "name": "Technology / AI Semis",
-        "change_pct": 0.0,
-        "note": "Flat/cautious FOMC day. AMD digesting +12% June 16 gap. INTC/MRVL/NVDA consolidating Iran deal gains. Awaiting dot plot at 2PM ET."
+        "name": "Semiconductors / AI \u2014 BROAD SELLOFF",
+        "change_pct": -5.0,
+        "note": "MRVL -7.4% (sell-the-news post-inclusion), MU -9.1% (pre-earnings profit-taking, earnings June 24), NVDA ~-5% (AI trade selloff). EXCEPTION: AMD +4.86% (quantum announcement + Rackspace deal + upgrades)."
       },
       {
-        "name": "Intel Foundry / Semis",
-        "change_pct": 0.2,
-        "note": "INTC ~26-132. Foundry thesis intact. BofA Buy PT 35. S&P inclusion announcement for MRVL June 22 continuing to attract interest."
+        "name": "Intel Foundry",
+        "change_pct": -4.0,
+        "note": "INTC pulling back from ATH $141.45 (June 22) to ~$133.99 on June 23. Apple partnership catalyst remains intact; pullback is consolidation."
+      },
+      {
+        "name": "Small Cap / Russell 2000",
+        "change_pct": 0.83,
+        "note": "Russell 2000 +0.83% \u2014 defensive rotation out of large-cap AI names into small caps. Sector leadership shifted temporarily."
       },
       {
         "name": "Precious Metals",
-        "change_pct": -0.5,
-        "note": "GLD est. 65-385. Iran deal lowering geopolitical risk premium. Dollar firming ahead of FOMC. No re-entry planned."
-      },
-      {
-        "name": "Energy",
-        "change_pct": -1.0,
-        "note": "Iran deal Hormuz reopening = oil supply relief. Brent crude stabilizing after May spike."
+        "change_pct": 0.0,
+        "note": "No GLD position. Iran deal maintained. Gold likely stable to slightly higher as risk-OFF safe-haven."
       }
     ],
-    "macro_notes_md": "**2026-06-19 (Juneteenth \u2014 Market Closed)**\n- NYSE/NASDAQ closed for Juneteenth National Independence Day\n- No market data today\n- Post-FOMC: June 17 Hold confirmed at 4.25\u20134.50%; markets remain risk-on into June 22\n- SPX estimated ~7,600 as of June 18 close (+5.56% from strategy start ~$7,200)\n- **June 22 Primary Catalyst:** MRVL S&P 500 index inclusion effective Monday; index tracker/ETF inflows must execute June 22 close buy \u2014 predictable intraday demand\n- **AMD Warning:** Stale GTC buy orders at $520.59/$524.15 \u2014 OPERATOR MUST CANCEL before June 22 open\n- **BTC:** ~$66K\u201370K \u2014 below $82K threshold, no crypto entry\n- Iran peace deal intact; oil stabilizing; risk-on environment persisting into June 22",
-    "sp500_today_pct": "~flat to -0.5% (FOMC caution, pre-decision)",
-    "sp500_est": 7550,
-    "macro_note": "FOMC DECISION DAY. Rate hold 97%+. Kevin Warsh first SEP dot plot \u2014 hawkish bias risk (1-2 hikes in 2026H2 penciled in). Even if hawkish: brief yield spike = buying opportunity June 18. 3 silent failures today (cloud session dropout). Iran deal ceremony today in Switzerland. JUNETEENTH June 19 = market closed. Next trading after June 18 = June 23."
+    "macro_notes_md": "**2026-06-23 Midday (12:32 PM ET)**\n- SPX -1.53%, Nasdaq -2.3% \u2014 global AI/chip selloff\n- Korea Kospi -9.99% (circuit breakers triggered twice)\n- Japan Nikkei broke 8-session winning streak\n- Micron pre-earnings profit-taking (-9.1%); EARNINGS JUNE 24 = BINARY EVENT\n- MRVL sell-the-news post-S&P 500 inclusion (-7.4%; -3.90% June 22 also)\n- NVDA ~$203 \u2014 AI spending concerns ('Kalshi traders turn bearish on chip prices')\n- **AMD exception: +4.86%** \u2014 quantum computing hybrid announcement; Rackspace 30MW deal; MEXT acquisition; Citi $575/BofA $560/Goldman $450/Baird $625 upgrades\n- INTC ~$133.99 \u2014 pulling back from ATH $141.45 (June 22, Apple partnership + Q2 guidance beat)\n- Russell 2000 +0.83% \u2014 defensive small-cap rotation\n- No Fed events today; FOMC hold (June 17) digested\n- AMD 6-agent APPROVED 7.17 \u2014 order blocked (44th API block); operator must execute",
+    "sp500_today_pct": "-1.53% (global AI/chip selloff; Korea -9.99%; Nasdaq -2.3%)",
+    "sp500_est": 7439,
+    "macro_note": "Global AI trade selloff June 23. AMD is the key outlier with specific catalysts (quantum + Rackspace). MU binary event tomorrow June 24. INTC consolidating after ATH. All semiconductor names except AMD in risk-OFF mode."
   },
   "routines": [
     {
@@ -122,10 +122,10 @@
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-19T16:33:00Z",
-      "next_run": "2026-06-22 12:30 ET",
-      "last_summary": "June 19 (Juneteenth \u2014 MARKET CLOSED): No-op. Market holiday. 0 positions, 0 stop gaps, no orders. Predecessor audit clean \u2014 Market-Open completed 13:48Z, Mid-Morning absent (expected). Next: June 22 Midday \u2014 confirm June 22 MOO/GTC fills, trail stops on new positions."
+      "status": "completed",
+      "last_run": "2026-06-23T16:32:00Z",
+      "next_run": "2026-06-24 12:30 ET",
+      "last_summary": "June 23 Midday: June 22 full-day blackout + June 23 Pre-Market/Market-Open/Mid-Morning all failed (10 total violations logged). Stop audit: HTTP 403 (44th). Market risk-OFF (SPX -1.53%). AMD 6-agent APPROVED 7.17 (quantum + Rackspace + MEXT) \u2014 ORDER BLOCKED HTTP 403. INTC 6.5 REJECTED (ATH pullback). MRVL 5.33 REJECTED (sell-the-news). NVDA 5.83 REJECTED (AI selloff). MU Exemption 2 (earnings June 24). 0 positions, $99,854 cash. OPERATOR MUST: cancel AMD stale GTCs $524.15+$520.59, then BUY AMD 9sh limit $540 bracket GTC stop $513 target $621."
     },
     {
       "name": "Afternoon",

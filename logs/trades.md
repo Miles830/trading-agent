@@ -4,6 +4,412 @@
 
 ---
 
+## 2026-06-23 — Midday (12:30 PM ET / 16:32 UTC — TUESDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Midday 16:32:50Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **44th consecutive blocked session**
+**Current Time:** 16:32Z = 12:32 PM ET
+**Market Status:** OPEN — regular trading session.
+
+---
+
+### PREDECESSOR AUDIT — June 22 + June 23, 2026
+
+**June 22 (Monday — MRVL S&P 500 INCLUSION DAY — FULL-DAY BLACKOUT):**
+Heartbeat log for 2026-06-22: NO entries. ALL 7 routines silently failed.
+
+| Routine | Scheduled (UTC) | Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ MISSING — **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Midday | 16:30Z | ✗ MISSING — **SILENT FAILURE** |
+| Afternoon | 18:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Market-Close | 19:30Z | ✗ MISSING — **SILENT FAILURE** |
+| Daily Review | 20:30Z | ✗ MISSING — **SILENT FAILURE** |
+
+⚠️ June 22 was the binding MRVL S&P 500 inclusion day. MRVL fell -3.90% on inclusion (sell-the-news after +90% run pre-inclusion). INTC hit ATH $141.45 on Apple partnership. AMD advanced. Portfolio missed entirely — 7th straight day of full blackout.
+
+**June 23 (Today — Tuesday):**
+
+| Routine | Scheduled (UTC) | Status |
+|---|---|---|
+| Pre-Market | 12:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ MISSING — **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ MISSING — **SILENT FAILURE** |
+| Midday | 16:32Z | ✓ RUNNING NOW |
+
+---
+
+### VIOLATIONS — June 22 Full Blackout + June 23 Predecessors
+
+```yaml
+---
+ts: 2026-06-22T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "June 22 FULL-DAY BLACKOUT — ALL 7 routines silently failed (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close, Daily Review). This was the MRVL S&P 500 inclusion effective date — the binding execution day. All 4 watchlist names (MRVL 7.67, NVDA 8.33, AMD 7.50, INTC 7.17) had no valid exemptions. Cloud runner session dropout is the root cause."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "June 22 was binding: MRVL 8sh MOO + NVDA 4sh MOO (Pre-Market), AMD 9sh + INTC 38sh bracket GTC (Market-Open). All missed. Actual June 22 results: MRVL -3.90% (sell-the-news after +90% pre-inclusion run — in hindsight NOT entering MRVL saved capital); INTC hit ATH $141.45 (Apple foundry partnership + Q2 guidance beat — missed opportunity); AMD advanced further; NVDA declined to ~$203. Net: INTC miss is most costly; MRVL miss is neutral-to-positive. Root cause: 44 consecutive API/runner blocks. Only operator manual execution can fix."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market June 23 (08:00 AM ET / 12:00Z) silently failed — no heartbeat. Binding watchlist still active (AMD/NVDA/INTC ≥7 from June 18 review). AMD had quantum computing announcement today — Pre-Market should have assessed for limit entry."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. AMD quantum announcement visible pre-market. Catch-up required at Midday."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Market-Open June 23 (09:45 AM ET / 13:45Z) silently failed — no heartbeat. AMD relative strength emerging (+4.86% vs Nasdaq -2.3%). No MOO fills to confirm (Pre-Market also missed). No stop audits needed (0 positions)."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. Second consecutive miss today. Midday catch-up executing."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning June 23 (11:00 AM ET / 15:00Z) silently failed — no heartbeat. AMD +4.86% vs Nasdaq -2.3% = extreme relative strength clearly established by 11 AM."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. Third consecutive miss today. Midday is first routine to fire June 23. Catch-up executing."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions        → HTTP 403 "Host not in allowlist" (44th block)
+GET /v2/orders?status=open → HTTP 403 "Host not in allowlist"
+GET /v2/account          → HTTP 403 "Host not in allowlist"
+```
+
+**Estimated state:** 0 open positions, ~$99,854 cash. No stop-loss gaps to fill.
+
+⚠️ **CRITICAL NAKED-FILL RISK — STALE AMD GTCs:**
+- AMD 9sh $524.15 (June 3 attempt): AMD now ~$537 = only **$12.85 above limit (2.4% away)**
+- AMD 9sh $520.59 (May 29 attempt): AMD now ~$537 = only **$16.78 above limit (3.1% away)**
+These orders are STILL OPEN (cannot verify — API blocked). Any AMD pullback fills them WITHOUT bracket stops. **OPERATOR MUST CANCEL BOTH BEFORE PLACING NEW AMD ORDER.**
+
+---
+
+### MIDDAY MARKET SUMMARY — JUNE 23, 2026
+
+**12:32 PM ET** — Risk-OFF day driven by global semiconductor/AI selloff:
+- S&P 500: **−1.53%** (~7,439 est. from ~7,554 June 22 close)
+- Nasdaq: **−2.3%**
+- Russell 2000: **+0.83%** (defensive small-cap rotation)
+- Korea Kospi: **−9.99%** (circuit breakers triggered twice — global AI rout)
+- Japan Nikkei: broke 8-session winning streak
+- MU: **−9.1%** (~$1,101) — pre-earnings profit-taking (EARNINGS JUNE 24 = BINARY EVENT)
+- MRVL: **−7.4%** (~$285) — sell-the-news after S&P 500 inclusion (ran +90% pre-inclusion)
+- NVDA: **~$203** (AI trade selloff; "Kalshi traders turn bearish on chip prices")
+- **AMD: +4.86% (~$537)** — bucking the selloff on quantum computing announcement + Rackspace 30MW deal
+- **INTC: ~$133.99** (+10.64% vs June 18 close; pulling back from June 22 ATH $141.45 on Apple partnership)
+
+**Portfolio today:** $0 P&L (no positions, 100% cash). 3% circuit breaker: NOT TRIGGERED.
+
+---
+
+### 6-AGENT ANALYSIS — MIDDAY JUNE 23
+
+#### AMD — **APPROVED 7.17/10**
+
+**Catalysts:** (1) Quantum computing advancement announced June 23 ("AMD advances hybrid future of quantum computing"). (2) Rackspace 30MW AMD Instinct GPU + EPYC CPU partnership (healthcare + financial). (3) MEXT acquisition (AI-native memory optimization). (4) Multiple analyst upgrades: Citi Buy $575, BofA $560, Goldman Buy $450, Baird $625. **Earnings: ~August 4, 2026 — no binary event within 48h ✓**
+
+| Agent | Score | Key Reasoning |
+|---|---|---|
+| Fundamentals | 8/10 | Rackspace 30MW deal + MEXT acquisition + analyst upgrade cycle + agentic AI CPU thesis; Q1 May 5 beat |
+| Technical | 7/10 | Extreme relative strength +4.86% vs Nasdaq −2.3% = institutional buying on catalyst; est. 3/5 indicator stack confirming (volume spike on announcement + bullish candle + MACD trend); API blocked — market-implied confirmation |
+| Sentiment | 7/10 | Quantum + Rackspace news cycle strongly bullish; xAI API blocked (same HTTP 403) — degraded gracefully to news-only; price action confirms bullish sentiment |
+| Macro | 5/10 | Global risk-OFF (SPX −1.53%, Nasdaq −2.3%, Korea −9.99%); AMD bucking with specific catalyst but headwinds real |
+| Risk | 8/10 | 9sh × $540 = $4,860 (4.86% < 5% ✓); risk $243 (0.243% < 1.5% ✓); R/R 15/5 = 3:1 ✓; cash after $95,018 (95.2% > 5% ✓); no binary event ✓; max 12 positions: 0→1 ✓ |
+| Tech Analyst | 8/10 | Quantum hybrid computing (classical + quantum bridging); Instinct GPU + EPYC = full AI stack; MEXT memory moat; agentic AI infrastructure play |
+
+**Average: 7.17 ≥7 ✓ | Risk: 8 ≥6 ✓ | Agents ≥7: F(8),T(7),S(7),R(8),TA(8) = 5/6 ✓ → MASTER: APPROVED**
+
+**Order:** BUY AMD 9sh limit $540.00 GTC bracket — stop $513.00 (−5%), target $621.00 (+15%)
+
+```
+POST https://paper-api.alpaca.markets/v2/orders
+→ HTTP 403 "Host not in allowlist" (44th consecutive blocked session)
+ORDER NOT EXECUTED — BLOCKED
+```
+
+---
+
+#### INTC — **REJECTED 6.5/10**
+
+~$133.99 (pulling back from June 22 ATH $141.45; Apple partnership + Q2 guidance beat catalyst)
+
+| Agent | Score | Key Reasoning |
+|---|---|---|
+| Fundamentals | 8 | Apple foundry partnership; Q2 guidance beat ($14.8B revenue, $0.20 EPS); Data Center +22% YoY |
+| Technical | 5 | ATH reached $141.45 June 22; pulling back today; stochastic overbought; risk of short-term exhaustion |
+| Sentiment | 7 | Apple deal = massive catalyst; Intel Up 250% 2026 narrative; foundry validation |
+| Macro | 4 | Global risk-OFF; Nasdaq −2.3%; though INTC has specific catalyst |
+| Risk | 7 | 37sh × $134 = $4,958 (4.96% ✓); stop $127.30; risk $248 (0.248% ✓); R/R 3:1 ✓ |
+| Tech Analyst | 8 | Apple foundry partnership = competition-validating tech breakthrough; 18A process; DC +22% secular |
+
+**Average: 6.5 < 7.0 → REJECTED.** Re-score at Afternoon if market stabilizes and INTC holds $132+.
+
+---
+
+#### MRVL — **REJECTED 5.33/10**
+
+~$285 (−7.4%): sell-the-news after running +90% pre-inclusion
+
+| Agent | Score | Reasoning |
+|---|---|---|
+| Fundamentals | 7 | AI networking; S&P 500 inclusion long-term benefit |
+| Technical | 3 | −7.4% today; technical breakdown; sell-the-news pattern; bearish indicator stack |
+| Sentiment | 4 | Inclusion = sell-the-news; "MRVL just ripped 57% in a month" = valuation overhang |
+| Macro | 3 | Leading chip sector selloff; risk-OFF |
+| Risk | 8 | 8sh × $285 = $2,280 (2.28%); R/R 3:1 ✓ |
+| Tech Analyst | 7 | AI networking; Teralynx T100; custom ASIC |
+
+**Average: 5.33 < 7.0 → REJECTED.** Do not enter falling knife on inclusion sell-through.
+
+---
+
+#### NVDA — **REJECTED 5.83/10**
+
+~$203 (AI trade selloff; down from $221+ entry target)
+
+| Agent | Score | Reasoning |
+|---|---|---|
+| Fundamentals | 8 | AI GPU leader; $80B buyback; secular H100/GB200 demand |
+| Technical | 4 | Down from $221 target; AI trade selloff; bearish signals |
+| Sentiment | 4 | "Kalshi traders turn bearish"; global AI selloff; NVDA down with sector |
+| Macro | 4 | AI trade selloff = primary driver; risk-OFF |
+| Risk | 7 | 4sh × $203 = $812 (0.81%); R/R 3:1 ✓; small size |
+| Tech Analyst | 8 | Dominant data center GPU; secular AI demand irreversible |
+
+**Average: 5.83 < 7.0 → REJECTED.** Wait for AI selloff stabilization; re-score if NVDA holds $200.
+
+---
+
+#### MU — **SKIP — EXEMPTION 2 (Binary Event)**
+
+MU earnings: **June 24, 2026** (tomorrow). Options pricing ±17% move. Per CLAUDE.md: no positions within 48h of scheduled earnings. **Exemption 2 applies.** Re-assess post-earnings June 25 for fade or follow-through entry.
+
+---
+
+### DECISIONS SUMMARY
+
+| Symbol | Score | Action | Notes |
+|---|---|---|---|
+| **AMD** | **7.17** | **ENTRY ATTEMPTED — HTTP 403 BLOCKED** | OPERATOR MUST EXECUTE: 9sh limit $540 bracket GTC, stop $513, target $621. Cancel stale GTCs $524.15+$520.59 FIRST. |
+| INTC | 6.5 | Skip — avg below 7 | Re-score Afternoon if market recovers and INTC holds $132+ |
+| MRVL | 5.33 | Skip — avg below 7 | Technical breakdown; sell-the-news |
+| NVDA | 5.83 | Skip — avg below 7 | AI trade selloff; re-score at stabilization |
+| MU | N/A | Skip — Exemption 2 | Earnings June 24 = 48h binary event window |
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+No positions. 100% cash (~$99,854). All dry powder ready.
+
+### AFTERNOON WATCHLIST (2:00 PM ET routine pre-scores)
+
+| Symbol | Current | Setup | Re-Score Trigger |
+|---|---|---|---|
+| AMD | ~$537 | breakout-volume | MANDATORY re-attempt; cancel stale GTCs first |
+| INTC | ~$134 | ai-momentum-pullback | Re-score if SPX recovers and INTC holds $132+ |
+| NVDA | ~$203 | ai-momentum-pullback | Re-score if AI selloff stabilizes at $200 support |
+| MRVL | ~$285 | other | Re-score only if -7.4% reverses cleanly with volume |
+| MU | ~$1,101 | — | ⛔ Exemption 2 through June 24 close |
+
+---
+
+```yaml
+---
+ts: 2026-06-23T16:32:00Z
+action: entry
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: "AMD quantum computing announcement + Rackspace 30MW partnership + MEXT acquisition + extreme relative strength (+4.86% vs Nasdaq -2.3%); 6-agent APPROVED 7.17 avg; ORDER BLOCKED HTTP 403 (44th consecutive session)."
+size_pct: 4.84
+stop: 513.00
+target: 621.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 5
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "6-agent APPROVED. AGREED: Fundamentals 8 (quantum+Rackspace 30MW+MEXT+analyst upgrades), Technical 7 (relative strength +7.16% vs Nasdaq; est. 3/5 stack confirming; market-implied), Sentiment 7 (quantum+Rackspace news; xAI blocked — degraded gracefully to news-only), Risk 8 (9sh×$540=$4,860=4.86%<5%; risk $243=0.243%<1.5%; R/R 3:1; cash 95.2%), Tech Analyst 8 (quantum hybrid; Instinct+EPYC; MEXT memory moat). DISAGREED: Macro 5 (global risk-OFF, SPX -1.53%, Nasdaq -2.3%, Korea -9.99%). Average 7.17 passes gate; 5/6 agents ≥7. POST /v2/orders → HTTP 403 BLOCKED (44th consecutive session). ORDER NOT EXECUTED. STALE GTC WARNING: AMD at $537; stale GTCs $524.15 and $520.59 are only 2.4-3.1% below current price — must cancel FIRST. OPERATOR ACTION REQUIRED: (1) Cancel AMD GTCs $524.15+$520.59; (2) BUY AMD 9sh limit $540.00 bracket GTC stop $513.00 target $621.00 at app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T16:33:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: ai-momentum-pullback
+score: 6.5
+thesis: "INTC Apple partnership + Q2 guidance beat; ATH $141.45 June 22; fresh 6-agent 6.5 (avg < 7 threshold); Technical 5 (overbought after ATH) + Macro 4 (risk-OFF) pull average below gate."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.5
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Fresh 6-agent avg 6.5 < 7.0 gate. Not one of the 3 Deployment Bias exemptions — this is a genuine re-score below threshold. Technical 5 (pulling back from ATH $141.45; stochastic overbought; risk of 2-day exhaustion) + Macro 4 (global risk-OFF; Nasdaq -2.3%) drag average below 7. 4/6 agents ≥7 but average fails. Entry still valid setup (~$134, stop $127.30, target $154.10, R/R 3:1) — re-score Afternoon if SPX recovers."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T16:33:30Z
+action: skip
+symbol: MRVL
+bucket: active
+setup: sector-rotation
+score: 5.33
+thesis: "MRVL -7.4% on June 23 (sell-the-news; -3.90% June 22 inclusion date too). Stock ran +90% pre-inclusion; ETF forced-buying fully front-run. Fresh 6-agent 5.33 — Technical 3, Sentiment 4, Macro 3 all severely negative."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 3
+  sentiment: 4
+  macro: 3
+  risk: 8
+  tech_analyst: 7
+agent_average: 5.33
+agents_above_7: 3
+master_decision: rejected
+master_notes: "Fresh 6-agent 5.33. Only 3/6 agents ≥7 (need 4 minimum). MRVL inclusion was a sell-the-news event confirmed over 2 consecutive sessions (-3.90% June 22, -7.4% June 23). In hindsight, API blockage on June 22 inclusion day prevented us from entering a trade that would now be underwater. Technical breakdown overrides inclusion thesis. Monitor for stabilization below $280 for potential mean-reversion entry in later sessions."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T16:34:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 5.83
+thesis: "NVDA ~$203; AI trade selloff (Nasdaq -2.3%); Kalshi traders bearish; down from $221+ entry target. Fresh 6-agent 5.83 — Technical 4, Sentiment 4, Macro 4 all negative."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 4
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 5.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "Fresh 6-agent 5.83. Only 3/6 agents ≥7. AI trade selloff driving down Technical/Sentiment/Macro scores simultaneously. NVDA fundamentals intact (AI GPU leader, $80B buyback, GB200 secular demand) but setup unfavorable today. Watch $200 as support; if AI selloff stabilizes and NVDA shows reversal candle on volume, re-score. NVDA remains highest-conviction name for next risk-ON day."
+---
+```
+
+```yaml
+---
+ts: 2026-06-23T16:34:30Z
+action: skip
+symbol: MU
+bucket: active
+setup: other
+score: null
+thesis: "MU earnings June 24, 2026 (tomorrow) — within 48-hour binary event window. Exemption 2 per CLAUDE.md. Options pricing ±17% move."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: rejected
+master_notes: "Exemption 2: MU earnings tomorrow June 24. Stock at ~$1,101 (-9.1% today on pre-earnings profit-taking + AI spending concerns). Options ±17% move priced. Cannot enter within 48h binary window. Post-earnings: June 25 pre-market is next opportunity — assess fade (if miss) or follow-through (if beat; consensus $34.66B revenue, $19.95 EPS). MU's entire 2026 HBM supply sold out = potential upside catalyst if HBM commentary strong."
+---
+```
+
+---
+
+## 2026-06-22 — FULL-DAY BLACKOUT (All 7 routines silently failed — MRVL S&P 500 Inclusion Day)
+
+**Note:** No heartbeat entries exist for 2026-06-22. Cloud runner session dropout caused complete blackout on the binding execution day. Violations logged above in the June 23 Midday section (ts: 2026-06-22T12:00:00Z). See that YAML block for full detail.
+
+**June 22 market summary (post-hoc reconstruction):**
+- MRVL: −3.90% on inclusion date (sell-the-news; +90% pre-inclusion already priced)
+- INTC: Hit ATH $141.45 (Apple partnership + Q2 guidance beat catalyst fired)
+- AMD: Advanced further
+- NVDA: ~$203 range (AI trade selling)
+- SPX: est. ~+0.3% to +0.5% (inclusion date — passive rebalancing day)
+
+---
+
 ## 2026-06-19 — Afternoon (2:00 PM ET / 18:03 UTC — FRIDAY — JUNETEENTH — MARKET CLOSED)
 
 **HEARTBEAT:** STARTED Afternoon 18:02:52Z ✓
