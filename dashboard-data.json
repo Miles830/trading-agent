@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-24T16:32:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-24T18:02:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 2.51,
     "benchmark_gap_pct": -4.2,
     "open_positions_count": 0,
-    "note": "June 24 MIDDAY (12:32 PM ET / 16:32Z). API BLOCKED (HTTP 403 \u2014 49th consecutive). Mid-Morning SILENT FAILURE (15:00Z). 6 total blocked attempts today (3\u00d7INTC, 3\u00d7IBM). NEW: GOOGL Dow Jones inclusion June 29 \u2014 APPROVED 8.0 avg (all 6 agents \u22657) \u2014 BLOCKED. AMD rescore: 7.17 avg but Risk Agent VETO (existing 18sh position = 9.13% equity, Exemption 1). INTC ~$134.10 (range $130.03\u2013$136.08). IBM ~$264.24 (volume 15.69M vs 8.74M avg = elevated). NVDA ~$198.70 (below threshold 6.5). MU ~$1,058 (+10.7% from $956 June 23 close \u2014 EXEMPTION 2). SPX +0.35%, NDX +0.62%. UBS raised AMD PT $670 from $455. Cumulative gap: est. \u22124.2 pp. OPERATOR URGENT: (1) sell 9sh AMD, place stop $481.42; (2) BUY 14sh GOOGL limit $350.53 bracket GTC; (3) BUY 36sh INTC limit $134.70 bracket; (4) BUY 3sh IBM limit $265.32 bracket."
+    "note": "June 24 AFTERNOON (2:02 PM ET / 18:02Z). API BLOCKED (HTTP 403 \u2014 50th consecutive). 12 total blocked attempts today (INTC\u00d75, IBM\u00d75, GOOGL\u00d72). NEW THIS ROUTINE: NVDA broke $200 (now $202) \u2014 Midday conditional triggered \u2014 APPROVED 7.83 avg (all 6 agents \u22657) \u2014 BLOCKED. GOOGL limit updated $350.53\u2192$352.22 (afternoon price $350.97). AMD estimated ~$526-541 (UBS PT $670 bull case); 18sh NAKED position still unresolved (Risk Veto Exemption 1). MU $1,057.59 (earnings at 4:30 PM ET \u2014 EXEMPTION 2). SPX \u22120.3%, NDX \u22120.4%, Dow +0.3%, VIX 18.24 (\u22125%). Oil Brent \u22123% (~$74). Cumulative gap: est. ~\u22124.5 pp. OPERATOR URGENT (MARKET CLOSES IN 90 MIN): (1) SELL 9sh AMD before 3:50 PM ET; place stop $481.42 + target $582.77; (2) BUY 14sh GOOGL limit $352.22 bracket GTC \u2014 URGENT (3 sessions to inclusion); (3) BUY 4sh NVDA limit $203.01 bracket GTC ($200 breakout); (4) BUY 36sh INTC limit $134.70 bracket; (5) BUY 3sh IBM limit $265.32 bracket."
   },
   "positions": [
     {
@@ -62,7 +62,7 @@
     }
   ],
   "market": {
-    "mode": "MODEST RECOVERY. SPX +0.35%, NDX +0.62%, Dow -0.17% midday. Growth/tech leading. MU earnings binary event tonight (+10.7% pre-earnings rebound). GOOGL Dow inclusion June 29 (5-session catalyst window). UBS raised AMD PT $670. Semis stabilizing.",
+    "mode": "DEFENSIVE TILT. SPX −0.3%, NDX −0.4%, Dow +0.3% (defensive outperforming growth). VIX 18.24 (−5% — volatility easing). NVDA $202 (broke $200 — AI-momentum recovery signal). MU earnings tonight 4:30 PM ET (±17% options). GOOGL Dow inclusion June 29 (urgency: 3 sessions remaining). Oil Brent −3% ($74 — Iran Strait normalizing). AMD ~$526-541 (UBS PT $670).",
     "fear_greed": null,
     "fear_greed_label": "Neutral. Recovery from 2-day selloff but muted \u2014 investors waiting on MU earnings for sector direction.",
     "spx": "S&P 500 +0.35% midday (est. ~7,479). Nasdaq +0.62% outperforming (growth/tech). Dow -0.17%. Wall Street holding pattern ahead of Micron earnings tonight 4:30 PM ET. GOOGL +0.7% on Dow inclusion announcement (June 29 effective date).",
@@ -90,9 +90,9 @@
       }
     ],
     "macro_notes_md": "**2026-06-24 Midday (12:32 PM ET)**\n- SPX +0.35%, NDX +0.62%, Dow -0.17% \u2014 modest recovery\n- **UBS raised AMD PT to $670 from $455** (Timothy Arcuri, June 24) \u2014 standalone CPU rack adoption + agentic AI workloads. Meta 6GW + Oracle 50K-GPU Helios.\n- **GOOGL joining Dow Jones June 29** \u2014 5-session forced-buying window. 14sh limit $350.53 APPROVED 8.0 avg \u2014 BLOCKED.\n- MU +10.7% pre-earnings (was ~$956 June 23 \u2192 ~$1,058 today). Earnings tonight 4:30 PM ET. Exemption 2 all day.\n- INTC ~$134.10 (range $130.03\u2013$136.08). BofA $160 PT intact. 4th order attempt blocked.\n- IBM ~$264.24, volume 15.69M (80% above avg). JPMorgan OW upgrade digested.\n- NVDA ~$198.70 \u2014 recovering but Stochastic still descending; score 6.5, below threshold.\n- Fed: on hold 4.25-4.50%. No events today.\n- Iran deal intact, oil lower, risk-on macro backdrop.",
-    "sp500_today_pct": "+0.35% midday",
-    "sp500_est": 7479,
-    "macro_note": "Midday recovery day. NDX leading (+0.62%). Key binary event: MU earnings at 4:30 PM ET \u2014 \u00b117% options move expected, HBM4 commentary is the pivotal metric for semiconductor sector direction Thursday. GOOGL Dow inclusion is highest-conviction new setup (8.0 avg). AMD UBS PT $670 validates bull case but position status unresolved."
+    "sp500_today_pct": "-0.3% (2 PM ET)",
+    "sp500_est": 7365,
+    "macro_note": "Afternoon softening. Dow outperforming (defensive rotation into MU earnings tonight). NVDA $202 breakout = key technical signal (Midday conditional triggered \u2192 7.83 avg APPROVED). MU at $1,057 pre-print \u2014 \u00b117% options move = $878\u2013$1,238 range. GOOGL Dow inclusion June 29 window closing (3 sessions). Oil Brent \u22123% ($74): Iran Strait of Hormuz traffic normalizing. KB Home +17% on Q2 beat (homebuilder sector rotation visible). VIX 18.24 (\u22125%): volatility easing despite soft price action."
   },
   "routines": [
     {
@@ -130,10 +130,10 @@
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-23T18:00:00Z",
-      "next_run": "2026-06-22 14:00 ET",
-      "last_summary": "SILENT FAILURE \u2014 no heartbeat June 23 2:00 PM ET."
+      "status": "completed",
+      "last_run": "2026-06-24T18:02:00Z",
+      "next_run": "2026-06-25 14:00 ET",
+      "last_summary": "June 24 Afternoon: API blocked (50th). NVDA $200 breakout \u2014 Midday conditional triggered \u2192 APPROVED 7.83 avg (all 6 agents \u22657): 4sh limit $203.01 bracket GTC BLOCKED. GOOGL limit updated $350.53\u2192$352.22 (2nd attempt, blocked). INTC 5th attempt blocked. IBM 5th attempt blocked. AMD Exemption 1 maintained (18sh naked, operator must sell 9sh before 3:50 PM ET). MU Exemption 2 (earnings 4:30 PM ET tonight). No day trades to close. Tomorrow watchlist: MU post-earnings (SCORE FIRST), GOOGL (URGENT \u2014 3 sessions), NVDA $203.01, INTC $134.70, IBM $265.32."
     },
     {
       "name": "Market Close",
@@ -160,7 +160,109 @@
       "last_summary": "Next due: Friday June 6. Week of June 2-6: S&P records, AVGO -15% post-earnings, AMD sympathy pullback, MU ATH $1,089, PLTR stable, GLD corrected lower than expected."
     }
   ],
+  "watchlist": [
+    {
+      "symbol": "MU",
+      "score": null,
+      "notes": "SCORE FIRST at June 25 Pre-Market post-earnings print (tonight 4:30 PM ET). Beat + bullish HBM4 → earnings-reaction-follow MOO. Miss → earnings-reaction-fade or skip. MU at $1,058 pre-print sets high bar.",
+      "priority": "MANDATORY — score at open June 25",
+      "entry": "post-print",
+      "stop": "fill×0.95",
+      "target": "fill×1.15",
+      "setup": "earnings-reaction-follow or earnings-reaction-fade"
+    },
+    {
+      "symbol": "GOOGL",
+      "score": 8.0,
+      "notes": "Dow Jones inclusion June 29 (replacing VZ). Only 3 sessions remaining. All 6 agents ≥7. Forced institutional buying window closing fast.",
+      "priority": "🔴 HIGHEST URGENCY — 3 sessions to inclusion",
+      "entry": "limit $352.22",
+      "stop": "334.61",
+      "target": "404.85",
+      "setup": "sector-rotation"
+    },
+    {
+      "symbol": "NVDA",
+      "score": 7.83,
+      "notes": "Broke $200 in afternoon — Midday conditional trigger met. All 6 agents ≥7. AI capex secular + $80B buyback support. Fresh Afternoon score.",
+      "priority": "🔴 MANDATORY",
+      "entry": "limit $203.01",
+      "stop": "192.86",
+      "target": "233.46",
+      "setup": "ai-momentum-pullback"
+    },
+    {
+      "symbol": "INTC",
+      "score": 7.17,
+      "notes": "BofA PT $135→$160 Buy (fresh June 24). Apple foundry partnership + Data Center +22% YoY. 5th consecutive blocked attempt.",
+      "priority": "🔴 MANDATORY",
+      "entry": "limit $134.70",
+      "stop": "127.97",
+      "target": "154.91",
+      "setup": "ai-momentum-pullback"
+    },
+    {
+      "symbol": "IBM",
+      "score": 7.5,
+      "notes": "JPMorgan OW upgrade June 24. Extreme relative strength June 23 (+4.2% on -1.3% SPX day). Red Hat moat. 5th consecutive blocked attempt.",
+      "priority": "🔴 MANDATORY",
+      "entry": "limit $265.32",
+      "stop": "252.05",
+      "target": "305.12",
+      "setup": "sector-rotation"
+    },
+    {
+      "symbol": "AMD",
+      "score": 7.17,
+      "notes": "UBS PT $670 (June 24). Meta 6GW + Oracle 50K-GPU validation. CONDITIONAL: operator must first reduce stale 18sh to ≤9sh and place stops. Risk Agent veto until resolved.",
+      "priority": "⚠️ CONDITIONAL — after AMD stale position resolved",
+      "entry": "operator action required first",
+      "stop": "481.42",
+      "target": "582.77",
+      "setup": "breakout-volume"
+    }
+  ],
   "trades": [
+    {
+      "ts": "2026-06-24T18:02:00Z",
+      "symbol": "NVDA",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.83,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 7.83,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "NEW AFTERNOON — $200 breakout triggers Midday conditional rescore. NVDA $202 (intraday $200-$203.77). All 6 agents ≥7. 4sh limit $203.01 bracket GTC stop $192.86 target $233.46. BLOCKED HTTP 403 (50th consecutive). OPERATOR MUST EXECUTE."
+    },
+    {
+      "ts": "2026-06-24T18:02:00Z",
+      "symbol": "GOOGL",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 8.0,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "2ND ATTEMPT (updated limit). GOOGL now ~$350.97 (up from $348.79 midday). Limit updated $350.53→$352.22. Dow inclusion June 29 — 3 sessions remaining. 14sh bracket GTC stop $334.61 target $404.85. BLOCKED HTTP 403 (50th). OPERATOR MUST EXECUTE — URGENT."
+    },
     {
       "ts": "2026-06-24T15:00:00Z",
       "symbol": "N/A",
