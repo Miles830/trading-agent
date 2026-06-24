@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-24T12:22:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-24T13:45:00Z",
+  "updated_by": "market-open-scheduled",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 2.16,
     "benchmark_gap_pct": -4.2,
     "open_positions_count": 0,
-    "note": "June 24 MARKET-OPEN (8:22 AM ET running early; market opens 9:30 AM ET). API BLOCKED (HTTP 403 \u2014 47th consecutive). PRICE CORRECTIONS: INTC ~$134 (consistent with estimate). IBM ~$264 (NOT $289 as estimated \u2014 JPMorgan upgrade less catalytic; June 23 close was $262.87). AMD June 23 close CONFIRMED $526.60; pre-market CONFIRMED $506.76 (both stale GTCs filled at $506.76 open). INTC 36sh limit $134.70 bracket GTC APPROVED 7.17 \u2014 BLOCKED (re-attempt). IBM 3sh limit $265.32 bracket GTC APPROVED 7.5 \u2014 BLOCKED (re-attempt). \u26a0\ufe0f\u26a0\ufe0f AMD: 18sh NAKED at $506.76 fill (9.13% equity, NO STOPS \u2014 GUARDRAIL VIOLATION). OPERATOR: SELL 9sh AMD immediately, place stop at $481.42 on remaining 9sh. MU Exemption 2 all day (earnings tonight). 0 confirmed Alpaca positions, $99,854 est. cash. Cumulative gap: est. -4.2 pp."
+    "note": "June 24 MARKET-OPEN SCHEDULED (9:45 AM ET / 13:45Z \u2014 market open 15 min). API BLOCKED (HTTP 403 \u2014 48th consecutive). 3rd order attempt today for INTC+IBM \u2014 all 3 blocked (12:05Z Pre-Market, 12:22Z early Market-Open, 13:45Z scheduled Market-Open). INTC 36sh limit $134.70 bracket GTC APPROVED 7.17 \u2014 BLOCKED. IBM 3sh limit $265.32 bracket GTC APPROVED 7.5 \u2014 BLOCKED. \u26a0\ufe0f\u26a0\ufe0f AMD 18sh NAKED (stale GTC fills $506.76 June 23 = 9.13% equity, NO STOPS \u2014 guardrail violation). MU Exemption 2 all day (earnings tonight ~4:30 PM ET). NVDA ~6.5, below threshold. 0 confirmed Alpaca positions, ~$99,854 est. cash. Cumulative gap: est. \u22124.2 pp. OPERATOR MUST ACT NOW: (1) sell 9sh AMD, place stop $481.42; (2) BUY 36sh INTC limit $134.70 bracket; (3) BUY 3sh IBM limit $265.32 bracket."
   },
   "positions": [
     {
@@ -107,9 +107,9 @@
       "name": "Market Open",
       "schedule": "09:45 ET daily",
       "status": "completed",
-      "last_run": "2026-06-24T12:22:00Z",
+      "last_run": "2026-06-24T13:45:00Z",
       "next_run": "2026-06-25 09:45 ET",
-      "last_summary": "June 24 (running at 8:22 AM ET pre-open): API BLOCKED (47th). PRICE CORRECTIONS \u2014 IBM ~$264 (not $289), INTC ~$134 (consistent). AMD stale GTC fills CONFIRMED at $506.76 (18sh NAKED). INTC 36sh limit $134.70 bracket GTC re-attempted \u2014 BLOCKED. IBM 3sh limit $265.32 bracket GTC re-attempted \u2014 BLOCKED. MU Exemption 2 all day. OPERATOR: sell 9sh AMD, place stop $481.42 on remaining 9sh."
+      "last_summary": "June 24 (9:45 AM ET scheduled run \u2014 3rd attempt today for INTC/IBM): API BLOCKED (48th). INTC 36sh $134.70 bracket GTC BLOCKED. IBM 3sh $265.32 bracket GTC BLOCKED. AMD 18sh NAKED stale GTC situation still unresolved. MU Exemption 2 all day (earnings tonight). NVDA 6.5 below threshold. OPERATOR: sell 9sh AMD + place stop $481.42 + BUY INTC + BUY IBM manually."
     },
     {
       "name": "Mid-Morning",
@@ -161,6 +161,59 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-24T13:45:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.17,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "3RD ATTEMPT (9:45 AM ET scheduled open). 36sh INTC limit $134.70 bracket GTC stop $127.97 target $154.91. BLOCKED HTTP 403 (48th consecutive). OPERATOR EXECUTE."
+    },
+    {
+      "ts": "2026-06-24T13:45:00Z",
+      "symbol": "IBM",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.5,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "3RD ATTEMPT (9:45 AM ET scheduled open). 3sh IBM limit $265.32 bracket GTC stop $252.05 target $305.12. BLOCKED HTTP 403 (48th consecutive). OPERATOR EXECUTE."
+    },
+    {
+      "ts": "2026-06-24T13:45:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Market open ~15 min. AMD stale GTC situation still unresolved (API blocked — cannot verify fills or place corrective orders). Est. AMD ~$520-530. OPERATOR: sell 9sh + place stop $481.42 + target $582.77."
+    },
     {
       "ts": "2026-06-24T12:22:00Z",
       "symbol": "INTC",

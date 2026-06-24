@@ -452,6 +452,172 @@ MU Q3 FY2026 earnings tonight: consensus $34.66B revenue, $19.95 EPS (source: we
 
 ---
 
+### MARKET-OPEN — SCHEDULED (9:45 AM ET / 13:45 UTC — SECOND MARKET-OPEN RUN TODAY)
+
+**HEARTBEAT:** STARTED Market-Open 13:45:28Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **48th consecutive blocked session**
+**Current Time:** 13:45Z = 9:45 AM ET — market has been open ~15 min (opened 13:30Z)
+**Note:** A first Market-Open run fired at 12:22Z (8:22 AM ET pre-market) and documented INTC/IBM/AMD. This is the actual scheduled 9:45 AM ET run. All API calls remain blocked.
+
+---
+
+#### PREDECESSOR CHECK
+Pre-Market ✓ STARTED 12:05:05Z / COMPLETED 12:18:07Z — no catch-up required.
+First Market-Open ✓ STARTED 12:22:20Z / COMPLETED 12:32:09Z — already documented INTC/IBM/AMD.
+
+---
+
+#### STOP-LOSS AUDIT (FIRST ACTION — MANDATORY)
+```
+GET /v2/positions          → HTTP 403 (48th block — empty response body)
+GET /v2/orders?status=open → HTTP 403
+GET /v2/account            → HTTP 403
+```
+
+**Confirmed: Alpaca API INACCESSIBLE.** Cannot verify AMD stale GTC fills, open positions, or resting stop orders. All three endpoint calls returned no data. The proxy policy denial (`connect_rejected — gateway answered 403 to CONNECT`) is unchanged since the first Market-Open run 83 minutes ago.
+
+**Estimated state (unchanged from prior run):**
+- AMD 18sh stale GTC fills at ~$506.76 — NEAR-CERTAIN, NAKED (no resting stops)
+- INTC: 0 confirmed positions
+- IBM: 0 confirmed positions
+- Cash: ~$99,854 estimated
+
+**⚠️⚠️ AMD NAKED POSITION RISK — OPERATOR MUST ACT NOW (market has been open 15 min):**
+AMD opened June 23 at $506.76 (confirmed from web research); June 23 close: $526.60; pre-market June 24 est. ~$520-530. Both stale GTC buy limits ($520.59 and $524.15) were above the $506.76 open → BOTH FILLED at ~$506.76. 18sh AMD at ~$506.76 = ~$9,122 = 9.13% equity — double the 5% limit. NO resting stop orders. EVERY MINUTE WITHOUT A STOP IS A GUARDRAIL VIOLATION. Operator must log into app.alpaca.markets NOW.
+
+---
+
+#### ORDER RE-ATTEMPTS (9:45 AM ET ACTUAL OPEN)
+
+**INTC — 3rd attempt today (first: Pre-Market 12:05Z; second: Market-Open 12:22Z; now: scheduled open 13:45Z):**
+- Market is now open; INTC est. trading ~$133-136 (recovering from $132.28 June 23 close)
+- Same analysis as prior runs; limit price $134.70 still reasonable
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"INTC","qty":36,"side":"buy","type":"limit","limit_price":"134.70","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"127.97"},"take_profit":{"limit_price":"154.91"}}'
+→ HTTP 403 BLOCKED (48th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-06-24T13:45:00Z
+action: entry
+symbol: INTC
+bucket: active
+setup: ai-momentum-pullback
+score: 7
+thesis: "INTC 3rd order attempt today (pre-market 12:05Z, early market-open 12:22Z, scheduled open 13:45Z). All blocked. BofA PT raised $135→$160 Buy (fresh June 24); The Club buying June 23; Apple foundry intact; Data Center +22% YoY. 36sh limit $134.70 bracket GTC (stop $127.97, target $154.91). BLOCKED — HTTP 403 (48th consecutive). OPERATOR MUST EXECUTE."
+size_pct: 4.85
+stop: 127.97
+target: 154.91
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "Carry-forward from pre-market analysis (all 6 agents ≥7, avg 7.17). Third order attempt — still blocked. OPERATOR EXECUTE: 36sh INTC limit $134.70 bracket gtc, stop_loss $127.97, take_profit $154.91. If INTC has moved significantly above $134.70 at this point, adjust limit to current ask × 1.005 and recalculate stop/target. Core thesis unchanged: BofA upgrade + Apple foundry partnership + technical reversal setup."
+---
+```
+
+**IBM — 3rd attempt today:**
+- IBM est. trading ~$264-267 (June 23 close $262.87; upgrade priced in)
+- Limit price $265.32 still valid
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"265.32","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"252.05"},"take_profit":{"limit_price":"305.12"}}'
+→ HTTP 403 BLOCKED (48th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-06-24T13:45:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 8
+thesis: "IBM 3rd order attempt today. Defensive AI/consulting name; JPMorgan OW upgrade fresh June 24; extreme relative strength June 23 (+4.2% on -1.3% SPX day); Red Hat moat; 3sh limit $265.32 bracket GTC. BLOCKED — HTTP 403 (48th). OPERATOR MUST EXECUTE."
+size_pct: 0.80
+stop: 252.05
+target: 305.12
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Carry-forward from pre-market (avg 7.5, 5/6 agents ≥7). Third blocked attempt. OPERATOR EXECUTE: 3sh IBM limit $265.32 bracket gtc, stop_loss $252.05, take_profit $305.12. Trivially small position — risk $43.56 per trade, well within 1.5% cap."
+---
+```
+
+---
+
+#### NVDA — RESCORE AT OPEN
+
+NVDA est. ~$195-200 at open (recovering from -4.13% June 23 close ~$195). Fresh look: Stochastic still descending, MACD not crossed, only 1-2/5 indicators confirming. Score still ~6.5, below 7.0 threshold. SKIP this routine.
+
+---
+
+#### AMD — OPERATOR SITUATION UNRESOLVED
+
+Market has been open ~15 min. AMD est. trading ~$520-530 (based on $526.60 June 23 close and pre-market stabilization). Cannot verify fill status (API blocked). Cannot place corrective sell or stops (API blocked). OPERATOR MUST VERIFY IMMEDIATELY.
+
+```yaml
+---
+ts: 2026-06-24T13:45:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: null
+thesis: "AMD stale GTC situation still unresolved at scheduled Market-Open (9:45 AM ET). API blocked — cannot verify if 18sh fill occurred June 23 or place corrective orders. Operator must act via app.alpaca.markets."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "48th consecutive API block. Estimated AMD position: 18sh at ~$506.76 (9.13% equity, NAKED). If unresolved: AMD now ~$520-530 = unrealized gain of ~$240-420 on 18sh. The gain does NOT reduce the guardrail violation — a position without stops is a violation regardless of P&L. Operator: sell 9sh at market NOW, place stop on remaining 9sh at $481.42 ($506.76×0.95), take-profit bracket at $582.77. If fills are confirmed different from estimates, recalculate accordingly."
+---
+```
+
+---
+
+#### MU — EXEMPTION 2 (STILL ACTIVE)
+
+MU earnings tonight after close (~4:30 PM ET / 20:30Z). Exemption 2 confirmed — no entry all day.
+
+---
+
+#### MARKET CONDITIONS UPDATE (9:45 AM ET OPEN)
+- **S&P 500:** Recovering from 2-day selloff; futures were mixed pre-open; ~7,450-7,480 est. open
+- **Semiconductors:** Mixed — INTC recovering on upgrade; AMD consolidating; MU up pre-market
+- **MU:** Pre-market rebound +4.1% on positioning ahead of tonight's earnings (still EXEMPT)
+- **IBM:** Steady around $264-267; JPMorgan upgrade digested
+- **VIX:** Estimate ~16-18 (moderate risk)
+- **Key risk remaining today:** MU earnings 4:30 PM ET — ±17% expected
+
+---
+
 ## 2026-06-23 — Daily Review (4:30 PM ET / 20:32 UTC — TUESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:26Z ✓
