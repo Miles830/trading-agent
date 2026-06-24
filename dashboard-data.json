@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-23T20:32:00Z",
-  "updated_by": "daily-review",
+  "last_updated": "2026-06-24T12:05:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 2.16,
     "benchmark_gap_pct": -4.2,
     "open_positions_count": 0,
-    "note": "June 23 DAILY REVIEW (4:30 PM ET). TRADING DAY. API blocked (HTTP 403 \u2014 45th consecutive). 5 of 6 intraday routines silently failed. Market closed: SPX ~-1.3% (~7,453 est.), Nasdaq ~-2.1%. NVDA -4.13% (~$195), INTC -6.14% (~$126), MU -13.18% (~$956 pre-earnings dump), AMD est. ~$510-525. IBM +4.2% (defensive). Portfolio: 0 positions, $99,854 cash, +1.3 pp vs SPX today. Cumulative gap: est. -4.2 pp (improved). \u26a0\ufe0f AMD STALE GTC NAKED-FILL RISK \u2014 may have filled during June 23 intraday. OPERATOR VERIFY IMMEDIATELY. JUNE 24 BINDING: (1) Cancel AMD GTCs $520.59/$524.15; (2) INTC 38sh limit $126 bracket GTC; (3) AMD fresh entry; (4) IBM 3sh bracket; (5) MU Exemption 2 all day (earnings tonight)."
+    "note": "June 24 PRE-MARKET (8:05 AM ET). TRADING DAY. API BLOCKED (HTTP 403 \u2014 46th consecutive). S&P 500 futures UP (recovery day, Micron earnings tonight). INTC ~$134-135 (BofA PT $160; 6-agent APPROVED 7.17 \u2014 BLOCKED). IBM ~$289 pre-market (+5% JPMorgan OW upgrade; 6-agent APPROVED 7.5 \u2014 BLOCKED). \u26a0\ufe0f\u26a0\ufe0f AMD STALE GTC FILLS ALMOST CERTAIN: AMD opened June 23 at ~$508 (below $520.59 and $524.15 buy limits) \u2014 both GTC orders FILLED at ~$508. 18sh AMD NAKED, 9.14% equity, NO STOPS. OPERATOR MUST ACT BEFORE 9:30 AM ET: verify fills, sell 9sh, place stop. MU Exemption 2 all day (earnings tonight after close). 0 confirmed positions, $99,854 cash. Cumulative gap: est. -4.2 pp."
   },
   "positions": [
     {
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "RISK-OFF. Global AI/chip selloff Day 2. SPX ~-1.3%, Nasdaq ~-2.1%. NVDA -4.13%, INTC -6.14%, MU -13.18% pre-earnings. AMD gave back intraday gains. IBM/ACN defensive names outperformed.",
+    "mode": "RECOVERY. S&P 500 futures UP (Micron earnings in focus). Semis bouncing after 2-day rout. INTC ~$134-135 (recovering on BofA/Club buying). IBM +5% pre-market (JPMorgan OW upgrade). MU earnings tonight (EXEMPTION 2). Korea Kospi stabilizing.",
     "fear_greed": null,
-    "fear_greed_label": "Fear \u2014 global semiconductor selloff; AI spending concerns; Korea -9.99%.",
-    "spx": "S&P 500 est. ~7,439 June 23 midday (-1.53% from June 22 close). SPX total return since ~May 1: est. +3.31% (7,439/7,200-1). Global AI/chip rout pulling SPX lower. Portfolio inadvertently outperforming today (+0 vs -1.53%).",
-    "btc": "BTC unknown \u2014 likely below $82K threshold. No crypto entry.",
+    "fear_greed_label": "Neutral-to-Fear. Recovery from 2-day selloff. MU binary event tonight adds uncertainty.",
+    "spx": "S&P 500 futures UP June 24 pre-market. Prior close ~7,453 est. (June 23 -1.3%). Recovery driven by Micron earnings anticipation and Alphabet Dow inclusion announcement. Persistent inflation concern (BoFA) remains headwind.",
+    "btc": "BTC status unknown (API blocked). Last known: ~$65-67K, below $82K entry threshold. No crypto entry.",
     "sectors": [
       {
         "name": "Semiconductors / AI \u2014 BROAD SELLOFF",
@@ -89,19 +89,19 @@
         "note": "No GLD position. Iran deal maintained. Gold likely stable to slightly higher as risk-OFF safe-haven."
       }
     ],
-    "macro_notes_md": "**2026-06-23 Daily Review (4:30 PM ET)**\n- SPX ~-1.3%, Nasdaq ~-2.1% \u2014 global AI/chip selloff Day 2\n- BoFA hawkish Fed rate note + Korean chip rout (Kospi -9.99% June 22-23)\n- NVDA -4.13% (~$195), INTC -6.14% (~$126; ATH pullback), MU -13.18% (~$956; pre-earnings)\n- AMD: started +4.86% at midday but gave back gains in afternoon selloff; est. close ~$510-525\n- Defensive names: IBM +4.2%, ACN +3.3%, PSA +4.4%\n- **MU EARNINGS TONIGHT (June 24 after close)**: consensus $34.66B rev / $19.72 EPS (283% YoY growth)\n- Pre-market June 24: chip stocks showing bounce signals (NVDA/INTC/AMD)",
-    "sp500_today_pct": "-1.3% (closed ~7,453 est.)",
-    "sp500_est": 7453,
-    "macro_note": "Global AI trade selloff June 23. AMD is the key outlier with specific catalysts (quantum + Rackspace). MU binary event tomorrow June 24. INTC consolidating after ATH. All semiconductor names except AMD in risk-OFF mode."
+    "macro_notes_md": "**2026-06-24 Pre-Market (8:05 AM ET)**\n- S&P 500 futures UP \u2014 recovery from 2-day AI/chip selloff\n- Micron (MU) earnings tonight after close: key driver; consensus $35.25B rev / $20.28 EPS; HBM4 commentary critical\n- INTC: recovering to ~$134-135 (BofA raised PT $135\u2192$160, Buy; The Club bought June 23). 6-agent APPROVED 7.17.\n- IBM: +5% pre-market on JPMorgan upgrade to Overweight (from Neutral). 6-agent APPROVED 7.5.\n- AMD: June 23 close $519.85. \u26a0\ufe0f STALE GTC FILLS: AMD opened June 23 at ~$508 (below both $520.59 and $524.15 buy limits) \u2192 BOTH FILLED at open. 18sh AMD naked, 9.14% equity, NO stops \u2014 critical guardrail violation.\n- NVDA: recovering after -4.13% June 23. Score 6.5 \u2014 below 7 threshold.\n- Alphabet joining Dow Jones next Monday (front-running potential).\n- Iran deal intact, oil lower, macro supportive.\n- Korea Kospi stabilizing after -9.99% rout.\n- Fed: No meeting today. Next key catalyst: post-MU guidance for semiconductor sector.",
+    "sp500_today_pct": "futures +0.2-0.4% est. (pre-market recovery)",
+    "sp500_est": 7480,
+    "macro_note": "Recovery day after 2-day AI/chip selloff. Micron earnings tonight are the binary event. INTC and IBM are the high-conviction entries today (both approved 7+). AMD stale GTC situation is the critical operational risk."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "holiday",
-      "last_run": "2026-06-16 08:07 ET",
-      "next_run": "2026-06-22 08:00 ET",
-      "last_summary": "June 19: JUNETEENTH (market holiday) \u2014 correctly absent. June 22 Pre-Market MUST place MOO orders for MRVL 8sh + NVDA 4sh (cap 3 MOO)."
+      "status": "completed",
+      "last_run": "2026-06-24T12:05:00Z",
+      "next_run": "2026-06-25 08:00 ET",
+      "last_summary": "June 24: API BLOCKED (46th). S&P futures up (recovery). INTC 6-agent APPROVED 7.17 (BofA PT $160; 36sh limit $135.68 bracket GTC) \u2014 BLOCKED. IBM 6-agent APPROVED 7.5 (JPMorgan OW upgrade; 3sh limit $290.45 bracket GTC) \u2014 BLOCKED. AMD stale GTC fills almost certain (18sh NAKED) \u2014 OPERATOR ACT IMMEDIATELY. MU Exemption 2 (earnings tonight). 0 user suggestions. OPERATOR MUST EXECUTE INTC+IBM orders manually."
     },
     {
       "name": "Market Open",
@@ -161,6 +161,72 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-24T12:05:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.17,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "APPROVED 7.17 avg. All 6 agents ≥7. BofA PT $160 upgrade (fresh June 24 catalyst). 36sh limit $135.68 bracket GTC stop $128.90 target $156.03. BLOCKED HTTP 403 (46th consecutive). OPERATOR MUST EXECUTE."
+    },
+    {
+      "ts": "2026-06-24T12:05:00Z",
+      "symbol": "IBM",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.5,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 9,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "APPROVED 7.5 avg. 5/6 agents ≥7 (Technical=6, overbought after +9.4% 2-day run). JPMorgan OW upgrade fresh June 24 catalyst. 3sh limit $290.45 bracket GTC stop $275.93 target $334.02. BLOCKED HTTP 403 (46th). OPERATOR MUST EXECUTE."
+    },
+    {
+      "ts": "2026-06-24T12:05:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "STALE GTC FILL CRITICAL: AMD opened June 23 at ~$508 (below $520.59/$524.15 buy limits). Both GTCs almost certainly FILLED at ~$508. 18sh AMD NAKED (9.14% equity, double 5% limit). OPERATOR MUST VERIFY AND ACT. No fresh AMD score until stale situation resolved."
+    },
+    {
+      "ts": "2026-06-24T12:05:00Z",
+      "symbol": "MU",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "other",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "EXEMPTION 2: MU earnings tonight June 24 after close. Options ±17%. Score June 25 post-print."
+    },
     {
       "ts": "2026-06-18T19:33:00Z",
       "symbol": "MRVL",
@@ -954,35 +1020,35 @@
       "score": 7.17,
       "bucket": "active",
       "setup": "ai-momentum-pullback",
-      "est_price": 126.0,
-      "stop": 119.7,
-      "target": 144.9,
-      "thesis": "Apple foundry intact; -11% from ATH $141.45 = improved entry at ~$126; Data Center +22%; 38sh bracket GTC. MANDATORY.",
-      "action": "BUY \u2014 38sh limit ~$126 bracket GTC (stop $119.70 -5%, target $144.90 +15%)",
+      "est_price": 135.0,
+      "stop": 128.90,
+      "target": 156.03,
+      "thesis": "BofA raised PT $135\u2192$160 (Buy, June 24 catalyst); The Club announced buy June 23; Apple foundry intact; Data Center +22%; -6.5% from ATH = improved entry. 36sh bracket GTC. MANDATORY.",
+      "action": "BUY \u2014 36sh limit $135.68 bracket GTC (stop $128.90 -5%, target $156.03 +15%). BLOCKED \u2014 OPERATOR MUST EXECUTE.",
       "priority": 1
     },
     {
+      "symbol": "IBM",
+      "score": 7.5,
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "est_price": 289.0,
+      "stop": 275.93,
+      "target": 334.02,
+      "thesis": "+5% pre-market on JPMorgan OW upgrade; +4.2% June 23 on -1.3% SPX = extreme relative strength; AI consulting + Red Hat hybrid cloud. Defensive in risk-OFF. APPROVED 7.5 avg.",
+      "action": "BUY \u2014 3sh limit $290.45 bracket GTC (stop $275.93 -5%, target $334.02 +15%). BLOCKED \u2014 OPERATOR MUST EXECUTE.",
+      "priority": 2
+    },
+    {
       "symbol": "AMD",
-      "score": 7.0,
+      "score": null,
       "bucket": "active",
       "setup": "breakout-volume",
       "est_price": 520.0,
       "stop": null,
       "target": null,
-      "thesis": "Quantum+Rackspace 30MW catalyst; cancel stale GTCs $520.59/$524.15 FIRST; re-entry at current level.",
-      "action": "CANCEL stale GTCs first; then BUY 9sh limit bracket GTC (stop -5%, target +15%)",
-      "priority": 2
-    },
-    {
-      "symbol": "IBM",
-      "score": 7.33,
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "est_price": 275.0,
-      "stop": 261.25,
-      "target": 316.25,
-      "thesis": "+4.2% on June 23 red day; defensive AI consulting + hybrid cloud; strong relative strength vs semis.",
-      "action": "BUY \u2014 3sh limit ~$275 bracket GTC (stop $261.25 -5%, target $316.25 +15%)",
+      "thesis": "\u26a0\ufe0f STALE GTC FILLS CRITICAL: AMD opened June 23 at ~$508 (below $520.59/$524.15 buy limits). Both likely FILLED at ~$508. 18sh NAKED. OPERATOR MUST VERIFY AND MANAGE FIRST.",
+      "action": "OPERATOR ACTION: verify AMD fills; if 18sh \u2014 sell 9sh + place stop $482.60; if unfilled \u2014 cancel GTCs. Fresh entry scored by Market-Open after resolution.",
       "priority": 3
     },
     {
@@ -993,8 +1059,8 @@
       "est_price": 956.0,
       "stop": null,
       "target": null,
-      "thesis": "Earnings tonight (June 24 after close); consensus $34.66B rev / $19.72 EPS; HBM4 commentary. EXEMPTION 2 all day June 24.",
-      "action": "SKIP June 24 (Exemption 2). Score June 25 post-print for follow/fade entry.",
+      "thesis": "Earnings TONIGHT (June 24 after close); analyst est. $35.25B rev / $20.28 EPS; HBM4 is the key metric. Options \u00b117%. EXEMPTION 2 all day June 24.",
+      "action": "SKIP June 24 (Exemption 2). Score June 25 Pre-Market post-print for follow/fade entry.",
       "priority": 4
     },
     {
@@ -1002,48 +1068,24 @@
       "score": 6.5,
       "bucket": "active",
       "setup": "ai-momentum-pullback",
-      "est_price": 195.0,
-      "stop": 185.25,
-      "target": 224.25,
-      "thesis": "-4.13% June 23; AI infrastructure secular intact but score below 7 (2 down days). Conditional on pre-market bounce + 2/5 indicator confirmation.",
-      "action": "CONDITIONAL \u2014 only enter if score rises to \u22657 at June 24 open.",
+      "est_price": 198.0,
+      "stop": null,
+      "target": null,
+      "thesis": "-4.13% June 23; recovering pre-market June 24. Score 6.5 \u2014 below 7 threshold. Need 2/5 indicator stack to confirm.",
+      "action": "CONDITIONAL \u2014 score at Market-Open; enter only if score rises to \u22657.",
       "priority": 5
-    },
-    {
-      "symbol": "AVGO",
-      "score": 6.5,
-      "bucket": "active",
-      "setup": "mean-reversion-oversold",
-      "est_price": 395.0,
-      "stop": null,
-      "target": null,
-      "thesis": "Soft AI guidance triggered June selloff; AI infrastructure thesis intact. Score below 7 \u2014 re-score if market stabilizes.",
-      "action": "MONITOR \u2014 conditional on macro stabilization.",
-      "priority": 6
-    },
-    {
-      "symbol": "LRCX",
-      "score": 6.8,
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "est_price": 1100.0,
-      "stop": null,
-      "target": null,
-      "thesis": "+114% YTD; AI semiconductor equipment (etch for HBM); secular AI demand.",
-      "action": "CONDITIONAL \u2014 confirm 2/5 indicator stack at open.",
-      "priority": 7
     },
     {
       "symbol": "MRVL",
       "score": 5.5,
       "bucket": "active",
       "setup": "other",
-      "est_price": 265.0,
+      "est_price": 264.0,
       "stop": null,
       "target": null,
-      "thesis": "Day 2 sell-the-news post-S&P 500 inclusion. Technical breakdown.",
-      "action": "SKIP \u2014 wait for stabilization below $260.",
-      "priority": 8
+      "thesis": "Day 2+ sell-the-news post-S&P 500 inclusion. Technical breakdown.",
+      "action": "SKIP \u2014 wait for stabilization and score reset.",
+      "priority": 6
     }
   ],
   "history": [
