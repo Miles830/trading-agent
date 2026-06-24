@@ -326,6 +326,132 @@ NVDA est. ~$195-200 June 24 (recovering from -4.13% June 23). Entry checklist: s
 
 ---
 
+### MARKET-OPEN (9:45 AM ET / 12:22 UTC — RUNNING AT 8:22 AM ET PRE-MARKET)
+
+**HEARTBEAT:** STARTED Market-Open 12:22:20Z (8:22 AM ET — **market opens 9:30 AM ET / 13:30Z in ~70 min**)
+**Alpaca API Status:** BLOCKED — HTTP 403 — **47th consecutive blocked session** (proxy status confirmed: `connect_rejected` on `paper-api.alpaca.markets:443`)
+**Note:** Session continued from Pre-Market context; running 83 min early. MOO fills cannot be confirmed until 9:30 AM ET. Research and order attempts run now.
+
+---
+
+#### PREDECESSOR CHECK
+Pre-Market ✓ STARTED 12:05:05Z / COMPLETED 12:18:07Z — no catch-up required.
+
+---
+
+#### STOP-LOSS BACKFILL (FIRST ACTION)
+```
+GET /v2/positions       → HTTP 403 (47th block)
+GET /v2/orders?status=open → HTTP 403
+```
+**Estimated positions:** 0 confirmed Alpaca positions (API inaccessible).
+**EXCEPTION — AMD STALE GTC FILLS (CRITICAL):**
+New data from web research confirms AMD June 23 pre-market price: **$506.76 (−8.13%)**. Both stale GTC buy limits ($520.59 and $524.15) were **above** AMD's $506.76 open → **both orders filled at approximately $506.76** at the June 23 opening bell.
+
+| Parameter | Value |
+|---|---|
+| Fills | 2× 9sh AMD at ~$506.76 = **18sh total** |
+| Cost basis | $506.76 × 18 = **$9,121.68** |
+| Pct of equity | **9.13%** (hard limit 5% — DOUBLE) |
+| AMD June 23 close (confirmed) | **$526.60** |
+| Unrealized P&L at June 23 close | ($526.60 − $506.76) × 18 = **+$357** |
+| Resting stop-loss orders | **NONE** — naked position |
+| Guardrail status | **⚠️⚠️ VIOLATION: 9.13% position (max 5%), naked (no stop)** |
+
+**OPERATOR MANDATORY ACTION BEFORE 9:30 AM ET:**
+1. Open [app.alpaca.markets/orders](https://app.alpaca.markets/orders) — verify AMD fills from June 23
+2. **If 18sh filled at ~$506.76:** sell 9sh immediately at market → reduces to 9sh ($4,561 = 4.56% ✓)
+3. **After selling 9sh:** place GTC stop on remaining 9sh: `stop_price: $481.42` ($506.76 × 0.95)
+4. **Take-profit (3:1 R/R):** `$506.76 × 1.15 = $582.77` — place bracket or standalone limit order
+5. If unfilled (orders still open): cancel both GTCs before 9:25 AM ET
+
+---
+
+#### WATCHLIST EXECUTION — OUTSTANDING ≥7 ENTRIES
+
+Pre-Market logged INTC (7.17) and IBM (7.5) as `action: entry` (blocked). Both are outstanding ≥7 entries. Per Market-Open routine: re-attempt as limit bracket GTC orders.
+
+**Updated price data from web research (June 24):**
+- **INTC:** ~$134-135 pre-market (consistent with pre-market estimate; possible intraday gap to $139.50 on BofA upgrade open — catalyst confirmed). Thesis intact.
+- **IBM:** ~$264 pre-market (LOWER than our $289 pre-market estimate — JPMorgan upgrade less catalytic at open than expected; June 23 close was ~$262.87 vs. our ~$275 estimate). Thesis partially intact — fundamental/defensive story unchanged but gap-up momentum not materializing.
+
+**INTC — RE-ATTEMPT (updated limit price):**
+Analysis from Pre-Market unchanged (F=8, T=7, S=7, M=7, R=7, TA=7, avg 7.17). Price update: ~$134 → revised limit $134.70. Updated order:
+- 36sh INTC limit $134.70, stop $127.97 ($134.70 × 0.95), target $154.91 ($134.70 × 1.15)
+- R/R: ($154.91 − $134.70) / ($134.70 − $127.97) = $20.21/$6.73 = **3.0× ✓**
+- Size: 36 × $134.70 = $4,849 = 4.85% equity ✓
+
+```yaml
+---
+ts: 2026-06-24T12:22:00Z
+action: entry
+symbol: INTC
+bucket: active
+setup: ai-momentum-pullback
+score: 7
+thesis: "INTC ~$134 pre-market (recovering from ATH $141.45→$132.28 June 23; BofA PT $135→$160 Buy; The Club buying June 23; Apple foundry intact). Market-Open re-attempt: 36sh limit $134.70 bracket GTC. ORDER BLOCKED — HTTP 403 (47th consecutive). OPERATOR MUST EXECUTE."
+size_pct: 4.85
+stop: 127.97
+target: 154.91
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "Re-attempt from Pre-Market (same 6-agent scores). Updated limit $135.68→$134.70 to match current ~$134 pre-market price. All 6 agents ≥7. Guardrails: 36sh×$134.70=$4,849=4.85% ✓, R/R 3.0× ✓, trade risk $243<$1,498 cap ✓. ORDER BLOCKED API 403. OPERATOR EXECUTE: 36sh INTC limit $134.70 bracket gtc, stop_loss $127.97, take_profit $154.91."
+---
+```
+
+**IBM — RE-ATTEMPT (updated limit price, price discrepancy noted):**
+⚠️ IBM trading at ~$264 (vs. $289 pre-market estimate). June 23 close was ~$262.87 (not ~$275 as estimated). JPMorgan OW upgrade catalyst did not produce the expected +5% gap-up. Fundamental thesis unchanged. Technical score maintained at 6/10 (Volume Oscillator ✓, MACD ✓, Volume Spike ✓; Stochastic neutral at $264 — less overbought risk than at $289; gap-up momentum absent). Average: 7.5 — still above gate. Updated order:
+- 3sh IBM limit $265.32 ($264 × 1.005), stop $252.05, target $305.12
+- R/R: ($305.12 − $265.32) / ($265.32 − $252.05) = $39.80/$13.27 = **3.0× ✓**
+- Size: 3 × $265.32 = $796 = 0.80% equity ✓
+
+```yaml
+---
+ts: 2026-06-24T12:22:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 8
+thesis: "IBM ~$264 pre-market (June 23 close $262.87; JPMorgan OW upgrade less catalytic than expected — no +5% gap; defensive AI/consulting thesis intact; Red Hat moat). Market-Open re-attempt: 3sh limit $265.32 bracket GTC. ORDER BLOCKED — HTTP 403 (47th). OPERATOR MUST EXECUTE."
+size_pct: 0.80
+stop: 252.05
+target: 305.12
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Re-attempt from Pre-Market. Updated limit $290.45→$265.32 (IBM ~$264, not $289 as pre-market estimated). JPMorgan upgrade priced in on June 23 — June 23 close was ~$262.87 (our estimate $275 was wrong). Technical still 6/10 (3/5 indicators: VO ✓, MACD ✓, VSpike ✓; Stochastic neutral, gap-up absent). All other agents unchanged. Avg 7.5 — STILL APPROVED. Guardrails: 3sh×$265.32=$796=0.80% ✓, R/R 3.0× ✓, trade risk $40<$1,498 cap ✓. ORDER BLOCKED API 403. OPERATOR EXECUTE: 3sh IBM limit $265.32 bracket gtc, stop_loss $252.05, take_profit $305.12."
+---
+```
+
+#### MARKET CONDITIONS UPDATE (PRE-MARKET 8:22 AM ET)
+- S&P 500 futures: **mixed** (slight recovery after 2-day tech/chip selloff; Micron earnings in focus)
+- Semiconductors: bouncing; INTC recovering on BofA upgrade; AMD ~$526-530 est.
+- MU: +4.1% pre-market rebound (still Exemption 2 — earnings tonight 4:30 PM ET)
+- No major economic releases today; Fed speakers possible
+
+#### MU — EXEMPTION 2 CONFIRMED (ALL DAY JUNE 24)
+MU Q3 FY2026 earnings tonight: consensus $34.66B revenue, $19.95 EPS (source: web research). HBM4 commentary will be critical for semiconductor sector Thursday. Score June 25 Pre-Market post-print. Still no entry.
+
+---
+
 ## 2026-06-23 — Daily Review (4:30 PM ET / 20:32 UTC — TUESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:32:26Z ✓
