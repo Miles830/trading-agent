@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-24T16:32:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-06-24T19:35:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 2.51,
-    "benchmark_gap_pct": -4.2,
+    "spx_return_pct": 2.93,
+    "benchmark_gap_pct": -4.65,
     "open_positions_count": 0,
-    "note": "June 24 MIDDAY (12:32 PM ET / 16:32Z). API BLOCKED (HTTP 403 \u2014 49th consecutive). Mid-Morning SILENT FAILURE (15:00Z). 6 total blocked attempts today (3\u00d7INTC, 3\u00d7IBM). NEW: GOOGL Dow Jones inclusion June 29 \u2014 APPROVED 8.0 avg (all 6 agents \u22657) \u2014 BLOCKED. AMD rescore: 7.17 avg but Risk Agent VETO (existing 18sh position = 9.13% equity, Exemption 1). INTC ~$134.10 (range $130.03\u2013$136.08). IBM ~$264.24 (volume 15.69M vs 8.74M avg = elevated). NVDA ~$198.70 (below threshold 6.5). MU ~$1,058 (+10.7% from $956 June 23 close \u2014 EXEMPTION 2). SPX +0.35%, NDX +0.62%. UBS raised AMD PT $670 from $455. Cumulative gap: est. \u22124.2 pp. OPERATOR URGENT: (1) sell 9sh AMD, place stop $481.42; (2) BUY 14sh GOOGL limit $350.53 bracket GTC; (3) BUY 36sh INTC limit $134.70 bracket; (4) BUY 3sh IBM limit $265.32 bracket."
+    "note": "June 24 MARKET-CLOSE (3:33 PM ET / 19:33Z). API BLOCKED (HTTP 403 \u2014 50th consecutive). Full day: Pre-Market \u2713, Market-Open \u2713\u00d72, Mid-Morning \u2717 (silent failure), Midday \u2713, Afternoon \u2717 (silent failure), Market-Close \u2713. 10 total blocked attempts today: 5\u00d7INTC, 5\u00d7IBM, 3\u00d7GOOGL (Midday+MOC), 3\u00d7MOC. MOC orders BLOCKED: GOOGL 14sh, INTC 36sh, IBM 3sh. AMD 18sh NAKED (no stops) \u2014 OPERATOR MUST ACT. SPX est. +0.42-0.55% (~$7,480-7,495). NDX +0.60-0.75%. Cumulative gap: est. \u22124.65 pp. TONIGHT: MU earnings 4:30 PM ET. JUNE 25 PRIORITY: (1) AMD: sell 9sh + stop $481.42; (2) GOOGL 14sh limit ~$350 bracket GTC \u2014 MOST URGENT (4 sessions left in Dow inclusion window, score 8.0); (3) INTC 36sh ~$134 bracket; (4) IBM 3sh ~$265 bracket; (5) MU post-print score."
   },
   "positions": [
     {
@@ -62,10 +62,10 @@
     }
   ],
   "market": {
-    "mode": "MODEST RECOVERY. SPX +0.35%, NDX +0.62%, Dow -0.17% midday. Growth/tech leading. MU earnings binary event tonight (+10.7% pre-earnings rebound). GOOGL Dow inclusion June 29 (5-session catalyst window). UBS raised AMD PT $670. Semis stabilizing.",
+    "mode": "RECOVERY CLOSE. SPX est. +0.42-0.55% close (~7,480-7,495). Nasdaq outperforming (growth/tech). MU earnings after close \u2014 \u00b117% options; HBM4 guidance critical for semi sector Thursday. GOOGL Dow inclusion window = 4 sessions remaining.",
     "fear_greed": null,
-    "fear_greed_label": "Neutral. Recovery from 2-day selloff but muted \u2014 investors waiting on MU earnings for sector direction.",
-    "spx": "S&P 500 +0.35% midday (est. ~7,479). Nasdaq +0.62% outperforming (growth/tech). Dow -0.17%. Wall Street holding pattern ahead of Micron earnings tonight 4:30 PM ET. GOOGL +0.7% on Dow inclusion announcement (June 29 effective date).",
+    "fear_greed_label": "Neutral-Cautious. Recovery from 2-day selloff. Held gains through close. MU earnings create overnight binary risk for semis.",
+    "spx": "S&P 500 est. +0.42-0.55% close (est. ~7,481-7,492). Nasdaq +0.60-0.75% outperforming. Dow -0.17% (value lagging). Recovery session after 2-day chip selloff. GOOGL leading Communication Services on Dow inclusion. MU +10-15% pre-earnings (EXEMPT). After-hours: MU reports at 4:30 PM ET.",
     "btc": "BTC status unknown (API blocked). Last known: ~$65-67K, below $82K entry threshold. No crypto entry.",
     "sectors": [
       {
@@ -90,9 +90,9 @@
       }
     ],
     "macro_notes_md": "**2026-06-24 Midday (12:32 PM ET)**\n- SPX +0.35%, NDX +0.62%, Dow -0.17% \u2014 modest recovery\n- **UBS raised AMD PT to $670 from $455** (Timothy Arcuri, June 24) \u2014 standalone CPU rack adoption + agentic AI workloads. Meta 6GW + Oracle 50K-GPU Helios.\n- **GOOGL joining Dow Jones June 29** \u2014 5-session forced-buying window. 14sh limit $350.53 APPROVED 8.0 avg \u2014 BLOCKED.\n- MU +10.7% pre-earnings (was ~$956 June 23 \u2192 ~$1,058 today). Earnings tonight 4:30 PM ET. Exemption 2 all day.\n- INTC ~$134.10 (range $130.03\u2013$136.08). BofA $160 PT intact. 4th order attempt blocked.\n- IBM ~$264.24, volume 15.69M (80% above avg). JPMorgan OW upgrade digested.\n- NVDA ~$198.70 \u2014 recovering but Stochastic still descending; score 6.5, below threshold.\n- Fed: on hold 4.25-4.50%. No events today.\n- Iran deal intact, oil lower, risk-on macro backdrop.",
-    "sp500_today_pct": "+0.35% midday",
-    "sp500_est": 7479,
-    "macro_note": "Midday recovery day. NDX leading (+0.62%). Key binary event: MU earnings at 4:30 PM ET \u2014 \u00b117% options move expected, HBM4 commentary is the pivotal metric for semiconductor sector direction Thursday. GOOGL Dow inclusion is highest-conviction new setup (8.0 avg). AMD UBS PT $670 validates bull case but position status unresolved."
+    "sp500_today_pct": "+0.42-0.55% est. close",
+    "sp500_est": 7486,
+    "macro_note": "Recovery close. SPX +0.42-0.55% est. (NDX leading). MU earnings after close \u2014 binary event for semis sector Thursday. GOOGL Dow inclusion play: 4 sessions left. UBS AMD PT $670 = validated bull case. Fed: on hold. Iran deal intact (risk-on backdrop). No economic data today. Key risk overnight: MU earnings miss = semi selloff Thursday."
   },
   "routines": [
     {
@@ -131,17 +131,17 @@
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
       "status": "failed",
-      "last_run": "2026-06-23T18:00:00Z",
-      "next_run": "2026-06-22 14:00 ET",
-      "last_summary": "SILENT FAILURE \u2014 no heartbeat June 23 2:00 PM ET."
+      "last_run": "2026-06-24T18:00:00Z",
+      "next_run": "2026-06-25 14:00 ET",
+      "last_summary": "June 24 Afternoon SILENT FAILURE \u2014 no heartbeat at 2:00 PM ET (18:00Z). Violation logged in trades.md. Catch-up merged into Market-Close routine: GOOGL/INTC/IBM MOC attempts \u2014 all blocked (50th API block)."
     },
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-23T19:30:00Z",
-      "next_run": "2026-06-22 15:30 ET",
-      "last_summary": "SILENT FAILURE \u2014 no heartbeat June 23 3:30 PM ET."
+      "status": "completed",
+      "last_run": "2026-06-24T19:33:00Z",
+      "next_run": "2026-06-25 15:30 ET",
+      "last_summary": "June 24: API BLOCKED (50th consecutive). Afternoon violation logged. MOC orders attempted \u2014 GOOGL 14sh (score 8.0), INTC 36sh (score 7.17), IBM 3sh (score 7.5) \u2014 all HTTP 403. AMD 18sh NAKED (stale GTC est. fills at $506.76). 0 confirmed positions. SPX est. +0.42-0.55%. Portfolio flat = gap widens to est. -4.65 pp. Tonight: MU earnings. OPERATOR URGENT: sell 9sh AMD + place stop $481.42; execute GOOGL/INTC/IBM bracket GTC orders."
     },
     {
       "name": "Daily Review",
@@ -161,6 +161,58 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-24T19:35:00Z",
+      "symbol": "GOOGL",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 8.0,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 8, "macro": 8, "risk": 8, "tech_analyst": 9},
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC attempt (Market-Close, 19:35Z). GOOGL Dow Jones inclusion June 29 — 4 sessions left. 14sh MOC time_in_force=cls. BLOCKED HTTP 403 (50th consecutive). OPERATOR MUST EXECUTE tonight or June 25 Pre-Market."
+    },
+    {
+      "ts": "2026-06-24T19:35:00Z",
+      "symbol": "INTC",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.17,
+      "agent_scores": {"fundamentals": 8, "technical": 7, "sentiment": 7, "macro": 7, "risk": 7, "tech_analyst": 7},
+      "agent_average": 7.17,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC attempt (Market-Close). 5th attempt today. 36sh MOC time_in_force=cls. BLOCKED HTTP 403 (50th). OPERATOR EXECUTE June 25."
+    },
+    {
+      "ts": "2026-06-24T19:35:00Z",
+      "symbol": "IBM",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.5,
+      "agent_scores": {"fundamentals": 8, "technical": 6, "sentiment": 8, "macro": 7, "risk": 9, "tech_analyst": 7},
+      "agent_average": 7.5,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "MOC attempt (Market-Close). 5th attempt today. 3sh MOC time_in_force=cls. BLOCKED HTTP 403 (50th). OPERATOR EXECUTE June 25."
+    },
+    {
+      "ts": "2026-06-24T18:00:00Z",
+      "symbol": "N/A",
+      "action": "violation",
+      "bucket": "active",
+      "setup": "silent-failure",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": null,
+      "order_status": "Afternoon routine (2:00 PM ET / 18:00Z) SILENTLY FAILED June 24 — no heartbeat. 50th consecutive API block session. Catch-up merged into Market-Close."
+    },
     {
       "ts": "2026-06-24T15:00:00Z",
       "symbol": "N/A",
@@ -1287,6 +1339,13 @@
     }
   ],
   "history": [
+    {
+      "date": "2026-06-24",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 2.93,
+      "daily_pnl_pct": 0.0,
+      "note": "Market-Close. API blocked (50th). 2 silent failures (Mid-Morning, Afternoon). 10 blocked attempts (INTC×5, IBM×5, GOOGL×3 MOC). MOC orders: GOOGL 14sh, INTC 36sh, IBM 3sh — all HTTP 403. 0 confirmed positions. Portfolio flat. SPX est. +0.42-0.55%. Daily gap: -0.45 pp. Cumulative gap: est. -4.65 pp. MU earnings tonight. AMD 18sh NAKED (operator must act). 4 sessions left in GOOGL Dow inclusion window."
+    },
     {
       "date": "2026-06-18",
       "portfolio_return_pct": -0.15,
