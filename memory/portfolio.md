@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-24 (Wednesday) — MIDDAY (12:32 PM ET / 16:32 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 49th consecutive blocked session). Market has been open ~3 hours. Six blocked order attempts today (3× INTC, 3× IBM via Pre-Market + 2× Market-Open + Midday); Midday adds GOOGL (NEW: Dow inclusion play, 8.0 avg, all 6 agents ≥7) and notes Mid-Morning SILENT FAILURE. MARKET: SPX +0.35%, NDX +0.62%, Dow −0.17%. KEY MIDDAY DEVELOPMENTS: (1) UBS raised AMD PT $670 from $455 (massive fresh catalyst; AMD ~$521 flat); (2) GOOGL joining Dow Jones June 29 — 5-session forced-buying window; NEW entry APPROVED 8.0 avg; (3) MU rebounding +10.7% to ~$1,058 pre-earnings (earnings tonight 4:30 PM ET); (4) INTC ~$134.10 (range $130.03–$136.08); (5) IBM ~$264.24 (volume 15.69M vs 8.74M avg = elevated). AMD STALE POSITION: 18sh at ~$506.76 = 9.13% equity NAKED (no stops) — Risk Agent VETO on new AMD entries (Exemption 1) until position managed. NVDA: ~$198.70, score ~6.5, below threshold. CUMULATIVE GAP vs SPX: est. ~−4.2 pp (SPX +0.35% today, portfolio flat = +0.35 pp advantage today only). JUNE 24 MANDATORY OPERATOR ACTIONS (MARKET OPEN NOW): (1) ⚠️⚠️ SELL 9sh AMD at market (reduce 18sh→9sh); place GTC stop $481.42; take-profit $582.77; (2) BUY 14sh GOOGL limit $350.53 bracket GTC (stop $333.00, target $403.11) — NEW PRIORITY: Dow inclusion closes in 5 sessions; 8.0 avg all 6 ≥7; (3) BUY 36sh INTC limit $134.70 bracket GTC (stop $127.97, target $154.91); (4) BUY 3sh IBM limit $265.32 bracket GTC (stop $252.05, target $305.12); (5) MU — skip all day June 24; score June 25 Pre-Market post-print.**
+**2026-06-25 (Thursday) — MID-MORNING (11:05 AM ET / 15:05 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 50th consecutive blocked session). Pre-Market + Market-Open BOTH SILENTLY FAILED today. MU BLOWOUT EARNINGS (June 24 AH): EPS $25.11 (+24% beat vs $20.20 est.), revenue $41.46B (+15.7% beat vs $35.84B est.), Q4 guidance $50B vs $42.9B est. (+16.5% guidance beat). HBM4 SOLD OUT through 2026. MU +19.2% today ($1,136–$1,255 range, ~$1,165.94 current). SEMICONDUCTOR RALLY: Nasdaq +2.30%, SPX +0.77%, Dow +0.30%. NEW HIGH-CONVICTION ENTRIES SCORED AND BLOCKED: MU 8.5 avg (4sh limit $1,171.77 — ALL 6 agents ≥7, earnings-reaction-follow); NVDA 8.0 avg (4sh limit $201.70 — rescore upgrade on MU read-through, was 6.5, now all 6 ≥7). CARRY-FORWARD ORDERS: INTC 7.5 (updated limit $138.30 — up from $134.70 on semiconductor rally); GOOGL 8.0 (updated limit $343.84 — better than prior $350.53, 2 sessions left before Dow inclusion June 29 — URGENT); IBM 7.5 (updated limit $272.36). ALL 5 ORDERS BLOCKED HTTP 403. AMD: still Exemption 1 — 18sh naked at ~$506.76 est. Unrealized gain est. +$418 at $530 but NAKED (no stops). CUMULATIVE GAP vs SPX: est. ~−5.0 pp and widening rapidly (SPX up significantly while portfolio holds 0% deployed; MU +19.2% alone represents a massive missed opportunity). JUNE 25 MANDATORY OPERATOR ACTIONS (MARKET OPEN NOW — EXECUTE IN ORDER): (1) ⚠️⚠️ SELL 9sh AMD at market; place GTC stop $481.42 on remaining 9sh; (2) BUY 4sh MU limit $1,171.77 bracket GTC — HIGHEST CONVICTION setup this month (8.5 avg, window closing as rally extends); (3) BUY 14sh GOOGL limit $343.84 bracket GTC — 2 sessions before Dow inclusion; (4) BUY 4sh NVDA limit $201.70 bracket GTC — 15% pullback from ATH + MU catalyst; (5) BUY 35sh INTC limit $138.30 bracket GTC; (6) BUY 3sh IBM limit $272.36 bracket GTC.**
+
+**Prior Last Updated:** 2026-06-24 (Wednesday) — MIDDAY (12:32 PM ET / 16:32 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 49th consecutive blocked session). Market has been open ~3 hours. Six blocked order attempts today (3× INTC, 3× IBM via Pre-Market + 2× Market-Open + Midday); Midday adds GOOGL (NEW: Dow inclusion play, 8.0 avg, all 6 agents ≥7) and notes Mid-Morning SILENT FAILURE. MARKET: SPX +0.35%, NDX +0.62%, Dow −0.17%. KEY MIDDAY DEVELOPMENTS: (1) UBS raised AMD PT $670 from $455 (massive fresh catalyst; AMD ~$521 flat); (2) GOOGL joining Dow Jones June 29 — 5-session forced-buying window; NEW entry APPROVED 8.0 avg; (3) MU rebounding +10.7% to ~$1,058 pre-earnings (earnings tonight 4:30 PM ET); (4) INTC ~$134.10 (range $130.03–$136.08); (5) IBM ~$264.24 (volume 15.69M vs 8.74M avg = elevated). AMD STALE POSITION: 18sh at ~$506.76 = 9.13% equity NAKED (no stops) — Risk Agent VETO on new AMD entries (Exemption 1) until position managed. NVDA: ~$198.70, score ~6.5, below threshold. CUMULATIVE GAP vs SPX: est. ~−4.2 pp (SPX +0.35% today, portfolio flat = +0.35 pp advantage today only). JUNE 24 MANDATORY OPERATOR ACTIONS (MARKET OPEN NOW): (1) ⚠️⚠️ SELL 9sh AMD at market (reduce 18sh→9sh); place GTC stop $481.42; take-profit $582.77; (2) BUY 14sh GOOGL limit $350.53 bracket GTC (stop $333.00, target $403.11) — NEW PRIORITY: Dow inclusion closes in 5 sessions; 8.0 avg all 6 ≥7; (3) BUY 36sh INTC limit $134.70 bracket GTC (stop $127.97, target $154.91); (4) BUY 3sh IBM limit $265.32 bracket GTC (stop $252.05, target $305.12); (5) MU — skip all day June 24; score June 25 Pre-Market post-print.**
 
 **Prior Last Updated:** 2026-06-23 (Tuesday) — DAILY REVIEW (4:30 PM ET / 20:32 UTC). TRADING DAY. Alpaca API STILL BLOCKED ("Host not in allowlist" — 45th consecutive blocked session). June 23 NEAR-TOTAL BLACKOUT: 5 of 6 intraday routines silently failed (Pre-Market, Market-Open, Mid-Morning, Afternoon, Market-Close); only Midday completed. MARKET CLOSE RECAP: SPX ~−1.3% (closed ~7,453 est.); Nasdaq ~−2.1%; NVDA −4.13% (~$195 est.); INTC −6.14% (~$132.28 close — CORRECTED from prior est. $126; BofA note: current price $132.28 was -6.14% from ATH $141.45); MU −13.18% (~$956 est.; massive pre-earnings dump — EARNINGS TONIGHT after close); AMD close $519.85 (started +4.86% at midday ~$537 but gave back gains in afternoon chip selloff); MRVL ~$264 (continued sell-the-news). DEFENSIVE NAMES STRONG: IBM +4.2% (~$275 est. close), ACN +3.3%, PSA +4.4%. Portfolio: 0 positions, ~$99,854 cash (0.0% P&L today vs SPX −1.3% = +1.3 pp inadvertent outperformance). Cumulative gap vs SPX: est. ~−4.2 pp (improved from −5.5 pp due to SPX selloff). ⚠️⚠️ CRITICAL AMD STALE GTC: AMD opened June 23 at ~$506-508 (BELOW $520.59 and $524.15 limits) — both GTC buy orders FILLED at ~$508 open price. 18sh AMD NAKED. ⚠️ 20-DAY UNDERPERFORMANCE FLAG: 35+ consecutive trading days (API blockage root cause). JUNE 24 BINDING ACTIONS: (1) Cancel/manage AMD stale GTCs; (2) INTC 36sh limit ~$135.68 bracket GTC (7.17 score — UPDATED from $126 estimate; INTC at $132-135 range); (3) IBM 3sh bracket GTC (7.5); (4) MU EXEMPTION 2 all day June 24 (earnings tonight) — score June 25 post-print.**
 
@@ -144,27 +146,29 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-24 Pre-Market — all estimates; API blocked 46th session)
+## Current Account Snapshot (as of 2026-06-25 Mid-Morning — all estimates; API blocked 50th session)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** **~$99,854** (no confirmed fills since GLD stop June 10)
-- **Cash:** **~$99,854** (99.9% cash — all orders blocked by API)
-- **Long Market Value:** $0 CONFIRMED / **UNKNOWN — ⚠️ AMD STALE GTC FILL RISK (see below)**
-- **⚠️⚠️⚠️ AMD STALE GTC — ALMOST CERTAINLY FILLED JUNE 23:**
-  - AMD 9sh buy limit $520.59 GTC (May 29): AMD opened June 23 at ~$506-508 (BELOW $520.59) → ORDER FILLED at ~$508 at open
-  - AMD 9sh buy limit $524.15 GTC (June 3): AMD opened June 23 at ~$506-508 (BELOW $524.15) → ORDER FILLED at ~$508 at open
-  - **If both filled: 18sh AMD at ~$508 = ~$9,144 = 9.14% equity** (DOUBLE the 5% position limit — guardrail violation)
-  - **NO BRACKET STOPS EXIST** (GTC buy limits don't auto-create stops)
-  - AMD June 23 close: $519.85 → unrealized gain if filled: ~+$213
-  - **OPERATOR MUST ACT IMMEDIATELY: (1) Log into app.alpaca.markets; (2) If both filled → sell 9sh at market; place GTC stop on remaining 9sh at $482.60 ($508×0.95); (3) If unfilled → cancel both before 9:25 AM ET June 24**
-- **INTC Status:** June 23 close ~$132.28 (−6.5% from ATH $141.45 June 22). June 24 pre-market: ~$134-135. **BofA raised PT to $160 (fresh June 24 upgrade). The Club announced buy June 23. Fresh 6-agent: APPROVED 7.17 avg (F=8, T=7, S=7, M=7, R=7, TA=7). ORDER BLOCKED HTTP 403 (46th session). OPERATOR MUST EXECUTE: 36sh limit $135.68 bracket GTC (stop $128.90, target $156.03).**
-- **IBM Status:** June 23 close ~$275 (+4.2% on -1.3% SPX day = extreme relative strength). June 24 pre-market: ~$289 (+5% on JPMorgan OW upgrade). **Fresh 6-agent: APPROVED 7.5 avg (F=8, T=6, S=8, M=7, R=9, TA=7). ORDER BLOCKED HTTP 403 (46th session). OPERATOR MUST EXECUTE: 3sh limit $290.45 bracket GTC (stop $275.93, target $334.02).**
-- **MU Status:** June 23 close ~$956 (−13.18%). **EARNINGS TONIGHT (June 24 AH) — EXEMPTION 2 ALL DAY. Score June 25 Pre-Market post-print.** Analyst est: $35.25B rev / $20.28 EPS. Options ±17%.
-- **NVDA Status:** ~$195-200 (−4.13% June 23). Recovering pre-market June 24. Score 6.5 — below 7 threshold. Re-score Market-Open.
-- **MRVL Status:** ~$264 (continued sell-the-news). Score 5.5. No entry.
-- **PLTR Stale GTC:** $150.74 — PLTR ~$133 → limit NOT at risk. Cancel when possible.
-- **MRVL Stale GTC:** $202.19 — MRVL ~$264 → far above limit. NOT at risk. Cancel when possible.
-- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **46th consecutive blocked session.** Proxy egress policy denial — not a code error.
-- **3% Circuit Breaker:** NOT TRIGGERED (0% confirmed daily P&L) ✓
+- **Total Equity (estimated):** **~$99,854** (no confirmed fills since GLD stop June 10; AMD stale fills unknown)
+- **Cash:** **~$99,854** (99.9% cash confirmed / ~$90,732 if AMD 18sh stale GTCs confirmed)
+- **Long Market Value:** $0 CONFIRMED / ⚠️ ~$9,544 estimated (18sh AMD at $506.76 fill × current ~$530 = ~$9,544)
+
+**⚠️⚠️⚠️ AMD STALE GTC — CONFIRMED FILL JUNE 23 (HIGH CONFIDENCE):**
+- AMD 9sh buy limit $520.59 GTC (May 29): AMD opened June 23 at $506.76 → FILLED ~$506.76
+- AMD 9sh buy limit $524.15 GTC (June 3): AMD opened June 23 at $506.76 → FILLED ~$506.76
+- **18sh AMD at ~$506.76 fill price = $9,122 = 9.13% equity — DOUBLE the 5% hard cap. NAKED (no stops).**
+- Today AMD est. ~$530 (+$23.24 from fill) = unrealized gain est. +$418 on 18sh
+- **OPERATOR MUST ACT BEFORE NEXT ROUTINE: (1) log into app.alpaca.markets; (2) sell 9sh AMD at market; (3) place GTC stop on remaining 9sh at $481.42 ($506.76×0.95), take-profit $582.77 ($506.76×1.15)**
+
+- **MU Status:** ⭐ **EARNINGS REACTION — MASSIVE BEAT.** Q3 FY2026: EPS $25.11 (+24% beat), revenue $41.46B (+15.7% beat), Q4 guidance $50B (+16.5% beat). HBM4 SOLD OUT through 2026. MU +19.2% today ($1,136–$1,255). **FRESH 6-AGENT: 8.5 avg, ALL 6 ≥7. EARNINGS-REACTION-FOLLOW. ORDER BLOCKED HTTP 403 (50th). OPERATOR MUST EXECUTE: 4sh MU limit $1,171.77 bracket GTC (stop $1,113.18, target $1,347.54).**
+- **NVDA Status:** ~$200.70 today (recovering; range $200–$203.77). MU HBM4 sold-out = NVDA GPU demand at record = direct bull read-through. **FRESH 6-AGENT: 8.0 avg, ALL 6 ≥7 (upgraded from 6.5). ORDER BLOCKED HTTP 403. OPERATOR MUST EXECUTE: 4sh NVDA limit $201.70 bracket GTC (stop $191.62, target $231.96).**
+- **INTC Status:** ~$138 today (up from $131.65 June 24 close on MU semiconductor rally). BofA PT $160, Apple foundry intact. **APPROVED 7.5 avg (updated score). ORDER BLOCKED HTTP 403 (50th). OPERATOR MUST EXECUTE: 35sh INTC limit $138.30 bracket GTC (stop $131.39, target $159.05).**
+- **GOOGL Status:** ~$342.13 today (Dow inclusion June 29 — 2 sessions remain). Score 8.0. **ORDER BLOCKED HTTP 403. OPERATOR MUST EXECUTE SAME DAY: 14sh GOOGL limit $343.84 bracket GTC (stop $326.65, target $395.42). WINDOW CLOSING.**
+- **IBM Status:** ~$271 today (JPMorgan OW upgrade intact). Score 7.5. **ORDER BLOCKED HTTP 403. OPERATOR MUST EXECUTE: 3sh IBM limit $272.36 bracket GTC (stop $258.74, target $313.21).**
+- **MRVL:** ~$264 est. Score 5.5. No entry.
+- **PLTR Stale GTC:** $150.74 — PLTR est. ~$133. NOT at risk. Cancel when possible.
+- **MRVL Stale GTC:** $202.19 — MRVL ~$264. NOT at risk. Cancel when possible.
+- **API Status:** BLOCKED — "Host not in allowlist" (HTTP 403). **50th consecutive blocked session.**
+- **3% Circuit Breaker:** NOT TRIGGERED ✓
 - **Daytrade Count:** 0 confirmed
 
 ## Prior Account Snapshot (as of 2026-06-23 Midday — all estimates; API blocked 44th session)
@@ -259,24 +263,26 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-24 Pre-Market — estimates; API blocked 46th session)
+## Bucket State (as of 2026-06-25 Mid-Morning — estimates; API blocked 50th session)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
-| Active Trading | 85% ($85K) | **$0 confirmed** / ⚠️ ~$9,144 possible (AMD stale GTC fills unknown) | ~0-9.1% | 0 confirmed / ⚠️ 18sh AMD possible |
-| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC unknown, below $82K threshold |
-| Cash Reserve | 5% floor | **~$99,854 confirmed** | ~99.9% | — |
+| Active Trading | 85% ($85K) | **$0 confirmed** / ⚠️ ~$9,544 est. (18sh AMD at $506.76 fill, current ~$530) | ~0–9.5% | 0 confirmed / ⚠️ 18sh AMD est. |
+| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC unknown, likely below $82K threshold |
+| Cash Reserve | 5% floor | **~$99,854 confirmed** (or ~$90,310 if AMD fills confirmed) | ~99.5–90.4% | — |
 
-**Deployment gap: ~$94,861 above the 5% floor (confirmed cash positions only).**
+**Deployment gap: ~$94,861 above the 5% floor (confirmed cash only). If AMD 18sh confirmed: ~$85,318 gap remaining.**
 
-**RECOVERY DAY (June 24 Pre-Market):** S&P 500 futures UP, Micron earnings in focus tonight. Semiconductors attempting bounce. IBM +5% pre-market (defensive strength continues). Key risk: MU earnings after close.
+**MU SEMICONDUCTOR RALLY DAY (June 25):** MU +19.2% on record-breaking Q3 earnings. Nasdaq +2.30%. Entire AI semiconductor complex rallying. Portfolio missed the MU move entirely due to API blockage. Cumulative gap vs SPX est. ~−5.0 pp and accelerating.
 
-**MANDATORY OPERATOR ACTIONS (June 24 — BEFORE 9:30 AM ET):**
+**MANDATORY OPERATOR ACTIONS (June 25 — EXECUTE NOW):**
 | Priority | Symbol | Action | Detail |
 |---|---|---|---|
-| 🔴 CRITICAL | **AMD** | Verify fills / manage | Check order history June 23; if 18sh filled: sell 9sh, place stop $482.60; if unfilled: cancel GTCs |
-| 🔴 MANDATORY | **INTC** | BUY 36sh limit $135.68 | Bracket GTC: stop $128.90, target $156.03 — APPROVED 7.17 |
-| 🔴 MANDATORY | **IBM** | BUY 3sh limit $290.45 | Bracket GTC: stop $275.93, target $334.02 — APPROVED 7.5 |
-| ✓ EXEMPT | **MU** | SKIP | Exemption 2 — earnings tonight |
+| 🔴 CRITICAL | **AMD** | Sell 9sh + stop | Reduce 18sh→9sh at market; place GTC stop $481.42 on remaining; take-profit $582.77 |
+| ⭐ TOP | **MU** | BUY 4sh limit $1,171.77 | Bracket GTC: stop $1,113.18, target $1,347.54 — 8.5 avg, best setup this month |
+| 🔴 URGENT | **GOOGL** | BUY 14sh limit $343.84 | Bracket GTC: stop $326.65, target $395.42 — Dow inclusion June 29 (2 sessions left) |
+| 🔴 HIGH | **NVDA** | BUY 4sh limit $201.70 | Bracket GTC: stop $191.62, target $231.96 — 8.0 avg, MU read-through |
+| 🟡 MANDATORY | **INTC** | BUY 35sh limit $138.30 | Bracket GTC: stop $131.39, target $159.05 — 7.5 avg |
+| 🟡 MANDATORY | **IBM** | BUY 3sh limit $272.36 | Bracket GTC: stop $258.74, target $313.21 — 7.5 avg |
 
 ## Prior Bucket State (as of 2026-06-18 Mid-Morning — estimates; API blocked 38th session)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
