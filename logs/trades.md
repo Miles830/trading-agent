@@ -1088,6 +1088,235 @@ Micron Technology's historic Q3 FY2026 earnings (EPS $25.11 vs $20.20 est; reven
 
 ---
 
+## 2026-06-25 — Daily Review (4:30 PM ET / 20:32 UTC — THURSDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:32:27Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **52nd consecutive blocked session**
+**Market Status:** MARKET CLOSED (regular session ended 20:00Z / 4:00 PM ET)
+
+---
+
+PORTFOLIO STATE
+Total Equity: ~$99,854 (confirmed) / ~$90,732 est. (if AMD 18sh confirmed fills)
+Cash: ~$99,854 (99.9%) — 5% floor ✓
+Trading bucket: $0 confirmed (0.0%) — 0 confirmed positions — target 85% / est. ~$9,630 if AMD 18sh confirmed
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+---
+
+### HEARTBEAT TALLY — JUNE 25, 2026
+
+| Routine | Scheduled (ET / UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ❌ NO | ❌ NO | **SILENT FAILURE** |
+| Market-Open | 09:45 ET / 13:45Z | ❌ NO | ❌ NO | **SILENT FAILURE** |
+| Mid-Morning | 11:00 ET / 15:00Z | ✅ 15:04:56Z | ✅ 15:16:37Z | COMPLETED |
+| Midday | 12:30 ET / 16:30Z | ❌ NO | ❌ NO | **SILENT FAILURE** |
+| Afternoon | 14:00 ET / 18:00Z | ✅ 18:02:41Z | ✅ 18:13:34Z | COMPLETED |
+| Market-Close | 15:30 ET / 19:30Z | ✅ 19:33:47Z | ✅ 19:42:03Z | COMPLETED |
+| Daily-Review | 16:30 ET / 20:30Z | ✅ 20:32:27Z | (running) | STARTED |
+
+**Silent failures: 3 of 6 routines (Pre-Market, Market-Open, Midday) — TOP OPERATIONAL ISSUE.**
+Pre-Market and Market-Open are the most critical windows (first stop audit, MOO orders, post-fill stop placement) and both silently failed. Midday would have caught price moves since Mid-Morning. Without these three windows, the agent cannot place pre-open MOO orders or confirm fills by 9:45 AM ET.
+
+**Remediation proposed:** (1) Operator must check heartbeat log at 8:15 AM ET each day; if Pre-Market STARTED line is missing, manually trigger the Pre-Market routine or place all watchlist MOOs manually before 9:25 AM ET. (2) Operator must check heartbeat log at 9:55 AM ET; if Market-Open STARTED line is missing, manually post stop-loss orders for any MOO fills. (3) For June 26 specifically: operator MUST place the GOOGL MOO at 9:00–9:25 AM ET regardless of routine status — the Dow inclusion window expires at June 26 EOD.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+```
+GET /v2/positions          → HTTP 403 (52nd block)
+GET /v2/orders?status=open → HTTP 403
+GET /v2/account            → HTTP 403
+```
+
+**API INACCESSIBLE.** Estimated state:
+- **⚠️⚠️⚠️ AMD 18sh ESTIMATED NAKED** at ~$506.76 fill (stale GTC fills from June 23 open). AMD closed est. ~$535 today (+$28.24/sh from fill). Est. unrealized gain: 18 × $28.24 = **+$508**. Position est. ~$9,630 = **9.63% equity — 1.93× the 5% hard cap. NO STOP ORDERS. GUARDRAIL VIOLATION.**
+- 0 other confirmed positions. All 10 order attempts today (5 limit entries at Mid-Morning, 5 MOC at Market-Close) returned HTTP 403.
+
+---
+
+### PERFORMANCE REVIEW — JUNE 25, 2026
+
+**SPY / S&P 500 today:** est. +0.68% (closed ~7,535 from ~7,484 est. June 24 close)
+**Portfolio today:** 0.00% (0 fills; net $0 P&L)
+**Daily gap: −0.68 pp** (portfolio +0.00% vs SPX +0.68%)
+
+**Missed opportunity cost today:**
+| Symbol | Move | Est. Position | Missed Gain |
+|---|---|---|---|
+| MU | +19.2% | 4sh × ~$221/sh gain | ~$884 |
+| INTC | +6.4% | 35sh × ~$8.40/sh | ~$294 |
+| NVDA | +1.0% | 4sh × ~$2.00/sh | ~$8 |
+| GOOGL | flat | — | ~$0 |
+| IBM | +1.5% | 3sh × ~$4.09/sh | ~$12 |
+| **Total missed June 25** | | | **~$1,198** |
+
+**Cumulative benchmark gap:** est. **~−5.77 pp**
+(SPX return ~+4.80% from ~May 1 start; portfolio return −0.15%)
+
+**Rolling 20-day stats:**
+- Portfolio total return: −0.15%
+- SPX rolling ~20-day return: est. +4.80%
+- 20-day gap: ~−4.95 pp
+- **⚠️ 20-DAY UNDERPERFORMANCE FLAG ACTIVE: 52nd+ consecutive trading day underperforming. Root cause = API blockage. Hard guardrails unchanged. Strategy adjustments: none warranted beyond restoring API access.**
+
+**Win/Loss statistics (all-time):**
+| Metric | All-time | Rolling 20-day |
+|---|---|---|
+| Completed trades | 1 | 0 |
+| Win rate | 0% (0/1) | N/A |
+| Avg win | N/A | N/A |
+| Avg loss | −$145.58 (−4.99%) | N/A |
+| Profit factor | 0 | N/A |
+
+---
+
+### TODAY'S ORDER FLOW SUMMARY
+
+| Time | Routine | Action | Symbol | Result |
+|---|---|---|---|---|
+| 12:00Z | Pre-Market (sched) | entry | all watchlist | SILENT FAILURE |
+| 13:45Z | Market-Open (sched) | stop-audit | all | SILENT FAILURE |
+| 15:05Z | Mid-Morning catch-up | entry | MU | HTTP 403 (50th) |
+| 15:05Z | Mid-Morning catch-up | entry | NVDA | HTTP 403 (50th) |
+| 15:05Z | Mid-Morning catch-up | entry | INTC | HTTP 403 (50th) |
+| 15:05Z | Mid-Morning catch-up | entry | GOOGL | HTTP 403 (50th) |
+| 15:05Z | Mid-Morning catch-up | entry | IBM | HTTP 403 (50th) |
+| 16:30Z | Midday (sched) | entry | re-attempt | SILENT FAILURE |
+| 19:33Z | Market-Close | entry (MOC) | GOOGL | HTTP 403 (51st) |
+| 19:34Z | Market-Close | entry (MOC) | MU | HTTP 403 (51st) |
+| 19:35Z | Market-Close | entry (MOC) | NVDA | HTTP 403 (51st) |
+| 19:36Z | Market-Close | entry (MOC) | INTC | HTTP 403 (51st) |
+| 19:37Z | Market-Close | entry (MOC) | IBM | HTTP 403 (51st) |
+
+**Total: 10 order attempts. 10 blocked. 0 fills.**
+
+---
+
+### BEST AND WORST TRADES TODAY
+
+**Best decision:** Correctly applied AMD Exemption 1 (18sh estimated = 9.13% equity, above 5% cap → no additional AMD entries permitted). Also correctly applied proximity-to-close rule in Afternoon, deferring new entries to June 26. MU 6-agent analysis was executed comprehensively and within 95 minutes of market open despite Pre-Market silent failure.
+
+**Worst outcome:** Three silent failures (Pre-Market, Market-Open, Midday) prevented participation in the broadest semiconductor rally of 2026. MU +19.2% with 4sh scoring 8.5 avg (all 6 agents ≥7) was the highest-conviction blocked trade to date. Est. missed gain: ~$884 on MU alone.
+
+---
+
+### THREE THINGS THAT WORKED TODAY
+
+1. **MU post-earnings scoring was fast and correct** — catch-up completed in Mid-Morning (11:05 AM ET / 15:05Z), ~95 minutes after open. All 6 sub-agents scored correctly. 8.5 avg / all 6 ≥7 reflects best monthly setup. Blowout earnings thesis (HBM4 sold-out → multi-quarter pricing power → $50B Q4 guidance) was properly articulated and documented.
+
+2. **GOOGL Dow inclusion urgency correctly escalated** — By Afternoon, the framing shifted from "high priority" to "ABSOLUTE LAST ENTRY WINDOW" for June 26. The MOO recommendation for June 26 is the right tool (guarantees fill regardless of gap direction; limits could be bypassed on a gap-up inclusion day).
+
+3. **AMD guardrail discipline held** — Despite AMD up +5.5% today (validated by MU AI demand), correctly applied Exemption 1 and focused operator instructions on resolving the naked position rather than adding more exposure. No double-down on a guardrail violation.
+
+---
+
+### THREE THINGS TO IMPROVE TOMORROW
+
+1. **OPERATOR: Place GOOGL manually at market open June 26** — Pre-Market routine has < 50% fire rate this month. GOOGL is a time-bounded setup expiring June 26 EOD. This cannot be delegated to the cloud routine. Operator must log into app.alpaca.markets and place 14sh GOOGL MOO or market order before 9:25 AM ET.
+
+2. **OPERATOR: Resolve AMD naked position FIRST** — 18sh AMD at ~$506.76 with no stop-loss has been live for 2 days. Every market hour without a stop on AMD is a tail-risk exposure event. Priority #1 at June 26 open: sell 9sh AMD at market (reduces to 9sh = ~4.8% equity ✓), place GTC stop on remaining 9sh at $481.42.
+
+3. **Midday scheduler gap — consider manual midday check** — Midday routine silently fails ~60%+ of days this month. The midday window is used to update limit prices (as stocks move from Mid-Morning). Missing midday means stale limits persist into Market-Close MOC attempts. If operator can check at 12:45 PM ET and manually fire a catch-up, limit prices will be more accurate.
+
+---
+
+### SETUP-TAG TALLY (rolling 5-day: June 20–June 25)
+
+**No new completed trades in the 5-day window.** All entries blocked by API (HTTP 403). No result_pct values updated. Setup Performance Tracker unchanged.
+
+### CUMULATIVE SETUP PERFORMANCE TRACKER (as of 2026-06-25 Daily Review)
+
+| Setup type | Wins | Losses | Consec. L | 3-in-a-row halt | 3-in-a-row boost | Status |
+|---|---|---|---|---|---|---|
+| macro-hedge | 0 | 1 (GLD −4.99%) | 1 | none (need 3) | — | 1 consecutive loss |
+| earnings-reaction-follow | 0 | 0 | 0 | none | — | MU MANDATORY June 26 (8.5 avg) |
+| sector-rotation | 0 | 0 | 0 | none | — | GOOGL MANDATORY June 26 (8.0 avg, last day) |
+| ai-momentum-pullback | 0 | 0 | 0 | none | — | NVDA + INTC MANDATORY June 26 |
+| breakout-volume | 0 | 0 | 0 | none | — | AMD — resolve naked first |
+| mean-reversion-oversold | 0 | 0 | 0 | none | — | No active candidates |
+| candlestick-reversal | 0 | 0 | 0 | none | — | No active candidates |
+| crypto-flush-rebound | 0 | 0 | 0 | none | — | BTC ~$68K — below $82K threshold |
+
+**No 3-in-a-row halt or boost triggered.** 52nd consecutive API-blocked session.
+
+---
+
+### MACRO CALENDAR — JUNE 26–JUNE 30, 2026
+
+| Date | Event | Market Impact |
+|---|---|---|
+| June 26 (Fri) | PCE Price Index May (8:30 AM ET) | ⚠️ KEY RISK — if hot (>+3.8% YoY), risk-off could pressure semis |
+| June 26 (Fri) | Consumer Confidence | Minor |
+| June 26 (Fri) | **GOOGL Dow Jones inclusion LAST ENTRY DAY** | ⭐ Time-bounded catalyst closes today |
+| June 29 (Mon) | GOOGL officially added to DJIA | Passive fund forced buying at open/close |
+| June 29 (Mon) | Q2 2026 final week open | Window-dressing, rebalancing flows begin |
+| June 30 (Tue) | End of Q2 2026 | Institutional rebalancing, quarter-end flows |
+
+**PCE is the key risk for tomorrow.** A benign print (+0.1–0.2% m/m) extends the semiconductor rally. A hot print (+0.3%+ m/m) could gap down all watchlist names by 1-3%.
+
+---
+
+### TOP-10 WATCHLIST — JUNE 26 PRE-MARKET (COMMITMENT)
+
+Per CLAUDE.md Deployment Bias: this watchlist is a COMMITMENT. Any name scoring ≥7 must be entered at the next Pre-Market unless a guardrail exception applies. All 5 existing names score ≥7 and have no valid exemption for June 26.
+
+| Priority | Symbol | Score | Setup | Est. Limit | Stop | Target | Qty | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 0 (resolve first) | **AMD** | — | management | SELL 9sh market | $481.42 | $582.77 | sell 9sh | ⚠️ NAKED — fix first |
+| 1 | **GOOGL** | **8.0** | sector-rotation | MOO 14sh (preferred) | fill×0.95 | fill×1.15 | 14sh | **ABSOLUTE LAST DAY — Dow June 29** |
+| 2 | **MU** | **8.5** | earnings-reaction-follow | pre-mkt ask×1.005 | fill×0.95 | fill×1.15 | 4sh | Best score this month; update limit at pre-mkt |
+| 3 | **NVDA** | **8.0** | ai-momentum-pullback | pre-mkt ask×1.005 | fill×0.95 | fill×1.15 | 4sh | MU HBM4 sold-out = NVDA GPU demand floor |
+| 4 | **INTC** | **7.5** | ai-momentum-pullback | pre-mkt ask×1.005 | fill×0.95 | fill×1.15 | 34-35sh | Note: 34sh if June 25 close >$142.86 |
+| 5 | **IBM** | **7.5** | sector-rotation | pre-mkt ask×1.005 | fill×0.95 | fill×1.15 | 3sh | JPMorgan OW; defensive |
+| 6 | **AMAT** | est. 7.0 | sector-rotation | Fresh 6-agent | fill×0.95 | fill×1.15 | ~10sh | MU capex expansion = equipment demand |
+| 7 | **SMCI** | est. 7.0 | ai-momentum-pullback | Fresh 6-agent | fill×0.95 | fill×1.15 | TBD | AI server builder; Blackwell rack demand |
+| 8 | **TSM** | est. 7.0 | breakout-volume | Fresh 6-agent | fill×0.95 | fill×1.15 | TBD | TSMC foundry; AI chip wafer demand |
+| 9 | **KLAC** | est. 6.5 | sector-rotation | Fresh 6-agent | fill×0.95 | fill×1.15 | TBD | HBM 3D stack inspection equipment |
+| 10 | **AVGO** | est. 6.5 | other | Fresh 6-agent | fill×0.95 | fill×1.15 | TBD | AI custom ASIC; check recent news |
+
+**Guardrail check (if all 5 priority entries fill):**
+GOOGL 4.82% + MU 4.69% + NVDA 0.81% + INTC ~4.84% + IBM 0.82% + AMD 9sh est. ~4.8% = **~20.78% deployed**. Cash remaining ~$79,260 (79.3% > 5% floor ✓). Max positions: 6 ✓. No sector >25% ✓.
+
+**Stale GTCs to cancel June 26:**
+- PLTR 10sh $150.74 — PLTR ~$133 (not at risk; stale)
+- MRVL 8sh $202.19 — MRVL ~$264 (not at risk; stale)
+
+---
+
+### LESSONS LEARNED (new — June 25, 2026 Daily Review)
+
+- **2026-06-25 — MU historic earnings was the largest single missed opportunity since account launch:** EPS +24.3% beat, revenue +15.7% beat, Q4 guidance +16.5% beat, HBM4 sold out. MU +19.2%. 4sh × $221/sh gain = ~$884 missed in one session. The position was fully scored (8.5 avg, all 6 agents ≥7) — blocked only by API. Every additional blocked session represents compounding opportunity cost that will not be recovered.
+
+- **2026-06-25 — GOOGL Dow inclusion is a mechanical, time-bounded catalyst — operator MUST act:** Dow Jones index ETFs (DIA, etc.) rebalance to hold GOOGL by June 29 close. Unlike most catalysts, this buying is certain and amount-bounded (~$4.75B forced buying). June 26 is the last session to enter ahead of the buying. After June 26 EOD: entire thesis expires regardless of score.
+
+- **2026-06-25 — Semiconductor equipment names are the secondary read-through from MU:** AMAT, KLAC, LRCX all supply the capital equipment MU needs to expand HBM capacity. As MU invests in new packaging lines (3D HBM stacking requires advanced etch/CVD/inspection), these equipment companies receive purchase orders. Run fresh 6-agent on AMAT for June 26 Pre-Market.
+
+- **2026-06-25 — AMD naked position is a portfolio-scale tail risk, not just a paperwork issue:** 18sh at ~$506.76 = $9,122 = 9.13% equity with no stop. AMD has moved -20% in a single week twice in 2026 (Jan chip-scare + April tariff shock). A -18% single-day move (which AMD has experienced on sector-specific bad news) = ~$1,640 loss = larger than all confirmed realized trading activity to date. This is the most urgent risk management action on the books.
+
+```yaml
+---
+ts: 2026-06-25T20:32:00Z
+action: skip
+symbol: DAILY_REVIEW
+bucket: null
+setup: null
+score: null
+thesis: "Daily Review 2026-06-25. 10 order attempts, 10 HTTP 403 blocks (52nd consecutive). Portfolio 0.00% vs SPX +0.68% = −0.68 pp today. Cumulative gap ~−5.77 pp. Missed MU +19.2% (8.5-avg approved, ~$884 gain). 3 of 6 routines silently failed. AMD naked 18sh (9.13%) persists. June 26 = ABSOLUTE LAST GOOGL entry window (Dow inclusion June 29)."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Daily Review June 25 complete. Watchlist committed for June 26: AMD management (sell 9sh + stop) FIRST, then GOOGL MOO 14sh (last day), MU 4sh, NVDA 4sh, INTC 34-35sh, IBM 3sh. Setup tally unchanged (0W/1L all-time). 20-day underperformance flag ACTIVE (52nd+ consecutive day — API blockage). PCE May 2026 at 8:30 AM ET June 26 is key risk. Operator must execute manually if API remains blocked."
+---
+```
+
+---
+
 ## 2026-06-24 — Pre-Market (8:00 AM ET / 12:05 UTC — WEDNESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 12:05:05Z ✓
