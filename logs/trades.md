@@ -486,6 +486,293 @@ master_notes: "Exemption 1 — estimated AMD position at 9.13% equity (18sh at ~
 
 ---
 
+## 2026-06-25 — Afternoon (2:00 PM ET / 18:02 UTC — THURSDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Afternoon 18:02:41Z ✓
+**Alpaca API Status:** BLOCKED — "Host not in allowlist" (HTTP 403) — **51st consecutive blocked session**
+**Current Time:** 18:02Z = 2:02 PM ET — market open ~4.5h (regular session closes 20:00Z)
+**Market Status:** REGULAR SESSION — Semiconductor AI Rally continuation, MU post-earnings day 1
+
+---
+
+### PREDECESSOR AUDIT — AFTERNOON UPDATE
+
+```
+logs/heartbeats/2026-06-25.log:
+  2026-06-25T15:04:56Z STARTED Mid-Morning
+  2026-06-25T15:16:37Z COMPLETED Mid-Morning
+  2026-06-25T18:02:41Z STARTED Afternoon
+```
+
+| Routine | Scheduled ET / UTC | Status |
+|---|---|---|
+| Pre-Market | 08:00 / 12:00Z | ❌ SILENT FAILURE — logged in Mid-Morning |
+| Market-Open | 09:45 / 13:45Z | ❌ SILENT FAILURE — logged in Mid-Morning |
+| Mid-Morning | 11:00 / 15:00Z | ✅ STARTED 15:04:56Z / COMPLETED 15:16:37Z |
+| Midday | 12:30 / 16:30Z | ❌ SILENT FAILURE — NEW — logging violation below |
+| Afternoon | 14:00 / 18:00Z | ✅ RUNNING 18:02:41Z |
+
+```yaml
+---
+ts: 2026-06-25T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Midday June 25 (12:30 PM ET / 16:30Z) silently failed — no heartbeat. API blocked (51st session). Midday would have re-attempted GOOGL, MU, NVDA, INTC, IBM limit bracket orders and assessed afternoon semiconductor sector momentum. Catch-up merged into Afternoon."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Silent failure. 3 of 5 intraday routines failed today (Pre-Market, Market-Open, Midday). Only Mid-Morning and Afternoon fired. All 5 >=7 watchlist names (MU 8.5, GOOGL 8.0, NVDA 8.0, INTC 7.5, IBM 7.5) remain unexecuted. GOOGL Dow inclusion window: ONE session remains (June 26 = last day before June 29 inclusion)."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (2nd MANDATORY AUDIT TODAY)
+
+```
+GET /v2/positions          → HTTP 403 (51st block)
+GET /v2/orders?status=open → HTTP 403
+GET /v2/account            → HTTP 403
+```
+
+**API INACCESSIBLE.** State unchanged from Mid-Morning:
+- 0 CONFIRMED Alpaca positions
+- ⚠️⚠️ AMD 18sh ESTIMATED NAKED at ~$506.76 fill, est. ~$535–545 mid-afternoon (sector rally; unrealized est. +$504–692). NO STOP ORDERS. OPERATOR MUST ACT.
+- All 5 pending bracket orders (MU/NVDA/INTC/GOOGL/IBM): zero resting at Alpaca (every attempt HTTP 403)
+- Cash est.: ~$99,854 (confirmed 0 positions) / ~$90,500 (if AMD 18sh confirmed)
+
+---
+
+### AFTERNOON MARKET UPDATE (2:00 PM ET)
+
+**Overall:** Risk-on day sustained through afternoon. MU earnings-reaction momentum holding. Semiconductor sector broadly higher.
+
+| Symbol | Est. Afternoon Price | vs Morning | Notes |
+|---|---|---|---|
+| MU | ~$1,162–1,178 | Off $1,255 intraday high; still +18–19% | Post-earnings settling; sell-side PTs rolling in (DB $1,550+) |
+| GOOGL | ~$340–346 | Flat on the day | **⚠️⚠️ ONE SESSION LEFT — June 26 = ABSOLUTE LAST ENTRY** |
+| NVDA | ~$200–205 | +1–2% (semiconductor rally) | Continuing MU read-through bid |
+| INTC | ~$138–142 | +5–7% (sector day) | BofA $160 PT intact |
+| IBM | ~$270–276 | +3% (stable) | Defensive AI bid |
+| AMD | ~$535–545 est. | +4–5% est. (sector rally) | NAKED — unrealized est. +$504–692 — NO STOPS |
+| SPX | ~7,538 | +0.77% | Semiconductor-led risk-on |
+| Nasdaq | est. ~16,950 | +2.30% | AI names leading |
+
+**Critical afternoon catalyst — GOOGL Dow inclusion timeline:**
+- June 25 (today): ~1.5 hours remain — proximity-to-close rule + API blocked = no entry
+- **June 26 (tomorrow): LAST TRADING SESSION before inclusion**
+- June 27–28: Market closed
+- June 29 (Monday): GOOGL officially joins Dow Jones — institutional forced buying AT THE OPEN
+
+---
+
+### DAY TRADE REVIEW
+
+**Day trades open:** NONE. No MOC orders needed.
+**Positions to flatten before close:** NONE.
+**Stop-trailing on day trades:** N/A.
+
+---
+
+### SWING POSITION REVIEW
+
+**Confirmed open positions:** 0 (API blocked all session)
+**Estimated naked position (AMD):** 18sh at ~$506.76 fill est. ~$535–545 at 2PM
+- Unrealized est. gain: +$504–692 on 18sh
+- Still at 9.6% equity (double the 5% hard cap)
+- NO STOP ORDERS — guardrail violation persists
+- Estimated P&L on AMD: not yet at +15% partial-profit threshold (~$582 = +15%) — maintain
+
+**Stop-loss trailing:** Cannot trail stops on confirmed positions (none). AMD naked = no stop to trail via API.
+
+---
+
+### GOOGL DOW INCLUSION — CRITICAL ESCALATION
+
+⚠️⚠️⚠️ **JUNE 26 = ABSOLUTE FINAL ENTRY WINDOW — ONE SESSION REMAINS**
+
+The Dow Jones inclusion date is June 29 (Monday). Index funds and Dow-tracking ETFs (DIA and others) must complete rebalancing BY Friday June 27 EOD to execute on Monday June 29. This means ALL institutional forced buying happens over Thursday June 25 + Friday June 26 — with June 26 being the last actionable session.
+
+**June 26 Pre-Market protocol (MANDATORY):**
+1. Place GOOGL MOO (time_in_force=opg) 14sh — guarantees fill at June 26 open regardless of gap
+2. Immediately post Market-Open: place GTC stop-loss at fill × 0.95 (follow-up stop per CLAUDE.md bracket rules for MOO entries)
+3. If MOO is not available due to API block: use limit at ask × 1.005, bracket GTC
+
+If operator or agent cannot execute June 26: ENTIRE GOOGL SETUP IS ABANDONED at close June 26. The time-bounded catalyst expires June 29.
+
+---
+
+### ACTIVE ENTRIES — PROXIMITY-TO-CLOSE DEFER (OUTPUT CONTRACT SECTION B)
+
+Per `routines/afternoon.md`: "do NOT initiate new active-bucket entries this routine — too close to close." All 5 ≥7 names were already attempted (HTTP 403) at Mid-Morning. Logging `action:skip` for afternoon window.
+
+**API blockage note:** The Alpaca API HTTP 403 makes physical order placement impossible regardless of the proximity-to-close rule. Both constraints apply simultaneously.
+
+```yaml
+---
+ts: 2026-06-25T18:05:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 9
+thesis: "MU 8.5 avg (all 6 agents >=7). Best setup of the month — blowout Q3 earnings. API blocked (51st) + afternoon proximity-to-close per playbook. Deferred to June 26 Pre-Market (no time-bounded expiry — earnings reaction momentum persists). Limit ~$1,165–1,180 bracket GTC."
+size_pct: 4.69
+stop: 1113.18
+target: 1347.54
+result_pct: null
+agent_scores:
+  fundamentals: 10
+  technical: 7
+  sentiment: 9
+  macro: 9
+  risk: 8
+  tech_analyst: 8
+agent_average: 8.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP Afternoon only — proximity-to-close (playbook) + API blocked (51st). Already attempted Mid-Morning (action:entry, HTTP 403). Carry to June 26 Pre-Market as MANDATORY. Update limit to pre-market ask x1.005 at June 26."
+---
+```
+
+```yaml
+---
+ts: 2026-06-25T18:05:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: sector-rotation
+score: 8
+thesis: "GOOGL 8.0 avg (all 6 agents >=7). Dow Jones inclusion June 29 — ONE SESSION LEFT (June 26). API blocked (51st) + proximity-to-close. Limit $343.84 bracket GTC or MOO. June 26 Pre-Market is FINAL ENTRY WINDOW — if not entered by June 26 EOD, thesis expires."
+size_pct: 4.82
+stop: 326.65
+target: 395.42
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP Afternoon only — API blocked + proximity-to-close. CRITICAL: June 26 Pre-Market MUST attempt GOOGL as first priority (above MU, NVDA, INTC, IBM). MOO 14sh preferred. If API blocked, OPERATOR MUST PLACE MANUALLY before 9:25 AM ET June 26. Miss June 26 = miss entire setup."
+---
+```
+
+```yaml
+---
+ts: 2026-06-25T18:05:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: "NVDA 8.0 avg (all 6 agents >=7). MU HBM4 sold out = NVDA GPU demand at record. $200–205 mid-afternoon. API blocked (51st) + proximity-to-close. Deferred to June 26 Pre-Market. Update limit to pre-market ask x1.005."
+size_pct: 0.81
+stop: 191.62
+target: 231.96
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 9
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP Afternoon only. Full analysis in Mid-Morning section. No time-bounded catalyst (unlike GOOGL). Carry to June 26 Pre-Market — priority #3 after AMD resolution and GOOGL."
+---
+```
+
+```yaml
+---
+ts: 2026-06-25T18:05:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: "INTC 7.5 avg (all 6 agents >=7). 5th blocked attempt. BofA PT $160 + Apple foundry + MU AI data-center 7x read-through. INTC est. $138–142 mid-afternoon (up from $131.65 June 24 close). API blocked + proximity-to-close. Update limit to pre-market ask x1.005 June 26."
+size_pct: 4.84
+stop: 131.39
+target: 159.05
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP Afternoon only. 5th consecutive blocked attempt. If INTC is at $140+ on June 26 pre-market, update limit to $140.70 (ask x1.005), stop to $133.67 ($140.70 x0.95), target to $161.81 ($140.70 x1.15). Recalculate shares: at $140, 35sh = $4,900 = 4.91% still ok."
+---
+```
+
+```yaml
+---
+ts: 2026-06-25T18:05:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 8
+thesis: "IBM 7.5 avg (5/6 agents >=7). JPMorgan OW upgrade + elevated volume + defensive AI. est. $270–276 mid-afternoon. API blocked + proximity-to-close. 3sh limit ~$272-276 bracket GTC. Carry to June 26 Pre-Market."
+size_pct: 0.82
+stop: 258.74
+target: 313.21
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 7
+  risk: 9
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP Afternoon only. 5th consecutive blocked attempt. Small position (0.82% equity). Carry to June 26. Update limit to IBM close x1.005 if it closes higher today."
+---
+```
+
+---
+
+### MANDATORY OUTPUT CONTRACT — AFTERNOON STATUS
+
+**Outcome: (B) satisfied for all 5 ≥7 watchlist names.**
+- Primary constraint: Alpaca API HTTP 403 (51st consecutive — network policy blocking `paper-api.alpaca.markets:443`)
+- Secondary constraint: Afternoon proximity-to-close per `routines/afternoon.md` playbook
+- All 5 names already attempted and documented in Mid-Morning as `action:entry` (blocked)
+- Afternoon window properly closed — all 5 carry to June 26 Pre-Market as BINDING COMMITMENTS
+
+**JUNE 26 PRE-MARKET BINDING COMMITMENT (execution order):**
+| Priority | Symbol | Action | Est. Limit | Stop | Target | Score | Note |
+|---|---|---|---|---|---|---|---|
+| 🔴 CRITICAL | **AMD** | Sell 9sh market + GTC stop 9sh | — | $481.42 | $582.77 | — | FIX NAKED FIRST |
+| 🔴 HIGHEST | **GOOGL** | 14sh MOO or limit | ~$343–347 | fill×0.95 | fill×1.15 | 8.0 | **LAST DAY — DOW INCLUSION JUNE 29** |
+| ⭐ HIGH | **MU** | 4sh limit | ~$1,165–1,180 | $1,113.18 | $1,347.54 | 8.5 | Update to pre-mkt ask×1.005 |
+| 🔴 HIGH | **NVDA** | 4sh limit | ~$200–205 | fill×0.95 | fill×1.15 | 8.0 | Update to pre-mkt ask×1.005 |
+| 🟡 MANDATORY | **INTC** | 35sh limit | ~$138–142 | fill×0.95 | fill×1.15 | 7.5 | Update to pre-mkt ask×1.005 |
+| 🟡 MANDATORY | **IBM** | 3sh limit | ~$272–276 | fill×0.95 | fill×1.15 | 7.5 | Update to pre-mkt ask×1.005 |
+
+**3% Circuit Breaker:** NOT TRIGGERED ✓ (0 confirmed positions, 0 confirmed daily P&L)
+
+---
+
 ## 2026-06-24 — Pre-Market (8:00 AM ET / 12:05 UTC — WEDNESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 12:05:05Z ✓
