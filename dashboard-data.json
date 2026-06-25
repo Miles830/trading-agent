@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-25T18:05:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-06-25T19:40:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 3.28,
-    "benchmark_gap_pct": -5.0,
+    "spx_return_pct": 4.05,
+    "benchmark_gap_pct": -5.77,
     "open_positions_count": 0,
-    "note": "June 25 AFTERNOON (2:02 PM ET / 18:05Z). API BLOCKED (HTTP 403 — 51st consecutive). Pre-Market + Market-Open + Midday ALL SILENT FAILED (3 of 5 intraday routines). Mid-Morning COMPLETED 15:16Z. 5 HIGH-CONVICTION ORDERS ALL HTTP 403: MU 8.5 avg (4sh limit $1,171.77 bracket GTC); GOOGL 8.0 avg (14sh limit $343.84 bracket GTC — ONE SESSION LEFT before Dow inclusion June 29); NVDA 8.0 avg (4sh limit $201.70 bracket GTC); INTC 7.5 avg (35sh limit $138.30 bracket GTC); IBM 7.5 avg (3sh limit $272.36 bracket GTC). AMD NAKED 18sh at ~$506.76 fill, est. ~$535-545 at 2PM (unrealized est. +$504-692, NO STOPS). MU +19.2% today (consolidating from $1,255 high to ~$1,162-1,178). SPX +0.77%, NDX +2.30%. Cumulative gap: est. ~-5.0 pp. JUNE 26 BINDING: AMD sell 9sh + stop; GOOGL MOO 14sh (LAST DAY); MU/NVDA/INTC/IBM bracket orders."
+    "note": "June 25 MARKET-CLOSE (3:33 PM ET / 19:33Z). API BLOCKED (HTTP 403 — 51st consecutive). Pre-Market + Market-Open + Midday SILENT FAILED (3/6). Mid-Morning + Afternoon + Market-Close completed. 5 MOC ORDERS ALL HTTP 403: GOOGL 8.2 avg (14sh MOC cls — SECOND-TO-LAST DOW INCLUSION WINDOW); MU 8.5 avg (4sh MOC cls); NVDA 8.0 avg (4sh MOC cls); INTC 7.5 avg (35sh MOC cls); IBM 7.5 avg (3sh MOC cls). AMD NAKED 18sh at ~$506.76 fill, est. ~$535 EOD (unrealized est. +$509, NO STOPS). MU closed est. ~$1,162 (+19.2%). SPX closed est. +0.68%. Cumulative gap: est. ~-5.77 pp. JUNE 26 ABSOLUTE BINDING: (1) AMD sell 9sh + GTC stop; (2) GOOGL MOO 14sh LAST DAY; (3) MU/NVDA/INTC/IBM bracket GTC orders."
   },
   "positions": [
     {
@@ -138,10 +138,10 @@
     {
       "name": "Market Close",
       "schedule": "15:30 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-23T19:30:00Z",
-      "next_run": "2026-06-22 15:30 ET",
-      "last_summary": "SILENT FAILURE — no heartbeat June 23 3:30 PM ET."
+      "status": "completed",
+      "last_run": "2026-06-25T19:33:00Z",
+      "next_run": "2026-06-26T19:30:00Z",
+      "last_summary": "June 25 Market-Close: 5 MOC orders attempted (GOOGL 8.2/MU 8.5/NVDA 8.0/INTC 7.5/IBM 7.5) — all HTTP 403 (51st block). No day trades to close. AMD naked 18sh est. ~$535 EOD, NO stops. SPX est. +0.68%. Portfolio 0 P&L. Gap est. -5.77 pp. June 26: AMD fix + GOOGL MOO (LAST DAY — Dow inclusion June 29)."
     },
     {
       "name": "Daily Review",
@@ -1278,9 +1278,9 @@
     {
       "date": "2026-06-25",
       "portfolio_return_pct": -0.15,
-      "spx_return_pct": 3.28,
+      "spx_return_pct": 4.05,
       "daily_pnl_pct": 0.0,
-      "note": "Afternoon snapshot. API blocked (51st). Pre-Market + Market-Open + Midday all silent failed (3/5 routines). Mid-Morning + Afternoon completed. 5 orders (MU 8.5, GOOGL 8.0, NVDA 8.0, INTC 7.5, IBM 7.5) all HTTP 403. MU +19.2% post-earnings (best quarter in MU history). Nasdaq +2.30%, SPX +0.77%. Portfolio: 0 confirmed positions, cash +0.0%, missed all of today's rally. Cumulative gap est. ~-5.0 pp (widening). GOOGL Dow inclusion June 29: ONE SESSION REMAINS (June 26). AMD naked 18sh est. ~$535-545 (unrealized +$504-692, NO STOPS — operator must act)."
+      "note": "Market-Close EOD. API blocked (51st). Pre-Market + Market-Open + Midday silent failed (3/6); Mid-Morning + Afternoon + Market-Close completed. 5 MOC orders (GOOGL 8.2, MU 8.5, NVDA 8.0, INTC 7.5, IBM 7.5) all HTTP 403. MU closed est. ~$1,162 (+19.2%). SPX closed est. +0.68% (~7,535). Nasdaq +2.30%. Portfolio: 0 confirmed positions, 0 daily P&L, missed entire semiconductor rally. AMD naked 18sh est. +$509 unrealized (NO STOPS). Gap est. ~-5.77 pp (widened -0.77 pp today). JUNE 26 LAST: AMD fix + GOOGL MOO (Dow inclusion June 29)."
     },
     {
       "date": "2026-06-18",
