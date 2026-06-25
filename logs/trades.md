@@ -4,6 +4,296 @@
 
 ---
 
+## 2026-06-25 — Midday (12:30 PM ET / 16:32 UTC — THURSDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Midday 16:32:47Z ✓
+**Alpaca API Status:** BLOCKED — proxy 403 / HTTP 000 (connect_rejected paper-api.alpaca.markets:443) — **51st consecutive blocked session**
+**Current Time:** 16:32Z = 12:32 PM ET — market open ~3h02m
+**Market Status:** REGULAR SESSION — Semiconductor AI Rally Day persisting (MU +19.2% remains elevated post-morning)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 25, 2026 (MIDDAY)
+
+```
+cat logs/heartbeats/2026-06-25.log
+→ 2026-06-25T15:04:56Z STARTED Mid-Morning
+→ 2026-06-25T15:16:37Z COMPLETED Mid-Morning
+→ 2026-06-25T16:32:47Z STARTED Midday
+```
+
+| Routine | Scheduled (ET / UTC) | Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | **❌ SILENT FAILURE** (logged in Mid-Morning) |
+| Market-Open | 09:45 ET / 13:45Z | **❌ SILENT FAILURE** (logged in Mid-Morning) |
+| Mid-Morning | 11:00 ET / 15:00Z | ✓ COMPLETED 15:04:56Z → 15:16:37Z |
+| **Midday** | **12:30 ET / 16:30Z** | ✓ RUNNING 16:32:47Z |
+
+Pre-Market and Market-Open violations already logged in Mid-Morning. Mid-Morning completed full catch-up (5 order attempts: MU, NVDA, INTC, GOOGL, IBM — all HTTP 403). No additional violation entries needed.
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 000 (connect_rejected — proxy policy denial)
+GET /v2/orders?status=open → HTTP 000 (connect_rejected — proxy policy denial)
+GET /v2/account            → HTTP 000 (connect_rejected — proxy policy denial)
+```
+
+**API INACCESSIBLE — 51st consecutive blocked session.** Estimated position state unchanged from Mid-Morning:
+
+| Symbol | Est. Qty | Est. Entry | Est. Current | Est. P&L | Stop Status |
+|---|---|---|---|---|---|
+| AMD | 18sh (est.) | ~$506.76 | ~$535 est. | +$508 est. | ⚠️ **NAKED — NO STOP** |
+| GOOGL | 0 (unconfirmed) | — | ~$342 est. | — | N/A |
+| MU | 0 (unconfirmed) | — | ~$1,160 est. | — | N/A |
+| NVDA | 0 (unconfirmed) | — | ~$201 est. | — | N/A |
+| INTC | 0 (unconfirmed) | — | ~$138 est. | — | N/A |
+| IBM | 0 (unconfirmed) | — | ~$271 est. | — | N/A |
+
+⚠️ **AMD NAKED POSITION RISK:** AMD est. ~$535 (up from ~$530 at Mid-Morning as sector rally continues). Estimated unrealized gain +$508 on 18sh. NO stop-loss orders confirmed. This remains a CRITICAL guardrail violation. Operator must reduce to ≤9sh and place GTC stop.
+
+---
+
+### MIDDAY MARKET SUMMARY
+
+Post-MU-earnings rally holding into midday. MU's blowout Q3 FY2026 print (EPS +24%, revenue +15.7%, Q4 guidance $50B vs $42.9B est.) is driving a broad-based AI/semiconductor risk-on move:
+
+- **Nasdaq 100:** +2.30% (semiconductor/AI stocks leading)
+- **S&P 500:** +0.77% (broad market participation)
+- **Dow:** +0.30% (modest participation — value/cyclicals lagging)
+
+Key midday read-throughs:
+- MU price consolidating off morning highs. Estimated ~$1,155–1,185 range midday (vs $1,255 session high at open) = healthy absorption of the +19.2% gap
+- NVDA benefiting from MU's "GPUs at full utilization" confirmation. Est. ~$200–204, holding gains
+- INTC elevated on AI foundry demand validation from MU data center numbers (+7× YoY)
+- GOOGL quietly flat to slightly lower (~$341–343) — **2 trading sessions until Dow inclusion June 29 — window is closing**
+- IBM holding with modest gains — defensive AI play unaffected by semiconductor rally
+- AMD est. ~$535 on sector sympathy — NAKED position gaining value but no protection
+
+**No daily loss > 3%.** Circuit breaker NOT triggered. Estimated daily portfolio P&L: $0 (no confirmed open positions by Alpaca) / +$508 est. unrealized (if AMD stale fill confirmed).
+
+---
+
+### MIDDAY ORDER ATTEMPTS (2-ENTRY CAP per Midday playbook)
+
+Mid-Morning already attempted all 5 watchlist entries (HTTP 403 blocked). Midday re-attempts the 2 highest priority per the Midday 2-entry cap: MU (highest conviction 8.5 avg) and GOOGL (most time-sensitive: Dow inclusion June 29 = 2 sessions remain). NVDA, INTC, IBM will be retried at the Afternoon routine.
+
+#### MIDDAY ORDER #1: MU — 4sh limit $1,171.77 bracket GTC (8.5 avg)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MU","qty":4,"side":"buy","type":"limit","limit_price":"1171.77","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1113.18"},"take_profit":{"limit_price":"1347.54"}}'
+→ HTTP 000 (connect_rejected — 51st consecutive — proxy 403 policy denial)
+```
+
+```yaml
+---
+ts: 2026-06-25T16:32:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 9
+thesis: "MIDDAY RE-ATTEMPT (2nd today after Mid-Morning block). MU Q3 FY2026: EPS $25.11 (+24% beat), revenue $41.46B (+15.7% beat), Q4 guidance $50B (+16.5% beat). HBM4 sold out through 2026. 4sh limit $1,171.77 bracket GTC (stop $1,113.18, target $1,347.54). BLOCKED — HTTP 000 (51st consecutive). OPERATOR MUST EXECUTE."
+size_pct: 4.69
+stop: 1113.18
+target: 1347.54
+result_pct: null
+agent_scores:
+  fundamentals: 10
+  technical: 7
+  sentiment: 9
+  macro: 9
+  risk: 8
+  tech_analyst: 8
+agent_average: 8.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "MIDDAY RETRY. All 6 agents ≥7. 8.5 avg. MU post-earnings consolidation midday (~$1,155-1,185) is typical healthy absorption — entry thesis unchanged. HBM4 sold out = pricing power secured for 2H2026 and into 2027. $50B Q4 guidance is structural, not one-time: AI capex accelerating even faster than most bullish models. 4/5 indicators confirming (Volume Spike ✓ Volume Oscillator ✓ MACD ✓ Candlestick ✓ Stochastic overbought on day 1 post-earnings = normal, not a veto). xAI API blocked, neutral X modifier. ORDER BLOCKED HTTP 000. OPERATOR EXECUTE: 4sh MU limit $1,171.77 bracket gtc, stop_loss $1,113.18, take_profit $1,347.54."
+---
+```
+
+#### MIDDAY ORDER #2: GOOGL — 14sh limit $343.84 bracket GTC (8.0 avg) — URGENT
+
+⚠️ **WINDOW CLOSING:** GOOGL Dow Jones inclusion June 29 (Monday). Today (June 25, Thursday) + Tomorrow (June 26, Friday) = only 2 sessions left. Index funds must establish DJIA positions before Monday open. Forced buying intensifies into Friday close. Miss this window and the catalyst evaporates.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GOOGL","qty":14,"side":"buy","type":"limit","limit_price":"343.84","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"326.65"},"take_profit":{"limit_price":"395.42"}}'
+→ HTTP 000 (connect_rejected — 51st consecutive — proxy 403 policy denial)
+```
+
+```yaml
+---
+ts: 2026-06-25T16:32:00Z
+action: entry
+symbol: GOOGL
+bucket: active
+setup: sector-rotation
+score: 8
+thesis: "MIDDAY RE-ATTEMPT (2nd today). GOOGL Dow Jones inclusion June 29 — 2 sessions remain. Est. ~$342 midday. 14sh limit $343.84 bracket GTC (stop $326.65, target $395.42). R/R 3.0×. BLOCKED — HTTP 000 (51st consecutive). OPERATOR MUST EXECUTE TODAY OR TOMORROW."
+size_pct: 4.82
+stop: 326.65
+target: 395.42
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MIDDAY RETRY. All 6 agents ≥7. 8.0 avg. URGENCY ESCALATED: 2 sessions left before Dow inclusion. Every session the agent fails to execute this order the catalyst window narrows by one trading day. If GOOGL continues to underperform today (flat vs Nasdaq +2.30%), operator should consider a MARKET ORDER at the Afternoon or Market-Close routine to guarantee participation before the June 27 weekend. Limit $343.84 = current ask×1.005. Stop $326.65 = −5%, Target $395.42 = +15%, R/R 3.0×. Guardrails: 14sh×$343.84=$4,814=4.82% ✓, trade risk $241 ✓. xAI API blocked, neutral X modifier. ORDER BLOCKED HTTP 000. OPERATOR EXECUTE SAME DAY."
+---
+```
+
+---
+
+### MIDDAY 2-ENTRY CAP REACHED — NVDA / INTC / IBM DEFERRED TO AFTERNOON
+
+Mid-Morning already scored and attempted NVDA (8.0), INTC (7.5), and IBM (7.5) — all blocked HTTP 403. Midday 2-entry cap exhausted by MU and GOOGL re-attempts. These 3 remain fully approved and will be re-attempted at Afternoon routine (2:00 PM ET).
+
+```yaml
+---
+ts: 2026-06-25T16:32:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: "NVDA 4sh limit $201.70 (8.0 avg — scored and attempted in Mid-Morning, blocked HTTP 403). Midday 2-entry cap reached (MU + GOOGL used). No thesis change since Mid-Morning. Re-attempt at Afternoon routine."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Midday cap. Previously scored and attempted in Mid-Morning: fundamentals 8, technical 7, sentiment 7, macro 8, risk 9, tech_analyst 9, avg 8.0, all 6 ≥7, approved. Entry params unchanged: 4sh limit $201.70, stop $191.62, target $231.96. Retry at Afternoon."
+---
+```
+
+```yaml
+---
+ts: 2026-06-25T16:32:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: ai-momentum-pullback
+score: 8
+thesis: "INTC 35sh limit $138.30 (7.5 avg — scored and attempted in Mid-Morning, blocked HTTP 403). Midday 2-entry cap reached. No thesis change. Re-attempt at Afternoon routine."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Midday cap. Previously scored and attempted in Mid-Morning: fundamentals 8, technical 7, sentiment 7, macro 8, risk 7, tech_analyst 7, avg 7.5, all 6 ≥7, approved. Entry params unchanged: 35sh limit $138.30, stop $131.39, target $159.05. Retry at Afternoon."
+---
+```
+
+```yaml
+---
+ts: 2026-06-25T16:32:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 8
+thesis: "IBM 3sh limit $272.36 (7.5 avg — scored and attempted in Mid-Morning, blocked HTTP 403). Midday 2-entry cap reached. No thesis change. Re-attempt at Afternoon routine."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Midday cap. Previously scored and attempted in Mid-Morning: fundamentals 8, technical 6, sentiment 8, macro 7, risk 9, tech_analyst 7, avg 7.5, 5/6 ≥7, approved. Entry params unchanged: 3sh limit $272.36, stop $258.74, target $313.21. Retry at Afternoon."
+---
+```
+
+---
+
+### AMD — EXEMPTION 1 + NAKED POSITION ESCALATION
+
+AMD est. ~$535 midday (semiconductor rally continuing). Estimated unrealized gain on stale 18sh position: ($535 − $506.76) × 18 = **+$508**. The position is gaining but completely unprotected.
+
+A further note on urgency: AMD could gap down −5% tomorrow on any negative catalyst and fill through $506 → $481 range in seconds without a stop. The $508 unrealized gain is fictional until a stop protects it.
+
+**Operator actions (EXECUTE BEFORE AFTERNOON SESSION):**
+1. Log in to app.alpaca.markets
+2. Sell 9sh AMD at market → reduces position from 18sh (9.13% equity) to 9sh (~4.7% equity)
+3. Immediately after sell fills, place: GTC stop $481.42 ($506.76 × 0.95) on remaining 9sh
+4. Set GTC take-profit limit order $582.77 ($506.76 × 1.15) on remaining 9sh
+
+```yaml
+---
+ts: 2026-06-25T16:32:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: breakout-volume
+score: null
+thesis: "AMD est. ~$535 midday. Estimated 18sh NAKED at ~$506.76 (9.13% equity, Exemption 1). Est. unrealized gain +$508. No new AMD entries. Operator must reduce to 9sh and place GTC stop $481.42 before afternoon session."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "Exemption 1. AMD stale GTCs estimated filled June 23 at ~$506.76. 18sh = 9.13% equity = double the 5% hard cap and triple the 3.3% AMD sector allocation. No stop orders confirmed. API blocked — cannot verify or remedy programmatically. OPERATOR MUST EXECUTE MANUALLY: sell 9sh market, place GTC stop $481.42 on remaining 9sh, set GTC take-profit $582.77. After resolution: do NOT add new AMD until confirmed position = ≤9sh with resting stop. Est. unrealized gain +$508 — do not let paper gain delay stop placement."
+---
+```
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+If any of today's 5 orders eventually execute (operator manual intervention), the overnight hold thesis:
+
+| Symbol | Hold Overnight? | Reason |
+|---|---|---|
+| **MU** | ✅ YES | $50B Q4 guidance = multi-week thesis. Post-earnings continuation trades typically extend 2–5 sessions. Stop at $1,113.18 protects principal. |
+| **GOOGL** | ✅ YES | Dow inclusion June 29 = forced index buying through Friday close and into next Monday open. HOLD through June 29. |
+| **NVDA** | ✅ YES | AI capex secular thesis + MU read-through catalyst. Stop at $191.62 covers risk. |
+| **INTC** | ✅ YES | Apple 18A foundry thesis + AI foundry demand (MU data center 7× validation). Multi-week hold. |
+| **IBM** | ✅ YES | Defensive AI + JPMorgan OW upgrade support. Small position (0.82% equity) — overnight risk minimal. |
+| **AMD** | ⚠️ ONLY WITH STOP | Do NOT hold overnight without stop at $481.42. Current 18sh NAKED overnight = unacceptable gap risk. |
+
+No day-trade positions to close (no confirmed intraday positions).
+
+---
+
+### MANDATORY OUTPUT CONTRACT STATUS
+
+**Outcome (A) satisfied:** 2 POST /v2/orders calls attempted at Midday (MU + GOOGL) — both HTTP 000 (51st consecutive block). Both documented with full YAML entries above.
+
+**Orders outstanding for operator manual execution (PRIORITY ORDER):**
+
+| Priority | Symbol | Action | Qty | Limit/Market | Stop | Target | Score | Urgency |
+|---|---|---|---|---|---|---|---|---|
+| 🔴 **CRITICAL** | **AMD** | SELL 9sh, then STOP 9sh | 9sh sell + stop | Market → $481.42 stop | $481.42 | $582.77 | — | FIX NAKED POSITION NOW |
+| 🔴 **HIGHEST** | **GOOGL** | BUY bracket GTC | 14sh | $343.84 limit | $326.65 | $395.42 | 8.0 | **Dow inclusion June 29 — 2 sessions left** |
+| 🔴 **HIGH** | **MU** | BUY bracket GTC | 4sh | $1,171.77 limit | $1,113.18 | $1,347.54 | 8.5 | Best setup this month |
+| 🟡 **MANDATORY** | **NVDA** | BUY bracket GTC | 4sh | $201.70 limit | $191.62 | $231.96 | 8.0 | AI capex catalyst (MU read-through) |
+| 🟡 **MANDATORY** | **INTC** | BUY bracket GTC | 35sh | $138.30 limit | $131.39 | $159.05 | 7.5 | 5th blocked attempt |
+| 🟡 **MANDATORY** | **IBM** | BUY bracket GTC | 3sh | $272.36 limit | $258.74 | $313.21 | 7.5 | Tiny defensive position |
+
+**3% Circuit Breaker:** NOT TRIGGERED (no confirmed daily P&L change) ✓
+**Cash Reserve (estimated):** ~$99,854 (99.9% — well above 5% floor) ✓
+**Max Positions:** 0 confirmed (1 estimated AMD naked) ✓ (< 12 max)
+
+---
+
 ## 2026-06-25 — Mid-Morning (11:00 AM ET / 15:05 UTC — THURSDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:56Z ✓

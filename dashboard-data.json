@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-24T16:32:00Z",
+  "last_updated": "2026-06-25T16:32:00Z",
   "updated_by": "midday",
   "portfolio": {
     "total_equity": 99854,
@@ -12,10 +12,10 @@
     "daily_pnl": 0,
     "daily_pnl_pct": 0.0,
     "total_return_pct": -0.15,
-    "spx_return_pct": 2.51,
-    "benchmark_gap_pct": -4.2,
+    "spx_return_pct": 3.28,
+    "benchmark_gap_pct": -5.5,
     "open_positions_count": 0,
-    "note": "June 24 MIDDAY (12:32 PM ET / 16:32Z). API BLOCKED (HTTP 403 \u2014 49th consecutive). Mid-Morning SILENT FAILURE (15:00Z). 6 total blocked attempts today (3\u00d7INTC, 3\u00d7IBM). NEW: GOOGL Dow Jones inclusion June 29 \u2014 APPROVED 8.0 avg (all 6 agents \u22657) \u2014 BLOCKED. AMD rescore: 7.17 avg but Risk Agent VETO (existing 18sh position = 9.13% equity, Exemption 1). INTC ~$134.10 (range $130.03\u2013$136.08). IBM ~$264.24 (volume 15.69M vs 8.74M avg = elevated). NVDA ~$198.70 (below threshold 6.5). MU ~$1,058 (+10.7% from $956 June 23 close \u2014 EXEMPTION 2). SPX +0.35%, NDX +0.62%. UBS raised AMD PT $670 from $455. Cumulative gap: est. \u22124.2 pp. OPERATOR URGENT: (1) sell 9sh AMD, place stop $481.42; (2) BUY 14sh GOOGL limit $350.53 bracket GTC; (3) BUY 36sh INTC limit $134.70 bracket; (4) BUY 3sh IBM limit $265.32 bracket."
+    "note": "June 25 MIDDAY (12:32 PM ET / 16:32Z). API BLOCKED (HTTP 000 / proxy 403 \u2014 51st consecutive). Mid-Morning COMPLETED (15:04-15:16Z) \u2014 5 orders attempted (MU, NVDA, INTC, GOOGL, IBM \u2014 all HTTP 403). Midday re-attempts top 2: MU (8.5 avg) + GOOGL (8.0 avg) \u2014 both HTTP 000. MU BLOWOUT Q3 FY2026: EPS $25.11 (+24% beat), revenue $41.46B (+15.7% beat), Q4 guidance $50B (+16.5% beat). MU +19.2% today. SEMICONDUCTOR RALLY: Nasdaq +2.30%, SPX +0.77%. AMD est. 18sh NAKED at ~$506.76 \u2014 est. unrealized gain +$508 at ~$535 midday \u2014 NO STOP ORDERS. GOOGL Dow inclusion June 29 \u2014 2 sessions left. Cumulative gap: est. ~\u22125.5 pp (SPX +0.77% today = another widening day). OPERATOR EXECUTE: (1) SELL 9sh AMD market + stop $481.42; (2) 4sh MU limit $1,171.77 bracket GTC; (3) 14sh GOOGL limit $343.84 bracket GTC; (4) 4sh NVDA limit $201.70 bracket GTC; (5) 35sh INTC limit $138.30 bracket GTC; (6) 3sh IBM limit $272.36 bracket GTC."
   },
   "positions": [
     {
@@ -62,37 +62,37 @@
     }
   ],
   "market": {
-    "mode": "MODEST RECOVERY. SPX +0.35%, NDX +0.62%, Dow -0.17% midday. Growth/tech leading. MU earnings binary event tonight (+10.7% pre-earnings rebound). GOOGL Dow inclusion June 29 (5-session catalyst window). UBS raised AMD PT $670. Semis stabilizing.",
+    "mode": "AI/SEMICONDUCTOR RALLY. MU +19.2% on blowout Q3 FY2026 earnings (EPS +24%, revenue +15.7%, Q4 guide +16.5%). Nasdaq +2.30%, SPX +0.77%, Dow +0.30% midday. GOOGL Dow inclusion June 29 \u2014 2 sessions remain.",
     "fear_greed": null,
-    "fear_greed_label": "Neutral. Recovery from 2-day selloff but muted \u2014 investors waiting on MU earnings for sector direction.",
-    "spx": "S&P 500 +0.35% midday (est. ~7,479). Nasdaq +0.62% outperforming (growth/tech). Dow -0.17%. Wall Street holding pattern ahead of Micron earnings tonight 4:30 PM ET. GOOGL +0.7% on Dow inclusion announcement (June 29 effective date).",
-    "btc": "BTC status unknown (API blocked). Last known: ~$65-67K, below $82K entry threshold. No crypto entry.",
+    "fear_greed_label": "Bullish. Micron blowout earnings sparked across-the-board semiconductor rally. AI capex thesis getting broad institutional validation.",
+    "spx": "S&P 500 +0.77% midday (est. ~7,538). Nasdaq 100 +2.30% (semiconductors leading; MU +19.2%, NVDA +1%, INTC +4.8%). Dow +0.30% (modest participation). MU earnings beat is the dominant catalyst \u2014 $50B Q4 guidance vs $42.9B est. = AI memory demand accelerating beyond all bullish models.",
+    "btc": "BTC status unknown (API blocked). Last known: ~$65-67K est., below $82K entry threshold. No crypto entry.",
     "sectors": [
       {
-        "name": "Communication Services \u2014 LEADING",
-        "change_pct": 0.9,
-        "note": "GOOGL +0.7% (Dow Jones inclusion June 29). 5-session forced-buying window. NEW ENTRY APPROVED 8.0 avg (all 6 agents \u22657). OPERATOR EXECUTE: 14sh limit $350.53 bracket GTC."
+        "name": "Semiconductors \u2014 STRONGLY LEADING",
+        "change_pct": 5.5,
+        "note": "MU +19.2% ($1,136-$1,255 range; consolidating ~$1,155-1,185 midday). NVDA +1% (~$200-204). INTC +4.8% (~$137-139; MU AI data center 7\u00d7 YoY validates Intel foundry demand). AMD est. +~5% (~$535). MRVL ~$264 (post-S&P inclusion digestion). All semiconductor names rallying on MU's AI memory sold-out signal."
       },
       {
-        "name": "Semiconductors \u2014 STABILIZING",
-        "change_pct": 0.4,
-        "note": "MU +10.7% (pre-earnings rebound, EXEMPT). AMD flat ~$521 (UBS PT raised $670 \u2014 MASSIVE catalyst). INTC +1.0% (range $130-$136). NVDA +2.0% (~$198.70, Stochastic descending, score 6.5). MRVL ~$264 (sell-the-news, no entry)."
+        "name": "Communication Services \u2014 LAGGING THE RALLY",
+        "change_pct": 0.1,
+        "note": "GOOGL est. ~$342 (underperforming Nasdaq on this semiconductor-specific day). Dow inclusion June 29 \u2014 2 sessions remain. ENTRY APPROVED 8.0 avg. 14sh limit $343.84 bracket GTC \u2014 BLOCKED 51st session. OPERATOR EXECUTE URGENTLY."
       },
       {
-        "name": "Enterprise Tech / AI Consulting \u2014 STRONG",
-        "change_pct": 0.5,
-        "note": "IBM ~$264.24 with elevated volume (15.69M vs 8.74M avg). JPMorgan OW upgrade June 24. Defensive AI play. ENTRY APPROVED 7.5 avg."
+        "name": "Enterprise Tech / AI Consulting \u2014 MODEST GAIN",
+        "change_pct": 0.8,
+        "note": "IBM est. ~$271 (+3%). JPMorgan OW upgrade + defensive AI thesis intact. ENTRY APPROVED 7.5 avg. 3sh limit $272.36 bracket GTC \u2014 BLOCKED."
       },
       {
-        "name": "Nasdaq Tech \u2014 RECOVERY",
-        "change_pct": 0.62,
-        "note": "Nasdaq +0.62% \u2014 tech/growth recovering from 2-day selloff. Market in 'wait and see' mode ahead of MU print."
+        "name": "AI Infrastructure \u2014 BROAD RALLY",
+        "change_pct": 2.3,
+        "note": "Entire AI infrastructure stack rallying on MU's confirmation that AI capex is accelerating faster than any model forecast. MU Q4 $50B guidance = $50B in chip demand per quarter from hyperscalers alone. Positive for NVDA, INTC, AMD, ASML, AMAT."
       }
     ],
-    "macro_notes_md": "**2026-06-24 Midday (12:32 PM ET)**\n- SPX +0.35%, NDX +0.62%, Dow -0.17% \u2014 modest recovery\n- **UBS raised AMD PT to $670 from $455** (Timothy Arcuri, June 24) \u2014 standalone CPU rack adoption + agentic AI workloads. Meta 6GW + Oracle 50K-GPU Helios.\n- **GOOGL joining Dow Jones June 29** \u2014 5-session forced-buying window. 14sh limit $350.53 APPROVED 8.0 avg \u2014 BLOCKED.\n- MU +10.7% pre-earnings (was ~$956 June 23 \u2192 ~$1,058 today). Earnings tonight 4:30 PM ET. Exemption 2 all day.\n- INTC ~$134.10 (range $130.03\u2013$136.08). BofA $160 PT intact. 4th order attempt blocked.\n- IBM ~$264.24, volume 15.69M (80% above avg). JPMorgan OW upgrade digested.\n- NVDA ~$198.70 \u2014 recovering but Stochastic still descending; score 6.5, below threshold.\n- Fed: on hold 4.25-4.50%. No events today.\n- Iran deal intact, oil lower, risk-on macro backdrop.",
-    "sp500_today_pct": "+0.35% midday",
-    "sp500_est": 7479,
-    "macro_note": "Midday recovery day. NDX leading (+0.62%). Key binary event: MU earnings at 4:30 PM ET \u2014 \u00b117% options move expected, HBM4 commentary is the pivotal metric for semiconductor sector direction Thursday. GOOGL Dow inclusion is highest-conviction new setup (8.0 avg). AMD UBS PT $670 validates bull case but position status unresolved."
+    "macro_notes_md": "**2026-06-25 Midday (12:32 PM ET)**\n- SPX +0.77%, NDX +2.30%, Dow +0.30% \u2014 AI/semiconductor rally day\n- **MU Q3 FY2026 BLOWOUT:** EPS $25.11 vs $20.20 est (+24.3%); Revenue $41.46B vs $35.84B est (+15.7%); Q4 Guide $50B vs $42.9B est (+16.5%). HBM4 SOLD OUT through 2026. Cloud Memory gross margin 83%. Data center revenue +7\u00d7 YoY.\n- **MU +19.2%** today ($1,136\u2013$1,255 range; consolidating midday ~$1,155-1,185)\n- **NVDA:** +1% at ~$200-204. Direct read-through: HBM4 sold out = every NVDA GPU has its memory committed to hyperscalers\n- **INTC:** +4.8% at ~$137-139. AI foundry demand validated by MU's data center numbers\n- **AMD:** est. +5% at ~$535. NAKED 18sh position \u2014 no stops. Operator must reduce to 9sh\n- **GOOGL:** est. flat at ~$342. Dow inclusion June 29 = 2 sessions remaining\n- **IBM:** est. +3% at ~$271. Defensive AI play holding\n- **Fed:** On hold 4.25-4.50%. No events today or this week\n- **Iran deal:** Intact. Oil lower. Risk-on macro backdrop unchanged\n- **API:** BLOCKED 51st consecutive session (proxy 403 policy denial on paper-api.alpaca.markets)",
+    "sp500_today_pct": "+0.77% midday",
+    "sp500_est": 7538,
+    "macro_note": "AI/semiconductor rally day driven by MU blowout Q3 FY2026 earnings. $50B Q4 guidance signals AI capex cycle is in hypergrowth \u2014 16.5% above consensus. HBM4 sold out = supply constraint = pricing power = multi-quarter revenue visibility for entire AI stack. Portfolio sitting 99.9% cash = another day of benchmark widening. GOOGL Dow inclusion (June 29) is the most time-sensitive setup \u2014 2 sessions left."
   },
   "routines": [
     {
@@ -123,9 +123,9 @@
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "completed",
-      "last_run": "2026-06-24T16:32:00Z",
-      "next_run": "2026-06-25 12:30 ET",
-      "last_summary": "June 24 Midday: API blocked (49th). Mid-Morning violation logged. NEW: GOOGL Dow Jones inclusion June 29 \u2014 APPROVED 8.0 avg (all 6 agents \u22657). 14sh limit $350.53 bracket GTC BLOCKED. INTC 4th attempt BLOCKED. IBM 4th attempt BLOCKED. AMD REJECTED (Risk Agent veto Exemption 1 \u2014 18sh naked at 9.13% equity). MU Exemption 2 confirmed (earnings tonight). UBS AMD PT $670. SPX +0.35%, NDX +0.62%. OPERATOR: (1) sell 9sh AMD + stop $481.42; (2) BUY 14sh GOOGL $350.53; (3) BUY 36sh INTC $134.70; (4) BUY 3sh IBM $265.32."
+      "last_run": "2026-06-25T16:32:00Z",
+      "next_run": "2026-06-26 12:30 ET",
+      "last_summary": "June 25 Midday: API blocked (51st \u2014 HTTP 000). Mid-Morning COMPLETED (5 attempts: MU 8.5, NVDA 8.0, INTC 7.5, GOOGL 8.0, IBM 7.5 \u2014 all HTTP 403). Midday 2-entry cap: re-attempted MU (8.5) + GOOGL (8.0) \u2014 both HTTP 000. NVDA/INTC/IBM deferred to Afternoon. AMD NAKED 18sh est. ~$535 \u2014 unrealized +$508 \u2014 NO STOP. MU +19.2% (blowout Q3: EPS +24%, revenue +15.7%, Q4 guide +16.5%). Overnight plan: hold all 5 if filled. GOOGL Dow inclusion June 29 = 2 sessions left. OPERATOR: (1) SELL 9sh AMD + stop $481.42; (2) 4sh MU $1,171.77; (3) 14sh GOOGL $343.84; (4) 4sh NVDA $201.70; (5) 35sh INTC $138.30; (6) 3sh IBM $272.36."
     },
     {
       "name": "Afternoon",
@@ -1202,75 +1202,75 @@
   },
   "watchlist": [
     {
+      "symbol": "AMD",
+      "score": null,
+      "bucket": "active",
+      "setup": "breakout-volume",
+      "est_price": 535.0,
+      "stop": null,
+      "target": null,
+      "thesis": "\u26a0\ufe0f\u26a0\ufe0f CRITICAL: NAKED POSITION. Est. 18sh at ~$506.76 (stale GTC fills June 23) = 9.13% equity (double 5% cap). AMD est. ~$535 midday on MU semiconductor rally. Unrealized est. gain +$508. NO STOP ORDERS. Guardrail violation. Exemption 1 \u2014 cannot add new AMD.",
+      "action": "OPERATOR URGENT (BEFORE AFTERNOON): (1) sell 9sh AMD market \u2192 reduce to 9sh = 4.7% equity; (2) place GTC stop $481.42 ($506.76\u00d70.95) on remaining 9sh; (3) set GTC take-profit $582.77 ($506.76\u00d71.15). Do NOT add new shares until resolved.",
+      "priority": 1
+    },
+    {
       "symbol": "GOOGL",
       "score": 8.0,
       "bucket": "active",
       "setup": "sector-rotation",
-      "est_price": 348.79,
-      "stop": 331.35,
-      "target": 403.11,
-      "thesis": "Joining Dow Jones Industrial Average June 29 2026 (replacing VZ) \u2014 5-session forced institutional buying window. 28/33 analysts Buy, consensus PT $427 (+22.7%). GCP AI infra moat, Gemini 2.5 Pro SOTA, Search dominance. All 6 agents \u22657. Highest score today (8.0 avg). NEW DISCOVERY Midday.",
-      "action": "BUY \u2014 14sh limit $350.53 bracket GTC (stop $331.35 -5.5%, target $403.11 +15%). BLOCKED 49th session \u2014 OPERATOR MUST EXECUTE before June 27 open.",
-      "priority": 1
+      "est_price": 342.0,
+      "stop": 326.65,
+      "target": 395.42,
+      "thesis": "Dow Jones inclusion June 29 (replacing VZ) \u2014 2 sessions remain in forced-buying window. ~$4.75B est. index fund demand. 28/33 analysts Buy, consensus PT $427. GCP AI moat + Gemini SOTA. All 6 agents \u22657. 8.0 avg.",
+      "action": "BUY \u2014 14sh limit $343.84 bracket GTC (stop $326.65 -5%, target $395.42 +15%). Attempted twice today (Mid-Morning + Midday) \u2014 both HTTP 403/000. OPERATOR EXECUTE SAME DAY \u2014 window closes in 2 sessions.",
+      "priority": 2
+    },
+    {
+      "symbol": "MU",
+      "score": 8.5,
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "est_price": 1168.0,
+      "stop": 1113.18,
+      "target": 1347.54,
+      "thesis": "Q3 FY2026 BLOWOUT: EPS $25.11 (+24%), revenue $41.46B (+15.7%), Q4 guidance $50B (+16.5% beat). HBM4 sold out through 2026. Cloud Memory 83% gross margin. Data center +7\u00d7 YoY. Best quarter in Micron's 46-year history. All 6 agents \u22657. 8.5 avg.",
+      "action": "BUY \u2014 4sh limit $1,171.77 bracket GTC (stop $1,113.18 -5%, target $1,347.54 +15%). Attempted twice today (Mid-Morning + Midday) \u2014 both HTTP 403/000. OPERATOR EXECUTE \u2014 highest conviction this month.",
+      "priority": 3
+    },
+    {
+      "symbol": "NVDA",
+      "score": 8.0,
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "est_price": 201.5,
+      "stop": 191.62,
+      "target": 231.96,
+      "thesis": "MU HBM4 sold out = NVDA GPU demand exceeds supply capacity. Every sold-out HBM4 unit = one NVDA Blackwell GPU sold. NVDA at ~$201 = 15% below ATH $236.54 (May 14) = compelling pullback entry. Technical upgraded 5\u21927 on MU sector catalyst. All 6 agents \u22657. 8.0 avg.",
+      "action": "BUY \u2014 4sh limit $201.70 bracket GTC (stop $191.62 -5%, target $231.96 +15%). Attempted Mid-Morning (HTTP 403). Deferred Midday (2-entry cap). RETRY at Afternoon routine. OPERATOR EXECUTE.",
+      "priority": 4
     },
     {
       "symbol": "INTC",
-      "score": 7.17,
+      "score": 7.5,
       "bucket": "active",
       "setup": "ai-momentum-pullback",
-      "est_price": 134.10,
-      "stop": 127.97,
-      "target": 154.91,
-      "thesis": "BofA raised PT $135\u2192$160 (Buy, June 24 catalyst); The Club announced buy June 23; Apple foundry intact; Data Center +22%; midday ~$134.10 (range $130.03\u2013$136.08). 4th attempt blocked.",
-      "action": "BUY \u2014 36sh limit $134.70 bracket GTC (stop $127.97 -5%, target $154.91 +15%). BLOCKED 4th attempt \u2014 OPERATOR MUST EXECUTE.",
-      "priority": 2
+      "est_price": 138.0,
+      "stop": 131.39,
+      "target": 159.05,
+      "thesis": "BofA PT $160 Buy + Apple 18A foundry + Data Center +22% YoY. MU data-center +7\u00d7 YoY validates AI foundry demand thesis. INTC est. ~$138 (+4.8% on MU rally). All 6 agents \u22657. 7.5 avg.",
+      "action": "BUY \u2014 35sh limit $138.30 bracket GTC (stop $131.39 -5%, target $159.05 +15%). Attempted Mid-Morning (HTTP 403). Deferred Midday (2-entry cap). RETRY at Afternoon routine. OPERATOR EXECUTE.",
+      "priority": 5
     },
     {
       "symbol": "IBM",
       "score": 7.5,
       "bucket": "active",
       "setup": "sector-rotation",
-      "est_price": 264.24,
-      "stop": 252.05,
-      "target": 305.12,
-      "thesis": "JPMorgan OW upgrade June 24; elevated volume 15.69M (1.8\u00d7 avg); AI consulting + Red Hat hybrid cloud. Defensive in risk-off. APPROVED 7.5 avg. Midday price ~$264.24.",
-      "action": "BUY \u2014 3sh limit $265.32 bracket GTC (stop $252.05 -5%, target $305.12 +15%). BLOCKED 4th attempt \u2014 OPERATOR MUST EXECUTE.",
-      "priority": 3
-    },
-    {
-      "symbol": "AMD",
-      "score": null,
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "est_price": 521.0,
-      "stop": null,
-      "target": null,
-      "thesis": "\u26a0\ufe0f NAKED POSITION CRISIS: 18sh AMD at ~$506.76 (est.) = 9.13% equity (double 5% cap). UBS raised PT $670 from $455 (June 24). Midday ~$521. Rescore 7.17 avg but RISK AGENT VETO (Exemption 1 \u2014 existing oversized position).",
-      "action": "OPERATOR URGENT: sell 9sh AMD at market \u2192 reduce to 9sh = 4.7% equity. Place GTC stop on remaining 9sh at $481.42. Target $582.77. Do NOT add new shares until resolved.",
-      "priority": 4
-    },
-    {
-      "symbol": "MU",
-      "score": null,
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "est_price": 1058.0,
-      "stop": null,
-      "target": null,
-      "thesis": "Earnings TONIGHT June 24 after close. Analyst est. $35.25B rev / $20.28 EPS. Options \u00b117%. Midday +10.7% from $956 June 23 close = pre-earnings rebound. HBM4 commentary is pivotal metric. EXEMPTION 2 all day.",
-      "action": "SKIP June 24 (Exemption 2 \u2014 binary event). Score June 25 Pre-Market post-print for follow/fade entry.",
-      "priority": 5
-    },
-    {
-      "symbol": "NVDA",
-      "score": 6.5,
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "est_price": 198.70,
-      "stop": null,
-      "target": null,
-      "thesis": "Midday ~$198.70 (+2.0%). Stochastic still descending. Score 6.5 \u2014 below 7 threshold. Only 1/5 mandatory indicator stack confirmed.",
-      "action": "CONDITIONAL \u2014 re-score at Afternoon; enter only if score rises to \u22657 with \u22652/5 indicator confirmation.",
+      "est_price": 271.0,
+      "stop": 258.74,
+      "target": 313.21,
+      "thesis": "JPMorgan OW upgrade June 24. AI consulting + Red Hat hybrid cloud moat. Defensive AI play. IBM est. ~$271 (+3% on MU rally). 5/6 agents \u22657. 7.5 avg.",
+      "action": "BUY \u2014 3sh limit $272.36 bracket GTC (stop $258.74 -5%, target $313.21 +15%). Attempted Mid-Morning (HTTP 403). Deferred Midday (2-entry cap). RETRY at Afternoon routine. OPERATOR EXECUTE.",
       "priority": 6
     },
     {
@@ -1281,12 +1281,19 @@
       "est_price": 264.0,
       "stop": null,
       "target": null,
-      "thesis": "Day 2+ sell-the-news post-S&P 500 inclusion. Technical breakdown. Score 5.5 \u2014 below threshold.",
-      "action": "SKIP \u2014 wait for stabilization and score reset.",
+      "thesis": "Post-S&P 500 inclusion sell-the-news digestion. Score 5.5 \u2014 below threshold.",
+      "action": "SKIP \u2014 wait for base-building and score reset above 7.",
       "priority": 7
     }
   ],
   "history": [
+    {
+      "date": "2026-06-25",
+      "portfolio_return_pct": -0.15,
+      "spx_return_pct": 3.28,
+      "daily_pnl_pct": 0.0,
+      "note": "Midday (12:32 PM ET). SEMICONDUCTOR RALLY DAY. MU +19.2% (Q3 FY2026 blowout: EPS +24%, revenue +15.7%, Q4 guide $50B vs $42.9B est). Nasdaq +2.30%, SPX +0.77%. API blocked (51st \u2014 HTTP 000). Pre-Market + Market-Open SILENT FAILURES. Mid-Morning COMPLETED (5 attempts: MU, NVDA, INTC, GOOGL, IBM \u2014 all HTTP 403). Midday re-attempts MU + GOOGL \u2014 both HTTP 000. AMD 18sh NAKED est. ~$535 \u2014 unrealized gain est. +$508 \u2014 no stops. 0 confirmed positions. 0 P&L. Cumulative gap: est. ~-5.5 pp."
+    },
     {
       "date": "2026-06-18",
       "portfolio_return_pct": -0.15,
