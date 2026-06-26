@@ -4,6 +4,345 @@
 
 ---
 
+## 2026-06-26 — Market Open (9:45 AM ET / 13:46 UTC — FRIDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Market-Open 13:46:01Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 / policy 403) — **53rd consecutive blocked session**
+**Current Time:** 13:46Z = 9:46 AM ET — market open ~16 min (opened 13:30Z)
+**Market Status:** REGULAR SESSION OPEN
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 26, 2026
+
+```
+cat logs/heartbeats/2026-06-26.log
+→ 2026-06-26T13:46:01Z STARTED Market-Open
+```
+
+| Routine | Scheduled (ET / UTC) | Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | **❌ SILENT FAILURE — no heartbeat** |
+| Market-Open | 09:45 ET / 13:45Z | ✓ STARTED 13:46:01Z (running) |
+
+**Pre-Market silently failed again.** All MOO orders that June 25 Daily Review designated (specifically the GOOG/GOOGL Dow-inclusion MOO and AMD management orders) could not be placed. Running catch-up here. AMD 18sh remains NAKED. Violation logged below.
+
+```yaml
+---
+ts: 2026-06-26T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Pre-Market June 26 silently failed — no heartbeat. June 25 Daily Review mandated (1) SELL 9sh AMD MOO at market; (2) BUY 14sh GOOGL/GOOG MOO for Dow inclusion (ABSOLUTE LAST WINDOW); (3) BUY 4sh MU limit pre-mkt bracket GTC; (4) BUY 4sh NVDA limit bracket GTC; (5) BUY 35sh INTC limit bracket GTC; (6) BUY 3sh IBM limit bracket GTC. None of these were attempted."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "53rd consecutive silent failure at Pre-Market. All actions folded into Market-Open catch-up. AMD 18sh NAKED entering 4th consecutive day without stops."
+---
+```
+
+---
+
+### MACRO CONTEXT — JUNE 26, 2026
+
+**PCE Inflation Report (May 2026 — released 8:30 AM ET today):**
+- Headline PCE: **+4.1% YoY** (matched consensus 4.1%; highest since April 2023)
+- Core PCE: **+3.4% YoY** (slightly above 3.3% est; highest since October 2023)
+- Monthly: **+0.4%** (PCE index)
+- Personal spending: **+0.7%** (above +0.4% est; strong consumer)
+- Driver: Iran war energy shock + AI buildout raising component costs (Apple announced MacBook/iPad price hikes)
+- **Market reaction:** Stock futures HELD POSITIVE after release. Treasury yields slipped. Not a shock — matched estimates.
+
+**Market conditions (9:46 AM ET):**
+- S&P 500: ~-0.44% (est. ~7,502 from yesterday's ~7,535)
+- **Semiconductors SELLING OFF**: MU, AMD, INTC, TSM, NVDA all falling — Apple price-hike demand concerns
+- GOOGL/GOOG: open $336.25, range $335.84–$343.00 (day range so far)
+- Market NOT down >1.5% → NO position-size halving required ✓
+- 3% circuit breaker: NOT TRIGGERED ✓
+
+**CRITICAL CORRECTION — DOW INCLUSION CLASS ERROR:**
+Prior daily reviews stated "BUY GOOGL MOO for Dow inclusion." This is INCORRECT — Alphabet **Class C (GOOG)** joins the Dow Jones Industrial Average on June 29, 2026 (replacing Verizon, ~4.0% weight, 7th largest component). **GOOGL (Class A)** does NOT join the Dow and does NOT benefit from direct forced ETF rebalancing flows. Orders should be placed for GOOG, not GOOGL. This correction affects today's entry attempt and is logged in the agent_scores/master_notes below.
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 000 (proxy blocks CONNECT paper-api.alpaca.markets:443)
+GET /v2/orders?status=open → HTTP 000
+GET /v2/account            → HTTP 000
+```
+
+**API INACCESSIBLE — 53rd consecutive session.**
+
+**Estimated position state:**
+- 0 CONFIRMED Alpaca positions via API
+- ⚠️⚠️⚠️ **AMD 18sh ESTIMATED NAKED** — stale GTC fills from June 23 open (~$506.76 avg). Today AMD estimated ~$510-525 (down from ~$530 est on June 25 due to semiconductor selloff). NO STOP ORDER. NO TAKE-PROFIT ORDER. **DAY 4 NAKED.** Estimated loss if stop hit ($481.42): −$25.34/sh × 18 = −$456 (−0.46% equity).
+- All other orders (GOOGL, INTC, IBM, MU, NVDA from prior sessions): ALL HTTP 403/000 blocked — never reached Alpaca. 0 confirmed fills on any of those.
+- **OPERATOR MUST LOG INTO app.alpaca.markets IMMEDIATELY and: (1) sell 9sh AMD at market; (2) place GTC stop $481.42 + take-profit $582.77 on remaining 9sh.**
+
+---
+
+### MARKET OPEN SUMMARY
+
+PCE release at 8:30 AM ET matched expectations (4.1% — no shock); futures held positive. However, semiconductor stocks opened lower on Apple price-hike demand destruction concerns. GOOG (Dow inclusion play) opened at $336.25, down from yesterday's $342.13 — a slightly BETTER entry for the Dow inclusion thesis. IBM held up as defensive tech. MU, NVDA, INTC, AMD all pulling back from yesterday's semiconductor rally. The 3% circuit breaker is NOT tripped and market down <1.5%, so normal position sizes apply.
+
+**Market Open re-scoring in light of today's conditions:**
+
+| Symbol | Prior Score | Today's Re-score | Change | Decision |
+|---|---|---|---|---|
+| GOOG | 8.0 (as GOOGL) | **7.0** (as GOOG) | −1.0 (PCE macro, semiconductor selloff, GOOG not GOOGL correction) | **APPROVED — attempt** |
+| MU | 8.5 | **7.17** | −1.33 (semiconductor selloff, Apple demand concern) | **APPROVED — attempt** |
+| IBM | 7.5 | **7.0** | −0.5 (PCE headwind; defensive = less exposed) | **APPROVED — attempt** |
+| NVDA | 8.0 | **6.67** | −1.33 (−8% week; T=5 trend broken) | **REJECTED** |
+| INTC | 7.5 | **6.50** | −1.0 (specifically named falling today; semiconductor selloff) | **REJECTED** |
+
+---
+
+### 6-AGENT ANALYSIS
+
+#### GOOG — Dow Inclusion Play (CORRECTED: GOOG not GOOGL)
+
+**Sub-Agent 1 — Fundamentals (8/10):** Google Cloud +29% YoY, YouTube +15%, Gemini AI monetizing across ads/search/cloud. Q1 2026 EPS beat. Revenue growth accelerating. P/E justified by AI earnings trajectory. Analyst consensus Strong Buy, avg PT ~$400+. **Score: 8/10**
+
+**Sub-Agent 2 — Technical (7/10):** Opening $336.25, down from $342.13 yesterday. Dow inclusion creates guaranteed demand event on June 29 — index trackers MUST buy before market open Monday. The pullback today to $336 is an attractive entry before forced buying. Stochastic: oversold intraday (below 20 on 5-min). MACD: weak (bearish day but Dow event overrides intraday trend). Volume oscillator: negative today (selling). Volume spike: NO (normal volume). Candlestick: insufficient data intraday. 1 of 5 indicators confirms (Stochastic oversold = counter-signal). **Score: 7/10** (Dow event mechanics outweigh intraday technicals; R/R improves at lower price)
+
+**Sub-Agent 3 — Sentiment (7/10):** Dow inclusion is broadly bullish — widely covered, major index event. Apple/Microsoft tech cost headlines weigh on today's sentiment. X/xAI API: UNAVAILABLE (HTTP 403). Scoring from non-X inputs: news is net positive (Dow entry = prestige catalyst), short interest low, options activity likely call-heavy into Monday. Base 7/10. No X modifier available. **Score: 7/10**
+
+**Sub-Agent 4 — Macro (6/10):** PCE 4.1% matched estimates — not a shock, market took it neutrally. Fed on hold at 3.50-3.75% (June 17 decision confirmed). September hike probability rising but not imminent. Iran war continues driving energy inflation but is not today's market mover. Alphabet is a domestic-revenue company, less sensitive to dollar strength than semis. S&P -0.44% = mild risk-off but not a rotation day. **Score: 6/10**
+
+**Sub-Agent 5 — Risk (7/10):** GOOG 14sh × $337.93 = $4,731 = 4.73% equity ✓ (under 5%). Sector: Communication Services (zero current exposure — sector cap fine). Stop $321.03 (-5%), target $388.62 (+15%) = 3:1 R/R ✓ (meets minimum). Trade risk: 14 × ($337.93 − $321.03) = 14 × $16.90 = $236.60 = 0.24% equity ✓ (well under 1.5% cap). Cash floor: $99,854 − $4,731 = $95,123 >> 5% floor ✓. No circuit breaker. No guardrail breach. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst (7/10):** Google Cloud is top-3 hyperscaler with strong AI differentiation via TPU v5/v6 and Gemini integration. Search moat under regulatory pressure but remains dominant. YouTube Shorts monetizing. Waymo optionality. R&D ~15% of revenue. Not a chip maker — insulated from Apple component cost concerns. **Score: 7/10**
+
+**MASTER AGENT — GOOG:**
+Fundamentals: 8/10 | Technical: 7/10 | Sentiment: 7/10 | Macro: 6/10 | Risk: 7/10 | Tech Analyst: 7/10
+Average: **7.0/10**
+Agents ≥7: F✓, T✓, S✓, R✓, TA✓ = 5 of 6 ✓ (need ≥4 of 6 ✓)
+Risk Agent: 7/10 ✓ (need ≥6)
+Decision: **APPROVED**
+
+---
+
+#### MU — Earnings Reaction Follow
+
+**Sub-Agent 1 — Fundamentals (9/10):** Q3 FY2026 historic beat — EPS $25.11 (+24.3% vs est), revenue $41.46B (+15.7% beat), Q4 guidance $50B±1B (+16.5% beat vs $42.9B est). HBM4 SOLD OUT through 2026 (pricing power floor). Cloud memory GM 83%. Data center revenue +7× YoY. Analyst consensus: multiple target hikes post-earnings. **Score: 9/10**
+
+**Sub-Agent 2 — Technical (6/10):** Semiconductor selloff today — MU pulling back from +19.2% yesterday. Day 2 after a massive earnings gap is often volatile. Stochastic: could be giving back overbought (>80) → rolling over. MACD: bullish crossover but momentum fading intraday. Volume oscillator: negative (today's selling). Volume spike: relative to yesterday's massive volume, today looks quieter. 1 of 5 confirms (MACD still bullish). Pullback after earnings gap = potentially constructive pattern for entry IF support holds. **Score: 6/10**
+
+**Sub-Agent 3 — Sentiment (7/10):** Post-earnings sentiment strongly positive on fundamentals. Apple price hike is TODAY's negative narrative but it actually BENEFITS MU (higher memory prices = better margins). X API unavailable. Options likely heavy call activity from earnings pop. Short interest probably being squeezed. **Score: 7/10**
+
+**Sub-Agent 4 — Macro (6/10):** PCE 4.1% matched consensus — neutral. Apple concern is a consumer electronics narrative, but MU revenue is >80% data center and AI (not consumer). The "demand destruction" narrative for MU is overblown given HBM4 sold-out to hyperscalers. Fed on hold. Energy inflation doesn't directly affect memory demand. **Score: 6/10**
+
+**Sub-Agent 5 — Risk (7/10):** MU 4sh × $1,125.60 = $4,502 = 4.50% equity ✓. Stop $1,064.00 (-5.5%), target $1,288.00 (+14.4%). R/R = 14.4%/5.5% = 2.6:1 — BELOW 3:1 MINIMUM. Let me recalculate with strict 3:1: stop at -5% from entry means target must be ≥ +15%. Entry $1,120 est × 1.005 = $1,125.60. Stop: $1,125.60 × 0.95 = $1,069.32. Target: $1,069.32 + 3×($1,125.60−$1,069.32) = $1,069.32 + 3×$56.28 = $1,069.32 + $168.84 = $1,238.16. OR: target = entry + 3×(entry−stop) = $1,125.60 + 3×$56.28 = $1,294.44. Use $1,294.44 as target. R/R = ($1,294.44−$1,125.60)/($1,125.60−$1,069.32) = $168.84/$56.28 = 3.0:1 ✓. Trade risk: 4 × $56.28 = $225.12 = 0.23% equity ✓. Sector (Tech/Memory): 0% current exposure ✓. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst (8/10):** HBM4 (High-Bandwidth Memory Gen 4) is the only next-gen memory for NVIDIA H200/GB200 class GPUs. MU and SK Hynix are the only two suppliers, and MU said HBM4 is sold out through 2026. This is a near-monopoly pricing position in the most critical component for AI training. Manufacturing moat (advanced packaging, 1-gamma node). R&D spending elevated but earnings leverage enormous. **Score: 8/10**
+
+**MASTER AGENT — MU:**
+Fundamentals: 9/10 | Technical: 6/10 | Sentiment: 7/10 | Macro: 6/10 | Risk: 7/10 | Tech Analyst: 8/10
+Average: **7.17/10**
+Agents ≥7: F✓, S✓, R✓, TA✓ = 4 of 6 ✓ (exactly meets minimum)
+Risk Agent: 7/10 ✓
+Decision: **APPROVED**
+
+---
+
+#### IBM — Defensive Tech Momentum
+
+**Sub-Agent 1 — Fundamentals (7/10):** Enterprise software/consulting. AI consulting revenue growing (Watson X). Steady dividend, share buybacks. JPMorgan Overweight upgrade intact. Revenue growth moderate. Less glamorous than semis but more predictable. **Score: 7/10**
+
+**Sub-Agent 2 — Technical (7/10):** IBM insulated from today's semiconductor selloff. Not named in Apple component-cost concerns. Holding up better than NVDA/INTC/AMD today. Stochastic: neutral/positive. MACD: bullish bias (enterprise tech outperforming today). Volume oscillator: moderate. Candlestick: insufficient. 2 of 5 indicators (MACD + Stochastic neutral) confirm. **Score: 7/10**
+
+**Sub-Agent 3 — Sentiment (7/10):** JPMorgan OW upgrade is a recent institutional positive. Not in the "AI cost" narrative that's hurting semis. X API unavailable. Analyst consensus positive. **Score: 7/10**
+
+**Sub-Agent 4 — Macro (7/10):** PCE matched estimates — neutral. IBM is domestic enterprise, largely dollar-neutral. Fed on hold = stable rate environment for enterprise IT spending. Not exposed to Apple consumer demand concerns. **Score: 7/10**
+
+**Sub-Agent 5 — Risk (7/10):** IBM 3sh × $271.35 = $814 = 0.81% equity ✓ (very small). Stop: $271.35 × 0.95 = $257.78. Target: $271.35 + 3×($271.35−$257.78) = $271.35 + $40.72 = $312.07. R/R = 3.0:1 ✓. Trade risk: 3 × $13.57 = $40.71 = 0.04% equity ✓. Sector (IT Services): 0% current ✓. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst (7/10):** IBM's watsonx platform gaining enterprise AI adoption. Mainframe installed base = switching-cost moat. Consulting business provides recurring revenue. Not leading AI innovation but defensible franchise. **Score: 7/10**
+
+**MASTER AGENT — IBM:**
+Fundamentals: 7/10 | Technical: 7/10 | Sentiment: 7/10 | Macro: 7/10 | Risk: 7/10 | Tech Analyst: 7/10
+Average: **7.0/10**
+Agents ≥7: ALL 6 ✓
+Risk Agent: 7/10 ✓
+Decision: **APPROVED**
+
+---
+
+### ORDER ATTEMPTS
+
+```
+# ORDER 1: GOOG 14sh bracket GTC
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ...
+  symbol: GOOG, qty: 14, side: buy, type: limit, limit_price: 337.93,
+  time_in_force: gtc, order_class: bracket,
+  stop_loss: {stop_price: 321.03}, take_profit: {limit_price: 388.62}
+→ HTTP 000 (proxy CONNECT rejected — paper-api.alpaca.markets:443 not in allowlist)
+
+# ORDER 2: MU 4sh bracket GTC
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ...
+  symbol: MU, qty: 4, side: buy, type: limit, limit_price: 1125.60,
+  time_in_force: gtc, order_class: bracket,
+  stop_loss: {stop_price: 1069.32}, take_profit: {limit_price: 1294.44}
+→ HTTP 000 (proxy CONNECT rejected)
+
+# ORDER 3: IBM 3sh bracket GTC
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ...
+  symbol: IBM, qty: 3, side: buy, type: limit, limit_price: 271.35,
+  time_in_force: gtc, order_class: bracket,
+  stop_loss: {stop_price: 257.78}, take_profit: {limit_price: 312.07}
+→ HTTP 000 (proxy CONNECT rejected)
+```
+
+**53rd CONSECUTIVE BLOCKED SESSION. ALL 3 APPROVED ORDERS FAILED. OPERATOR MUST EXECUTE MANUALLY.**
+
+---
+
+### YAML DECISION LOG
+
+```yaml
+---
+ts: 2026-06-26T13:46:00Z
+action: entry
+symbol: GOOG
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Alphabet GOOG (Class C) joins Dow Jones Industrial Average June 29 — last trading session before forced index-tracker buying. Open $336.25 today (below yesterday's $342.13) = favorable entry. R/R 3:1 ✓."
+size_pct: 4.73
+stop: 321.03
+target: 388.62
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "ORDER BLOCKED HTTP 000 (53rd consecutive — proxy policy denial paper-api.alpaca.markets:443). OPERATOR MUST EXECUTE: BUY 14sh GOOG limit $337.93 bracket GTC, stop $321.03, target $388.62. CORRECTION from prior daily reviews: Dow inclusion is for GOOG (Class C) not GOOGL (Class A). xAI API also unavailable (same proxy block). AMD 18sh NAKED — operator must sell 9sh + place stops on remaining 9sh BEFORE entering new positions."
+---
+```
+
+```yaml
+---
+ts: 2026-06-26T13:46:10Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: "Micron Q3 FY2026 blowout: EPS $25.11 (+24.3% beat), revenue $41.46B, Q4 guidance $50B. HBM4 sold out through 2026. Day-2 pullback in semiconductor selloff provides better entry than yesterday's gap. AI data center demand secular — Apple consumer concern overstated for MU."
+size_pct: 4.50
+stop: 1069.32
+target: 1294.44
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "ORDER BLOCKED HTTP 000 (53rd consecutive). OPERATOR MUST EXECUTE: BUY 4sh MU limit $1,125.60 bracket GTC, stop $1,069.32, target $1,294.44. Technical 6/10 (day-2 pullback risk); fundamentals and TA strongest setup this month. xAI API unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-06-26T13:46:20Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "IBM defensive tech — insulated from semiconductor selloff. JPMorgan OW upgrade intact. Enterprise AI (watsonx) adoption growing. Outperforming on today's Apple-driven chip selloff. PCE macro neutral (matched estimates). Conservative position 0.81% equity."
+size_pct: 0.81
+stop: 257.78
+target: 312.07
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "ORDER BLOCKED HTTP 000 (53rd consecutive). OPERATOR MUST EXECUTE: BUY 3sh IBM limit $271.35 bracket GTC, stop $257.78, target $312.07. All 6 agents at 7/10. xAI API unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-06-26T13:46:30Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 6.67
+thesis: "NVDA re-scored today: down approximately -1% in a week on pace for -8% decline. Semiconductor selloff. Apple AI cost concerns. Technical setup broken."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 2
+master_decision: rejected
+master_notes: "SKIP — score 6.67 < 7.0 threshold AND only 2 of 6 agents ≥7 (need ≥4). Technical 5/10: NVDA on pace for -8% week — trend broken. Sentiment 6/10: AI cost concerns weighing. Re-score at Mid-Morning if semiconductor sector stabilizes."
+---
+```
+
+```yaml
+---
+ts: 2026-06-26T13:46:40Z
+action: skip
+symbol: INTC
+bucket: active
+setup: sector-rotation
+score: 6.50
+thesis: "INTC specifically named in 'AI Chip Stocks MU, AMD, INTC, TSM Are Falling Today — June 26, 2026' (TipRanks). Semiconductor selloff day. Apple demand concern. Score below threshold."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.50
+agents_above_7: 3
+master_decision: rejected
+master_notes: "SKIP — score 6.50 < 7.0 threshold AND only 3 of 6 agents ≥7 (need ≥4). Technical 5/10: explicitly falling today with sector. Semiconductor selloff driven by Apple price hike demand concern. Re-score at Mid-Morning."
+---
+```
+
+---
+
 ## 2026-06-25 — Mid-Morning (11:00 AM ET / 15:05 UTC — THURSDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:56Z ✓
