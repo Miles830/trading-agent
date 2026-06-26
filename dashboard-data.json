@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-26T15:04:51Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-06-26T18:06:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.05,
     "benchmark_gap_pct": -5.77,
     "open_positions_count": 0,
-    "note": "June 25 MARKET-CLOSE (3:33 PM ET / 19:33Z). API BLOCKED (HTTP 403 \u2014 51st consecutive). Pre-Market + Market-Open + Midday SILENT FAILED (3/6). Mid-Morning + Afternoon + Market-Close completed. 5 MOC ORDERS ALL HTTP 403: GOOGL 8.2 avg (14sh MOC cls \u2014 SECOND-TO-LAST DOW INCLUSION WINDOW); MU 8.5 avg (4sh MOC cls); NVDA 8.0 avg (4sh MOC cls); INTC 7.5 avg (35sh MOC cls); IBM 7.5 avg (3sh MOC cls). AMD NAKED 18sh at ~$506.76 fill, est. ~$535 EOD (unrealized est. +$509, NO STOPS). MU closed est. ~$1,162 (+19.2%). SPX closed est. +0.68%. Cumulative gap: est. ~-5.77 pp. JUNE 26 ABSOLUTE BINDING: (1) AMD sell 9sh + GTC stop; (2) GOOGL MOO 14sh LAST DAY; (3) MU/NVDA/INTC/IBM bracket GTC orders."
+    "note": "June 26 AFTERNOON (2:06 PM ET / 18:06Z). API BLOCKED (HTTP 403 \u2014 55th consecutive). Pre-Market + Midday SILENT FAILED. Market-Open + Mid-Morning completed but all 6 order attempts blocked. GOOG Dow inclusion thesis EXPIRED (joins Dow June 29 \u2014 no pre-inclusion entry executed). GLD 7.0 scored (PCE 4.1% macro hedge) \u2014 approved Monday Pre-Market. AMD NAKED 18sh Day 5 (est. ~$505-525, NO STOPS \u2014 OPERATOR CRITICAL). Cumulative gap est. ~-6.0 pp. MONDAY BINDING: (1) AMD sell 9sh + stop; (2) MU 4sh MOO (7.17); (3) IBM 3sh GTC bracket (7.0); (4) GLD 10sh GTC bracket (7.0); (5) GOOG re-score post-inclusion thesis."
   },
   "positions": [
     {
@@ -84,10 +84,10 @@
         "note": "IBM est. $272-274 (+0.4-1.1%) \u2014 outperforming in semiconductor selloff. Not exposed to Apple consumer narrative."
       }
     ],
-    "macro_notes_md": "**2026-06-25 Afternoon (2:02 PM ET / 18:05Z)**\n- **MU BLOWOUT Q3 FY2026:** Revenue $41.46B (+15.7% beat), EPS $25.11 (+24.3% beat), Q4 guidance $50B (+16.5% beat). HBM4 SOLD OUT through 2026. Cloud Memory 83% gross margin. Data center +7x YoY. MU +19.2% (range $1,136-$1,255, settling ~$1,162-1,178).\n- **GOOGL DOW INCLUSION CRITICAL:** June 26 is LAST SESSION before June 29 (inclusion date). Must enter Friday. MOO 14sh preferred.\n- Nasdaq +2.30% (AI/semiconductors leading). SPX +0.77%. Dow +0.30%.\n- NVDA ~$200-205 (+1-2% on MU read-through). INTC ~$138-142 (+5-7%). IBM ~$270-276 (+3%).\n- AMD est. ~$535-545 (semiconductor rally). Naked 18sh position \u2014 unrealized est. +$504-692.\n- API blocked (51st session). All 5 orders blocked. 3 of 5 intraday routines failed today.",
-    "sp500_today_pct": "-0.3 to -0.5% mid-morning",
+    "macro_notes_md": "**June 26, 2026 \u2014 2 PM ET:**\n- PCE May 2026: **+4.1% YoY** (matched consensus; highest since April 2023) \u2014 persistent inflation\n- Core PCE: **+3.4% YoY** (above 3.3% est) \u2014 sticky inflation\n- S&P 500: est. **-0.3 to -0.5%** today (semiconductor selloff on Apple component cost concerns)\n- Semiconductors: AMD/MU/INTC/NVDA all declining\n- IBM/GLD: outperforming (defensive/inflation hedge)\n- GOOG: ~$335-340, down from $342 open; Dow inclusion tomorrow (June 29)\n- Iran conflict: ongoing (energy inflation driver)\n- Fed: on hold at 3.50-3.75% (June 17 decision)\n- **API ACCESS:** paper-api.alpaca.markets BLOCKED (55th consecutive session)\n- **Monday June 29:** GOOG officially joins Dow; API MUST be restored",
+    "sp500_today_pct": -0.4,
     "sp500_est": 7484,
-    "macro_note": "Mid-Morning June 26. PCE 4.1% matched consensus \u2014 absorbed neutrally. Semiconductor selloff driven by Apple component cost narrative (consumer DRAM/NAND). AI/HBM segment (MU, NVDA) unaffected \u2014 data center demand secular. GOOG Dow inclusion June 29: ABSOLUTE LAST TRADING SESSION TODAY. AMD naked 18sh Day 5 \u2014 operator must manage FIRST."
+    "macro_note": "PCE 4.1% persistent inflation + semiconductor selloff + API blocked (55th session). Monday: GOOG joins Dow."
   },
   "routines": [
     {
@@ -118,17 +118,17 @@
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "failed",
-      "last_run": "2026-06-24T16:32:00Z",
+      "last_run": "2026-06-26T18:06:00Z",
       "next_run": "2026-06-26 12:30 ET",
-      "last_summary": "June 25 Midday SILENT FAILURE \u2014 no heartbeat at 16:30Z. Violation logged in trades.md. Catch-up merged into Afternoon. All 5 watchlist names (MU 8.5, GOOGL 8.0, NVDA 8.0, INTC 7.5, IBM 7.5) still unexecuted. API blocked 51st session."
+      "last_summary": "June 26 Midday SILENT FAILURE \u2014 no heartbeat at 16:30Z. Violation logged in trades.md. API blocked (55th session). GLD scoring deferred to Afternoon (executed). GOOG/MU/IBM re-attempts deferred to Market-Close."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
       "status": "completed",
-      "last_run": "2026-06-25T18:02:00Z",
-      "next_run": "2026-06-26 14:00 ET",
-      "last_summary": "June 25 Afternoon: API BLOCKED (51st). Pre-Market + Market-Open + Midday all silent failed today (3 failures). Mid-Morning completed 15:16Z. No day trades open \u2014 nothing to close. 5 positions (MU/GOOGL/NVDA/INTC/IBM) all >=7, proximity-to-close defer per playbook. All 5 logged action:skip. AMD naked 18sh (~$535-545, unrealized +$504-692, NO STOPS). GOOGL CRITICAL: June 26 is ABSOLUTE LAST SESSION before Dow inclusion June 29. June 26 Pre-Market binding: (1) AMD 9sh sell + stop; (2) GOOGL 14sh MOO \u2014 LAST DAY; (3) MU 4sh; (4) NVDA 4sh; (5) INTC 35sh; (6) IBM 3sh."
+      "last_run": "2026-06-26T18:06:00Z",
+      "next_run": "2026-06-29T18:00:00Z",
+      "last_summary": "June 26 Afternoon: API BLOCKED (55th). Pre-Market + Midday silent failed. No day trades open \u2014 nothing to close. 4 positions (GOOG/MU/IBM/GLD) scored \u22657, all logged action:skip (proximity-to-close + API blocked). GLD freshly scored 7.0 (PCE 4.1% macro hedge) \u2014 approved Monday Pre-Market. AMD naked 18sh Day 5. GOOG Dow inclusion thesis expires today \u2014 Monday requires fresh post-inclusion score. Monday Pre-Market binding: AMD resolve + MU 4sh + IBM 3sh + GLD 10sh + GOOG re-score."
     },
     {
       "name": "Market Close",
@@ -136,7 +136,7 @@
       "status": "completed",
       "last_run": "2026-06-25T19:33:00Z",
       "next_run": "2026-06-26T19:30:00Z",
-      "last_summary": "June 25 Market-Close: 5 MOC orders attempted (GOOGL 8.2/MU 8.5/NVDA 8.0/INTC 7.5/IBM 7.5) \u2014 all HTTP 403 (51st block). No day trades to close. AMD naked 18sh est. ~$535 EOD, NO stops. SPX est. +0.68%. Portfolio 0 P&L. Gap est. -5.77 pp. June 26: AMD fix + GOOGL MOO (LAST DAY \u2014 Dow inclusion June 29)."
+      "last_summary": "June 25 Market-Close: 5 MOC orders attempted \u2014 all HTTP 403 (51st block). June 26 Market-Close (next, 3:30 PM ET / 19:30Z): attempt GOOG/MU/IBM MOC orders as LAST window today. AMD naked resolution remains operator-only action."
     },
     {
       "name": "Daily Review",
@@ -156,6 +156,38 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-26T18:06:00Z",
+      "action": "skip",
+      "symbol": "GOOG",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "reason": "Afternoon proximity-to-close + API blocked (55th session). Dow inclusion thesis expires today."
+    },
+    {
+      "ts": "2026-06-26T18:06:05Z",
+      "action": "skip",
+      "symbol": "MU",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "reason": "Afternoon proximity-to-close + API blocked."
+    },
+    {
+      "ts": "2026-06-26T18:06:10Z",
+      "action": "skip",
+      "symbol": "IBM",
+      "setup": "sector-rotation",
+      "score": 7.0,
+      "reason": "Afternoon proximity-to-close + API blocked."
+    },
+    {
+      "ts": "2026-06-26T18:06:20Z",
+      "action": "skip",
+      "symbol": "GLD",
+      "setup": "macro-hedge",
+      "score": 7.0,
+      "reason": "Afternoon proximity-to-close per playbook. Approved for Monday Pre-Market. PCE 4.1% catalyst."
+    },
     {
       "ts": "2026-06-26T15:04:00Z",
       "action": "violation",
@@ -1233,64 +1265,85 @@
   },
   "watchlist": [
     {
-      "symbol": "AMD",
-      "score": null,
-      "bucket": "active",
-      "setup": "other",
-      "est_price": 524.0,
-      "stop": 481.42,
-      "target": 582.77,
-      "thesis": "NAKED POSITION CRISIS: 18sh AMD at ~$506.76 avg = Day 5 no stops. Est. ~$520-528 mid-morning (down in semiconductor selloff). Oversized at ~9.13% equity.",
-      "action": "OPERATOR CRITICAL (FIRST ACTION): (1) SELL 9sh AMD at market (reduce to ~4.6% equity). (2) GTC stop on remaining 9sh at fill \u00d7 0.95 (~$481.42). (3) Target fill \u00d7 1.15 (~$582.77).",
-      "priority": 1
-    },
-    {
-      "symbol": "GOOG",
-      "score": 7.0,
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "est_price": 335.8,
-      "stop": 320.61,
-      "target": 388.1,
-      "thesis": "GOOG (Class C) joins Dow Jones Industrial Average Sunday June 29. TODAY IS THE FINAL TRADING SESSION before forced index-tracker buying. 14sh limit $337.48 bracket GTC.",
-      "action": "BUY \u2014 14sh limit $337.48 bracket GTC (stop $320.61, target $388.10). FINAL WINDOW \u2014 After today market close, Dow inclusion locked.",
-      "priority": 2
-    },
-    {
+      "rank": 1,
       "symbol": "MU",
       "score": 7.17,
-      "bucket": "active",
       "setup": "earnings-reaction-follow",
-      "est_price": 1100.0,
-      "stop": 1050.23,
-      "target": 1271.33,
-      "thesis": "Day-2 post-earnings pullback in semiconductor selloff. Apple consumer concern does NOT apply to MU HBM4/data-center segment (80%+ revenue). $50B Q4 guidance locked. 4sh limit $1,105.50 bracket GTC.",
-      "action": "BUY \u2014 4sh limit $1,105.50 bracket GTC (stop $1,050.23, target $1,271.33). Improved vs Market-Open $1,125.60.",
-      "priority": 3
+      "thesis": "Q3 FY2026 historic beat (EPS $25.11, rev $41.46B). HBM4 sold out through 2026. 2-day pullback = improved entry vs Thursday open. Data center +7x YoY.",
+      "entry_est": 1100,
+      "stop": 1045,
+      "target": 1265,
+      "priority": "MOO Monday",
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 6,
+        "sentiment": 7,
+        "macro": 6,
+        "risk": 7,
+        "tech_analyst": 8
+      }
     },
     {
+      "rank": 2,
       "symbol": "IBM",
       "score": 7.0,
-      "bucket": "active",
       "setup": "sector-rotation",
-      "est_price": 273.0,
-      "stop": 260.65,
-      "target": 315.53,
-      "thesis": "Defensive enterprise tech outperforming in semiconductor selloff. JPMorgan OW intact. Not exposed to Apple consumer narrative. 3sh limit $274.37 bracket GTC.",
-      "action": "BUY \u2014 3sh limit $274.37 bracket GTC (stop $260.65, target $315.53).",
-      "priority": 4
+      "thesis": "Defensive tech outperforming semiconductor selloff. JPMorgan OW. watsonx AI consulting growing. Insulated from Apple component cost narrative.",
+      "entry_est": 275,
+      "stop": 261,
+      "target": 317,
+      "priority": "limit bracket GTC Monday",
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 7
+      }
     },
     {
+      "rank": 3,
       "symbol": "GLD",
-      "score": null,
-      "bucket": "active",
+      "score": 7.0,
       "setup": "macro-hedge",
-      "est_price": 402.0,
-      "stop": null,
-      "target": null,
-      "thesis": "FLAGGED FOR MIDDAY SCORING. PCE 4.1% + Iran conflict = inflation tailwind for gold. Prior GLD position stopped June 10. Re-evaluate with fresh 6-agent at Midday if price data available.",
-      "action": "SCORE at Midday routine \u2014 do NOT enter without full 6-agent approval.",
-      "priority": 5
+      "thesis": "PCE 4.1% May 2026 (highest since April 2023) + Iran conflict = persistent inflation. Fed on hold = real rates compressing. Gold classic inflation hedge re-entry after June 10 stop-hit.",
+      "entry_est": 405,
+      "stop": 384.75,
+      "target": 465.75,
+      "priority": "limit bracket GTC Monday",
+      "agent_scores": {
+        "fundamentals": 6,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 7
+      }
+    },
+    {
+      "rank": 4,
+      "symbol": "GOOG",
+      "score": "re-score",
+      "setup": "post-inclusion",
+      "thesis": "GOOG joins Dow Monday June 29 (effective). Pre-inclusion thesis EXPIRED. Re-score post-inclusion momentum vs. buy-the-news fade risk. Fundamentals remain strong (Cloud +29%, Gemini AI). If score \u22657, enter; if <7, skip.",
+      "entry_est": 338,
+      "stop": 321,
+      "target": 389,
+      "priority": "re-score required at Pre-Market",
+      "agent_scores": {}
+    },
+    {
+      "rank": 5,
+      "symbol": "AMD",
+      "score": "critical",
+      "setup": "naked-management",
+      "thesis": "CRITICAL: 18sh estimated naked since June 23. Day 6 Monday. Operator MUST sell 9sh at market + place GTC stop $481.42 + take-profit $582.77 on remaining 9sh. If unresolved by Monday Pre-Market, sell entire 18sh position.",
+      "entry_est": 506.76,
+      "stop": 481.42,
+      "target": 582.77,
+      "priority": "OPERATOR MANDATORY \u2014 resolve before any new orders",
+      "agent_scores": {}
     }
   ],
   "history": [
