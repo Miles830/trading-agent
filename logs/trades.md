@@ -4,6 +4,261 @@
 
 ---
 
+## 2026-06-26 — Daily Review (4:30 PM ET / 20:31 UTC — FRIDAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:31:57Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (exit 56 / policy 403) — **57th consecutive blocked session**
+**Market Status:** CLOSED — regular session ended 20:00Z (4:00 PM ET)
+
+---
+
+### HEARTBEAT AUDIT — JUNE 26, 2026 (FULL DAY)
+
+```
+cat logs/heartbeats/2026-06-26.log
+→ 2026-06-26T13:46:01Z STARTED Market-Open
+→ 2026-06-26T13:55:48Z COMPLETED Market-Open
+→ 2026-06-26T15:04:51Z STARTED Mid-Morning
+→ 2026-06-26T15:13:57Z COMPLETED Mid-Morning
+→ 2026-06-26T18:02:50Z STARTED Afternoon
+→ 2026-06-26T18:13:37Z COMPLETED Afternoon
+→ 2026-06-26T19:33:39Z STARTED Market-Close
+→ 2026-06-26T19:38:54Z COMPLETED Market-Close
+→ 2026-06-26T20:31:57Z STARTED Daily-Review
+```
+
+| Routine | Scheduled (ET / UTC) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ❌ absent | ❌ absent | **SILENT FAILURE** |
+| Market-Open | 09:45 ET / 13:45Z | ✅ 13:46:01Z | ✅ 13:55:48Z | COMPLETED |
+| Mid-Morning | 11:00 ET / 15:00Z | ✅ 15:04:51Z | ✅ 15:13:57Z | COMPLETED |
+| Midday | 12:30 ET / 16:30Z | ❌ absent | ❌ absent | **SILENT FAILURE** |
+| Afternoon | 14:00 ET / 18:00Z | ✅ 18:02:50Z | ✅ 18:13:37Z | COMPLETED |
+| Market-Close | 15:30 ET / 19:30Z | ✅ 19:33:39Z | ✅ 19:38:54Z | COMPLETED |
+| Daily-Review | 16:30 ET / 20:30Z | ✅ 20:31:57Z | ⏳ running | IN PROGRESS |
+
+**4 of 6 intraday routines completed. 2 SILENT FAILURES (Pre-Market, Midday).**
+
+**⚠️ TOP OPERATIONAL ISSUE — CHRONIC Pre-Market SILENT FAILURE:**
+Pre-Market has now silently failed on EVERY trading day this week (June 22, 23, 24, 25, 26 — 5 consecutive failures). This is the day's primary operational issue. All MOO orders this week were lost before placement. The Dow inclusion (GOOG, last window June 26), AMD management (9sh sell + stop placement), and MU MOO were all designated by prior Daily Reviews as Pre-Market actions — none executed.
+
+**Root-cause hypothesis:** The 8:00 AM ET / 12:00 UTC trigger is not firing on the cloud scheduler. Mid-morning (11:00 AM / 15:00 UTC) and Afternoon (2:00 PM / 18:00 UTC) fire reliably, suggesting the issue is specific to early-morning triggers (12:00 UTC). The Midday (12:30 PM / 16:30 UTC) failed 2 of 5 days this week, suggesting intermittent scheduler issues at that time slot as well.
+
+**Proposed remediation:** Operator should inspect the claude.ai/code/routines trigger schedule for the Pre-Market slot and verify the cron expression. If the trigger is set correctly, the issue may be the agent hitting a context limit or timeout before completing the heartbeat START line.
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION (MARKET CLOSED)
+
+API blocked — cannot call /v2/positions or /v2/orders. Relying on estimated state:
+
+- **AMD 18sh — NAKED — DAY 5/6 (going into weekend as Day 6):** fills est. ~$506.76 avg (June 23 GTC stale fill). No stop. No take-profit. Position: ~9.1% equity — double the 5% hard cap. CRITICAL weekend risk.
+- All other positions: 0 confirmed.
+
+```yaml
+---
+ts: 2026-06-26T20:31:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh NAKED Day 6 — going into 2-day weekend with zero stop protection. Position is 9.13% equity (5% hard cap = violation). 5 consecutive trading days without a resting stop at Alpaca. API blocked 57th consecutive session — cannot place stop programmatically."
+size_pct: 9.13
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "CRITICAL WEEKEND VIOLATION. Operator MUST log into app.alpaca.markets TONIGHT (Friday or Saturday morning): (1) SELL 9sh AMD at market (reduce 18sh→9sh; bring position from 9.1%→4.6%); (2) Place GTC stop $481.42 on remaining 9sh ($506.76 × 0.95); (3) Place GTC take-profit $582.77 on remaining 9sh ($506.76 × 1.15). R/R = 3:1 ✓. If AMD gaps down >5% Sunday evening on futures, the position absorbs the full gap-down loss with no protection."
+---
+```
+
+---
+
+### TODAY'S P&L vs BENCHMARK
+
+**Portfolio daily return:** $0.00 / 0.00% (no confirmed positions; AMD stale fills unverifiable via API)
+**SPX estimated return (June 26):** −0.40% (semiconductor selloff on Apple cost narrative; PCE 4.1% absorbed neutrally)
+**Daily gap vs SPX:** **+0.40 pp** (inadvertent — cash wins on a -0.40% day)
+**Portfolio total return (inception May 1 2026):** −0.15% (GLD stop June 10 = −$145.58 realized)
+**SPX total return (May 1–June 26 2026):** +5.25% (estimated from ~$7,100 baseline to ~$7,484)
+**Cumulative gap vs SPX:** **est. −6.0 pp** (−0.15% portfolio vs +5.25% SPX)
+
+**Rolling 20-day equity curve:** API blocked — cannot pull /v2/account/portfolio/history. Estimated from memory: portfolio flat at ~$99,854 every day while SPX has compounded +5%+ since May. The 20-day rolling window shows consistent underperformance on every single day.
+
+**⚠️ 20-DAY UNDERPERFORMANCE FLAG ACTIVE — 45+ CONSECUTIVE TRADING DAYS**
+This flag has been active since approximately late May 2026. Root cause remains: Alpaca API blocked by egress proxy policy (paper-api.alpaca.markets:443 not in allowlist). No Anthropic infrastructure fix has landed as of the 57th consecutive blocked session. The portfolio has $94,000+ of approved, scored, 6-agent-cleared orders sitting unexecuted. This is not a strategy failure — it is a pure execution failure.
+
+**Strategy adjustments (without changing hard guardrails):**
+1. **API restoration is non-negotiable for Monday.** The operator must contact Anthropic support to add paper-api.alpaca.markets to the allowlist, OR begin executing all orders manually from the Alpaca web UI each morning.
+2. **Widen the Monday scan beyond carry-forwards.** Monday June 29 has several fresh setups to evaluate alongside the pre-approved list.
+3. **After first fill, focus immediately on 85% deployment.** ~$94K of cash above the 5% floor needs to be deployed into approved setups.
+4. **Crypto bucket remains untouched.** BTC est. ~$65-67K — below $82K threshold. No crypto entries until threshold clears.
+
+---
+
+### WIN RATE / PROFIT FACTOR
+
+**Today:** 0 completed trades (0 fills, 9 order attempts all blocked).
+**All-time (inception to June 26):** 1 completed trade (GLD macro-hedge stop_hit, −4.99%). Win rate: 0%. Profit factor: 0 (no winning trades).
+**Rolling 20-day:** 0 completed trades. No statistical metrics computable.
+
+Note: Win rate of 0% reflects exactly 1 completed trade (GLD), not systematic losing. All other entries are "attempted + blocked" and have no result_pct. Once orders start executing, win-rate will become meaningful.
+
+---
+
+### BEST / WORST TRADE OF THE DAY
+
+**Best trade (conceptual):** Being in cash on a −0.40% SPX day provided +0.40 pp of inadvertent alpha. IBM entry was correctly identified as defensive outperformer (est. +0.4-1.1% on the day vs sector −2.5%). IBM timing was right; execution was blocked.
+
+**Worst trade (operational):** Pre-Market silent failure for the 5th consecutive trading day lost the GOOG Dow inclusion entry permanently. 7 total attempts for GOOG across June 24-26 (2 sessions × 3 routines each), all blocked. The Dow inclusion forced-buying thesis — the most time-sensitive catalyst of the month — expired at today's close with zero execution. This represents the largest single thesis-execution failure of the portfolio's life.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **AMD exposure during semiconductor selloff preserved (inadvertently):** AMD pulled back ~-2% on Apple cost concerns. Had we successfully increased AMD from 18sh to 27sh yesterday (as prior plans called for), today's selloff would have deepened the naked-position loss. The API block, while frustrating, prevented adding to an already-oversized naked position.
+
+2. **GOOG GOOGL correction applied and clarified:** The research error (GOOGL vs GOOG for Dow inclusion) was identified and corrected in time to target the correct share class. Even though the entry was never executed, the research discipline is improving — catching class-share errors on index rebalancing plays matters.
+
+3. **GLD re-scored correctly at 7.0 on PCE 4.1%:** The Afternoon routine correctly identified GLD as a valid macro hedge re-entry given the PCE 4.1% inflation print. Score 7.0 approved for Monday. This sets up a productive Monday entry independent of the semiconductor/Dow-inclusion themes.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW (MONDAY)
+
+1. **AMD MUST be managed before any new entries.** The 9.13% naked position is the single most dangerous operational issue. Operator must sell 9sh and place stop BEFORE Monday open. No new positions until AMD is at or below 5% with a resting stop.
+
+2. **Pre-Market trigger must be verified.** If Pre-Market fails again Monday, no MOO orders can be placed. MU was approved for MOO (score 7.17) — that MOO will be lost again. Operator should verify the trigger is firing at 12:00 UTC Monday or manually execute the Pre-Market action plan.
+
+3. **Broaden Monday scan beyond carry-forwards.** The Monday watchlist has 4 carry-forwards (MU, IBM, GLD, GOOG re-score). Fresh universe scan should include NKE post-earnings (reports tonight after close), XOM energy macro hedge, and the semiconductor sector for a potential bounce setup.
+
+---
+
+### SETUP-TAG TALLY (June 22-26 rolling 5-day window)
+
+All result_pct values remain null — no completed trades in the rolling 5-day window (API blockage = no exits). Setup tracker unchanged from June 25 Daily Review.
+
+| Setup type | Wins | Losses | Consec. L | 3-in-a-row halt | 3-in-a-row boost | Status |
+|---|---|---|---|---|---|---|
+| macro-hedge | 0 | **1** (GLD −4.99%) | 1 | none — need 3 | — | GLD approved for Monday re-entry (PCE 4.1%) |
+| earnings-reaction-follow | 0 | 0 | 0 | none | — | **MU 7.17 BINDING for Monday** (HBM4 sold out; Day 3 post-earnings) |
+| sector-rotation | 0 | 0 | 0 | none | — | **IBM 7.0 BINDING for Monday**; GOOG re-score needed (Dow inclusion EXPIRED) |
+| ai-momentum-pullback | 0 | 0 | 0 | none | — | NVDA (was 6.67 June 26 — re-score Monday); INTC (was 6.50 — re-score) |
+| breakout-volume | 0 | 0 | 0 | none | — | AMD — resolve naked position first; no new breakout entries |
+| mean-reversion-oversold | 0 | 0 | 0 | none | — | No candidates |
+| earnings-reaction-fade | 0 | 0 | 0 | none | — | No trades |
+| candlestick-reversal | 0 | 0 | 0 | none | — | No trades |
+| crypto-flush-rebound | 0 | 0 | 0 | none | — | BTC ~$65-67K — below $82K threshold |
+
+**No 3-in-a-row halt or boost triggered.** All trades remain in "attempted/blocked" state with null result_pct. The setup tracker cannot differentiate performance until API is restored and trades close.
+
+---
+
+### AGENT CALIBRATION (June 22-26 rolling 5-day window)
+
+No closed trades → no calibration update. All scores remain at pre-trade state.
+
+Notable observation: The Technical Agent has consistently scored LOWER than other agents on every entry this week (GOOG T=7, MU T=6, IBM T=7, GLD T=7, NVDA T=5, INTC T=5). The Technical Agent may be appropriately conservative in a semiconductor selloff + high-PCE environment. The Fundamentals Agent remains the highest scorer on average (MU F=9, GOOG F=8, IBM F=7, GLD F=6). No calibration adjustments triggered (need completed trades).
+
+---
+
+### MONDAY JUNE 29 WATCHLIST — BINDING COMMITMENT (per CLAUDE.md Deployment Bias)
+
+**PRIORITY 0 (BEFORE ANY ENTRIES):** AMD naked management — SELL 9sh + place GTC stop $481.42 + take-profit $582.77 on remaining 9sh. Must be done via app.alpaca.markets TONIGHT or Saturday. Confirms by Monday Pre-Market.
+
+| # | Symbol | Score | Setup | Est. Entry | Stop | Target | Thesis | Action |
+|---|---|---|---|---|---|---|---|---|
+| 1 | **MU** | **7.17** | earnings-reaction-follow | ~$1,090–1,110 | $1,050 (−5%) | $1,264 (+15%) | HBM4 sold out through 2026; Q3 blowout beat; Day 3 post-earnings pullback = constructive entry | **MOO BINDING** |
+| 2 | **IBM** | **7.0** | sector-rotation | ~$273–278 | $260 (−5%) | $315 (+15%) | Defensive enterprise tech; JPMorgan OW; outperformed in June 26 semiconductor selloff | **Limit bracket GTC BINDING** |
+| 3 | **GLD** | **7.0** | macro-hedge | ~$405 | $384.75 (−5%) | $465.75 (+15%) | PCE 4.1% (highest since April 2023); Iran war inflation; Fed on hold = real rates compressing | **Limit bracket GTC BINDING** |
+| 4 | **GOOG** | **re-score** | post-inclusion | ~$335–345 | TBD | TBD | Dow inclusion EFFECTIVE Monday — post-inclusion momentum vs. buy-the-news fade; needs fresh 6-agent at Pre-Market | **Re-score before entering** |
+| 5 | **NVDA** | **re-score** | ai-momentum-pullback | ~$198–204 | TBD | TBD | Was 6.67 June 26 (T=5 in semi selloff); if semiconductor sector bounces Monday, Technical may recover to 7; fresh 6-agent needed | **Re-score at Pre-Market** |
+| 6 | **XOM** | **~7.0 est.** | macro-hedge | ~$128–135 | −5% | +15% | PCE 4.1% energy component +23.5% YoY; Iran conflict ongoing; oil above $100/bbl; energy inflation secular | **Fresh 6-agent at Pre-Market** |
+| 7 | **INTC** | **re-score** | ai-momentum-pullback | ~$133–140 | TBD | TBD | Was 6.50 June 26 (specifically named in selloff); BofA PT $135; Apple foundry partnership; re-score Monday | **Re-score at Pre-Market** |
+| 8 | **NKE** | **pending** | earnings-reaction-follow | TBD | TBD | TBD | Nike Q4 FY2026 prints tonight (after June 26 close); if beats + raises: earnings-reaction-follow at Monday open | **Score post-print at Pre-Market** |
+| 9 | **MRVL** | **~6.5 est.** | breakout-volume | ~$260–270 | TBD | TBD | Post-S&P 500 inclusion (June 22 effective); AI custom chip (Teralynx T100); consolidating post-inclusion; needs fresh score | **Re-score; only enter if ≥7** |
+| 10 | **AMD** | **MGMT** | — | ~$506–525 | $481.42 | $582.77 | NOT a new entry — naked position management (sell 9sh, stop remaining 9sh); already confirmed fill at ~$506.76 | **OPERATOR MUST ACT WEEKEND** |
+
+**Monday Pre-Market execution order (if API restored):**
+1. Confirm AMD 18sh → sell 9sh at MOO; confirm remaining 9sh stop resting at Alpaca
+2. MU 4sh MOO (binding score 7.17)
+3. XOM fresh 6-agent; if ≥7 → limit bracket GTC
+4. GOOG fresh 6-agent (post-inclusion thesis); if ≥7 → limit bracket GTC
+5. IBM 3sh limit bracket GTC (binding score 7.0)
+6. GLD 10sh limit bracket GTC (binding score 7.0)
+7. NKE post-earnings score; if ≥7 → limit bracket GTC
+8. NVDA/INTC re-scores; enter only if ≥7
+
+---
+
+### KEY MACRO EVENTS — WEEK OF JUNE 29, 2026
+
+| Date | Event | Relevance |
+|---|---|---|
+| Mon Jun 29 | **GOOG joins Dow Jones Industrial Average** (effective open) | Forced index-tracker rebalancing; post-inclusion buy vs. fade |
+| Mon Jun 29 | No major US economic releases scheduled | Clean day for entries; full session available |
+| Tue Jun 30 | **Consumer Confidence (Jun)** (10 AM ET) | Sentiment indicator; PCE 4.1% context may weigh |
+| Tue Jun 30 | **S&P Case-Shiller Home Prices (Apr)** (9 AM ET) | Housing/inflation read |
+| Wed Jul 1 | **ISM Manufacturing PMI (Jun)** (10 AM ET) | Economic activity; if weak = risk-off |
+| Thu Jul 2 | **Initial Jobless Claims** (8:30 AM ET) | Labor market read; strong labor = Fed hold justified |
+| Fri Jul 3 | **Non-Farm Payrolls (Jun)** (8:30 AM ET) | Major event; markets partially closed (Independence Day Eve) |
+| Fri Jul 4 | **US MARKETS CLOSED** — Independence Day | No trading |
+| Rolling | **Iran conflict** | Oil/energy inflation; geopolitical risk |
+| Rolling | **Q2 Earnings season begins ~Jul 8-14** | Avoid positions within 48h of each company's print |
+
+**Earnings nearby (48h window exclusions):**
+- No major S&P 500 earnings June 29 (Monday)
+- Check NKE post-print (tonight June 26 after close) before entering
+- FedEx (FDX) ~June 25 AH — check status
+- Q2 season begins in earnest ~Jul 8 (banks: JPM, BAC, WFC)
+
+---
+
+### FRIDAY WEEKLY STRATEGY EVOLUTION NOTE — Week of June 22-26, 2026
+
+**Week in review:**
+- **June 22 (Mon):** MRVL S&P 500 inclusion effective — entry attempted, blocked (45th-47th consecutive blocked sessions). Market +1.3-1.7% on Iran deal aftermath.
+- **June 23 (Tue):** Near-total blackout (5 of 6 routines silent failed). AMD stale GTC fills triggered (~$506.76 avg, 18sh). MU pre-earnings capitulation selloff. Portfolio: 0% vs SPX −1.3%.
+- **June 24 (Wed):** GOOGL/GOOG Dow inclusion announced (June 29 effective) — 5-session entry window opened. MU +10.7% pre-earnings. 3 orders attempted (GOOGL, INTC, IBM) — all blocked.
+- **June 25 (Thu):** MU Q3 FY2026 blowout (EPS $25.11 +24.3%, rev $41.46B +15.7%, Q4 $50B guide). MU +19.2% on earnings. S&P +0.68%. 10 orders attempted — all blocked. AMD naked Day 3.
+- **June 26 (Fri):** PCE 4.1% (May, matched consensus). Semiconductor selloff (Apple cost narrative). GOOG Dow inclusion pre-entry window EXPIRED at close. 9 orders attempted — all blocked. AMD naked Day 5/6 going into weekend.
+
+**What changed this week:**
+1. **MU thesis fully validated:** EPS +24.3% beat, HBM4 sold out, Q4 guidance beat consensus by 16.5%. Score upgraded from 8.5 to confirmed 7.17 (post-selloff, more conservative). MU is the highest-conviction entry for Monday.
+2. **GOOG class-share error identified and corrected:** Prior daily reviews incorrectly targeted GOOGL (Class A) for Dow inclusion. The correct share class is GOOG (Class C). This correction was made June 26 but was too late to execute. Research quality protocol: verify index-inclusion share class against the official announcement.
+3. **Pre-Market scheduler confirmed broken (5 consecutive failures):** Every single trading day this week had a Pre-Market silent failure. This is systematic, not intermittent. The early-morning trigger (12:00 UTC / 8:00 AM ET) is not firing. This is the single largest operational issue in the portfolio's history.
+4. **Inflation narrative entrenched:** PCE 4.1% (May) is the strongest reading since April 2023. Combined with Iran conflict driving energy costs, the macro environment is high-and-persistent inflation with Fed on hold. This makes GLD and XOM increasingly attractive as portfolio anchors alongside AI/semiconductor names.
+5. **Semiconductor selloff overdone (hypothesis):** Apple's MacBook/iPad price hike targets consumer DRAM/NAND — NOT the HBM4 that MU's revenues depend on. The Apple narrative created a sentiment selloff in a category (AI HBM memory) that is fundamentally unaffected. This creates a potential mean-reversion entry Monday if semis bounce on the clarification.
+
+**What did NOT change:**
+- Hard guardrails (stop-loss %, position limits, R/R, cash floor) unchanged
+- AMD 18sh naked position — still unresolved (Day 5/6 going into weekend)
+- API blockage — still unresolved (57th consecutive session)
+- Core thesis: MU (HBM4 monopoly), IBM (defensive), GLD (inflation), GOOG (AI cloud) are all valid fundamental setups
+
+**Next week strategy focus:**
+- Restore API access before Monday 8 AM ET (operator action required)
+- Deploy capital aggressively once API restored — $94K+ sits above the 5% floor with no excuse
+- Prioritize: AMD management → MU MOO → GLD/IBM brackets → fresh scans
+- Week of July 4: Independence Day Friday (Jul 4 closed), thin Thursday volume. Position for NFP (Jul 3) and be prepared to reduce exposure before the long weekend.
+
+---
+
+### DAILY SUMMARY (June 26, 2026 — Friday)
+
+**Market:** SPX est. −0.40%. Semiconductor selloff (Apple cost narrative). PCE 4.1% matched consensus. GOOG Dow inclusion thesis expired at close.
+**Portfolio:** 0.00% daily return. 0 fills (all orders blocked — 57th consecutive session). Daily gap vs SPX: +0.40 pp (inadvertent cash shield).
+**Cumulative gap vs SPX:** est. **−6.0 pp** (widening daily; all entries blocked).
+**Routines completed:** Market-Open ✅ Mid-Morning ✅ Afternoon ✅ Market-Close ✅. FAILED: Pre-Market ❌ Midday ❌.
+**Orders attempted today:** 9 (3 GOOG + 3 MU/IBM + 3 MOC). All blocked HTTP 000.
+**Win rate (all-time):** 0% (1 trade — GLD macro-hedge stop_hit −4.99%).
+**AMD naked status:** Day 5/6 — CRITICAL OPERATOR ACTION REQUIRED TONIGHT.
+**Monday binding commitment:** AMD management → MU 4sh MOO → GLD 10sh bracket → IBM 3sh bracket → GOOG/NVDA/XOM/NKE re-scores.
+
+---
+
 ## 2026-06-26 — Market Open (9:45 AM ET / 13:46 UTC — FRIDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:46:01Z ✓
