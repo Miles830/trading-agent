@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-26T15:04:51Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-06-26T16:32:46Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.05,
     "benchmark_gap_pct": -5.77,
     "open_positions_count": 0,
-    "note": "June 25 MARKET-CLOSE (3:33 PM ET / 19:33Z). API BLOCKED (HTTP 403 \u2014 51st consecutive). Pre-Market + Market-Open + Midday SILENT FAILED (3/6). Mid-Morning + Afternoon + Market-Close completed. 5 MOC ORDERS ALL HTTP 403: GOOGL 8.2 avg (14sh MOC cls \u2014 SECOND-TO-LAST DOW INCLUSION WINDOW); MU 8.5 avg (4sh MOC cls); NVDA 8.0 avg (4sh MOC cls); INTC 7.5 avg (35sh MOC cls); IBM 7.5 avg (3sh MOC cls). AMD NAKED 18sh at ~$506.76 fill, est. ~$535 EOD (unrealized est. +$509, NO STOPS). MU closed est. ~$1,162 (+19.2%). SPX closed est. +0.68%. Cumulative gap: est. ~-5.77 pp. JUNE 26 ABSOLUTE BINDING: (1) AMD sell 9sh + GTC stop; (2) GOOGL MOO 14sh LAST DAY; (3) MU/NVDA/INTC/IBM bracket GTC orders."
+    "note": "Midday June 26 (12:32 PM ET / 16:32Z). API BLOCKED (55th consecutive \u2014 HTTP 403). Pre-Market Day 5 silent fail. Market-Open \u2713 (13:46-13:55Z). Mid-Morning \u2713 (15:04-15:13Z). Midday running. 3 re-attempts BLOCKED again: GOOG 14sh $336.68, MU 4sh $1,105.50, IBM 3sh $274.37. AMD 18sh NAKED Day 5 (est. ~$516-526, declining). PCE 4.1% absorbed. Semiconductor selloff -2.5%. GOOG Dow inclusion FINAL WINDOW (Afternoon + Market-Close remain today). Cumulative gap est. ~-6.0 pp."
   },
   "positions": [
     {
@@ -62,7 +62,7 @@
     }
   ],
   "market": {
-    "mode": "SEMICONDUCTOR SELLOFF \u2014 Apple MacBook/iPad price hikes driving demand-destruction fear. PCE 4.1% matched estimates. GOOG Dow inclusion Sunday June 29 = LAST TRADING DAY TODAY.",
+    "mode": "SEMICONDUCTOR SELLOFF \u2014 Apple MacBook/iPad price hikes (midday, -2.5% semis). PCE 4.1% absorbed. GOOG Dow inclusion June 29 = LAST ENTRY WINDOW TODAY (Afternoon + Market-Close).",
     "fear_greed": null,
     "fear_greed_label": "Greed. MU blowout print + HBM4 sold-out narrative driving AI capex confidence. Market pricing in accelerating AI infrastructure spend.",
     "spx": "S&P 500 +0.77% at 2PM ET (est. ~7,538). Nasdaq +2.30% (AI/semis leading). Dow +0.30%. Broad risk-on with semiconductor complex driving indices.",
@@ -71,23 +71,23 @@
       {
         "name": "Semiconductors \u2014 SELLOFF (Apple consumer narrative)",
         "change_pct": -2.5,
-        "note": "Apple memory cost concerns driving consumer DRAM/NAND sell. INTC ~$135, NVDA ~$200, MU day-2 pullback ~$1,100. AI/HBM unaffected but price pressure real."
+        "note": "Apple MacBook/iPad price hikes from higher memory costs driving demand destruction fear. INTC ~$135, NVDA ~$200, MU day-2 pullback ~$1,100, AMD ~$516-526 (NAKED). AI/HBM segment unaffected but consumer drag real."
       },
       {
-        "name": "Communication Services \u2014 DOW INCLUSION",
-        "change_pct": -0.5,
-        "note": "GOOG down ~-0.1 to -0.5% from $336.25 open. Dow inclusion Sunday June 29 = TODAY IS LAST ENTRY. 14sh limit $337.48 bracket GTC \u2014 FINAL WINDOW."
+        "name": "Communication Services \u2014 GOOG DOW INCLUSION LAST DAY",
+        "change_pct": -0.4,
+        "note": "GOOG est. ~$334-337 (down from $342.13 Thursday). Dow inclusion Sunday June 29 = TODAY IS LAST ENTRY. Limit $336.68 bracket GTC blocked. Afternoon + Market-Close = FINAL WINDOWS."
       },
       {
         "name": "Enterprise Tech / Defensive",
         "change_pct": 0.5,
-        "note": "IBM est. $272-274 (+0.4-1.1%) \u2014 outperforming in semiconductor selloff. Not exposed to Apple consumer narrative."
+        "note": "IBM est. $272-275 (+0.4-1.1%) \u2014 outperforming in semiconductor selloff. Not exposed to Apple consumer narrative. Limit $274.37 blocked. Still approved for entry."
       }
     ],
     "macro_notes_md": "**2026-06-25 Afternoon (2:02 PM ET / 18:05Z)**\n- **MU BLOWOUT Q3 FY2026:** Revenue $41.46B (+15.7% beat), EPS $25.11 (+24.3% beat), Q4 guidance $50B (+16.5% beat). HBM4 SOLD OUT through 2026. Cloud Memory 83% gross margin. Data center +7x YoY. MU +19.2% (range $1,136-$1,255, settling ~$1,162-1,178).\n- **GOOGL DOW INCLUSION CRITICAL:** June 26 is LAST SESSION before June 29 (inclusion date). Must enter Friday. MOO 14sh preferred.\n- Nasdaq +2.30% (AI/semiconductors leading). SPX +0.77%. Dow +0.30%.\n- NVDA ~$200-205 (+1-2% on MU read-through). INTC ~$138-142 (+5-7%). IBM ~$270-276 (+3%).\n- AMD est. ~$535-545 (semiconductor rally). Naked 18sh position \u2014 unrealized est. +$504-692.\n- API blocked (51st session). All 5 orders blocked. 3 of 5 intraday routines failed today.",
-    "sp500_today_pct": "-0.3 to -0.5% mid-morning",
-    "sp500_est": 7484,
-    "macro_note": "Mid-Morning June 26. PCE 4.1% matched consensus \u2014 absorbed neutrally. Semiconductor selloff driven by Apple component cost narrative (consumer DRAM/NAND). AI/HBM segment (MU, NVDA) unaffected \u2014 data center demand secular. GOOG Dow inclusion June 29: ABSOLUTE LAST TRADING SESSION TODAY. AMD naked 18sh Day 5 \u2014 operator must manage FIRST."
+    "sp500_today_pct": "-0.3 to -0.5% midday",
+    "sp500_est": 7507,
+    "macro_note": "Midday June 26 (12:32 PM ET). PCE 4.1% (matched 4.1% est.) \u2014 fully absorbed, neutral. Semiconductor selloff driven by Apple component cost narrative (consumer DRAM/NAND demand destruction). AI/HBM demand unaffected \u2014 data center secular. GOOG Dow inclusion June 29: TODAY IS THE ABSOLUTE LAST TRADING SESSION. AMD naked 18sh Day 5 \u2014 operator must manage FIRST at app.alpaca.markets."
   },
   "routines": [
     {
@@ -117,10 +117,10 @@
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-24T16:32:00Z",
-      "next_run": "2026-06-26 12:30 ET",
-      "last_summary": "June 25 Midday SILENT FAILURE \u2014 no heartbeat at 16:30Z. Violation logged in trades.md. Catch-up merged into Afternoon. All 5 watchlist names (MU 8.5, GOOGL 8.0, NVDA 8.0, INTC 7.5, IBM 7.5) still unexecuted. API blocked 51st session."
+      "status": "completed",
+      "last_run": "2026-06-26T16:32:46Z",
+      "next_run": "2026-06-27T16:30:00Z",
+      "last_summary": "BLOCKED \u2014 API 55th consecutive. Pre-Market missed (Day 5 violation already logged). Stop-loss audit: AMD 18sh NAKED Day 5 (est. ~$516-526, no stops). 3 re-attempts (all blocked): GOOG 14sh $336.68 (Dow inclusion FINAL WINDOW today), MU 4sh $1,105.50 (day-2 pullback), IBM 3sh $274.37 (defensive outperforming). Semiconductor selloff -2.5%. PCE 4.1% absorbed. GOOG is priority \u2014 Afternoon and Market-Close are final windows. AMD operator action critical."
     },
     {
       "name": "Afternoon",
@@ -156,6 +156,42 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-26T16:32:46Z",
+      "action": "violation",
+      "symbol": "AMD",
+      "setup": "other",
+      "score": null,
+      "thesis": "AMD 18sh NAKED Day 5 \u2014 no stop-loss at Alpaca. API blocked 55th session, cannot fix. Declining in semiconductor selloff.",
+      "master_decision": null
+    },
+    {
+      "ts": "2026-06-26T16:32:47Z",
+      "action": "entry",
+      "symbol": "GOOG",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "thesis": "Midday re-attempt #3. Dow inclusion LAST DAY. 14sh $336.68 bracket GTC. BLOCKED.",
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-06-26T16:32:48Z",
+      "action": "entry",
+      "symbol": "MU",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "thesis": "Midday re-attempt #3. Day-2 pullback ~$1,100. 4sh $1,105.50 bracket GTC. BLOCKED.",
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-06-26T16:32:49Z",
+      "action": "entry",
+      "symbol": "IBM",
+      "setup": "sector-rotation",
+      "score": 7.0,
+      "thesis": "Midday re-attempt #3. Defensive outperforming semis. 3sh $274.37 bracket GTC. BLOCKED.",
+      "master_decision": "approved"
+    },
     {
       "ts": "2026-06-26T15:04:00Z",
       "action": "violation",
