@@ -885,6 +885,264 @@ master_notes: "SKIP REASON: Afternoon proximity-to-close per playbook. Approved 
 
 ---
 
+## 2026-06-26 — Market-Close (3:30 PM ET / 19:33 UTC — FRIDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:39Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (exit code 56 / policy 403) — **56th consecutive blocked session**
+**Current Time:** 19:33Z = 3:33 PM ET — market closes at 20:00Z (27 min remaining)
+**Market Status:** REGULAR SESSION — final window for MOC orders (deadline 3:50 PM ET / 19:50Z)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 26, 2026
+
+```
+cat logs/heartbeats/2026-06-26.log
+→ 2026-06-26T13:46:01Z STARTED Market-Open
+→ 2026-06-26T13:55:48Z COMPLETED Market-Open
+→ 2026-06-26T15:04:51Z STARTED Mid-Morning
+→ 2026-06-26T15:13:57Z COMPLETED Mid-Morning
+→ 2026-06-26T18:02:50Z STARTED Afternoon
+→ 2026-06-26T18:13:37Z COMPLETED Afternoon
+→ 2026-06-26T19:33:39Z STARTED Market-Close
+```
+
+| Routine | Scheduled (ET / UTC) | Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ❌ SILENT FAILURE (violation logged at Market-Open) |
+| Market-Open | 09:45 ET / 13:45Z | ✅ COMPLETED 13:55:48Z |
+| Mid-Morning | 11:00 ET / 15:00Z | ✅ COMPLETED 15:13:57Z |
+| Midday | 12:30 ET / 16:30Z | ❌ SILENT FAILURE (violation logged at Afternoon) |
+| Afternoon | 14:00 ET / 18:00Z | ✅ COMPLETED 18:13:37Z |
+| Market-Close | 15:30 ET / 19:30Z | ✓ STARTED 19:33:39Z (running) |
+
+**2 of 5 predecessors silently failed today.** Pre-Market + Midday. No additional predecessor violations to log — already captured at Market-Open and Afternoon.
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION
+
+```
+GET https://paper-api.alpaca.markets/v2/positions → curl exit 56 (proxy CONNECT rejected — 56th consecutive)
+GET https://paper-api.alpaca.markets/v2/orders?status=open → curl exit 56
+```
+
+**API INACCESSIBLE — 56th consecutive session.** All Alpaca endpoints blocked by egress proxy policy.
+
+**Known state (estimated — API blocked):**
+- **⚠️⚠️⚠️ AMD 18sh — NAKED — DAY 5 (now DAY 6 as market closes):** stale GTC fills from June 23 open at ~$506.76 avg. Est. current ~$510–525 (semiconductor selloff). NO STOP. NO TAKE-PROFIT. Position is ~9.1% equity — DOUBLE the 5% hard cap. NAKED OVER WEEKEND if not resolved.
+- GOOG, MU, IBM: 0sh confirmed (all GTC bracket orders blocked across 6+ attempts today).
+- GLD: 0sh confirmed (new position approved for Monday but not entered today per proximity-to-close rule).
+
+```yaml
+---
+ts: 2026-06-26T19:33:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh at ~$506.76 avg — NAKED Day 5/6. Will be NAKED OVER THE WEEKEND with no stop protection. Position is 9.13% equity (hard cap 5%). API blocked 56th consecutive session — cannot place stop programmatically."
+size_pct: 9.13
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "CRITICAL WEEKEND RISK. AMD 18sh estimated at ~$510–525 EOD Friday June 26. No stop orders. Position double the 5% cap. Operator MUST log in to app.alpaca.markets TONIGHT or SATURDAY MORNING: (1) SELL 9sh AMD at market; (2) Place GTC stop $481.42 on remaining 9sh; (3) Place GTC take-profit $582.77 on remaining 9sh. If AMD drops >5% before Sunday open on bad news, position loses $456+ with zero protection."
+---
+```
+
+---
+
+### EOD MARKET SUMMARY
+
+**Friday June 26, 2026 — Final conditions (all estimates; API blocked):**
+- **S&P 500:** Est. ~-0.3 to -0.5% (PCE 4.1% absorbed neutrally; semiconductor selloff was the day's driver)
+- **Semiconductors (SOX):** Est. -2 to -3% (Apple MacBook/iPad price hike demand-destruction narrative)
+- **GOOG:** Est. ~$334–337 at close (Dow inclusion DOW INCLUSION NOW IN EFFECT AS OF CLOSE TODAY — GOOG officially joins Dow on June 29 open; today's close is the final pre-inclusion price)
+- **MU:** Est. ~$1,080–1,110 (day-2 post-earnings pullback; AI/HBM thesis fundamentally intact)
+- **IBM:** Est. ~$272–276 (defensive outperformer in semiconductor selloff)
+- **GLD:** Est. ~$400–410 (PCE 4.1% + Iran inflation bid; bounced from $395-400 support zone)
+- **AMD:** Est. ~$510–525 (declining from $530+ earlier this week; semiconductor selloff)
+- **BTC:** Est. ~$63–67K (below $82K entry threshold)
+- **Portfolio daily P&L (confirmed):** $0.00 (0.00%) — no confirmed positions
+- **Market daily return (est.):** ~-0.40%
+- **Daily alpha vs SPX:** +0.40 pp (inadvertent — portfolio in cash from API blockage)
+- **3% circuit breaker:** NOT TRIGGERED ✓
+
+---
+
+### MOC ORDER ATTEMPTS — LAST WINDOW (before 3:50 PM ET / 19:50Z)
+
+#### CRITICAL PRIORITIZATION:
+1. **GOOG MOC** — Dow inclusion thesis EXPIRES at today's close. Last possible pre-inclusion entry. Score 7.0.
+2. **AMD SELL MOC** — Emergency naked position reduction. Sell 9sh to bring from 9.1% → ~4.6%.
+3. **MU MOC** — Score 7.17, but thesis valid for Monday. Lower urgency than GOOG/AMD.
+
+```bash
+# ORDER 1: GOOG 14sh MOC (time_in_force=cls) — Dow inclusion LAST POSSIBLE ENTRY
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GOOG","qty":14,"side":"buy","type":"market","time_in_force":"cls"}'
+→ curl exit 56 (proxy CONNECT rejected — paper-api.alpaca.markets:443 — 56th consecutive session)
+
+# ORDER 2: MU 4sh MOC
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MU","qty":4,"side":"buy","type":"market","time_in_force":"cls"}'
+→ curl exit 56 (proxy CONNECT rejected — 56th consecutive)
+
+# ORDER 3: AMD 9sh MOC SELL (emergency naked reduction)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+→ curl exit 56 (proxy CONNECT rejected — 56th consecutive)
+```
+
+**ALL 3 MOC ORDERS BLOCKED. 56th CONSECUTIVE SESSION. API INACCESSIBLE.**
+
+---
+
+### YAML DECISION LOG — MARKET CLOSE
+
+```yaml
+---
+ts: 2026-06-26T19:33:10Z
+action: entry
+symbol: GOOG
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Market-Close final attempt: GOOG (Class C) joins Dow Jones Industrial Average on June 29. Today's close is the LAST pre-inclusion price. MOC order at market would capture the Dow inclusion forced-buying event (index trackers must rebalance before Monday open). 14sh MOC at close (~$335-337 est)."
+size_pct: 4.73
+stop: 320.61
+target: 388.10
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "MOC ORDER BLOCKED — curl exit 56 (56th consecutive blocked session). Proxy egress policy denies CONNECT to paper-api.alpaca.markets:443. Dow inclusion thesis NOW EXPIRED as of today's close. Monday re-score required: GOOG is now a Dow component; entry at open Monday would be a POST-inclusion trade (different thesis: buy-the-news continuation vs. sell-the-news fade). 7 order attempts for GOOG today — all blocked. AMD 18sh NAKED over the weekend — operator must act. xAI API also unavailable (same egress block)."
+---
+```
+
+```yaml
+---
+ts: 2026-06-26T19:33:20Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: "Market-Close attempt: MU HBM4 sold-out / Q3 FY2026 blowout (EPS $25.11, rev $41.46B, Q4 guide $50B). Day-2 post-earnings pullback on Apple consumer fear creates constructive entry for data-center-dominant MU. 4sh MOC at close."
+size_pct: 4.42
+stop: 1050.23
+target: 1271.33
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "MOC ORDER BLOCKED — curl exit 56 (56th consecutive blocked session). MU thesis remains valid for Monday June 29 Pre-Market — HBM4 sold-out thesis does not expire at today's close. Monday entry: est. $1,080-1,110 range (Day 3 post-earnings; pullbacks often find footing on Day 3). 7 order attempts for MU across today's routines — all blocked. xAI API unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-06-26T19:33:30Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "EMERGENCY AMD NAKED REDUCTION ATTEMPT: Sell 9sh AMD at MOC (time_in_force=cls) to reduce position from 18sh (~9.1% equity) to 9sh (~4.6% equity) before weekend. Position has been naked (no stops) for 5 consecutive trading days."
+size_pct: 9.13
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "MOC SELL ORDER BLOCKED — curl exit 56 (56th consecutive blocked session). AMD 18sh will remain NAKED over the weekend. This is a critical guardrail violation: (1) Position at 9.1% — above 5% cap; (2) No stop-loss order resting at Alpaca; (3) Going into 2-day weekend with zero protection. OPERATOR MUST (TONIGHT OR SATURDAY): Log into app.alpaca.markets → SELL 9sh AMD at market → Place GTC stop $481.42 + take-profit $582.77 on remaining 9sh. Est. AMD ~$510-525 at close. Weekend gap-down risk is real."
+---
+```
+
+---
+
+### STALE ORDER CHECK
+
+**Stale GTC orders to cancel (all blocked — API inaccessible):**
+- PLTR 10sh limit $150.74 GTC (June 3 attempt) — PLTR est. ~$133. NOT at risk but should cancel.
+- MRVL 8sh limit $202.19 GTC (May 29 attempt) — MRVL est. ~$264. FAR above limit. NOT at risk.
+- *(AMD stale GTCs from May 29 and June 3 already ESTIMATED FILLED on June 23 open at ~$506.76)*
+
+Cannot cancel via API (blocked). Operator should cancel via app.alpaca.markets when managing AMD.
+
+---
+
+### TODAY'S P&L SUMMARY
+
+| Category | Value |
+|---|---|
+| Confirmed positions | 0 |
+| Day trades | 0 |
+| Realized P&L today | $0.00 |
+| Unrealized P&L (est.) | ~+$58–338 (AMD 18sh at est. +$3–19/sh EOD) |
+| Portfolio daily return | 0.00% |
+| S&P 500 daily return (est.) | ~-0.40% |
+| Daily alpha | +0.40 pp (inadvertent — cash from API blockage) |
+| Total return since inception | -0.15% (GLD stop -$145.58) |
+| SPX total return since inception | ~+4.05% |
+| **Cumulative benchmark gap** | **~-6.0 pp (est.)** |
+| Orders attempted today | 9 (3 Market-Open + 3 Mid-Morning + 3 Market-Close) |
+| Orders filled | 0 (all blocked by egress proxy) |
+
+---
+
+### KEY THINGS TO WATCH MONDAY (June 29, 2026)
+
+1. **⚠️⚠️⚠️ AMD WEEKEND RISK** — 18sh NAKED over 2-day weekend. Operator MUST manage tonight or Saturday morning via app.alpaca.markets.
+2. **GOOG Dow inclusion effective** — Monday June 29 GOOG officially joins Dow. Pre-inclusion thesis is EXPIRED; Monday entry would be buy-the-news continuation OR sell-the-news fade. Re-score fresh 6-agent.
+3. **MU Monday pre-market** — Day 3 after earnings. Pullback from $1,163 Thursday open may stabilize over weekend. Score 7.17 remains valid — MOO preferred if API accessible.
+4. **GLD Monday pre-market** — PCE 4.1% inflation narrative intact. Score 7.0 — MOO at open or limit bracket GTC.
+5. **IBM Monday** — Defensive tech; score 7.0; thesis intact; limit bracket GTC Monday.
+6. **API ACCESS** — 56 consecutive blocked sessions. Operator MUST restore API access before Monday 8:00 AM ET. Every session from Monday Pre-Market is blocked without it.
+7. **S&P 500 close est.** ~7,484–7,500 (SPX ~-0.4% from 7,535). Cumulative SPX return ~+4.05% from $100K start.
+
+---
+
+### MARKET-CLOSE SUMMARY
+
+- **Alpaca API:** BLOCKED (56th consecutive) — zero MOC orders placed
+- **GOOG Dow inclusion thesis:** EXPIRED at today's close — re-score needed Monday
+- **MU:** Score 7.17 carries to Monday (earnings-reaction-follow thesis valid for 3-5 days post-earnings)
+- **IBM:** Score 7.0 carries to Monday (defensive sector rotation — no expiry)
+- **GLD:** Score 7.0 carries to Monday (PCE inflation hedge — multi-week thesis)
+- **AMD:** NAKED over weekend — CRITICAL operator action required
+- **Orders today:** 9 attempts total — 0 filled (all blocked, 56th consecutive)
+- **Benchmark gap:** ~-6.0 pp (widening; every missed entry compounds the lag)
+- **Monday MANDATORY actions:** AMD sell 9sh + stop/target; MU MOO 4sh; GLD MOO/limit 10sh; IBM limit 3sh; GOOG re-score
+
+---
+
 ## 2026-06-25 — Mid-Morning (11:00 AM ET / 15:05 UTC — THURSDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:56Z ✓
