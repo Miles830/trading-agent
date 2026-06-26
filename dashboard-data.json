@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-25T19:40:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-06-26T12:15:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
     "total_equity": 99854,
     "starting_equity": 100000.0,
@@ -15,7 +15,7 @@
     "spx_return_pct": 4.05,
     "benchmark_gap_pct": -5.77,
     "open_positions_count": 0,
-    "note": "June 25 MARKET-CLOSE (3:33 PM ET / 19:33Z). API BLOCKED (HTTP 403 — 51st consecutive). Pre-Market + Market-Open + Midday SILENT FAILED (3/6). Mid-Morning + Afternoon + Market-Close completed. 5 MOC ORDERS ALL HTTP 403: GOOGL 8.2 avg (14sh MOC cls — SECOND-TO-LAST DOW INCLUSION WINDOW); MU 8.5 avg (4sh MOC cls); NVDA 8.0 avg (4sh MOC cls); INTC 7.5 avg (35sh MOC cls); IBM 7.5 avg (3sh MOC cls). AMD NAKED 18sh at ~$506.76 fill, est. ~$535 EOD (unrealized est. +$509, NO STOPS). MU closed est. ~$1,162 (+19.2%). SPX closed est. +0.68%. Cumulative gap: est. ~-5.77 pp. JUNE 26 ABSOLUTE BINDING: (1) AMD sell 9sh + GTC stop; (2) GOOGL MOO 14sh LAST DAY; (3) MU/NVDA/INTC/IBM bracket GTC orders."
+    "note": "June 26 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED (HTTP 403 — 53rd consecutive). PCE May 2026 HOT: +0.4% MoM / +4.1% YoY (highest since April 2023). Nasdaq futures -1.2%. RISK-OFF. ONLY PASSING ENTRY: MU 8.00 avg (all 6 ≥7, earnings-reaction-follow) — MOO 4sh ATTEMPTED → HTTP 403 BLOCKED. All others re-scored below 7 due to PCE: GOOGL 6.83 (LAST DAY FOR DOW INCLUSION — operator must decide), INTC 6.67, NVDA 6.50, IBM 6.17. AMD: Exemption 1 (18sh naked est. = 9.13%). OPERATOR: (1) SELL 9sh AMD NOW; (2) BUY 4sh MU; (3) Consider GOOGL 14sh (last chance). Gap: est. ~-5.77 pp."
   },
   "positions": [
     {
@@ -62,11 +62,11 @@
     }
   ],
   "market": {
-    "mode": "SEMICONDUCTOR AI RALLY — MU +19.2% post-earnings. AI/HBM4 memory sold-out supercycle confirmed. Nasdaq +2.30%, SPX +0.77%. Afternoon: consolidation/continuation. GOOGL Dow inclusion forced buying (1 session remaining).",
+    "mode": "RISK-OFF — PCE May 2026 HOT (+4.1% YoY, highest since April 2023). Nasdaq futures -1.2%. S&P futures -0.5%. Chip names showing relative strength (MU +3-5%, AMD +4%, INTC +5% pre-market). GOOGL +0.3% pre-market (relative strength vs Nasdaq -1.2% = Dow inclusion pre-positioning). TODAY IS LAST DAY for GOOGL pre-Dow-inclusion entry.",
     "fear_greed": null,
-    "fear_greed_label": "Greed. MU blowout print + HBM4 sold-out narrative driving AI capex confidence. Market pricing in accelerating AI infrastructure spend.",
-    "spx": "S&P 500 +0.77% at 2PM ET (est. ~7,538). Nasdaq +2.30% (AI/semis leading). Dow +0.30%. Broad risk-on with semiconductor complex driving indices.",
-    "btc": "BTC status unknown (API blocked). Last known ~$65-67K, below $82K entry threshold. Post-MU risk-on could push crypto but $82K threshold unlikely today.",
+    "fear_greed_label": "Fear/Caution. PCE hot print reviving Fed hawkish concerns. Tech growth stocks under pressure. Chip sector decoupled (AI capex thesis independent of consumer inflation).",
+    "spx": "S&P 500 futures -0.5% pre-market. Nasdaq futures -1.2% on PCE inflation data. Dow futures -0.1%. Risk-off macro backdrop.",
+    "btc": "BTC ~$60K (OPTIONS EXPIRY DAY — largest of 2026). Well below $82K entry threshold. ETH ~$1,500. Both crypto assets in risk-off mode.",
     "sectors": [
       {
         "name": "Semiconductors — MASSIVE RALLY",
@@ -89,19 +89,19 @@
         "note": "Nasdaq +2.30% — AI names leading. MU earnings validation of AI capex supercycle = risk-on for all AI infrastructure."
       }
     ],
-    "macro_notes_md": "**2026-06-25 Afternoon (2:02 PM ET / 18:05Z)**\n- **MU BLOWOUT Q3 FY2026:** Revenue $41.46B (+15.7% beat), EPS $25.11 (+24.3% beat), Q4 guidance $50B (+16.5% beat). HBM4 SOLD OUT through 2026. Cloud Memory 83% gross margin. Data center +7x YoY. MU +19.2% (range $1,136-$1,255, settling ~$1,162-1,178).\n- **GOOGL DOW INCLUSION CRITICAL:** June 26 is LAST SESSION before June 29 (inclusion date). Must enter Friday. MOO 14sh preferred.\n- Nasdaq +2.30% (AI/semiconductors leading). SPX +0.77%. Dow +0.30%.\n- NVDA ~$200-205 (+1-2% on MU read-through). INTC ~$138-142 (+5-7%). IBM ~$270-276 (+3%).\n- AMD est. ~$535-545 (semiconductor rally). Naked 18sh position — unrealized est. +$504-692.\n- API blocked (51st session). All 5 orders blocked. 3 of 5 intraday routines failed today.",
-    "sp500_today_pct": "+0.77% afternoon",
-    "sp500_est": 7538,
-    "macro_note": "Afternoon semiconductor AI rally. MU Q3 blowout ($41.46B revenue, $25.11 EPS, $50B Q4 guidance) = AI infrastructure capex cycle accelerating beyond any bull-case model. HBM4 sold out = pricing power + visibility for 2+ quarters. GOOGL: Dow inclusion June 29 — ONE SESSION REMAINS (June 26). AMD: naked position accumulating unrealized gains without stops. Fed on hold. Iran deal intact. Risk-on macro."
+    "macro_notes_md": "**2026-06-26 Pre-Market (8:05 AM ET / 12:05Z)**\n- **PCE MAY 2026 HOT:** +0.4% MoM / +4.1% YoY (highest YoY since April 2023). Core PCE +0.3% MoM / +3.4% YoY. Personal consumption +0.7% (above +0.4% est.). RISK-OFF macro.\n- Nasdaq futures -1.2%. S&P futures -0.5%. Dow futures -0.1%. Fed hawkish stance reinforced.\n- **CHIP SECTOR DECOUPLED:** MU +3-5% pre-market (AI earnings continuation). AMD +4%. INTC +5%. AI capex thesis = semiconductor demand independent of consumer PCE cycle.\n- **GOOGL DOW INCLUSION LAST DAY:** June 26 is the FINAL session before GOOGL joins the Dow on June 29. GOOGL +0.3% pre-market vs Nasdaq -1.2% = relative strength. Scored 6.83 (just below 7.0 gate due to PCE). OPERATOR DECISION REQUIRED.\n- BTC ~$60K (options expiry + risk-off). ETH ~$1,500. Below $82K threshold — no crypto entry.\n- API BLOCKED (53rd consecutive session). MU MOO 4sh ATTEMPTED → HTTP 403.",
+    "sp500_today_pct": "-0.5% futures (pre-market)",
+    "sp500_est": 7498,
+    "macro_note": "Risk-off: PCE May 2026 +4.1% YoY hottest in 3 years. Fed Chair Warsh hawkish stance reinforced. BUT chip sector (MU, AMD, INTC) showing relative strength on AI capex thesis. MU MOO attempted (8.0 avg) — blocked (53rd session). GOOGL Dow inclusion last day — scored 6.83 (below 7.0 gate); operator should consider manual entry."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-24T12:05:00Z",
-      "next_run": "2026-06-26 08:00 ET",
-      "last_summary": "June 25 Pre-Market SILENT FAILURE. June 26 Pre-Market is CRITICAL: GOOGL last day for Dow inclusion + MU/NVDA/INTC/IBM carry-forward + AMD naked resolution. Operator must execute all manually if API still blocked."
+      "status": "completed",
+      "last_run": "2026-06-26T12:05:00Z",
+      "next_run": "2026-06-30 08:00 ET",
+      "last_summary": "June 26 Pre-Market COMPLETED (12:05Z). PCE May hot (+4.1% YoY) = risk-off. ONLY PASSING ENTRY: MU 8.00 avg (all 6 ≥7) — MOO 4sh ATTEMPTED → HTTP 403 BLOCKED (53rd). GOOGL rescored 6.83 (below 7.0 gate due to PCE Macro drop to 5) — LAST DAY for Dow inclusion (June 29). OPERATOR MUST DECIDE MANUALLY. Next trading day: Monday June 30."
     },
     {
       "name": "Market Open",
@@ -161,6 +161,119 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-26T12:07:00Z",
+      "symbol": "MU",
+      "action": "entry",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.0,
+      "agent_scores": {
+        "fundamentals": 10,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 8
+      },
+      "agent_average": 8.0,
+      "result_pct": null,
+      "master_decision": "approved",
+      "order_status": "APPROVED 8.00 avg. All 6 agents >=7. MOO 4sh ATTEMPTED — HTTP 403 BLOCKED (53rd consecutive session). OPERATOR MUST EXECUTE: BUY 4sh MU at market open or limit ~$1,201 bracket GTC (stop fill×0.95, target fill×1.15). Market-Open routine places stop post-fill."
+    },
+    {
+      "ts": "2026-06-26T12:10:00Z",
+      "symbol": "GOOGL",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 6.83,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 7,
+        "macro": 5,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 6.83,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "RESCORED 6.83 (below 7.0 gate). PCE +4.1% YoY dropped Macro to 5. LAST DAY for Dow inclusion June 29. 4/6 agents >=7 (gate met) but average fails. Operator may override manually. Not a deployment bias violation — fresh rescore below threshold."
+    },
+    {
+      "ts": "2026-06-26T12:12:00Z",
+      "symbol": "INTC",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 6.67,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 6,
+        "macro": 6,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 6.67,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "RESCORED 6.67 (below 7.0 gate). PCE hot drops Macro/Sentiment. +5% pre-market not enough to override. Re-score Monday June 30."
+    },
+    {
+      "ts": "2026-06-26T12:13:00Z",
+      "symbol": "NVDA",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 6.5,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 5,
+        "sentiment": 5,
+        "macro": 5,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 6.5,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "RESCORED 6.50. -6% June 25 + PCE hot = T(5), S(5), M(5). Only 3/6 agents >=7. Re-score Monday June 30."
+    },
+    {
+      "ts": "2026-06-26T12:14:00Z",
+      "symbol": "IBM",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 6.17,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 5,
+        "sentiment": 5,
+        "macro": 5,
+        "risk": 8,
+        "tech_analyst": 7
+      },
+      "agent_average": 6.17,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "RESCORED 6.17. PCE risk-off, no specific catalyst. Below 7.0 gate. Re-score Monday June 30."
+    },
+    {
+      "ts": "2026-06-26T12:15:00Z",
+      "symbol": "AMD",
+      "action": "skip",
+      "bucket": "active",
+      "setup": "other",
+      "score": null,
+      "agent_scores": {},
+      "agent_average": null,
+      "result_pct": null,
+      "master_decision": "rejected",
+      "order_status": "EXEMPTION 1: AMD new entry blocked — estimated 18sh at $506.76 = 9.13% equity (double 5% cap). AMD +4% pre-market est. ~$545. Operator must SELL 9sh at open + place GTC stop $481.42 + target $582.77."
+    },
     {
       "ts": "2026-06-24T15:00:00Z",
       "symbol": "N/A",
@@ -1202,18 +1315,6 @@
   },
   "watchlist": [
     {
-      "symbol": "GOOGL",
-      "score": 8.0,
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "est_price": 343.84,
-      "stop": 326.65,
-      "target": 395.42,
-      "thesis": "Dow Jones Industrial Average inclusion June 29. JUNE 26 IS ABSOLUTE LAST SESSION. 14sh limit $343.84 or MOO bracket GTC. Index fund forced buying at June 29 open — non-renewable time-bounded catalyst.",
-      "action": "BUY — 14sh MOO (preferred) or limit $343.84 bracket GTC. OPERATOR EXECUTE before 9:25 AM ET June 26. If MOO: place GTC stop at fill x0.95 at Market-Open.",
-      "priority": 1
-    },
-    {
       "symbol": "AMD",
       "score": null,
       "bucket": "active",
@@ -1221,56 +1322,68 @@
       "est_price": 540.0,
       "stop": 481.42,
       "target": 582.77,
-      "thesis": "NAKED POSITION CRISIS: 18sh AMD at ~$506.76 (est.) = 9.13% equity (double 5% cap). Now est. ~$535-545 (semiconductor rally). Unrealized est. +$504-692. NO STOPS. Exemption 1 blocks new entries.",
-      "action": "OPERATOR CRITICAL: (1) SELL 9sh AMD at market (reduce to 9sh = ~4.8% equity). (2) Place GTC stop on remaining 9sh at $481.42 (fill x0.95). (3) Target $582.77 (fill x1.15). FIRST ACTION AT JUNE 26 OPEN.",
-      "priority": 2
+      "thesis": "NAKED POSITION CRISIS: 18sh AMD at ~$506.76 (est.) = 9.13% equity (double 5% cap). +4% pre-market est. ~$545. Unrealized est. +$690. NO STOPS. Exemption 1 blocks new entries.",
+      "action": "OPERATOR CRITICAL: (1) SELL 9sh AMD at market open immediately. (2) Place GTC stop on remaining 9sh at $481.42 (fill x0.95). (3) Target $582.77 (fill x1.15). FIRST ACTION AT OPEN.",
+      "priority": 1
     },
     {
       "symbol": "MU",
-      "score": 8.5,
+      "score": 8.0,
       "bucket": "active",
       "setup": "earnings-reaction-follow",
-      "est_price": 1171.77,
-      "stop": 1113.18,
-      "target": 1347.54,
-      "thesis": "Q3 FY2026 blowout — best quarter in MU history. EPS $25.11 (+24% beat), revenue $41.46B (+15.7% beat), Q4 guidance $50B (+16.5% beat). HBM4 sold out through 2026. All 6 agents >=7 (avg 8.5). 4sh bracket GTC.",
-      "action": "BUY — 4sh limit at pre-market ask x1.005 bracket GTC (stop -5%, target +15%). Update limit at June 26 pre-market. Priority #3 (after AMD + GOOGL).",
+      "est_price": 1200.0,
+      "stop": 1140.0,
+      "target": 1380.0,
+      "thesis": "Q3 FY2026 blowout — best quarter in MU history. HBM4 sold out. All 6 agents >=7 (avg 8.0 June 26 rescore). PCE headwind absorbed by AI capex independence. 4sh MOO. ONLY PASSING ENTRY TODAY (June 26). MOO attempted → HTTP 403 BLOCKED (53rd).",
+      "action": "OPERATOR EXECUTE: BUY 4sh MU at market open (MOO if possible) or limit ~$1,201 bracket GTC (stop fill x0.95, target fill x1.15). Market-Open routine places stop after fill.",
+      "priority": 2
+    },
+    {
+      "symbol": "GOOGL",
+      "score": 6.83,
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "est_price": 344.25,
+      "stop": 326.84,
+      "target": 395.89,
+      "thesis": "Dow Jones inclusion June 29 — LAST ENTRY DAY IS TODAY (June 26). Rescored 6.83 (below 7.0 gate) due to PCE hot (+4.1% YoY) dropping Macro to 5. MECHANICAL forced buying June 29 = structural catalyst independent of PCE. GOOGL +0.3% pre-market vs Nasdaq -1.2% = relative strength.",
+      "action": "OPERATOR DECISION: Score below 7.0 gate (6.83). Routine skipped. If you believe June 29 forced buying overwhelms PCE headwind, execute manually: 14sh GOOGL limit $344.25 bracket GTC (stop $326.84, target $395.89). TODAY IS THE LAST DAY.",
       "priority": 3
     },
     {
-      "symbol": "NVDA",
-      "score": 8.0,
+      "symbol": "INTC",
+      "score": 6.67,
       "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "est_price": 201.7,
-      "stop": 191.62,
-      "target": 231.96,
-      "thesis": "NVDA at $200-205 — 15% pullback from ATH $236.54. MU HBM4 sold out = NVDA GPU demand exceeds supply. All 6 agents >=7 (avg 8.0). CUDA monopoly + Blackwell architecture. 4sh bracket GTC.",
-      "action": "BUY — 4sh limit at pre-market ask x1.005 bracket GTC. Update limit at June 26 pre-market. Priority #4.",
+      "setup": "sector-rotation",
+      "est_price": 145.0,
+      "stop": 137.75,
+      "target": 166.75,
+      "thesis": "Intel +5% pre-market on chip rally. PCE hot drops Macro/Sentiment. Fresh June 26 rescore: 6.67 (below 7.0 gate). Re-score Monday June 30 pre-market — if PCE shock absorbed and chip sector maintains, could recover above 7.0.",
+      "action": "SKIP June 26 (score 6.67 < 7.0). Re-score Monday June 30 pre-market. At ~$145: 34sh bracket GTC (stop $137.75, target $166.75, 4.93% position).",
       "priority": 4
     },
     {
-      "symbol": "INTC",
-      "score": 7.5,
+      "symbol": "NVDA",
+      "score": 6.5,
       "bucket": "active",
       "setup": "ai-momentum-pullback",
-      "est_price": 138.3,
-      "stop": 131.39,
-      "target": 159.05,
-      "thesis": "BofA PT $160 Buy + Apple 18A foundry + AI data-center 7x YoY (MU read-through). All 6 agents >=7 (avg 7.5). 5th blocked attempt. Est. $138-142 at close. 35sh bracket GTC.",
-      "action": "BUY — 35sh limit at pre-market ask x1.005 bracket GTC. Update limit if INTC closes above $140. Priority #5.",
+      "est_price": 203.0,
+      "stop": 192.85,
+      "target": 233.45,
+      "thesis": "NVDA -6% June 25 + PCE hot = rescored 6.50 (below 7.0 gate). +1.4% pre-market recovery. Need 2-day confirmation of reversal above June 25 close before re-entry. Re-score Monday June 30.",
+      "action": "SKIP June 26. Re-score Monday June 30. Need: (1) NVDA hold above $200; (2) macro stabilization. At ~$203: 4sh bracket GTC.",
       "priority": 5
     },
     {
       "symbol": "IBM",
-      "score": 7.5,
+      "score": 6.17,
       "bucket": "active",
       "setup": "sector-rotation",
-      "est_price": 272.36,
-      "stop": 258.74,
-      "target": 313.21,
-      "thesis": "JPMorgan OW upgrade + elevated volume + defensive AI consulting + Red Hat moat. 5/6 agents >=7 (avg 7.5). 5th blocked attempt. 3sh bracket GTC (tiny position — low guardrail impact).",
-      "action": "BUY — 3sh limit at pre-market ask x1.005 bracket GTC. Priority #6 (smallest position).",
+      "est_price": 272.0,
+      "stop": 258.40,
+      "target": 312.80,
+      "thesis": "No specific catalyst today. PCE hot = risk-off headwind. Rescored 6.17 (below 7.0 gate). Re-score Monday June 30 if macro stabilizes.",
+      "action": "SKIP June 26. Re-score Monday June 30. 3sh bracket GTC at current price.",
       "priority": 6
     }
   ],
