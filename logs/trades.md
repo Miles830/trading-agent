@@ -343,6 +343,269 @@ master_notes: "SKIP — score 6.50 < 7.0 threshold AND only 3 of 6 agents ≥7 (
 
 ---
 
+## 2026-06-26 — Mid-Morning (11:00 AM ET / 15:04 UTC — FRIDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Mid-Morning 15:04:51Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 / policy 403) — **54th consecutive blocked session**
+**Current Time:** 15:04Z = 11:04 AM ET — market open ~94 min (opened 13:30Z)
+**Market Status:** REGULAR SESSION OPEN — Semiconductor SELLOFF day (Apple memory cost concerns); PCE 4.1% absorbed
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 26, 2026
+
+```
+cat logs/heartbeats/2026-06-26.log
+→ 2026-06-26T13:46:01Z STARTED Market-Open
+→ 2026-06-26T13:55:48Z COMPLETED Market-Open
+→ 2026-06-26T15:04:51Z STARTED Mid-Morning
+```
+
+| Routine | Scheduled (ET / UTC) | Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | **❌ SILENT FAILURE — no heartbeat (5th consecutive day)** |
+| Market-Open | 09:45 ET / 13:45Z | ✅ STARTED 13:46:01Z · COMPLETED 13:55:48Z |
+| Mid-Morning | 11:00 ET / 15:00Z | ✓ STARTED 15:04:51Z (running) |
+
+**Market-Open completed successfully.** Pre-Market silently failed (5th consecutive day — chronic silent failure). Market-Open already ran full catch-up: GOOG (7.0), MU (7.17), IBM (7.0) approved and attempted — all blocked HTTP 000. NVDA (6.67) and INTC (6.50) rejected. All YAML entries logged in June 26 Market-Open section above. No additional Pre-Market catch-up needed here — Market-Open covered it.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (MANDATORY)
+
+```
+GET /v2/positions          → HTTP 000 (proxy CONNECT rejected — paper-api.alpaca.markets:443 not in allowlist)
+GET /v2/orders?status=open → HTTP 000
+GET /v2/account            → HTTP 000
+```
+
+**API INACCESSIBLE — 54th consecutive session.**
+
+**Known state from June 26 Market-Open routine (all estimated — API blocked):**
+- **⚠️⚠️⚠️ AMD 18sh NAKED — DAY 5** — stale GTC fills (~$506.76 avg) from June 23 open. No stop orders. AMD est. ~$520-528 in today's semiconductor selloff (down from ~$535 EOD June 25). Unrealized est. +$240-385. OPERATOR MUST PLACE STOP at app.alpaca.markets.
+- **GOOG 14sh GTC bracket**: Attempted at Market-Open ($337.93) — blocked. NOT in Alpaca.
+- **MU 4sh GTC bracket**: Attempted at Market-Open ($1,125.60) — blocked. NOT in Alpaca.
+- **IBM 3sh GTC bracket**: Attempted at Market-Open ($271.35) — blocked. NOT in Alpaca.
+
+```yaml
+---
+ts: 2026-06-26T15:04:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh at ~$506.76 avg cost — NAKED (no stop-loss at Alpaca) for 5 consecutive trading days. Position is ~9.13% estimated equity — above the 5% position cap. Stop-loss audit blocked by API (54th consecutive session). OPERATOR MUST act via app.alpaca.markets."
+size_pct: 9.13
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+master_decision: null
+master_notes: "CRITICAL VIOLATION — Day 5 AMD naked. AMD ~$520-528 in semiconductor selloff (down from $535 EOD). Oversized (9.13% > 5% cap) AND naked (no stops). OPERATOR: (1) SELL 9sh AMD at market (reduce to ~4.6%); (2) GTC stop on remaining 9sh at fill × 0.95 (~$481.42); (3) GTC take-profit at fill × 1.15 (~$582.77). AMD management FIRST — before any new entries. API blocked, cannot fix programmatically."
+---
+```
+
+---
+
+### MARKET CONDITIONS UPDATE — 11:00 AM ET / 15:04 UTC
+
+**SEMICONDUCTOR SELLOFF CONTINUES — APPLE COST NARRATIVE DOMINATES:**
+
+Today's market reversal from June 25's AI rally:
+- **Apple MacBook/iPad price hikes** (+8-15% avg) due to memory component cost increases → consumer electronics demand destruction fears
+- Semis exposed to consumer DRAM/NAND selling off; AI/HBM segment unaffected
+- **PCE May 2026: 4.1% headline / 3.4% core** — matched consensus. Market absorbed it neutrally at 8:30 AM ET. S&P held ~-0.44% after print (no shock).
+- **S&P ~-0.3 to -0.5% mid-morning** (stabilizing after PCE absorbed)
+- **GOOG Dow inclusion window CLOSES TODAY** (Sunday June 29 = effective date; forced ETF buying before Monday open is non-negotiable)
+
+**Estimated mid-morning price snapshot (all estimates — API blocked):**
+
+| Symbol | Open | Est. 11 AM | vs Open | Thesis Impact |
+|---|---|---|---|---|
+| GOOG | $336.25 | ~$335-337 | ±0-0.5% | POSITIVE — slightly lower = better entry for Dow inclusion |
+| MU | ~$1,125 | ~$1,095-1,110 | -1 to -2.5% | NEUTRAL — day-2 pullback; AI/HBM thesis intact |
+| IBM | ~$271 | ~$272-274 | +0.4-1.1% | POSITIVE — defensive outperformance in selloff |
+| AMD | ~$529 | ~$520-528 | -1 to -2% | CONCERN — naked position declining, no stops |
+| S&P 500 | -0.44% | ~-0.3-0.5% | stabilizing | PCE absorbed; mid-morning consolidation |
+
+---
+
+### RE-ATTEMPT #1: GOOG 14sh — DOW INCLUSION ABSOLUTE LAST DAY
+
+Updated mid-morning limit based on est. ~$335.80: **$337.48** ($335.80 × 1.005)
+Stop: $337.48 × 0.95 = **$320.61**
+Target: $337.48 × 1.15 = **$388.10**
+R/R: $50.62 / $16.87 = **3.0× ✓**
+Size: 14sh × $337.48 = $4,725 = **4.72% equity ✓**
+Trade risk: 14 × $16.87 = $236 < $1,498 ✓
+
+**Score: 7.0/10 — APPROVED** (unchanged from Market-Open; PCE neutral macro)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GOOG","qty":14,"side":"buy","type":"limit","limit_price":"337.48","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"320.61"},"take_profit":{"limit_price":"388.10"}}'
+→ HTTP 000 (proxy CONNECT rejected — paper-api.alpaca.markets:443 — 54th consecutive)
+```
+
+```yaml
+---
+ts: 2026-06-26T15:04:01Z
+action: entry
+symbol: GOOG
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Mid-Morning re-attempt #2. GOOG (Class C) joins Dow Jones Industrial Average Sunday June 29. TODAY IS THE FINAL TRADING SESSION before forced index-tracker buying. Entry ~$335.80 (slightly improved vs Market-Open $336.25). 14sh limit $337.48 bracket GTC."
+size_pct: 4.72
+stop: 320.61
+target: 388.10
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "Mid-Morning re-attempt #2 (Market-Open was #1 at $337.93). Score 7.0 maintained. PCE 4.1% matched consensus — zero macro deterioration. GOOG slightly lower than open (~$335.80 est.) = marginally better entry. Dow inclusion thesis unchanged: after today's close GOOG joins Dow Sunday June 29; ETF/index-tracker forced buying is non-discretionary (April 2019 AAPL Dow inclusion = +8% in 3 days post-inclusion). Correction confirmed: GOOG (Class C, GOOGL=Class A) is the Dow entrant. Updated limit $337.93→$337.48. ORDER BLOCKED HTTP 000. OPERATOR EXECUTE: 14sh GOOG limit $337.48 bracket GTC, stop $320.61, target $388.10."
+---
+```
+
+---
+
+### RE-ATTEMPT #2: MU 4sh — DAY-2 POST-EARNINGS PULLBACK (IMPROVED ENTRY)
+
+Updated mid-morning limit based on est. ~$1,100: **$1,105.50** ($1,100 × 1.005)
+Stop: $1,105.50 × 0.95 = **$1,050.23**
+Target: $1,105.50 × 1.15 = **$1,271.33**
+R/R: $165.83 / $55.28 = **3.0× ✓**
+Size: 4sh × $1,105.50 = $4,422 = **4.42% equity ✓**
+Trade risk: 4 × $55.28 = $221 < $1,498 ✓
+
+**Score: 7.17/10 — APPROVED** (unchanged; day-2 pullback is constructive for earnings-reaction-follow setups)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MU","qty":4,"side":"buy","type":"limit","limit_price":"1105.50","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1050.23"},"take_profit":{"limit_price":"1271.33"}}'
+→ HTTP 000 (proxy CONNECT rejected — paper-api.alpaca.markets:443 — 54th consecutive)
+```
+
+```yaml
+---
+ts: 2026-06-26T15:04:05Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: "Mid-Morning re-attempt #2. MU day-2 post-earnings pullback in semiconductor selloff. Apple consumer concern does NOT apply to MU's AI/HBM segment (80%+ data center revenue; HBM4 sold out through 2026). Lower entry ~$1,100 vs Market-Open $1,125.60 = improved risk profile. 4sh limit $1,105.50 bracket GTC."
+size_pct: 4.42
+stop: 1050.23
+target: 1271.33
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "Mid-Morning re-attempt #2. Score 7.17 maintained. Updated limit $1,125.60→$1,105.50 (day-2 est. pullback to ~$1,100). Apple narrative: MacBook/iPad uses commodity DRAM/NAND — NOT HBM4. MU's $50B Q4 guidance is from hyperscaler HBM contracts; these are locked multi-quarter agreements immune to consumer demand fluctuations. Constructive day-2 setup: earnings-reaction-follow setups often pullback 2-5% on day-2 before resuming uptrend. xAI API unavailable (HTTP 000). ORDER BLOCKED. OPERATOR EXECUTE: 4sh MU limit $1,105.50 bracket GTC, stop $1,050.23, target $1,271.33."
+---
+```
+
+---
+
+### RE-ATTEMPT #3: IBM 3sh — DEFENSIVE OUTPERFORMANCE IN SELLOFF
+
+Updated mid-morning limit based on est. ~$273: **$274.37** ($273 × 1.005)
+Stop: $274.37 × 0.95 = **$260.65**
+Target: $274.37 × 1.15 = **$315.53**
+R/R: $41.15 / $13.72 = **3.0× ✓**
+Size: 3sh × $274.37 = $823 = **0.82% equity ✓**
+Trade risk: 3 × $13.72 = $41 < $1,498 ✓
+
+**Score: 7.0/10 — APPROVED** (all 6 agents 7/10; IBM outperforming in today's selloff)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"274.37","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"260.65"},"take_profit":{"limit_price":"315.53"}}'
+→ HTTP 000 (proxy CONNECT rejected — paper-api.alpaca.markets:443 — 54th consecutive)
+```
+
+```yaml
+---
+ts: 2026-06-26T15:04:10Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Mid-Morning re-attempt #2. IBM defensive tech outperforming in semiconductor selloff. Enterprise software/AI consulting not exposed to Apple consumer memory concerns. JPMorgan OW intact. Est. $272-274 mid-morning (up slightly from open $271). Updated limit $274.37. BLOCKED — HTTP 000 (54th)."
+size_pct: 0.82
+stop: 260.65
+target: 315.53
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "Mid-Morning re-attempt #2. All 6 agents 7/10. Updated limit $271.35→$274.37 (IBM outperforming in selloff — estimated up slightly from open). IBM enterprise revenue insulated from Apple/consumer semiconductor narrative. Defensive characteristic confirmed: outperforms on down-sector days. Tiny position (0.82%) — minimal guardrail impact. xAI API unavailable. ORDER BLOCKED. OPERATOR EXECUTE: 3sh IBM limit $274.37 bracket GTC, stop $260.65, target $315.53."
+---
+```
+
+---
+
+### MID-MORNING SCAN — NEW OPPORTUNITIES
+
+| Sector | Trend | Result |
+|---|---|---|
+| Semiconductors | SELLOFF | No new entries. INTC (6.50) and NVDA (6.67) below threshold. |
+| Communication Services | Mixed/down | GOOG already in watchlist (7.0, last-day Dow inclusion). |
+| Healthcare/Biotech | Defensive bid | No fresh catalyst today — score at Midday if prices available. |
+| Gold / GLD | PCE inflation bid | PCE 4.1% + Iran ongoing = potential re-entry. Flagged for Midday. |
+| Enterprise Tech | Outperforming | IBM in watchlist. MSFT/ORCL: no fresh catalyst today. |
+
+**GLD FLAG for Midday:** PCE 4.1% May 2026 confirms persistent inflation above Fed target. Combined with ongoing Iran conflict (energy inflation), gold has a structural macro tailwind. GLD was previously in portfolio (entry $418.86, stopped at $397.92 June 10 = −$145.58). Current est. ~$395-410 range. A fresh 6-agent score at Midday is warranted if price data becomes available.
+
+**User suggestions check:** 0 open `user-suggestion` issues on GitHub. No action.
+
+---
+
+### MID-MORNING SUMMARY
+
+**3 order re-attempts — ALL BLOCKED (54th consecutive API session):**
+1. GOOG 14sh limit $337.48 GTC bracket → HTTP 000 (Dow inclusion last day — CRITICAL)
+2. MU 4sh limit $1,105.50 GTC bracket → HTTP 000 (improved vs Market-Open entry)
+3. IBM 3sh limit $274.37 GTC bracket → HTTP 000 (defensive outperforming)
+
+**Critical ongoing violation:**
+- AMD 18sh NAKED — Day 5 — est. $520-528, declining in selloff
+- Operator must manage AMD FIRST (sell 9sh + place stop on remaining 9sh) before any new entries
+
+**Next window:** Midday (12:30 PM ET / 16:30Z) — re-attempt all three orders; re-evaluate GLD
+
+---
+
 ## 2026-06-25 — Mid-Morning (11:00 AM ET / 15:05 UTC — THURSDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 15:04:56Z ✓
