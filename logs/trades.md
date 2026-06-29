@@ -4,6 +4,259 @@
 
 ---
 
+## 2026-06-29 — Market Close (3:30 PM ET / 19:33 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:36Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 — paper-api.alpaca.markets:443 not in egress allowlist) — **59th consecutive blocked session**
+**Current Time:** 19:33Z = 3:33 PM ET — market closes at 4:00 PM ET (26 minutes remaining)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Expected UTC | Status |
+|---|---|---|
+| Pre-Market | 12:05Z | ✓ STARTED 12:05:10Z / COMPLETED 12:28:33Z |
+| Market-Open | 13:45Z | ✓ STARTED 13:45:46Z / COMPLETED 13:50:35Z |
+| Mid-Morning | ~15:00Z | ❌ SILENT FAILURE — no heartbeat |
+| Midday | ~16:30Z | ❌ SILENT FAILURE — no heartbeat |
+| Afternoon | ~18:00Z | ❌ SILENT FAILURE — no heartbeat |
+| Market-Close | 19:33Z | ✓ RUNNING NOW |
+
+**Three consecutive silent failures (Mid-Morning, Midday, Afternoon).** Per close.md: catch-up all open active-bucket positions that Afternoon should have reviewed. No day trades are open (AMD is a swing position, not a day trade). No MOC closes needed per Afternoon's mandate. Violation entries logged below.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 000 (proxy CONNECT rejected)
+GET /v2/orders?status=open → HTTP 000
+GET /v2/account            → HTTP 000
+```
+
+**API INACCESSIBLE — 59th consecutive session. Cannot verify fills or stop orders.**
+
+**Estimated position state:**
+- ⚠️⚠️⚠️ **AMD 18sh NAKED** — filled June 23 open ~$506.76 avg. AMD est. close today ~$522. Unrealized est. +$274. **NO STOP. NO TAKE-PROFIT. DAY 9 NAKED.**
+- **MU 4sh MOO** — attempted Pre-Market June 29 → BLOCKED. Not filled by agent. Operator manual execution unknown.
+- **IBM 3sh MOO** — attempted Pre-Market June 29 → BLOCKED. Not filled by agent. Operator manual execution unknown.
+- Stale GTCs: PLTR 10sh limit $150.74 (below trigger ~$133), MRVL 8sh limit $202.19 (far below current ~$264).
+
+**⚠️⚠️⚠️ OPERATOR CRITICAL — AMD NAKED POSITION (DAY 9):**
+AMD 18sh at ~$522 = $9,396 = ~9.4% equity — OVER 5% hard cap. NO stop-loss. NO take-profit.
+OPERATOR MUST LOG IN TO app.alpaca.markets IMMEDIATELY:
+1. **SELL 9sh AMD at market** (reduce to 9sh = ~4.7% equity ✓)
+2. **Place GTC STOP** on remaining 9sh at **$481.42** ($506.76 × 0.95)
+3. **Place GTC TAKE-PROFIT** on remaining 9sh at **$582.78** ($506.76 + 3 × $25.34)
+
+---
+
+### MARKET SUMMARY — EOD JUNE 29, 2026
+
+- **S&P 500:** +1.08%, closed ~7,433.81. Driven by Supreme Court rejecting firing of Fed Governor Lisa Cook and US-Iran agreeing to halt tit-for-tat attacks (peace talks ongoing).
+- **Nasdaq Composite:** +1.8% — tech leading the recovery.
+- **AMD:** Est. close ~$522, range $502.61–$525.11 (+~3.30% from intraday low / ~flat to prior close). AI momentum intact.
+- **MU:** Closed $1,132.33 (range $1,121.36–$1,198.71; opened $1,139.08 — gave back intraday highs, closed near low end of range). Recovery thesis still valid but daily reversal from high is a technical caution.
+- **IBM:** Est. ~$252–$265 (web data inconsistent; MOO blocked so not in portfolio).
+- **NVDA:** Recovering with Nasdaq; est. +1.5–2%.
+- **BTC:** ~$60,000 range (below $82K threshold — no crypto entry).
+- **3% Circuit Breaker:** NOT triggered ✓
+
+**Tomorrow (June 30, 2026):**
+- Economic calendar: June Jobs Report is Thursday July 2 (not tomorrow)
+- No major earnings releases expected tomorrow
+- Markets close Friday July 3 for July 4 holiday (Saturday)
+- MU and IBM entries remain committed watchlist items for tomorrow's Pre-Market MOO
+
+---
+
+### DAY TRADE CLOSE AUDIT
+
+No day trades open. AMD is a swing position (entered June 23). Nothing to close via MOC. ✓
+
+---
+
+### SWING POSITION STOP-LOSS CONFIRMATION
+
+- **AMD 18sh:** Stop-loss and take-profit **NOT RESTING AT ALPACA** — API blocked. Day 9 guardrail violation. ⛔
+
+---
+
+### MOC ORDER ATTEMPTS
+
+No new MOC entries to place (MU and IBM are Pre-Market MOO candidates for tomorrow, not today's MOC). AMD risk reduction MOC was already the subject of prior routine violations. Attempting AMD sell MOC:
+
+```bash
+# ATTEMPT: SELL 9sh AMD MOC to reduce over-cap position
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}' 
+→ HTTP 000 (proxy CONNECT rejected — 59th consecutive blocked session)
+```
+
+**AMD MOC sell BLOCKED.** Position remains 18sh naked heading into overnight. ⛔
+
+---
+
+### TODAY'S P&L SUMMARY
+
+| Item | Value |
+|---|---|
+| AMD 18sh × ($522.00 est. − $506.76 fill) | +$274.32 unrealized |
+| MU (not filled) | $0 |
+| IBM (not filled) | $0 |
+| Cash | $90,732 |
+| **Total Equity Est.** | **$100,132** |
+| **Daily P&L (vs morning $100,069)** | **+$63 (+0.06%)** |
+| **S&P 500 Today** | **+1.08%** |
+| **Daily Gap** | **−1.02 pp** |
+| **Cumulative Portfolio Return** | **+0.13%** |
+| **Cumulative S&P 500 Return** | **~7.45%** |
+| **Cumulative Gap vs SPX** | **−7.32 pp** |
+
+---
+
+### TOMORROW'S WATCHLIST (June 30, 2026 — binding commitments)
+
+| Rank | Symbol | Score | Action |
+|---|---|---|---|
+| CRITICAL | AMD | — | OPERATOR: SELL 9sh + GTC stop $481.42 + GTC target $582.78 — **BEFORE 9:25 AM ET** |
+| 1 | MU | 7.5 | MOO 4sh (2nd day blocked — OPERATOR MUST EXECUTE) |
+| 2 | IBM | 7.0 | MOO 3sh (2nd day blocked — OPERATOR MUST EXECUTE) |
+| 3 | NVDA | 6.83 | WATCH — re-score if confirms reversal with 2/5 indicator stack |
+
+---
+
+### YAML DECISION LOG — MARKET-CLOSE JUNE 29
+
+```yaml
+---
+ts: 2026-06-29T15:00:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine (11:00 AM ET / 15:00Z) silently failed — no heartbeat entry in logs/heartbeats/2026-06-29.log."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SILENT FAILURE — Mid-Morning. Expected STARTED ~15:00Z. Actual: absent. Per close.md, Market-Close must catch up on Afternoon's duties. No day trades were open; no forced MOC closes from this gap. Violation logged for performance tracking."
+---
+---
+ts: 2026-06-29T16:30:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Midday routine (12:30 PM ET / 16:30Z) silently failed — no heartbeat entry in logs/heartbeats/2026-06-29.log."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SILENT FAILURE — Midday. Expected STARTED ~16:30Z. Actual: absent. 2nd consecutive intraday silent failure today. Universe scan and mid-session position review not completed. Catching up in Market-Close."
+---
+---
+ts: 2026-06-29T18:00:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Afternoon routine (2:00 PM ET / 18:00Z) silently failed — no heartbeat entry in logs/heartbeats/2026-06-29.log."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "SILENT FAILURE — Afternoon. Expected STARTED ~18:00Z. Actual: absent. 3rd consecutive intraday silent failure today. Afternoon's primary duty was to scan open active positions and close any day trades. AMD is a swing position (not a day trade), so no forced MOC closes were missed. Market-Close catching up now."
+---
+---
+ts: 2026-06-29T19:33:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh naked (no stop, no take-profit, ~9.4% equity > 5% hard cap) for 9th consecutive day (including weekend days). MOC sell 9sh AMD attempted → HTTP 000 blocked."
+size_pct: 9.4
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION Day 9 — AMD 18sh at ~$522 est. close = ~$9,396 = ~9.4% equity. Hard cap 5%. No stop resting at Alpaca (API blocked 59th consecutive session). AMD MOC sell attempted (cls TIF) → HTTP 000. Position profitable (est. +$274 unrealized) but completely unprotected. Gap risk overnight: if AMD drops >$14 to $508, trailing stop territory. OPERATOR: Log in to app.alpaca.markets NOW — SELL 9sh AMD at market + place GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. Cannot force-close via agent — all API calls return HTTP 000."
+---
+---
+ts: 2026-06-29T19:35:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: "MU approved 7.5 (2nd day blocked). MOO missed today. No valid MOC entry at 3:33 PM ET — prior 7.5 approval was for MOO at open, not end-of-day. Re-attempting tomorrow Pre-Market as MOO."
+size_pct: 4.53
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP REASON: Exemption 1 — MU closed at $1,132.33 after running to $1,198.71 intraday and giving back all gains. EOD reversal changes entry calculus: buying at $1,132 after a $66-reversal day introduces elevated overnight risk. The original MOO approval at $1,133-$1,141 no longer applies at 3:33 PM ET with only 27 minutes to close. Re-scoring required for June 30 Pre-Market. xAI API blocked — degraded gracefully. Exemption 1 applies: entering now at the close after intraday reversal would produce unfavorable R/R, not the 3:1 minimum required. Carry-forward to June 30 MOO with fresh Pre-Market score."
+---
+---
+ts: 2026-06-29T19:35:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "IBM approved 7.0 (2nd day blocked). No valid MOC entry at 3:33 PM ET — MOO approval was for open. Market closing in 27 min; insufficient intraday context. Carry-forward to June 30 Pre-Market MOO."
+size_pct: 0.82
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "SKIP REASON: Exemption 1 — IBM web data shows inconsistent price ranging $252-$265 (vs $271-274 from morning estimate). Data uncertainty + proximity to close = R/R unclear. If IBM is materially lower than the $272 estimate, the bracket order parameters need recalculating. Cannot calculate safe stop/target with reliable current price. Exemption 1 (would breach 3:1 R/R guardrail if price unknown). Carry-forward to June 30 Pre-Market for fresh MOO score. xAI API blocked."
+---
+```
+
+---
+
 ## 2026-06-29 — Market Open (9:45 AM ET / 13:46 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:45:46Z ✓
