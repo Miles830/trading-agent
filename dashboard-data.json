@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-29T12:06:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-06-29T13:46:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 100069,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90732,
       "cash_pct": 90.7
     },
-    "note": "June 29 PRE-MARKET (8:00 AM ET / 12:06Z). TRADING DAY. API BLOCKED (HTTP 000 \u2014 57th+ consecutive session). 3 orders ATTEMPTED + BLOCKED: (1) MU 4sh MOO \u2014 approved 7.5, BLOCKED; (2) IBM 3sh MOO \u2014 approved 7.0, BLOCKED; (3) AMD sell 9sh MOO risk mgmt, BLOCKED. REJECTED: GOOGL 5.5 (sell-the-news post-Dow inclusion, AI talent exodus), GLD 5.5 (downtrend confirmed, price at $370 vs prior $405 entry plan), NVDA 6.83 (sell signal, -18.33% from ATH, 5 down days). AMD 18sh STILL NAKED \u2014 Day 7. Est. equity ~$100,069 (18sh AMD @ $518.72 = +$215 unrealized). OPERATOR: manually execute MU/IBM MOOs + AMD risk reduction at app.alpaca.markets."
+    "note": "June 29 MARKET-OPEN (9:45 AM ET / 13:46Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 58th consecutive session). Market-Open limit orders ATTEMPTED + BLOCKED: (1) MU 4sh limit bracket GTC \u2014 7.5 avg, BLOCKED; (2) IBM 3sh limit bracket GTC \u2014 7.0 avg, BLOCKED. AMD 18sh naked Day 8 \u2014 stop backfill attempted, BLOCKED. MOO fill status unknown (Pre-Market MOOs blocked by API; operator may have manually executed). Market opened +0.8-1.0% (below 2% no-chase). OPERATOR URGENT: (1) SELL 9sh AMD at market NOW + GTC stop $481.42 + GTC take-profit $582.78; (2) If MU/IBM MOOs did not fill \u2014 place limit bracket GTC orders now; (3) If MOOs DID fill \u2014 immediately place GTC stops at fill\u00d70.95 and take-profits at fill+3\u00d7(fill\u2212stop)."
   },
   "positions": [
     {
@@ -38,7 +38,7 @@
       "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED \u2014 Day 7 without stop-loss. 18sh \u00d7 $506.76 fill (stale GTC). Current est. $518.72. Unrealized +$215. Position = 9.3% equity (OVER 5% hard cap). OPERATOR URGENT: (1) SELL 9sh at market NOW; (2) place GTC stop $481.42 on remaining 9sh; (3) place GTC take-profit $582.78 on remaining 9sh. API BLOCKED \u2014 agent cannot execute."
+      "note": "CRITICALLY NAKED \u2014 Day 8 without stop-loss. 18sh \u00d7 $506.76 fill (stale GTC). Est. $518-525 at open. Unrealized est. +$200-340. Position = ~9.3% equity (OVER 5% hard cap). OPERATOR URGENT: (1) SELL 9sh at market NOW; (2) place GTC stop $481.42 on remaining 9sh; (3) place GTC take-profit $582.78 on remaining 9sh. API BLOCKED \u2014 agent cannot execute. 8th consecutive day naked."
     },
     {
       "symbol": "MU",
@@ -84,7 +84,7 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON REBOUND. SPX +1.12%, Nasdaq +1.31%. GOOGL (Class A) officially joins Dow. MU recovering Day 4 post-earnings. AMD +$12 unrealized. API STILL BLOCKED (57th+).",
+    "mode": "RISK-ON REBOUND. Market Open (9:45 AM ET). SPX est. +0.8-1.0% at open (below 2% no-chase). Nasdaq leading. MU recovering Day 4 post-earnings. AMD est. $518-525. API STILL BLOCKED (58th).",
     "fear_greed": null,
     "fear_greed_label": "Risk-on. Broad market rally Monday; semiconductor leadership returning. GOOGL Dow inclusion live.",
     "spx": "S&P 500 futures +1.12% pre-market (~7,568). Nasdaq +1.31%. Broad risk-on rally after Friday semiconductor selloff reversion.",
@@ -124,9 +124,9 @@
       "name": "Market Open",
       "schedule": "09:45 ET daily",
       "status": "completed",
-      "last_run": "2026-06-26T13:46:01Z",
-      "next_run": "2026-06-26 09:45 ET",
-      "last_summary": "June 25 Market-Open SILENT FAILURE. June 26 Market-Open: place GTC stop on any GOOGL MOO fill at open \u00d7 0.95. Confirm AMD resolution."
+      "last_run": "2026-06-29T13:46:00Z",
+      "next_run": "2026-06-30T13:45:00Z",
+      "last_summary": "June 29 Market-Open: API BLOCKED (58th consecutive). MU 4sh limit bracket GTC ATTEMPTED + BLOCKED (7.5 avg). IBM 3sh limit bracket GTC ATTEMPTED + BLOCKED (7.0 avg). AMD 18sh naked Day 8 \u2014 stop backfill BLOCKED. MOO fill status unknown. Market opened est. +0.8-1.0%. OPERATOR: AMD risk reduction + verify MOO fills + place missing stops/take-profits."
     },
     {
       "name": "Mid-Morning",
@@ -179,7 +179,48 @@
   ],
   "trades": [
     {
-      "ts": "2026-06-29T12:06:00Z",
+      "ts": "2026-06-29T13:46:00Z",
+      "action": "violation",
+      "symbol": "AMD",
+      "bucket": "active",
+      "setup": "other",
+      "score": null,
+      "thesis": "AMD 18sh naked (no stop, 9.3% equity > 5% cap) Day 8. Stop backfill attempted — HTTP 403 blocked. 58th consecutive API block.",
+      "size_pct": 9.3,
+      "stop": null,
+      "target": null,
+      "agent_scores": null,
+      "agent_average": null,
+      "agents_above_7": null,
+      "master_decision": "rejected",
+      "master_notes": "GUARDRAIL VIOLATION — AMD 18sh naked Day 8. Stop backfill API call blocked. OPERATOR: app.alpaca.markets — SELL 9sh at market + GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh."
+    },
+    {
+      "ts": "2026-06-29T13:46:00Z",
+      "action": "entry",
+      "symbol": "IBM",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.0,
+      "thesis": "Market-Open carry-forward from Pre-Market MOO (blocked). IBM recovering with market (+0.8-1.0%). Defensive large-cap tech, all 6 agents at 7.0.",
+      "size_pct": 0.82,
+      "stop": 260.30,
+      "target": 315.20,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.0,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "Limit bracket GTC attempted — HTTP 403 BLOCKED (58th consecutive). OPERATOR: BUY 3sh IBM limit $274 bracket GTC (stop $260.30, target $315.20) if MOO did not fill."
+    },
+    {
+      "ts": "2026-06-29T13:46:00Z",
       "action": "entry",
       "symbol": "MU",
       "bucket": "active",

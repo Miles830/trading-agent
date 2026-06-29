@@ -4,6 +4,159 @@
 
 ---
 
+## 2026-06-29 — Market Open (9:45 AM ET / 13:46 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Market-Open 13:45:46Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **58th consecutive blocked session**
+**Current Time:** 13:46Z = 9:46 AM ET — market has been open ~16 minutes
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Pre-Market predecessor: `STARTED Pre-Market 2026-06-29T12:05:10Z` ✓ | `COMPLETED Pre-Market 2026-06-29T12:28:33Z` ✓
+Pre-Market ran normally. No catch-up needed.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/account            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — 58th consecutive session. Cannot verify fills or stop orders.**
+
+**Estimated position state (from prior logs + Pre-Market research):**
+- ⚠️⚠️⚠️ **AMD 18sh ESTIMATED NAKED** — filled June 23 open at ~$506.76 avg. AMD opened today at est. $518-522 (Nasdaq +1.31% recovery). Unrealized est. +$200–$280. **NO STOP. NO TAKE-PROFIT. DAY 8 NAKED.**
+- **MU 4sh MOO** — attempted Pre-Market but BLOCKED. Fill status UNKNOWN. If operator manually placed the MOO, it may have filled at today's open (est. ~$1,130-$1,140). Cannot confirm.
+- **IBM 3sh MOO** — attempted Pre-Market but BLOCKED. Fill status UNKNOWN.
+- Stale GTCs: PLTR 10sh limit $150.74 (PLTR ~$133 — below trigger, not in danger); MRVL 8sh limit $202.19 (MRVL ~$264 — far above limit, not in danger).
+
+**CANNOT BACKFILL STOPS — API BLOCKED.**
+If MU/IBM MOOs filled (by operator manual execution), they have NO STOP-LOSS protection. This is a guardrail violation per CLAUDE.md.
+
+**⚠️⚠️⚠️ OPERATOR CRITICAL — AMD NAKED POSITION (DAY 8):**
+At today's open ($518.72 est.): AMD 18sh = $9,337 = est. 9.3% of equity — STILL over 5% hard cap.
+OPERATOR MUST LOG IN TO app.alpaca.markets IMMEDIATELY:
+1. **SELL 9sh AMD at market** (reduce 18sh → 9sh = ~4.65% equity ✓)
+2. After sell fills: **Place GTC STOP on remaining 9sh at $481.42** ($506.76 fill × 0.95)
+3. **Place GTC TAKE-PROFIT on remaining 9sh at $582.78** ($506.76 + 3 × $25.34)
+4. If MU MOO filled: **Place GTC stop at fill × 0.95 and take-profit at fill + 3×(fill − stop)**
+5. If IBM MOO filled: **Place GTC stop at fill × 0.95 and take-profit at fill + 3×(fill − stop)**
+
+---
+
+### MARKET CONDITIONS AT OPEN — JUNE 29, 2026
+
+- **S&P 500:** Recovery day — futures were +1.12% pre-market; open est. +0.8–1.0%
+- **Nasdaq 100:** Recovery in tech — +1.3% pre-market; AI names recovering
+- **AMD:** Est. $518–525 at open (recovering with Nasdaq)
+- **MU:** Est. $1,130–$1,145 (recovering from Friday -6.69% oversold)
+- **IBM:** Est. $272–274 (recovering with market)
+- **GOOGL:** Est. ~$336 (underperforming — sell-the-news Dow inclusion, AI talent exodus)
+- **Market opened UP ~0.8-1.0%** — below the 2% "caution/no-chase" threshold; normal position sizing applies
+- **3% Circuit Breaker:** NOT triggered ✓
+- **No new breaking catalysts since Pre-Market scan**
+
+---
+
+### WATCHLIST EXECUTION — MARKET OPEN
+
+Pre-Market already placed (or attempted) the mandatory MOO orders for MU and IBM. Those are the only ≥7-score entries from today's watchlist. Both were BLOCKED at the API level.
+
+**GOOGL (5.5/10):** REJECTED by 6-agent gate — below threshold. No action needed.
+**GLD (5.5/10):** REJECTED by 6-agent gate — downtrend confirmed. No action needed.
+**NVDA (6.83/10):** REJECTED by 6-agent gate — average below 7.0. No action needed.
+
+No new limit-order entries identified for the Market-Open routine. The universe scan from Pre-Market showed no additional names breaking above threshold. The Nasdaq recovery is broad but below the 2% "no-chase" threshold, so existing approved names from the watchlist remain the active candidates.
+
+**Limit-order re-attempt status (all blocked):**
+All API calls to place limit bracket orders for MU, IBM are blocked (58th consecutive session). Orders cannot be submitted.
+
+---
+
+### YAML DECISION LOG — MARKET-OPEN ENTRIES
+
+```yaml
+---
+ts: 2026-06-29T13:46:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: "Market-Open follow-up on Pre-Market MOO attempt: MU recovering from Friday -6.69% oversold. Nasdaq +1.0% recovery context. HBM4 sold out through 2026. Entry limit at ask × 1.005."
+size_pct: 4.53
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Carry-forward from Pre-Market: MOO blocked by API. Market-Open limit order also blocked (HTTP 403 — 58th consecutive). MU est. $1,130-1,145 at open. Limit would be ask×1.005 ≈ $1,136-$1,150. Cannot submit. OPERATOR: If MOO did not fill, place limit bracket GTC: symbol=MU qty=4 side=buy limit_price=1141 stop_loss.stop_price=1083.95 take_profit.limit_price=1313.85 tif=gtc order_class=bracket. Stop 5% below $1,141 = $1,083.95; target 15% above = $1,312.15 (adjusted for 3:1 R/R). xAI X-sentiment unavailable (API blocked)."
+---
+---
+ts: 2026-06-29T13:46:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Market-Open follow-up on Pre-Market MOO attempt: IBM recovering with market (+0.8% SPX). Defensive large-cap tech, all 6 agents at 7.0. JPMorgan OW, watsonx enterprise AI."
+size_pct: 0.82
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "Carry-forward from Pre-Market: MOO blocked by API. Market-Open limit also blocked (HTTP 403 — 58th consecutive). IBM est. $272-274 at open. Limit would be ~$274.37. Cannot submit. OPERATOR: If MOO did not fill, place limit bracket GTC: symbol=IBM qty=3 side=buy limit_price=274 stop_loss.stop_price=260.30 take_profit.limit_price=315.20 tif=gtc order_class=bracket. xAI X-sentiment unavailable."
+---
+---
+ts: 2026-06-29T13:46:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh naked (no stop, no take-profit, 9.3% equity > 5% cap) for 8th consecutive day. Stop backfill attempted: HTTP 403 blocked. Cannot place protective orders."
+size_pct: 9.3
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION — logged per CLAUDE.md. AMD 18sh at ~$506.76 avg fill = est. $9,337 (9.3% equity). Hard cap is 5% per position. No stop resting at Alpaca (API blocked for 58th consecutive session). Cannot reduce to 9sh (sell order blocked), cannot place stop (API blocked). Est. AMD at $518-525 today = unrealized est. +$200-340. Position profitable but completely unprotected. OPERATOR: App.alpaca.markets — SELL 9sh AMD at market NOW + place GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. This violation is being logged for the 8th consecutive session."
+---
+```
+
+---
+
 ## 2026-06-29 — Pre-Market (8:00 AM ET / 12:06 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 12:05:10Z ✓
