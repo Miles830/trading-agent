@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-29T13:46:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-29T18:05:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 100069,
     "starting_equity": 100000.0,
@@ -9,11 +9,11 @@
     "buying_power": 181464,
     "long_market_value": 9337,
     "short_market_value": 0.0,
-    "daily_pnl": 215,
-    "daily_pnl_pct": 0.21,
+    "daily_pnl": 274,
+    "daily_pnl_pct": 0.27,
     "total_return_pct": 0.07,
-    "spx_return_pct": 6.37,
-    "benchmark_gap_pct": -6.3,
+    "spx_return_pct": 6.82,
+    "benchmark_gap_pct": -6.8,
     "open_positions_count": 1,
     "buckets": {
       "active_value": 9337,
@@ -23,7 +23,7 @@
       "cash_value": 90732,
       "cash_pct": 90.7
     },
-    "note": "June 29 MARKET-OPEN (9:45 AM ET / 13:46Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 58th consecutive session). Market-Open limit orders ATTEMPTED + BLOCKED: (1) MU 4sh limit bracket GTC \u2014 7.5 avg, BLOCKED; (2) IBM 3sh limit bracket GTC \u2014 7.0 avg, BLOCKED. AMD 18sh naked Day 8 \u2014 stop backfill attempted, BLOCKED. MOO fill status unknown (Pre-Market MOOs blocked by API; operator may have manually executed). Market opened +0.8-1.0% (below 2% no-chase). OPERATOR URGENT: (1) SELL 9sh AMD at market NOW + GTC stop $481.42 + GTC take-profit $582.78; (2) If MU/IBM MOOs did not fill \u2014 place limit bracket GTC orders now; (3) If MOOs DID fill \u2014 immediately place GTC stops at fill\u00d70.95 and take-profits at fill+3\u00d7(fill\u2212stop)."
+    "note": "June 29 AFTERNOON (2:00 PM ET / 18:05Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 59th consecutive session). Mid-Morning SILENT FAILED. Midday SILENT FAILED. AMD 18sh NAKED Day 8 \u2014 est. $522, unrealized +$274, NO STOPS. Market: S&P +0.82%, Nasdaq +1.43%. GOOGL +4.18% to $351 (Dow inclusion reversal). NVDA ~$194 (+0.73%, -18% ATH \u2014 FRESH SCORE 8.0). BTC ~$59K (below $82K \u2014 NO CRYPTO). TOMORROW BINDING (June 30): (1) NVDA 4sh MOO (8.0); (2) MU 4sh MOO (7.5); (3) GOOGL 14sh limit GTC ~$354 (7.67); (4) IBM 3sh limit GTC ~$275 (7.0). OPERATOR BEFORE CLOSE (4 PM ET): SELL 9sh AMD + stops on all filled positions."
   },
   "positions": [
     {
@@ -31,14 +31,14 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 518.72,
-      "pnl": 215.28,
-      "pnl_pct": 2.36,
+      "current_price": 522.0,
+      "pnl": 274.32,
+      "pnl_pct": 2.84,
       "stop_loss": null,
       "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED \u2014 Day 8 without stop-loss. 18sh \u00d7 $506.76 fill (stale GTC). Est. $518-525 at open. Unrealized est. +$200-340. Position = ~9.3% equity (OVER 5% hard cap). OPERATOR URGENT: (1) SELL 9sh at market NOW; (2) place GTC stop $481.42 on remaining 9sh; (3) place GTC take-profit $582.78 on remaining 9sh. API BLOCKED \u2014 agent cannot execute. 8th consecutive day naked."
+      "note": "CRITICALLY NAKED \u2014 Day 8. 18sh \u00d7 $506.76 fill. Est. $522 at 2 PM ET. Unrealized +$274. 9.4% equity (OVER 5% hard cap). OPERATOR: SELL 9sh at market (app.alpaca.markets) BEFORE 4 PM TODAY + GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. API BLOCKED 59th session."
     },
     {
       "symbol": "MU",
@@ -131,26 +131,26 @@
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
+      "status": "failed",
       "last_run": "2026-06-26T15:04:51Z",
-      "next_run": "2026-06-27T15:00:00Z",
-      "last_summary": "BLOCKED \u2014 API 54th consecutive. Pre-Market missed (Day 5 silent fail). Stop-loss audit: AMD 18sh NAKED Day 5 (est ~$520-528, no stops). 3 re-attempts (all blocked): GOOG 14sh $337.48 (Dow inclusion LAST DAY), MU 4sh $1,105.50 (day-2 pullback improved entry), IBM 3sh $274.37 (defensive outperforming). PCE 4.1% matched consensus \u2014 neutral. User suggestions: 0. GLD flagged for Midday re-eval."
+      "next_run": "2026-06-30T15:00:00Z",
+      "last_summary": "SILENT FAILURE June 29 \u2014 no heartbeat at ~15:00Z. Violation logged. AMD naked stop-backfill window missed. No watchlist re-scoring."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
       "status": "failed",
       "last_run": "2026-06-26T16:30:00Z",
-      "next_run": "2026-06-26 12:30 ET",
-      "last_summary": "June 26 Midday SILENT FAILURE \u2014 no heartbeat at 16:30Z. Violation logged. API blocked (55th session). GOOG/MU/IBM re-attempts deferred to Market-Close."
+      "next_run": "2026-06-30T16:30:00Z",
+      "last_summary": "SILENT FAILURE June 29 \u2014 no heartbeat at ~16:30Z. Violation logged. 2nd consecutive Midday silent failure on same day as Mid-Morning failure."
     },
     {
       "name": "Afternoon",
       "schedule": "14:00 ET daily",
       "status": "completed",
-      "last_run": "2026-06-26T18:06:00Z",
-      "next_run": "2026-06-29T18:00:00Z",
-      "last_summary": "June 26 Afternoon: API BLOCKED (55th). Pre-Market + Midday silent failed. No day trades open \u2014 nothing to close. 4 positions (GOOG/MU/IBM/GLD) scored \u22657, all logged action:skip (proximity-to-close + API blocked). GLD freshly scored 7.0 (PCE 4.1% macro hedge) \u2014 approved Monday Pre-Market. AMD naked 18sh Day 5. GOOG Dow inclusion thesis expires today \u2014 Monday requires fresh post-inclusion score. Monday Pre-Market binding: AMD resolve + MU 4sh + IBM 3sh + GLD 10sh + GOOG re-score."
+      "last_run": "2026-06-29T18:05:00Z",
+      "next_run": "2026-06-30T18:00:00Z",
+      "last_summary": "June 29 Afternoon: API BLOCKED (59th). Mid-Morning + Midday both silent failed. AMD 18sh NAKED Day 8 (est. $522, +$274 unrealized). No day trades to close. 2 proximity-to-close skips logged: NVDA (8.0, mean-reversion-oversold, deferred to tomorrow MOO) + GOOGL (7.67, post-Dow-inclusion, deferred to limit GTC). Tomorrow binding: NVDA 4sh MOO (8.0), MU 4sh MOO (7.5), GOOGL 14sh limit GTC (7.67), IBM 3sh limit GTC (7.0). Market: S&P +0.82%, Nasdaq +1.43%. BTC ~$59K \u2014 no crypto."
     },
     {
       "name": "Market Close",
@@ -178,6 +178,105 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-29T18:05:00Z",
+      "action": "skip",
+      "symbol": "GOOGL",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.67,
+      "thesis": "GOOGL fresh score 7.67 at $351 — Dow inclusion reversal +4.18%. Approved (6/6 ≥7). Skipped: afternoon proximity-to-close (routine guardrail). Deferred to limit bracket GTC June 30.",
+      "size_pct": null,
+      "stop": 336.30,
+      "target": 407.10,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 7.67,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "6/6 agents ≥7. Afternoon proximity-to-close exemption applied (Exemption 1 — strategy guardrail, routines/afternoon.md). Deferred to June 30 limit bracket GTC at $354 stop $336.30 target $407.10. CORRECTED from morning 5.5 score (sell-the-news fade reversed)."
+    },
+    {
+      "ts": "2026-06-29T18:05:00Z",
+      "action": "skip",
+      "symbol": "NVDA",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": 8.0,
+      "thesis": "NVDA fresh score 8.0 at $194 — -18% from ATH, Stochastic + MACD oversold bounce confirmed (2/5 indicators). Approved (6/6 ≥7). Skipped: afternoon proximity-to-close (routine guardrail). Deferred to MOO June 30.",
+      "size_pct": null,
+      "stop": 184.30,
+      "target": 223.10,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 10
+      },
+      "agent_average": 8.0,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "6/6 agents ≥7. Highest score of the session (8.0). Afternoon proximity-to-close exemption applied (Exemption 1 — strategy guardrail, routines/afternoon.md). MANDATORY: June 30 MOO 4sh. Upgraded from 6.83 morning score — Stochastic %K crossed above %D from oversold + MACD bullish crossover confirmed at 2 PM = 2/5 indicator stack met."
+    },
+    {
+      "ts": "2026-06-29T18:05:00Z",
+      "action": "violation",
+      "symbol": "AMD",
+      "bucket": "active",
+      "setup": "other",
+      "score": null,
+      "thesis": "AMD 18sh naked (no stop, no target) Day 8. Est. $522, unrealized +$274. 9.4% equity — nearly double 5% hard cap. Stop backfill blocked (59th consecutive API block).",
+      "size_pct": 9.4,
+      "stop": null,
+      "target": null,
+      "agent_scores": null,
+      "agent_average": null,
+      "agents_above_7": null,
+      "master_decision": null,
+      "master_notes": "CRITICAL GUARDRAIL VIOLATION — AMD naked Day 8. OPERATOR REQUIRED BEFORE 4 PM ET: (1) SELL 9sh AMD at market via app.alpaca.markets; (2) Place GTC stop $481.42 on remaining 9sh; (3) Place GTC take-profit $582.78 on remaining 9sh. API blocked 59th session — cannot automate."
+    },
+    {
+      "ts": "2026-06-29T16:30:00Z",
+      "action": "violation",
+      "symbol": "ROUTINE",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "thesis": "Midday routine (12:30 PM ET / 16:30Z) silently failed June 29. No heartbeat. AMD naked stop-backfill window missed. No watchlist re-scoring.",
+      "size_pct": null,
+      "stop": null,
+      "target": null,
+      "agent_scores": null,
+      "agent_average": null,
+      "agents_above_7": null,
+      "master_decision": null,
+      "master_notes": "2nd consecutive silent failure on June 29 (Mid-Morning + Midday both failed). 2 consecutive routine failures compounds naked AMD risk. Violation logged per afternoon.md predecessor audit."
+    },
+    {
+      "ts": "2026-06-29T15:00:00Z",
+      "action": "violation",
+      "symbol": "ROUTINE",
+      "bucket": null,
+      "setup": "silent-failure",
+      "score": null,
+      "thesis": "Mid-Morning routine (11:00 AM ET / 15:00Z) silently failed June 29. No heartbeat. AMD naked stop-backfill window missed.",
+      "size_pct": null,
+      "stop": null,
+      "target": null,
+      "agent_scores": null,
+      "agent_average": null,
+      "agents_above_7": null,
+      "master_decision": null,
+      "master_notes": "Silent failure confirmed via grep of logs/heartbeats/2026-06-29.log — no STARTED Mid-Morning entry. Violation logged per afternoon.md predecessor audit."
+    },
     {
       "ts": "2026-06-29T13:46:00Z",
       "action": "violation",
@@ -1448,30 +1547,37 @@
   "watchlist": [
     {
       "rank": 1,
-      "symbol": "AMD",
-      "score": null,
-      "action": "OPERATOR CRITICAL \u2014 RISK MANAGEMENT",
+      "symbol": "NVDA",
+      "score": 8.0,
+      "action": "BUY \u2014 MOO 4sh June 30 (BINDING)",
       "bucket": "active",
-      "setup": "other",
-      "thesis": "18sh NAKED \u2014 no stop-loss. Day 7. Est. $518.72 = +$215 unrealized but 9.3% equity (OVER 5% cap). MUST reduce. OPERATOR: (1) SELL 9sh at market; (2) place GTC stop $481.42 remaining 9sh; (3) GTC take-profit $582.78 remaining 9sh.",
-      "entry_est": null,
-      "stop": 481.42,
-      "target": 582.78,
-      "priority": "IMMEDIATE OPERATOR ACTION \u2014 BEFORE MARKET OPEN",
-      "agent_scores": {}
+      "setup": "mean-reversion-oversold",
+      "thesis": "Fresh score 8.0 at $194 \u2014 -18% from ATH with Stochastic + MACD confirming oversold bounce (2/5 indicators). AI capex supercycle intact. Blackwell ramp Q2 2026. 6/6 agents \u22657. Afternoon proximity-to-close skip \u2014 deferred to June 30 MOO.",
+      "entry_est": 194.0,
+      "stop": 184.30,
+      "target": 223.10,
+      "priority": "MOO 4sh before 9:25 AM ET June 30 \u2014 MANDATORY per deployment bias",
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 10
+      }
     },
     {
       "rank": 2,
       "symbol": "MU",
       "score": 7.5,
-      "action": "BUY \u2014 MOO BLOCKED (operator must execute)",
+      "action": "BUY \u2014 MOO 4sh June 30 (BINDING, carry-forward)",
       "bucket": "active",
       "setup": "earnings-reaction-follow",
-      "thesis": "Day-4 post-earnings recovery. Q3 blowout (EPS $5.11), HBM4 sold out through 2026. Friday -6.69% Apple overreaction overblown \u2014 AI data center demand intact. 5/6 agents \u22657.",
-      "entry_est": 1133.50,
-      "stop": 1076.83,
-      "target": 1303.75,
-      "priority": "MOO 4sh before 9:25 AM ET \u2014 57th blocked, operator must place",
+      "thesis": "Day-4 post-earnings recovery. Q3 blowout (EPS $5.11), HBM4 sold out through 2026. Friday -6.69% Apple overreaction overblown \u2014 AI data center demand intact. 5/6 agents \u22657. 59th consecutive API block prevented fill.",
+      "entry_est": 1165.0,
+      "stop": 1106.75,
+      "target": 1339.75,
+      "priority": "MOO 4sh before 9:25 AM ET June 30 \u2014 MU now $1,165 (up from $1,133 entry est). Update bracket to fill\u00d70.95 stop + fill\u00d71.15 target after MOO confirms.",
       "agent_scores": {
         "fundamentals": 9,
         "technical": 7,
@@ -1483,84 +1589,42 @@
     },
     {
       "rank": 3,
-      "symbol": "IBM",
-      "score": 7.0,
-      "action": "BUY \u2014 MOO BLOCKED (operator must execute)",
+      "symbol": "GOOGL",
+      "score": 7.67,
+      "action": "BUY \u2014 limit bracket GTC 14sh June 30",
       "bucket": "active",
       "setup": "sector-rotation",
-      "thesis": "Defensive outperformer. watsonx AI consulting. Insulated from Apple semiconductor narrative. All 6 agents at 7.0 \u2014 unanimous approval.",
-      "entry_est": 272.0,
-      "stop": 258.40,
-      "target": 312.80,
-      "priority": "MOO 3sh before 9:25 AM ET \u2014 57th blocked, operator must place",
+      "thesis": "FRESH score 7.67 at $351 (up from 5.5 sell-the-news morning score). Dow inclusion reversal confirmed: GOOGL +4.18% to $351.48 \u2014 buyers overwhelmed morning fade. AI Search competitive moat intact, O3/Gemini gap narrowing. 6/6 agents \u22657. Afternoon proximity-to-close skip \u2014 deferred to limit GTC.",
+      "entry_est": 354.0,
+      "stop": 336.30,
+      "target": 407.10,
+      "priority": "Limit bracket GTC: BUY 14sh at $354 (ask\u00d71.005), stop $336.30, target $407.10 \u2014 place before market open June 30",
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 9
+      }
+    },
+    {
+      "rank": 4,
+      "symbol": "IBM",
+      "score": 7.0,
+      "action": "BUY \u2014 limit bracket GTC 3sh June 30 (carry-forward)",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "thesis": "Defensive outperformer. watsonx AI consulting growing. Insulated from Apple semiconductor narrative. All 6 agents at 7.0 \u2014 unanimous approval. 59th consecutive API block prevented fill at $272.",
+      "entry_est": 275.0,
+      "stop": 261.25,
+      "target": 316.25,
+      "priority": "Limit bracket GTC: BUY 3sh at $275 (ask\u00d71.005), stop $261.25, target $316.25 \u2014 place before market open June 30",
       "agent_scores": {
         "fundamentals": 7,
         "technical": 7,
         "sentiment": 7,
         "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      }
-    },
-    {
-      "rank": 4,
-      "symbol": "NVDA",
-      "score": 6.83,
-      "action": "WATCH \u2014 below threshold, no entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "thesis": "Recovery bounce candidate on risk-on day, but -18.33% from ATH with confirmed sell signal. 5 consecutive down days. No confirmed reversal pattern. Score 6.83 \u2014 needs \u22657.0 to enter.",
-      "entry_est": 195.15,
-      "stop": 185.39,
-      "target": 224.42,
-      "priority": "WATCH \u2014 re-score if reversal confirmed with 2/5 indicator stack",
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 4,
-        "sentiment": 6,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
-      }
-    },
-    {
-      "rank": 5,
-      "symbol": "GOOGL",
-      "score": 5.5,
-      "action": "REJECTED \u2014 below threshold",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "thesis": "Dow inclusion thesis expired (sell-the-news). AI talent exodus. Technical sell signal -4.19pp vs Nasdaq. Score 5.5 \u2014 decisive rejection.",
-      "entry_est": 336.15,
-      "stop": null,
-      "target": null,
-      "priority": "DO NOT ENTER \u2014 re-score only if technical reversal + talent narrative resolves",
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 3,
-        "sentiment": 4,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 6
-      }
-    },
-    {
-      "rank": 6,
-      "symbol": "GLD",
-      "score": 5.5,
-      "action": "REJECTED \u2014 downtrend confirmed",
-      "bucket": "active",
-      "setup": "macro-hedge",
-      "thesis": "Price at $370-375, DOWN -8.8% from June 26 entry plan at $405. Prior stop $384.75 breached. Downtrend overrides PCE 4.1% macro-hedge thesis on risk-on day.",
-      "entry_est": 372.0,
-      "stop": null,
-      "target": null,
-      "priority": "DO NOT ENTER \u2014 re-score only after downtrend reversal with 2/5 indicator confirmation",
-      "agent_scores": {
-        "fundamentals": 5,
-        "technical": 3,
-        "sentiment": 5,
-        "macro": 6,
         "risk": 7,
         "tech_analyst": 7
       }

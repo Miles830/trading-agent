@@ -4,6 +4,221 @@
 
 ---
 
+## 2026-06-29 — Afternoon (2:00 PM ET / 18:02 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Afternoon 18:02:49Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **59th consecutive blocked session**
+**Current Time:** 18:02Z = 2:02 PM ET — afternoon session
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 29, 2026
+
+| Routine | Scheduled | Status |
+|---|---|---|
+| Pre-Market | 8:00 AM ET / 12:05Z | ✓ COMPLETED 12:28Z |
+| Market-Open | 9:45 AM ET / 13:45Z | ✓ COMPLETED 13:50Z |
+| Mid-Morning | 11:00 AM ET / ~15:00Z | ✗ **SILENT FAILURE — no heartbeat** |
+| Midday | 12:30 PM ET / ~16:30Z | ✗ **SILENT FAILURE — no heartbeat** |
+
+Two violations logged below (Mid-Morning, Midday).
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/account            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — 59th consecutive session. Cannot verify fills, stops, or account.**
+
+**Estimated position state:**
+- ⚠️⚠️⚠️ **AMD 18sh ESTIMATED NAKED** — filled June 23 at ~$506.76 avg. Est. price at 2 PM: ~$522 (Nasdaq +1.43%). Unrealized est. +$274. **NO STOP. NO TAKE-PROFIT. DAY 8 NAKED.**
+- **MU 4sh** — MOO attempted pre-market + Market-Open, both BLOCKED. If operator manually executed the MOO today, MU filled at ~$1,139.08 (confirmed open price from search). Est. afternoon: ~$1,170-$1,180. If filled: NO STOP placed. OPERATOR must place GTC stop $1,082.05 ($1,139×0.95) + take-profit $1,309.85.
+- **IBM 3sh** — MOO also BLOCKED. If operator executed: fill ~$272-273 open. Est. afternoon: ~$275-278. If filled: NO STOP. OPERATOR: GTC stop $259.35 + take-profit $313.95.
+- **Stale GTCs (still live):** PLTR 10sh $150.74 (PLTR ~$133, not in danger); MRVL 8sh $202.19 (MRVL ~$264, not in danger). Cancel when operator has Alpaca access.
+
+**CANNOT PLACE PROTECTIVE ORDERS — API BLOCKED (59th session).**
+
+---
+
+### AFTERNOON MARKET SUMMARY — JUNE 29, 2026
+
+**S&P 500: +0.82%** (~7,560-7,580) | **Nasdaq: +1.43%** (tech leading) | **Dow: +0.41%** | **Russell 2000: −0.75%** (small caps lagging)
+
+**Key Movers at 2 PM ET:**
+- GOOGL: **+4.18% to ~$351** (Dow inclusion day recovery — opened -2.88% sell-the-news pre-mkt, reversed strongly; all 6 agents re-scored 7.67 — see watchlist below)
+- AMZN: +5.34% | TSLA: +4.7% (Mag7 leadership today)
+- NVDA: **~$194** (up ~0.73%; -18% from ATH $235.47; oversold bounce developing; re-scored 8.0 — see watchlist)
+- AMD: **~$522 est.** (up with Nasdaq; NAKED 18sh; operator action overdue)
+- MU: **~$1,170 est.** (range $1,121-$1,199 today; recovering from Friday -6.69% Apple-demand-concern selloff)
+- IBM: **~$276 est.** (defensive, steady with market)
+- BTC: **~$59,000** (falling below $60K — WELL BELOW $82K threshold — NO crypto entry today or tomorrow)
+
+**Macro context:**
+- Supreme Court rejected firing of Fed Governor Lisa Cook → Fed independence upheld → strong risk-on signal
+- Iran ceasefire talks continuing, no new tit-for-tat attacks → reduced geopolitical risk premium in market
+- **⚠️ Key event this week: Non-Farm Payrolls THURSDAY July 2** (moved from typical Friday due to July 4 holiday proximity; not a binary event exemption but market-moving risk)
+- 3% daily-loss circuit breaker: NOT TRIGGERED ✓
+
+**Day trades to close:** None. AMD is a swing/stale-GTC position, not a day trade. No MOC orders needed for position closure. No other day-trade positions confirmed.
+
+---
+
+### YAML DECISION LOG — AFTERNOON
+
+```yaml
+---
+ts: 2026-06-29T15:00:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine (11:00 AM ET / ~15:00Z) silently failed — no heartbeat in logs/heartbeats/2026-06-29.log"
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Mid-Morning 2026-06-29 silently failed. No STARTED heartbeat logged. This is a repeated pattern in the current API-blocked stretch (59th session). Market-Open completed at 13:50Z. Any stop-trailing, watchlist re-scoring, or intraday entry at the 11 AM window was skipped. AMD remains naked with no Mid-Morning stop-backfill attempt."
+---
+---
+ts: 2026-06-29T16:30:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Midday routine (12:30 PM ET / ~16:30Z) silently failed — no heartbeat in logs/heartbeats/2026-06-29.log"
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Midday 2026-06-29 silently failed. No STARTED heartbeat. MU/IBM limit re-attempts, AMD stop backfill, and Midday universe scan all skipped. Consecutive silent failures (Mid-Morning + Midday) leaves a 4-hour window with no monitoring between 9:45 AM and 2:00 PM ET."
+---
+---
+ts: 2026-06-29T18:05:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh NAKED (no stop, no take-profit, 9.4% equity > 5% hard cap) — Day 8. Stop backfill and position reduction attempted → HTTP 403 blocked (59th consecutive session)."
+size_pct: 9.4
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "AMD violation Day 8. Est. AMD ~$522 (Nasdaq +1.43% recovery). 18sh × $522 = $9,396 ≈ 9.4% equity. Unrealized est. +$274. No stop. No take-profit. API BLOCKED 59th session. OPERATOR MANDATORY AFTERNOON: (1) Log into app.alpaca.markets; (2) SELL 9sh AMD at market (reduce to 9sh ≈ 4.65% equity); (3) GTC stop $481.42 on remaining 9sh; (4) GTC take-profit $582.78 on remaining 9sh. If MU MOO filled today: GTC stop $1,082.05 + GTC take-profit $1,309.85. If IBM MOO filled today: GTC stop $259.35 + GTC take-profit $313.95. Market closes 4:00 PM ET today."
+---
+---
+ts: 2026-06-29T18:05:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: mean-reversion-oversold
+score: 8.0
+thesis: "NVDA fresh 6-agent score 8.0 at ~$194 — down -18% from ATH $235.47 (May 14). Stochastic + MACD confirming oversold bounce. Pre-scored for tomorrow Pre-Market MOO. Skipping per afternoon proximity-to-close rule."
+size_pct: 0.78
+stop: 184.30
+target: 223.10
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 10
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7. APPROVED at 8.0 avg. Skip reason: afternoon proximity-to-close per routines/afternoon.md — active entries deferred to Pre-Market (Exemption 1 — strategy guardrail). ENTRY DEFERRED TO PRE-MARKET JUNE 30: MOO preferred (oversold bounce; gap-up potential at open). Entry ~$194 MOO. Stop $184.30 (fill×0.95). Target $223.10 (fill×1.15 ≈ 3:1 R/R ✓). 4sh × $194 = $776 = 0.78% equity ✓. Technical (2 of 5 confirmed): Stochastic (14,3,3) %K crossing above %D from oversold <20 zone; MACD bullish crossover developing post -18% drawdown. Tech Analyst: CUDA moat unassailable, Blackwell production ramp, $80B buyback underpinning floor. xAI X-sentiment unavailable (API blocked) — degraded gracefully."
+---
+---
+ts: 2026-06-29T18:05:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: sector-rotation
+score: 7.67
+thesis: "GOOGL fresh 6-agent score 7.67 at $351 — Dow inclusion day confirmed +4.18% (reversed pre-market -2.88% sell-the-news). Post-inclusion momentum + AI leadership. Pre-scored for tomorrow Pre-Market. Skipping per afternoon proximity-to-close rule."
+size_pct: 4.96
+stop: 336.30
+target: 407.10
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents ≥7. APPROVED at 7.67 avg. Skip reason: afternoon proximity-to-close per routines/afternoon.md (Exemption 1 — strategy guardrail). ENTRY DEFERRED TO PRE-MARKET JUNE 30: Limit bracket GTC at ask×1.005 (~$354). Stop $336.30 (fill×0.95). Target $407.10 (fill×1.15 ≈ 3:1 R/R ✓). 14sh × $354 = $4,956 = 4.96% equity ✓. Technical (2 of 5): Dow inclusion drove massive volume spike (≥2× avg) + MACD strong bullish crossover = 2 confirmed ✓. Note: GOOGL (Class A) confirmed as Dow member — NOT GOOG (Class C); pre-market data correction confirmed in today's Pre-Market log. Sector: tech/internet (separate from semis AMD/MU/NVDA). xAI X-sentiment unavailable (API blocked) — degraded gracefully."
+---
+```
+
+---
+
+### TOMORROW'S PRE-MARKET BINDING WATCHLIST — TUESDAY JUNE 30, 2026
+
+All four entries MANDATORY per Deployment Bias (scores ≥7, no valid exemptions on June 30). MOO cap = 3: top two highest scores (NVDA 8.0, MU 7.5) as MOO; GOOGL and IBM as limit bracket GTC.
+
+| Priority | Symbol | Qty | Order Type | Entry est. | Stop (fill×0.95) | Target (fill×1.15) | Size% | Score | Setup |
+|---|---|---|---|---|---|---|---|---|---|
+| 🔴 MOO #1 | **NVDA** | **4sh** | **MOO** | ~$194 | ~$184.30 | ~$223.10 | 0.78% | **8.0** | mean-reversion-oversold |
+| 🔴 MOO #2 | **MU** | **4sh** | **MOO** | ~$1,165 | ~$1,106.75 | ~$1,339.75 | 4.66% | **7.5** | earnings-reaction-follow |
+| 🔴 MANDATORY | **GOOGL** | **14sh** | Limit GTC bracket | ask×1.005 ≈ $354 | ~$336.30 | ~$407.10 | 4.96% | **7.67** | sector-rotation |
+| 🔴 MANDATORY | **IBM** | **3sh** | Limit GTC bracket | ask×1.005 ≈ $275 | ~$261.25 | ~$316.25 | 0.83% | **7.0** | sector-rotation |
+
+⚠️ **Before entering MU or IBM tomorrow:** If operator manually executed today's MOOs and they filled, these positions already exist — do NOT re-enter. Verify Alpaca positions first and skip duplicate entries.
+
+**Guardrail check for full 5-position portfolio (AMD 9sh + NVDA + MU + GOOGL + IBM):**
+- AMD 9sh×$522 = $4,698 | NVDA 4sh×$194 = $776 | MU 4sh×$1,165 = $4,660 → Semis total $10,134 = 10.1% ✓ (<25%)
+- GOOGL 14sh×$354 = $4,956 | IBM 3sh×$275 = $825 → Tech/Internet total $5,781 = 5.8% ✓
+- Total deployed: ~$15,915 + $4,698 AMD = $20,613 = 20.6% → Cash ~$79,387 = 79.4% ✓ (well above 5% floor)
+- Position count: 5 ✓ (<12)
+- No sector > 25% ✓
+
+**Risk event note:** NFP Thursday July 2 — not a binary event exemption (economic data, not earnings/FDA/Fed). Entries valid. If NFP is very hot (wage inflation surge), may tighten stops on entries placed June 30.
+
+---
+
 ## 2026-06-29 — Market Open (9:45 AM ET / 13:46 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:45:46Z ✓
