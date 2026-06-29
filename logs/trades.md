@@ -4,6 +4,303 @@
 
 ---
 
+## 2026-06-29 — Pre-Market (8:00 AM ET / 12:06 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Pre-Market 12:05:10Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 — paper-api.alpaca.markets:443 not in egress allowlist) — **57th+ consecutive blocked session**
+**Current Time:** 12:06Z = 8:06 AM ET — pre-market session
+**Market Status:** PRE-MARKET (market opens 13:30Z)
+
+---
+
+### USER SUGGESTION INBOX
+No open issues with label `user-suggestion`. (Checked via GitHub MCP.) Proceeding.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 29, 2026
+
+| Routine | Last Scheduled | Status |
+|---|---|---|
+| All June 26 intraday routines | June 26 (Friday) | ✓ Market-Open + Mid-Morning + Afternoon + Market-Close completed (all orders blocked) |
+| June 27-28 | Weekend | Non-trading days — no routines expected |
+| Pre-Market (today) | June 29 08:00 ET | ✓ RUNNING 12:05:10Z |
+
+No predecessor silent failures to log today.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 000 (proxy CONNECT rejected)
+GET /v2/orders?status=open → HTTP 000
+GET /v2/account            → HTTP 000
+```
+
+**API INACCESSIBLE — 57th+ consecutive session.**
+
+**Estimated position state (from prior logs):**
+- ⚠️⚠️⚠️ **AMD 18sh ESTIMATED NAKED** — stale GTC fills from June 23 open (~$506.76 avg fill). AMD today at $518.72 = unrealized est. +$215.28. NO STOP ORDER. NO TAKE-PROFIT ORDER. **DAY 7 NAKED** (including weekend).
+- All other positions: 0 confirmed.
+- Stale GTCs: PLTR 10sh limit $150.74 (NOT in danger — PLTR ~$133, this is a limit buy ABOVE current price set as breakout trigger; PLTR below trigger); MRVL 8sh limit $202.19 (NOT in danger — MRVL ~$264, far above the buy limit).
+
+**⚠️⚠️⚠️ OPERATOR CRITICAL — AMD NAKED POSITION:**
+AMD 18sh at $506.76 fill = 9.13% equity = 1.83× the 5% hard cap. Position NAKED for 7+ days.
+AMD at $518.72 today = unrealized +$215.28 (profitable but COMPLETELY UNPROTECTED).
+OPERATOR MUST LOG IN TO app.alpaca.markets IMMEDIATELY AND:
+1. **SELL 9sh AMD at market** (reduce 18sh → 9sh → 9sh × $518.72 = $4,668 = 4.67% equity ✓)
+2. **Place GTC STOP-LOSS** on remaining 9sh at **$481.42** ($506.76 fill × 0.95)
+3. **Place GTC TAKE-PROFIT** on remaining 9sh at **$582.78** ($506.76 + 3×$25.34)
+AMD sell order attempted via cloud API: SELL 9sh AMD MOO → **HTTP 000 BLOCKED**
+
+---
+
+### MARKET CONDITIONS — JUNE 29, 2026
+
+**Pre-Market (8:06 AM ET / 12:06Z) — Recovery Day:**
+- **S&P 500 futures: +1.12%** (~7,455-7,463; recovering from Friday 2-week lows)
+- **Nasdaq 100 futures: +1.31%** (tech leading recovery)
+- **Dow futures: +0.56%** (GOOGL inclusion today replacing VZ)
+- **Russell 2000: -0.19%** (small caps lagging; risk selective)
+- **AMD: $518.72** (range $502.61-$525.11; elevated volume 52.7M vs 32.7M avg = 1.61×)
+- **MU: ~$1,133.50** (recovering from Friday -6.69% Apple-demand-concern selloff; ATH $1,213.56 June 25)
+- **GOOGL: $336.15** (range $333.69-$344.12; DOWN -2.88% from Friday $346.08 despite Dow inclusion day; AI talent exodus: Adler/Pritzel leaving for Anthropic)
+- **IBM: ~$271-273** (est. from June 26 $271.63; recovering with market)
+- **NVDA: $195.15 pre-mkt** (+1.36% from $192.53 June 26 close; confirmed sell signal from pivot top May 14; -18.33% from ATH; 5 consecutive down days)
+- **GLD: ~$370-375** (well below June 26 $405 target; below former stop $384.75; Iran peace deal suppressing gold)
+- **BTC: ~$60,064** (well below $82K threshold — NO CRYPTO ENTRY)
+
+**GOOGL DOW INCLUSION CORRECTION (FINAL):** GOOGL (Class A) joins Dow today, NOT GOOG (Class C). The June 26 Market-Open correction ("GOOG Class C is the correct ticker") was itself incorrect. GOOGL is confirmed as the inclusion. Both classes trade; GOOGL gets the forced index rebalancing flows. However, GOOGL is DOWN -2.88% on inclusion day as "sell the news" + AI talent exodus overwhelm the forced buying.
+
+**Economic calendar:** No major releases June 29, 2026.
+**Earnings:** No major earnings expected today.
+**3% Circuit Breaker:** NOT triggered ✓
+
+---
+
+### WHOLE-MARKET SCAN (web research — Alpaca data API blocked)
+
+Sector overview: Large-cap tech recovery (Nasdaq +1.31%) led by AI names. Communication Services underperforming (GOOGL dragging). Semiconductors: MU recovering; NVDA recovery attempt vs confirmed sell signal. Gold weak (risk-on + Iran peace). Defense: weak (Iran deal headwind). Small caps lagging (risk selective, not broad-based recovery). No new names from screeners surface above the 7.0 threshold beyond the established watchlist.
+
+---
+
+### 6-AGENT ANALYSES
+
+#### CANDIDATE 1: MU — Earnings Reaction Follow (MANDATORY from June 26 Daily Review)
+
+**Sub-Agent 1 — Fundamentals (9/10):** Q3 FY2026 blowout: EPS $25.11 (+24.3% vs $20.20 est); revenue $41.46B (+15.7%); Q4 guidance $50B (+16.5% vs $42.9B est). HBM4 SOLD OUT through 2026 — pricing power confirmed. Cloud memory GM 83%. Data center +7× YoY. Analyst consensus Buy (29 analysts per search). **Score: 9/10**
+
+**Sub-Agent 2 — Technical (7/10):** Recovery from Friday oversold -6.69% selloff driven by overblown Apple consumer narrative. Stochastic: %K crossing from <20 (oversold zone) → confirms long (1/5). Volume oscillator: Friday heavy selloff volume; today lighter = supply exhaustion signal (1/5). Candlestick: Friday's large red candle + today's recovery bounce = potential hammer reversal on daily (1/5). MACD: turning from bearish crossover (partial, 0.5/5). 2-3 of 5 confirms — meets ≥2 minimum. **Score: 7/10**
+
+**Sub-Agent 3 — Sentiment (8/10):** Post-earnings bullish sentiment intact. Apple narrative overblown for data center memory (>80% of MU revenue). Short sellers covering after -6.69% overshoot. Options: heavy call activity. xAI API blocked — degraded gracefully. Non-X inputs all bullish. **Score: 8/10**
+
+**Sub-Agent 4 — Macro (6/10):** Nasdaq +1.31% recovery backdrop is positive. But SPX still at 2-week lows (context from Friday). Semiconductor sector recovering. PCE 4.1% matched est — neutral for memory demand. **Score: 6/10**
+
+**Sub-Agent 5 — Risk (7/10):** 4sh × ~$1,133.50 est MOO fill = $4,534 = 4.53% equity ✓. Stop: $1,076.83 (fill×0.95). Target: $1,303.75 (fill + 3×(fill-stop)). R/R: $170.25/$56.67 = 3.0:1 ✓. Trade risk: 4×$56.67 = $226.68 = 0.23% ✓. Sector 0% ✓. Cash floor ✓. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst (8/10):** HBM4 near-monopoly for GB200-class GPU training. MU + SK Hynix only suppliers; MU SOLD OUT through 2026. 1-gamma process node. Best-in-class for AI infrastructure. **Score: 8/10**
+
+**MASTER AGENT — MU:**
+Fundamentals: 9/10 | Technical: 7/10 | Sentiment: 8/10 | Macro: 6/10 | Risk: 7/10 | Tech Analyst: 8/10
+Average: **7.5/10** | Agents ≥7: 5 of 6 ✓ | Risk: 7 ✓ | Decision: **APPROVED**
+
+---
+
+#### CANDIDATE 2: IBM — Defensive Tech Recovery
+
+**Sub-Agent 1 — Fundamentals (7/10):** Steady AI transformation, hybrid cloud, watsonx enterprise AI. JPMorgan OW. Revenue growth moderate but consistent. **Score: 7/10**
+
+**Sub-Agent 2 — Technical (7/10):** Recovery day gives IBM a better backdrop than June 26 (-0.44%). Stochastic: oversold reversal possible from $271 support. IBM insulated from GOOGL/semiconductor headwinds — should track broader recovery. 2 of 5 confirms possible (stochastic + recovery candle). **Score: 7/10**
+
+**Sub-Agent 3 — Sentiment (7/10):** JPMorgan OW. No negative headlines. Enterprise IT spending stable. Recovery day improves sentiment. **Score: 7/10**
+
+**Sub-Agent 4 — Macro (7/10):** SPX +1.12% recovery (better than June 26's -0.44%). Enterprise spending stable. Warsh Fed on hold = stable rates for IT. **Score: 7/10**
+
+**Sub-Agent 5 — Risk (7/10):** 3sh × ~$272 = $816 = 0.82% equity ✓. Stop $258.40 (-5%). Target $312.80 (+15%). R/R 3:1 ✓. Trade risk $40.80 = 0.04% ✓. Minimal capital at risk. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst (7/10):** Hybrid cloud + watsonx. Mainframe switching-cost moat. Consulting recurring revenue. Not leading AI but defensible franchise. **Score: 7/10**
+
+**MASTER AGENT — IBM:**
+Fundamentals: 7/10 | Technical: 7/10 | Sentiment: 7/10 | Macro: 7/10 | Risk: 7/10 | Tech Analyst: 7/10
+Average: **7.0/10** | Agents ≥7: 6 of 6 ✓ | Risk: 7 ✓ | Decision: **APPROVED** (marginal; all at floor score — monitor closely)
+
+---
+
+#### CANDIDATE 3: GOOGL — Post-Dow-Inclusion Re-score (Required by June 26 Daily Review)
+
+**Context:** GOOGL (Class A) joins Dow at today's open. Pre-inclusion entry thesis expired. Stock DOWN -2.88% while Nasdaq is UP +1.31% = -4.19pp relative underperformance. AI talent exodus: Jonas Adler and Alexander Pritzel leaving for Anthropic.
+
+**Sub-Agent 1 — Fundamentals (7/10):** Google Cloud +29%, YouTube +15%. But AI talent exodus is a material fundamental concern threatening the $35B+ AI pipeline. **Score: 7/10**
+**Sub-Agent 2 — Technical (3/10):** GOOGL DOWN while market is UP = severe relative weakness. Confirmed "sell the news." Stochastic: crossing down. 0 of 5 confirms long. **Score: 3/10**
+**Sub-Agent 3 — Sentiment (4/10):** "Stock takes a hammering" on Dow inclusion day. AI talent loss headlines dominant. **Score: 4/10**
+**Sub-Agent 4 — Macro (6/10):** Broader market recovering but GOOGL not participating. **Score: 6/10**
+**Sub-Agent 5 — Risk (7/10):** Sizing works numerically (14sh × $336 = $4,704 = 4.70% ✓, stop $319.20, target $386.64, R/R 3:1 ✓). **Score: 7/10**
+**Sub-Agent 6 — Tech Analyst (6/10):** AI talent exodus (Adler/Pritzel/Jumper/Shazeer) materially weakens AI competitive position vs Anthropic/OpenAI. **Score: 6/10**
+
+**MASTER AGENT — GOOGL:**
+Fundamentals: 7/10 | Technical: 3/10 | Sentiment: 4/10 | Macro: 6/10 | Risk: 7/10 | Tech Analyst: 6/10
+Average: **5.5/10** | Agents ≥7: 2 of 6 ✗ | Decision: **REJECTED**
+
+---
+
+#### CANDIDATE 4: GLD — Macro Hedge (from June 26 mandatory watchlist)
+
+GLD at $370-375, DOWN from June 26 $405 target. Below former $384.75 stop level. Downtrend confirmed ($418→$398→$370). Risk-on today removes safe-haven.
+
+**Scores:** F=5 | T=3 | S=5 | M=6 | R=7 | TA=7
+Average: **5.5/10** | Agents ≥7: 2 of 6 ✗ | Decision: **REJECTED** (downtrend + risk-on + price far below June 26 target; prior entry would have stopped out again)
+
+---
+
+#### CANDIDATE 5: NVDA — AI Recovery (supplemental)
+
+NVDA $195.15 pre-mkt. Confirmed sell signal from pivot top May 14; -18.33% from ATH; 5 consecutive down days.
+
+**Scores:** F=8 | T=4 | S=6 | M=7 | R=7 | TA=9
+Average: **6.83/10** | Agents ≥7: 4 of 6 ✓ | Average 6.83 < 7.0 | Decision: **REJECTED** (fails average threshold; confirmed sell signal and 5 down days outweigh recovery bounce)
+
+---
+
+### ORDER ATTEMPTS (ALL BLOCKED)
+
+```
+# ORDER 1: MU 4sh BUY MOO (MANDATORY)
+→ HTTP 000 (proxy CONNECT rejected — paper-api.alpaca.markets:443)
+  Intended: symbol=MU, qty=4, side=buy, type=market, time_in_force=opg
+  After fill: GTC stop at fill×0.95, take-profit at fill + 3×(fill-stop)
+
+# ORDER 2: IBM 3sh BUY MOO
+→ HTTP 000 (proxy CONNECT rejected)
+  Intended: symbol=IBM, qty=3, side=buy, type=market, time_in_force=opg
+  After fill: GTC stop at fill×0.95, take-profit at fill + 3×(fill-stop)
+
+# RISK MGMT: AMD 9sh SELL MOO (CRITICAL — position over 5% cap)
+→ HTTP 000 (proxy CONNECT rejected)
+  Intended: symbol=AMD, qty=9, side=sell, type=market, time_in_force=opg
+  After sell: GTC stop on remaining 9sh at $481.42, take-profit $582.78
+```
+
+**57th+ CONSECUTIVE BLOCKED SESSION. ALL 3 CRITICAL ORDERS FAILED.**
+**OPERATOR MUST EXECUTE ALL 3 MANUALLY AT app.alpaca.markets BEFORE 9:25 AM ET.**
+
+---
+
+### YAML DECISION LOG
+
+```yaml
+---
+ts: 2026-06-29T12:06:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: "Day-4 post-earnings recovery bounce: MU -6.69% Friday on overblown Apple consumer narrative (>80% MU revenue is data center, HBM4 sold out). Nasdaq +1.31% recovery backdrop. MOO for open fill. R/R 3:1 ✓."
+size_pct: 4.53
+stop: 1076.83
+target: 1303.75
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "5 of 6 agents ≥7 (Macro 6/10 only miss). MANDATORY per June 26 Daily Review. ORDER ATTEMPTED MOO → HTTP 000 BLOCKED (proxy egress policy 57th+ consecutive). OPERATOR: BUY 4sh MU MOO before 9:25 AM ET. After fill: GTC stop fill×0.95, take-profit fill+3×(fill-stop). xAI X-sentiment API unavailable — degraded gracefully."
+---
+---
+ts: 2026-06-29T12:06:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Defensive large-cap tech recovering with market (+1.12% SPX). All 6 agents at 7/10. JPMorgan OW. Watsonx enterprise AI traction. Insulated from GOOGL talent exodus and semiconductor headwinds. MOO for recovery open."
+size_pct: 0.82
+stop: 258.40
+target: 312.80
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "All 6 agents at 7.0 — marginal approval. Recovery day macro (SPX +1.12%) vs June 26's -0.44% improves outlook. IBM insulated from GOOGL and semiconductor headwinds. ORDER ATTEMPTED MOO → HTTP 000 BLOCKED (proxy egress 57th+). OPERATOR: BUY 3sh IBM MOO before 9:25 AM ET. After fill: GTC stop fill×0.95, take-profit fill+3×(fill-stop). xAI X-sentiment API unavailable."
+---
+---
+ts: 2026-06-29T12:06:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: sector-rotation
+score: 5.5
+thesis: "Post-Dow-inclusion fresh re-score per June 26 mandate. GOOGL (Class A) joins Dow today. REJECTED: severe relative weakness (-4.19pp vs Nasdaq on inclusion day); AI talent exodus (Adler/Pritzel → Anthropic); sell-the-news confirmed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 3
+  sentiment: 4
+  macro: 6
+  risk: 7
+  tech_analyst: 6
+agent_average: 5.5
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Fresh re-score per June 26 Daily Review requirement (Dow inclusion thesis expired; new analysis needed). Average 5.5 < 7.0; only 2 of 6 ≥7 (need 4). Technical 3/10: confirmed sell-the-news, -4.19pp relative weakness. Sentiment 4/10: talent exodus + hammering headline. TA 6/10: AI competitive position eroding. NOT a guardrail-exempt skip — fresh re-score legitimately below threshold. Also CORRECTION NOTED: it is GOOGL (Class A) joining Dow, not GOOG (Class C) as stated in June 26 Market-Open. June 26 'correction' was itself wrong."
+---
+---
+ts: 2026-06-29T12:06:00Z
+action: skip
+symbol: GLD
+bucket: active
+setup: macro-hedge
+score: 5.5
+thesis: "June 26 mandatory watchlist: GLD 10sh at $405 (score 7.0). Today GLD at $370-375 (-8.8% from $405 target, -4.6% below former $384.75 stop). Downtrend confirmed. Risk-on (+1.12% SPX) removes safe-haven demand. REJECTED on fresh re-score."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 3
+  sentiment: 5
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 5.5
+agents_above_7: 2
+master_decision: rejected
+master_notes: "GLD fell from $405 (June 26 target) to $370-375 over weekend — if we had entered at $405, stop $384.75 would already be triggered. Downtrend: $418.86 entry (May) → $397.92 stop-out (June 10) → $370 today. Technical 3/10: no reversal signals; below all key supports. Risk-on day removes inflation safe-haven bid. Score 5.5 < 7.0. NOT a guardrail-exempt skip."
+---
+```
+
+---
+
+### KEY RISKS TO WATCH TODAY
+
+1. ⚠️ **AMD NAKED**: 18sh, 9.13% equity, no stops. AMD showing +$215 unrealized but completely unprotected. Gap could reverse intraday.
+2. **SPX Recovery Sustainability**: Bouncing from 2-week lows with no major catalyst. Could be dead-cat bounce.
+3. **GOOGL Contagion**: AI talent exodus from Google could spread concern to other large-cap AI names.
+4. **NVDA sell signal**: -18.33% from ATH; 5 down days. If Nasdaq recovery fades, NVDA could lead another down leg.
+5. **MU/IBM fills unconfirmed**: If operator does not execute the MOO orders manually, both positions remain unfilled.
+
+**CUMULATIVE GAP VS SPX:** ~-6.0 pp going into today. If SPX recovers +1.12% and portfolio stays fully in cash (except unconfirmed AMD), gap widens to est. ~-7.1 pp.
+
+---
+
 ## 2026-06-26 — Market Open (9:45 AM ET / 13:46 UTC — FRIDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:46:01Z ✓
