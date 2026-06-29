@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-29T13:46:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-29T16:33:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 100069,
     "starting_equity": 100000.0,
@@ -12,8 +12,8 @@
     "daily_pnl": 215,
     "daily_pnl_pct": 0.21,
     "total_return_pct": 0.07,
-    "spx_return_pct": 6.37,
-    "benchmark_gap_pct": -6.3,
+    "spx_return_pct": 7.07,
+    "benchmark_gap_pct": -7.0,
     "open_positions_count": 1,
     "buckets": {
       "active_value": 9337,
@@ -23,7 +23,7 @@
       "cash_value": 90732,
       "cash_pct": 90.7
     },
-    "note": "June 29 MARKET-OPEN (9:45 AM ET / 13:46Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 58th consecutive session). Market-Open limit orders ATTEMPTED + BLOCKED: (1) MU 4sh limit bracket GTC \u2014 7.5 avg, BLOCKED; (2) IBM 3sh limit bracket GTC \u2014 7.0 avg, BLOCKED. AMD 18sh naked Day 8 \u2014 stop backfill attempted, BLOCKED. MOO fill status unknown (Pre-Market MOOs blocked by API; operator may have manually executed). Market opened +0.8-1.0% (below 2% no-chase). OPERATOR URGENT: (1) SELL 9sh AMD at market NOW + GTC stop $481.42 + GTC take-profit $582.78; (2) If MU/IBM MOOs did not fill \u2014 place limit bracket GTC orders now; (3) If MOOs DID fill \u2014 immediately place GTC stops at fill\u00d70.95 and take-profits at fill+3\u00d7(fill\u2212stop)."
+    "note": "June 29 MIDDAY (12:33 PM ET / 16:33Z). TRADING DAY. API BLOCKED (HTTP 000 \u2014 59th consecutive session). Mid-Morning silent failed (violation logged). Midday catch-up ATTEMPTED + BLOCKED: MU 4sh limit bracket GTC $1,138.14 (7.5 avg); IBM 3sh limit bracket GTC $275.37 (7.0 avg). REJECTED: GOOGL 6.33 avg (Risk Agent 4 veto \u2014 gap-up day poor R/R). AMD 18sh naked Day 8 \u2014 stop backfill attempted, BLOCKED. Benchmark gap widening: SPX +0.7% today, portfolio flat \u2014 est. -7.0 pp cumulative. OPERATOR URGENT: (1) SELL 9sh AMD at market NOW (app.alpaca.markets) + GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. (2) BUY 4sh MU limit bracket GTC: limit_price=1138.14, stop=1081.23, target=1308.86. (3) BUY 3sh IBM limit bracket GTC: limit_price=275.37, stop=261.60, target=316.68."
   },
   "positions": [
     {
@@ -84,32 +84,37 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON REBOUND. Market Open (9:45 AM ET). SPX est. +0.8-1.0% at open (below 2% no-chase). Nasdaq leading. MU recovering Day 4 post-earnings. AMD est. $518-525. API STILL BLOCKED (58th).",
+    "mode": "RISK-ON. Midday (12:33 PM ET). SPX +0.7%, Nasdaq +1.2%. Mag7 leading (AMZN +5.34%, TSLA +4.7%, GOOGL +3.86%). AMD $518.72, MU $1,132 (pulled back from $1,198 high). BTC -0.7%. API BLOCKED (59th).",
     "fear_greed": null,
-    "fear_greed_label": "Risk-on. Broad market rally Monday; semiconductor leadership returning. GOOGL Dow inclusion live.",
-    "spx": "S&P 500 futures +1.12% pre-market (~7,568). Nasdaq +1.31%. Broad risk-on rally after Friday semiconductor selloff reversion.",
-    "btc": "BTC ~$60,064 (est, API blocked). Well below $82K active-trading threshold. No crypto entries today.",
+    "fear_greed_label": "Risk-on. Supreme Court upheld Fed governor Cook; US-Iran agreed to halt attacks. Broad tech rally. Crypto declining.",
+    "spx": "S&P 500 +0.7% at midday. Nasdaq +1.2%. Dow +0.4%. Catalysts: Fed independence affirmed (SCOTUS), Iran peace talks. Mag7 surging.",
+    "btc": "BTC $59,860 (-0.7% today). ETH $1,572 (flat). Crypto declining \u2014 outflows from BTC ETFs, stronger dollar, investor rotation to AI equities. No crypto entry.",
     "sectors": [
       {
-        "name": "Semiconductors \u2014 RECOVERY (AI capex narrative resumes)",
-        "change_pct": 1.5,
-        "note": "MU recovering from Friday -6.69% Apple overreaction; HBM4 sold out thesis intact. AMD $518.72 (+2.4%). NVDA $195.15 \u2014 still in downtrend from ATH, rejected today."
+        "name": "Semiconductors \u2014 MIXED (MU pulled back from open high)",
+        "change_pct": 1.2,
+        "note": "AMD $518.72 (range $502-525, vol 1.6x avg \u2014 elevated). MU $1,132 (pulled back from $1,198 open high \u2014 better entry emerging). NVDA +0.65%. Korean memory capex (SK Hynix, Samsung) driving HBM AI thesis."
       },
       {
-        "name": "Communication Services \u2014 GOOGL DOW INCLUSION LIVE",
-        "change_pct": -0.5,
-        "note": "GOOGL (Class A) $336.15. Inclusion effective today but sell-the-news pattern. Re-scored 5.5 \u2014 REJECTED. Talent exodus (OpenAI/Anthropic) adding overhang. CORRECTION: it is GOOGL (Class A), NOT GOOG (Class C)."
+        "name": "Communication Services \u2014 GOOGL DOW INCLUSION DAY",
+        "change_pct": 3.5,
+        "note": "GOOGL +3.86% (Dow inclusion effective today, index rebalancing). Re-scored: 6.33 avg \u2014 REJECTED (Risk Agent 4 veto, gap-up day poor R/R). AMZN +5.34% \u2014 gap-up pre-filter reject."
       },
       {
         "name": "Enterprise Tech / Defensive",
-        "change_pct": 0.8,
-        "note": "IBM est. ~$272 (+0.5%). Defensive outperforming confirmed. 3sh MOO approved 7.0, attempted, BLOCKED."
+        "change_pct": 0.7,
+        "note": "IBM est. ~$273-275 (+0.7% with market). Defensive thesis intact. Limit bracket GTC at $275.37 approved (7.0), BLOCKED. Operator must place."
+      },
+      {
+        "name": "Crypto \u2014 DECLINING",
+        "change_pct": -0.7,
+        "note": "BTC $59,860 (-0.7%), ETH $1,572 (flat). No crypto-flush-rebound signal. Steady decline since mid-June. No entry."
       }
     ],
-    "macro_notes_md": "**June 29, 2026 \u2014 Pre-Market (8:00 AM ET / 12:06 UTC):**\n- S&P 500 futures: **+1.12%** (~7,568) \u2014 broad risk-on rebound after Friday semiconductor selloff\n- Nasdaq futures: **+1.31%** \u2014 tech recovery led by AI names\n- GOOGL (Class A): **$336.15** \u2014 officially joins Dow today; sell-the-news fade overriding inclusion catalyst\n- MU: **$1,133.50** \u2014 Day 4 recovery from Friday -6.69% Apple overreaction; HBM4 AI demand intact\n- AMD: **$518.72** \u2014 up from $506.76 entry; NAKED (no stop-loss, Day 7)\n- IBM: **~$272** \u2014 defensive outperforming\n- GLD: **$370-375** \u2014 downtrend confirmed, -8.8% from June 26 prior plan at $405\n- NVDA: **$195.15** \u2014 sell signal; -18.33% from ATH; 5 consecutive down days\n- BTC: **~$60,064** \u2014 below $82K threshold; no crypto plays\n- PCE May 2026: +4.1% YoY (prior reading) \u2014 persistent inflation, Fed on hold\n- Iran conflict: ongoing\n- **API ACCESS:** paper-api.alpaca.markets BLOCKED (57th+ consecutive session \u2014 HTTP 000)\n- **TICKER CORRECTION FINAL:** GOOGL (Class A) joins Dow \u2014 NOT GOOG (Class C)",
-    "sp500_today_pct": 1.12,
-    "sp500_est": 7568,
-    "macro_note": "June 29 Pre-Market. Risk-on: SPX +1.12%, Nasdaq +1.31%. GOOGL (Class A) joins Dow \u2014 sell-the-news fade. MU recovering (HBM4 intact). AMD $518.72 +$215 unrealized but NAKED Day 7. API blocked 57th+ session."
+    "macro_notes_md": "**June 29, 2026 \u2014 Midday (12:33 PM ET / 16:33Z):**\n- S&P 500: **+0.7%** \u2014 risk-on rally (Fed independence affirmed by SCOTUS; US-Iran peace talks)\n- Nasdaq: **+1.2%** \u2014 tech leadership\n- GOOGL: **+3.86%** (Dow inclusion effective today \u2014 index rebalancing)\n- AMZN: **+5.34%**, TSLA: **+4.7%**, NVDA: **+0.65%**\n- AMD: **$518.72** (range $502.61-$525.11, vol 52.7M = 1.6\u00d7 avg)\n- MU: **$1,132.33** (range $1,121-$1,199 \u2014 pulled back from open high)\n- IBM: **~$273-275** (+0.7% with market)\n- BTC: **$59,860** (-0.7%) / ETH: **$1,572** (flat) \u2014 crypto declining\n- PCE May 2026: 4.1% \u2014 Fed on hold\n- **API ACCESS:** paper-api.alpaca.markets BLOCKED (59th consecutive \u2014 HTTP 000)\n- Benchmark gap est. **-7.0 pp vs SPX** (SPX +0.7% today, portfolio flat)",
+    "sp500_today_pct": 0.7,
+    "sp500_est": 7610,
+    "macro_note": "June 29 Midday. Risk-on: SPX +0.7%, Nasdaq +1.2%. SCOTUS affirmed Fed independence; US-Iran peace talks. GOOGL +3.86% Dow inclusion. AMD $518.72 (naked Day 8). MU $1,132 (pullback from open \u2014 better entry). API blocked 59th session."
   },
   "routines": [
     {
@@ -131,18 +136,18 @@
     {
       "name": "Mid-Morning",
       "schedule": "11:00 ET daily",
-      "status": "completed",
+      "status": "failed",
       "last_run": "2026-06-26T15:04:51Z",
-      "next_run": "2026-06-27T15:00:00Z",
-      "last_summary": "BLOCKED \u2014 API 54th consecutive. Pre-Market missed (Day 5 silent fail). Stop-loss audit: AMD 18sh NAKED Day 5 (est ~$520-528, no stops). 3 re-attempts (all blocked): GOOG 14sh $337.48 (Dow inclusion LAST DAY), MU 4sh $1,105.50 (day-2 pullback improved entry), IBM 3sh $274.37 (defensive outperforming). PCE 4.1% matched consensus \u2014 neutral. User suggestions: 0. GLD flagged for Midday re-eval."
+      "next_run": "2026-06-30T15:00:00Z",
+      "last_summary": "June 29 Mid-Morning SILENT FAILED \u2014 no heartbeat at ~15:00Z. Violation logged in trades.md. Midday ran catch-up per routines/midday.md: MU 4sh limit bracket + IBM 3sh limit bracket both attempted + BLOCKED (59th session)."
     },
     {
       "name": "Midday",
       "schedule": "12:30 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-26T16:30:00Z",
-      "next_run": "2026-06-26 12:30 ET",
-      "last_summary": "June 26 Midday SILENT FAILURE \u2014 no heartbeat at 16:30Z. Violation logged. API blocked (55th session). GOOG/MU/IBM re-attempts deferred to Market-Close."
+      "status": "completed",
+      "last_run": "2026-06-29T16:33:00Z",
+      "next_run": "2026-06-30T16:30:00Z",
+      "last_summary": "June 29 Midday: API BLOCKED (59th consecutive, HTTP 000). Mid-Morning violation logged. Catch-up: MU 4sh limit bracket GTC $1,138.14 (7.5 avg) BLOCKED; IBM 3sh limit bracket GTC $275.37 (7.0 avg) BLOCKED. GOOGL re-scored 6.33 (Risk Agent 4 veto \u2014 gap-up day poor R/R). AMD naked Day 8. Market: SPX +0.7%, Nasdaq +1.2%; AMZN +5.34%, GOOGL +3.86% Dow inclusion live. MU pulled back from $1,198 to $1,132 (better entry emerging). BTC -0.7%, no crypto setup. Benchmark gap est. -7.0 pp. OPERATOR: AMD sell 9sh + stops, MU/IBM limit brackets."
     },
     {
       "name": "Afternoon",

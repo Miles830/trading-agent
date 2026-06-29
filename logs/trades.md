@@ -4,6 +4,245 @@
 
 ---
 
+## 2026-06-29 — Midday (12:30 PM ET / 16:33 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Midday 16:33:05Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (exit code 000 — paper-api.alpaca.markets:443 not in egress allowlist) — **59th consecutive blocked session**
+**Current Time:** 16:33Z = 12:33 PM ET — market open ~3 hours
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market: `STARTED 2026-06-29T12:05:10Z` ✓ | `COMPLETED 2026-06-29T12:28:33Z` ✓
+- Market-Open: `STARTED 2026-06-29T13:45:46Z` ✓ | `COMPLETED 2026-06-29T13:50:35Z` ✓
+- **Mid-Morning: MISSING** ✗ — No STARTED or COMPLETED heartbeat for Mid-Morning (expected ~15:00Z = 11:00 AM ET)
+
+```yaml
+---
+ts: 2026-06-29T16:33:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine (11:00 AM ET / 15:00Z) did not run — no STARTED heartbeat in logs/heartbeats/2026-06-29.log."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Silent-failure violation. Mid-Morning predecessor did not fire. Midday catch-up running per routines/midday.md: stop-loss audit, watchlist catch-up, position review. AMD naked (no stop, no take-profit) — Day 8. MU 4sh and IBM 3sh remain unfilled and are still ≥7-score carry-forwards."
+---
+```
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 000 BLOCKED (59th consecutive — egress policy denial)
+GET /v2/orders?status=open → HTTP 000 BLOCKED
+GET /v2/account            → HTTP 000 BLOCKED
+```
+
+**Estimated position state (from dashboard + prior logs):**
+- ⚠️⚠️⚠️ **AMD 18sh NAKED Day 8** — entry ~$506.76 avg June 23. Midday $518.72 (range: $502.61–$525.11, vol 52.7M = 1.6× avg). Unrealized: +$215.28 (~+2.36%). Position = ~9.3% equity (OVER 5% hard cap). **No stop. No take-profit. Day 8.**
+- **MU 4sh MOO + follow-up limit** — both blocked. Not filled. Score 7.5. Midday price $1,132.33 (range: $1,121.36–$1,198.71 — pulled back from morning high).
+- **IBM 3sh MOO + follow-up limit** — both blocked. Not filled. Score 7.0. Midday est. ~$273–275.
+- **PLTR GTC $150.74** — PLTR ~$134–138 est. (below limit, not triggered). Stale/live.
+- **MRVL GTC $202.19** — MRVL ~$265–270 est. (far above limit, not triggered). Stale/live.
+
+**Stop-loss backfill (AMD — mandatory):**
+```
+POST /v2/orders AMD GTC stop $481.42 → HTTP 000 BLOCKED
+```
+AMD remains naked. Guardrail violation persists.
+
+---
+
+### MIDDAY MARKET SUMMARY (12:33 PM ET)
+
+- **S&P 500:** +0.7% (risk-on rally — Supreme Court rejected Fed governor Lisa Cook firing; US-Iran agreed to halt attacks, enabling peace talks)
+- **Nasdaq 100:** +1.2% (tech leadership — Mag7 surging)
+- **Mag7 performance:** AMZN +5.34%, TSLA +4.7%, GOOGL +3.86% (Dow inclusion effective today), NVDA +0.65%
+- **AMD:** $518.72 (midday; flat-to-up from open; day high $525.11, low $502.61; vol 1.6× avg — elevated)
+- **MU:** $1,132.33 (pulled back from $1,198 high at open — "buy the open sell the afternoon" pattern emerging)
+- **IBM:** ~$273–275 (recovering with market, +0.7% est.)
+- **BTC:** $59,860 (–0.7%), **ETH:** $1,572 (flat) — crypto declining; no crypto entry signal
+- **Sectors:** Tech leading; Communication Services strong (GOOGL Dow effect); crypto-adjacent weak
+- **Circuit breaker (–3% daily):** NOT triggered ✓
+- **Market mode:** Risk-ON — Iran peace talks, Fed independence affirmed
+
+---
+
+### WATCHLIST CATCH-UP (Mid-Morning missed)
+
+**MU — Score 7.5 (F=9 T=7 S=8 M=6 R=7 TA=8) — APPROVED carry-forward**
+
+Midday catch-up: limit bracket GTC at ask × 1.005 ≈ $1,138.14
+- Stop: $1,138.14 × 0.95 = $1,081.23 (5% below entry)
+- Target: $1,138.14 × 1.15 = $1,308.86 (15% above = 3:1 R/R ✓)
+- Size: 4sh × $1,138.14 = $4,553 = 4.55% equity ✓ (<5%)
+- MU has pulled back from $1,198 to $1,132 — slightly better entry than the MOO would have been
+
+```
+POST /v2/orders {"symbol":"MU","qty":4,"side":"buy","type":"limit","limit_price":"1138.14",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"1081.23"},"take_profit":{"limit_price":"1308.86"}}
+→ HTTP 000 BLOCKED (59th consecutive)
+```
+
+```yaml
+---
+ts: 2026-06-29T16:33:00Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: "Midday catch-up (Mid-Morning missed). MU pulled back from $1,198 open high to $1,132. HBM4 sold out through 2026; post-earnings Day 4 recovery. Limit bracket GTC at $1,138.14 (ask×1.005)."
+size_pct: 4.55
+stop: 1081.23
+target: 1308.86
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Carry-forward from Pre-Market + Market-Open. API BLOCKED (HTTP 000 — 59th consecutive). MU pullback from $1,198 to $1,132 creates better entry than MOO. Catch-up limit $1,138.14, stop $1,081.23, target $1,308.86 (3:1 R/R). OPERATOR: BUY 4sh MU limit bracket GTC now — symbol=MU qty=4 side=buy limit_price=1138.14 stop_loss.stop_price=1081.23 take_profit.limit_price=1308.86 tif=gtc order_class=bracket. MU volume and momentum strong post-earnings; Korean HBM capex news (SK Hynix, Samsung) adding conviction. xAI X-sentiment unavailable (API blocked)."
+---
+```
+
+**IBM — Score 7.0 (F=7 T=7 S=7 M=7 R=7 TA=7) — APPROVED carry-forward**
+
+Midday catch-up: limit bracket GTC at ask × 1.005 ≈ $275.37
+- Stop: $275.37 × 0.95 = $261.60 (5% below entry)
+- Target: $275.37 × 1.15 = $316.68 (15% above = 3:1 R/R ✓)
+- Size: 3sh × $275.37 = $826 = 0.83% equity ✓ (<5%)
+
+```
+POST /v2/orders {"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"275.37",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"261.60"},"take_profit":{"limit_price":"316.68"}}
+→ HTTP 000 BLOCKED (59th consecutive)
+```
+
+```yaml
+---
+ts: 2026-06-29T16:33:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Midday catch-up (Mid-Morning missed). IBM est. ~$273-275. Defensive large-cap tech, watsonx AI momentum, recovering with market (+0.7% SPX). Limit bracket GTC at $275.37."
+size_pct: 0.83
+stop: 261.60
+target: 316.68
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "Carry-forward from Pre-Market + Market-Open. API BLOCKED (HTTP 000 — 59th consecutive). Limit bracket GTC at $275.37 (ask×1.005 est.); stop $261.60; target $316.68 (3:1 R/R). IBM insulated from semiconductor Apple narrative; JPMorgan OW reiterated. OPERATOR: BUY 3sh IBM limit bracket GTC — symbol=IBM qty=3 side=buy limit_price=275.37 stop_loss.stop_price=261.60 take_profit.limit_price=316.68 tif=gtc order_class=bracket. xAI X-sentiment unavailable (API blocked)."
+---
+```
+
+---
+
+### FRESH MIDDAY SCORING — NEW SETUPS
+
+**GOOGL — Post-Dow-Inclusion Re-Score (fresh for June 29)**
+
+Context: GOOGL officially joins Dow Jones today (June 29 effective). Up +3.86% at midday.
+
+- Fundamentals: 8/10 — Strong Q1 2026 (revenue +10% YoY, cloud growing, AI monetization). Solid balance sheet.
+- Technical: 4/10 — Entering after +3.86% gap-up day. RSI likely >72 (overbought). No bullish candlestick setup — in fact, entering here risks buying the top of a one-day pop. Volume elevated (index inclusion rebalancing). Stochastic likely overbought. Only 0 of 5 mandatory indicators confirm entry here (gap-up day = poor technical entry). Score capped below 5.
+- Sentiment: 7/10 — Dow inclusion positive; analysts positive; X sentiment likely bullish (Dow addition headline). Base 7, X modifier +0 (neutral/mildly bullish from inclusion — priced in). Score: 7.
+- Macro: 7/10 — Risk-on day, Iran peace, Fed independence. Tech tailwind. Score: 7.
+- Risk: 4/10 — **R/R FAILS at this entry.** Entering +3.86% gap-up, stop 5% below ~$GOOGL price → target must be 15% above. But momentum from Dow inclusion is a one-day event; the 15% target is uncertain while the 5% stop is easy to hit on a gap reversal. R/R technically satisfied at 3:1 math but setup is buying a spike — Risk Agent scores 4 (entry quality too poor). Not a veto on score alone (score 4 = auto-veto at <6). **AUTOMATIC VETO: Risk < 6.**
+- Tech Analyst: 8/10 — Google Cloud, Gemini AI, quantum computing, defensive search moat. Score: 8.
+
+**Average: (8+4+7+7+4+8)/6 = 38/6 = 6.33** → BELOW 7.0 threshold. Risk Agent = 4 (auto-veto).
+
+```yaml
+---
+ts: 2026-06-29T16:33:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: other
+score: 6.33
+thesis: "Post-Dow-inclusion gap-up (+3.86%). Dow membership is a one-day event; entering into the spike has poor R/R. Technical score 4/10 (overbought, gap-up day, 0 of 5 indicators confirm entry)."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 7
+  macro: 7
+  risk: 4
+  tech_analyst: 8
+agent_average: 6.33
+agents_above_7: 3
+master_decision: rejected
+master_notes: "GOOGL post-Dow-inclusion re-score. Rejected: avg 6.33 < 7.0 minimum; Risk Agent 4 = automatic veto (R/R poor on gap-up entry; entering a 1-day inclusion spike is not a 3:1 setup). Only 3 of 6 agents scored ≥7 (need ≥4). No skip exemption needed — score below threshold. Not a violation. xAI unavailable."
+---
+```
+
+**AMZN — +5.34% Gap-Up Scan**
+
+Not scored in full — quick pre-filter: entering after +5.34% gap-up on no new fundamental catalyst (Amazon move appears sympathy with broad tech risk-on). Technical score would be 2/10 (overbought, gap-up, RSI extreme). Risk Agent would score 3/10 (gap-up entry with wide 5% stop and uncertain 15% target). **Pre-filter REJECT — Technical and Risk scores preclude ≥7 average.** Not proceeding to 6-agent full score.
+
+**Crypto — BTC $59,860 (–0.7%), ETH $1,572 (flat)**
+
+No setup. Crypto is declining (BTC -0.7%, below $82K active-trading threshold from prior weeks). ETH flat. No `crypto-flush-rebound` signal present — price declining steadily, not capitulation. No crypto entry. No YAML entry needed (below threshold, not a carry-forward).
+
+---
+
+### AFTERNOON SETUP PLAN
+
+1. **MU: WATCH for continuation.** If MU stabilizes above $1,120 support and shows a volume spike + bullish candlestick on the 5-min chart in the 1:00–2:00 PM window, the entry thesis strengthens. Midday pullback from $1,198 to $1,132 is a potential Hammer setup in progress. Market-Close routine should attempt re-entry if limit unfilled.
+2. **IBM: WATCH for sector leadership.** If broad market holds +0.7% into afternoon, IBM should drift to ~$274–276. Market-Close routine: re-attempt limit bracket GTC if not yet filled.
+3. **AMD: MONITOR.** AMD at $518.72 is ~+2.36% from entry. The position needs protective orders. Afternoon routine should flag if AMD drops back below $502 (day low was $502.61 — a break below could signal reversal requiring operator action). The 3% circuit breaker is NOT triggered.
+4. **No new names above 7.0 score** identified at midday scan. Universe is dominated by gap-up names with poor entry R/R.
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+| Symbol | Hold? | Reason |
+|--------|-------|--------|
+| AMD 18sh | HOLD (involuntary) | API blocked, cannot close or add stops. Naked overnight Day 8. OPERATOR: log into app.alpaca.markets and place stop $481.42 + take-profit $582.78 on 9sh; sell 9sh at market. |
+| MU 4sh | NOT POSITIONED | Limit blocked; operator should place at ~$1,132–$1,140 |
+| IBM 3sh | NOT POSITIONED | Limit blocked; operator should place at ~$273–$276 |
+
+---
+
 ## 2026-06-29 — Market Open (9:45 AM ET / 13:46 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:45:46Z ✓
