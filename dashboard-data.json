@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-29T13:46:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-06-30T12:06:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
     "total_equity": 100069,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90732,
       "cash_pct": 90.7
     },
-    "note": "June 29 MARKET-OPEN (9:45 AM ET / 13:46Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 58th consecutive session). Market-Open limit orders ATTEMPTED + BLOCKED: (1) MU 4sh limit bracket GTC \u2014 7.5 avg, BLOCKED; (2) IBM 3sh limit bracket GTC \u2014 7.0 avg, BLOCKED. AMD 18sh naked Day 8 \u2014 stop backfill attempted, BLOCKED. MOO fill status unknown (Pre-Market MOOs blocked by API; operator may have manually executed). Market opened +0.8-1.0% (below 2% no-chase). OPERATOR URGENT: (1) SELL 9sh AMD at market NOW + GTC stop $481.42 + GTC take-profit $582.78; (2) If MU/IBM MOOs did not fill \u2014 place limit bracket GTC orders now; (3) If MOOs DID fill \u2014 immediately place GTC stops at fill\u00d70.95 and take-profits at fill+3\u00d7(fill\u2212stop)."
+    "note": "June 30 PRE-MARKET (8:00 AM ET / 12:06Z). Q2 LAST DAY. API BLOCKED (HTTP 000 \u2014 60th consecutive session). 4 orders ATTEMPTED + BLOCKED: (1) SELL 9sh AMD MOO \u2014 risk mgmt Day 9 naked, BLOCKED; (2) BUY 4sh MU MOO \u2014 8.17 avg, BLOCKED; (3) BUY 4sh NVDA MOO \u2014 8.0 avg, BLOCKED; (4) BUY 3sh IBM limit $274.87 bracket GTC \u2014 7.17 avg, BLOCKED. OPERATOR MANDATORY (BEFORE 9:25 AM ET): (1) SELL 9sh AMD MOO; (2) BUY 4sh MU MOO; (3) BUY 4sh NVDA MOO; (4) BUY 3sh IBM limit $274.87 bracket GTC. After fills: AMD stop $481.42 + take-profit $582.78; MU stop fill\u00d70.95, target fill+3\u00d7(fill-stop); NVDA stop fill\u00d70.95, target fill\u00d71.15. JULY 4 = MARKET CLOSED. Next trading day: July 7."
   },
   "positions": [
     {
@@ -38,7 +38,7 @@
       "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED \u2014 Day 8 without stop-loss. 18sh \u00d7 $506.76 fill (stale GTC). Est. $518-525 at open. Unrealized est. +$200-340. Position = ~9.3% equity (OVER 5% hard cap). OPERATOR URGENT: (1) SELL 9sh at market NOW; (2) place GTC stop $481.42 on remaining 9sh; (3) place GTC take-profit $582.78 on remaining 9sh. API BLOCKED \u2014 agent cannot execute. 8th consecutive day naked."
+      "note": "CRITICALLY NAKED \u2014 Day 9 without stop-loss. Pre-market $517.84 (-2.77%). 18sh \u00d7 $506.76 fill = 9.3% equity (OVER 5% hard cap). Unrealized est. +$200. SELL 9sh AMD MOO ATTEMPTED \u2192 HTTP 000 BLOCKED (60th session). OPERATOR: SELL 9sh AMD at market BEFORE 9:25 AM ET. After fill: GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. DAY 9 NAKED."
     },
     {
       "symbol": "MU",
@@ -52,7 +52,7 @@
       "take_profit": 1303.75,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.5,
-      "note": "APPROVED 7.5 (F=9 T=7 S=8 M=6 R=7 TA=8). MOO 4sh ATTEMPTED June 29 Pre-Market \u2192 HTTP 000 BLOCKED (57th). Day-4 post-earnings recovery: MU -6.69% Friday on overblown Apple consumer narrative; HBM4/HBM3E AI data center demand intact. OPERATOR: BUY 4sh MU MOO before 9:25 AM ET. After fill: stop at fill\u00d70.95, target at fill+3\u00d7(fill-stop)."
+      "note": "APPROVED 8.17 (F=9 T=7 S=8 M=8 R=8 TA=9). MOO 4sh ATTEMPTED June 30 Pre-Market \u2192 HTTP 000 BLOCKED (60th). Day 5 post-earnings: Anthropic strategic partnership + HBM4 sold out. June 29 close $1,132.33. Q2 window dressing last day. OPERATOR: BUY 4sh MU MOO before 9:25 AM ET. After fill: stop fill\u00d70.95, target fill+3\u00d7(fill-stop)."
     },
     {
       "symbol": "IBM",
@@ -66,7 +66,21 @@
       "take_profit": 312.80,
       "setup": "sector-rotation",
       "agent_average": 7.0,
-      "note": "APPROVED 7.0 (all 6 agents at 7.0). MOO 3sh ATTEMPTED June 29 Pre-Market \u2192 HTTP 000 BLOCKED (57th). Defensive outperforming; watsonx AI consulting growing; insulated from semiconductor Apple narrative. OPERATOR: BUY 3sh IBM MOO before 9:25 AM ET. After fill: stop at fill\u00d70.95, target at fill\u00d71.15."
+      "note": "APPROVED 7.17 (F=7 T=7 S=7 M=7 R=8 TA=7). Limit bracket GTC $274.87 ATTEMPTED June 30 \u2192 HTTP 000 BLOCKED (60th). Pre-market $273.49. Defensive outperformer; watsonx/HashiCorp recurring revenue; earnings July 20 (outside window). OPERATOR: BUY 3sh IBM limit $274.87 bracket GTC (stop $261.13, target $316.09)."
+    },
+    {
+      "symbol": "NVDA",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 197.0,
+      "current_price": 197.0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": 187.15,
+      "take_profit": 226.55,
+      "setup": "mean-reversion-oversold",
+      "agent_average": 8.0,
+      "note": "APPROVED 8.0 (F=8 T=7 S=7 M=8 R=9 TA=9). MOO 4sh ATTEMPTED June 30 Pre-Market \u2192 HTTP 000 BLOCKED (60th). -8% week oversold reversal + Q2 window dressing + SMH +0.82% recovery + MU-Anthropic AI capex read-through. OPERATOR: BUY 4sh NVDA MOO before 9:25 AM ET. After fill: stop fill\u00d70.95, target fill\u00d71.15."
     },
     {
       "symbol": "GLD",
@@ -84,41 +98,41 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON REBOUND. Market Open (9:45 AM ET). SPX est. +0.8-1.0% at open (below 2% no-chase). Nasdaq leading. MU recovering Day 4 post-earnings. AMD est. $518-525. API STILL BLOCKED (58th).",
+    "mode": "RISK-ON \u2014 Q2 FINAL DAY WINDOW DRESSING. SPX June 29 closed +1.18% \u2192 7,440.43 (RECORD DOW). Nasdaq +2.07%. Futures gaining June 30. SMH +0.82% premarket. Semiconductor recovery. AI capex validated by Anthropic-MU deal. API STILL BLOCKED (60th).",
     "fear_greed": null,
-    "fear_greed_label": "Risk-on. Broad market rally Monday; semiconductor leadership returning. GOOGL Dow inclusion live.",
-    "spx": "S&P 500 futures +1.12% pre-market (~7,568). Nasdaq +1.31%. Broad risk-on rally after Friday semiconductor selloff reversion.",
-    "btc": "BTC ~$60,064 (est, API blocked). Well below $82K active-trading threshold. No crypto entries today.",
+    "fear_greed_label": "Risk-on. Q2 window dressing last day. Semiconductor recovery (SMH +0.82%). AI capex boom confirmed (Anthropic-MU strategic deal).",
+    "spx": "S&P 500 June 29 close: +1.18% \u2192 7,440.43. Dow RECORD HIGH. Futures gaining June 30. SMH (semiconductor ETF) +0.82% premarket.",
+    "btc": "BTC ~$59,686 (June 29 data). Well below $82K active-trading threshold. No crypto entries today.",
     "sectors": [
       {
-        "name": "Semiconductors \u2014 RECOVERY (AI capex narrative resumes)",
-        "change_pct": 1.5,
-        "note": "MU recovering from Friday -6.69% Apple overreaction; HBM4 sold out thesis intact. AMD $518.72 (+2.4%). NVDA $195.15 \u2014 still in downtrend from ATH, rejected today."
-      },
-      {
-        "name": "Communication Services \u2014 GOOGL DOW INCLUSION LIVE",
-        "change_pct": -0.5,
-        "note": "GOOGL (Class A) $336.15. Inclusion effective today but sell-the-news pattern. Re-scored 5.5 \u2014 REJECTED. Talent exodus (OpenAI/Anthropic) adding overhang. CORRECTION: it is GOOGL (Class A), NOT GOOG (Class C)."
+        "name": "Semiconductors \u2014 RECOVERY + AI VALIDATION",
+        "change_pct": 0.82,
+        "note": "SMH +0.82% premarket. MU $1,132.33 (Q3 blowout + Anthropic strategic deal + HBM4 sold out). NVDA ~$196 (recovering from -8% week \u2014 oversold). AMD pre-mkt $517.84 (-2.77% from prev close). All 3 APPROVED: MU 8.17, NVDA 8.0, AMD sell (risk mgmt)."
       },
       {
         "name": "Enterprise Tech / Defensive",
-        "change_pct": 0.8,
-        "note": "IBM est. ~$272 (+0.5%). Defensive outperforming confirmed. 3sh MOO approved 7.0, attempted, BLOCKED."
+        "change_pct": 0.68,
+        "note": "IBM pre-mkt $273.49 (+0.68%). Defensive outperformer. Approved 7.17 via limit bracket GTC $274.87."
+      },
+      {
+        "name": "Crypto \u2014 BELOW THRESHOLD",
+        "change_pct": -2.0,
+        "note": "BTC ~$59,686 (June 29 est). Well below $82K active-trading threshold. No crypto entries. Bearish trend per technical analysis."
       }
     ],
-    "macro_notes_md": "**June 29, 2026 \u2014 Pre-Market (8:00 AM ET / 12:06 UTC):**\n- S&P 500 futures: **+1.12%** (~7,568) \u2014 broad risk-on rebound after Friday semiconductor selloff\n- Nasdaq futures: **+1.31%** \u2014 tech recovery led by AI names\n- GOOGL (Class A): **$336.15** \u2014 officially joins Dow today; sell-the-news fade overriding inclusion catalyst\n- MU: **$1,133.50** \u2014 Day 4 recovery from Friday -6.69% Apple overreaction; HBM4 AI demand intact\n- AMD: **$518.72** \u2014 up from $506.76 entry; NAKED (no stop-loss, Day 7)\n- IBM: **~$272** \u2014 defensive outperforming\n- GLD: **$370-375** \u2014 downtrend confirmed, -8.8% from June 26 prior plan at $405\n- NVDA: **$195.15** \u2014 sell signal; -18.33% from ATH; 5 consecutive down days\n- BTC: **~$60,064** \u2014 below $82K threshold; no crypto plays\n- PCE May 2026: +4.1% YoY (prior reading) \u2014 persistent inflation, Fed on hold\n- Iran conflict: ongoing\n- **API ACCESS:** paper-api.alpaca.markets BLOCKED (57th+ consecutive session \u2014 HTTP 000)\n- **TICKER CORRECTION FINAL:** GOOGL (Class A) joins Dow \u2014 NOT GOOG (Class C)",
-    "sp500_today_pct": 1.12,
-    "sp500_est": 7568,
-    "macro_note": "June 29 Pre-Market. Risk-on: SPX +1.12%, Nasdaq +1.31%. GOOGL (Class A) joins Dow \u2014 sell-the-news fade. MU recovering (HBM4 intact). AMD $518.72 +$215 unrealized but NAKED Day 7. API blocked 57th+ session."
+    "macro_notes_md": "**June 30, 2026 \u2014 Pre-Market (8:00 AM ET / 12:06 UTC) \u2014 Q2 FINAL DAY:**\n- S&P 500 June 29 close: **+1.18% \u2192 7,440.43** \u2014 broad risk-on; Dow at RECORD HIGH\n- Nasdaq June 29 close: **+2.07% \u2192 25,820.14** \u2014 tech leadership\n- June 30 futures: **Gaining** (TheStreet: 'futures gain after record close')\n- SMH (VanEck Semiconductor ETF): **+0.82% premarket** \u2014 semiconductor recovery\n- AMD pre-market: **$517.84 (-2.77%)** \u2014 some profit-taking but fundamentals intact\n- MU June 29 close: **$1,132.33** \u2014 Q3 EPS $25.11 (+22.5% beat); Anthropic strategic partnership; HBM4 SOLD OUT; analyst PT $1,420\n- NVDA est: **~$196** \u2014 recovering from -8% week; SMH recovery positive read-through; CUDA moat intact\n- IBM pre-market: **$273.49** \u2014 defensive outperformer; Buy consensus PT $300.31\n- BTC: **~$59,686** \u2014 below $82K threshold; bearish trend; NO CRYPTO ENTRY\n- GLD: **~$374-380** \u2014 downtrend; NO RE-ENTRY\n- Economic calendar: **QUIET** \u2014 no major macro releases June 30 (PCE already out; no FOMC)\n- Q2 window dressing: **MAXIMUM INSTITUTIONAL URGENCY** \u2014 last day to add outperformers to Q2 portfolios\n- **API ACCESS:** paper-api.alpaca.markets BLOCKED (60th consecutive session \u2014 HTTP 000 proxy egress denial)\n- **July 4 = MARKET CLOSED** \u2014 next trading day Monday July 7, 2026",
+    "sp500_today_pct": 1.18,
+    "sp500_est": 7440,
+    "macro_note": "June 30 Pre-Market. Q2 final day. Risk-on: SPX +1.18% June 29 (7,440.43 close). Futures gaining. SMH +0.82%. MU Anthropic deal validates AI capex. Q2 window dressing last day \u2014 institutional urgency to add MU/NVDA/IBM to Q2 books. AMD Day 9 naked \u2014 operator critical action. API blocked 60th session."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "schedule": "08:00 ET daily",
       "status": "completed",
-      "last_run": "2026-06-29T12:06:00Z",
-      "next_run": "2026-06-30 08:00 ET",
-      "last_summary": "June 29 Pre-Market: SPX +1.12% risk-on rally. 3 MOO orders attempted + BLOCKED (HTTP 000 — 57th+ session): MU 4sh (7.5), IBM 3sh (7.0), AMD sell 9sh. REJECTED: GOOGL 5.5 (sell-the-news), GLD 5.5 (downtrend $370 vs prior $405 plan), NVDA 6.83 (sell signal -18.33% ATH). AMD 18sh NAKED Day 7 — OPERATOR CRITICAL ACTION REQUIRED."
+      "last_run": "2026-06-30T12:06:00Z",
+      "next_run": "2026-07-07 08:00 ET",
+      "last_summary": "June 30 Pre-Market (Q2 last day): SPX June 29 +1.18% (7,440.43 record Dow). SMH +0.82% premarket semiconductor recovery. 4 orders ATTEMPTED + BLOCKED (HTTP 000 — 60th session): AMD sell 9sh (risk mgmt), MU 4sh MOO (8.17), NVDA 4sh MOO (8.0), IBM 3sh limit $274.87 bracket GTC (7.17). REJECTED: INTC 6.5 (Technical 6/TA 6). July 4 = market closed; next trading day July 7."
     },
     {
       "name": "Market Open",
@@ -178,6 +192,118 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-06-30T12:06:00Z",
+      "action": "exit",
+      "symbol": "AMD",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "thesis": "MANDATORY risk reduction: AMD 18sh at 9.3% equity exceeds 5% hard cap. Day 9 naked. Selling 9sh MOO (reduces to 4.65% equity). Pre-mkt $517.84. Still +$11/sh above fill.",
+      "size_pct": 4.65,
+      "stop": 481.42,
+      "target": 582.78,
+      "agent_scores": null,
+      "agent_average": null,
+      "master_decision": "approved",
+      "master_notes": "Risk management — not a scored trade. SELL 9sh AMD MOO ATTEMPTED → HTTP 000 BLOCKED (60th). OPERATOR: SELL 9sh AMD at market BEFORE 9:25 AM ET. After fill: GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh."
+    },
+    {
+      "ts": "2026-06-30T12:06:00Z",
+      "action": "entry",
+      "symbol": "MU",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 9,
+      "thesis": "Q3 FY2026 blowout (+22.5% EPS beat, +16.2% rev beat) + HBM4 sold out + Anthropic strategic partnership (AI memory arch, multiyear supply, MU equity in Anthropic Series H). Day 5 pullback optimal entry. Q2 window dressing last day.",
+      "size_pct": 4.53,
+      "stop": 1075.40,
+      "target": 1301.80,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 8,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.17,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "All 6 agents ≥7. Risk=8 (no veto). Highest conviction. ORDER ATTEMPTED: BUY 4sh MU MOO → HTTP 000 BLOCKED (60th). OPERATOR: BUY 4sh MU MOO before 9:25 AM ET. xAI API blocked — X modifier 0 (defaulted)."
+    },
+    {
+      "ts": "2026-06-30T12:06:00Z",
+      "action": "entry",
+      "symbol": "NVDA",
+      "bucket": "active",
+      "setup": "mean-reversion-oversold",
+      "score": 9,
+      "thesis": "-8% week oversold decline (5 down days); Stochastic near oversold; SMH +0.82% sector recovery premarket; MU-Anthropic deal = AI capex validation (HBM4 → NVDA GPUs); Q2 window dressing last day; CUDA moat intact.",
+      "size_pct": 0.79,
+      "stop": 187.15,
+      "target": 226.55,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.0,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "All 6 agents ≥7. Risk=9 (no veto). 3rd MOO slot. ORDER ATTEMPTED: BUY 4sh NVDA MOO → HTTP 000 BLOCKED (60th). OPERATOR: BUY 4sh NVDA MOO before 9:25 AM ET. xAI API blocked — X modifier 0 (defaulted)."
+    },
+    {
+      "ts": "2026-06-30T12:06:00Z",
+      "action": "entry",
+      "symbol": "IBM",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7,
+      "thesis": "Defensive tech with AI consulting (watsonx) and HashiCorp recurring revenue. Limit bracket GTC (MOO slots full). Earnings July 20 (outside 48h window). 3:1 R/R exactly met.",
+      "size_pct": 0.82,
+      "stop": 261.13,
+      "target": 316.09,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.17,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "All 6 agents ≥7. Risk=8 (no veto). Limit $274.87 bracket GTC (stop $261.13, target $316.09). ORDER ATTEMPTED: BUY 3sh IBM limit $274.87 bracket GTC → HTTP 000 BLOCKED (60th). OPERATOR: BUY 3sh IBM limit $274.87 bracket GTC at app.alpaca.markets. xAI API blocked — X modifier 0 (defaulted)."
+    },
+    {
+      "ts": "2026-06-30T12:06:00Z",
+      "action": "skip",
+      "symbol": "INTC",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 6,
+      "thesis": "INTC re-scored 6.5/10 — below 7.0 minimum. Technical 6 (below ATH, -9% from $141.45, specifically flagged as falling June 29). Tech Analyst 6 (Intel Foundry execution risk vs TSMC).",
+      "size_pct": 0,
+      "stop": null,
+      "target": null,
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 6,
+        "sentiment": 6,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 6
+      },
+      "agent_average": 6.5,
+      "agents_above_7": 4,
+      "master_decision": "rejected",
+      "master_notes": "Average 6.5 < 7.0 threshold. Only 4 of 6 ≥7. Technical=6 (weak momentum). Tech Analyst=6 (Intel Foundry IFS lagging TSMC). Re-score July 7 (post-July 4 holiday)."
+    },
     {
       "ts": "2026-06-29T13:46:00Z",
       "action": "violation",
