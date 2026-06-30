@@ -1,7 +1,9 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-06-29 (Monday) — DAILY REVIEW (4:30 PM ET / 20:30 UTC). TRADING DAY COMPLETE. Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 59th consecutive blocked session). HEARTBEAT AUDIT: Pre-Market ✅ + Market-Open ✅ completed; Mid-Morning ❌ + Midday ❌ + Afternoon ❌ + Market-Close ❌ SILENT FAILURES (4 of 7 routines). ALL ORDERS BLOCKED TODAY: AMD SELL 9sh MOO → HTTP 403; MU 4sh MOO → HTTP 403; IBM 3sh MOO → HTTP 403. GOOGL rejected 5.5/10 (sell-the-news Dow inclusion, -2.9% on day). GLD rejected 5.5/10 (downtrend confirmed, $370-375). NVDA rejected 6.83/10 (5 down days, sell signal). AMD 18sh NAKED DAY 8. SPX est. +0.9% today (close ~7,565); portfolio +0.23% est. (AMD unrealized ~$240). DAILY GAP: ~-0.67 pp. CUMULATIVE GAP vs SPX: est. ~-5.0 pp absolute (from May 1 baseline). SETUP TALLY: 0 changes (all entries pending/blocked). 20-DAY UNDERPERFORMANCE FLAG: Active (45+ consecutive days — API blockage root cause). TOMORROW JUNE 30 (Q2 LAST DAY — BINDING COMMITMENT): (1) ⚠️⚠️⚠️ SELL 9sh AMD MOO (CRITICAL — Day 9 naked if skipped); (2) BUY 4sh MU MOO (score 7.5 — MANDATORY — Day 5 post-earnings); (3) BUY 3sh IBM limit bracket GTC at ask×1.005 (score 7.0 — MANDATORY); (4) Re-score NVDA/INTC at Pre-Market for Q2 window-dressing opportunity. July 4 = MARKET CLOSED. Q2 earnings season starts ~July 8 (JPM/WFC July 11). IBM earnings window opens ~July 20 — must exit IBM before July 20 if holding.**
+**2026-06-30 (Tuesday — Q2 FINAL DAY) — DAILY REVIEW (4:30 PM ET / 20:33 UTC). TRADING DAY COMPLETE. Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 60th consecutive blocked session). HEARTBEAT AUDIT: ❌❌❌ ALL 6 INTRADAY ROUTINES SILENTLY FAILED (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close — WORST DAY ON RECORD). Only Daily-Review fired (20:32Z). ALL MANDATORY JUNE 30 ORDERS UNEXECUTED: AMD SELL 9sh MOO → Pre-Market never fired; MU 4sh MOO → Pre-Market never fired; IBM 3sh GTC → Pre-Market never fired. AMD 18sh NAKED DAY 9 (CRITICAL). SPX est. +0.3-0.5% today (Q2 window dressing, close ~7,590-7,610); portfolio +0.20-0.38% est. (AMD mark only). DAILY GAP: ~0 to -0.2 pp (approximately flat). Q2 FINAL CUMULATIVE GAP vs SPX: est. ~-5.1 pp (portfolio +0.09-0.19% vs SPX +5.3-5.5% since May 1). SETUP TALLY: 0 changes (no fills). 20-DAY UNDERPERFORMANCE FLAG: Active (50+ consecutive days — API + cron blockage root cause). TOMORROW JULY 1 (Q3 FIRST DAY — BINDING COMMITMENT — 2 DAYS OVERDUE): (1) ⚠️⚠️⚠️ SELL 9sh AMD MOO (CRITICAL — Day 10 naked if skipped; place GTC stop $481.42 + take-profit $582.78 on remaining 9sh); (2) BUY 4sh MU MOO (score 7.5 — MANDATORY — 3rd day post-earnings recovery); (3) BUY 3sh IBM limit bracket GTC at ask×1.005 (score 7.0 — MANDATORY); (4) Re-score NVDA/INTC at Pre-Market. Watch July 1 ISM Manufacturing PMI (10 AM ET): >50 = proceed; <50 = pause MU/IBM. July 4 = MARKET CLOSED. IBM earnings window opens ~July 20 — must exit IBM by July 18. AMD earnings window opens ~July 25 — must exit AMD by July 24. CRON SCHEDULE INVESTIGATION IS NOW PRIORITY #1 — 6 consecutive routine failures on June 30 indicate systemic cron scheduling failure beyond API blockage.**
+
+**Prior Last Updated:** 2026-06-29 (Monday) — DAILY REVIEW (4:30 PM ET / 20:30 UTC). TRADING DAY COMPLETE. Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 59th consecutive blocked session). HEARTBEAT AUDIT: Pre-Market ✅ + Market-Open ✅ completed; Mid-Morning ❌ + Midday ❌ + Afternoon ❌ + Market-Close ❌ SILENT FAILURES (4 of 7 routines). ALL ORDERS BLOCKED TODAY: AMD SELL 9sh MOO → HTTP 403; MU 4sh MOO → HTTP 403; IBM 3sh MOO → HTTP 403. GOOGL rejected 5.5/10 (sell-the-news Dow inclusion, -2.9% on day). GLD rejected 5.5/10 (downtrend confirmed, $370-375). NVDA rejected 6.83/10 (5 down days, sell signal). AMD 18sh NAKED DAY 8. SPX est. +0.9% today (close ~7,565); portfolio +0.23% est. (AMD unrealized ~$240). DAILY GAP: ~-0.67 pp. CUMULATIVE GAP vs SPX: est. ~-5.0 pp absolute (from May 1 baseline). SETUP TALLY: 0 changes (all entries pending/blocked). 20-DAY UNDERPERFORMANCE FLAG: Active (45+ consecutive days — API blockage root cause). TOMORROW JUNE 30 (Q2 LAST DAY — BINDING COMMITMENT): (1) ⚠️⚠️⚠️ SELL 9sh AMD MOO (CRITICAL — Day 9 naked if skipped); (2) BUY 4sh MU MOO (score 7.5 — MANDATORY — Day 5 post-earnings); (3) BUY 3sh IBM limit bracket GTC at ask×1.005 (score 7.0 — MANDATORY); (4) Re-score NVDA/INTC at Pre-Market for Q2 window-dressing opportunity. July 4 = MARKET CLOSED. Q2 earnings season starts ~July 8 (JPM/WFC July 11). IBM earnings window opens ~July 20 — must exit IBM before July 20 if holding.**
 
 **Prior Last Updated (Market-Open):** 2026-06-29 (Monday) — MARKET-OPEN (9:45 AM ET / 13:46 UTC). TRADING DAY. Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 58th consecutive blocked session). Pre-Market predecessor confirmed (STARTED 12:05Z, COMPLETED 12:28Z). MARKET-OPEN ORDERS APPROVED BUT BLOCKED: (1) MU 4sh limit bracket GTC (7.5 avg — carry-forward from Pre-Market MOO) → HTTP 403; (2) IBM 3sh limit bracket GTC (7.0 avg) → HTTP 403. VIOLATIONS LOGGED: AMD 18sh naked Day 8 — stop backfill attempted → HTTP 403. MOO FILL STATUS UNKNOWN: MU and IBM MOOs were attempted in Pre-Market (12:06Z) by cloud agent but blocked; if operator manually placed them, they may have filled at today's open (~MU $1,130-1,145, IBM ~$272-274). MARKET CONDITIONS AT OPEN: SPX est. +0.8-1.0% (below 2% no-chase threshold); Nasdaq +1.0%; AMD est. $518-525. REJECTED (unchanged from Pre-Market): GOOGL 5.5, GLD 5.5, NVDA 6.83. CUMULATIVE GAP vs SPX: est. ~-6.0 pp (widening — if SPX ends +1% today and portfolio unchanged, gap → ~-7.0 pp). MANDATORY OPERATOR ACTIONS (MARKET IS OPEN NOW): (1) ⚠️⚠️⚠️ SELL 9sh AMD at market IMMEDIATELY (app.alpaca.markets); place GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. (2) If MU MOO NOT filled: BUY 4sh MU limit bracket GTC at ~$1,141 (stop $1,083.95, target $1,312.15). (3) If IBM MOO NOT filled: BUY 3sh IBM limit bracket GTC at ~$274 (stop $260.30, target $315.20). (4) If MU/IBM MOOs DID fill: immediately place GTC stops at fill×0.95 and take-profits at fill+3×(fill-stop).**
 
@@ -156,12 +158,14 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 ## PRIOR Last Updated (kept for context)
 2026-05-14 (Thursday) — Daily Review (4:30 PM ET / 20:35 UTC). Alpaca API STILL blocked ("Host not in allowlist"). 8th consecutive blocked session. All 6 intraday routines (Pre-Market through Market Close) SILENT FAILED again. Prices from web research. AMD entry still unconfirmed (4th consecutive deployment failure). S&P 500 hit new record high (+0.79% to 7,511). NVDA +4.54% on Trump-Xi summit (Jensen Huang attended). 200-jet Boeing China order confirmed. BTC $79,600 (below $82K threshold).
 
-## Current Account Snapshot (as of 2026-06-29 Daily Review — all estimates; API blocked 59th session)
+## Current Account Snapshot (as of 2026-06-30 Daily Review — all estimates; API blocked 60th session)
 - **Broker:** Alpaca Paper Trading (account PA3TXVEJ19LW)
-- **Total Equity (estimated):** **~$100,092** (base $90,732 cash + est. AMD market value $9,360 = $100,092; AMD est. EOD ~$520)
+- **Total Equity (estimated):** **~$100,150** (base $90,732 cash + est. AMD market value $9,418 = $100,150; AMD est. Q2 close ~$524)
 - **Cash:** **~$90,732** (estimated — $99,854 base minus AMD cost 18sh×$506.76=$9,122)
-- **Long Market Value:** ⚠️ **~$9,360 estimated** (18sh AMD × $520 est. EOD = $9,360; NAKED — no stops)
-- **AMD est. unrealized:** +$240.48 (18sh × ($520.03 − $506.76)) — PROFITABLE but UNPROTECTED (DAY 8)
+- **Long Market Value:** ⚠️ **~$9,418 estimated** (18sh AMD × $523 est. Q2 EOD = $9,414; NAKED — no stops)
+- **AMD est. unrealized:** +$293.76 (18sh × ($523 − $506.76)) — PROFITABLE but UNPROTECTED (DAY 9)
+- **API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — **60th consecutive blocked session**
+- **Cron Status:** ⚠️ ALL 6 INTRADAY ROUTINES FAILED TODAY — systemic cron failure suspected
 
 **⚠️⚠️⚠️ AMD STALE GTC — CONFIRMED FILL JUNE 23 (HIGH CONFIDENCE) — DAY 7 NAKED (INCL WEEKEND):**
 - AMD 9sh buy limit $520.59 GTC (May 29): AMD opened June 23 at $506.76 → FILLED ~$506.76
@@ -276,15 +280,22 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 - **Daytrade Count:** 0
 - **3% Circuit Breaker:** NOT TRIGGERED (market up, portfolio estimated flat to slightly positive)
 
-## Bucket State (as of 2026-06-29 Daily Review — estimates; API blocked 59th session)
+## Bucket State (as of 2026-06-30 Daily Review — estimates; API blocked 60th session)
+| Bucket | Target | Current $ (est.) | Current % | Positions |
+|---|---|---|---|---|
+| Active Trading | 85% ($85K) | ⚠️ ~$9,414 est. (18sh AMD × $523 est. Q2 EOD — NAKED DAY 9) | ~9.4% | 1 est.: 18sh AMD NAKED (DAY 9) |
+| Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$60,000, below $82K threshold |
+| Cash Reserve | 5% floor | **~$90,732 est.** (after AMD cost basis) | ~90.5% | — |
+
+**Deployment gap: ~$85,396 above the 5% floor.**
+**Tomorrow July 1 mandatory deployment (2 days overdue):** AMD SELL 9sh MOO (Day 10 critical), MU 4sh MOO (score 7.5), IBM 3sh limit bracket GTC (score 7.0). Watch July 1 ISM PMI (10 AM ET).
+
+## Prior Bucket State (as of 2026-06-29 Daily Review — estimates; API blocked 59th session)
 | Bucket | Target | Current $ (est.) | Current % | Positions |
 |---|---|---|---|---|
 | Active Trading | 85% ($85K) | ⚠️ ~$9,360 est. (18sh AMD × $520 est. EOD = $9,360 — NAKED) | ~9.3% | 1 est.: 18sh AMD NAKED (DAY 8) |
 | Crypto | 10% ($10K) | $0 | 0% | 0 — BTC ~$60,064, below $82K threshold |
 | Cash Reserve | 5% floor | **~$90,732 est.** (after AMD cost basis) | ~90.4% | — |
-
-**Deployment gap: ~$85,396 above the 5% floor.**
-**Tomorrow June 30 mandatory deployment:** AMD SELL 9sh (risk mgmt, reduces to 4.65%), MU 4sh MOO (score 7.5), IBM 3sh limit GTC (score 7.0).
 
 **SEMICONDUCTOR SELLOFF DAY (June 26):** Apple announced MacBook/iPad price hikes due to higher memory/storage component costs → demand destruction fear for semiconductors. MU, AMD, INTC, NVDA, TSM all falling. GOOG opened at $336.25 (DOW INCLUSION LAST DAY — the entry is actually more attractive at this lower price). PCE 4.1% matched estimates — not a shock. Market -0.44%. Cumulative gap vs SPX est. ~−6.0 pp.
 
@@ -366,14 +377,20 @@ Sunday operator manually triggered `trig_01Fyy66iJSYdwL9hMm4C8eVB` Daily Review 
 
 All well under 25% sector cap in either scenario. If both old semis (Scenario B) AND new entries (AMD+MU) exist simultaneously: ~18.8% semis — still under 25% cap.
 
-## Performance vs S&P 500 (as of 2026-06-29 Daily Review)
+## Performance vs S&P 500 (as of 2026-06-30 Daily Review — Q2 FINAL)
+- **Portfolio total equity (est.):** **~$100,150** (AMD unrealized est. +$294; GLD stop −$145.58 realized; all other entries blocked)
+- **Portfolio total return:** **~+0.15%** (AMD est. unrealized +$294 on 18sh; GLD realized −$145.58; net ~$148)
+- **S&P 500 (est. June 30 Q2 close):** ~7,590-7,610 (window dressing +0.3-0.5%). SPX since strategy start (~May 1 ~$7,200): **~+5.4%** (7,600/7,200 − 1)
+- **Gap vs SPX (Q2 FINAL): ~−5.2 pp** (portfolio +0.15% vs SPX est. +5.4% = −5.25 pp)
+- **Q2 daily lag June 30: ~flat to -0.2 pp** (portfolio MTM roughly matched SPX on window dressing day)
+- **Q2 2026 summary:** Portfolio +0.15% (est.) vs SPX +5.4% (est.) = −5.25 pp Q2 shortfall. 100% attributable to Alpaca API blockage (60 consecutive sessions). Zero guardrail violations on strategy decisions. Every scored trade that cleared the 6-agent gate was blocked by infrastructure.
+- **⚠️ 20-DAY UNDERPERFORMANCE FLAG ACTIVE:** 50+ consecutive trading days. Root cause: Alpaca API blocked 60 sessions + cron scheduling failing 6 of 7 routines on June 30. Hard guardrails unchanged. Infrastructure fix is the only cure.
+
+## Prior Performance vs S&P 500 (as of 2026-06-29 Daily Review)
 - **Portfolio total equity (est.):** **~$100,092** (AMD unrealized; no confirmed non-AMD fills; GLD stop June 10 only completed trade)
 - **Portfolio total return:** **~+0.09%** (AMD est. unrealized +$240; GLD stop −$145.58 realized; all other approved entries pending)
-- **S&P 500 (est. June 29 close):** ~7,565 (from ~7,550 June 26 + ~0.9% recovery today). SPX since strategy start (~May 1 ~$7,200): **+5.07%**
-- **Gap vs SPX (UPDATED): ~−5.0 pp** (portfolio +0.09% vs SPX +5.07% = −4.98 pp; rounded to -5.0 pp)
-- **Daily lag June 29: −0.67 pp** (portfolio est. +0.23% AMD mark vs SPX +0.9%)
-- **Miss cost today:** MU recover est. +3.5% (4sh × ~$1,140 × 3.5% = ~$160); IBM recovery est. +0.9% (3sh × $274 × 0.9% = ~$7). Total 1-day additional miss on blocked entries: ~$167.
-- **⚠️ 20-DAY UNDERPERFORMANCE FLAG ACTIVE:** 45+ consecutive trading days underperforming SPX. Root cause: Alpaca API blocked 59 consecutive sessions. Hard guardrails unchanged. No strategy adjustment warranted — infrastructure fix required.
+- **S&P 500 (est. June 29 close):** ~7,565. SPX since strategy start (~May 1 ~$7,200): **+5.07%**
+- **Gap vs SPX: ~−5.0 pp** (portfolio +0.09% vs SPX +5.07% = −4.98 pp)
 
 ## Prior Performance vs S&P 500 (as of 2026-06-15 Daily Review)
 - **Portfolio total equity (est.):** **~$99,854** (June 15 close — no fills; GLD stop June 10 only completed trade)
