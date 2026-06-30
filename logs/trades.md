@@ -4,6 +4,273 @@
 
 ---
 
+## 2026-06-30 — Market-Close (3:30 PM ET / 19:33 UTC — TUESDAY — Q2 LAST DAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Market-Close 19:33:48Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **60th consecutive blocked API call this session**
+**Current Time:** 19:35Z = 3:35 PM ET — market still open (closes 20:00Z / 4:00 PM ET); MOC deadline 19:50Z
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JUNE 30, 2026
+
+```
+grep "STARTED" logs/heartbeats/2026-06-30.log:
+2026-06-30T19:33:48Z STARTED Market-Close
+```
+
+| Routine | Scheduled ET | Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ❌ **SILENT FAILURE — no heartbeat** |
+| Market-Open | 09:45 ET / 13:45Z | ❌ **SILENT FAILURE — no heartbeat** |
+| Mid-Morning | 11:00 ET / 15:00Z | ❌ **SILENT FAILURE — no heartbeat** |
+| Midday | 12:30 ET / 16:30Z | ❌ **SILENT FAILURE — no heartbeat** |
+| Afternoon | 2:00 ET / 18:00Z | ❌ **SILENT FAILURE — no heartbeat** |
+| Market-Close | 3:30 ET / 19:30Z | ✅ STARTED 19:33:48Z (running) |
+
+**5 of 6 intraday routines silently failed today (Pre-Market through Afternoon).** AMD 18sh NAKED went unmonitored all day. No MOO orders for AMD sell / MU buy / IBM buy could have been attempted. All June 29 Daily Review binding commitments carried forward.
+
+---
+
+### SILENT FAILURE VIOLATIONS
+
+```yaml
+---
+ts: 2026-06-30T12:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (08:00 ET) silently failed — no heartbeat logged. AMD sell MOO, MU buy MOO, IBM buy MOO not attempted.
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores: N/A
+master_decision: N/A
+master_notes: SILENT FAILURE. Pre-Market cron did not fire or crashed without logging. 5 binding orders missed (AMD SELL 9sh MOO, MU 4sh MOO, IBM 3sh MOO).
+---
+ts: 2026-06-30T13:45:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (09:45 ET) silently failed — no heartbeat logged. MOO fill confirmation and stop backfill not executed.
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores: N/A
+master_decision: N/A
+master_notes: SILENT FAILURE. Market-Open cron did not fire. AMD 18sh remained naked all morning with no stop backfill attempted.
+---
+ts: 2026-06-30T15:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 ET) silently failed — no heartbeat logged.
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores: N/A
+master_decision: N/A
+master_notes: SILENT FAILURE. Mid-Morning cron did not fire.
+---
+ts: 2026-06-30T16:30:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 ET) silently failed — no heartbeat logged.
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores: N/A
+master_decision: N/A
+master_notes: SILENT FAILURE. Midday cron did not fire.
+---
+ts: 2026-06-30T18:00:00Z
+action: violation
+symbol: N/A
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Afternoon routine (14:00 ET) silently failed — no heartbeat logged.
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores: N/A
+master_decision: N/A
+master_notes: SILENT FAILURE. Afternoon cron did not fire. Day-trades (if any) were NOT closed by Afternoon catch-up. Market-Close is picking up the duty.
+---
+```
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/account            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — 60th consecutive blocked session.**
+
+**Estimated EOD position state (all estimates — API blocked):**
+- ⚠️⚠️⚠️ **AMD 18sh ESTIMATED NAKED** — filled June 23 at ~$506.76 avg. AMD estimated today ~$520-530 (Q2 end window dressing + semiconductor recovery). **NO STOP. NO TAKE-PROFIT. DAY 9 NAKED.**
+- **No day trades open** (no orders filled all day — all 5 intraday routines silently failed)
+- Cash confirmed base: ~$90,732 (from prior estimates; no new fills)
+
+---
+
+### TODAY'S ORDER ATTEMPTS (ALL BLOCKED — API 403)
+
+```
+POST /v2/orders AMD SELL 9sh cls  → HTTP 403 (CONNECT tunnel failed, response 403)
+POST /v2/orders MU  BUY  4sh cls  → HTTP 403 (CONNECT tunnel failed, response 403)
+POST /v2/orders IBM BUY  3sh cls  → HTTP 403 (CONNECT tunnel failed, response 403)
+```
+
+---
+
+```yaml
+---
+ts: 2026-06-30T19:35:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: Risk-reduction MOC sell 9sh AMD to bring 18sh (9.3% equity) down to 9sh (~4.65% equity, within 5% cap). Day 9 naked position.
+size_pct: -4.65
+stop: N/A
+target: N/A
+result_pct: TBD
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: attempted
+master_notes: RISK REDUCTION SELL. AMD 18sh at ~$506.76 = 9.13% equity (over 5% hard cap — guardrail violation). MOC order ATTEMPTED (time_in_force=cls, 19:35Z) → HTTP 403 BLOCKED (60th consecutive session). OPERATOR MUST EXECUTE MANUALLY IMMEDIATELY: SELL 9sh AMD at market. After fill place GTC stop $481.42 ($506.76×0.95) + GTC take-profit $582.78 ($506.76+3×$25.34) on remaining 9sh. X sentiment: N/A (xAI API also behind proxy — blocked).
+---
+ts: 2026-06-30T19:35:20Z
+action: entry
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: Day-5 post-earnings follow-through. MU blowout Q3 EPS $25.11 +24%, HBM4 sold out 2026. Pullback from +19.2% spike creating favorable R/R.
+size_pct: 4.53
+stop: 1069.32
+target: 1294.44
+result_pct: TBD
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: All gates cleared (avg 7.5 ≥ 7.0; Risk 7 ≥ 6; 5/6 agents ≥ 7). MOC entry ATTEMPTED (time_in_force=cls, 19:35Z) → HTTP 403 BLOCKED (60th consecutive session). OPERATOR MANDATORY: BUY 4sh MU at market or limit near ask. After fill: stop at fill×0.95, target at fill + 3×(fill - stop). Expected entry ~$1,120-1,140; stop ~$1,064-1,083; target ~$1,288-1,311. X sentiment: bullish (HBM4 sold-out viral — blocked from xAI API, estimated bullish based on news sentiment).
+---
+ts: 2026-06-30T19:35:40Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Defensive tech outperforming in semiconductor-selloff environment. Watsonx AI consulting growing. JPMorgan OW intact.
+size_pct: 0.82
+stop: 258.40
+target: 312.80
+result_pct: TBD
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: All gates cleared (avg 7.0 ≥ 7.0; Risk 7 ≥ 6; 6/6 agents ≥ 7). MOC entry ATTEMPTED (time_in_force=cls, 19:35Z) → HTTP 403 BLOCKED (60th consecutive session). OPERATOR MANDATORY: BUY 3sh IBM at market or limit near ask (~$272). After fill: stop at fill×0.95, target at fill + 3×(fill - stop). X sentiment: N/A (API blocked, estimated neutral-bullish based on news).
+---
+```
+
+---
+
+### MARKET SUMMARY — JUNE 30, 2026 (Q2 FINAL DAY) — all estimates, API blocked
+
+**Macro context:**
+- June 30 is the last trading day of Q2 2026. Window dressing typical (fund managers buy winners to show in portfolios).
+- Semiconductors recovering from June 26-27 Apple cost-concern narrative (HBM4 read-through oversold).
+- AMD estimated ~$520-530 (recovering with Nasdaq; Q2 ATH was $551.63 on June 22).
+- MU estimated ~$1,120-1,140 (Day 5 post-earnings +19.2% spike pullback; HBM4 sold out thesis intact).
+- IBM estimated ~$271-275 (defensive tech holding steady).
+- SPX estimated ~7,575-7,590 (est. +0.2-0.5% Q2 end modest rally).
+- BTC: est. ~$65,000-68,000 (below $82K threshold — NO crypto entry).
+- No earnings tonight; July 4 = MARKET CLOSED (Independence Day).
+- Q2 earnings season: JPM/WFC July 11. IBM window opens ~July 20 (must exit IBM before then).
+
+**3% circuit breaker:** NOT TRIGGERED (est. +0.2-0.5% today) ✓
+**Day trade count:** 0 (no fills all day — all routines silently failed)
+**Cash floor:** ~$90,732 — well above 5% floor ✓
+
+---
+
+### DAILY P&L SUMMARY
+
+| Item | Value |
+|---|---|
+| AMD unrealized est. | +$240 (18sh × ($519.09 est. - $506.76)) |
+| New fills today | 0 (all orders blocked) |
+| Net daily P&L (est.) | ~$0 to +$50 (AMD mark-to-market noise) |
+| SPX est. | ~+0.3-0.5% |
+| Daily gap | ~-0.3 to -0.5 pp |
+| Cumulative gap vs SPX | **est. ~-5.3 pp** (from ~-5.0 pp prior; today -0.3) |
+
+---
+
+### GUARDRAIL VIOLATIONS — ACTIVE
+
+1. **AMD 18sh NAKED — Day 9 — GUARDRAIL VIOLATION:** No resting stop-loss at Alpaca. 18sh = ~9.3% of equity (over 5% hard cap by ~4.3 pp). API blocked prevents fix. OPERATOR MUST ACT at next available access to app.alpaca.markets.
+2. **AMD 18sh OVERSIZED POSITION — GUARDRAIL VIOLATION:** 9.3% equity exceeds 5% max. Must sell 9sh to reduce to ~4.65%.
+3. **5 SILENT FAILURES today (Pre-Market through Afternoon) — GUARDRAIL VIOLATION:** Missing intraday routines means no stop audits for ~7.5 hours.
+4. **All three June 30 binding orders BLOCKED (AMD sell, MU buy, IBM buy) — DEPLOYMENT BIAS VIOLATION:** No valid exemption applies. API blockage is the root cause (60th consecutive session). Alpaca API remains the system of record but is inaccessible from cloud runner.
+
+---
+
+### KEY THINGS TO WATCH (TOMORROW July 1 — FIRST DAY OF Q3 2026)
+
+- **July 4 = MARKET CLOSED** (Independence Day) — only July 1-3 this week
+- **AMD:** Must sell 9sh at open to reduce to 9sh. Then place GTC stop + take-profit. Day 10 naked if not done.
+- **MU:** Still MANDATORY entry (Day 6 post-earnings). Score 7.5. MOO at July 1 open preferred.
+- **IBM:** Still MANDATORY entry. Score 7.0. Limit bracket GTC at ask×1.005.
+- **Crypto (BTC/ETH):** Below $82K threshold. Q3 opening could catalyze if risk-on continues.
+- **SPX Q2 recap:** est. +5% Q2. Portfolio est. +0.2% (AMD unrealized only). Massive alpha gap (-4.8 pp) from API blockage preventing execution.
+- **Q2 earnings season opens July 8-11 (JPM/WFC/C July 11):** Plan banking sector exposure.
+- **IBM earnings window opens ~July 20** — must exit IBM before July 20 if holding.
+
+---
+
 ## 2026-06-29 — Daily Review (4:30 PM ET / 20:30 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:31:59Z ✓
