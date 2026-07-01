@@ -4,6 +4,403 @@
 
 ---
 
+## 2026-07-01 — Pre-Market (8:00 AM ET / 12:09 UTC — WEDNESDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Pre-Market 12:05:26Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **60th consecutive blocked API call**
+**Current Time:** 12:09Z = 8:09 AM ET — pre-market (US markets open 9:30 AM ET / 13:30 UTC)
+**Today is:** July 1, 2026 — First trading day of Q3 2026
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/account            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — 60th consecutive blocked call.**
+
+**Known open position (estimated — cannot verify via API):**
+- ⚠️⚠️⚠️ **AMD 18sh — STILL NAKED — DAY 10** (calendar days since June 23 fill)
+  - Fill price: $506.76 avg (18sh via stale GTC fills June 23)
+  - Pre-market price July 1: **$575.00** (range $538.89–$584.73 on June 30)
+  - Unrealized gain: ($575.00 − $506.76) × 18 = **$1,228.32 est.**
+  - AMD % of equity: 18sh × $575 / $101,082 est. = **10.22% — 2× the 5% hard cap**
+  - **ORIGINAL TARGET $582.78 WAS HIT INTRADAY JUNE 30** (AMD high $584.73 > target $582.78) — missed because no take-profit order was placed
+  - **No stop-loss, no take-profit. 10 consecutive calendar days naked. Critical guardrail violation.**
+
+**No other confirmed open positions (MU/IBM attempts all blocked).**
+
+---
+
+### JUNE 30, 2026 — POST-MORTEM: COMPLETE ROUTINE BLACKOUT
+
+**CRITICAL: No heartbeat file exists for June 30, 2026** (`logs/heartbeats/2026-06-30.log` is absent). This means ZERO of 7 scheduled routines fired on June 30 (Q2 last trading day).
+
+Impact:
+- AMD SELL 9sh MOO (MANDATORY per June 29 commitment) — NOT ATTEMPTED
+- MU 4sh MOO (MANDATORY, score 7.5) — NOT ATTEMPTED
+- IBM 3sh limit GTC (MANDATORY, score 7.0) — NOT ATTEMPTED
+- AMD remained naked through the entire Q2-end window-dressing session
+- AMD rallied to $584.73 intraday (above original target $582.78) with no take-profit set
+- AMD now at $575 pre-market July 1 — STILL NAKED
+
+Root cause: Unknown (same as prior silent failures — cron scheduler issue for intraday + possibly full-day gap in June 30 cron config). Operator must investigate.
+
+---
+
+### USER SUGGESTIONS (GitHub Issues — user-suggestion label)
+
+Checked via GitHub MCP: **0 open suggestions**. Proceeding to market research.
+
+---
+
+### MARKET CONDITIONS — JULY 1, 2026 PRE-MARKET
+
+**US Futures (pre-market weakness after strong Q2 end):**
+- S&P 500 futures: **−0.2%** (~7,555 est.)
+- Nasdaq 100 futures: **−0.4%** (tech slight underperformance)
+- Dow futures: **−0.2%** (−105 pts)
+
+**Context: Best Q2 since 2020 — institutional quarter-end rebalancing complete**
+- Q2 2026 final: Dow +8.9%, S&P 500 +9.6%, Nasdaq +12.8%
+- JPMorgan estimated ~$165B in institutional equity selling into bonds for Q2 rebalance (largest in 4+ years)
+- That selling is COMPLETE as of June 30 close — Q3 starts fresh
+- July 1 slight weakness reflects last pockets of rebalancing pressure being absorbed
+
+**Key events today:**
+| Time (ET) | Event | Risk Level |
+|---|---|---|
+| **9:30 AM** | **Fed Chair Warsh speech at Sintra, Portugal** | ⚠️ HIGH — Warsh is a hawk, hawkish comments could spike rates/pressure tech at open |
+| 10:00 AM | ISM Manufacturing PMI (June) | MODERATE — May was 54.0% (expansion); if June stays >50 = bullish for semis |
+| 10:00 AM | Construction Spending | LOW |
+| Thursday | ADP Employment (early due to July 4 holiday) | MODERATE |
+| **July 4 (Friday)** | **Market CLOSED — Independence Day** | — |
+
+**Warsh Risk Note:** Warsh speaking at Sintra at the SAME TIME as market open (9:30 AM ET) is a volatility risk. If hawkish tone, tech stocks could face a brief rate-spike selloff. This is NOT Exemption 2 (not an FOMC decision day) but creates early-session uncertainty. MOO orders placed before 9:25 AM ET will execute INTO this uncertainty.
+
+**Stock prices (pre-market July 1):**
+| Symbol | Pre-Market Price | Change | Key Note |
+|---|---|---|---|
+| AMD | **$575.00** | est. flat-to-up vs June 30 close ~$560+ | Russell Top 50 addition; WF PT $615; near original target $582.78 |
+| MU | **$1,145.50** | recovering | 72 analysts Strong Buy; PT avg $1,454; ex-div July 6 |
+| IBM | **$281.84** | +0.21% | Up from $272 prior plan; Q1 beat; 0.7nm chip; quantum $10B |
+| NVDA | **$199.52** | (June 30 close) | −23% from May ATH; 62 Strong Buy analysts; PT $298.93 |
+| BTC | **$58,543** | −0.06% | Below $82K — NO crypto entry |
+
+**3% Circuit Breaker:** NOT TRIGGERED (portfolio no confirmed daily change — AMD unrealized gain is positive) ✓
+
+---
+
+### AMD RISK MANAGEMENT — UPDATED PLAN
+
+**Old plan (June 29 commitment):** SELL 9sh AMD MOO at ~$519
+**New situation (July 1):** AMD at $575 pre-market — near original $582.78 target
+**NEW CATALYSTS:**
+1. **Russell Top 50 Index addition** — mechanical buying from index-tracking ETFs (structural demand catalyst, similar to MRVL S&P 500 inclusion we tracked)
+2. **Wells Fargo raised price target to $615** (from prior lower estimate)
+
+**AMD position math at $575:**
+| Scenario | AMD Qty | AMD Value | % of Equity | Action |
+|---|---|---|---|---|
+| Current (naked) | 18sh | $10,350 | **10.22% — OVER CAP** | Must reduce |
+| Sell 9sh | 9sh | $5,175 | 5.12% — still over 5% cap | ❌ Not enough |
+| Sell 10sh | 8sh | $4,600 | **4.55% ✓** | Correct plan |
+
+**REVISED AMD PLAN:**
+1. **SELL 10sh AMD at market open** (reduces 18sh → 8sh; 4.55% equity ✓)
+2. **TRAIL STOP on remaining 8sh: $546.25** ($575 × 0.95 — locks in $39.25/sh = $314 profits)
+3. **RAISE TAKE-PROFIT to $615** (WF PT; index inclusion buying could push through original $582.78)
+4. Note: AMD **intraday high of $584.73 on June 30** already exceeded original $582.78 target — price has briefly shown this level is achievable
+
+API BLOCKED — cannot execute. OPERATOR MUST ACT AT OPEN.
+
+---
+
+### 6-AGENT ANALYSIS — TODAY'S WATCHLIST
+
+#### MU — Micron Technology (earnings-reaction-follow)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 9/10 | Q3 FY2026 blowout: EPS $5.11, revenue $41.46B, Q4 guidance $50B (+16.5% vs consensus). HBM4 sold out through 2026. 72 analysts = 29 Buy + 43 Strong Buy. PT avg $1,454.13 vs $1,145.50 (+27% upside). Market cap crossed $1 trillion. PT raised to $1,870 by Phillip Securities. |
+| Technical | 7/10 | Post-earnings recovery in progress. -6.69% June 27 Apple-narrative dip reversed. Current $1,145.50 = consolidation above earnings-day range. 2/5 indicator confirmation: Stochastic likely oversold→crossing up from prior dip; volume oscillator turning positive on recovery. MACD: bearish→neutral transition. |
+| Sentiment | 7/10 | Overwhelmingly bullish analyst community. 72 analysts near-unanimously Buy/Strong Buy. xAI Grok API blocked — no X sentiment data (degraded gracefully, scored without X). Note: MU ex-dividend July 6 ($0.15/sh) — buying before July 3 captures small dividend. |
+| Macro | 7/10 | Q3 start + AI capex supercycle intact. ISM Manufacturing May 54% (expansion) = semiconductor demand positive. No near-term MU binary events (next earnings ~late September). Warsh speech adds 9:30 AM ET volatility risk. |
+| Risk | 7/10 | 4sh × $1,145.50 = $4,582 = 4.54% equity. Stop: $1,088.23 (fill×0.95). Target: $1,317.32 (fill+3×57.27 = 3:1). All guardrails satisfied. R/R = 3:1 ✓. Position within 5% cap. |
+| Tech Analyst | 8/10 | HBM4 (High Bandwidth Memory 4th gen) = gold standard for AI GPU training. SOLD OUT through 2026 = pricing power. HBM5 roadmap in development. No competitive threat to MU's AI memory leadership in near term. |
+| **Average** | **7.50/10** | |
+| **Gate** | **APPROVED** | avg ≥7 ✓, Risk ≥6 ✓, 6/6 agents ≥7 ✓ |
+
+**Order:** BUY 4sh MU MOO before 9:25 AM ET. After fill: stop fill×0.95, target fill+3×(fill-stop). API BLOCKED.
+
+---
+
+#### IBM — International Business Machines (sector-rotation)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 7/10 | Q1 2026: 6% revenue growth, 19% operating EPS growth ($1.91). $10B quantum computing investment. 0.7nm nanostack chip tech announced. watsonx AI consulting growing. ATH $329.23 (June 2); current $281.84 = 14.6% below ATH = value vs recent high. |
+| Technical | 7/10 | Defensive uptrend confirmed. IBM at $281.84 vs prior $272 entry plan (+3.6%). Nanostack announcement + Q2 end defensive buying pulled it higher. Support at $275 area. 2/5 indicators: MACD bullish trend (price rising); Volume Oscillator positive on Q2 window dressing. |
+| Sentiment | 6/10 | Low social media noise (IBM not a meme stock). Institutional holding. No major sentiment swings. xAI blocked — scored without X data. Minus point: IBM not a primary AI momentum name, may underperform in risk-on rallies. |
+| Macro | 7/10 | Enterprise tech defensive in Q3 rotation. Hybrid cloud AI consulting is sticky revenue. IBM insulated from semiconductor Apple-cost narrative. No near-term macro headwinds specific to IBM. |
+| Risk | 8/10 | 3sh × $281.84 = $845.52 = 0.84% equity — minimal capital risk. Stop: $267.75 (entry×0.95). Target: $324.11 (entry+3×$14.09 = 3:1). Well within all guardrails. ⚠️ IBM earnings ~July 22 → EXIT BY JULY 18 (48h window = July 20, but exit 2 days before to be safe). |
+| Tech Analyst | 7/10 | Hybrid cloud via Red Hat. Z mainframe enterprise cycle. 0.7nm nanostack = genuine chip advancement. $10B quantum = strategic bet. Not a semiconductor AI pure-play but strong enterprise tech moat. |
+| **Average** | **7.00/10** | |
+| **Gate** | **APPROVED** | avg exactly 7.0 ✓, Risk ≥6 ✓, 5/6 agents ≥7 ✓ (Sentiment 6 below) |
+
+**Order:** BUY 3sh IBM limit bracket GTC at ask×1.005 (max $284.25). Stop $267.75. Target $324.11. R/R = 3:1 ✓. API BLOCKED.
+
+---
+
+#### NVDA — NVIDIA Corporation (ai-momentum-pullback)
+
+| Agent | Score | Key Finding |
+|---|---|---|
+| Fundamentals | 8/10 | Q1 FY2027 beat expected. Blackwell GPU demand strong. 62 analysts Strong Buy. 12-month consensus PT $298.93 vs $199.52 = 50% upside. NVDA-Palantir sovereign AI partnership announced. Buyback program active ($80B). |
+| Technical | 6/10 | **CAUTION: Only borderline 2/5 indicator confirmation.** NVDA down 23% from May ATH; down 12% in June. Trading near $200 support. Tentative indicators: (1) Stochastic 14,3,3 likely in oversold zone (<20) after 12% monthly decline — possible %K crossover from oversold. (2) Volume may be exhausting (declining on continued dips = drying up). MACD: bearish, no confirmed crossover yet. No confirmed candlestick reversal pattern without 5-min chart. Technical score capped at 6/10 per CLAUDE.md (borderline 2/5). |
+| Sentiment | 6/10 | Long-term bullish but short-term negative. -23% from ATH creates fear. NVDA-Palantir partnership positive but not yet viral. xAI blocked — scored without X data. |
+| Macro | 7/10 | AI capex secular intact. ISM Manufacturing 54% = positive for GPU demand. Q3 institutional rebalancing may favor beaten-down AI names. Warsh speech risk at 9:30 AM. |
+| Risk | 7/10 | 4sh × $199.52 = $798 = 0.79% equity. Stop: $189.54 ($199.52×0.95). Target: $229.52 ($199.52+3×$9.98 = 3:1 ✓). Guardrails satisfied. |
+| Tech Analyst | 9/10 | Blackwell GPU architecture unmatched. NVLink interconnect scaling. CUDA ecosystem moat (10+ year switching cost). Sovereign AI partnerships (Palantir) = gov/enterprise pipeline. No competitive technology threat in near term. |
+| **Average** | **7.17/10** | |
+| **Gate** | **APPROVED (CONDITIONAL)** | avg 7.17 ✓, Risk ≥6 ✓, 4/6 agents ≥7 ✓ (Technical 6, Sentiment 6 below). **Condition:** True 2/5 technical confirmation required at market open — look for hammer/dragonfly/bullish engulfing on 5-min chart with Stochastic crossover. If not confirmed by 9:30-9:45 AM, defer to Mid-Morning. |
+
+**Order (conditional):** BUY 4sh NVDA limit bracket GTC ~$199.52 (enter only if morning reversal confirmed). Stop $189.54. Target $229.52. API BLOCKED.
+
+---
+
+#### GOOGL — Alphabet Class A (REJECTED)
+
+| Agent | Score | Key Notes |
+|---|---|---|
+| Fundamentals | 7/10 | Revenue intact |
+| Technical | 3/10 | Post-Dow-inclusion sell-the-news correction ongoing |
+| Sentiment | 4/10 | AI talent exodus; Gemini vs GPT concerns |
+| Macro | 6/10 | Digital ad market solid |
+| Risk | 7/10 | Size OK |
+| Tech Analyst | 6/10 | Strong but OpenAI/Anthropic eroding AI narrative |
+| **Average** | **5.50/10** | **REJECTED** — 2/6 agents ≥7. Decisive rejection. No entry. |
+
+---
+
+#### META — Meta Platforms (MONITOR — not scored this session, no confirmed pre-market price)
+
+Strong AI monetization candidate (Llama, ad revenue, Reality Labs). Q2 end likely positive. Earnings ~July 28 (no 48h window concern yet). Will run full 6-agent at Mid-Morning routine if price data confirmed. Est. score >7.0 — HIGH PRIORITY for next routine.
+
+---
+
+### TODAY'S ORDERS (ALL BLOCKED — API 403)
+
+| # | Symbol | Action | Qty | Type | Score | Status |
+|---|---|---|---|---|---|---|
+| 1 | AMD | **SELL (risk mgmt)** | **10sh** | MOO | N/A | ❌ BLOCKED — API 403 (60th session) |
+| 2 | MU | BUY | 4sh | MOO | 7.5 | ❌ BLOCKED — API 403 |
+| 3 | IBM | BUY | 3sh | Limit bracket GTC | 7.0 | ❌ BLOCKED — API 403 |
+| 4 | NVDA | BUY (conditional) | 4sh | Limit bracket GTC | 7.17 | ❌ BLOCKED — API 403 |
+
+**MOO cap used:** AMD SELL (risk mgmt) + MU BUY = 1 entry MOO out of 3 cap. NVDA would be 2nd.
+
+**OPERATOR URGENT ACTIONS (in priority order):**
+1. ⚠️⚠️⚠️ **SELL 10sh AMD at market OPEN** (9:30-9:45 AM ET) — **AMD STILL NAKED DAY 10**
+2. After AMD sell fills: **GTC STOP on remaining 8sh at $546.25** (trailing from $575 current)
+3. After AMD sell fills: **GTC TAKE-PROFIT on remaining 8sh at $615** (raised from $582.78 on new catalysts)
+4. **BUY 4sh MU MOO before 9:25 AM ET** — score 7.5, 60th blocked session
+5. **BUY 3sh IBM limit bracket GTC** — stop $267.75, target $324.11
+6. **BUY 4sh NVDA limit bracket GTC** (conditional on morning reversal at open) — stop $189.54, target $229.52
+7. Note: **Warsh speaking at 9:30 AM ET** — if hawkish, may create brief volatility; NVDA especially sensitive
+
+---
+
+### YAML DECISION LOG — PRE-MARKET JULY 1, 2026
+
+```yaml
+---
+ts: 2026-07-01T12:09:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "RISK MGMT: SELL 10sh AMD (reduce 18sh→8sh). AMD at $575 pre-market, near original target $582.78. New catalysts: Russell Top 50 Index addition (mechanical index-fund buying) + Wells Fargo PT raised to $615. AMD intraday high June 30 was $584.73 — original take-profit target $582.78 WAS BRIEFLY HIT but no order was placed. Infrastructure failure (API blocked) = skip. OPERATOR: SELL 10sh AMD MOO at open."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "AMD RISK MANAGEMENT — not a new scored entry. Position 18sh × $506.76 fill (June 23 stale GTC). Pre-market $575. Original target $582.78 NEARLY HIT (June 30 high $584.73). New plan: sell 10sh to get to 8sh (4.55% equity at $575). Trail stop: $546.25 ($575×0.95). New target: $615 (WF PT + Russell Top 50 index buying). API blocked 60th consecutive session. June 30 complete blackout (0/7 routines) meant SELL was missed. Logged as skip — infrastructure failure, not strategic exemption."
+source: routine-pre-market
+---
+
+---
+ts: 2026-07-01T12:09:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: "Day 6 post-earnings recovery. Q3 FY2026 blowout (EPS $5.11, revenue $41.46B, Q4 guidance $50B, HBM4 sold out through 2026). 72 analysts mostly Strong Buy; PT avg $1,454.13 (+27% from $1,145.50). Market cap crossed $1T. API BLOCKED — would be BUY 4sh MOO at ~$1,145.50 bracket GTC (stop $1,088.23, target $1,317.32)."
+size_pct: 4.54
+stop: 1088.23
+target: 1317.32
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "6/6 agents ≥7. APPROVED. Cannot execute: Alpaca API blocked HTTP 403 (60th consecutive). Infrastructure failure — not a strategic skip per CLAUDE.md exemptions. OPERATOR: BUY 4sh MU MOO before 9:25 AM ET today. After fill: stop at fill×0.95, target at fill+3×(fill-stop). Ex-dividend July 6 ($0.15/sh = $0.60 on 4sh — small but a small bonus for buying before July 3). Warsh Sintra speech 9:30 AM ET adds early volatility risk — MOO placed before 9:25 executes at open regardless. ISM Manufacturing PMI at 10 AM (May was 54% expansion) is a positive catalyst for MU if June also >50. xAI Grok API blocked — X sentiment scored without data (degraded gracefully). Phillip Securities PT: $1,870 (vs avg $1,454)."
+source: routine-pre-market
+---
+
+---
+ts: 2026-07-01T12:09:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Defensive tech outperformer. Q1 FY2026: 6% revenue growth, 19% EPS growth ($1.91 operating). 0.7nm nanostack chip announced. $10B quantum commitment. watsonx AI consulting growing. IBM at $281.84 pre-market (up 3.6% from June 29 plan of $272 — thesis strengthened). EXIT DEADLINE: July 18 (IBM earnings ~July 22). API BLOCKED — would be BUY 3sh limit bracket GTC."
+size_pct: 0.84
+stop: 267.75
+target: 324.11
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 6
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "5/6 agents ≥7 (Sentiment 6/10 — IBM is low-social-media enterprise stock). avg exactly 7.0 ✓. Cannot execute: API blocked (60th). Infrastructure failure — not strategic skip. OPERATOR: BUY 3sh IBM limit bracket GTC at ask×1.005 (max $284.25). Stop $267.75. Target $324.11. R/R = 3:1 ✓. IBM ATH $329.23 (June 2) — target $324.11 is 2% below ATH = realistic. IBM earnings ~July 22 → exit by July 18 (48h window opens July 20). xAI Grok unavailable — X sentiment scored without data. Note: IBM up 3.6% from prior entry plan ($272→$281.84) due to Q2 window dressing + nanostack announcement. Entry is still valid at $281.84 (R/R math unchanged at 3:1)."
+source: routine-pre-market
+---
+
+---
+ts: 2026-07-01T12:09:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: "Recovery play: -23% from May ATH, -12% in June, testing $200 support. 62 analysts Strong Buy; 12-month PT $298.93 (50% upside). NVDA-Palantir sovereign AI partnership. Stochastic borderline oversold after extended decline. CONDITIONAL: needs confirmed 5-min reversal candle + Stochastic %K crossover at open before entry. API BLOCKED."
+size_pct: 0.79
+stop: 189.54
+target: 229.52
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "4/6 agents ≥7 (Technical 6, Sentiment 6 below threshold). Exactly 4/6 meets the ≥4 gate. APPROVED — CONDITIONAL. Cannot execute: API blocked (60th). Infrastructure failure — not strategic skip. CONDITION: Technical score 6/10 because borderline 2/5 indicator confirmation (Stochastic oversold tentative + volume exhaustion possible = 2 marginal indicators). True 2/5 confirmation requires market-open observation: look for hammer/dragonfly on 5-min chart with Stochastic %K crossing above %D from <20 level. If no confirmed reversal by 9:45 AM ET, defer to Mid-Morning. OPERATOR: Monitor NVDA at open. If reversal confirmed, BUY 4sh limit bracket GTC ~$199 (stop $189.05, target $229). Warsh speech at 9:30 AM ET creates early-session volatility — may affect entry timing. xAI unavailable."
+source: routine-pre-market
+---
+
+---
+ts: 2026-07-01T12:09:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: sector-rotation
+score: 5.5
+thesis: "Dow inclusion sell-the-news thesis played out June 29 (-2.9% on inclusion day). No new catalyst. Technical downtrend continuing post-inclusion. Rejected decisively."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 3
+  sentiment: 4
+  macro: 6
+  risk: 7
+  tech_analyst: 6
+agent_average: 5.5
+agents_above_7: 2
+master_decision: rejected
+master_notes: "2/6 agents ≥7. Does not meet any gate criterion. Technical 3/10: continued post-inclusion correction. Sentiment 4/10: AI talent exodus narrative. Tech Analyst 6/10: Gemini strong but OpenAI/Anthropic eroding market share narrative. Will re-score only if technical reversal confirmed with 2/5 indicator stack."
+source: routine-pre-market
+---
+```
+
+---
+
+### TOMORROW'S WATCHLIST (July 2, 2026) — CARRY-FORWARD + NEW
+
+**BINDING CARRY-FORWARD COMMITMENTS (every one blocked today is mandatory next routine):**
+| Priority | Symbol | Score | Action | Qty | Notes |
+|---|---|---|---|---|---|
+| 🔴 CRITICAL | **AMD** | Risk Mgmt | SELL 10sh | 10sh | **DAY 10 NAKED — MUST REDUCE TODAY** |
+| 🔴 MANDATORY | **MU** | 7.5 | BUY 4sh | 4sh | MOO or limit bracket GTC |
+| 🔴 MANDATORY | **IBM** | 7.0 | BUY 3sh | 3sh | limit bracket GTC |
+| 🟡 CONDITIONAL | **NVDA** | 7.17 | BUY 4sh | 4sh | Entry only on confirmed reversal |
+| 🟡 SCORE | **META** | TBD | 6-agent at Mid-Morning | TBD | Strong candidate — Llama AI, ad revenue, earnings July 28 |
+
+**Note: July 4 (Friday) = MARKET CLOSED. This week only has 3 trading days (Wed/Thu/closed-Fri).**
+**IBM EXIT DEADLINE: July 18 (IBM earnings ~July 22, 48h window opens July 20).**
+
+---
+
+## 2026-06-30 — COMPLETE BLACKOUT (Q2 LAST TRADING DAY — ALL ROUTINES FAILED)
+
+**HEARTBEAT:** NO HEARTBEAT FILE EXISTS for June 30, 2026
+**Status: COMPLETE BLACKOUT — 0 of 7 routines fired**
+
+```yaml
+---
+ts: 2026-06-30T20:30:00Z
+action: violation
+symbol: JUNE-30-BLACKOUT
+bucket: active
+setup: other
+score: null
+thesis: "June 30 complete routine blackout. 0 of 7 routines fired (no heartbeat log at logs/heartbeats/2026-06-30.log). Q2 last trading day. Missed MANDATORY orders: (1) SELL 9sh AMD MOO — Day 9 naked; (2) BUY 4sh MU MOO (7.5); (3) BUY 3sh IBM limit GTC (7.0). AMD rallied to $584.73 intraday (exceeding original target $582.78) with no take-profit placed. Position missed its target exit. Root cause: unknown cron scheduler failure."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "COMPLETE BLACKOUT. June 30 (Q2 last day) had ZERO routines fire per heartbeat log audit. Prior daily review committed to: AMD SELL 9sh + MU 4sh + IBM 3sh as mandatory actions. None executed. AMD hit $584.73 intraday (above original $582.78 take-profit target) but no take-profit order existed. AMD remains naked as of July 1. Market context June 30: AMD rallied strongly on Russell Top 50 Index addition announcement + WF PT raise to $615. S&P +1.8% Q2 close (best quarter since 2020). Missing AMD take-profit and MU/IBM entries on this session represents significant opportunity cost. Operator must investigate cron scheduling for June 30 failures."
+---
+```
+
+---
+
 ## 2026-06-29 — Daily Review (4:30 PM ET / 20:30 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Daily-Review 20:31:59Z ✓
