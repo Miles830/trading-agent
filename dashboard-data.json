@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-01T18:08:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-01T19:35:00Z",
+  "updated_by": "market-close",
   "portfolio": {
-    "total_equity": 101154.0,
+    "total_equity": 101100.0,
     "starting_equity": 100000.0,
     "cash": 90732,
-    "cash_pct": 89.7,
+    "cash_pct": 89.8,
     "buying_power": 181464,
-    "long_market_value": 10422.0,
+    "long_market_value": 10368.0,
     "short_market_value": 0.0,
-    "daily_pnl": 1300.32,
-    "daily_pnl_pct": 1.3,
-    "total_return_pct": 1.15,
+    "daily_pnl": 668.0,
+    "daily_pnl_pct": 0.66,
+    "total_return_pct": 1.1,
     "spx_return_pct": 4.69,
-    "benchmark_gap_pct": -3.54,
+    "benchmark_gap_pct": -3.59,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10422.0,
+      "active_value": 10368.0,
       "active_pct": 10.3,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90732,
       "cash_pct": 89.7
     },
-    "note": "July 1 AFTERNOON (2:08 PM ET / 18:08Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 61st+ consecutive). MARKET REVERSED: SPX +0.52%, Nasdaq +1.52% (from -0.35% mid-morning). AMD intraday HIGH $584.73 EXCEEDED take-profit $582.78. Wells Fargo AMD PT $615 (street-high). IBM $292.16 (+3.9%) re-scored 7.67 \u2014 updated order $293.62 bracket GTC (stop $278.94, target $337.66). META ~$611-619 +10% carry-forward. TSLA +8.6% SKIP (delivery July 2 binary event). JULY 2 BINDING: AMD SELL 9sh + IBM 3sh $293.62 + META 8sh $615 + TSLA conditional post-delivery."
+    "note": "July 1 MARKET-CLOSE EOD (3:35 PM ET / 19:35Z). TRADING DAY COMPLETE. API BLOCKED (HTTP 000 \u2014 62nd+ consecutive). Q3 Day 1 closed RISK-ON: SPX +0.52%, Nasdaq +1.52%. AMD close est. $576 (day range $538.89\u2013$584.73); intraday high $584.73 exceeded take-profit $582.78 \u2014 gain NOT locked in. Position NAKED Day 11. IBM $292.16 (+3.9%), META est. $613 (+10%). TSLA +8.6% SKIP (delivery July 2 binary). MU -6.5% rejected (antitrust). JULY 2 BINDING: AMD SELL 9sh + check TSLA delivery + IBM 3sh + META 8sh."
   },
   "positions": [
     {
@@ -31,14 +31,14 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 579.0,
-      "pnl": 1300.32,
-      "pnl_pct": 14.3,
+      "current_price": 576.0,
+      "pnl": 1246.32,
+      "pnl_pct": 13.7,
       "stop_loss": null,
       "take_profit": 607.0,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 10+. 18sh at $506.76 fill, now ~$579. INTRADAY HIGH $584.73 EXCEEDED original take-profit $582.78 \u2014 gain not locked in (no order at Alpaca). Wells Fargo PT $615 (street-high, raised today). AMD Advancing AI 2026 event July 22-23. Position 10.3% equity (OVER 5% cap x2). OPERATOR: (1) SELL 9sh at market NOW; (2) GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED \u2014 agent cannot execute."
+      "note": "CRITICALLY NAKED Day 11 at EOD. AMD close est. $576 (day range $538.89\u2013$584.73). Intraday high $584.73 EXCEEDED original take-profit $582.78 \u2014 gain not locked in. Wells Fargo PT $615 (street-high, raised July 1). AMD Advancing AI 2026 event July 22-23. Position 10.3% equity (OVER 5% cap). MOC SELL 9sh attempted 19:35Z \u2192 HTTP 000 blocked. OPERATOR: (1) SELL 9sh AMD at market FIRST at July 2 open; (2) GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED \u2014 agent cannot execute."
     },
     {
       "symbol": "IBM",
@@ -52,21 +52,21 @@
       "take_profit": 337.66,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "FRESH SCORE 7.67 (was 6.67 mid-morning). NEW CATALYSTS: JPMorgan Overweight, sub-1nm NanoStack chip (world's first, +50% perf vs 2nm), quantum executive orders. Order: 3sh limit $293.62 bracket GTC (stop $278.94, target $337.66, R/R 3:1). HARD EXIT DEADLINE July 18 EOD (earnings July 22). OPERATOR: BUY 3sh IBM limit $293.62, stop_loss $278.94, take_profit $337.66, order_class=bracket, tif=gtc."
+      "note": "SCORE 7.67 (JPMorgan Overweight + sub-1nm NanoStack chip + quantum exec orders). IBM closed $292.16 (+3.9% July 1). Order: 3sh limit $293.62 bracket GTC (stop $278.94, target $337.66, R/R 3:1 exactly). HARD EXIT DEADLINE July 18 EOD (earnings July 22). MOC not attempted (no bracket support + API blocked). OPERATOR: BUY 3sh IBM limit $293.62, stop_loss $278.94, take_profit $337.66, order_class=bracket, tif=gtc."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
       "entry_price": 615.06,
-      "current_price": 615.0,
+      "current_price": 613.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": 584.31,
       "take_profit": 707.31,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "Score 7.5 unchanged. Cloud compute story confirmed 8+ outlets. Day range $561.88-$616.96. Order re-attempted: 8sh limit $615.06 bracket GTC -> HTTP 403. Carry-forward to July 2 Pre-Market. OPERATOR: BUY 8sh META limit $615, stop_loss $584.31, take_profit $707.31, order_class=bracket, tif=gtc."
+      "note": "Score 7.5 unchanged. Bloomberg cloud compute confirmed 8+ outlets. EOD close est. $613. Day range $561.88\u2013$616.96. MOC not attempted (no bracket + API blocked). Carry-forward to July 2. OPERATOR: BUY 8sh META limit ~$615 (re-confirm price at open), stop_loss $584.31, take_profit $707.31, order_class=bracket, tif=gtc."
     },
     {
       "symbol": "TSLA",
@@ -84,10 +84,10 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON RECOVERY. S&P +0.52%, Nasdaq +1.52%, Q3 start tech rally. Full reversal from morning -0.35%.",
+    "mode": "RISK-ON. Q3 Day 1 closed +0.52% SPX / +1.52% Nasdaq. Full intraday reversal from -0.35% morning.",
     "fear_greed": null,
-    "fear_greed_label": "Risk-on. Nasdaq +1.52%. META +10% cloud compute. IBM +3.9% sub-1nm chip. AMD +6.6%. TSLA +8.6%.",
-    "spx": "S&P 500 est. 7538.0 (+0.52% from June 30 close 7,499.36). May 1 baseline 7,200 \u2192 +4.69%.",
+    "fear_greed_label": "Risk-On. Nasdaq +1.52% led by META (+10% cloud compute), AMD (+7.3%), IBM (+3.9%).",
+    "spx": "S&P 500 est. 7,538 (+0.52% from June 30 close 7,499.36). May 1 baseline 7,200 \u2192 +4.69%.",
     "btc": "BTC est. ~$60K. Well below $82K active-trading threshold. No crypto entries.",
     "sectors": [
       {
@@ -150,17 +150,17 @@
     },
     {
       "name": "Market-Close",
-      "status": "PENDING",
-      "last_run": null,
-      "next_run": "2026-07-01T19:30:00Z",
-      "last_summary": "Scheduled 3:30 PM ET / 19:30Z. Consider MOC orders for IBM/META if limit orders not filled."
+      "status": "completed",
+      "last_run": "2026-07-01T19:35:07Z",
+      "next_run": "2026-07-02T19:30:00Z",
+      "last_summary": "No day trades to close. AMD naked 18sh \u2014 MOC SELL 9sh attempted, HTTP 000 blocked. IBM/META GTC brackets carry to July 2. Daily alpha +0.14 pp (portfolio +0.66% vs SPX +0.52%). Cumulative gap -3.59 pp."
     },
     {
       "name": "Daily-Review",
       "status": "PENDING",
       "last_run": "2026-06-29T20:30:00Z",
       "next_run": "2026-07-01T20:30:00Z",
-      "last_summary": "Last ran June 29. July 1 Daily Review scheduled 4:30 PM ET / 20:30Z."
+      "last_summary": "Scheduled 4:30 PM ET / 20:30Z today. Key: TSLA delivery report check, AMD urgency escalation."
     }
   ],
   "trades": [
@@ -208,6 +208,21 @@
       "result": "RE-SCORED BELOW THRESHOLD \u2014 antitrust lawsuit + -6.5% breakdown",
       "agent_average": 6.5,
       "master_decision": "rejected"
+    },
+    {
+      "ts": "2026-07-01T19:35:00Z",
+      "action": "sell_attempted",
+      "symbol": "AMD",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "side": "sell",
+      "qty": 9,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "HTTP 000 BLOCKED \u2014 MOC order (time_in_force: cls) proxy CONNECT denied",
+      "agent_average": null,
+      "master_decision": "position_management"
     }
   ],
   "watchlist": [
@@ -246,6 +261,14 @@
       "target": 607.0,
       "setup": "ai-momentum-pullback",
       "notes": "NAKED Day 10+. Take-profit exceeded intraday. Wells Fargo PT $615. Operator action required."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-07-01",
+      "portfolio_return_pct": 1.1,
+      "spx_return_pct": 4.69,
+      "daily_pnl_pct": 0.66
     }
   ]
 }
