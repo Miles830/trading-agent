@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-01T15:09:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-01T18:08:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
-    "total_equity": 101082,
+    "total_equity": 101154.0,
     "starting_equity": 100000.0,
     "cash": 90732,
-    "cash_pct": 89.8,
+    "cash_pct": 89.7,
     "buying_power": 181464,
-    "long_market_value": 10350,
+    "long_market_value": 10422.0,
     "short_market_value": 0.0,
-    "daily_pnl": 645,
-    "daily_pnl_pct": 0.64,
-    "total_return_pct": 1.08,
-    "spx_return_pct": 3.79,
-    "benchmark_gap_pct": -2.71,
+    "daily_pnl": 1300.32,
+    "daily_pnl_pct": 1.3,
+    "total_return_pct": 1.15,
+    "spx_return_pct": 4.69,
+    "benchmark_gap_pct": -3.54,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10350,
-      "active_pct": 10.2,
+      "active_value": 10422.0,
+      "active_pct": 10.3,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90732,
-      "cash_pct": 89.8
+      "cash_pct": 89.7
     },
-    "note": "July 1 MID-MORNING (11:09 AM ET / 15:09Z). TRADING DAY. API BLOCKED (HTTP 403 — 60th+ consecutive session). JUNE 30 COMPLETE BLACKOUT. July 1 Pre-Market + Market-Open SILENTLY FAILED. This Mid-Morning is first routine today. AMD 18sh NAKED DAY 10 at $575 — 1.4% from take-profit $582.78. Orders attempted: AMD SELL 9sh + IBM 3sh + META 8sh — all HTTP 403 BLOCKED. MU RE-SCORED 6.5 (DRAM antitrust lawsuit) — REJECTED. META NEW APPROVED 7.5 (cloud compute Bloomberg). ISM PMI 53.3% expansion. SPX -0.35% Q2 digestion. OPERATOR URGENT: (1) SELL 9sh AMD NOW + GTC stop $481.42 + GTC target $607; (2) BUY 3sh IBM limit bracket $274; (3) BUY 8sh META limit bracket $615."
+    "note": "July 1 AFTERNOON (2:08 PM ET / 18:08Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 61st+ consecutive). MARKET REVERSED: SPX +0.52%, Nasdaq +1.52% (from -0.35% mid-morning). AMD intraday HIGH $584.73 EXCEEDED take-profit $582.78. Wells Fargo AMD PT $615 (street-high). IBM $292.16 (+3.9%) re-scored 7.67 \u2014 updated order $293.62 bracket GTC (stop $278.94, target $337.66). META ~$611-619 +10% carry-forward. TSLA +8.6% SKIP (delivery July 2 binary event). JULY 2 BINDING: AMD SELL 9sh + IBM 3sh $293.62 + META 8sh $615 + TSLA conditional post-delivery."
   },
   "positions": [
     {
@@ -31,84 +31,84 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 575.00,
-      "pnl": 1228.32,
-      "pnl_pct": 13.5,
+      "current_price": 579.0,
+      "pnl": 1300.32,
+      "pnl_pct": 14.3,
       "stop_loss": null,
-      "take_profit": 582.78,
+      "take_profit": 607.0,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED — Day 10. 18sh at $506.76 fill, now ~$575. Unrealized +$1,228 (+12.4%). Take-profit target $582.78 only 1.4% away. AMD 'Advancing AI 2026' event July 23; MI450 Q3 ramp. Technical breakout targeting $607. Position = ~10.2% equity (OVER 5% hard cap). OPERATOR: (1) SELL 9sh at market NOW; (2) GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED — agent cannot execute."
-    },
-    {
-      "symbol": "MU",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 0,
-      "current_price": 1058.48,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "earnings-reaction-follow",
-      "agent_average": 6.5,
-      "note": "RE-SCORED 6.5 (was 7.5). REJECTED. DRAM antitrust class-action (Samsung/SK Hynix/Micron, June 25 filing) + MU -6.5% today ($1,154 → $1,058) on H2 profit-taking. Fundamentals intact (HBM4 sold out) but antitrust overhang reduces conviction. Wait for technical stabilization before re-entry. NOT ENTERING."
+      "note": "CRITICALLY NAKED Day 10+. 18sh at $506.76 fill, now ~$579. INTRADAY HIGH $584.73 EXCEEDED original take-profit $582.78 \u2014 gain not locked in (no order at Alpaca). Wells Fargo PT $615 (street-high, raised today). AMD Advancing AI 2026 event July 22-23. Position 10.3% equity (OVER 5% cap x2). OPERATOR: (1) SELL 9sh at market NOW; (2) GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED \u2014 agent cannot execute."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 274.37,
-      "current_price": 273.00,
+      "entry_price": 293.62,
+      "current_price": 292.16,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 260.65,
-      "take_profit": 315.53,
-      "setup": "sector-rotation",
-      "agent_average": 6.67,
-      "note": "Carry-forward from June 29 7.0 commitment. Re-scored 6.67 (only market-level Technical/Sentiment drag). Order attempted: 3sh limit $274.37 bracket GTC (stop $260.65, target $315.53) → HTTP 403 BLOCKED. IBM earnings window opens ~July 20 — must exit before. OPERATOR: BUY 3sh IBM limit $274, stop $260.65, target $315.53, order_class=bracket, tif=gtc."
+      "stop_loss": 278.94,
+      "take_profit": 337.66,
+      "setup": "breakout-volume",
+      "agent_average": 7.67,
+      "note": "FRESH SCORE 7.67 (was 6.67 mid-morning). NEW CATALYSTS: JPMorgan Overweight, sub-1nm NanoStack chip (world's first, +50% perf vs 2nm), quantum executive orders. Order: 3sh limit $293.62 bracket GTC (stop $278.94, target $337.66, R/R 3:1). HARD EXIT DEADLINE July 18 EOD (earnings July 22). OPERATOR: BUY 3sh IBM limit $293.62, stop_loss $278.94, take_profit $337.66, order_class=bracket, tif=gtc."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
       "entry_price": 615.06,
-      "current_price": 611.68,
+      "current_price": 615.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": 584.31,
       "take_profit": 707.31,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "NEW APPROVED 7.5 (F=9 T=6 S=9 M=7 R=6 TA=8). Bloomberg: Meta launching cloud compute service. +7.56% gap-up on major company-specific catalyst. Order attempted: 8sh limit $615.06 bracket GTC (stop $584.31, target $707.31) → HTTP 403 BLOCKED. OPERATOR: BUY 8sh META limit $615, stop $584.31, target $707.31, order_class=bracket, tif=gtc."
+      "note": "Score 7.5 unchanged. Cloud compute story confirmed 8+ outlets. Day range $561.88-$616.96. Order re-attempted: 8sh limit $615.06 bracket GTC -> HTTP 403. Carry-forward to July 2 Pre-Market. OPERATOR: BUY 8sh META limit $615, stop_loss $584.31, take_profit $707.31, order_class=bracket, tif=gtc."
+    },
+    {
+      "symbol": "TSLA",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 0,
+      "current_price": 0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": null,
+      "take_profit": null,
+      "setup": "earnings-reaction-follow",
+      "agent_average": 7.5,
+      "note": "PRELIMINARY SCORE 7.5. Q2 delivery report due July 2 (consensus 406,024 vehicles). SKIPPED today per Exemption 2 (binary event within 48h). Conditional entry July 2-3 if deliveries BEAT 406K. FSD v14 Lite + Europe +85-90% YoY registration growth supportive. Run full 6-agent at July 2 Pre-Market once delivery numbers are out."
     }
   ],
   "market": {
-    "mode": "RISK-ON MILD PULLBACK. S&P -0.35%, Nasdaq -0.72%, Russell 2000 +0.46%. ISM Manufacturing 53.3% (expansion). Q2 digestion after strongest quarter since 2020.",
+    "mode": "RISK-ON RECOVERY. S&P +0.52%, Nasdaq +1.52%, Q3 start tech rally. Full reversal from morning -0.35%.",
     "fear_greed": null,
-    "fear_greed_label": "Risk-on. ISM expansion 53.3%. Market digesting record Q2 gains. META +8% cloud catalyst. AMD +6.6% breakout. MU -6.5% antitrust.",
-    "spx": "S&P 500 ~7,473 (-0.35%). June 30 close: 7,499.36. S&P +3.79% since May 1 strategy start (~7,200 baseline). Q2 2026 was strongest quarter since 2020.",
+    "fear_greed_label": "Risk-on. Nasdaq +1.52%. META +10% cloud compute. IBM +3.9% sub-1nm chip. AMD +6.6%. TSLA +8.6%.",
+    "spx": "S&P 500 est. 7538.0 (+0.52% from June 30 close 7,499.36). May 1 baseline 7,200 \u2192 +4.69%.",
     "btc": "BTC est. ~$60K. Well below $82K active-trading threshold. No crypto entries.",
     "sectors": [
       {
-        "name": "Communication Services / Social Media — META BREAKOUT",
-        "change_pct": 7.56,
-        "note": "META +7.56% on Bloomberg cloud compute report. Reframes $65B+ capex as revenue stream. Company-specific catalyst diverging from market."
+        "name": "Technology (Nasdaq +1.52%)",
+        "change_pct": 1.52,
+        "note": "Full PM recovery. META +10%, IBM +3.9%, AMD +6.6%, TSLA +8.6%. Tech leading Q3 open."
       },
       {
-        "name": "Semiconductors — MIXED",
-        "change_pct": -3.5,
-        "note": "AMD +6.6% (technical breakout, July 23 AI event). MU -6.5% (DRAM antitrust lawsuit + H2 profit-taking). Split performance within sector."
+        "name": "Communication Services \u2014 META BREAKOUT",
+        "change_pct": 10.0,
+        "note": "META surged on Bloomberg cloud compute report (rivaling AWS/Azure/GCP). Day range $561-617."
       },
       {
-        "name": "Industrials / Manufacturing",
-        "change_pct": 0.5,
-        "note": "ISM Manufacturing PMI 53.3% (expansion). Industrials modestly positive. Risk-on context supports further deployment."
+        "name": "Semiconductors \u2014 AMD STRONG",
+        "change_pct": 3.5,
+        "note": "AMD +6.6% (Wells Fargo PT $615 street-high; Advancing AI July 22-23). MU -6.5% (antitrust overhang)."
       },
       {
-        "name": "Small Caps (Russell 2000)",
-        "change_pct": 0.46,
-        "note": "Russell 2000 outperforming S&P and Nasdaq. Rotation into small caps as Q3 starts — potential deployment opportunity in future routines."
+        "name": "Enterprise Tech \u2014 IBM BREAKOUT",
+        "change_pct": 3.9,
+        "note": "IBM +3.9% on JPMorgan Overweight + sub-1nm NanoStack chip. New catalysts emerged since June 25."
       }
     ]
   },
@@ -118,7 +118,7 @@
       "status": "SILENT FAILURE",
       "last_run": "2026-06-29T12:05:10Z",
       "next_run": "2026-07-02T12:00:00Z",
-      "last_summary": "June 29 was last successful Pre-Market. July 1 Pre-Market silently failed (no heartbeat). July 2 is next trading day — July 4 is Independence Day (market closed)."
+      "last_summary": "June 29 was last successful Pre-Market. July 1 Pre-Market silently failed (no heartbeat). July 2 is next trading day \u2014 July 4 is Independence Day (market closed)."
     },
     {
       "name": "Market-Open",
@@ -132,21 +132,21 @@
       "status": "RUNNING",
       "last_run": "2026-07-01T15:09:37Z",
       "next_run": "2026-07-02T15:00:00Z",
-      "last_summary": "Stop audit: API blocked. AMD naked Day 10 at $575 — near take-profit $582.78. MU re-scored 6.5 (antitrust) = REJECTED. IBM carry-forward 6.67 avg — attempted, blocked. META new 7.5 — attempted, blocked. All 3 orders HTTP 403. June 30 blackout + July 1 Pre-Market/Market-Open silent failures documented."
+      "last_summary": "Stop audit: API blocked. AMD naked Day 10 at $575 \u2014 near take-profit $582.78. MU re-scored 6.5 (antitrust) = REJECTED. IBM carry-forward 6.67 avg \u2014 attempted, blocked. META new 7.5 \u2014 attempted, blocked. All 3 orders HTTP 403. June 30 blackout + July 1 Pre-Market/Market-Open silent failures documented."
     },
     {
       "name": "Midday",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": null,
       "next_run": "2026-07-01T16:30:00Z",
-      "last_summary": "Scheduled for 12:30 PM ET / 16:30Z. Check AMD take-profit — $575 is 1.4% from $582.78 target."
+      "last_summary": "Midday July 1 silently failed (no heartbeat at 16:30Z)."
     },
     {
       "name": "Afternoon",
-      "status": "PENDING",
-      "last_run": null,
-      "next_run": "2026-07-01T18:00:00Z",
-      "last_summary": "Scheduled 2:00 PM ET / 18:00Z."
+      "status": "RUNNING",
+      "last_run": "2026-07-01T18:08:05Z",
+      "next_run": "2026-07-02T18:00:00Z",
+      "last_summary": "API blocked (61st+). Market reversed: SPX +0.52%, Nasdaq +1.52%. AMD high $584.73 exceeded take-profit $582.78 \u2014 still naked. IBM re-scored 7.67 (new catalysts: JPMorgan upgrade + sub-1nm chip). TSLA +8.6% skip (delivery July 2 binary). Orders blocked: AMD SELL + META BUY."
     },
     {
       "name": "Market-Close",
@@ -205,9 +205,47 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "RE-SCORED BELOW THRESHOLD — antitrust lawsuit + -6.5% breakdown",
+      "result": "RE-SCORED BELOW THRESHOLD \u2014 antitrust lawsuit + -6.5% breakdown",
       "agent_average": 6.5,
       "master_decision": "rejected"
+    }
+  ],
+  "watchlist": [
+    {
+      "symbol": "IBM",
+      "score": 7.67,
+      "action": "BUY 3sh limit $293.62 bracket GTC",
+      "stop": 278.94,
+      "target": 337.66,
+      "setup": "breakout-volume",
+      "notes": "MANDATORY July 2 Pre-Market. Hard exit July 18 EOD."
+    },
+    {
+      "symbol": "META",
+      "score": 7.5,
+      "action": "BUY 8sh limit $615.06 bracket GTC",
+      "stop": 584.31,
+      "target": 707.31,
+      "setup": "breakout-volume",
+      "notes": "MANDATORY July 2. Confirm cloud story still valid at open."
+    },
+    {
+      "symbol": "TSLA",
+      "score": 7.5,
+      "action": "CONDITIONAL \u2014 enter post-delivery only if beat 406K",
+      "stop": null,
+      "target": null,
+      "setup": "earnings-reaction-follow",
+      "notes": "Q2 delivery report July 2. Run 6-agent after numbers out."
+    },
+    {
+      "symbol": "AMD",
+      "score": 7.17,
+      "action": "SELL 9sh at market FIRST (reduce 18->9sh)",
+      "stop": 481.42,
+      "target": 607.0,
+      "setup": "ai-momentum-pullback",
+      "notes": "NAKED Day 10+. Take-profit exceeded intraday. Wells Fargo PT $615. Operator action required."
     }
   ]
 }
