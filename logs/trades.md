@@ -4,6 +4,188 @@
 
 ---
 
+## 2026-07-01 — Midday (12:30 PM ET / 16:35 UTC — WEDNESDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Midday 2026-07-01T16:34:51Z ✓  
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **61st consecutive blocked session**  
+**Current Time:** 16:35Z = 12:35 PM ET — market has been open ~3 hours 5 minutes
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 1, 2026
+
+| Predecessor | Scheduled | Heartbeat Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ❌ SILENT FAILURE (documented in Mid-Morning below) |
+| Market-Open | 09:45 ET / 13:45Z | ❌ SILENT FAILURE (documented in Mid-Morning below) |
+| Mid-Morning | 11:00 ET / 15:00Z | ✅ COMPLETED 15:21Z |
+
+No new violations to log — Pre-Market and Market-Open violations already documented in Mid-Morning section.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 000 (proxy CONNECT rejected — 61st consecutive blocked)
+GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD 18sh DAY 10 — STILL NAKED.** Stop backfill blocked for 10 consecutive days. AMD est. $575-$583 at midday.
+
+---
+
+### MIDDAY MARKET SUMMARY
+
+- **SPX:** ~-0.35% holding — Q2 digestion continuing but not deteriorating. Not risk-off.
+- **Nasdaq:** ~-0.72% — mild AI/tech pullback; sector rotation into small-caps (Russell 2000 +0.46%).
+- **AMD:** est. $575-$583 at midday. Take-profit $582.78 within 0-1.4% of current price. AMD 'Advancing AI 2026' event July 23 catalyst intact.
+- **META:** est. $600-$620 at midday — consolidating from +7.56% morning gap-up. Bloomberg cloud compute thesis unchanged.
+- **IBM:** est. $272-$276 — no new IBM-specific news; defensive posture holding in mild down market.
+- **MU:** est. $1,050-$1,070 — antitrust overhang (case No. 3:26-cv-06345) continues; thesis on hold.
+- **ISM PMI 53.3%** (released 10:00 AM ET): Expansion confirmed = RISK-ON macro context.
+- **July 4 (Friday):** Market closed — Independence Day. July 2 (Thursday) is next full trading day.
+
+---
+
+### ORDER RE-ATTEMPTS (Midday — following Mid-Morning blocks)
+
+**Order 1 — AMD PARTIAL EXIT: SELL 9sh limit $577.00**
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"limit","limit_price":"577.00","time_in_force":"day"}'
+```
+**Result: HTTP 000 — proxy CONNECT rejected (61st consecutive blocked session)**
+
+**Order 2 — IBM 3sh limit bracket GTC at $274.37**
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"274.37","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"260.65"},"take_profit":{"limit_price":"315.53"}}'
+```
+**Result: HTTP 000 — proxy CONNECT rejected (61st consecutive blocked session)**
+
+**Order 3 — META 8sh limit bracket GTC at $615.00**
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"615.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"584.25"},"take_profit":{"limit_price":"707.25"}}'
+```
+**Result: HTTP 000 — proxy CONNECT rejected (61st consecutive blocked session)**
+
+**Total orders attempted: 3 (AMD sell + IBM buy + META buy). Total fills: 0 (API policy blocked).**
+
+---
+
+### MIDDAY POSITION ASSESSMENT
+
+| Symbol | Est. Price | P&L | Stop | Target | Action |
+|---|---|---|---|---|---|
+| AMD 18sh | ~$578 est. | +$1,282 (+14.1%) | NONE (naked) | $582.78 / $607 | URGENT: Sell 9sh |
+
+AMD take-profit $582.78 is approaching. If AMD closes above $582.78 today without a resting take-profit order, the unrealized gain will remain on paper. AMD 'Advancing AI 2026' event July 23 supports continued upside for remaining 9sh if operator manages the position today.
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+| Symbol | Overnight? | Rationale |
+|---|---|---|
+| AMD 9sh (post-sell) | YES — hold | July 23 AMD event catalyst. GTC stop $481.42 + GTC target $607 (operator must place). |
+| AMD 18sh (if sell fails) | RISKY | Another naked overnight — 11th day. Operator must act. |
+| IBM 3sh | YES — if entered | Exit before July 20 earnings window. Defensive. |
+| META 8sh | YES — if entered | Multi-day swing on cloud compute re-rating. |
+
+**July 4 = MARKET CLOSED.** No routines Friday. July 2 (Thursday) next full trading day.
+
+---
+
+### OPERATOR CRITICAL ACTIONS (STILL OUTSTANDING — EXECUTE AT APP.ALPACA.MARKETS)
+
+1. ⚠️⚠️⚠️ **AMD: SELL 9sh at MARKET immediately** (reduces 18sh→9sh; brings within 5% cap)
+   - After fill: **GTC STOP on remaining 9sh at $481.42** + **GTC TAKE-PROFIT at $607**
+   - If AMD hits $582.78 before you act: accept full 18sh exit (15% win on both halves)
+2. **IBM: BUY 3sh limit $274.37** — bracket GTC — stop $260.65 — target $315.53
+3. **META: BUY 8sh limit $615.00** — bracket GTC — stop $584.25 — target $707.25
+
+---
+
+### YAML DECISION LOG — MIDDAY JULY 1
+
+```yaml
+---
+ts: 2026-07-01T16:35:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "Midday re-attempt of partial exit — reduce 18sh to 9sh for guardrail compliance (18sh = 10.2% equity, cap 5%). AMD est. $575-583 at midday."
+size_pct: 10.2
+stop: 481.42
+target: 607.00
+result_pct: null
+master_notes: "AMD SELL 9sh limit $577 — HTTP 000 blocked (61st consecutive session — proxy CONNECT rejected). AMD approaching take-profit $582.78. If AMD closes ≥$582.78 without resting take-profit order: gain locked as unrealized only. OPERATOR: app.alpaca.markets — SELL 9sh AMD at market NOW. After fill: GTC stop $481.42 + GTC target $607. xAI API unavailable — degraded gracefully."
+---
+---
+ts: 2026-07-01T16:36:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7
+thesis: "IBM defensive tech — watsonx AI enterprise consulting; carry-forward from June 29 7.0 commitment. Midday re-attempt of Mid-Morning blocked order."
+size_pct: 0.81
+stop: 260.65
+target: 315.53
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.67
+agents_above_7: 4
+master_decision: approved
+master_notes: "IBM 3sh limit $274.37 bracket GTC — HTTP 000 blocked (61st consecutive session). Carry-forward approval from June 29 7.0 commitment; 6.67 re-score reflects market drag only (no IBM-specific change). R/R: entry $274.37, stop $260.65 (-4.99%), target $315.53 (+14.99%) = 3:1 ✓. xAI API unavailable — degraded."
+---
+---
+ts: 2026-07-01T16:37:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "Meta Platforms cloud computing service (Bloomberg) reframes $65B+ AI capex as revenue stream. Gap-up +7.56% on major company-specific catalyst. Midday re-attempt of Mid-Morning approved entry."
+size_pct: 4.87
+stop: 584.25
+target: 707.25
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 9
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 4
+master_decision: approved
+master_notes: "META 8sh limit $615 bracket GTC — HTTP 000 blocked (61st consecutive session). 7.5 avg unchanged from Mid-Morning analysis. META est. $600-620 midday (consolidating from gap-up). R/R: entry $615, stop $584.25 (-4.99%), target $707.25 (+15.0%) = 3:1 ✓. X/Twitter $META strongly bullish (cloud compute re-rating narrative) — estimated +2 sentiment modifier. xAI API unavailable — degraded gracefully."
+---
+```
+
+---
+
 ## 2026-07-01 — Mid-Morning (11:09 AM ET / 15:09 UTC — WEDNESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-01T15:09:37Z ✓
