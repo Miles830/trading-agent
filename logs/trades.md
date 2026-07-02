@@ -4,6 +4,302 @@
 
 ---
 
+## 2026-07-02 — Mid-Morning (11:00 AM ET / 15:09 UTC — THURSDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-02T15:09:43Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **62nd+ consecutive blocked session**
+**Current Time:** 15:09Z = 11:09 AM ET — market open ~1h40min; July 4 = Independence Day (MARKET CLOSED); July 3 = last trading day before holiday weekend
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 2, 2026 (MID-MORNING CHECK)
+
+| Predecessor | Scheduled | Heartbeat Status |
+|---|---|---|
+| Pre-Market | 08:00 ET / 12:00Z | ❌ **SILENT FAILURE** — no STARTED entry in logs/heartbeats/2026-07-02.log |
+| Market-Open | 09:45 ET / 13:45Z | ❌ **SILENT FAILURE** — no STARTED entry in logs/heartbeats/2026-07-02.log |
+
+Both predecessor routines silently failed. Catch-up being executed in this Mid-Morning routine (binding watchlist from July 1 Afternoon). Violations logged below.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/account            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — 62nd+ consecutive blocked session. Cannot verify or place stop orders.**
+
+**Estimated position state (from logs + market research):**
+- ⚠️⚠️⚠️ **AMD 18sh CRITICALLY NAKED — DAY 11** — filled June 23 at $506.76 avg.
+  - **AMD today (July 2): $531.50 (range $525.57–$553.80)**
+  - AMD ATH was $584.73 on June 30/July 1 — original take-profit $582.78 exceeded but NOT locked in
+  - AMD pulled back -9% from ATH; still well above $506.76 cost basis
+  - Unrealized est.: 18sh × ($531.50 − $506.76) = +$445.32
+  - Position = 18 × $531.50 / $100,299 = **~9.5% of equity (OVER 5% hard cap day 11)**
+  - No stop. No take-profit. Position NAKED.
+
+No other confirmed positions (IBM, META, TSLA — all order attempts blocked in prior sessions).
+
+---
+
+### MARKET CONDITIONS UPDATE — JULY 2, 2026 (11:09 AM ET)
+
+| Metric | Value | Notes |
+|---|---|---|
+| S&P 500 | +0.49% (~7,575 est.) | Holding gains pre-holiday weekend |
+| Nasdaq | +0.40% | Tech moderate positive |
+| Dow | +0.46% | |
+| Russell 2000 | -0.39% | Small caps underperforming — slight risk-off undertone |
+| AMD | ~$531.50 (range $525.57–$553.80) | -9% from ATH $584.73; pullback continuation |
+| META | ~$612.91 (+8.81% from July 1 close) | Bloomberg cloud compute story extending |
+| IBM | ~$277.91 (range $271.12–$282.57) | -4.9% from July 1 close $292.16; broader downtrend from $332 June ATH |
+| TSLA | ~$429.84 (+1.1% from $425.30) | Delivery beat 480K vs 406K (+18%) — muted/sell-the-news reaction |
+| 3% Circuit Breaker | NOT TRIGGERED | Portfolio AMD-only position, daily P&L flat to slightly negative |
+
+**Key macro:** June Nonfarm Payrolls = **57,000** (vs 115,000 consensus) — VERY WEAK. Rate-cut narrative strengthening. Initial jobless claims: 215,000 (below 219K est.). Markets holding +0.5% on rate-cut read (bad jobs = good for stocks short-term). July 4 = market closed tomorrow — pre-holiday light volume expected.
+
+---
+
+### TSLA — FULL 6-AGENT SCORE (MANDATORY PER JULY 1 CONDITIONAL)
+
+**Trigger:** TSLA Q2 deliveries reported pre-market July 2: **480,126 vehicles** (consensus 406,024 = **+18.3% beat; +25% YoY; +34% QoQ**). Binary event CLEARED. Full 6-agent assessment required per July 1 binding commitment.
+
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 7/10 | Q2 deliveries 480K = massive beat (+18.3%). 25% YoY growth = strong recovery from 2025 slowdown. Q2 earnings July 22 will show strong P&L leverage on 480K volume. FSD v14 Lite improving monetization. Optimus scaling. High P/E (est. 80-100x) limits upside; TSLA priced for perfection. IBM 18-day hard exit (earnings July 22 — MUST EXIT by July 20 EOD). |
+| Technical | 4/10 | **SELL-THE-NEWS PATTERN.** TSLA ran +24% from April low to $425 pre-delivery. Despite 18% delivery beat, stock only +1%. Overbought on daily chart. 5-indicator stack: only Volume Spike (1) confirming bullish; Stochastic overbought (bearish); MACD potentially rolling over; candlestick: weak reaction candle on high volume = distribution signal. Required 2-of-5 minimum NOT met. |
+| Sentiment | 6/10 | Delivery numbers positive (+18% beat generates headlines). But stock reaction (+1%) signals market was already positioned long. Short covering drove the initial spike; re-shorting emerging. xAI API unavailable — degraded gracefully, no X modifier applied. Base 6: positive news, negative price action = mixed. |
+| Macro | 7/10 | Weak jobs report (57K vs 115K) → rate-cut narrative → supportive of TSLA (growth/EV). SPX +0.49%, Nasdaq +0.40% = risk-on macro. Russell 2000 -0.39% = slight economic concern (could dampen EV consumer demand). Net positive for TSLA. |
+| Risk | 6/10 | Entry est. $430, stop $408.50 (-5%), target $494.50 (+15%), R/R = 3:1 ✓. Size: 11sh × $430 = $4,730 = 4.7% equity ✓. Trade risk: 11 × $21.50 = $236.50 = 0.24% equity ✓. CRITICAL CONSTRAINT: TSLA earnings July 22 → hard exit July 20 EOD = **only 13 calendar days** from today. This is a very tight window for a 15% target. R/R is mathematically met but probability of hitting in 13 days is low given sell-the-news price action. Risk Agent penalizes for tight window and weak entry signal. |
+| Tech Analyst | 7/10 | FSD v14 Lite = meaningful AI/autonomy progression. Optimus = emerging product line with real monetization path. Dojo supercomputer = proprietary AI training advantage. Battery: 4680 cells still competitive. EV commoditization risk real (BYD, Hyundai catching up on range/cost). TSLA more AI company than auto; tech moat real but narrowing on EV side. |
+
+**TSLA Average: (7+4+6+7+6+7)/6 = 37/6 = 6.17/10**
+**Gate check:**
+- Average ≥ 7.0: ✗ **(6.17 — FAILS)**
+- Risk Agent ≥ 6: ✓ (6)
+- Agents ≥ 7: F(7)✓, M(7)✓, TA(7)✓ = **3/6 ✗ (need 4 of 6)**
+
+**Master Decision: REJECTED** — 6.17 average (below 7.0 minimum); only 3 of 6 agents ≥ 7 (need 4). Technical Agent 4/10 is the decisive veto: sell-the-news reaction after a massive delivery beat on an already-overbought stock is a high-risk entry. This is a score-based rejection (not an exemption).
+
+---
+
+### IBM — RE-SCORE AT $277.91 (DOWNTREND CONTEXT CONFIRMED)
+
+**Context:** IBM July 1 close $292.16 (+3.9% on JPMorgan upgrade + sub-1nm catalyst). Today IBM at $277.91 (-4.9% from July 1 close), range $271.12–$282.57. Broader context: IBM ATH $332.46 in early June 2026 → pulled back to $249.10 by June 18 (-25%) → bounced to $292.16 on July 1 catalyst → reversing today to $277.91.
+
+| Agent | Score | Notes |
+|---|---|---|
+| Fundamentals | 8/10 | Sub-1nm NanoStack chip (world's first, 100B transistors, +50% perf vs 2nm) still valid catalyst. JPMorgan Overweight upgrade intact. WatsonX AI backlog growing. Red Hat hybrid cloud. IBM earnings July 22 = MUST EXIT by July 18 EOD. |
+| Technical | 4/10 | **DOWNTREND DOMINANT.** IBM in downtrend from $332 ATH: lower highs, lower lows. July 1 catalyst spike to $292 = lower high (below $332). Now reversing to $277. 5-indicator stack: Stochastic neutral-to-bearish (not oversold yet); MACD likely bearish crossover on weekly; Volume Oscillator negative; candlestick: July 1 engulfing up reversed July 2 = bearish signal. Only 1 of 5 indicators potentially confirming (Volume Spike on the July 1 rally, now gone). Mandatory 2-of-5 minimum NOT met. |
+| Sentiment | 7/10 | JPMorgan Overweight still recent and positive. Sub-1nm NanoStack coverage (MIT Tech Review, HPCwire). ServiceNow partnership. Partial sell-the-news on July 2 dampens. xAI API unavailable — degraded gracefully. |
+| Macro | 7/10 | Weak jobs = rate cut narrative = supportive of IBM (defensive tech + dividend quality + rate-sensitive). AI enterprise spending secular. IBM benefits from rate-cut environment. |
+| Risk | 6/10 | Fresh entry at $279.30 (ask×1.005), stop $265.34 (-5%), target $321.18 (+15%), R/R = 3:1 ✓. 3sh = $837.90 = 0.84% equity ✓. Risk per trade: 3 × $13.96 = $41.88 = 0.04% equity ✓. TIGHT EXIT: IBM earnings July 22 = hard exit July 18 EOD = 16 calendar days. Tight window. Risk score penalized for downtrend context + tight exit. |
+| Tech Analyst | 9/10 | Sub-1nm NanoStack unchanged: world's first functional sub-1nm chip; 3D stacking bypasses 2D lithography limits; quantum computing hardware moat; Red Hat open-source enterprise stack. Real technology leadership. |
+
+**IBM Average: (8+4+7+7+6+9)/6 = 41/6 = 6.83/10**
+**Gate check:**
+- Average ≥ 7.0: ✗ **(6.83 — FAILS)**
+- Risk Agent ≥ 6: ✓ (6)
+- Agents ≥ 7: F(8)✓, S(7)✓, M(7)✓, TA(9)✓ = 4/6 (passes minimum BUT average fails)
+
+**Master Decision: REJECTED** — Average 6.83 < 7.0 threshold. Technical Agent 4/10 is decisive: downtrend from $332 ATH intact; catalyst bounce reversed; indicator stack not confirming. Will re-score IBM when price stabilizes at support ($271-$273 range from pre-catalyst June levels) and technical picture improves.
+
+---
+
+### META — ORDER RE-ATTEMPT (CARRY-FORWARD FROM JULY 1, SCORE 7.5)
+
+META current price: ~$612.91 (+8.81% from July 1 close ~$563). Bloomberg cloud compute story extending. Score 7.5 confirmed from July 1 Mid-Morning/Afternoon. Order parameters unchanged:
+- 8sh limit BUY at $615.06 (ask×1.005 from July 1; current price $612.91 < $615.06 = would fill at market ~$612-613)
+- Stop: $584.31 (-5% from $615.06)
+- Target: $707.31 (+15% from $615.06)
+- R/R: ($707.31 − $615.06) / ($615.06 − $584.31) = $92.25 / $30.75 = 3.0:1 ✓
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "symbol":"META",
+    "qty":8,
+    "side":"buy",
+    "type":"limit",
+    "limit_price":"615.06",
+    "time_in_force":"gtc",
+    "order_class":"bracket",
+    "stop_loss":{"stop_price":"584.31"},
+    "take_profit":{"limit_price":"707.31"}
+  }'
+```
+**Result: HTTP 403 — proxy CONNECT rejected (62nd+ consecutive blocked session)**
+
+---
+
+### AMD SELL ATTEMPT (CATCH-UP FROM PRE-MARKET / MARKET-OPEN)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"limit","limit_price":"528.94","time_in_force":"day"}'
+```
+**Result: HTTP 403 — proxy CONNECT rejected**
+
+AMD sell blocked again. **DAY 11 NAKED.** AMD has given back $53/sh from ATH since original take-profit was exceeded but not locked in.
+
+---
+
+### BINDING WATCHLIST FOR JULY 3, 2026 (LAST TRADING DAY BEFORE HOLIDAY)
+
+| Priority | Symbol | Score | Action | Entry | Stop | Target | Notes |
+|---|---|---|---|---|---|---|---|
+| 1 ⚠️ | AMD | — | SELL 9sh | $528.94 limit (= ~$531 × 0.995) | — | — | OPERATOR: SELL 9sh AMD at market IMMEDIATELY. Day 11 naked, 9.5% equity, $53 off ATH. |
+| 2 | META | 7.5 | BUY 8sh | $615.06 limit bracket GTC | $584.31 | $707.31 | Carry-forward; check pre-market price; 62nd blocked session |
+| 3 | IBM | — | HOLD / SKIP | — | — | — | Re-score when $271-$273 support holds; score 6.83 today |
+| 4 | TSLA | — | SKIP | — | — | — | Score 6.17; sell-the-news; re-score if momentum entry develops |
+
+**Note: July 4 = MARKET CLOSED. July 3 is critical — MUST manage AMD before the 3-day holiday weekend.**
+
+---
+
+### YAML DECISION LOG — MID-MORNING JULY 2
+
+```yaml
+---
+ts: 2026-07-02T12:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Pre-Market routine (8:00 AM ET / 12:00Z) silently failed — no heartbeat in logs/heartbeats/2026-07-02.log. AMD naked Day 11 continued unaddressed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Pre-Market routine: scheduled 12:00Z, no STARTED or COMPLETED heartbeat logged. Silent failure. AMD naked carry-forward from Day 10. META and IBM orders not re-attempted. TSLA conditional delivery check not performed. Running catch-up in Mid-Morning."
+---
+---
+ts: 2026-07-02T13:45:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Market-Open routine (9:45 AM ET / 13:45Z) silently failed — no heartbeat in logs/heartbeats/2026-07-02.log."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market-Open routine: scheduled 13:45Z, no STARTED or COMPLETED heartbeat logged. Silent failure. AMD naked Day 11. MOO fills from any Pre-Market orders could not be verified or stop-loss orders placed. Second consecutive silent failure this session (Pre-Market also missed). Running catch-up in Mid-Morning."
+---
+---
+ts: 2026-07-02T15:09:43Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "AMD 18sh naked DAY 11 — SELL 9sh limit $528.94 attempted to reduce to within 5% cap → HTTP 403 BLOCKED. AMD ATH $584.73 exceeded original take-profit; now pulled back to $531.50."
+size_pct: 9.5
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "AMD 18sh at $506.76 fill (June 23). ATH $584.73 on June 30/July 1 — original take-profit $582.78 exceeded intraday but never locked in. Today July 2: AMD at $531.50 (range $525.57-$553.80), -9% from ATH. Unrealized: 18sh × $24.74 = +$445. Position 9.5% equity (OVER 5% cap day 11). No stop. SELL 9sh limit $528.94 → HTTP 403. After sell: remaining 9sh; stop $481.42 (cost×0.95), target $607 (WF PT $615; 3.96:1 R/R). AMD Advancing AI event July 22-23. OPERATOR: app.alpaca.markets → SELL 9sh AMD now before 3-day holiday weekend. xAI API unavailable — degraded gracefully."
+---
+---
+ts: 2026-07-02T15:09:43Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: earnings-reaction-follow
+score: 6.17
+thesis: "TSLA Q2 deliveries 480,126 vs 406,024 consensus (+18.3% beat, +25% YoY). Binary event cleared. Full 6-agent score 6.17 — below 7.0 threshold. Sell-the-news: stock only +1% on massive beat. REJECTED."
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 6
+  macro: 7
+  risk: 6
+  tech_analyst: 7
+agent_average: 6.17
+agents_above_7: 3
+master_decision: rejected
+master_notes: "TSLA Q2 deliveries 480,126 (vs 406,024 consensus = +18.3% beat; +25% YoY; +34% QoQ). Binary event cleared as required by July 1 commitment. Full 6-agent score: F=7 (strong delivery beat, FSD monetization, but high P/E and July 22 earnings binary ahead); T=4 (sell-the-news — only +1% on massive beat after 24% run from April low; overbought daily; 1 of 5 indicators confirming; mandatory 2-of-5 NOT met); S=6 (delivery beat positive, but muted stock reaction = market not excited; distribution signal); M=7 (weak jobs 57K = rate-cut narrative = supportive); R=6 (R/R 3:1 met at est. entry $430; MUST EXIT by July 20 = 13 calendar days — very tight for 15% target); TA=7 (FSD v14, Optimus, Dojo moat; EV commoditization risk). Average 6.17 < 7.0. 3/6 agents ≥7 (need 4). Score-based rejection, not an exemption. Re-score if TSLA shows clear technical momentum entry in July 3 Pre-Market. xAI API unavailable — degraded gracefully."
+---
+---
+ts: 2026-07-02T15:09:43Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 6.83
+thesis: "IBM re-scored 6.83 at $277.91 (down -4.9% from July 1 close $292.16). Downtrend from $332 June ATH intact. Technical Agent 4/10. Average below 7.0 threshold. REJECTED."
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 7
+  macro: 7
+  risk: 6
+  tech_analyst: 9
+agent_average: 6.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "IBM at $277.91 (range $271.12-$282.57). Broader context: ATH $332.46 early June → fell to $249.10 by June 18 (-25%) → bounced to $292.16 on July 1 (JPMorgan OW + sub-1nm NanoStack) → reversing to $277.91 today (-4.9%). Net: IBM still +11% above pre-catalyst $249 level but the July 1 catalyst spike is being sold. Technical score 4/10: downtrend from $332 dominant; catalyst bounce = lower high; 5-indicator stack: only 1 of 5 confirming (volume spike on July 1 — now gone); mandatory 2-of-5 minimum NOT met; daily chart: lower high ($292 < $332) confirms downtrend. Average 6.83 < 7.0 threshold = score-based rejection. Re-score when IBM tests $271-$273 support (pre-catalyst levels) and shows stabilization. Sub-1nm NanoStack + JPMorgan OW catalysts still valid long-term — IBM on watchlist for next session. IBM earnings July 22 — if re-entered, HARD EXIT by July 18 EOD. xAI API unavailable — degraded gracefully."
+---
+---
+ts: 2026-07-02T15:09:43Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "META carry-forward from July 1 (score 7.5 approved). Bloomberg cloud compute story extending: META +8.81% today at $612.91. 8sh limit $615.06 bracket GTC — ORDER ATTEMPTED → HTTP 403 BLOCKED (62nd+ consecutive)."
+size_pct: 4.9
+stop: 584.31
+target: 707.31
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 9
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 4
+master_decision: approved
+master_notes: "META order: 8sh limit $615.06 bracket GTC (stop $584.31, target $707.31, R/R 3:1 exact). Current price $612.91 — order would fill at ~$612-613 (below limit = fill at market). Bloomberg cloud compute report confirmed across 8+ outlets. META compute rivals AWS/Azure/GCP. Score 7.5 (F=9 S=9 TA=8 M=7; T=6 insufficient indicators but above 5; R=6 meets minimum). API blocked (62nd session) — order NEVER REACHED ALPACA. Carry-forward to July 3 Pre-Market as MOO (market on open) to guarantee fill. OPERATOR: app.alpaca.markets → BUY 8sh META MOO before 9:25 AM ET July 3. If MOO: follow-up stop at fill×0.95 in Market-Open routine. xAI API unavailable — degraded gracefully."
+---
+```
+
+---
+
 ## 2026-07-01 — Afternoon (2:08 PM ET / 18:08 UTC — WEDNESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-01T18:08:05Z ✓
