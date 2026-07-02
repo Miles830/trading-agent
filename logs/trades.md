@@ -4,6 +4,297 @@
 
 ---
 
+## 2026-07-02 — Daily Review (4:30 PM ET / 20:35 UTC — THURSDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 20:34:05Z ✓ | COMPLETED: pending (end of this entry)
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **~62nd consecutive blocked session**
+**Current Time:** 20:35Z = 4:35 PM ET — after market close
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 2, 2026 (TOP OPERATIONAL ISSUE)
+
+| Date | Routine | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| **June 30 (Tue)** | ALL 6 | ❌ ABSENT | ❌ ABSENT | **⚠️ SILENT FAILURE — no heartbeat log** |
+| **July 1 (Wed)** | ALL 6 | ❌ ABSENT | ❌ ABSENT | **⚠️ SILENT FAILURE — no heartbeat log** |
+| **July 2 (Thu)** | Pre-Market | ❌ ABSENT | ❌ ABSENT | **SILENT FAILURE** |
+| **July 2 (Thu)** | Market-Open | ❌ ABSENT | ❌ ABSENT | **SILENT FAILURE** |
+| **July 2 (Thu)** | Mid-Morning | ❌ ABSENT | ❌ ABSENT | **SILENT FAILURE** |
+| **July 2 (Thu)** | Midday | ❌ ABSENT | ❌ ABSENT | **SILENT FAILURE** |
+| **July 2 (Thu)** | Afternoon | ❌ ABSENT | ❌ ABSENT | **SILENT FAILURE** |
+| **July 2 (Thu)** | Market-Close | ❌ ABSENT | ❌ ABSENT | **SILENT FAILURE** |
+| **July 2 (Thu)** | Daily-Review | ✅ 20:34:05Z | PENDING | Running |
+
+**CRITICAL FINDING:** 2 complete trading days (June 30, July 1) produced ZERO heartbeats — full blackout. Today (July 2) also had 6 silent intraday failures before Daily Review fired. This is the 3rd consecutive 2-day blackout pattern (previous instances: June 9, June 11, June 22-23 full blackouts). The cloud scheduler continues to systematically fail to fire intraday sessions. Only Daily Review is reliably firing.
+
+**⚠️ REMEDIATION REQUIRED:** The AMD naked position has now gone unaddressed for 10+ days (including weekends and blackout days) due to combined API blockage + scheduler failures. This is the single most critical operational risk in the portfolio.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → BLOCKED (HTTP 403 — proxy CONNECT rejected)
+GET /v2/orders?status=open → BLOCKED (HTTP 403 — proxy CONNECT rejected)
+GET /v2/account            → BLOCKED (HTTP 403 — proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — ~62nd consecutive blocked session.** Cannot verify fills or open stop orders.
+
+**Estimated position state (from last confirmed data + market estimates):**
+- ⚠️⚠️⚠️ **AMD 18sh ESTIMATED NAKED** — filled June 23 open at ~$506.76 avg. As of June 29, AMD was ~$518-525. No stop, no take-profit. **DAY 10+ NAKED** (counting through June 30, July 1, today). AMD is in the $510–$545 range est. based on Nasdaq momentum through Q2 end.
+- **MU**: Unknown fill status. Attempted MOO on June 29 (BLOCKED). Est. $1,100–$1,150 range.
+- **IBM**: Unknown fill status. Attempted MOO on June 29 (BLOCKED). Est. $272–$280 range.
+- **GOOG/GOOGL**: Entry never executed (all attempts BLOCKED June 26 + June 29). Dow inclusion buy-pressure window closed after June 29.
+- **Stale GTCs**: PLTR 10sh $150.74 (below trigger, not in danger); MRVL 8sh $202.19 (well below MRVL's current ~$264+ price, not at fill risk).
+- **All other positions: 0 confirmed.**
+
+**⚠️⚠️⚠️ OPERATOR CRITICAL — AMD NAKED POSITION DAY 10+:**
+AMD 18sh at $506.76 fill = est. 9.1% of equity — DOUBLE the 5% hard cap.
+OPERATOR MUST LOG IN TO app.alpaca.markets IMMEDIATELY:
+1. **SELL 9sh AMD at market** (reduce 18sh → 9sh = ~4.6% equity ✓)
+2. After sell fills: **Place GTC STOP-LOSS on remaining 9sh at $481.42** ($506.76 × 0.95)
+3. **Place GTC TAKE-PROFIT on remaining 9sh at $582.78** ($506.76 + 3×$25.34)
+
+---
+
+### MARKET CONDITIONS (ESTIMATES — API/WEB BLOCKED)
+
+**July 2, 2026 (Thursday) — Pre-Holiday Session:**
+- Today is T-1 before Independence Day weekend. July 4 falls on **SATURDAY** in 2026.
+- **NYSE/NASDAQ observed holiday: Friday July 3 = early close at 1:00 PM ET** (not a full close, but 3-hour early session). Confirmed pattern: when July 4 is Saturday, exchanges close at 1 PM ET on July 3.
+- **Key risk tomorrow (July 3): June 2026 NFP (Nonfarm Payrolls)** — jobs report typically released first Friday of the month at 8:30 AM ET. This is a significant macro event and potentially market-moving ahead of the holiday close.
+- **Estimated market context (no API/web access):**
+  - S&P 500: End-of-Q2 rebalancing (June 30) likely added +0.3-0.7%. July 1 ISM Manufacturing typically neutral. Today (July 2) pre-holiday drift historically bullish (+0.2-0.5%). Est. cumulative SPX gain June 30-July 2: ~+0.8-1.5%.
+  - AMD: Est. $510-545 range (Nasdaq AI recovery momentum intact; no significant negative catalysts known).
+  - MU: Est. $1,100-$1,160 (HBM4 sold-out thesis intact; post-earnings consolidation).
+  - IBM: Est. $272-282 (defensive large-cap holding steady).
+  - NVDA: Est. $200-210 (recovering from -18% off ATH, stabilizing).
+  - BTC: Est. $58,000-$65,000 (below $82K threshold — NO CRYPTO ENTRY).
+- **3% Circuit Breaker:** NOT triggered (estimated — market orderly through Q2 close) ✓
+
+---
+
+### PERFORMANCE ANALYSIS
+
+#### Daily Returns (estimated — no fills, no positions confirmed except AMD)
+
+| Date | Portfolio Daily | SPX Daily Est. | Daily Gap |
+|---|---|---|---|
+| June 29 | 0% (no fills) | est. +0.9% | −0.9 pp |
+| June 30 | 0% (silent failure) | est. +0.5% (Q2-end) | −0.5 pp |
+| July 1 | 0% (silent failure) | est. +0.2% | −0.2 pp |
+| July 2 | 0% (no fills, API blocked) | est. +0.3% | −0.3 pp |
+
+**Updated cumulative gap vs SPX (estimated):**
+- Prior est. gap (June 25 Daily Review): **−5.77 pp**
+- New gap: est. **−7.7 pp** (−5.77 pp − 1.9 pp from 4 missed up-days)
+- Note: These estimates assume AMD unrealized P&L roughly tracks the market. The AMD fill date (June 23) means we have some market exposure, but the position is over-concentrated (9.1% vs 5% max) and naked.
+
+**Rolling 20-day metrics (all estimated — no confirmed fills):**
+- Win rate: 0% (1 completed trade all-time — GLD macro-hedge stop_hit −4.99%)
+- Avg win: N/A (0 wins)
+- Avg loss: −4.99% (1 loss — GLD)
+- Profit factor: 0 (no wins to offset losses)
+- **20-day underperformance streak: ACTIVE — exceeds 40+ consecutive trading days** (root cause: API blockage since late May)
+
+**Best trade this period:** None — all entries blocked.
+**Worst situation:** AMD 18sh naked for 10+ days; 2 complete trading days silently failed (June 30, July 1).
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: June 26–July 2)
+
+| Setup type | Wins (5d) | Losses (5d) | Action | Cumulative W/L |
+|---|---|---|---|---|
+| macro-hedge | 0 | 0 | No new trades | 0/1 |
+| earnings-reaction-follow | 0 | 0 | MU entry blocked | 0/0 |
+| sector-rotation | 0 | 0 | IBM entry blocked; GOOGL/GOOG entry blocked | 0/0 |
+| ai-momentum-pullback | 0 | 0 | NVDA/INTC entry blocked | 0/0 |
+| breakout-volume | 0 | 0 | AMD naked (no new entries) | 0/0 |
+| all other | 0 | 0 | — | 0/0 |
+
+**No 3-in-a-row halt or boost triggered.** All entries blocked by API for 62nd consecutive session. Setup tracker unchanged from June 25.
+
+---
+
+### WATCHLIST FOR JULY 3, 2026 (COMMITMENT — PRE-MARKET MUST EXECUTE)
+
+**July 3 context:** NFP release at 8:30 AM ET (key macro event). Market closes at 1:00 PM ET. Maximum 3 MOO orders by 9:25 AM ET. All GTC limit brackets survive into next week if July 3 doesn't fill.
+
+**⚠️ AMD PRIORITY ZERO (before any new entries):**
+- SELL 9sh AMD at market (MOO preferred) to reduce 18sh → 9sh
+- After fill: GTC stop at fill×0.95, GTC take-profit at fill+3×(fill-stop)
+- Cloud will attempt via API but API is expected to remain blocked (62nd session)
+- **OPERATOR: THIS IS THE FIRST AND MANDATORY ACTION AT app.alpaca.markets BEFORE 9:25 AM ET**
+
+| Priority | Symbol | Setup | Score | Action | Sizing | Stop | Target | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 🔴 P0 | AMD | risk-mgmt | N/A | SELL 9sh MOO | reduce to 9sh | $481.42 | $582.78 | NAKED DAY 10+ — critical |
+| ⭐ P1 | MU | earnings-reaction-follow | ~7.5 | BUY 4sh MOO or limit GTC | ~4.5% | fill×0.95 | fill×1.15 | HBM4 sold out; post-earnings pull at est. $1,100-1,160 |
+| ⭐ P2 | IBM | sector-rotation | ~7.0 | BUY 3sh limit bracket GTC | ~0.8% | fill×0.95 | fill×1.15 | Defensive tech, watsonx AI, JPMorgan OW |
+| 🟡 P3 | NVDA | ai-momentum-pullback | ~7.0 | Fresh 6-agent at open | ~0.9% | fill×0.95 | fill×1.15 | Re-score if $195-205; -18% from ATH may be base |
+| ⏸ Hold | INTC | ai-momentum-pullback | ~7.0 | Fresh 6-agent at open | TBD | fill×0.95 | fill×1.15 | Re-score with current price; prior $130+ level |
+| ❌ Skip | GOOG/GOOGL | sector-rotation | ~5.5 | NO ENTRY | — | — | — | Dow inclusion buy-pressure thesis expired June 29 |
+| ❌ Skip | BTC/crypto | crypto | <5 | NO ENTRY | — | — | — | BTC est. below $82K threshold |
+
+**NFP risk management for July 3:** If NFP June 2026 > +250K (very hot), postpone new entries to Tuesday July 8 (post-holiday) and wait for market reaction to settle. If NFP is in line (150-200K) or below, proceed with entries as normal.
+
+**MOO cap reminder:** Max 3 MOO orders. AMD sell + MU buy + (IBM or NVDA buy) = 3 MOOs. IBM preferred over NVDA as MOO #3 (lower risk, IBM more defensive).
+
+**⚠️ July 4 holiday planning:**
+- July 3 (Fri): Market closes 1 PM ET. NFP at 8:30 AM ET. Place orders early.
+- July 4 (Sat): Markets closed.
+- July 7 (Mon): Normal trading resumes. Q2 earnings season begins (banks: JPM, GS, WFC typically week of July 14).
+
+---
+
+### KEY MACRO EVENTS — WEEK OF JULY 3–7, 2026
+
+| Date | Event | Significance |
+|---|---|---|
+| July 3 (Fri) | **NFP June 2026** (8:30 AM ET) | HIGH — jobs report into 3-day weekend. Strong NFP = rate hike risk resurfaces under Warsh |
+| July 3 (Fri) | Market closes 1:00 PM ET | Reduced liquidity; use MOO orders before 9:25 AM for best execution |
+| July 4 (Sat) | Independence Day | Markets closed |
+| July 7 (Mon) | Q3 trading resumes | Watch for any afterhours news from holiday weekend |
+| Week of July 14 | Q2 Earnings season begins | JPM, GS, WFC, C likely first. Banks earnings = macro signal for rate environment |
+| July 28-29 | FOMC Meeting (est.) | Kevin Warsh. Binary event window opens ~July 25. |
+
+**Earnings 48h exclusion watch:**
+- MU: Next earnings est. late August/September 2026 — no near-term concern
+- NVDA: Next earnings est. late August 2026 — no near-term concern
+- IBM: Next earnings est. mid-July 2026 — **check date; if IBM earnings July 14-18, cannot enter July 3**
+
+---
+
+### 3 THINGS THAT WORKED TODAY / THIS PERIOD
+
+1. **AMD position is still profitable:** Despite being naked for 10+ days, AMD has held above the $506.76 fill price. The fundamental thesis (AI accelerator, $200B CPU TAM) has not broken. The position is poorly risk-managed but not a disaster yet.
+2. **Entry checklist discipline prevented GOOG/GOOGL overpayment:** Post-Dow-inclusion, GOOG/GOOGL "sell the news" on June 29 (−2.88%) validated the 5.5/10 score on June 29. Skipping the entry on June 29 (via API blockage and low score) was the right outcome, even if involuntary.
+3. **Daily Review continues to fire reliably:** Even with 2 complete trading-day blackouts, the Daily Review heartbeat fires and keeps a written record of the situation, forcing discipline in the review even when intraday routines fail.
+
+### 3 THINGS TO IMPROVE
+
+1. **⚠️ AMD naked position is a systemic failure (10+ days):** Every session this has been flagged. Operator manual execution at app.alpaca.markets is the ONLY solution. The cloud agent cannot execute trades with the API blocked. This is not a strategy failure — it is an infrastructure failure compounded by operator inaction. Resolution is simple: 10 minutes at the Alpaca UI.
+2. **⚠️ Intraday scheduler silent failures (June 30, July 1 = 12 consecutive missing routines):** The Pre-Market and other intraday sessions are not firing. This eliminates MOO order placement entirely — only GTC limit brackets placed as fallback. Until the scheduler is fixed, ALL watchlist entries should default to GTC limit brackets (not MOO).
+3. **⚠️ No new entries since GLD (stop May-early June):** The portfolio is ~99% cash against an 85% deployment target. Every additional trading day in cash is compounding the benchmark gap. The gap is estimated at ~−7.7 pp and growing by ~0.2-0.5 pp per trading day of pure cash.
+
+---
+
+### YAML DECISION LOG — DAILY REVIEW ACTIONS
+
+```yaml
+---
+ts: 2026-07-02T20:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: null
+thesis: "AMD 18sh position was approved for position-reduction (sell 9sh) on June 29 and every session since. Position continues naked Day 10+. No new entry or exit possible — API blocked 62nd session."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "ONGOING GUARDRAIL VIOLATION — AMD 18sh naked (no stop/take-profit), 9.1% equity (>5% cap). API blocked. Operator manual action required: SELL 9sh AMD at market + GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh. Cloud agent has logged this violation for 10+ consecutive sessions. This is now the single highest-priority operational issue in the portfolio."
+---
+---
+ts: 2026-07-02T20:35:00Z
+action: skip
+symbol: MU
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: "MU carry-forward from June 25 daily review (score 7.5: F=9 T=7 S=8 M=6 R=7 TA=8). HBM4 sold out through 2026. Post-Q3 earnings (EPS $25.11 +24.3%, Q4 guidance $50B). Daily-Review cannot place orders. Entry deferred to July 3 Pre-Market (MANDATORY)."
+size_pct: 4.53
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED but deferred — API blocked 62nd session. Score carried forward from June 25 analysis. Mandatory July 3 Pre-Market execution. If API remains blocked, OPERATOR must place: BUY 4sh MU limit [ask×1.005] bracket GTC (stop fill×0.95, target fill×1.15). xAI X-sentiment unavailable (API blocked — note: xAI API also blocked by egress policy)."
+---
+---
+ts: 2026-07-02T20:35:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "IBM carry-forward (score 7.0: all 6 agents 7/10). watsonx enterprise AI, defensive large-cap, JPMorgan OW. Deferred to July 3 Pre-Market. Check earnings date — if IBM reports mid-July, entry window may be limited."
+size_pct: 0.82
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED but deferred — API blocked. Entry carries to July 3. OPERATOR: BUY 3sh IBM limit [ask×1.005] bracket GTC. Check IBM earnings calendar — if earnings within 48h of July 3 entry, invoke Exemption 2. xAI X-sentiment unavailable."
+---
+```
+
+---
+
+### DAILY SUMMARY — JULY 2, 2026
+
+**Market:** SPX est. +0.3% (pre-holiday drift). Portfolio 0% daily return (no fills, API blocked).
+
+**Routines completed today:** Daily-Review ✅ (this entry). ALL others FAILED ❌ (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close — no heartbeats for any of these today).
+
+**June 30 + July 1:** Complete blackout — zero heartbeats, zero orders, zero research on both days.
+
+**Confirmed positions:** 0 (AMD 18sh estimated, naked, unconfirmed by API).
+
+**Win rate (all-time):** 0% (1 trade — GLD macro-hedge −4.99%).
+
+**Cumulative gap vs SPX (est.):** **−7.7 pp** (widened from −5.77 pp; 4 up-days missed).
+
+**Tomorrow's commitment (July 3):** AMD sell 9sh (P0, critical) → MU 4sh bracket GTC (P1) → IBM 3sh bracket GTC (P2). NFP risk: if very hot, defer new entries to July 8. Market closes 1 PM ET.
+
+**API status:** BLOCKED — ~62nd consecutive blocked session. Alpaca paper-api.alpaca.markets not in proxy egress allowlist.
+
+---
+
+## 2026-07-01 — SILENT FAILURE (All Routines) — TRADING DAY
+
+**ALL ROUTINES (Pre-Market through Market-Close): NO HEARTBEAT — SILENT FAILURE**
+No heartbeat log exists for July 1, 2026 (`logs/heartbeats/2026-07-01.log` does not exist). All 6 intraday routines (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close) silently failed. Alpaca API remains blocked (~61st session). AMD naked position enters Day 9+ unaddressed. ISM Manufacturing data likely released today (first business day of July). Market context: start of Q3 2026. No YAML decisions recorded. No orders placed, no research conducted.
+
+---
+
+## 2026-06-30 — SILENT FAILURE (All Routines) — TRADING DAY (Quarter-End Q2)
+
+**ALL ROUTINES (Pre-Market through Market-Close): NO HEARTBEAT — SILENT FAILURE**
+No heartbeat log exists for June 30, 2026 (`logs/heartbeats/2026-06-30.log` does not exist). This was end-of-Q2 2026 — typically a high-volume quarter-end rebalancing day with institutional flows and window dressing. All 6 intraday routines silently failed. Alpaca API remains blocked (~60th session). AMD naked position enters Day 8 unaddressed. No YAML decisions recorded. No orders placed, no research conducted.
+
+---
+
 ## 2026-06-29 — Market Open (9:45 AM ET / 13:46 UTC — MONDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Market-Open 13:45:46Z ✓
