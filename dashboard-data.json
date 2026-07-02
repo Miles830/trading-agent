@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-01T18:08:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-02T13:45:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 101154.0,
+    "total_equity": 101082.0,
     "starting_equity": 100000.0,
     "cash": 90732,
-    "cash_pct": 89.7,
+    "cash_pct": 89.8,
     "buying_power": 181464,
-    "long_market_value": 10422.0,
+    "long_market_value": 10350.0,
     "short_market_value": 0.0,
-    "daily_pnl": 1300.32,
-    "daily_pnl_pct": 1.3,
-    "total_return_pct": 1.15,
-    "spx_return_pct": 4.69,
-    "benchmark_gap_pct": -3.54,
+    "daily_pnl": 0.0,
+    "daily_pnl_pct": 0.0,
+    "total_return_pct": 1.08,
+    "spx_return_pct": 4.31,
+    "benchmark_gap_pct": -3.23,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10422.0,
-      "active_pct": 10.3,
+      "active_value": 10350.0,
+      "active_pct": 10.2,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90732,
-      "cash_pct": 89.7
+      "cash_pct": 89.8
     },
-    "note": "July 1 AFTERNOON (2:08 PM ET / 18:08Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 61st+ consecutive). MARKET REVERSED: SPX +0.52%, Nasdaq +1.52% (from -0.35% mid-morning). AMD intraday HIGH $584.73 EXCEEDED take-profit $582.78. Wells Fargo AMD PT $615 (street-high). IBM $292.16 (+3.9%) re-scored 7.67 \u2014 updated order $293.62 bracket GTC (stop $278.94, target $337.66). META ~$611-619 +10% carry-forward. TSLA +8.6% SKIP (delivery July 2 binary event). JULY 2 BINDING: AMD SELL 9sh + IBM 3sh $293.62 + META 8sh $615 + TSLA conditional post-delivery."
+    "note": "July 2 MARKET-OPEN (9:45 AM ET / 13:45Z). TRADING DAY \u2014 EARLY CLOSE 1 PM ET. API BLOCKED (HTTP 403 \u2014 62nd+ consecutive). TSLA Q2 deliveries 480,126 vs 406,024 consensus (+18.4% beat) \u2014 binary event CLEARED. TSLA scored 7.67 APPROVED (11sh $423.10 bracket GTC, stop $401.95, target $486.57) \u2014 BLOCKED. IBM 7.67 carry-forward 3sh $293.62 \u2014 BLOCKED. META 7.5 carry-forward 8sh $616.07 \u2014 BLOCKED. AMD naked Day 11 sell 9sh \u2014 BLOCKED. SPX +0.3-0.4%, jobs +57K vs 113K (Fed cut odds up). Next trading day: July 7."
   },
   "positions": [
     {
@@ -38,7 +38,7 @@
       "take_profit": 607.0,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 10+. 18sh at $506.76 fill, now ~$579. INTRADAY HIGH $584.73 EXCEEDED original take-profit $582.78 \u2014 gain not locked in (no order at Alpaca). Wells Fargo PT $615 (street-high, raised today). AMD Advancing AI 2026 event July 22-23. Position 10.3% equity (OVER 5% cap x2). OPERATOR: (1) SELL 9sh at market NOW; (2) GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED \u2014 agent cannot execute."
+      "note": "CRITICALLY NAKED Day 11. 18sh at $506.76 fill, now ~$575 est. July 1 intraday HIGH $584.73 EXCEEDED original take-profit $582.78. Wells Fargo PT $615 (street-high). AMD Advancing AI 2026 event July 22-23. Position 10.2% equity (OVER 5% cap x2). OPERATOR: (1) SELL 9sh at market NOW; (2) GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED \u2014 agent cannot execute (62nd+ consecutive session)."
     },
     {
       "symbol": "IBM",
@@ -66,28 +66,28 @@
       "take_profit": 707.31,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "Score 7.5 unchanged. Cloud compute story confirmed 8+ outlets. Day range $561.88-$616.96. Order re-attempted: 8sh limit $615.06 bracket GTC -> HTTP 403. Carry-forward to July 2 Pre-Market. OPERATOR: BUY 8sh META limit $615, stop_loss $584.31, take_profit $707.31, order_class=bracket, tif=gtc."
+      "note": "Score 7.5 carry-forward. Cloud compute story gaining momentum: META est. $613 July 2 (+8.81% from July 1 close ~$563). Entry limit updated to $616.07 (ask x1.005). 8sh x $616.07 = $4,928 = 4.87% equity. Order attempted: 8sh limit $616.07 bracket GTC (stop $585.27, target $708.48, R/R=3:1) -> HTTP 403 BLOCKED. OPERATOR: BUY 8sh META limit $616.07, stop_loss $585.27, take_profit $708.48, order_class=bracket, tif=gtc."
     },
     {
       "symbol": "TSLA",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 0,
-      "current_price": 0,
+      "entry_price": 423.10,
+      "current_price": 421.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
       "take_profit": null,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.5,
-      "note": "PRELIMINARY SCORE 7.5. Q2 delivery report due July 2 (consensus 406,024 vehicles). SKIPPED today per Exemption 2 (binary event within 48h). Conditional entry July 2-3 if deliveries BEAT 406K. FSD v14 Lite + Europe +85-90% YoY registration growth supportive. Run full 6-agent at July 2 Pre-Market once delivery numbers are out."
+      "note": "FULL 6-AGENT SCORE 7.67 APPROVED (F=8 T=6 S=9 M=8 R=7 TA=8). Q2 deliveries 480,126 vs 406,024 consensus (+18.4% beat, +25% YoY). Binary event CLEARED. Muted stock reaction (~$421) after 14% pre-print run = buy-the-rumor dynamic. Entry: 11sh limit $423.10 bracket GTC (stop $401.95 -5%, target $486.57 +15%, R/R=3:1). ORDER BLOCKED: HTTP 403. OPERATOR: BUY 11sh TSLA limit $423.10, stop_loss $401.95, take_profit $486.57, order_class=bracket, tif=gtc. Markets close 1 PM ET; next trading day July 7."
     }
   ],
   "market": {
-    "mode": "RISK-ON RECOVERY. S&P +0.52%, Nasdaq +1.52%, Q3 start tech rally. Full reversal from morning -0.35%.",
+    "mode": "RISK-ON. S&P +0.3-0.4% at open. Jobs +57K vs 113K (Fed cut odds up). TSLA Q2 delivery beat +18.4%. Early close 1 PM ET (Independence Day long weekend). Next trading day July 7.",
     "fear_greed": null,
-    "fear_greed_label": "Risk-on. Nasdaq +1.52%. META +10% cloud compute. IBM +3.9% sub-1nm chip. AMD +6.6%. TSLA +8.6%.",
-    "spx": "S&P 500 est. 7538.0 (+0.52% from June 30 close 7,499.36). May 1 baseline 7,200 \u2192 +4.69%.",
+    "fear_greed_label": "Risk-on. SPX +0.3-0.4%. TSLA delivery beat 480K (+18.4%). Meta cloud compute ~+8.81%. Softer jobs = dovish Fed signal.",
+    "spx": "S&P 500 est. 7,500-7,512 at open (+0.3-0.4%). May 1 baseline 7,200 \u2192 +4.17% est.",
     "btc": "BTC est. ~$60K. Well below $82K active-trading threshold. No crypto entries.",
     "sectors": [
       {
@@ -122,10 +122,10 @@
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-02T13:45:00Z",
-      "last_summary": "June 29 was last successful Market-Open. July 1 Market-Open silently failed. June 30 complete blackout."
+      "status": "completed",
+      "last_run": "2026-07-02T13:45:00Z",
+      "next_run": "2026-07-07T13:45:00Z",
+      "last_summary": "API blocked (62nd+). Pre-Market silently failed — catch-up run. TSLA Q2 delivery beat +18.4% (480K vs 406K) — binary event cleared; scored 7.67, approved, blocked. IBM 7.67 + META 7.5 carry-forward also blocked. AMD naked Day 11 sell attempt blocked. Markets close early 1 PM ET today; next trading day July 7."
     },
     {
       "name": "Mid-Morning",
