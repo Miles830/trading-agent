@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-02T19:35:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-07-03T20:34:00Z",
+  "updated_by": "daily-review",
   "portfolio": {
-    "total_equity": 101154.0,
+    "total_equity": 100722.0,
     "starting_equity": 100000.0,
     "cash": 90732,
-    "cash_pct": 89.7,
+    "cash_pct": 90.1,
     "buying_power": 181464,
-    "long_market_value": 10422.0,
+    "long_market_value": 9990.0,
     "short_market_value": 0.0,
     "daily_pnl": 0.0,
     "daily_pnl_pct": 0.0,
-    "total_return_pct": 1.15,
-    "spx_return_pct": 4.69,
-    "benchmark_gap_pct": -3.54,
+    "total_return_pct": 0.72,
+    "spx_return_pct": 4.51,
+    "benchmark_gap_pct": -3.79,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10422.0,
-      "active_pct": 10.3,
+      "active_value": 9990.0,
+      "active_pct": 9.9,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90732,
-      "cash_pct": 89.7
+      "cash_pct": 90.1
     },
-    "note": "July 2 MARKET-CLOSE (3:35 PM ET / 19:35Z). LAST TRADING DAY BEFORE JULY 4 HOLIDAY. API BLOCKED (HTTP 403 — 62nd consecutive). 5 of 6 routines today SILENT FAILED. ALL 3 MOC ATTEMPTS BLOCKED (AMD SELL 9sh + IBM BUY 3sh + META BUY 8sh). AMD NAKED DAY 11 — no stop, 10.3% equity (OVER 5% cap). TSLA Q2 delivery report due today — status unknown. NEXT TRADING DAY: July 3. JULY 3 BINDING: AMD SELL 9sh MOO + IBM 3sh limit $293.62 bracket GTC + META 8sh limit $615 bracket GTC + TSLA conditional."
+    "note": "July 3 DAILY-REVIEW (4:34 PM ET / 20:34Z). MARKET HOLIDAY (observed Independence Day). API BLOCKED (HTTP 403 — 64th consecutive). Pre-Market ✅ (holiday identified correctly). NO TRADES TODAY. AMD NAKED DAY 12/13 — 18sh at $506.76 fill, est. $555 July 2 close = $9,990 (9.9% equity — OVER 5% cap). July 6 BINDING: SELL 9sh AMD MOO (FIRST ORDER) + IBM 3sh limit $290 bracket GTC + META 8sh limit $587 bracket GTC + TSLA fresh 6-agent (prelim REJECT). WEEKLY EVOLUTION: shifting from AI chip cyclicals to AI services/enterprise tech. NEXT TRADING DAY: July 6, 2026 (Monday)."
   },
   "positions": [
     {
@@ -31,129 +31,169 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 579.0,
-      "pnl": 1300.32,
-      "pnl_pct": 14.3,
+      "current_price": 555.0,
+      "pnl": 868.32,
+      "pnl_pct": 9.5,
       "stop_loss": null,
       "take_profit": 607.0,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 11. 18sh at $506.76 fill, est. ~$579 (last known). Original take-profit $582.78 EXCEEDED intraday July 1 (high $584.73) — gain not locked in. Wells Fargo PT $615 (street-high). AMD Advancing AI 2026 July 22-23. Position 10.3% equity (OVER 5% cap — Day 11 violation). NO STOP RESTING AT ALPACA. OPERATOR ACTION REQUIRED: SELL 9sh AMD at MOO July 3; place GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED — agent cannot execute."
+      "note": "CRITICALLY NAKED Day 12/13. 18sh at $506.76 fill, est. ~$555 (July 2 close — down 4.3% from July 1 high $584.73 which EXCEEDED take-profit $582.78 without execution). Wells Fargo PT $615 (street-high). AMD Advancing AI 2026 July 22-23. Position 9.9% equity (OVER 5% cap). SK Hynix HBM slowdown + AI ROI skepticism = semiconductor selloff context. NO STOP RESTING AT ALPACA. OPERATOR MUST SELL 9sh AMD at MOO July 6 (FIRST ORDER before 9:25 AM ET); place GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED — agent cannot execute."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 293.62,
-      "current_price": 292.16,
+      "entry_price": 290.0,
+      "current_price": 289.52,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 278.94,
-      "take_profit": 337.66,
+      "stop_loss": 275.50,
+      "take_profit": 333.50,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "Score 7.67 (approved July 1). MOC buy 3sh blocked July 2 (HTTP 403). HARD EXIT DEADLINE July 18 EOD (earnings July 22 — 20-day window opens July 2). OPERATOR: BUY 3sh IBM limit $293.62 bracket GTC (stop $278.94, target $337.66, R/R 3:1) at July 3 Pre-Market. Catalysts: JPMorgan Overweight, sub-1nm NanoStack chip, quantum executive orders."
+      "note": "Score 7.67 (approved July 1; re-priced July 3). MOC buy 3sh blocked July 2 (HTTP 403). HARD EXIT DEADLINE July 18 EOD (earnings July 22 — 20-day window opens July 2). RE-PRICED: limit $293.62→$290.00; stop $278.94→$275.50; target $337.66→$333.50 (R/R 3:1 ✓). OPERATOR: BUY 3sh IBM limit $290.00 bracket GTC at July 6 Pre-Market. Catalysts: JPMorgan Overweight, sub-1nm NanoStack chip (world's first 0.7nm transistor), quantum executive orders, defensive enterprise tech in AI selloff environment."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 615.06,
-      "current_price": 615.0,
+      "entry_price": 587.0,
+      "current_price": 585.0,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 584.31,
-      "take_profit": 707.31,
+      "stop_loss": 557.65,
+      "take_profit": 675.05,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "Score 7.5 (approved July 1). MOC buy 8sh blocked July 2 (HTTP 403). Re-verify cloud compute story at July 3 Pre-Market before entry — check if Bloomberg report confirmed/denied by Meta IR. OPERATOR: BUY 8sh META limit $615 bracket GTC (stop $584.31, target $707.31, R/R ~15.1%) at July 3 Pre-Market."
+      "note": "Score 7.5 (approved July 1; re-priced July 3). MOC buy 8sh blocked July 2 (HTTP 403). RE-PRICED: limit $615.06→$587.00; stop $584.31→$557.65; target $707.31→$675.05 (R/R 3:1 ✓). Bloomberg cloud compute story confirmed 8+ outlets — META selling excess AI capacity as service. OPERATOR: BUY 8sh META limit $587 bracket GTC at July 6 Pre-Market. Re-verify story still intact before placing order (check that META has not withdrawn the cloud service announcement)."
     },
     {
       "symbol": "TSLA",
       "bucket": "active",
       "qty": 0,
       "entry_price": 0,
-      "current_price": 0,
+      "current_price": 395.86,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
       "take_profit": null,
-      "setup": "earnings-reaction-follow",
-      "agent_average": 7.5,
-      "note": "Q2 delivery report due July 2 (consensus 406,024 vehicles). Binary event expires after numbers out. Cannot check delivery results (API/web blocked). Conditional entry July 3: if deliveries BEAT 406K → run full 6-agent score at Pre-Market and enter if score >=7; if MISS → skip. FSD v14 Lite + Europe +85-90% YoY support thesis."
+      "setup": "earnings-reaction-fade",
+      "agent_average": 5.3,
+      "note": "Binary event expired (Q2 deliveries: 480,126 vehicles vs 406,024 consensus = +18.2% beat). Stock FELL 7.49% to ~$395.86 (sell-the-news: P/E ~390x + US domestic sales -19.7% YoY for 9th consecutive month). Prelim 6-agent score ~5.3 (BELOW 7 threshold). NEEDS FRESH 6-AGENT July 6 Pre-Market. If entering: HARD EXIT DEADLINE July 20 EOD (TSLA earnings July 22). Likely REJECT unless macro stabilizes and sell-the-news reversal is confirmed."
     }
   ],
   "market": {
-    "mode": "RISK-ON — July 2 conditions unknown (API blocked). Last known: SPX +0.52%, Nasdaq +1.52% from July 1 close. Q3 start tech recovery. TSLA Q2 delivery report today — market-moving if beat/miss.",
+    "mode": "MIXED — AI chip selloff vs Dow cyclical strength. July 2: Dow +1.03%, Nasdaq −0.8%. Sector rotation from semiconductors → cyclicals/enterprise. AI ROI skepticism emerging (SK Hynix HBM slowdown catalyst).",
     "fear_greed": null,
-    "fear_greed_label": "Unknown — API blocked. Last known July 1: risk-on. Nasdaq +1.52%. META +10%, IBM +3.9%, AMD +6.6%.",
-    "spx": "S&P 500 est. 7538.0 (July 1 est. close). May 1 baseline 7,200 → +4.69%. July 2 EOD price unknown.",
-    "btc": "BTC est. ~$60K (last known). Below $82K active-trading threshold. No crypto entries.",
+    "fear_greed_label": "Unknown — API blocked. Last known (July 2 est.): elevated uncertainty. Semiconductor selloff (AMD −4.3%, NVDA −5%, MU −7%) vs Dow cyclical strength (+1.03%). Bifurcated market.",
+    "spx": "S&P 500 est. ~7,525 (July 2 close est.). May 1 baseline 7,200 → +4.51%. July 3 CLOSED (market holiday). Next data: July 6 open.",
+    "btc": "BTC est. ~$60K (last known). Below $82K active-trading threshold. No crypto entries. Risk-off from AI chip selloff could pressure BTC further.",
     "sectors": [
       {
-        "name": "Technology — API BLOCKED, July 2 data unavailable",
-        "change_pct": 0.0,
-        "note": "Last known (July 1): Nasdaq +1.52%. July 2 market conditions unknown. TSLA delivery report today could swing semiconductors/EV sector."
+        "name": "Semiconductors (AI chips) — SELLOFF",
+        "change_pct": -5.0,
+        "note": "July 2: AMD −4.3%, NVDA −5%, MU −7%, SMH −5%. Catalyst: SK Hynix slowing HBM production + AI ROI skepticism. Strategy implication: reducing chip exposure, increasing AI services."
       },
       {
-        "name": "Enterprise Tech — IBM carry",
-        "change_pct": 3.9,
-        "note": "IBM last known $292.16 (July 1 close). JPMorgan Overweight + sub-1nm chip. Hard exit July 18."
+        "name": "Enterprise Tech — defensive outperformer",
+        "change_pct": 0.0,
+        "note": "IBM at $289.52 (July 2 close). JPMorgan Overweight + NanoStack 0.7nm chip. Holding up better than semis in chip selloff. MANDATORY entry July 6."
+      },
+      {
+        "name": "Social/Cloud Tech — META",
+        "change_pct": -5.3,
+        "note": "META +10% July 1 on cloud compute story, then gave back to ~$585 July 2 (AI bubble sentiment). Cloud story confirmed 8+ outlets. Re-entry at $587 more attractive than $615. MANDATORY entry July 6."
+      },
+      {
+        "name": "Industrials/Dow Cyclicals — rotating in",
+        "change_pct": 1.03,
+        "note": "Dow +539 pts (+1.03%) on July 2 while Nasdaq −0.8%. Capital rotating from high-multiple AI names to cyclicals. Watch for IBM (Dow component) to benefit."
       }
     ]
   },
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-06-29T12:05:10Z",
-      "next_run": "2026-07-03T12:00:00Z",
-      "last_summary": "July 2 Pre-Market silently failed (no heartbeat). Last successful: June 29. Next: July 3 (note: July 4 = Independence Day, no routines)."
+      "status": "completed",
+      "last_run": "2026-07-03T12:05:12Z",
+      "next_run": "2026-07-06T12:00:00Z",
+      "last_summary": "July 3 Pre-Market ✅ — correctly identified market holiday (observed Independence Day). No orders placed. All bindings carry to July 6. Next: Monday July 6 (first trading day of week)."
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
+      "status": "N/A — holiday",
       "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-03T13:45:00Z",
-      "last_summary": "July 2 Market-Open silently failed. AMD MOO sell 9sh not placed. Last successful: June 29."
+      "next_run": "2026-07-06T13:45:00Z",
+      "last_summary": "July 3 Market-Open: N/A (market holiday — correct absence). Last active: June 29. Next: July 6. CRITICAL: AMD sell 9sh MOO must execute at July 6 open."
     },
     {
       "name": "Mid-Morning",
-      "status": "SILENT FAILURE",
+      "status": "N/A — holiday",
       "last_run": "2026-07-01T15:09:37Z",
-      "next_run": "2026-07-03T15:00:00Z",
-      "last_summary": "July 2 Mid-Morning silently failed. IBM/META limit orders not attempted. TSLA delivery evaluation missed."
+      "next_run": "2026-07-06T15:00:00Z",
+      "last_summary": "July 3 Mid-Morning: N/A (market holiday). Last active: July 1. Next: July 6. IBM/META limit bracket orders pending execution."
     },
     {
       "name": "Midday",
-      "status": "SILENT FAILURE",
+      "status": "N/A — holiday",
       "last_run": null,
-      "next_run": "2026-07-03T16:30:00Z",
-      "last_summary": "July 2 Midday silently failed. TSLA delivery numbers likely released by this point — evaluation missed."
+      "next_run": "2026-07-06T16:30:00Z",
+      "last_summary": "July 3 Midday: N/A (market holiday). Last active: none recently. Next: July 6."
     },
     {
       "name": "Afternoon",
-      "status": "SILENT FAILURE",
+      "status": "N/A — holiday",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-03T18:00:00Z",
-      "last_summary": "July 2 Afternoon silently failed (5th of 5 predecessor failures today). AMD naked Day 11 unaddressed."
+      "next_run": "2026-07-06T18:00:00Z",
+      "last_summary": "July 3 Afternoon: N/A (market holiday). Last active: July 1. Next: July 6."
     },
     {
       "name": "Market-Close",
-      "status": "completed",
+      "status": "N/A — holiday",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-03T19:30:00Z",
-      "last_summary": "API blocked (62nd session). 3 MOC attempts blocked (AMD sell 9sh, IBM buy 3sh, META buy 8sh). July 2 = last day before July 4 holiday. Next: July 3. July 4 = market CLOSED. TSLA delivery unknown."
+      "next_run": "2026-07-06T19:30:00Z",
+      "last_summary": "July 3 Market-Close: N/A (market holiday). Last active: July 2 (3 MOC orders blocked). Next: July 6."
     },
     {
       "name": "Daily-Review",
-      "status": "PENDING",
-      "last_run": "2026-06-29T20:30:00Z",
-      "next_run": "2026-07-02T20:30:00Z",
-      "last_summary": "Last ran June 29. Daily Review not yet run today (July 2). Scheduled 4:30 PM ET / 20:30Z."
+      "status": "completed",
+      "last_run": "2026-07-03T20:34:00Z",
+      "next_run": "2026-07-06T20:30:00Z",
+      "last_summary": "July 3 Daily Review ✅ COMPLETED (market holiday condensed review). AMD naked Day 12/13 at 9.9% equity. Portfolio +0.72% vs SPX +4.51% = −3.79 pp gap. Weekly evolution note: shifting AI chip → AI services/enterprise. July 6 binding: AMD sell 9sh MOO + IBM $290 + META $587 + TSLA fresh 6-agent (likely reject). CPI July 10 = key macro event."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-03T20:34:00Z",
+      "action": "skip",
+      "symbol": "SYSTEM",
+      "setup": "other",
+      "score": null,
+      "side": null,
+      "qty": 0,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "MARKET HOLIDAY — No trades. Pre-Market ✅ holiday confirmed. Weekly strategy evolution: AI chip → AI services. July 6 bindings: AMD sell 9sh MOO + IBM $290 + META $587.",
+      "agent_average": null,
+      "master_decision": "rejected"
+    },
+    {
+      "ts": "2026-07-03T12:05:12Z",
+      "action": "skip",
+      "symbol": "SYSTEM",
+      "setup": "other",
+      "score": null,
+      "side": null,
+      "qty": 0,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "MARKET HOLIDAY PRE-MARKET — NYSE/NASDAQ closed (observed Independence Day). All bindings carry to July 6.",
+      "agent_average": null,
+      "master_decision": "rejected"
+    },
     {
       "ts": "2026-07-02T19:35:00Z",
       "action": "moc_blocked",
@@ -248,48 +288,91 @@
   "watchlist": [
     {
       "symbol": "AMD",
-      "score": 7.17,
-      "action": "SELL 9sh at MOO July 3 (FIRST ORDER — Day 11 naked violation)",
+      "score": null,
+      "action": "SELL 9sh at MOO July 6 (FIRST ORDER — Day 12 naked, 9.9% equity vs 5% cap)",
       "stop": 481.42,
       "target": 607.0,
       "setup": "ai-momentum-pullback",
-      "notes": "CRITICALLY NAKED. Original take-profit $582.78 exceeded intraday July 1. Wells Fargo PT $615. After 9sh sold: place GTC stop $481.42 + GTC target $607 on remaining 9sh."
+      "notes": "CRITICALLY NAKED Day 12. Sell 9sh → then place GTC stop $481.42 + GTC target $607 on remaining 9sh. Semiconductor selloff accelerating (SK Hynix HBM slowdown). Wells Fargo PT $615 still valid for 9sh hold."
     },
     {
       "symbol": "IBM",
       "score": 7.67,
-      "action": "BUY 3sh limit $293.62 bracket GTC (MANDATORY July 3)",
-      "stop": 278.94,
-      "target": 337.66,
+      "action": "BUY 3sh limit $290.00 bracket GTC (MANDATORY July 6)",
+      "stop": 275.50,
+      "target": 333.50,
       "setup": "breakout-volume",
-      "notes": "Score 7.67. HARD EXIT DEADLINE July 18 EOD (earnings July 22). Catalysts: JPMorgan Overweight + sub-1nm NanoStack chip + quantum executive orders."
+      "notes": "Score 7.67. RE-PRICED from $293.62. IBM at $289.52 July 2 close → limit $290 should fill at open. HARD EXIT DEADLINE July 18 EOD (earnings July 22). Catalysts: JPMorgan OW + NanoStack 0.7nm chip + quantum exec orders + defensive enterprise in chip selloff."
     },
     {
       "symbol": "META",
       "score": 7.5,
-      "action": "BUY 8sh limit $615.06 bracket GTC (MANDATORY July 3 — re-verify story)",
-      "stop": 584.31,
-      "target": 707.31,
+      "action": "BUY 8sh limit $587.00 bracket GTC (MANDATORY July 6 — re-verify story)",
+      "stop": 557.65,
+      "target": 675.05,
       "setup": "breakout-volume",
-      "notes": "Score 7.5. Re-verify Bloomberg cloud compute story. Update limit if price moved. Stop $584.31, target $707.31 (R/R ~15.1%)."
+      "notes": "Score 7.5. RE-PRICED from $615.06 to $587 (META gave back to ~$585 on AI bubble concern). Cloud compute story confirmed 8+ outlets. R/R = $88.05/$29.35 = 3:1 ✓. 8sh × $587 = $4,696 = 4.66% equity ✓."
     },
     {
       "symbol": "TSLA",
-      "score": 7.5,
-      "action": "CONDITIONAL July 3 — check Q2 delivery results first",
+      "score": 5.3,
+      "action": "FRESH 6-AGENT at July 6 Pre-Market (prelim REJECT)",
       "stop": null,
       "target": null,
-      "setup": "earnings-reaction-follow",
-      "notes": "Q2 delivery consensus 406,024 vehicles. Binary event expires once numbers out. Run full 6-agent score before entering. Only enter if beat + score >=7."
+      "setup": "earnings-reaction-fade",
+      "notes": "480K delivery beat (+18.2%) but stock −7.49% (sell-the-news). P/E ~390x. US domestic sales −19.7% YoY (9th consecutive month). Prelim 6-agent ~5.3 (BELOW 7 threshold). Likely REJECT. Hard exit July 20 EOD if entering (TSLA earnings July 22)."
+    },
+    {
+      "symbol": "PANW",
+      "score": 7.0,
+      "action": "FRESH 6-AGENT at July 6 Pre-Market (prelim APPROVE)",
+      "stop": null,
+      "target": null,
+      "setup": "sector-rotation",
+      "notes": "Palo Alto Networks — cybersecurity. Not chip-exposed. Secular demand from AI threat surface. Defensive in semiconductor selloff environment. Prelim ~7.0. Run 6-agent July 6 Pre-Market."
+    },
+    {
+      "symbol": "MSFT",
+      "score": 7.0,
+      "action": "FRESH 6-AGENT at July 6 Pre-Market (prelim APPROVE)",
+      "stop": null,
+      "target": null,
+      "setup": "sector-rotation",
+      "notes": "Microsoft — Azure cloud + Copilot monetization. Not chip capex dependent. AI services exposure (similar thesis to META). Prelim ~7.0. Check earnings window (est. July 30 — well outside 48h rule). Run 6-agent July 6 Pre-Market."
+    },
+    {
+      "symbol": "NVDA",
+      "score": 6.0,
+      "action": "FRESH 6-AGENT at July 6 Pre-Market — likely REJECT",
+      "stop": null,
+      "target": null,
+      "setup": "mean-reversion-oversold",
+      "notes": "Oversold after −5% July 2 (AI ROI skepticism + SK Hynix HBM narrative). AI capex secular intact. Prelim ~6.0 — below 7 threshold until sentiment stabilizes. Re-score if semiconductor sector shows reversal Monday."
+    },
+    {
+      "symbol": "GLD",
+      "score": 6.5,
+      "action": "MONITOR — re-score if AI selloff triggers broad risk-off",
+      "stop": null,
+      "target": null,
+      "setup": "macro-hedge",
+      "notes": "Gold hedge for macro uncertainty. PCE 4.1% inflation still elevated. AI chip selloff has NOT yet triggered broad risk-off (Dow +1% while Nasdaq −0.8%). If selloff broadens, GLD becomes more attractive. Prelim ~6.5 — below 7. Watch July 10 CPI print."
     }
   ],
   "history": [
     {
-      "date": "2026-07-02",
-      "portfolio_return_pct": 1.15,
-      "spx_return_pct": 4.69,
+      "date": "2026-07-03",
+      "portfolio_return_pct": 0.72,
+      "spx_return_pct": 4.51,
       "daily_pnl_pct": 0.0,
-      "note": "API blocked (62nd session). All 3 MOC orders blocked. AMD naked Day 11. 5 of 6 predecessor routines silent failed. July 4 = market closed."
+      "note": "MARKET HOLIDAY (observed Independence Day). No trading. Portfolio est. +0.72% total return vs SPX +4.51% = −3.79 pp gap. AMD 18sh naked Day 12/13 at 9.9% equity. Weekly strategy evolution: AI chip → AI services. July 6 = next trading day."
+    },
+    {
+      "date": "2026-07-02",
+      "portfolio_return_pct": 0.72,
+      "spx_return_pct": 4.51,
+      "daily_pnl_pct": -0.43,
+      "note": "API blocked (62nd session). AMD fell ~4.3% from $579 to $555 est. All 3 MOC orders blocked. AMD naked Day 11-12. 5 of 6 predecessor routines silent failed. Last trading day before July 4 holiday."
     }
   ]
 }

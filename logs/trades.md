@@ -155,6 +155,246 @@ master_notes: "Non-trading day — market closed. CLAUDE.md: routines run on tra
 
 ---
 
+## 2026-07-03 — Daily Review (4:30 PM ET / 20:30 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-03T20:34:38Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **64th consecutive blocked session**
+**Current Time:** 20:34Z = 4:34 PM ET — Daily Review window
+
+---
+
+### MARKET HOLIDAY — BRIEF REVIEW & CARRY-FORWARD
+
+**July 3, 2026 = Observed Independence Day (market CLOSED). July 4 falls on Saturday → NYSE/NASDAQ closed Friday.**
+
+Per CLAUDE.md: "Routines run on trading days only." This Daily Review fires per scheduler but recognizes the holiday and executes a condensed end-of-week review.
+
+---
+
+### HEARTBEAT AUDIT — JULY 3, 2026
+
+| Routine | Scheduled ET | Scheduled Z | STARTED | COMPLETED | Status |
+|---------|-------------|-------------|---------|-----------|--------|
+| Pre-Market | 8:00 AM | 12:00Z | ✅ 12:05Z | ✅ 12:11Z | **OK — holiday identified correctly** |
+| Market-Open | 9:45 AM | 13:45Z | N/A | N/A | ✅ EXPECTED ABSENT (holiday) |
+| Mid-Morning | 11:00 AM | 15:00Z | N/A | N/A | ✅ EXPECTED ABSENT (holiday) |
+| Midday | 12:30 PM | 16:30Z | N/A | N/A | ✅ EXPECTED ABSENT (holiday) |
+| Afternoon | 2:00 PM | 18:00Z | N/A | N/A | ✅ EXPECTED ABSENT (holiday) |
+| Market-Close | 3:30 PM | 19:30Z | N/A | N/A | ✅ EXPECTED ABSENT (holiday) |
+| Daily-Review | 4:30 PM | 20:30Z | ✅ 20:34Z | PENDING | Running |
+
+**No silent failures today.** Pre-Market correctly identified the holiday. All other non-firings are expected behavior per CLAUDE.md.
+
+**TOP OPERATIONAL ISSUE (ongoing — Day 64):** Alpaca API egress blocked. All 7 trading routines this week (June 30 through July 2) attempted and failed to reach paper-api.alpaca.markets. AMD naked position (18sh) continues unprotected. AMD take-profit $582.78 was exceeded intraday July 1 ($584.73 high) without capture. Root cause: proxy allowlist policy; operator must file ticket with Anthropic or provision a workaround before July 6.
+
+---
+
+### PREDECESSOR WEEK HEARTBEAT SUMMARY (June 30 – July 3)
+
+| Date | Day | Routines OK | Silent Failures |
+|------|-----|-------------|-----------------|
+| June 30 | Mon | 0 | 6 of 6 (full blackout) |
+| July 1 | Tue | 2 | 4 of 6 (Mid-Morning ✅, Afternoon ✅) |
+| July 2 | Wed | 1 | 5 of 6 (Market-Close ✅) |
+| July 3 | Thu | 1 | 0 (holiday) |
+
+**Total this week: 4 of 25 routine slots fired correctly. 21 silent failures.**
+
+---
+
+### PORTFOLIO STATE (estimated — API blocked 64th session)
+
+| Item | Value | Notes |
+|------|-------|-------|
+| Total Equity (est.) | **~$100,722** | Cash $90,732 + AMD 18sh × $555 est. |
+| Cash | ~$90,732 (90.1%) | 5% floor: ✅ well above. But 90% cash = massive deployment failure |
+| AMD (active) | 18sh × ~$555 = ~$9,990 | **9.9% equity — OVER 5% cap (Day 12/13 naked)** |
+| Total return (est.) | **+0.72%** | ($100,722 / $100,000 − 1) |
+| S&P 500 return (est.) | **+4.51%** | May 1 baseline 7,200 → July 2 ~7,525 |
+| **Cumulative gap vs SPX** | **est. −3.79 pp** | Widening — chip selloff hurt AMD est. value; cash earns nothing |
+| Crypto bucket | $0 (0%) | No entries; BTC ~$60K (below $82K threshold) |
+
+---
+
+### TODAY'S P&L vs SPX GAP
+
+**Today (July 3 = MARKET HOLIDAY):** No trading. No P&L. SPX = no change (closed).
+- Daily gap: **0.00 pp** (holiday — no comparison possible)
+
+**Rolling 20-day cumulative gap:** est. **−3.79 pp** (portfolio +0.72% vs SPX +4.51% from May 1 baseline)
+
+**This week's estimated performance:**
+- AMD fell from ~$579 (July 1 close est.) to ~$555 (July 2 close est.) = −$24/sh × 18sh = **−$432 est. unrealized P&L lost this week**
+- Portfolio total return declined from est. +1.15% (July 1) to est. +0.72% (July 2) = **−0.43 pp this week**
+- SPX moved from est. 7,538 (July 1) to ~7,525 (July 2) = approximately **flat to slightly down** (Dow +1%, Nasdaq −0.8%)
+- Net weekly gap change: approximately **0 pp** (both portfolio and SPX roughly flat on week, both hurt by AI chip selloff)
+
+---
+
+### ROLLING 20-DAY WIN RATE / PROFIT FACTOR
+
+**Closed trades (last 20 trading days):** 1 confirmed trade in 20-day window.
+- GLD: entry $418.86 (May 20 est.), stop hit $397.92 (June 10) = **−4.99% loss** (−$145.58)
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Win rate (20-day) | 0% (0W / 1L) | Only GLD stop hit; AMD position open/unresolved |
+| Avg win | N/A | No wins |
+| Avg loss | 4.99% ($145.58) | GLD stop |
+| Profit factor | 0.00 | No winning trades to offset loss |
+
+All other approved entries (INTC, MRVL, AMD 2nd lot, IBM, META, TSLA) were blocked at the API and never filled. Win/loss metrics will not improve until orders can actually execute.
+
+---
+
+### BEST & WORST OF THE WEEK
+
+**Best:** AMD unrealized gain remains profitable despite selloff (+$868 est. on 18sh at $506.76 fill vs ~$555 July 2). Take-profit of $582.78 was exceeded intraday July 1 ($584.73) — **a win that wasn't captured** due to API blockage.
+
+**Worst:** AMD remains at 9.9% of equity with no stop-loss (Day 12/13 naked). The July 1 peak has now partially reversed. In a functioning system, 9sh would have been sold at the MOO on any of 5+ routine attempts, and the remaining 9sh would have a GTC stop protecting the position.
+
+---
+
+### 3 THINGS THAT WORKED THIS WEEK
+
+1. **Holiday identification correct:** Pre-Market on July 3 correctly identified the NYSE/NASDAQ closure and refrained from placing any orders — correct behavior per CLAUDE.md "routines run on trading days only."
+2. **New catalyst discovery:** IBM's sub-1nm NanoStack chip (world's first 0.7nm transistor) + JPMorgan Overweight = re-scored to 7.67 (from 6.67 mid-morning July 1). Rapid re-scoring on fresh catalyst is the right protocol.
+3. **META identification:** Bloomberg cloud compute story confirmed by 8+ outlets = META approved at 7.5 avg on July 1. Correctly identified META as a beneficiary of AI monetization (selling excess compute capacity) rather than a victim of AI chip ROI skepticism.
+
+---
+
+### 3 THINGS TO IMPROVE FOR JULY 6
+
+1. **AMD SELL 9sh is Job 1 Monday morning (Pre-9:25 AM ET).** This is a Day 12 naked position at 9.9% of equity. Operator must log into app.alpaca.markets before market open and sell 9sh at MOO + place GTC stop $481.42 on remaining 9sh. API blockage is NOT an exemption.
+2. **Re-price IBM and META before placing orders.** IBM closed $289.52 on July 2 (limit $290, not $293.62). META closed ~$585 on July 2 (limit $587, not $615). Using stale limits risks missing fills or entering at worse prices.
+3. **Begin building watchlist for non-chip tech in this AI ROI skepticism environment.** META (cloud compute) and IBM (enterprise/hybrid cloud) are already approved — need to add PANW, MSFT, and other names not exposed to chip capex cycle as the environment rotates.
+
+---
+
+### SETUP-TAG TALLY (rolling 5-day: June 27 – July 3)
+
+**Completed trades with `result_pct` in window:** 0 (all entries blocked by API; AMD open/unresolved)
+
+| Setup Tag | Win | Loss | Streak | Status | Action |
+|-----------|-----|------|--------|--------|--------|
+| ai-momentum-pullback | 0 | 0 | — | OPEN (AMD) | No change |
+| breakout-volume | 0 | 0 | — | PENDING (IBM, META) | No change |
+| earnings-reaction-follow | 0 | 0 | — | DEFERRED (TSLA, MU) | No change |
+| macro-hedge | 0 | 1 | 1L | — | GLD loss June 10; no new entries |
+
+**No halts or boosts triggered.** Insufficient closed-trade data — API blockage prevents entry execution which prevents exit tracking.
+
+---
+
+### AGENT CALIBRATION UPDATE
+
+No new closed trades this week to calibrate against. Tracking state unchanged:
+- All 6 sub-agents have scored AMD 7.17 avg (approved) — position profitable but naked
+- IBM scored 7.67 avg (all 6 agents ≥ 7) — order not yet executed (API blocked)
+- META scored 7.5 avg — order not yet executed (API blocked)
+
+Agent calibration will be meaningful once the API blockage is resolved and entries can actually be tracked through to exits.
+
+---
+
+### WATCHLIST FOR JULY 6, 2026 (MONDAY) — BINDING COMMITMENT
+
+**MANDATORY ORDERS (previously scored ≥7, carry-forward):**
+
+| Priority | Ticker | Action | Score | Order | Stop | Target | Notes |
+|----------|--------|--------|-------|-------|------|--------|-------|
+| 1 | **AMD SELL 9sh** | MOO sell | — | Market-on-Open | — | — | Day 12 naked; reduce 18sh→9sh; place GTC stop $481.42 on remaining 9sh |
+| 2 | **IBM** | BUY 3sh limit | 7.67 | $290.00 bracket GTC | $275.50 | $333.50 | Re-priced from $293.62; IBM at $289.52 July 2 close; hard exit deadline July 18 EOD |
+| 3 | **META** | BUY 8sh limit | 7.5 | $587.00 bracket GTC | $557.65 | $675.05 | Re-priced from $615.06; META at ~$585 July 2 close; cloud compute story confirmed |
+
+**FRESH 6-AGENT REQUIRED AT MONDAY PRE-MARKET:**
+
+| Ticker | Prelim Score | Key Thesis | Key Risk |
+|--------|-------------|------------|----------|
+| TSLA | 5.3 est. | 480K delivery beat (+18.2% vs 406K); sell-the-news -7.5% could reverse | P/E ~390x; US sales -19.7% YoY; earnings July 22 (must exit by July 20) |
+| NVDA | 6.0 est. | AI capex secular intact; oversold -5% July 2 | AI ROI skepticism; SK Hynix HBM slowdown narrative |
+| PANW | 7.0 est. | Cybersecurity defensive; not chip-exposed; strong secular demand | Valuation elevated; competition from Microsoft Defender |
+| MSFT | 7.0 est. | Azure cloud growth; Copilot monetizing; not chip capex dependent | Earnings ~July 30 — must check 48h window |
+| MU | 5.5 est. | Oversold -7% July 2; HBM4 sold out | Antitrust class-action 3:26-cv-06345 (June 25); supply headwind from SK Hynix |
+| GLD | 6.5 est. | Inflation hedge 4.1% PCE; macro uncertainty | Rate-cut hope suppresses gold; semiconductor selloff not yet triggering broad risk-off |
+
+**BINDING ENTRY POLICY for July 6 (per Deployment Bias):**
+- IBM (7.67) + META (7.5) → MANDATORY at July 6 Pre-Market. No "wait for better setup" excuses.
+- AMD SELL 9sh → MANDATORY first order (cannot be deferred — 12 days naked is beyond any acceptable threshold).
+- TSLA: if fresh 6-agent scores ≥7 AND semiconductor sector shows stabilization → enter. Likely REJECT given P/E and US sales trend.
+- PANW/MSFT: run fresh 6-agent at Pre-Market; enter if ≥7.
+
+---
+
+### KEY MACRO EVENTS — WEEK OF JULY 6
+
+| Date | Event | Impact |
+|------|-------|--------|
+| July 6 (Mon) | Market reopens post-holiday; semiconductor sector direction | AMD/NVDA/MU tone-setting |
+| July 7 (Tue) | ISM Services PMI | Risk-on/off signal |
+| July 8 (Wed) | FOMC Minutes (June 17 meeting) | Rate trajectory; USD impact |
+| July 9 (Thu) | Initial Jobless Claims | Labor market health |
+| July 10 (Fri) | CPI June 2026 | Key inflation print — could move rates/gold |
+| July 11 (Fri) | JPMorgan (JPM) Q2 earnings | Q2 earnings season kicks off; financial sector read |
+| July 11 (Fri) | Wells Fargo (WFC) Q2 earnings | Same day as JPM — double earnings kick |
+
+**⚠️ IBM EXIT DEADLINE: July 18 EOD** (IBM earnings July 22 — 20-day window opens July 2, hard exit by July 18)
+**⚠️ TSLA EXIT DEADLINE (if entering): July 20 EOD** (TSLA earnings July 22 after close)
+**CPI July 10:** If hot (>4.2% headline), macro headwinds for growth/tech names. If cool, rate-cut optimism could boost growth stocks significantly.
+
+---
+
+### FRIDAY WEEKLY STRATEGY EVOLUTION — WEEK OF JUNE 30, 2026
+
+**Summary: A week of compounding missed opportunities in an environment that rewarded both action AND inaction at different moments.**
+
+**What changed this week:**
+
+1. **The AI chip cycle showed real cracks.** SK Hynix announcing slower HBM production expansion (July 2) is not a one-day event — it signals the market is questioning whether AI infrastructure buildout is ahead of monetization. This is consistent with "when does AI capex pay off?" sentiment that has been building since June. **Strategy implication:** Reduce direct AI chip exposure (AMD is currently our only chip position); emphasize AI SOFTWARE and AI SERVICES names (META cloud compute, IBM enterprise AI) that benefit from AI adoption regardless of chip cycle timing.
+
+2. **META cloud compute thesis emerged as the strongest new idea.** Bloomberg cloud compute report (July 1), confirmed by 8+ outlets, positions META as a two-sided AI marketplace: they sell AI capacity to third parties. This is structurally different from NVDA/AMD/MU (chip sellers) because META's revenue comes from SERVICES on top of the infrastructure. Score 7.5 — carry to Monday as MANDATORY entry.
+
+3. **TSLA: beat on delivery but deteriorating US market.** 480K deliveries = impressive headline. US domestic -19.7% YoY for 9th consecutive month = structural problem. The sell-the-news reaction (-7.5%) reflects the market seeing through the headline beat. **Strategy: SKIP unless 6-agent scores ≥7 with clear explanation of why US market share decline reverses.**
+
+4. **IBM NanoStack sub-1nm chip = defensible moat.** IBM's 0.7nm transistor (world's first) + quantum executive orders + JPMorgan OW = score jumped from 6.67 to 7.67. IBM is the most credible "defensive tech" play in this environment — enterprise clients, subscription revenue, not chip capex dependent.
+
+5. **API blockage root cause (Day 64 of 64):** The proxy allowlist policy blocking paper-api.alpaca.markets has now lasted through an entire quarter-end, a market holiday, and 64 consecutive sessions. Every approved trade since May has been blocked from execution. **This is the single largest operational risk to the strategy.** Operator must escalate this to Anthropic with urgency before July 6 open.
+
+**No changes to hard guardrails.** The stop-loss percentages, position caps, and R/R requirements are non-negotiable. The strategy evolution is in SECTOR EMPHASIS: reducing chip cyclical exposure, increasing AI-services and enterprise tech exposure.
+
+---
+
+### YAML DECISION LOG — JULY 3 DAILY REVIEW
+
+```yaml
+---
+ts: 2026-07-03T20:34:38Z
+action: skip
+symbol: SYSTEM
+bucket: active
+setup: other
+score: null
+thesis: "Market holiday Daily Review. NYSE/NASDAQ closed (observed Independence Day). No trades. Weekly evolution note written. Watchlist for July 6 confirmed: AMD sell 9sh MOO (mandatory), IBM 3sh $290 bracket GTC (mandatory 7.67), META 8sh $587 bracket GTC (mandatory 7.5), TSLA fresh 6-agent needed (prelim reject), PANW/MSFT fresh 6-agent candidates."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Holiday daily review. API blocked (64th consecutive). No orders placed. AMD 18sh naked Day 12/13 — critical carry to July 6 MOO sell. IBM re-priced $293.62→$290.00. META re-priced $615.06→$587.00. TSLA prelim score ~5.3 (likely reject July 6). Weekly strategy evolution note written: shift emphasis from AI chip cyclicals to AI services/enterprise tech (META cloud compute, IBM NanoStack). No guardrail changes."
+---
+```
+
+---
+
 ## 2026-07-02 — Market Close (3:30 PM ET / 19:35 UTC — THURSDAY — TRADING DAY — LAST DAY BEFORE JULY 4 HOLIDAY)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-02T19:35:13Z ✓
