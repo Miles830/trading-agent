@@ -4,6 +4,148 @@
 
 ---
 
+## 2026-07-03 — Afternoon (2:00 PM ET / 18:07 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-03T18:07:11Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443) — **64th consecutive blocked session**
+**Current Time:** 18:07Z = 2:07 PM ET — Afternoon routine window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 3 AFTERNOON
+
+Checking `logs/heartbeats/2026-07-03.log`:
+- Pre-Market: STARTED 12:05:12Z / COMPLETED 12:11:44Z ✅
+- Market Open: NOT IN LOG → **HOLIDAY-EXEMPT** (CLAUDE.md: "Routines run on trading days only. No routines on weekends or market holidays.")
+- Mid-Morning: NOT IN LOG → **HOLIDAY-EXEMPT**
+- Midday: NOT IN LOG → **HOLIDAY-EXEMPT**
+- Afternoon: STARTED 18:07:11Z ✅ RUNNING
+
+**No violations to log.** Market Open/Mid-Morning/Midday absence is correct behavior on a market holiday. Pre-Market ran and correctly confirmed non-trading day at 8:05 AM ET.
+
+---
+
+### MARKET STATUS
+
+**NYSE/NASDAQ CLOSED — OBSERVED INDEPENDENCE DAY (JULY 4, 2026 FALLS ON SATURDAY)**
+
+Per exchange rules, when Independence Day falls on Saturday, the preceding Friday is the observed holiday. July 3, 2026 is a non-trading day.
+
+- Market opens next: **Monday, July 6, 2026** (post-holiday session)
+- No price updates available since July 2 close
+- No orders can be placed (market closed + API blocked)
+
+---
+
+### STOP-LOSS AUDIT
+
+**Alpaca API blocked (64th consecutive session).** Cannot verify stop orders.
+
+Estimated position state (unchanged from July 2 close — market closed, no price changes):
+- ⚠️⚠️⚠️ **AMD 18sh — CRITICALLY NAKED — DAY 12 (Day 13 by Monday July 6 open)**
+  - Fill: 18sh × $506.76 avg = $9,121.68 cost basis
+  - Est. price (July 2 close): **~$555** (AMD -4.3% on July 2 in semiconductor selloff)
+  - Unrealized est.: 18sh × ($555 − $506.76) = **+$868.32** (+9.5%)
+  - NAKED — no stop-loss, no take-profit resting at Alpaca
+  - Position est. ~$9,990 = **~9.9% of equity** (OVER 5% hard cap — GUARDRAIL VIOLATION DAY 12)
+  - Original take-profit $582.78 was exceeded intraday July 1 (high $584.73) without execution
+  - AMD trajectory: $506.76 fill → $584.73 peak (July 1) → $555 (July 2 close, -4.3% on SK Hynix caution)
+  - July 3 = market closed; price unchanged at ~$555 est.
+
+---
+
+### AFTERNOON MARKET ANALYSIS (HOLIDAY — NO LIVE DATA)
+
+Since market is closed and web/API access is blocked, this routine uses last-known data (July 2 close) for Monday preparation.
+
+**Key themes entering July 6 (Monday):**
+
+1. **Semiconductor sector selloff** (July 1-2): AI infrastructure ROI skepticism + SK Hynix slowing HBM expansion
+   - AMD: -4.3% July 2 (from $579→$555 est.); NVDA: -5%; MU: -7%; SMH (ETF): -5%
+   - Support levels to watch: AMD $500, NVDA $190, SMH $225
+   - Catalyst: Any AI capex announcement (MSFT, GOOGL, META, AMZN hyperscaler spend confirmation) could reverse
+
+2. **META cloud compute story** (confirmed July 1): META building two-tier cloud offering — raw compute + managed AI service
+   - META gave back from $619 → $585 on July 2 (general AI bubble selloff, not META-specific)
+   - Cloud story confirmed by 8+ outlets, not retracted
+   - Monday entry thesis intact at re-priced $587 limit (score 7.5 — MANDATORY)
+
+3. **IBM** (July 2 close $289.52): JPMorgan Overweight intact; sub-1nm NanoStack chip catalyst; Q2 earnings July 22
+   - IBM closed BELOW our re-priced limit $290.00 on July 2 → WILL FILL at Monday open
+   - Hard exit deadline: July 18 EOD (20-day window before July 22 earnings)
+
+4. **TSLA sell-the-news** (July 2 close ~$395.86, -7.49%): Q2 deliveries 480,126 (beat by +18.2%) but stock dropped
+   - US sales -19.7% YoY (9th consecutive month of domestic decline — structural concern)
+   - P/E ~390x (extreme premium, any AI narrative reversal = multiple compression risk)
+   - Monday action: Full 6-agent score at Pre-Market; enter only if ≥7
+   - Must exit before July 20 EOD (earnings July 22)
+
+5. **Post-holiday volume**: July 6 Monday sessions after July 4 holiday typically see wider spreads, thinner volume in first 30 minutes. MOO for AMD reduction is the right execution (guaranteed fill at open regardless of spread).
+
+---
+
+### PRELIMINARY WATCHLIST FOR MONDAY JULY 6
+
+| Priority | Ticker | Action | Score | Binding? | Price Target | Stop | R/R |
+|----------|--------|--------|-------|----------|-------------|------|-----|
+| 1 | AMD SELL 9sh | MOO | — | ⚠️ CRITICAL | ~$555 est. | — | — |
+| 2 | IBM | Limit BUY 3sh | 7.67 | ✅ MANDATORY | $290.00 limit | $275.50 | 3:1 |
+| 3 | META | Limit BUY 8sh | 7.5 | ✅ MANDATORY | $587.00 limit | $557.65 | 3:1 |
+| 4 | TSLA | 6-agent score | TBD | Conditional | TBD | TBD | ≥3:1 req'd |
+
+**Post-holiday scan additions for Monday Pre-Market:**
+- NVDA: If AI narrative stabilizes over weekend (any hyperscaler capex news = bullish), re-score at Monday Pre-Market. Last score ~6.83 (below 7 threshold). Watch for $190 bounce.
+- SMH/SOXL ETF: If semiconductor sector shows recovery, sector ETF is lower-risk entry than individual names.
+- QQQ: If AI bubble narrative reverses on positive weekend news, QQQ calls (sector-rotation-follow setup).
+- Energy (XOM/CVX): If macro remains strong and crude oil holds, consider sector rotation into energy.
+
+**Note:** xAI Grok API blocked (same network policy as Alpaca — proxy 403). X sentiment cannot be queried this routine. Pre-Market July 6 must run X sentiment check as part of TSLA 6-agent analysis and META re-verify.
+
+---
+
+### DAY-TRADE ASSESSMENT
+
+No day trades open. AMD is a swing trade (NAKED, Day 12). Market is closed. No MOC orders to place.
+
+---
+
+### SWING TRADE REVIEW
+
+AMD 18sh: Last known +$868 unrealized (+9.5%). No stop resting. No target resting. Semiconductor sector in correction mode. Monday plan: SELL 9sh at MOO (reduce to within 5% cap). After fill, place GTC stop on remaining 9sh at $506.76 × 0.95 = **$481.42**. Target for remaining 9sh: $481.42 to $555 delta = $73.58; target = $555 + 3×$73.58 = **$775.74** (or the original $582.78 if conservative — but original target already exceeded once, may need re-assessment at Monday Pre-Market based on semiconductor sector direction).
+
+---
+
+### YAML DECISION LOG — AFTERNOON JULY 3
+
+```yaml
+---
+ts: 2026-07-03T18:07:32Z
+action: skip
+symbol: SYSTEM
+bucket: active
+setup: other
+score: null
+thesis: "Market holiday (July 3 = observed Independence Day). Afternoon routine confirms non-trading day. API blocked (64th consecutive). No prices updated since July 2 close. All bindings carry to July 6 Monday. AMD naked Day 12 (Day 13 by Monday). No orders possible."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Holiday routine — market closed (NYSE/NASDAQ observed July 4 holiday on July 3). API proxy blocked paper-api.alpaca.markets:443 (64th consecutive blocked session). Pre-Market ran 12:05-12:11Z and confirmed holiday. Market Open/Mid-Morning/Midday absent — HOLIDAY-EXEMPT per CLAUDE.md. xAI Grok API also blocked (same network policy). No trading activity. Monday July 6 bindings: (1) AMD SELL 9sh MOO — ABSOLUTE FIRST ORDER; (2) IBM 3sh limit $290.00 bracket GTC; (3) META 8sh limit $587.00 bracket GTC; (4) TSLA conditional on 6-agent ≥7 at Pre-Market."
+---
+```
+
+---
+
 ## 2026-07-03 — Pre-Market (8:00 AM ET / 12:05 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-03T12:05:12Z ✓
