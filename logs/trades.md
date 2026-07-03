@@ -4,6 +4,53 @@
 
 ---
 
+## 2026-07-03 — Market-Open (9:45 AM ET / 13:45 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-03T13:45:58Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **64th consecutive blocked session**
+**Current Time:** 13:46Z = 9:46 AM ET — Market-Open window
+
+### HOLIDAY CONFIRMATION — MARKET CLOSED
+
+**Pre-Market predecessor heartbeat:** STARTED 12:05Z / COMPLETED 12:11Z ✓
+
+NYSE/NASDAQ are **CLOSED** today — July 3, 2026 is the observed Independence Day (July 4 falls on Saturday; exchange observes Friday July 3). No MOO fills, no orders to backfill, no limit orders permitted.
+
+**All bindings carry forward to July 6 (Monday):**
+- ⚠️ AMD SELL 9sh at MOO — ABSOLUTE FIRST ORDER (Day 12 naked, ~$9,990 position = ~9.9% equity, OVER 5% cap)
+- IBM 3sh limit ~$290 bracket GTC (score 7.67 — MANDATORY)
+- META 8sh limit ~$587 bracket GTC (score 7.5 — MANDATORY)
+- TSLA full 6-agent re-score (binary event expired; 480K delivery beat; -7.5% sell-the-news)
+
+```yaml
+---
+ts: 2026-07-03T13:46:00Z
+action: skip
+symbol: SYSTEM
+bucket: active
+setup: other
+score: null
+thesis: "Market-Open routine — market holiday (observed Independence Day July 3). No fills to backfill, no orders possible. All bindings carry to July 6."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Non-trading day confirmed. Pre-Market predecessor completed 12:11Z. API blocked (64th consecutive — proxy 403). No positions or stops changed. AMD remains critically naked (Day 12, 18sh, ~9.9% equity). July 6 MANDATORY: (1) AMD SELL 9sh MOO FIRST; (2) IBM 3sh limit $290 bracket GTC; (3) META 8sh limit $587 bracket GTC; (4) TSLA 6-agent if score ≥7."
+---
+```
+
+---
+
 ## 2026-07-03 — Pre-Market (8:00 AM ET / 12:05 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-03T12:05:12Z ✓
