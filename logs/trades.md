@@ -155,6 +155,134 @@ master_notes: "Non-trading day — market closed. CLAUDE.md: routines run on tra
 
 ---
 
+### Market-Close (3:30 PM ET / 19:35 UTC — HOLIDAY — NO TRADING)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-03T19:34:57Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden) — **64th consecutive blocked session**
+**Current Time:** 19:35Z = 3:35 PM ET — Market CLOSED (observed Independence Day)
+
+---
+
+#### PREDECESSOR HEARTBEAT AUDIT — JULY 3
+
+| Routine | Expected? | Status |
+|---------|-----------|--------|
+| Pre-Market | Yes | ✅ COMPLETED 12:11Z (holiday confirmed in log) |
+| Market-Open | No (holiday) | ✅ Correctly absent — no violation |
+| Mid-Morning | No (holiday) | ✅ Correctly absent — no violation |
+| Midday | No (holiday) | ✅ Correctly absent — no violation |
+| Afternoon | No (holiday) | ✅ Correctly absent — no violation |
+
+All intermediate routines correctly absent on a market holiday. No silent-failure violations to log.
+
+---
+
+#### STOP-LOSS AUDIT (HOLIDAY — ALL ESTIMATES)
+
+- **AMD 18sh** at $506.76 fill — ⚠️⚠️⚠️ **CRITICALLY NAKED — Day 12** (holiday counts toward naked-day tally)
+  - Est. price (July 2 close): ~$555 — unrealized est. +$868.32
+  - No stop-loss resting at Alpaca (API blocked 64th consecutive session)
+  - Position est. ~$9,990 = ~9.9% equity — OVER 5% hard cap (Day 12 violation)
+- No other open positions
+
+---
+
+#### MARKET CLOSE SUMMARY
+
+**Market Status:** NYSE/NASDAQ CLOSED — Observed Independence Day (July 4 falls Saturday → July 3 is observed holiday)
+
+**Orders Placed:** NONE — market closed; this is not one of the 3 enumerated exemptions but a more fundamental condition: no market = no orders possible. The 3-exemption framework applies only on trading days.
+
+**Day Trades to Close:** NONE (no intraday positions)
+
+**Portfolio Changes Today:** NONE (no trading)
+
+**After-Hours / Crypto Check:** BTC est. ~$60K range (below $82K active-trading threshold — no entry)
+
+---
+
+#### PORTFOLIO STATE (UNCHANGED FROM JULY 2)
+
+```
+PORTFOLIO STATE
+Total Equity: ~$100,722 (estimated — API blocked 64th consecutive session)
+Cash: ~$90,732 (90.1%) — 5% floor ✓
+Trading bucket: ~$9,990 (9.9%) — 1 position — target 85%
+  ⚠️ AMD 18sh × $555 est. = $9,990 (OVER 5% hard cap — Day 12 NAKED)
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+S&P 500 (May 1 baseline 7,200 → July 2 est. 7,525): +4.51%
+Portfolio return est.: +0.72%
+Cumulative gap vs SPX: est. −3.79 pp
+Daily P&L: $0.00 (market closed)
+```
+
+---
+
+#### JULY 6 (MONDAY) BINDING COMMITMENTS — CONFIRMED CARRY-FORWARD
+
+1. ⚠️⚠️⚠️ **AMD SELL 9sh at MOO** — ABSOLUTE FIRST ORDER (Day 12 naked; semiconductor selloff active; reduce from 18sh to 9sh; post GTC stop $481.42 + GTC target $607 on remaining 9sh at Market-Open fill price)
+2. **IBM 3sh limit ~$290.00 bracket GTC** (stop $275.50, target $333.50 — re-priced from $293.62; IBM closed July 2 at $289.52; score 7.67 MANDATORY)
+3. **META 8sh limit ~$587.00 bracket GTC** (stop $557.65, target $675.05 — re-priced from $615.06; META gave back to ~$585 on July 2; cloud compute story intact; score 7.5 MANDATORY — re-verify at pre-market)
+4. **TSLA 6-agent score** at Pre-Market (480K Q2 delivery beat vs 406K consensus; -7.5% sell-the-news; binary event expired; P/E ~390x; US sales -19.7% YoY 9th month of decline; earnings July 22 → MUST exit by July 20 EOD if entering)
+
+---
+
+#### YAML SKIP LOG — MARKET-CLOSE (HOLIDAY CARRY-FORWARDS)
+
+```yaml
+---
+ts: 2026-07-03T19:35:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: "IBM 3sh limit $290.00 bracket GTC — carry-forward to July 6 (market closed today — observed Independence Day)"
+size_pct: 0.87
+stop: 275.50
+target: 333.50
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "Skip reason: NYSE/NASDAQ closed (observed Independence Day July 3). Not one of 3 CLAUDE.md trading-day exemptions — market closure supersedes. Carry forward to July 6 Pre-Market. Re-price limit to $290.00 (IBM closed $289.52 July 2). Stop $275.50 (-5%), target $333.50 (+3×$14.50 = +15%). Hard exit deadline July 18 EOD (earnings July 22)."
+---
+---
+ts: 2026-07-03T19:35:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.50
+thesis: "META 8sh limit $587.00 bracket GTC — carry-forward to July 6 (market closed today — observed Independence Day)"
+size_pct: 4.67
+stop: 557.65
+target: 675.05
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 6
+master_decision: approved
+master_notes: "Skip reason: NYSE/NASDAQ closed (observed Independence Day July 3). Not one of 3 CLAUDE.md trading-day exemptions — market closure supersedes. Carry forward to July 6 Pre-Market. Re-price limit to $587.00 (META gave back from $619 to ~$585 on July 2 AI chip selloff). Cloud compute story confirmed by 8+ outlets. New stop $557.65 (-5%), target $675.05 (+3×$29.35 = +15%)."
+---
+```
+
+---
+
 ## 2026-07-02 — Market Close (3:30 PM ET / 19:35 UTC — THURSDAY — TRADING DAY — LAST DAY BEFORE JULY 4 HOLIDAY)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-02T19:35:13Z ✓
