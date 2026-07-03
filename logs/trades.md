@@ -4,6 +4,158 @@
 
 ---
 
+## 2026-07-03 — Mid-Morning (11:00 AM ET / 15:10 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-03T15:09:49Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 not in egress allowlist) — **64th consecutive blocked session**
+**Current Time:** 15:10Z = 11:10 AM ET — Mid-Morning window
+
+---
+
+### MARKET STATUS
+
+**MARKET CLOSED — OBSERVED INDEPENDENCE DAY HOLIDAY.**
+July 4, 2026 (Saturday) → NYSE observes on preceding Friday July 3. No trading. No orders.
+Pre-Market routine (12:05–12:11Z) already confirmed holiday status — no Market-Open routine fired (correct, expected). No predecessor violations.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Predecessor | Scheduled ET | Heartbeat Status |
+|---|---|---|
+| Pre-Market (8:00 AM) | 12:05Z | ✅ STARTED 12:05Z / COMPLETED 12:11Z |
+| Market-Open (9:45 AM) | 13:45Z | ⬜ NOT EXPECTED (market holiday — no violation) |
+
+No violations to log.
+
+---
+
+### STOP-LOSS AUDIT (ESTIMATED — API BLOCKED)
+
+Cannot verify Alpaca orders. Estimated position state:
+
+| Symbol | Shares | Entry | Est. Close (July 2 actual) | Est. P&L | Stop Status | % Equity |
+|--------|--------|-------|---------------------------|----------|-------------|----------|
+| AMD | 18sh | $506.76 | **$517.82** (revised↓ from $555 est.) | **+$199.08** | ⚠️ NAKED — Day 12 | **9.32% — OVER 5% cap** |
+
+**AMD PRICE REVISION (significant):** Web research confirms AMD July 2 close ~$517.82 (down 4.26%). Prior estimate was $555. The semiconductor selloff was more severe than tracked:
+- SOX (PHLX Semiconductor Index): -7% on July 1, -12% over 2 days (worst Q3 start since [AI rout])
+- AMD high was $584.73 on July 1 (intraday only — never closed near that)
+- AMD July 1 close appears to have been ~$541, then -4.26% July 2 = **$517.82**
+- Position value: 18sh × $517.82 = **$9,320.76** (revised from $9,990)
+- Total est. equity: $90,732 cash + $9,320.76 = **$100,052.76**
+
+---
+
+### MID-MORNING RESEARCH — MONDAY JULY 6 PREPARATION
+
+#### Semiconductor Sector (AMD)
+- **SOX -12% over 2 days** entering Independence Day weekend (Goldman Sachs data)
+- Catalysts for selloff: SK Hynix HBM capacity caution + AI ROI skepticism + profit-taking after +80% H1 2026 semiconductor gains
+- AMD at $517.82: still +$11.06/sh above our $506.76 fill (profitable) but stop at $481.42 now only ~7% below market
+- AMD 'Advancing AI 2026' event July 23 — not a binary event (no earnings; can hold through)
+- Wells Fargo PT $615 (street-high) from July 1 still intact
+- **Monday action CONFIRMED: SELL 9sh AMD at MOO** (Day 13 naked; semiconductor headwinds; reduce position to within 5% cap regardless of direction)
+
+#### META (Cloud Compute Story)
+- Bloomberg July 1 report: Meta building cloud business to sell excess AI compute capacity (like CoreWeave)
+- Meta to offer two tiers: raw GPU compute + managed AI model hosting
+- Stock reaction: +10% on July 1 to ~$619 peak, then gave back; July 3 data shows range $580.42–$610.00, open ~$607.90
+- Motley Fool July 3 article confirms story still valid, framing it as "rival to Amazon and Microsoft"
+- Fortune article has skeptical take ("detour not strategy") — watch as contra-indicator
+- **July 2 capex guidance: $125B–$145B in 2026** (raised from $72.2B in 2025 — massive AI bet)
+- META cloud story is multi-year; not a 1-day pop; thesis: revenue diversification from advertising → cloud
+- **Monday action CONFIRMED: BUY 8sh META limit ~$610.00 (ask × 1.005 at Monday open) bracket GTC**
+  - Stop: $610 × 0.95 = $579.50
+  - Target: $610 + 3×$30.50 = $701.50
+  - R/R: $91.50 / $30.50 = 3:1 ✓
+  - Size: 8sh × $610 = $4,880 (4.87% equity) — within 5% cap ✓
+
+#### IBM
+- IBM July 3 range: $281.80–$290.86, currently ~$287.60 (per web data)
+- IBM Q2 2026 earnings: **July 22 after close** (CONFIRMED)
+- Analyst consensus: overweight/buy, average PT ~$282 (note: below current $287 — some older targets dragging mean lower; JPMorgan OW intact)
+- Software segment: +11% YoY in Q1 2026
+- AI backlog: hit 30% growth (new data point)
+- **Hard exit deadline: July 18 EOD** (IBM earnings window opens July 2; must be flat by July 18)
+- IBM at $287.60 is within our original $290 limit. Can enter with revised limit at $288.00 Monday
+  - Limit: $288.00 (ask × 1.005 at Monday open)
+  - Stop: $288.00 × 0.95 = $273.60
+  - Target: $288.00 + 3×$14.40 = $331.20
+  - R/R: $43.20 / $14.40 = 3:1 ✓
+  - Size: 3sh × $288 = $864 (0.86% equity) ✓
+  - ⚠️ NOTE: Average analyst PT $282 is BELOW entry $288 — this is a concern. IBM must be re-evaluated at Monday pre-market. JPMorgan OW with higher individual target is the primary anchor. Will re-confirm before placing.
+
+#### TSLA
+- July 2 close: **$393.45** (down 7.49% on delivery beat — classic sell-the-news)
+- Q2 deliveries: 480,126 vs 406,024 est. (+18.2% beat, +25% YoY, +34% QoQ) — operationally excellent
+- After-hours recovery: +$0.95 to ~$394.40
+- Bears: P/E ~390x extreme; US domestic sales -19.7% YoY (9th straight month of US decline)
+- Bulls: massive delivery beat; autonomous vehicle updates; energy/storage segment
+- **Earnings July 22 after close** → must EXIT by July 20 EOD if entering (20-day window opens July 2)
+- **Monday action: Run full 6-agent at Pre-Market before committing.** TSLA at $393 with 18-day max hold adds complexity. Only enter if score ≥ 7 AND can exit comfortably before July 20.
+
+#### Broad Market / Macro
+- SPX July 1 close: 7,483.23 (+3.93% from May 1 baseline 7,200)
+- Goldman Sachs raised S&P 500 year-end 2026 target to **8,000** (from 7,600) — +6% remaining upside
+- Dow July 2: +539pts (+1.03%) to 52,844 — cyclical rotation (Dow components stronger than tech)
+- Bitcoin: ~$60K range (below $82K entry threshold — crypto bucket stays empty)
+- AI capex spending: $754B projected from hyperscalers in 2026 (+83% YoY) — long-term AI infrastructure bull intact despite near-term semiconductor correction
+
+---
+
+### MONDAY JULY 6 — FINAL BINDING COMMITMENTS (MANDATORY)
+
+| Priority | Action | Symbol | Type | Details | Score | Exemption Override? |
+|----------|--------|--------|------|---------|-------|---------------------|
+| 1 ⚠️⚠️⚠️ | SELL 9sh | AMD | MOO | Reduce 18sh→9sh; Day 13 naked; semiconductor selloff; over 5% cap | N/A | MANDATORY — no exemption |
+| 2 | BUY 3sh | IBM | Limit bracket GTC | ~$288 limit, stop $273.60, target $331.20 — RE-VERIFY at Pre-Market | 7.67 | None |
+| 3 | BUY 8sh | META | Limit bracket GTC | ~$610 limit, stop $579.50, target $701.50 | 7.5 | None |
+| 4 | After AMD sell: PLACE STOP | AMD | GTC stop | 9sh stop at $481.42 ($506.76×0.95) | N/A | MANDATORY |
+| 5 | After AMD sell: PLACE TARGET | AMD | GTC limit | 9sh target at $582.78 ($506.76+3×$25.34) | N/A | MANDATORY |
+| 6 | 6-agent score | TSLA | Research | $393.45 entry; must exit by July 20; only if score ≥ 7 | TBD | None |
+| 7 | Exit deadline log | IBM | Reminder | Must sell IBM by July 18 EOD (IBM earnings July 22) | N/A | N/A |
+
+**Post-AMD-sell position cap check:**
+- After selling 9sh AMD: remaining position 9sh × ~$520 est. = ~$4,680 (4.67% equity — within 5% ✓)
+- IBM 3sh entry: $864 (0.86%) — within cap ✓
+- META 8sh entry: $4,880 (4.87%) — within cap ✓
+- Combined positions after all Monday orders fill: AMD 9sh (~$4,680) + IBM 3sh (~$864) + META 8sh (~$4,880) = $10,424 (10.4% deployed) — leaves ~$90,000+ cash ✓
+
+---
+
+### YAML DECISION LOG — JULY 3 MID-MORNING (NON-TRADING DAY)
+
+```yaml
+---
+ts: 2026-07-03T15:10:00Z
+action: skip
+symbol: SYSTEM
+bucket: active
+setup: other
+score: null
+thesis: "Market holiday (observed Independence Day — July 4 Saturday → Friday July 3 observed). Mid-Morning research routine completed: updated AMD price to $517.82 (revised from $555 est.), confirmed META cloud story at $580-610, IBM at $287.60, TSLA at $393.45. All Monday commitments refreshed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Non-trading day — market closed. Research completed for Monday July 6 preparation. AMD revised price $517.82 (down from $555 estimate). Semiconductor sector: SOX -12% over 2 days. META cloud story confirmed — Motley Fool July 3 article validates. IBM $287.60 within entry range but avg analyst PT $282 (below entry) noted as concern for Monday re-verify. TSLA $393.45 sell-the-news; needs fresh 6-agent Monday. All API calls blocked (64th consecutive session). No orders possible today."
+---
+```
+
+---
+
 ## 2026-07-03 — Pre-Market (8:00 AM ET / 12:05 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-03T12:05:12Z ✓
