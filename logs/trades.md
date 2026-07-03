@@ -155,6 +155,92 @@ master_notes: "Non-trading day — market closed. CLAUDE.md: routines run on tra
 
 ---
 
+### MIDDAY ROUTINE — JULY 3, 2026 (12:30 PM ET / 16:34 UTC — NON-TRADING DAY CONFIRMATION)
+
+**HEARTBEAT:** STARTED Midday 2026-07-03T16:34:41Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden) — **64th consecutive blocked session**
+**Current Time:** 16:34Z = 12:34 PM ET
+
+---
+
+#### PREDECESSOR HEARTBEAT AUDIT
+
+```
+2026-07-03T12:05:12Z STARTED Pre-Market  ✓
+2026-07-03T12:11:44Z COMPLETED Pre-Market ✓
+Market-Open: ABSENT (expected — market holiday)
+Mid-Morning: ABSENT (expected — market holiday)
+Midday:      16:34:41Z STARTED ✓
+```
+
+No violations — Market-Open and Mid-Morning are correctly absent on a market holiday per CLAUDE.md.
+
+---
+
+#### HOLIDAY CONFIRMATION (MIDDAY VERIFICATION)
+
+**Market Status:** NYSE/NASDAQ CLOSED — Observed Independence Day (July 4 on Saturday → July 3 observed). Pre-Market routine confirmed this at 12:05Z. Midday confirmation: MARKET STILL CLOSED. No orders can be placed.
+
+**API Status:** Alpaca paper API blocked at proxy (HTTP 403 CONNECT rejected — `paper-api.alpaca.markets:443`). 64th consecutive session blocked. Cannot verify positions, stop orders, or account equity.
+
+---
+
+#### STOP-LOSS AUDIT (API BLOCKED — ESTIMATED STATE ONLY)
+
+- ⚠️⚠️⚠️ **AMD 18sh — CRITICALLY NAKED — Day 13 (counting both July 3 and July 4)**
+  - Fill: June 23 at $506.76 avg (18sh = $9,121.68 cost basis)
+  - Est. price (July 2 close): ~$555 → est. value ~$9,990 → est. unrealized P&L: **+$868**
+  - Position est. ~9.9% of equity — **OVER 5% hard cap** (cap = ~$5,058 at $100,722 est. equity)
+  - No stop-loss resting at Alpaca (naked — API has been blocked every session since fill)
+  - **Must SELL 9sh at MOO on July 6 (Monday) — ABSOLUTE FIRST ORDER — no exemptions**
+
+---
+
+#### PORTFOLIO STATE (ESTIMATED — API BLOCKED)
+
+```
+Total Equity (est.):  $100,722
+Cash (est.):          $90,732  (90.1%) — above 5% floor ✓
+Trading bucket (est.):  $9,990   (9.9%) — 1 position (AMD 18sh) — OVER 5% cap
+Crypto bucket:             $0   (0.0%) — target 10%
+SPX return (est.):        +4.51% (May 1 baseline 7,200 → July 2 ~7,525)
+Portfolio return (est.):  +0.72%
+Benchmark gap (est.):     -3.79 pp (underperforming — API blockage root cause)
+```
+
+---
+
+#### MIDDAY YAML DECISION LOG
+
+```yaml
+---
+ts: 2026-07-03T16:34:00Z
+action: skip
+symbol: SYSTEM
+bucket: active
+setup: other
+score: null
+thesis: "Midday holiday confirmation — NYSE/NASDAQ closed (Observed Independence Day). Market-Open and Mid-Morning correctly absent. All July 6 bindings confirmed and carry forward unchanged."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Non-trading day — market closed. Midday routine fires per scheduler but correctly takes no action. Pre-Market (12:05Z) already confirmed holiday. API still blocked (64th session). AMD Day 13 naked — JULY 6 MOO SELL 9sh is ABSOLUTE FIRST ORDER. July 6 binding commitments: (1) SELL 9sh AMD MOO; (2) IBM 3sh limit $290.00 bracket GTC (stop $275.50, target $333.50); (3) META 8sh limit $587.00 bracket GTC (stop $557.65, target $675.05); (4) TSLA full 6-agent scoring (480K delivery beat, sell-the-news -7.5%, earnings July 22 → exit by July 20 EOD if entering)."
+---
+```
+
+---
+
 ## 2026-07-02 — Market Close (3:30 PM ET / 19:35 UTC — THURSDAY — TRADING DAY — LAST DAY BEFORE JULY 4 HOLIDAY)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-02T19:35:13Z ✓

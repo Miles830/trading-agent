@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-02T19:35:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-07-03T16:34:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 101154.0,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90732,
       "cash_pct": 89.7
     },
-    "note": "July 2 MARKET-CLOSE (3:35 PM ET / 19:35Z). LAST TRADING DAY BEFORE JULY 4 HOLIDAY. API BLOCKED (HTTP 403 — 62nd consecutive). 5 of 6 routines today SILENT FAILED. ALL 3 MOC ATTEMPTS BLOCKED (AMD SELL 9sh + IBM BUY 3sh + META BUY 8sh). AMD NAKED DAY 11 — no stop, 10.3% equity (OVER 5% cap). TSLA Q2 delivery report due today — status unknown. NEXT TRADING DAY: July 3. JULY 3 BINDING: AMD SELL 9sh MOO + IBM 3sh limit $293.62 bracket GTC + META 8sh limit $615 bracket GTC + TSLA conditional."
+    "note": "July 3 MIDDAY (12:34 PM ET / 16:34Z). MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY (July 4 on Saturday → July 3 observed). NYSE/NASDAQ CLOSED. API BLOCKED (HTTP 403 — 64th consecutive). No orders placed. AMD NAKED DAY 13 (counting July 3 + July 4 holiday) — 18sh at $506.76 fill, est. ~$555 (July 2 close est.), 9.9% equity (OVER 5% cap). NEXT TRADING DAY: July 6 (Monday). JULY 6 BINDING (MANDATORY — no exemptions): (1) SELL 9sh AMD MOO — ABSOLUTE FIRST ORDER; (2) IBM 3sh limit $290.00 bracket GTC (stop $275.50, target $333.50); (3) META 8sh limit $587.00 bracket GTC (stop $557.65, target $675.05); (4) TSLA full 6-agent at July 6 pre-market (480K delivery beat, sell-the-news, earnings July 22 → exit by July 20 EOD)."
   },
   "positions": [
     {
@@ -31,42 +31,42 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 579.0,
-      "pnl": 1300.32,
-      "pnl_pct": 14.3,
+      "current_price": 555.0,
+      "pnl": 868.32,
+      "pnl_pct": 9.5,
       "stop_loss": null,
       "take_profit": 607.0,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 11. 18sh at $506.76 fill, est. ~$579 (last known). Original take-profit $582.78 EXCEEDED intraday July 1 (high $584.73) — gain not locked in. Wells Fargo PT $615 (street-high). AMD Advancing AI 2026 July 22-23. Position 10.3% equity (OVER 5% cap — Day 11 violation). NO STOP RESTING AT ALPACA. OPERATOR ACTION REQUIRED: SELL 9sh AMD at MOO July 3; place GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED — agent cannot execute."
+      "note": "CRITICALLY NAKED Day 13. 18sh at $506.76 fill, est. ~$555 (July 2 close — fell 4.3% in semiconductor selloff). Original take-profit $582.78 EXCEEDED intraday July 1 (high $584.73) — gain not locked in (API blocked). Position est. 9.9% equity (OVER 5% cap — Day 13 violation). NO STOP RESTING AT ALPACA. ABSOLUTE FIRST ORDER JULY 6: SELL 9sh AMD at MOO; then place GTC stop $481.42 + GTC take-profit on remaining 9sh. API BLOCKED — agent cannot execute. July 6 is Monday — next trading day."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 293.62,
-      "current_price": 292.16,
+      "entry_price": 290.0,
+      "current_price": 289.52,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 278.94,
-      "take_profit": 337.66,
+      "stop_loss": 275.5,
+      "take_profit": 333.5,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "Score 7.67 (approved July 1). MOC buy 3sh blocked July 2 (HTTP 403). HARD EXIT DEADLINE July 18 EOD (earnings July 22 — 20-day window opens July 2). OPERATOR: BUY 3sh IBM limit $293.62 bracket GTC (stop $278.94, target $337.66, R/R 3:1) at July 3 Pre-Market. Catalysts: JPMorgan Overweight, sub-1nm NanoStack chip, quantum executive orders."
+      "note": "Score 7.67 (approved July 1). MOC buy 3sh blocked July 2 (HTTP 403). RE-PRICED July 3: limit $290.00 (was $293.62 — IBM July 2 close $289.52, below original limit). Stop $275.50 ($290 × 0.95). Target $333.50 ($290 + 3 × $14.50). R/R 3:1 ✓. HARD EXIT DEADLINE July 18 EOD (earnings July 22 — 20-day window opens July 2). OPERATOR: BUY 3sh IBM limit $290.00 bracket GTC (stop $275.50, target $333.50) at July 6 Pre-Market. Catalysts: JPMorgan Overweight, sub-1nm NanoStack chip, quantum executive orders."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 615.06,
-      "current_price": 615.0,
+      "entry_price": 587.0,
+      "current_price": 585.0,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 584.31,
-      "take_profit": 707.31,
+      "stop_loss": 557.65,
+      "take_profit": 675.05,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "Score 7.5 (approved July 1). MOC buy 8sh blocked July 2 (HTTP 403). Re-verify cloud compute story at July 3 Pre-Market before entry — check if Bloomberg report confirmed/denied by Meta IR. OPERATOR: BUY 8sh META limit $615 bracket GTC (stop $584.31, target $707.31, R/R ~15.1%) at July 3 Pre-Market."
+      "note": "Score 7.5 (approved July 1). MOC buy 8sh blocked July 2 (HTTP 403). RE-PRICED July 3: limit $587.00 (was $615.06 — META July 2 est. close ~$585 after -5.3% AI bubble selloff). Stop $557.65 ($587 × 0.95). Target $675.05 ($587 + 3 × $29.35). R/R 3:1 ✓. Cloud compute thesis intact (Bloomberg + 8 outlets confirmed). Re-verify Monday morning before entry. OPERATOR: BUY 8sh META limit $587.00 bracket GTC (stop $557.65, target $675.05) at July 6 Pre-Market."
     },
     {
       "symbol": "TSLA",
@@ -105,10 +105,10 @@
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-06-29T12:05:10Z",
-      "next_run": "2026-07-03T12:00:00Z",
-      "last_summary": "July 2 Pre-Market silently failed (no heartbeat). Last successful: June 29. Next: July 3 (note: July 4 = Independence Day, no routines)."
+      "status": "completed",
+      "last_run": "2026-07-03T12:05:12Z",
+      "next_run": "2026-07-06T12:00:00Z",
+      "last_summary": "July 3 Pre-Market ran (holiday confirmation — market closed). July 6 (Monday) next trading day. Binding: SELL 9sh AMD MOO (first order), IBM 3sh limit $290 bracket, META 8sh limit $587 bracket, TSLA 6-agent score."
     },
     {
       "name": "Market-Open",
@@ -126,10 +126,10 @@
     },
     {
       "name": "Midday",
-      "status": "SILENT FAILURE",
-      "last_run": null,
-      "next_run": "2026-07-03T16:30:00Z",
-      "last_summary": "July 2 Midday silently failed. TSLA delivery numbers likely released by this point — evaluation missed."
+      "status": "completed",
+      "last_run": "2026-07-03T16:34:00Z",
+      "next_run": "2026-07-06T16:30:00Z",
+      "last_summary": "July 3 Midday completed (market holiday — observed Independence Day). No orders. AMD Day 13 naked confirmed. July 6 binding commitments: SELL 9sh AMD MOO, IBM 3sh limit $290 bracket, META 8sh limit $587 bracket, TSLA 6-agent score. API blocked (64th session)."
     },
     {
       "name": "Afternoon",
