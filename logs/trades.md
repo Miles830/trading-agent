@@ -4,6 +4,157 @@
 
 ---
 
+## 2026-07-03 — Pre-Market (8:00 AM ET / 12:05 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-03T12:05:12Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 and data.alpaca.markets:443 not in egress allowlist) — **63rd consecutive blocked session**
+**Current Time:** 12:05Z = 8:05 AM ET — Pre-Market window
+
+---
+
+### MARKET HOLIDAY CONFIRMATION
+
+**TODAY IS A MARKET HOLIDAY — NYSE/NASDAQ CLOSED.**
+
+July 4, 2026 (Independence Day) falls on a **Saturday**. Per NYSE/NASDAQ rules, when a federal holiday falls on Saturday, the preceding Friday is the observed holiday. Therefore:
+- **July 3, 2026 (Friday)** = Observed Independence Day — **MARKET CLOSED**
+- **July 6, 2026 (Monday)** = Next trading day
+
+Per CLAUDE.md: *"Routines run on trading days only. No routines on weekends or market holidays."*
+
+**No orders may be placed today. No MOO/MOC/limit orders.** All binding commitments carry forward to July 6 (Monday) Pre-Market.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 3, 2026
+
+No predecessor routines expected today (market holiday). Pre-Market fired in error per scheduling but correctly identifies non-trading day condition.
+
+---
+
+### STOP-LOSS AUDIT
+
+**Alpaca API blocked (63rd consecutive session).** Cannot verify stop orders.
+
+Estimated position state (unchanged from July 2 close estimate):
+- ⚠️⚠️⚠️ **AMD 18sh CRITICALLY NAKED — Day 12 (counting holiday)** — filled June 23 at $506.76 avg
+  - Est. price July 2 close: **~$555** (AMD fell 4.3% on July 2 in broad AI chip selloff)
+  - Unrealized est.: 18sh × ($555 − $506.76) = **+$868.32**
+  - NAKED — no stop, no take-profit resting at Alpaca
+  - Position est. ~$9,990 = ~9.9% of equity (OVER 5% hard cap — Day 12)
+  - ⚠️ Semiconductor selloff underway: SK Hynix slowing HBM, AI valuation reset, $500 support level flagged
+
+---
+
+### MARKET CONTEXT — JULY 2 CLOSE (last trading day)
+
+**Broad Market (July 2, 2026):**
+- S&P 500: flat to slight decline; Dow +539 pts (+1.03%) to 52,844 (bifurcated — tech weak, cyclicals strong)
+- Nasdaq 100: -0.8% (AI chip valuation concerns)
+- Sector rotation: away from semiconductors → cyclicals/Dow components
+- VIX: elevated (AI bubble fears)
+
+**Semiconductor Sector — MAJOR SELLOFF (July 1-2):**
+- Catalyst: SK Hynix reported slowing HBM (high-bandwidth memory) production expansion
+- Broader narrative: AI infrastructure ROI skepticism; "when does the AI capex pay off?"
+- MU: -7% on July 2 (had previously rallied +19% on HBM4 sold-out news)
+- AMD: -4.3% on July 2 (high was $584.73 on July 1 — exceeded our take-profit $582.78 without execution)
+- NVDA: -5%+ (AI valuation reset)
+- Applied Materials: -7.4%
+- VanEck Semiconductor ETF (SMH): -5%
+- AMD at $555 testing path toward $500 support level
+
+**META (July 1-2):**
+- July 1: +10% to ~$619 on Bloomberg cloud compute story (selling excess AI capacity to third parties)
+- July 2: Gave back to ~$585 as AI chip rout fueled broader AI bubble concerns
+- Cloud story confirmed by 8+ outlets — META planning two-tier offering: raw compute + managed AI service
+- Original July 1 entry limit $615.06 is now ABOVE current market ($585) → needs re-pricing for Monday
+
+**IBM (July 2):**
+- Closed at $289.52 (slightly below our original $293.62 limit — LIMIT WOULD NOW FILL)
+- JPMorgan Overweight still intact; sub-1nm NanoStack chip thesis solid
+- Hard exit deadline: July 18 EOD (IBM earnings July 22, 20-day window opens July 2)
+
+**TSLA (July 2):**
+- Q2 2026 deliveries: **480,126 vehicles** (vs 406,024 consensus — beat by 18.2%, +25% YoY, +34% QoQ)
+- Stock reaction: **-7.49% to ~$395.86** (worst day in nearly a year) — classic sell-the-news
+- Why it fell: (1) stock had surged 11%+ in preceding sessions pricing in the beat; (2) P/E ~390x (extreme valuation); (3) US domestic sales -19.7% YoY in June (9th straight month of US decline); (4) AI bubble sentiment dragging all high-multiple names
+- Binary event restriction EXPIRED (results published July 2) → eligible for 6-agent scoring at Monday pre-market
+- Tesla financial results: July 22 after close (do NOT hold through July 20 if entering)
+
+**Bitcoin (est.):**
+- ~$60K range (below $82K threshold — no crypto entry)
+
+---
+
+### USER SUGGESTION INBOX
+
+Checked GitHub Issues with label `user-suggestion` — **0 open suggestions** (no action required).
+
+---
+
+### WATCHLIST FOR MONDAY JULY 6 (binding)
+
+| Ticker | Action | Score | Binding? | Notes |
+|--------|--------|-------|----------|-------|
+| AMD SELL 9sh | MOO | — | ⚠️ CRITICAL | Day 12 naked; reduce 18sh→9sh; semiconductor selloff makes urgency higher |
+| IBM | Limit BUY 3sh | 7.67 | ✅ MANDATORY | Re-price limit: ~$289-292 (was $293.62; IBM now at $289.52 — fill likely) |
+| META | Limit BUY 8sh | 7.5 | ✅ MANDATORY re-score | Re-price limit: ~$585-590 (was $615.06; cloud story valid, price corrected 5%) |
+| TSLA | 6-agent score | TBD | Conditional | Binary event expired; 480K beat; sell-the-news -7.5%; US sales -19.7% YoY; score ≥7 to enter |
+
+**AMD RISK NOTE:** Semiconductor selloff ongoing. AMD fell 4.3% on July 2 alone (from ~$579 est. to ~$555). Support at $500. If AMD opens Monday below $520, the sell-9sh at MOO still applies (MUST execute) but the remaining 9sh stop at $481.42 ($506.76 × 0.95) is only ~8% below a $520 level — still valid protection.
+
+**META RE-PRICING:** July 1 entry at $615 was above closing price. Meta is now ~$585. New entry:
+- Limit: ~$587 (ask × 1.005 at Monday open)
+- Stop: $587 × 0.95 = $557.65
+- Target: $587 + 3×($587−$557.65) = $675.05
+- R/R: $88.05 / $29.35 = 3:1 ✓
+
+**IBM RE-PRICING:** IBM at $289.52 (July 2 close). New entry:
+- Limit: ~$290.00 (ask × 1.005 at Monday open)
+- Stop: $290.00 × 0.95 = $275.50
+- Target: $290.00 + 3×$14.50 = $333.50
+- Qty: 3sh (position = $870 = 0.86% equity — well within 5% cap) ✓
+
+**TSLA PRELIMINARY (need full 6-agent at Monday pre-market):**
+- If semiconductor/AI selloff continues into Monday, TSLA may be even weaker (P/E drag)
+- If sell-the-news reversal occurs (shorts cover, delivery print digested), TSLA could bounce
+- Earnings binary event: July 22 — must EXIT before July 20 if entering
+- Conservative: only enter TSLA if 6-agent ≥ 7 AND tech sector shows signs of stabilizing
+
+---
+
+### YAML DECISION LOG — JULY 3 (NON-TRADING DAY)
+
+```yaml
+---
+ts: 2026-07-03T12:05:12Z
+action: skip
+symbol: SYSTEM
+bucket: active
+setup: other
+score: null
+thesis: "Market holiday — NYSE/NASDAQ closed (observed Independence Day; July 4 falls on Saturday). All bindings carry forward to July 6."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Non-trading day — market closed. CLAUDE.md: routines run on trading days only. No exemption needed — no market = no orders. All July 3 bindings (AMD sell 9sh MOO, IBM 3sh limit, META 8sh limit) carry to July 6 Pre-Market with updated prices. TSLA binary event expired — add to July 6 6-agent candidates."
+---
+```
+
+---
+
 ## 2026-07-02 — Market Close (3:30 PM ET / 19:35 UTC — THURSDAY — TRADING DAY — LAST DAY BEFORE JULY 4 HOLIDAY)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-02T19:35:13Z ✓
