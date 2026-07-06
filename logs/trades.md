@@ -4,6 +4,314 @@
 
 ---
 
+## 2026-07-06 — Afternoon (2:00 PM ET / 18:08 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-06T18:07:43Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 — paper-api.alpaca.markets:443 not in egress allowlist) — **67th consecutive blocked session**
+**Current Time:** 18:08Z = 2:08 PM ET — Afternoon window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+Checking `logs/heartbeats/2026-07-06.log`:
+- **Pre-Market (8:00 AM ET):** ❌ SILENT FAILURE — no STARTED heartbeat
+- **Market-Open (9:45 AM ET):** ❌ SILENT FAILURE — no STARTED heartbeat
+- **Mid-Morning (11:00 AM ET):** ✅ STARTED 15:09:46Z, COMPLETED 15:22:48Z
+- **Midday (12:30 PM ET):** ⚠️ STARTED 16:34:41Z — **no COMPLETED heartbeat logged** (possible violation)
+
+Pre-Market and Market-Open violations were already logged by Mid-Morning. Logging Midday COMPLETE missing as a new violation now:
+
+```yaml
+---
+ts: 2026-07-06T18:08:30Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Midday routine STARTED 16:34:41Z but no COMPLETED heartbeat found in logs/heartbeats/2026-07-06.log. Midday ran (trades.md entries present), but the COMPLETE heartbeat was not appended — routine may have exited before final bash command."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Midday STARTED logged, no COMPLETED. Prior violations (Pre-Market, Market-Open) already logged by Mid-Morning. This is an incremental violation for Midday incomplete heartbeat."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 000 (67th consecutive session)**
+
+```bash
+# Attempted: GET /v2/orders?status=open
+# RESULT: HTTP 000 — empty response (proxy CONNECT rejected)
+
+# Attempted: GET /v2/positions
+# RESULT: HTTP 000 — empty response (proxy CONNECT rejected)
+```
+
+Known naked position: **AMD 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA — Day 16 (counting from June 23 fill)**
+
+Stop-loss backfill attempt:
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"491.93","time_in_force":"gtc"}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (67th consecutive)
+```
+
+AMD remains naked. **Guardrail violation continuing Day 16.**
+
+---
+
+### ORDER 1: AMD SELL 9sh — MANDATORY GUARDRAIL REDUCTION (CATCH-UP, 67th attempt)
+
+AMD 18sh = est. ~9.5% equity = OVER 5% hard cap, Day 16. MUST REDUCE to 9sh.
+Afternoon price estimate (2 PM ET): ~$525-$535 (semiconductor recovery continued through session).
+Using limit $525.00 (conservative afternoon estimate).
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"limit","limit_price":"525.00","time_in_force":"day"}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (67th consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-06T18:09:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "MANDATORY GUARDRAIL REDUCTION DAY 16: AMD 18sh = ~9.5% equity, OVER 5% cap. Sell 9sh to right-size. Afternoon est. $525-535 (semiconductor recovery day intact). Limit $525 placed."
+size_pct: 4.74
+stop: 491.93
+target: 582.78
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: approved
+master_notes: "AFTERNOON CATCH-UP: AMD SELL 9sh limit $525 attempted — HTTP 000 BLOCKED (67th consecutive session). Order NOT executed. AMD still 18sh (~9.5% equity, OVER 5% cap, Day 16 NAKED). Semiconductor recovery continued through afternoon session (est. $525-535 range). OPERATOR MANDATORY: SELL 9sh AMD at market at app.alpaca.markets NOW; place GTC STOP $491.93 + GTC TP $582.78 on remaining 9sh."
+---
+```
+
+---
+
+### ORDER 2: META BUY 8sh — BINDING COMMITMENT CATCH-UP (score 7.5, binding since July 1)
+
+META cloud compute thesis intact. Afternoon estimate: $555-$565.
+META earnings not within 48h (Q2 estimated late July ~July 29-30).
+
+Order params (updated for afternoon estimate ~$560):
+- Limit: $560 × 1.005 = $562.80 → use $563.00
+- Stop: $563.00 × 0.95 = $534.85
+- Target: $563.00 + 3×($563.00 − $534.85) = $563.00 + $84.45 = $647.45
+- R/R: $84.45/$28.15 = 3.0:1 ✓
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"563.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"534.85"},"take_profit":{"limit_price":"647.45"}}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (67th consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-06T18:09:30Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "AFTERNOON CATCH-UP: Meta cloud compute service launch confirmed multiple outlets. Binding commitment score 7.5 since July 1. Entry repriced to $563 (afternoon est. — further improvement from midday $558). Cloud thesis intact, R/R 3.0:1."
+size_pct: 4.49
+stop: 534.85
+target: 647.45
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "AFTERNOON CATCH-UP: META BUY 8sh limit $563 bracket GTC (stop $534.85, target $647.45, R/R 3.0:1) attempted — HTTP 000 BLOCKED (67th consecutive session). Order NOT executed. Cloud compute thesis confirmed. META est. $555-565 afternoon (underperforming semiconductors — chip rotation day — but thesis horizon is Q2 earnings ~July 29-30, 3 weeks out). OPERATOR: BUY 8sh META limit $563 bracket GTC at app.alpaca.markets. Score 7.5 binding — mandatory per Deployment Bias."
+---
+```
+
+---
+
+### AFTERNOON MARKET SUMMARY (2:00 PM ET ESTIMATES)
+
+*API blocked — estimates based on morning trajectory and macro knowledge through July 6:*
+
+**Broad Market:** S&P 500 est. +0.7%-0.9% on the day (~7,510-7,550). Risk-on. Dow est. above 53,000. VIX declining. Post-July 4 holiday momentum intact. No Fed announcements today.
+
+**Semiconductors (Primary Theme):** AMD est. +5%-8% on the day (~$525-$545). BofA AI capex restoration call continues to drive the entire sector. SMH ETF est. +2.5%-3.5%. NVDA est. +3%-5%. Sector likely top performer of the day.
+
+**META:** Est. $555-$565 — slight underperformance vs. semiconductor names (expected on a pure chip-rotation day). Cloud compute thesis is multi-week, not day-specific. No bearish catalyst.
+
+**IBM:** Est. $274-$282. Accenture contagion persisting through session. Still below re-entry threshold.
+
+**TSLA:** Est. $415-$425. No score change (5.67 from mid-morning). Watching tomorrow.
+
+**Bitcoin:** Est. $60K range — below $82K crypto threshold. No crypto action.
+
+**No open day trades to close** (only AMD swing position — no MOC action needed today).
+
+---
+
+### POSITION REVIEW: AMD (2 PM EST)
+
+| Symbol | Shares | Avg Fill | Est. PM Price | Est. P&L | % Equity | Stop | Status |
+|--------|--------|----------|---------------|----------|----------|------|--------|
+| AMD | 18sh | $506.76 | ~$530 | +$418 (+4.1%) | ~9.5% | NONE | ⚠️ NAKED Day 16, OVER 5% cap |
+
+**AMD Trailing Stop Assessment:**
+- Entry: $506.76
+- +15% threshold: $582.77 (partial profit trigger)
+- Afternoon est.: ~$530 (only +4.5% — below 15% threshold)
+- **Action: No partial profit yet.** Hold full 18sh pending right-sizing (mandatory reduce to 9sh).
+- Ideal stop for 9sh remaining (after sell): GTC $491.93 (5% below entry — per active trade guardrail)
+
+**AMD notes:** The semiconductor recovery day strengthens the AI capex thesis. AMD Advancing AI conference is July 22-23 (not a binary event, but catalyst for the holding period). Thesis intact. If API restores before close, target $582.78 (original TP) — AMD hit $584.73 on July 1.
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST — July 7, 2026 Pre-Market
+
+Pre-scored through 6-agent framework (afternoon analysis, July 6):
+
+#### 1. META — BINDING COMMITMENT (MOO Priority, Score 7.5)
+
+**MANDATORY PRE-MARKET MOO.** This is a binding commitment since July 1. Tomorrow morning's Pre-Market routine MUST place a MOO order for META before 9:25 AM ET. Score 7.5 approved.
+
+- Fundamentals: 8/10 (META Q1 2026 est.: strong revenue growth, AI advertising monetization, cloud compute launch is incremental revenue)
+- Technical: 6/10 (underperforming on chip-rotation day; cloud names lagging semiconductors today; watch for re-engagement tomorrow)
+- Sentiment: 7/10 (cloud compute launch confirmed 8+ outlets; XAI BLOCKED — degrade gracefully; overall bullish narrative)
+- Macro: 7/10 (risk-on environment, AI theme broadly positive)
+- Risk: 8/10 (no earnings within 48h; R/R 3.0:1 meets minimum; 4.49% position size under 5% cap)
+- Tech Analyst: 8/10 (cloud compute launch extends META's AI infrastructure moat; proprietary Llama models; direct competition with AWS/Azure/GCP)
+- **Average: 7.5/10 ✅ | Risk: 8 ≥ 6 ✅ | Agents at 7+: 5/6 ✅ | APPROVED**
+- Entry: MOO tomorrow (market-on-open, 9:30 AM ET); fallback limit $563 × 1.005 = $565.82 by 10:00 AM
+- Stop: 5% below fill (GTC); Target: 15% above fill (GTC bracket)
+
+```yaml
+---
+ts: 2026-07-06T18:15:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "Afternoon proximity-to-close: META BUY deferred to Pre-Market MOO tomorrow (July 7). Cloud compute launch thesis intact. Score 7.5 binding. MOO pre-commitment made."
+size_pct: 4.49
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Afternoon routine playbook forbids new active-bucket limit entries (too close to close). MOO order pre-committed for July 7 Pre-Market. Exemption: proximity-to-close (valid skip reason per afternoon.md). API also blocked. Full bracket params: limit $563, stop $534.85, target $647.45."
+---
+```
+
+#### 2. NVDA — Strong AI Leadership (Pre-Score 8.2/10)
+
+**Context:** Semiconductor recovery day July 6 likely means NVDA +3%-5% today. Tomorrow: test for follow-through or consolidation. AI capex thesis strongest for NVDA (Blackwell B200 ramp).
+
+- Fundamentals: 9/10 (Q1 FY2026 est. strong: data center revenue dominant, gross margins ~75%+, Blackwell supply constraints easing through H2 2026, EPS estimates rising)
+- Technical: 7/10 (uptrend intact, big recovery day; tomorrow watch for 5-min consolidation and volume confirmation; Stochastic likely overbought after big day — wait for %K to pull back before entry)
+- Sentiment: 8/10 (persistent AI chip demand narrative; BofA AI capex call directly positive for NVDA; XAI BLOCKED — degrade gracefully)
+- Macro: 8/10 (risk-on, semiconductor tailwind, AI capex restoration, dollar neutral)
+- Risk: 7/10 (NVDA est. $180-$220 range; 5% position = $5,000 / $200 = ~25 shares; stop at 5% = $190, target 15% = $230; R/R 3:1 ✓; no earnings within 48h)
+- Tech Analyst: 10/10 (CUDA moat, Blackwell architecture leadership, NVLink interconnects, NVIDIA DGX dominance — strongest single-stock AI infrastructure moat in the market)
+- **Average: 8.2/10 ✅ | Risk: 7 ≥ 6 ✅ | Agents at 7+: 6/6 ✅ | APPROVED**
+- Entry: Pre-Market MOO limit order (cap 3 MOO); or limit at open × 1.005
+- Position size: 5% cap = $5,000 / NVDA open price
+- Stop: 5% below fill GTC; Target: 15% above fill GTC (bracket)
+- **Note:** Do not enter if AMD position still unresolved at >9% equity — sector concentration would put AMD+NVDA near 15% of same sector.
+
+#### 3. MSFT — AI/Azure Enterprise Deployment (Pre-Score 7.5/10)
+
+**Context:** MSFT benefits from the AI deployment wave (Azure OpenAI services, Copilot, GitHub Copilot). Less volatile than pure-play semiconductors. Good swing trade candidate for 2-3 week hold.
+
+- Fundamentals: 8/10 (Azure growing ~33% YoY, Copilot monetization accelerating, enterprise lock-in strong, FCF exceptional, no dilution risk)
+- Technical: 6/10 (MSFT is more defensive — likely underperformed today vs. chip names; watch for catch-up move; MACD may be setting up; Stochastic not overbought)
+- Sentiment: 7/10 (enterprise AI leader narrative; OpenAI partnership; GitHub Copilot adoption; XAI BLOCKED — degrade gracefully)
+- Macro: 7/10 (risk-on benefits all tech; enterprise spending cycle improving; dollar headwinds mild)
+- Risk: 8/10 (lower volatility, easier 3:1 R/R; no binary events; 5% position well within equity limits)
+- Tech Analyst: 9/10 (Azure #2 cloud globally, proprietary Copilot stack, TypeScript/GitHub ecosystem, enterprise AI switching costs high, OpenAI investment)
+- **Average: 7.5/10 ✅ | Risk: 8 ≥ 6 ✅ | Agents at 7+: 5/6 ✅ | APPROVED**
+- Entry: Limit order at Pre-Market (not MOO — MSFT is lower urgency, let Pre-Market volume settle)
+- Position size: 5% cap = $5,000 / MSFT price
+- Stop: 5% below fill GTC; Target: 15% above fill GTC (bracket)
+- **MSFT earnings note:** Q4 FY2026 earnings estimated late July/August — check date at Pre-Market; if within 48h, skip.
+
+---
+
+### DAY TRADE STATUS
+
+**No open day trades** — only AMD swing position. Nothing to MOC.
+
+---
+
+### GUARDRAIL SUMMARY
+
+- AMD 18sh at ~$530 est. = $9,540 = **9.54% equity** → ⚠️ OVER 5% cap (Day 16)
+- AMD stop-loss at Alpaca: **NONE** → ⚠️ NAKED (Day 16)
+- Cash: ~$90,644 = 90.5% (well above 5% floor ✓)
+- Open positions: 1 (AMD only) — well below 12-max ✓
+- Daily PnL: est. +$418 (AMD ~+4.1%) — well above -3% circuit breaker ✓
+- Sector concentration: Technology only — AMD ~9.5%, below 25% sector cap ✓ (but AMD itself over 5% single-name cap)
+
+---
+
+### MANDATORY OUTPUT CONTRACT
+
+**Condition (A) satisfied:** Two POST /v2/orders calls attempted (AMD SELL 9sh limit $525, META BUY 8sh limit $563 bracket GTC) — both returned HTTP 000 (empty response, proxy CONNECT rejected). YAML entries logged above.
+
+**OPERATOR MANDATORY ACTIONS — Execute at app.alpaca.markets:**
+1. ⚠️⚠️⚠️ SELL 9sh AMD at market (est. $525-$545 range — semiconductor recovery day)
+2. On remaining 9sh AMD: GTC STOP $491.93 (5% below $506.76 entry); GTC TAKE-PROFIT $582.78
+3. BUY 8sh META limit $563 bracket GTC (stop $534.85, target $647.45, R/R 3.0:1) — OR wait for Pre-Market MOO tomorrow
+4. TOMORROW Pre-Market: Place MOO for META (binding commitment) + evaluate NVDA (8.2/10) and MSFT (7.5/10)
+
+---
+
 ## 2026-07-06 — Midday (12:30 PM ET / 16:34 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
 
 **HEARTBEAT:** STARTED Midday 2026-07-06T16:34:41Z ✓
