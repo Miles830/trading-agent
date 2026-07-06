@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-06T16:35:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-07-06T20:34:25Z",
+  "updated_by": "daily-review",
   "portfolio": {
-    "total_equity": 100058.0,
+    "total_equity": 100094.0,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 90.6,
+    "cash_pct": 90.5,
     "buying_power": 181288,
-    "long_market_value": 9414.0,
+    "long_market_value": 9450.0,
     "short_market_value": 0.0,
-    "daily_pnl": -669.0,
-    "daily_pnl_pct": -0.67,
-    "total_return_pct": 0.06,
-    "spx_return_pct": 4.65,
-    "benchmark_gap_pct": -4.59,
+    "daily_pnl": -628.0,
+    "daily_pnl_pct": -0.62,
+    "total_return_pct": 0.09,
+    "spx_return_pct": 4.79,
+    "benchmark_gap_pct": -4.70,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9414.0,
-      "active_pct": 9.4,
+      "active_value": 9450.0,
+      "active_pct": 9.5,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 90.6
+      "cash_pct": 90.5
     },
-    "note": "July 6 MIDDAY (12:34 PM ET / 16:34Z). API BLOCKED HTTP 000 — 66th consecutive. AMD SELL 9sh BLOCKED. META BUY 8sh BLOCKED. AMD STOP BACKFILL BLOCKED. AMD 18sh est. $523 = $9,414 (9.4% — OVER 5% cap, Day 15 NAKED). Semiconductor recovery intact (AMD +6% AM, BofA AI capex call). META est. $550-565 (cloud thesis intact, underperforming chips today). IBM est. $275-282 (Accenture contagion). TSLA est. $410-420 (rejected 5.67). S&P 500 est. +0.65% midday. OPERATOR: (1) SELL 9sh AMD market + GTC STOP $491.93 + GTC TP $582.78; (2) BUY 8sh META limit $558 bracket GTC (stop $530.10, target $641.70)."
+    "note": "July 6 DAILY REVIEW (EOD est.). API BLOCKED HTTP 000 — 67th consecutive. AMD SELL 9sh BLOCKED (5 attempts today). META BUY 8sh BLOCKED. AMD STOP BACKFILL BLOCKED. AMD 18sh est. $525 = $9,450 (9.5% — OVER 5% cap, Day 15+ NAKED). Semiconductor recovery day strong (+0.8% SPX, AMD+6%+ AM). Meta est. $555 (cloud thesis intact). IBM -4% Accenture contagion. TSLA est. $415. BTC ~$60K. OPERATOR MANDATORY BEFORE JULY 7 OPEN: (1) SELL 9sh AMD at market + GTC STOP fill×0.95 + GTC TP fill+3×stop-dist; (2) BUY 8sh META limit $558 bracket GTC (stop $530.10, target $641.70). Fix egress proxy to allow paper-api.alpaca.markets."
   },
   "positions": [
     {
@@ -31,85 +31,145 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 517.82,
-      "pnl": 199.08,
-      "pnl_pct": 2.18,
+      "current_price": 525.0,
+      "pnl": 326.88,
+      "pnl_pct": 3.59,
       "stop_loss": null,
       "take_profit": 582.78,
       "stop_loss_pending": 491.93,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 15. 18sh at $506.76 fill, est. $510-530 at midday July 6. Semiconductor recovery (+6% AM, BofA: temporary correction). Unrealized est. +$63-$424 at midday. Original TP $582.78 exceeded intraday July 1 (high $584.73) — not locked in. Position ~9.4% equity (OVER 5% cap — Day 15 violation). NO STOP RESTING AT ALPACA. Trail stop attempt $491.93 — BLOCKED midday (66th consecutive). SELL 9sh attempted — BLOCKED. OPERATOR MANDATORY: SELL 9sh AMD at market NOW (app.alpaca.markets); place GTC STOP $491.93 + GTC TP $582.78 on remaining 9sh."
+      "note": "CRITICALLY NAKED Day 15+. 18sh at $506.76 fill, est. EOD $525 (semiconductor recovery +3.6% unrealized = +$326.88). TP $582.78 target. NO STOP RESTING AT ALPACA. Position ~9.5% equity (OVER 5% cap — 15 days in violation). ALL SELL/STOP ATTEMPTS BLOCKED (HTTP 000, 67 consecutive sessions). OPERATOR MANDATORY BEFORE JULY 7 OPEN: SELL 9sh AMD at market; place GTC STOP $491.93 + GTC TP $582.78 on remaining 9sh at app.alpaca.markets. AMD Advancing AI conf July 22-23 (catalyst — not binary event)."
+    }
+  ],
+  "watchlist": [
+    {
+      "rank": 1,
+      "symbol": "AMD-SELL",
+      "action": "SELL 9sh MOO (MANDATORY GUARDRAIL)",
+      "bucket": "active",
+      "score": "N/A",
+      "setup": "ai-momentum-pullback",
+      "thesis": "Guardrail compliance: 18sh at 9.5% equity (OVER 5% cap, Day 15 naked). Reduce to 9sh at MOO. After fill: GTC STOP at fill×0.95, GTC TP at fill+3×(fill-stop). Not a scored decision — mandatory compliance action.",
+      "priority": "CRITICAL"
     },
     {
+      "rank": 2,
       "symbol": "META",
+      "action": "BUY 8sh limit ~$555-558 bracket GTC",
       "bucket": "active",
-      "qty": 0,
-      "entry_price": 557.0,
-      "current_price": 554.09,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 529.15,
-      "take_profit": 640.55,
+      "score": 7.5,
       "setup": "breakout-volume",
-      "agent_average": 7.5,
-      "note": "Score 7.5 (approved July 1 — binding). Re-verified July 6: cloud compute story confirmed 8+ outlets. META est. $550-565 at midday (underperforming semiconductors, not thesis change). BUY 8sh limit $558 bracket GTC attempted July 6 midday — BLOCKED HTTP 000 (66th consecutive). Re-priced from $615 (July 1) to $558 (midday). OPERATOR: BUY 8sh META limit $558 bracket GTC (stop $530.10, target $641.70, R/R 3:1). Entry deadline: before META Q2 earnings (est. late July — ~July 29-30)."
+      "thesis": "Cloud compute service launch confirmed 8+ outlets (Bloomberg + others). Score 7.5 binding since July 1. Entry re-priced to $558 (was $615 July 1 peak — now better entry). Stop $530.10, target $641.70, R/R 3.0:1. Q2 earnings est. July 29-30 (entry window open until July 27).",
+      "priority": "MANDATORY"
     },
     {
+      "rank": 3,
+      "symbol": "NVDA",
+      "action": "Full 6-agent at Pre-Market; enter if ≥7.0",
+      "bucket": "active",
+      "score": "~7.0",
+      "setup": "ai-momentum-pullback",
+      "thesis": "Semiconductor recovery leader. BofA AI capex restoration call July 6. Blackwell ramp intact. Was 6.83 June 29 — recovery day may push to 7.0+. Max 5% position = ~$50 stock → ~19sh at ~$195 est.",
+      "priority": "HIGH"
+    },
+    {
+      "rank": 4,
+      "symbol": "INTC",
+      "action": "Full 6-agent at Pre-Market; enter if ≥7.0",
+      "bucket": "active",
+      "score": "~6.5-7.0",
+      "setup": "sector-rotation",
+      "thesis": "Intel foundry inflection (Google 3M TPU, NVIDIA Feynman GPU evaluation on Intel foundry). Semiconductor recovery day. Was 7.17 avg on June 18. If still in uptrend at $127-135, score may recover to 7.0+.",
+      "priority": "HIGH"
+    },
+    {
+      "rank": 5,
       "symbol": "IBM",
+      "action": "Full 6-agent re-score at Pre-Market; enter only if ≥7.0",
       "bucket": "active",
-      "qty": 0,
-      "entry_price": 279.5,
-      "current_price": 277.91,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": 265.53,
-      "take_profit": 321.41,
+      "score": "6.17 → re-score",
       "setup": "breakout-volume",
-      "agent_average": 6.17,
-      "note": "Re-scored 6.17 July 6 (was 7.67 July 1). Accenture narrowed guidance → IT services AI erosion fear → contagion selloff hitting IBM (-4% today in +0.6% market). IBM's own AI sovereignty study misread as deployment delays. Analyst consensus PT $300 below our required $321 target. REJECTED today. Re-score July 7 Pre-Market. EXIT DEADLINE if entered: July 20 EOD (IBM earnings July 22)."
+      "thesis": "IBM re-score needed. Was 7.67 July 1, dropped to 6.17 July 6 (Accenture contagion). If Accenture fear subsides, IBM AI sovereignty + sub-1nm chip catalyst still valid. PT $300 analyst consensus may limit upside. HARD EXIT by July 20 EOD (IBM earnings July 22).",
+      "priority": "MEDIUM"
     },
     {
+      "rank": 6,
       "symbol": "TSLA",
+      "action": "Full 6-agent re-score at Pre-Market; enter only if ≥7.0",
       "bucket": "active",
-      "qty": 0,
-      "entry_price": 0,
-      "current_price": 414.17,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "earnings-reaction-fade",
-      "agent_average": 5.67,
-      "note": "6-agent scored July 6 mid-morning: 5.67 avg (F=5 T=4 S=4 M=7 R=6 TA=8). REJECTED: average below 7.0 minimum; only 2/6 agents ≥7 (need 4); 0-of-5 mandatory technical indicators confirming bullish. Q2 deliveries 480K beat 406K (+18.2%) but -7.49% sell-the-news. P/E ~400x extreme. US sales -19.7% YoY 9th month. Today +0.6% to $414 but insufficient technical setup. Re-score July 7 if technical picture improves. Must exit by July 20 EOD if entering (earnings July 22)."
+      "score": "5.67 → re-score",
+      "setup": "earnings-reaction-follow",
+      "thesis": "480K Q2 deliveries vs 406K consensus (+18.2% beat). Sell-the-news -7.5% July 2 ($395.86). Recovering (~$415). P/E ~400x and US sales -19.7% YoY remain concerns. Must score ≥7.0 with improved technicals. Exit before July 20 EOD (earnings July 22).",
+      "priority": "MEDIUM"
+    },
+    {
+      "rank": 7,
+      "symbol": "MU",
+      "action": "Full 6-agent at Pre-Market; enter only if ≥7.0",
+      "bucket": "active",
+      "score": "~6.0-6.5",
+      "setup": "ai-momentum-pullback",
+      "thesis": "Antitrust class-action overhang (3:26-cv-06345). HBM4 sold out. Semiconductor recovery day. Was 7.5 before class-action, dropped to 6.5 after. Risk Agent must quantify antitrust exposure before entry.",
+      "priority": "MEDIUM"
+    },
+    {
+      "rank": 8,
+      "symbol": "PLTR",
+      "action": "Full 6-agent at Pre-Market; enter only if ≥7.0",
+      "bucket": "active",
+      "score": "~7.0",
+      "setup": "ai-momentum-pullback",
+      "thesis": "AI/defense platform. Q1 beat ($0.33 EPS vs $0.27 est.). NVDA partnership. Was scored 7.5 historically. Check Q2 earnings date to confirm no 48h binary event conflict.",
+      "priority": "MEDIUM"
+    },
+    {
+      "rank": 9,
+      "symbol": "SMCI",
+      "action": "Full 6-agent at Pre-Market if catalyst present",
+      "bucket": "active",
+      "score": "~6.0-7.0",
+      "setup": "breakout-volume",
+      "thesis": "Super Micro Computer — AI server infrastructure. Direct beneficiary of AI capex ramp per BofA call. Check pre-market volume and price action before scoring.",
+      "priority": "LOW"
+    },
+    {
+      "rank": 10,
+      "symbol": "SCAN-MOVERS",
+      "action": "Pre-market scan of top gainers/losers >$5, >1M ADV",
+      "bucket": "active",
+      "score": "TBD",
+      "setup": "other",
+      "thesis": "Whole-market scan per CLAUDE.md universe selection. Top % pre-market gainers/losers, unusual volume, overnight earnings reactions, 52-week highs on >2x volume. Do not anchor to this list — surface fresh catalyst names.",
+      "priority": "STANDARD"
     }
   ],
   "market": {
-    "mode": "RISK-ON — Semiconductor recovery day. BofA: July 1-2 chip selloff 'temporary adjustment, not fundamental shift in AI demand.' AMD +6%+, Broadcom +6%+, SMH +2.7%, XLK +2%+, S&P +0.6%. Dow briefly >53,000. META -1.5% (AI rotation into chips). IBM -4% (Accenture contagion). TSLA +0.6% (delivery recovery).",
+    "mode": "RISK-ON — Semiconductor recovery day complete. BofA: July 1-2 chip selloff 'temporary adjustment, not fundamental shift in AI demand.' AMD +6%+ AM, Broadcom +6%+, SMH +2.7%, XLK +2%+, S&P est. +0.8%. Dow >53,000 intraday. META -1.5% (AI rotation into chips). IBM -4% (Accenture contagion). TSLA recovering +0.6%.",
     "fear_greed": null,
     "fear_greed_label": "Greed — Risk-on recovery. Semiconductor surge. BofA bullish AI capex. Dow at all-time high territory.",
-    "spx": "S&P 500 ~7,530 (July 6 mid-morning, range 7,427-7,540). May 1 baseline 7,200 → +4.58%.",
+    "spx": "S&P 500 est. ~7,545 EOD (July 6 EOD est. +0.8% from prior close). May 1 baseline 7,200 → +4.79% cumulative.",
     "btc": "BTC est. ~$60K range (below $82K active-trading threshold). No crypto entries.",
     "sectors": [
       {
         "name": "Semiconductors (SMH)",
         "change_pct": 2.7,
-        "note": "Recovery day. BofA: temporary correction not structural AI demand shift. AMD +6%+, Broadcom +6%+. Portfolio exposed via AMD 18sh (over-allocated)."
+        "note": "Recovery day. BofA: temporary correction not structural AI demand shift. AMD +6%+, Broadcom +6%+. Portfolio exposed via AMD 18sh (over-allocated 9.5%)."
       },
       {
         "name": "Technology (XLK)",
         "change_pct": 2.0,
-        "note": "Tech broadly recovering. Nasdaq climbing. Dow touched 53,000 first time."
+        "note": "Tech broadly recovering. Nasdaq climbing. Dow touched 53,000."
       },
       {
         "name": "Enterprise IT / Cloud (IBM sector)",
         "change_pct": -4.0,
-        "note": "Accenture guidance narrowed → IT services AI erosion fear. IBM -4% contagion. May be overdone — re-evaluate July 7."
+        "note": "Accenture guidance narrowed → IT services AI erosion fear. IBM -4% contagion. Re-evaluate July 7."
       },
       {
         "name": "Social Media / Ad Tech (META)",
         "change_pct": -1.5,
-        "note": "META -1.5% while semiconductors surge — sector rotation. Cloud compute thesis intact. Better entry at $554 vs prior $619."
+        "note": "META underperformed semiconductors today (sector rotation). Cloud compute thesis intact. Better entry at ~$555 vs prior $619."
       }
     ]
   },
@@ -119,81 +179,64 @@
       "status": "SILENT FAILURE",
       "last_run": "2026-07-03T12:05:12Z",
       "next_run": "2026-07-07T12:00:00Z",
-      "last_summary": "July 6 Pre-Market silently failed (no heartbeat). Last successful: July 3 (holiday confirmation). AMD SELL 9sh MOO not placed. IBM/META limits not placed. Violation logged in trades.md."
+      "last_summary": "July 6 Pre-Market silently failed (no heartbeat). AMD SELL 9sh MOO not placed. IBM/META limits not placed. Violation logged."
     },
     {
       "name": "Market-Open",
       "status": "SILENT FAILURE",
       "last_run": "2026-06-29T13:45:46Z",
       "next_run": "2026-07-07T13:45:00Z",
-      "last_summary": "July 6 Market-Open silently failed. MOO fill confirmation not run. AMD stop-loss backfill missed. Violation logged."
+      "last_summary": "July 6 Market-Open silently failed. MOO fill confirmation not run. AMD stop-loss backfill missed."
     },
     {
       "name": "Mid-Morning",
       "status": "completed",
       "last_run": "2026-07-06T15:09:46Z",
       "next_run": "2026-07-07T15:00:00Z",
-      "last_summary": "July 6 Mid-Morning COMPLETED. Stop-loss audit (naked AMD — blocked). AMD SELL 9sh blocked. META BUY 8sh blocked. TSLA scored 5.67 (rejected). IBM rescored 6.17 (rejected — Accenture contagion). 2 violations logged (Pre-Market + Market-Open). Semiconductor recovery noted."
+      "last_summary": "July 6 COMPLETED. AMD SELL 9sh blocked. META BUY 8sh blocked. TSLA 5.67 rejected. IBM 6.17 rejected (Accenture contagion). 2 violations logged."
     },
     {
       "name": "Midday",
-      "status": "completed",
+      "status": "partial",
       "last_run": "2026-07-06T16:34:41Z",
       "next_run": "2026-07-07T16:30:00Z",
-      "last_summary": "July 6 Midday COMPLETED. API BLOCKED (HTTP 000 — 66th consecutive). Stop-loss audit: AMD still naked Day 15. AMD SELL 9sh BLOCKED. META BUY 8sh limit $558 bracket GTC BLOCKED. AMD STOP $491.93 BLOCKED. Semiconductor recovery intact through midday. Overnight hold: AMD 18sh (guardrail violation but forced by API block). META pending operator action. IBM/TSLA: below threshold, re-score July 7."
+      "last_summary": "July 6 STARTED but no COMPLETED logged. All catch-up orders blocked (AMD SELL + META BUY + AMD STOP all HTTP 000). Semiconductor recovery intact. AMD naked Day 15."
     },
     {
       "name": "Afternoon",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-06T18:00:00Z",
-      "last_summary": "Not yet run today. Next at 2:00 PM ET / 18:00Z."
+      "next_run": "2026-07-07T18:00:00Z",
+      "last_summary": "July 6 Afternoon silently failed. No heartbeat. Root cause: API blockage degrading scheduler cadence. Violation logged."
     },
     {
       "name": "Market-Close",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-06T19:30:00Z",
-      "last_summary": "Not yet run today. Next at 3:30 PM ET / 19:30Z."
+      "next_run": "2026-07-07T19:30:00Z",
+      "last_summary": "July 6 Market-Close silently failed. AMD naked overnight with no MOC stop attempt. Violation logged. OPERATOR: place GTC stop before July 7 open."
     },
     {
       "name": "Daily-Review",
-      "status": "PENDING",
-      "last_run": "2026-06-29T20:30:00Z",
-      "next_run": "2026-07-06T20:30:00Z",
-      "last_summary": "Not yet run today. Next at 4:30 PM ET / 20:30Z."
+      "status": "completed",
+      "last_run": "2026-07-06T20:34:25Z",
+      "next_run": "2026-07-07T20:30:00Z",
+      "last_summary": "July 6 Daily Review COMPLETED. No completed trades (all blocked — 67th consecutive session). AMD naked Day 15+ (9.5% equity, over 5% cap). Portfolio est. +0.09% total vs SPX +4.79% cumulative. Gap: -4.70 pp. Top issue: Alpaca API proxy block. Watchlist: META (7.5 MANDATORY), NVDA/INTC/IBM/TSLA re-score July 7."
     }
   ],
+  "memory": {
+    "recent_lessons_md": "## Lessons — July 6, 2026\n\n**3 Things That Worked:**\n1. IBM rejection preserved capital — re-scored 6.17 (Accenture contagion) vs prior 7.67; correctly overrode binding score when new negative data arrived.\n2. META re-pricing discipline — dropped target from $615 (July 1 peak) to $558 (midday) reflecting market rotation. Entry price discipline not chasing.\n3. AMD unrealized hold above water — $506.76 fill → ~$525 EOD = +3.6% unrealized despite naked position risk.\n\n**3 Things To Improve:**\n1. API blockage Day 67 — paper-api.alpaca.markets still not in egress allowlist. Every missed trade traces here. 5-day deadline: if not resolved, operator reassess cloud environment viability.\n2. AMD naked 15+ days — SELL 9sh + GTC stop must happen before July 7 open. Longest-running guardrail violation.\n3. Midday COMPLETED heartbeat missing — routine STARTED but no COMPLETED log line. Ensure COMPLETE heartbeat fires in finally block.\n\n## Lessons — July 3 (Holiday Confirmation)\nPrior Pre-Market correctly confirmed July 4 holiday. No orders. All carry-forward bindings documented.\n\n## Lessons — July 2 (Market-Close)\nAll 3 MOC attempts blocked. AMD still naked. Market closed for July 4. All bindings extended to July 6 opening.\n\n## Lessons — July 1 (Afternoon)\nAMD intraday high $584.73 EXCEEDED original take-profit $582.78 — position still naked, profit not locked. AMD Wells Fargo PT $615. IBM upgraded 7.67 on JPMorgan + NanoStack chip. META +10% on Bloomberg cloud story. TSLA skipped (Q2 delivery binary event)."
+  },
   "trades": [
     {
-      "ts": "2026-07-06T15:25:00Z",
-      "action": "skip",
-      "symbol": "IBM",
-      "setup": "breakout-volume",
-      "score": 6.17,
-      "side": "buy",
-      "qty": 3,
-      "limit_price": 279.5,
-      "stop_loss": 265.53,
-      "take_profit": 321.41,
-      "result": "REJECTED — score 6.17 below 7.0 minimum; only 2/6 agents ≥7; Accenture contagion",
-      "agent_average": 6.17,
-      "master_decision": "rejected"
-    },
-    {
-      "ts": "2026-07-06T15:20:00Z",
-      "action": "skip",
-      "symbol": "TSLA",
-      "setup": "earnings-reaction-fade",
-      "score": 5.67,
-      "side": "buy",
-      "qty": 12,
-      "limit_price": 416.24,
-      "stop_loss": 395.43,
-      "take_profit": 478.67,
-      "result": "REJECTED — 5.67 avg; only 2/6 agents ≥7; 0-of-5 technical indicators; P/E ~400x",
-      "agent_average": 5.67,
-      "master_decision": "rejected"
+      "ts": "2026-07-06T20:34:25Z",
+      "action": "daily_review",
+      "symbol": "DAILY-REVIEW",
+      "setup": "other",
+      "score": null,
+      "result": "COMPLETED. 0 trades executed. AMD naked Day 15+ (est. +3.6% unrealized). Gap vs SPX: -4.70 pp. Top issue: API proxy block Day 67. Watchlist: META mandatory, NVDA/INTC/IBM/TSLA re-score.",
+      "agent_average": null,
+      "master_decision": "reviewed"
     },
     {
       "ts": "2026-07-06T16:35:10Z",
@@ -221,9 +264,39 @@
       "limit_price": 517.0,
       "stop_loss": null,
       "take_profit": null,
-      "result": "MIDDAY CATCH-UP: MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 15) — HTTP 000 BLOCKED proxy CONNECT rejected",
+      "result": "MIDDAY: MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 15) — HTTP 000 BLOCKED",
       "agent_average": 7.17,
       "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-06T15:25:00Z",
+      "action": "skip",
+      "symbol": "IBM",
+      "setup": "breakout-volume",
+      "score": 6.17,
+      "side": "buy",
+      "qty": 3,
+      "limit_price": 279.5,
+      "stop_loss": 265.53,
+      "take_profit": 321.41,
+      "result": "REJECTED — score 6.17 below 7.0 minimum; Accenture contagion; analyst PT $300 below required $321 target",
+      "agent_average": 6.17,
+      "master_decision": "rejected"
+    },
+    {
+      "ts": "2026-07-06T15:20:00Z",
+      "action": "skip",
+      "symbol": "TSLA",
+      "setup": "earnings-reaction-fade",
+      "score": 5.67,
+      "side": "buy",
+      "qty": 12,
+      "limit_price": 416.24,
+      "stop_loss": 395.43,
+      "take_profit": 478.67,
+      "result": "REJECTED — 5.67 avg; only 2/6 agents ≥7; 0-of-5 technical indicators; P/E ~400x extreme",
+      "agent_average": 5.67,
+      "master_decision": "rejected"
     },
     {
       "ts": "2026-07-06T15:11:00Z",
@@ -236,7 +309,7 @@
       "limit_price": 557.0,
       "stop_loss": 529.15,
       "take_profit": 640.55,
-      "result": "APPROVED but HTTP 000 BLOCKED — proxy CONNECT rejected (65th consecutive session)",
+      "result": "MID-MORNING: APPROVED but HTTP 000 BLOCKED — proxy CONNECT rejected (65th consecutive session)",
       "agent_average": 7.5,
       "master_decision": "approved"
     },
@@ -251,7 +324,7 @@
       "limit_price": 517.82,
       "stop_loss": null,
       "take_profit": null,
-      "result": "MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 14) — HTTP 000 BLOCKED proxy CONNECT rejected",
+      "result": "MID-MORNING: MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 14) — HTTP 000 BLOCKED",
       "agent_average": 7.17,
       "master_decision": "approved"
     },

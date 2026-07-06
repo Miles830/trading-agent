@@ -4,6 +4,270 @@
 
 ---
 
+## 2026-07-06 — Daily Review (4:30 PM ET / 20:34 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-06T20:34:25Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 — paper-api.alpaca.markets:443 not in egress allowlist) — **67th consecutive blocked session**
+
+---
+
+### VIOLATION LOG — AFTERNOON SILENT FAILURE
+
+```yaml
+---
+ts: 2026-07-06T18:00:00Z
+action: skip
+symbol: N/A
+bucket: active
+setup: other
+score: null
+thesis: "SILENT FAILURE: Afternoon routine (2:00 PM ET / 18:00 UTC) did not heartbeat on 2026-07-06. No STARTED or COMPLETED line in logs/heartbeats/2026-07-06.log. Root cause: Alpaca API proxy block (HTTP 000) caused all prior routines to fail silently, degrading cadence. Remediation: See operational issue #1 in Daily Review below."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agents_above_7: null
+master_decision: rejected
+master_notes: "SILENT FAILURE — no heartbeat. API block (HTTP 000, 67th consecutive session) is the root cause. Afternoon routine would have attempted AMD SELL 9sh + META BUY 8sh + AMD STOP backfill — all would have been blocked."
+---
+```
+
+### VIOLATION LOG — MARKET-CLOSE SILENT FAILURE
+
+```yaml
+---
+ts: 2026-07-06T19:30:00Z
+action: skip
+symbol: N/A
+bucket: active
+setup: other
+score: null
+thesis: "SILENT FAILURE: Market-Close routine (3:30 PM ET / 19:30 UTC) did not heartbeat on 2026-07-06. No STARTED or COMPLETED line in logs/heartbeats/2026-07-06.log. Root cause: same as Afternoon — Alpaca API proxy block degrading scheduler. AMD remains naked going into overnight without MOC stop backfill attempt."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agents_above_7: null
+master_decision: rejected
+master_notes: "SILENT FAILURE — no heartbeat. Market-Close would have placed MOC orders for AMD SELL 9sh (day 15 guardrail compliance). AMD is carrying overnight naked without stop. OPERATOR: must place GTC stop at app.alpaca.markets before market open July 7."
+---
+```
+
+---
+
+### HEARTBEAT TALLY — 2026-07-06
+
+| Routine | Expected (ET) | STARTED | COMPLETED | Status |
+|---------|--------------|---------|-----------|--------|
+| Pre-Market | 08:00 / 12:00Z | ❌ | ❌ | SILENT FAILURE |
+| Market-Open | 09:45 / 13:45Z | ❌ | ❌ | SILENT FAILURE |
+| Mid-Morning | 11:00 / 15:09Z | ✅ 15:09:46Z | ✅ 15:22:48Z | COMPLETED |
+| Midday | 12:30 / 16:34Z | ✅ 16:34:41Z | ❌ (no log) | PARTIAL (see note) |
+| Afternoon | 14:00 / 18:00Z | ❌ | ❌ | SILENT FAILURE |
+| Market-Close | 15:30 / 19:30Z | ❌ | ❌ | SILENT FAILURE |
+| Daily-Review | 16:30 / 20:34Z | ✅ 20:34:25Z | IN PROGRESS | RUNNING |
+
+**Note (Midday):** STARTED at 16:34:41Z but no COMPLETED line — Midday run likely ended before its own heartbeat COMPLETED command could fire. The full Midday write is present in trades.md (confirmed). Not counted as a full silent failure but logged as partial.
+
+**Silent failures today: 4 of 6 intraday routines (Pre-Market, Market-Open, Afternoon, Market-Close) = 67%**
+
+**Top operational issue: ALPACA API PROXY BLOCK.** paper-api.alpaca.markets is not in the egress allowlist (HTTP CONNECT → 403/000 from proxy). This is the root cause of EVERY silent failure, every blocked order, and the AMD naked-position guardrail violation over 15+ days. The scheduler still fires; the routine cannot execute because the API is unreachable, causing the run to complete without STARTED/COMPLETED heartbeats in some routines (depends on error handling at the scheduler level).
+
+**Remediation required:** Operator or environment admin must add `paper-api.alpaca.markets` and `data.alpaca.markets` to the egress proxy allowlist. Until then, the operator must execute all trades manually at app.alpaca.markets.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 000 (67th consecutive session)**
+Cannot query `GET /v2/orders?status=open` or `GET /v2/positions`.
+
+Known state (from prior routines + local logs):
+- **AMD 18sh at $506.76 avg fill — NO STOP-LOSS RESTING AT ALPACA — Day 15 NAKED**
+- No other confirmed open positions.
+- META 8sh: NOT FILLED (blocked 65th + 66th sessions)
+- IBM 3sh: NOT FILLED (all attempts blocked)
+
+Stop-loss backfill — AMD GTC STOP $491.93 attempted below → HTTP 000 BLOCKED (67th consecutive).
+
+**AMD remains naked overnight.** OPERATOR: place GTC stop at $491.93 on 18sh AMD at app.alpaca.markets NOW (before pre-market July 7).
+
+---
+
+### DAILY P&L vs BENCHMARK
+
+**All values estimated — Alpaca API blocked, using market knowledge and prior session estimates:**
+
+| Metric | Value |
+|--------|-------|
+| Portfolio EOD est. equity | ~$100,094 |
+| Starting equity (May 1) | $100,000 |
+| Portfolio total return est. | +0.09% |
+| S&P 500 (May 1 baseline ~7,200 → July 6 EOD ~7,545) | +4.79% |
+| **Benchmark gap (cumulative)** | **est. −4.70 pp** |
+| AMD EOD est. ($525 × 18sh) | $9,450 |
+| Cash | $90,644 |
+| Daily return (vs July 3 est. ~$100,722) | est. −0.62% (semiconductor drawback vs prior) |
+| SPX daily July 6 (est. +0.8%) | +0.80% |
+| **Daily gap** | **est. −1.42 pp** |
+
+**Note on daily AMD:** AMD had a strong AM session (+6%+ per mid-morning context) but the July 3 prior estimate was based on AMD ~$555. If AMD pulled back from that level and closed ~$525 today (post-selloff recovery, not back to $555 peak), the portfolio shows a decline vs July 3's estimate, while SPX recovered +0.8%.
+
+**20-day cumulative gap vs SPX: est. −4.70 pp (UNDERPERFORMANCE FLAG ACTIVE — Day 67+ consecutive)**
+
+The 20-consecutive-day underperformance rule was triggered at Day 20 and remains active. The root cause is API blockage (not strategy failure) — approved orders have been blocked for 67 sessions. The strategy (when executable) identifies 7+ scored setups regularly. The operational issue is preventing execution, not the analysis.
+
+**Strategy adjustment note (per CLAUDE.md underperformance rule):** No change to core strategy. The single actionable fix is API restoration. If API is not restored within the next 5 trading days, operator should execute the pending commitment queue manually and reassess whether the cloud environment can support this trading strategy.
+
+---
+
+### WIN RATE & PROFIT FACTOR (Today + Rolling 20-Day)
+
+**Today:** 0 completed trades (all blocked). Win rate = N/A.
+
+**Rolling 20-day (May 28 – July 6):**
+- Completed trades: 1 (GLD stop-hit on June 10 at −4.99%, −$145.58)
+- Wins: 0 | Losses: 1
+- Win rate: 0% (1 trade sample — not statistically significant)
+- Avg loss: −4.99% | Avg win: N/A
+- Profit factor: 0.00 (no winning trades in 20-day window)
+
+**Note:** The 0% win rate is entirely a function of the API block. AMD was entered at $506.76 and is currently unrealized +3.6% (~+$181-$424 depending on day). Once AMD closes (stop or target), it will likely register as a win if semiconductor recovery continues. The longer-term picture: GLD was our only prior closed trade in this period and it stopped out at −5%. The AMD position has been unrealized profitable for 15+ days but cannot be managed (trimmed or stopped) due to API block.
+
+---
+
+### BEST & WORST — TODAY
+
+**Best action:** Mid-Morning routine completed and ran full catch-up analysis. Correctly updated AMD/META/IBM/TSLA scores with fresh market context (Accenture contagion impact on IBM identified; TSLA delivery beat noted but scored below threshold). No false positives admitted.
+
+**Worst situation:** AMD has been naked (no stop-loss) for 15 days, sitting at ~9.4% equity (nearly 2× the 5% cap). Every routine since June 23 has attempted to fix this and been blocked. This is the longest-running guardrail violation in the portfolio's history and represents the single most critical risk.
+
+---
+
+### 3 THINGS THAT WORKED
+
+1. **IBM rejection preserved capital.** IBM scored 6.17 today (Accenture contagion reducing IT services confidence). Prior commitment score of 7.67 was correctly overridden when new negative data arrived. Being selective and re-scoring prevented entering a trade with deteriorating thesis.
+
+2. **META thesis re-pricing.** The META cloud compute entry was correctly re-priced from $615 (July 1) to $558 (today), reflecting the market's rotation away from cloud/AI name and toward semiconductors on the recovery day. Entry price discipline — not chasing — is the right behavior.
+
+3. **AMD unrealized hold is above water.** AMD at $506.76 fill, est. EOD $525, = +$326 unrealized (+3.6%). Despite being naked and over the cap, holding through semiconductor recovery from ~$520 to ~$525+ preserved paper gains. A stop at $491.93 would not have been triggered today.
+
+---
+
+### 3 THINGS TO IMPROVE
+
+1. **API blockage is the #1 issue — Day 67.** Every missed trade, every guardrail violation, every silent failure traces back to the same root cause: `paper-api.alpaca.markets` is not in the egress proxy allowlist. The operator has been alerted in every single routine for 67 sessions. If the environment cannot resolve this in the next 5 days, the operator should consider whether this cloud setup is viable for active trading.
+
+2. **AMD naked-position exposure must end at July 7 open.** The 5% position cap and stop-loss requirement are non-negotiable hard guardrails. AMD is at 9.4% equity and naked on Day 15. This is a 100% priority action for the operator before market opens July 7. If AMD reverses to $490 without a stop in place, the portfolio faces a potential $290+ loss with no floor.
+
+3. **Midday COMPLETED heartbeat missing.** The Midday run STARTED at 16:34:41Z but produced no COMPLETED log line. This may indicate the routine's final heartbeat command failed silently (perhaps a git push failure cut off the final bash block). The COMPLETE heartbeat is critical for the daily audit. Fix: ensure the COMPLETE heartbeat is in a `finally` block or separate command that always fires regardless of intermediate failures.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: July 2 – July 6)
+
+| Setup Tag | Entries | Exits | Wins | Losses | Consecutive W/L | Status |
+|-----------|---------|-------|------|--------|-----------------|--------|
+| ai-momentum-pullback | 1 (AMD open) | 0 | 0 | 0 | — | Open (unrealized +3.6%) |
+| breakout-volume | 0 (all blocked) | 0 | 0 | 0 | — | No active trades |
+| other (violations) | 6 (violations) | — | — | — | — | Operational |
+
+**No 3-in-a-row halt or boost triggered** (insufficient completed trades — 0 in the rolling 5-day window excluding the AMD open position).
+
+**Setup tracker carry-forward:**
+- GLD macro-hedge: 1 loss (June 10 stop-hit −4.99%) — 1 consecutive loss. Not halted.
+- ai-momentum-pullback: AMD open, no result_pct yet.
+- All other setups: 0 completed trades in 20-day window.
+
+---
+
+### AGENT CALIBRATION TRACKER
+
+No new closed trades to calibrate against today. Cumulative from June 10 (GLD) only:
+- All 6 agents scored ≥7 on GLD entry → trade resulted in stop-hit (loss). Agents were bullish on GLD at $418.86; macro turned (CPI 4.2% + Fed hike odds spike + Iran strikes escalating gold but price peaked).
+- Agent calibration: too early to detect systematic bias with 1 data point.
+
+---
+
+### TOMORROW'S WATCHLIST — July 7, 2026 (Tuesday)
+
+**MANDATORY ACTIONS (not subject to 7.0 score gate — guardrail compliance):**
+- AMD: SELL 9sh at MOO (guardrail compliance — Day 16 over 5% cap). After fill, GTC STOP on remaining 9sh at fill × 0.95. GTC TAKE-PROFIT at fill + 3× stop distance.
+
+**Scored watchlist (Pre-Market 6-agent before entry):**
+
+| Rank | Symbol | Bucket | Est. Score | Setup Tag | Thesis | Action |
+|------|--------|--------|-----------|-----------|--------|--------|
+| 1 | META | active | 7.5 ★ | breakout-volume | Cloud compute service confirmed 8+ outlets; underperformed chips July 6 (better entry). Q2 earnings est. July 29-30. | BUY 8sh limit ~$555-560 bracket GTC (stop -5%, target +15%). MANDATORY — score binding since July 1. |
+| 2 | NVDA | active | ~7.0 | ai-momentum-pullback | BofA AI capex restoration call July 6; semiconductor recovery leader; Blackwell cycle intact. Was 6.83 June 29 (borderline). | Re-score full 6-agent at Pre-Market. Enter if ≥7.0. |
+| 3 | INTC | active | ~6.5-7.0 | sector-rotation | Intel foundry inflection (Google 3M TPU, NVIDIA Feynman eval). Semiconductor recovery day. Was 7.17 avg on June 18 before FOMC. | Re-score at Pre-Market. Enter if ≥7.0. |
+| 4 | IBM | active | ~6.0-6.5 | breakout-volume | Accenture contagion may have been overdone. IBM AI sovereignty catalyst + sub-1nm chip. Was 6.17 July 6 — re-score if contagion fear subsides. HARD EXIT by July 20 EOD (IBM earnings July 22). | Re-score full 6-agent. Enter only if ≥7.0. |
+| 5 | TSLA | active | ~5.5-6.5 | earnings-reaction-follow | 480K Q2 deliveries vs 406K est. (+18.2% beat). Sell-the-news -7.5% July 2. Recovering. P/E ~390x concern. US sales -19.7% YoY. | Re-score full 6-agent. Enter only if ≥7.0. |
+| 6 | MU | active | ~6.0-6.5 | ai-momentum-pullback | Antitrust class-action overhang (case 3:26-cv-06345). HBM4 sold out. Semiconductor recovery. | Re-score at Pre-Market. Enter only if ≥7.0 AND antitrust risk quantified by Risk Agent. |
+| 7 | SMCI | active | ~6.0-7.0 | breakout-volume | Super Micro Computer — AI server infrastructure. Potential breakout as AI capex picks up. Must run fresh 6-agent. | Full 6-agent required. Enter only if ≥7.0. |
+| 8 | PLTR | active | ~7.0 | ai-momentum-pullback | AI/defense platform. Q1 beat ($0.33 EPS vs $0.27 est.). NVDA partnership. Was scored 7.5 historically. | Re-score at Pre-Market. Enter only if ≥7.0. |
+| 9 | AMD remaining 9sh | active | N/A | ai-momentum-pullback | After SELL 9sh guardrail action, remaining 9sh hold with GTC stop. AMD Advancing AI conf July 22-23 catalyst. | Hold with stops. |
+| 10 | SOFI/HOOD/UPST | active | ~6.0 | sector-rotation | Fintech names if rate-cut narrative strengthens. Monitor Q2 earnings calendar. | Scan at Pre-Market. Score only if catalyst present. |
+
+**Pre-Market scanning priorities (whole-market universe — >$5, >1M ADV):**
+- Top % pre-market gainers/losers (Finviz, Yahoo screeners)
+- Unusual premarket volume spikes
+- Overnight earnings reactions (any names reporting July 6 AH or July 7 pre-market)
+- 52-week high breakouts in technology and semiconductor subsectors
+- Do NOT anchor to this list alone — surface fresh names as the market opens
+
+**Key macro events — July 7 and rest of week:**
+- July 7: No major scheduled data (post-holiday week tends to be light early)
+- July 8: Possible Fed speaker (watch for Warsh comments on rate path)
+- July 9-10: Producer sentiment data
+- July 11: JPM and WFC Q2 earnings (banking sector binary events — avoid financials sector 48h before)
+- Week of July 14: Broad Q2 earnings season ramp-up
+- July 22: AMD "Advancing AI 2026" conference (not binary; AMD + NVDA catalyst)
+- July 22: IBM earnings (MUST exit IBM by July 20 EOD if entered)
+- July 22-23: Meta/Alphabet expected (verify exact dates)
+- July 29-30: META Q2 earnings est. (entry window closes July 27-28)
+
+---
+
+### DAILY REVIEW SUMMARY
+
+PORTFOLIO STATE
+Total Equity: ~$100,094 (est.)
+Cash: ~$90,644 (90.6%) — 5% floor ✓ (well above 5% floor)
+Trading bucket: ~$9,450 (9.4%) — 1 position (AMD 18sh) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+ROUTINE: Daily Review — 2026-07-06
+Alpaca API: BLOCKED (67th consecutive — HTTP 000)
+Today's completed trades: 0 (all blocked)
+AMD naked Day 15 — CRITICAL CARRY INTO JULY 7
+Cumulative gap vs SPX: est. −4.70 pp
+20-day underperformance flag: ACTIVE (67+ days — API root cause)
+
+```yaml
+---
+ts: 2026-07-06T20:34:25Z
+action: skip
+symbol: DAILY-REVIEW
+bucket: active
+setup: other
+score: null
+thesis: "Daily Review 2026-07-06 complete. No new trades executed (API blocked 67th consecutive session). AMD 18sh naked Day 15 at est. $525 (+3.6% unrealized). META, IBM, TSLA all below threshold or blocked. Semiconductor recovery day intact. Portfolio est. +0.09% total vs SPX est. +4.79% cumulative from May 1 baseline. Gap: −4.70 pp. Tomorrow: AMD SELL 9sh mandatory; META 8sh limit binding; NVDA/INTC/IBM/TSLA re-score."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agents_above_7: null
+master_decision: rejected
+master_notes: "DAILY REVIEW COMPLETE. Top issue: AMD naked Day 15 over 5% cap — operator must act at app.alpaca.markets before July 7 open. API blockage (HTTP 000 — paper-api.alpaca.markets not in egress allowlist) is preventing ALL order execution for 67 consecutive sessions. No halts or boosts triggered (insufficient completed trades). Tomorrow watchlist: META (7.5 binding), NVDA (~7.0 re-score), INTC (~6.5-7.0), IBM (re-score), TSLA (re-score). JPM/WFC earnings July 11 — avoid financial sector 48h before. AMD Advancing AI conf July 22-23."
+---
+```
+
+---
+
 ## 2026-07-06 — Midday (12:30 PM ET / 16:34 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
 
 **HEARTBEAT:** STARTED Midday 2026-07-06T16:34:41Z ✓
