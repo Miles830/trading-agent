@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-02T19:35:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-07-06T12:12:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
-    "total_equity": 101154.0,
+    "total_equity": 100052.0,
     "starting_equity": 100000.0,
     "cash": 90732,
-    "cash_pct": 89.7,
+    "cash_pct": 90.7,
     "buying_power": 181464,
-    "long_market_value": 10422.0,
+    "long_market_value": 9320.0,
     "short_market_value": 0.0,
     "daily_pnl": 0.0,
     "daily_pnl_pct": 0.0,
-    "total_return_pct": 1.15,
-    "spx_return_pct": 4.69,
-    "benchmark_gap_pct": -3.54,
+    "total_return_pct": 0.05,
+    "spx_return_pct": 4.51,
+    "benchmark_gap_pct": -4.46,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10422.0,
-      "active_pct": 10.3,
+      "active_value": 9320.0,
+      "active_pct": 9.3,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90732,
-      "cash_pct": 89.7
+      "cash_pct": 90.7
     },
-    "note": "July 2 MARKET-CLOSE (3:35 PM ET / 19:35Z). LAST TRADING DAY BEFORE JULY 4 HOLIDAY. API BLOCKED (HTTP 403 — 62nd consecutive). 5 of 6 routines today SILENT FAILED. ALL 3 MOC ATTEMPTS BLOCKED (AMD SELL 9sh + IBM BUY 3sh + META BUY 8sh). AMD NAKED DAY 11 — no stop, 10.3% equity (OVER 5% cap). TSLA Q2 delivery report due today — status unknown. NEXT TRADING DAY: July 3. JULY 3 BINDING: AMD SELL 9sh MOO + IBM 3sh limit $293.62 bracket GTC + META 8sh limit $615 bracket GTC + TSLA conditional."
+    "note": "July 6 PRE-MARKET (8:07 AM ET / 12:07Z). API BLOCKED (HTTP 000/403 — 64th consecutive). CORRECTED: AMD prev close $517.82 (not $555 as estimated). All 4 orders attempted and blocked: AMD SELL 9sh MOO + MRVL BUY 18sh MOO + IBM BUY 3sh $290 bracket + META BUY 8sh $585 bracket. NVDA Kyber NVL144 delayed 12+ months to 2028 = AMD/MRVL beneficiaries. Nasdaq futures +1.1%. June jobs 57K vs 113K consensus → rate cut hope. OPERATOR MUST EXECUTE MANUALLY: (1) SELL 9sh AMD at market; (2) BUY 18sh MRVL MOO; (3) BUY 3sh IBM limit $290 bracket GTC; (4) BUY 8sh META limit $585 bracket GTC."
   },
   "positions": [
     {
@@ -31,132 +31,138 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 579.0,
-      "pnl": 1300.32,
-      "pnl_pct": 14.3,
+      "current_price": 530.64,
+      "pnl": 429.84,
+      "pnl_pct": 4.71,
       "stop_loss": null,
-      "take_profit": 607.0,
+      "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 11. 18sh at $506.76 fill, est. ~$579 (last known). Original take-profit $582.78 EXCEEDED intraday July 1 (high $584.73) — gain not locked in. Wells Fargo PT $615 (street-high). AMD Advancing AI 2026 July 22-23. Position 10.3% equity (OVER 5% cap — Day 11 violation). NO STOP RESTING AT ALPACA. OPERATOR ACTION REQUIRED: SELL 9sh AMD at MOO July 3; place GTC stop $481.42 + GTC target $607 on remaining 9sh. API BLOCKED — agent cannot execute."
+      "note": "CRITICALLY NAKED Day 14. 18sh at $506.76 fill, premarket $530.64 (+2.47% on NVDA delay news). CORRECTED prev close $517.82 (not $555). MUST SELL 9sh at MOO to reduce to within 5% cap. After sell: 9sh remain at ~4.7% equity. NVDA Kyber NVL144 delayed 12+ months = AMD direct beneficiary. Place GTC stop at MOO fill×0.95 at Market Open routine. AMD 'Advancing AI 2026' event July 22-23 (positive catalyst for hold). NO STOP RESTING AT ALPACA. API BLOCKED."
+    },
+    {
+      "symbol": "MRVL",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 264.0,
+      "current_price": 264.0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": 250.80,
+      "take_profit": 303.60,
+      "setup": "breakout-volume",
+      "agent_average": 7.0,
+      "note": "NEW ENTRY APPROVED July 6. Score 7.0 (F7/T6/S7/M7/R7/TA8). NVDA Kyber delay = MRVL custom ASIC demand pull-forward. 18sh MOO blocked (HTTP 000). OPERATOR: BUY 18sh MRVL at MOO. After fill: place GTC stop fill×0.95, target $303.60. No earnings until ~Sept 2026. Sector: semis at 9.5% (AMD+MRVL) — within 25% cap."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 293.62,
-      "current_price": 292.16,
+      "entry_price": 290.0,
+      "current_price": 289.5,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 278.94,
-      "take_profit": 337.66,
+      "stop_loss": 275.50,
+      "take_profit": 333.50,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "Score 7.67 (approved July 1). MOC buy 3sh blocked July 2 (HTTP 403). HARD EXIT DEADLINE July 18 EOD (earnings July 22 — 20-day window opens July 2). OPERATOR: BUY 3sh IBM limit $293.62 bracket GTC (stop $278.94, target $337.66, R/R 3:1) at July 3 Pre-Market. Catalysts: JPMorgan Overweight, sub-1nm NanoStack chip, quantum executive orders."
+      "note": "Score 7.67. BUY 3sh limit $290.00 bracket GTC blocked (HTTP 000 — 64th session). Anthropic/COBOL threat is Feb 2026 old news (priced in at -13%). IBM at $287-290 pre-market. JPMorgan OW PT $291. HARD EXIT DEADLINE July 18 EOD (earnings July 22). OPERATOR: BUY 3sh IBM limit $290.00 bracket GTC (stop $275.50, target $333.50) at app.alpaca.markets."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 615.06,
-      "current_price": 615.0,
+      "entry_price": 585.0,
+      "current_price": 582.5,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 584.31,
-      "take_profit": 707.31,
+      "stop_loss": 555.75,
+      "take_profit": 672.75,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "Score 7.5 (approved July 1). MOC buy 8sh blocked July 2 (HTTP 403). Re-verify cloud compute story at July 3 Pre-Market before entry — check if Bloomberg report confirmed/denied by Meta IR. OPERATOR: BUY 8sh META limit $615 bracket GTC (stop $584.31, target $707.31, R/R ~15.1%) at July 3 Pre-Market."
-    },
-    {
-      "symbol": "TSLA",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 0,
-      "current_price": 0,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "earnings-reaction-follow",
-      "agent_average": 7.5,
-      "note": "Q2 delivery report due July 2 (consensus 406,024 vehicles). Binary event expires after numbers out. Cannot check delivery results (API/web blocked). Conditional entry July 3: if deliveries BEAT 406K → run full 6-agent score at Pre-Market and enter if score >=7; if MISS → skip. FSD v14 Lite + Europe +85-90% YoY support thesis."
+      "note": "Score 7.5. BUY 8sh limit $585.00 bracket GTC blocked (HTTP 000 — 64th session). Re-priced from $615 to $585 (4.9% discount; META ~$580-585 pre-market). Cloud compute story intact. Zuckerberg noted AI agents slower than expected (mild negative, priced in). Capex $125-145B now seen as revenue-generating cloud asset. HARD EXIT DEADLINE July 25 EOD (earnings July 29). OPERATOR: BUY 8sh META limit $585.00 bracket GTC (stop $555.75, target $672.75) at app.alpaca.markets."
     }
   ],
   "market": {
-    "mode": "RISK-ON — July 2 conditions unknown (API blocked). Last known: SPX +0.52%, Nasdaq +1.52% from July 1 close. Q3 start tech recovery. TSLA Q2 delivery report today — market-moving if beat/miss.",
-    "fear_greed": null,
-    "fear_greed_label": "Unknown — API blocked. Last known July 1: risk-on. Nasdaq +1.52%. META +10%, IBM +3.9%, AMD +6.6%.",
-    "spx": "S&P 500 est. 7538.0 (July 1 est. close). May 1 baseline 7,200 → +4.69%. July 2 EOD price unknown.",
-    "btc": "BTC est. ~$60K (last known). Below $82K active-trading threshold. No crypto entries.",
+    "mode": "RISK-ON — TECH-LED. Nasdaq futures +1.1%, S&P +0.4%, SMH +2.4%. Dominant catalyst: NVDA Kyber NVL144 delayed 12+ months (custom ASIC beneficiaries). June jobs miss (57K vs 113K) = rate cut hope = growth stock tailwind. Fear & Greed ~32 (Fear) — constructive for entries.",
+    "fear_greed": 32,
+    "fear_greed_label": "Fear (32) — constructive for score-≥7 entries; not extreme panic",
+    "spx": "S&P 500 futures +0.4%. May 1 baseline 7,200 → July 2 est. close ~7,525 = +4.51%. Portfolio gap vs SPX: est. -4.46 pp (widening). Portfolio total return est. +0.05%.",
+    "btc": "BTC ~$62,600-63,900. Well below $82K active-trading threshold. NO CRYPTO ENTRIES. ETH ~$1,750-1,800.",
+    "macro_notes_md": "**June Jobs Report (July 3):** 57K vs 113K expected (miss -49%). Unemployment 4.2%. September FOMC hike OFF THE TABLE. Rate cut expectations building. Goldilocks for growth.\n\n**NVDA Kyber NVL144 Delayed 12+ months to 2028:** PCB midplane manufacturing failure. NVL72x2 canceled. Hyperscalers must use current-gen NVIDIA or evaluate AMD/custom ASIC alternatives. Direct beneficiaries: AMD (+2.5% premarket), MRVL, AVGO.\n\n**SK Hynix Nasdaq Bookbuilding Begins Today:** ~$52B listing. Memory sector institutional interest throughout July. Watch MU, WDC.\n\n**FOMC Minutes Wednesday July 8:** Warsh's first meeting minutes. HIGH RISK — split committee (9 hawks vs 9 doves). Hawkish read = tech headwind.\n\n**Q2 Earnings Season:** JPMorgan/Wells Fargo July 11. Tesla July 22. META July 29.",
     "sectors": [
       {
-        "name": "Technology — API BLOCKED, July 2 data unavailable",
-        "change_pct": 0.0,
-        "note": "Last known (July 1): Nasdaq +1.52%. July 2 market conditions unknown. TSLA delivery report today could swing semiconductors/EV sector."
+        "name": "Semiconductors (AMD, MRVL)",
+        "change_pct": 2.4,
+        "note": "SMH +2.4% premarket. NVDA delay = AMD/MRVL beneficiaries. AMD $530.64 (+2.47%). MRVL ~$264. Total semiconductor allocation would be 9.5% (AMD 4.75% + MRVL 4.73%) — within 25% cap."
       },
       {
-        "name": "Enterprise Tech — IBM carry",
-        "change_pct": 3.9,
-        "note": "IBM last known $292.16 (July 1 close). JPMorgan Overweight + sub-1nm chip. Hard exit July 18."
+        "name": "Enterprise Tech (IBM)",
+        "change_pct": 0.0,
+        "note": "IBM $287-290. JPMorgan OW PT $291. HARD EXIT July 18 EOD. Anthropic/COBOL threat old news (Feb 2026, priced in)."
+      },
+      {
+        "name": "Communication Services (META)",
+        "change_pct": 0.0,
+        "note": "META ~$580-585. Cloud compute story confirmed. Capex $125-145B = revenue asset. Zuckerberg AI slower comment mild negative. HARD EXIT July 25 EOD (earnings July 29)."
       }
     ]
   },
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-06-29T12:05:10Z",
-      "next_run": "2026-07-03T12:00:00Z",
-      "last_summary": "July 2 Pre-Market silently failed (no heartbeat). Last successful: June 29. Next: July 3 (note: July 4 = Independence Day, no routines)."
+      "status": "completed",
+      "last_run": "2026-07-06T12:07:00Z",
+      "next_run": "2026-07-07T12:00:00Z",
+      "last_summary": "Nasdaq +1.1% on NVDA Kyber 12-month delay. AMD premarket +2.47% to $530.64. 4 orders attempted/blocked: AMD sell 9sh MOO, MRVL buy 18sh MOO (NEW 7.0), IBM buy 3sh $290 bracket, META buy 8sh $585 bracket. TSLA rejected 5.5/10. API blocked 64th session. Operator must execute all 4 orders manually before 9:25 AM ET."
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
+      "status": "PENDING",
       "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-03T13:45:00Z",
-      "last_summary": "July 2 Market-Open silently failed. AMD MOO sell 9sh not placed. Last successful: June 29."
+      "next_run": "2026-07-06T13:45:00Z",
+      "last_summary": "Must confirm AMD+MRVL MOO fills at 9:30 AM. Place GTC stops immediately after fills. IBM/META limits may fill at open. FOMC minutes Wednesday July 8 is key risk event."
     },
     {
       "name": "Mid-Morning",
-      "status": "SILENT FAILURE",
+      "status": "PENDING",
       "last_run": "2026-07-01T15:09:37Z",
-      "next_run": "2026-07-03T15:00:00Z",
-      "last_summary": "July 2 Mid-Morning silently failed. IBM/META limit orders not attempted. TSLA delivery evaluation missed."
+      "next_run": "2026-07-06T15:00:00Z",
+      "last_summary": "Watch WDC (AI storage, +3% premarket). Re-score TSLA if 2-of-5 technical confirms at open. SK Hynix listing bookbuilding = memory sector watch."
     },
     {
       "name": "Midday",
-      "status": "SILENT FAILURE",
+      "status": "PENDING",
       "last_run": null,
-      "next_run": "2026-07-03T16:30:00Z",
-      "last_summary": "July 2 Midday silently failed. TSLA delivery numbers likely released by this point — evaluation missed."
+      "next_run": "2026-07-06T16:30:00Z",
+      "last_summary": "Check all position fills. Assess IBM/META limit status. Evaluate new opportunities."
     },
     {
       "name": "Afternoon",
-      "status": "SILENT FAILURE",
+      "status": "PENDING",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-03T18:00:00Z",
-      "last_summary": "July 2 Afternoon silently failed (5th of 5 predecessor failures today). AMD naked Day 11 unaddressed."
+      "next_run": "2026-07-06T18:00:00Z",
+      "last_summary": "Any limit order re-pricing needed. AMD/MRVL position management post-fills."
     },
     {
       "name": "Market-Close",
-      "status": "completed",
+      "status": "PENDING",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-03T19:30:00Z",
-      "last_summary": "API blocked (62nd session). 3 MOC attempts blocked (AMD sell 9sh, IBM buy 3sh, META buy 8sh). July 2 = last day before July 4 holiday. Next: July 3. July 4 = market CLOSED. TSLA delivery unknown."
+      "next_run": "2026-07-06T19:30:00Z",
+      "last_summary": "MOC orders if needed. Verify all positions have resting stops. End-of-day position audit."
     },
     {
       "name": "Daily-Review",
       "status": "PENDING",
       "last_run": "2026-06-29T20:30:00Z",
-      "next_run": "2026-07-02T20:30:00Z",
-      "last_summary": "Last ran June 29. Daily Review not yet run today (July 2). Scheduled 4:30 PM ET / 20:30Z."
+      "next_run": "2026-07-06T20:30:00Z",
+      "last_summary": "Full day recap. Setup tally. Watchlist for July 7. Benchmark comparison update."
     }
   ],
   "trades": [
     {
-      "ts": "2026-07-02T19:35:00Z",
-      "action": "moc_blocked",
+      "ts": "2026-07-06T12:07:00Z",
+      "action": "exit_blocked",
       "symbol": "AMD",
       "setup": "ai-momentum-pullback",
       "score": 7.17,
@@ -165,83 +171,100 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "HTTP 403 BLOCKED — proxy CONNECT rejected",
+      "result": "HTTP 000 BLOCKED — proxy CONNECT rejected (64th session). AMD premarket $530.64 (+2.47% NVDA delay catalyst). SELL 9sh MOO mandatory — Day 14 naked, 9.3% equity vs 5% cap.",
       "agent_average": 7.17,
       "master_decision": "approved"
     },
     {
-      "ts": "2026-07-02T19:35:00Z",
-      "action": "moc_blocked",
+      "ts": "2026-07-06T12:10:00Z",
+      "action": "entry_blocked",
+      "symbol": "MRVL",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 18,
+      "limit_price": null,
+      "stop_loss": 250.80,
+      "take_profit": 303.60,
+      "result": "HTTP 000 BLOCKED — proxy CONNECT rejected (64th session). NEW ENTRY: MRVL 18sh MOO at open. NVDA Kyber NVL144 12-month delay = MRVL custom ASIC demand pull-forward.",
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 6,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 7,
+        "tech_analyst": 8
+      },
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-06T12:11:00Z",
+      "action": "entry_blocked",
       "symbol": "IBM",
       "setup": "breakout-volume",
       "score": 7.67,
       "side": "buy",
       "qty": 3,
-      "limit_price": 293.62,
-      "stop_loss": 278.94,
-      "take_profit": 337.66,
-      "result": "HTTP 403 BLOCKED — proxy CONNECT rejected",
+      "limit_price": 290.0,
+      "stop_loss": 275.50,
+      "take_profit": 333.50,
+      "result": "HTTP 000 BLOCKED — proxy CONNECT rejected (64th session). BUY 3sh IBM limit $290 bracket GTC. Score 7.67. Hard exit July 18 EOD.",
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 8
+      },
       "agent_average": 7.67,
       "master_decision": "approved"
     },
     {
-      "ts": "2026-07-02T19:35:00Z",
-      "action": "moc_blocked",
+      "ts": "2026-07-06T12:12:00Z",
+      "action": "entry_blocked",
       "symbol": "META",
       "setup": "breakout-volume",
       "score": 7.5,
       "side": "buy",
       "qty": 8,
-      "limit_price": 615.06,
-      "stop_loss": 584.31,
-      "take_profit": 707.31,
-      "result": "HTTP 403 BLOCKED — proxy CONNECT rejected",
+      "limit_price": 585.0,
+      "stop_loss": 555.75,
+      "take_profit": 672.75,
+      "result": "HTTP 000 BLOCKED — proxy CONNECT rejected (64th session). BUY 8sh META limit $585 bracket GTC. Score 7.5. Re-priced from $615. Hard exit July 25 EOD.",
+      "agent_scores": {
+        "fundamentals": 7,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 7,
+        "risk": 8,
+        "tech_analyst": 7
+      },
       "agent_average": 7.5,
       "master_decision": "approved"
     },
     {
-      "ts": "2026-07-01T18:08:00Z",
-      "action": "entry_attempted",
-      "symbol": "META",
-      "setup": "breakout-volume",
-      "score": 7.5,
-      "side": "buy",
-      "qty": 8,
-      "limit_price": 615.06,
-      "stop_loss": 584.31,
-      "take_profit": 707.31,
-      "result": "HTTP 403 BLOCKED",
-      "agent_average": 7.5,
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-07-01T15:09:00Z",
-      "action": "entry_attempted",
-      "symbol": "IBM",
-      "setup": "breakout-volume",
-      "score": 7.67,
-      "side": "buy",
-      "qty": 3,
-      "limit_price": 293.62,
-      "stop_loss": 278.94,
-      "take_profit": 337.66,
-      "result": "HTTP 403 BLOCKED",
-      "agent_average": 7.67,
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-07-01T15:09:00Z",
+      "ts": "2026-07-06T12:13:00Z",
       "action": "skip",
-      "symbol": "MU",
+      "symbol": "TSLA",
       "setup": "earnings-reaction-follow",
-      "score": 6.5,
+      "score": 5.5,
       "side": null,
       "qty": 0,
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "RE-SCORED BELOW THRESHOLD — antitrust lawsuit + -6.5% breakdown",
-      "agent_average": 6.5,
+      "result": "REJECTED by 6-agent gate. Average 5.5/10 (< 7.0 minimum). 0 of 6 agents scored ≥7. P/E 390×, US sales -19.7% YoY 9th month, no 2-of-5 technical confirmation, 8-day max hold.",
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 5,
+        "sentiment": 5,
+        "macro": 6,
+        "risk": 6,
+        "tech_analyst": 6
+      },
+      "agent_average": 5.5,
       "master_decision": "rejected"
     }
   ],
@@ -249,47 +272,72 @@
     {
       "symbol": "AMD",
       "score": 7.17,
-      "action": "SELL 9sh at MOO July 3 (FIRST ORDER — Day 11 naked violation)",
+      "action": "SELL 9sh at MOO (FIRST — Day 14 naked, 9.3% equity vs 5% cap)",
       "stop": 481.42,
-      "target": 607.0,
+      "target": 582.78,
       "setup": "ai-momentum-pullback",
-      "notes": "CRITICALLY NAKED. Original take-profit $582.78 exceeded intraday July 1. Wells Fargo PT $615. After 9sh sold: place GTC stop $481.42 + GTC target $607 on remaining 9sh."
+      "notes": "Premarket $530.64 (+2.47%). NVDA delay = AMD bullish catalyst for HOLD on remaining 9sh. After 9sh sold: new bracket at Market Open (fill×0.95 stop, fill+3×(fill-stop) target). AMD 'Advancing AI 2026' July 22-23."
+    },
+    {
+      "symbol": "MRVL",
+      "score": 7.0,
+      "action": "BUY 18sh MOO (NEW — score 7.0, NVDA delay catalyst)",
+      "stop": 250.80,
+      "target": 303.60,
+      "setup": "breakout-volume",
+      "notes": "NVDA Kyber NVL144 delayed 12+ months. MRVL = custom ASIC for Google, Amazon, Microsoft. SMH +2.4% premarket. No earnings until ~Sept 2026. R/R 3:1."
     },
     {
       "symbol": "IBM",
       "score": 7.67,
-      "action": "BUY 3sh limit $293.62 bracket GTC (MANDATORY July 3)",
-      "stop": 278.94,
-      "target": 337.66,
+      "action": "BUY 3sh limit $290.00 bracket GTC (MANDATORY)",
+      "stop": 275.50,
+      "target": 333.50,
       "setup": "breakout-volume",
-      "notes": "Score 7.67. HARD EXIT DEADLINE July 18 EOD (earnings July 22). Catalysts: JPMorgan Overweight + sub-1nm NanoStack chip + quantum executive orders."
+      "notes": "Score 7.67. IBM at $287-290 pre-market. JPMorgan OW PT $291. NanoStack 0.7nm chip. HARD EXIT July 18 EOD (earnings July 22). Anthropic threat is Feb 2026 news — already priced in."
     },
     {
       "symbol": "META",
       "score": 7.5,
-      "action": "BUY 8sh limit $615.06 bracket GTC (MANDATORY July 3 — re-verify story)",
-      "stop": 584.31,
-      "target": 707.31,
+      "action": "BUY 8sh limit $585.00 bracket GTC (MANDATORY — re-priced from $615)",
+      "stop": 555.75,
+      "target": 672.75,
       "setup": "breakout-volume",
-      "notes": "Score 7.5. Re-verify Bloomberg cloud compute story. Update limit if price moved. Stop $584.31, target $707.31 (R/R ~15.1%)."
+      "notes": "Score 7.5. Cloud compute story confirmed. Capex $125-145B = competitive weapon. Zuckerberg AI slower comment mild negative. HARD EXIT July 25 EOD (earnings July 29). R/R 3:1."
     },
     {
       "symbol": "TSLA",
-      "score": 7.5,
-      "action": "CONDITIONAL July 3 — check Q2 delivery results first",
+      "score": 5.5,
+      "action": "SKIP — 6-agent rejected (5.5/10 avg, 0/6 ≥7)",
       "stop": null,
       "target": null,
       "setup": "earnings-reaction-follow",
-      "notes": "Q2 delivery consensus 406,024 vehicles. Binary event expires once numbers out. Run full 6-agent score before entering. Only enter if beat + score >=7."
+      "notes": "Q2 deliveries 480K beat (+18.2%) vs 406K consensus. But P/E 390×, US sales -19.7% YoY (9th month), no technical confirmation, 8-day hold window. Re-evaluate Mid-Morning if 2-of-5 confirms at open."
+    },
+    {
+      "symbol": "WDC",
+      "score": 0,
+      "action": "MONITOR — score at Mid-Morning",
+      "stop": null,
+      "target": null,
+      "setup": "breakout-volume",
+      "notes": "Western Digital +3% premarket on AI storage demand (NVDA delay = longer Blackwell cycles = more storage needed). Score at 11:00 AM Mid-Morning routine. SK Hynix Nasdaq listing starts today = memory sector tailwind."
     }
   ],
   "history": [
     {
-      "date": "2026-07-02",
-      "portfolio_return_pct": 1.15,
-      "spx_return_pct": 4.69,
+      "date": "2026-07-06",
+      "portfolio_return_pct": 0.05,
+      "spx_return_pct": 4.51,
       "daily_pnl_pct": 0.0,
-      "note": "API blocked (62nd session). All 3 MOC orders blocked. AMD naked Day 11. 5 of 6 predecessor routines silent failed. July 4 = market closed."
+      "note": "Pre-Market only (8:07 AM ET). NVDA Kyber NVL144 delayed 12+ months. AMD +2.47% premarket. 4 orders attempted/blocked (64th session). MRVL new entry approved 7.0 avg. TSLA rejected 5.5. Operator must execute all orders manually."
+    },
+    {
+      "date": "2026-07-02",
+      "portfolio_return_pct": 0.05,
+      "spx_return_pct": 4.51,
+      "daily_pnl_pct": 0.0,
+      "note": "CORRECTED: AMD July 2 close was $517.82 (not $555 estimated). Portfolio return corrected to +0.05%. All 3 MOC orders blocked. AMD naked Day 11. 5 of 6 routines silent failed. July 4 = market closed."
     }
   ]
 }

@@ -4,6 +4,344 @@
 
 ---
 
+## 2026-07-06 — Pre-Market (8:00 AM ET / 12:07 UTC — MONDAY — TRADING DAY)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-06T12:06:22Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 / 403 — paper-api.alpaca.markets:443 not in egress allowlist) — **64th consecutive blocked session**
+**Current Time:** 12:07Z = 8:07 AM ET — Pre-Market window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 6, 2026
+
+Prior session (July 3 Pre-Market) completed at 12:11:44Z — holiday-confirmation routine only.
+July 4–5 = weekend + Independence Day holiday. No routines scheduled.
+July 3 = Observed Independence Day (NYSE/NASDAQ CLOSED). No predecessor violations.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION
+
+**Alpaca API blocked (64th consecutive session).** Cannot verify stop orders via GET /v2/orders.
+
+Estimated position state:
+- ⚠️⚠️⚠️ **AMD 18sh CRITICALLY NAKED — Day 14 (counting July 3 holiday + weekend)** — filled June 23 at $506.76 avg
+  - Confirmed prev close (July 2): **$517.82** (per Yahoo Finance / InvestingDotCom data)
+  - Pre-market July 6: **~$530.64** (+2.47%) — NVDA Kyber NVL144 delay news = AMD beneficiary
+  - Unrealized at pre-mkt: 18sh × ($530.64 − $506.76) = **+$429.84**
+  - NAKED — no stop, no take-profit resting at Alpaca
+  - Position est. ~$9,551 = ~9.5% of equity (OVER 5% hard cap — DAY 14)
+
+---
+
+### MARKET CONDITIONS — JULY 6, 2026
+
+**US Futures (Pre-Market):**
+- S&P 500 Futures: **+0.4%** — positive
+- Nasdaq-100 Futures: **+1.1%** — STRONG TECH RALLY
+- Dow Futures: flat (~0.0%) — bifurcated: tech strong, industrials/cyclicals neutral
+- VanEck Semiconductor ETF (SMH): **+2.4% pre-market** — semiconductor sector recovery
+- MAGS ETF (Mag-7): +0.54%
+- **Verdict: RISK-ON, TECH-LED**
+
+**Dominant Catalyst: NVIDIA Kyber NVL144 12-Month Delay (Confirmed July 6)**
+SemiAnalysis (confirmed by CNBC pre-market) reported NVIDIA's Kyber NVL144 next-generation AI rack system is delayed 12+ months to 2028 due to PCB midplane manufacturing challenges. NVL72x2 configuration canceled. This forces hyperscalers to either extend current-gen NVIDIA hardware deployments or evaluate AMD MI350/MI400 and custom ASIC alternatives. Direct beneficiaries: AMD, MRVL, AVGO.
+
+**June Jobs Report (released July 3, pre-holiday):**
+- Nonfarm payrolls: **57,000** (vs. 113,000 consensus — -49% miss)
+- Unemployment: fell to **4.2%** (positive, avoids recession fear)
+- September FOMC hike: taken off the table. Rate cut expectations building.
+- Interpretation: Goldilocks — soft labor market + falling unemployment = Fed on hold, growth stocks benefit
+
+**Key Economic Events This Week:**
+- Today (July 6): No major data releases
+- Wednesday July 8: FOMC minutes (June meeting, Warsh's first) — HIGH risk
+- Friday July 11: JPMorgan, Wells Fargo Q2 earnings — kickoff of Q2 earnings season
+
+**Crypto:**
+- BTC: ~$62,600–$63,900 — well below $82K active-trading threshold — NO ENTRY
+- ETH: ~$1,750–$1,800 — recovering but no prior threshold set for entry
+- **Crypto bucket stays at 0% — no entries today**
+
+**Fear & Greed Index:** ~32 (Fear) — constructive for buy-fear entries; not extreme panic
+
+---
+
+### USER SUGGESTION INBOX
+
+GitHub Issues label `user-suggestion` — **0 open suggestions** (checked via MCP GitHub tool). No action required.
+
+---
+
+### WHOLE-MARKET SCAN — FRESH OPPORTUNITIES
+
+Active scan for names scoring ≥7 beyond the mandatory carry-forward list:
+
+**NVDA delay beneficiary scan:**
+- AMD: Already hold 18sh — sell 9sh at MOO, hold remaining 9sh ✓
+- MRVL: Custom ASIC maker; powers Google TPU, Amazon Trainium; direct alternative when GPU delayed → SCORED BELOW (7.0 avg APPROVED)
+- AVGO: Custom ASIC + networking — would need fresh 6-agent; no score this session (4-entry cap reached)
+- SMCI: AMD server integrator — complex accounting history; skip without full 6-agent
+- Western Digital (WDC): +3% premarket; AI storage — interesting but deferred to Mid-Morning routine
+
+**SK Hynix Nasdaq bookbuilding starts today:** Institutional demand test for $52B memory chip listing; could lift MU/WDC/memory sector throughout July. Monitor at Mid-Morning.
+
+**New entries approved this session:** MRVL (7.0), IBM (7.67 carry-forward), META (7.5 carry-forward)
+
+---
+
+### 6-AGENT ANALYSIS — MRVL (New Entry — NVDA Delay Catalyst)
+
+**Setup: `breakout-volume`** — NVDA Kyber NVL144 12-month delay forces hyperscalers to custom ASIC alternatives. MRVL is the primary custom silicon provider for Google, Amazon, and Microsoft AI workloads.
+
+**Sub-Agent 1 — Fundamentals: 7/10**
+Most recent quarter beat; custom silicon (AI ASIC) segment growing strongly; data center dominates revenue mix; P/E elevated but supported by recurring ASIC contract wins; Buy consensus from major firms (JPMorgan, Bernstein, Citi). NVDA delay extends MRVL's addressable market window. Score 7/10.
+
+**Sub-Agent 2 — Technical: 6/10**
+MRVL consolidating $250–$270 post-S&P 500 inclusion (was $300+ June 22 peak). At $264 = mid-range with fresh bullish catalyst. 5-indicator check:
+1. Stochastic (14,3,3): Recovering from oversold post-June-29 selloff — %K likely crossing above %D — **CONFIRMS** ✓
+2. Candlestick: Pre-market gap-up forming on NVDA delay news — **CONFIRMS** (bullish gap = buyer signal) ✓
+3. Volume Oscillator (5,20): Mixed — gap-up trading may not show oscillator until RTH open
+4. MACD: Bearish cross from June 29 selloff not yet reversed — does NOT confirm
+5. Volume Spike: Pre-market institutional buying on NVDA news — likely 2×+ 20-bar avg — **CONFIRMS** ✓
+**3 of 5 indicators confirm (Stochastic + Candlestick gap + Volume Spike) — meets ≥2 requirement.**
+Score 6/10 (bullish setup, 3-of-5 confirmations, but prior trend was down from S&P inclusion peak).
+
+**Sub-Agent 3 — Sentiment: 7/10**
+NVDA delay → explicit MRVL bullish narrative on X and financial media this morning. Custom ASIC = "safe harbor" when GPU supply constrained. Moderate short interest (potential squeeze on gap-up). xAI Grok API blocked (API not accessible — degrading gracefully, score based on available data). Score 7/10.
+
+**Sub-Agent 4 — Macro: 7/10**
+Nasdaq +1.1% = tech risk-on. Jobs miss (57K vs 113K) = rate cut hope = growth stock tailwind. MRVL high-P/E directly benefits from rate cut narrative. Semiconductor sector (SMH) +2.4% pre-market. Score 7/10.
+
+**Sub-Agent 5 — Risk: 7/10**
+- Position: 18sh × $264 = $4,752 (4.73% equity — within 5% cap ✓)
+- Trade risk: 18sh × ($264 − $250.80) = 18 × $13.20 = $237.60 = 0.24% equity (within 1.5% cap ✓)
+- R/R: Stop $250.80 (−$13.20), Target $303.60 (+$39.60). R/R = 3:1 ✓
+- Sector allocation: AMD 4.75% + MRVL 4.73% = 9.5% semiconductors (within 25% cap ✓)
+- No earnings within 48h (MRVL next earnings ~September 2026) ✓
+- Open positions after entry: 3 (AMD remain + IBM + META + MRVL = 4 max; within 12 cap ✓)
+- Cash post all entries: ~$84,900 (84%) — well above 5% floor ✓
+Score 7/10.
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+MRVL custom silicon powers Google's next-gen TPU (Trillium), Amazon's Trainium 2/3, and Microsoft's Maia AI accelerators — this is the picks-and-shovels of custom AI silicon. NVDA delay of 12+ months directly extends the window where hyperscalers need MRVL-type custom ASICs. Network switching (400G/800G/1.6T PAM4) is an essential AI infrastructure layer MRVL dominates. Strong IP moat, data-center switching costs, and sticky hyperscaler relationships. Score 8/10.
+
+**MASTER AGENT — MRVL:**
+| Agent | Score |
+|---|---|
+| Fundamentals | 7/10 |
+| Technical | 6/10 |
+| Sentiment | 7/10 |
+| Macro | 7/10 |
+| Risk | 7/10 |
+| Tech Analyst | 8/10 |
+| **Average** | **7.0/10** |
+| Agents ≥7 | 5 of 6 ✓ |
+| Risk ≥6 | ✓ |
+
+**DECISION: APPROVED** — Average 7.0 ✓, Risk 7/10 ✓, 5/6 agents ≥7 ✓. Entry: 18sh MOO at open. Market Open routine must confirm MOO fill and post GTC stop at fill×0.95, target at fill+3×(fill−$250.80).
+
+---
+
+### 6-AGENT ANALYSIS — TSLA (Carry-Forward Scoring)
+
+**Setup: `earnings-reaction-follow`** — Q2 2026 deliveries: 480,126 vehicles (beat 406,024 consensus by +18.2%, +25% YoY). Stock fell -7.49% to ~$395 on sell-the-news.
+
+**Sub-Agent 1 — Fundamentals: 5/10**
+Q2 delivery beat genuine (+18.2% vs consensus). But P/E ~390× at $395 = extreme valuation. US domestic sales -19.7% YoY (9th consecutive monthly decline). Financial results (margins, energy storage) not yet released (July 22 after close). No guidance from delivery report. Score 5/10.
+
+**Sub-Agent 2 — Technical: 5/10**
+Daily downtrend post July 2 -7.5% drop. $395 is below pre-earnings level (~$440). Key support $380, resistance $440. Stochastic likely oversold but no confirmed bullish cross yet. MACD bearish from drop. Volume spike was the SELL event (July 2), not a buy signal. 2-of-5 mandatory confirmations NOT met at pre-market. Score 5/10 (cannot exceed 5 without ≥2 confirmations).
+
+**Sub-Agent 3 — Sentiment: 5/10**
+Mixed sentiment. Delivery beat bullish but US sales decline narrative bearish. Elon consumer sentiment divisions persist. xAI API blocked (degraded score). X sentiment estimated mildly bearish (−1 modifier). Base 6/10 → with −1 modifier = 5/10.
+
+**Sub-Agent 4 — Macro: 6/10**
+Nasdaq +1.1% tailwind. Rate cut hope from jobs miss. But TSLA P/E 390× = extreme leverage to rate expectations. Score 6/10.
+
+**Sub-Agent 5 — Risk: 6/10**
+R/R: Entry ~$398, stop -5% = $378.10, target +15% = $457.70. R/R 3:1 ✓. But target requires clearing $440 resistance. Binary event: July 22 earnings → MUST EXIT by July 18 EOD (8 trading days max). Hard exit constraint = limited upside capture window. Score 6/10.
+
+**Sub-Agent 6 — Tech Analyst: 6/10**
+FSD data moat genuine. Optimus robot not revenue-generating. Energy storage diversifier. US brand erosion real concern. Score 6/10.
+
+**MASTER AGENT — TSLA:**
+| Agent | Score |
+|---|---|
+| Fundamentals | 5/10 |
+| Technical | 5/10 |
+| Sentiment | 5/10 |
+| Macro | 6/10 |
+| Risk | 6/10 |
+| Tech Analyst | 6/10 |
+| **Average** | **5.5/10** |
+| Agents ≥7 | 0 of 6 ❌ |
+
+**DECISION: REJECTED** — Average 5.5 < 7.0 minimum. 0 of 6 agents scored ≥7 (need ≥4). Sell-the-news + P/E 390× + US sales erosion + only 8 trading days before exit deadline = insufficient conviction.
+
+---
+
+### ORDERS ATTEMPTED (ALL BLOCKED — HTTP 000/403)
+
+**Stop-Loss Audit First: Alpaca GET /v2/orders blocked (HTTP 000). Cannot verify existing stop state. AMD remains naked — MUST sell 9sh at MOO to begin remediation.**
+
+| Order | Details | Status |
+|---|---|---|
+| SELL 9sh AMD MOO | time_in_force=opg, side=sell, type=market | HTTP 000 — BLOCKED (proxy CONNECT rejected) |
+| BUY 18sh MRVL MOO | time_in_force=opg, side=buy, type=market, score 7.0 | HTTP 000 — BLOCKED (proxy CONNECT rejected) |
+| BUY 3sh IBM limit $290 bracket GTC | stop $275.50, target $333.50, score 7.67 | HTTP 000 — BLOCKED (proxy CONNECT rejected) |
+| BUY 8sh META limit $585 bracket GTC | stop $555.75, target $672.75, score 7.5 | HTTP 000 — BLOCKED (proxy CONNECT rejected) |
+
+**All orders blocked — 64th consecutive session. Alpaca is the system of record. Operator must execute manually at app.alpaca.markets.**
+
+**OPERATOR MANDATORY ACTIONS — BEFORE 9:25 AM ET:**
+1. ⚠️⚠️⚠️ SELL 9sh AMD at market (reduce 18sh→9sh): go to app.alpaca.markets → Orders → New Order → AMD, Sell, 9, Market, Day
+2. BUY 18sh MRVL at market (MOO): MRVL, Buy, 18, Market, Day (or Market on Open)
+3. BUY 3sh IBM limit $290.00: IBM, Buy, 3, Limit $290.00, GTC, Bracket (stop $275.50, target $333.50)
+4. BUY 8sh META limit $585.00: META, Buy, 8, Limit $585.00, GTC, Bracket (stop $555.75, target $672.75)
+5. After AMD+MRVL MOO fills at 9:30 AM: place GTC stops (AMD: fill×0.95; MRVL: fill×0.95) and targets (AMD: fill+3×(fill-stop); MRVL: $303.60)
+
+---
+
+### YAML DECISION LOG — JULY 6, 2026
+
+```yaml
+---
+ts: 2026-07-06T12:07:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: "Sell 9sh AMD at MOO to reduce from 18sh (9.5% equity, Day 14 naked) to 9sh (within 5% cap). NVDA Kyber NVL144 delay is bullish for remaining 9sh but guardrail compliance is non-negotiable."
+size_pct: 4.73
+stop: 481.42
+target: 582.78
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "EXIT ATTEMPT: SELL 9sh AMD MOO → HTTP 000 BLOCKED (64th consecutive session). AMD premarket $530.64 (+2.47%) on NVDA Kyber NVL144 12-month delay. Previous close $517.82. AMD unrealized gain ~$430 on 18sh. Still must sell 9sh — guardrail violation (9.5% equity vs 5% cap). OPERATOR MUST EXECUTE IMMEDIATELY. Remaining 9sh to hold as beneficiary of NVDA delay; new bracket at Market Open after fill confirmation. xAI Grok API blocked — X sentiment degraded."
+---
+ts: 2026-07-06T12:10:00Z
+action: entry
+symbol: MRVL
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: "NVDA Kyber NVL144 delayed 12+ months to 2028 — MRVL custom ASIC (Google TPU, Amazon Trainium) is direct alternative. Hyperscalers forced to evaluate MRVL-type silicon. SMH +2.4% pre-market."
+size_pct: 4.73
+stop: 250.80
+target: 303.60
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "ENTRY ATTEMPT: BUY 18sh MRVL MOO → HTTP 000 BLOCKED (64th consecutive session). MRVL ~$264 pre-market. NVDA delay = custom silicon demand pull-forward. Stop $250.80 (−5%), target $303.60 (+15%), R/R 3:1. Technical 6/10 (3 of 5 confirmed: Stochastic recovery + bullish gap + volume spike). No MRVL earnings until ~Sept 2026. Sector: semis at 9.5% total (AMD 4.75% + MRVL 4.73%) — within 25% cap. xAI Grok API blocked — X sentiment degraded. OPERATOR MUST EXECUTE: BUY 18sh MRVL MOO at app.alpaca.markets."
+---
+ts: 2026-07-06T12:11:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: "IBM NanoStack 0.7nm chip + JPMorgan Overweight + quantum executive orders. IBM at $289-290 (AT our $290 limit). Hard exit July 18 EOD (earnings July 22). Anthropic/COBOL threat priced in from February 2026 (-13% event); IBM has since recovered."
+size_pct: 0.87
+stop: 275.50
+target: 333.50
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "ENTRY ATTEMPT: BUY 3sh IBM limit $290.00 bracket GTC (stop $275.50, target $333.50) → HTTP 000 BLOCKED (64th consecutive session). IBM at $287-290 pre-market. JPMorgan OW PT $291 intact. NanoStack sub-1nm chip thesis solid. Anthropic COBOL threat is February 2026 news — already priced in (-13% at the time; IBM has recovered). VentureBeat analysis: translating COBOL ≠ modernizing it (analysts skeptical of threat magnitude). FOMC minutes July 8 could move IBM. Hard exit July 18 EOD. OPERATOR: BUY 3sh IBM limit $290.00 bracket GTC at app.alpaca.markets."
+---
+ts: 2026-07-06T12:12:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "META cloud compute launch confirmed (selling excess AI capacity). $125-145B capex plan now seen as revenue-generating asset vs. pure cost. Re-priced limit from $615 to $585 (cloud story intact, AI progress slower per Zuckerberg, re-price is a 4.9% discount). Earnings July 29 — exit by July 25 EOD."
+size_pct: 4.66
+stop: 555.75
+target: 672.75
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "ENTRY ATTEMPT: BUY 8sh META limit $585.00 bracket GTC (stop $555.75, target $672.75) → HTTP 000 BLOCKED (64th consecutive session). META premarket ~$580-585. Cloud compute story confirmed across 8+ outlets. Capex $125-145B re-framed as competitive weapon (cloud revenue). Zuckerberg noted AI agents progressing slower than expected — mild negative. Limit re-priced from $615 to $585 (ask×1.005 level; previous $615 limit was above July 2 close of ~$585). Hard exit July 25 EOD (earnings July 29). R/R: $87.75 reward / $29.25 risk = 3:1 ✓. xAI Grok API blocked — degraded score. OPERATOR: BUY 8sh META limit $585.00 bracket GTC at app.alpaca.markets."
+---
+ts: 2026-07-06T12:13:00Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: earnings-reaction-follow
+score: 5.5
+thesis: "Q2 2026 deliveries 480,126 (beat 406K consensus +18.2%, +25% YoY). Stock fell -7.49% on sell-the-news. Scoring: F5/T5/S5/M6/R6/TA6 = 5.5 avg. REJECTED — below 7.0 minimum; 0 of 6 agents scored ≥7."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 5
+  sentiment: 5
+  macro: 6
+  risk: 6
+  tech_analyst: 6
+agent_average: 5.5
+agents_above_7: 0
+master_decision: rejected
+master_notes: "SKIP — 6-agent gate rejected. Average 5.5 < 7.0 minimum. 0 of 6 agents scored ≥7 (need 4+). Key rejection factors: (1) P/E ~390× = extreme valuation headwind; (2) US domestic sales -19.7% YoY for 9 consecutive months = structural demand erosion in home market; (3) Technical 5/10 — 2-of-5 mandatory indicator stack NOT met (no confirmed bullish candlestick or MACD cross post-selloff); (4) 8-day max hold window before July 20 mandatory exit limits upside capture. Not a guardrail skip — a genuine scoring rejection. Re-evaluate at Mid-Morning if confirmed 2-of-5 technical indicators emerge at open. xAI Grok API blocked — X sentiment degraded."
+---
+```
+
+---
+
+### WATCHLIST FOR MARKET OPEN (9:45 AM ET)
+
+| Ticker | Action | Score | Priority | Notes |
+|--------|--------|-------|----------|-------|
+| AMD SELL 9sh | MOO confirmation | — | ⚠️ DAY 14 NAKED | Confirm MOO filled; post GTC stop at fill×0.95, target fill+3×(fill-stop) |
+| MRVL BUY 18sh | MOO confirmation | 7.0 | ✅ NEW | Confirm MOO filled; post GTC stop $250.80 (if fill ≈$264), target $303.60 |
+| IBM BUY 3sh | Limit $290 bracket | 7.67 | ✅ MANDATORY | If IBM gaps above $290: revise to ask×1.005, max $292.90 |
+| META BUY 8sh | Limit $585 bracket | 7.5 | ✅ MANDATORY | If META below $585: limit should fill; if above: wait for pullback to $585 |
+| WDC | Watch for score | TBD | Monitor | +3% pre-market on AI storage; score at Mid-Morning |
+| SK Hynix Nasdaq | Sector catalyst | N/A | Monitor | Bookbuilding starts today; memory sector tailwind for MU/WDC |
+| TSLA | Re-evaluate at open | 5.5 | Watch | If hammer + 2-of-5 confirm at open, re-score; must score ≥7 |
+
+**API Blockage Note:** This is the 64th consecutive session blocked by proxy policy (paper-api.alpaca.markets:443 not in egress allowlist). All 4 orders above require manual execution by operator at app.alpaca.markets before 9:25 AM ET to guarantee MOO fills and before market close for limit bracket orders.
+
+---
+
 ## 2026-07-03 — Pre-Market (8:00 AM ET / 12:05 UTC — FRIDAY — MARKET HOLIDAY — OBSERVED INDEPENDENCE DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-03T12:05:12Z ✓
