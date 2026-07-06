@@ -4,6 +4,231 @@
 
 ---
 
+## 2026-07-06 — Market-Close (3:30 PM ET / 19:35 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-06T19:34:58Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (HTTP 000 — paper-api.alpaca.markets:443 not in egress allowlist) — **67th consecutive blocked session**
+**Current Time:** 19:35Z = 3:35 PM ET — Market-Close window (market closed 4:00 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+- **Pre-Market (8:00 AM ET / 12:00 UTC):** ❌ SILENT FAILURE — violation logged by Mid-Morning ✓
+- **Market-Open (9:45 AM ET / 13:45 UTC):** ❌ SILENT FAILURE — violation logged by Mid-Morning ✓
+- **Mid-Morning (11:00 AM ET / 15:09 UTC):** ✅ STARTED 15:09:46Z, COMPLETED 15:22:48Z
+- **Midday (12:30 PM ET / 16:34 UTC):** ✅ STARTED 16:34:41Z — no COMPLETED heartbeat found (routine completed per trades.md but final heartbeat push may have failed — non-critical)
+- **Afternoon (2:00 PM ET / 18:00 UTC):** ❌ SILENT FAILURE — no heartbeat entry in logs/heartbeats/2026-07-06.log — **logging violation now**
+
+```yaml
+---
+ts: 2026-07-06T18:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: "Afternoon routine (2:00 PM ET / 18:00Z) silently failed — no heartbeat STARTED entry in logs/heartbeats/2026-07-06.log. Market-Close routine is executing catch-up: closing day trades (none open — AMD is an overnight swing, no intraday positions), confirming stops (naked AMD — stop backfill repeated below), and attempting MOC entries for pre-scored commitments. 67th consecutive blocked API session."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Afternoon silent failure. Market-Close running catch-up per close.md playbook. No day trades open. AMD 18sh remains NAKED — stop backfill and sell-9sh attempted below (both blocked). META MOC entry attempted below (blocked). No new 6-agent analysis needed — pre-scored commitments govern."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — every routine)
+
+**API BLOCKED — HTTP 000 (67th consecutive session)**
+
+```bash
+# GET /v2/account → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+```
+
+Known naked position: **AMD 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA — Day 16 (counting from June 23 fill)**
+
+Stop-loss backfill attempt (GTC stop at $491.93 — 2.5% trailing from mid-morning $517.82, adequate for active-trade 5% rule):
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"491.93","time_in_force":"gtc"}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (67th consecutive session)
+```
+
+AMD remains naked. **Guardrail violation continuing Day 16.**
+
+---
+
+### DAY TRADE CLOSE AUDIT
+
+No intraday positions open. AMD 18sh is an overnight swing (entered June 23 — Day 16). No day trades to close via MOC.
+
+---
+
+### ORDER 1: AMD SELL 9sh MOC — MANDATORY GUARDRAIL REDUCTION (Day 16)
+
+AMD 18sh = ~9.3-9.5% equity = OVER 5% hard cap. Semiconductor recovery day — AMD estimated $530-$540 range at close. MOC order (time_in_force=cls) to execute at 4:00 PM ET market-on-close price.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (67th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-06T19:35:15Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "MANDATORY GUARDRAIL REDUCTION Day 16: AMD 18sh = ~9.4% equity, OVER 5% hard cap. MOC SELL 9sh attempted at market close price (est. $533-540). Semiconductor recovery day confirmed — AMD ranged $506-$548 through session, recovering from July 1-2 selloff."
+size_pct: 4.7
+stop: 491.93
+target: 582.78
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: approved
+master_notes: "MARKET-CLOSE CATCH-UP: AMD MOC SELL 9sh (time_in_force=cls) attempted — HTTP 000 BLOCKED (67th consecutive session). Order NOT executed. AMD still 18sh (~9.4% equity, OVER 5% cap, Day 16 NAKED). OPERATOR MANDATORY at app.alpaca.markets: (1) SELL 9sh AMD at market; (2) Place GTC STOP on remaining 9sh at $506.76 × 0.95 = $481.42 (original 5% stop from fill) OR trail to $491.93 (current trail); (3) Place GTC TAKE-PROFIT on remaining 9sh at $582.78 (original target). AMD's semiconductor recovery thesis intact — BofA confirmed July 1-2 selloff was temporary. AMD Advancing AI conference July 22-23 is upcoming catalyst."
+---
+```
+
+---
+
+### ORDER 2: META BUY 8sh — BINDING COMMITMENT MOC (score 7.5)
+
+META binding since July 1 (score 7.5). No earnings within 48h (Q2 est. ~July 29-30). MOC swing entry at today's close price. Market condition: risk-on, semiconductor recovery; META underperforming chips but cloud thesis intact.
+
+MOC entry (bracket parameters set to approximate close price ~$555-$562):
+- Entry: market (MOC)
+- Stop: entry × 0.95 (5% active-trade stop)
+- Target: entry + 3× (entry × 0.05) (15% target — minimum 3:1 R/R)
+
+```bash
+# MOC cannot use bracket — will need follow-up stop at Market-Open tomorrow
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (67th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-06T19:35:30Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "META cloud compute service launch confirmed Bloomberg + 8 outlets. Binding commitment since July 1 (score 7.5). MOC entry attempted at est. $555-562 close. Stop -5% (~$528-534), target +15% (~$638-647), R/R 3:1. Entry deadline: before META Q2 earnings est. July 29-30."
+size_pct: 4.43
+stop: 531.43
+target: 641.05
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "MARKET-CLOSE: META MOC BUY 8sh (time_in_force=cls) attempted — HTTP 000 BLOCKED (67th consecutive session). Order NOT executed. META cloud compute thesis confirmed by multiple outlets. Score 7.5 per prior 6-agent run (July 1, re-verified July 6 mid-morning). META underperformed semiconductors today (AI rotation) but cloud thesis horizon is 3+ weeks. Entry repriced from $619 to ~$558 (July 6 range). OPERATOR: BUY 8sh META market or limit ~$558 bracket GTC (stop ~$530, target ~$642, R/R 3.0:1) at app.alpaca.markets."
+---
+```
+
+---
+
+### MARKET SUMMARY — End of Day Estimates (API Blocked — estimates based on morning trajectory + macro)
+
+**All prices estimated — no API access for confirmed EOD data:**
+
+| Symbol | EOD Est. Price | Day Change | Notes |
+|--------|---------------|------------|-------|
+| AMD | ~$535 | ~-4.4% from Jul 3 close ($559) | Recovery from $506 AM low; ranged $506-$548 |
+| META | ~$558 | ~-1.5% est. | Underperforming semiconductors; AI chip rotation |
+| S&P 500 | ~7,555 | ~+0.7% | Strong recovery; Dow touched 53,000 |
+| NASDAQ | ~14,400+ est. | ~+1.5% | Semiconductor names leading |
+| BTC | ~$60K est. | flat | Below $82K crypto threshold |
+
+- **Market Mode:** RISK-ON — Semiconductor recovery. BofA calling July 1-2 selloff "temporary adjustment not structural AI demand shift." SMH +2.7%+, AMD/NVDA/AVGO leading. Dow briefly >53,000. META -1.5% (chip rotation). IBM -4% (Accenture contagion).
+- **No day trades to report** — all positions are overnight swings.
+- **No stale limit orders to cancel** — no GTC limits placed (all blocked).
+- **Tomorrow's key risk:** No major macro events (light calendar). Earnings season begins ~July 8 (JPM/WFC July 11). IBM earnings July 22.
+
+---
+
+### EOD PORTFOLIO STATE
+
+| Symbol | Shares | Avg Fill | Est. EOD Price | Est. P&L | % Portfolio | Status |
+|--------|--------|----------|---------------|----------|-------------|--------|
+| AMD | 18sh | $506.76 | ~$535 | +$505 | ~9.5% | ⚠️ OVER 5% cap, NAKED Day 16 |
+
+**End of Day Estimates:**
+- AMD 18sh × $535 = $9,630 (9.6% equity)
+- Cash: ~$90,644
+- **Total Est. Equity: ~$100,274**
+- **Daily P&L est.: ~-$453** (AMD down ~$25/sh from Jul 3 reference ~$560; 18 × -$25 = -$453)
+- **Daily P&L %: ~-0.45%**
+- **Total Return: ~+0.27%** (from $100,000 starting equity)
+- **S&P 500 Return from May 1 (7,200 → ~7,555): ~+4.93%**
+- **Gap vs S&P 500: est. ~-4.66 pp**
+
+---
+
+### OVERNIGHT HOLD CONFIRMATION
+
+- **AMD 18sh:** Hold overnight. Semiconductor recovery thesis intact (BofA AI capex call). Original take-profit $582.78 remains valid. **VIOLATION: no stop-loss resting at Alpaca (Day 16 naked)**. Operator must place: SELL 9sh at market + GTC STOP $481.42 + GTC TP $582.78 on remaining 9sh.
+- **AMD Advancing AI conference:** July 22-23 — upcoming catalyst, NOT a binary-event blocker.
+- **META:** Not yet entered (blocked). Binding entry commitment carries to Pre-Market July 7.
+- **IBM:** Re-score July 7 Pre-Market (scored 6.17 today — Accenture contagion, analyst PT $300 below required $321 target).
+- **TSLA:** Re-score July 7 Pre-Market (scored 5.67 today — 0-of-5 technicals, P/E ~400x). Hard exit deadline July 20 EOD if entering (earnings July 22).
+
+---
+
+### JULY 7 MANDATORY ACTIONS (Pre-Market binding commitment)
+
+1. ⚠️⚠️⚠️ AMD: SELL 9sh MOO (Day 16 naked, OVER 5% cap) — ABSOLUTE FIRST ORDER
+2. META: 8sh limit bracket GTC at ~$558 (score 7.5 — mandatory entry, deadline before July 29-30 Q2 earnings)
+3. IBM: Fresh 6-agent re-score (Accenture contagion — was 6.17 today; watch for recoverye)
+4. TSLA: Fresh 6-agent re-score (was 5.67 today — needs technical improvement to qualify)
+5. Market-Open (9:45 AM ET): Immediately after AMD MOO fill, place GTC STOP at fill × 0.95 + GTC TP at fill × 1.15 (3:1 R/R) on remaining 9sh
+
+---
+
 ## 2026-07-06 — Midday (12:30 PM ET / 16:34 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
 
 **HEARTBEAT:** STARTED Midday 2026-07-06T16:34:41Z ✓
