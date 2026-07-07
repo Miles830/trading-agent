@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-07T12:15:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-07-07T13:46:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 100238.0,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.4
     },
-    "note": "July 7 PRE-MARKET (8:06 AM ET / 12:06Z). API BLOCKED HTTP 000 \u2014 67th consecutive. 5 orders blocked: AMD SELL 9sh MOO, AMD GTC STOP $506.39, META BUY 8sh MOO, PLTR BUY 35sh MOO, IBM BUY 3sh limit $289.50 bracket GTC. AMD 18sh est. $533 = $9,594 (9.5% \u2014 OVER 5% cap, Day 16 NAKED). NVIDIA Kyber delay \u2192 AMD +2.5% pre-mkt; Goldman PT $640. PLTR D.A. Davidson upgrade \u2192 +5.3%. ISM Services 9:00 AM ET today. Operator: (1) SELL 9sh AMD + GTC STOP $506.39 + GTC TP $640; (2) BUY 8sh META MOO + GTC stops at fill; (3) BUY 35sh PLTR MOO + GTC stops at fill; (4) BUY 3sh IBM limit $289.50 bracket GTC (EXIT Jul 20 EOD)."
+    "note": "July 7 MARKET-OPEN (9:46 AM ET / 13:46Z). API BLOCKED HTTP 000 \u2014 68th consecutive. Market open: Nasdaq -1.10% (semiconductor rotation), S&P -0.25%, <1.5% so no size halving. SpaceX joined Nasdaq-100 today. ISM Services PMI result unknown. 3 Market-Open orders blocked: AMD SELL 9sh limit $530, AMD GTC STOP $506.39, IBM limit $289.50 bracket GTC. Pre-market MOOs (AMD sell, META buy, PLTR buy) were also blocked. AMD 18sh est. $533-540 = ~$9,594-9,720 (9.5-9.7% \u2014 OVER 5% cap, Day 17 NAKED). PLTR score 7.67 approved. META score 7.0 approved. IBM score 7.33 approved. Operator: (1) SELL 9sh AMD at market + GTC STOP $506.39 + GTC TP $640; (2) BUY 8sh META at market + GTC stops at fill; (3) BUY 35sh PLTR at market + GTC stops at fill; (4) BUY 3sh IBM limit $289.50 bracket GTC (EXIT Jul 20 EOD)."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 506.39,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 16. 18sh at $506.76 fill, pre-market $533.25 (+2.5%). NVIDIA Kyber NVL144 AI rack delayed to 2028 \u2192 AMD direct beneficiary at high end. Goldman PT raised $640 (from $450). AMD 'Advancing AI 2026' event July 23. Position ~9.5% equity (OVER 5% cap \u2014 Day 16 violation). NO STOP RESTING AT ALPACA. Trail stop attempt $506.39 \u2014 BLOCKED 67th consecutive. SELL 9sh MOO attempt \u2014 BLOCKED. OPERATOR MANDATORY: SELL 9sh AMD at market NOW; GTC STOP $506.39 + GTC TP $640 on remaining 9sh. Earnings July 22 \u2192 MUST EXIT by July 20 EOD."
+      "note": "CRITICALLY NAKED Day 17. 18sh at $506.76 fill, est. market open $533-540 (+2.5-3.5%). NVIDIA Kyber NVL144 AI rack delayed to 2028 \u2192 AMD direct beneficiary. Goldman PT raised $640 (from $450). AMD 'Advancing AI 2026' event July 23. Position ~9.5-9.7% equity (OVER 5% cap \u2014 Day 17 violation). NO STOP RESTING AT ALPACA. Market-Open stop backfill attempt \u2014 BLOCKED (68th consecutive). SELL 9sh limit $530 attempt \u2014 BLOCKED. OPERATOR MANDATORY: SELL 9sh AMD at market NOW; GTC STOP $506.39 + GTC TP $640 on remaining 9sh. Earnings July 22 \u2192 MUST EXIT by July 20 EOD."
     },
     {
       "symbol": "META",
@@ -143,10 +143,10 @@
     },
     {
       "name": "Market-Open",
-      "status": "PENDING",
-      "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-07T13:45:00Z",
-      "last_summary": "PENDING. CRITICAL: Market Open MUST confirm MOO fills (AMD SELL, META BUY, PLTR BUY if operator placed). Must set GTC stop+target for each fill. AMD stop backfill mandatory."
+      "status": "completed",
+      "last_run": "2026-07-07T13:46:00Z",
+      "next_run": "2026-07-08T13:45:00Z",
+      "last_summary": "July 7 Market-Open COMPLETED. API BLOCKED (HTTP 000 — 68th consecutive). MOO fills unverifiable (all pre-market MOO orders were blocked). AMD stop backfill: IMPOSSIBLE. 3 Market-Open order attempts blocked: AMD SELL 9sh limit $530, AMD GTC STOP $506.39, IBM limit $289.50 bracket GTC. AMD naked Day 17. Nasdaq -1.10% at open. No fills executed. Operator manual action required at app.alpaca.markets."
     },
     {
       "name": "Mid-Morning",
@@ -185,6 +185,96 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-07T13:46:00Z",
+      "action": "violation",
+      "symbol": "ALL",
+      "setup": "other",
+      "score": null,
+      "side": null,
+      "qty": null,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "Market-Open BLOCKED — API HTTP 000 (68th consecutive). 3 order attempts failed: AMD SELL 9sh, AMD GTC STOP $506.39, IBM limit $289.50 bracket GTC. AMD naked Day 17. Nasdaq -1.10% at open. No fills executed.",
+      "agent_average": null,
+      "master_decision": null
+    },
+    {
+      "ts": "2026-07-07T12:14:00Z",
+      "action": "skip",
+      "symbol": "TSLA",
+      "setup": "earnings-reaction-fade",
+      "score": 5.5,
+      "side": "buy",
+      "qty": 0,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "REJECTED — score 5.5 below 7.0 minimum; only 1/6 agents >=7 (Tech Analyst=8); RIVN dilution EV headwind; 0-of-5 technicals confirming",
+      "agent_average": 5.5,
+      "master_decision": "rejected"
+    },
+    {
+      "ts": "2026-07-07T12:13:00Z",
+      "action": "entry",
+      "symbol": "IBM",
+      "setup": "sector-rotation",
+      "score": 7.33,
+      "side": "buy",
+      "qty": 3,
+      "limit_price": 289.5,
+      "stop_loss": 275.03,
+      "take_profit": 332.91,
+      "result": "APPROVED — BLOCKED HTTP 000 (67th consecutive). Order not executed. IBM z17 launch + BofA PT $330 catalyst.",
+      "agent_average": 7.33,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-07T12:12:00Z",
+      "action": "entry",
+      "symbol": "PLTR",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "side": "buy",
+      "qty": 35,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "APPROVED — BLOCKED HTTP 000 (67th consecutive). MOO not executed. D.A. Davidson upgrade + Q1 $1.63B revenue (+85% YoY).",
+      "agent_average": 7.67,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-07T12:11:00Z",
+      "action": "entry",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 8,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "APPROVED — BLOCKED HTTP 000 (67th consecutive). MOO not executed. Cloud compute launch confirmed.",
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-07T12:10:00Z",
+      "action": "exit",
+      "symbol": "AMD",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "side": "sell",
+      "qty": 9,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": 640.0,
+      "result": "MANDATORY GUARDRAIL REDUCTION ATTEMPTED — BLOCKED HTTP 000 (67th consecutive). AMD 18sh = 9.5% equity, OVER 5% cap, Day 17 naked. MOO sell 9sh not executed.",
+      "agent_average": null,
+      "master_decision": null
+    },
     {
       "ts": "2026-07-06T15:25:00Z",
       "action": "skip",

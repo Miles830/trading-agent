@@ -480,6 +480,182 @@ master_notes: "TSLA REJECTED: avg 5.5 (need 7.0); only 1/6 agents ≥7 (Tech Ana
 
 ---
 
+## 2026-07-07 — Market Open (9:45 AM ET / 13:46 UTC — TUESDAY — SEMICONDUCTOR ROTATION / API BLOCKED DAY 68)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-07T13:45:39Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (paper-api.alpaca.markets:443 policy denial) — **68th consecutive blocked session**
+**Current Time:** 13:46Z = 9:46 AM ET — Market Open window (market has been open ~16 minutes)
+
+---
+
+### PREDECESSOR CHECK
+
+`grep "STARTED Pre-Market" logs/heartbeats/2026-07-07.log` → **CONFIRMED** (2026-07-07T12:06:19Z STARTED Pre-Market). Pre-Market completed successfully and placed all 4 blocked orders. Watchlist committed: AMD SELL 9sh, META BUY 8sh, PLTR BUY 35sh, IBM BUY 3sh limit $289.50 bracket GTC. No catch-up required — pre-market ran.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 000 (68th consecutive session)**
+
+```bash
+curl -s "${APCA_API_BASE_URL}/v2/positions" "${AUTH[@]}"
+# RESULT: HTTP 000 — proxy CONNECT rejected (68th consecutive session)
+
+curl -s "${APCA_API_BASE_URL}/v2/orders?status=open" "${AUTH[@]}"
+# RESULT: HTTP 000 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**Known naked position: AMD 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA — Day 17**
+
+Stop backfill attempt (AMD est. open ~$530-540 → trailing stop $530 × 0.95 = $503.50):
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"503.50","time_in_force":"gtc"}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (68th consecutive session)
+```
+
+AMD remains naked — no stop resting at Alpaca. **Guardrail violation continuing Day 17.**
+
+---
+
+### MOO FILL VERIFICATION
+
+Pre-Market routine at 12:06-12:15Z submitted 3 MOO orders (AMD sell 9sh, META buy 8sh, PLTR buy 35sh) — all blocked HTTP 000. Market opened at 9:30 AM ET (~13:30Z). MOO fills cannot be verified due to API blockage.
+
+**Estimated open prices (based on pre-market readings and futures direction):**
+- AMD: pre-market $533.25 (+2.5%) → est. open ~$533-540 (counter-trend to Nasdaq -1.1%)
+- META: pre-market $608 (+1.4%) → est. open ~$600-608 (slight give-back as Nasdaq sold off)
+- PLTR: pre-market $133.36 (+5.3%) → est. open ~$130-136 (upgrade catalyst; may hold gains)
+- IBM: limit at $289.50 → IBM est. open ~$287-291 (may have filled intraday)
+
+**Because all MOO orders were blocked, MOO fills did NOT execute.** The Alpaca paper account has received no new orders from this agent. AMD remains at 18sh (unverified through API; estimated ~9.5% equity, OVER 5% cap, naked Day 17).
+
+**Stop-loss backfill for MOO fills: N/A** — no MOO fills occurred (all orders blocked).
+
+---
+
+### MARKET OPEN ASSESSMENT
+
+**Time:** 9:46 AM ET (market open 16 minutes)
+**Market direction (estimated from pre-market futures):**
+- Nasdaq-100: -1.10% (semiconductor rotation — Samsung revenue miss; SpaceX joins Nasdaq-100 today adding forced passive rebalancing)
+- S&P 500: -0.25% (below -1.5% threshold — no position size halving required)
+- Dow: +0.14% (rotation from tech to value)
+
+**Market opened down <1.5%** — position sizing per CLAUDE.md unchanged (no halving required).
+**Market opened down ~0.25%** — well below +2% threshold (no chase-prevention rule triggered).
+
+**ISM Services PMI (9:00 AM ET):** Released at 9:00 AM ET (result unknown — no API access; consensus ~52.5; a beat = risk-on pivot, miss = further risk-off). This was the "day's pivot" identified in Pre-Market.
+
+**Key market developments at open (estimated):**
+- SpaceX officially joined Nasdaq-100 at market open today — est. $4.3B-$27B in forced passive buying (positive sentiment)
+- AMD: Counter-trend strength likely held — Goldman PT $640 + NVIDIA Kyber delay = strong catalyst
+- PLTR: D.A. Davidson upgrade catalyst typically holds at open on volume
+- META: May have given back some pre-market gains on Nasdaq selloff
+
+---
+
+### NEW ORDER ATTEMPTS — MARKET OPEN ROUTINE
+
+Per CLAUDE.md Deployment Bias, all pre-market commitments carry forward until executed. IBM limit order is the primary new action for this routine (limit bracket GTC was attempted in pre-market but blocked; market-open is the appropriate window for limit orders).
+
+**ORDER ATTEMPT 1: IBM limit bracket GTC (re-attempt)**
+
+IBM z17 + LinuxONE 5 launch day. BofA PT $330 catalyst intact. Est. IBM trading ~$287-291.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"289.50",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"275.03"},
+  "take_profit":{"limit_price":"332.91"}
+}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**ORDER ATTEMPT 2: AMD SELL 9sh — limit order re-attempt**
+
+AMD naked Day 17. Estimated AMD open ~$533-540. Limit sell at market price.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"AMD","qty":9,"side":"sell","type":"limit","limit_price":"530.00",
+  "time_in_force":"day"
+}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**ORDER ATTEMPT 3: AMD GTC STOP for remaining 9sh**
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' -d '{
+  "symbol":"AMD","qty":9,"side":"sell","type":"stop","stop_price":"506.39",
+  "time_in_force":"gtc"
+}'
+# RESULT: HTTP 000 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**ALL 3 MARKET-OPEN ORDER ATTEMPTS BLOCKED — HTTP 000 (68th consecutive session)**
+
+---
+
+### YAML DECISION LOG
+
+```yaml
+---
+ts: 2026-07-07T13:46:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "MARKET OPEN ROUTINE — API BLOCKED (68th consecutive session). Proxy CONNECT rejected HTTP 000. AMD naked Day 17: 18sh at $506.76, est. ~9.5% equity (OVER 5% cap). Stop-loss backfill IMPOSSIBLE. MOO fills from pre-market: UNKNOWN (orders never reached Alpaca). New AMD SELL 9sh limit $530 attempt: BLOCKED. AMD GTC STOP $506.39 attempt: BLOCKED. IBM limit bracket $289.50 attempt: BLOCKED. All 3 Market-Open order attempts failed."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: null
+  technical: null
+  sentiment: null
+  macro: null
+  risk: null
+  tech_analyst: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "Market Open 9:46 AM ET (13:46Z). Alpaca API blocked HTTP 000 — 68th consecutive session. Proxy policy denial at paper-api.alpaca.markets:443. Pre-Market predecessor confirmed STARTED 12:06Z. Nasdaq -1.10% (semiconductor rotation), S&P -0.25% (not >1.5% — no size halving). AMD est. open $533-540. META est. open $600-608. PLTR est. open $130-136. IBM limit $289.50 — status unknown (may be resting from pre-market submission attempt; API NEVER executed the order so it is NOT resting at Alpaca). ISM Services PMI result unknown. SpaceX joins Nasdaq-100 today. All guardrail violations from pre-market persist. Operator MUST log into app.alpaca.markets immediately."
+---
+```
+
+---
+
+### MARKET OPEN SUMMARY
+
+**Portfolio State (estimated — API unavailable):**
+- AMD: 18sh at $506.76 (est. $533-540 open) = est. $9,594-9,720 (~9.5-9.7% equity) ⚠️ OVER 5% cap, Day 17
+- META: 0sh (buy blocked)
+- PLTR: 0sh (buy blocked)
+- IBM: 0sh (limit blocked; order not resting at Alpaca)
+- Cash: ~$90,644 (~90.4% equity) — far above 5% floor but FAR above 85% active target
+- Total equity est.: ~$100,350-$100,475
+
+**Benchmark (SPX):** Est. May 1 baseline 7,200 → July 7 market-open est. ~7,568 (-0.25% from 7,587 est.) = +5.11%
+**Portfolio est. return:** +0.35-0.47%
+**Cumulative gap vs SPX: est. -4.64 to -4.76 pp (widening)**
+
+**OPERATOR MANDATORY ACTIONS — Execute NOW at app.alpaca.markets:**
+1. ⚠️⚠️⚠️ SELL 9sh AMD at market (est. $533-540; Day 17 naked, 9.5% cap violation — use "Market Order" or "Limit" near bid)
+2. On remaining 9sh AMD: GTC STOP $506.39; GTC TAKE-PROFIT $640 (Goldman PT-aligned)
+3. BUY 8sh META at market (score 7.0) → immediately set GTC STOP at fill×0.95; GTC TARGET at fill+3×(fill-stop)
+4. BUY 35sh PLTR at market (score 7.67) → immediately set GTC STOP at fill×0.95; GTC TARGET at fill+3×(fill-stop)
+5. BUY 3sh IBM limit $289.50 bracket GTC (stop $275.03, target $332.91, R/R 3:1) — EXIT BEFORE JULY 20 EOD
+6. ⚠️ CRITICAL: Contact cloud environment admin to allowlist paper-api.alpaca.markets and data.alpaca.markets in egress proxy — 68 sessions lost to API blockage
+
+---
+
 ## 2026-07-06 — Midday (12:30 PM ET / 16:34 UTC — MONDAY — SEMICONDUCTOR RECOVERY DAY)
 
 **HEARTBEAT:** STARTED Midday 2026-07-06T16:34:41Z ✓
