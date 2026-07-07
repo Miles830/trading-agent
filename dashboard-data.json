@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-06-29T13:46:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-07-07T15:15:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 100069,
+    "total_equity": 99894.56,
     "starting_equity": 100000.0,
-    "cash": 90732,
+    "cash": 90644,
     "cash_pct": 90.7,
-    "buying_power": 181464,
-    "long_market_value": 9337,
+    "buying_power": 181288,
+    "long_market_value": 9250.56,
     "short_market_value": 0.0,
-    "daily_pnl": 215,
-    "daily_pnl_pct": 0.21,
-    "total_return_pct": 0.07,
-    "spx_return_pct": 6.37,
-    "benchmark_gap_pct": -6.3,
+    "daily_pnl": -343.44,
+    "daily_pnl_pct": -0.34,
+    "total_return_pct": -0.11,
+    "spx_return_pct": 5.37,
+    "benchmark_gap_pct": -5.48,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9337,
-      "active_pct": 9.3,
+      "active_value": 9250.56,
+      "active_pct": 9.26,
       "crypto_value": 0,
       "crypto_pct": 0.0,
-      "cash_value": 90732,
-      "cash_pct": 90.7
+      "cash_value": 90644,
+      "cash_pct": 90.74
     },
-    "note": "June 29 MARKET-OPEN (9:45 AM ET / 13:46Z). TRADING DAY. API BLOCKED (HTTP 403 \u2014 58th consecutive session). Market-Open limit orders ATTEMPTED + BLOCKED: (1) MU 4sh limit bracket GTC \u2014 7.5 avg, BLOCKED; (2) IBM 3sh limit bracket GTC \u2014 7.0 avg, BLOCKED. AMD 18sh naked Day 8 \u2014 stop backfill attempted, BLOCKED. MOO fill status unknown (Pre-Market MOOs blocked by API; operator may have manually executed). Market opened +0.8-1.0% (below 2% no-chase). OPERATOR URGENT: (1) SELL 9sh AMD at market NOW + GTC stop $481.42 + GTC take-profit $582.78; (2) If MU/IBM MOOs did not fill \u2014 place limit bracket GTC orders now; (3) If MOOs DID fill \u2014 immediately place GTC stops at fill\u00d70.95 and take-profits at fill+3\u00d7(fill\u2212stop)."
+    "note": "July 7 MID-MORNING (11:10 AM ET / 15:15Z). API BLOCKED HTTP 403 — 68th consecutive. SAMSUNG CHIP SELLOFF: AMD -7.09% to $513.92 (prev close $552.05). AMD 18sh P&L: +$128.88 (+1.41%). Stop $481.42 not breached (6.8% cushion). 7 orders blocked today. Market-Open SILENT FAILURE. AMD Day 17 naked. S&P 500 +0.67% midday, Nasdaq +1.21% (big tech resilient). PLTR +2.51% ($132.54), META +1.9% ($609), IBM $287-$301 range. Operator MUST act: (1) SELL 9sh AMD immediately; (2) GTC STOP $481.42; (3) BUY 35sh PLTR bracket $133.20; (4) BUY 8sh META bracket $612.05; (5) BUY 3sh IBM bracket $299.50."
   },
   "positions": [
     {
@@ -31,1590 +31,314 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 518.72,
-      "pnl": 215.28,
-      "pnl_pct": 2.36,
+      "current_price": 513.92,
+      "pnl": 128.88,
+      "pnl_pct": 1.41,
       "stop_loss": null,
-      "take_profit": null,
+      "take_profit": 640.0,
+      "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED \u2014 Day 8 without stop-loss. 18sh \u00d7 $506.76 fill (stale GTC). Est. $518-525 at open. Unrealized est. +$200-340. Position = ~9.3% equity (OVER 5% hard cap). OPERATOR URGENT: (1) SELL 9sh at market NOW; (2) place GTC stop $481.42 on remaining 9sh; (3) place GTC take-profit $582.78 on remaining 9sh. API BLOCKED \u2014 agent cannot execute. 8th consecutive day naked."
+      "note": "CRITICALLY NAKED Day 17. AMD DOWN 7.09% TODAY to $513.92 (prev close $552.05) — Samsung chip selloff. Intel -7%, TSM -6%. P&L: 18 × ($513.92-$506.76) = +$128.88. Stop target $481.42 (6.8% below current — not breached). Thesis: Goldman PT $640 intact; NVIDIA Kyber delay AMD beneficiary; 'Advancing AI 2026' July 23. RISK: Chip selloff continuing. AMD valuation P/E 208x — correction from $552 to $513. POSITION 9.26% equity — OVER 5% cap. Sell 9sh to reduce. OPERATOR: SELL 9sh AMD at market NOW; GTC STOP 9sh at $481.42; GTC TP $640. Earnings July 22 → MUST EXIT ALL by July 20 EOD."
     },
     {
-      "symbol": "MU",
+      "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1133.50,
-      "current_price": 1133.50,
+      "entry_price": 609.0,
+      "current_price": 609.0,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 1076.83,
-      "take_profit": 1303.75,
-      "setup": "earnings-reaction-follow",
-      "agent_average": 7.5,
-      "note": "APPROVED 7.5 (F=9 T=7 S=8 M=6 R=7 TA=8). MOO 4sh ATTEMPTED June 29 Pre-Market \u2192 HTTP 000 BLOCKED (57th). Day-4 post-earnings recovery: MU -6.69% Friday on overblown Apple consumer narrative; HBM4/HBM3E AI data center demand intact. OPERATOR: BUY 4sh MU MOO before 9:25 AM ET. After fill: stop at fill\u00d70.95, target at fill+3\u00d7(fill-stop)."
+      "stop_loss": null,
+      "take_profit": null,
+      "setup": "breakout-volume",
+      "agent_average": 7.0,
+      "note": "Score 7.0. Opened $607.90, range $580-$610. Cloud compute service launch confirmed. +1.9% midday vs Nasdaq +1.21% = solid relative strength. BUY 8sh limit $612.05 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 8sh META limit $612.05, bracket GTC stop $581.45, target $703.25, R/R 3.0:1. Earnings ~July 29-30 — safe window."
+    },
+    {
+      "symbol": "PLTR",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 132.54,
+      "current_price": 132.54,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": null,
+      "take_profit": null,
+      "setup": "breakout-volume",
+      "agent_average": 7.67,
+      "note": "Score 7.67 (HIGHEST CONVICTION). D.A. Davidson Buy upgrade. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. +2.51% midday to $132.54. BUY 35sh limit $133.20 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 35sh PLTR limit $133.20, bracket GTC stop $126.54, target $154.06, R/R 3.0:1."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 272.0,
-      "current_price": 272.0,
+      "entry_price": 299.5,
+      "current_price": 299.5,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 258.40,
-      "take_profit": 312.80,
+      "stop_loss": 284.53,
+      "take_profit": 344.41,
       "setup": "sector-rotation",
-      "agent_average": 7.0,
-      "note": "APPROVED 7.0 (all 6 agents at 7.0). MOO 3sh ATTEMPTED June 29 Pre-Market \u2192 HTTP 000 BLOCKED (57th). Defensive outperforming; watsonx AI consulting growing; insulated from semiconductor Apple narrative. OPERATOR: BUY 3sh IBM MOO before 9:25 AM ET. After fill: stop at fill\u00d70.95, target at fill\u00d71.15."
-    },
-    {
-      "symbol": "GLD",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 418.86,
-      "current_price": 372.0,
-      "pnl": -145.58,
-      "pnl_pct": -4.99,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "macro-hedge",
-      "agent_average": 5.5,
-      "note": "RE-SCORED June 29: 5.5 avg (F=5 T=3 S=5 M=6 R=7 TA=7). REJECTED \u2014 price at $370-375, DOWN from June 26 plan at $405. Downtrend confirmed, risk-on day removes safe-haven bid. Prior stop $384.75 already breached. No re-entry today."
+      "agent_average": 7.33,
+      "note": "Score 7.33. z17 + LinuxONE 5 launched TODAY. BofA PT $330. Range $287.65-$300.82 today. IBM trading strongly — refreshed limit price to $299.50 (midday). BUY 3sh limit $299.50 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 3sh IBM limit $299.50, bracket GTC stop $284.53, target $344.41. EXIT DEADLINE: July 20 EOD (earnings July 22)."
     }
   ],
   "market": {
-    "mode": "RISK-ON REBOUND. Market Open (9:45 AM ET). SPX est. +0.8-1.0% at open (below 2% no-chase). Nasdaq leading. MU recovering Day 4 post-earnings. AMD est. $518-525. API STILL BLOCKED (58th).",
-    "fear_greed": null,
-    "fear_greed_label": "Risk-on. Broad market rally Monday; semiconductor leadership returning. GOOGL Dow inclusion live.",
-    "spx": "S&P 500 futures +1.12% pre-market (~7,568). Nasdaq +1.31%. Broad risk-on rally after Friday semiconductor selloff reversion.",
-    "btc": "BTC ~$60,064 (est, API blocked). Well below $82K active-trading threshold. No crypto entries today.",
+    "mode": "CHIP SELLOFF / BIG TECH RESILIENT — Samsung Q2 revenue miss triggered semiconductor rotation. Intel -7%, AMD -7%, TSM -6%. S&P 500 +0.67% midday, Nasdaq +1.21% (AAPL, META, GOOG, TSLA all UP). PLTR +2.51%. Fear & Greed ~35-40 (recovering from pre-market 32).",
+    "fear_greed": 35,
+    "fear_greed_label": "Fear — Semiconductor sector rotation. Samsung revenue miss. AMD/Intel/TSM selloff. Big tech resilient.",
+    "spx": "S&P 500 ~7,587 (+0.67% midday). July 6 close 7,537.43. May 1 baseline 7,200 → +5.37%.",
+    "btc": "BTC ~$63,000-$64,000 estimate (below $82K active-trading threshold). No crypto entries.",
     "sectors": [
       {
-        "name": "Semiconductors \u2014 RECOVERY (AI capex narrative resumes)",
+        "name": "Semiconductors (SMH/AMD/INTC/TSM)",
+        "change_pct": -7.0,
+        "note": "Broad chip selloff. Samsung Q2 revenue miss despite 19x profit beat. Intel -7%, AMD -7%, TSM -6%. BoA 'bubble risk' flag from July 1 materializing. Profit-taking on stretched multiples."
+      },
+      {
+        "name": "AI Software (PLTR)",
+        "change_pct": 2.51,
+        "note": "PLTR +2.51% showing software is NOT the problem — AI demand intact. D.A. Davidson upgrade holding intraday."
+      },
+      {
+        "name": "Cloud/Social (META)",
+        "change_pct": 1.9,
+        "note": "META +1.9% — cloud compute thesis offsetting chip concerns. Showing that AI story is rotating from hardware to software."
+      },
+      {
+        "name": "IT Services / Mainframe (IBM)",
+        "change_pct": 3.5,
+        "note": "IBM +3-4% estimate on z17/LinuxONE 5 launch + BofA PT $330. Not correlated with semiconductor selloff."
+      },
+      {
+        "name": "Big Tech (AAPL, GOOG, TSLA)",
         "change_pct": 1.5,
-        "note": "MU recovering from Friday -6.69% Apple overreaction; HBM4 sold out thesis intact. AMD $518.72 (+2.4%). NVDA $195.15 \u2014 still in downtrend from ATH, rejected today."
-      },
-      {
-        "name": "Communication Services \u2014 GOOGL DOW INCLUSION LIVE",
-        "change_pct": -0.5,
-        "note": "GOOGL (Class A) $336.15. Inclusion effective today but sell-the-news pattern. Re-scored 5.5 \u2014 REJECTED. Talent exodus (OpenAI/Anthropic) adding overhang. CORRECTION: it is GOOGL (Class A), NOT GOOG (Class C)."
-      },
-      {
-        "name": "Enterprise Tech / Defensive",
-        "change_pct": 0.8,
-        "note": "IBM est. ~$272 (+0.5%). Defensive outperforming confirmed. 3sh MOO approved 7.0, attempted, BLOCKED."
+        "note": "Big tech resilient: AAPL, GOOG, META, TSLA all up. Market rotation: sell chips, buy software/services."
       }
     ],
-    "macro_notes_md": "**June 29, 2026 \u2014 Pre-Market (8:00 AM ET / 12:06 UTC):**\n- S&P 500 futures: **+1.12%** (~7,568) \u2014 broad risk-on rebound after Friday semiconductor selloff\n- Nasdaq futures: **+1.31%** \u2014 tech recovery led by AI names\n- GOOGL (Class A): **$336.15** \u2014 officially joins Dow today; sell-the-news fade overriding inclusion catalyst\n- MU: **$1,133.50** \u2014 Day 4 recovery from Friday -6.69% Apple overreaction; HBM4 AI demand intact\n- AMD: **$518.72** \u2014 up from $506.76 entry; NAKED (no stop-loss, Day 7)\n- IBM: **~$272** \u2014 defensive outperforming\n- GLD: **$370-375** \u2014 downtrend confirmed, -8.8% from June 26 prior plan at $405\n- NVDA: **$195.15** \u2014 sell signal; -18.33% from ATH; 5 consecutive down days\n- BTC: **~$60,064** \u2014 below $82K threshold; no crypto plays\n- PCE May 2026: +4.1% YoY (prior reading) \u2014 persistent inflation, Fed on hold\n- Iran conflict: ongoing\n- **API ACCESS:** paper-api.alpaca.markets BLOCKED (57th+ consecutive session \u2014 HTTP 000)\n- **TICKER CORRECTION FINAL:** GOOGL (Class A) joins Dow \u2014 NOT GOOG (Class C)",
-    "sp500_today_pct": 1.12,
-    "sp500_est": 7568,
-    "macro_note": "June 29 Pre-Market. Risk-on: SPX +1.12%, Nasdaq +1.31%. GOOGL (Class A) joins Dow \u2014 sell-the-news fade. MU recovering (HBM4 intact). AMD $518.72 +$215 unrealized but NAKED Day 7. API blocked 57th+ session."
+    "macro_notes_md": "FOMC minutes Wednesday July 8 (Warsh debut — hawkish watch). Samsung Q2: operating profit +19x YoY (record) but revenue MISSED — chip supply-side peak concern. S&P 500 +0.67%, Nasdaq +1.21% midday (55.3% of issues advancing). ISM Services PMI result from 9:00 AM ET: TBD (likely benign given market positive). Rotation trade: sell semiconductors → buy software/services/big tech."
   },
   "routines": [
     {
       "name": "Pre-Market",
-      "schedule": "08:00 ET daily",
       "status": "completed",
-      "last_run": "2026-06-29T12:06:00Z",
-      "next_run": "2026-06-30 08:00 ET",
-      "last_summary": "June 29 Pre-Market: SPX +1.12% risk-on rally. 3 MOO orders attempted + BLOCKED (HTTP 000 — 57th+ session): MU 4sh (7.5), IBM 3sh (7.0), AMD sell 9sh. REJECTED: GOOGL 5.5 (sell-the-news), GLD 5.5 (downtrend $370 vs prior $405 plan), NVDA 6.83 (sell signal -18.33% ATH). AMD 18sh NAKED Day 7 — OPERATOR CRITICAL ACTION REQUIRED."
+      "last_run": "2026-07-07T12:06:19Z",
+      "next_run": "2026-07-08T12:00:00Z",
+      "last_summary": "July 7 Pre-Market COMPLETED. Nasdaq futures -1.10% (Samsung chip selloff); AMD +2.5% pre-market (NVIDIA delay + Goldman PT $640); PLTR +5.3% (D.A. Davidson upgrade). 5 orders attempted — all blocked HTTP 000 (67th consecutive). NEW APPROVALS: META 7.0, PLTR 7.67, IBM 7.33. AMD Day 16 naked. ISM Services 9:00 AM ET pivot event."
     },
     {
-      "name": "Market Open",
-      "schedule": "09:45 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-29T13:46:00Z",
-      "next_run": "2026-06-30T13:45:00Z",
-      "last_summary": "June 29 Market-Open: API BLOCKED (58th consecutive). MU 4sh limit bracket GTC ATTEMPTED + BLOCKED (7.5 avg). IBM 3sh limit bracket GTC ATTEMPTED + BLOCKED (7.0 avg). AMD 18sh naked Day 8 \u2014 stop backfill BLOCKED. MOO fill status unknown. Market opened est. +0.8-1.0%. OPERATOR: AMD risk reduction + verify MOO fills + place missing stops/take-profits."
+      "name": "Market-Open",
+      "status": "SILENT FAILURE",
+      "last_run": "2026-06-29T13:45:46Z",
+      "next_run": "2026-07-08T13:45:00Z",
+      "last_summary": "SILENT FAILURE — no heartbeat July 7. Violation logged in trades.md. No MOO fills to confirm (all MOO orders were API-blocked at Pre-Market). No stop-loss audit performed."
     },
     {
       "name": "Mid-Morning",
-      "schedule": "11:00 ET daily",
       "status": "completed",
-      "last_run": "2026-06-26T15:04:51Z",
-      "next_run": "2026-06-27T15:00:00Z",
-      "last_summary": "BLOCKED \u2014 API 54th consecutive. Pre-Market missed (Day 5 silent fail). Stop-loss audit: AMD 18sh NAKED Day 5 (est ~$520-528, no stops). 3 re-attempts (all blocked): GOOG 14sh $337.48 (Dow inclusion LAST DAY), MU 4sh $1,105.50 (day-2 pullback improved entry), IBM 3sh $274.37 (defensive outperforming). PCE 4.1% matched consensus \u2014 neutral. User suggestions: 0. GLD flagged for Midday re-eval."
+      "last_run": "2026-07-07T15:10:00Z",
+      "next_run": "2026-07-08T15:00:00Z",
+      "last_summary": "July 7 Mid-Morning COMPLETED. API BLOCKED (HTTP 403 — 68th consecutive). CRITICAL: AMD -7.09% today to $513.92 (Samsung chip selloff). AMD stop $481.42 not breached. Market-Open violation logged. 7 orders attempted and blocked: AMD sell 9sh + AMD stop + PLTR 35sh + META 8sh + IBM 3sh + AMD stop (×2). AMD Day 17 naked. Chip sector rotation: sell semis, buy software. PLTR +2.51%, META +1.9%, IBM strong."
     },
     {
       "name": "Midday",
-      "schedule": "12:30 ET daily",
-      "status": "failed",
-      "last_run": "2026-06-26T16:30:00Z",
-      "next_run": "2026-06-26 12:30 ET",
-      "last_summary": "June 26 Midday SILENT FAILURE \u2014 no heartbeat at 16:30Z. Violation logged. API blocked (55th session). GOOG/MU/IBM re-attempts deferred to Market-Close."
+      "status": "PENDING",
+      "last_run": "2026-07-06T16:34:41Z",
+      "next_run": "2026-07-07T16:30:00Z",
+      "last_summary": "Not yet run today. Next at 12:30 PM ET / 16:30Z."
     },
     {
       "name": "Afternoon",
-      "schedule": "14:00 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-26T18:06:00Z",
-      "next_run": "2026-06-29T18:00:00Z",
-      "last_summary": "June 26 Afternoon: API BLOCKED (55th). Pre-Market + Midday silent failed. No day trades open \u2014 nothing to close. 4 positions (GOOG/MU/IBM/GLD) scored \u22657, all logged action:skip (proximity-to-close + API blocked). GLD freshly scored 7.0 (PCE 4.1% macro hedge) \u2014 approved Monday Pre-Market. AMD naked 18sh Day 5. GOOG Dow inclusion thesis expires today \u2014 Monday requires fresh post-inclusion score. Monday Pre-Market binding: AMD resolve + MU 4sh + IBM 3sh + GLD 10sh + GOOG re-score."
+      "status": "PENDING",
+      "last_run": "2026-07-01T18:08:05Z",
+      "next_run": "2026-07-07T18:00:00Z",
+      "last_summary": "Not yet run today. Next at 2:00 PM ET / 18:00Z."
     },
     {
-      "name": "Market Close",
-      "schedule": "15:30 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-26T19:33:39Z",
-      "next_run": "2026-06-29T19:30:00Z",
-      "last_summary": "June 26 Market-Close: API BLOCKED (56th, exit 56). 3 MOC orders attempted (GOOG 14sh, MU 4sh, AMD sell 9sh) \u2014 ALL exit 56. GOOG Dow inclusion thesis EXPIRED. AMD naked over weekend \u2014 operator critical action required. 0 confirmed fills today. Cumulative gap ~-6.0 pp."
+      "name": "Market-Close",
+      "status": "PENDING",
+      "last_run": "2026-07-02T19:35:00Z",
+      "next_run": "2026-07-07T19:30:00Z",
+      "last_summary": "Not yet run today. Next at 3:30 PM ET / 19:30Z."
     },
     {
-      "name": "Daily Review",
-      "schedule": "16:30 ET daily",
-      "status": "completed",
-      "last_run": "2026-06-23T20:32:00Z",
-      "next_run": "2026-06-24T20:30:00Z",
-      "last_summary": "June 23: SPX -1.3% (global chip selloff Day 2). Portfolio flat (0 positions) = +1.3 pp today. Cumulative gap: est. -4.2 pp. 5 of 6 intraday routines silently failed (45th API block). AMD 6-agent APPROVED 7.17 (all blocked). \u26a0\ufe0f AMD stale GTC naked-fill risk unknown \u2014 operator must verify. BINDING June 24: INTC 38sh $126 (7.17), AMD fresh entry (7.0), IBM 3sh $275 (7.33). MU Exemption 2 all day (earnings tonight)."
-    },
-    {
-      "name": "Weekly Review",
-      "schedule": "Friday 16:30 ET",
-      "status": "pending",
-      "last_run": "never completed",
-      "next_run": "2026-06-06 16:30 ET",
-      "last_summary": "Next due: Friday June 6. Week of June 2-6: S&P records, AVGO -15% post-earnings, AMD sympathy pullback, MU ATH $1,089, PLTR stable, GLD corrected lower than expected."
+      "name": "Daily-Review",
+      "status": "PENDING",
+      "last_run": "2026-06-29T20:30:00Z",
+      "next_run": "2026-07-07T20:30:00Z",
+      "last_summary": "Not yet run today. Next at 4:30 PM ET / 20:30Z."
     }
   ],
   "trades": [
     {
-      "ts": "2026-06-29T13:46:00Z",
-      "action": "violation",
+      "ts": "2026-07-07T15:15:00Z",
+      "action": "skip",
       "symbol": "AMD",
-      "bucket": "active",
-      "setup": "other",
+      "setup": "ai-momentum-pullback",
       "score": null,
-      "thesis": "AMD 18sh naked (no stop, 9.3% equity > 5% cap) Day 8. Stop backfill attempted — HTTP 403 blocked. 58th consecutive API block.",
-      "size_pct": 9.3,
-      "stop": null,
-      "target": null,
-      "agent_scores": null,
-      "agent_average": null,
-      "agents_above_7": null,
-      "master_decision": "rejected",
-      "master_notes": "GUARDRAIL VIOLATION — AMD 18sh naked Day 8. Stop backfill API call blocked. OPERATOR: app.alpaca.markets — SELL 9sh at market + GTC stop $481.42 + GTC take-profit $582.78 on remaining 9sh."
+      "side": "sell",
+      "qty": 9,
+      "limit_price": null,
+      "stop_loss": 481.42,
+      "take_profit": 640.0,
+      "result": "HOLD FORCED — API BLOCKED HTTP 403 (68th consecutive). AMD -7.09% to $513.92 (Samsung chip selloff). P&L +$128.88. Stop $481.42 not breached. Thesis intact. OPERATOR: SELL 9sh AMD at market NOW.",
+      "agent_average": 6.17,
+      "master_decision": "hold-by-default"
     },
     {
-      "ts": "2026-06-29T13:46:00Z",
-      "action": "entry",
-      "symbol": "IBM",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 7.0,
-      "thesis": "Market-Open carry-forward from Pre-Market MOO (blocked). IBM recovering with market (+0.8-1.0%). Defensive large-cap tech, all 6 agents at 7.0.",
-      "size_pct": 0.82,
-      "stop": 260.30,
-      "target": 315.20,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.0,
-      "agents_above_7": 6,
-      "master_decision": "approved",
-      "master_notes": "Limit bracket GTC attempted — HTTP 403 BLOCKED (58th consecutive). OPERATOR: BUY 3sh IBM limit $274 bracket GTC (stop $260.30, target $315.20) if MOO did not fill."
-    },
-    {
-      "ts": "2026-06-29T13:46:00Z",
-      "action": "entry",
-      "symbol": "MU",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 7.5,
-      "thesis": "Day-4 post-earnings recovery bounce: MU -6.69% Friday on overblown Apple consumer narrative; HBM4/HBM3E AI data center demand intact. Q3 FY2026 EPS $5.11 blowout, $50B Q4 guidance.",
-      "size_pct": 4.53,
-      "stop": 1076.83,
-      "target": 1303.75,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.5,
-      "agents_above_7": 5,
-      "master_decision": "approved",
-      "order_status": "MOO 4sh ATTEMPTED → HTTP 000 BLOCKED (57th+ consecutive). OPERATOR: BUY 4sh MU MOO before 9:25 AM ET. After fill: stop at fill×0.95 GTC + target at fill+3×(fill-stop) GTC.",
-      "master_notes": "5 of 6 agents ≥7. Macro 6/10 (PCE 4.1% inflation risk, but semiconductor recovery risk-on). X sentiment API blocked — scored on news/options only. ORDER ATTEMPTED MOO → HTTP 000 BLOCKED."
-    },
-    {
-      "ts": "2026-06-29T12:06:00Z",
-      "action": "entry",
-      "symbol": "IBM",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 7.0,
-      "thesis": "Defensive outperformer; watsonx AI consulting growing; insulated from Apple semiconductor narrative. All 6 agents at 7.0.",
-      "size_pct": 0.82,
-      "stop": 258.40,
-      "target": 312.80,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.0,
-      "agents_above_7": 6,
-      "master_decision": "approved",
-      "order_status": "MOO 3sh ATTEMPTED → HTTP 000 BLOCKED (57th+ consecutive). OPERATOR: BUY 3sh IBM MOO before 9:25 AM ET. After fill: stop at fill×0.95 GTC + target at fill×1.15 GTC.",
-      "master_notes": "All 6 agents at 7.0 — unanimous. Low conviction on any single axis but broad consensus. X sentiment API blocked. ORDER ATTEMPTED MOO → HTTP 000 BLOCKED."
-    },
-    {
-      "ts": "2026-06-29T12:06:00Z",
-      "action": "skip",
-      "symbol": "GOOGL",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 5.5,
-      "thesis": "Fresh re-score post Dow inclusion: sell-the-news confirmed. AI talent exodus (OpenAI/Anthropic). Technical 3/10 — -4.19pp relative weakness vs Nasdaq.",
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 3,
-        "sentiment": 4,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 6
-      },
-      "agent_average": 5.5,
-      "agents_above_7": 2,
-      "master_decision": "rejected",
-      "master_notes": "Average 5.5 < 7.0 threshold. Only 2 of 6 ≥7. Technical 3/10 (sell-the-news, -4.19pp relative weakness vs Nasdaq). Sentiment 4/10 (talent exodus). TICKER CORRECTION FINAL: GOOGL (Class A) joins Dow — NOT GOOG (Class C). Prior June 26 correction was itself incorrect."
-    },
-    {
-      "ts": "2026-06-29T12:06:00Z",
-      "action": "skip",
-      "symbol": "GLD",
-      "bucket": "active",
-      "setup": "macro-hedge",
-      "score": 5.5,
-      "thesis": "Downtrend confirmed. GLD at $370-375 — DOWN from June 26 plan at $405. Prior stop $384.75 already breached. Risk-on day removes safe-haven bid.",
-      "agent_scores": {
-        "fundamentals": 5,
-        "technical": 3,
-        "sentiment": 5,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 5.5,
-      "agents_above_7": 2,
-      "master_decision": "rejected",
-      "master_notes": "GLD fell -8.8% from June 26 planned entry $405 to $370-375. Below former stop $384.75. If we had entered Friday, we would have been stopped out. Technical 3/10 (downtrend). Risk-on day = no safe-haven demand. Average 5.5 — decisively rejected."
-    },
-    {
-      "ts": "2026-06-26T19:33:10Z",
-      "action": "entry",
-      "symbol": "GOOG",
-      "setup": "sector-rotation",
-      "score": 7.0,
-      "thesis": "Market-Close final attempt: GOOG joins Dow June 29. MOC at close = last pre-inclusion entry window. BLOCKED exit 56.",
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-06-26T19:33:20Z",
-      "action": "entry",
-      "symbol": "MU",
-      "setup": "earnings-reaction-follow",
-      "score": 7.17,
-      "thesis": "Market-Close attempt: MU Day 3 post-earnings; HBM4 sold out. MOC at close. BLOCKED exit 56.",
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-06-26T19:33:30Z",
-      "action": "violation",
-      "symbol": "AMD",
-      "setup": "other",
-      "score": null,
-      "thesis": "EMERGENCY: AMD sell 9sh MOC to reduce 18sh naked to 9sh. BLOCKED exit 56. AMD NAKED OVER WEEKEND.",
-      "master_decision": null
-    },
-    {
-      "ts": "2026-06-26T18:06:00Z",
-      "action": "skip",
-      "symbol": "GOOG",
-      "setup": "breakout-volume",
-      "score": 7.0,
-      "reason": "Afternoon proximity-to-close + API blocked (55th session). Dow inclusion thesis expires today."
-    },
-    {
-      "ts": "2026-06-26T18:06:05Z",
-      "action": "skip",
-      "symbol": "MU",
-      "setup": "earnings-reaction-follow",
-      "score": 7.17,
-      "reason": "Afternoon proximity-to-close + API blocked."
-    },
-    {
-      "ts": "2026-06-26T18:06:10Z",
-      "action": "skip",
+      "ts": "2026-07-07T15:14:00Z",
+      "action": "entry_blocked",
       "symbol": "IBM",
       "setup": "sector-rotation",
-      "score": 7.0,
-      "reason": "Afternoon proximity-to-close + API blocked."
-    },
-    {
-      "ts": "2026-06-26T18:06:20Z",
-      "action": "skip",
-      "symbol": "GLD",
-      "setup": "macro-hedge",
-      "score": 7.0,
-      "reason": "Afternoon proximity-to-close per playbook. Approved for Monday Pre-Market. PCE 4.1% catalyst."
-    },
-    {
-      "ts": "2026-06-26T15:04:00Z",
-      "action": "violation",
-      "symbol": "AMD",
-      "setup": "other",
-      "score": null,
-      "thesis": "AMD 18sh NAKED Day 5 \u2014 no stop-loss at Alpaca. API blocked, cannot fix.",
-      "master_decision": null
-    },
-    {
-      "ts": "2026-06-26T15:04:01Z",
-      "action": "entry",
-      "symbol": "GOOG",
-      "setup": "sector-rotation",
-      "score": 7.0,
-      "thesis": "Mid-Morning re-attempt #2. Dow inclusion last day. 14sh $337.48. BLOCKED.",
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-06-26T15:04:05Z",
-      "action": "entry",
-      "symbol": "MU",
-      "setup": "earnings-reaction-follow",
-      "score": 7.17,
-      "thesis": "Mid-Morning re-attempt #2. Day-2 pullback ~$1,100. 4sh $1,105.50. BLOCKED.",
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-06-26T15:04:10Z",
-      "action": "entry",
-      "symbol": "IBM",
-      "setup": "sector-rotation",
-      "score": 7.0,
-      "thesis": "Mid-Morning re-attempt #2. Defensive outperforming. 3sh $274.37. BLOCKED.",
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-06-24T15:00:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Mid-Morning routine (11:00 AM ET / 15:00Z) SILENTLY FAILED June 24 \u2014 no heartbeat. 4th attempt day for INTC/IBM. Catch-up merged into Midday routine."
-    },
-    {
-      "ts": "2026-06-24T16:32:00Z",
-      "symbol": "GOOGL",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 8.0,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 8,
-        "tech_analyst": 9
-      },
-      "agent_average": 8.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "NEW MIDDAY DISCOVERY. GOOGL joining Dow Jones June 29 2026 (replacing VZ). All 6 agents \u22657. Highest conviction today (8.0 avg). 14sh limit $350.53 bracket GTC stop $331.35 target $403.11. BLOCKED HTTP 403 (49th consecutive). OPERATOR MUST EXECUTE before June 27."
-    },
-    {
-      "ts": "2026-06-24T16:32:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "4TH ATTEMPT (Midday catch-up). INTC midday ~$134.10 (range $130.03-$136.08). 36sh limit $134.70 bracket GTC stop $127.97 target $154.91. BLOCKED HTTP 403 (49th consecutive). OPERATOR EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T16:32:00Z",
-      "symbol": "IBM",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 7.5,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 9,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "4TH ATTEMPT (Midday catch-up). IBM midday ~$264.24 (volume 15.69M vs 8.74M avg = 80% above avg). 3sh limit $265.32 bracket GTC stop $252.05 target $305.12. BLOCKED HTTP 403 (49th consecutive). OPERATOR EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T16:32:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 3,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "RESCORE with UBS PT $670 catalyst. Base avg 7.17 (5/6 \u22657). RISK AGENT VETO (3/10): existing 18sh position = est. 9.13% equity, double 5% hard cap. Exemption 1 applies. Do NOT add new AMD until oversized position resolved."
-    },
-    {
-      "ts": "2026-06-24T13:45:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "3RD ATTEMPT (9:45 AM ET scheduled open). 36sh INTC limit $134.70 bracket GTC stop $127.97 target $154.91. BLOCKED HTTP 403 (48th consecutive). OPERATOR EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T13:45:00Z",
-      "symbol": "IBM",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 7.5,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 9,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "3RD ATTEMPT (9:45 AM ET scheduled open). 3sh IBM limit $265.32 bracket GTC stop $252.05 target $305.12. BLOCKED HTTP 403 (48th consecutive). OPERATOR EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T13:45:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Market open ~15 min. AMD stale GTC situation still unresolved (API blocked \u2014 cannot verify fills or place corrective orders). Est. AMD ~$520-530. OPERATOR: sell 9sh + place stop $481.42 + target $582.77."
-    },
-    {
-      "ts": "2026-06-24T12:22:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "MARKET-OPEN RE-ATTEMPT. Updated limit $135.68\u2192$134.70 (INTC ~$134 pre-market). 36sh limit $134.70 bracket GTC stop $127.97 target $154.91. BLOCKED HTTP 403 (47th). OPERATOR EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T12:22:00Z",
-      "symbol": "IBM",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 7.5,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 9,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "MARKET-OPEN RE-ATTEMPT. PRICE CORRECTION: IBM ~$264 (not $289). Updated limit $290.45\u2192$265.32. 3sh bracket GTC stop $252.05 target $305.12. BLOCKED HTTP 403 (47th). OPERATOR EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T12:05:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "APPROVED 7.17 avg. All 6 agents \u22657. BofA PT $160 upgrade (fresh June 24 catalyst). 36sh limit $135.68 bracket GTC stop $128.90 target $156.03. BLOCKED HTTP 403 (46th consecutive). OPERATOR MUST EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T12:05:00Z",
-      "symbol": "IBM",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 7.5,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 9,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "APPROVED 7.5 avg. 5/6 agents \u22657 (Technical=6, overbought after +9.4% 2-day run). JPMorgan OW upgrade fresh June 24 catalyst. 3sh limit $290.45 bracket GTC stop $275.93 target $334.02. BLOCKED HTTP 403 (46th). OPERATOR MUST EXECUTE."
-    },
-    {
-      "ts": "2026-06-24T12:05:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "STALE GTC FILLS CONFIRMED: AMD pre-market June 23 was $506.76 (\u22128.13%) \u2014 below both $520.59 and $524.15 buy limits \u2192 BOTH FILLED AT $506.76 OPEN. 18sh AMD at $506.76 = $9,121 = 9.13% equity (DOUBLE 5% limit). AMD June 23 close $526.60 = +$357 unrealized. NAKED (no stops). OPERATOR MUST: sell 9sh immediately; place GTC stop on remaining 9sh at $481.42; target $582.77 (3:1)."
-    },
-    {
-      "ts": "2026-06-24T12:05:00Z",
-      "symbol": "MU",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "other",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "EXEMPTION 2: MU earnings tonight June 24 after close. Options \u00b117%. Score June 25 post-print."
-    },
-    {
-      "ts": "2026-06-18T19:33:00Z",
-      "symbol": "MRVL",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.67,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.67,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z (within 3:50PM ET window) \u2014 HTTP 403 BLOCKED (39th consecutive). MRVL S&P 500 inclusion JUNE 22 \u2014 today was LAST ENTRY WINDOW before inclusion. June 23 entry post-inclusion (premium gone). GTC bracket also blocked at Mid-Morning. OPERATOR MUST ENTER June 22."
-    },
-    {
-      "ts": "2026-06-18T19:33:00Z",
-      "symbol": "INTC",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z \u2014 HTTP 403 BLOCKED (39th consecutive). GTC bracket $130.65 also blocked. Thesis intact for June 22 entry. BofA Buy PT $135."
-    },
-    {
-      "ts": "2026-06-18T19:33:00Z",
-      "symbol": "AMD",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.5,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 6,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z \u2014 HTTP 403 BLOCKED (39th consecutive). \u26a0\ufe0f STALE GTC NAKED RISK: AMD $520.59 and $524.15 stale GTCs may fill on June 22 open if AMD corrects. OPERATOR MUST CANCEL BOTH BEFORE JUNE 22 OPEN. Fresh bracket at ask\u00d71.005 on June 22."
-    },
-    {
-      "ts": "2026-06-18T19:33:00Z",
-      "symbol": "NVDA",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 8.33,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 8,
-        "sentiment": 9,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 10
-      },
-      "agent_average": 8.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "MOC cls ATTEMPTED at 19:33Z \u2014 HTTP 403 BLOCKED (39th consecutive). Best score of the 4 (8.33 avg, all 6 agents \u22657, TA 10/10). GTC bracket $221.10 also blocked. June 22 entry viable \u2014 no time-bounded catalyst. MANDATORY per deployment bias."
-    },
-    {
-      "ts": "2026-06-18T16:30:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Midday routine (12:30 PM ET / 16:30Z) SILENTLY FAILED June 18 \u2014 no heartbeat. MANDATORY ENTRY DAY. 4 watchlist names \u22657. No valid exemption. Violation logged."
-    },
-    {
-      "ts": "2026-06-18T18:00:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Afternoon routine (2:00 PM ET / 18:00Z) SILENTLY FAILED June 18 \u2014 no heartbeat. MANDATORY ENTRY DAY. MOC swing entries should have been primary tool at 2PM ET. Violation logged."
-    },
-    {
-      "ts": "2026-06-16T12:07:00Z",
-      "symbol": "MRVL",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.67,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2 (FOMC binary event June 17 2PM ET). MANDATORY June 18: 8sh bracket at ask x1.005. Cancel stale GTC $202.19 first."
-    },
-    {
-      "ts": "2026-06-16T12:07:00Z",
-      "symbol": "INTC",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2. Technical 6/10 - overbought after +9.5% June 15. MANDATORY June 18: 38sh bracket at ask x1.005."
-    },
-    {
-      "ts": "2026-06-16T12:07:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 6,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2. CRITICAL: AMD gapped from $489 to $548. Stale GTCs $520.59/$524.15 now only 5% below. OPERATOR MUST CANCEL BEFORE FOMC JUNE 17 2PM ET. MANDATORY June 18: 9sh at ask x1.005."
-    },
-    {
-      "ts": "2026-06-16T12:07:00Z",
-      "symbol": "NVDA",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 10
-      },
-      "agent_average": 7.83,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2. CONDITIONAL June 18: fresh 6-agent at >=7.0, 4sh bracket at ask x1.005."
-    },
-    {
-      "ts": "2026-06-15T16:33:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Mid-Morning routine (11:00 AM ET / 15:00 UTC June 15) produced no heartbeat. Silent failure logged at Midday. No catch-up entries needed \u2014 all \u22657 watchlist names justified-skipped at Market Open per Exemption 2 (FOMC binary event). API blocked 33rd session."
-    },
-    {
-      "ts": "2026-06-15T13:45:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Pre-Market silently failed June 15. No heartbeat. Market-Open running catch-up (first routine to fire today)."
-    },
-    {
-      "ts": "2026-06-15T13:47:00Z",
-      "symbol": "INTC",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.0,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2 (FOMC binary event June 16-17). Gate APPROVED 7.0 avg. INTC gapped to $124.57 (+6.5%) above $123.69 GTC limit. 40sh at $125.11 = 5.01% = violates 5% cap. Maintain existing GTC bracket at $123.69 if operator placed. API blocked 32nd session. Next entry: Thursday June 18 at 39sh ask\u00d71.005."
-    },
-    {
-      "ts": "2026-06-15T13:48:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.0,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 7.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2 (FOMC binary event). AMD MIDDAY ~$511-512 (+7-8% on Iran deal + Citi upgrade). \u26a0\ufe0f STALE GTC RISK ELEVATED: AMD now only ~1.7% below stale limit $520.59. IF OPERATOR PLACED MANUALLY: CANCEL IMMEDIATELY at Alpaca. Fresh 6-agent needed June 18."
-    },
-    {
-      "ts": "2026-06-15T13:49:00Z",
-      "symbol": "MRVL",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "SKIP per Exemption 2 (FOMC binary event). MRVL ~$285+ (est.). Stale GTC $202.19 not in danger (MRVL $285 >> $202). CANCEL stale order at Alpaca. Post-FOMC: MANDATORY entry Thursday June 18."
-    },
-    {
-      "ts": "2026-06-12T16:33:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7,
-      "agent_scores": {
-        "fundamentals": 6,
-        "technical": 6,
-        "sentiment": 8,
-        "macro": 8,
-        "risk": 8,
-        "tech_analyst": 8
-      },
+      "score": 7.33,
+      "side": "buy",
+      "qty": 3,
+      "limit_price": 299.5,
+      "stop_loss": 284.53,
+      "take_profit": 344.41,
+      "result": "APPROVED (7.33) but HTTP 403 BLOCKED — proxy CONNECT rejected (68th consecutive session). IBM range $287-$301 today on z17 launch. Refreshed limit $299.50.",
       "agent_average": 7.33,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED HTTP 403 BLOCKED (31st consecutive). Fresh score at $123 (was $106 June 10). FOMC hike prob 63%\u21922.2%. ORDER: 40sh limit $123.69 bracket GTC stop $117.51 target $142.24. OPERATOR MUST EXECUTE before Sunday FOMC window."
+      "master_decision": "approved"
     },
     {
-      "ts": "2026-06-12T16:35:00Z",
-      "symbol": "LMT",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "score": 5,
-      "agent_scores": {
-        "fundamentals": 6,
-        "technical": 4,
-        "sentiment": 5,
-        "macro": 4,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 5.5,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED 5.5 avg. Iran deal INVERTS defense catalyst. Thesis invalidated. Technical 4 (overbought, 1/5 indicators)."
-    },
-    {
-      "ts": "2026-06-12T16:36:00Z",
-      "symbol": "MU",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "mean-reversion-oversold",
-      "score": 6,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 5,
-        "sentiment": 8,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 6
-      },
-      "agent_average": 6.67,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED 6.67 avg. PPI +1.1% m/m failed condition (required \u2264+0.3%). Technical 5 (extended +11.66% June 11). Only 3/6 \u22657."
-    },
-    {
-      "ts": "2026-06-11T12:00:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "June 11 FULL DAY BLACKOUT. No heartbeat file. SOXX +8%, INTC +7%, MU +11.66%, S&P +1.75% \u2014 entire day missed."
-    },
-    {
-      "ts": "2026-06-10T16:34:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
+      "ts": "2026-07-07T15:13:00Z",
+      "action": "entry_blocked",
+      "symbol": "META",
       "setup": "breakout-volume",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED HTTP 403 BLOCKED (30th consecutive). Updated limit $106.39 (from $108.06 at Market-Open \u2014 actual midday price $105.86). OPERATOR MUST EXECUTE: INTC 44sh limit $106.39 bracket GTC stop $101.07 target $122.35."
-    },
-    {
-      "ts": "2026-06-10T16:34:00Z",
-      "symbol": "MU",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "mean-reversion-oversold",
-      "score": 7,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 6,
-        "macro": 5,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 6.83,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED midday 6.83 avg (improved from 6.5). Technical improved to 7 on intraday $854\u2192$989 recovery. Macro 5/10 + Sentiment 6/10 hold avg below 7.0. Re-score at Afternoon."
-    },
-    {
-      "ts": "2026-06-10T15:00:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Mid-Morning 2026-06-10 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED \u2014 no heartbeat. INTC MANDATORY not re-attempted 11:00-12:30 window."
-    },
-    {
-      "ts": "2026-06-10T13:46:00Z",
-      "symbol": "GLD",
-      "action": "stop_hit",
-      "bucket": "active",
-      "setup": "macro-hedge",
-      "score": null,
-      "agent_scores": null,
-      "agent_average": null,
-      "result_pct": -4.99,
-      "master_decision": null,
-      "order_status": "ESTIMATED STOP-HIT at $397.92 (GLD range $388.75-$400.48). Est. proceeds 7sh \u00d7 $397.92 = $2,785.44. Est. loss -$145.58. CPI 4.2% + Warsh hike 63% \u2192 dollar/gold inversion. OPERATOR MUST VERIFY exact fill."
-    },
-    {
-      "ts": "2026-06-10T13:46:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED HTTP 403 (29th+ consecutive blocked). OPERATOR MUST EXECUTE: INTC 44sh limit $108.06 bracket GTC stop $102.66 target $124.27."
-    },
-    {
-      "ts": "2026-06-10T13:46:00Z",
-      "symbol": "MU",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "mean-reversion-oversold",
-      "score": 6,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 5,
-        "macro": 5,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 6.5,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED fresh 6.5 score. CPI 4.2%+Iran \u2192 Macro 5, Sentiment 5. Was 7.17 June 8. Re-score at Midday."
-    },
-    {
-      "ts": "2026-06-08T15:20:00Z",
-      "symbol": "INTC",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 9,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 9,
-        "sentiment": 8,
-        "macro": 7,
-        "risk": 8,
-        "tech_analyst": 9
-      },
-      "agent_average": 8.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED HTTP 403 (28th consecutive blocked). OPERATOR MUST EXECUTE: INTC 44sh limit $109.55 bracket GTC stop $104.07 target $125.98."
-    },
-    {
-      "ts": "2026-06-08T15:20:00Z",
-      "symbol": "MU",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "mean-reversion-oversold",
-      "score": 8,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED HTTP 403 (28th consecutive blocked). OPERATOR MUST EXECUTE: MU 4sh limit $940 bracket GTC stop $893 target $1,081."
-    },
-    {
-      "ts": "2026-06-08T15:20:00Z",
-      "symbol": "AMD",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 6,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 4,
-        "sentiment": 5,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 7
-      },
-      "agent_average": 6.0,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "SKIP \u2014 fresh 6-agent score 6.0 (Technical 4/10 relative weakness; AMD -3.7% vs Nasdaq +1.44%). Binding watchlist conditional not met."
-    },
-    {
-      "ts": "2026-06-04T16:44:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "api-blocked",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "API BLOCKED HTTP 403 \u2014 26th consecutive session. MU limit $1,020 bracket GTC BLOCKED. AMD limit $508 bracket GTC BLOCKED. GLD CORRECTED to ~$408. Stop $397.92 MAINTAIN."
-    },
-    {
-      "ts": "2026-06-04T16:43:00Z",
-      "symbol": "PLTR",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
       "score": 7.0,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 7,
-        "macro": 5,
-        "risk": 8,
-        "tech_analyst": 8
-      },
+      "side": "buy",
+      "qty": 8,
+      "limit_price": 612.05,
+      "stop_loss": 581.45,
+      "take_profit": 703.25,
+      "result": "APPROVED (7.0) but HTTP 403 BLOCKED — proxy CONNECT rejected (68th consecutive session). META opened $607.90, +1.9% midday.",
       "agent_average": 7.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "DEFERRED \u2014 midday 2-entry cap (MU #1, AMD #2 used). PLTR $143.50 midday (range $140-$152). MANDATORY at Afternoon routine. 10sh limit ask\u00d71.005 bracket GTC."
+      "master_decision": "approved"
     },
     {
-      "ts": "2026-06-04T16:42:00Z",
-      "symbol": "AMD",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 7,
-        "macro": 5,
-        "risk": 8,
-        "tech_analyst": 9
-      },
-      "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (limit 9sh AMD $508 bracket GTC) \u2192 HTTP 403 (26th consecutive). 19th mandatory attempt. Improved entry vs $521 pre-market est. AVGO AI rev $10.8B confirms AMD demand. Stop $482.60 (-5%), target $584.20 (+15%). OPERATOR: BUY 9sh AMD limit $508 bracket GTC."
-    },
-    {
-      "ts": "2026-06-04T16:40:00Z",
-      "symbol": "MU",
-      "action": "entry",
-      "bucket": "active",
+      "ts": "2026-07-07T15:12:00Z",
+      "action": "entry_blocked",
+      "symbol": "PLTR",
       "setup": "breakout-volume",
       "score": 7.67,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 5,
-        "risk": 8,
-        "tech_analyst": 9
-      },
+      "side": "buy",
+      "qty": 35,
+      "limit_price": 133.2,
+      "stop_loss": 126.54,
+      "take_profit": 154.06,
+      "result": "APPROVED (7.67) but HTTP 403 BLOCKED — proxy CONNECT rejected (68th consecutive session). PLTR +2.51% to $132.54 midday.",
       "agent_average": 7.67,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (limit 4sh MU $1,020 bracket GTC stop $969 target $1,173) \u2192 HTTP 403 (26th consecutive). HIGHEST CONVICTION (7.67 avg, 5/6\u22657, improved from 7.5 pre-market). Down 6.7% from ATH = better entry. HBM4 sold out. \u26a0\ufe0f EXIT by June 22. OPERATOR: BUY 4sh MU limit $1,020 bracket GTC."
+      "master_decision": "approved"
     },
     {
-      "ts": "2026-06-04T16:38:00Z",
-      "symbol": "AVGO",
+      "ts": "2026-07-07T13:45:00Z",
+      "action": "violation",
+      "symbol": "MARKET-OPEN",
+      "setup": "silent-failure",
+      "score": null,
+      "side": null,
+      "qty": null,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "Market Open routine silently failed — no heartbeat in logs/heartbeats/2026-07-07.log. Logged as violation from Mid-Morning catch-up.",
+      "agent_average": null,
+      "master_decision": "violation"
+    },
+    {
+      "ts": "2026-07-06T15:25:00Z",
       "action": "skip",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 6.0,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 5,
-        "sentiment": 6,
-        "macro": 4,
-        "risk": 6,
-        "tech_analyst": 8
-      },
-      "agent_average": 6.0,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED (MIDDAY RE-SCORE) \u2014 Goldman $525 PT noted but avg 6.0 < 7. Technical 5/10 (gap-down day, no confirmed reversal). Still a falling knife. Re-score at Daily Review once support forms at $405-415."
+      "symbol": "IBM",
+      "setup": "breakout-volume",
+      "score": 6.17,
+      "side": "buy",
+      "qty": 3,
+      "limit_price": 279.5,
+      "stop_loss": 265.53,
+      "take_profit": 321.41,
+      "result": "REJECTED — score 6.17 below 7.0 minimum; only 2/6 agents >=7; Accenture contagion",
+      "agent_average": 6.17,
+      "master_decision": "rejected"
     },
     {
-      "ts": "2026-06-04T15:00:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Mid-Morning 2026-06-04 (11:00 AM ET / 15:00 UTC) SILENTLY FAILED \u2014 no heartbeat. Catch-up running at Midday. AMD/MU catch-up limits blocked."
+      "ts": "2026-07-06T15:20:00Z",
+      "action": "skip",
+      "symbol": "TSLA",
+      "setup": "earnings-reaction-fade",
+      "score": 5.67,
+      "side": "buy",
+      "qty": 12,
+      "limit_price": 416.24,
+      "stop_loss": 395.43,
+      "take_profit": 478.67,
+      "result": "REJECTED — 5.67 avg; only 2/6 agents >=7; 0-of-5 technical indicators; P/E ~400x",
+      "agent_average": 5.67,
+      "master_decision": "rejected"
     },
     {
-      "ts": "2026-06-04T13:45:00Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "silent-failure",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "Market Open 2026-06-04 (9:45 AM ET / 13:45 UTC) SILENTLY FAILED \u2014 no heartbeat. MOO fill confirmations and GTC stop placements missed. Catch-up running at Midday."
-    },
-    {
-      "ts": "2026-06-04T12:10:30Z",
-      "symbol": "N/A",
-      "action": "violation",
-      "bucket": "active",
-      "setup": "api-blocked",
-      "score": null,
-      "agent_scores": {},
-      "agent_average": null,
-      "result_pct": null,
-      "master_decision": null,
-      "order_status": "API BLOCKED HTTP 403 \u2014 25th consecutive session. All 3 MOO orders blocked (AMD 9sh, MU 4sh, PLTR 10sh). All API endpoints blocked. OPERATOR: Execute at https://app.alpaca.markets"
-    },
-    {
-      "ts": "2026-06-04T12:10:00Z",
-      "symbol": "PLTR",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "ai-momentum-pullback",
-      "score": 7.0,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 7,
-        "macro": 5,
-        "risk": 8,
-        "tech_analyst": 8
-      },
-      "agent_average": 7.0,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (MOO 10sh PLTR) \u2192 HTTP 403 (25th consecutive). Borderline 7.0 avg. OPERATOR: BUY 10sh PLTR limit ask+0.5% bracket GTC."
-    },
-    {
-      "ts": "2026-06-04T12:09:30Z",
-      "symbol": "MU",
-      "action": "entry",
-      "bucket": "active",
+      "ts": "2026-07-06T16:35:10Z",
+      "action": "entry_blocked",
+      "symbol": "META",
       "setup": "breakout-volume",
       "score": 7.5,
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 5,
-        "risk": 7,
-        "tech_analyst": 9
-      },
+      "side": "buy",
+      "qty": 8,
+      "limit_price": 558.0,
+      "stop_loss": 530.1,
+      "take_profit": 641.7,
+      "result": "MIDDAY CATCH-UP: APPROVED but HTTP 000 BLOCKED — proxy CONNECT rejected (66th consecutive session)",
       "agent_average": 7.5,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (MOO 4sh MU) \u2192 HTTP 403 (25th). HIGHEST CONVICTION. Updated to limit at midday. EXIT by June 22."
+      "master_decision": "approved"
     },
     {
-      "ts": "2026-06-04T12:09:00Z",
+      "ts": "2026-07-06T16:34:50Z",
+      "action": "exit_blocked",
       "symbol": "AMD",
-      "action": "entry",
-      "bucket": "active",
-      "setup": "breakout-volume",
-      "score": 7.17,
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 6,
-        "sentiment": 7,
-        "macro": 5,
-        "risk": 8,
-        "tech_analyst": 9
-      },
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "side": "sell",
+      "qty": 9,
+      "limit_price": 517.0,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "MIDDAY CATCH-UP: MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 15) — HTTP 000 BLOCKED proxy CONNECT rejected",
       "agent_average": 7.17,
-      "result_pct": null,
-      "master_decision": "approved",
-      "order_status": "ATTEMPTED AND BLOCKED \u2014 POST /v2/orders (MOO 9sh AMD) \u2192 HTTP 403 (25th). 18th attempt. Updated to limit at midday."
-    },
-    {
-      "ts": "2026-06-04T12:08:00Z",
-      "symbol": "AVGO",
-      "action": "skip",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 5.67,
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 4,
-        "sentiment": 5,
-        "macro": 4,
-        "risk": 6,
-        "tech_analyst": 8
-      },
-      "agent_average": 5.67,
-      "result_pct": null,
-      "master_decision": "rejected",
-      "order_status": "REJECTED (pre-market) \u2014 Revenue miss, Technical 4/10 gap-down. Reconfirmed at midday (6.0). Wait for base."
+      "master_decision": "approved"
     }
   ],
-  "trade_stats": {
-    "total": 32,
-    "wins": 0,
-    "losses": 0,
-    "win_rate_pct": null,
-    "profit_factor": null,
-    "avg_win_pct": null,
-    "avg_loss_pct": null
-  },
-  "agent_scorecard": {
-    "trades_scored": 27,
-    "most_accurate": "\u2014",
-    "most_accurate_note": "Hit-rate tracking begins after first exit.",
-    "most_conservative": "Technical Sub-Agent",
-    "most_conservative_note": "Technical consistently lowest scorer. Midday: AVGO 5/10 (gap-down, no reversal confirmed). AMD 6/10 (MACD+stochastic 2/5). MU 7/10 (ATH breakout, MACD+vol spike 2/5). PLTR 6/10.",
-    "per_agent": {
-      "fundamentals": {
-        "avg_score": 8.1,
-        "calls_above_7": 22,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "Consistently highest. MU 9/10 (midday). AMD 8/10. PLTR 8/10. AVGO 7/10."
-      },
-      "technical": {
-        "avg_score": 5.8,
-        "calls_above_7": 10,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "Most conservative. AVGO 5/10 midday (gap-down still). AMD 6/10. PLTR 6/10. MU 7/10 (best, ATH breakout confirmed)."
-      },
-      "sentiment": {
-        "avg_score": 6.9,
-        "calls_above_7": 13,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "xAI Grok API blocked all runs. MU 8/10 (HBM4 supercycle + bullish inferred). AMD 7/10. PLTR 7/10. AVGO 6/10."
-      },
-      "macro": {
-        "avg_score": 5.1,
-        "calls_above_7": 8,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "Midday: Dow +1.8%, S&P +0.3%, Nasdaq -0.2%. Rotation day. AVGO 4/10 (IS the headwind). AMD/MU 5/10 (secular demand insulates vs macro). PLTR 5/10."
-      },
-      "risk": {
-        "avg_score": 7.7,
-        "calls_above_7": 21,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "MU midday 8/10 (improved entry \u2014 lower price \u2192 better R/R). AMD 8/10. PLTR 8/10. All guardrails satisfied. Risk correctly vetoed MRVL June 3."
-      },
-      "tech_analyst": {
-        "avg_score": 8.3,
-        "calls_above_7": 23,
-        "wins_on_above_7": 0,
-        "hit_rate_pct": null,
-        "note": "AMD 9/10. MU 9/10. PLTR 8/10. AVGO 8/10 (custom ASIC moat intact despite earnings miss)."
-      }
-    }
-  },
-  "memory": {
-    "recent_lessons_md": "### 2026-06-25 Afternoon (key observations)\n\n1. **GOOGL Dow inclusion is time-bounded.** June 26 is the final session. The non-renewable catalyst means this is not a 'next week' opportunity \u2014 if missed Friday, the entry is abandoned. Pre-Market June 26 must prioritize GOOGL above all other orders.\n2. **MU blowout validates AI infrastructure capex supercycle.** $50B Q4 guidance (+16.5% vs consensus) and HBM4 sold out through 2026 = multi-quarter pricing power and revenue visibility. This is the best fundamental read on AI demand available \u2014 bullish for NVDA, INTC foundry, and the entire AI semiconductor chain.\n3. **3 silent failures in one day = systematic cron/scheduler issue.** Pre-Market, Market-Open, AND Midday all failed June 25 (only Mid-Morning and Afternoon fired). This pattern (some but not all routines firing) suggests intermittent cron availability rather than a full-day blackout. Operator should investigate cron configuration.\n\n### 2026-06-23 Daily Review (3 things that worked)\n\n1. **MU Exemption 2 discipline saved ~$1,000+.** MU fell -13.18% on pre-earnings profit-taking. Strict 48h binary-event window prevented entering a losing trade.\n2. **Cash as inadvertent hedge.** On a -1.3% SPX / -2.1% Nasdaq day, 100% cash narrowed cumulative gap by 1.3 pp. Not a strategy win but validates guardrails.\n3. **INTC correctly re-scored.** At $126 (from ATH $141.45), INTC now scores 7.17 \u2014 better entry than at any point in June. Catalyst (Apple foundry) still intact. Quick re-score on new price = correct process.\n\n### 2026-06-23 Daily Review (3 things to improve)\n\n1. **AMD stale GTC situation is a critical unresolved risk.** May have been AT-THE-MONEY or filled during intraday rally. Operator must verify BEFORE June 24 open.\n2. **5 silent failures = 5 missed catch-up windows.** AMD was approved 7.17 at Midday. If even ONE of Pre-Market/Afternoon/Market-Close had fired, AMD entry could have been attempted. Escalate to operator for network policy fix.\n3. **IBM as defensive name was not on prior watchlists.** IBM +4.2% on a red day is institutional defensive buying. Non-semiconductor AI plays (consulting, hybrid cloud) were overlooked \u2014 now added to watchlist.\n\n### 2026-06-12 Daily Review (3 things that worked)\n\n1. **Fresh scoring at new price level.** INTC was MANDATORY at $106 (June 10). After +16% gap to $123, fresh 6-agent run correctly (7.33 \u2014 still approved). Score discipline works.\n2. **LMT thesis inversion recognized immediately.** Iran deal progress flipped defense from bullish to bearish within 24h. Score correctly fell from est. 7.33 \u2192 5.5. No momentum bias.\n3. **PPI condition enforced despite MU +11.66% temptation.** MU jumped 11.66% June 11 but PPI +1.1% m/m (condition required \u2264+0.3%) correctly blocked entry.\n"
-  },
   "watchlist": [
     {
-      "rank": 1,
-      "symbol": "AMD",
-      "score": null,
-      "action": "OPERATOR CRITICAL \u2014 RISK MANAGEMENT",
+      "symbol": "PLTR",
       "bucket": "active",
-      "setup": "other",
-      "thesis": "18sh NAKED \u2014 no stop-loss. Day 7. Est. $518.72 = +$215 unrealized but 9.3% equity (OVER 5% cap). MUST reduce. OPERATOR: (1) SELL 9sh at market; (2) place GTC stop $481.42 remaining 9sh; (3) GTC take-profit $582.78 remaining 9sh.",
-      "entry_est": null,
-      "stop": 481.42,
-      "target": 582.78,
-      "priority": "IMMEDIATE OPERATOR ACTION \u2014 BEFORE MARKET OPEN",
-      "agent_scores": {}
+      "score": 7.67,
+      "action": "BUY 35sh limit $133.20 bracket GTC",
+      "setup": "breakout-volume",
+      "notes": "HIGHEST CONVICTION. D.A. Davidson Buy upgrade July 7. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. +2.51% midday $132.54. API BLOCKED."
     },
     {
-      "rank": 2,
-      "symbol": "MU",
-      "score": 7.5,
-      "action": "BUY \u2014 MOO BLOCKED (operator must execute)",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "thesis": "Day-4 post-earnings recovery. Q3 blowout (EPS $5.11), HBM4 sold out through 2026. Friday -6.69% Apple overreaction overblown \u2014 AI data center demand intact. 5/6 agents \u22657.",
-      "entry_est": 1133.50,
-      "stop": 1076.83,
-      "target": 1303.75,
-      "priority": "MOO 4sh before 9:25 AM ET \u2014 57th blocked, operator must place",
-      "agent_scores": {
-        "fundamentals": 9,
-        "technical": 7,
-        "sentiment": 8,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 8
-      }
-    },
-    {
-      "rank": 3,
       "symbol": "IBM",
+      "bucket": "active",
+      "score": 7.33,
+      "action": "BUY 3sh limit $299.50 bracket GTC",
+      "setup": "sector-rotation",
+      "notes": "z17+LinuxONE 5 launched today. BofA PT $330. Range $287-$301. Refreshed limit $299.50. EXIT by July 20 EOD (earnings July 22). API BLOCKED."
+    },
+    {
+      "symbol": "META",
+      "bucket": "active",
       "score": 7.0,
-      "action": "BUY \u2014 MOO BLOCKED (operator must execute)",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "thesis": "Defensive outperformer. watsonx AI consulting. Insulated from Apple semiconductor narrative. All 6 agents at 7.0 \u2014 unanimous approval.",
-      "entry_est": 272.0,
-      "stop": 258.40,
-      "target": 312.80,
-      "priority": "MOO 3sh before 9:25 AM ET \u2014 57th blocked, operator must place",
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 7,
-        "sentiment": 7,
-        "macro": 7,
-        "risk": 7,
-        "tech_analyst": 7
-      }
+      "action": "BUY 8sh limit $612.05 bracket GTC",
+      "setup": "breakout-volume",
+      "notes": "Cloud compute thesis confirmed. Opened $607.90, +1.9% midday. Relative strength vs chip selloff. Earnings ~July 29-30 safe window. API BLOCKED."
     },
     {
-      "rank": 4,
-      "symbol": "NVDA",
-      "score": 6.83,
-      "action": "WATCH \u2014 below threshold, no entry",
+      "symbol": "AMD",
       "bucket": "active",
+      "score": null,
+      "action": "SELL 9sh at market + GTC STOP $481.42 on remaining 9sh",
       "setup": "ai-momentum-pullback",
-      "thesis": "Recovery bounce candidate on risk-on day, but -18.33% from ATH with confirmed sell signal. 5 consecutive down days. No confirmed reversal pattern. Score 6.83 \u2014 needs \u22657.0 to enter.",
-      "entry_est": 195.15,
-      "stop": 185.39,
-      "target": 224.42,
-      "priority": "WATCH \u2014 re-score if reversal confirmed with 2/5 indicator stack",
-      "agent_scores": {
-        "fundamentals": 8,
-        "technical": 4,
-        "sentiment": 6,
-        "macro": 8,
-        "risk": 7,
-        "tech_analyst": 8
-      }
-    },
-    {
-      "rank": 5,
-      "symbol": "GOOGL",
-      "score": 5.5,
-      "action": "REJECTED \u2014 below threshold",
-      "bucket": "active",
-      "setup": "sector-rotation",
-      "thesis": "Dow inclusion thesis expired (sell-the-news). AI talent exodus. Technical sell signal -4.19pp vs Nasdaq. Score 5.5 \u2014 decisive rejection.",
-      "entry_est": 336.15,
-      "stop": null,
-      "target": null,
-      "priority": "DO NOT ENTER \u2014 re-score only if technical reversal + talent narrative resolves",
-      "agent_scores": {
-        "fundamentals": 7,
-        "technical": 3,
-        "sentiment": 4,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 6
-      }
-    },
-    {
-      "rank": 6,
-      "symbol": "GLD",
-      "score": 5.5,
-      "action": "REJECTED \u2014 downtrend confirmed",
-      "bucket": "active",
-      "setup": "macro-hedge",
-      "thesis": "Price at $370-375, DOWN -8.8% from June 26 entry plan at $405. Prior stop $384.75 breached. Downtrend overrides PCE 4.1% macro-hedge thesis on risk-on day.",
-      "entry_est": 372.0,
-      "stop": null,
-      "target": null,
-      "priority": "DO NOT ENTER \u2014 re-score only after downtrend reversal with 2/5 indicator confirmation",
-      "agent_scores": {
-        "fundamentals": 5,
-        "technical": 3,
-        "sentiment": 5,
-        "macro": 6,
-        "risk": 7,
-        "tech_analyst": 7
-      }
-    }
-  ],
-  "history": [
-    {
-      "date": "2026-06-25",
-      "portfolio_return_pct": -0.15,
-      "spx_return_pct": 4.05,
-      "daily_pnl_pct": 0.0,
-      "note": "Market-Close EOD. API blocked (51st). Pre-Market + Market-Open + Midday silent failed (3/6); Mid-Morning + Afternoon + Market-Close completed. 5 MOC orders (GOOGL 8.2, MU 8.5, NVDA 8.0, INTC 7.5, IBM 7.5) all HTTP 403. MU closed est. ~$1,162 (+19.2%). SPX closed est. +0.68% (~7,535). Nasdaq +2.30%. Portfolio: 0 confirmed positions, 0 daily P&L, missed entire semiconductor rally. AMD naked 18sh est. +$509 unrealized (NO STOPS). Gap est. ~-5.77 pp (widened -0.77 pp today). JUNE 26 LAST: AMD fix + GOOGL MOO (Dow inclusion June 29)."
-    },
-    {
-      "date": "2026-06-18",
-      "portfolio_return_pct": -0.15,
-      "spx_return_pct": 5.56,
-      "daily_pnl_pct": 0.0,
-      "note": "Market-Close. POST-FOMC first clean day \u2014 last before Juneteenth. API blocked (39th). 4 silent failures (Pre-Market, Market-Open, Midday, Afternoon). Mid-Morning + Market-Close completed. 8 orders attempted (4 GTC limit + 4 MOC) \u2014 all HTTP 403. 0 positions, 0 P&L. SPX est. +0.6% (~7,600). Cumulative gap: ~-5.71 pp. MRVL S&P inclusion June 22 \u2014 missed last entry window. AMD stale GTC naked risk warning issued."
-    },
-    {
-      "date": "2026-06-04",
-      "portfolio_return_pct": 0.14,
-      "spx_return_pct": 5.1,
-      "daily_pnl_pct": -0.08,
-      "note": "Midday. API blocked (26th). Market Open + Mid-Morning silent failed. GLD CORRECTED to $408 (underwater from $418.86). AVGO re-scored 6.0 (Goldman PT $525 noted; still below threshold). MU limit $1,020 blocked. AMD limit $508 blocked. PLTR deferred to Afternoon."
-    },
-    {
-      "date": "2026-06-03",
-      "portfolio_return_pct": 0.32,
-      "spx_return_pct": 4.8,
-      "daily_pnl_pct": 0.1,
-      "note": "Afternoon snapshot. API blocked (24th). Midday violation. AMD hit ATH $533.82 without fill. AVGO earnings tonight. GLD est. +$104 (WAS WRONG \u2014 GLD actually at $408 not $432)."
-    },
-    {
-      "date": "2026-05-29",
-      "portfolio_return_pct": 0.15,
-      "spx_return_pct": 5.21,
-      "daily_pnl_pct": -0.03,
-      "note": "Market Open catch-up. API blocked. 3 orders attempted/blocked. PLTR deferred. Pre-Market silent failure."
-    },
-    {
-      "date": "2026-06-16",
-      "portfolio_return_pct": -0.15,
-      "spx_return_pct": 4.92,
-      "daily_pnl_pct": 0.0,
-      "note": "Market-Close. FOMC Day 1. API blocked (36th). 4 silent failures. 0 positions. 0 trades. Both portfolio and SPX ~flat today. Cumulative gap: ~-5.07 pp. MANDATORY entries Thursday June 18 post-FOMC."
-    },
-    {
-      "date": "2026-06-26",
-      "portfolio_return_pct": -0.15,
-      "spx_return_pct": 5.25,
-      "daily_pnl_pct": 0.0,
-      "note": "Market-Close EOD. API blocked 56th consecutive. 9 order attempts \u2014 0 filled. GOOG Dow inclusion expired. AMD naked over weekend. Semiconductor selloff day -0.40%."
+      "notes": "GUARDRAIL: 18sh=9.26% equity, OVER 5% cap, Day 17. CHIP SELLOFF -7.09% to $513.92. P&L +$128.88. Stop $481.42 not breached. Goldman PT $640. Earnings July 22 — EXIT ALL by July 20 EOD. API BLOCKED."
     }
   ]
 }
