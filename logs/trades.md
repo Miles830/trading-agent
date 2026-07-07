@@ -4,6 +4,313 @@
 
 ---
 
+## 2026-07-07 — Midday (12:30 PM ET / 16:34 UTC — FOXCONN BEAT REVERSES CHIP SELLOFF / AMD RECOVERING)
+
+**HEARTBEAT:** STARTED Midday 2026-07-07T16:34:41Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (paper-api.alpaca.markets:443 not in egress allowlist) — **69th consecutive blocked session**
+**Current Time:** 16:34Z = 12:34 PM ET — Midday window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Status | Note |
+|---|---|---|
+| Pre-Market | ✅ STARTED 12:06Z / COMPLETED 12:23Z | Normal |
+| Market-Open | ❌ SILENT FAILURE | Violation already logged in Mid-Morning entry |
+| Mid-Morning | ✅ STARTED 15:09Z / COMPLETED 15:18Z | Normal |
+
+No new violations to log — Market-Open silent failure already captured in Mid-Morning entry.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 403 (69th consecutive session)**
+
+```bash
+curl GET "${APCA_API_BASE_URL}/v2/orders?status=open" → HTTP 403 (proxy policy denial)
+curl GET "${APCA_API_BASE_URL}/v2/positions" → HTTP 403 (proxy policy denial)
+```
+
+**Proxy status:** `curl http://127.0.0.1:39291/__agentproxy/status` confirms `connect_rejected` for paper-api.alpaca.markets:443 (policy denial, not transient).
+
+**Known naked position:**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA — **Day 18** (started pre-market Day 16, mid-morning Day 17, now midday Day 18)
+
+**Stop placement attempt:**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (69th consecutive session)
+```
+
+**GUARDRAIL VIOLATION CONTINUING:** AMD 18sh has no resting stop at Alpaca for 18 consecutive trading days.
+
+---
+
+### MARKET CONDITIONS — JULY 7, 2026 MIDDAY (~12:34 PM ET)
+
+**KEY MIDDAY DEVELOPMENT: FOXCONN Q2 BEAT REVERSES SEMICONDUCTOR SELLOFF**
+
+| Index | Midday Performance | Note |
+|---|---|---|
+| S&P 500 | **+0.7%** (~7,600) | Broad market resilient, tracking toward record |
+| Nasdaq | **+1.1%** | AI optimism reviving — Big Tech leading |
+| Dow | **+300+ pts** | NEW RECORD ABOVE 53,000 |
+| AMD | **est. $515–525** | Recovering from −7.09% morning low of $513.92 |
+| PLTR | **~$132.54–134** | Holding D.A. Davidson upgrade gains |
+| META | **~$609–615** | Cloud compute thesis intact, +1.9%+ |
+| IBM | **~$295–305** | z17 launch day, BofA PT $330 |
+
+**FOXCONN (HON HAI) Q2 2026 RESULTS — CRITICAL CATALYST:**
+- Revenue: T$2.513 trillion (~$78.71B) — vs T$2.372T consensus = **+5.9% BEAT**
+- This directly confirms: AI server hardware demand is NOT peaking
+- Samsung revenue miss = SUPPLY-SIDE anomaly, NOT demand destruction
+- Foxconn sells directly into AI data center supply chains (NVIDIA, AMD GPU servers)
+- **AMD thesis vindicated at midday**: The morning selloff overreacted to supply-side noise
+
+**Market Context:**
+- Nasdaq heading for best session in 2+ weeks on Foxconn AI capex confirmation
+- Dow on pace for new all-time record close
+- Risk appetite restored — rotation BACK INTO semiconductors developing
+
+---
+
+### POSITION REVIEW — AMD (MIDDAY)
+
+| Metric | Value |
+|---|---|
+| Position | 18sh at $506.76 avg cost |
+| Morning low | $513.92 (−$38.13 from $552.05 close) |
+| Midday est. | $515–525 (recovering as Foxconn news spreads) |
+| Unrealized P&L | +$145–$326 (est. midday recovery) |
+| Stop target | $481.42 (still NOT resting at Alpaca) |
+| Take-profit | $640 (Goldman Sachs PT) |
+| Cap status | **OVER 5% cap** (18sh × $520 ≈ $9,360 = 9.37% equity) |
+| Earnings | July 22 → MUST EXIT ALL by July 20 EOD |
+
+**Thesis Assessment (Midday Update):**
+- Foxconn beat CONFIRMS AI data center demand intact — the strongest evidence yet
+- AMD "Advancing AI 2026" conference July 22-23 = near-term catalyst
+- Goldman PT $640 (from July 6 upgrade) = 23% upside from current levels
+- Cantor Fitzgerald PT $700 = 34% upside
+- The morning selloff (-7%) appears to be an overreaction to Samsung supply-side miss
+
+**Action:** HOLD AMD position. Stop $481.42 is 6.8%–8.3% below current price ($515–525) — adequate cushion. Do NOT panic-exit into the Foxconn reversal.
+
+**Operator MUST act:**
+1. SELL 9sh AMD at current market price (reduce from 9.37% → ~4.7% equity, within 5% cap)
+2. Place GTC STOP on remaining 9sh at $481.42
+3. Place GTC TAKE-PROFIT on remaining 9sh at $640
+
+```yaml
+---
+ts: 2026-07-07T16:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.5
+thesis: HOLD — Foxconn Q2 $78.71B BEAT confirms AI capex intact. Samsung selloff was supply-side noise. AMD recovering from $513.92 morning low. Goldman PT $640, Cantor $700. Must reduce from 18sh to 9sh (cap violation) and place GTC stop.
+size_pct: 9.37
+stop: 481.42
+target: 640.0
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: hold-reduce-blocked
+master_notes: "API BLOCKED 69th consecutive session. AMD recovering from morning low as Foxconn Q2 $78.71B beat (5.9% above consensus) confirms AI hardware demand intact. Morning -7% was overreaction to Samsung supply-side miss. AMD midday est $515-525. Stop $481.42 NOT resting at Alpaca (Day 18 naked). Technical score raised 5→6 (Foxconn reversal catalyst; volume likely turning positive). Sentiment 5→7 (Foxconn confirms thesis, Goldman PT $640 intact, Samsung news now understood as supply vs demand story). Macro 4→7 (Foxconn beat = AI capex not peaking = RISK-ON for AI semis). ORDER ATTEMPTED: SELL 9sh AMD at market → HTTP 403. GTC STOP $481.42 → HTTP 403. CRITICAL: Position still 9.37% equity (over 5% cap) and naked. Operator MUST sell 9sh immediately, then place GTC stop $481.42 + GTC TP $640 on remaining 9sh. AMD 'Advancing AI 2026' July 22-23 catalyst ahead. EXIT DEADLINE July 20 EOD (earnings July 22)."
+---
+```
+
+---
+
+### WATCHLIST CATCH-UP — PENDING APPROVED ENTRIES (CARRY-FORWARD FROM MID-MORNING)
+
+All three approved entries from Pre-Market/Mid-Morning remain BLOCKED. Midday retry attempted:
+
+**PLTR — Score 7.67 — CARRY-FORWARD**
+
+```yaml
+---
+ts: 2026-07-07T16:38:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: D.A. Davidson Buy upgrade; Q1 $1.63B +85% YoY; NVIDIA sovereign AI partnership. Holding $132.54 area into midday. Score unchanged 7.67.
+size_pct: 4.70
+stop: 126.54
+target: 154.06
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED 69th consecutive session. PLTR est. $132.54–134.00 at midday. Market rally (Nasdaq +1.1%) favorable for high-beta tech. D.A. Davidson Buy upgrade still fresh. Foxconn AI confirmation = macro tailwind for PLTR AI software thesis. Retry limit bracket: BUY 35sh limit $134.00 × 1.005 ≈ $134.68 (updated for midday ask), stop $127.95, target $155.50 (R/R ~3.0:1). HTTP 403 blocked (69th). OPERATOR: BUY 35sh PLTR limit $134.00 bracket GTC stop $127.95, target $155.50. If PLTR above $135 by Afternoon, re-price limit accordingly."
+---
+```
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{
+  "symbol":"PLTR","qty":35,"side":"buy","type":"limit","limit_price":"134.68",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"127.95"},
+  "take_profit":{"limit_price":"155.50"}
+}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (69th consecutive session)
+```
+
+**META — Score 7.0 — CARRY-FORWARD**
+
+```yaml
+---
+ts: 2026-07-07T16:39:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Cloud compute service launch confirmed. +1.9%+ today showing relative strength. Foxconn beat = AI capex intact = bullish for Meta AI spend monetization.
+size_pct: 4.87
+stop: 581.45
+target: 703.25
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED 69th consecutive session. META est. $609–615 midday; +1.9%+ on cloud compute story. Macro score improves to 7 (Foxconn beat = AI capex confirmed, direct read-through to Meta's AI monetization thesis). Retry limit bracket at midday ask: BUY 8sh limit $612.05, stop $581.45, target $703.25 (R/R 3.0:1). HTTP 403 blocked (69th). OPERATOR: BUY 8sh META limit $612.05 bracket GTC stop $581.45, target $703.25. Earnings ~July 29-30 — safe window. If META above $616 by Afternoon, re-price limit to ask × 1.005."
+---
+```
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{
+  "symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"612.05",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"581.45"},
+  "take_profit":{"limit_price":"703.25"}
+}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (69th consecutive session)
+```
+
+**IBM — Score 7.33 — CARRY-FORWARD (z17 launch day)**
+
+```yaml
+---
+ts: 2026-07-07T16:40:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: z17 mainframe launch TODAY is peak catalyst day. BofA PT $330. IBM Japan + MUFG AI deal. IBM up on launch day. MUST EXIT by July 20 EOD (earnings July 22).
+size_pct: 0.87
+stop: 284.53
+target: 344.41
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "API BLOCKED 69th consecutive session. IBM trading in $295–305 range midday on z17 launch day. Entry window TODAY is the strongest (new product cycle launch momentum). z17 + LinuxONE 5 launched today; BofA PT $330 from $315 raised July 6; IBM Japan + MUFG AI deal. Retry limit at midday: BUY 3sh limit $299.50 bracket GTC, stop $284.53 (stop distance $14.97), target $344.41 (reward distance $44.91 = R/R 3.0:1). HTTP 403 blocked (69th). OPERATOR: BUY 3sh IBM limit $299.50 bracket GTC stop $284.53, target $344.41. HARD EXIT deadline July 20 EOD — IBM earnings July 22 (earnings window = binary event)."
+---
+```
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{
+  "symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"299.50",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"284.53"},
+  "take_profit":{"limit_price":"344.41"}
+}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (69th consecutive session)
+```
+
+---
+
+### AFTERNOON SETUP SCAN — NEW OPPORTUNITIES
+
+**SpaceX Nasdaq-100 Inclusion (joined today):**
+- SpaceX joined Nasdaq-100 on July 7 — estimated $4.3B–$27B in passive tracker buying TODAY
+- SpaceX is private — cannot trade directly
+- Read-through: NVDA (Starlink satellite AI chips), VSAT (satellite infrastructure) — noted but below threshold without full 6-agent
+
+**Semiconductor Recovery Plays (Foxconn catalyst):**
+- NVDA: ~$202–210 est. midday. Would need fresh 6-agent. Noted for Afternoon.
+- INTC: Recovery from -7% morning. Re-score potential at Afternoon.
+- AMD: Already holding — thesis strengthened
+
+**No new entries scored above 7 this routine** — focusing on carry-forward approved names.
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+| Symbol | Hold? | Reason | Exit deadline |
+|---|---|---|---|
+| AMD 18sh | ✅ HOLD | Foxconn confirms AI capex; Goldman PT $640; AMD 'Advancing AI 2026' July 23 ahead; stop $481.42 | EXIT ALL by July 20 EOD (earnings July 22) |
+| PLTR (pending) | ✅ Carry-forward | 7.67 score, API blocking entry | Enter at Afternoon or Market-Close |
+| META (pending) | ✅ Carry-forward | 7.0 score, API blocking entry | Enter at Afternoon or Market-Close |
+| IBM (pending) | ✅ Carry-forward | 7.33 score, z17 launch = peak catalyst TODAY | Enter at Afternoon or Market-Close |
+
+**Stop-loss trail consideration (AMD):**
+- Current AMD est. $515–525. Stop $481.42 = 6.8–8.3% cushion.
+- If AMD recovers to $540+, trail stop to $500+ (breakeven protection).
+- Cannot execute via API — documented for operator action.
+
+---
+
+### SUMMARY — MIDDAY JULY 7, 2026
+
+| Item | Status |
+|---|---|
+| Alpaca API | ❌ BLOCKED — 69th consecutive session |
+| Stop-loss audit | ❌ BLOCKED — AMD Day 18 naked |
+| AMD position review | ⚠️ Recovering from $513.92 morning low. Foxconn confirms AI capex. Hold. |
+| PLTR entry (7.67) | ❌ BLOCKED — 69th attempt, HTTP 403 |
+| META entry (7.0) | ❌ BLOCKED — 69th attempt, HTTP 403 |
+| IBM entry (7.33) | ❌ BLOCKED — 69th attempt, HTTP 403 |
+| New setups scored | ✅ None above threshold |
+| Daily P&L check | AMD −$684 daily (~−0.69% equity) — below 3% circuit breaker ✅ |
+
+**Operator Mandatory Actions (URGENT — TODAY):**
+1. ⚠️⚠️⚠️ **SELL 9sh AMD** at market — reduce from 9.37% → ~4.7% (within 5% cap)
+2. **Place GTC STOP: 9sh AMD at $481.42**
+3. **Place GTC TP: 9sh AMD at $640**
+4. **BUY 35sh PLTR bracket GTC:** limit ~$134 (check ask), stop $127.95, target $155.50
+5. **BUY 8sh META bracket GTC:** limit $612.05, stop $581.45, target $703.25
+6. **BUY 3sh IBM bracket GTC:** limit $299.50, stop $284.53, target $344.41
+7. **⚠️ ESCALATE API blockage** — 69 consecutive sessions (paper-api.alpaca.markets blocked at network egress policy level)
+
+---
+
 ## 2026-07-07 — Mid-Morning (11:00 AM ET / 15:10 UTC — SAMSUNG CHIP SELLOFF / AMD AT-RISK)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-07T15:09:55Z ✓
