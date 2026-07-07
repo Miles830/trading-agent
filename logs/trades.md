@@ -4,6 +4,300 @@
 
 ---
 
+## 2026-07-07 — Mid-Morning (11:00 AM ET / 15:10 UTC — SAMSUNG CHIP SELLOFF / AMD AT-RISK)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-07T15:09:55Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (paper-api.alpaca.markets:443 not in egress allowlist) — **68th consecutive blocked session**
+**Current Time:** 15:10Z = 11:10 AM ET — Mid-Morning window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+- Pre-Market: ✅ STARTED 2026-07-07T12:06:19Z / COMPLETED 2026-07-07T12:23:37Z
+- Market-Open: ❌ **SILENT FAILURE — no heartbeat in logs/heartbeats/2026-07-07.log**
+
+```yaml
+---
+ts: 2026-07-07T13:45:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Market Open routine (9:45 AM ET / 13:45Z) did not run today — no STARTED entry in logs/heartbeats/2026-07-07.log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Market Open silently failed. Critical consequences: (1) No stop-loss placed post-MOO for AMD (moot — all MOO orders also blocked by API); (2) No stop-loss audit at 9:45 AM; (3) No GTC stop backfilled for AMD 18sh naked position. Catch-up executed from Mid-Morning. Samsung chip selloff discovered during Mid-Morning research: AMD -7.09% today to ~$513.92 from $552.05 close — position now only $7/sh above cost basis $506.76."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 403 (68th consecutive session)**
+
+```bash
+curl GET "${APCA_API_BASE_URL}/v2/orders?status=open" → HTTP 403 (proxy policy denial)
+curl GET "${APCA_API_BASE_URL}/v2/positions" → HTTP 403 (proxy policy denial)
+```
+
+**Proxy status confirmed via:** `curl http://127.0.0.1:45263/__agentproxy/status`
+```json
+"recentRelayFailures": [
+  {"kind":"connect_rejected","detail":"gateway answered 403 to CONNECT (policy denial)","host":"paper-api.alpaca.markets:443"},
+  {"kind":"connect_rejected","detail":"gateway answered 403 to CONNECT (policy denial)","host":"data.alpaca.markets:443"}
+]
+```
+
+**Known naked position (based on persistent portfolio state):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA — **Day 17** (was Day 16 at Pre-Market)
+
+**Stop placement attempt:**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**GUARDRAIL VIOLATION CONTINUING:** AMD 18sh has no resting stop at Alpaca for 17 consecutive days. Operator manual action remains the only resolution.
+
+---
+
+### MARKET CONDITIONS — JULY 7, 2026 MID-MORNING (~11:10 AM ET)
+
+**CRITICAL: SAMSUNG CHIP SELLOFF — SEMICONDUCTOR SECTOR UNDER PRESSURE**
+
+| Index | Midday Performance | Driver |
+|---|---|---|
+| S&P 500 | **+0.67%** (~7,587) | Broad market resilience |
+| Nasdaq | **+1.21%** | Big Tech: AAPL, GOOG, META, TSLA up |
+| **AMD** | **−7.09%** (~$513.92) | Samsung chip selloff trigger |
+| PLTR | **+2.51%** (~$132.54) | D.A. Davidson upgrade holding |
+| META | **+1.90%** (~$609-610) | Cloud compute story intact |
+| IBM | **Range $287–$301** | z17 launch day |
+
+**Chip Selloff Root Cause:** Samsung Q2 2026 preliminary earnings — operating profit +19x YoY (record beat) BUT revenue missed estimates → investors fear supply-side peak, AI capex cycle top. Intel −7%, AMD −8%, TSM −6%. Broader Big Tech is UP (META, GOOG, AAPL) — selloff is semiconductor-specific, NOT broad tech risk-off.
+
+**AMD Specifics (CRITICAL for our position):**
+- Previous close (July 6): $552.05
+- Current (July 7 midday): ~$513.92 (−$38.13, −7.09%)
+- Day range: $509.61 – $522.39
+- Our cost basis: $506.76/sh (18sh)
+- Current P&L: 18 × ($513.92 − $506.76) = **+$128.88** (+1.41%)
+- Stop (5%): $506.76 × 0.95 = **$481.42** — AMD is $32.50 above stop (~6.8% cushion)
+- **THESIS INTACT:** Goldman Sachs PT $640 unchanged, NVIDIA Kyber delay to 2028 still in play, AMD "Advancing AI 2026" July 23 ahead
+- **RISK:** If chip selloff continues to −10%+, AMD could breach $506.76 cost basis. Stop at $481.42 not resting at Alpaca.
+
+**Risk Assessment:** Selloff appears to be a valuation correction on Samsung revenue miss, not fundamental semiconductor demand collapse. AMD at P/E 208× was due for a pullback on any uncertainty. The long-term AI capex thesis (AMD as NVIDIA alternative beneficiary) is unchanged. **Hold AMD, do not panic-exit if operator has access today.**
+
+---
+
+### MARKET OPEN CATCH-UP — MOO FILL STATUS
+
+Since Market Open silently failed, checking for any MOO fills from Pre-Market submissions:
+- All MOO attempts in Pre-Market were **BLOCKED via API** (HTTP 000/403)
+- Therefore: no MOO orders were submitted to Alpaca
+- Therefore: no MOO fills to confirm
+- Therefore: no stop-losses need to be placed post-MOO fill
+
+Portfolio remains: **AMD 18sh (18sh still over 5% cap) + ~$90,644 cash**
+
+---
+
+### WATCHLIST CATCH-UP — PENDING APPROVED ENTRIES
+
+From Pre-Market approved watchlist (scores ≥ 7, all MOO attempts blocked):
+
+**PLTR — Score 7.67 — APPROVED**
+
+```yaml
+---
+ts: 2026-07-07T15:12:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: D.A. Davidson upgrade Buy; Q1 revenue $1.63B +85% YoY; NVIDIA sovereign AI partnership. Approved in Pre-Market; MOO blocked.
+size_pct: 4.69
+stop: 126.01
+target: 153.09
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED — 68th consecutive session. Limit bracket order attempted at $132.54 × 1.005 = $133.20 (current ask), stop $126.54, target $154.06 (R/R 3.0:1). HTTP 403 proxy denial. THIS IS NOT A VALID EXEMPTION UNDER CLAUDE.md — this is an infrastructure failure. PLTR +2.51% today = ~$132.54. Holding conviction. Will retry at next routine. Operator manual entry: BUY 35sh PLTR limit $133.20, stop $126.54, target $154.06."
+---
+```
+
+Attempted limit bracket order (catch-up at 11:10 AM ET):
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{
+  "symbol":"PLTR","qty":35,"side":"buy","type":"limit","limit_price":"133.20",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"126.54"},
+  "take_profit":{"limit_price":"154.06"}
+}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**META — Score 7.0 — APPROVED**
+
+```yaml
+---
+ts: 2026-07-07T15:13:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Cloud compute service launch confirmed 8+ outlets. Pre-market +1.9% showing resilience despite Nasdaq chip selloff. Zuckerberg AI concern already priced in.
+size_pct: 4.87
+stop: 579.85
+target: 700.00
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED — 68th consecutive session. META opened $607.90, range $580-$610. Limit bracket attempted at $609 × 1.005 = $612.05, stop $581.45, target $703.25 (R/R ~3.0:1). HTTP 403 proxy denial. THIS IS NOT A VALID EXEMPTION UNDER CLAUDE.md — infrastructure failure. META +1.9% today showing relative strength vs Nasdaq. Earnings ~July 29-30 — safe window. Operator manual entry: BUY 8sh META limit $612.05, bracket GTC stop $581.45, target $703.25."
+---
+```
+
+Attempted limit bracket order:
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{
+  "symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"612.05",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"581.45"},
+  "take_profit":{"limit_price":"703.25"}
+}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (68th consecutive session)
+```
+
+**IBM — Score 7.33 — APPROVED**
+
+```yaml
+---
+ts: 2026-07-07T15:14:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: z17 mainframe + LinuxONE 5 launched today. BofA PT $330. IBM Japan + MUFG AI deal. Must exit by July 20 EOD (pre-earnings 48h window July 22).
+size_pct: 0.87
+stop: 275.03
+target: 332.91
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "API BLOCKED — 68th consecutive session. IBM range $287.65-$300.82 today; opened $288.19 per plan. Limit bracket attempted at $289.50 (original plan), stop $275.03, target $332.91 (R/R 3.0:1). HTTP 403 proxy denial. THIS IS NOT A VALID EXEMPTION UNDER CLAUDE.md — infrastructure failure. z17 launch today is live catalyst — best entry day is NOW. Earnings July 22 → must be fully out by July 20 EOD. IBM trading up to $298+ midday — strong day. Operator manual entry: BUY 3sh IBM limit $299.50 (refreshed from $289.50 — IBM already moved up), bracket GTC stop $284.53, target $344.41."
+---
+```
+
+Attempted limit bracket order:
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{
+  "symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"289.50",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"275.03"},
+  "take_profit":{"limit_price":"332.91"}
+}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (68th consecutive session)
+```
+
+---
+
+### AMD — POSITION MANAGEMENT (MID-MORNING REVIEW)
+
+```yaml
+---
+ts: 2026-07-07T15:15:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: HOLD — chip selloff -7.09% today (Samsung trigger) but AI capex thesis intact. Goldman PT $640. AMD only ~$7/sh above $506.76 avg. Stop $481.42 not yet breached but approaching cost basis. Sell 9sh to reduce from 18sh to 9sh (reduce to 5% cap) and place GTC stop.
+size_pct: 9.23
+stop: 481.42
+target: 640.0
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 5
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 3
+master_decision: hold-by-default
+master_notes: "API BLOCKED — 68th consecutive session. Re-score for SELL-9sh decision: Technical now 5/10 (chip sector breakdown, 5-indicator stack mostly bearish today — Stochastic possibly overbought, MACD bearish crossover forming, volume spike to the downside); Sentiment 5/10 (Samsung miss dampens chip sentiment; X likely bearish; modifier -1 to -2 estimated); Macro 4/10 (chip sector rotation into non-chip big tech today). Decision: HOLD is not ideal but forced by API blockage. OPERATOR MUST: (1) SELL 9sh AMD immediately at market to reduce from 18sh (9.23% equity, over cap) to 9sh (~4.6%); (2) Place GTC STOP on 9sh at $481.42; (3) Raise take-profit to $640 (Goldman PT). Do NOT let AMD fall below $506.76 cost basis without a stop in place. AMD 'Advancing AI 2026' event July 23 still bullish catalyst ahead."
+---
+```
+
+Attempted AMD SELL 9sh + stop placement:
+```bash
+# SELL 9sh to reduce over-cap position:
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"day"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (68th consecutive session)
+
+# Place stop-loss on remaining 9sh:
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (68th consecutive session)
+```
+
+---
+
+### SUMMARY — MID-MORNING JULY 7, 2026
+
+| Item | Status |
+|---|---|
+| Alpaca API | ❌ BLOCKED — 68th consecutive session (HTTP 403, proxy policy denial) |
+| Market-Open predecessor | ❌ SILENT FAILURE — violation logged |
+| AMD stop-loss audit | ❌ BLOCKED — AMD 18sh naked Day 17 |
+| AMD position review | ⚠️ AMD −7.09% today ($513.92); +$128.88 unrealized; HOLD (stop $481.42 not breached) |
+| PLTR entry (7.67) | ❌ BLOCKED — order attempted, HTTP 403 |
+| META entry (7.0) | ❌ BLOCKED — order attempted, HTTP 403 |
+| IBM entry (7.33) | ❌ BLOCKED — order attempted, HTTP 403 |
+| AMD reduce (9sh sell) | ❌ BLOCKED — order attempted, HTTP 403 |
+| New opportunities scanned | ✅ No new setups above 7 — broad market rotation into non-chip tech |
+
+**Operator Mandatory Actions (TODAY):**
+1. ⚠️⚠️⚠️ **SELL 9sh AMD at market** — reduce from 9.23% → ~4.6% equity (within 5% cap)
+2. **Place GTC STOP: AMD 9sh stop $481.42** (or place on all 18sh if not selling)
+3. **BUY 35sh PLTR bracket GTC:** limit $133.20, stop $126.54, target $154.06
+4. **BUY 8sh META bracket GTC:** limit $612.05, stop $581.45, target $703.25
+5. **BUY 3sh IBM bracket GTC:** limit $299.50 (refreshed for midday price), stop $284.53, target $344.41
+6. **Escalate API blockage** — 68 consecutive sessions (paper-api.alpaca.markets blocked in egress policy)
+
+---
+
 ## 2026-07-07 — Pre-Market (8:00 AM ET / 12:06 UTC — TUESDAY — SEMICONDUCTOR ROTATION / AMD CATALYST DAY)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-07T12:06:19Z ✓
