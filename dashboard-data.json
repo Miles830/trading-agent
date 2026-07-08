@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-07T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-08T20:34:03Z",
+  "updated_by": "daily-review",
   "portfolio": {
     "total_equity": 99894.56,
     "starting_equity": 100000.0,
@@ -9,11 +9,11 @@
     "buying_power": 181288,
     "long_market_value": 9250.56,
     "short_market_value": 0.0,
-    "daily_pnl": -343.44,
-    "daily_pnl_pct": -0.34,
+    "daily_pnl": 0.0,
+    "daily_pnl_pct": 0.0,
     "total_return_pct": -0.11,
     "spx_return_pct": 5.37,
-    "benchmark_gap_pct": -5.48,
+    "benchmark_gap_pct": -5.53,
     "open_positions_count": 1,
     "buckets": {
       "active_value": 9250.56,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.74
     },
-    "note": "July 7 MID-MORNING (11:10 AM ET / 15:15Z). API BLOCKED HTTP 403 — 68th consecutive. SAMSUNG CHIP SELLOFF: AMD -7.09% to $513.92 (prev close $552.05). AMD 18sh P&L: +$128.88 (+1.41%). Stop $481.42 not breached (6.8% cushion). 7 orders blocked today. Market-Open SILENT FAILURE. AMD Day 17 naked. S&P 500 +0.67% midday, Nasdaq +1.21% (big tech resilient). PLTR +2.51% ($132.54), META +1.9% ($609), IBM $287-$301 range. Operator MUST act: (1) SELL 9sh AMD immediately; (2) GTC STOP $481.42; (3) BUY 35sh PLTR bracket $133.20; (4) BUY 8sh META bracket $612.05; (5) BUY 3sh IBM bracket $299.50."
+    "note": "July 8 DAILY REVIEW (4:30 PM ET / 20:34Z). API BLOCKED HTTP 403 — 69th consecutive. WORST DAY: 6/6 intraday routines silently failed. AMD Day 18 naked (18sh @ $506.76, ~9.26% equity, no stop at Alpaca). Est. equity ~$99,894. SPX baseline May 1 7,200 → July 8 est. ~7,590 = +5.42%. Portfolio −0.11%. Cumulative gap vs SPX: est. −5.53 pp. FOMC minutes released today (Warsh hawkish watch). Q2 earnings: JPM/WFC July 11 (48h window opens July 9 — DO NOT ENTER banking). AMD EXIT DEADLINE: July 20 EOD (earnings July 22). IBM EXIT DEADLINE: July 20 EOD. Carry-forward MANDATORY: (1) SELL 9sh AMD MOO July 9; (2) AMD GTC STOP $481.42 on 9sh; (3) PLTR 35sh bracket GTC; (4) IBM 3sh bracket GTC; (5) META 8sh bracket GTC."
   },
   "positions": [
     {
@@ -122,52 +122,52 @@
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-07T12:06:19Z",
-      "next_run": "2026-07-08T12:00:00Z",
-      "last_summary": "July 7 Pre-Market COMPLETED. Nasdaq futures -1.10% (Samsung chip selloff); AMD +2.5% pre-market (NVIDIA delay + Goldman PT $640); PLTR +5.3% (D.A. Davidson upgrade). 5 orders attempted — all blocked HTTP 000 (67th consecutive). NEW APPROVALS: META 7.0, PLTR 7.67, IBM 7.33. AMD Day 16 naked. ISM Services 9:00 AM ET pivot event."
+      "next_run": "2026-07-09T12:00:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat. Last successful run: July 7 Pre-Market 12:06Z. Violation logged in trades.md (6th consecutive failure in recent days)."
     },
     {
       "name": "Market-Open",
       "status": "SILENT FAILURE",
       "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-08T13:45:00Z",
-      "last_summary": "SILENT FAILURE — no heartbeat July 7. Violation logged in trades.md. No MOO fills to confirm (all MOO orders were API-blocked at Pre-Market). No stop-loss audit performed."
+      "next_run": "2026-07-09T13:45:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat. Last successful run: June 29 Market-Open. 6th+ consecutive failure. No stop audit performed today."
     },
     {
       "name": "Mid-Morning",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-07T15:10:00Z",
-      "next_run": "2026-07-08T15:00:00Z",
-      "last_summary": "July 7 Mid-Morning COMPLETED. API BLOCKED (HTTP 403 — 68th consecutive). CRITICAL: AMD -7.09% today to $513.92 (Samsung chip selloff). AMD stop $481.42 not breached. Market-Open violation logged. 7 orders attempted and blocked: AMD sell 9sh + AMD stop + PLTR 35sh + META 8sh + IBM 3sh + AMD stop (×2). AMD Day 17 naked. Chip sector rotation: sell semis, buy software. PLTR +2.51%, META +1.9%, IBM strong."
+      "next_run": "2026-07-09T15:00:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat. Last successful: July 7 Mid-Morning (15:09Z). FOMC minutes released today — analysis missed entirely."
     },
     {
       "name": "Midday",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-06T16:34:41Z",
-      "next_run": "2026-07-07T16:30:00Z",
-      "last_summary": "Not yet run today. Next at 12:30 PM ET / 16:30Z."
+      "next_run": "2026-07-09T16:30:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat. Last successful: July 6 Midday. Post-FOMC minutes market reaction missed."
     },
     {
       "name": "Afternoon",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-07T18:00:00Z",
-      "last_summary": "Not yet run today. Next at 2:00 PM ET / 18:00Z."
+      "next_run": "2026-07-09T18:00:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat. Last successful: July 1 Afternoon. AMD position unmonitored for full trading day."
     },
     {
       "name": "Market-Close",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-07T19:30:00Z",
-      "last_summary": "Not yet run today. Next at 3:30 PM ET / 19:30Z."
+      "next_run": "2026-07-09T19:30:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat. Last successful: July 2 Market-Close. No MOC orders, no daily P&L pull, no AMD position close-of-day review. AMD enters overnight Day 18 naked."
     },
     {
       "name": "Daily-Review",
-      "status": "PENDING",
-      "last_run": "2026-06-29T20:30:00Z",
-      "next_run": "2026-07-07T20:30:00Z",
-      "last_summary": "Not yet run today. Next at 4:30 PM ET / 20:30Z."
+      "status": "completed",
+      "last_run": "2026-07-08T20:34:03Z",
+      "next_run": "2026-07-09T20:30:00Z",
+      "last_summary": "July 8 Daily Review COMPLETED. WORST DAY: 6/6 intraday silent failures (scheduler fully down). API BLOCKED 69th consecutive (HTTP 403). AMD Day 18 naked (9.26% equity, no stop). Est. equity ~$99,894. Cumulative gap vs SPX: −5.53 pp. JPM/WFC earnings July 11 — 48h window opens July 9. AMD + IBM exit deadline: July 20 EOD. Carry-forward MANDATORY July 9: SELL 9sh AMD + PLTR 7.67 + IBM 7.33 + META 7.0."
     }
   ],
   "trades": [
@@ -309,36 +309,84 @@
   ],
   "watchlist": [
     {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": null,
+      "action": "SELL 9sh at MARKET MOO — FIRST ORDER (Day 18 naked, 9.26% equity over 5% cap). Then GTC STOP 9sh at $481.42. EXIT ALL by July 20 EOD.",
+      "setup": "ai-momentum-pullback",
+      "notes": "⚠️⚠️⚠️ CRITICAL PRIORITY 0. Day 18 no stop. 9.26% equity = 4.26 pp OVER 5% hard cap. Samsung selloff -7.09% July 7 but AMD held above $481.42 stop. Goldman PT $640 intact. Advancing AI 2026 July 23 conference ahead. Full exit required July 20 EOD (earnings July 22)."
+    },
+    {
       "symbol": "PLTR",
       "bucket": "active",
       "score": 7.67,
-      "action": "BUY 35sh limit $133.20 bracket GTC",
+      "action": "BUY 35sh limit ask×1.005 bracket GTC (refresh price July 9 pre-market). Stop fill×0.95, target fill+15% (R/R 3.0:1).",
       "setup": "breakout-volume",
-      "notes": "HIGHEST CONVICTION. D.A. Davidson Buy upgrade July 7. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. +2.51% midday $132.54. API BLOCKED."
+      "notes": "HIGHEST CONVICTION — carry-forward Day 3. D.A. Davidson Buy upgrade. Q1 $1.63B +85% YoY. NVIDIA sovereign AI partnership. 5/6 agents ≥7. Earnings ~Aug 4-5 — safe window. API BLOCKED 69th session."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "score": 7.33,
-      "action": "BUY 3sh limit $299.50 bracket GTC",
+      "action": "BUY 3sh limit ask×1.005 bracket GTC (refresh price July 9 pre-market). Stop fill×0.95, target fill+15%. EXIT ALL by July 20 EOD.",
       "setup": "sector-rotation",
-      "notes": "z17+LinuxONE 5 launched today. BofA PT $330. Range $287-$301. Refreshed limit $299.50. EXIT by July 20 EOD (earnings July 22). API BLOCKED."
+      "notes": "T-7 to IBM exit deadline (July 20 EOD, earnings July 22). z17 + LinuxONE 5 launched July 7. BofA PT $330. MUFG AI deal. IBM Japan. 4/6 agents ≥7. Enter ASAP — every day of delay shrinks the holding window."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY 8sh limit $612.05 bracket GTC",
+      "action": "BUY 8sh limit ask×1.005 bracket GTC (refresh price July 9 pre-market). Stop fill×0.95, target fill+15% (R/R 3.0:1).",
       "setup": "breakout-volume",
-      "notes": "Cloud compute thesis confirmed. Opened $607.90, +1.9% midday. Relative strength vs chip selloff. Earnings ~July 29-30 safe window. API BLOCKED."
+      "notes": "Cloud compute service launch confirmed (8+ outlets). Showed relative strength during chip selloff July 7. Earnings ~July 29-30 (48h window ~July 27). 5/6 agents ≥7. API BLOCKED 69th session."
     },
     {
-      "symbol": "AMD",
+      "symbol": "NVDA",
       "bucket": "active",
       "score": null,
-      "action": "SELL 9sh at market + GTC STOP $481.42 on remaining 9sh",
+      "action": "Full 6-agent score at July 9 Pre-Market. If ≥7: BUY 4sh limit ask×1.005 bracket GTC.",
       "setup": "ai-momentum-pullback",
-      "notes": "GUARDRAIL: 18sh=9.26% equity, OVER 5% cap, Day 17. CHIP SELLOFF -7.09% to $513.92. P&L +$128.88. Stop $481.42 not breached. Goldman PT $640. Earnings July 22 — EXIT ALL by July 20 EOD. API BLOCKED."
+      "notes": "Was 6.67 on July 7 chip selloff day. If semiconductor sector recovers July 8-9, NVDA could reach 7.0+. AI capex secular intact. $80B buyback. Re-score fresh with current technical picture."
+    },
+    {
+      "symbol": "TSLA",
+      "bucket": "active",
+      "score": null,
+      "action": "Full 6-agent score July 9. If ≥7: BUY, but EXIT by July 17 EOD (earnings July 21 = 48h window opens July 19).",
+      "setup": "earnings-reaction-fade",
+      "notes": "480K Q2 deliveries (vs 406K est., +18.2%) but -7.5% sell-the-news. Was scored 5.67 July 6. Binary event (earnings July 21) requires exit by July 17 EOD — short window. Only enter if score ≥7 AND R/R 3:1 achievable in that window."
+    },
+    {
+      "symbol": "GOOGL",
+      "bucket": "active",
+      "score": null,
+      "action": "Full 6-agent score July 9. If ≥7: BUY. EXIT by July 20 EOD (earnings July 22 — 48h window opens July 20).",
+      "setup": "breakout-volume",
+      "notes": "Big tech resilient during chip selloff July 7 (AAPL, GOOG, META all up). Cloud compute software rotation. Dow component (GCP catalyst). Exit deadline July 20 EOD = same as AMD/IBM."
+    },
+    {
+      "symbol": "JPM",
+      "bucket": "SKIP",
+      "score": null,
+      "action": "DO NOT ENTER — 48h binary event window opens July 9 (earnings July 11 pre-market).",
+      "setup": "earnings-reaction-follow",
+      "notes": "Post-print entry July 11 afternoon (MOC) or July 12 Pre-Market MOO. Watch for banking sector rotation signal from JPM print. NIM trajectory and credit quality are key reads for WFC, BAC, C."
+    },
+    {
+      "symbol": "WFC",
+      "bucket": "SKIP",
+      "score": null,
+      "action": "DO NOT ENTER — 48h binary event window opens July 9 (earnings July 11).",
+      "setup": "earnings-reaction-follow",
+      "notes": "Same binary event logic as JPM. Watch for consumer lending health signal from WFC print."
+    },
+    {
+      "symbol": "SMH",
+      "bucket": "active",
+      "score": null,
+      "action": "Conditional — only if semiconductor sector shows confirmed reversal candles (5-min + 1-hr alignment, 2-of-5 mandatory stack).",
+      "setup": "mean-reversion-oversold",
+      "notes": "ETF bounce candidate post-Samsung selloff (-7% semis July 7). Diversified chip exposure (AMD, NVDA, TSM, INTC, MU). Requires candlestick reversal confirmation."
     }
   ]
 }
