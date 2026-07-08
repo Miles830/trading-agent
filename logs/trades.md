@@ -4,6 +4,247 @@
 
 ---
 
+## 2026-07-08 — Market Close (3:30 PM ET / 19:30 UTC — IRAN ESCALATION / OIL SHOCK / API BLOCKED DAY 69)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-08T19:34:44Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (paper-api.alpaca.markets:443 not in egress allowlist) — **69th consecutive blocked session**
+**Current Time:** 19:34Z = 3:34 PM ET — Market Close window (market closes 4:00 PM ET / 20:00 UTC)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT (JULY 8)
+
+Today's heartbeat log (`logs/heartbeats/2026-07-08.log`) shows ONLY:
+- Market-Close: ✅ STARTED 2026-07-08T19:34:44Z
+
+**SILENT FAILURES (ALL 5 predecessors missed today):**
+- Pre-Market (8:00 AM ET / 12:00Z): ❌ SILENT FAILURE
+- Market-Open (9:45 AM ET / 13:45Z): ❌ SILENT FAILURE
+- Mid-Morning (11:00 AM ET / 15:00Z): ❌ SILENT FAILURE
+- Midday (12:30 PM ET / 16:30Z): ❌ SILENT FAILURE
+- Afternoon (2:00 PM ET / 18:00Z): ❌ SILENT FAILURE
+
+```yaml
+---
+ts: 2026-07-08T12:00:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET / 12:00Z) did not run on 2026-07-08 — no STARTED entry in logs/heartbeats/2026-07-08.log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "5-routine silent failure day (69th consecutive API block). Consequence: No MOO orders placed for PLTR/IBM/META (watchlist scored ≥7 from July 7 review). No stop-loss audit at market open. AMD remains naked (no stop at Alpaca). Iran ceasefire ended overnight — would have triggered macro-hedge reassessment at Pre-Market."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T13:45:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET / 13:45Z) did not run on 2026-07-08 — no STARTED entry in heartbeat log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Consequence: No post-MOO stop-loss placement (moot—MOOs also blocked). No AMD stop-loss backfill. Market-Open is Day 18 AMD naked."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T15:00:00Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET / 15:00Z) did not run on 2026-07-08
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "AMD traded $503.11-$533.02 intraday. Low $503.11 was ABOVE stop target $481.42 — stop not breached. But no agent was watching. Oil +5.24% Iran shock discovered only at Market-Close routine."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET / 16:30Z) did not run on 2026-07-08
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Fed meeting minutes released midday — hawkish commentary (oil shock = inflation risk = rates higher for longer). No watchlist reassessment performed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T18:00:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Afternoon routine (2:00 PM ET / 18:00Z) did not run on 2026-07-08
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "No position review. No day-trade closure. No afternoon technical re-scoring. AMD still nakedly held at ~$512 with no stop at Alpaca."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 403 (69th consecutive session)**
+
+```bash
+curl GET "${APCA_API_BASE_URL}/v2/orders?status=open" → HTTP 403 (proxy policy denial)
+curl GET "${APCA_API_BASE_URL}/v2/positions" → HTTP 403 (proxy policy denial)
+curl GET "${APCA_API_BASE_URL}/v2/account" → HTTP 403 (proxy policy denial)
+```
+
+**Proxy diagnosis:**
+```json
+{
+  "recentRelayFailures": [
+    {"ts":"2026-07-08T19:34:54.210Z","kind":"connect_rejected","detail":"gateway answered 403 to CONNECT (policy denial)","host":"paper-api.alpaca.markets:443"},
+    {"ts":"2026-07-08T19:34:54.510Z","kind":"connect_rejected","detail":"gateway answered 403 to CONNECT (policy denial)","host":"paper-api.alpaca.markets:443"},
+    {"ts":"2026-07-08T19:35:02.759Z","kind":"connect_rejected","detail":"gateway answered 403 to CONNECT (policy denial)","host":"paper-api.alpaca.markets:443"}
+  ]
+}
+```
+
+**⚠️ GUARDRAIL VIOLATION — AMD NAKED POSITION (Day 18):**
+AMD 18 shares has NO confirmed resting stop-loss at Alpaca due to 69 consecutive API blocks. Stop target remains $481.42 (5% below $506.76 entry). Alpaca cannot be reached to verify or place stop orders.
+
+---
+
+### MARKET SUMMARY — JULY 8, 2026
+
+**MACRO SHOCK: Iran ceasefire ended**
+- Trump: "We hit them very hard last night. We'll probably hit them hard again tonight."
+- Oil: +5.24% ($74.16) — biggest single-day surge in months
+- S&P 500: **-0.65%** (est. 7,455 from July 7 close 7,503.85)
+- Dow Jones: **-1.14%**
+- Nasdaq: **-0.50%** (tech more resilient than value)
+- IMF downgraded global outlook citing energy shock
+
+**Fed Minutes (released midday):** Addressed rate-hike question — if oil-driven inflation reaccelerates, rates stay higher for longer. Market interpreted as modestly hawkish.
+
+**AMD today:** Ranged $503.11–$533.02, current ~$512.15. Pre-market was $516.04. Position low ($503.11) was ABOVE stop target ($481.42) — not breached.
+
+**Chips:** Further pressure. Samsung Q2 revenue miss overhang + Iran oil shock = dual headwind for semiconductor supply chain.
+
+---
+
+### POSITION REVIEW
+
+**AMD (18 shares, entry $506.76)**
+- July 8 estimated close: ~$512.15 (market still open at time of routine; range $503.11-$533.02)
+- P&L vs entry: 18 × ($512.15 - $506.76) = +$97.02 (+1.07% from entry)
+- P&L vs July 7 midday ($513.92): -$31.86 (-0.34% daily)
+- Stop target (unplaced at Alpaca): $481.42 (5% below entry)
+- Take-profit target: $640 (Goldman PT, 3:1 R/R)
+- AMD earnings: July 22 → **MUST EXIT ALL BY JULY 20 EOD** (12 days remaining)
+- Guardrail status: 18sh × $512.15 = $9,218.70 = **9.21% equity — CRITICAL OVER 5% CAP**
+- Thesis still valid: Goldman PT $640, NVIDIA Kyber delay beneficiary, AI Advancing event July 23. But chip sector under pressure.
+
+**MOC Order Attempted (BLOCKED):**
+```bash
+# Attempted: Reduce AMD from 18sh to 9sh via MOC
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+→ HTTP 403 (proxy policy denial — 69th consecutive API block)
+```
+
+```yaml
+---
+ts: 2026-07-08T19:38:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: Attempt to place MOC sell 9sh AMD to reduce from 9.21% to ~4.6% equity — BLOCKED by API (HTTP 403)
+size_pct: 9.21
+stop: 481.42
+target: 640.0
+result_pct: N/A
+master_notes: "API BLOCKED — cannot place MOC order. AMD Day 18 naked (no stop at Alpaca). This skip is NOT one of the 3 valid exemptions — it is a SYSTEM FAILURE (API blocked by proxy egress policy). OPERATOR MUST sell 9sh AMD manually and place GTC stop $481.42 on remaining 9sh. Earnings July 22 — exit deadline July 20 EOD."
+---
+```
+
+---
+
+### WATCHLIST REASSESSMENT — JULY 8 CLOSE
+
+**Carry-forward from July 7 (all orders blocked):**
+1. **PLTR** (7.67) — AI software, D.A. Davidson upgrade, national security AI. Iran escalation could be BULLISH for PLTR (government AI contracts surge in war environments). STILL HIGH CONVICTION.
+2. **IBM** (7.33) — z17 mainframe launched July 7. BofA PT $330. Earnings July 22 — exit by July 20.
+3. **META** (7.0) — Cloud compute launch. Big tech resilient today vs chip selloff.
+
+**NEW: Iran-shock macro-hedge candidates (preliminary, not fully scored):**
+4. **XLE** (Energy sector ETF) — Oil +5.24%, Iran risk premium rising. Needs full scoring at Pre-Market July 9.
+5. **GLD** (Gold ETF) — Safe haven, Fed minutes hawkish, geopolitical risk. Needs full scoring.
+6. **RTX/LMT/NOC** (Defense) — Iran escalation, military spending thesis. Needs full scoring.
+
+**Dropped/reassessed:**
+- AMD reduce (9sh sell): MANDATORY at next session open (Day 18 naked, 9.21% equity)
+
+**ALL 3 CARRY-FORWARD NAMES (PLTR 7.67, IBM 7.33, META 7.0) REMAIN ≥7 — COMMITMENT FOR JULY 9 PRE-MARKET MOO ORDERS (subject to Iran-macro reassessment at open)**
+
+---
+
+### END-OF-DAY P&L SUMMARY
+
+**Portfolio State (estimated — Alpaca API blocked):**
+- AMD: 18sh × $512.15 = **$9,218.70** (est.)
+- Cash: $90,644.00 (unchanged — no trades executed)
+- **Total Equity: ~$99,862.70**
+- Daily P&L: ~−$31.86 (−0.032%) vs Jul 7 midday — AMD slight decline
+- **Total return from $100,000: −0.137%**
+
+**Benchmark:**
+- S&P 500 July 7 close: 7,503.85
+- S&P 500 July 8 est. close: ~7,455 (−0.65%)
+- S&P 500 May 1 baseline: 7,200
+- **SPX total return May 1 → July 8: +3.54%**
+- **Portfolio vs SPX gap: −0.137% − 3.54% = −3.68 pp**
+
+**Daily vs SPX:** AMD −0.34% vs SPX −0.65% → outperformed by +0.31 pp today
+
+---
+
+### TOMORROW'S KEY EVENTS (JULY 9, 2026)
+- Iran situation: Watch for overnight escalation/de-escalation
+- Oil: Any further moves in crude affect energy/chip/airline sectors
+- Fed: No scheduled events but hawkish minutes still digesting
+- AMD earnings: July 22 — 13 days. Exit ALL AMD by July 20.
+- PLTR, IBM, META: Reattempt entry via MOO at Pre-Market if API unblocked
+
+---
+
+### MOC ORDERS SUMMARY (all attempted and blocked)
+1. AMD SELL 9sh MOC → HTTP 403 BLOCKED (API egress policy)
+
+**MANDATORY OUTPUT CONTRACT: Outcome (B) applies** — all ≥7 watchlist names could not be entered due to SYSTEM FAILURE (Alpaca API blocked by egress proxy — 69th consecutive session). This is logged as violations, not valid exemptions under CLAUDE.md.
+
+---
+
 ## 2026-07-07 — Mid-Morning (11:00 AM ET / 15:10 UTC — SAMSUNG CHIP SELLOFF / AMD AT-RISK)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-07T15:09:55Z ✓
