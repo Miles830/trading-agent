@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-07T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-08T13:46:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99894.56,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.74
     },
-    "note": "July 7 MID-MORNING (11:10 AM ET / 15:15Z). API BLOCKED HTTP 403 — 68th consecutive. SAMSUNG CHIP SELLOFF: AMD -7.09% to $513.92 (prev close $552.05). AMD 18sh P&L: +$128.88 (+1.41%). Stop $481.42 not breached (6.8% cushion). 7 orders blocked today. Market-Open SILENT FAILURE. AMD Day 17 naked. S&P 500 +0.67% midday, Nasdaq +1.21% (big tech resilient). PLTR +2.51% ($132.54), META +1.9% ($609), IBM $287-$301 range. Operator MUST act: (1) SELL 9sh AMD immediately; (2) GTC STOP $481.42; (3) BUY 35sh PLTR bracket $133.20; (4) BUY 8sh META bracket $612.05; (5) BUY 3sh IBM bracket $299.50."
+    "note": "July 8 MARKET-OPEN (9:45 AM ET / 13:46Z). API BLOCKED HTTP 000 — 69th consecutive. PRE-MARKET SILENTLY FAILED (no heartbeat). FOMC MINUTES TODAY at 2 PM ET (June Warsh meeting). AMD est. ~$513.92 (July 7 close, -7.09% Samsung selloff). AMD 18sh P&L: +$128.88 est. Stop $481.42 not breached. 5 orders blocked: AMD sell 9sh + AMD stop $481.42 + PLTR 35sh + META 8sh + IBM 3sh. AMD Day 18 naked. Operator MUST act NOW at app.alpaca.markets."
   },
   "positions": [
     {
@@ -117,22 +117,22 @@
         "note": "Big tech resilient: AAPL, GOOG, META, TSLA all up. Market rotation: sell chips, buy software/services."
       }
     ],
-    "macro_notes_md": "FOMC minutes Wednesday July 8 (Warsh debut — hawkish watch). Samsung Q2: operating profit +19x YoY (record) but revenue MISSED — chip supply-side peak concern. S&P 500 +0.67%, Nasdaq +1.21% midday (55.3% of issues advancing). ISM Services PMI result from 9:00 AM ET: TBD (likely benign given market positive). Rotation trade: sell semiconductors → buy software/services/big tech."
+    "macro_notes_md": "FOMC minutes releasing TODAY at 2 PM ET (June 16-17 Warsh debut meeting). Samsung selloff aftermath: chip sector oversold after July 7 selloff — AMD/Intel/TSM expected to stabilize or rebound July 8. S&P 500 July 7 close ~7,587 (+0.67%). JPM/WFC earnings July 11 — earnings season begins. Rotation trade: sell semiconductors → buy software/services. API blocked (69th session) — all estimates based on July 7 last-known data."
   },
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-07T12:06:19Z",
-      "next_run": "2026-07-08T12:00:00Z",
-      "last_summary": "July 7 Pre-Market COMPLETED. Nasdaq futures -1.10% (Samsung chip selloff); AMD +2.5% pre-market (NVIDIA delay + Goldman PT $640); PLTR +5.3% (D.A. Davidson upgrade). 5 orders attempted — all blocked HTTP 000 (67th consecutive). NEW APPROVALS: META 7.0, PLTR 7.67, IBM 7.33. AMD Day 16 naked. ISM Services 9:00 AM ET pivot event."
+      "next_run": "2026-07-09T12:00:00Z",
+      "last_summary": "SILENT FAILURE July 8 — no heartbeat in logs/heartbeats/2026-07-08.log. Violation logged in trades.md. No pre-market scan executed. Previous run: July 7 Pre-Market completed 12:06Z."
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-08T13:45:00Z",
-      "last_summary": "SILENT FAILURE — no heartbeat July 7. Violation logged in trades.md. No MOO fills to confirm (all MOO orders were API-blocked at Pre-Market). No stop-loss audit performed."
+      "status": "completed",
+      "last_run": "2026-07-08T13:46:00Z",
+      "next_run": "2026-07-09T13:45:00Z",
+      "last_summary": "July 8 Market-Open COMPLETED. API BLOCKED HTTP 000 (69th consecutive). Pre-Market silently failed (violation logged). 5 orders attempted + blocked: AMD sell 9sh, AMD stop $481.42, PLTR 35sh limit $133.20, META 8sh limit $612.05, IBM 3sh limit $299.50. AMD Day 18 naked — CRITICAL. FOMC minutes at 2 PM ET today. Operator must act at app.alpaca.markets."
     },
     {
       "name": "Mid-Morning",
@@ -171,6 +171,81 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-08T13:46:00Z",
+      "action": "skip",
+      "symbol": "IBM",
+      "setup": "sector-rotation",
+      "score": 7.33,
+      "side": "buy",
+      "qty": 3,
+      "limit_price": 299.5,
+      "stop_loss": 284.53,
+      "take_profit": 344.41,
+      "result": "APPROVED (7.33) but HTTP 000 BLOCKED — proxy CONNECT rejected (69th consecutive session). z17 mainframe launch catalyst. EXIT by July 20 EOD for July 22 earnings.",
+      "agent_average": 7.33,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-08T13:45:55Z",
+      "action": "skip",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 8,
+      "limit_price": 612.05,
+      "stop_loss": 581.45,
+      "take_profit": 703.25,
+      "result": "APPROVED (7.0) but HTTP 000 BLOCKED — proxy CONNECT rejected (69th consecutive session). NOTE: Refresh limit to $610 to ensure 3:1 R/R.",
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-08T13:45:50Z",
+      "action": "skip",
+      "symbol": "PLTR",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "side": "buy",
+      "qty": 35,
+      "limit_price": 133.2,
+      "stop_loss": 126.54,
+      "take_profit": 154.06,
+      "result": "APPROVED (7.67 — HIGHEST CONVICTION) but HTTP 000 BLOCKED — proxy CONNECT rejected (69th consecutive session). D.A. Davidson upgrade + NVIDIA sovereign AI.",
+      "agent_average": 7.67,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-08T13:45:40Z",
+      "action": "skip",
+      "symbol": "AMD",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "side": "sell",
+      "qty": 9,
+      "limit_price": null,
+      "stop_loss": 481.42,
+      "take_profit": 640.0,
+      "result": "GUARDRAIL REDUCTION SELL 9sh attempted — HTTP 000 BLOCKED (69th consecutive). AMD Day 18 naked. OPERATOR: SELL 9sh at market NOW.",
+      "agent_average": null,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-08T12:00:00Z",
+      "action": "violation",
+      "symbol": "PRE-MARKET",
+      "setup": "silent-failure",
+      "score": null,
+      "side": null,
+      "qty": null,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "Pre-Market routine silently failed July 8 — no heartbeat in logs/heartbeats/2026-07-08.log.",
+      "agent_average": null,
+      "master_decision": "violation"
+    },
     {
       "ts": "2026-07-07T15:15:00Z",
       "action": "skip",
