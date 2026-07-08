@@ -4,6 +4,325 @@
 
 ---
 
+## 2026-07-08 — Afternoon (2:00 PM ET / 18:08 UTC — IRAN CEASEFIRE COLLAPSE / RISK-OFF / API BLOCKED DAY 69)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-08T18:07:48Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (paper-api.alpaca.markets:443 not in egress allowlist) — **69th consecutive blocked session**
+**Current Time:** 18:08Z = 2:08 PM ET — Afternoon window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+Checking `logs/heartbeats/2026-07-08.log`:
+- Pre-Market (08:00 ET / 12:06Z): ❌ **SILENT FAILURE — no STARTED entry**
+- Market-Open (09:45 ET / 13:45Z): ❌ **SILENT FAILURE — no STARTED entry**
+- Mid-Morning (11:00 ET / 15:09Z): ❌ **SILENT FAILURE — no STARTED entry**
+- Midday (12:30 ET / 16:30Z): ❌ **SILENT FAILURE — no STARTED entry**
+- Afternoon (14:00 ET / 18:07Z): ✅ STARTED 18:07:48Z (this routine)
+
+**4 predecessor violations logged:**
+
+```yaml
+---
+ts: 2026-07-08T12:06:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET / 12:06Z) did not run today — no STARTED entry in logs/heartbeats/2026-07-08.log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Pre-Market silently failed. Consequences: (1) No MOO orders placed for PLTR/META/IBM carry-forward watchlist; (2) No AMD stop-loss backfill attempted; (3) No pre-market market scan executed. 69th consecutive session with API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T13:45:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET / 13:45Z) did not run today — no STARTED entry in logs/heartbeats/2026-07-08.log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Market-Open silently failed. Consequences: (1) No post-MOO fill confirmation (moot — MOOs blocked); (2) No stop-loss placed for AMD post-fill; (3) AMD remains Day 18 naked with no Alpaca stop resting."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T15:09:00Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET / 15:09Z) did not run today — no STARTED entry in logs/heartbeats/2026-07-08.log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Mid-Morning silently failed. 4 consecutive silent failures today (Pre-Market through Mid-Morning). This routine is the first to fire on July 8."
+---
+```
+
+```yaml
+---
+ts: 2026-07-08T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET / 16:30Z) did not run today — no STARTED entry in logs/heartbeats/2026-07-08.log
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Midday silently failed. Afternoon is now the first and only routine to fire today. Market snapshot being captured at 2:08 PM ET."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — HTTP 403 (69th consecutive session)**
+
+```bash
+curl GET "${APCA_API_BASE_URL}/v2/orders?status=open"   → HTTP 403 (proxy CONNECT rejected)
+curl GET "${APCA_API_BASE_URL}/v2/positions"            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**Proxy relay failure log:** `paper-api.alpaca.markets:443` — "gateway answered 403 to CONNECT (policy denial)" — same as all prior 68 sessions.
+
+**Known naked position (persistent since Day 1):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA — **Day 18**
+
+**Stop backfill attempt:**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (69th consecutive session)
+```
+
+**GUARDRAIL VIOLATION CONTINUING:** AMD 18sh has had no resting stop-loss at Alpaca for 18 consecutive trading days. Operator manual action via app.alpaca.markets remains the only resolution.
+
+---
+
+### MARKET CONDITIONS — JULY 8, 2026 AFTERNOON (~2:08 PM ET)
+
+**RISK-OFF: IRAN CEASEFIRE COLLAPSE — OIL SURGE — YIELD SPIKE**
+
+| Index | Day Performance | Driver |
+|---|---|---|
+| S&P 500 | **−0.65%** (~7,538 est.) | Iran/oil risk-off |
+| Dow Jones | **−1.14%** | Geopolitical selloff |
+| Nasdaq | **−0.50%** | AI valuation doubts + yields |
+| Russell 2000 | **−0.90%** | Risk-off |
+| Brent Crude | **+3.3%** ($76.54) | Iran ceasefire effectively over |
+| 10Y Treasury | **4.56%** | 7-day high — inflation risk |
+
+**Key Macro Event:** President Trump declared the US-Iran ceasefire effectively over; new military strikes exchanged across the Middle East. Washington withdrew oil sales concession for Iran. Iran foreign ministry: breach of framework deal. Oil surge reverses prior ceasefire relief rally. IMF projects oil +32% in 2026, global inflation 4.7% (up from 4.1% in 2025).
+
+**Portfolio Positions (estimated):**
+
+| Symbol | Price | Change | Notes |
+|---|---|---|---|
+| AMD | $512.15 | −0.34% from $513.92 | Range $503.11–$533.02; chip selloff continues; cost basis $506.76 |
+| PLTR | $129.21 | −3.84% | Range $126.72–$131.34; broad risk-off; defense AI thesis strengthened |
+| META | ~$605 | ~−1.7% est. | Range $600.24–$616.00; July 7 close $615.58 |
+| IBM | $306.13 | +7% over past week | New Lightwell + Red Hat vulnerability service launched today |
+| GLD | $380.19 | −0.5% from $382.13 | Gold DOWN despite Iran tensions — rising yields/dollar stronger |
+
+**New IBM Catalyst:** IBM + Red Hat launched "Lightwell" AI-powered vulnerability remediation service today — strengthens AI/security enterprise thesis. Complements z17 launch from July 7.
+
+**AMD Assessment (existing position):**
+- Current price: ~$512.15 vs cost basis $506.76 → P&L: 18 × $5.39 = **+$97.02 (+0.96%)**
+- Stop target: $481.42 — AMD is $30.73 above stop (6.0% cushion) — NOT BREACHED
+- Thesis check: Goldman PT $640 unchanged; AMD "Advancing AI 2026" July 23 event ahead
+- Risk: Dual headwinds — Samsung chip selloff (July 7) + Iran/yields today; P/E 208× is stretched in 4.56% yield environment
+- Earnings July 22 → MUST EXIT ALL AMD by July 20 EOD (~10 trading days)
+- **Recommendation:** Hold remaining 9sh (after operator reduces from 18sh → 9sh) through July 18 for July 23 conference narrative. Set alert at $500 (2.5% below today).
+
+---
+
+### WATCHLIST CATCH-UP (CARRY-FORWARD — API BLOCKED)
+
+Per afternoon.md playbook: new active entries deferred to tomorrow's Pre-Market. All re-scored at afternoon prices for handoff.
+
+**PLTR — Re-scored 7.67 CONFIRMED CARRY-FORWARD**
+
+*Re-pricing at $129.21 (down from $132.54):*
+- Entry: 35sh limit $129.86 (ask × 1.005) bracket GTC
+- Stop: $122.75 (5% below $129.21)
+- Target: $151.19 (3:1 R/R: stop dist $7.11 × 3 = $21.33)
+- Position size: 35 × $129.86 = $4,545 (4.55% equity ✓)
+- Trade risk: 35 × $7.11 = $248.85 (0.25% equity ✓)
+- R/R: 3.0:1 ✓
+
+*Note: Iran tensions actually STRENGTHEN PLTR thesis (government AI contracts, intelligence/defense spending). The -3.84% today is broad risk-off, not PLTR-specific. D.A. Davidson Buy upgrade still recent and valid. Q1 $1.63B +85% YoY unchanged.*
+
+```yaml
+---
+ts: 2026-07-08T18:10:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: D.A. Davidson Buy upgrade; Q1 $1.63B +85% YoY; NVIDIA sovereign AI; Iran tensions STRENGTHEN government AI/defense thesis. Re-priced at $129.86 limit from July 7's $133.20. Score maintained 7.67.
+size_pct: 4.55
+stop: 122.75
+target: 151.19
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP: afternoon proximity-to-close per routines/afternoon.md (active entries deferred to Pre-Market). API also BLOCKED HTTP 403 (69th consecutive). PLTR -3.84% today to $129.21 (range $126.72-$131.34) on broad risk-off; Iran tensions actually improve PLTR's government AI/defense thesis. Re-priced stop $122.75, target $151.19 (3:1 R/R). Carry to July 9 Pre-Market as MANDATORY #1 priority (highest score). Tomorrow MOO preferred to get fill at open before volatility."
+---
+```
+
+**IBM — Re-scored 7.5 UPGRADED — CARRY-FORWARD (TIME-SENSITIVE)**
+
+*Re-pricing at $306.13 current; new Lightwell/Red Hat catalyst today:*
+- Entry: 3sh limit $307.66 (ask × 1.005) bracket GTC
+- Stop: $290.82 (5% below $306.13)
+- Target: $358.18 (3:1 R/R: stop dist $16.84 × 3 = $50.52; from entry $307.66)
+- Position size: 3 × $307.66 = $922.98 (0.92% equity ✓)
+- Trade risk: 3 × $16.84 = $50.52 (0.05% equity ✓)
+- R/R: 3.0:1 ✓
+- **EXIT DEADLINE: July 20 EOD** (IBM earnings July 22 — 48h window opens July 20)
+- Score upgrade: Lightwell AI vulnerability service launch = new security catalyst → upgrade fundamentals to 8 and tech_analyst to 8 → average 7.5
+
+```yaml
+---
+ts: 2026-07-08T18:11:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.5
+thesis: z17 mainframe launch (July 7) + Lightwell AI vulnerability remediation service w/Red Hat (July 8) + BofA PT $330; defensive enterprise tech outperforms in risk-off. UPGRADED from 7.33 on dual catalyst day.
+size_pct: 0.92
+stop: 290.82
+target: 358.18
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP: afternoon proximity-to-close per routines/afternoon.md. API also BLOCKED HTTP 403 (69th consecutive). IBM $306.13 today (7% gain past week; July 7 range $300.49-$311.77; July 8 est $300-310 range). SCORE UPGRADED 7.33 → 7.5: Lightwell + Red Hat AI vulnerability remediation service launched TODAY adds security/AI catalyst on top of z17 mainframe launch yesterday. IBM is defensive enterprise tech — outperforms in risk-off. Carry to July 9 Pre-Market as MANDATORY #2. NOTE: EXIT DEADLINE July 20 EOD (IBM earnings July 22) — must enter Monday July 9 latest to have meaningful holding window. Re-price limit at July 9 open ask×1.005."
+---
+```
+
+**META — Re-priced, DEFERRED to tomorrow re-score**
+
+*Meta July 8: Open $614.38, High $616.00, Low $600.24; est. afternoon ~$605.*
+- With Nasdaq -0.50% and "AI valuation doubts" headwind + rising yields (10Y at 4.56%)
+- Meta cloud compute thesis intact (B2B story, less consumer-sentiment-dependent)
+- But yield/multiple compression is a real headwind at current P/E ~25×
+- Score: Defer fresh 6-agent re-score to July 9 Pre-Market given today's market dislocation
+- Previous score: 7.0 — may hold or edge down to 6.8 on yield headwind
+
+```yaml
+---
+ts: 2026-07-08T18:12:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Cloud compute thesis intact (B2B enterprise). July 7 close $615.58, today range $600.24-$616.00. Deferring fresh re-score to July 9 Pre-Market given Iran/yield dislocation.
+size_pct: 4.87
+stop: 574.75
+target: 707.87
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP: afternoon proximity-to-close per routines/afternoon.md. API also BLOCKED HTTP 403 (69th consecutive). META traded $600.24-$616.00 today; est. $605 afternoon. Iran tensions + 10Y yield at 4.56% = multiple compression headwind for META (P/E ~25×). Cloud compute B2B thesis largely insulated from consumer sentiment but Nasdaq AI valuation doubts are a real headwind. Score 7.0 maintained provisionally — requires fresh re-score at July 9 Pre-Market. Entry re-priced: limit ~$605 × 1.005 = $608, stop $574.75, target $707.87 (3:1 R/R). META earnings July 29-30 — safe entry window."
+---
+```
+
+**AMD SELL 9sh — MANDATORY GUARDRAIL REDUCTION (18th consecutive attempt)**
+
+```yaml
+---
+ts: 2026-07-08T18:13:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: MANDATORY SELL 9sh to reduce from 9.22% equity to ~4.6% (within 5% cap). Day 18 of guardrail violation.
+size_pct: N/A
+stop: 481.42
+target: 640.0
+result_pct: N/A
+master_notes: "AMD SELL 9sh at market attempted → HTTP 403 (69th consecutive blocked session). AMD $512.15 today (range $503.11-$533.02). P&L on 18sh: +$97.02 (+0.96%). Chip selloff + Iran/yields = dual headwinds. Goldman PT $640 intact. AMD earnings July 22 → EXIT ALL by July 20 EOD. OPERATOR MUST ACT TODAY: (1) SELL 9sh AMD at market; (2) GTC STOP $481.42 + GTC TP $640 on remaining 9sh."
+---
+```
+
+---
+
+### AFTERNOON DECISIONS
+
+**Day Trades:** None open — AMD is a swing position.
+**MOC Orders:** None needed — no day trades to flatten.
+**Stop Trail:** Cannot execute — API blocked. AMD stop remains at $481.42 target (not resting).
+**Partial Profits:** AMD P&L +$97.02 (+0.96%) — below the 15% partial-profit threshold.
+**Upcoming Binary Events (next 48h):**
+- July 9 (tomorrow): No known binary events — JPM/WFC earnings expected July 11
+- July 10-11: Q2 earnings season begins (JPM, WFC July 11) — monitor for market-moving impacts
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (July 9 Pre-Market)
+
+| Rank | Symbol | Score | Action | Notes |
+|---|---|---|---|---|
+| 1 | **PLTR** | **7.67** | BUY 35sh MOO | Highest conviction; re-priced at ~$129-131; Iran tensions strengthen gov AI thesis |
+| 2 | **IBM** | **7.5** | BUY 3sh limit bracket GTC | Upgraded; dual catalyst (z17+Lightwell); defensive; EXIT by July 20 EOD |
+| 3 | **META** | **7.0*** | BUY 8sh limit bracket GTC | Re-score at Pre-Market; cloud compute; yields a headwind; earnings July 29-30 safe |
+| 4 | **AMD** | SELL | SELL 9sh market | MANDATORY guardrail reduction; Day 19 naked tomorrow |
+| — | GLD | Skip | — | Gold DOWN despite Iran tensions (yield/dollar stronger); skip |
+
+*META score pending fresh Pre-Market re-score due to today's yield/valuation dislocation.
+
+**Key Pre-Market Actions July 9:**
+1. ⚠️⚠️⚠️ SELL 9sh AMD at MOO (ABSOLUTE FIRST — Day 19 naked, guardrail breach continues)
+2. PLTR 35sh MOO (score 7.67 — MANDATORY per Deployment Bias)
+3. IBM 3sh limit bracket GTC at open ask×1.005 (score 7.5 — MANDATORY; TIME-SENSITIVE deadline July 20)
+4. META: re-score with fresh prices, enter if ≥7
+
+---
+
+
+
 ## 2026-07-07 — Mid-Morning (11:00 AM ET / 15:10 UTC — SAMSUNG CHIP SELLOFF / AMD AT-RISK)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-07T15:09:55Z ✓
