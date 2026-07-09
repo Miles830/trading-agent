@@ -4,6 +4,321 @@
 
 ---
 
+## 2026-07-02 — Market Close (3:30 PM ET / 19:35 UTC — THURSDAY — TRADING DAY — LAST DAY BEFORE JULY 4 HOLIDAY)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-02T19:35:13Z ✓
+**Alpaca API Status:** BLOCKED — proxy HTTP CONNECT rejected (403 Forbidden — paper-api.alpaca.markets:443 and data.alpaca.markets:443 not in egress allowlist) — **62nd consecutive blocked session**
+**Current Time:** 19:35Z = 3:35 PM ET — market closes in ~25 minutes
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 2, 2026
+
+```bash
+grep "STARTED " logs/heartbeats/2026-07-02.log
+# Output: 2026-07-02T19:35:13Z STARTED Market-Close
+```
+
+| Predecessor | Scheduled ET | Scheduled Z | Heartbeat Status |
+|---|---|---|---|
+| Pre-Market | 8:00 AM | 12:00Z | ❌ **SILENT FAILURE** — no heartbeat |
+| Market-Open | 9:45 AM | 13:45Z | ❌ **SILENT FAILURE** — no heartbeat |
+| Mid-Morning | 11:00 AM | 15:00Z | ❌ **SILENT FAILURE** — no heartbeat |
+| Midday | 12:30 PM | 16:30Z | ❌ **SILENT FAILURE** — no heartbeat |
+| Afternoon | 2:00 PM | 18:00Z | ❌ **SILENT FAILURE** — no heartbeat |
+
+**5 of 6 routines today silently failed.** YAML violation entries logged below.
+
+---
+
+### MANDATORY STOP-LOSS AUDIT — FIRST ACTION
+
+```
+GET /v2/positions          → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/account            → HTTP 403 (proxy CONNECT rejected)
+```
+
+**API INACCESSIBLE — 62nd consecutive blocked session.** Cannot verify or place any stop orders.
+
+**Estimated position state (carried from July 1 Afternoon log):**
+- ⚠️⚠️⚠️ **AMD 18sh CRITICALLY NAKED — DAY 11** — filled June 23 at $506.76 avg.
+  - No stop-loss resting at Alpaca. **GUARDRAIL VIOLATION — Day 11.**
+  - Position ~10.3% of equity (OVER 5% hard cap — Day 11 of violation)
+  - Original take-profit $582.78 was EXCEEDED intraday on July 1 (high $584.73) — gain not locked in
+  - Est. price today: data unavailable (API blocked). Last known: ~$579-582 range (July 1 close est.)
+  - Wells Fargo PT $615 (street-high). AMD Advancing AI 2026 event July 22-23.
+  - Unrealized gain est: 18sh × ($579 - $506.76) = +$1,299 est.
+- IBM: 0sh — approved July 1, order never submitted to Alpaca (API blocked)
+- META: 0sh — approved July 1, order never submitted to Alpaca (API blocked)
+- TSLA: 0sh — conditional entry pending post-delivery numbers (binary event expires today)
+- Crypto: 0sh
+
+**AFTERNOON CATCH-UP (routine silently failed):** Afternoon job was to close day trades and place pre-scored MOC entries. No day trades open. Pre-scored swing entries (IBM, META) were already flagged for MOC if limit orders failed. Attempted below.
+
+---
+
+### MOC ORDER ATTEMPTS — 3:35 PM ET (MARKET CLOSES 4:00 PM ET)
+
+Per CLAUDE.md and routines/close.md: place MOC (`time_in_force=cls`) for any unfilled pre-scored orders.
+
+**MOC Attempt 1 — IBM 3sh (score 7.67 — APPROVED July 1):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"market","time_in_force":"cls"}'
+# → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+```
+
+**MOC Attempt 2 — META 8sh (score 7.5 — APPROVED July 1):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"market","time_in_force":"cls"}'
+# → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+```
+
+**MOC Attempt 3 — AMD partial exit 9sh (reduce naked position toward 5% cap):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+# → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+```
+
+**All MOC attempts BLOCKED.** The egress proxy policy does not allow outbound HTTPS to *.alpaca.markets. This must be resolved by the operator — Alpaca orders cannot be placed from this session until the network allowlist is updated.
+
+---
+
+### TSLA DELIVERY REPORT STATUS — JULY 2, 2026
+
+TSLA Q2 delivery report was due today (consensus: 406,024 vehicles, +5.7% YoY). Binary event restriction expires once numbers are published. Cannot access news feeds (API/web blocked by proxy). Status: UNKNOWN. 
+
+If TSLA beat 406K vehicles: conditional entry approved — carry-forward to July 7 Pre-Market (full 6-agent re-score required at open). July 4 = market closed.
+
+---
+
+### EOD MARKET SUMMARY (ESTIMATED — API BLOCKED)
+
+No live market data available. Based on last known prices (July 1, 2:08 PM ET):
+- S&P 500: ~7,538 (est. July 1 close) — baseline May 1: 7,200 = +4.69%
+- AMD: ~$579-582 est. — Wells Fargo PT $615 — AMD Advancing AI July 22-23
+- IBM: ~$292 est. (closed July 1 at $292.16) — hard exit deadline July 18 EOD
+- META: ~$611-619 est. (closed July 1 ~$615+)
+- TSLA: Q2 delivery results — unknown (data unavailable)
+- BTC: ~$60K est. — below $82K threshold
+
+**Portfolio P&L estimate (unchanged from July 1):**
+- Total equity: ~$101,154
+- AMD unrealized: +$1,299 est. (18sh × ($579 - $506.76))
+- Total return: +1.15% vs S&P +4.69% — GAP: -3.54 pp
+
+---
+
+### JULY 4 HOLIDAY — TRADING CALENDAR
+
+- **July 3, 2026 (Thursday):** TRADING DAY — routines should run normally
+- **July 4, 2026 (Friday):** INDEPENDENCE DAY — MARKET CLOSED — NO ROUTINES
+- **July 7, 2026 (Monday):** TRADING DAY — first post-holiday session
+
+**Pre-Market July 3 BINDING COMMITMENTS (same as July 2, unexecuted):**
+1. ⚠️ AMD SELL 9sh at MOO — reduce 18sh → 9sh; bring within 5% cap; no guardrail passes until done
+2. IBM BUY 3sh limit $293.62 bracket GTC (stop $278.94, target $337.66) — score 7.67 APPROVED
+3. META BUY 8sh limit $615.06 bracket GTC (stop $584.31, target $707.31) — score 7.5 APPROVED
+4. TSLA: conditional — if Q2 deliveries beat 406K consensus, run 6-agent score at Pre-Market; enter only if score ≥ 7 post-scoring
+
+---
+
+### YAML DECISION LOG — JULY 2 MARKET CLOSE
+
+```yaml
+---
+ts: 2026-07-02T12:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Pre-Market routine (8:00 AM ET / 12:00Z) silently failed — no heartbeat logged."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "July 2 Pre-Market: no STARTED or COMPLETED heartbeat. AMD naked Day 11 continued. IBM/META carry-forward orders not placed. TSLA delivery report due today — binary event expires after numbers out."
+---
+---
+ts: 2026-07-02T13:45:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Market-Open routine (9:45 AM ET / 13:45Z) silently failed — no heartbeat logged."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "July 2 Market-Open: no heartbeat. MOO orders for AMD SELL 9sh not placed. No stop-loss audit performed. AMD continues naked Day 11."
+---
+---
+ts: 2026-07-02T15:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Mid-Morning routine (11:00 AM ET / 15:00Z) silently failed — no heartbeat logged."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "July 2 Mid-Morning: no heartbeat. IBM/META limit orders not attempted. No market scan performed."
+---
+---
+ts: 2026-07-02T16:30:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Midday routine (12:30 PM ET / 16:30Z) silently failed — no heartbeat logged."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "July 2 Midday: no heartbeat. TSLA delivery numbers likely out — conditional entry evaluation missed. IBM/META orders not re-attempted."
+---
+---
+ts: 2026-07-02T18:00:00Z
+action: violation
+symbol: SYSTEM
+bucket: active
+setup: silent-failure
+score: null
+thesis: "Afternoon routine (2:00 PM ET / 18:00Z) silently failed — no heartbeat logged."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores: null
+agent_average: null
+agents_above_7: null
+master_decision: null
+master_notes: "July 2 Afternoon: no heartbeat. AMD sell-down not executed. No pre-close position review. 5 of 6 routines today silently failed."
+---
+---
+ts: 2026-07-02T19:35:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: "AMD 18sh NAKED Day 11 — no stop-loss resting at Alpaca. Position 10.3% equity (2× the 5% hard cap). MOC sell 9sh blocked (HTTP 403). Cannot reduce exposure."
+size_pct: 10.3
+stop: null
+target: 607.0
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: rejected
+master_notes: "ONGOING GUARDRAIL VIOLATION DAY 11: AMD 18sh has no stop, exceeds 5% position cap, original take-profit $582.78 exceeded intraday July 1 (high $584.73) without execution. MOC sell 9sh attempted at 19:35Z → HTTP 403. Operator must act. Next opportunity: July 3 Pre-Market MOO sell 9sh."
+---
+---
+ts: 2026-07-02T19:35:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: "IBM 3sh MOC blocked — HTTP 403. Score 7.67 APPROVED since July 1. EXEMPTION: none of the 3 valid skip exemptions apply — this is a proxy blockage failure, not a guardrail violation."
+size_pct: 0.87
+stop: 278.94
+target: 337.66
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "IBM MOC buy 3sh at $293.62 attempted at 19:35Z → HTTP 403 proxy CONNECT rejected. NOT a valid skip — Exemption 1 (guardrail breach), Exemption 2 (binary event), and Exemption 3 (3% circuit breaker) all do NOT apply. This is a system/infrastructure failure. Carry-forward to July 3 Pre-Market MOO (mandatory). Hard exit deadline July 18 EOD (earnings July 22)."
+---
+---
+ts: 2026-07-02T19:35:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: "META 8sh MOC blocked — HTTP 403. Score 7.5 APPROVED since July 1. Cannot execute. Carry-forward."
+size_pct: 4.86
+stop: 584.31
+target: 707.31
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 9
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 4
+master_decision: approved
+master_notes: "META MOC buy 8sh attempted at 19:35Z → HTTP 403. NOT a valid skip per Deployment Bias exemptions. Infrastructure failure only. Note: cloud compute story may be evolving — re-verify thesis at July 3 Pre-Market before entry. Update limit price if META moved materially. Check if Bloomberg report has been confirmed/denied by Meta IR."
+---
+```
+
+---
+
+### EOD SUMMARY — JULY 2, 2026 (MARKET CLOSE)
+
+| Metric | Value | Notes |
+|---|---|---|
+| Alpaca API | BLOCKED (62nd session) | HTTP 403 — egress policy |
+| Predecessor failures today | 5 of 5 | Pre-Market + Market-Open + Mid-Morning + Midday + Afternoon |
+| MOC orders attempted | 3 (AMD sell, IBM buy, META buy) | All HTTP 403 |
+| AMD position | 18sh naked — Day 11 | GUARDRAIL VIOLATION |
+| Est. portfolio total equity | ~$101,154 | Based on July 1 Afternoon estimate |
+| Est. total return | +1.15% | vs S&P +4.69% — gap -3.54 pp |
+| Next trading day | July 3, 2026 | July 4 = Independence Day (CLOSED) |
+| July 3 binding actions | AMD SELL 9sh MOO + IBM/META limit entries | Score ≥ 7 on both IBM/META = MANDATORY |
+
+---
+
 ## 2026-07-01 — Afternoon (2:08 PM ET / 18:08 UTC — WEDNESDAY — TRADING DAY)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-01T18:08:05Z ✓
