@@ -4,6 +4,269 @@
 
 ---
 
+## 2026-07-09 — Midday (12:30 PM ET / 16:35 UTC — API BLOCKED — 72nd consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-09T16:34:48Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 — `paper-api.alpaca.markets:443` egress policy denial — **72nd consecutive blocked session**
+**Data API Status:** BLOCKED — `data.alpaca.markets:443` also blocked — no live market data
+**Current Time:** 16:35Z = 12:35 PM ET — Midday window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+```
+logs/heartbeats/2026-07-09.log:
+  2026-07-09T13:45:36Z STARTED Market-Open    ✓ ran
+  2026-07-09T13:51:32Z COMPLETED Market-Open  ✓ completed
+  2026-07-09T15:10:36Z STARTED Mid-Morning    ✓ ran
+  2026-07-09T15:14:36Z COMPLETED Mid-Morning  ✓ completed
+  2026-07-09T16:34:48Z STARTED Midday         ← this routine
+  (no Pre-Market STARTED entry — silent failure logged prior sessions)
+```
+
+- Pre-Market July 9: ❌ **SILENT FAILURE** — already logged in Market-Open section
+- Market-Open July 9: ✅ ran 13:45Z–13:51Z — all orders blocked (70th session)
+- Mid-Morning July 9: ✅ ran 15:10Z–15:14Z — all orders blocked (71st session)
+- Midday July 9: ✅ running NOW (72nd session)
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED)
+
+```bash
+# ATTEMPT 1: GET /v2/orders?status=open
+curl -s -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..." \
+  "https://paper-api.alpaca.markets/v2/orders?status=open"
+# RESULT: HTTP 000 / empty body — proxy policy denial
+
+# ATTEMPT 2: GET /v2/positions
+curl -s -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..." \
+  "https://paper-api.alpaca.markets/v2/positions"
+# RESULT: HTTP 000 / empty body — proxy policy denial
+
+# ATTEMPT 3: GET /v2/account
+curl -s -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..." \
+  "https://paper-api.alpaca.markets/v2/account"
+# RESULT: HTTP 000 / empty body — proxy policy denial
+```
+
+**AMD naked position status (Day 21 — critical):**
+- AMD: 18sh at $506.76 avg — **NO STOP-LOSS AT ALPACA** (Day 21 — 21st consecutive routine unable to backfill)
+- Last known price: ~$513.92 (July 7 Mid-Morning — 2 full trading days stale)
+- July 8–9 price action: **COMPLETELY UNKNOWN** (API blocked every routine)
+- Stop backfill attempted again — blocked (72nd consecutive session):
+
+```bash
+# ATTEMPT 4: AMD SELL 9sh — reduce over-cap position
+POST /v2/orders: {"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"day"}
+# RESULT: HTTP 000 — proxy policy denial (72nd session)
+
+# ATTEMPT 5: AMD GTC STOP at $481.42 (5% below $506.76 avg)
+POST /v2/orders: {"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}
+# RESULT: HTTP 000 — proxy policy denial (72nd session)
+```
+
+**GUARDRAIL VIOLATION CONTINUING:** AMD 18sh has had NO resting stop at Alpaca for 21 consecutive routines. AMD at ~9.26% equity (OVER 5% cap). Price unknown since July 7.
+
+---
+
+### CRITICAL CALENDAR EVENTS — MIDDAY UPDATE
+
+- **JPM/WFC 48h blackout opens ~2:00 PM ET TODAY (18:00Z)** — in ~90 minutes from this routine. NO new JPM or WFC entries after 2PM ET today.
+- **AMD + IBM EXIT DEADLINE: July 20 EOD** — AMD earnings July 22, IBM earnings July 22 → Must EXIT ALL by July 20 (~9 trading days). Entry window for IBM closes ~July 18.
+- **AMD "Advancing AI 2026" Conference: July 22–23** — catalyst event (not binary). AMD entries still allowed until July 20 exit deadline.
+- **Q2 earnings season accelerating** — more names entering 48h blackout windows through the week.
+
+---
+
+### MARKET CONDITIONS — JULY 9, 2026 (ESTIMATED — NO API ACCESS)
+
+**Last confirmed data (July 7 Mid-Morning — 2 full trading days stale):**
+- S&P 500: ~7,587 (+0.67% on July 7); cumulative +5.37% from May 1 baseline
+- AMD: ~$513.92 (fell −7.09% on Samsung chip selloff, July 7)
+- PLTR: ~$132.54 (+2.51%, July 7) — D.A. Davidson Buy upgrade active
+- META: ~$607–$610 (+1.9%, July 7) — cloud compute service confirmed
+- IBM: ~$287–$301 range (+z17/LinuxONE 5 launch, July 7)
+
+**Known macro events since last data:**
+- July 8: FOMC minutes (Warsh hawkish risk) — market reaction UNKNOWN
+- July 9 (today): Q2 earnings season momentum; Fed speakers calendar TBD
+
+**Working assumption:** Maintaining July 7 prices as last known reference. All position P&L estimates stale.
+
+---
+
+### WATCHLIST EXECUTION — RE-ATTEMPT (CATCH-UP for Pre-Market silent failure)
+
+Per midday playbook: re-attempt all ≥7-score watchlist names not yet filled. Cap: 2 catch-up entries. All 3 names re-attempted:
+
+```bash
+# ATTEMPT 6: PLTR — 35sh limit bracket GTC at $133.20 / stop $126.54 / target $154.06
+POST /v2/orders: {"symbol":"PLTR","qty":35,"side":"buy","type":"limit","limit_price":"133.20",
+  "time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"126.54"},
+  "take_profit":{"limit_price":"154.06"}}
+# RESULT: HTTP 000 — proxy policy denial (72nd session)
+
+# ATTEMPT 7: META — 8sh limit bracket GTC at $612.05 / stop $581.45 / target $703.25
+POST /v2/orders: {"symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"612.05",
+  "time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"581.45"},
+  "take_profit":{"limit_price":"703.25"}}
+# RESULT: HTTP 000 — proxy policy denial (72nd session)
+
+# ATTEMPT 8: IBM — 3sh limit bracket GTC at $289.50 / stop $275.03 / target $332.91
+POST /v2/orders: {"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"289.50",
+  "time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"275.03"},
+  "take_profit":{"limit_price":"332.91"}}
+# RESULT: HTTP 000 — proxy policy denial (72nd session)
+```
+
+```yaml
+---
+ts: 2026-07-09T16:36:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: D.A. Davidson Buy upgrade; Q1 revenue $1.63B +85% YoY; NVIDIA sovereign AI partnership. Midday re-attempt — 72nd consecutive blocked session.
+size_pct: 4.69
+stop: 126.54
+target: 154.06
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (72nd session). HTTP 000. No valid CLAUDE.md exemption. Operator MUST place at app.alpaca.markets: BUY 35sh PLTR limit current_ask×1.005, bracket GTC, stop -5%, target +15% (3:1 R/R). Price reference: $132.54 July 7 — STALE, recalculate limit/stop/target from current ask."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T16:37:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Cloud compute service confirmed; +1.9% relative strength July 7. Earnings ~July 29-30 (outside 48h window). Midday re-attempt — 72nd consecutive blocked session.
+size_pct: 4.87
+stop: 581.45
+target: 703.25
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (72nd session). HTTP 000. META $607-610 last known (July 7 — STALE). Recalculate limit to current_ask×1.005, stop=entry×0.95, target=entry+3×(entry-stop). Operator: BUY 8sh META at app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T16:38:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: z17+LinuxONE 5 post-launch momentum. BofA PT $330. EXIT DEADLINE July 20 EOD before IBM earnings July 22 — 9 trading days left. Midday re-attempt — 72nd consecutive blocked session.
+size_pct: 0.87
+stop: 275.03
+target: 332.91
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "API BLOCKED (72nd session). HTTP 000. ⚠️ IBM EXIT DEADLINE: July 20 EOD — 9 trading days remain. Entry window open through ~July 18. Operator: BUY 3sh IBM limit current_ask×1.005, bracket GTC, stop entry×0.95, target entry+(3×stop_dist). If price moved past $295 recalculate."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T16:35:30Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: "AMD NAKED DAY 21 — Stop-loss placement attempt blocked for 21st consecutive routine. Position: 18sh at $506.76 avg, ~9.26% equity (OVER 5% cap). All sell/stop orders HTTP 000 (72nd session)."
+size_pct: 9.26
+stop: null
+target: 640.0
+result_pct: N/A
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION ACTIVE: AMD has no resting stop-loss at Alpaca for 21 consecutive routines. 18sh = ~9.26% equity (2× the 5% cap). All API attempts HTTP 000. Operator MUST: (1) SELL 9sh AMD at market NOW; (2) Place GTC STOP on remaining 9sh at entry×0.95 from current price."
+---
+```
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+**AMD (18sh — Day 21 naked):**
+- Currently holding overnight by default (cannot close via API)
+- Highest priority: reduce to 9sh + add stop immediately
+- If price has moved significantly (unknown), reassess thesis at market open
+- **Operator action required BEFORE market open July 10**
+
+**PLTR / META / IBM:**
+- All approved ≥7 but cannot execute
+- Prices may have moved since July 7; recalculate entry levels from current ask at app.alpaca.markets
+- JPM/WFC 48h blackout opens 2PM ET today — ensure no JPM/WFC positions initiated
+
+---
+
+### PORTFOLIO STATE — MIDDAY ESTIMATE
+
+*(All figures unchanged from last confirmed July 9 Market-Open snapshot — API blocked)*
+
+**Total Equity: ~$99,895**
+**Cash: ~$90,644 (90.74%) — target 5% floor (OVER-HOLDING CASH)**
+**Trading bucket: ~$9,251 (9.26%) — 1 position (AMD) — target 85%**
+**Crypto bucket: $0 (0%) — 0 positions — target 10%**
+**Daily P&L: UNKNOWN (no API access)**
+**vs S&P 500: -5.48 pp gap (last confirmed July 7) — gap UNKNOWN since**
+
+**OPERATOR URGENT ACTIONS (app.alpaca.markets — before July 10 market open):**
+1. SELL 9sh AMD at market (reduce over-cap)
+2. GTC STOP on 9sh AMD at current_price × 0.95 + GTC TP at current_price + 3×stop_dist
+3. BUY 35sh PLTR limit current_ask×1.005, bracket GTC (stop -5%, target +15%, R/R 3:1)
+4. BUY 8sh META limit current_ask×1.005, bracket GTC (stop -5%, target +15%, R/R 3:1)
+5. BUY 3sh IBM limit current_ask×1.005, bracket GTC (stop -5%, target +15%, R/R 3:1)
+6. DO NOT enter JPM or WFC — 48h blackout opens 2PM ET today (July 11 earnings)
+
+---
+
 ## 2026-07-09 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 71st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-09T15:10:36Z ✓

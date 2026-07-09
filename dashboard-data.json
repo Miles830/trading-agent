@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-09T13:49:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-07-09T16:38:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 99894.56,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.74
     },
-    "note": "July 9 MARKET-OPEN (9:45 AM ET / 13:49Z). API BLOCKED HTTP 000 \u2014 70th consecutive session. JULY 8 FULL BLACKOUT. MARKET CONDITIONS UNKNOWN since July 7 midday. AMD 18sh Day 19 naked (last price ~$513.92 July 7 \u2014 STALE). 5 orders blocked. Pre-Market silently failed. IBM exit deadline July 20 EOD (~11 days). OPERATOR MUST ACT: (1) SELL 9sh AMD immediately; (2) GTC STOP $481.42 + TP $640 on 9sh; (3) BUY 35sh PLTR bracket GTC; (4) BUY 8sh META bracket GTC; (5) BUY 3sh IBM bracket GTC."
+    "note": "July 9 MIDDAY (12:35 PM ET / 16:38Z). API BLOCKED HTTP 000 \u2014 72nd consecutive session. AMD 18sh Day 21 naked (last price ~$513.92 July 7 \u2014 STALE 2 trading days). 5 orders blocked this routine. Pre-Market silently failed July 9. JPM/WFC 48h blackout opens ~2PM ET TODAY. IBM+AMD exit deadline July 20 EOD (~9 days). OPERATOR MUST ACT: (1) SELL 9sh AMD immediately; (2) GTC STOP current_price x0.95 on 9sh; (3) BUY 35sh PLTR bracket GTC current_ask x1.005; (4) BUY 8sh META bracket GTC; (5) BUY 3sh IBM bracket GTC."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 17. AMD DOWN 7.09% TODAY to $513.92 (prev close $552.05) \u2014 Samsung chip selloff. Intel -7%, TSM -6%. P&L: 18 \u00d7 ($513.92-$506.76) = +$128.88. Stop target $481.42 (6.8% below current \u2014 not breached). Thesis: Goldman PT $640 intact; NVIDIA Kyber delay AMD beneficiary; 'Advancing AI 2026' July 23. RISK: Chip selloff continuing. AMD valuation P/E 208x \u2014 correction from $552 to $513. POSITION 9.26% equity \u2014 OVER 5% cap. Sell 9sh to reduce. OPERATOR: SELL 9sh AMD at market NOW; GTC STOP 9sh at $481.42; GTC TP $640. Earnings July 22 \u2192 MUST EXIT ALL by July 20 EOD."
+      "note": "CRITICALLY NAKED Day 21. Price unknown since July 7 ($513.92 last known \u2014 STALE). 18sh at $506.76 avg = ~9.26% equity (OVER 5% cap). No stop-loss at Alpaca (21 consecutive blocked routines). Midday: 2 more stop attempts blocked (HTTP 000). OPERATOR: SELL 9sh AMD at market NOW; GTC STOP on 9sh at current_price x0.95; GTC TP at current_price+3x stop_dist. AMD earnings July 22 \u2014 EXIT ALL AMD by July 20 EOD."
     },
     {
       "symbol": "META",
@@ -117,7 +117,7 @@
         "note": "Big tech resilient: AAPL, GOOG, META, TSLA all up. Market rotation: sell chips, buy software/services."
       }
     ],
-    "macro_notes_md": "JULY 9 \u2014 DATA STALE (API blocked, no live data since July 7 midday). FOMC minutes released July 8 (Warsh debut hawkish risk \u2014 market reaction unknown). JPM/WFC earnings July 11 \u2014 48h window opens today afternoon. Samsung chip selloff from July 7: Intel -7%, AMD -7%, TSM -6%. Big tech was resilient July 7 (AAPL, META, GOOG, TSLA up). IBM z17 launch July 7 \u2014 strong catalyst. AMD 'Advancing AI 2026' July 22-23 (not a binary event). IBM earnings July 22 \u2192 exit by July 20 EOD."
+    "macro_notes_md": "**July 9 Midday \u2014 API BLOCKED.** Last confirmed data July 7. Sector leaders (July 7): Software/AI (PLTR +2.51%, META +1.9%). Sector laggards: Semis (AMD -7.09%, Intel -7%, TSM -6% \u2014 Samsung chip selloff). FOMC minutes July 8: reaction UNKNOWN. Q2 earnings season accelerating. JPM/WFC earnings July 11 \u2014 blackout opens 2PM ET TODAY. Risk-on/off status: UNKNOWN."
   },
   "routines": [
     {
@@ -143,10 +143,10 @@
     },
     {
       "name": "Midday",
-      "status": "PENDING",
-      "last_run": "2026-07-06T16:34:41Z",
-      "next_run": "2026-07-07T16:30:00Z",
-      "last_summary": "Not yet run today. Next at 12:30 PM ET / 16:30Z."
+      "status": "completed",
+      "last_run": "2026-07-09T16:38:00Z",
+      "next_run": "2026-07-10T16:30:00Z",
+      "last_summary": "API BLOCKED HTTP 000 (72nd consecutive). 5 orders blocked: AMD sell 9sh, AMD GTC stop $481.42, PLTR 35sh bracket GTC, META 8sh bracket GTC, IBM 3sh bracket GTC. AMD Day 21 naked. JPM/WFC 48h blackout opens 2PM ET today. IBM+AMD exit deadline July 20 EOD (~9 days). No new positions opened. Overnight plan: AMD holds naked (operator action required before July 10 open)."
     },
     {
       "name": "Afternoon",
