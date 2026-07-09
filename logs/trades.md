@@ -2,6 +2,198 @@
 
 > **Ordering:** newest trading date at the TOP. New entries are prepended directly under this header.
 
+## 2026-07-09 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 71st+ consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-09T20:34:07Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` not in egress allowlist — **71st+ consecutive blocked session**
+
+---
+
+### HEARTBEAT TALLY — July 9, 2026
+
+| Routine | STARTED | COMPLETED | Status |
+|---|---|---|---|
+| Pre-Market (08:00 ET / 12:00Z) | ❌ | ❌ | **SILENT FAILURE** |
+| Market-Open (09:45 ET / 13:45Z) | ✅ 13:45:36Z | ✅ 13:51:32Z | OK |
+| Mid-Morning (11:00 ET / 15:10Z) | ✅ 15:10:36Z | ✅ 15:14:36Z | OK |
+| Midday (12:30 ET / 16:30Z) | ❌ | ❌ | **SILENT FAILURE** |
+| Afternoon (2:00 ET / 18:00Z) | ❌ | ❌ | **SILENT FAILURE** |
+| Market-Close (3:30 ET / 19:30Z) | ❌ | ❌ | **SILENT FAILURE** |
+| Daily-Review (4:30 ET / 20:34Z) | ✅ 20:34:07Z | ✅ Running | OK |
+
+**Top operational issue (Day 2 of pattern):** 4 of 7 intraday routines silently failed. July 8 was a complete blackout (0 of 7). Cloud runner fires reliably at ~13:45Z and ~15:10Z; all other slots (12:00Z, 16:30Z, 18:00Z, 19:30Z) are persistently failing. AMD has been naked 20 consecutive days with zero stop-loss backfill possible.
+
+**Remediation:** Operator should audit cron schedule for the 4 failing slots. Short-term: reduce to 3 reliable routines (Market-Open, Mid-Morning, Daily-Review) until scheduler is repaired.
+
+---
+
+### VIOLATION LOG — SILENT FAILURES (July 9)
+
+```yaml
+---
+ts: 2026-07-09T12:00:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (08:00 AM ET / 12:00Z) did not fire — no STARTED entry in logs/heartbeats/2026-07-09.log before Market-Open at 13:45Z.
+master_notes: "3rd consecutive Pre-Market failure (July 7, 8, 9). No MOO orders submitted. Watchlist (PLTR 7.67, META 7.0, IBM 7.33) not executed. AMD Day 20 naked stop backfill not attempted."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET / 16:30Z) did not fire — no STARTED entry in logs/heartbeats/2026-07-09.log at 16:30Z.
+master_notes: "No price discovery or limit refresh. JPM/WFC 48h blackout window opened ~14:00 ET — not formally confirmed by a running routine. AMD naked Day 20."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T18:00:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Afternoon routine (2:00 PM ET / 18:00Z) did not fire — no STARTED entry in logs/heartbeats/2026-07-09.log at 18:00Z.
+master_notes: "No end-of-day position review or stop audit. Market entered final trading hour with no active monitoring."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T19:30:00Z
+action: violation
+symbol: MARKET-CLOSE
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Market-Close routine (3:30 PM ET / 19:30Z) did not fire — no STARTED entry in logs/heartbeats/2026-07-09.log at 19:30Z.
+master_notes: "No MOC orders placed. No EOD stop confirmation. AMD closes Day 20 naked. If any stop or target was triggered during July 9 session, the event remains unknown until API restored."
+---
+```
+
+---
+
+### DAILY REVIEW — July 9, 2026
+
+**Market data:** UNKNOWN (API blocked). Last confirmed data: July 7 Mid-Morning (2.5+ trading days stale). July 8 = full blackout. July 9 = Market-Open + Mid-Morning only.
+
+#### Portfolio State (Estimated — No API Access)
+
+| Metric | Value | Note |
+|---|---|---|
+| Total Equity | ~$99,895 | Estimated — no API confirmation |
+| Cash | ~$90,644 (90.5%) | Far above 5% floor — severely underinvested |
+| Active bucket | ~$9,251 (9.26%) | Target 85% — AMD only position |
+| Crypto bucket | $0 (0%) | Target 10% |
+| AMD 18sh | ~$9,251 est. | $506.76 avg; last known $513.92 July 7; **NAKED Day 20** |
+
+#### Benchmark Gap (Estimated)
+
+| Metric | Value |
+|---|---|
+| Portfolio return (since May 1) | est. −0.11% |
+| SPX return (since May 1) | est. +5.37% (July 7 confirmed; July 8-9 unknown) |
+| Cumulative benchmark gap | est. **−5.48 pp** (last confirmed July 7; may be wider if SPX rose July 8-9) |
+| Today's daily gap | UNKNOWN — API blocked |
+| 20-Day Underperformance Flag | **ACTIVE — 71+ consecutive trading days** (egress policy blockage root cause) |
+
+#### Win Rate / Profit Factor
+
+| Metric | Value |
+|---|---|
+| Trades completed today | 0 (all API blocked) |
+| Rolling 20-day completed trades | 0 |
+| All-time completed trades | 1 (GLD macro-hedge stop_hit Jun 10, −4.99%) |
+| All-time win rate | 0% |
+| All-time profit factor | 0 (no wins) |
+
+#### Best & Worst Trade — July 9
+
+- **Best:** N/A (no executions)
+- **Worst:** AMD Day 20 naked continued. If AMD hit stop $481.42 intraday (unknown), loss would be est. ~−$457 (−0.46% equity). No confirmation available.
+
+#### 3 Things That Worked
+
+1. **Market-Open and Mid-Morning fired reliably** — both ran on schedule, audited positions, logged violations, attempted all approved orders (confirming the 13:45Z and 15:10Z cron slots are working).
+2. **AMD chip selloff (July 7) did not breach stop** — last confirmed $513.92 is 6.8% above stop $481.42; thesis technically intact.
+3. **Exit deadline tracking is precise** — every routine correctly counts down IBM/AMD July 20 EOD deadline; operator has clear countdown regardless of API status.
+
+#### 3 Things to Improve
+
+1. **4 of 7 routines silently failing** — Pre-Market, Midday, Afternoon, Market-Close all produced zero heartbeats. AMD was unmonitored for 2+ full trading days (July 8-9). This is the highest-priority operational risk.
+2. **AMD naked for Day 20 — exits safe monitoring window** — operator has received 20+ urgent escalations. AMD earnings July 22 mean a mandatory exit no later than July 20 EOD; the position is simultaneously over-sized (9.26% vs 5% cap), unprotected (no stop), and approaching an earnings binary event.
+3. **IBM entry window closing** — 7 trading days remain to enter and exit IBM before July 20 EOD. If API remains blocked and operator does not place manually on July 10 (Friday), only 5 trading days remain (July 13-17) to achieve a +15% target — increasingly unlikely.
+
+#### Setup-Tag Tally (Rolling 5-Day: July 3-9)
+
+No completed trades in the rolling window. All entries API-blocked. Setup Performance Tracker unchanged.
+
+| Setup type | Wins | Losses | Consec. L | Halt | Boost | Status |
+|---|---|---|---|---|---|---|
+| macro-hedge | 0 | **1** (GLD −4.99% Jun 10) | 1 | none | — | No re-entry |
+| ai-momentum-pullback | 0 | 0 | 0 | none | — | AMD hold (naked) |
+| breakout-volume | 0 | 0 | 0 | none | — | PLTR/META pending |
+| sector-rotation | 0 | 0 | 0 | none | — | IBM pending |
+| earnings-reaction-follow | 0 | 0 | 0 | none | — | No completed trades |
+| candlestick-reversal | 0 | 0 | 0 | none | — | No day trades placed |
+| mean-reversion-oversold | 0 | 0 | 0 | none | — | No candidates |
+| crypto-flush-rebound | 0 | 0 | 0 | none | — | BTC below $82K |
+
+**Halted setups:** None | **Boosted setups:** None
+
+#### Agent Calibration
+
+Only 1 completed trade (GLD Jun 10, −4.99%, avg score 6.83). Insufficient data for calibration. Will update when 5+ completed trades available.
+
+---
+
+### TOMORROW'S WATCHLIST — July 10, 2026 (Friday)
+
+**⚠️ JPM/WFC 48H BLACKOUT: Active since ~14:00 ET today — NO JPM or WFC entries**
+**⚠️ AMD MANDATORY SELL: 9sh at market FIRST ORDER (Day 20 naked, 9.26% equity, earnings July 22)**
+
+| Rank | Symbol | Score | Setup | Action | Thesis | Risk |
+|---|---|---|---|---|---|---|
+| 1 | PLTR | 7.67 | breakout-volume | BUY 35sh limit ask×1.005, bracket GTC | D.A. Davidson upgrade, Q1 +85% YoY, NVIDIA AI | Chip contagion risk |
+| 2 | IBM | 7.33 | sector-rotation | BUY 3sh limit ask×1.005, bracket GTC | z17+LinuxONE 5 momentum, BofA $330 PT | EXIT DEADLINE July 20 EOD — 7 trading days |
+| 3 | META | 7.0 | breakout-volume | BUY 8sh limit ask×1.005, bracket GTC | Cloud compute launch, chip-selloff immune | Re-price from $612.05; earnings July 29-30 safe |
+| 4 | MSFT | est. 7.0 | ai-momentum-pullback | Run 6-agent Pre-Market → BUY if ≥7 | Azure Copilot revenue, AI integration | Earnings ~July 29 safe |
+| 5 | AMZN | est. 7.0 | ai-momentum-pullback | Run 6-agent Pre-Market → BUY if ≥7 | AWS acceleration, Anthropic partnership | Earnings late July safe |
+| 6 | AAPL | est. 7.0 | ai-momentum-pullback | Run 6-agent Pre-Market → BUY if ≥7 | Apple Intelligence upgrade cycle | Earnings early August safe |
+| 7 | GOOGL | est. 7.0 | ai-momentum-pullback | Run 6-agent Pre-Market → BUY if ≥7 | Search AI monetization, Cloud growth | Earnings late July safe |
+| 8 | CRWD | est. 7.0 | breakout-volume | Run 6-agent Pre-Market → BUY if ≥7 | Cybersecurity structural demand, AI detection | Post-incident recovery; validate 6-agent |
+| 9 | NVDA | est. 6.5 | ai-momentum-pullback | CONDITIONAL — fresh 6-agent required | Chip selloff re-entry opportunity; HBM intact | Below threshold; only enter if bounces to ≥7 |
+| 10 | TSLA | est. 6.0 | earnings-reaction-follow | CONDITIONAL — verify earnings date first | Q2 delivery beat 480K vs 406K | P/E 390x; check earnings window before any entry |
+
+**Key macro events July 10:**
+- University of Michigan Consumer Sentiment 10:00 AM ET (preliminary July) — watch inflation expectations
+- JPM + WFC earnings pre-market July 11 (48h blackout active now)
+- IBM exit countdown: 7 trading days to July 20 EOD deadline
+- AMD exit countdown: Must EXIT ALL AMD by July 20 EOD (earnings July 22)
+
+```yaml
+---
+ts: 2026-07-09T20:34:00Z
+action: daily-review
+symbol: PORTFOLIO
+bucket: active
+setup: other
+score: N/A
+thesis: Daily Review July 9 — 4 of 7 routines failed, AMD Day 20 naked, API blocked 71st session, cumulative gap est. -5.48 pp vs SPX.
+master_notes: "Heartbeat: Pre-Market ❌ / Market-Open ✅ / Mid-Morning ✅ / Midday ❌ / Afternoon ❌ / Market-Close ❌. API blocked 71st+ session. AMD Day 20 naked (18sh, ~9.26% equity, over 5% cap). Est. benchmark gap -5.48 pp. 4 violations logged. Tomorrow MANDATORY: (1) AMD SELL 9sh market; (2) PLTR 35sh bracket GTC; (3) META 8sh bracket GTC; (4) IBM 3sh bracket GTC (7 days to exit deadline July 20); (5) 6-agent on MSFT/AMZN/AAPL/GOOGL/CRWD before placing. No JPM/WFC entries (48h blackout)."
+---
+```
+
 ---
 
 ## 2026-07-09 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 71st consecutive session)

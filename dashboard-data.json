@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-09T13:49:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-07-09T20:34:00Z",
+  "updated_by": "daily-review",
   "portfolio": {
     "total_equity": 99894.56,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.74
     },
-    "note": "July 9 MARKET-OPEN (9:45 AM ET / 13:49Z). API BLOCKED HTTP 000 \u2014 70th consecutive session. JULY 8 FULL BLACKOUT. MARKET CONDITIONS UNKNOWN since July 7 midday. AMD 18sh Day 19 naked (last price ~$513.92 July 7 \u2014 STALE). 5 orders blocked. Pre-Market silently failed. IBM exit deadline July 20 EOD (~11 days). OPERATOR MUST ACT: (1) SELL 9sh AMD immediately; (2) GTC STOP $481.42 + TP $640 on 9sh; (3) BUY 35sh PLTR bracket GTC; (4) BUY 8sh META bracket GTC; (5) BUY 3sh IBM bracket GTC."
+    "note": "July 9 DAILY REVIEW (4:30 PM ET / 20:34Z). API BLOCKED \u2014 71st+ consecutive session. 4 OF 7 ROUTINES FAILED (Pre-Market, Midday, Afternoon, Market-Close). July 8 = full blackout. AMD Day 20 naked (18sh, ~9.2% equity, OVER 5% cap, NO STOP). Est. benchmark gap -5.48 pp vs SPX. AMD + IBM EXIT DEADLINE: July 20 EOD (7 trading days). JPM/WFC 48h blackout active \u2014 no JPM/WFC entries. OPERATOR MUST ACT at app.alpaca.markets: (1) SELL 9sh AMD market; (2) GTC STOP $481.42 + TP $640 on 9sh; (3) BUY 35sh PLTR bracket GTC; (4) BUY 8sh META bracket GTC; (5) BUY 3sh IBM bracket GTC. Tomorrow run 6-agent on MSFT/AMZN/AAPL/GOOGL/CRWD."
   },
   "positions": [
     {
@@ -122,59 +122,52 @@
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-07T12:06:19Z",
-      "next_run": "2026-07-08T12:00:00Z",
-      "last_summary": "July 7 Pre-Market COMPLETED. Nasdaq futures -1.10% (Samsung chip selloff); AMD +2.5% pre-market (NVIDIA delay + Goldman PT $640); PLTR +5.3% (D.A. Davidson upgrade). 5 orders attempted \u2014 all blocked HTTP 000 (67th consecutive). NEW APPROVALS: META 7.0, PLTR 7.67, IBM 7.33. AMD Day 16 naked. ISM Services 9:00 AM ET pivot event."
+      "next_run": "2026-07-10T12:00:00Z",
+      "last_summary": "SILENT FAILURE July 9 (3rd consecutive). July 7 was last successful run. No MOO orders placed. Watchlist (PLTR 7.67, META 7.0, IBM 7.33) not executed. AMD Day 20 naked stop backfill not attempted. Violation logged."
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-08T13:45:00Z",
-      "last_summary": "SILENT FAILURE \u2014 no heartbeat July 7. Violation logged in trades.md. No MOO fills to confirm (all MOO orders were API-blocked at Pre-Market). No stop-loss audit performed."
+      "status": "completed",
+      "last_run": "2026-07-09T13:51:32Z",
+      "next_run": "2026-07-10T13:45:00Z",
+      "last_summary": "July 9 Market-Open COMPLETED 13:45Z-13:51Z. API BLOCKED (71st consecutive). Pre-Market silent failure logged. July 8 full blackout logged. 5 orders attempted \u2014 all blocked. AMD Day 19\u219220 naked."
     },
     {
       "name": "Mid-Morning",
       "status": "completed",
-      "last_run": "2026-07-07T15:10:00Z",
-      "next_run": "2026-07-08T15:00:00Z",
-      "last_summary": "July 7 Mid-Morning COMPLETED. API BLOCKED (HTTP 403 \u2014 68th consecutive). CRITICAL: AMD -7.09% today to $513.92 (Samsung chip selloff). AMD stop $481.42 not breached. Market-Open violation logged. 7 orders attempted and blocked: AMD sell 9sh + AMD stop + PLTR 35sh + META 8sh + IBM 3sh + AMD stop (\u00d72). AMD Day 17 naked. Chip sector rotation: sell semis, buy software. PLTR +2.51%, META +1.9%, IBM strong."
+      "last_run": "2026-07-09T15:14:36Z",
+      "next_run": "2026-07-10T15:00:00Z",
+      "last_summary": "July 9 Mid-Morning COMPLETED 15:10Z-15:14Z. API BLOCKED (71st consecutive). 5 re-attempts blocked: AMD sell, AMD stop, PLTR bracket, META bracket, IBM bracket. AMD Day 20 naked. JPM/WFC 48h blackout now active. Violation YAML logged."
     },
     {
       "name": "Midday",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-06T16:34:41Z",
-      "next_run": "2026-07-07T16:30:00Z",
-      "last_summary": "Not yet run today. Next at 12:30 PM ET / 16:30Z."
+      "next_run": "2026-07-10T16:30:00Z",
+      "last_summary": "SILENT FAILURE July 9. No STARTED entry at 16:30Z. Violation logged. Last successful run July 6."
     },
     {
       "name": "Afternoon",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-07T18:00:00Z",
-      "last_summary": "Not yet run today. Next at 2:00 PM ET / 18:00Z."
+      "next_run": "2026-07-10T18:00:00Z",
+      "last_summary": "SILENT FAILURE July 9. No STARTED entry at 18:00Z. Violation logged. Last successful run July 1."
     },
     {
       "name": "Market-Close",
-      "status": "PENDING",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-07T19:30:00Z",
-      "last_summary": "Not yet run today. Next at 3:30 PM ET / 19:30Z."
+      "next_run": "2026-07-10T19:30:00Z",
+      "last_summary": "SILENT FAILURE July 9. No STARTED entry at 19:30Z. Violation logged. No MOC orders. No EOD stop confirmation. AMD closes Day 20 naked. Last successful run July 2."
     },
     {
       "name": "Daily-Review",
-      "status": "PENDING",
-      "last_run": "2026-06-29T20:30:00Z",
-      "next_run": "2026-07-07T20:30:00Z",
-      "last_summary": "Not yet run today. Next at 4:30 PM ET / 20:30Z."
-    },
-    {
-      "name": "Market Open",
       "status": "completed",
-      "last_run": "2026-07-09T13:49:00Z",
-      "next_run": "2026-07-10T13:45:00Z",
-      "last_summary": "API BLOCKED HTTP 000 (70th consecutive). Pre-Market silent failure. July 8 full blackout. 7 orders attempted \u2014 all blocked. AMD Day 19 naked. IBM exit deadline 11 days."
+      "last_run": "2026-07-09T20:34:00Z",
+      "next_run": "2026-07-10T20:30:00Z",
+      "last_summary": "July 9 Daily Review COMPLETED. API blocked 71st session. 4 of 7 routines failed (Pre-Market, Midday, Afternoon, Market-Close). AMD Day 20 naked (~9.2% equity, over 5% cap). Est. benchmark gap -5.48 pp. AMD+IBM exit deadline July 20 EOD (7 trading days). JPM/WFC 48h blackout active. Tomorrow: AMD sell 9sh + PLTR/META/IBM brackets + 6-agent on MSFT/AMZN/AAPL/GOOGL/CRWD."
     }
   ],
   "trades": [
@@ -316,36 +309,87 @@
   ],
   "watchlist": [
     {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": null,
+      "action": "MANDATORY SELL 9sh at market FIRST ORDER",
+      "setup": "ai-momentum-pullback",
+      "notes": "RISK MANAGEMENT \u2014 NOT A BUY. Day 20 naked, 9.26% equity (OVER 5% cap). Then: GTC STOP $481.42 on remaining 9sh + GTC TP $640. EXIT ALL AMD by July 20 EOD (earnings July 22 \u2014 7 trading days). Operator must act at app.alpaca.markets."
+    },
+    {
       "symbol": "PLTR",
       "bucket": "active",
       "score": 7.67,
-      "action": "BUY 35sh limit $133.20 bracket GTC",
+      "action": "BUY 35sh limit ask\u00d71.005 bracket GTC (stop -5%, target +15%)",
       "setup": "breakout-volume",
-      "notes": "HIGHEST CONVICTION. D.A. Davidson Buy upgrade July 7. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. +2.51% midday $132.54. API BLOCKED."
+      "notes": "HIGHEST CONVICTION. D.A. Davidson Buy upgrade July 7. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. Last known $132.54 (July 7). Re-price at current ask. API BLOCKED \u2014 operator manual."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "score": 7.33,
-      "action": "BUY 3sh limit $299.50 bracket GTC",
+      "action": "BUY 3sh limit ask\u00d71.005 bracket GTC (stop -5%, target +15%)",
       "setup": "sector-rotation",
-      "notes": "z17+LinuxONE 5 launched today. BofA PT $330. Range $287-$301. Refreshed limit $299.50. EXIT by July 20 EOD (earnings July 22). API BLOCKED."
+      "notes": "z17+LinuxONE 5 momentum. BofA PT $330. EXIT DEADLINE July 20 EOD \u2014 7 trading days. If not entered July 10, window closes rapidly. Re-price from $299.50. API BLOCKED \u2014 operator manual."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY 8sh limit $612.05 bracket GTC",
+      "action": "BUY 8sh limit ask\u00d71.005 bracket GTC (stop -5%, target +15%)",
       "setup": "breakout-volume",
-      "notes": "Cloud compute thesis confirmed. Opened $607.90, +1.9% midday. Relative strength vs chip selloff. Earnings ~July 29-30 safe window. API BLOCKED."
+      "notes": "Cloud compute launch confirmed. Chip-selloff immune (+1.9% July 7). Earnings July 29-30 safe window. Re-price from $612.05 to current ask. API BLOCKED \u2014 operator manual."
     },
     {
-      "symbol": "AMD",
+      "symbol": "MSFT",
       "bucket": "active",
-      "score": null,
-      "action": "SELL 9sh at market + GTC STOP $481.42 on remaining 9sh",
+      "score": 7.0,
+      "action": "Run 6-agent Pre-Market July 10 \u2192 BUY if score \u22657",
       "setup": "ai-momentum-pullback",
-      "notes": "GUARDRAIL: 18sh=9.26% equity, OVER 5% cap, Day 17. CHIP SELLOFF -7.09% to $513.92. P&L +$128.88. Stop $481.42 not breached. Goldman PT $640. Earnings July 22 \u2014 EXIT ALL by July 20 EOD. API BLOCKED."
+      "notes": "ESTIMATE SCORE \u2014 6-agent required. Azure Copilot revenue growing. AI integration lead. Earnings ~July 29 (safe). Score pending live data restoration."
+    },
+    {
+      "symbol": "AMZN",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "Run 6-agent Pre-Market July 10 \u2192 BUY if score \u22657",
+      "setup": "ai-momentum-pullback",
+      "notes": "ESTIMATE SCORE \u2014 6-agent required. AWS acceleration. Anthropic partnership. Earnings late July (safe). Score pending live data."
+    },
+    {
+      "symbol": "AAPL",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "Run 6-agent Pre-Market July 10 \u2192 BUY if score \u22657",
+      "setup": "ai-momentum-pullback",
+      "notes": "ESTIMATE SCORE \u2014 6-agent required. Apple Intelligence upgrade cycle. Services growth. Earnings early August (safe). Score pending live data."
+    },
+    {
+      "symbol": "GOOGL",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "Run 6-agent Pre-Market July 10 \u2192 BUY if score \u22657",
+      "setup": "ai-momentum-pullback",
+      "notes": "ESTIMATE SCORE \u2014 6-agent required. Search AI monetization. Google Cloud growth. Waymo. Earnings late July (safe). Score pending live data."
+    },
+    {
+      "symbol": "CRWD",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "Run 6-agent Pre-Market July 10 \u2192 BUY if score \u22657",
+      "setup": "breakout-volume",
+      "notes": "ESTIMATE SCORE \u2014 6-agent required. Cybersecurity structural demand. AI detection capabilities. Post-incident recovery complete. Score pending live data."
+    },
+    {
+      "symbol": "NVDA",
+      "bucket": "active",
+      "score": 6.5,
+      "action": "CONDITIONAL \u2014 fresh 6-agent required; only enter if score \u22657",
+      "setup": "ai-momentum-pullback",
+      "notes": "ESTIMATE SCORE BELOW THRESHOLD. Chip selloff may create re-entry opportunity. HBM demand intact. Check if technical bounce from Samsung selloff. Do NOT enter without 6-agent confirmation \u22657."
     }
-  ]
+  ],
+  "memory": {
+    "recent_lessons_md": "## July 9, 2026 \u2014 Daily Review\n\n**3 things that worked:**\n1. Market-Open and Mid-Morning both fired on schedule \u2014 the 13:45Z and 15:10Z cron slots are reliable.\n2. AMD thesis technically intact through last confirmed data ($513.92 > stop $481.42).\n3. Exit deadline tracking (AMD/IBM July 20 EOD) is being maintained accurately in every log entry.\n\n**3 things to improve:**\n1. 4 of 7 routines silently failing \u2014 Pre-Market, Midday, Afternoon, Market-Close all dark. Operator must audit cron schedule.\n2. AMD naked Day 20 \u2014 must be sold immediately; both an over-cap violation AND an earnings-deadline forced exit by July 20.\n3. IBM entry window closing rapidly \u2014 7 trading days to enter and exit before July 20 EOD; if API not restored today, only operator manual entry can capture this trade."
+  }
 }
