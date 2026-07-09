@@ -4,6 +4,220 @@
 
 ---
 
+## 2026-07-09 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 71st consecutive session)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-09T15:10:36Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` not in egress allowlist — **71st consecutive blocked session**
+**Data API Status:** BLOCKED — `data.alpaca.markets:443` also 403 — no live market data available
+**Current Time:** 15:10Z = 11:10 AM ET — Mid-Morning window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+```
+logs/heartbeats/2026-07-09.log:
+  2026-07-09T13:45:36Z STARTED Market-Open    ✓ ran
+  2026-07-09T13:51:32Z COMPLETED Market-Open  ✓ completed
+  2026-07-09T15:10:36Z STARTED Mid-Morning    ← this routine
+  (no Pre-Market STARTED entry — already logged as violation in Market-Open section)
+```
+
+- Pre-Market July 9: ❌ **SILENT FAILURE** — already logged in Market-Open section
+- Market-Open July 9: ✅ ran at 13:45Z, completed 13:51Z, all orders blocked (70th session), AMD remains naked
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED)
+
+```bash
+# ATTEMPT 1: Audit open orders
+curl -s "${APCA_API_BASE_URL}/v2/orders?status=open" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}"
+# RESULT: HTTP 403 / exit 56 — proxy policy denial (paper-api.alpaca.markets:443 not in allowlist)
+
+# ATTEMPT 2: Get positions
+curl -s "${APCA_API_BASE_URL}/v2/positions" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}"
+# RESULT: HTTP 403 / exit 56 — proxy policy denial
+```
+
+**AMD naked position status (Day 20 — critical):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA (Day 20 — 20th consecutive routine unable to backfill)
+- Last known price: ~$513.92 (July 7 Mid-Morning — now 2 full trading days stale)
+- July 8 price action: UNKNOWN (full blackout)
+- July 9 intraday: UNKNOWN (API blocked)
+- Stop placement attempt:
+
+```bash
+# ATTEMPT 3: AMD SELL 9sh (reduce over-cap position)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"day"}'
+# RESULT: HTTP 403 / exit 56 — proxy policy denial (71st session)
+
+# ATTEMPT 4: AMD GTC STOP at $481.42 (5% below $506.76 avg)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 403 / exit 56 — proxy policy denial (71st session)
+```
+
+**GUARDRAIL VIOLATION CONTINUING:** AMD 18sh has had NO resting stop at Alpaca for 20 consecutive days. AMD at ~9% equity (over 5% cap). Operator must act immediately via app.alpaca.markets.
+
+---
+
+### MARKET CONDITIONS — JULY 9, 2026 (ESTIMATED — NO API ACCESS)
+
+**Last confirmed data (July 7 Mid-Morning — 2 trading days stale):**
+- S&P 500: ~7,587 (+0.67% on July 7)
+- AMD: ~$513.92 (fell −7.09% on Samsung selloff, July 7)
+- PLTR: ~$132.54 (+2.51%, July 7)
+- META: ~$607-610 (+1.9%, July 7)
+- IBM: ~$287-$301 range (z17 launch day, July 7)
+
+**Key events since last confirmed data:**
+- July 8: FOMC minutes (Warsh hawkish risk) — market reaction UNKNOWN
+- July 9: Q2 earnings season accelerating; market in risk-on/risk-off unknown
+
+**CRITICAL EARNINGS CALENDAR:**
+- JPM/WFC earnings July 11 → 48h blackout window opens **TODAY ~2PM ET** — NO new JPM or WFC entries after 2PM ET
+- IBM earnings July 22 → EXIT DEADLINE July 20 EOD (now 11 days, ~9 trading days remaining)
+- AMD "Advancing AI 2026": July 22-23 (catalyst event, not a binary event — entries still allowed)
+
+---
+
+### WATCHLIST EXECUTION — CARRY-FORWARD (MARKET-OPEN CATCH-UP ALREADY ATTEMPTED)
+
+All three approved ≥7-score names (PLTR 7.67, META 7.0, IBM 7.33) were re-attempted in Market-Open and blocked. Re-attempting Mid-Morning in case proxy policy updated:
+
+```bash
+# ATTEMPT 5: PLTR — 35sh limit bracket GTC at $133.20 / stop $126.54 / target $154.06
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"PLTR","qty":35,"side":"buy","type":"limit","limit_price":"133.20","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"126.54"},"take_profit":{"limit_price":"154.06"}}'
+# RESULT: HTTP 403 / exit 56 — proxy policy denial (71st session)
+
+# ATTEMPT 6: META — 8sh limit bracket GTC at $612.05 / stop $581.45 / target $703.25
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"612.05","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"581.45"},"take_profit":{"limit_price":"703.25"}}'
+# RESULT: HTTP 403 / exit 56 — proxy policy denial (71st session)
+
+# ATTEMPT 7: IBM — 3sh limit bracket GTC at $289.50 / stop $275.03 / target $332.91
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"289.50","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"275.03"},"take_profit":{"limit_price":"332.91"}}'
+# RESULT: HTTP 403 / exit 56 — proxy policy denial (71st session)
+```
+
+```yaml
+---
+ts: 2026-07-09T15:11:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: D.A. Davidson Buy upgrade; Q1 revenue $1.63B +85% YoY; NVIDIA sovereign AI partnership. Mid-Morning re-attempt — still blocked.
+size_pct: 4.69
+stop: 126.54
+target: 154.06
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (71st session). Proxy 403. No valid CLAUDE.md exemption applies. Operator must place manually at app.alpaca.markets: BUY 35sh PLTR limit current_ask×1.005, bracket GTC, stop -5%, target +15% (3:1 R/R)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T15:12:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Cloud compute service confirmed; +1.9% relative strength July 7. Earnings ~July 29-30 (outside 48h window). Mid-Morning re-attempt — still blocked.
+size_pct: 4.87
+stop: 581.45
+target: 703.25
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (71st session). Proxy 403. META price unknown since July 7 ($607-$610). Operator must re-price limit to current_ask×1.005 — stop = entry×0.95, target = entry + 3×(entry-stop). Must place manually at app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T15:13:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: z17+LinuxONE 5 post-launch momentum. BofA PT $330. Must EXIT by July 20 EOD before July 22 earnings — 9 trading days left. Mid-Morning re-attempt — still blocked.
+size_pct: 0.87
+stop: 275.03
+target: 332.91
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "API BLOCKED (71st session). ⚠️ IBM EXIT DEADLINE: July 20 EOD — 9 trading days remain. Entry window open through ~July 18. Operator must place manually: BUY 3sh IBM limit current_ask×1.005, bracket GTC, stop entry×0.95, target entry+(3×stop_dist). If price exceeds $295 recalculate all levels."
+---
+```
+
+---
+
+### PORTFOLIO STATE (ESTIMATED — NO LIVE API DATA)
+
+**All figures estimated from last confirmed data (July 7 Mid-Morning):**
+
+- AMD: 18sh × ~$513.92 last known = ~$9,251 unrealized est.
+  - Entry: $506.76 avg · Unrealized P&L: ~+$128.88 (+1.4% est.) · Status: NAKED (no stop)
+- PLTR: 0 positions (blocked)
+- META: 0 positions (blocked)
+- IBM: 0 positions (blocked)
+
+**Portfolio totals (estimated):**
+- Total Equity: ~$99,895
+- Cash: ~$90,644 (90.5%) — ABOVE 5% floor but MASSIVELY above target due to API blockage
+- Active bucket: ~$9,251 (9.2%) — target 85% — severely underinvested
+- Crypto bucket: $0 (0%) — target 10%
+- AMD % equity: ~9.2% — OVER 5% cap (critical violation)
+
+---
+
 ## 2026-07-09 — Market-Open (9:45 AM ET / 13:45 UTC — API BLOCKED / FULL BLACKOUT x2)
 
 **HEARTBEAT:** STARTED Market-Open 2026-07-09T13:45:36Z ✓
