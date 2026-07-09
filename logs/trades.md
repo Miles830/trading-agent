@@ -4,6 +4,265 @@
 
 ---
 
+## 2026-07-09 — Market-Close (3:30 PM ET / 19:34 UTC — API BLOCKED — 72nd consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-09T19:34:39Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (exit 56) — `paper-api.alpaca.markets:443` not in egress allowlist — **72nd consecutive blocked session**
+**Data API Status:** BLOCKED — `data.alpaca.markets:443` also blocked — no live market data
+**Current Time:** 19:34Z = 3:34 PM ET — Market-Close window (MOC deadline 3:50 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+```
+logs/heartbeats/2026-07-09.log:
+  2026-07-09T13:45:36Z STARTED Market-Open    ✓
+  2026-07-09T13:51:32Z COMPLETED Market-Open  ✓
+  2026-07-09T15:10:36Z STARTED Mid-Morning    ✓
+  2026-07-09T15:14:36Z COMPLETED Mid-Morning  ✓
+  (no Midday STARTED entry — expected at ~16:30Z)
+  (no Afternoon STARTED entry — expected at ~18:00Z)
+  2026-07-09T19:34:39Z STARTED Market-Close   ← this routine
+```
+
+- Midday July 9 (12:30 PM ET / 16:30Z): ❌ **SILENT FAILURE** — no STARTED entry
+- Afternoon July 9 (2:00 PM ET / 18:00Z): ❌ **SILENT FAILURE** — no STARTED entry
+
+```yaml
+---
+ts: 2026-07-09T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET / 16:30Z) did not run today — no entry in logs/heartbeats/2026-07-09.log.
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Midday silently failed July 9. No stop-loss audit, no price checks, no order attempts. AMD remains naked (Day 21). PLTR/META/IBM carry-forward. Third silent failure today (Pre-Market also missed). Root cause: cloud runner scheduling gaps with API egress blocked — no external confirmation of execution."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T18:00:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Afternoon routine (2:00 PM ET / 18:00Z) did not run today — no entry in logs/heartbeats/2026-07-09.log.
+size_pct: N/A
+stop: N/A
+target: N/A
+master_notes: "Afternoon silently failed July 9. Close-of-day position review not run. AMD still-open day trade check not performed (AMD is swing, not day trade). No AMD reduction attempt. No stop-loss audit. Fourth silent failure today. Market-Close performing catch-up for all Afternoon duties."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED)
+
+All Alpaca API endpoints blocked — HTTP 000 / exit 56 — egress proxy CONNECT rejected (72nd consecutive session).
+
+```bash
+# ATTEMPT 1: GET /v2/account → HTTP 000 (blocked)
+# ATTEMPT 2: GET /v2/positions → HTTP 000 (blocked)
+# ATTEMPT 3: GET /v2/orders?status=open → HTTP 000 (blocked)
+```
+
+**Last known position state (Market-Open July 9 / July 7 data):**
+- AMD: 18sh at $506.76 avg — **NO STOP-LOSS AT ALPACA** — **Day 21 naked** (21st consecutive routine unable to backfill)
+- Last known AMD price: ~$513.92 (July 7 Mid-Morning — **3 full trading days stale**)
+  - July 7 afternoon: UNKNOWN (routine silently failed)
+  - July 8: UNKNOWN (full blackout — all routines failed)
+  - July 9 intraday: UNKNOWN (API blocked all day)
+- AMD current price: UNKNOWN — could be anywhere between ~$460-$560 based on chip selloff context
+- AMD position est. value: UNKNOWN (18sh × unknown price)
+- Estimated % equity: UNKNOWN (was 9.26% as of July 7 stale data — OVER 5% cap)
+- No other open positions confirmed
+
+**Critical guardrail violations (ongoing):**
+1. AMD position > 5% equity cap (was 9.26% July 7 — no data since)
+2. AMD has NO resting stop-loss at Alpaca (Day 21 — critical)
+3. No stop-loss confirmation possible due to API blockage
+
+---
+
+### ORDER ATTEMPTS — MARKET-CLOSE (ALL BLOCKED)
+
+```bash
+# ATTEMPT 4: AMD SELL 9sh MOC (reduce over-cap — Afternoon catch-up)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 000 / exit 56 — proxy CONNECT rejected (72nd session)
+
+# ATTEMPT 5: AMD GTC stop-loss 9sh at $481.42 (entry $506.76 × 0.95)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 000 / exit 56 — proxy CONNECT rejected (72nd session)
+
+# ATTEMPT 6: PLTR BUY 35sh MOC (score 7.67 — highest conviction — MOC catch-up for earlier blocked limits)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -d '{"symbol":"PLTR","qty":35,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 000 / exit 56 — proxy CONNECT rejected (72nd session)
+
+# ATTEMPT 7: META BUY 8sh MOC (score 7.0)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 000 / exit 56 — proxy CONNECT rejected (72nd session)
+
+# ATTEMPT 8: IBM BUY 3sh MOC (score 7.33 — EXIT by July 20 EOD, 9 trading days remaining)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 000 / exit 56 — proxy CONNECT rejected (72nd session)
+```
+
+---
+
+### YAML DECISION LOG — MARKET-CLOSE
+
+```yaml
+---
+ts: 2026-07-09T19:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: SELL 9sh AMD MOC to reduce over-cap position (was 9.26% equity July 7, target ≤5%) + place GTC stop $481.42 on remaining 9sh.
+size_pct: 9.26
+stop: 481.42
+target: 640.0
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 6
+  macro: 6
+  risk: 3
+  tech_analyst: 7
+agent_average: 5.83
+agents_above_7: 2
+master_decision: approved
+master_notes: "GUARDRAIL ENFORCEMENT (not scored trade — mandatory reduction). AMD sell + stop attempt BLOCKED — HTTP 000 / exit 56 — egress policy denial (72nd consecutive session). No valid CLAUDE.md exemption. Operator MUST visit app.alpaca.markets: (1) SELL 9sh AMD at market IMMEDIATELY; (2) Place GTC stop $481.42 on remaining 9sh; (3) AMD earnings July 22 — EXIT ALL by July 20 EOD."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T19:36:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: D.A. Davidson Buy upgrade July 7; Q1 revenue $1.63B +85% YoY; NVIDIA sovereign AI partnership. MOC entry attempted (catch-up for blocked limit from Mid-Morning).
+size_pct: 4.69
+stop: 126.54
+target: 154.06
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 8
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (72nd session). MOC order HTTP 000 blocked — proxy CONNECT rejected. No valid CLAUDE.md exemption (not guardrail breach, not binary event, circuit breaker not tripped). Score 7.67 mandates entry but cannot execute. PLTR price unknown since July 7 $132.54 (+2.51% midday). Operator: BUY 35sh PLTR at market (app.alpaca.markets) + GTC stop $126.54 + GTC TP $154.06. Recheck price before entry — adjust levels from current price (stop -5%, target +15%, R/R 3:1)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T19:37:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: Cloud compute service confirmed; +1.9% relative strength July 7 vs chip selloff. MOC entry attempted — prior bracket GTC limits blocked.
+size_pct: 4.87
+stop: 581.45
+target: 703.25
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (72nd session). MOC order HTTP 000 blocked. No valid CLAUDE.md exemption. META price unknown since July 7 ($607-$610 midday). Earnings ~July 29-30 — safe window. Operator: BUY 8sh META at market + GTC stop entry×0.95 + GTC TP entry+(3×stop_dist). R/R must be ≥ 3:1."
+---
+```
+
+```yaml
+---
+ts: 2026-07-09T19:38:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.33
+thesis: z17+LinuxONE 5 launch momentum. BofA PT $330. MOC entry — 9 trading days until IBM EXIT DEADLINE July 20 EOD (earnings July 22).
+size_pct: 0.87
+stop: 275.03
+target: 332.91
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "API BLOCKED (72nd session). MOC order HTTP 000 blocked. No valid CLAUDE.md exemption. IBM exit window closes July 20 EOD — 9 trading days remain. Operator: BUY 3sh IBM at market (current ask) + GTC stop entry×0.95 + GTC TP entry+(3×stop_dist, min 3:1 R/R). ⚠️ IBM EARNINGS JULY 22 — must EXIT ALL by July 20 EOD close."
+---
+```
+
+---
+
+### PORTFOLIO STATE — MARKET-CLOSE (ESTIMATED — NO LIVE DATA)
+
+**All figures estimated; last API data July 7 Mid-Morning (3 trading days stale):**
+- AMD: 18sh at $506.76 avg — price UNKNOWN (last $513.92 July 7) — P&L UNKNOWN
+- PLTR: 0 positions (all orders blocked)
+- META: 0 positions (all orders blocked)  
+- IBM: 0 positions (all orders blocked)
+- Estimated Total Equity: ~$99,895 (price-dependent — AMD moves unknown)
+- Estimated Cash: ~$90,644 (90.7% — massively above target 5%)
+- SPX July 9 EOD: UNKNOWN (last confirmed May 1 baseline 7,200 → +5.37% July 7)
+- Daily P&L: UNKNOWN (no account data)
+- Benchmark gap: UNKNOWN (last est. -5.48 pp July 7)
+
+**Guardrail Violations (active, Day 21):**
+1. 🚨 AMD naked (no stop-loss) — Day 21 — critical
+2. 🚨 AMD over 5% cap (est 9.26% — exact unknown)
+3. 🚨 Portfolio ~90.7% cash — severely underinvested (target ≤5%)
+4. 🚨 72 consecutive API-blocked sessions
+
+**Day Trades to Close:** None (AMD is swing, not day trade; no intraday entries today)
+
+**Tomorrow (July 10, Thursday):**
+- JPM/WFC earnings Friday July 11 — 48h blackout window NOW OPEN (opened ~9:30 AM ET today)
+- IBM exit deadline: July 20 EOD — 9 trading days remaining
+- AMD exit deadline: July 20 EOD — 9 trading days remaining (earnings July 22)
+- PLTR/META still highest-priority entries if API unblocks
+
+---
+
 ## 2026-07-09 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 71st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-09T15:10:36Z ✓
