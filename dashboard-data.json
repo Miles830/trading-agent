@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-07T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-09T12:20:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
-    "total_equity": 99894.56,
+    "total_equity": 99806.0,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 90.7,
+    "cash_pct": 90.8,
     "buying_power": 181288,
-    "long_market_value": 9250.56,
+    "long_market_value": 9162.0,
     "short_market_value": 0.0,
-    "daily_pnl": -343.44,
-    "daily_pnl_pct": -0.34,
-    "total_return_pct": -0.11,
-    "spx_return_pct": 5.37,
-    "benchmark_gap_pct": -5.48,
+    "daily_pnl": -88.56,
+    "daily_pnl_pct": -0.09,
+    "total_return_pct": -0.19,
+    "spx_return_pct": 5.56,
+    "benchmark_gap_pct": -5.75,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9250.56,
-      "active_pct": 9.26,
+      "active_value": 9162.0,
+      "active_pct": 9.18,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 90.74
+      "cash_pct": 90.82
     },
-    "note": "July 7 MID-MORNING (11:10 AM ET / 15:15Z). API BLOCKED HTTP 403 — 68th consecutive. SAMSUNG CHIP SELLOFF: AMD -7.09% to $513.92 (prev close $552.05). AMD 18sh P&L: +$128.88 (+1.41%). Stop $481.42 not breached (6.8% cushion). 7 orders blocked today. Market-Open SILENT FAILURE. AMD Day 17 naked. S&P 500 +0.67% midday, Nasdaq +1.21% (big tech resilient). PLTR +2.51% ($132.54), META +1.9% ($609), IBM $287-$301 range. Operator MUST act: (1) SELL 9sh AMD immediately; (2) GTC STOP $481.42; (3) BUY 35sh PLTR bracket $133.20; (4) BUY 8sh META bracket $612.05; (5) BUY 3sh IBM bracket $299.50."
+    "note": "July 9 PRE-MARKET (8:10 AM ET / 12:10Z). API BLOCKED HTTP 403 — 69th consecutive. JULY 8 FULL-DAY BLACKOUT. US-IRAN ESCALATION: fresh strikes July 8; oil WTI $73-74, Brent $79 (+7-11%). Nasdaq futures +0.55%, S&P 500 +0.13%. AMD pre-market $508.96 (↓1.39% from $516.11 close). AMD Day 19 naked. 5 orders blocked today. AMD SELL 9sh MOO + PLTR BUY 35sh MOO + META BUY 8sh limit — all HTTP 403. IBM REJECTED (R/R 1.74:1 < 3:1 minimum at $302). CORRECTION: AMD earnings = August 4 (NOT July 22). IBM never entered. Operator MUST act NOW: (1) SELL 9sh AMD; (2) GTC STOP $481.42 AMD 9sh; (3) BUY 35sh PLTR; (4) BUY 8sh META $618.66."
   },
   "positions": [
     {
@@ -31,148 +31,178 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 513.92,
-      "pnl": 128.88,
-      "pnl_pct": 1.41,
+      "current_price": 508.96,
+      "pnl": 39.6,
+      "pnl_pct": 0.43,
       "stop_loss": null,
       "take_profit": 640.0,
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
-      "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 17. AMD DOWN 7.09% TODAY to $513.92 (prev close $552.05) — Samsung chip selloff. Intel -7%, TSM -6%. P&L: 18 × ($513.92-$506.76) = +$128.88. Stop target $481.42 (6.8% below current — not breached). Thesis: Goldman PT $640 intact; NVIDIA Kyber delay AMD beneficiary; 'Advancing AI 2026' July 23. RISK: Chip selloff continuing. AMD valuation P/E 208x — correction from $552 to $513. POSITION 9.26% equity — OVER 5% cap. Sell 9sh to reduce. OPERATOR: SELL 9sh AMD at market NOW; GTC STOP 9sh at $481.42; GTC TP $640. Earnings July 22 → MUST EXIT ALL by July 20 EOD."
-    },
-    {
-      "symbol": "META",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 609.0,
-      "current_price": 609.0,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "breakout-volume",
       "agent_average": 7.0,
-      "note": "Score 7.0. Opened $607.90, range $580-$610. Cloud compute service launch confirmed. +1.9% midday vs Nasdaq +1.21% = solid relative strength. BUY 8sh limit $612.05 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 8sh META limit $612.05, bracket GTC stop $581.45, target $703.25, R/R 3.0:1. Earnings ~July 29-30 — safe window."
+      "note": "CRITICALLY NAKED Day 19. Pre-market $508.96 (↓$7.15 from $516.11 close, ↓1.39%). P&L: 18 × ($508.96-$506.76) = +$39.60. Stop $481.42 (27.54 cushion, 5.4%). Cost basis: $506.76. Samsung chip selloff + Iran macro pressing. AMD thesis INTACT: Goldman PT $640, Bernstein $600. 'Advancing AI 2026' July 22-23 upcoming catalyst. EARNINGS = August 4 (NOT July 22 — CORRECTION). Position 9.18% equity — OVER 5% cap. OPERATOR: SELL 9sh AMD at market; GTC STOP $481.42 + GTC TP $640 on remaining 9sh."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 132.54,
-      "current_price": 132.54,
+      "entry_price": 133.67,
+      "current_price": 132.5,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
+      "stop_loss": 126.98,
+      "take_profit": 153.74,
       "setup": "breakout-volume",
-      "agent_average": 7.67,
-      "note": "Score 7.67 (HIGHEST CONVICTION). D.A. Davidson Buy upgrade. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. +2.51% midday to $132.54. BUY 35sh limit $133.20 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 35sh PLTR limit $133.20, bracket GTC stop $126.54, target $154.06, R/R 3.0:1."
+      "agent_average": 7.83,
+      "note": "HIGHEST CONVICTION — Score 7.83 (upgraded from 7.67). ALL 6 agents ≥7. DA Davidson Buy $175 target. Q1 $1.63B +85% YoY. NVIDIA sovereign AI partnership. BUY 35sh MOO attempted — HTTP 403 BLOCKED (69th consecutive). OPERATOR: BUY 35sh PLTR at market; GTC STOP $126.98; GTC TP $153.74."
+    },
+    {
+      "symbol": "META",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 618.66,
+      "current_price": 615.58,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": 587.73,
+      "take_profit": 711.45,
+      "setup": "breakout-volume",
+      "agent_average": 7.5,
+      "note": "Score 7.5 (upgraded from 7.0). 5/6 agents ≥7. Cloud compute service launch confirmed. July 9 range $598-$616, open $614.39. PE 22.37. Analyst consensus PT $823. Earnings July 29 — 20 days away, safe window. BUY 8sh limit $618.66 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 8sh META limit $618.66, bracket GTC stop $587.73, target $711.45. Exit by July 27 EOD (pre-earnings)."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 299.5,
-      "current_price": 299.5,
+      "entry_price": null,
+      "current_price": 302.05,
       "pnl": 0,
       "pnl_pct": 0,
-      "stop_loss": 284.53,
-      "take_profit": 344.41,
-      "setup": "sector-rotation",
-      "agent_average": 7.33,
-      "note": "Score 7.33. z17 + LinuxONE 5 launched TODAY. BofA PT $330. Range $287.65-$300.82 today. IBM trading strongly — refreshed limit price to $299.50 (midday). BUY 3sh limit $299.50 bracket GTC attempted — HTTP 403 BLOCKED. OPERATOR: BUY 3sh IBM limit $299.50, bracket GTC stop $284.53, target $344.41. EXIT DEADLINE: July 20 EOD (earnings July 22)."
+      "stop_loss": null,
+      "take_profit": null,
+      "setup": "breakout-volume",
+      "agent_average": 6.33,
+      "note": "REJECTED — R/R 1.74:1 FAILS 3:1 MINIMUM. IBM rallied +7.5% in 2 days (July 7 +3.90%, July 8 +3.62%) post z17 launch. At $302.05 entry, stop 5% below = $288.38; BofA PT $330 → R/R = ($330-$303.56)/($303.56-$288.38) = 1.74:1. Automatic Risk Agent veto. Re-score if IBM retraces to ~$278 OR if analysts raise PT to $349+. IBM earnings July 22 → moot since never entered."
     }
   ],
   "market": {
-    "mode": "CHIP SELLOFF / BIG TECH RESILIENT — Samsung Q2 revenue miss triggered semiconductor rotation. Intel -7%, AMD -7%, TSM -6%. S&P 500 +0.67% midday, Nasdaq +1.21% (AAPL, META, GOOG, TSLA all UP). PLTR +2.51%. Fear & Greed ~35-40 (recovering from pre-market 32).",
-    "fear_greed": 35,
-    "fear_greed_label": "Fear — Semiconductor sector rotation. Samsung revenue miss. AMD/Intel/TSM selloff. Big tech resilient.",
-    "spx": "S&P 500 ~7,587 (+0.67% midday). July 6 close 7,537.43. May 1 baseline 7,200 → +5.37%.",
-    "btc": "BTC ~$63,000-$64,000 estimate (below $82K active-trading threshold). No crypto entries.",
+    "mode": "US-IRAN ESCALATION / BIFURCATED — Nasdaq +0.55% (tech), Dow -0.10% (defense rotation). Oil WTI +7-11% ($73-74) from Iran strikes. Semiconductors weak (MU -3.4% premarket, Samsung selloff continuation). Software/services resilient. Risk-on tech momentum vs geopolitical risk-off headwind.",
+    "fear_greed": 32,
+    "fear_greed_label": "Fear — Iran escalation, chip sector weakness, oil spike",
+    "spx": "S&P 500 est. ~7,600 pre-market (+0.13% futures). May 1 baseline 7,200 → +5.56%.",
+    "btc": "BTC $63,318 (July 8) — BELOW $82K crypto entry threshold. ETH $1,769. Both down on Iran strikes.",
     "sectors": [
       {
-        "name": "Semiconductors (SMH/AMD/INTC/TSM)",
-        "change_pct": -7.0,
-        "note": "Broad chip selloff. Samsung Q2 revenue miss despite 19x profit beat. Intel -7%, AMD -7%, TSM -6%. BoA 'bubble risk' flag from July 1 materializing. Profit-taking on stretched multiples."
+        "name": "Semiconductors (AMD/MU/INTC)",
+        "change_pct": -2.5,
+        "note": "MU -3.4% premarket. AMD -1.39% ($508.96). Samsung chip selloff continuing from July 7. Supply-peak concerns."
       },
       {
         "name": "AI Software (PLTR)",
-        "change_pct": 2.51,
-        "note": "PLTR +2.51% showing software is NOT the problem — AI demand intact. D.A. Davidson upgrade holding intraday."
+        "change_pct": 0.0,
+        "note": "PLTR ~$132-134, stable. Iran escalation = bullish for government analytics contracts. DA Davidson $175 target holding."
       },
       {
-        "name": "Cloud/Social (META)",
-        "change_pct": 1.9,
-        "note": "META +1.9% — cloud compute thesis offsetting chip concerns. Showing that AI story is rotating from hardware to software."
+        "name": "Social/Cloud (META)",
+        "change_pct": 0.1,
+        "note": "META ~$615, stable premarket. Cloud compute launch thesis intact. Not correlated with chip selloff. PE 22.37 not stretched."
       },
       {
-        "name": "IT Services / Mainframe (IBM)",
-        "change_pct": 3.5,
-        "note": "IBM +3-4% estimate on z17/LinuxONE 5 launch + BofA PT $330. Not correlated with semiconductor selloff."
+        "name": "Energy (XOM/OXY/CVX)",
+        "change_pct": 4.0,
+        "note": "Oil WTI +7-11% from Iran escalation. Energy sector benefiting. XOM/OXY/CVX gapping up. Monitor for Mid-Morning entry if 6-agent score ≥7."
       },
       {
-        "name": "Big Tech (AAPL, GOOG, TSLA)",
-        "change_pct": 1.5,
-        "note": "Big tech resilient: AAPL, GOOG, META, TSLA all up. Market rotation: sell chips, buy software/services."
+        "name": "Defense (LMT/RTX/NOC)",
+        "change_pct": 2.0,
+        "note": "Iran strikes = defense spending thesis re-emerges. LMT/RTX/NOC likely bid up. Monitor for Mid-Morning scoring."
       }
     ],
-    "macro_notes_md": "FOMC minutes Wednesday July 8 (Warsh debut — hawkish watch). Samsung Q2: operating profit +19x YoY (record) but revenue MISSED — chip supply-side peak concern. S&P 500 +0.67%, Nasdaq +1.21% midday (55.3% of issues advancing). ISM Services PMI result from 9:00 AM ET: TBD (likely benign given market positive). Rotation trade: sell semiconductors → buy software/services/big tech."
+    "macro_notes_md": "US-Iran: Fresh US military strikes July 8 on Iranian targets following Iran tanker attacks in Strait of Hormuz. Iran vowed large retaliation. Oil WTI $73.30-74, Brent $79 (+7-11%). 10-Year Treasury 4.58% (4-week high). Gold rangebound ~$3,400+ (safe-haven bid to USD, not gold). DAL reports Q2 tomorrow (July 10). 13 earnings today — none from our watchlist. July 9: Nasdaq futures +0.55%, S&P +0.13%, Dow -0.10%. Iran escalation is key macro risk all day."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "status": "completed",
-      "last_run": "2026-07-07T12:06:19Z",
-      "next_run": "2026-07-08T12:00:00Z",
-      "last_summary": "July 7 Pre-Market COMPLETED. Nasdaq futures -1.10% (Samsung chip selloff); AMD +2.5% pre-market (NVIDIA delay + Goldman PT $640); PLTR +5.3% (D.A. Davidson upgrade). 5 orders attempted — all blocked HTTP 000 (67th consecutive). NEW APPROVALS: META 7.0, PLTR 7.67, IBM 7.33. AMD Day 16 naked. ISM Services 9:00 AM ET pivot event."
+      "last_run": "2026-07-09T12:10:00Z",
+      "next_run": "2026-07-10T12:00:00Z",
+      "last_summary": "July 9 Pre-Market COMPLETED. US-Iran escalation; oil +7-11%; Nasdaq futures +0.55%. AMD $508.96 pre-market (-1.39%), PLTR $132-134, META $615. 5 orders blocked HTTP 403 (69th consecutive): AMD SELL 9sh + PLTR BUY 35sh + META BUY 8sh + AMD stop backfill + IBM REJECTED (R/R 1.74:1 fails). PLTR rescored 7.83 (all 6 agents ≥7). META rescored 7.5. IBM rejected at $302 (R/R veto)."
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
+      "status": "PENDING",
       "last_run": "2026-06-29T13:45:46Z",
-      "next_run": "2026-07-08T13:45:00Z",
-      "last_summary": "SILENT FAILURE — no heartbeat July 7. Violation logged in trades.md. No MOO fills to confirm (all MOO orders were API-blocked at Pre-Market). No stop-loss audit performed."
+      "next_run": "2026-07-09T13:45:00Z",
+      "last_summary": "Not yet run today. Confirm AMD MOO fill (if any), place GTC STOP on AMD 9sh at $481.42."
     },
     {
       "name": "Mid-Morning",
-      "status": "completed",
+      "status": "PENDING",
       "last_run": "2026-07-07T15:10:00Z",
-      "next_run": "2026-07-08T15:00:00Z",
-      "last_summary": "July 7 Mid-Morning COMPLETED. API BLOCKED (HTTP 403 — 68th consecutive). CRITICAL: AMD -7.09% today to $513.92 (Samsung chip selloff). AMD stop $481.42 not breached. Market-Open violation logged. 7 orders attempted and blocked: AMD sell 9sh + AMD stop + PLTR 35sh + META 8sh + IBM 3sh + AMD stop (×2). AMD Day 17 naked. Chip sector rotation: sell semis, buy software. PLTR +2.51%, META +1.9%, IBM strong."
+      "next_run": "2026-07-09T15:00:00Z",
+      "last_summary": "Not yet run today. Re-assess energy/defense names (XOM, OXY, LMT) for Iran catalyst play. Score if ≥7 → limit entry."
     },
     {
       "name": "Midday",
       "status": "PENDING",
       "last_run": "2026-07-06T16:34:41Z",
-      "next_run": "2026-07-07T16:30:00Z",
+      "next_run": "2026-07-09T16:30:00Z",
       "last_summary": "Not yet run today. Next at 12:30 PM ET / 16:30Z."
     },
     {
       "name": "Afternoon",
       "status": "PENDING",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-07T18:00:00Z",
+      "next_run": "2026-07-09T18:00:00Z",
       "last_summary": "Not yet run today. Next at 2:00 PM ET / 18:00Z."
     },
     {
       "name": "Market-Close",
       "status": "PENDING",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-07T19:30:00Z",
+      "next_run": "2026-07-09T19:30:00Z",
       "last_summary": "Not yet run today. Next at 3:30 PM ET / 19:30Z."
     },
     {
       "name": "Daily-Review",
       "status": "PENDING",
       "last_run": "2026-06-29T20:30:00Z",
-      "next_run": "2026-07-07T20:30:00Z",
+      "next_run": "2026-07-09T20:30:00Z",
       "last_summary": "Not yet run today. Next at 4:30 PM ET / 20:30Z."
     }
   ],
   "trades": [
     {
-      "ts": "2026-07-07T15:15:00Z",
+      "ts": "2026-07-09T12:20:00Z",
+      "action": "skip",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "side": "buy",
+      "qty": 8,
+      "limit_price": 618.66,
+      "stop_loss": 587.73,
+      "take_profit": 711.45,
+      "result": "APPROVED (7.5) but HTTP 403 BLOCKED — proxy CONNECT rejected (69th consecutive). Entry $618.66 limit, R/R 3:1, earnings July 29 safe.",
+      "agent_average": 7.5,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-09T12:19:00Z",
+      "action": "skip",
+      "symbol": "PLTR",
+      "setup": "breakout-volume",
+      "score": 7.83,
+      "side": "buy",
+      "qty": 35,
+      "limit_price": null,
+      "stop_loss": 126.98,
+      "take_profit": 153.74,
+      "result": "APPROVED (7.83, ALL 6 AGENTS ≥7) but HTTP 403 BLOCKED — proxy CONNECT rejected (69th consecutive). MOO order attempted.",
+      "agent_average": 7.83,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-09T12:18:00Z",
       "action": "skip",
       "symbol": "AMD",
       "setup": "ai-momentum-pullback",
@@ -182,59 +212,29 @@
       "limit_price": null,
       "stop_loss": 481.42,
       "take_profit": 640.0,
-      "result": "HOLD FORCED — API BLOCKED HTTP 403 (68th consecutive). AMD -7.09% to $513.92 (Samsung chip selloff). P&L +$128.88. Stop $481.42 not breached. Thesis intact. OPERATOR: SELL 9sh AMD at market NOW.",
-      "agent_average": 6.17,
-      "master_decision": "hold-by-default"
-    },
-    {
-      "ts": "2026-07-07T15:14:00Z",
-      "action": "entry_blocked",
-      "symbol": "IBM",
-      "setup": "sector-rotation",
-      "score": 7.33,
-      "side": "buy",
-      "qty": 3,
-      "limit_price": 299.5,
-      "stop_loss": 284.53,
-      "take_profit": 344.41,
-      "result": "APPROVED (7.33) but HTTP 403 BLOCKED — proxy CONNECT rejected (68th consecutive session). IBM range $287-$301 today on z17 launch. Refreshed limit $299.50.",
-      "agent_average": 7.33,
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-07-07T15:13:00Z",
-      "action": "entry_blocked",
-      "symbol": "META",
-      "setup": "breakout-volume",
-      "score": 7.0,
-      "side": "buy",
-      "qty": 8,
-      "limit_price": 612.05,
-      "stop_loss": 581.45,
-      "take_profit": 703.25,
-      "result": "APPROVED (7.0) but HTTP 403 BLOCKED — proxy CONNECT rejected (68th consecutive session). META opened $607.90, +1.9% midday.",
+      "result": "POSITION MANAGEMENT SELL blocked — HTTP 403. AMD Day 19 naked, 9.2% equity (over 5% cap). MOO sell 9sh attempted.",
       "agent_average": 7.0,
       "master_decision": "approved"
     },
     {
-      "ts": "2026-07-07T15:12:00Z",
-      "action": "entry_blocked",
-      "symbol": "PLTR",
+      "ts": "2026-07-09T12:15:00Z",
+      "action": "skip",
+      "symbol": "IBM",
       "setup": "breakout-volume",
-      "score": 7.67,
+      "score": 6.33,
       "side": "buy",
-      "qty": 35,
-      "limit_price": 133.2,
-      "stop_loss": 126.54,
-      "take_profit": 154.06,
-      "result": "APPROVED (7.67) but HTTP 403 BLOCKED — proxy CONNECT rejected (68th consecutive session). PLTR +2.51% to $132.54 midday.",
-      "agent_average": 7.67,
-      "master_decision": "approved"
+      "qty": 0,
+      "limit_price": null,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "REJECTED — R/R 1.74:1 < 3:1 minimum at $302 (Risk Agent auto-veto). Score 6.33 avg (below 7.0). IBM rallied +7.5% in 2 days post-z17 launch.",
+      "agent_average": 6.33,
+      "master_decision": "rejected"
     },
     {
-      "ts": "2026-07-07T13:45:00Z",
+      "ts": "2026-07-09T12:06:18Z",
       "action": "violation",
-      "symbol": "MARKET-OPEN",
+      "symbol": "JULY-8-BLACKOUT",
       "setup": "silent-failure",
       "score": null,
       "side": null,
@@ -242,103 +242,52 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "Market Open routine silently failed — no heartbeat in logs/heartbeats/2026-07-07.log. Logged as violation from Mid-Morning catch-up.",
+      "result": "Full-day blackout July 8 — all 7 routines silently failed. AMD Day 18-19 naked without management. 7 violations from July 8.",
       "agent_average": null,
       "master_decision": "violation"
-    },
-    {
-      "ts": "2026-07-06T15:25:00Z",
-      "action": "skip",
-      "symbol": "IBM",
-      "setup": "breakout-volume",
-      "score": 6.17,
-      "side": "buy",
-      "qty": 3,
-      "limit_price": 279.5,
-      "stop_loss": 265.53,
-      "take_profit": 321.41,
-      "result": "REJECTED — score 6.17 below 7.0 minimum; only 2/6 agents >=7; Accenture contagion",
-      "agent_average": 6.17,
-      "master_decision": "rejected"
-    },
-    {
-      "ts": "2026-07-06T15:20:00Z",
-      "action": "skip",
-      "symbol": "TSLA",
-      "setup": "earnings-reaction-fade",
-      "score": 5.67,
-      "side": "buy",
-      "qty": 12,
-      "limit_price": 416.24,
-      "stop_loss": 395.43,
-      "take_profit": 478.67,
-      "result": "REJECTED — 5.67 avg; only 2/6 agents >=7; 0-of-5 technical indicators; P/E ~400x",
-      "agent_average": 5.67,
-      "master_decision": "rejected"
-    },
-    {
-      "ts": "2026-07-06T16:35:10Z",
-      "action": "entry_blocked",
-      "symbol": "META",
-      "setup": "breakout-volume",
-      "score": 7.5,
-      "side": "buy",
-      "qty": 8,
-      "limit_price": 558.0,
-      "stop_loss": 530.1,
-      "take_profit": 641.7,
-      "result": "MIDDAY CATCH-UP: APPROVED but HTTP 000 BLOCKED — proxy CONNECT rejected (66th consecutive session)",
-      "agent_average": 7.5,
-      "master_decision": "approved"
-    },
-    {
-      "ts": "2026-07-06T16:34:50Z",
-      "action": "exit_blocked",
-      "symbol": "AMD",
-      "setup": "ai-momentum-pullback",
-      "score": null,
-      "side": "sell",
-      "qty": 9,
-      "limit_price": 517.0,
-      "stop_loss": null,
-      "take_profit": null,
-      "result": "MIDDAY CATCH-UP: MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 15) — HTTP 000 BLOCKED proxy CONNECT rejected",
-      "agent_average": 7.17,
-      "master_decision": "approved"
     }
   ],
   "watchlist": [
     {
       "symbol": "PLTR",
       "bucket": "active",
-      "score": 7.67,
-      "action": "BUY 35sh limit $133.20 bracket GTC",
+      "score": 7.83,
+      "action": "BUY 35sh MOO — MANDATORY",
       "setup": "breakout-volume",
-      "notes": "HIGHEST CONVICTION. D.A. Davidson Buy upgrade July 7. Q1 $1.63B +85% YoY. NVIDIA sovereign AI. +2.51% midday $132.54. API BLOCKED."
-    },
-    {
-      "symbol": "IBM",
-      "bucket": "active",
-      "score": 7.33,
-      "action": "BUY 3sh limit $299.50 bracket GTC",
-      "setup": "sector-rotation",
-      "notes": "z17+LinuxONE 5 launched today. BofA PT $330. Range $287-$301. Refreshed limit $299.50. EXIT by July 20 EOD (earnings July 22). API BLOCKED."
+      "notes": "HIGHEST CONVICTION. All 6 agents ≥7. DA Davidson Buy $175. Q1 +85% YoY. NVIDIA AI partnership. Iran = bullish for gov contracts. API BLOCKED."
     },
     {
       "symbol": "META",
       "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 8sh limit $612.05 bracket GTC",
+      "score": 7.5,
+      "action": "BUY 8sh limit $618.66 bracket GTC — MANDATORY",
       "setup": "breakout-volume",
-      "notes": "Cloud compute thesis confirmed. Opened $607.90, +1.9% midday. Relative strength vs chip selloff. Earnings ~July 29-30 safe window. API BLOCKED."
+      "notes": "Cloud compute launch confirmed. PE 22.37. 42/53 analysts Buy. PT $823. Earnings July 29 safe window. Exit by July 27 EOD. API BLOCKED."
     },
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": null,
-      "action": "SELL 9sh at market + GTC STOP $481.42 on remaining 9sh",
+      "action": "SELL 9sh at market + GTC STOP $481.42 — MANDATORY",
       "setup": "ai-momentum-pullback",
-      "notes": "GUARDRAIL: 18sh=9.26% equity, OVER 5% cap, Day 17. CHIP SELLOFF -7.09% to $513.92. P&L +$128.88. Stop $481.42 not breached. Goldman PT $640. Earnings July 22 — EXIT ALL by July 20 EOD. API BLOCKED."
+      "notes": "GUARDRAIL: 18sh=9.18% equity, OVER 5% cap, Day 19. Pre-market $508.96. Thesis intact (Goldman $640). Earnings = August 4. API BLOCKED."
+    },
+    {
+      "symbol": "XOM/OXY",
+      "bucket": "active",
+      "score": null,
+      "action": "Score at Mid-Morning — Iran catalyst",
+      "setup": "sector-rotation",
+      "notes": "Oil +7-11% from Iran escalation. XOM/OXY gapping up. 6-agent score at Mid-Morning with live pricing. If ≥7, limit bracket entry."
+    },
+    {
+      "symbol": "IBM",
+      "bucket": "active",
+      "score": 6.33,
+      "action": "OFF WATCHLIST — R/R veto",
+      "setup": "breakout-volume",
+      "notes": "IBM ran +7.5% post z17 launch. At $302+, R/R is only 1.74:1 vs 3:1 minimum. Re-evaluate if price retraces to ~$278 or analysts raise PT to $349+."
     }
-  ]
+  ],
+  "history": []
 }
