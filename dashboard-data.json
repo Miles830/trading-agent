@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-06T15:25:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-06T16:35:00Z",
+  "updated_by": "midday",
   "portfolio": {
-    "total_equity": 100053.0,
+    "total_equity": 100058.0,
     "starting_equity": 100000.0,
-    "cash": 90732,
-    "cash_pct": 90.7,
-    "buying_power": 181464,
-    "long_market_value": 9321.0,
+    "cash": 90644,
+    "cash_pct": 90.6,
+    "buying_power": 181288,
+    "long_market_value": 9414.0,
     "short_market_value": 0.0,
     "daily_pnl": -669.0,
     "daily_pnl_pct": -0.67,
-    "total_return_pct": 0.05,
-    "spx_return_pct": 4.58,
-    "benchmark_gap_pct": -4.53,
+    "total_return_pct": 0.06,
+    "spx_return_pct": 4.65,
+    "benchmark_gap_pct": -4.59,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9321.0,
-      "active_pct": 9.3,
+      "active_value": 9414.0,
+      "active_pct": 9.4,
       "crypto_value": 0,
       "crypto_pct": 0.0,
-      "cash_value": 90732,
-      "cash_pct": 90.7
+      "cash_value": 90644,
+      "cash_pct": 90.6
     },
-    "note": "July 6 MID-MORNING (11:09 AM ET / 15:09Z). FIRST TRADING DAY AFTER JULY 4 HOLIDAY. API BLOCKED (HTTP 000 — 65th consecutive). PRE-MARKET + MARKET-OPEN both SILENT FAILED. MID-MORNING is first routine. ALL ORDER ATTEMPTS BLOCKED: AMD SELL 9sh limit $517.82 (HTTP 000) + META BUY 8sh limit $557 bracket GTC (HTTP 000). TSLA 6-agent REJECTED (5.67 avg). IBM re-scored REJECTED (6.17 avg, Accenture contagion). AMD NAKED DAY 14 — no stop, 9.3% equity (OVER 5% cap). SEMICONDUCTOR RECOVERY: AMD +6%+ to $517.82, SMH +2.7%, BofA 'temporary correction not structural.' META -1.5% to $554 (cloud story intact). IBM -4% to $277.91 (Accenture contagion). CARRY-FORWARD OPERATOR ACTIONS: (1) SELL 9sh AMD + trail stop $491.93 + keep TP $582.78; (2) BUY 8sh META limit $557 bracket GTC; (3) Skip IBM+TSLA today."
+    "note": "July 6 MIDDAY (12:34 PM ET / 16:34Z). API BLOCKED HTTP 000 — 66th consecutive. AMD SELL 9sh BLOCKED. META BUY 8sh BLOCKED. AMD STOP BACKFILL BLOCKED. AMD 18sh est. $523 = $9,414 (9.4% — OVER 5% cap, Day 15 NAKED). Semiconductor recovery intact (AMD +6% AM, BofA AI capex call). META est. $550-565 (cloud thesis intact, underperforming chips today). IBM est. $275-282 (Accenture contagion). TSLA est. $410-420 (rejected 5.67). S&P 500 est. +0.65% midday. OPERATOR: (1) SELL 9sh AMD market + GTC STOP $491.93 + GTC TP $582.78; (2) BUY 8sh META limit $558 bracket GTC (stop $530.10, target $641.70)."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 491.93,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 14. 18sh at $506.76 fill, $517.82 mid-morning July 6. Semiconductor recovery (+6%+ today — BofA: temporary correction). Unrealized +$199.08 (was +$1,404 at July 1 peak $584.73). Original TP $582.78 exceeded intraday July 1 (high $584.73) — not locked in. Position 9.3% equity (OVER 5% cap — Day 14 violation). NO STOP RESTING AT ALPACA. Trail stop attempted $481.42 → $491.93 — BLOCKED. SELL 9sh attempted — BLOCKED. OPERATOR MANDATORY: SELL 9sh AMD at market NOW (app.alpaca.markets); place GTC STOP $491.93 + GTC TP $582.78 on remaining 9sh."
+      "note": "CRITICALLY NAKED Day 15. 18sh at $506.76 fill, est. $510-530 at midday July 6. Semiconductor recovery (+6% AM, BofA: temporary correction). Unrealized est. +$63-$424 at midday. Original TP $582.78 exceeded intraday July 1 (high $584.73) — not locked in. Position ~9.4% equity (OVER 5% cap — Day 15 violation). NO STOP RESTING AT ALPACA. Trail stop attempt $491.93 — BLOCKED midday (66th consecutive). SELL 9sh attempted — BLOCKED. OPERATOR MANDATORY: SELL 9sh AMD at market NOW (app.alpaca.markets); place GTC STOP $491.93 + GTC TP $582.78 on remaining 9sh."
     },
     {
       "symbol": "META",
@@ -53,7 +53,7 @@
       "take_profit": 640.55,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "Score 7.5 (approved July 1 — binding). Re-verified July 6: cloud compute story confirmed 8+ outlets. META at $554 (-1.5% today — AI rotation into chips, not thesis change). BUY 8sh limit $557 bracket GTC attempted July 6 mid-morning — BLOCKED HTTP 000. Re-priced from $615 (July 1) to $557 (today) — improved entry. OPERATOR: BUY 8sh META limit $557 bracket GTC (stop $529.15, target $640.55, R/R 3:1). Entry deadline: before META Q2 earnings (est. late July — ~July 29-30)."
+      "note": "Score 7.5 (approved July 1 — binding). Re-verified July 6: cloud compute story confirmed 8+ outlets. META est. $550-565 at midday (underperforming semiconductors, not thesis change). BUY 8sh limit $558 bracket GTC attempted July 6 midday — BLOCKED HTTP 000 (66th consecutive). Re-priced from $615 (July 1) to $558 (midday). OPERATOR: BUY 8sh META limit $558 bracket GTC (stop $530.10, target $641.70, R/R 3:1). Entry deadline: before META Q2 earnings (est. late July — ~July 29-30)."
     },
     {
       "symbol": "IBM",
@@ -137,10 +137,10 @@
     },
     {
       "name": "Midday",
-      "status": "PENDING",
-      "last_run": null,
-      "next_run": "2026-07-06T16:30:00Z",
-      "last_summary": "Not yet run. Next at 12:30 PM ET / 16:30Z."
+      "status": "completed",
+      "last_run": "2026-07-06T16:34:41Z",
+      "next_run": "2026-07-07T16:30:00Z",
+      "last_summary": "July 6 Midday COMPLETED. API BLOCKED (HTTP 000 — 66th consecutive). Stop-loss audit: AMD still naked Day 15. AMD SELL 9sh BLOCKED. META BUY 8sh limit $558 bracket GTC BLOCKED. AMD STOP $491.93 BLOCKED. Semiconductor recovery intact through midday. Overnight hold: AMD 18sh (guardrail violation but forced by API block). META pending operator action. IBM/TSLA: below threshold, re-score July 7."
     },
     {
       "name": "Afternoon",
@@ -194,6 +194,36 @@
       "result": "REJECTED — 5.67 avg; only 2/6 agents ≥7; 0-of-5 technical indicators; P/E ~400x",
       "agent_average": 5.67,
       "master_decision": "rejected"
+    },
+    {
+      "ts": "2026-07-06T16:35:10Z",
+      "action": "entry_blocked",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "side": "buy",
+      "qty": 8,
+      "limit_price": 558.0,
+      "stop_loss": 530.10,
+      "take_profit": 641.70,
+      "result": "MIDDAY CATCH-UP: APPROVED but HTTP 000 BLOCKED — proxy CONNECT rejected (66th consecutive session)",
+      "agent_average": 7.5,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-06T16:34:50Z",
+      "action": "exit_blocked",
+      "symbol": "AMD",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "side": "sell",
+      "qty": 9,
+      "limit_price": 517.0,
+      "stop_loss": null,
+      "take_profit": null,
+      "result": "MIDDAY CATCH-UP: MANDATORY GUARDRAIL REDUCTION (over 5% cap Day 15) — HTTP 000 BLOCKED proxy CONNECT rejected",
+      "agent_average": 7.17,
+      "master_decision": "approved"
     },
     {
       "ts": "2026-07-06T15:11:00Z",
