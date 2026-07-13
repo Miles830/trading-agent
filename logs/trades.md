@@ -4,6 +4,285 @@
 
 ---
 
+## 2026-07-13 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 76th+ consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-13T18:08:00Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT HTTP 000 — `paper-api.alpaca.markets:443` and `data.alpaca.markets:443` not in egress allowlist — **76th+ consecutive blocked session**
+**Current Time:** 18:08Z = 2:08 PM ET — Afternoon window (2:00 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+```
+logs/heartbeats/2026-07-13.log:
+  2026-07-13T13:45:41Z STARTED Market-Open
+  2026-07-13T13:50:48Z COMPLETED Market-Open
+  2026-07-13T18:08:00Z STARTED Afternoon
+  (no Mid-Morning STARTED entry)
+  (no Midday STARTED entry)
+```
+
+- Pre-Market July 13: ❌ **SILENT FAILURE** (logged by Market-Open)
+- Market-Open July 13: ✅ COMPLETED 13:50Z
+- Mid-Morning July 13: ❌ **SILENT FAILURE** — no heartbeat entry
+- Midday July 13: ❌ **SILENT FAILURE** — no heartbeat entry
+
+```yaml
+---
+ts: 2026-07-13T18:08:00Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Mid-Morning (11:00 AM ET) routine did not fire on July 13 — no heartbeat log entry
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Silent failure — Mid-Morning did not heartbeat. Scheduling gap in cloud runner. 3 of 6 predecessor routines today did not fire (Pre-Market, Mid-Morning, Midday).
+---
+```
+
+```yaml
+---
+ts: 2026-07-13T18:08:01Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday (12:30 PM ET) routine did not fire on July 13 — no heartbeat log entry
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Silent failure — Midday did not heartbeat. Cloud runner scheduling gap.
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED)
+
+```bash
+# ATTEMPT 1: Open orders audit
+curl -s "${APCA_API_BASE_URL}/v2/orders?status=open" -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..."
+# RESULT: HTTP 000 — proxy CONNECT rejected (76th+ consecutive session)
+
+# ATTEMPT 2: AMD SELL 9sh (reduce over-cap 9.2% position to ~4.6%)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"day"}'
+# RESULT: HTTP 000 — BLOCKED
+
+# ATTEMPT 3: AMD GTC STOP $481.42 (5% below $506.76 avg)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 000 — BLOCKED
+
+# ATTEMPT 4: PLTR BUY 35sh limit bracket GTC (score 7.67)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"PLTR","qty":35,"side":"buy","type":"limit","limit_price":"133.20","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"126.54"},"take_profit":{"limit_price":"154.06"}}'
+# RESULT: HTTP 000 — BLOCKED
+
+# ATTEMPT 5: META BUY 8sh limit bracket GTC (score 7.0)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"612.05","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"581.45"},"take_profit":{"limit_price":"703.85"}}'
+# RESULT: HTTP 000 — BLOCKED
+
+# ATTEMPT 6: IBM BUY 3sh limit bracket GTC (score 7.33) — DEADLINE JULY 17 EOD
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"299.50","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"284.53"},"take_profit":{"limit_price":"344.41"}}'
+# RESULT: HTTP 000 — BLOCKED
+```
+
+```yaml
+---
+ts: 2026-07-13T18:09:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD 18sh naked Day 22+ — over 5% cap at ~9.2% equity — NO stop at Alpaca. CRITICAL DEADLINE July 17 EOD (AMD earnings July 22, 48h window opens July 20). API blocked, all remediation impossible.
+size_pct: 9.2
+stop: 481.42
+target: 582.78
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "CRITICAL MULTI-VIOLATION: (1) AMD 18sh at $506.76 avg (~9.2% equity) OVER 5% position cap. (2) NO resting stop at Alpaca for Day 22+. (3) AMD earnings July 22 — 48h window opens July 20 (Mon) — LAST SAFE EXIT = July 17 (Fri) EOD. Only 4 trading days remain (July 14/15/16/17). All stop and sell attempts blocked HTTP 000 (76th+ session). OPERATOR MUST ACT at app.alpaca.markets IMMEDIATELY: (A) SELL 9sh AMD at market NOW; (B) GTC STOP on 9sh AMD at $481.42; (C) GTC TAKE-PROFIT on 9sh AMD at $582.78; (D) EXIT ALL AMD by July 17 EOD before earnings window."
+---
+```
+
+```yaml
+---
+ts: 2026-07-13T18:09:30Z
+action: violation
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: PLTR score 7.67 approved July 7 — 6th consecutive routine unable to execute BUY 35sh due to API blockage. No valid skip exemption applies.
+size_pct: 4.65
+stop: 126.54
+target: 154.06
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: APPROVED July 7. 6th blocked attempt. PLTR price drift from $132.54 (July 7) unknown — last-known thesis intact (D.A. Davidson Buy upgrade, Q1 $1.63B +85% YoY, sovereign AI demand, NVDA Kyber delay beneficiary). Pre-Market July 14 MUST re-score and place MOO if price still valid. 35sh × ~$133 = ~$4,655 (~4.65% equity) within 5% cap. Risk: 5% stop → $481/position ÷ ~$99,895 = ~0.48% trade risk — within 1.5% limit. OPERATOR: BUY 35sh PLTR limit $133.20 bracket GTC stop $126.54 target $154.06.
+---
+```
+
+```yaml
+---
+ts: 2026-07-13T18:10:00Z
+action: violation
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: META score 7.0 approved July 7 — 6th consecutive routine unable to execute BUY 8sh due to API blockage.
+size_pct: 4.9
+stop: 581.45
+target: 703.85
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: APPROVED July 7. Last known price ~$607.90 (July 7). 8sh × ~$612 = ~$4,896 (~4.9% equity) within 5% cap. Earnings ~July 29-30 — safe window remains (6+ trading days). OPERATOR: BUY 8sh META limit current_ask×1.005 bracket GTC stop −5%, target +15%.
+---
+```
+
+```yaml
+---
+ts: 2026-07-13T18:10:30Z
+action: violation
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.33
+thesis: IBM score 7.33 approved July 7 — 6th consecutive blocked attempt. IBM EXIT DEADLINE = JULY 17 EOD (only 4 trading days remain before earnings 48h window).
+size_pct: 0.9
+stop: 284.53
+target: 344.41
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED July 7 — IBM earnings July 22 → 48h window opens July 20 (Mon) → LAST SAFE ENTRY = July 17 (Fri) — only 4 trading days remain. Entry AND exit must both happen by July 17 EOD. 3sh × ~$299.50 = ~$898 (0.9% equity). Risk: 5% stop = ~$45/position = $135 total ÷ $99,895 = 0.13% — well within 1.5% limit. z17/LinuxONE 5 catalyst intact. OPERATOR: BUY 3sh IBM limit $299.50 bracket GTC stop $284.53 target $344.41. MONITOR: IBM must be closed by July 17 EOD."
+---
+```
+
+---
+
+### MARKET ANALYSIS — JULY 13 AFTERNOON (ESTIMATED — NO API DATA)
+
+**Last confirmed data:** July 7, 2026 — 4 trading days stale
+**Missing data window:** July 8, 10, 11, 13 (today) — API blocked all days
+
+**Estimated market context (July 13):**
+- Q2 earnings season in full swing: JPM, WFC, Citi reported July 11 (reactions unknown)
+- AMD earnings July 22 — AMD price action from chip selloff ($513.92 on July 7) unknown
+- PLTR earnings typically late July — safe window for entry still open
+- IBM z17 catalyst from July 7 — likely consolidated or pulled back modestly
+- S&P 500: was ~7,587 (+5.37% from May 1 baseline) — likely range-bound to +6% given earnings season
+
+**Day trades to close:** NONE (no day trades open — AMD is swing position)
+**MOC orders needed:** NONE (no day trades to flatten)
+
+**Swing position review:**
+- AMD: Only confirmed position. Day 22+ naked. Last price $513.92 (July 7 — stale). MUST EXIT by July 17 EOD.
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (Pre-Market July 14, 2026)
+
+**CARRY-FORWARD (re-score at open):**
+
+1. **PLTR** — Score 7.67 (Highest Conviction)
+   - Setup: `ai-momentum-pullback`
+   - Thesis: D.A. Davidson Buy, Q1 +85% YoY revenue, sovereign AI demand
+   - Pre-Market action: MOO 35sh if score ≥ 7 still holds (price target: ~$133 entry)
+   - Stop: −5% | Target: +15% | R/R 3:1
+   - Priority: #1 — highest scored name, 6 consecutive blocked entries
+
+2. **IBM** — Score 7.33 (**DEADLINE: MUST ENTER BY JULY 17 EOD**)
+   - Setup: `sector-rotation`
+   - Thesis: z17 + LinuxONE 5 launch, BofA PT $330, mainframe refresh cycle
+   - Pre-Market action: MOO 3sh (small position — IBM R/R tight but thesis intact)
+   - Stop: −5% ($284.53) | Target: +15% ($344.41)
+   - **EXIT DEADLINE: July 17 EOD** — earnings July 22, 48h window opens July 20
+   - Priority: #2 — deadline pressure, must enter AND exit by July 17
+
+3. **META** — Score 7.0
+   - Setup: `breakout-volume`
+   - Thesis: Cloud compute launch, AI monetization, big tech resilience
+   - Pre-Market action: MOO 8sh if score ≥ 7 (price target: ~$612 entry)
+   - Stop: −5% ($581.45) | Target: +15% ($703.85) | R/R 3:1
+   - Earnings: ~July 29-30 — safe window
+   - Priority: #3
+
+**NEW SCAN TARGETS (Pre-Market July 14 — earnings season momentum):**
+
+4. **NFLX** — Earnings play candidate (reports ~July 15-16)
+   - Thesis: Q2 subscriber growth + ad-tier monetization — could be strong beat
+   - Setup: `earnings-reaction-follow` (post-print only — NO pre-earnings entry)
+   - Note: Check earnings date at Pre-Market — if earnings within 48h, SKIP
+   - Score: TBD (requires Pre-Market 6-agent analysis)
+
+5. **GS / MS** — Financials earnings reaction
+   - Thesis: Goldman Sachs and Morgan Stanley reporting mid-July — M&A revival, trading desk beats
+   - Setup: `earnings-reaction-follow` (post-print only)
+   - Score: TBD (requires Pre-Market 6-agent analysis)
+
+**AMD CRITICAL ACTION (July 14 Pre-Market):**
+- AMD must be reduced: SELL 9sh at market (MOO day order)
+- AMD GTC STOP on remaining 9sh at $481.42
+- IBM earnings July 22 and AMD earnings July 22 → both must be exited by July 17 EOD
+
+---
+
 ## 2026-07-13 — Market-Open (9:45 AM ET / 13:45 UTC — API BLOCKED — 75th+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Open 2026-07-13T13:45:41Z ✓
