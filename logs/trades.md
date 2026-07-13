@@ -302,6 +302,420 @@ master_notes: APPROVED (avg 7.5, Risk 7, 5/6 ≥7) — ORDER ATTEMPT BLOCKED HTT
 
 ---
 
+## 2026-07-13 — Market-Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 76th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-13T19:34:57Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` not in egress allowlist — **76th consecutive blocked session**
+**Data API Status:** BLOCKED (both `paper-api.alpaca.markets` and `data.alpaca.markets` — 403 egress policy denial)
+**Current Time:** 19:35Z = 3:35 PM ET — Market Close window (3:30–3:50 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — JULY 13, 2026
+
+```
+logs/heartbeats/2026-07-13.log (full content):
+  2026-07-13T13:45:41Z STARTED Market-Open   ← ✓ completed
+  2026-07-13T13:50:48Z COMPLETED Market-Open ← ✓
+  2026-07-13T19:34:57Z STARTED Market-Close  ← this routine
+```
+
+| Routine | Expected (ET) | Heartbeat | Status |
+|---|---|---|---|
+| Pre-Market | 8:00 AM / 12:00Z | ❌ MISSING | SILENT FAILURE (logged by Market-Open) |
+| Market-Open | 9:45 AM / 13:45Z | ✓ 13:45:41Z–13:50:48Z | COMPLETED |
+| Mid-Morning | 11:00 AM / 15:00Z | ❌ MISSING | SILENT FAILURE |
+| Midday | 12:30 PM / 16:30Z | ❌ MISSING | SILENT FAILURE |
+| Afternoon | 2:00 PM / 18:00Z | ❌ MISSING | SILENT FAILURE |
+| Market-Close | 3:30 PM / 19:30Z | ✓ 19:34:57Z | THIS ROUTINE |
+
+Logging YAML violations for the three missing routines not yet logged today:
+
+```yaml
+---
+ts: 2026-07-13T15:00:00Z
+action: violation
+symbol: MID-MORNING
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Mid-Morning routine did not fire on July 13 — no heartbeat log entry exists
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Silent failure — Mid-Morning routine (11:00 AM ET) did not heartbeat July 13. API still blocked. Stop-loss audit not performed this window.
+---
+```
+
+```yaml
+---
+ts: 2026-07-13T16:30:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday routine did not fire on July 13 — no heartbeat log entry exists
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Silent failure — Midday routine (12:30 PM ET) did not heartbeat July 13. API still blocked. No limit order cancellations or position reviews performed.
+---
+```
+
+```yaml
+---
+ts: 2026-07-13T18:00:00Z
+action: violation
+symbol: AFTERNOON
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Afternoon routine did not fire on July 13 — no heartbeat log entry exists
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: Silent failure — Afternoon routine (2:00 PM ET) did not heartbeat July 13. Afternoon is responsible for closing day trades and trailing-stop tightening. Not executed — Market-Close is performing catch-up.
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED)
+
+```bash
+# ATTEMPT: Verify all open positions have resting stop-loss orders at Alpaca
+curl -s "${APCA_API_BASE_URL}/v2/orders?status=open" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}"
+# RESULT: HTTP 403 — proxy CONNECT rejected — paper-api.alpaca.markets:443 not in egress allowlist (76th session)
+
+# ATTEMPT: Backfill AMD GTC stop ($481.42 = 5% below $506.76 avg)
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" \
+  -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected
+```
+
+**AMD naked position — Day 23 (CRITICAL GUARDRAIL VIOLATION — DAY 76 OF API BLOCKAGE):**
+- AMD: 18sh at $506.76 avg — **NO STOP-LOSS AT ALPACA** — Day 23+ naked
+- Last confirmed price: ~$513.92 (July 7 — 4 trading days stale, July 8/10/11/13 unknown)
+- Required stop: $481.42 (5% below $506.76 avg)
+- Position size: ~$9,250 est. (~9.25% equity — OVER 5% hard cap)
+- Stop order status: **UNKNOWN** (cannot verify at Alpaca — API blocked)
+
+```yaml
+---
+ts: 2026-07-13T19:36:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: AMD 18sh naked for Day 23+ — no verified stop-loss at Alpaca. API blocked 76th consecutive session. Position over 5% cap at ~9.25% equity.
+size_pct: 9.25
+stop: 481.42
+target: 582.78
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: CRITICAL GUARDRAIL VIOLATION — AMD 18sh at $506.76 avg (~9.25% equity, over 5% hard cap) has had NO verified resting stop at Alpaca for 23+ trading days. All API attempts HTTP 403. OPERATOR URGENT ACTION REQUIRED: (1) SELL 9sh AMD at market NOW to get under 5% cap; (2) GTC STOP $481.42 on remaining 9sh + GTC TP $582.78.
+---
+```
+
+---
+
+### MARKET CONDITIONS — JULY 13, 2026 (ALL ESTIMATED — NO API ACCESS)
+
+**Status:** API blocked (76th consecutive session). All market data stale as of July 7 close.
+**Last confirmed data (July 7, 2026 — 4 trading days stale):**
+- S&P 500: ~7,587 (close; +5.37% from May 1 baseline 7,200)
+- AMD: ~$513.92 (fell −7.09% on Samsung Q2 revenue miss)
+- PLTR: ~$132.54 (+2.51%, July 7 close)
+- META: ~$607–$610 (+1.9%, July 7)
+- IBM: ~$287–$301 range (z17 launch week)
+
+**Key events since July 7 (all outcomes unknown due to API blackout):**
+- July 8: Fed minutes released — market reaction unknown
+- July 10–11: Blackout (no heartbeat files)
+- July 11: JPM + WFC Q2 earnings — now past 48h window, entries allowed
+- July 14 (tomorrow): Q2 earnings continuing; economics calendar check needed
+- **IBM DEADLINE CRITICAL:** 4 trading days remain to enter IBM (last safe entry: July 17 EOD, earnings July 22)
+
+**Portfolio estimate (unchanged — no new data since July 7):**
+| | Estimated | % |
+|---|---|---|
+| Cash | ~$90,644 | ~90.7% |
+| AMD (18sh × ~$513.92 last known) | ~$9,250 | ~9.3% |
+| **Total Equity** | **~$99,894** | |
+| Portfolio return (vs $100k start) | ~−0.11% | |
+| S&P 500 return (May 1 baseline) | ~+5.37% | |
+| **Benchmark gap** | **~−5.48 pp** | |
+
+---
+
+### DAY TRADE CLOSE — AFTERNOON CATCH-UP
+
+Per close.md: "Close ALL remaining day trades immediately — no exceptions. Close all Afternoon misses via MOC."
+
+**Day trades open today:** None (no trades were entered today — all order attempts blocked at Market-Open)
+**Active position to close tonight:** None entered today
+**Afternoon catch-up close:** No open day trades to close (no entries executed)
+
+---
+
+### MOC ORDER ATTEMPTS — WATCHLIST DEPLOYMENT (MANDATORY OUTPUT CONTRACT)
+
+Per CLAUDE.md Deployment Bias: score ≥ 7 = ENTER at this routine (via MOC) if earlier routines failed to deploy. Attempting all three ≥7-score names:
+
+**PLTR — MOC entry (score 7.67 from July 7, carry-forward):**
+Refreshed limit estimate: $133.20 (July 7 close $132.54, stale; MOC = time_in_force=cls)
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"PLTR","qty":35,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (76th consecutive session — egress policy denial)
+```
+
+```yaml
+---
+ts: 2026-07-13T19:37:00Z
+action: violation
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: PLTR AI/data platform — D.A. Davidson Buy upgrade, Q1 $1.63B +85% YoY, NVIDIA sovereign AI. MOC entry attempted. HTTP 403 blocked.
+size_pct: 4.65
+stop: 126.54
+target: 154.06
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: APPROVED (avg 7.67, Risk 7, 5/6 ≥7) — MOC attempt HTTP 403 BLOCKED (76th consecutive session). Not a valid skip exemption per CLAUDE.md. OPERATOR: BUY 35sh PLTR at market or limit ~$133.20 with bracket GTC stop $126.54, target $154.06.
+---
+```
+
+**IBM — MOC entry (score 7.33 from July 7, carry-forward — DEADLINE July 17):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"IBM","qty":3,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (76th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-13T19:37:30Z
+action: violation
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.33
+thesis: IBM z17+LinuxONE 5 launch, AI mainframe cycle, BofA PT $330. MOC entry attempted. HTTP 403 blocked. ⚠️ DEADLINE: Must enter by July 17 EOD (earnings July 22).
+size_pct: 0.9
+stop: 284.53
+target: 344.41
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: APPROVED (avg 7.33, Risk 8, 4/6 ≥7) — MOC attempt HTTP 403 BLOCKED (76th consecutive session). ⚠️ DEADLINE CRITICAL — IBM earnings July 22, 48h window July 20. Last safe trade date = July 17 (4 trading days). If API not restored by July 17 COB, this entry is permanently missed. OPERATOR: BUY 3sh IBM limit ~$301.00 bracket GTC.
+---
+```
+
+**META — MOC entry (score 7.0 from July 7, carry-forward):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":8,"side":"buy","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (76th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-13T19:38:00Z
+action: violation
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.0
+thesis: META cloud compute service launch, relative strength vs chip selloff (+1.9% July 7). MOC entry attempted. HTTP 403 blocked.
+size_pct: 4.9
+stop: 581.45
+target: 703.85
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: APPROVED (avg 7.0, Risk 7, 6/6 ≥7) — MOC attempt HTTP 403 BLOCKED (76th consecutive session). OPERATOR: BUY 8sh META limit ~$612.05 bracket GTC, stop $581.45, target $703.85. Verify earnings date (est. July 29-30) before entry.
+---
+```
+
+**AMD — MOC size reduction (guardrail compliance):**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: ${APCA_API_KEY_ID}" -H "APCA-API-SECRET-KEY: ${APCA_API_SECRET_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (76th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-13T19:38:30Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: AMD 18sh = ~9.25% equity, hard cap 5%. Mandatory MOC sell-9 to reduce to ~4.6%. HTTP 403 blocked.
+size_pct: 9.25
+stop: 481.42
+target: 582.78
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: GUARDRAIL VIOLATION — mandatory position reduction cannot execute. AMD 18sh at ~9.25% equity (hard cap 5%). MOC sell 9sh blocked HTTP 403. OPERATOR URGENT: SELL 9sh AMD at next available price; place GTC STOP $481.42 + TP $582.78 on remaining 9sh. Note: AMD earnings July 22 → EXIT ALL by July 20 EOD.
+---
+```
+
+---
+
+### OVERNIGHT POSITION REVIEW
+
+| Symbol | Qty | Entry | Last Price | P&L est | Stop | Stop Status | Notes |
+|---|---|---|---|---|---|---|---|
+| AMD | 18sh | $506.76 | ~$513.92 (July 7 stale) | ~+$128.88 (+1.41%) | $481.42 (intent) | **NAKED — NOT CONFIRMED AT ALPACA** | Day 23+ violation. Over 5% cap. Earnings July 22 — EXIT ALL by July 20 EOD |
+
+**Overnight positions without confirmed stop-loss:** AMD (critical)
+**Total naked positions:** 1 (AMD)
+
+---
+
+### STALE LIMIT ORDER CANCELLATION
+
+**Assessment:** Cannot verify open orders at Alpaca (API blocked). Based on prior session records, the following limit orders may be stale or expired:
+- PLTR: bracket limit buy $133.20 placed July 7 — assumed expired (day order) or may be GTC and still live
+- META: bracket limit buy $612.05 placed July 7 — price may have moved significantly in 4 trading days
+- IBM: bracket limit buy $299.50 placed July 7 — price may have moved; deadline approaching
+
+**Action:** Cannot cancel via API. No cancellations executed. Operator should verify and refresh/cancel stale orders at app.alpaca.markets.
+
+---
+
+### TODAY'S P&L SUMMARY (ESTIMATED)
+
+| Metric | Value |
+|---|---|
+| Starting equity (paper, May 1) | $100,000.00 |
+| Estimated current equity | ~$99,894 (stale — AMD price July 7) |
+| Today's daily P&L | **UNKNOWN** (no API access, no price data) |
+| Total return to date | ~−0.11% (stale estimate) |
+| S&P 500 return (May 1 baseline) | ~+5.37% (July 7 last known) |
+| Benchmark gap | ~−5.48 pp (cumulative, stale) |
+| Trading days underperforming SPX | 20+ (API blockage = zero trades deployed vs rising market) |
+
+**3% daily-loss circuit breaker:** Not triggered (no new price data to evaluate — last known AMD P&L +1.41%, no other positions)
+
+---
+
+### TOMORROW'S KEY EVENTS & WATCHLIST (JULY 14, 2026)
+
+**Earnings calendar (approximate — verify at Alpaca/Finviz tomorrow):**
+- Q2 earnings season in full swing — multiple large-caps reporting
+- **IBM: Earnings July 22 (4 trading days to enter before 48h window = July 20)**
+- AMD: Earnings July 22 — must EXIT ALL AMD by July 20 EOD (2 weeks from today)
+- PLTR: No imminent earnings — safe entry window
+
+**Watchlist carry-forward (ALL pending operator execution):**
+| Symbol | Score | Action | Setup | Notes |
+|---|---|---|---|---|
+| PLTR | 7.67 | BUY 35sh MOO or limit bracket GTC | ai-momentum-pullback | Highest conviction. Carry day 5. |
+| IBM | 7.33 | BUY 3sh MOO or limit bracket GTC | sector-rotation | ⚠️ DEADLINE July 17 EOD — 4 days left |
+| META | 7.0 | BUY 8sh limit bracket GTC | breakout-volume | Verify earnings date before entry |
+| AMD | — | SELL 9sh + GTC STOP $481.42 on 9sh | — | Guardrail compliance + earnings exit |
+
+---
+
+⚠️⚠️⚠️ **OPERATOR MANDATORY ACTIONS AT app.alpaca.markets (URGENT — SAME AS PRIOR SESSIONS):**
+1. **SELL 9sh AMD at market** (reduce ~9.25% → ~4.6% equity — guardrail violation ongoing Day 23+)
+2. **GTC STOP on remaining 9sh AMD at $481.42** + GTC take-profit $582.78
+3. **BUY 35sh PLTR** — limit $133.20 bracket GTC (or MOO tomorrow) — stop $126.54, target $154.06
+4. **BUY 3sh IBM limit ~$301.00 bracket GTC** (stop $284.53, target $344.41) — **⚠️ LAST 4 DAYS (July 14–17)**
+5. **BUY 8sh META limit ~$612.05 bracket GTC** (stop $581.45, target $703.85) — verify earnings date
+6. **Plan AMD exit**: AMD earnings July 22 → must SELL ALL 9sh (or remaining after #1) by July 20 EOD
+
+---
+
 ## 2026-07-09 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 71st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-09T15:10:36Z ✓
