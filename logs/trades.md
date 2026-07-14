@@ -4,6 +4,365 @@
 
 ---
 
+## 2026-07-14 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 77th+ consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-14T12:05:07Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 — `paper-api.alpaca.markets:443` — **77th+ consecutive blocked session**
+**Market Status:** Pre-market (8:05 AM ET). Trading day confirmed. CPI June 2026 releases at 8:30 AM ET — NOT YET PUBLISHED at time of routine execution.
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO` (not configured in session environment). Sentiment Agent degraded gracefully; X sentiment scoring omitted per CLAUDE.md fallback rules.
+
+---
+
+### MARKET CONDITIONS — July 14, 2026
+
+**US Futures (pre-market):** Mixed / slight risk-off lean
+- S&P 500 futures: −0.2% | Nasdaq 100: +0.2% (AI tech resilient) | Dow: −0.3% to −0.6%
+- 10-year Treasury: ~4.59% (rate hike narrative persists under Warsh)
+
+**CPI June 2026 (8:30 AM ET — NOT YET RELEASED):**
+- Consensus: Headline 3.8%–3.9% YoY (down from 4.2% May, driven by gasoline −10% June on Iran ceasefire)
+- Core consensus: 2.8%–2.9% MoM still sticky at ~0.3%
+- Fed watch: Markets pricing September HIKE (not cut) — Warsh hawkish bias
+- Kevin Warsh gives inaugural Congressional testimony today — key event
+
+**Macro Narrative — Three Colliding Forces:**
+1. US-Iran Strait of Hormuz conflict escalating (Trump blockade announced; Brent crude $85+ = oil/energy bullish, equities headwind)
+2. Bank earnings BROAD BLOWOUT (GS +45% vs consensus, JPM +5.5% beat, BAC +7.7% beat, WFC +16.3% beat — record revenues)
+3. CPI + Warsh testimony = rate uncertainty (hot core CPI = risk-off; cool = relief rally)
+
+**Pre-market movers >2%:** AMD +2.6% ($548.30, BofA PT $550→$620); APP −12.65%; MU −5%; GS strongly up on beat; META −2.02% ($603.12); IBM −1.33% ($302.05); VG +9.15% (EnBW LNG deal)
+
+**Semiconductor sector:** MU −5%, SK Hynix −9% — crowding unwind vs AMD bucking (server/cloud demand)
+
+**Bitcoin:** Est. ~$65,000 area (below $82K crypto threshold — no crypto entries)
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED 77th consecutive)
+
+```bash
+# GET /v2/orders?status=open — HTTP 000 (proxy CONNECT rejected)
+# All audit calls blocked. Estimated state from last known data:
+# AMD 18sh — NO STOP AT ALPACA (Day 23+ naked — CRITICAL GUARDRAIL VIOLATION)
+# No other open positions confirmed (all prior entries blocked)
+```
+
+**AMD naked position — Day 23+ (CRITICAL, UNRESOLVED):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA
+- Pre-market July 14: $548.30 (+2.6% today, +8.2% from avg)
+- Unrealized P&L est: 18 × ($548.30 − $506.76) = $747.72 (+8.2%)
+- Position value est: 18 × $548.30 = $9,869.40 (~9.83% equity — OVER 5% cap by nearly 5%)
+- BofA raised AMD PT $550→$620 (fresh positive catalyst)
+- OPERATOR MUST SELL 9sh AMD at open TODAY — see order attempts below
+
+---
+
+### 6-AGENT ANALYSIS
+
+#### Candidate 1: GS (Goldman Sachs) — NEW: Earnings-reaction-follow
+
+**Sub-Agent 1 — Fundamentals: 10/10**
+Q2 2026 EPS $20.98 vs $14.51 estimate (+$6.47 beat, +45% above consensus). Revenue $20.34B vs $16.22B (+25% beat). Net earnings $6.63B. ROE 23.5%, ROTE 25.5%. Record net revenues and diluted EPS for Q2 2026 per company release. Best fundamental surprise in this portfolio's universe in any quarter.
+
+**Sub-Agent 2 — Technical: 5/10**
+Earnings-day gap-up entry carries significant reversal risk. No confirmed pre-market GS price (estimating $630–$660 range on +5–8% gap from ~$625 prior close). Gap-up buying has poor timing dynamics: initial enthusiasm fades; best entries on earnings beats are often the first pullback, not the open. 5-min candlestick data unavailable (API blocked). Indicator stack cannot be confirmed. Score constrained to 5 due to gap-up entry risk and lack of live technical confirmation.
+
+**Sub-Agent 3 — Sentiment: 9/10**
+Record Q2 print guaranteed to dominate financial media today (CNBC, Bloomberg, WSJ). GS is a sentiment bellwether — a +45% consensus beat creates extremely positive narrative for banking sector and risk assets broadly. Investment banking recovery narrative confirmed. Short interest likely low. Options flow unavailable (API blocked). X sentiment: NOT AVAILABLE (xAI key not configured). Base sentiment score 9 without X modifier.
+
+**Sub-Agent 4 — Macro: 7/10**
+Iran risk-off is negative for equities broadly but financials benefit from volatile markets (trading revenues spike on geopolitical events). GS capital markets division likely benefited FROM the Iran volatility in Q2. Rate hike risk is a mild headwind for financial valuations but GS P/E is reasonable. Warsh testimony adds uncertainty. Net: mixed-to-positive for GS specifically.
+
+**Sub-Agent 5 — Risk: 6/10**
+GS est. ~$645 (post-earnings gap). 7sh × $645 = $4,515 = 4.5% equity (under 5% cap ✓). Stop at 5% below fill: ~$612.75. Target +15%: ~$741.75. R/R = 3:1 ✓. Trade risk: 5% × $4,515 = $225.75 = 0.23% equity (under 1.5% ✓). Sector (Financials): 4.5% (under 25% ✓). Cash after: ~$90,644 − $4,515 = ~$86,129 (86% — above 5% floor ✓). Risk score: 6 (the gap-up entry means stop is larger in dollar terms than ideal; entry at unknown open price adds uncertainty).
+
+**Sub-Agent 6 — Tech Analyst: 7/10**
+GS is a financial institution, not a technology company. Auto-score 7 per CLAUDE.md — defers to other agents for non-tech positions. Note: GS does have significant technology platforms (Goldman's engineering investment, transaction banking tech stack) but core thesis is financial performance.
+
+**Master Agent — GS:**
+- Fundamentals: 10 | Technical: 5 | Sentiment: 9 | Macro: 7 | Risk: 6 | Tech Analyst: 7
+- Average: (10+5+9+7+6+7)/6 = **7.33** ✓
+- Agents ≥7: Fundamentals (10), Sentiment (9), Macro (7), Tech Analyst (7) = **4 agents** ✓
+- Risk Agent: 6 ✓ (≥6 required)
+- **MASTER DECISION: APPROVED — 7.33 avg, 4/6 agents ≥7, Risk 6**
+
+```yaml
+---
+ts: 2026-07-14T12:10:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: GS Q2 2026 blowout — EPS $20.98 vs $14.51 est (+45% beat), revenue $20.34B vs $16.22B; record quarter drives MOO entry
+size_pct: 4.5
+stop: 612.75
+target: 741.75
+result_pct:
+agent_scores:
+  fundamentals: 10
+  technical: 5
+  sentiment: 9
+  macro: 7
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "Approved: F(10) S(9) M(7) TA(7) all ≥7. Technical(5) below threshold — gap-up entry risk on earnings day. Risk(6) barely clears — entry price unknown until open. GS beat is extraordinary: +45% vs consensus, record revenues. Financials benefit from volatile-market trading revenues (Iran geopolitical). Warsh testimony could add rate uncertainty. xAI Grok API N/A — key not configured. ORDER ATTEMPTED: POST /v2/orders 7sh GS MOO → HTTP 000 (77th consecutive block). OPERATOR MUST EXECUTE at app.alpaca.markets: BUY 7sh GS at market open; stop at fill×0.95; take-profit at fill×1.15."
+---
+```
+
+---
+
+#### Candidate 2: META (Meta Platforms) — Prior commitment, re-scored today
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q1 2026 EPS $7.29 vs $6.74 est (+8.2% beat); revenue $47.4B +27% YoY (from prior scoring). Meta Compute division newly launched (cloud infrastructure revenue stream). "Iris" custom AI chip launching September 2026 — vertical integration path mirrors Apple's M-series moat. P/E ~27x (reasonable for 27%+ revenue growth). Analyst PT $743 from one firm. Strong margins expanding.
+
+**Sub-Agent 2 — Technical: 6/10**
+Pre-market: $603.12 (−2.02%). Prior commit price ~$607–$615. Today's pullback is macro-driven (Iran risk-off), not META-specific. The −2% dip puts us BELOW prior commit limits — MOO entry benefits from lower cost basis. Indicator stack (5 of 5): cannot confirm without live data (API blocked). Score constrained to 6 — direction unclear until CPI print resolves. No candlestick data available.
+
+**Sub-Agent 3 — Sentiment: 7/10**
+Meta Compute division launch = strong bullish narrative. "Iris" chip = positive vertically-integrated future. Analyst PT $743 = significant upside. Today's −2% is macro-driven. Iran has minimal direct impact on META's business. Trump administration AI infrastructure push benefits large-cap AI firms. X sentiment: NOT AVAILABLE (xAI key not configured). Base sentiment score 7 without X modifier.
+
+**Sub-Agent 4 — Macro: 6/10**
+Iran risk-off = headwind for equities. Rate hike risk = mild headwind (but META P/E ~27x is NOT egregiously expensive for rate sensitivity). CPI print at 8:30 AM ET is the swing factor — cool print = META relief rally; hot core = risk-off drag. Bank earnings beat is broadly positive for risk sentiment. Net: mixed macro environment, META less sensitive to oil/Iran than energy names.
+
+**Sub-Agent 5 — Risk: 8/10**
+META at $603.12 pre-market. 8sh × $603 = $4,824 = 4.8% equity (under 5% cap ✓). Stop at 5% below fill: ~$572.90. Target +15%: ~$693.58. R/R = 3:1 ✓. Trade risk: 5% × $4,824 = $241.20 = 0.24% equity (under 1.5% ✓). Sector (Communication Services): 4.8% (under 25% ✓). Cash impact clean. Prior scoring: 7.5 avg (July 13) — today re-scores at 7.17 due to Iran macro headwind; commitment survives.
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+Meta AI: LLaMA models (open-source leadership drives adoption), Meta Compute (competing with AWS/Azure = huge TAM expansion), "Iris" chip (vertical integration = long-term margin improvement like Apple). Social graph = world's largest dataset for ad targeting — unmatched moat. R&D ~$15B+ per year. Reality Labs optionality. Key technical moat: network effects across Facebook/Instagram/WhatsApp/Threads (3B+ MAU).
+
+**Master Agent — META:**
+- Fundamentals: 8 | Technical: 6 | Sentiment: 7 | Macro: 6 | Risk: 8 | Tech Analyst: 8
+- Average: (8+6+7+6+8+8)/6 = **7.17** ✓
+- Agents ≥7: Fundamentals (8), Sentiment (7), Risk (8), Tech Analyst (8) = **4 agents** ✓
+- Risk Agent: 8 ✓ | Tech Analyst: 8 ✓
+- **MASTER DECISION: APPROVED — 7.17 avg, 4/6 agents ≥7**
+
+```yaml
+---
+ts: 2026-07-14T12:11:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: Meta Compute division launch + Iris chip September; prior 7.5 commitment re-scores 7.17 today; pre-market pullback creates better entry at $603
+size_pct: 4.8
+stop: 572.90
+target: 693.58
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "Approved: F(8) S(7) R(8) TA(8) ≥7. Technical(6) and Macro(6) below threshold — Iran risk-off and CPI uncertainty drag. Score declined from 7.5 (July 13) to 7.17 today; still above Master gate. Meta Compute + Iris chip thesis intact. Pre-market −2.02% is macro noise not thesis reversal. CPI at 8:30 ET is swing factor — operator should watch and cancel MOO if core CPI >3.0% (rate shock). xAI Grok API N/A — key not configured. ORDER ATTEMPTED: POST /v2/orders 8sh META MOO → HTTP 000 (77th consecutive block). OPERATOR MUST EXECUTE: BUY 8sh META at market open; bracket stop at fill×0.95, target fill×1.15. Earnings ~July 29-30 — safe entry window."
+---
+```
+
+---
+
+#### Candidate 3: IBM — Prior commitment, EXIT DEADLINE JULY 17 EOD
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q1 2026: EPS $1.98 vs $1.91 (+3.7% beat). z17 quantum-safe mainframe now shipping (new product cycle revenue). WatsonX AI platform enterprise penetration growing. BofA TODAY raised PT $315 → $330 (fresh positive catalyst this morning). IBM Software segment growing. Defensive valuation P/E ~19x. Consulting headwinds (Accenture contagion) partially offset by software strength.
+
+**Sub-Agent 2 — Technical: 6/10**
+Pre-market: $302.05 (−1.33%). Prior limit prices ranged $287–$302 across various sessions. IBM listed on CNBC's "biggest pre-market movers" today — implies institutional attention. z17 launch cycle supports uptrend. Pullback is macro-driven. Cannot confirm indicator stack (API blocked). Score 6 — direction uncertain until CPI resolves.
+
+**Sub-Agent 3 — Sentiment: 8/10**
+BofA PT raise $315→$330 published today — significant same-day catalyst. IBM on CNBC pre-market movers list (institutional attention). IBM earnings July 22 creates pre-earnings anticipation and potential buildup. z17 quantum-safe mainframe is a genuine corporate differentiation story (post-quantum computing transition). X sentiment: NOT AVAILABLE. Base score 8 (BofA PT raise is a concrete same-day catalyst).
+
+**Sub-Agent 4 — Macro: 6/10**
+Iran risk-off = mild headwind but IBM is "defensive tech" — less volatile than semiconductors or high-multiple SaaS. Enterprise IT spending less correlated with oil prices. Rate hike risk = mild headwind for all equities. IBM's revenue is subscription/contract-based = more resilient in risk-off. Net: macro slightly negative but IBM is one of the most insulated names in the portfolio universe.
+
+**Sub-Agent 5 — Risk: 7/10**
+IBM at $302. 3sh × $302 = $906 = 0.9% equity (well under 5% cap ✓). Stop at 5% below fill: ~$286.90. Target +15%: ~$347.30. R/R = 3:1 ✓. Trade risk: 5% × $906 = $45.30 = 0.05% equity (well under 1.5% ✓). EXIT CONSTRAINT: MUST EXIT BY JULY 17 EOD (3 trading days: July 14, 15, 17). IBM earnings July 22 → 48h window opens July 20 (Mon). This is a KNOWN constraint accepted at entry — 3 trading days is sufficient for a swing trade if thesis plays out. Position sizing is deliberately small (3sh) to limit damage if forced out early.
+
+**Sub-Agent 6 — Tech Analyst: 7/10**
+IBM z17 (sub-1nm NanoStack chip, quantum-safe) = technically differentiated mainframe. WatsonX AI = enterprise AI tooling platform. Red Hat OpenShift = hybrid cloud leader with strong switching costs. IBM Consulting = implementation stickiness. R&D ~$6B/year (meaningful for a $200B company). Key moat: 75% of world's top 25 banks use IBM; Fortune 500 penetration at enterprise-grade (extremely high switching costs). Not a hypergrowth tech story — a deep moat defensive tech story.
+
+**Master Agent — IBM:**
+- Fundamentals: 8 | Technical: 6 | Sentiment: 8 | Macro: 6 | Risk: 7 | Tech Analyst: 7
+- Average: (8+6+8+6+7+7)/6 = **7.0** ✓ (exactly meets threshold)
+- Agents ≥7: Fundamentals (8), Sentiment (8), Risk (7), Tech Analyst (7) = **4 agents** ✓
+- Risk Agent: 7 ✓ | Tech Analyst: 7 ✓
+- **MASTER DECISION: APPROVED — 7.0 avg exactly, 4/6 agents ≥7**
+
+```yaml
+---
+ts: 2026-07-14T12:12:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: IBM z17 launch cycle + BofA PT raised $315→$330 today; defensive tech entry ahead of July 22 earnings; EXIT MANDATORY by July 17 EOD
+size_pct: 0.9
+stop: 286.90
+target: 347.30
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "Approved at exactly 7.0 avg. F(8) and S(8) carry the score vs T(6) and M(6) drag. BofA PT raise $315→$330 TODAY is a genuine same-day catalyst not reflected in prior scoring. IBM is most insulated from Iran/oil risk in watchlist. EXIT DEADLINE: July 17 EOD MANDATORY (IBM earnings July 22; 48h window opens July 20). Only 3 trading days to manage position. xAI Grok API N/A — key not configured. ORDER ATTEMPTED: POST /v2/orders 3sh IBM MOO → HTTP 000 (77th consecutive block). OPERATOR MUST EXECUTE: BUY 3sh IBM at market open; bracket stop at fill×0.95, target fill×1.15. Set MOC sell order for July 17 as deadline exit."
+---
+```
+
+---
+
+#### Candidate 4: PLTR — Re-scored below Master gate today
+
+**Sub-Agent 1 — Fundamentals: 6/10**
+Q1 2026 EPS $0.33 vs $0.27 est (+22% beat). Revenue growing strongly (US commercial +71% YoY). However, PLTR P/E is astronomical (>200x). Growth justifies premium but rate-hike risk environment makes high-multiple names more expensive to hold. DA Davidson upgraded to Buy with 39% upside. Score 6 — strong growth but valuation headwind in current rate environment.
+
+**Sub-Agent 2 — Technical: 6/10**
+Pre-market: conflicting data ($127.52 to $132.22 — sources differ on time). Prior reference $132.54 (July 7). If at $127.52, this is a ~3.8% pullback from July 7 — potential technical support test. Cannot confirm indicator stack (API blocked). Score 6.
+
+**Sub-Agent 3 — Sentiment: 7/10**
+Trump disclosed $1M+ PLTR position July 1 (strong signal for government contract flow). DA Davidson Buy upgrade (39% upside). Nvidia AI partnership. Government contract narrative remains intact. Today's pullback is macro-driven. X sentiment: NOT AVAILABLE. Base score 7.
+
+**Sub-Agent 4 — Macro: 5/10**
+Iran risk-off + Warsh hawkish testimony + rate hike pricing = triple headwind for high-multiple names. PLTR P/E >200x is extremely sensitive to discount rate changes. CPI sticky core at ~2.9% with September hike pricing is the worst macro environment for PLTR's valuation. Nasdaq +0.2% (slight green) offers some comfort but risk-off tone is real.
+
+**Sub-Agent 5 — Risk: 8/10**
+PLTR at $129 est (mid-range of $127–$132 data). 35sh × $129 = $4,515 = 4.5% equity (under 5% ✓). Stop −5%: ~$122.55. Target +15%: ~$148.35. R/R 3:1 ✓. Trade risk: 0.23% equity. Sector (Technology): 4.5% (under 25% ✓). Position sizing is clean.
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+AIP (AI Platform) is genuinely differentiated — no competitor has equivalent government-cleared AI orchestration. Apollo (edge AI) is unique IP. Deep moats: US intelligence/defense contracts with extremely high switching costs. Nvidia partnership validates technical credibility. R&D intensive.
+
+**Master Agent — PLTR:**
+- Fundamentals: 6 | Technical: 6 | Sentiment: 7 | Macro: 5 | Risk: 8 | Tech Analyst: 8
+- Average: (6+6+7+5+8+8)/6 = **6.67** — BELOW 7.0 THRESHOLD
+- Agents ≥7: Sentiment (7), Risk (8), Tech Analyst (8) = **3 agents** — BELOW 4 REQUIRED
+- **MASTER DECISION: REJECTED — 6.67 avg (< 7.0), only 3/6 agents ≥7 (< 4 required)**
+
+**PLTR: Score fell from 7.5 (July 13) to 6.67 today due to macro deterioration (Iran escalation + Warsh hawkish testimony + rate hike pricing crushing high-multiple names). Prior commitment was to a ≥7 entry; today's re-score is 6.67 — the Master gate is not met. Entry deferred to next routine when macro conditions may stabilize (post-CPI confirmation, post-Warsh testimony).**
+
+```yaml
+---
+ts: 2026-07-14T12:13:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.67
+thesis: PLTR re-scored 6.67 today (was 7.5 July 13); Iran risk-off + Warsh hawkish testimony + rate hike pricing crushed macro score to 5 — Master gate not met
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 7
+  macro: 5
+  risk: 8
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "SKIP — score fell from 7.5 (July 13) to 6.67 today. Only 3 of 6 agents ≥7 (need 4). Macro Agent scored 5 — Iran Strait of Hormuz escalation + Trump blockade + Brent $85+ + Warsh hawkish congressional testimony today + September rate hike pricing = triple threat to high-multiple names (PLTR P/E >200x). Prior commitment was to a ≥7-scored entry; today's re-score at 6.67 means the commit condition is no longer met. This is a SCORE REVISION not a guardrail skip. PLTR remains on watchlist — re-score at Market Open once CPI print and Warsh testimony tone are known. Bull case: CPI cool + Warsh dovish pivot → PLTR macro score recovers to 6-7 → Average could reach 7.0+ again."
+---
+```
+
+---
+
+### AMD — Position Management (SELL 9sh — MANDATORY, NOT new entry)
+
+AMD pre-market: $548.30 (+2.6%) on BofA PT raise $550 → $620. BofA: "Buy, strong cloud/server demand, improved supply visibility." AMD "Advancing AI 2026" conference July 22-23 (NOT a binary event per CLAUDE.md — analyst conference, not earnings). AMD Q2 2026 earnings estimated late July/early August (no confirmed date; not within 48h window).
+
+Current AMD position: 18sh @ $506.76 = $9,122 book, est. $9,869.40 market (~9.83% equity — OVER 5% cap by nearly 5 percentage points). Unrealized P&L: +$747.72 (+8.2%). AMD take-profit from original analysis: $582.78; new BofA PT $620. From current $548.30, remaining upside to original TP: $34.48 (6.3%); downside to stop $481.42: $66.88 (12.2%) — POOR RISK/REWARD FROM CURRENT PRICE (0.52:1). Strong case to:
+1. Sell 9sh immediately (reduce to <5% cap — mandatory guardrail compliance)
+2. Trail stop up on remaining 9sh from $481.42 → ~$520 (5% below current ~$548)
+3. Consider updating TP to $620 (BofA PT) on remaining 9sh
+
+```yaml
+---
+ts: 2026-07-14T12:14:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: MANDATORY position reduction — AMD 9.83% equity (OVER 5% hard cap by 4.8 pp); selling 9sh to reduce to 4.9% compliance; AMD +8.2% unrealized = $747.72 gain on full position
+size_pct: 4.9
+stop: 481.42
+target: 620.0
+result_pct:
+master_notes: "PARTIAL EXIT — MANDATORY guardrail compliance. AMD 18sh → 9sh. NOT a thesis exit. BofA raised PT $550→$620 today — AMD still bullish. 'Advancing AI 2026' conference July 22-23 upcoming catalyst. After 9sh sell: 9sh × $548.30 est. = $4,934 = ~4.9% equity (barely under 5% cap — still close). OPERATOR SHOULD TRAIL STOP on remaining 9sh from $481.42 → $520.89 (5% below current $548.30) to protect 2.7% of unrealized gain. NEW TP suggestion: $620 (matches BofA analyst PT). ORDER ATTEMPTED: POST /v2/orders 9sh AMD SELL MOO → HTTP 000 (77th consecutive block). AMD now Day 23+ naked with NO STOP. Unrealized gain UNPROTECTED. OPERATOR MUST ACT IMMEDIATELY."
+---
+```
+
+---
+
+### TODAY'S ORDERS — ALL BLOCKED (HTTP 000 — 77th Consecutive Session)
+
+| Order | Type | Approved | Qty | Est. Price | Est. Value | Status | Error |
+|---|---|---|---|---|---|---|---|
+| AMD SELL | MOO | Mandatory | 9sh | ~$548.30 | $4,934 | **BLOCKED** | HTTP 000 |
+| META BUY | MOO | 7.17 avg | 8sh | ~$603.12 | $4,825 | **BLOCKED** | HTTP 000 |
+| IBM BUY | MOO | 7.0 avg | 3sh | ~$302.05 | $906 | **BLOCKED** | HTTP 000 |
+| GS BUY | MOO | 7.33 avg | 7sh | ~$645 est. | $4,515 | **BLOCKED** | HTTP 000 |
+| PLTR | — | REJECTED | 0sh | $129 est. | — | **SKIPPED** | Score 6.67 < 7.0 |
+
+**API STATUS: paper-api.alpaca.markets:443 in egress deny list (HTTP 000 / proxy CONNECT rejected). ALL EXECUTION BLOCKED. 77th consecutive trading session with zero execution.**
+
+---
+
+### PORTFOLIO STATE
+
+**Estimated (pre-market July 14 — no API confirmation):**
+
+| Component | Shares | Avg Cost | Est. Price | Est. Value | % Equity |
+|---|---|---|---|---|---|
+| AMD | 18 | $506.76 | $548.30 | $9,869.40 | 9.83% |
+| Cash | — | — | — | $90,644 | 90.1% |
+| **Total** | | | | **~$100,513** | **100%** |
+
+- Cash: 90.1% — WELL ABOVE 5% floor but FAR BELOW 95% deployment target
+- AMD: 9.83% equity — GUARDRAIL VIOLATION (max 5%)
+- Active bucket: 9.83% — target 85%
+- Crypto bucket: 0% — target 10%
+- Cumulative gap vs SPX: est. **−5.5 to −6.8 pp** (SPX ~7,600-7,700 est. vs portfolio +0.5%)
+
+---
+
+### ⚠️⚠️⚠️ OPERATOR MANDATORY ACTIONS (app.alpaca.markets — BEFORE 9:25 AM ET TODAY):
+
+**PRIORITY 1 (IMMEDIATE — guardrail violation):**
+- SELL 9sh AMD at market open (MOO): AMD at $548.30 pre-market; reduce 18sh → 9sh; trail stop to $520.89 (5% below $548.30); consider TP $620 (BofA analyst PT)
+
+**PRIORITY 2 (HIGH — approved entries, API blocked):**
+- BUY 7sh GS at market open: Score 7.33 — Q2 record blowout. Stop fill×0.95. TP fill×1.15. (Earnings-reaction-follow)
+- BUY 8sh META at market open: Score 7.17 — Meta Compute + Iris chip. Stop fill×0.95. TP fill×1.15. CANCEL if CPI core >3.0%
+- BUY 3sh IBM at market open: Score 7.0 — BofA PT raised today, z17 launch. Stop fill×0.95. TP fill×1.15. **EXIT MANDATORY by July 17 EOD** (IBM earnings July 22)
+
+**PRIORITY 3 (MEDIUM — monitor):**
+- PLTR deferred: Re-score at Market Open (9:45 AM ET) after CPI print and Warsh testimony tone. If macro improves, PLTR could recover to ≥7.0 avg. If CPI cool + Warsh non-hawkish → consider limit entry $127–$132 bracket GTC
+
+**PRIORITY 4 (WATCH — no action yet):**
+- BlackRock (BLK) reports tomorrow July 15 pre-market: pre-score tonight for tomorrow's routine
+- Netflix (NFLX) reports Thursday July 16 after close: watch for entry post-earnings July 17
+- IBM EXIT: Set MOC sell for July 17 as soon as IBM fills today
+
+---
+
 ## 2026-07-13 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 76th+ consecutive session)
 
 **HEARTBEAT:** STARTED Daily-Review 2026-07-13T20:34:09Z ✓
