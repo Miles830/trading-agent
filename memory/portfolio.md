@@ -1,6 +1,17 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
+**2026-07-14 (Tuesday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 79th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+
+**AFTERNOON UPDATE (2:08 PM ET):** API blocked for 79th consecutive session. No new active entries placed (afternoon proximity-to-close rule per routines/afternoon.md + API blockage). AMD estimated ~$563-570 (up ~11.5% from $506.76 entry, est P&L +$1,048). AMD still naked Day 24+ — trail stop order to $536.75 (5% below $565 est) BLOCKED HTTP 403. Position still ~10.1% equity (GUARDRAIL VIOLATION — max 5%). No day trades open; no MOC orders needed. GS (score 7.17) and META (score 7.33) logged as SKIP with proximity-to-close + API blockage reasons — both are BINDING COMMITMENTS for Pre-Market July 15. TOMORROW KEY EVENTS: PPI June 2026 (8:30 AM ET July 15) — verify before GS entry; MS/WFC earnings July 15 (binary event — no entries); ASML earnings July 15 (semiconductor read-through). PORTFOLIO EST (2 PM ET): Cash $90,644 (89.9%), AMD 18sh × $565 est = $10,170 (10.1% — OVER 5% cap), Total est. ~$100,814 (+0.81% return). SPX May 1 baseline 7,200 → July 14 est 7,535-7,545 = +4.65-4.65%. CUMULATIVE GAP vs SPX: est. -3.84 pp. 20-DAY UNDERPERFORMANCE FLAG: Active (79th consecutive session — API blockage root cause).
+
+**JULY 15 PRE-MARKET BINDING COMMITMENTS (OPERATOR — app.alpaca.markets):**
+1. ⚠️⚠️⚠️ SELL 9sh AMD MOO (FIRST ORDER — Day 24+ naked, 10.1% equity, MUST reduce) → after fill, GTC stop at fill×0.95, GTC target at fill + 3×(fill×0.05)
+2. BUY 7sh META limit $663 bracket GTC (stop $629.85, target $762.45, R/R 3:1, score 7.33 MANDATORY) — NO binary event risk
+3. BUY 4sh GS limit $1,080 bracket GTC (stop $1,026, target $1,242, R/R 3:1, score 7.17 CONDITIONAL) — VERIFY PPI FIRST: if PPI hot (>+0.3% MoM) defer; if in-line/cool proceed
+4. DO NOT enter MS, WFC, ASML — binary event window July 15 (earnings day)
+
+**Prior Last Updated (2026-07-14 MIDDAY):**
 **2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**

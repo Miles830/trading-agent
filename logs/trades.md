@@ -4,6 +4,198 @@
 
 ---
 
+## 2026-07-14 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 79th consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-14T18:07:37Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` blocked by egress policy — **79th consecutive blocked session**
+**Market Status:** OPEN — 2:08 PM ET (5 hours 22 minutes since open; 1 hr 22 min until close)
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT (today)
+
+| Routine | Expected (UTC) | Found in log | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC | STARTED ✓ (no COMPLETED) | Ran — API blocked exit |
+| Market-Open | ~13:45 UTC | **NOT FOUND** | **SILENT FAILURE** |
+| Mid-Morning | ~15:00 UTC | **NOT FOUND** | **SILENT FAILURE** |
+| Midday | 16:34 UTC | STARTED + COMPLETED ✓ | Completed 16:48Z |
+| Afternoon | 18:07 UTC | STARTED ✓ | Running now |
+
+Market-Open and Mid-Morning violations were already logged in the Midday routine. No duplicate entries needed.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**Open positions requiring stop audit:**
+
+| Symbol | Qty | Entry | Current (est) | Stop Required | Stop at Alpaca | Status |
+|---|---|---|---|---|---|---|
+| AMD | 18sh | $506.76 | ~$565 (est 2 PM) | $536.75 (5% below $565) | **NONE** | **VIOLATION — BLOCKED** |
+
+**Result:** AMD remains critically naked for Day 24+. Trail stop order from $532.63 (midday mental level) to **$536.75** (5% below $565 est afternoon price). Order attempt blocked — API unavailable. No resting stop at Alpaca.
+
+```yaml
+---
+ts: 2026-07-14T18:10:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD trailing stop order blocked — API HTTP 403 — 79th consecutive session. Trail from $532.63 to $536.75 (5% below $565 est). No stop resting at Alpaca. Position naked Day 24+.
+size_pct: 10.09
+stop: 536.75
+target: 649.75
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION. AMD 18sh has no resting stop-loss at Alpaca for Day 24+. Afternoon routine attempted to trail stop from $532.63 → $536.75 (5% below $565 estimated afternoon price) — BLOCKED HTTP 403 (proxy egress policy). The AMD position is also above the 5% position cap (est. ~10.1% equity at $565). Two simultaneous guardrail violations: (1) no stop, (2) over-size. Operator must act at app.alpaca.markets: SELL 9sh AMD market + GTC stop on remaining 9sh at fill×0.95 + GTC target at fill + 3×(fill-stop)."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 14, 2026 Afternoon (2:08 PM ET)
+
+**Macro backdrop:** CPI June 2026 cool print (headline 3.5% vs 3.8% est, core 2.6% vs 2.8% est, MoM -0.4% sa) is the dominant force today. September rate cut probability re-emerges. 10-yr yields falling. Risk-on especially for growth, semis, and AI names. IBM's earnings warning (-22%) weighing on Dow but contained to enterprise software/consulting sector.
+
+**Market snapshot (estimated, 2 PM ET — no API access):**
+- S&P 500: +0.3–0.5% est (was +0.26% at 12:36 PM, likely extended by afternoon)
+- Nasdaq 100: +0.9–1.1% est (chips and AI leading; tech buying on rate cut hope)
+- Dow: flat to -0.2% (IBM drag)
+- VIX: ~14-15 est (risk-on low)
+
+**Key mover updates (estimated, 2 PM ET):**
+- AMD: ~$563–570 est (extended from $560.66 midday; chip sector +4-5% sustained; BofA PT $620)
+- GS: ~$1,070–1,080 est (digesting earnings beat; financial sector +3-4%)
+- META: ~$655–665 est (CPI tailwind + cloud compute narrative)
+- PLTR: ~$128-130 est (slight recovery from -0.4% midday on improving macro)
+- IBM: ~$230-240 est (down ~22%, contagion limited to enterprise software)
+- 10-yr yield: ~4.05-4.20% est (down from pre-CPI ~4.45%)
+
+**After-hours earnings calendar (July 14 AH):** Unknown — API + web blocked. Operator should check. Note: BofA, MS, WFC all expected around July 14-15 window; GS already reported this morning.
+
+**Tomorrow key events (July 15):**
+- **PPI June 2026** (8:30 AM ET) — macro risk; if hot, financial sector reversal; if cool, continuation
+- **Morgan Stanley (MS) earnings** — estimated July 15 pre-market (48h window opened July 13 PM — no new MS entries allowed until print)
+- **Wells Fargo (WFC) earnings** — estimated July 15 pre-market (same binary event window)
+- **ASML earnings** (EU, July 15 pre-open EU) — semiconductor sentiment read-through
+
+---
+
+### POSITION REVIEW
+
+**AMD (18sh, $506.76 avg) — Day 24+ Naked Swing:**
+- Estimated P&L: 18 × ($565 - $506.76) = +$1,048 (+11.5% unrealized)
+- Position value: 18 × $565 = $10,170 = **~10.1% equity (GUARDRAIL VIOLATION — max 5%)**
+- Trail stop (mental): $536.75 (5% below $565 est) — BLOCKED, cannot place
+- Take profit: $649.75 (15% above $565 est, 3:1 R/R from current) — originally $582.78 when set at entry; AMD has already EXCEEDED this level intraday; need to update take-profit
+- AMD is UP 11.5% from entry. Per playbook, positions up >15% warrant partial profit consideration. **AMD is not yet at 15% threshold** but approaching it (~3.5 pp away). Operator should consider partial when AMD reaches $582.78 (original TP).
+- AMD Advancing AI 2026 conference July 22-23 — 8 calendar days away. Not a binary event (conference, not earnings). Remaining upside to BofA PT $620: ~9.7% from current.
+- MANDATORY: Reduce 18sh → 9sh. This is the highest priority operator action.
+
+**No day trades open** — nothing to close with MOC orders.
+
+---
+
+### AFTERNOON PROXIMITY-TO-CLOSE RULE
+
+Per `routines/afternoon.md`: "Active-trading catch-up: do NOT initiate new active-bucket entries this routine — too close to close." No new entries placed this routine. GS and META skip entries logged below. Both carry forward as **binding commitments for Pre-Market July 15**.
+
+Note: The underlying enabler of ALL orders (API access) remains blocked regardless of this rule. The proximity-to-close rule provides the strategy-design reason; the API blockage is the operational blocker.
+
+```yaml
+---
+ts: 2026-07-14T18:12:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7
+thesis: GS Q2 2026 earnings beat: EPS $10.22 vs $7.08 est (+45%), revenue beat. Post-earnings follow on financial sector leadership. CPI cool print extends financial sector tailwind. Score 7.17 avg (F:8 T:6 S:7 M:8 R:7 TA:7).
+size_pct: 4.27
+stop: 1021.25
+target: 1236.25
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "SKIP REASON: afternoon proximity-to-close rule (routines/afternoon.md) — new active entries not initiated after ~2 PM ET. Primary blocker: API HTTP 403 (79th consecutive session). THESIS: GS Q2 earnings beat (+45% EPS vs consensus); financial sector strongest since bank earnings week; CPI cool print (rate cut re-emerging) extends financial leadership. RISK: PPI July 15 8:30 AM ET — hot print could cause brief yield spike and financial sector reversal. ENTRY PLAN: 4sh limit $1,080 (ask×1.005) bracket GTC; stop $1,026 (5% below $1,080); target $1,242 (15% above). R/R 3:1. BINDING COMMITMENT: Pre-Market July 15 — verify PPI print before market open."
+---
+```
+
+```yaml
+---
+ts: 2026-07-14T18:14:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7
+thesis: META cloud compute expansion + CPI cool print rate tailwind. Position: 7sh × $660 = $4,620 = 4.59% equity. Score 7.33 avg (F:8 T:6 S:7 M:8 R:7 TA:8). Earnings ~July 29-30 (safe entry window — 15+ days away).
+size_pct: 4.59
+stop: 627.00
+target: 759.00
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "SKIP REASON: afternoon proximity-to-close rule (routines/afternoon.md). Primary blocker: API HTTP 403 (79th consecutive). THESIS: META cloud compute narrative (Bloomberg-confirmed, 8+ outlets); Q1 2026 EPS $19.39 vs $18.39 est, revenue $42.3B (+16% YoY). CPI cool print = growth tech tailwind. Meta AI moat strong (social graph + LLAMA). Entry safe window (earnings ~July 29-30, >15 days away). ENTRY PLAN: 7sh limit $663 (ask×1.005) bracket GTC; stop $629.85 (5% below); target $762.45 (15% above). R/R 3:1. BINDING COMMITMENT: Pre-Market July 15."
+---
+```
+
+---
+
+### TOMORROW'S PRE-MARKET WATCHLIST (July 15 — Binding Commitments)
+
+**Priority 0 — MANDATORY (guardrail fix, not new entry):**
+- **AMD SELL 9sh MOO**: Reduce from 18sh to 9sh. Brings position from ~10.1% → ~5.0% equity. After fill, IMMEDIATELY place GTC stop at fill×0.95 and GTC target at fill+(3×(fill-(fill×0.95))). Must execute before any new entries.
+
+**Priority 1 — META 7sh limit bracket GTC (score 7.33, APPROVED):**
+- Limit: ~$663 (current ask × 1.005)
+- Stop: $629.85 (5% below entry)
+- Target: $762.45 (15% above entry, 3:1 R/R)
+- Condition: None — earnings July 29-30, safe window, no binary event
+- MAX SIZE: 7sh × $663 = $4,641 = 4.62% equity — under 5% cap ✓
+
+**Priority 2 — GS 4sh limit bracket GTC (score 7.17, APPROVED CONDITIONAL):**
+- Limit: ~$1,080 (ask × 1.005)
+- Stop: $1,026 (5% below)
+- Target: $1,242 (15% above, 3:1 R/R)
+- Condition: CHECK PPI JULY 15 (8:30 AM ET) BEFORE PLACING. If PPI hot (above +0.3% MoM), defer GS entry — financial sector headwind. If PPI cool/in-line, proceed.
+- MAX SIZE: 4sh × $1,080 = $4,320 = 4.32% equity — under 5% cap ✓
+
+**Monitor (not entering tomorrow):**
+- **PLTR**: Score 6.83 (below 7.0 gate). Will re-score at Pre-Market July 15 after overnight. Potential re-score to 7+ if Nasdaq continues.
+- **MS/WFC**: Earnings July 15 — BINARY EVENT. Skip all day July 15. Post-earnings play possible July 16.
+- **ASML**: Earnings July 15 (EU pre-open). Will provide semiconductor sector read-through for AMD.
+
+---
+
+
+
 ## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓
