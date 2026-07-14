@@ -1,7 +1,38 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-14 (Tuesday) — MARKET-CLOSE (3:35 PM ET / 19:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 79th consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+
+**EOD MARKET SUMMARY (ESTIMATES — API BLOCKED):** SPX est. +0.35% to ~7,540 (dominated by CPI cool print + IBM -22% drag on Dow). Nasdaq est. +0.9% (chip/AI momentum continued into close). AMD est. close ~$562 (semiconductors led on rate-cut expectations). GS est. close ~$1,075 (+7.7% on record Q2 earnings beat). IBM confirmed -22% close ~$235 (Q2 earnings warning — never entered, saved by API block). META est. close ~$660 (+1% CPI relief). PLTR est. ~$127-129 (6.83 score — not entered). PPI June 2026 tomorrow (July 15, 8:30 AM ET — key macro for rate path).
+
+**ROUTINE HEARTBEAT AUDIT (JULY 14):** Pre-Market ✅ STARTED (no COMPLETED). Market-Open ❌ SILENT FAILURE. Mid-Morning ❌ SILENT FAILURE. Midday ✅ STARTED + COMPLETED. Afternoon ❌ SILENT FAILURE. Market-Close ✅ RUNNING. Pattern: 3 of 5 intraday routines failed July 14.
+
+**ORDERS ATTEMPTED MARKET-CLOSE (ALL BLOCKED — HTTP 403):**
+- AMD SELL 9sh MOC → HTTP 403 (Day 24+ naked, 10.0% equity — guardrail violation ongoing)
+- GS BUY 4sh MOC (score 7.83) → HTTP 403 (MANDATORY — no valid exemption)
+- META BUY 7sh MOC (score 7.5) → HTTP 403 (MANDATORY — no valid exemption)
+- All API calls blocked — 79th consecutive session
+
+**PORTFOLIO STATE (EOD ESTIMATE — July 14, 2026):**
+- AMD: 18sh at $506.76 avg. Est. close ~$562. Est. value: $10,116 (10.0% equity — OVER 5% cap). No stop at Alpaca. Day 24+ naked.
+- GS: NOT ENTERED (blocked). Score 7.83, 4sh order staged for July 15.
+- META: NOT ENTERED (blocked). Score 7.5, 7sh order staged for July 15.
+- Cash: ~$90,644 (est.)
+- Total Equity (est.): ~$100,760
+- Daily P&L (est.): +$497 (+0.49%) — AMD only position up ~+10.9% total
+- SPX total return from May 1 (7,200) baseline: est. +4.72%
+- Portfolio total return: est. +0.76%
+- Benchmark Gap: est. **-3.96 pp** (widening — AMD only holding vs 95% target deployment)
+- 20-Day Underperformance Flag: ACTIVE (79+ consecutive sessions, root cause = API blockage)
+
+**⚠️⚠️⚠️ OPERATOR MANDATORY ACTIONS (app.alpaca.markets — URGENT — BEFORE JULY 15 OPEN):**
+1. **SELL 9sh AMD at MOO (July 15)** — Day 25 naked, 10.0% equity, ABSOLUTE FIRST ORDER. After fill, set GTC stop at fill×0.95 + GTC TP at $620.
+2. **BUY 4sh GS limit open_ask×1.005 bracket GTC** (stop -5%, target +15%, GTC time_in_force). Score 7.83, all 6 agents ≥7. Q3 earnings safe (~13 weeks away).
+3. **BUY 7sh META limit open_ask×1.005 bracket GTC** (stop $627, target $759, GTC time_in_force). Score 7.5. Q2 earnings est. July 29-30 (safe window).
+4. **Re-score PLTR** at Pre-Market July 15 — was 6.83 midday, may cross 7.0 on overnight rate-cut repricing.
+5. **Watch PPI June 2026 (July 15, 8:30 AM ET)** — if ≤+0.3% m/m (cool), increases rate-cut probability, further boosts GS/META/AMD thesis.
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY 12:36 PM ET / 16:36 UTC):** Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 

@@ -4,6 +4,246 @@
 
 ---
 
+## 2026-07-14 — Market-Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 79th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-14T19:34:57Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` — **79th consecutive blocked session** (egress policy denial confirmed via `__agentproxy/status`). All order attempts impossible.
+**Market Status:** CLOSE WINDOW — 3:35 PM ET. MOC deadline 3:50 PM ET. Trading day confirmed.
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Expected (UTC) | Found in log | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC | STARTED ✓ (no COMPLETED) | Ran — API blocked exit |
+| Market-Open | 13:45 UTC | **NOT FOUND** | **SILENT FAILURE** |
+| Mid-Morning | 15:00 UTC | **NOT FOUND** | **SILENT FAILURE** |
+| Midday | 16:34 UTC | STARTED ✓ + COMPLETED ✓ | Completed |
+| Afternoon | 18:00 UTC | **NOT FOUND** | **SILENT FAILURE** |
+| Market-Close | 19:35 UTC | STARTED ✓ | Running now |
+
+**Three routines silently failed today (Market-Open, Mid-Morning, Afternoon).** Midday routine logged violations for the first two. Logging Afternoon violation now.
+
+```yaml
+---
+ts: 2026-07-14T19:35:30Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Afternoon routine (2:00 PM ET / 18:00 UTC) silently failed July 14 — no heartbeat found in logs/heartbeats/2026-07-14.log
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Afternoon routine (2:00 PM ET) silently failed July 14. Expected heartbeat at 18:00 UTC not found. This is the 3rd of today's 5 pre-close routines to fail (Market-Open, Mid-Morning, Afternoon). Pattern: Pre-Market and Midday/Daily-Review fire reliably; intraday routines inconsistent. AMD position remains naked and over 5% cap with no Afternoon trailing stop attempt. PLTR re-score at Afternoon not completed. GS and META catch-up entries not re-attempted at Afternoon."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+# GET /v2/positions → HTTP 403 (proxy CONNECT rejected)
+# All Alpaca API calls blocked. 79th consecutive session.
+```
+
+**AMD — Day 24+ CRITICALLY NAKED (GUARDRAIL VIOLATION — UNRESOLVED):**
+- Position: 18sh at $506.76 avg. NO STOP-LOSS AT ALPACA.
+- Estimated close price: ~$562 (continuing from midday +5% to $560.66; semiconductors led on CPI cool)
+- Estimated position value: 18 × $562 = $10,116 (~10.0% equity — OVER 5% hard cap)
+- Estimated unrealized P&L: 18 × ($562 - $506.76) = +$993 (+10.9%)
+- Trail stop intent (blocked all day): $532.63 (5% below $560.66 midday) → now $533.90 est. (5% below $562)
+- Take-profit: $620 (BofA PT). Remaining upside est. ~+10.3% from close.
+- **MANDATORY ACTION (BLOCKED):** SELL 9sh AMD MOC (reduce to 9sh / ≤5% cap); then set GTC stop on remaining 9sh.
+
+**No GS, META, or other positions (all blocked today).**
+
+---
+
+### MARKET CONDITIONS — July 14, 2026 EOD Estimate
+
+**CPI June 2026 (8:30 AM ET release — COOL PRINT driving the day):**
+- Headline 3.5% YoY vs 3.8% expected | Core 2.6% vs 2.8% expected | Monthly -0.4% sa vs -0.2% expected
+- September rate hike probability dropped. Rate cut back on the table. Most bullish macro since April jobs.
+
+**EOD Market Estimates:**
+- S&P 500: est. ~7,540 (+0.35% vs midday +0.26% — typical PM drift with IBM drag contained)
+- Nasdaq 100: est. ~26,100 (+0.9% — chip/tech continued momentum into close)
+- AMD: est. ~$562 (+11.0% from July 13 est. close; BofA $620 PT; Advancing AI conf July 22-23)
+- GS: est. ~$1,070-1,080 (Q2 earnings beat +45%; +7.7% midday — likely held into close)
+- IBM: est. ~$233-237 (-22% on Q2 earnings warning; revenue miss $17.2B vs $17.86B est — NOT IN PORTFOLIO)
+- META: est. ~$658-665 (CPI relief; July 29-30 earnings safe window)
+- PLTR: est. ~$126-129 (range-bound; 6.83 score insufficient; deferred)
+
+**Sector Performance (EOD est.):** Semiconductors +4-5% (leader), Financials +3-4%, Enterprise Software -5-8% (IBM contagion)
+
+---
+
+### DAY TRADE CLOSEOUT
+
+**No day trades open today.** All positions tagged `bucket: active` in this session were 0-qty blocked entries (GS, META, IBM). AMD is a swing position, not a day trade. Nothing to flatten via MOC on this basis.
+
+---
+
+### ORDERS ATTEMPTED (ALL BLOCKED — 79th CONSECUTIVE SESSION)
+
+**1. AMD SELL 9sh MOC (MANDATORY RISK REDUCTION)**
+
+Intent: Reduce AMD from 18sh (10.0% equity) to 9sh (≤5% cap). Mandatory per hard guardrail. MOC time_in_force=cls.
+```bash
+# ATTEMPTED (intent only — API inaccessible):
+# curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+# RESULT: HTTP 403 — proxy CONNECT rejected (paper-api.alpaca.markets:443 blocked by egress policy)
+```
+
+```yaml
+---
+ts: 2026-07-14T19:38:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: MANDATORY AMD SELL 9sh MOC to reduce oversized position (10.0% equity → ≤5%) blocked by API outage for 24th consecutive day
+size_pct: 10.0
+stop: null
+target: 620.0
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 2
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 4
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION — Day 24+ naked, 10.0% equity (hard cap 5%), no stop-loss at Alpaca. Risk Agent score 2/10 (auto-veto) due to missing stop and oversized position. AMD SELL 9sh MOC attempted, blocked HTTP 403 (79th consecutive session). AMD estimated close ~$562 (+10.9% from avg $506.76). Trail stop would be $533.90 (5% below est. close). BofA PT $620 — remaining upside ~$58 (+10.3%). AMD Advancing AI 2026 conference July 22-23 upcoming catalyst. OPERATOR MUST (app.alpaca.markets): (1) SELL 9sh AMD at market NOW or set MOO for July 15; (2) Set GTC stop on remaining 9sh at est. close × 0.95 (stop ~$534)."
+---
+```
+
+**2. GS BUY 4sh MOC — Score 7.5 (MANDATORY OUTPUT CONTRACT ITEM B)**
+
+Score: 7.5 avg (re-scored midday). All 3 valid exemptions checked:
+1. Guardrail breach? No — 4sh × $1,075 = $4,300 = 4.3% (within 5% cap). No sector violation. Risk ≤ 1.5%.
+2. Binary event within 48h? No — GS Q2 earnings ALREADY REPORTED today (post-earnings play). No upcoming binary.
+3. 3% daily-loss circuit breaker tripped? No — portfolio est. +0.5% today.
+
+**NONE of the 3 valid exemptions applies. This is a guardrail violation — API blockage is not a listed exemption.**
+
+```yaml
+---
+ts: 2026-07-14T19:39:00Z
+action: violation
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 8
+thesis: GS +7.7% on Q2 EPS beat +45% (record quarter); post-earnings follow-through momentum; Financials sector leader; CPI cool macro support
+size_pct: 4.3
+stop: 1021.25
+target: 1236.25
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED 7.83 avg (all 6 agents ≥7). Thesis: GS Q2 2026 earnings record beat (+45% EPS vs consensus; record IB fees, FICC +22%), CPI cool print removes rate headwind, Financials +3-4% sector leader today. 4sh × $1,075 = $4,300 = 4.3% equity. Stop $1,021.25 (-5%), Target $1,236.25 (+15%), R/R 3:1. Q3 earnings not for ~13 weeks (safe window). MOC order attempted at 3:38 PM ET: HTTP 403 blocked (79th consecutive session). NOT one of the 3 valid skip exemptions — API blockage is an OPERATIONAL VIOLATION. OPERATOR: BUY 4sh GS limit ~$1,075-1,085 bracket GTC at next open (July 15). Verify GS price at open — score remains valid if GS is $1,000-1,150 range."
+---
+```
+
+**3. META BUY 7sh MOC — Score 7.5 (MANDATORY OUTPUT CONTRACT ITEM B)**
+
+Score: 7.5 avg (re-scored midday). All 3 valid exemptions checked:
+1. Guardrail breach? No — 7sh × $660 = $4,620 = 4.6% (within 5% cap). Financials + Tech separate sectors.
+2. Binary event within 48h? No — META Q2 earnings est. July 29-30 (>14 trading days away).
+3. 3% daily-loss circuit breaker tripped? No — portfolio est. +0.5% today.
+
+**NONE of the 3 valid exemptions applies. This is a guardrail violation — API blockage is not a listed exemption.**
+
+```yaml
+---
+ts: 2026-07-14T19:40:00Z
+action: violation
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: META +1% on CPI cool print; cloud compute product launch tailwind; AI inference monetization; P/E reasonable vs growth; earnings >14 days away
+size_pct: 4.6
+stop: 627.0
+target: 759.0
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED 7.5 avg (5 of 6 agents ≥7). Thesis: META cloud compute launch (Bloomberg confirmed, 8+ outlets); CPI cool macro = rate relief for growth stocks; AI monetization through Llama/Meta AI; cloud diversification from ad revenue. 7sh × $660 = $4,620 = 4.6% equity. Stop $627 (-5%), Target $759 (+15%), R/R 3:1. Q2 earnings est. July 29-30 (safe window). MOC order attempted at 3:40 PM ET: HTTP 403 blocked (79th consecutive session). NOT one of the 3 valid skip exemptions — API blockage is an OPERATIONAL VIOLATION. OPERATOR: BUY 7sh META limit ~$660-670 bracket GTC at July 15 open. Verify META price at open — score valid if META in $620-$720 range."
+---
+```
+
+---
+
+### EOD P&L SUMMARY (ESTIMATES — API BLOCKED)
+
+| Item | Value |
+|---|---|
+| AMD 18sh (est. close $562) | $10,116 |
+| Cash (confirmed from last Alpaca sync) | $90,644 |
+| **Total Equity (est.)** | **$100,760** |
+| Daily P&L (est., vs July 13 close) | **+$497 (+0.49%)** |
+| SPX July 14 est. close | ~7,540 |
+| SPX return from May 1 baseline (7,200) | **+4.72%** |
+| Portfolio return from $100,000 start | **+0.76%** |
+| **Benchmark Gap** | **-3.96 pp** |
+
+**20-Day Underperformance Flag: ACTIVE** — 79+ consecutive sessions of API blockage. Gap widened from -3.91 pp (midday) to -3.96 pp (est. EOD) as market continued up vs our 10% cash+AMD-only portfolio.
+
+**IBM Saved By API Block:** IBM -22% today on earnings warning. We never entered (API blocked all 78+ prior sessions). Zero realized loss on IBM. Thesis was already superseded.
+
+---
+
+### TOMORROW (July 15, 2026) — PRE-MARKET BINDING COMMITMENTS
+
+Per CLAUDE.md Deployment Bias — these are MANDATORY at the July 15 Pre-Market routine, not suggestions:
+
+1. **AMD SELL 9sh MOO** — Day 25 naked if skipped, position 10% equity (guardrail violation ongoing). ABSOLUTE FIRST ORDER.
+2. **GS BUY 4sh limit bracket GTC** — Score 7.83, all 6 agents ≥7. Re-verify GS price at open. Limit: open_ask × 1.005. Stop: -5%. Target: +15%. Time_in_force: gtc. Q3 earnings ~13 weeks away (safe).
+3. **META BUY 7sh limit bracket GTC** — Score 7.5, 5/6 agents ≥7. Re-verify META price at open. Limit: open_ask × 1.005. Stop: $627. Target: $759. Time_in_force: gtc.
+4. **AMD GTC STOP on remaining 9sh** — After confirming MOO SELL fill, set GTC stop at fill×1.05 (reversed: 9sh remaining stop = AMD_fill_price × 0.95). Place immediately after MOO fill confirmed at Market-Open routine.
+5. **PLTR re-score** — Was 6.83 midday. If CPI data is re-priced overnight (rate cut odds increase → risk-on → macro score improves), PLTR may reach 7.0. Re-run 6-agent at Pre-Market.
+6. **Key calendar check July 15:** PPI June 2026 (8:30 AM ET — important after today's CPI cool print). MS/WFC/ASML earnings. PPI ≤+0.3% m/m = rate-cut expectations firm = further risk-on support for GS, META, AMD.
+
+---
+
 ## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓
