@@ -4,6 +4,319 @@
 
 ---
 
+## 2026-07-14 — Mid-Morning (11:00 AM ET / 15:09 UTC — API BLOCKED — 78th consecutive session)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-14T15:09:42Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` — **78th consecutive blocked session** (data.alpaca.markets also blocked)
+**Market Status:** Market open (11:09 AM ET). Full session underway. CPI June 2026 released 8:30 AM ET today — outcome unknown (no data access). Kevin Warsh testimony underway.
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO` (not configured). Sentiment Agent degraded per CLAUDE.md fallback rules.
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+| Routine | Expected | Found in log | Status |
+|---|---|---|---|
+| Pre-Market | 8:00 AM ET | ✅ 12:05:07Z STARTED | Ran |
+| Market-Open | 9:45 AM ET | ❌ NOT FOUND | **SILENT FAILURE** |
+
+**Market-Open silent failure — logging violation:**
+
+```yaml
+---
+ts: 2026-07-14T13:45:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market-Open routine (9:45 AM ET) did not heartbeat today — critical catch-up required from Mid-Morning
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION — Market-Open (9:45 AM ET) did not run. No heartbeat entry found in logs/heartbeats/2026-07-14.log. Market-Open responsibilities unexecuted: (1) Confirm MOO fills for GS 7sh, META 8sh, IBM 3sh, AMD-SELL 9sh; (2) Place stop-loss orders after MOO fill confirmation; (3) Re-score PLTR post-CPI print at 8:30 AM ET. ALL MOOT — Alpaca API still blocked (HTTP 403). MOO fills cannot be confirmed; stops cannot be placed. AMD remains naked Day 23+. Running catch-up from Mid-Morning."
+---
+```
+
+---
+
+### MARKET-OPEN CATCH-UP (API BLOCKED — ALL ATTEMPTS HTTP 403)
+
+**Attempted: GET /v2/orders?status=filled&after=2026-07-14T13:30:00Z**
+```
+Result: HTTP 403 (proxy CONNECT rejected — paper-api.alpaca.markets:443 in egress deny list)
+```
+Cannot confirm whether MOO orders filled (GS, META, IBM, AMD-SELL — all placed as MOO in pre-market logs but via HTTP 000 blocks). Since orders were never successfully submitted to Alpaca, no fills occurred. AMD, GS, META, IBM remain as documented in Pre-Market: AMD 18sh unprotected, GS/META/IBM with 0 shares.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED 78th consecutive)
+
+**Attempted: GET /v2/orders?status=open — HTTP 403 (proxy CONNECT rejected)**
+**Attempted: GET /v2/positions — HTTP 403 (proxy CONNECT rejected)**
+
+Cannot execute stop-loss audit via API. Estimated state based on Pre-Market log:
+
+| Symbol | Shares | Avg Cost | Stop Resting at Alpaca | Status |
+|---|---|---|---|---|
+| AMD | 18 | $506.76 | NONE | **CRITICAL NAKED — Day 23+** |
+| GS | 0 | — | N/A (no fill) | MOO never executed |
+| META | 0 | — | N/A (no fill) | MOO never executed |
+| IBM | 0 | — | N/A (no fill) | MOO never executed |
+
+**Attempted stop orders (all blocked):**
+```bash
+# Place stop for AMD 18sh at $481.42 (5% below $506.76 avg)
+# curl -X POST paper-api.alpaca.markets/v2/orders -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"481.42","time_in_force":"gtc"}'
+# Result: HTTP 403 (proxy CONNECT rejected — 78th consecutive block)
+```
+
+---
+
+### MARKET CONDITIONS UPDATE — July 14, 11:09 AM ET
+
+**CPI June 2026 (8:30 AM ET release — no live data access):**
+- Prior consensus: Headline 3.8-3.9% YoY, Core ~2.9% MoM sticky
+- Cannot confirm actual print — API and news feed access blocked
+- Warsh testimony ongoing — tone unknown
+
+**Intraday estimates (no live data — extrapolated from pre-market context):**
+- AMD pre-market: $548.30 (+2.6% on BofA PT raise $550→$620)
+- GS pre-market: +5-8% gap up on record Q2 earnings
+- META pre-market: $603.12 (−2.02%)
+- IBM pre-market: $302.05 (−1.33%)
+- PLTR pre-market: $127-132 range
+
+**Sector watch (estimated from pre-market trends):**
+- Financials: Likely green/strong (GS +45% beat, bank earnings blowout)
+- Semiconductors: Likely weak (MU −5%, SK Hynix −9% — AMD bucking trend)
+- Energy: Bullish (Iran blockade + Brent $85+)
+- AI/High-multiple: Under pressure (rate hike pricing + Warsh hawkish bias)
+
+---
+
+### WATCHLIST EXECUTION CATCH-UP
+
+Pre-Market approved entries (all MOO-blocked) — re-attempting as limit orders for intraday execution:
+
+#### Attempt 1: AMD — SELL 9sh (MANDATORY — guardrail compliance)
+
+```bash
+# SELL 9sh AMD limit at bid×0.995 — mandatory position reduction (18sh → 9sh, 9.83% → 4.9% equity)
+# curl -X POST paper-api.alpaca.markets/v2/orders -d '{"symbol":"AMD","qty":9,"side":"sell","type":"limit","limit_price":"546.55","time_in_force":"day"}'
+# Est. limit price: $548.30×0.995 = $545.56 (0.5% below pre-market estimate)
+# Result: HTTP 403 (proxy CONNECT rejected — 78th consecutive block)
+```
+
+```yaml
+---
+ts: 2026-07-14T15:10:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: MANDATORY PARTIAL EXIT — AMD 9.83% equity violates 5% hard cap; reducing 18sh→9sh; API blocked 78th consecutive session
+size_pct: 4.9
+stop: 481.42
+target: 620.0
+result_pct:
+master_notes: "MANDATORY guardrail compliance exit (NOT thesis exit). AMD 18sh @ 9.83% must become 9sh @ ~4.9%. BofA PT raised $550→$620 today (bull thesis intact). AMD 'Advancing AI 2026' conf July 22-23 supports remaining position. Sell limit attempted @ ~$546 (0.5% below pre-market $548.30 est.) → HTTP 403 BLOCKED. AMD remains naked Day 23+ with 18sh and NO STOP. OPERATOR MUST: (1) SELL 9sh AMD immediately at market; (2) Trail stop on remaining 9sh to $520.89 (5% below $548.30 est.). 78th consecutive block — pattern continues."
+---
+```
+
+#### Attempt 2: GS — BUY 7sh (Score 7.33 — APPROVED)
+
+```bash
+# BUY 7sh GS limit (catch-up for MOO) — bracket GTC
+# curl -X POST paper-api.alpaca.markets/v2/orders -d '{"symbol":"GS","qty":7,"side":"buy","type":"limit","limit_price":"<ask×1.005>","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"<fill×0.95>"},"take_profit":{"limit_price":"<fill×1.15>"}}'
+# Cannot determine live ask (data.alpaca.markets also blocked)
+# Result: HTTP 403 (proxy CONNECT rejected — 78th consecutive block)
+```
+
+```yaml
+---
+ts: 2026-07-14T15:10:30Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: GS Q2 2026 record blowout — EPS $20.98 vs $14.51 (+45% beat); catch-up limit attempt after Market-Open silent failure; API blocked
+size_pct: 4.5
+stop: 0
+target: 0
+result_pct:
+agent_scores:
+  fundamentals: 10
+  technical: 5
+  sentiment: 9
+  macro: 7
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "CATCH-UP for Market-Open silent failure. GS score 7.33 — approved Pre-Market. Limit bracket order attempted → HTTP 403 BLOCKED (78th consecutive). Live GS price unknown (data blocked). Pre-market est. $645+ on record Q2. If operator executed at open: fill likely $640-$660; stop at fill×0.95; target at fill×1.15 (3:1 R/R). xAI N/A. Order NOT placed at Alpaca — position count remains 0. OPERATOR: BUY 7sh GS immediately at market; place bracket stop+target. Time-sensitive: earnings-day entries lose edge intraday as gap-up fades."
+---
+```
+
+#### Attempt 3: META — BUY 8sh (Score 7.17 — APPROVED)
+
+```bash
+# BUY 8sh META limit bracket GTC
+# curl -X POST paper-api.alpaca.markets/v2/orders -d '{"symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"<ask×1.005>","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"<fill×0.95>"},"take_profit":{"limit_price":"<fill×1.15>"}}'
+# Result: HTTP 403 (proxy CONNECT rejected)
+```
+
+```yaml
+---
+ts: 2026-07-14T15:11:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: Meta Compute division + Iris chip September; catch-up limit attempt after Market-Open silent failure; API blocked
+size_pct: 4.8
+stop: 0
+target: 0
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "CATCH-UP for Market-Open silent failure. META score 7.17 — approved Pre-Market. Limit bracket order attempted → HTTP 403 BLOCKED (78th consecutive). Pre-market: $603.12 (−2.02%). CPI outcome unknown — if core CPI >3.0% (hot), this entry should be cancelled (META sensitive to rate shock). If CPI in-line or cool → thesis intact. OPERATOR: BUY 8sh META limit. If CPI hot → CANCEL or defer to tomorrow. Earnings ~July 29-30 — safe entry window (>48h). xAI N/A."
+---
+```
+
+#### Attempt 4: IBM — BUY 3sh (Score 7.0 — APPROVED; EXIT DEADLINE JULY 17 EOD)
+
+```bash
+# BUY 3sh IBM limit bracket GTC
+# curl -X POST paper-api.alpaca.markets/v2/orders -d '{"symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"<ask×1.005>","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"<fill×0.95>"},"take_profit":{"limit_price":"<fill×1.15>"}}'
+# Result: HTTP 403 (proxy CONNECT rejected)
+```
+
+```yaml
+---
+ts: 2026-07-14T15:11:30Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: IBM z17 launch cycle + BofA PT raised $315→$330 today; catch-up limit attempt; EXIT MANDATORY July 17 EOD (IBM earnings July 22); API blocked
+size_pct: 0.9
+stop: 0
+target: 0
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "CATCH-UP for Market-Open silent failure. IBM score 7.0 — approved Pre-Market. Limit bracket order attempted → HTTP 403 BLOCKED (78th consecutive). Pre-market: $302.05 (−1.33%). BofA PT $315→$330 raised TODAY. IBM EXIT DEADLINE July 17 EOD (IBM earnings July 22; 48h window opens July 20). With only 2 trading days left (July 15, 17), time value of this entry is eroding fast. OPERATOR: BUY 3sh IBM as soon as possible today or tomorrow morning; set hard MOC exit for July 17; stop at fill×0.95, target fill×1.15. Do NOT hold past July 17 close under any circumstances. xAI N/A."
+---
+```
+
+#### PLTR Re-Score (Post-CPI — No Data Access)
+
+Cannot re-score PLTR post-CPI without live market data. PLTR scored 6.67 Pre-Market (Macro dragged by Iran + Warsh hawkish). Post-CPI direction:
+- If CPI cool (headline <3.8%) + Warsh non-hawkish: Macro could recover from 5→6-7; total score could reach 7.0+. Entry warranted.
+- If CPI hot (core >3.0%) + Warsh hawkish: Macro stays 5 or declines further. Entry remains invalid.
+
+```yaml
+---
+ts: 2026-07-14T15:12:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.67
+thesis: PLTR re-score deferred post-CPI — no live data; pre-market score 6.67 (below 7.0 gate); Macro Agent 5/10 on Iran/Warsh headwinds
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 7
+  macro: 5
+  risk: 8
+  tech_analyst: 8
+agent_average: 6.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "SKIP — PLTR scores 6.67 as of Pre-Market (below 7.0 gate, only 3/6 agents ≥7). Mid-Morning re-score blocked by API (cannot access live price/volume data). CPI outcome unknown. If CPI printed cool (<3.8% headline, core <2.9%) and Warsh tone was non-hawkish, PLTR Macro could recover to 6-7 and total score could reach 7.0+. OPERATOR: Re-score PLTR manually. If CPI cool + market recovering → consider limit bracket 35sh at current ask. If CPI hot → hold off, PLTR P/E >200x is extremely rate-sensitive. IBM EXIT DEADLINE July 17 takes priority over new PLTR entry today."
+---
+```
+
+---
+
+### PORTFOLIO STATE — Mid-Morning (11:09 AM ET / 15:09 UTC — All API Calls Blocked)
+
+**Estimated (pre-market values — no live confirmation):**
+
+| Component | Shares | Avg Cost | Est. Price | Est. Value | % Equity | Stop Resting |
+|---|---|---|---|---|---|---|
+| AMD | 18 | $506.76 | ~$548+ | ~$9,869+ | ~9.83% | **NONE — CRITICAL** |
+| Cash | — | — | — | ~$90,644 | ~90.1% | — |
+| **Total** | | | | **~$100,513** | **100%** | |
+
+**Guardrail violations active:**
+1. AMD 9.83% equity (hard cap 5%) — 78th+ consecutive routine unable to remediate
+2. AMD no resting stop-loss at Alpaca (Day 23+)
+3. Cash 90.1% (target 85% active + 10% crypto = 95% deployed; 5% floor)
+4. Active bucket: 9.83% (target 85%) — 4 approved entries completely blocked
+
+**Orders attempted this routine (all HTTP 403):**
+1. AMD SELL 9sh limit ~$546 → **BLOCKED**
+2. GS BUY 7sh limit bracket GTC → **BLOCKED**
+3. META BUY 8sh limit bracket GTC → **BLOCKED**
+4. IBM BUY 3sh limit bracket GTC → **BLOCKED**
+
+---
+
+### ⚠️⚠️⚠️ OPERATOR MANDATORY ACTIONS (app.alpaca.markets — IMMEDIATE):
+
+**PRIORITY 1 — GUARDRAIL COMPLIANCE (do immediately):**
+- SELL 9sh AMD at current market price → trail stop on remaining 9sh to 5% below current fill
+- Current AMD est: $548+ → after 9sh sell, remaining 9sh ≈ 4.9% equity ✓
+
+**PRIORITY 2 — APPROVED ENTRIES (time-sensitive: GS earnings-day entry loses edge hourly):**
+- BUY 7sh GS at current market (score 7.33 — earnings blowout follow) → stop fill×0.95, target fill×1.15
+- BUY 8sh META at current market (score 7.17 — only if CPI core was ≤3.0%) → stop fill×0.95, target fill×1.15
+- BUY 3sh IBM at current market (score 7.0 — EXIT MANDATORY July 17 EOD) → stop fill×0.95, target fill×1.15
+
+**PRIORITY 3 — PLTR (conditional):**
+- Re-score PLTR with live data. If CPI cool + Warsh non-hawkish → BUY 35sh limit bracket GTC
+
+**CRITICAL: GS EARNINGS-DAY ENTRY WINDOW IS CLOSING.** Earnings-reaction entries have best edge in the first 2 hours of trading (9:30-11:30 AM ET). It is now 11:09 AM — less than 20 minutes left in peak edge window for GS.
+
+---
+
 ## 2026-07-14 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 77th+ consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-14T12:05:07Z ✓

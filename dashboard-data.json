@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-14T12:05:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-07-14T15:09:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 100513.40,
+    "total_equity": 100513.4,
     "starting_equity": 100000.0,
     "cash": 90644,
     "cash_pct": 90.1,
     "buying_power": 181288,
-    "long_market_value": 9869.40,
+    "long_market_value": 9869.4,
     "short_market_value": 0.0,
     "daily_pnl": null,
     "daily_pnl_pct": null,
     "total_return_pct": 0.51,
-    "spx_return_pct": 5.80,
+    "spx_return_pct": 5.8,
     "benchmark_gap_pct": -5.29,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9869.40,
+      "active_value": 9869.4,
       "active_pct": 9.83,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
       "cash_pct": 90.17
     },
-    "note": "July 14 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED HTTP 000 — 77th consecutive session. AMD pre-market $548.30 (+2.6%) on BofA PT raise $550→$620. AMD 18sh = 9.83% equity — GUARDRAIL VIOLATION (max 5%). CPI June 2026 releases 8:30 AM ET (expected 3.8-3.9% headline). Bank earnings: GS +45% beat, JPM +5.5%, BAC +7.7%, WFC +16.3% — record Q2 for banks. Iran blockade: Brent $85+. Warsh Congressional testimony today. 4 orders blocked: AMD SELL 9sh, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred (6.67 re-score). IBM EXIT DEADLINE: JULY 17 EOD (3 trading days). OPERATOR MUST ACT at app.alpaca.markets."
+    "note": "July 14 MID-MORNING (11:09 AM ET / 15:09Z). API BLOCKED HTTP 403 \u2014 78th consecutive session. Market-Open SILENT FAILURE. CPI outcome unknown. AMD 18sh naked Day 23+ @ 9.83% equity. 4 catch-up orders blocked. GS earnings edge closing. IBM EXIT DEADLINE July 17 (2 days left). OPERATOR MUST ACT AT app.alpaca.markets."
   },
   "positions": [
     {
@@ -31,15 +31,15 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 548.30,
+      "current_price": 548.3,
       "pnl": 747.72,
-      "pnl_pct": 8.20,
+      "pnl_pct": 8.2,
       "stop_loss": null,
       "take_profit": 620.0,
       "stop_loss_pending": 520.89,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 23+. AMD +2.6% pre-market to $548.30 on BofA PT raise $550→$620. P&L: 18 × ($548.30-$506.76) = +$747.72 (+8.2%). Position 9.83% equity — OVER 5% cap by nearly 5 pp. From current $548.30: remaining upside to TP ($620) = $71.70 (13.1%); downside to stop ($481.42) = $66.88 (12.2%) — R/R only 1.07:1 from current price. AMD 'Advancing AI 2026' conf July 22-23 (not binary event). OPERATOR: (1) SELL 9sh AMD MOO TODAY; (2) Trail stop on remaining 9sh from $481.42 → $520.89 (5% below $548.30); (3) Consider TP $620 (BofA analyst PT). ORDER ATTEMPTED: 9sh SELL MOO → HTTP 000 BLOCKED."
+      "note": "CRITICALLY NAKED Day 23+. AMD +2.6% pre-market to $548.30 on BofA PT raise $550\u2192$620. P&L: 18 \u00d7 ($548.30-$506.76) = +$747.72 (+8.2%). Position 9.83% equity \u2014 OVER 5% cap by nearly 5 pp. From current $548.30: remaining upside to TP ($620) = $71.70 (13.1%); downside to stop ($481.42) = $66.88 (12.2%) \u2014 R/R only 1.07:1 from current price. AMD 'Advancing AI 2026' conf July 22-23 (not binary event). OPERATOR: (1) SELL 9sh AMD MOO TODAY; (2) Trail stop on remaining 9sh from $481.42 \u2192 $520.89 (5% below $548.30); (3) Consider TP $620 (BofA analyst PT). ORDER ATTEMPTED: 9sh SELL MOO \u2192 HTTP 000 BLOCKED."
     },
     {
       "symbol": "GS",
@@ -53,7 +53,7 @@
       "take_profit": null,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.33,
-      "note": "NEW TODAY — Score 7.33 APPROVED. Q2 2026 EPS $20.98 vs $14.51 est (+45% beat). Revenue $20.34B vs $16.22B. Record net revenues. ROE 23.5%, ROTE 25.5%. BUY 7sh GS MOO attempted → HTTP 000 BLOCKED. OPERATOR: BUY 7sh GS at market open. Stop fill×0.95. Target fill×1.15 (3:1 R/R). Est. cost ~$4,515 at ~$645/sh."
+      "note": "NEW TODAY \u2014 Score 7.33 APPROVED. Q2 2026 EPS $20.98 vs $14.51 est (+45% beat). Revenue $20.34B vs $16.22B. Record net revenues. ROE 23.5%, ROTE 25.5%. BUY 7sh GS MOO attempted \u2192 HTTP 000 BLOCKED. OPERATOR: BUY 7sh GS at market open. Stop fill\u00d70.95. Target fill\u00d71.15 (3:1 R/R). Est. cost ~$4,515 at ~$645/sh."
     },
     {
       "symbol": "META",
@@ -67,7 +67,7 @@
       "take_profit": null,
       "setup": "breakout-volume",
       "agent_average": 7.17,
-      "note": "Re-scored 7.17 today (was 7.5 July 13). Pre-market $603.12 (-2.02%) — macro-driven pullback, not thesis reversal. Meta Compute division + Iris chip September still intact. BUY 8sh META MOO attempted → HTTP 000 BLOCKED. OPERATOR: BUY 8sh META at market open. CANCEL if CPI core >3.0%. Stop fill×0.95. Target fill×1.15. Earnings ~July 29-30 (safe)."
+      "note": "Re-scored 7.17 today (was 7.5 July 13). Pre-market $603.12 (-2.02%) \u2014 macro-driven pullback, not thesis reversal. Meta Compute division + Iris chip September still intact. BUY 8sh META MOO attempted \u2192 HTTP 000 BLOCKED. OPERATOR: BUY 8sh META at market open. CANCEL if CPI core >3.0%. Stop fill\u00d70.95. Target fill\u00d71.15. Earnings ~July 29-30 (safe)."
     },
     {
       "symbol": "IBM",
@@ -81,7 +81,7 @@
       "take_profit": null,
       "setup": "sector-rotation",
       "agent_average": 7.0,
-      "note": "Score 7.0 today (up from prior 6.67 — BofA PT raised $315→$330 TODAY). Pre-market $302.05 (-1.33%) — macro-driven. IBM on CNBC biggest movers list. z17 quantum-safe mainframe driving thesis. BUY 3sh IBM MOO attempted → HTTP 000 BLOCKED. OPERATOR: BUY 3sh IBM at market open. Stop fill×0.95. Target fill×1.15. EXIT MANDATORY by July 17 EOD (IBM earnings July 22). Set MOC July 17 as deadline sell."
+      "note": "Score 7.0 today (up from prior 6.67 \u2014 BofA PT raised $315\u2192$330 TODAY). Pre-market $302.05 (-1.33%) \u2014 macro-driven. IBM on CNBC biggest movers list. z17 quantum-safe mainframe driving thesis. BUY 3sh IBM MOO attempted \u2192 HTTP 000 BLOCKED. OPERATOR: BUY 3sh IBM at market open. Stop fill\u00d70.95. Target fill\u00d71.15. EXIT MANDATORY by July 17 EOD (IBM earnings July 22). Set MOC July 17 as deadline sell."
     },
     {
       "symbol": "PLTR",
@@ -95,14 +95,14 @@
       "take_profit": null,
       "setup": "ai-momentum-pullback",
       "agent_average": 6.67,
-      "note": "DEFERRED — re-scored 6.67 today (was 7.5 July 13). Score fell below 7.0 Master gate. Macro Agent scored 5: Iran risk-off + Trump Hormuz blockade + Warsh hawkish testimony + September rate hike pricing = triple threat to high-multiple (P/E >200x) names. Pre-market $127-132 range (conflicting sources). Re-score at Market Open (9:45 AM) after CPI print. Bull case: CPI cool + Warsh non-hawkish → re-score could recover to 7.0+. If recovered: BUY 35sh limit at ask×1.005 bracket GTC."
+      "note": "DEFERRED \u2014 re-scored 6.67 today (was 7.5 July 13). Score fell below 7.0 Master gate. Macro Agent scored 5: Iran risk-off + Trump Hormuz blockade + Warsh hawkish testimony + September rate hike pricing = triple threat to high-multiple (P/E >200x) names. Pre-market $127-132 range (conflicting sources). Re-score at Market Open (9:45 AM) after CPI print. Bull case: CPI cool + Warsh non-hawkish \u2192 re-score could recover to 7.0+. If recovered: BUY 35sh limit at ask\u00d71.005 bracket GTC."
     }
   ],
   "market": {
-    "mode": "BIFURCATED — BANK EARNINGS BLOWOUT vs IRAN RISK-OFF. Financials rally on record Q2 (GS +45% beat, JPM +5.5%, BAC +7.7%). Semiconductors weak (MU -5%, SK Hynix -9%). AMD bucking chip weakness (+2.6% on BofA PT raise). CPI June 2026 at 8:30 AM ET = swing factor. Warsh inaugural testimony = rate uncertainty.",
+    "mode": "BIFURCATED \u2014 BANK EARNINGS BLOWOUT vs IRAN RISK-OFF. Financials rally on record Q2 (GS +45% beat, JPM +5.5%, BAC +7.7%). Semiconductors weak (MU -5%, SK Hynix -9%). AMD bucking chip weakness (+2.6% on BofA PT raise). CPI June 2026 at 8:30 AM ET = swing factor. Warsh inaugural testimony = rate uncertainty.",
     "fear_greed": 40,
-    "fear_greed_label": "Fear/Neutral — Iran blockade + CPI uncertainty vs bank earnings blowout",
-    "spx": "S&P 500 futures -0.2% pre-market. Est. ~7,620-7,700 area (Q2 bank earnings offset by Iran/CPI headwinds). May 1 baseline 7,200 → +5.8% est.",
+    "fear_greed_label": "Fear/Neutral \u2014 Iran blockade + CPI uncertainty vs bank earnings blowout",
+    "spx": "S&P 500 futures -0.2% pre-market. Est. ~7,620-7,700 area (Q2 bank earnings offset by Iran/CPI headwinds). May 1 baseline 7,200 \u2192 +5.8% est.",
     "btc": "BTC est. ~$65,000 area (below $82K active-trading threshold). No crypto entries.",
     "sectors": [
       {
@@ -113,7 +113,7 @@
       {
         "name": "Semiconductors (MU, SKHY, SMH)",
         "change_pct": -5.0,
-        "note": "MU -5%, SK Hynix -9% — crowding unwind vs SMH -5% over past month. AMD +2.6% bucking weakness (server/cloud demand, BofA PT $550→$620). DRAM ETF down ~12% past month."
+        "note": "MU -5%, SK Hynix -9% \u2014 crowding unwind vs SMH -5% over past month. AMD +2.6% bucking weakness (server/cloud demand, BofA PT $550\u2192$620). DRAM ETF down ~12% past month."
       },
       {
         "name": "AI Software / Defense (PLTR)",
@@ -123,12 +123,12 @@
       {
         "name": "Social/Cloud (META)",
         "change_pct": -2.02,
-        "note": "META $603.12 (-2.02%) — macro-driven pullback only. Meta Compute + Iris chip thesis fully intact. Reasonable P/E ~27x limits rate sensitivity. Better entry than prior $612 limit."
+        "note": "META $603.12 (-2.02%) \u2014 macro-driven pullback only. Meta Compute + Iris chip thesis fully intact. Reasonable P/E ~27x limits rate sensitivity. Better entry than prior $612 limit."
       },
       {
         "name": "Enterprise Tech (IBM)",
         "change_pct": -1.33,
-        "note": "IBM $302.05 pre-market. BofA raised PT $315→$330 TODAY. IBM on CNBC biggest movers list. Defensive tech in risk-off = relative outperformance potential. z17 launch cycle ongoing."
+        "note": "IBM $302.05 pre-market. BofA raised PT $315\u2192$330 TODAY. IBM on CNBC biggest movers list. Defensive tech in risk-off = relative outperformance potential. z17 launch cycle ongoing."
       },
       {
         "name": "Energy (VG, OIL)",
@@ -136,7 +136,7 @@
         "note": "VG +9.15% (EnBW LNG deal 820K tpa 5yr). Brent crude $85+ (Iran Hormuz blockade). Oil and energy stocks benefit from geopolitical risk."
       }
     ],
-    "macro_notes_md": "JULY 14 2026 PRE-MARKET: Three macro forces collide today. (1) IRAN/HORMUZ: Trump announced US blockade on Iranian shipping; Brent crude $85+ — risk-off for equities, bullish for energy. Strait of Hormuz controls ~20% of global oil supply. (2) BANK EARNINGS BLOWOUT: GS +45% beat (record Q2), JPM +5.5%, BAC +7.7%, WFC +16.3% — strongest bank earnings in years. Investment banking + trading revenue surging on volatile markets. (3) CPI June 2026 at 8:30 AM ET: Expected headline 3.8-3.9% (down from 4.2% on gasoline -10%); core 2.8-2.9% (sticky). Fed pricing September HIKE under Warsh. Kevin Warsh inaugural Congressional testimony today — first chance to hear his public rate guidance. Net: financials bullish, semis/high-multiple-tech bearish, CPI is the session swing factor. AMD 'Advancing AI 2026' conference July 22-23. IBM earnings July 22 (IBM EXIT DEADLINE: July 17 EOD). BlackRock reports July 15. Netflix reports July 16 AH."
+    "macro_notes_md": "JULY 14 2026 PRE-MARKET: Three macro forces collide today. (1) IRAN/HORMUZ: Trump announced US blockade on Iranian shipping; Brent crude $85+ \u2014 risk-off for equities, bullish for energy. Strait of Hormuz controls ~20% of global oil supply. (2) BANK EARNINGS BLOWOUT: GS +45% beat (record Q2), JPM +5.5%, BAC +7.7%, WFC +16.3% \u2014 strongest bank earnings in years. Investment banking + trading revenue surging on volatile markets. (3) CPI June 2026 at 8:30 AM ET: Expected headline 3.8-3.9% (down from 4.2% on gasoline -10%); core 2.8-2.9% (sticky). Fed pricing September HIKE under Warsh. Kevin Warsh inaugural Congressional testimony today \u2014 first chance to hear his public rate guidance. Net: financials bullish, semis/high-multiple-tech bearish, CPI is the session swing factor. AMD 'Advancing AI 2026' conference July 22-23. IBM earnings July 22 (IBM EXIT DEADLINE: July 17 EOD). BlackRock reports July 15. Netflix reports July 16 AH."
   },
   "routines": [
     {
@@ -144,21 +144,21 @@
       "status": "completed",
       "last_run": "2026-07-14T12:05:00Z",
       "next_run": "2026-07-15T12:00:00Z",
-      "last_summary": "July 14 Pre-Market COMPLETED 12:05Z. API BLOCKED HTTP 000 (77th consecutive). CPI at 8:30 ET not yet out. Bank earnings blowout (GS +45%, JPM, BAC, WFC all beat). 4 orders attempted — all blocked. AMD SELL 9sh MOO, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred (6.67 re-score, macro headwind). IBM exit deadline July 17 EOD."
+      "last_summary": "July 14 Pre-Market COMPLETED 12:05Z. API BLOCKED HTTP 000 (77th consecutive). CPI at 8:30 ET not yet out. Bank earnings blowout (GS +45%, JPM, BAC, WFC all beat). 4 orders attempted \u2014 all blocked. AMD SELL 9sh MOO, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred (6.67 re-score, macro headwind). IBM exit deadline July 17 EOD."
     },
     {
       "name": "Market-Open",
-      "status": "pending",
+      "status": "silent-failure",
       "last_run": "2026-07-13T13:45:41Z",
       "next_run": "2026-07-14T13:45:00Z",
-      "last_summary": "July 13 Market-Open ran 13:45-13:50Z. All orders blocked. AMD naked Day 22. Next: July 14 13:45Z — CRITICAL: confirm CPI print, check AMD fill, place stops if any fills happened via operator."
+      "last_summary": "July 14 SILENT FAILURE \u2014 no heartbeat. Violation logged. Catch-up attempted from Mid-Morning but all orders HTTP 403."
     },
     {
       "name": "Mid-Morning",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-09T15:10:00Z",
-      "next_run": "2026-07-14T15:00:00Z",
-      "last_summary": "July 9 Mid-Morning was last successful run. July 10-13 all silently failed (except Daily Review July 13). Next attempt: July 14 11:00 AM ET / 15:00Z."
+      "status": "completed",
+      "last_run": "2026-07-14T15:09:00Z",
+      "next_run": "2026-07-15T15:00:00Z",
+      "last_summary": "July 14 Mid-Morning COMPLETED 15:09Z. API BLOCKED HTTP 403 (78th consecutive). Market-Open violation logged. Stop-loss audit: AMD naked Day 23+ (blocked). 4 catch-up orders blocked: AMD SELL 9sh, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred (6.67 score). GS earnings-day edge closing. IBM deadline July 17 EOD."
     },
     {
       "name": "Midday",
@@ -201,7 +201,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "APPROVED 7.33 avg (F:10 T:5 S:9 M:7 R:6 TA:7) — MOO BUY 7sh GS → HTTP 000 BLOCKED (77th consecutive). Q2 EPS $20.98 vs $14.51 (+45% beat), revenue $20.34B vs $16.22B, record quarter. OPERATOR: BUY 7sh GS at market open.",
+      "result": "APPROVED 7.33 avg (F:10 T:5 S:9 M:7 R:6 TA:7) \u2014 MOO BUY 7sh GS \u2192 HTTP 000 BLOCKED (77th consecutive). Q2 EPS $20.98 vs $14.51 (+45% beat), revenue $20.34B vs $16.22B, record quarter. OPERATOR: BUY 7sh GS at market open.",
       "agent_average": 7.33,
       "master_decision": "approved"
     },
@@ -216,7 +216,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "APPROVED 7.17 avg (F:8 T:6 S:7 M:6 R:8 TA:8) — MOO BUY 8sh META → HTTP 000 BLOCKED (77th consecutive). Pre-market $603.12 (-2.02% macro-driven). Meta Compute + Iris chip thesis intact. OPERATOR: BUY 8sh META at open; CANCEL if CPI core >3.0%.",
+      "result": "APPROVED 7.17 avg (F:8 T:6 S:7 M:6 R:8 TA:8) \u2014 MOO BUY 8sh META \u2192 HTTP 000 BLOCKED (77th consecutive). Pre-market $603.12 (-2.02% macro-driven). Meta Compute + Iris chip thesis intact. OPERATOR: BUY 8sh META at open; CANCEL if CPI core >3.0%.",
       "agent_average": 7.17,
       "master_decision": "approved"
     },
@@ -231,7 +231,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "APPROVED 7.0 avg (F:8 T:6 S:8 M:6 R:7 TA:7) — MOO BUY 3sh IBM → HTTP 000 BLOCKED (77th consecutive). BofA PT raised $315→$330 TODAY. Pre-market $302.05 (-1.33%). EXIT DEADLINE: July 17 EOD. OPERATOR: BUY 3sh IBM at open; set MOC July 17 as exit.",
+      "result": "APPROVED 7.0 avg (F:8 T:6 S:8 M:6 R:7 TA:7) \u2014 MOO BUY 3sh IBM \u2192 HTTP 000 BLOCKED (77th consecutive). BofA PT raised $315\u2192$330 TODAY. Pre-market $302.05 (-1.33%). EXIT DEADLINE: July 17 EOD. OPERATOR: BUY 3sh IBM at open; set MOC July 17 as exit.",
       "agent_average": 7.0,
       "master_decision": "approved"
     },
@@ -246,7 +246,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "MANDATORY GUARDRAIL REDUCTION — AMD 9.83% equity (OVER 5% cap, Day 23+ naked). MOO SELL 9sh AMD → HTTP 000 BLOCKED (77th consecutive). AMD pre-market $548.30 (+2.6%). P&L on full 18sh: +$747.72 (+8.2%). OPERATOR: SELL 9sh AMD immediately; trail stop on 9sh to $520.89; consider TP $620 (BofA PT).",
+      "result": "MANDATORY GUARDRAIL REDUCTION \u2014 AMD 9.83% equity (OVER 5% cap, Day 23+ naked). MOO SELL 9sh AMD \u2192 HTTP 000 BLOCKED (77th consecutive). AMD pre-market $548.30 (+2.6%). P&L on full 18sh: +$747.72 (+8.2%). OPERATOR: SELL 9sh AMD immediately; trail stop on 9sh to $520.89; consider TP $620 (BofA PT).",
       "agent_average": 7.17,
       "master_decision": "approved"
     },
@@ -261,7 +261,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "DEFERRED — re-scored 6.67 (was 7.5 July 13). Master gate not met (avg < 7.0, only 3/6 agents >=7). Macro scored 5 — Iran + Warsh + rate hike pricing = triple threat to P/E >200x names. Re-score at Market Open after CPI print.",
+      "result": "DEFERRED \u2014 re-scored 6.67 (was 7.5 July 13). Master gate not met (avg < 7.0, only 3/6 agents >=7). Macro scored 5 \u2014 Iran + Warsh + rate hike pricing = triple threat to P/E >200x names. Re-score at Market Open after CPI print.",
       "agent_average": 6.67,
       "master_decision": "rejected"
     },
@@ -276,7 +276,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "AMD 18sh naked Day 22+ — no stop at Alpaca — API blocked all remediation. 5 of 7 routines silently failed July 13.",
+      "result": "AMD 18sh naked Day 22+ \u2014 no stop at Alpaca \u2014 API blocked all remediation. 5 of 7 routines silently failed July 13.",
       "agent_average": null,
       "master_decision": "violation"
     }
@@ -286,47 +286,47 @@
       "symbol": "GS",
       "bucket": "active",
       "score": 7.33,
-      "action": "BUY 7sh MOO — APPROVED",
+      "action": "BUY 7sh MOO \u2014 APPROVED",
       "setup": "earnings-reaction-follow",
-      "notes": "NEW TODAY. Q2 2026 record blowout: EPS $20.98 vs $14.51 (+45%), revenue $20.34B vs $16.22B. ROE 23.5%. API BLOCKED. OPERATOR: BUY 7sh GS at open; stop fill×0.95; target fill×1.15."
+      "notes": "NEW TODAY. Q2 2026 record blowout: EPS $20.98 vs $14.51 (+45%), revenue $20.34B vs $16.22B. ROE 23.5%. API BLOCKED. OPERATOR: BUY 7sh GS at open; stop fill\u00d70.95; target fill\u00d71.15."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.17,
-      "action": "BUY 8sh MOO — APPROVED (cancel if CPI core >3.0%)",
+      "action": "BUY 8sh MOO \u2014 APPROVED (cancel if CPI core >3.0%)",
       "setup": "breakout-volume",
-      "notes": "Re-scored 7.17 (was 7.5). Meta Compute + Iris chip September. Pre-market $603.12 (-2% macro). API BLOCKED. OPERATOR: BUY 8sh META at open; stop fill×0.95; target fill×1.15."
+      "notes": "Re-scored 7.17 (was 7.5). Meta Compute + Iris chip September. Pre-market $603.12 (-2% macro). API BLOCKED. OPERATOR: BUY 8sh META at open; stop fill\u00d70.95; target fill\u00d71.15."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY 3sh MOO — APPROVED (EXIT by July 17 EOD)",
+      "action": "BUY 3sh MOO \u2014 APPROVED (EXIT by July 17 EOD)",
       "setup": "sector-rotation",
-      "notes": "BofA PT raised $315→$330 TODAY. z17 launch. Pre-market $302.05. API BLOCKED. EXIT DEADLINE JULY 17 EOD. OPERATOR: BUY 3sh at open; set MOC July 17 exit."
+      "notes": "BofA PT raised $315\u2192$330 TODAY. z17 launch. Pre-market $302.05. API BLOCKED. EXIT DEADLINE JULY 17 EOD. OPERATOR: BUY 3sh at open; set MOC July 17 exit."
     },
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": null,
-      "action": "SELL 9sh MOO (mandatory) — trail stop to $520.89",
+      "action": "SELL 9sh MOO (mandatory) \u2014 trail stop to $520.89",
       "setup": "ai-momentum-pullback",
-      "notes": "18sh = 9.83% equity, OVER 5% cap, Day 23+ naked. AMD $548.30 pre-market (+2.6%, BofA PT $550→$620). P&L +$747.72. API BLOCKED. OPERATOR: SELL 9sh AMD at open immediately."
+      "notes": "18sh = 9.83% equity, OVER 5% cap, Day 23+ naked. AMD $548.30 pre-market (+2.6%, BofA PT $550\u2192$620). P&L +$747.72. API BLOCKED. OPERATOR: SELL 9sh AMD at open immediately."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
       "score": 6.67,
-      "action": "DEFERRED — re-score at Market Open (9:45 AM ET)",
+      "action": "DEFERRED \u2014 re-score at Market Open (9:45 AM ET)",
       "setup": "ai-momentum-pullback",
-      "notes": "Re-scored 6.67 today (was 7.5). Macro 5/10 — Iran + Warsh + rate hike pricing kills high-multiple names. Pre-market ~$127-132. If CPI cool + Warsh non-hawkish: BUY 35sh limit bracket GTC. Trump $1M+ position, DA Davidson Buy upgrade still intact."
+      "notes": "Re-scored 6.67 today (was 7.5). Macro 5/10 \u2014 Iran + Warsh + rate hike pricing kills high-multiple names. Pre-market ~$127-132. If CPI cool + Warsh non-hawkish: BUY 35sh limit bracket GTC. Trump $1M+ position, DA Davidson Buy upgrade still intact."
     },
     {
       "symbol": "BLK",
       "bucket": "active",
       "score": null,
-      "action": "PRE-SCORE TONIGHT — reports July 15 pre-market",
+      "action": "PRE-SCORE TONIGHT \u2014 reports July 15 pre-market",
       "setup": "earnings-reaction-follow",
       "notes": "BlackRock reports tomorrow July 15 pre-market. Expected EPS $12.55, revenue $6.63B. Run 6-agent tonight for tomorrow's Pre-Market routine commitment. AUM expansion + fee income thesis."
     },
@@ -334,7 +334,7 @@
       "symbol": "NFLX",
       "bucket": "active",
       "score": null,
-      "action": "WATCH — reports July 16 AH; entry opportunity July 17",
+      "action": "WATCH \u2014 reports July 16 AH; entry opportunity July 17",
       "setup": "earnings-reaction-follow",
       "notes": "Netflix reports Thursday July 16 after close. Potential entry July 17 (Friday) if beat confirmed. Subscriber growth + ad tier thesis. Must exit before next earnings (~October)."
     }
