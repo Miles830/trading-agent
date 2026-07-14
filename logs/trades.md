@@ -4,6 +4,377 @@
 
 ---
 
+## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 — `paper-api.alpaca.markets:443` and `data.alpaca.markets:443` — **78th consecutive blocked session** (egress policy denial, not auth failure)
+**Market Status:** OPEN — 12:36 PM ET. Trading day confirmed.
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Expected (UTC) | Found in log | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC (8:05 AM ET) | STARTED ✓ | Ran (no COMPLETED — API blocked exit) |
+| Market-Open | 13:45 UTC (9:45 AM ET) | **NOT FOUND** | **SILENT FAILURE** |
+| Mid-Morning | 15:00 UTC (11:00 AM ET) | **NOT FOUND** | **SILENT FAILURE** |
+| Midday | 16:34 UTC (12:34 PM ET) | STARTED ✓ | Running now |
+
+**Market-Open and Mid-Morning both silently failed.** This triggers WATCHLIST EXECUTION CATCH-UP per midday.md.
+
+```yaml
+---
+ts: 2026-07-14T16:36:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market-Open (9:45 AM ET) and Mid-Morning (11:00 AM ET) both silently failed July 14 — neither heartbeat found in logs/heartbeats/2026-07-14.log
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Market-Open routine (9:45 AM ET) and Mid-Morning (11:00 AM ET) both missed July 14. Pattern: only Pre-Market and Midday/Daily-Review fire reliably. No AMD stop was set at open, no fill confirmations logged, no intraday stop trailing performed. 78th+ consecutive session with API blockage compounding the scheduler failure. Watchlist catch-up executing now per midday.md protocol."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 14, 2026 Midday (12:36 PM ET)
+
+**CPI June 2026 (RELEASED 8:30 AM ET — COOL PRINT):**
+- Headline: 3.5% YoY (vs 3.8% expected — BEAT by 0.3 pp to the downside)
+- Core: 2.6% YoY (vs 2.8% expected — BEAT by 0.2 pp to the downside)
+- Monthly: -0.4% seasonally adjusted (vs -0.2% expected — meaningful undershoot)
+- Impact: September rate HIKE now less likely. September rate CUT back on the table. Risk-on reaction especially for growth/tech. This is the most bullish macro development since the April jobs report.
+
+**Midday Market Snapshot (12:36 PM ET):**
+- S&P 500: +0.26% to 7,535.12
+- Nasdaq 100: +0.81% to 26,083 (tech/AI names leading)
+- Dow Jones: -0.19% (IBM -22% crash weighing on Dow)
+- 10-yr Treasury: Rallying (yield dropping) on cool CPI — bullish for growth stocks
+
+**Key Movers Today:**
+- AMD: +5% to ~$560.66 (CPI-driven chip rebound; BofA PT $620 intact)
+- GS: +7.7% to ~$1,075 (Q2 earnings beat +45% vs consensus; intraday range $1,046-$1,077)
+- IBM: **-22% to ~$235** (Q2 earnings WARNING — revenue $17.2B vs $17.86B est, EPS $2.93 vs $3.01 est — THESIS DESTROYED)
+- META: +1.0% to ~$660 (CPI relief; range $654-$676 today)
+- PLTR: -0.4% to ~$127.97 (range $126.20-$130.72; CPI helps but Iran still drag)
+- ServiceNow (NOW): -7%, Salesforce (CRM): -5%, Accenture (ACN): -8% (IBM contagion to enterprise software/consulting)
+
+**Sector Leaders (Midday):** Semiconductors (+4-5%), Financials (+3-4%), Consumer Discretionary (+1%)
+**Sector Laggards:** Enterprise Software (-5 to -8%), Consulting (-7 to -9%), Dow components (IBM)
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION (API BLOCKED — 78th consecutive)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+# All Alpaca API calls blocked. Stop-loss status estimated from last known data.
+```
+
+**AMD — Day 24+ NAKED (CRITICAL GUARDRAIL VIOLATION, UNRESOLVED):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA (Day 24+ naked — confirmed blocked)
+- Midday July 14: ~$560.66 (+5% today, +10.6% from avg)
+- Position value: 18 × $560.66 = $10,091.88 (~10.0% equity — STILL OVER 5% CAP)
+- Unrealized P&L: 18 × ($560.66 - $506.76) = 18 × $53.90 = **+$970.20 (+10.6%)**
+- Trail stop intent (blocked): was $520.89 → now should be $532.63 (5% below $560.66)
+- Take-profit: $620 (BofA PT); from current $560.66, remaining upside +10.6%
+
+**No GS, META, or IBM positions exist** (all MOO orders blocked this morning).
+
+```yaml
+---
+ts: 2026-07-14T16:37:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD 18sh naked Day 24+ — still NO stop-loss at Alpaca — API blocked all remediation — position at 10.0% equity (OVER 5% cap)
+size_pct: 10.0
+stop: 0
+target: 620.0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION. AMD 10.0% equity (18sh × $560.66). Hard cap is 5%. No stop at Alpaca. Day 24+ naked. API blocked. AMD up +10.6% from entry — profitable position but completely unprotected. Trail stop ORDER BLOCKED: SELL 9sh AMD → HTTP 000. OPERATOR MUST: (1) SELL 9sh AMD at market now (or MOC); (2) Set GTC stop on remaining 9sh at $532.63 (5% below $560.66)."
+---
+```
+
+---
+
+### IBM — WATCHLIST REMOVAL (Thesis Destroyed — Earnings Warning)
+
+IBM issued a Q2 2026 earnings WARNING pre-announcement this morning before market open. Revenue $17.2B vs $17.86B est. (-$660M miss). EPS $2.93 vs $3.01 est. CEO Arvind Krishna said customers are diverting from software/consulting to hardware. Stock crashed -22% to ~$235. This is IBM's worst single-day performance since 1987.
+
+**This is a complete thesis reversal.** The BofA PT raise to $330 from this morning was issued before the earnings warning landed and is now obsolete. Enterprise software/consulting contagion: NOW -7%, CRM -5%, ACN -8%.
+
+**IBM status: REMOVED from watchlist effective immediately.** Score falls to ~2/10 (fundamentals collapse). DO NOT ENTER IBM at any price today. IBM earnings July 22 confirmed — stay out.
+
+**Silver lining:** Our inability to execute the IBM BUY MOO order saved us from a -22% loss on the position. At 3sh × $302 = $906, a -22% loss would have been -$199.32 (manageable but painful, and the stop at $286.90 would likely have been gapped through). The API blockage inadvertently avoided a losing trade.
+
+```yaml
+---
+ts: 2026-07-14T16:38:00Z
+action: skip
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 2.0
+thesis: IBM thesis DESTROYED by Q2 earnings warning (July 14 morning) — revenue $17.2B vs $17.86B est, EPS $2.93 vs $3.01 est — stock -22% to ~$235 — removing from watchlist
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 2
+  technical: 1
+  sentiment: 3
+  macro: 5
+  risk: 1
+  tech_analyst: 4
+agent_average: 2.67
+agents_above_7: 0
+master_decision: rejected
+master_notes: "WATCHLIST REMOVAL. IBM Q2 earnings pre-announcement this morning: revenue miss $17.2B vs $17.86B (-3.7%), EPS miss $2.93 vs $3.01 (-2.7%). CEO attributed weakness to customers diverting from software/consulting to hardware (servers, storage, memory). Stock -22% to ~$235 — worst single day since Oct 1987. BofA PT raise $315→$330 (issued before warning) now void. Enterprise software contagion: NOW -7%, CRM -5%, ACN -8%. Prior score 7.0 (this morning). Score now 2.67 — thesis destroyed. SKIP exemption reason: fundamentals collapse + binary event (earnings warning is a material event). Operator instruction: IBM EXIT DEADLINE July 17 is now irrelevant — do not enter IBM. IBM earnings July 22 (48h window opens July 20). Excluded from all future watchlists until post-earnings thesis review."
+---
+```
+
+---
+
+### WATCHLIST EXECUTION CATCH-UP (Market-Open + Mid-Morning missed)
+
+Per midday.md: Max 2 catch-up entries. Running 6-agent gate on approved names.
+
+---
+
+#### Catch-Up Candidate 1: GS (Goldman Sachs) — Re-scored Midday
+
+**CRITICAL PRICE CORRECTION:** Pre-market routine estimated GS at ~$645/sh. Actual midday price is **~$1,075/sh** (up +7.7% on earnings today; intraday range $1,046-$1,077). Original MOO instruction (7sh = ~$4,515 at $645 est.) would have been a guardrail violation at actual price: 7sh × $1,075 = $7,525 = 7.5% equity — OVER 5% CAP. Reducing to **4 shares** for compliance: 4sh × $1,075 = $4,300 = 4.27% equity ✓.
+
+**Sub-Agent 1 — Fundamentals: 10/10**
+Q2 2026 EPS $20.98 vs $14.54 est (+$6.44 beat, +44% above consensus). Revenue $20.34B vs $16.4B (+24% beat). Record net revenues. ROE 23.5%, ROTE 25.5%. This remains one of the most extraordinary earnings beats in large-cap financial history. No revision to fundamentals.
+
+**Sub-Agent 2 — Technical: 5/10**
+GS now at $1,075 (midday). Opened at ~$1,046 (the day's low), rallied to $1,077 high, now trading near HOD ($1,075). Entering near the high of the day on earnings-pop day is technically weak timing. No confirmed reversal patterns available (API blocked). Volume likely extremely elevated (earnings day), but direction unclear intraday. Stochastic: unknown. MACD: unknown. Entry near HOD creates fade risk. Technical score capped at 5.
+
+**Sub-Agent 3 — Sentiment: 8/10**
+Record Q2 print dominates all financial media. GS conference call at 9:30 AM ET was universally bullish. Investment banking revival narrative confirmed. M&A pipeline robust. Short interest likely very low on an earnings beat day. CPI cool + GS earnings = double tailwind for financial sentiment. X API not available; base score 8.
+
+**Sub-Agent 4 — Macro: 8/10**
+CPI June 2026 came in COOL: 3.5% vs 3.8% headline, 2.6% vs 2.8% core. This is a significant macro improvement from pre-market: (1) September rate hike probability dropping → lower discount rates = higher financial stock valuations; (2) Capital markets vol remains elevated (Iran/Warsh uncertainty = GS trading revenues); (3) Bank earnings broadly outstanding; (4) Nasdaq up 0.81% = risk-on. Net macro: 8/10 (up from 7 at pre-market due to CPI print).
+
+**Sub-Agent 5 — Risk: 7/10**
+4sh × $1,075 = $4,300 = 4.27% equity ✓ (under 5% cap). Stop -5%: $1,021.25. Target +15%: $1,236.25. R/R = 3:1 ✓ (stop distance $53.75, target $161.25 = exactly 3:1). Trade risk: 5% × $4,300 = $215 = 0.21% equity ✓. Sector (Financials): 4.27% (under 25% ✓). Cash after entry: ~$90,644 − $4,300 = ~$86,344 (85.7% — well above 5% floor ✓). Position count: AMD(1) + GS(1) = 2 (under 12 max ✓). Risk score 7 (entering near HOD on earnings day is a tail risk, partially offset by extraordinary earnings quality).
+
+**Sub-Agent 6 — Tech Analyst: 7/10**
+Financial institution — auto-score 7, defer to other agents. Note: GS technology platform (Marcus, Apollo alternative asset management, transaction banking tech) is meaningful but thesis is financial performance.
+
+**Master Agent — GS MIDDAY RE-SCORE:**
+- Fundamentals: 10 | Technical: 5 | Sentiment: 8 | Macro: 8 | Risk: 7 | Tech Analyst: 7
+- Average: (10+5+8+8+7+7)/6 = **7.5** ✓
+- Agents ≥7: F(10), S(8), M(8), R(7), TA(7) = **5 agents** ✓
+- Risk: 7 ✓
+- **MASTER DECISION: APPROVED — 7.5 avg, 5/6 agents ≥7, Risk 7**
+- **CATCH-UP ENTRY #1** — limit order bracket GTC (midday.md protocol)
+
+```yaml
+---
+ts: 2026-07-14T16:40:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: GS Q2 EPS $20.98 vs $14.54 est (+44% beat); revenue $20.34B vs $16.4B (+24%); catch-up after Market-Open silent failure; 4sh at ~$1,075 (re-sized from 7sh due to real price vs stale $645 estimate)
+size_pct: 4.27
+stop: 1021.25
+target: 1236.25
+result_pct:
+agent_scores:
+  fundamentals: 10
+  technical: 5
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "CATCH-UP for Market-Open/Mid-Morning silent failures. APPROVED 7.5 avg, 5/6 ≥7. F(10) and M(8) are the conviction drivers; CPI cool print (3.5% vs 3.8%) upgraded macro from 7→8. Price correction: pre-market estimate $645 was badly wrong — actual GS $1,075. Original 7sh instruction would have been 7.5% equity = guardrail violation. Reduced to 4sh = 4.27% ✓. Technical(5) below threshold — entering near HOD on earnings day, fade risk. Limit bracket GTC: buy at ~$1,075 × 1.005 = $1,080.38, stop $1,021.25, target $1,236.25. xAI Grok API N/A. ORDER ATTEMPTED: POST /v2/orders 4sh GS limit bracket GTC → HTTP 000 BLOCKED. OPERATOR MUST: BUY 4sh GS at ~$1,075 (limit bid); stop $1,021.25 GTC; target $1,236.25 GTC. Use bracket order. Cash impact: ~$4,300."
+---
+```
+
+---
+
+#### Catch-Up Candidate 2: META Platforms — Re-scored Midday
+
+**PRICE CORRECTION:** Pre-market estimated META at $603.12 (-2.02%). Actual July 13 close: $648. July 14 midday: ~$660 (range $654-$676.62). Pre-market data was stale/incorrect. Using $660 current est. for sizing: **7 shares** × $660 = $4,620 = 4.59% equity ✓.
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Q1 2026 EPS $7.29 vs $6.74 est (+8.2% beat); revenue $47.4B +27% YoY. Meta Compute division launched (cloud infrastructure revenue stream). "Iris" custom AI chip launching September 2026 (vertical integration = margin improvement path). Analyst PT $743. No earnings warning risk — Q2 earnings est. July 29-30 (safe window). Fundamentals intact. IBM enterprise consulting weakness DOES NOT apply to META (META = advertising/AI, not enterprise software/consulting).
+
+**Sub-Agent 2 — Technical: 6/10**
+META at ~$660 today (range $654-$676.62). Up ~+1.8% from $648 July 13 close. CPI relief drove the morning pop. Trading near the midpoint of today's range. Cannot confirm indicator stack (API blocked). Entry at midday with price near mid-range (not near HOD) is slightly better timing than GS, but still not ideal without confirmed momentum signals. Technical score: 6.
+
+**Sub-Agent 3 — Sentiment: 8/10**
+CPI cool = tailwind for growth stocks like META (lower discount rates support high-multiple valuations). Meta AI (LLaMA), Meta Compute launch, Iris chip September = strong innovation narrative. "Magnificent Seven" stocks receiving fresh upgrades today per market reports. IBM enterprise contagion DOES NOT extend to META — different business model (advertising, not consulting/software enterprise). X API not available; base score 8.
+
+**Sub-Agent 4 — Macro: 8/10**
+CPI headline 3.5% vs 3.8% expected — significant undershoot. Core 2.6% vs 2.8% expected. September rate hike probability dropping rapidly. Nasdaq up 0.81% = risk-on for growth names. META P/E ~27x is NOT overly rate-sensitive (vs PLTR at >200x). Iran/Hormuz: minimal direct impact on META's advertising business. Macro 8/10 (up from 6 pre-market due to CPI print resolution).
+
+**Sub-Agent 5 — Risk: 7/10**
+7sh × $660 = $4,620 = 4.59% equity ✓. Stop -5%: $627. Target +15%: $759. R/R = 3:1 ✓ (stop $33/sh, target $99/sh = exactly 3:1). Trade risk: $33 × 7sh = $231 = 0.23% equity ✓. Sector (Communication Services): 4.59% (under 25% ✓). Cash after: $90,644 − $4,620 = $86,024 (85.4% — above 5% floor ✓). Total positions if GS also entered: AMD(10%) + GS(4.27%) + META(4.59%) = 18.86% deployed (cash 81.1% — fine). Position count: 3 (under 12 ✓). Q2 earnings July 29-30 = safe entry window (>14 days from today). Risk score 7.
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+Meta AI (LLaMA open-source leadership), Meta Compute (entering cloud infrastructure = massive TAM expansion competing with AWS/Azure/GCP), Iris chip (vertical integration targeting cost reduction similar to Apple's M-series strategy), social graph (world's largest dataset for ad targeting = unmatched moat), Reality Labs (long-term optionality). Network effects across Facebook/Instagram/WhatsApp/Threads (3B+ MAU). R&D >$15B/year. Technical moats are deep and widening.
+
+**Master Agent — META MIDDAY RE-SCORE:**
+- Fundamentals: 8 | Technical: 6 | Sentiment: 8 | Macro: 8 | Risk: 7 | Tech Analyst: 8
+- Average: (8+6+8+8+7+8)/6 = **7.5** ✓
+- Agents ≥7: F(8), S(8), M(8), R(7), TA(8) = **5 agents** ✓
+- Risk: 7 ✓ | Tech Analyst: 8 ✓
+- **MASTER DECISION: APPROVED — 7.5 avg, 5/6 agents ≥7**
+- **CATCH-UP ENTRY #2** — limit order bracket GTC
+
+```yaml
+---
+ts: 2026-07-14T16:41:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: Meta Compute + Iris chip Sep; Q1 beat; CPI cool = macro tailwind for growth; catch-up after Market-Open/Mid-Morning silent failures; 7sh at ~$660 (re-sized; pre-market price $603 was stale)
+size_pct: 4.59
+stop: 627.0
+target: 759.0
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "CATCH-UP for Market-Open/Mid-Morning silent failures. APPROVED 7.5 avg, 5/6 ≥7. Macro upgraded 6→8 on CPI cool print (3.5% vs 3.8% headline; 2.6% vs 2.8% core). IBM enterprise contagion does NOT apply to META — different business model. Price correction: pre-market $603.12 was stale (July 13 close $648; midday ~$660). IBM crash confirmed that the CPI is the key driver today, not software/consulting risk. META Q2 earnings ~July 29-30 = safe entry window (>14 days). Limit bracket GTC: buy at $660 × 1.005 = $663.30, stop $627, target $759. xAI API N/A. ORDER ATTEMPTED: POST /v2/orders 7sh META limit bracket GTC → HTTP 000 BLOCKED. OPERATOR MUST: BUY 7sh META ~$660 limit; bracket stop $627 GTC; target $759 GTC."
+---
+```
+
+---
+
+#### Candidate 3: PLTR — Re-Scored Midday (Still Below Threshold)
+
+PLTR midday: $127.97 (range $126.20-$130.72). CPI cool improves macro score but Iran conflict ongoing. Re-score:
+
+**Macro re-score for PLTR:** Pre-market macro score was 5 (Iran risk-off + rate hike fear + Warsh hawkish). CPI cool partially reverses: September rate hike less likely, Nasdaq up 0.81%. However, Iran blockade is still active (Brent crude still elevated), Warsh testimony is ongoing (could still be hawkish on core CPI at 2.6% > 2% target). Net macro re-score for PLTR: **7** (CPI improvement partially offsets Iran/Warsh drag; Nasdaq up confirms risk-on bias).
+
+- Fundamentals: 6 | Technical: 6 | Sentiment: 7 | Macro: 7 | Risk: 7 | Tech Analyst: 8
+- Average: (6+6+7+7+7+8)/6 = **6.83** — STILL BELOW 7.0 THRESHOLD
+- Agents ≥7: S(7), M(7), R(7), TA(8) = 4 agents ✓ (meets the 4-agent criterion)
+- But avg 6.83 < 7.0 → REJECTED at Master gate
+- Fundamentals (6) and Technical (6) continue to drag the average. P/E >200x at $127.97 is the main headwind.
+
+```yaml
+---
+ts: 2026-07-14T16:42:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.83
+thesis: PLTR re-scored 6.83 midday July 14 (was 6.67 pre-market); macro improved 5→7 on CPI cool but avg still below 7.0 Master gate; Fundamentals(6) and Technical(6) drag average; P/E >200x remains headwind
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP — score 6.83 < 7.0 Master gate. 4 of 6 agents at ≥7 (meets criterion) but average falls short. Macro improved from 5→7 on CPI cool print. Fundamentals capped at 6 due to P/E >200x rate sensitivity even in improved rate environment. Technical 6 — $127.97 mid-range ($126.20-$130.72), no confirmed breakout signal. PLTR at $127.97 is essentially flat vs $129 pre-market est. CPI improvement is real but Iran conflict ongoing; Warsh testimony tone still uncertain. Defer to Afternoon routine (2:00 PM ET) for potential re-score if macro further improves (if September hike pricing drops materially, PLTR P/E concern diminishes). SKIP exemption: score < 7.0 (not a guardrail-based skip; simply score-gated). xAI API N/A."
+---
+```
+
+---
+
+### MIDDAY POSITION PERFORMANCE SUMMARY
+
+| Symbol | Shares | Entry | Current | Unreal. P&L | % of Equity | Status |
+|---|---|---|---|---|---|---|
+| AMD | 18 | $506.76 | ~$560.66 | +$970.20 (+10.6%) | 10.0% (**OVER 5% CAP**) | NAKED (no stop) |
+| GS | 0 | — | ~$1,075 | — | 0% | APPROVED, BLOCKED |
+| META | 0 | — | ~$660 | — | 0% | APPROVED, BLOCKED |
+
+**Total estimated equity:** ~$100,735 (AMD gain of $222 since pre-market + $90,644 cash)
+**Daily P&L est.:** +$472.86 (+0.47% of portfolio) — AMD up +5% today
+**3% daily circuit breaker threshold:** $3,022 — NOT TRIGGERED (well below)
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+**AMD (18sh):** Hold overnight. BofA PT $620 from current $560.66 = 10.6% upside remaining. "Advancing AI 2026" conference July 22-23 is a near-term catalyst. Semiconductor sector catching a bid today. HOWEVER: must reduce to ≤9sh (operator action required). Trail stop to $532.63 (5% below $560.66). If operator cannot execute, AMD remains dangerously naked.
+
+**GS (pending):** If operator enters, swing trade thesis. GS earnings-follow setup typically sustains for 3-5 days as sell-side initiates/raises targets. Overnight hold is appropriate. Stop at $1,021.25 must be live GTC bracket.
+
+**META (pending):** If operator enters, swing trade thesis. Meta Compute + Iris chip is a multi-week narrative. Earnings July 29-30 creates urgency to exit by July 25 (48h window opens). Overnight hold appropriate with GTC bracket.
+
+**IBM:** DO NOT HOLD (do not enter). Earnings warning context extends well past July 22 earnings date.
+
+---
+
+### ⚠️⚠️⚠️ OPERATOR ACTION ITEMS (Priority Order)
+
+**CRITICAL — Execute at app.alpaca.markets NOW (market closes 4:00 PM ET):**
+
+1. **SELL 9sh AMD** — limit at ~$560 (or MOC): Reduces position from 18sh → 9sh, achieving ~5% cap compliance ($5,046 = ~5.0%). Alternatively, sell 10sh to leave 8sh at 4.45% (better buffer). Trail stop on remaining shares to **$532.63** (5% below $560.66 midday est.).
+
+2. **BUY 4sh GS** — limit bracket GTC at ~$1,075:
+   - Entry limit: $1,080.38 ($1,075 × 1.005)
+   - Stop loss: $1,021.25 (GTC)
+   - Take profit: $1,236.25 (GTC)
+   - 4sh × $1,075 = $4,300 = 4.27% equity ✓
+
+3. **BUY 7sh META** — limit bracket GTC at ~$660:
+   - Entry limit: $663.30 ($660 × 1.005)
+   - Stop loss: $627.00 (GTC)
+   - Take profit: $759.00 (GTC)
+   - 7sh × $660 = $4,620 = 4.59% equity ✓
+
+4. **DO NOT ENTER IBM** — earnings warning; stock crashed -22% today; thesis destroyed.
+
+---
+
 ## 2026-07-14 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 77th+ consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-14T12:05:07Z ✓
