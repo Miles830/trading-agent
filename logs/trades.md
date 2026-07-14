@@ -4,6 +4,206 @@
 
 ---
 
+## 2026-07-14 — Market Open (9:45 AM ET / 13:45 UTC — API BLOCKED — 78th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-14T13:46:16Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 — `paper-api.alpaca.markets:443` — **78th consecutive blocked session** (confirmed by proxy status: `"gateway answered 403 to CONNECT (policy denial or upstream failure)"`)
+**Predecessor Check:** Pre-Market heartbeat confirmed ✓ (`grep "STARTED Pre-Market" logs/heartbeats/2026-07-14.log` → `2026-07-14T12:05:07Z STARTED Pre-Market`)
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO` (not configured in session environment). X sentiment scoring omitted per CLAUDE.md fallback rules.
+
+---
+
+### MARKET OPEN SUMMARY — July 14, 2026 (9:45 AM ET estimates)
+
+**CPI June 2026 (released 8:30 AM ET):**
+- Live data unavailable (API + external data blocked). Based on pre-market consensus (headline 3.8-3.9%, core 2.8-2.9%):
+  - If inline-to-cool: brief equity relief rally, then settled into macro uncertainty
+  - If hot core (>3.0%): Warsh hawkish confirmation → risk-off deepens
+  - Estimated SPX open: ~7,620–7,650 (mixed: bank earnings bullish, Iran risk-off, CPI uncertainty)
+
+**Estimated market open prices (9:30 AM ET):**
+- AMD: ~$545–$555 (pre-mkt $548.30, likely held gains on BofA PT raise)
+- GS: ~$650–$670 (blowout Q2 — likely gapped up strongly at open)
+- META: ~$598–$610 (pre-mkt $603.12, CPI swing factor)
+- IBM: ~$300–$305 (pre-mkt $302.05, BofA PT raise $315→$330)
+
+**Kevin Warsh inaugural Congressional testimony (morning):**
+- Hawkish tone expected — rate hike probability elevated → headwind for growth equities
+- Benefits: GS (trading revenue) | Headwinds: META, high-multiple tech
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED 78th consecutive)
+
+```bash
+# GET /v2/orders?status=open — HTTP 000 (proxy CONNECT rejected 403 policy denial)
+# GET /v2/positions — HTTP 000 (proxy CONNECT rejected 403 policy denial)
+# All audit calls blocked.
+```
+
+**AMD naked position — Day 24 (CRITICAL, UNRESOLVED):**
+- AMD: est. 18sh at $506.76 avg — NO STOP AT ALPACA — CRITICAL GUARDRAIL VIOLATION
+- Est. current: ~$548 (+8.2%) — position ~$9,864 (~9.83% equity — OVER 5% cap)
+- Stop backfill ATTEMPTED: `POST /v2/orders {"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"day"}` → **HTTP 000 BLOCKED**
+- OPERATOR: URGENT — SELL 9sh AMD at market NOW via app.alpaca.markets; place GTC stop on remaining 9sh at $520.89 (5% below $548.30)
+
+---
+
+### ORDER ATTEMPTS — July 14, 2026 Market Open
+
+**Order 1: AMD SELL 9sh (size reduction — Day 24 naked + oversize)**
+```bash
+POST /v2/orders {"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"day"}
+Response: HTTP 000 — BLOCKED (proxy CONNECT rejected)
+```
+
+**Order 2: GS BUY 7sh bracket limit (score 7.33 — Pre-Market commitment)**
+```bash
+POST /v2/orders {
+  "symbol":"GS","qty":7,"side":"buy","type":"limit","limit_price":"647.00",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"614.65"},
+  "take_profit":{"limit_price":"743.05"}
+}
+Response: HTTP 000 — BLOCKED (proxy CONNECT rejected)
+```
+
+**Order 3: META BUY 8sh bracket limit (score 7.17 — Pre-Market commitment)**
+```bash
+POST /v2/orders {
+  "symbol":"META","qty":8,"side":"buy","type":"limit","limit_price":"608.00",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"577.60"},
+  "take_profit":{"limit_price":"698.20"}
+}
+Response: HTTP 000 — BLOCKED (proxy CONNECT rejected)
+```
+
+**Order 4: IBM BUY 3sh bracket limit (score 7.0 — Pre-Market commitment)**
+```bash
+POST /v2/orders {
+  "symbol":"IBM","qty":3,"side":"buy","type":"limit","limit_price":"303.00",
+  "time_in_force":"gtc","order_class":"bracket",
+  "stop_loss":{"stop_price":"287.85"},
+  "take_profit":{"limit_price":"348.45"}
+}
+Response: HTTP 000 — BLOCKED (proxy CONNECT rejected)
+```
+
+---
+
+### TRADE LOG ENTRIES (YAML)
+
+```yaml
+---
+ts: 2026-07-14T13:46:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: GS Q2 2026 blowout EPS $20.98 vs $14.51 (+45% beat); record revenues $20.34B; bracket limit $647 attempted at Market Open — HTTP 000 blocked (78th consecutive)
+size_pct: 4.5
+stop: 614.65
+target: 743.05
+result_pct:
+agent_scores:
+  fundamentals: 10
+  technical: 5
+  sentiment: 9
+  macro: 7
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "Market Open re-attempt of Pre-Market commitment. ORDER ATTEMPTED: POST /v2/orders 7sh GS bracket limit $647.00 → HTTP 000 BLOCKED (78th consecutive session). Limit $647 = ask×1.005 est. Stop $614.65 = limit×0.95 (5% active stop). Target $743.05 = limit×1.148 (3:1 R/R). R/R check: reward $96.05 / risk $32.35 = 2.97:1 ≈ 3:1 ✓. Cannot confirm CPI outcome (API blocked) — GS thesis independent of CPI (Q2 beat already reported). OPERATOR: BUY 7sh GS at market via app.alpaca.markets; stop at fill×0.95; target fill×1.15."
+---
+```
+
+```yaml
+---
+ts: 2026-07-14T13:47:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.17
+thesis: Meta Compute division + Iris chip September; pre-market pullback -2.02% macro-driven; bracket limit $608 attempted at Market Open — HTTP 000 blocked
+size_pct: 4.8
+stop: 577.60
+target: 698.20
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 6
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "Market Open re-attempt of Pre-Market commitment. ORDER ATTEMPTED: POST /v2/orders 8sh META bracket limit $608 → HTTP 000 BLOCKED (78th consecutive session). Stop $577.60 = limit×0.95. Target $698.20 = limit×1.149 (3:1 R/R). IBM EXIT DEADLINE July 17 EOD noted — META earnings July 29-30 safe. OPERATOR: BUY 8sh META at market via app.alpaca.markets. CANCEL if CPI core printed >3.0% (rate shock)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-14T13:48:00Z
+action: entry
+symbol: IBM
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: IBM z17 quantum-safe mainframe cycle + BofA PT $315→$330; IBM earnings July 22 → EXIT BY JULY 17 EOD (3 trading days left); bracket limit $303 attempted — HTTP 000 blocked
+size_pct: 0.9
+stop: 287.85
+target: 348.45
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "Market Open re-attempt of Pre-Market commitment. ORDER ATTEMPTED: POST /v2/orders 3sh IBM bracket limit $303 → HTTP 000 BLOCKED (78th consecutive session). Stop $287.85 = limit×0.95. Target $348.45 = limit×1.15 (3:1 R/R). EXIT CONSTRAINT: IBM earnings July 22. Must exit by July 17 EOD (today + July 15 + July 17 = 3 trading days). Position deliberately small (3sh, 0.9% equity) to minimize forced-exit risk. BofA PT raise $315→$330 is same-day catalyst. OPERATOR: BUY 3sh IBM at market via app.alpaca.markets; bracket stop fill×0.95, target fill×1.15; HARD SELL by July 17 3:50 PM ET MOC."
+---
+```
+
+```yaml
+---
+ts: 2026-07-14T13:49:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD naked position Day 24 — sell-9sh order HTTP 000 blocked; GTC stop backfill also blocked; position remains 9.83% equity (OVER 5% cap) with no stop protection
+size_pct: 9.83
+stop: null
+target: 620.0
+result_pct:
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION — Day 24. AMD: 18sh at $506.76 avg, est. $548 current (~+8.2%). Position ~9.83% equity (5% cap exceeded). No stop at Alpaca. Sell-9sh market order attempted → HTTP 000 BLOCKED. Stop backfill attempted → HTTP 000 BLOCKED. 78th consecutive blocked session. Root cause: egress policy denial on paper-api.alpaca.markets:443 (proxy 403). OPERATOR MANDATORY: Via app.alpaca.markets — (1) SELL 9sh AMD at market IMMEDIATELY; (2) Place GTC stop on remaining 9sh at $520.89 (5% below $548.30); (3) Update take-profit to $620 (BofA PT). This violation persists until the operator executes manually."
+---
+```
+
+---
+
 ## 2026-07-14 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 77th+ consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-14T12:05:07Z ✓
