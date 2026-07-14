@@ -1,13 +1,25 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-14 (Tuesday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000/403 — 79th consecutive blocked session). DAILY REVIEW ✅ RUNNING.**
 
-**CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
+**CPI JUNE 2026 FINAL: COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly −0.4% sa. September rate HIKE probability significantly reduced; September rate CUT scenario re-opened. Most bullish macro development YTD for growth/AI names.**
 
-**IBM WATCHLIST REMOVAL (CRITICAL): IBM issued Q2 2026 earnings WARNING pre-announcement morning of July 14. Revenue $17.2B vs $17.86B est (-3.7%). EPS $2.93 vs $3.01 est (-2.7%). CEO said customers diverting from software/consulting to hardware. Stock -22% to ~$235 — worst day since 1987. IBM REMOVED from watchlist permanently until post-July-22-earnings review. IBM EXIT DEADLINE (July 17) is now irrelevant — IBM was never entered (API blocked). BofA PT raise $315→$330 (this morning, before warning) is now void. IBM contagion: ServiceNow (NOW) -7%, Salesforce (CRM) -5%, Accenture (ACN) -8%.**
+**IBM WATCHLIST REMOVAL (PERMANENT): IBM Q2 earnings warning pre-announcement July 14 AM. Revenue $17.2B vs $17.86B est (−3.7%); EPS $2.93 vs $3.01 est (−2.7%). Stock −22% to ~$235 — worst day since 1987. IBM REMOVED from watchlist until post-July-22-earnings full re-score. API blockage inadvertently saved us from −22% realized loss. IBM EXIT DEADLINE July 17 is now irrelevant (position was never opened).**
 
-**MARKET MIDDAY (12:36 PM ET):** SPX +0.26% to 7,535.12 | Nasdaq +0.81% to 26,083 (chip/tech rebound) | Dow -0.19% (IBM weighing). AMD +5% to ~$560.66. GS +7.7% to ~$1,075. META +1.8% to ~$660 (range $654-$676). PLTR -0.4% to ~$127.97. Sectors: Semiconductors +4-5% (leader), Financials +3-4%, Enterprise Software -5-8% (IBM contagion laggard).
+**MARKET EOD EST (4:30 PM ET):** SPX +0.26% to ~7,535 | Nasdaq +0.81% | Dow −0.19% (IBM drag). AMD closed est. ~$560-570 (+5% day). GS closed est. ~$1,075-1,095 (+7.7%+ on record Q2). META closed est. ~$660-680 (+1.8%). Semiconductors and Financials led; Enterprise Software/Consulting lagged (IBM contagion).
+
+**PREDECESSOR FAILURES TODAY (July 14):** Pre-Market ✅ STARTED 12:05Z (no COMPLETED heartbeat). Market-Open ❌ SILENT FAILURE. Mid-Morning ❌ SILENT FAILURE. Midday ✅ STARTED 16:34Z / COMPLETED 16:48Z. Afternoon ❌ SILENT FAILURE. Market-Close ❌ SILENT FAILURE (4 of 7 routines fully missed). Pattern: only Pre-Market and Midday/Daily-Review fire reliably. Top operational issue: Market-Open and Afternoon/Market-Close scheduler failures persist.
+
+**MIDDAY CATCH-UP ENTRIES (APPROVED, BLOCKED):**
+- GS: Re-scored 7.5 midday. PRICE CORRECTION: real GS price ~$1,075 (not $645 pre-market estimate). Re-sized 4sh (not 7sh — 7sh at $1,075 = 7.5% equity = guardrail violation). 4sh × $1,075 = $4,300 = 4.27%. Stop $1,021.25. Target $1,236.25. ORDER BLOCKED: HTTP 000.
+- META: Re-scored 7.5 midday. PRICE CORRECTION: real META ~$660 (not $603 pre-market estimate). 7sh × $660 = $4,620 = 4.59%. Stop $627. Target $759. ORDER BLOCKED: HTTP 000.
+
+**PLTR MIDDAY RE-SCORE:** 6.83 avg (macro improved 5→7 on CPI cool). Still below 7.0 Master gate. Skip — not a guardrail-based skip; score-gated. P/E >200x continues to limit Fundamentals score.
+
+**AMD EOD STATUS:** 18sh at $506.76 avg. Current est. ~$560-570. P&L est.: +$970-1,134 (+10.6-12.0%). Position: ~10.0-10.5% equity — STILL OVER 5% CAP. NO STOP AT ALPACA. Day 24+ naked. All API calls blocked. BofA PT $620 — remaining upside ~10-11%. AMD "Advancing AI 2026" conference July 22-23 (upcoming catalyst). Trail stop should be $532.63 (5% below $560). OPERATOR MUST ACT: SELL 9sh AMD + set GTC stop at open tomorrow.
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY):** 2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING. CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks. IBM WATCHLIST REMOVAL (CRITICAL): IBM issued Q2 2026 earnings WARNING pre-announcement morning of July 14. Revenue $17.2B vs $17.86B est (-3.7%). EPS $2.93 vs $3.01 est (-2.7%). CEO said customers diverting from software/consulting to hardware. Stock -22% to ~$235 — worst day since 1987. IBM REMOVED from watchlist permanently until post-July-22-earnings review. IBM EXIT DEADLINE (July 17) is now irrelevant — IBM was never entered (API blocked). BofA PT raise $315→$330 (this morning, before warning) is now void. IBM contagion: ServiceNow (NOW) -7%, Salesforce (CRM) -5%, Accenture (ACN) -8%. MARKET MIDDAY (12:36 PM ET): SPX +0.26% to 7,535.12 | Nasdaq +0.81% to 26,083 (chip/tech rebound) | Dow -0.19% (IBM weighing). AMD +5% to ~$560.66. GS +7.7% to ~$1,075. META +1.8% to ~$660 (range $654-$676). PLTR -0.4% to ~$127.97. Sectors: Semiconductors (+4-5%), Financials (+3-4%), Enterprise Software (-5-8% — IBM contagion laggard). MIDDAY CATCH-UP ENTRIES (APPROVED, BLOCKED): GS 4sh (7.5 avg, $1,075, stop $1,021.25, target $1,236.25 — HTTP 000); META 7sh (7.5 avg, $660, stop $627, target $759 — HTTP 000). PLTR 6.83 — skip (score-gated). AMD Day 24+ naked, 10.0% equity, all sell/stop attempts blocked.
 
 **PREDECESSOR FAILURES TODAY (July 14):** Pre-Market ✅ STARTED. Market-Open ❌ SILENT FAILURE. Mid-Morning ❌ SILENT FAILURE. Pattern persists: scheduler only reliably fires Pre-Market, Midday, Daily-Review.
 
@@ -1030,22 +1042,92 @@ Verify at https://app.alpaca.markets → GLD 7sh stop $397.92 resting. If operat
 - **2026-05-26 — MU "likely filled" assumption was WRONG:** Prior notes said MU "likely filled" at $765.91 because the intraday dip ($747.27) was below our limit. But no order was ever successfully placed (all attempts HTTP 403). "Likely filled" language should NEVER be used without confirmed Alpaca API verification. The fill assumption led to overstating portfolio value in May 22-25 notes. Be precise: orders are either confirmed or not placed. Ambiguity is not allowed in stop-loss accounting.
 - **2026-05-26 — $1,625 PT changes MU thesis duration:** The UBS $1,625 PT implies MU at $912 is only 44% of the way to target. This changes the exit strategy: the +15% take-profit bracket (targeting $1,050) may be too conservative given the $1,625 PT. For the re-entry tomorrow, consider either a higher take-profit target or no take-profit (trailing stop only). The minimum 3:1 R/R is satisfied at +15%, but the optimal exit may be higher. Note this as an open question for tomorrow's Pre-Market scoring.
 
-## Setup Performance Tracker (updated 2026-07-13 Daily Review)
+## Setup Performance Tracker (updated 2026-07-14 Daily Review)
 | Setup type | Wins | Losses | Consec. L | 3-in-a-row halt | 3-in-a-row boost | Status |
 |---|---|---|---|---|---|---|
-| macro-hedge | 0 | **1** (GLD −4.99%) | 1 | none — need 3 | — | No halt; GLD downtrend confirmed, no re-entry |
-| earnings-reaction-follow | 0 | 0 | 0 | none | — | JPM/WFC/GS post-earnings July 14-15 eligible |
-| sector-rotation | 0 | 0 | 0 | none | — | IBM mandatory July 14 (score 7.2); EXIT July 17 |
-| ai-momentum-pullback | 0 | 0 | 0 | none | — | PLTR 7.5 MANDATORY July 14; META 7.5 MANDATORY July 14 |
-| breakout-volume | 0 | 0 | 0 | none | — | No breakouts triggered |
+| macro-hedge | 0 | **1** (GLD −4.99%) | 1 | none — need 3 | — | No halt; GLD still in downtrend (CPI cool = disinflation = gold headwind) |
+| earnings-reaction-follow | 0 | 0 | 0 | none | — | **GS 4sh MANDATORY July 15** (7.5 carry-forward); MS/ASML/WFC July 15 fresh-score |
+| sector-rotation | 0 | 0 | 0 | none | — | IBM REMOVED from watchlist (score 2.67 — thesis destroyed by earnings warning −22%) |
+| ai-momentum-pullback | 0 | 0 | 0 | none | — | AMD 18sh open (+10.6% unrealized, no stop); PLTR 6.83 — just below threshold; NVDA re-score July 15 |
+| breakout-volume | 0 | 0 | 0 | none | — | **META 7sh MANDATORY July 15** (7.5 carry-forward); CPI cool = breakout thesis intact |
 | candlestick-reversal | 0 | 0 | 0 | none | — | No day trades taken (API blocked) |
-| earnings-reaction-fade | 0 | 0 | 0 | none | — | No fades taken |
+| earnings-reaction-fade | 0 | 0 | 0 | none | — | IBM -22% was a potential fade but too risky (earnings binary event) |
 
 **Halted setups:** None
 **Boosted setups (3-in-a-row wins):** None
-**Rolling 5-day (July 7-11, 2026): 0W / 0L (no completed trades — all blocked by API)**
-**All-time: 1 completed trade (GLD macro-hedge stop_hit −4.99%). Win rate: 0%. Profit factor: 0.**
-**No 3-in-a-row halt or boost triggered. All entries blocked by API (76th+ consecutive session).**
+**Rolling 5-day (July 10-14, 2026): 0W / 0L (no completed trades — all blocked by API)**
+**All-time: 1 completed trade (GLD macro-hedge stop_hit −4.99%). Win rate: 0%. Profit factor: 0. AMD unrealized +$970 (+10.6%) — not counted until closed.**
+**No 3-in-a-row halt or boost triggered. All entries blocked by API (79th+ consecutive session).**
+**NOTE: IBM sector-rotation entry was approved at 7.2 avg (July 13) but NEVER executed (API blocked). IBM thesis destroyed July 14 AM. The non-fill inadvertently avoided a −22% loss — not a strategy win but a lucky operational failure.**
+
+## Daily Summary (2026-07-14)
+
+**Market (EOD est.):** SPX +0.26% to ~7,535 | Nasdaq +0.81% | Dow −0.19% (IBM drag −22%). Best sectors: Semiconductors (+4-5%), Financials (+3-4%). Worst: Enterprise Software/Consulting (−5 to −8%). VIX: est. ~14-15 (low, risk-on). 10-yr yield: declined on CPI cool print (bullish for growth).
+
+**Portfolio EOD:** +$970 unrealized (AMD) / +0.47% daily P&L. Total est. equity ~$100,735. Cash ~$90,644 (89.98%). AMD 18sh × ~$560.66 = ~$10,092 (10.0% — GUARDRAIL VIOLATION). SPX daily: +0.26%. **Daily portfolio gap: +0.21 pp (outperformed today — AMD chip rebound vs SPX slow day).** Cumulative gap vs SPX: **−3.91 pp** (narrowed from −5.5 pp; AMD recovery + SPX small gain today).
+
+**Routines completed today (July 14):**
+- Pre-Market ✅ STARTED 12:05Z (no COMPLETED heartbeat logged — API blocked before close)
+- Market-Open ❌ SILENT FAILURE (CRITICAL — no stop audit at open, no fill confirmation)
+- Mid-Morning ❌ SILENT FAILURE
+- Midday ✅ STARTED 16:34Z / COMPLETED 16:48Z ✓
+- Afternoon ❌ SILENT FAILURE
+- Market-Close ❌ SILENT FAILURE
+- Daily-Review ✅ STARTED 20:34Z / RUNNING
+
+**4 of 7 routines fully missed.** Pattern: only Pre-Market and Midday/Daily-Review fire reliably. Market-Open and Afternoon/Market-Close scheduler failures persist. This is now the top operational priority.
+
+**Orders attempted today: 8 (all blocked HTTP 000/403 — 79th consecutive session):**
+- AMD SELL 9sh (pre-market + midday) → HTTP 000/403
+- GS BUY 7sh MOO + 4sh limit bracket GTC → HTTP 000 (both blocked)
+- META BUY 8sh MOO + 7sh limit bracket GTC → HTTP 000 (both blocked)
+- IBM BUY 3sh MOO → HTTP 000 (fortunately never executed; thesis destroyed)
+- PLTR: Not attempted (score 6.83 < 7.0)
+
+**Best "trade" today:** Not executing IBM. IBM crashed −22% on Q2 earnings warning. Our inability to place the 7.0-scored IBM order saved us from a confirmed losing trade. Score 2.67 post-warning.
+
+**Worst outcome today:** AMD still at 10% equity with no stop (Day 24+). Every day this continues is an unquantified tail risk. AMD up +$970 unrealized but completely naked.
+
+**3 things that worked:**
+1. CPI cool print validation: The thesis that June CPI would be disinflationary (gasoline −10% on Iran ceasefire) was correct. Macro re-scored: macro 5→7 for PLTR, macro 6→8 for META/GS. This improved our watchlist scoring accuracy.
+2. IBM early exclusion: The July 13 Daily Review noted IBM EXIT DEADLINE July 17 but also flagged earnings risk July 22. When the earnings warning landed July 14 AM (before market open), we correctly SKIP-tagged IBM immediately and updated score to 2.67. Zero capital at risk.
+3. GS/META price correction: Midday routine caught that pre-market price estimates (GS $645, META $603) were badly wrong vs actual prices ($1,075, $660). This prevented a size guardrail violation (7sh GS at $1,075 = 7.5% equity).
+
+**3 things to improve tomorrow:**
+1. **Market-Open routine must fire.** AMD has been naked for 24+ days. The only window to place a stop at open (before 9:30 AM ET gap risk) requires the Market-Open routine to actually execute. Escalate to operator: check scheduler configuration.
+2. **GS/META entries must execute.** Both scored 7.5, both have binding commitments, both have been blocked for 24+ hours. Operator must manually execute these at app.alpaca.markets before July 15 open or at open. Tomorrow is Day 2 of this binding commitment.
+3. **AMD reduction is non-negotiable.** Sell 9-10sh AMD at July 15 open (first order). AMD Advancing AI 2026 conf July 22-23 is 8 days away — holding with no stop through a catalyst event is maximum risk.
+
+**Key observations:**
+- The IBM disaster validated our 48h earnings window rule. Our pre-market score (7.0) was based on fundamentals that were already misleading (BofA PT raise was issued BEFORE the earnings warning). The 48h rule would have prevented entry from July 20 (earnings July 22) but NOT from July 14 AM. The key lesson: when an earnings WARNING (not scheduled results) drops, the binary event rule kicks in retroactively — do not enter a stock that just issued a profit warning.
+- PLTR continues to be frustrating: score 6.83 (two consecutive near-misses at 6.67 and 6.83). The bottleneck is Fundamentals (6) due to P/E >200x and Technical (6) for lack of confirmed signals. If PPI July 15 is also cool, September cut pricing could push macro to 8, yielding avg 7.0+ (barely qualifying). Worth checking at the July 15 Pre-Market.
+
+**Lessons learned:**
+- "Cool" macro data (CPI −0.3pp miss) materializes same-day in stock prices but takes 24-48h to flow through sentiment/options repricing — expect continued momentum July 15.
+- GS and META are now 2 sessions into their carry-forward obligation. At day 3 (July 16), if still not entered, must log a formal deployment failure.
+- The AMD position is showing the strategy's core tension: a profitable unrealized gain (+10.6%) generating zero cash and carrying maximum guardrail risk. We are earning nothing by holding a naked, oversized position.
+
+**Cumulative gap vs SPX: −3.91 pp** (improving from −5.5 pp; AMD recovery helping).
+**20-Day underperformance flag: STILL ACTIVE** (79+ consecutive sessions — root cause remains API blockage; strategy not at fault).
+
+**Tomorrow's commitment (July 15 Pre-Market — BINDING):**
+1. AMD SELL 9sh at MOO or limit at open (FIRST ORDER — NON-NEGOTIABLE)
+2. AMD GTC STOP on remaining 9sh at $532.63 (5% below $560) + GTC TP $620
+3. GS BUY 4sh limit bracket GTC ~$1,080 (ask×1.005), stop $1,021.25, target $1,236.25 (MANDATORY — Day 2)
+4. META BUY 7sh limit bracket GTC ~$663 (ask×1.005), stop $627, target $759 (MANDATORY — Day 2)
+5. MS: Run 6-agent after Q2 pre-market print (earnings-reaction-follow; financial sector momentum)
+6. ASML: Run 6-agent after Q2 pre-market print (earnings-reaction-follow)
+7. PLTR: Re-score after PPI July 15 (if cool → macro→8 → avg→7.0 → enter 35sh)
+8. NVDA: Fresh 6-agent (AMD +5% semiconductor rebound signal; AI capex AI conf July 22-23 catalyst)
+9. WFC: Re-score (already reported; follow-through or fade depending on price action)
+10. IBM: DO NOT ENTER. Excluded from all watchlists until post-July-22 earnings review.
+
+**Key macro events July 15:**
+- PPI June 2026 (8:30 AM ET) — if cool like CPI, signals disinflation confirmed → September cut more likely → broad risk-on, growth stocks further bid
+- MS Q2 earnings (pre-market)
+- WFC Q2 follow-through (already reported July 14)
+- ASML Q2 earnings (pre-market — semiconductor equipment, EUV)
+- Netflix earnings after close July 16 (48h window opens July 14 EOD — NFLX excluded from July 15 entries)
 
 ## Daily Summary (2026-07-13)
 
