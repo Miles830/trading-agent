@@ -1,7 +1,45 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-15 (Wednesday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 79th+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+
+**JULY 15 PREDECESSOR AUDIT: Pre-Market ❌ + Market-Open ❌ + Mid-Morning ❌ + Midday ❌ SILENT FAILURES (all 4 missed). Afternoon ✅ first routine to fire today.**
+
+**MARKET EST. JULY 15 (API BLOCKED — ESTIMATES ONLY):** SPX ~7,540-7,620 (+0.3-1.2% continuation of CPI gains). PPI June 2026 released 8:30 AM ET — result UNKNOWN. WFC Q2 earnings likely strong (NII + fee income; GS beat 44% = sector tailwind). MS Q2 likely strong (investment banking + trading revenues). ASML Q2 — EUV capex read-through for semiconductor sector. AMD est. $560-580 (CPI continuation; ASML beat = additional tailwind). GS est. $1,050-1,090 (post-earnings digestion after +7.7% yesterday). META est. $655-675 (CPI relief + Meta Compute catalyst intact).
+
+**AMD JULY 15 STATUS (Day 25 NAKED):** Est. $570/sh. Position 18sh × $570 = $10,260 (~10.2% equity — OVER 5% cap). P&L est. +$1,138 (+12.5%). Trail stop INTENT $541.50 (5% below $570 est.) — ORDER BLOCKED HTTP 403. 15% partial-profit threshold = $582.77 — AMD approaching this level. AMD Advancing AI 2026 conference July 22-23 = keep 9sh through event. OPERATOR MUST: (1) SELL 9sh AMD at MOC TODAY or MOO July 16 (FIRST ORDER); (2) GTC STOP remaining 9sh at fill×0.95.
+
+**MANDATORY JULY 16 PRE-MARKET ORDERS:**
+- AMD: SELL 9sh MOO (FIRST ORDER — Day 26 naked → reduce to ~4.5% equity)
+- GS: BUY 4sh limit (ask×1.005) bracket GTC — stop fill×0.95, target fill×1.15 — SCORE 7.5 BINDING from July 14
+- META: BUY 7sh limit (ask×1.005) bracket GTC — stop fill×0.95, target fill×1.15 — SCORE 7.5 BINDING from July 14
+- WFC: Fresh 6-agent pre-market (Q2 earnings likely strong) — enter if ≥7
+- MS: Fresh 6-agent pre-market (Q2 earnings likely strong) — enter if ≥7
+- PLTR: Re-score with confirmed PPI + July 15 close — conditional on macro ≥8 (avg→7.0)
+- TSLA: Fresh 6-agent (480K delivery beat; earnings July 22 = last safe entry July 18 EOD)
+
+**IBM: PERMANENTLY REMOVED from watchlist (Q2 earnings warning July 14, -22% stock crash, thesis destroyed). Do NOT enter IBM until post-July-22 earnings review.**
+
+**NETFLIX: SKIP — 48h binary event window active (earnings AH July 16; window opened July 14 close).**
+
+**PORTFOLIO STATE EST. JULY 15 (from July 14 confirmed + AMD est.):**
+- Total Equity: ~$100,886 est. (AMD est. $570 × 18sh = $10,260 + cash $90,644)
+- Cash: $90,644 (89.9%)
+- AMD: 18sh at $506.76 avg, est. $570, P&L est. +$1,138 (+12.5%), bucket: active
+- GS: 0sh (approved 7.5, ORDER BLOCKED — MANDATORY July 16)
+- META: 0sh (approved 7.5, ORDER BLOCKED — MANDATORY July 16)
+- Open positions: 1 (AMD only)
+- Trading bucket: ~$10,260 est. (10.2% — target 85%; severely underfilled due to API blockage)
+- Crypto bucket: $0 (0% — target 10%; BTC est. below $82K threshold)
+- Cash reserve: $90,644 (89.9% — far above 5% floor)
+
+**CUMULATIVE PERFORMANCE EST.:**
+- Portfolio return est.: +0.89% (from $100K starting equity, AMD unrealized)
+- SPX est. July 15: from May 1 baseline 7,200 → est. 7,590 = +5.4%
+- Cumulative gap vs SPX: est. **−4.51 pp** (widening — capital sitting in cash while market rallies)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (79+ consecutive sessions — API blockage root cause)
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY):**
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 
