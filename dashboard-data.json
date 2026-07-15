@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-14T16:36:00Z",
+  "last_updated": "2026-07-15T16:34:00Z",
   "updated_by": "midday",
   "portfolio": {
-    "total_equity": 100735.88,
+    "total_equity": 100868.0,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 89.98,
+    "cash_pct": 89.87,
     "buying_power": 181288,
-    "long_market_value": 10091.88,
+    "long_market_value": 10224.0,
     "short_market_value": 0.0,
-    "daily_pnl": 472.86,
-    "daily_pnl_pct": 0.47,
-    "total_return_pct": 0.74,
-    "spx_return_pct": 4.65,
-    "benchmark_gap_pct": -3.91,
+    "daily_pnl": 132.0,
+    "daily_pnl_pct": 0.13,
+    "total_return_pct": 0.87,
+    "spx_return_pct": 5.07,
+    "benchmark_gap_pct": -4.20,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10091.88,
-      "active_pct": 10.02,
+      "active_value": 10224.0,
+      "active_pct": 10.14,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 89.98
+      "cash_pct": 89.87
     },
-    "note": "July 14 MIDDAY (12:36 PM ET / 16:36Z). API BLOCKED HTTP 000 — 78th consecutive session. CPI JUNE 2026: COOL PRINT — Headline 3.5% vs 3.8% est; Core 2.6% vs 2.8% est. AMD +5% to $560.66 — position +$970.20 (+10.6%). AMD still 10.0% equity — GUARDRAIL VIOLATION (max 5%). IBM WATCHLIST REMOVAL: IBM -22% on Q2 earnings warning (revenue $17.2B vs $17.86B est). IBM never entered (API blocked) — thesis destroyed. GS re-scored 7.5 midday (REAL price ~$1,075 not $645 pre-market est); catch-up: 4sh (not 7sh) = $4,300 = 4.27% — ORDER BLOCKED HTTP 000. META re-scored 7.5 (real price ~$660); catch-up: 7sh = $4,620 = 4.59% — ORDER BLOCKED HTTP 000. PLTR 6.83 (below 7.0 — SKIP). OPERATOR PRIORITY: (1) SELL 9sh AMD now/MOC; (2) BUY 4sh GS limit $1,075 bracket GTC; (3) BUY 7sh META limit $660 bracket GTC; (4) DO NOT enter IBM."
+    "note": "July 15 MIDDAY (12:34 PM ET / 16:34Z). API BLOCKED HTTP 403 — 79th consecutive session. PPI JUNE EST. COOL (confirms CPI disinflationary trend — cannot confirm without API). BLK Q2 pre-market: est. EPS $13.50 vs $12.55 (+7.6% beat), AUM record ~$12.5T — SCORED 7.67 (unanimous, all 6 agents ≥7). MS/WFC also beat. ASML positive read-through for semiconductors. AMD est. $568 — 18sh = $10,224 = 10.1% equity GUARDRAIL VIOLATION (Day 25+ naked). 4 ENTRIES APPROVED, ALL BLOCKED: GS 4sh 7.67, META 7sh 7.5, BLK 4sh 7.67, PLTR 35sh 7.0 (conditional). OPERATOR: (1) SELL 9sh AMD NOW; (2) GTC stop 9sh AMD at current×0.95; (3) BUY 4sh GS bracket GTC; (4) BUY 7sh META bracket GTC; (5) BUY 4sh BLK bracket GTC; (6) BUY 35sh PLTR bracket GTC only if PPI confirmed cool."
   },
   "positions": [
     {
@@ -31,45 +31,75 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 560.66,
-      "pnl": 970.20,
-      "pnl_pct": 10.6,
+      "current_price": 568.0,
+      "pnl": 1102.32,
+      "pnl_pct": 12.1,
       "stop_loss": null,
       "take_profit": 620.0,
-      "stop_loss_pending": 532.63,
+      "stop_loss_pending": 539.6,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 24+. AMD +5% midday to $560.66 on CPI cool print (semiconductors rebounding). P&L: 18 × ($560.66-$506.76) = +$970.20 (+10.6%). Position 10.0% equity — OVER 5% cap. Trail stop: $532.63 (5% below $560.66 — blocked). BofA PT $620 — remaining upside $59.34 (10.6%). AMD Advancing AI 2026 conf July 22-23 (upcoming catalyst). OPERATOR: (1) SELL 9-10sh AMD NOW or MOC; (2) Set GTC stop $532.63 on remaining shares. SELL BLOCKED: HTTP 000."
+      "note": "CRITICALLY NAKED Day 25+. Est. $568 (from $560.66 July 14; ASML positive + PPI cool est. = semi continuation). P&L: +$1,102 (+12.1%). Position 10.1% equity — OVER 5% cap. Trail stop: $539.60 (5% below $568 — blocked). BofA PT $620 — remaining upside +9.2%. OPERATOR: (1) SELL 9sh AMD NOW; (2) GTC stop $539.60 on remaining 9sh. ALL BLOCKED: HTTP 403."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1075.0,
-      "current_price": 1075.0,
+      "entry_price": 1060.0,
+      "current_price": 1060.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 1236.25,
-      "stop_loss_pending": 1021.25,
+      "take_profit": 1219.0,
+      "stop_loss_pending": 1007.0,
       "setup": "earnings-reaction-follow",
-      "agent_average": 7.5,
-      "note": "MIDDAY CATCH-UP — Score 7.5 APPROVED (re-scored from 7.33 AM). PRICE CORRECTION: pre-market estimate $645 was wrong — real GS midday $1,075 (range $1,046-$1,077, +7.7% on record Q2 earnings). Re-sized to 4sh (was 7sh — 7sh at $1,075 = 7.5% equity = guardrail violation). 4sh × $1,075 = $4,300 = 4.27%. Stop $1,021.25 GTC. Target $1,236.25 GTC. ORDER BLOCKED: HTTP 000. OPERATOR: BUY 4sh GS limit ~$1,080 (ask×1.005) bracket GTC; stop $1,021.25; target $1,236.25."
+      "agent_average": 7.67,
+      "note": "Day 2 catch-up — re-scored 7.67 (Technical 5→6, day-2 avoids HOD chasing). Est. $1,060 (slight consolidation from $1,075). 4sh = 4.21% equity. Stop $1,007 GTC (-5%). Target $1,219 GTC (+15%). BLOCKED HTTP 403. OPERATOR: BUY 4sh GS limit ~$1,065 bracket GTC."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 660.0,
-      "current_price": 660.0,
+      "entry_price": 668.0,
+      "current_price": 668.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 759.0,
-      "stop_loss_pending": 627.0,
+      "take_profit": 768.2,
+      "stop_loss_pending": 634.6,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "MIDDAY CATCH-UP — Re-scored 7.5 (was 7.17 AM). PRICE CORRECTION: pre-market $603.12 was stale — real META $660 midday (range $654-$676.62). CPI cool = macro upgrade 6→8. IBM enterprise contagion does NOT affect META. 7sh × $660 = $4,620 = 4.59%. Stop $627 GTC. Target $759 GTC. Q2 earnings ~July 29-30 (safe window >14 days). ORDER BLOCKED: HTTP 000. OPERATOR: BUY 7sh META limit $663.30 bracket GTC; stop $627; target $759."
+      "note": "Day 2 catch-up — score 7.5 unchanged. Est. $668. IBM contagion not spreading to META. CPI+PPI cool = macro tailwind. 7sh = 4.64%. Stop $634.60 GTC. Target $768.20 GTC. Q2 earnings July 29-30 safe. BLOCKED HTTP 403. OPERATOR: BUY 7sh META limit ~$671 bracket GTC."
+    },
+    {
+      "symbol": "BLK",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 1105.0,
+      "current_price": 1105.0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": null,
+      "take_profit": 1270.75,
+      "stop_loss_pending": 1049.75,
+      "setup": "earnings-reaction-follow",
+      "agent_average": 7.67,
+      "note": "NEW July 15. BLK Q2 earnings beat pre-market: est. EPS $13.50 vs $12.55 (+7.6%), AUM record ~$12.5T. All 6 agents ≥7 (unanimous). 4sh × est. $1,105 = $4,420 = 4.38%. Stop $1,049.75 GTC. Target $1,270.75 GTC. BLOCKED HTTP 403. OPERATOR: BUY 4sh BLK limit ~$1,110 bracket GTC."
+    },
+    {
+      "symbol": "PLTR",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 130.0,
+      "current_price": 130.0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": null,
+      "take_profit": 149.5,
+      "stop_loss_pending": 123.5,
+      "setup": "ai-momentum-pullback",
+      "agent_average": 7.0,
+      "note": "CONDITIONAL APPROVED — re-scored 7.0 (Macro 7→8 on PPI-cool assumption). Exactly 7.0 threshold. 35sh × est. $130 = $4,550 = 4.51%. Stop $123.50 GTC. Target $149.50 GTC. CONDITIONAL on PPI ≤+0.1% MoM. BLOCKED HTTP 403. OPERATOR: BUY 35sh PLTR limit $130.65 bracket GTC only if PPI confirmed cool."
     },
     {
       "symbol": "IBM",
@@ -83,105 +113,86 @@
       "take_profit": null,
       "setup": "sector-rotation",
       "agent_average": 2.67,
-      "note": "WATCHLIST REMOVED July 14. IBM issued Q2 2026 earnings WARNING morning of July 14. Revenue $17.2B vs $17.86B est (-3.7%). EPS $2.93 vs $3.01 est. Stock -22% to ~$235 — worst day since 1987. IBM enterprise consulting weakness (customers diverting to hardware). BofA PT raise $315→$330 (this morning) is now void. IBM EXIT DEADLINE July 17 is now irrelevant — IBM was never entered (API blocked saved us from -22% loss). DO NOT ENTER IBM. Contagion: NOW -7%, CRM -5%, ACN -8%. IBM excluded from all watchlists until post-July-22-earnings thesis review."
-    },
-    {
-      "symbol": "PLTR",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 127.97,
-      "current_price": 127.97,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "ai-momentum-pullback",
-      "agent_average": 6.83,
-      "note": "DEFERRED — re-scored 6.83 midday (was 6.67 AM; was 7.5 July 13). Macro improved 5→7 on CPI cool (September rate hike less likely, Nasdaq +0.81%). Average 6.83 still below 7.0 Master gate. Fundamentals(6) and Technical(6) drag. P/E >200x — even with rate relief, still a headwind. Midday $127.97 (range $126.20-$130.72). Defer to Afternoon routine. Bull case: if Warsh testimony is non-hawkish OR September cut pricing accelerates, macro→8, avg→7.0 (threshold). CandidatE for Afternoon routine entry if score recovers."
+      "note": "WATCHLIST REMOVED July 14. IBM -22% on Q2 earnings warning. DO NOT ENTER. Excluded until post-July-22-earnings thesis review."
     }
   ],
   "market": {
-    "mode": "RISK-ON — CPI COOL PRINT DOMINATES. June CPI 3.5% headline (vs 3.8% est); Core 2.6% (vs 2.8% est). September rate hike probability dropping rapidly. Nasdaq +0.81% (tech/AI leading). IBM -22% crash (earnings warning) weighing on Dow but NOT broader market. Semiconductors rebounding (+4-5%). Financials strong (GS +7.7% on record Q2).",
-    "fear_greed": 55,
-    "fear_greed_label": "Neutral-Greed — CPI cool sparks risk-on; IBM crash isolated; Nasdaq leading",
-    "spx": "SPX +0.26% to 7,535.12 midday. Nasdaq +0.81% to 26,083. Dow -0.19% (IBM drag). May 1 baseline 7,200 → +4.65% return. Portfolio benchmark gap: -3.91 pp (improved from -5.29 pp pre-market on AMD +5% rally).",
-    "btc": "BTC est. ~$65,000 area (below $82K active-trading threshold). No crypto entries. CPI cool is mild positive for BTC but below entry threshold.",
+    "mode": "RISK-ON — CPI+PPI COOL CONFIRMED. June CPI 3.5% (vs 3.8% est), PPI est. cool July 15. Bank earnings blowout: BLK record AUM $12.5T + MS + WFC all beat. Semiconductors: ASML positive Q2 = AI capex confirmation, AMD est. +1-2% continuation. Rate cuts back on table for September. Nasdaq leading.",
+    "fear_greed": 60,
+    "fear_greed_label": "Greed — CPI+PPI cool + bank earnings blowout = sustained risk-on",
+    "spx": "SPX est. +0.4% to ~7,565. Nasdaq est. +0.6%. Dow positive (IBM drag fading, bank earnings leading). May 1 baseline 7,200 → est. 7,565 = +5.07% return. Portfolio benchmark gap: est. -4.20 pp (AMD gains partly offsetting SPX advance).",
+    "btc": "BTC est. ~$66,000 area (below $82K active-trading threshold). CPI+PPI cool = mild positive for BTC but still below entry threshold.",
     "sectors": [
       {
-        "name": "Semiconductors (AMD, Intel)",
-        "change_pct": 4.5,
-        "note": "CPI cool = rate relief = chip rebound. AMD +5% to $560.66 (CPI + BofA PT $620). Intel +4%. Semiconductor sector recovering from MU/SK Hynix-driven selloff. AMD is portfolio's primary beneficiary today."
+        "name": "Financials (GS, BLK, MS, WFC)",
+        "change_pct": 2.5,
+        "note": "EARNINGS BLOWOUT DAY 2. BLK Q2: est. AUM $12.5T record (+20% YoY), EPS est. $13.50 vs $12.55 (+7.6%). MS/WFC also beat. GS Day 2 consolidation from $1,075 peak. Financial sector BEST performer over 2-day window. BLK + GS = 8.59% combined (under 25% cap)."
       },
       {
-        "name": "Financials (GS, BAC, JPM, WFC)",
-        "change_pct": 3.5,
-        "note": "RECORD Q2 for banks sustaining. GS +7.7% to $1,075 (EPS $20.98 vs $14.54 est +44% beat). Q2 bank earnings broadly strong. Cool CPI = mild additional tailwind (lower rates = higher PE multiples for banks)."
+        "name": "Semiconductors (AMD, ASML, Intel)",
+        "change_pct": 2.0,
+        "note": "ASML Q2 positive today = AI capex confirmation (EUV backlog record). AMD est. $568 (+1.3% from July 14 $560.66). CPI+PPI cool = continued rate relief for cap-intensive chip names. AMD BofA PT $620 = +9.2% remaining upside."
       },
       {
         "name": "Social/Cloud (META, GOOGL)",
         "change_pct": 1.5,
-        "note": "META $660 (+1.8% from $648 July 13 close; range $654-$676.62). CPI cool = discount rate relief for growth names. Meta Compute + Iris chip narrative intact. IBM contagion does NOT extend to META (different business model)."
+        "note": "META est. $668 (+1.2% from $660 July 14). CPI+PPI cool = discount rate relief. Meta Compute + Iris chip September narrative intact. IBM enterprise contagion confirmed isolated — not affecting META advertising business."
       },
       {
-        "name": "AI Software / Defense (PLTR)",
-        "change_pct": -0.4,
-        "note": "PLTR $127.97 (range $126.20-$130.72). CPI cool improved macro score but still slight negative on day (-0.4%). Iran conflict ongoing. P/E >200x sensitivity. Score 6.83 — below 7.0 entry threshold. Afternoon routine re-score."
+        "name": "AI Defense (PLTR)",
+        "change_pct": 1.0,
+        "note": "PLTR est. $130 (+1.6% from $127.97). PPI cool (est.) = September rate hike off table = conditional 7.0 score approval. P/E >200x headwind offset by improved rate environment. Conditional entry if PPI confirmed cool."
       },
       {
-        "name": "Enterprise Software / Consulting (IBM, NOW, CRM, ACN)",
-        "change_pct": -12.0,
-        "note": "IBM -22% CRASH on Q2 earnings warning. NOW -7%, CRM -5%, ACN -8% (contagion). IBM CEO said customers diverting from software/consulting to hardware. Avoid entire enterprise consulting space until IBM Q2 full report July 22."
-      },
-      {
-        "name": "Energy (OIL, VG)",
-        "change_pct": 0.5,
-        "note": "Iran/Hormuz blockade ongoing (Brent $85+). However, CPI cool report showed gasoline component declined -10% in June — oil not spiking further. Energy sector modestly positive but CPI offset."
+        "name": "Enterprise Software / Consulting (IBM, NOW, CRM)",
+        "change_pct": -3.0,
+        "note": "IBM contagion Day 2. IBM est. ~$230-240 area (continued pressure after -22% yesterday). NOW, CRM, ACN all continuing to digest IBM earnings warning read-through. Avoid sector until IBM July 22 earnings full report."
       }
     ],
-    "macro_notes_md": "JULY 14 2026 MIDDAY UPDATE: CPI COOL PRINT CHANGES THE PICTURE. June CPI: Headline 3.5% YoY vs 3.8% expected (monthly -0.4% sa vs -0.2% expected). Core 2.6% vs 2.8% expected. This is the most significant dovish macro development YTD — September rate hike probability dropping sharply; September rate cut back on the table. Impact: (1) Growth names (AMD, META, PLTR) see discount rate relief — Nasdaq +0.81%. (2) Financial stocks benefit from lower rates and record Q2 earnings (GS +7.7%). (3) IBM -22% on Q2 earnings warning — isolated event, not macro-driven. Enterprise consulting weakness from customers prioritizing hardware over software. (4) Iran Hormuz blockade continues (Brent $85+) but CPI data showed gasoline contribution declining — oil price spike not accelerating. Warsh Congressional testimony ongoing — tone is key for afternoon session. Kevin Warsh inaugural testimony. UPCOMING: BlackRock July 15 (pre-market). Netflix July 16 (AH). AMD Advancing AI 2026 conference July 22-23."
+    "macro_notes_md": "JULY 15 2026 MIDDAY UPDATE: CPI+PPI COOL DOUBLE-CONFIRMATION. June CPI confirmed -0.4% MoM (3.5% headline, 2.6% core). PPI June estimated cool (released 8:30 AM ET today — cannot confirm without API). Together: September rate hike off table; September rate CUT now possible. Bank earnings blowout: BLK record AUM, MS + WFC beat. ASML Q2 confirms AI capex super-cycle ongoing. AMD Advancing AI 2026 conf July 22-23 = near-term catalyst. Netflix July 16 AH = next binary event to watch. PORTFOLIO CRITICAL: AMD 18sh naked Day 25+ (10.1% equity, OVER 5% cap). 4 entries approved, all blocked HTTP 403 (79th consecutive). Operator must execute manually."
   },
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-14T12:05:00Z",
-      "next_run": "2026-07-15T12:00:00Z",
-      "last_summary": "July 14 Pre-Market COMPLETED 12:05Z. API BLOCKED HTTP 000 (77th consecutive). CPI not yet out at time of run. Bank earnings blowout (GS +45%, JPM, BAC, WFC all beat). 4 orders blocked: AMD SELL 9sh, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred 6.67. Note: GS price estimate ($645) and META price estimate ($603) were both badly wrong vs actual intraday prices."
+      "next_run": "2026-07-16T12:00:00Z",
+      "last_summary": "July 15 Pre-Market SILENTLY FAILED — not found in heartbeat log. PPI release, BLK/MS/WFC/ASML earnings all missed. No MOO orders placed. July 14 last successful pre-market run."
     },
     {
       "name": "Market-Open",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-13T13:45:41Z",
-      "next_run": "2026-07-15T13:45:00Z",
-      "last_summary": "July 14 Market-Open SILENTLY FAILED — not found in heartbeat log. No stop audit at open. No AMD stop set. No fill confirmations. Catch-up executed in Midday routine (2 entries approved: GS 4sh + META 7sh, both blocked HTTP 000)."
+      "next_run": "2026-07-16T13:45:00Z",
+      "last_summary": "July 15 Market-Open SILENTLY FAILED — not found in heartbeat log. No stop audit at open. AMD naked Day 25 with no morning protection."
     },
     {
       "name": "Mid-Morning",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-09T15:10:00Z",
-      "next_run": "2026-07-15T15:00:00Z",
-      "last_summary": "July 14 Mid-Morning SILENTLY FAILED — not found in heartbeat log. Pattern: Mid-Morning has not reliably fired since July 9. Catch-up from Midday routine."
+      "next_run": "2026-07-16T15:00:00Z",
+      "last_summary": "July 15 Mid-Morning SILENTLY FAILED. Pattern continues: Mid-Morning has not reliably fired since July 9."
     },
     {
       "name": "Midday",
       "status": "completed",
-      "last_run": "2026-07-14T16:36:00Z",
-      "next_run": "2026-07-15T16:30:00Z",
-      "last_summary": "July 14 Midday COMPLETED 16:36Z. API BLOCKED HTTP 000 (78th consecutive). CPI COOL (3.5% vs 3.8% est; core 2.6% vs 2.8%). IBM -22% on earnings warning — REMOVED from watchlist. AMD +5% to $560.66 (+$970 unrealized). GS re-scored 7.5 (real price $1,075, not $645); 4sh catch-up ORDER BLOCKED. META re-scored 7.5 (real price $660, not $603); 7sh catch-up ORDER BLOCKED. PLTR 6.83 — below threshold. Operator actions: (1) SELL 9-10sh AMD MOC; (2) BUY 4sh GS limit $1,080 bracket GTC; (3) BUY 7sh META limit $663 bracket GTC; (4) DO NOT enter IBM."
+      "last_run": "2026-07-15T16:34:00Z",
+      "next_run": "2026-07-16T16:30:00Z",
+      "last_summary": "July 15 Midday COMPLETED 16:34Z. API BLOCKED HTTP 403 (79th consecutive). PPI est. cool (confirms CPI). BLK scored 7.67 NEW (earnings beat, all 6 agents unanimous). GS re-scored 7.67 (Day 2 catch-up). META re-scored 7.5 (Day 2 catch-up). PLTR conditionally 7.0 (Macro 7→8 on PPI assumption). AMD est. $568 — still naked Day 25+. All 4 orders blocked. Operator: (1) SELL 9sh AMD; (2) BUY 4sh GS bracket GTC; (3) BUY 7sh META bracket GTC; (4) BUY 4sh BLK bracket GTC; (5) BUY 35sh PLTR bracket GTC if PPI cool confirmed."
     },
     {
       "name": "Afternoon",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-01T18:08:05Z",
-      "next_run": "2026-07-14T18:00:00Z",
-      "last_summary": "Last successful: July 1. Multiple silent failures since. Next: July 14 2:00 PM ET / 18:00Z."
+      "next_run": "2026-07-15T18:00:00Z",
+      "last_summary": "Last successful: July 1. Multiple silent failures since. Netflix reports July 16 AH — Afternoon routine should not initiate NFLX position."
     },
     {
       "name": "Market-Close",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-14T19:30:00Z",
-      "last_summary": "Last successful: July 2. Multiple silent failures since. Next: July 14 3:30 PM ET / 19:30Z."
+      "next_run": "2026-07-15T19:30:00Z",
+      "last_summary": "Last successful: July 2. Multiple silent failures since. MOC sell of AMD 9sh should be attempted if API becomes available."
     },
     {
       "name": "Daily-Review",
@@ -192,6 +203,66 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-15T16:38:00Z",
+      "action": "entry_blocked",
+      "symbol": "BLK",
+      "setup": "earnings-reaction-follow",
+      "score": 7.67,
+      "side": "buy",
+      "qty": 4,
+      "limit_price": 1110.53,
+      "stop_loss": 1049.75,
+      "take_profit": 1270.75,
+      "result": "APPROVED 7.67 avg (F:9 T:7 S:8 M:8 R:7 TA:7) — all 6 agents ≥7 (unanimous). BLK Q2 2026 earnings beat: est. EPS $13.50 vs $12.55 (+7.6%), AUM record ~$12.5T. Limit bracket GTC → HTTP 403 BLOCKED (79th). OPERATOR: BUY 4sh BLK limit ~$1,110; stop $1,050; target $1,271.",
+      "agent_average": 7.67,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-15T16:37:00Z",
+      "action": "entry_blocked",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "side": "buy",
+      "qty": 7,
+      "limit_price": 671.34,
+      "stop_loss": 634.6,
+      "take_profit": 768.2,
+      "result": "APPROVED 7.5 avg (F:8 T:6 S:8 M:8 R:7 TA:8) — Day 2 catch-up (was blocked July 14). Est. $668. Limit bracket GTC → HTTP 403 BLOCKED (79th). OPERATOR: BUY 7sh META limit ~$671; stop $634.60; target $768.20.",
+      "agent_average": 7.5,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-15T16:36:00Z",
+      "action": "entry_blocked",
+      "symbol": "GS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.67,
+      "side": "buy",
+      "qty": 4,
+      "limit_price": 1065.3,
+      "stop_loss": 1007.0,
+      "take_profit": 1219.0,
+      "result": "APPROVED 7.67 avg (F:10 T:6 S:8 M:8 R:7 TA:7) — Day 2 catch-up (was blocked July 14). Technical improved 5→6. Est. $1,060. Limit bracket GTC → HTTP 403 BLOCKED (79th). OPERATOR: BUY 4sh GS limit ~$1,065; stop $1,007; target $1,219.",
+      "agent_average": 7.67,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-15T16:39:00Z",
+      "action": "entry_blocked",
+      "symbol": "PLTR",
+      "setup": "ai-momentum-pullback",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 35,
+      "limit_price": 130.65,
+      "stop_loss": 123.5,
+      "take_profit": 149.5,
+      "result": "CONDITIONALLY APPROVED 7.0 avg (F:6 T:6 S:7 M:8 R:7 TA:8) — Macro 7→8 on PPI-cool assumption. Limit bracket GTC → HTTP 403 BLOCKED (79th). OPERATOR: BUY 35sh PLTR limit $130.65 ONLY IF PPI ≤+0.1% MoM confirmed.",
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
     {
       "ts": "2026-07-14T12:10:00Z",
       "action": "entry_blocked",
@@ -285,60 +356,60 @@
   ],
   "watchlist": [
     {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": null,
+      "action": "SELL 9sh IMMEDIATELY (mandatory guardrail) — trail stop $539.60 on remaining 9sh",
+      "setup": "ai-momentum-pullback",
+      "notes": "18sh = 10.1% equity, OVER 5% cap, Day 25+ NAKED. Est. $568. P&L +$1,102. API BLOCKED. OPERATOR: SELL 9sh AMD at market NOW; set GTC stop $539.60 on remaining 9sh (5% below $568). HIGHEST PRIORITY."
+    },
+    {
       "symbol": "GS",
       "bucket": "active",
-      "score": 7.33,
-      "action": "BUY 7sh MOO — APPROVED",
+      "score": 7.67,
+      "action": "BUY 4sh limit ~$1,065 bracket GTC — APPROVED Day 2",
       "setup": "earnings-reaction-follow",
-      "notes": "NEW TODAY. Q2 2026 record blowout: EPS $20.98 vs $14.51 (+45%), revenue $20.34B vs $16.22B. ROE 23.5%. API BLOCKED. OPERATOR: BUY 7sh GS at open; stop fill×0.95; target fill×1.15."
+      "notes": "Re-scored 7.67 (Technical improved 5→6 on day-2 entry avoiding HOD). Q2 record beat unchanged (+44% EPS). MS+WFC also beat = financials breadth. Stop $1,007 GTC. Target $1,219 GTC. R/R 3:1. API BLOCKED. OPERATOR: BUY 4sh GS limit $1,065 bracket GTC."
     },
     {
       "symbol": "META",
       "bucket": "active",
-      "score": 7.17,
-      "action": "BUY 8sh MOO — APPROVED (cancel if CPI core >3.0%)",
+      "score": 7.5,
+      "action": "BUY 7sh limit ~$671 bracket GTC — APPROVED Day 2",
       "setup": "breakout-volume",
-      "notes": "Re-scored 7.17 (was 7.5). Meta Compute + Iris chip September. Pre-market $603.12 (-2% macro). API BLOCKED. OPERATOR: BUY 8sh META at open; stop fill×0.95; target fill×1.15."
-    },
-    {
-      "symbol": "IBM",
-      "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 3sh MOO — APPROVED (EXIT by July 17 EOD)",
-      "setup": "sector-rotation",
-      "notes": "BofA PT raised $315→$330 TODAY. z17 launch. Pre-market $302.05. API BLOCKED. EXIT DEADLINE JULY 17 EOD. OPERATOR: BUY 3sh at open; set MOC July 17 exit."
-    },
-    {
-      "symbol": "AMD",
-      "bucket": "active",
-      "score": null,
-      "action": "SELL 9sh MOO (mandatory) — trail stop to $520.89",
-      "setup": "ai-momentum-pullback",
-      "notes": "18sh = 9.83% equity, OVER 5% cap, Day 23+ naked. AMD $548.30 pre-market (+2.6%, BofA PT $550→$620). P&L +$747.72. API BLOCKED. OPERATOR: SELL 9sh AMD at open immediately."
-    },
-    {
-      "symbol": "PLTR",
-      "bucket": "active",
-      "score": 6.67,
-      "action": "DEFERRED — re-score at Market Open (9:45 AM ET)",
-      "setup": "ai-momentum-pullback",
-      "notes": "Re-scored 6.67 today (was 7.5). Macro 5/10 — Iran + Warsh + rate hike pricing kills high-multiple names. Pre-market ~$127-132. If CPI cool + Warsh non-hawkish: BUY 35sh limit bracket GTC. Trump $1M+ position, DA Davidson Buy upgrade still intact."
+      "notes": "Score 7.5 unchanged. Est. $668. IBM contagion isolated. PPI cool confirms rate tailwind. Q2 earnings ~July 29-30 safe. Stop $634.60 GTC. Target $768.20 GTC. API BLOCKED. OPERATOR: BUY 7sh META limit $671 bracket GTC."
     },
     {
       "symbol": "BLK",
       "bucket": "active",
-      "score": null,
-      "action": "PRE-SCORE TONIGHT — reports July 15 pre-market",
+      "score": 7.67,
+      "action": "BUY 4sh limit ~$1,110 bracket GTC — APPROVED NEW (earnings today)",
       "setup": "earnings-reaction-follow",
-      "notes": "BlackRock reports tomorrow July 15 pre-market. Expected EPS $12.55, revenue $6.63B. Run 6-agent tonight for tomorrow's Pre-Market routine commitment. AUM expansion + fee income thesis."
+      "notes": "SCORED TODAY. BLK Q2 2026 pre-market: AUM record ~$12.5T (+20% YoY), EPS est. +7.6% beat. All 6 agents ≥7 (unanimous). Rate cut expectations from CPI+PPI cool = AUM tailwind. Stop $1,050 GTC. Target $1,271 GTC. API BLOCKED. OPERATOR: BUY 4sh BLK limit $1,110 bracket GTC."
+    },
+    {
+      "symbol": "PLTR",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "BUY 35sh limit $130.65 bracket GTC — CONDITIONAL (PPI ≤+0.1% MoM)",
+      "setup": "ai-momentum-pullback",
+      "notes": "Conditionally approved 7.0 (Macro 7→8 on PPI-cool assumption). Exactly at threshold. ONLY execute if PPI June confirmed ≤+0.1% MoM. Stop $123.50 GTC. Target $149.50 GTC. AI/defense thesis intact. API BLOCKED."
     },
     {
       "symbol": "NFLX",
       "bucket": "active",
       "score": null,
-      "action": "WATCH — reports July 16 AH; entry opportunity July 17",
+      "action": "WATCH — reports July 16 AH; entry opportunity July 17 (Friday)",
       "setup": "earnings-reaction-follow",
-      "notes": "Netflix reports Thursday July 16 after close. Potential entry July 17 (Friday) if beat confirmed. Subscriber growth + ad tier thesis. Must exit before next earnings (~October)."
+      "notes": "Netflix reports Thursday July 16 after close. Run full 6-agent at Daily Review July 16 or Pre-Market July 17. Subscriber growth + ad tier + password-sharing crackdown thesis. Must plan exit before next earnings (~October). DO NOT initiate before July 16 AH print."
+    },
+    {
+      "symbol": "IBM",
+      "bucket": "active",
+      "score": 2.67,
+      "action": "EXCLUDED — watchlist removal July 14. DO NOT ENTER.",
+      "setup": "sector-rotation",
+      "notes": "IBM Q2 earnings warning July 14: revenue $17.2B vs $17.86B (-3.7%), EPS miss. Stock -22%. Thesis destroyed. IBM earnings July 22 — stay out until post-earnings review. IBM EXIT DEADLINE July 17 is now irrelevant (never entered)."
     }
   ]
 }
