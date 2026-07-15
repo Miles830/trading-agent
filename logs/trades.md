@@ -4,6 +4,486 @@
 
 ---
 
+## 2026-07-15 — Pre-Market (8:05 AM ET / 12:05 UTC — API BLOCKED — 79th consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-15T12:05:23Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 — `paper-api.alpaca.markets:443` and `data.alpaca.markets:443` — **79th consecutive blocked session** (egress policy denial)
+**Market Status:** Pre-Market — 8:06 AM ET. PPI June 2026 releasing at 8:30 AM ET (in ~24 min). Market opens 9:30 AM ET.
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully throughout.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT (July 14)
+
+| Routine | Expected | Status |
+|---|---|---|
+| Pre-Market | 12:05Z | ✓ STARTED (no COMPLETED — API blocked exit) |
+| Market-Open | 13:45Z | ❌ SILENT FAILURE |
+| Mid-Morning | 15:00Z | ❌ SILENT FAILURE |
+| Midday | 16:34Z | ✓ COMPLETED (GS/META catch-up blocked HTTP 000) |
+| Afternoon | 18:00Z | ❌ SILENT FAILURE |
+| Market-Close | 19:30Z | ❌ SILENT FAILURE |
+| Daily-Review | 20:30Z | ❌ SILENT FAILURE (5 of 7 routines failed July 14) |
+
+---
+
+### USER SUGGESTION INBOX
+
+Checked GitHub Issues `user-suggestion` label — **0 open issues**. No operator suggestions to process this routine.
+
+---
+
+### MARKET CONDITIONS — July 15, 2026 Pre-Market (8:06 AM ET)
+
+**PPI June 2026 (8:30 AM ET — NOT YET RELEASED):**
+- Consensus: Headline MoM -0.1% (vs prior +1.1% — major deceleration expected), Core MoM +0.4%
+- Headline YoY: ~6.2% (down from 6.5%), Core YoY: ~5.2% (up from 4.9%)
+- Risk: Hot print (>+0.3% MoM headline) could partially reverse yesterday's CPI-driven rally
+- MOO orders are irrevocable once placed — accepting PPI risk at market open
+
+**US Futures (8:06 AM ET):**
+- S&P 500: +0.18% (+13.5 pts) — risk-on continuation of CPI rally
+- Nasdaq 100: +0.46% (+136.75 pts) — ASML + AMD upgrades driving chip/AI bid
+- Dow: +0.20% (+108 pts)
+
+**Key Earnings (Today/Yesterday):**
+- **ASML (this morning — BEAT + RAISED):** Q2 Revenue €9.33B (+21.3% YoY, above guidance); EPS €7.59 vs €6.99 est (+8.6%); Gross margin 54.0%; **Raised 2026 outlook to €43-45B** (from prior range); Q3 guidance €11-12B revenue; memory revenue +75% YoY; ASML +3.8% pre-market
+- **Morgan Stanley (this morning — BEAT):** EPS $3.46 vs $2.89 est (+20%); equities trading + IB fees drove record; 4th consecutive beat; MS +2-3% pre-market
+- **Goldman Sachs (July 14 — RECORD BEAT):** EPS $20.98 vs $14.46 est (+45%); Revenue $20.34B vs $16.40B (+39%); Assets under supervision record $4.04T; GS closed ~$1,075 (+7.7%)
+- **Wells Fargo (July 14 — BEAT):** EPS $2.00 vs $1.73 (+15.6%); Revenue $22.6B vs $22.0B; Net income +17% YoY; WFC ~$85.29
+
+**Pre-Market Movers:**
+- PYPL +18.5%: Stripe + Advent International offered $60.50/sh (~$53B deal, +28% premium) — M&A risk-arb
+- ASML +3.8%: Q2 beat + raised guidance (details above)
+- MS +2-3%: Q2 earnings beat
+- AMD +~1%: KeyBanc raised to $725 (Street high, was $530); China chip approvals (ZTE, Kingsoft Cloud, MagInfra); BofA $620 intact
+
+**Key Macro Context:**
+- CPI June (released July 14): 3.5% vs 3.8% headline; 2.6% vs 2.8% core — VERY COOL, most bullish macro development YTD
+- September rate cut now back on table (55-65% probability of Sept/Oct cut)
+- Iran: Brent ~$86/barrel; Trump escalating strikes; Strait of Hormuz risk ongoing
+- IBM: -22% yesterday on Q2 earnings warning — enterprise software contagion (NOW -7%, CRM -5%, ACN -8%) — IBM excluded from all watchlists until post-July-22-earnings review
+- AMD: China chip approvals for ZTE/Kingsoft Cloud/MagInfra = significant new addressable market catalyst
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected — 79th consecutive)
+# GET /v2/positions → HTTP 000
+# All Alpaca API calls blocked. Stop-loss status from last known data.
+```
+
+**AMD — Day 25 NAKED (CRITICAL GUARDRAIL VIOLATION, UNRESOLVED):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA (Day 25 naked — 79th consecutive session blocked)
+- Pre-Market July 15: ~$562 est (+1% from ~$560 close; KeyBanc $725 target today)
+- Position value: 18 × $562 = $10,116 (~10.04% equity — STILL OVER 5% CAP by 2× the limit)
+- Unrealized P&L: 18 × ($562 - $506.76) = +$994.32 (+10.9%)
+- Required stop if Alpaca accessible: $533.90 (5% below $562)
+- Required take-profit: $620 (BofA PT) or $725 (KeyBanc Street-high PT)
+
+```yaml
+---
+ts: 2026-07-15T12:06:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD 18sh naked Day 25 — NO stop at Alpaca — position at ~10% equity (OVER 5% hard cap by factor of 2) — API blocked 79th consecutive session — SELL 9sh MOO attempted and blocked HTTP 000
+size_pct: 10.04
+stop: 0
+target: 620.0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "ONGOING GUARDRAIL VIOLATION DAY 25. AMD 18sh at $506.76 avg (est. $562 pre-market today). Position value $10,116 = 10.04% equity — hard cap is 5%. No stop-loss resting at Alpaca. SELL 9sh MOO attempted this routine: curl POST /v2/orders {symbol:AMD, qty:9, side:sell, type:market, time_in_force:opg} → HTTP 000 (proxy CONNECT rejected). 79th consecutive blocked session. OPERATOR MANDATORY: (1) SELL 9sh AMD at market immediately via app.alpaca.markets; (2) Place GTC stop on remaining 9sh at $533.90 (5% below est. $562) + GTC TP $646.30 (15% above $562 = 3:1 R/R); (3) BUY 4sh GS via limit bracket GTC at $1,075; (4) BUY 7sh META via limit bracket GTC at $660."
+---
+```
+
+---
+
+### WATCHLIST — Pre-Market July 15, 2026
+
+**Carry-Forward (from July 14 Midday — binding commitment):**
+1. GS — 7.5 avg (approved, blocked yesterday)
+2. META — 7.5 avg (approved, blocked yesterday)
+
+**New Candidates Scanned:**
+3. ASML — Fresh 6-agent (earnings beat + raised guidance; +3.8% pre-market)
+4. PYPL — Fresh 6-agent (M&A offer $60.50; +18.5% pre-market)
+5. MS — Fresh 6-agent (Q2 beat +20%; +2-3% pre-market)
+6. WFC — Fresh 6-agent (Q2 beat +15.6%; ~$85.29)
+7. PLTR — Re-score (was 6.83 July 14 midday; ~$134 pre-market)
+
+---
+
+### SUB-AGENT ANALYSIS: GS (Goldman Sachs) — RE-CONFIRM CARRY-FORWARD
+
+Carry-forward score: 7.5 from July 14 midday. Re-confirming thesis for July 15 MOO.
+
+**Sub-Agent 1 — Fundamentals: 10/10**
+Q2 2026 EPS $20.98 vs $14.46 est (+45% beat). Revenue $20.34B vs $16.40B (+39% YoY) — record. ROE 23.5%, ROTE 25.5%. Assets under supervision: record $4.04T. Net revenues: record across Global Banking & Markets ($15.52B, +53% YoY). Zero deterioration in thesis overnight — this remains the strongest Q2 earnings beat in large-cap financials history.
+
+**Sub-Agent 2 — Technical: 5/10**
+GS at ~$1,075 (flat pre-market from yesterday's close). Yesterday: opened $1,046 (day low), peaked $1,077 (day high), closed ~$1,075. Today is Day 2 of the post-earnings move. No pre-market move suggests consolidation rather than fade. Entering at consolidation zone of Day 1 pop — technical score unchanged at 5 (limited chart data, no confirmed candlestick patterns, entering near post-earnings high). API blocked — Stochastic, MACD, Volume Oscillator unavailable.
+
+**Sub-Agent 3 — Sentiment: 8/10**
+GS dominated financial media yesterday. Analyst upgrades likely forthcoming. Morgan Stanley beat (EPS +20%) this morning confirms broad financial sector strength. No X/Twitter data (API unavailable). Short interest minimal on earnings beat day. Fear & Greed est. ~58 (Neutral-Greed) — risk-on. Score: 8.
+
+**Sub-Agent 4 — Macro: 8/10**
+CPI June very cool (3.5% vs 3.8% est). PPI pending (8:30 AM ET — consensus -0.1% MoM = continued disinflation). Lower rate trajectory = higher PE multiples for financials. Capital markets activity high (M&A revival, PYPL deal today). Iran is a mild headwind but GS benefits from market volatility (trading revenues). Score: 8.
+
+**Sub-Agent 5 — Risk: 7/10**
+4sh × $1,075 est. open = $4,300 = 4.27% equity ✓ (under 5% cap). Stop -5% = $1,021.25. Target +15% = $1,236.25. R/R = 3:1 ✓ minimum met. Trade risk: $4,300 × 5% = $215 = 0.21% equity ✓. Cash after entry (if AMD sell fills): ~$90,644 + $5,058 (AMD proceeds 9sh × $562) - $4,300 = ~$91,402 = 90.7% cash ✓. Sector (Financials): 4.27% ✓. Position count: AMD(9sh)+GS(4sh)+META(7sh pending) = 3 (under 12 ✓). Entering Day 2 after a 7.7% pop is a tail risk (fade risk). Score: 7.
+
+**Sub-Agent 6 — Tech Analyst: 7/10**
+Financial institution — auto-score 7. Note: GS technology platform (transaction banking, Marquee platform, AI trading infrastructure) is meaningful but thesis is driven by financial performance and capital markets activity, not technology competitive position per se.
+
+**Master Agent — GS PRE-MARKET DECISION:**
+- F:10 | T:5 | S:8 | M:8 | R:7 | TA:7 — Average: **7.5** ✓
+- Agents ≥7: F(10), S(8), M(8), R(7), TA(7) = **5 agents** ✓
+- Risk: 7 ✓ | Tech N/A ✓
+- **MASTER DECISION: APPROVED — MOO 4sh July 15**
+
+```yaml
+---
+ts: 2026-07-15T12:07:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: GS record Q2 2026 (+45% EPS beat, revenue $20.34B record); Day 2 post-earnings follow-through; CPI cool + MS beat confirm financial sector strength; target $1,236.25 (+15%)
+size_pct: 4.27
+stop: 1021.25
+target: 1236.25
+result_pct: null
+agent_scores:
+  fundamentals: 10
+  technical: 5
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED 7.5 avg (5/6 agents ≥7, Risk 7). MOO ORDER ATTEMPTED: curl POST /v2/orders {symbol:GS, qty:4, side:buy, type:market, time_in_force:opg} → HTTP 000 (proxy CONNECT rejected — 79th consecutive blocked session). ORDER NOT EXECUTED. Carry-forward from July 14 midday (MANDATORY binding commitment). OPERATOR: BUY 4sh GS limit $1,080.38 (ask×1.005) bracket GTC; stop $1,021.25 (−5%); target $1,236.25 (+15%, 3:1 R/R). Entering Day 2 of post-earnings move; consolidation at $1,075 is constructive. MS Q2 beat (+20%) this morning confirms financial sector momentum. PPI at 8:30 AM not yet out — soft PPI would add tailwind; hot PPI could pause the move."
+---
+```
+
+---
+
+### SUB-AGENT ANALYSIS: META (Meta Platforms) — RE-CONFIRM CARRY-FORWARD
+
+Carry-forward score: 7.5 from July 14 midday. Re-confirming thesis for July 15 MOO.
+
+**Sub-Agent 1 — Fundamentals: 8/10**
+Meta cloud compute story (Bloomberg confirmed across 8+ outlets July 14). Iris AI chip initiative. Goldman maintained Buy at $830 target ($840→$830 on higher capex — minor cut). Q2 earnings ~July 29-30 (>14 days away — safe window). Revenue growing ~17-20% YoY est. AI monetization (Meta AI, Reels ad revenue, WhatsApp Business). No fundamental deterioration overnight. IBM enterprise contagion does NOT affect META (different business model — consumer social, ad revenue, not enterprise consulting).
+
+**Sub-Agent 2 — Technical: 6/10**
+META at ~$658 pre-market (range $656-$661). Yesterday's range was $654-$676.62 with close ~$656.73. Pre-market slightly above yesterday's close — constructive. Daily trend: uptrend since April (CPI tailwind + cloud compute story). Entry near midrange (not at HOD). No confirmed candlestick patterns (API blocked). RSI est. ~55 — not overbought. Score: 6.
+
+**Sub-Agent 3 — Sentiment: 7/10**
+Meta cloud compute narrative confirmed and spreading (8+ major outlets). Goldman Buy $830 maintained. No negative news overnight. IBM contagion is enterprise-focused; META operates on completely different model. X data unavailable. Score: 7.
+
+**Sub-Agent 4 — Macro: 8/10**
+CPI very cool (3.5% vs 3.8%) — lower rate trajectory = growth stock benefit. PPI pending (soft = additional tailwind). Nasdaq +0.46% futures = growth/tech bias. Meta earnings window safe (>14 days to Q2). Iran risk is muted for META (ad revenue model insulated from oil prices). Score: 8.
+
+**Sub-Agent 5 — Risk: 7/10**
+7sh × $660 est. open = $4,620 = 4.59% equity ✓. Stop -5% = $627. Target +15% = $759. R/R = 3:1 ✓. Trade risk: $4,620 × 5% = $231 = 0.23% equity ✓. Cash after all 3 entries (AMD sell proceeds + GS buy + META buy): ~$91,402 (GS) - $4,620 = ~$86,782 = 86.2% cash ✓ (well above 5% floor). Sector (Social/Cloud): 4.59% ✓. Position count with GS: AMD(9)+GS(4)+META(7) = 3 ✓. Earnings July 29-30 — NO 48h blackout risk today ✓. Score: 7.
+
+**Sub-Agent 6 — Tech Analyst: 8/10**
+Meta's Iris AI chip is a significant strategic move (custom silicon for inference, reducing NVIDIA dependency). Cloud compute launch is a direct challenge to AWS/Azure/GCP — uses META's own hyperscale infrastructure. AI moat: 3.5B+ users generating proprietary training data. WhatsApp+Instagram+Facebook = unmatched distribution for AI assistant. LLaMA open-source strategy creates developer ecosystem lock-in. R&D ~18% of revenue and accelerating (Reality Labs + AI). Score: 8.
+
+**Master Agent — META PRE-MARKET DECISION:**
+- F:8 | T:6 | S:7 | M:8 | R:7 | TA:8 — Average: **7.33** ✓
+- Agents ≥7: F(8), S(7), M(8), R(7), TA(8) = **5 agents** ✓
+- Risk: 7 ✓ | Tech: 8 ✓
+- **MASTER DECISION: APPROVED — MOO 7sh July 15**
+
+```yaml
+---
+ts: 2026-07-15T12:08:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.33
+thesis: Meta cloud compute launch (8+ outlets confirmed) + Iris AI chip + Goldman Buy $830 PT; CPI cool = discount rate relief; Q2 earnings safe window July 29-30; target $759 (+15%)
+size_pct: 4.59
+stop: 627.0
+target: 759.0
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED 7.33 avg (5/6 agents ≥7, Risk 7, Tech 8). MOO ORDER ATTEMPTED: curl POST /v2/orders {symbol:META, qty:7, side:buy, type:market, time_in_force:opg} → HTTP 000 (proxy CONNECT rejected — 79th consecutive blocked session). ORDER NOT EXECUTED. Carry-forward from July 14 midday (MANDATORY binding commitment). OPERATOR: BUY 7sh META limit $663.30 (ask×1.005) bracket GTC; stop $627.00 (−5%); target $759.00 (+15%, 3:1 R/R). Meta cloud compute story intact. IBM contagion does NOT extend to META. Goldman maintained Buy $830 PT. Q2 earnings July 29-30 — >14 days, safe window. PPI at 8:30 AM not yet out — soft PPI adds upside; hot PPI could cause brief pause."
+---
+```
+
+---
+
+### SUB-AGENT ANALYSIS: ASML — NEW CANDIDATE (Earnings Reaction Follow)
+
+**Catalyst:** Q2 Revenue €9.33B (+21.3% YoY), Gross margin 54.0%, EPS €7.59 vs €6.99 est (+8.6%). Raised 2026 sales outlook to €43-45B. Q3 guidance €11-12B revenue. Memory revenue +75% YoY; logic +25%. Plans to increase chipmaking equipment capacity by 30%. Stock +3.8% pre-market.
+
+**Sub-Agent 1 — Fundamentals: 9/10**
+ASML's 2026 revenue guidance raise to €43-45B is significant (prior range was lower). The memory segment growing +75% YoY confirms AI-driven memory (HBM) demand is accelerating — not a one-quarter phenomenon. Gross margin guidance of 54-56% for 2026 is expanding. ASML is a structural AI capex beneficiary. The only maker of EUV machines required for nodes below 7nm. Customer base: TSMC (~70%), Samsung (~15%), Intel (~10%). Revenue is backlog-driven (years of visibility). P/E ~35x earnings — premium justified given monopoly position. Score: 9.
+
+**Sub-Agent 2 — Technical: 6/10**
+ASML +3.8% pre-market on strong Q2 beat. Estimated price range: ~$850-870 area (based on pre-market gain). Daily chart: uptrend intact (AI capex trade unbroken). Entering at earnings-day gap-up — positive technical signal but entering at resistance (day high from gap). No confirmed candlestick patterns (API blocked). Score: 6 (positive bias but limited technical data).
+
+**Sub-Agent 3 — Sentiment: 9/10**
+ASML Q2 confirms the AI capex cycle is intact — institutional fear that AI spending was slowing now definitively refuted. ASML beat is read-through for NVDA, AMD, MU, TSM. No negative sentiment. Analyst consensus: all Buy with raised PTs after today's print. The raised guidance is the key positive surprise — guidance raises produce sustained buying pressure. Score: 9.
+
+**Sub-Agent 4 — Macro: 8/10**
+CPI cool + potential soft PPI = lower rate trajectory = multiple expansion for growth/tech. Nasdaq +0.46% futures. ASML is a European company but USD-listed ADR with global revenue — benefits from dollar strength/weakness minimally. AI capex cycle (the macro driver for ASML) is confirmed accelerating by today's print. Q3 guidance €11-12B implies H2 acceleration. Score: 8.
+
+**Sub-Agent 5 — Risk: 7/10**
+ASML est. pre-market ~$860 (approx: prior close ~$829, +3.8% = ~$860). Position: 5sh × $860 = $4,300 = 4.27% equity ✓. Stop -5% = $817.00. Target +15% = $989.00. R/R = 3:1 ✓. Trade risk: $4,300 × 5% = $215 = 0.21% equity ✓. Sector (Semiconductors): AMD(9sh × $562 = $5,058 = 5.02%) + ASML(5sh × $860 = $4,300 = 4.27%) = 9.29% — well under 25% ✓. Position count: AMD+GS+META+ASML = 4 (under 12 ✓). ASML earnings risk: just reported this morning — earnings are OUT, no 48h binary event risk ✓. Score: 7.
+
+**Sub-Agent 6 — Tech Analyst: 10/10**
+ASML is the most defensible technology moat in the semiconductor industry. EUV (Extreme Ultraviolet Lithography) machines — the only ones in the world — are required by every advanced logic and memory fab. TSMC cannot make 3nm/2nm chips without ASML EUV. The technology took >15 years and ~€9B+ in R&D to develop. Zero competitors — NIKON and Canon gave up in 2010. Switching costs are infinite (can't switch to a machine that doesn't exist). Network effects: ASML's installed base creates a maintenance and upgrade revenue stream that compounds (service revenue growing ~20% YoY). AI demand wave: every AI chip (A100/H100/MI300/Grace) is made on ASML EUV. Memory manufacturers (SK Hynix, Micron, Samsung) must use ASML for HBM production. R&D spending ~14-15% of revenue ($1.3B+ annually). Next-gen: High-NA EUV machines at €350M each = ASML has pricing power unprecedented in industrial manufacturing. Score: 10.
+
+**Master Agent — ASML DECISION:**
+- F:9 | T:6 | S:9 | M:8 | R:7 | TA:10 — Average: **8.17** ✓
+- Agents ≥7: F(9), S(9), M(8), R(7), TA(10) = **5 agents** ✓
+- Risk: 7 ✓ | Tech: 10 ✓
+- **MASTER DECISION: APPROVED — 5sh. NOT MOO (3 MOO cap used: AMD SELL + GS BUY + META BUY). LIMIT ORDER for Market Open routine after PPI confirmation.**
+- Note: Since the 3 MOO cap is consumed, ASML will be placed as a limit order at Market Open (9:45 AM ET routine), contingent on PPI not being dramatically hot (>+0.5% MoM). A soft/in-line PPI print should have ASML continuing to rally.
+
+```yaml
+---
+ts: 2026-07-15T12:09:00Z
+action: entry
+symbol: ASML
+bucket: active
+setup: earnings-reaction-follow
+score: 8.17
+thesis: ASML Q2 Revenue €9.33B (+21.3% YoY); raised 2026 outlook to €43-45B; AI/HBM demand confirms capex cycle intact; EUV monopoly moat; target $989.00 (+15%)
+size_pct: 4.27
+stop: 817.0
+target: 989.0
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 10
+agent_average: 8.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED 8.17 avg (5/6 agents ≥7, Risk 7, Tech 10). DEFERRED TO LIMIT ORDER — 3 MOO cap already used (AMD SELL + GS BUY + META BUY). OPERATOR: BUY 5sh ASML limit $864.30 (est. ask×1.005 after PPI at 8:30 AM) bracket GTC; stop $817.00 (−5% from ~$860 fill); target $989.00 (+15%). If PPI is hot (>+0.3% MoM headline), delay ASML entry to Mid-Morning to assess macro reaction. ASML price est. $860 (prior close ~$829, +3.8% pre-market). AI/memory capex confirmed by today's Q2 print. Memory revenue +75% YoY. Raised 2026 guidance €43-45B is the key surprise. EUV monopoly = highest quality moat in semis. China risk: ASML has Netherlands export controls on EUV to China, but DUV (older gen) still shipping — this limits China upside but doesn't impair the thesis. Logged as entry with note ORDER NOT YET PLACED — Market Open routine to execute as limit order after PPI data lands."
+---
+```
+
+---
+
+### PYPL (PayPal) — REJECTED
+
+**Thesis:** Stripe + Advent International offered $60.50/sh (+28% premium to ~$47 pre-announcement). PYPL +18.5% pre-market.
+
+**Risk/Reward Analysis (AUTOMATIC REJECTION — Exemption 1):**
+- Expected M&A risk-arb price: PYPL likely opens ~$56-58 (discount to $60.50 offer for deal risk)
+- If deal closes: ~$60.50 vs $57 entry = +$3.50 = +6.1% upside
+- If deal breaks: ~$47 (pre-deal price) vs $57 entry = -$10 = -17.5% downside
+- Stop at -5% from entry: $57 × 0.95 = $54.15 stop = $2.85 downside
+- Target: $60.50 offer price = $3.50 upside
+- R/R = $3.50 / $2.85 = **1.23:1** — FAILS 3:1 MINIMUM REQUIRED
+
+Risk Agent auto-veto: R/R 1.23:1 < 3:1 minimum. Exemption 1 (guardrail breach). **REJECTED.**
+
+```yaml
+---
+ts: 2026-07-15T12:10:00Z
+action: skip
+symbol: PYPL
+bucket: active
+setup: other
+score: 6.33
+thesis: "PYPL M&A offer $60.50/sh from Stripe + Advent International (+28% premium). Stock +18.5% pre-market. REJECTED — Risk/Reward fails 3:1 minimum."
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 9
+  macro: 7
+  risk: 3
+  tech_analyst: 6
+agent_average: 6.33
+agents_above_7: 3
+master_decision: rejected
+master_notes: "SKIP EXEMPTION: Exemption 1 (guardrail breach — R/R fails mandatory 3:1 minimum). M&A risk-arb math: PYPL likely opens ~$57 (discount to $60.50 offer for deal uncertainty). Upside to offer: $3.50 (+6.1%). Stop at -5% from $57: $54.15 (downside: $2.85). R/R = 1.23:1 — FAILS 3:1 minimum. Risk Agent score 3/10 = automatic veto regardless of other scores. Even if deal closes at full $60.50, the reward is insufficient to compensate for deal-break risk (PYPL would return to $47 pre-deal level = -17.5% from $57). PYPL is also entering earnings season soon — thesis depends entirely on M&A completion. Average 6.33 (below 7.0 gate anyway). REJECT."
+---
+```
+
+---
+
+### MS (Morgan Stanley) — DEFERRED 6.83
+
+**Thesis:** Q2 EPS $3.46 vs $2.89 est (+20% beat). Equities trading + IB fees strong. 4th consecutive beat. +2-3% pre-market.
+
+**Brief Scoring:**
+- Fundamentals: 8 (strong Q2 beat, 4th consecutive)
+- Technical: 5 (MS price est. ~$140-150; entering day of earnings on pre-market pop — limited chart data)
+- Sentiment: 8 (confirms broad financial sector strength alongside GS beat)
+- Macro: 7 (CPI cool = positive for financials)
+- Risk: 7 (if ~$145 per share, 5% pos = $5,000/145 = 34sh; stop -5%, target +15%, R/R 3:1 ✓)
+- Tech Analyst: 7 (auto-score — financial institution)
+- Average: (8+5+8+7+7+7)/6 = **7.0** — AT threshold but not above
+- Agents ≥7: F(8), S(8), M(7), R(7), TA(7) = 5 agents ✓ BUT average exactly 7.0
+- **Decision: DEFERRED.** Average is exactly 7.0 (border). Technical is 5/10 (insufficient chart data on MS, price estimate is uncertain — I don't have a confirmed MS close or pre-market price with enough precision to size the order). Also: GS already captures the financial sector earnings momentum. Adding MS would put financials at ~8.5% sector exposure (GS 4.27% + MS ~4.3% = 8.57%) — under 25% cap but adds sector concentration. With 3 MOO slots consumed, MS deferred to limit order in a later routine with confirmed price data.
+
+```yaml
+---
+ts: 2026-07-15T12:11:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: MS Q2 EPS $3.46 vs $2.89 est (+20% beat); 4th consecutive beat; +2-3% pre-market. Deferred — price data insufficient for precise sizing; GS already captures financial sector momentum.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: rejected
+master_notes: "DEFERRED — NOT a guardrail-exemption skip. Score exactly 7.0 (border). Technical 5/10 limits conviction. MS pre-market price estimate uncertain ($140-150 range — no confirmed data). GS position already captures financial sector earnings momentum. Adding MS would bring financials exposure to ~8.5% (GS $4,300 + MS ~$4,300 = $8,600 = 8.5%) — technically under 25% cap but increases sector concentration in a sector that already moved 7-8% yesterday. No MOO slots remaining (all 3 used). PLAN: Reconsider MS at Mid-Morning or Daily Review with confirmed price and PPI data. If MS continues to hold gains post-PPI and score is reconfirmed ≥7, enter via limit bracket GTC at that routine."
+---
+```
+
+---
+
+### WFC (Wells Fargo) — DEFERRED 6.83
+
+**Brief Scoring:**
+- Fundamentals: 8 (EPS $2.00 vs $1.73 +15.6%, Revenue $22.6B vs $22.0B, net income +17% YoY)
+- Technical: 5 (WFC at $85.29; chart trend unknown, entering after Q2 earnings pop — no confirmed patterns)
+- Sentiment: 7 (Bank earnings broadly very strong; Q2 is best season in years)
+- Macro: 7 (CPI cool = rate relief for banks; lower rates = better margin environment eventually)
+- Risk: 7 (~59sh × $85.29 = $5,032 = 4.99% equity ✓; stop -5% = $81.03; target +15% = $98.08; R/R 3:1 ✓)
+- Tech Analyst: 7 (auto-score — financial institution)
+- Average: (8+5+7+7+7+7)/6 = **6.83** — BELOW 7.0 threshold
+
+**Decision: DEFERRED.** Score 6.83 below 7.0 Master gate. Technical 5/10 drags average. GS is the higher-quality earnings-beat play in financials (45% beat vs WFC's 15.6%). No MOO slots remaining.
+
+```yaml
+---
+ts: 2026-07-15T12:12:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 6.83
+thesis: WFC Q2 EPS $2.00 vs $1.73 (+15.6% beat); Revenue $22.6B vs $22.0B. Score 6.83 — below 7.0 Master gate. GS is the preferred financial play.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "DEFERRED — score 6.83 below 7.0 Master gate. Technical score 5/10 drags average below threshold (no confirmed chart pattern, entering day-after earnings pop without Stochastic/MACD confirmation from API). GS already captures the financial sector Q2 earnings trade with a superior earnings beat (+45% vs WFC +15.6%). WFC at $85.29 — if score recovers to ≥7.0 in a later routine with confirmed technical data, will reconsider. Also: GS entry today means financials sector exposure will be ~4.27% — adding WFC at ~4.99% would bring financials to ~9.26% (still under 25% cap). The score issue, not the guardrail, is the blocking reason here. Not a Deployment Bias exemption skip."
+---
+```
+
+---
+
+### PLTR (Palantir) — DEFERRED 6.83 (Unchanged)
+
+No change from July 14 midday score. PLTR ~$134.00 pre-market (DA Davidson Buy at $175; Nvidia AI partnership). Score 6.83 unchanged — same blocking agents (Fundamentals 6, Technical 6 = two weak agents). P/E >200x still a headwind even with CPI cool.
+
+```yaml
+---
+ts: 2026-07-15T12:13:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.83
+thesis: PLTR ~$134 pre-market; DA Davidson Buy $175; Nvidia AI partnership intact. Score 6.83 unchanged from July 14 midday — below 7.0 Master gate.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "DEFERRED — score 6.83 (below 7.0 gate). Only 3/6 agents ≥7 (need ≥4). Fundamentals 6/10 (P/E >200x; strong revenue growth but premium valuation still a headwind even with CPI cool). Technical 6/10 (API blocked; candlestick patterns unknown; ~$134 — up from $127.97 July 14 midday on Iran defense contract news). Sentiment 7, Macro 7, Risk 7, Tech 8. Not a Deployment Bias exemption — score-gated. Monitor for Macro improvement if PPI is soft (could push macro → 8 and avg → 7.0+). Will re-score at Midday routine."
+---
+```
+
+---
+
+### ORDERS SUMMARY — Pre-Market July 15, 2026
+
+| # | Symbol | Action | Qty | Type | Status | Reason |
+|---|---|---|---|---|---|---|
+| 1 | AMD | SELL | 9sh | MOO | ❌ BLOCKED HTTP 000 | Guardrail remediation (10% equity → 5%) |
+| 2 | GS | BUY | 4sh | MOO | ❌ BLOCKED HTTP 000 | Score 7.5 approved, carry-forward |
+| 3 | META | BUY | 7sh | MOO | ❌ BLOCKED HTTP 000 | Score 7.5 approved, carry-forward |
+| 4 | ASML | BUY | 5sh | LIMIT (Market-Open) | PLANNED | Score 8.17 approved; MOO cap used |
+| 5 | PYPL | N/A | - | - | ❌ REJECTED | R/R 1.23:1 < 3:1 min (Exemption 1) |
+| 6 | MS | N/A | - | - | DEFERRED | Score 7.0 border; price uncertain |
+| 7 | WFC | N/A | - | - | DEFERRED | Score 6.83 < 7.0 |
+| 8 | PLTR | N/A | - | - | DEFERRED | Score 6.83 < 7.0 |
+
+**API Status: 79th consecutive BLOCKED session.** All MOO orders attempted and confirmed blocked (HTTP 000 — proxy CONNECT rejected). Orders are NOT executing at Alpaca. OPERATOR MUST MANUALLY EXECUTE via app.alpaca.markets.
+
+---
+
+### OPERATOR MANDATORY ACTIONS (PRIORITY ORDER):
+
+1. ⚠️⚠️⚠️ **SELL 9sh AMD at market** immediately via app.alpaca.markets (Day 25 naked, 10% equity). Do NOT sell more than 9sh — retain 9sh as the active position within 5% cap.
+2. **Set GTC STOP on remaining 9sh AMD** at $533.90 (5% below est. $562) + GTC TP $646.30 (15% above $562, 3:1 R/R minimum)
+3. **BUY 4sh GS** limit $1,080.38 bracket GTC (stop $1,021.25, target $1,236.25)
+4. **BUY 7sh META** limit $663.30 bracket GTC (stop $627.00, target $759.00)
+5. **BUY 5sh ASML** limit $864.30 bracket GTC (stop $817.00, target $989.00) — AFTER PPI data at 8:30 AM ET (skip ASML if PPI headline MoM >+0.3%)
+6. ⚠️ **IBM: DO NOT ENTER.** Excluded from all watchlists. IBM earnings July 22 confirmed; thesis destroyed.
+
+---
+
 ## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓

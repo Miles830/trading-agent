@@ -1,7 +1,43 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-15 (Wednesday) — PRE-MARKET (8:06 AM ET / 12:06 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 79th consecutive blocked session). PRE-MARKET ROUTINE ✅ RUNNING.**
+
+**PPI JUNE 2026 (DUE 8:30 AM ET — NOT YET RELEASED AT TIME OF ROUTINE):** Consensus: Headline MoM -0.1% (vs prior +1.1% — major deceleration expected). Core MoM +0.4%. Headline YoY ~6.2% (down from 6.5%). Soft print would reinforce CPI cool and push rate-cut odds higher. Hot print (>+0.3% MoM headline) could briefly pause the rally. PPI is the key imminent binary risk.
+
+**ASML Q2 2026 BEAT (RELEASED THIS MORNING):** Revenue €9.33B (+21.3% YoY, above guidance). EPS €7.59 vs €6.99 est (+8.6%). Gross margin 54.0%. **Raised 2026 outlook to €43-45B.** Memory revenue +75% YoY (HBM demand). ASML +3.8% pre-market. ASML scored 8.17 — NEW ENTRY APPROVED. Blocked as limit order (MOO cap consumed). OPERATOR: BUY 5sh ASML limit $864.30 bracket GTC (stop $817, target $989) AFTER PPI data.
+
+**MORGAN STANLEY Q2 2026 BEAT (RELEASED THIS MORNING):** EPS $3.46 vs $2.89 est (+20%). 4th consecutive beat. Confirms financial sector strength alongside GS record. MS scored 7.0 (border) — DEFERRED (Technical drag, price uncertain). Will re-score Midday.
+
+**TODAY'S MARKET (PRE-MARKET 8:06 AM ET):** S&P futures +0.18%, Nasdaq +0.46%, Dow +0.20%. Broadly risk-on. PYPL +18.5% (M&A offer $60.50 from Stripe + Advent) — REJECTED (R/R 1.23:1 < 3:1 min). AMD ~$562 (+KeyBanc $725 target, China chip approvals). GS ~$1,075 (flat after yesterday's +7.7% record Q2 run). META ~$658.
+
+**PRE-MARKET MOO ORDERS ATTEMPTED (ALL BLOCKED HTTP 000 — 79th CONSECUTIVE):**
+- AMD SELL 9sh MOO → HTTP 000
+- GS BUY 4sh MOO → HTTP 000  
+- META BUY 7sh MOO → HTTP 000
+
+**AMD STATUS (DAY 25 NAKED):** 18sh at $506.76 avg. Est. $562 pre-market. Position value $10,116 = **10.04% equity — OVER 5% cap by 2×**. No stop at Alpaca. Day 25 without protection. P&L est. +$994 (+10.9%). BofA PT $620, KeyBanc NEW PT $725 (Street high). AMD Advancing AI 2026 conf July 22-23. OPERATOR CRITICAL: SELL 9sh AMD at market NOW → set GTC STOP on remaining 9sh at $533.90, GTC TP $646.30.
+
+**WATCHLIST STATUS (July 15):**
+- GS: 7.5 APPROVED (MOO blocked) — OPERATOR: BUY 4sh limit $1,080 bracket GTC
+- META: 7.33 APPROVED (MOO blocked) — OPERATOR: BUY 7sh limit $663 bracket GTC
+- ASML: 8.17 APPROVED (new, post-earnings) — OPERATOR: BUY 5sh limit $864 bracket GTC (after PPI)
+- PYPL: REJECTED (R/R 1.23:1 < 3:1 min)
+- MS: 7.0 DEFERRED (border score, price uncertain) — re-score Midday
+- WFC: 6.83 DEFERRED (below threshold)
+- PLTR: 6.83 DEFERRED (below threshold, unchanged)
+- IBM: EXCLUDED (thesis destroyed July 14, earnings July 22)
+
+**ESTIMATED PORTFOLIO (Pre-Market July 15):**
+- Cash: ~$90,644 (90.0% — over 5% floor ✓)
+- AMD: 18sh × $562 est. = $10,116 (10.04% — GUARDRAIL VIOLATION, 2× over 5% cap)
+- Total equity est.: ~$100,760
+- SPX May 1 baseline 7,200 → today ~7,549 (futures +0.18% on 7,535) = +4.85%
+- Portfolio return est.: +0.76% (AMD unrealized $994)
+- Benchmark gap: **-4.09 pp** (widened from -3.91 pp yesterday midday)
+- 20-DAY UNDERPERFORMANCE FLAG: **ACTIVE** (79+ consecutive sessions — API blockage root cause)
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY 12:36 PM ET):** Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 
