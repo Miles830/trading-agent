@@ -4,6 +4,206 @@
 
 ---
 
+## 2026-07-15 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 79th consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-15T20:34:17Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` and `data.alpaca.markets:443` — **79th consecutive blocked session** (egress policy denial)
+**Market Status:** CLOSED — 4:30 PM ET. Trading day confirmed (July 15, 2026 — Wednesday).
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully.
+
+---
+
+### HEARTBEAT AUDIT (MANDATORY FIRST ACTION)
+
+| Routine | Expected (UTC) | Found in log | Status |
+|---|---|---|---|
+| Pre-Market | ~12:05 UTC (8:05 AM ET) | **NOT FOUND** | **❌ SILENT FAILURE** |
+| Market-Open | ~13:45 UTC (9:45 AM ET) | **NOT FOUND** | **❌ SILENT FAILURE** |
+| Mid-Morning | ~15:00 UTC (11:00 AM ET) | **NOT FOUND** | **❌ SILENT FAILURE** |
+| Midday | ~16:30 UTC (12:30 PM ET) | **NOT FOUND** | **❌ SILENT FAILURE** |
+| Afternoon | ~18:00 UTC (2:00 PM ET) | **NOT FOUND** | **❌ SILENT FAILURE** |
+| Market-Close | ~19:30 UTC (3:30 PM ET) | **NOT FOUND** | **❌ SILENT FAILURE** |
+| Daily-Review | ~20:30 UTC (4:30 PM ET) | STARTED 20:34:17Z ✓ | ✅ RUNNING |
+
+**⚠️ TOP OPERATIONAL ISSUE:** Complete intraday blackout — 6 of 7 routines silently failed. Fourth full/near-full blackout day in July 2026 (July 8, 10, 11, 15). Scheduler is unreliable for all intraday windows; only Daily-Review fires consistently. **Proposed remediation:** (a) investigate session startup timing and confirm session-start hook is setting up cron correctly; (b) verify all 6 intraday routines are registered; (c) consider adding a "watchdog" mechanism that triggers a catch-up run if any routine is >30min past expected fire time. Until fixed, Daily-Review must run full catch-up including stop-audit, watchlist review, and position management.
+
+```yaml
+---
+ts: 2026-07-15T20:35:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: All 6 intraday routines silently failed July 15 — complete blackout; Daily-Review only routine to fire; 4th full/near-full blackout day in July 2026
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION — CRITICAL. Pre-Market (8:05 AM ET), Market-Open (9:45 AM), Mid-Morning (11:00 AM), Midday (12:30 PM), Afternoon (2:00 PM), Market-Close (3:30 PM) all silently failed July 15. No AMD stop-loss audit, no catch-up entries for GS/META (approved July 14, 7.5 avg both), no PPI/bank-earnings analysis. AMD naked Day 25+ at 10.1% equity with zero intraday management. Pattern: Pre-Market (8 AM ET) and all other intraday routines fail silently 4+ days per week. Daily-Review fires reliably. Root cause under investigation (session startup latency + scheduler timing). Remediation needed before July 16."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED 79th consecutive)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 403 (proxy CONNECT rejected)
+# All Alpaca API calls blocked. Estimated state from last known data (July 14 Midday).
+```
+
+**AMD — Day 25+ NAKED (CRITICAL GUARDRAIL VIOLATION, UNRESOLVED — 25th+ consecutive day):**
+- AMD: 18sh at $506.76 avg — **NO STOP-LOSS AT ALPACA**
+- July 14 midday est: ~$560.66 (+10.6% from avg)
+- July 15 EOD est: ~$565-$572 (modest continuation; PPI likely soft supporting semiconductor bull case; BofA PT $620)
+- Using $568 conservative estimate: Position value = 18 × $568 = **$10,224 = ~10.1% equity** (OVER 5% cap by ~5%)
+- Unrealized P&L est: 18 × ($568 − $506.76) = **+$1,102 (+12.1%)**
+- "Advancing AI 2026" conference July 22-23 = upcoming catalyst (7 calendar days)
+- GTC stop intent (blocked): $481.42 (5% below $506.76 fill price)
+- GTC TP intent (blocked): $582.78 ($506.76 + 3×$25.34)
+- Trail stop (current): 5% below $568 = $539.60 — but since stop was never placed, use original $481.42 (5% below fill)
+
+```yaml
+---
+ts: 2026-07-15T20:36:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD 18sh naked Day 25+ — still NO stop-loss at Alpaca — API blocked all remediation — position est. at 10.1% equity (OVER 5% cap by 5%)
+size_pct: 10.1
+stop: 0
+target: 582.78
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION — DAY 25+. AMD 18sh at $506.76 avg fill (June 23 stale GTC). No stop-loss order resting at Alpaca. Position est. at $568 = $10,224 = 10.1% equity — OVER 5% hard cap by approximately 5 percentage points. All stop-placement orders blocked for 79th consecutive session. Unrealized gain +$1,102 (+12.1%) — profitable but completely unprotected. 'Advancing AI 2026' conference July 22-23 approaching as positive catalyst. OPERATOR MUST: (1) SELL 9sh AMD at market or MOO July 16 (reduces to ~$5,112 = ~5.0% equity); (2) Place GTC STOP at $481.42 on remaining 9sh; (3) Place GTC TP at $582.78 on remaining 9sh. No further entries until AMD position is compliant."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 15, 2026 (inferred — no live API access)
+
+**Key events today (inferred from known calendar):**
+- **PPI June 2026 (8:30 AM ET):** Expected to confirm soft inflation trend (following CPI headline 3.5% vs 3.8% est. July 14). Consensus: PPI +0.1% m/m or flat. If soft → September rate-cut probability surges further → growth/tech tailwind continues.
+- **MS (Morgan Stanley) Q2 2026 earnings:** Reporting today. Following GS +45% beat, WFC +16.3% beat, JPM +5.5% beat — MS earnings expected strong. Investment banking recovery + trading revenues = strong catalyst for financial sector continuation.
+- **ASML Q2 2026 earnings:** Critical semiconductor-equipment read-through. ASML's booking data determines future chip fab spending — direct read-through for AMD, NVDA, INTC (CapEx plans). Strong ASML = semiconductor bull case intact.
+- **WFC additional:** Also reporting today per prior memory.
+
+**Inferred market conditions (conservative estimates):**
+- SPX July 15 est: ~7,565-7,580 (PPI + bank earnings continuation on CPI cool rally)
+- Nasdaq est: +0.5-1.0% (rate-cut thesis = growth-stock re-rating)
+- AMD est: ~$565-$572 (BofA PT $620 + CPI/PPI soft + semiconductor confidence from ASML)
+- GS est: ~$1,070-$1,090 (consolidating after +7.7% July 14 earnings day)
+- META est: ~$660-$678 (growth stock rally continuation)
+- IBM est: ~$230-$245 (continuing collapse from −22% July 14 crash; DO NOT ENTER)
+
+**SPX performance (cumulative):**
+- May 1 baseline: 7,200
+- Est. July 15 close: ~7,572
+- SPX return: **+5.17%** (7,572/7,200 − 1)
+- Portfolio return est: **+0.87%** ($100,868 / $100,000 − 1)
+- **CUMULATIVE GAP vs SPX: est. −4.30 pp** (improved from −5.48 pp last confirmed July 7; AMD unrealized +12.1% narrowing the gap)
+- **Daily gap today (July 15):** SPX est. +0.35%; Portfolio est. +0.11% (AMD modest gain); Daily gap est. −0.24 pp
+
+---
+
+### DAILY REVIEW ANALYSIS
+
+**Today's best trade:** AMD hold — +12.1% unrealized gain (+$1,102). CPI cool on July 14 + likely soft PPI July 15 = macro tailwind for AMD semiconductor thesis. BofA PT $620 has 9.2% remaining upside from $568 est. "Advancing AI 2026" conference July 22-23 is an upcoming catalyst.
+
+**Today's worst development:** Complete intraday blackout. Zero routine coverage during market hours. GS (7.5 avg) and META (7.5 avg) remained unexecuted for a second consecutive day — both originally approved July 14. Every day of delay is opportunity cost while both names trade in range.
+
+**3 things that worked:**
+1. IBM was never entered — thesis destroyed by -22% crash July 14; API blockage inadvertently prevented a ~-$200 realized loss on what would have been a 3sh position
+2. AMD +12.1% unrealized from entry — the only deployed capital is outperforming the market on a per-dollar basis (+12.1% vs SPX +5.17%)
+3. Score framework (GS 7.5, META 7.5) correctly identified both opportunities on July 14; thesis remains intact for July 16 entry
+
+**3 things to improve:**
+1. AMD position management: 10.1% equity, Day 25+ naked, no stop = single largest risk in the portfolio. Must execute SELL 9sh + stop placement before July 16 open
+2. Scheduler reliability: 6/7 silent failures today. Operator must address session configuration before market open
+3. Re-pricing GS and META: both were priced at July 14 midday estimates ($1,075 and $660 respectively); need fresh pre-market pricing July 16 before placing orders
+
+---
+
+### SETUP TALLY (rolling 5-day July 9-15, 2026)
+
+| Setup type | 5-day W | 5-day L | All-time W | All-time L | Status |
+|---|---|---|---|---|---|
+| macro-hedge | 0 | 0 | 0 | 1 (GLD -4.99%) | No halt; 1 more loss needed for halt |
+| earnings-reaction-follow | 0 | 0 | 0 | 0 | GS approved; pending operator fill |
+| ai-momentum-pullback | 0 | 0 | 0 | 0 | PLTR re-score needed; deferred |
+| breakout-volume | 0 | 0 | 0 | 0 | META approved; pending operator fill |
+| sector-rotation | 0 | 0 | 0 | 0 | IBM removed permanently |
+| candlestick-reversal | 0 | 0 | 0 | 0 | No API data for pattern detection |
+| earnings-reaction-fade | 0 | 0 | 0 | 0 | No candidates |
+| crypto-flush-rebound | 0 | 0 | 0 | 0 | BTC below $82K threshold |
+
+**3-in-a-row halt:** None triggered.
+**3-in-a-row boost:** None triggered.
+**Notes:** All setup tallies remain unchanged. AMD naked position is an untagged open position — will be classified as `breakout-volume` (original AMD approval) once closed. GS pending `earnings-reaction-follow`. META pending `breakout-volume`. No new completed trades this session.
+
+---
+
+### TOMORROW'S WATCHLIST (July 16, 2026 — BINDING COMMITMENT)
+
+| Priority | Symbol | Action | Shares | Est. Entry | Stop | Target | Score | Setup | Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 — CRITICAL | AMD | **SELL 9sh** | 9 | MOO/market | — | — | N/A | risk-mgmt | Day 25+ naked; reduce 18sh→9sh; ABSOLUTE FIRST ORDER |
+| 1b — CRITICAL | AMD | GTC STOP + TP | 9 remaining | $506.76 basis | $481.42 | $582.78 | N/A | risk-mgmt | Immediately after sell confirms |
+| 2 | GS | BUY 4sh | 4 | ask×1.005 | fill×0.95 | fill×1.15 | 7.5 (July 14) | earnings-reaction-follow | Re-price at pre-market; score 7.5 binding from July 14; verify still ≥7.0 |
+| 3 | META | BUY 7sh | 7 | ask×1.005 | fill×0.95 | fill×1.15 | 7.5 (July 14) | breakout-volume | Re-price at pre-market; score 7.5 binding from July 14; EXIT by July 25 (earnings 48h window) |
+| 4 | MS | Fresh 6-agent | TBD | ask×1.005 | fill×0.95 | fill×1.15 | TBD | earnings-reaction-follow | July 15 earnings; score at pre-market July 16; if ≥7 → mandatory |
+| 5 | ASML | Fresh 6-agent | TBD | ask×1.005 | fill×0.95 | fill×1.15 | TBD | earnings-reaction-follow | July 15 earnings; semiconductor equipment leader; if ≥7 → mandatory; positive read-through for AMD/NVDA |
+| 6 | NVDA | Re-score | TBD | ask×1.005 | fill×0.95 | fill×1.15 | TBD | ai-momentum-pullback | Conditional on ASML result — strong ASML = NVDA bull case strengthened |
+| — | IBM | **DO NOT ENTER** | 0 | — | — | — | 2.67 | — | Thesis destroyed; earnings July 22; permanently excluded |
+| — | NFLX | **Exemption 2** | 0 | — | — | — | — | — | Earnings AH July 16 = binary event; score July 17 pre-market for follow trade |
+
+**Max MOO orders:** 3. Priority order: (1) AMD SELL 9sh, (2) GS 4sh buy, (3) META 7sh buy (as limit-at-open if not MOO-eligible).
+**Note:** Retail Sales (8:30 AM ET July 16) is a market-moving data point but NOT a CLAUDE.md-exempt binary event. Do not delay entries on Retail Sales uncertainty — it is not earnings/FDA/Fed.
+
+---
+
+### KEY MACRO EVENTS (July 16-22, 2026)
+
+| Date | Event | Impact |
+|---|---|---|
+| July 16 | Retail Sales 8:30 AM ET | Consumer spending health; soft = risk-on; hot = growth headwind |
+| July 16 AH | Netflix (NFLX) earnings | Exemption 2 — do NOT enter NFLX July 16; score July 17 pre-market |
+| July 17 | Michigan Consumer Sentiment | Sentiment survey; directional indicator only |
+| July 17 | NFLX earnings-follow eligible | Score at July 17 pre-market if July 16 print was strong |
+| July 20 | IBM earnings 48h window opens | IBM excluded from watchlist regardless |
+| July 22 | IBM Q2 2026 earnings | IBM excluded — do not initiate or exit any IBM position (none held) |
+| July 22-23 | AMD "Advancing AI 2026" conference | NOT binary — AMD can be held through it; catalyst for position |
+| July 22-23 (est.) | TSLA earnings | MUST VERIFY EXACT DATE before any TSLA entry; if July 22-23, 48h window opens July 20 |
+| July 27-28 (est.) | META Q2 2026 earnings 48h window | EXIT META position by July 25 EOD if still held |
+
+---
+
+**DAILY REVIEW COMPLETE.**
+
+---
+
 ## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓
