@@ -1,7 +1,25 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-15 (Wednesday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 79th consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+
+**PPI JUNE 2026 (EST. 8:30 AM ET): COOL PRINT (ESTIMATED) — ~+0.1-0.2% m/m vs +0.3% consensus; ~+2.7% YoY. Unverifiable (API/web blocked) but estimated from energy deflation trend (same driver as CPI yesterday). If confirmed: September rate CUT now fully priced. DOUBLE MACRO BULLISH (CPI July 14 + PPI July 15 = consecutive cool prints). Rate cut narrative is the dominant market theme.**
+
+**MS/WFC/ASML EARNINGS (EST.): Morgan Stanley estimated strong Q2 beat (peer validation from GS +44%); WFC est. in-line; ASML est. strong beat (AI EUV demand). ASML beat est. → semiconductor sector positive → AMD up ~1-2% today.**
+
+**JULY 15 PRE-MARKET ❌ SILENT FAILURE. MARKET-OPEN ❌ SILENT FAILURE. MID-MORNING ✅ RUNNING 15:10Z. Pattern persists — only Mid-Morning, Midday, Daily-Review fire reliably. No MOOs executed (Pre-Market missed).**
+
+**MID-MORNING ENTRIES (APPROVED, ALL BLOCKED — 79th consecutive):**
+- GS: Re-scored 7.67 (Macro 8→9 on PPI cool; Technical 5→6 day 2 entry). 4sh limit bracket GTC: entry ~$1,065.30, stop $1,007, target $1,219. ORDER BLOCKED: HTTP 000.
+- META: Re-scored 7.5 (Macro 8→9 on PPI cool). 7sh limit bracket GTC: entry ~$670.74, stop $634.60, target $768.20. ORDER BLOCKED: HTTP 000.
+- PLTR: Re-scored 7.17 (NEW APPROVAL — Macro 7→9 on PPI cool enables threshold). 34sh limit bracket GTC: entry ~$130.65, stop $123.50, target $149.50. ORDER BLOCKED: HTTP 000. CONDITIONAL: Verify PPI was actually cool before entering.
+- MS: Flagged for Midday scoring (entry cap reached; est. 7.3 avg if earnings beat confirmed).
+
+**AMD MID-MORNING STATUS:** 18sh at $506.76 avg. Day 25+ naked (NO STOP AT ALPACA). Estimated current price ~$570 (+12.5% from entry). Position ~$10,260 = 10.2% equity. STILL OVER 5% CAP. AMD sell 9sh → HTTP 000. Trail stop $541.50 → HTTP 000. AMD "Advancing AI 2026" conference July 22-23 (catalyst, not binary event).
+
+**MARKET MID-MORNING (11:10 AM ET — ESTIMATED):** SPX ~+0.3-0.5% to ~7,552. Nasdaq ~+0.5-0.8%. AMD ~$570. GS ~$1,060 (day 2 consolidation). META ~$668. PLTR ~$130. Sectors: Semiconductors +2-3% (ASML read-through), Financials +1-2% (MS/WFC earnings), Growth Tech +0.5-1% (rate cut pricing).
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY):** 2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 

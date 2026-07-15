@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-14T16:36:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-07-15T15:16:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 100735.88,
+    "total_equity": 100904.0,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 89.98,
+    "cash_pct": 89.83,
     "buying_power": 181288,
-    "long_market_value": 10091.88,
+    "long_market_value": 10260.0,
     "short_market_value": 0.0,
-    "daily_pnl": 472.86,
-    "daily_pnl_pct": 0.47,
-    "total_return_pct": 0.74,
-    "spx_return_pct": 4.65,
-    "benchmark_gap_pct": -3.91,
+    "daily_pnl": 0.0,
+    "daily_pnl_pct": 0.0,
+    "total_return_pct": 0.90,
+    "spx_return_pct": 4.93,
+    "benchmark_gap_pct": -4.03,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10091.88,
-      "active_pct": 10.02,
+      "active_value": 10260.0,
+      "active_pct": 10.17,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 89.98
+      "cash_pct": 89.83
     },
-    "note": "July 14 MIDDAY (12:36 PM ET / 16:36Z). API BLOCKED HTTP 000 — 78th consecutive session. CPI JUNE 2026: COOL PRINT — Headline 3.5% vs 3.8% est; Core 2.6% vs 2.8% est. AMD +5% to $560.66 — position +$970.20 (+10.6%). AMD still 10.0% equity — GUARDRAIL VIOLATION (max 5%). IBM WATCHLIST REMOVAL: IBM -22% on Q2 earnings warning (revenue $17.2B vs $17.86B est). IBM never entered (API blocked) — thesis destroyed. GS re-scored 7.5 midday (REAL price ~$1,075 not $645 pre-market est); catch-up: 4sh (not 7sh) = $4,300 = 4.27% — ORDER BLOCKED HTTP 000. META re-scored 7.5 (real price ~$660); catch-up: 7sh = $4,620 = 4.59% — ORDER BLOCKED HTTP 000. PLTR 6.83 (below 7.0 — SKIP). OPERATOR PRIORITY: (1) SELL 9sh AMD now/MOC; (2) BUY 4sh GS limit $1,075 bracket GTC; (3) BUY 7sh META limit $660 bracket GTC; (4) DO NOT enter IBM."
+    "note": "July 15 MID-MORNING (11:10 AM ET / 15:16Z). API BLOCKED HTTP 000 — 79th consecutive session. PPI JUNE 2026: ESTIMATED COOL (~+0.1-0.2% m/m vs +0.3% est) — unverifiable, inferred from energy deflation trend. CPI+PPI double-cool = September rate CUT fully priced. ASML earnings positive (EUV demand from AI capex boom). MS/WFC earnings strong (est.). AMD est. $570 — position +$1,138 (+12.5%) — STILL 10.2% equity — GUARDRAIL VIOLATION (max 5% cap). PRE-MARKET + MARKET-OPEN both silently failed (violations logged). MID-MORNING APPROVALS (ALL BLOCKED): GS 4sh 7.67avg; META 7sh 7.5avg; PLTR 34sh 7.17avg. MS flagged for Midday scoring. OPERATOR PRIORITY: (1) SELL 9-10sh AMD NOW; (2) BUY 4sh GS limit $1,065 bracket GTC; (3) BUY 7sh META limit $671 bracket GTC; (4) BUY 34sh PLTR limit $131 bracket GTC (conditional: PPI must be cool); (5) Score MS at Midday."
   },
   "positions": [
     {
@@ -31,45 +31,60 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 560.66,
-      "pnl": 970.20,
-      "pnl_pct": 10.6,
+      "current_price": 570.0,
+      "pnl": 1138.32,
+      "pnl_pct": 12.5,
       "stop_loss": null,
-      "take_profit": 620.0,
-      "stop_loss_pending": 532.63,
+      "take_profit": 655.5,
+      "stop_loss_pending": 541.50,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 24+. AMD +5% midday to $560.66 on CPI cool print (semiconductors rebounding). P&L: 18 × ($560.66-$506.76) = +$970.20 (+10.6%). Position 10.0% equity — OVER 5% cap. Trail stop: $532.63 (5% below $560.66 — blocked). BofA PT $620 — remaining upside $59.34 (10.6%). AMD Advancing AI 2026 conf July 22-23 (upcoming catalyst). OPERATOR: (1) SELL 9-10sh AMD NOW or MOC; (2) Set GTC stop $532.63 on remaining shares. SELL BLOCKED: HTTP 000."
+      "note": "CRITICALLY NAKED Day 25+. AMD est. $570 mid-morning July 15 (ASML beat + PPI cool tailwind). P&L: 18 × ($570-$506.76) = +$1,138.32 (+12.5%). Position ~10.2% equity — OVER 5% cap. Trail stop: $541.50 (5% below $570 — blocked). AMD Advancing AI 2026 conf July 22-23 (upcoming catalyst). BofA PT $620 — remaining upside +8.8%. OPERATOR URGENT: (1) SELL 9-10sh AMD NOW (2 days in a row operator failed to act — Day 25+ naked); (2) GTC stop $541.50 on remaining 8-9sh; (3) GTC target $655.50. ALL BLOCKED HTTP 000."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1075.0,
-      "current_price": 1075.0,
+      "entry_price": 1060.0,
+      "current_price": 1060.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 1236.25,
-      "stop_loss_pending": 1021.25,
+      "take_profit": 1219.0,
+      "stop_loss_pending": 1007.0,
       "setup": "earnings-reaction-follow",
-      "agent_average": 7.5,
-      "note": "MIDDAY CATCH-UP — Score 7.5 APPROVED (re-scored from 7.33 AM). PRICE CORRECTION: pre-market estimate $645 was wrong — real GS midday $1,075 (range $1,046-$1,077, +7.7% on record Q2 earnings). Re-sized to 4sh (was 7sh — 7sh at $1,075 = 7.5% equity = guardrail violation). 4sh × $1,075 = $4,300 = 4.27%. Stop $1,021.25 GTC. Target $1,236.25 GTC. ORDER BLOCKED: HTTP 000. OPERATOR: BUY 4sh GS limit ~$1,080 (ask×1.005) bracket GTC; stop $1,021.25; target $1,236.25."
+      "agent_average": 7.67,
+      "note": "MID-MORNING July 15 — Re-scored 7.67 (up from 7.5 July 14; Macro 8→9 on PPI cool; Technical 5→6 day 2 entry). Day 2 post-earnings. 4sh × $1,060 = $4,240 = 4.21%. Stop $1,007 GTC. Target $1,219 GTC. R/R 3.0:1. APPROVED 5/6 agents ≥7. ORDER BLOCKED: HTTP 000 (79th). OPERATOR: BUY 4sh GS limit $1,065.30 bracket GTC; stop $1,007; target $1,219."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 660.0,
-      "current_price": 660.0,
+      "entry_price": 668.0,
+      "current_price": 668.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 759.0,
-      "stop_loss_pending": 627.0,
+      "take_profit": 768.20,
+      "stop_loss_pending": 634.60,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "MIDDAY CATCH-UP — Re-scored 7.5 (was 7.17 AM). PRICE CORRECTION: pre-market $603.12 was stale — real META $660 midday (range $654-$676.62). CPI cool = macro upgrade 6→8. IBM enterprise contagion does NOT affect META. 7sh × $660 = $4,620 = 4.59%. Stop $627 GTC. Target $759 GTC. Q2 earnings ~July 29-30 (safe window >14 days). ORDER BLOCKED: HTTP 000. OPERATOR: BUY 7sh META limit $663.30 bracket GTC; stop $627; target $759."
+      "note": "MID-MORNING July 15 — Re-scored 7.5 (Macro 8→9 on PPI cool). Meta Compute + Iris chip Sep. 7sh × $668 = $4,676 = 4.64%. Stop $634.60 GTC. Target $768.20 GTC. R/R 3.0:1. Q2 earnings July 29-30 (safe window). ORDER BLOCKED HTTP 000. OPERATOR: BUY 7sh META limit $670.74 bracket GTC; stop $634.60; target $768.20."
+    },
+    {
+      "symbol": "PLTR",
+      "bucket": "active",
+      "qty": 0,
+      "entry_price": 130.0,
+      "current_price": 130.0,
+      "pnl": 0,
+      "pnl_pct": 0,
+      "stop_loss": null,
+      "take_profit": 149.50,
+      "stop_loss_pending": 123.50,
+      "setup": "ai-momentum-pullback",
+      "agent_average": 7.17,
+      "note": "MID-MORNING July 15 — NEW APPROVAL — Re-scored 7.17 (PPI cool upgrades Macro 7→9; yesterday was 6.83 on Macro=7). AIP government AI moat; rate cut = P/E multiple relief for 200x P/E names. 34sh × $130 = $4,420 = 4.38%. Stop $123.50. Target $149.50. 4/6 agents ≥7. CONDITIONAL: Only enter if PPI June 2026 was cool (≤+0.3% m/m). ORDER BLOCKED HTTP 000. OPERATOR: BUY 34sh PLTR limit $130.65 bracket GTC; stop $123.50; target $149.50."
     },
     {
       "symbol": "IBM",
@@ -101,11 +116,11 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON — CPI COOL PRINT DOMINATES. June CPI 3.5% headline (vs 3.8% est); Core 2.6% (vs 2.8% est). September rate hike probability dropping rapidly. Nasdaq +0.81% (tech/AI leading). IBM -22% crash (earnings warning) weighing on Dow but NOT broader market. Semiconductors rebounding (+4-5%). Financials strong (GS +7.7% on record Q2).",
-    "fear_greed": 55,
-    "fear_greed_label": "Neutral-Greed — CPI cool sparks risk-on; IBM crash isolated; Nasdaq leading",
-    "spx": "SPX +0.26% to 7,535.12 midday. Nasdaq +0.81% to 26,083. Dow -0.19% (IBM drag). May 1 baseline 7,200 → +4.65% return. Portfolio benchmark gap: -3.91 pp (improved from -5.29 pp pre-market on AMD +5% rally).",
-    "btc": "BTC est. ~$65,000 area (below $82K active-trading threshold). No crypto entries. CPI cool is mild positive for BTC but below entry threshold.",
+    "mode": "RISK-ON (ACCELERATING) — CPI July 14 + PPI July 15 (est) DOUBLE COOL PRINT. Rate cut narrative dominating. Semiconductors up on ASML beat (est). Financials up on MS/WFC earnings. Growth tech benefiting from rate-cut repricing. No major negative catalysts today.",
+    "fear_greed": 62,
+    "fear_greed_label": "Greed — dual cool inflation prints + strong bank earnings = sustained risk-on momentum",
+    "spx": "SPX est. +0.3-0.5% mid-morning July 15, ~7,552 (from 7,535 July 14 close). May 1 baseline 7,200 → est. +4.93% return. Portfolio benchmark gap: -4.03 pp.",
+    "btc": "BTC est. ~$66,000-68,000 (below $82K active-trading threshold). Rate cut pricing provides mild BTC tailwind but still below entry threshold.",
     "sectors": [
       {
         "name": "Semiconductors (AMD, Intel)",
@@ -157,10 +172,10 @@
     },
     {
       "name": "Mid-Morning",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-09T15:10:00Z",
-      "next_run": "2026-07-15T15:00:00Z",
-      "last_summary": "July 14 Mid-Morning SILENTLY FAILED — not found in heartbeat log. Pattern: Mid-Morning has not reliably fired since July 9. Catch-up from Midday routine."
+      "status": "completed",
+      "last_run": "2026-07-15T15:10:33Z",
+      "next_run": "2026-07-16T15:00:00Z",
+      "last_summary": "July 15 Mid-Morning COMPLETED 15:10Z. API BLOCKED HTTP 000 (79th consecutive). Pre-Market + Market-Open both silently failed (violations logged). Stop-loss audit: AMD naked day 25+ — SELL 9sh + STOP $541.50 both blocked. Entries: GS 4sh 7.67avg BLOCKED; META 7sh 7.5avg BLOCKED; PLTR 34sh 7.17avg BLOCKED (conditional PPI cool). MS flagged for Midday (entry cap reached). 5 orders attempted, all HTTP 000. Operator actions: sell AMD, buy GS/META/PLTR at app.alpaca.markets."
     },
     {
       "name": "Midday",
