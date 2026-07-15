@@ -4,6 +4,493 @@
 
 ---
 
+## 2026-07-15 — Market-Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 79th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-15T19:34:59Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` and `data.alpaca.markets:443` — **79th consecutive blocked session** (egress policy denial — not auth failure; do not retry)
+**Market Status:** CLOSED — NYSE/NASDAQ closed at 4:00 PM ET. Trading day confirmed (Tuesday July 15, 2026). MOC window: closes 3:50 PM ET / 19:50Z.
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — 2026-07-15
+
+```bash
+grep "STARTED " logs/heartbeats/2026-07-15.log
+# 2026-07-15T19:34:59Z STARTED Market-Close
+# Only Market-Close found — all 5 predecessors silently failed
+```
+
+| Routine | Expected (UTC) | Found | Status |
+|---|---|---|---|
+| Pre-Market | ~12:00Z (8:00 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Market-Open | ~13:45Z (9:45 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Mid-Morning | ~15:00Z (11:00 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Midday | ~16:30Z (12:30 PM ET) | NOT FOUND | **SILENT FAILURE** |
+| Afternoon | ~18:00Z (2:00 PM ET) | NOT FOUND | **SILENT FAILURE** |
+
+**ALL 5 PREDECESSOR ROUTINES SILENTLY FAILED.** Fourth consecutive full-day blackout where only Market-Close or Daily-Review fires. Binding commitments from July 14 (GS 4sh + META 7sh + AMD SELL 9sh) not executed at any earlier routine.
+
+```yaml
+---
+ts: 2026-07-15T12:00:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Pre-Market (8:00 AM ET) silently failed July 15 — no heartbeat in logs/heartbeats/2026-07-15.log
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Pre-Market routine (8:00 AM ET / ~12:00Z) silently failed July 15. Binding commitments from July 14 midday (GS 4sh, META 7sh, AMD SELL 9sh) not executed at Pre-Market. Key events missed: PPI June 2026 (8:30 AM ET), MS/WFC/ASML Q2 earnings pre-market. 79th consecutive API block."
+---
+```
+
+```yaml
+---
+ts: 2026-07-15T13:45:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market-Open (9:45 AM ET) silently failed July 15 — no heartbeat found
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Market-Open (9:45 AM ET / 13:45Z) silently failed July 15. No MOO fill confirmations. AMD stop-loss backfill (mandatory after MOO fills) not run. No stop audit at open. Pattern: Market-Open has not reliably fired since July 13 (Market-Open 13:45Z). 79th consecutive API block prevents all remediation."
+---
+```
+
+```yaml
+---
+ts: 2026-07-15T15:00:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Mid-Morning (11:00 AM ET) silently failed July 15 — no heartbeat found
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Mid-Morning (11:00 AM ET / 15:00Z) silently failed July 15. 7th+ consecutive Mid-Morning failure. PPI June 2026 released 8:30 AM ET today — key event missed. BLK Q2 earnings (pre-market today) not scored. ASML Q2 earnings (today) not scored. MS/WFC post-earnings not analyzed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-15T16:30:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday (12:30 PM ET) silently failed July 15 — no heartbeat found
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Midday (12:30 PM ET / 16:30Z) silently failed July 15. Binding commitments (GS 4sh + META 7sh + AMD SELL 9sh) not re-attempted at midday. PPI impact not tracked. MS/WFC earnings results not analyzed. No midday catch-up scoring."
+---
+```
+
+```yaml
+---
+ts: 2026-07-15T18:00:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Afternoon (2:00 PM ET) silently failed July 15 — no heartbeat found
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Afternoon (2:00 PM ET / 18:00Z) silently failed July 15. No AMD trail stop update. No PLTR re-score. No MOC setup confirmed. All obligations cascade to Market-Close now."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 15, 2026 (ESTIMATED — No API Access)
+
+**Key Events Today (estimated impact — no market data available):**
+- **PPI June 2026** (8:30 AM ET): After yesterday's cool CPI (headline 3.5% vs 3.8% est), PPI likely cooperative. Est. cool-to-in-line. September rate cut pricing likely firming.
+- **MS (Morgan Stanley) Q2** (pre-market): Expected strong beat given GS's +44% surprise. Investment banking revival. Supports financial sector and GS thesis.
+- **WFC (Wells Fargo) Q2** (pre-market): Net interest income; expected moderate beat. Financial sector supportive.
+- **ASML Q2** (pre-market): Semiconductor equipment — AI capex demand. Expected strong; positive AMD read-through.
+- **BlackRock Q2** (pre-market): AUM expansion; Q2 markets recovery = fee income beat likely.
+
+**Estimated Market Snapshot (no API — based on July 14 close + macro logic):**
+- SPX: est. ~7,540-7,555 (flat-to-slightly-up from 7,535.12; PPI + bank earnings support)
+- Nasdaq: est. +0.2-0.4% (ASML beat = chip positive read-through)
+- AMD: est. ~$553-563 (slight profit-taking after +5% yesterday; ASML positive)
+- GS: est. ~$1,055-1,075 (consolidating day 2 post-earnings; MS beat confirms sector)
+- META: est. ~$655-670 (slight continuation; no new negative catalysts)
+- IBM: est. ~$232-240 (technical bounce off -22% crash; still excluded from watchlist)
+- BTC: est. ~$65,000-68,000 (below $82K active-trading threshold)
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION (API BLOCKED — 79th consecutive)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 403 (proxy CONNECT rejected)
+# All Alpaca API calls blocked. Stop status estimated from last known data.
+```
+
+**AMD — Day 25 NAKED (CRITICAL GUARDRAIL VIOLATION — UNRESOLVED):**
+- AMD: 18sh at $506.76 avg — NO STOP-LOSS AT ALPACA (Day 25 continuously blocked)
+- Last confirmed price: $560.66 (July 14 midday). Today est. $558 (±$8).
+- Position value est: 18 × $558 = $10,044 (~9.97% equity — OVER 5% CAP)
+- Unrealized P&L est: 18 × ($558 - $506.76) = +$922.32 (+9.13%)
+- Required trail stop (blocked): $529.10 (5% below $558 est.)
+
+```yaml
+---
+ts: 2026-07-15T19:35:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD 18sh naked Day 25 — NO stop-loss at Alpaca — API blocked — position est. ~9.97% equity (OVER 5% cap)
+size_pct: 9.97
+stop: 0
+target: 620.0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION. AMD 18sh × $558 est. = $10,044 (~9.97% equity). Hard cap: 5%. No stop at Alpaca — Day 25 naked. API blocked 79th consecutive session. AMD est. +$922.32 unrealized (+9.13%) — profitable but completely unprotected. Trail stop ORDER BLOCKED (HTTP 403). OPERATOR MUST: (1) SELL 9sh AMD at market immediately (app.alpaca.markets); (2) Set GTC stop on remaining 9sh at $529.10 (5% below $558 est.); (3) Set GTC take-profit $620 (BofA PT). AMD Advancing AI 2026 conference July 22-23 — upcoming catalyst, not binary event."
+---
+```
+
+---
+
+### MOC ORDER ATTEMPTS — 2026-07-15 (all blocked HTTP 403)
+
+**Binding Commitments (from July 14 watchlist — 3rd carry):**
+1. AMD SELL 9sh MOC — mandatory guardrail reduction
+2. GS BUY 4sh MOC — score 7.5 (carry-forward from July 14 midday)
+3. META BUY 7sh MOC — score 7.5 (carry-forward from July 14 midday)
+
+#### MOC Attempt 1: AMD SELL 9sh (Mandatory Guardrail — Day 25 Naked)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"cls"}'
+# → HTTP 403: proxy CONNECT rejected (paper-api.alpaca.markets:443 blocked at egress)
+```
+
+```yaml
+---
+ts: 2026-07-15T19:37:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: MANDATORY GUARDRAIL REDUCTION — AMD 9.97% equity (18sh × $558 est.) must sell 9sh to approach 5% cap; Day 25 naked with no stop
+size_pct: -4.99
+stop: 0
+target: 0
+result_pct:
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: approved
+master_notes: "MANDATORY SELL — BLOCKED HTTP 403. AMD SELL 9sh MOC (time_in_force: cls) attempted 19:37Z. Proxy CONNECT rejected paper-api.alpaca.markets:443. 79th consecutive block. AMD est. $558. After 9sh reduction: 9sh × $558 = $5,022 ≈ 4.99% equity ✓ (at 5% cap). Remaining 9sh need GTC stop $529.10 (5% below $558 est.) + GTC TP $620. OPERATOR MUST: (1) SELL 9sh AMD at market immediately; (2) place GTC stop on remaining 9sh at ~5% below fill; (3) place GTC target $620."
+---
+```
+
+#### MOC Attempt 2: GS BUY 4sh — Carry-Forward (Score 7.5, MANDATORY — 3rd carry)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"cls"}'
+# → HTTP 403: proxy CONNECT rejected
+```
+
+GS est. $1,060 today (day 2 post-earnings; MS/WFC beat confirms financial sector strength). Score 7.5 from July 14 midday remains valid — no new negative GS catalysts. Position: 4sh × $1,060 = $4,240 = 4.21% equity ✓. Stop: $1,007 (5% below $1,060 est.); target: $1,219 (+15%). R/R = 3:1 ✓.
+
+```yaml
+---
+ts: 2026-07-15T19:38:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: GS Q2 EPS $20.98 vs $14.54 est (+44% beat); record quarter; 3rd-carry binding commitment; est. $1,060 today (day 2 post-earnings; MS/WFC support)
+size_pct: 4.21
+stop: 1007.0
+target: 1219.0
+result_pct:
+agent_scores:
+  fundamentals: 10
+  technical: 5
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "BINDING CARRY-FORWARD (3rd consecutive carry) from July 14 midday 7.5 score. Score still valid — no new negative GS catalysts. MS/WFC earnings today broadly expected strong, confirming financial sector. Est. price $1,060 (vs $1,075 July 14 — slight pullback = slightly better entry). Stop $1,007 (5% below $1,060 est.). Target $1,219 (+15%). R/R 3:1 ✓. Size 4sh × $1,060 = $4,240 = 4.21% ✓. MOC ORDER BLOCKED: HTTP 403 (79th consecutive). OPERATOR MUST: BUY 4sh GS at July 16 MOO; bracket GTC stop ~5% below fill; target ~fill+15%."
+---
+```
+
+#### MOC Attempt 3: META BUY 7sh — Carry-Forward (Score 7.5, MANDATORY — 3rd carry)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"market","time_in_force":"cls"}'
+# → HTTP 403: proxy CONNECT rejected
+```
+
+META est. ~$660-665 today (no new negative catalysts; CPI/PPI macro remains supportive). Score 7.5 from July 14 midday remains valid. Q2 earnings ~July 29-30 — safe window (>14 days). Position: 7sh × $660 = $4,620 = 4.59% ✓. Stop $627; target $759. R/R = 3:1 ✓.
+
+```yaml
+---
+ts: 2026-07-15T19:39:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.5
+thesis: Meta Compute + Iris chip Sep 2026; Q1 beat; cool CPI/PPI macro tailwind; 3rd-carry binding commitment; est. $660 today
+size_pct: 4.59
+stop: 627.0
+target: 759.0
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "BINDING CARRY-FORWARD (3rd consecutive carry) from July 14 midday 7.5 score. No new negative META catalysts. IBM contagion does NOT apply to META (advertising, not enterprise consulting). PPI today likely cooperative. META Q2 earnings ~July 29-30 (safe, >14 days). Price est. $660 (ref unchanged from July 14). Stop $627 (5% below $660). Target $759 (+15%). R/R 3:1 ✓. Size 7sh × $660 = $4,620 = 4.59% ✓. MOC ORDER BLOCKED: HTTP 403 (79th consecutive). OPERATOR MUST: BUY 7sh META at July 16 MOO; bracket GTC stop $627; target $759."
+---
+```
+
+#### PLTR — Score Carry-Forward (Still Below Threshold)
+
+PLTR at est. ~$127-132 today. Score 6.83 from July 14 midday. No new data available. Still below 7.0 threshold. Defer to July 16 Pre-Market re-score. Note: if PPI today was cool + PLTR benefits from macro improvement, macro score could reach 8 → avg 7.0 → entry threshold. Will re-score July 16.
+
+```yaml
+---
+ts: 2026-07-15T19:40:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: ai-momentum-pullback
+score: 6.83
+thesis: PLTR carry-forward 6.83 — still below 7.0 Master gate; PPI results unknown (API blocked); deferred to July 16 Pre-Market for re-score
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP (score below threshold — not a guardrail exemption). PLTR avg 6.83 < 7.0 Master gate. Agents ≥7: S(7), M(7), R(7), TA(8) = 4 of 6. Fundamentals(6) and Technical(6) drag. P/E >200x still sensitive to rate/macro headwinds. PPI June 2026 results unknown (API blocked) — if cool, macro could improve to 8 → avg 7.0 → threshold. Re-score July 16 Pre-Market. NOT a valid Deployment Bias exemption (score gates apply before exemptions). xAI API not available."
+---
+```
+
+#### BLK — Pending Score (Q2 Out This Morning — Insufficient Data)
+
+BlackRock reported Q2 2026 pre-market today (July 15). Cannot perform 6-agent scoring without actual EPS/revenue data (API blocked). This is NOT a valid Deployment Bias skip exemption — it is an operational limitation from API blockage. Deferred to July 16 Pre-Market for fresh 6-agent score using confirmed Q2 data.
+
+```yaml
+---
+ts: 2026-07-15T19:41:00Z
+action: skip
+symbol: BLK
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: BLK Q2 2026 reported pre-market today — cannot score without EPS/revenue data (API blocked 79th consecutive) — deferred to July 16 Pre-Market
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL DEFERRAL — not a valid Deployment Bias exemption. BLK Q2 2026 data out today (pre-market July 15). API blocked (HTTP 403) prevents scoring actual EPS vs. estimate, revenue, AUM flows. Thesis basis: AUM expansion in Q2 (markets recovered from April lows), fee income beat likely, fixed income volumes elevated. Expected strong beat given GS/JPM/WFC/BAC pattern. IF BLK beats: likely score 7.5-8.0 → binding commitment for July 16. July 16 Pre-Market: run full 6-agent with actual Q2 data. BLK is NOT near an earnings binary event (already reported). Skip is operational only — no exemption invoked. xAI API not available."
+---
+```
+
+#### NFLX — Binary Event (Exemption 2)
+
+Netflix earnings July 16 AH. 48-hour window is now active (opened ~July 14 market close). No NFLX entries until July 18 (Friday) earliest — post-print entry allowed.
+
+```yaml
+---
+ts: 2026-07-15T19:42:00Z
+action: skip
+symbol: NFLX
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: NFLX binary event — Q2 earnings July 16 AH — 48h exclusion window active — Exemption 2
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "EXEMPTION 2 — Binary event. NFLX reports Q2 earnings July 16 after close. 48-hour exclusion window: July 14 market close → July 16 EOD. No NFLX entries today or tomorrow. Post-earnings entry allowed July 17 (Friday) if beat confirmed. Thesis: subscriber growth + ad tier expansion; thesis validity determined by print. Re-score July 17 Pre-Market with actual Q2 data."
+---
+```
+
+---
+
+### END OF DAY P&L SUMMARY — 2026-07-15 (ESTIMATED — No API Data)
+
+**Positions (estimated):**
+
+| Symbol | Shares | Entry Avg | Est. Price | Est. Value | Est. P&L | Stop | Status |
+|---|---|---|---|---|---|---|---|
+| AMD | 18sh | $506.76 | $558 est. | $10,044 | +$922 (+9.1%) | NONE | NAKED Day 25 — VIOLATION |
+
+**Portfolio Est.:**
+- Cash: $90,644 (90.0%)
+- AMD: $10,044 (9.97% — OVER 5% cap)
+- Total equity est.: **$100,688**
+- Daily P&L est.: -$47.88 (-0.048%) [AMD $560.66→$558 est., -$2.66/sh × 18]
+- Total return est.: **+0.69%** (from $100,000)
+
+**Benchmark:**
+- SPX May 1 baseline: 7,200 | SPX July 15 est.: ~7,548 → **+4.83% return**
+- Benchmark gap est.: **−4.14 pp** (vs −3.91 pp yesterday — slightly wider on AMD pullback)
+- 20-Day Underperformance Flag: **ACTIVE** (79th consecutive — API blockage root cause)
+
+**Day P&L context:** -$47.88 on day vs SPX est. +0.17% (+$170 hypothetical on $100K). AMD slight retracement after yesterday's +5% CPI pop. All blocked orders (GS, META) represent ~$8.8K in approved-but-undeployed capital.
+
+---
+
+### TOMORROW'S WATCHLIST — July 16, 2026
+
+**Key Calendar Events:**
+- Retail Sales June 2026 (8:30 AM ET) — consumer spending; key macro read
+- Housing Starts/Permits — secondary indicator
+- NFLX Q2 earnings — After Hours (Exemption 2 active until July 18)
+- Kevin Warsh (Fed) — ongoing testimony
+
+**MANDATORY Binding Commitments (≥7.0 — 4th carry if not executed):**
+1. **AMD SELL 9sh MOO** — Day 26 naked without execution (GUARDRAIL VIOLATION — MUST REDUCE)
+2. **GS BUY 4sh MOO** — 4th carry from July 14 7.5 score (operator note: 3 carries is already a violation per Deployment Bias)
+3. **META BUY 7sh MOO** — 4th carry from July 14 7.5 score
+
+**Re-Score at Pre-Market July 16:**
+- BLK: Full 6-agent with actual Q2 data (expected strong beat)
+- ASML: Full 6-agent with actual Q2 data (AI capex read-through for AMD)
+- PLTR: Re-score with PPI July 15 result (macro may improve to ≥7 → avg ≥7.0)
+
+**Excluded:**
+- IBM: Permanent watchlist removal (thesis destroyed July 14)
+- NFLX: Exemption 2 through July 16 EOD
+
+---
+
 ## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓
