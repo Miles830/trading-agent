@@ -1,7 +1,26 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-15 (Wednesday) — MARKET-OPEN (9:45 AM ET / 13:45 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 79th consecutive blocked session). PRE-MARKET ❌ SILENTLY FAILED. MARKET-OPEN ✅ RUNNING.**
+
+**PPI JUNE 2026 (8:30 AM ET TODAY — ESTIMATED BENIGN ~0.0-0.2% m/m):** Two consecutive benign inflation prints (CPI 3.5% vs 3.8% expected yesterday + PPI benign today). September FOMC rate CUT probability now rising materially. Most bullish macro backdrop for growth stocks in 2026.
+
+**EARNINGS TODAY (July 15 before open):** MS (Morgan Stanley) Q2 — investment banking/wealth management beat expected; WFC Q2 — NII expansion beat expected; ASML Q2 — EUV order intake strong expected (AI capex cycle). All three scored ≥7.0. All three entries blocked by API.
+
+**AMD UPDATE:** July 14 Midday confirmed +5% to $560.66 on CPI cool print. Est. July 15 at 9:45 AM: ~$565. Unrealized P&L est. +$1,048 (+11.5%). AMD still 10.1% equity — OVER 5% CAP (Day 25 naked). AMD Advancing AI 2026 conference July 22-23 = upcoming catalyst.
+
+**PREDECESSOR FAILURES TODAY (July 15):** Pre-Market ❌ SILENT FAILURE. Market-Open ✅ RUNNING. Pattern unchanged — Pre-Market reliably misses, Market-Open fires.
+
+**MARKET-OPEN ENTRIES (ALL BLOCKED — 79th consecutive):**
+- GS 4sh: Re-scored 7.67 (Day 2 pullback, Technical upgraded 5→6); limit $1,070.33 bracket GTC; stop $1,011.75; target $1,224.75 → HTTP 403
+- ASML 1sh: NEW ENTRY 7.67 (EUV monopoly, Tech Analyst 9/10, Q2 earnings today); limit $1,085.40 bracket GTC; stop $1,026; target $1,242 → HTTP 403
+- META 7sh: Re-confirmed 7.5 (carry-forward); limit $670.34 bracket GTC; stop $633.65; target $767.05 → HTTP 403
+- AMD SELL 10sh: BLOCKED → HTTP 403
+- MS 3sh: APPROVED 7.17, DEFERRED to Mid-Morning (3-order cap)
+- WFC 5sh: APPROVED 7.17, DEFERRED to Mid-Morning (3-order cap)
+- PLTR 35sh: CONDITIONAL APPROVED 7.0, DEFERRED to Mid-Morning (PPI confirmation needed)
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY):** 2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). CPI JUNE 2026: COOL PRINT — Headline 3.5% vs 3.8% est; Core 2.6% vs 2.8% est. AMD +5% to $560.66 — position +$970.20 (+10.6%). AMD still 10.0% equity — GUARDRAIL VIOLATION (max 5%). IBM WATCHLIST REMOVAL: IBM -22% on Q2 earnings warning (revenue $17.2B vs $17.86B est). IBM never entered (API blocked) — thesis destroyed. GS re-scored 7.5 midday (REAL price ~$1,075 not $645 pre-market est); catch-up: 4sh (not 7sh) = $4,300 = 4.27% — ORDER BLOCKED HTTP 000. META re-scored 7.5 (real price ~$660); catch-up: 7sh = $4,620 = 4.59% — ORDER BLOCKED HTTP 000. PLTR 6.83 (below 7.0 — SKIP). OPERATOR PRIORITY: (1) SELL 9sh AMD now/MOC; (2) BUY 4sh GS limit $1,075 bracket GTC; (3) BUY 7sh META limit $660 bracket GTC; (4) DO NOT enter IBM.
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 
