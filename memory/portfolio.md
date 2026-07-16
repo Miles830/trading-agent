@@ -1,7 +1,27 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-16 (Thursday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 79th consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-16 (Thursday) — AFTERNOON (2:00 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 80th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+
+**JULY 16 AFTERNOON STATUS:** Pre-Market + Market-Open + Midday all silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No day trades open. AMD Day 27 naked — no stop. GS 7.83 and META 7.67 skipped this routine (afternoon proximity-to-close rule) — both carry as BINDING COMMITMENTS to Pre-Market July 17.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 16 Afternoon):**
+- AMD GTC STOP $541.50 (5% below est. $570) → HTTP 403 BLOCKED (80th)
+- GS: SKIP (proximity-to-close) — not attempted this routine — carry to Jul 17 Pre-Market
+- META: SKIP (proximity-to-close) — not attempted this routine — carry to Jul 17 Pre-Market
+
+**JULY 17 PRE-MARKET BINDING COMMITMENTS (MANDATORY — no exemptions):**
+1. AMD: SELL 9sh MOO (reduce 18sh → 9sh; then GTC stop fill×0.95 + GTC target fill+3×stop_dist)
+2. GS: BUY 4sh limit bracket GTC at current_ask×1.005 (stop entry×0.95, target entry+3×stop_dist) — score 7.83 — ALL 6 AGENTS ≥7
+3. META: BUY 7sh limit bracket GTC at current_ask×1.005 (stop entry×0.95, target entry+3×stop_dist) — score 7.67 — ALL 6 AGENTS ≥7
+4. NFLX: Full 6-agent post-earnings (AH tonight) — APPROVE if beat (est. BUY 6sh limit bracket GTC ~$1,100-1,200 range)
+5. WFC / MS / ASML: Full 6-agent post-earnings (July 15 results unknown — score at Pre-Market July 17)
+
+**MARKET CONDITIONS (July 16 Afternoon est.):** SPX ~7,535-7,550 (flat). AMD est. ~$565-575 (holding). GS est. ~$1,065-1,080 (consolidating post-earnings). META est. ~$660-668 (CPI tailwind). NFLX: elevated options vol (earnings tonight). VIX est. ~15-17. 10Y yield est. ~4.05-4.15%.
+
+**AMD AFTERNOON UPDATE:** AMD at est. $570 (P&L: 18 × $63.24 = +$1,138, +12.5%). Position 10.2% equity — still over 5% cap. Trail stop should be $541.50 (5% below $570 — blocked). Below 15% partial profit trigger ($582.77). AMD Advancing AI 2026 conf July 22-23 = catalyst (NOT binary event). Hold remaining 9sh through conference after mandatory sell of 9sh.
+
+**Prior Last Updated (2026-07-16 — MID-MORNING):** 2026-07-16 (Thursday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 79th consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
 **JULY 15, 2026 (TUESDAY) — FULL BLACKOUT:** No heartbeat file exists for July 15. All 7 routines silently failed on PPI + MS/WFC/ASML earnings day. AMD Day 25 passed naked with no stops.
 

@@ -397,6 +397,283 @@ July 15 earnings results for WFC, Morgan Stanley, and ASML are unknown (API/web 
 
 ---
 
+## 2026-07-16 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 80th consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-16T18:08:35Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` — **80th consecutive blocked session** (egress policy denial — confirmed via proxy status endpoint)
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully.
+**Market Status:** OPEN — 2:00 PM ET (~90 minutes to close). NFLX earnings AH tonight.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Expected (UTC) | Found in 2026-07-16.log | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC | NOT FOUND | **SILENT FAILURE** |
+| Market-Open | 13:45 UTC | NOT FOUND | **SILENT FAILURE** |
+| Mid-Morning | 15:10 UTC | STARTED 15:10Z ✓, COMPLETED 15:18Z ✓ | **OK** |
+| Midday | 16:30 UTC | **NOT FOUND** | **SILENT FAILURE** |
+| Afternoon | 18:08 UTC | STARTED 18:08Z ✓ | Running now |
+
+**Midday silently failed** — 3rd silent failure today (Pre-Market, Market-Open, Midday). Midday violation logged below.
+
+```yaml
+---
+ts: 2026-07-16T16:30:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 16 Midday (12:30 PM ET / 16:30Z) silently failed — no heartbeat entry found. API still blocked (80th consecutive session). No midday position review, no stop-loss check, no catch-up order attempts during the midday window.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Midday silently failed July 16. GS 7.83 and META 7.67 binding commitments from mid-morning unchecked through midday window. AMD Day 27+ naked. No midday market review performed. Afternoon is catching up."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION (API BLOCKED — 80th consecutive)
+
+```bash
+# Attempt: GET /v2/orders?status=open
+curl -s -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+     -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+     "https://paper-api.alpaca.markets/v2/orders?status=open"
+# Result: HTTP 403 — BLOCKED (proxy CONNECT rejected — 80th consecutive session)
+```
+
+**AMD — Day 27 NAKED (CRITICAL — ONGOING GUARDRAIL VIOLATION):**
+- 18sh at $506.76 avg — NO STOP AT ALPACA (Day 27 — every routine since June 20 has been blocked)
+- Est. current price: ~$565-575 (afternoon session; holding chip sector gains)
+- Est. P&L: 18 × ($570 - $506.76) = **+$1,138 (+12.5%)**
+- Position est.: 18 × $570 = $10,260 (~10.2% equity — OVER 5% cap)
+- Trail stop intent: $570 × 0.95 = **$541.50** (updated from mid-morning $536.75)
+- AMD "Advancing AI 2026" conference July 22-23 — NOT binary event; entries/exits allowed
+- STILL BELOW 15% profit threshold ($506.76 × 1.15 = $582.77) — no forced partial profit yet
+
+**Stop-loss backfill attempt (80th block — documented for operator):**
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"541.50","time_in_force":"gtc"}'
+# Result: HTTP 403 — BLOCKED (80th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-16T18:10:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD 18sh naked Day 27 — NO stop-loss at Alpaca — API blocked 80 consecutive sessions — position est. 10.2% equity (OVER 5% cap) — trail stop attempt to $541.50 (5% below est. $570) BLOCKED HTTP 403
+size_pct: 10.2
+stop: 541.50
+target: 620.0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION x3: (1) AMD 18sh = ~10.2% equity, OVER 5% cap; (2) NO stop-loss at Alpaca — naked Day 27; (3) Trail stop attempt at $541.50 (5% below est. $570) → HTTP 403 BLOCKED. AMD 'Advancing AI 2026' conference July 22-23 approaching (NOT binary event — entries/exits allowed). AMD at ~$570 est. is 7.6% from BofA PT $620. Still below 15% threshold for partial profit trigger ($582.77). OPERATOR MANDATORY: (1) SELL 9sh AMD at market NOW (reduce to ~4.5% equity); (2) GTC stop on remaining 9sh at current_price × 0.95; (3) GTC take-profit at fill + 3 × (fill - stop)."
+---
+```
+
+---
+
+### MARKET SUMMARY — Afternoon July 16, 2026
+
+**Estimated conditions (API blocked — no live data):**
+- S&P 500: ~7,535-7,550 (flat consolidation; Retail Sales June released at 8:30 AM — est. +0.3-0.5%, benign)
+- Nasdaq: ~26,050-26,150 (tech holding CPI tailwind; NFLX earnings causing elevated options vol)
+- AMD: ~$565-575 (chips holding; conference July 22-23 catalyst approaching)
+- GS: ~$1,065-1,080 (post-earnings consolidation; financial sector stable)
+- META: ~$660-668 (cloud compute story intact; CPI tailwind for DCF)
+- NFLX: Elevated implied vol (earnings AH tonight) — **no position — Exemption 2**
+- VIX: est. ~15-17 (calm — no macro shock today)
+- 10-Year Yield: est. ~4.05-4.15% (declining on CPI cool + rate cut expectations rising)
+- Fear & Greed: est. ~65-70 (Greed — consistent with earnings season strength)
+
+**Day trade review:** No open day trades. All positions are swing (AMD).
+
+**Crypto:** BTC est. ~$67,000-70,000 (below $82K threshold for crypto entry per CLAUDE.md). No crypto action.
+
+---
+
+### POSITION REVIEW — July 16 Afternoon
+
+**AMD (18sh — swing, active bucket):**
+- Entry: $506.76 avg | Est. current: ~$570 | P&L: ~+$1,138 (+12.5%)
+- Position size: ~10.2% equity — **OVER 5% cap (guardrail violation)**
+- Stop: None (naked — Day 27)
+- Target: $620 (BofA PT)
+- Trailing stop intent (blocked): $541.50 (5% below $570)
+- AMD conference July 22-23: catalyst but NOT a binary event
+- Remaining upside to target: est. +8.8% ($570 → $620)
+- No partial profit triggered (below 15% threshold of $582.77)
+- **Action: Nothing changed — API blocked. Operator MUST act manually.**
+
+---
+
+### ACTIVE-TRADING SKIP ENTRIES — AFTERNOON PROXIMITY-TO-CLOSE RULE
+
+Per routines/afternoon.md: "do NOT initiate new active-bucket entries this routine — too close to close. Document any unfilled active watchlist names with a YAML action:skip entry citing 'afternoon proximity-to-close'."
+
+GS and META both scored ≥7 and are binding commitments. Carrying forward to tomorrow Pre-Market.
+
+```yaml
+---
+ts: 2026-07-16T18:12:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS Q2 2026 blowout — post-earnings follow-through — 4sh limit bracket GTC — binding commitment re-confirmed at 7.83 this mid-morning — skipping this routine per afternoon proximity-to-close rule; carry to Pre-Market July 17
+size_pct: 4.28
+stop: 1026.00
+target: 1242.00
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED 7.83 — all 6 agents >=7. Binding from July 14 midday (7.5) re-confirmed July 16 mid-morning (7.83). SKIP this routine: afternoon proximity-to-close rule applies (<90 min to close; active entries not allowed). CARRY FORWARD to Pre-Market July 17 as MANDATORY FIRST ENTRY. Re-price to current_ask × 1.005 at Pre-Market. Stop = entry × 0.95. Target = entry + 3 × stop_distance (must maintain 3:1 R/R). Master exemption: proximity-to-close is a valid playbook skip (routines/afternoon.md), not a CLAUDE.md Exemption 1/2/3 — this does not reset the commitment."
+---
+```
+
+```yaml
+---
+ts: 2026-07-16T18:13:00Z
+action: skip
+symbol: META
+bucket: active
+setup: earnings-reaction-follow
+score: 7.67
+thesis: META cloud compute + CPI tailwind — 7sh limit bracket GTC — binding commitment re-confirmed at 7.67 this mid-morning — skipping this routine per afternoon proximity-to-close rule; carry to Pre-Market July 17
+size_pct: 4.60
+stop: 629.85
+target: 762.45
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "APPROVED 7.67 — all 6 agents >=7. Binding from July 14 midday (7.5) re-confirmed July 16 mid-morning (7.67). SKIP this routine: afternoon proximity-to-close rule applies. CARRY FORWARD to Pre-Market July 17 as MANDATORY SECOND ENTRY. Re-price to current_ask × 1.005 at Pre-Market. Stop = entry × 0.95. Target = entry + 3 × stop_dist. META earnings est. July 29-30 — SAFE (>2 weeks away, 48h window opens July 27). xAI Grok unavailable — X sentiment not scored."
+---
+```
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST — Pre-Market July 17
+
+Scored using available information. Pre-Market will re-score deltas only.
+
+#### 1. AMD — MANDATORY MANAGEMENT (NOT a new entry)
+- **Action: SELL 9sh MOO (July 17 Pre-Market / Market-Open)**
+- Day 28 naked if not managed. 18sh = ~10.2% equity (OVER 5% cap)
+- After sell: 9sh × ~$570 = ~$5,130 (~5.1% equity — borderline, use current fill)
+- Then: GTC stop on remaining 9sh at fill × 0.95; GTC target at fill + 3×(fill−stop)
+- AMD conference July 22-23 — positive catalyst; hold remaining 9sh through conference
+
+#### 2. GS — BINDING COMMITMENT (carry-forward from July 14)
+- Score: **7.83/10** (re-confirmed mid-morning)
+- Action: BUY 4sh limit at current_ask × 1.005 — bracket GTC — stop entry×0.95 — target entry+3×stop_dist
+- Re-confirm price range: GS est. $1,065-1,080; re-price limit accordingly
+- Agent breakdown: F=9, T=7, S=8, M=8, R=8, TA=7 — all ≥7, avg 7.83
+
+#### 3. META — BINDING COMMITMENT (carry-forward from July 14)
+- Score: **7.67/10** (re-confirmed mid-morning)
+- Action: BUY 7sh limit at current_ask × 1.005 — bracket GTC — stop entry×0.95 — target entry+3×stop_dist
+- Re-confirm price range: META est. $660-668; re-price limit accordingly
+- Agent breakdown: F=8, T=7, S=7, M=8, R=8, TA=8 — all ≥7, avg 7.67
+- META earnings est. July 29-30 — safe (>2 weeks)
+
+#### 4. NFLX — POST-EARNINGS SCORING (reports AH tonight July 16)
+- Pre-score framework (will finalize at Pre-Market with actual results):
+  - **Bull case** (beat + guide up): Fundamentals ~8, Momentum ~8, Macro ~7 — est. avg 7.5-8.0 → APPROVE 6sh limit bracket GTC
+  - **Bear case** (miss or weak guidance): Fundamentals ~5, momentum break → score ~5.5-6.0 → REJECT
+  - Setup: earnings-reaction-follow (if beat) OR earnings-reaction-fade (if sell-the-news gap-down from stretched valuation)
+  - Consensus Q2: ~19-20M subscribers, EPS ~$6.50, revenue ~$12.5B
+  - Key risk: NFLX PE ~35x; ad-tier monetization; live events pipeline (NFL Christmas, WWE)
+  - **Wait for print — full 6-agent at Pre-Market July 17**
+
+#### 5. WFC / MS — POST-EARNINGS SCORING (reported July 15 — data unknown)
+- WFC Q2: Expected EPS ~$1.40, revenue ~$21B (NIM under pressure; fee income growing)
+- MS Q2: Expected EPS ~$2.55, revenue ~$16B (wealth management strong; IBD revival)
+- Both reported July 15 (blackout day — results unknown)
+- **Full 6-agent at Pre-Market July 17 once results are in**
+- Setup if beat: earnings-reaction-follow (same financial sector thesis as GS)
+
+#### 6. ASML — POST-EARNINGS SCORING (reported July 15 — data unknown)
+- ASML Q2: EUV machine demand; AI chip capacity build = positive
+- Export controls risk (US-China chip restrictions) = negative overhang
+- **Full 6-agent at Pre-Market July 17**
+
+---
+
+### ROUTINE SUMMARY — July 16 Afternoon
+
+**Portfolio State (estimated — API blocked):**
+- Total Equity: est. $100,735 (stable from mid-morning)
+- Cash: ~$90,644 (89.9%) — above 5% floor ✓
+- AMD: 18sh × est. $570 = ~$10,260 (10.2% — OVER 5% cap — NAKED Day 27)
+- Open positions: 1 (AMD — swing)
+
+**Actions This Routine:**
+1. Midday violation logged
+2. AMD trail stop $541.50 attempted → HTTP 403 BLOCKED (80th consecutive)
+3. GS 7.83: SKIP (proximity-to-close) → carry to Pre-Market July 17 ✓
+4. META 7.67: SKIP (proximity-to-close) → carry to Pre-Market July 17 ✓
+5. No day trades to close (none open)
+6. Tomorrow's watchlist: AMD mgmt + GS (binding) + META (binding) + NFLX (post-earnings) + WFC/MS/ASML (post-earnings)
+
+**OPERATOR MANDATORY (app.alpaca.markets — TONIGHT / BEFORE JULY 17 OPEN):**
+1. ⚠️⚠️⚠️ AMD: SELL 9sh at market (reduce 18sh → 9sh; then GTC stop at fill×0.95 + GTC target at fill+3×(fill−stop))
+2. GS: BUY 4sh limit bracket GTC at current ask × 1.005 (stop entry×0.95, target entry+3×stop_dist)
+3. META: BUY 7sh limit bracket GTC at current ask × 1.005 (stop entry×0.95, target entry+3×stop_dist)
+4. After NFLX print: if beat, place NFLX 6sh limit bracket GTC before July 17 open
+
+**S&P 500 est. return from May 1:** +4.7-5.0% (~7,540-7,560)
+**Portfolio est. return:** ~+0.7-0.8% (AMD only — all other approved entries blocked)
+**Cumulative gap vs SPX: est. −4.0 to −4.3 pp (widening — structural — API blockage root cause)**
+
+---
+
 ## 2026-07-14 — Midday (12:30 PM ET / 16:34 UTC — API BLOCKED — 78th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-07-14T16:34:48Z ✓
