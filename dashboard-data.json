@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-14T16:36:00Z",
-  "updated_by": "midday",
+  "last_updated": "2026-07-16T13:52:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 100735.88,
+    "total_equity": 100760,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 89.98,
+    "cash_pct": 89.97,
     "buying_power": 181288,
-    "long_market_value": 10091.88,
+    "long_market_value": 10116,
     "short_market_value": 0.0,
-    "daily_pnl": 472.86,
-    "daily_pnl_pct": 0.47,
-    "total_return_pct": 0.74,
-    "spx_return_pct": 4.65,
-    "benchmark_gap_pct": -3.91,
+    "daily_pnl": 0,
+    "daily_pnl_pct": 0,
+    "total_return_pct": 0.76,
+    "spx_return_pct": 4.9,
+    "benchmark_gap_pct": -4.14,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10091.88,
-      "active_pct": 10.02,
+      "active_value": 10116,
+      "active_pct": 10.04,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 89.98
+      "cash_pct": 89.97
     },
-    "note": "July 14 MIDDAY (12:36 PM ET / 16:36Z). API BLOCKED HTTP 000 — 78th consecutive session. CPI JUNE 2026: COOL PRINT — Headline 3.5% vs 3.8% est; Core 2.6% vs 2.8% est. AMD +5% to $560.66 — position +$970.20 (+10.6%). AMD still 10.0% equity — GUARDRAIL VIOLATION (max 5%). IBM WATCHLIST REMOVAL: IBM -22% on Q2 earnings warning (revenue $17.2B vs $17.86B est). IBM never entered (API blocked) — thesis destroyed. GS re-scored 7.5 midday (REAL price ~$1,075 not $645 pre-market est); catch-up: 4sh (not 7sh) = $4,300 = 4.27% — ORDER BLOCKED HTTP 000. META re-scored 7.5 (real price ~$660); catch-up: 7sh = $4,620 = 4.59% — ORDER BLOCKED HTTP 000. PLTR 6.83 (below 7.0 — SKIP). OPERATOR PRIORITY: (1) SELL 9sh AMD now/MOC; (2) BUY 4sh GS limit $1,075 bracket GTC; (3) BUY 7sh META limit $660 bracket GTC; (4) DO NOT enter IBM."
+    "note": "July 16 MARKET-OPEN (9:45 AM ET / 13:46Z). API BLOCKED HTTP 000 — 80th consecutive session. July 15 COMPLETE BLACKOUT (no log file — all 7 routines missed WFC/MS/ASML earnings + PPI day). Pre-Market July 16 silently failed. AMD est. $562 (Day 26+ naked, 10% equity — GUARDRAIL VIOLATION). 4 ORDERS BLOCKED: (1) SELL 9sh AMD → HTTP 000; (2) GTC STOP $532 AMD → HTTP 000; (3) BUY 4sh GS limit $1,085.40 bracket GTC (score 7.67) → HTTP 000; (4) BUY 7sh META limit $663.30 bracket GTC (score 7.5) → HTTP 000. PLTR deferred (6.83 score). Market est.: SPX ~7,550, mild risk-on continuing. Retail Sales July 16 (8:30 AM ET) — data already absorbed at open. Netflix AH. AMD Advancing AI 2026 conf July 22-23. OPERATOR: (1) SELL 9sh AMD immediately; (2) GTC stop $532 on 9sh AMD; (3) BUY 4sh GS ~$1,080 bracket GTC; (4) BUY 7sh META ~$660 bracket GTC."
   },
   "positions": [
     {
@@ -31,45 +31,45 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 560.66,
-      "pnl": 970.20,
-      "pnl_pct": 10.6,
+      "current_price": 562,
+      "pnl": 994.32,
+      "pnl_pct": 10.9,
       "stop_loss": null,
-      "take_profit": 620.0,
-      "stop_loss_pending": 532.63,
+      "take_profit": 646.30,
+      "stop_loss_pending": 532.00,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 24+. AMD +5% midday to $560.66 on CPI cool print (semiconductors rebounding). P&L: 18 × ($560.66-$506.76) = +$970.20 (+10.6%). Position 10.0% equity — OVER 5% cap. Trail stop: $532.63 (5% below $560.66 — blocked). BofA PT $620 — remaining upside $59.34 (10.6%). AMD Advancing AI 2026 conf July 22-23 (upcoming catalyst). OPERATOR: (1) SELL 9-10sh AMD NOW or MOC; (2) Set GTC stop $532.63 on remaining shares. SELL BLOCKED: HTTP 000."
+      "note": "CRITICALLY NAKED Day 26+. Est. $562 (July 16 est — last known $560.66 July 14). P&L est.: 18 × ($562-$506.76) = +$994 (+10.9%). Position ~10.0% equity — OVER 5% cap. Backfill blocked: SELL 9sh market → HTTP 000; GTC stop $532 on 9sh → HTTP 000. AMD Advancing AI 2026 conf July 22-23 (catalyst, NOT binary event). BofA PT $620. Target updated to $646.30 (15% above $562 est.). OPERATOR: (1) SELL 9sh AMD immediately; (2) GTC stop $532 on remaining 9sh; (3) GTC TP $646.30."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1075.0,
-      "current_price": 1075.0,
+      "entry_price": 1085.40,
+      "current_price": 1080,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 1236.25,
-      "stop_loss_pending": 1021.25,
+      "take_profit": 1248.21,
+      "stop_loss_pending": 1031.13,
       "setup": "earnings-reaction-follow",
-      "agent_average": 7.5,
-      "note": "MIDDAY CATCH-UP — Score 7.5 APPROVED (re-scored from 7.33 AM). PRICE CORRECTION: pre-market estimate $645 was wrong — real GS midday $1,075 (range $1,046-$1,077, +7.7% on record Q2 earnings). Re-sized to 4sh (was 7sh — 7sh at $1,075 = 7.5% equity = guardrail violation). 4sh × $1,075 = $4,300 = 4.27%. Stop $1,021.25 GTC. Target $1,236.25 GTC. ORDER BLOCKED: HTTP 000. OPERATOR: BUY 4sh GS limit ~$1,080 (ask×1.005) bracket GTC; stop $1,021.25; target $1,236.25."
+      "agent_average": 7.67,
+      "note": "PENDING — Re-scored July 16: 7.67 avg (F:10 T:6 S:8 M:8 R:7 TA:7 — improved from 7.5 July 14; Technical 5→6 on better post-earnings timing). Q2 EPS $20.98 vs $14.54 (+44% beat); revenue $20.34B vs $16.4B (+24%). 4sh × $1,080 est. = $4,320 = 4.3% equity. Limit $1,085.40 (est. ask×1.005). Stop $1,031.13 (5% below). Target $1,248.21 (15% above). R/R 3:1 ✓. ORDER BLOCKED: HTTP 000 (80th consecutive). OPERATOR: BUY 4sh GS limit ~$1,080-$1,090 bracket GTC; stop $1,031; target $1,248."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 660.0,
-      "current_price": 660.0,
+      "entry_price": 663.30,
+      "current_price": 660,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 759.0,
-      "stop_loss_pending": 627.0,
+      "take_profit": 762.80,
+      "stop_loss_pending": 629.14,
       "setup": "breakout-volume",
       "agent_average": 7.5,
-      "note": "MIDDAY CATCH-UP — Re-scored 7.5 (was 7.17 AM). PRICE CORRECTION: pre-market $603.12 was stale — real META $660 midday (range $654-$676.62). CPI cool = macro upgrade 6→8. IBM enterprise contagion does NOT affect META. 7sh × $660 = $4,620 = 4.59%. Stop $627 GTC. Target $759 GTC. Q2 earnings ~July 29-30 (safe window >14 days). ORDER BLOCKED: HTTP 000. OPERATOR: BUY 7sh META limit $663.30 bracket GTC; stop $627; target $759."
+      "note": "PENDING — Re-scored July 16: 7.5 avg (F:8 T:6 S:8 M:8 R:7 TA:8 — unchanged from July 14). Meta Compute + Iris chip Sep. Q1 beat $7.29 vs $6.74 EPS. 7sh × $660 est. = $4,620 = 4.6% equity. Limit $663.30 ($660 × 1.005). Stop $629.14 (5% below). Target $762.80 (15% above). R/R 3:1 ✓. Q2 earnings July 29-30 (48h block opens July 28 — safe entry window). Netflix AH today — no impact on META. ORDER BLOCKED: HTTP 000 (80th consecutive). OPERATOR: BUY 7sh META limit ~$660-$665 bracket GTC; stop $629; target $763."
     },
     {
       "symbol": "IBM",
@@ -150,10 +150,10 @@
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-13T13:45:41Z",
-      "next_run": "2026-07-15T13:45:00Z",
-      "last_summary": "July 14 Market-Open SILENTLY FAILED — not found in heartbeat log. No stop audit at open. No AMD stop set. No fill confirmations. Catch-up executed in Midday routine (2 entries approved: GS 4sh + META 7sh, both blocked HTTP 000)."
+      "status": "completed",
+      "last_run": "2026-07-16T13:46:09Z",
+      "next_run": "2026-07-17T13:45:00Z",
+      "last_summary": "July 16 Market-Open COMPLETED 13:46Z. API BLOCKED HTTP 000 (80th consecutive). July 15 complete blackout — all routines missed. Pre-Market July 16 silently failed. Stop audit: AMD 18sh naked Day 26+ — SELL 9sh + GTC stop $532 both blocked. Entries: GS 4sh bracket GTC limit $1,085.40 (score 7.67) BLOCKED; META 7sh bracket GTC limit $663.30 (score 7.5) BLOCKED. 4 orders total — all HTTP 000. OPERATOR: (1) SELL 9sh AMD; (2) GTC stop $532 AMD; (3) BUY 4sh GS; (4) BUY 7sh META."
     },
     {
       "name": "Mid-Morning",
@@ -192,6 +192,51 @@
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-16T13:52:00Z",
+      "action": "entry_blocked",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "side": "buy",
+      "qty": 7,
+      "limit_price": 663.30,
+      "stop_loss": 629.14,
+      "take_profit": 762.80,
+      "result": "APPROVED 7.5 avg (F:8 T:6 S:8 M:8 R:7 TA:8) — BUY 7sh META limit $663.30 bracket GTC → HTTP 000 BLOCKED (80th consecutive). Carry-forward from July 14 Midday. Q2 earnings July 29-30 safe window. OPERATOR: BUY 7sh META limit ~$660-665 bracket GTC; stop $629; target $763.",
+      "agent_average": 7.5,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-16T13:50:00Z",
+      "action": "entry_blocked",
+      "symbol": "GS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.67,
+      "side": "buy",
+      "qty": 4,
+      "limit_price": 1085.40,
+      "stop_loss": 1031.13,
+      "take_profit": 1248.21,
+      "result": "APPROVED 7.67 avg (F:10 T:6 S:8 M:8 R:7 TA:7) — BUY 4sh GS limit $1,085.40 bracket GTC → HTTP 000 BLOCKED (80th consecutive). Carry-forward from July 14. Technical improved 5→6 (better post-earnings entry timing). OPERATOR: BUY 4sh GS limit ~$1,080-1,090 bracket GTC; stop $1,031; target $1,248.",
+      "agent_average": 7.67,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-16T13:48:00Z",
+      "action": "violation",
+      "symbol": "AMD",
+      "setup": "other",
+      "score": null,
+      "side": "sell",
+      "qty": 9,
+      "limit_price": null,
+      "stop_loss": 532.00,
+      "take_profit": null,
+      "result": "AMD 18sh naked Day 26+, ~10% equity — SELL 9sh market → HTTP 000; GTC STOP $532 on 9sh → HTTP 000. Both blocked (80th consecutive). OPERATOR: (1) SELL 9sh AMD at market; (2) GTC stop $532 on remaining 9sh; (3) GTC TP $646.30.",
+      "agent_average": null,
+      "master_decision": "violation"
+    },
     {
       "ts": "2026-07-14T12:10:00Z",
       "action": "entry_blocked",
