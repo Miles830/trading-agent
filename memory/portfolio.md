@@ -1,7 +1,29 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-16 (Thursday) — PRE-MARKET (8:06 AM ET / 12:06 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 79th consecutive blocked session). PRE-MARKET ROUTINE ✅ RUNNING.**
+
+**JULY 15 (TUESDAY) FULL BLACKOUT — No heartbeat log found. All routines silently failed. AMD naked Day 25 unresolved. Market context July 15: PPI June -0.3% MoM (COOL PRINT — first monthly decline; vs -0.1% est). BlackRock (BLK) +5%+ on Q2 beat across the board. AMD -3% to ~$548 (broad chip rotation, approaching $500 support). PLTR +4.7% to $134.00 (confirmed close — rate-cut tailwind). AAPL +4%, AMZN +3%, GOOG +3%, MSFT +3%. S&P 500 closed +0.38% to 7,572.40. Nasdaq +0.62% to 26,269.23.**
+
+**JULY 16 PRE-MARKET STATUS (8:06 AM ET): S&P futures -0.17% | Nasdaq futures -0.54% (chip drag) | Dow futures +0.23% (UNH +6% Q2 beat). SMH -2.2% pre-market (Arm -4%, TSMC -4.6% initial then bounced on own Q2 beat). Retail Sales June 2026 at 8:30 AM ET (tentative beat per early headline). Netflix Q2 earnings tonight AH (options: 8% move expected).**
+
+**APPROVED ORDERS (ALL BLOCKED HTTP 403 — OPERATOR MUST EXECUTE):**
+- AMD: SELL 9sh MOO (mandatory, Day 26+ naked, 9.7% equity — if opens <$520 consider full 18sh exit)
+- GS: BUY 4sh MOO (score 7.83 — BINDING since July 14) — stop fill×0.95, target fill+15%
+- META: BUY 7sh MOO (score 7.83 — BINDING) — stop fill×0.95, target fill+15% — EXIT by July 25-26 (earnings July 29)
+- PLTR: BUY 35sh MOO (score 7.17 — UPGRADED from 6.83 on confirmed July 15 close $134) — stop fill×0.95, target fill+15%
+- BLK: BUY 4sh LIMIT at Market Open (score 7.33 — new: July 15 Q2 beat) — verify actual price first; bracket GTC
+
+**NFLX: SKIP today (Exemption 2 — earnings AH). Conditional pre-score 7.83 for July 17 if beat (Rev >$12.58B, EPS >$0.79, ad revenue strong).**
+
+**PORTFOLIO ESTIMATE (July 16 pre-market):**
+- Cash: ~$90,644 (~90%)
+- AMD: 18sh × ~$540 est. = $9,720 (~9.7% equity — OVER 5% CAP, Day 26+ naked)
+- Total equity: ~$100,364 est.
+- SPX May 1 baseline 7,200 → July 15 close 7,572.40 = +5.17%. Portfolio return est. +0.36% (AMD unrealized). CUMULATIVE GAP: est. -4.81 pp vs SPX (widening — no deployment while market rallied).
+- 20-DAY UNDERPERFORMANCE FLAG: Active (79+ consecutive sessions — API blockage root cause).
+
+**Prior Last Updated (2026-07-14 Tuesday — MIDDAY):** Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 
