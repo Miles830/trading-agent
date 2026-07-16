@@ -1,7 +1,22 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+**2026-07-16 (Thursday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 79th consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+
+**JULY 15, 2026 (TUESDAY) — FULL BLACKOUT:** No heartbeat file exists for July 15. All 7 routines silently failed on PPI + MS/WFC/ASML earnings day. AMD Day 25 passed naked with no stops.
+
+**JULY 16 MID-MORNING STATUS:** Pre-Market (8:05 AM) and Market-Open (9:45 AM) both silently failed — Mid-Morning is first routine to fire today. Retail Sales June 2026 released at 8:30 AM ET — data unavailable (API blocked). NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No NFLX entry today.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 16 Mid-Morning):**
+- AMD GTC STOP $536.75 (5% below est. $565) → HTTP 000
+- GS 4sh limit bracket GTC $1,080 / stop $1,026 / target $1,242 (7.83 avg, APPROVED) → HTTP 000
+- META 7sh limit bracket GTC $663 / stop $629.85 / target $762.45 (7.67 avg, APPROVED) → HTTP 000
+
+**MARKET CONDITIONS (July 16, est.):** SPX ~7,530-7,560 (flat to slightly up from July 14 7,535.12). AMD est. ~$560-575. GS est. ~$1,065-1,085 (post-earnings consolidation from +7.7% July 14). META est. ~$655-670. NFLX reports AH tonight — binary event. WFC/MS/ASML reported July 15 — results unknown.
+
+**AMD ADVANCED AI 2026 CONFERENCE:** July 22-23 (NOT a binary event — entries/exits allowed). AMD at ~$565 est. — BofA PT $620. AMD "Advancing AI 2026" is a positive catalyst approaching.
+
+**Prior Last Updated (2026-07-14 (Tuesday) — MIDDAY):** 2026-07-14 (Tuesday) — MIDDAY (12:36 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 78th consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
 
 **CPI JUNE 2026 RESULT (RELEASED 8:30 AM ET): COOL PRINT — Headline 3.5% vs 3.8% expected; Core 2.6% vs 2.8% expected. Monthly -0.4% sa vs -0.2% expected. Significant undershoot. September rate HIKE probability dropping; rate CUT back on the table. MOST BULLISH MACRO DEVELOPMENT YTD for growth stocks.**
 
