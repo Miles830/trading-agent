@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-16T18:08:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-16T19:40:00Z",
+  "updated_by": "market-close",
   "portfolio": {
-    "total_equity": 100764,
+    "total_equity": 100940,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 89.96,
+    "cash_pct": 89.8,
     "buying_power": 181288,
-    "long_market_value": 10260,
+    "long_market_value": 10296,
     "short_market_value": 0.0,
-    "daily_pnl": 501.0,
-    "daily_pnl_pct": 0.5,
-    "total_return_pct": 0.76,
-    "spx_return_pct": 4.85,
-    "benchmark_gap_pct": -4.09,
+    "daily_pnl": 176.0,
+    "daily_pnl_pct": 0.17,
+    "total_return_pct": 0.94,
+    "spx_return_pct": 4.72,
+    "benchmark_gap_pct": -3.78,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10260,
+      "active_value": 10296,
       "active_pct": 10.2,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 89.96
+      "cash_pct": 89.8
     },
-    "note": "July 16 AFTERNOON (2:00 PM ET / 18:08Z). API BLOCKED HTTP 403 \u2014 80th consecutive session. Pre-Market + Market-Open + Midday silently failed. Mid-Morning OK (15:10-15:18Z). NFLX earnings AH tonight \u2014 EXCLUDED Exemption 2. AMD Day 27 naked (18sh est. $570, +12.5%, 10.2% equity \u2014 OVER 5% cap). GS 7.83 + META 7.67 skipped this routine (proximity-to-close) \u2014 carry to Jul 17 Pre-Market as BINDING. OPERATOR URGENT: (1) SELL 9sh AMD + GTC stop on 9sh; (2) BUY 4sh GS limit bracket GTC; (3) BUY 7sh META limit bracket GTC; (4) Score NFLX post-earnings + WFC/MS/ASML at Pre-Market Jul 17."
+    "note": "July 16 MARKET-CLOSE (3:30 PM ET / 19:35Z). API BLOCKED HTTP 000 \u2014 81st consecutive session. EOD: AMD 18sh est. $572 (+12.9%, $10,296, 10.2% equity \u2014 OVER 5% cap, naked Day 27+). SPX est. 7,540 (+4.72% from May 1). Gap: -3.78 pp. NFLX earnings AH tonight \u2014 score at Jul 17 Pre-Market. ALL MOC ATTEMPTS BLOCKED: AMD MOC SELL 9sh + AMD GTC STOP $543.40 + GS MOC BUY 4sh all HTTP 000. OPERATOR MANDATORY: (1) SELL 9sh AMD FIRST ORDER Jul 17 open; (2) BUY 4sh GS + 7sh META limit bracket GTC; (3) Score NFLX/WFC/MS/ASML post-earnings at Pre-Market Jul 17."
   },
   "positions": [
     {
@@ -31,15 +31,15 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 570.0,
-      "pnl": 1138.32,
-      "pnl_pct": 12.5,
+      "current_price": 572.0,
+      "pnl": 1174.32,
+      "pnl_pct": 12.9,
       "stop_loss": null,
       "take_profit": 620.0,
-      "stop_loss_pending": 541.50,
+      "stop_loss_pending": 543.40,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 27. Est. $565-575 July 16 afternoon. P&L est: 18 x ($570-$506.76) = +$1,138 (+12.5%). Position est. 10.2% equity \u2014 OVER 5% cap. Trail stop: $541.50 (5% below est. $570 \u2014 blocked HTTP 403). BofA PT $620. AMD Advancing AI 2026 conf July 22-23 (catalyst \u2014 NOT binary event). Below 15% partial profit threshold ($582.77). OPERATOR: (1) SELL 9sh AMD FIRST ORDER Jul 17 Pre-Market; (2) GTC stop on 9sh at fill x 0.95; (3) GTC target at fill+3x(fill-stop). ALL AMD STOP ATTEMPTS BLOCKED 80 consecutive sessions."
+      "note": "CRITICALLY NAKED Day 27+ \u2014 EOD July 16. Est. $572 EOD. P&L est: 18 x ($572-$506.76) = +$1,174 (+12.9%). Position est. 10.2% equity \u2014 OVER 5% cap. Trail stop: $543.40 (5% below est. $572 EOD \u2014 blocked HTTP 000, 81st session). BofA PT $620. AMD Advancing AI 2026 conf July 22-23 (catalyst \u2014 NOT binary event). Still below 15% partial profit threshold ($582.77). OPERATOR ABSOLUTE FIRST ORDER July 17: (1) SELL 9sh AMD MOO (reduce to ~5% cap); (2) After open fill, GTC stop at fill\u00d70.95 + GTC TP at fill+3\u00d7stop_dist. ALL AMD STOP ATTEMPTS BLOCKED 81 consecutive sessions."
     },
     {
       "symbol": "GS",
@@ -178,10 +178,10 @@
     },
     {
       "name": "Market-Close",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-14T19:30:00Z",
-      "last_summary": "Last successful: July 2. Multiple silent failures since. Next: July 14 3:30 PM ET / 19:30Z."
+      "status": "completed",
+      "last_run": "2026-07-16T19:35:00Z",
+      "next_run": "2026-07-17T19:30:00Z",
+      "last_summary": "July 16 Market-Close COMPLETED 19:35Z. API BLOCKED HTTP 000 (81st consecutive). NO day trades to close. MOC attempts blocked: AMD SELL 9sh + AMD GTC STOP $543.40 + GS BUY 4sh — all HTTP 000. AMD naked Day 27+ (18sh est. $572, 10.2% equity, OVER 5% cap). NFLX AH earnings tonight — Exemption 2. GS 7.83 + META 7.67 carry to Jul 17 Pre-Market as BINDING. EOD equity est. $100,940 (+0.94%); SPX est. +4.72%; gap -3.78 pp. Tomorrow: (1) AMD SELL 9sh MOO FIRST ORDER; (2) GS BUY 4sh bracket GTC; (3) META BUY 7sh bracket GTC; (4) NFLX/WFC/MS/ASML post-earnings scoring."
     },
     {
       "name": "Daily-Review",
@@ -331,6 +331,15 @@
       "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reported Jul 15 \u2014 results unknown)",
       "setup": "earnings-reaction-follow",
       "notes": "Morgan Stanley Q2 reported July 15 (blackout day \u2014 results unknown). Expected EPS ~$2.55, rev ~$16B. Wealth management + investment banking revival thesis. Full 6-agent at Pre-Market July 17 with actual results."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-07-16",
+      "portfolio_return_pct": 0.94,
+      "spx_return_pct": 4.72,
+      "daily_pnl_pct": 0.17,
+      "note": "July 16 EOD est. AMD $572 (+12.9% position). API blocked 81st session. NFLX AH earnings tonight. Gap -3.78 pp vs SPX."
     }
   ]
 }

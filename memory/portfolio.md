@@ -1,7 +1,36 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-16 (Thursday) — AFTERNOON (2:00 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 80th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+**2026-07-16 (Thursday) — MARKET-CLOSE (3:30 PM ET / 19:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+
+**JULY 16 MARKET-CLOSE STATUS:** Pre-Market + Market-Open + Midday silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08-18:15Z) ✓. Market-Close (19:35Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2 — score at July 17 Pre-Market). AMD Day 27+ naked — no stop. All MOC orders blocked (81st consecutive). GS 7.83 and META 7.67 carry to July 17 Pre-Market as BINDING COMMITMENTS.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 16 Market-Close):**
+- AMD SELL 9sh MOC (cls) → HTTP 000 BLOCKED (81st)
+- AMD GTC STOP $543.40 (5% below est. $572 EOD) → HTTP 000 BLOCKED (81st)
+- GS BUY 4sh MOC (cls) → HTTP 000 BLOCKED (81st)
+
+**EOD PORTFOLIO EST (July 16):**
+- AMD: 18sh × $572 EOD = $10,296 (~10.2% equity — OVER 5% cap; +$1,174 unrealized +12.9%)
+- Cash: ~$90,644
+- Total Equity est.: ~$100,940
+- Total Return est.: +0.94%
+- SPX May 1 baseline 7,200 → July 16 EOD est. 7,540 = +4.72%
+- Benchmark Gap est.: **-3.78 pp** (20-DAY UNDERPERFORMANCE FLAG ACTIVE — 81+ sessions)
+
+**JULY 17 PRE-MARKET BINDING COMMITMENTS (MANDATORY — no exemptions):**
+1. AMD: SELL 9sh MOO (reduce 18sh → 9sh; bring to ≤5% cap) — ABSOLUTE FIRST ORDER
+2. AMD: After MOO fills at Market Open, place GTC stop at fill×0.95 + GTC target at fill+3×stop_dist
+3. GS: BUY 4sh limit bracket GTC at current_ask×1.005 (stop entry×0.95, target entry+3×stop_dist) — score 7.83 ALL 6 AGENTS
+4. META: BUY 7sh limit bracket GTC at current_ask×1.005 (stop entry×0.95, target entry+3×stop_dist) — score 7.67 ALL 6 AGENTS
+5. NFLX: Full 6-agent post-earnings scoring at Pre-Market (NFLX reports AH tonight July 16)
+6. WFC / MS / ASML: Full 6-agent post-earnings scoring (reported July 15 — full blackout day; results unknown)
+7. AMD trail stop update: after sell of 9sh, trail stop on remaining 9sh = new_fill_price × 0.95
+
+**NFLX POST-EARNINGS SCORING FRAMEWORK (July 17 Pre-Market):**
+- Beat scenario (EPS + subscribers above est.): earnings-reaction-follow — est. entry ~$1,100-1,150 (if +5-10% reaction); stop entry×0.95; target entry+15%; R/R 3:1
+- Miss scenario: earnings-reaction-fade — est. short/put if available; or skip if score < 7
+- Score full 6-agent before entering regardless of headline reaction
 
 **JULY 16 AFTERNOON STATUS:** Pre-Market + Market-Open + Midday all silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No day trades open. AMD Day 27 naked — no stop. GS 7.83 and META 7.67 skipped this routine (afternoon proximity-to-close rule) — both carry as BINDING COMMITMENTS to Pre-Market July 17.
 
