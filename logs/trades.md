@@ -567,6 +567,354 @@ Crypto bucket: $0 (0%) — 0 positions — target 10%
 
 ---
 
+## 2026-07-17 — Market-Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 82nd consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-17T19:35:11Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 — `paper-api.alpaca.markets:443` — **82nd consecutive blocked session** (egress policy denial, not auth failure)
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully per CLAUDE.md.
+**Market Status:** CLOSING (3:38 PM ET / 19:38Z). Friday — final session of week. Chip/AI selloff day. AMD est. −7% at close. SPX est. −1.0 to −1.15%.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT (July 17, 2026 — Full Day)
+
+| Routine | Expected (UTC) | Found in 2026-07-17.log | Status |
+|---|---|---|---|
+| Pre-Market | 12:05Z (8:05 AM ET) | NOT FOUND | ❌ SILENT FAILURE |
+| Market-Open | 13:45Z (9:45 AM ET) | NOT FOUND | ❌ SILENT FAILURE |
+| Mid-Morning | 15:10Z (11:10 AM ET) | STARTED 15:10Z / COMPLETED 15:25Z | ✅ COMPLETED |
+| Midday | 16:30Z (12:30 PM ET) | NOT FOUND | ❌ SILENT FAILURE |
+| Afternoon | 18:00Z (2:00 PM ET) | NOT FOUND | ❌ SILENT FAILURE |
+| Market-Close | 19:35Z (3:35 PM ET) | STARTED 19:35Z | ✅ RUNNING NOW |
+
+**July 17 failure count: 4 of 5 predecessor routines silently failed.** Mid-Morning was the only successful predecessor. Market-Close is executing AFTERNOON CATCH-UP per close.md: "scan all open positions; any still open MUST be closed via MOC."
+
+```yaml
+---
+ts: 2026-07-17T16:30:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 17 Midday (12:30 PM ET) silently failed — not found in 2026-07-17.log. Midday catch-up window (ASML scoring, intraday price updates, sector leadership check) missed entirely.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Midday silently failed July 17 — 4th silent failure of the day. AMD had already breached stop by mid-morning. Midday should have attempted AMD MOC exit, price-refreshed GS/META/WFC/MS entry limits, scored ASML Q2 (July 15 results unconfirmed), checked sector leadership for afternoon rotation. All missed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-17T18:00:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 17 Afternoon (2:00 PM ET) silently failed — not found in 2026-07-17.log. Afternoon catch-up window for MOC order prep, stop management, and close-of-day portfolio positioning missed.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Afternoon silently failed July 17 — 5th violation today. Per close.md: 'AFTERNOON CATCH-UP (if Afternoon silently failed): scan all open positions tagged bucket: active; any still open MUST be closed via MOC.' Market-Close is now executing AMD exit + binding entries as MOC catch-up orders."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED — 82nd consecutive)
+
+```bash
+# Attempt: GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+# Attempt: GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD — STOP BREACH STATUS (3:38 PM ET):**
+- Position: AMD 18sh at avg cost $506.76
+- Required stop (5% below avg): $481.42 — NEVER PLACED AT ALPACA (27+ days naked)
+- Estimated EOD price: ~$468 (based on mid-morning $465.79 −7%; modest stabilization near close assumed)
+- Unrealized P&L est.: 18 × ($468 − $506.76) = 18 × (−$38.76) = **~−$697.68 (−7.6%)**
+- Action: AMD MOC SELL 18sh — attempted below.
+
+---
+
+### MARKET-CLOSE ORDERS — ALL ATTEMPTED (ALL BLOCKED — 82nd consecutive)
+
+**Time of attempts: 3:38 PM ET (19:38Z) — within MOC window (before 3:50 PM ET cutoff)**
+
+#### 1. AMD — EMERGENCY MOC EXIT (Stop Breach — 18sh)
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED (82nd consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-17T19:38:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: AMD stop $481.42 breached July 17 (−7% to ~$465.79 then ~$468 est. EOD). Emergency MOC SELL 18sh 3:38 PM ET — mandatory per CLAUDE.md stop-loss rules and close.md afternoon catch-up.
+size_pct: 0
+stop: 481.42
+target: 582.78
+result_pct: -7.6
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 7.17
+agents_above_7: 0
+master_decision: rejected
+master_notes: "AMD emergency MOC SELL 18sh (time_in_force: cls) 3:38 PM ET — HTTP 000 BLOCKED (82nd consecutive session). Stop level $481.42 was breached at ~$465.79 mid-morning July 17. AMD EOD est. ~$468. Total unrealized loss est.: −$697.68 (−7.6% from avg $506.76). Per CLAUDE.md: exit is mandatory on stop breach. AMD Advancing AI 2026 conf July 22-23 is NOT a valid hold reason after stop breach. OPERATOR MANDATORY: Login to app.alpaca.markets NOW (Friday evening or Monday before open) and SELL ALL 18sh AMD at market immediately. Do NOT re-enter AMD until price recovers above $481.42 AND new setup scores ≥ 7."
+---
+```
+
+#### 2. GS — MOC BUY (4sh — Score 7.83, Binding Day 3)
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED (82nd consecutive)
+# Note: MOC cannot use bracket order_class; GTC stop ($1,044) + target ($1,264) to be placed
+#       at Monday Market-Open routine upon fill confirmation.
+```
+
+```yaml
+---
+ts: 2026-07-17T19:38:30Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS Q2 +45.7% EPS beat; M&A revival; investment banking cycle turning. All 6 agents ≥ 7. MOC entry attempt at Friday close — Day 3 binding carry from July 14. GTC stop to be placed Monday open on fill confirmation.
+size_pct: 4.44
+stop: 1044.08
+target: 1263.87
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "GS MOC BUY 4sh (time_in_force: cls) 3:38 PM ET — HTTP 000 BLOCKED (82nd consecutive). Score 7.83, all 6 agents ≥ 7. Three separate routines blocked (July 14 midday, July 17 mid-morning, July 17 market-close). EOD est. ~$1,093. If filled at close: stop ~$1,038.35 (−5%), target ~$1,257.45 (+15%, 3:1 R/R). GTC stop to be posted at Monday Market-Open. OPERATOR MANDATORY: Enter 4sh GS limit current_ask×1.005 bracket GTC at Monday open or app.alpaca.markets."
+---
+```
+
+#### 3. META — MOC BUY (7sh — Score 7.50, Binding Day 3)
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED (82nd consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-17T19:39:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.50
+thesis: META cloud compute launch confirmed (8+ outlets); Llama AI ecosystem; showing relative strength vs SPX −1.15% on chip selloff day. MOC entry attempt — Day 3 binding carry from July 14.
+size_pct: 4.72
+stop: 634.47
+target: 768.04
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 6
+master_decision: approved
+master_notes: "META MOC BUY 7sh (time_in_force: cls) 3:38 PM ET — HTTP 000 BLOCKED (82nd consecutive). Score 7.50, all 6 agents ≥ 7. EOD est. ~$663. If filled at close: stop ~$629.85 (−5%), target ~$762.45 (+15%, 3:1 R/R). META earnings est. July 29-30 — SAFE window (>10 trading days). GTC stop to be posted Monday Market-Open. OPERATOR MANDATORY: Enter 7sh META limit current_ask×1.005 bracket GTC at Monday open."
+---
+```
+
+#### 4. WFC — MOC BUY (30sh — Score 7.0, Day 2 Binding)
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED (82nd consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-17T19:39:30Z
+action: entry
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: WFC Q2 2026 EPS +13% beat ($1.96 vs $1.73); Revenue +2.8% beat; Net income +17% YoY. Post-earnings financials follow-through. MOC entry — Day 2 binding from July 17 Mid-Morning.
+size_pct: 2.65
+stop: 83.56
+target: 101.15
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 5
+master_decision: approved
+master_notes: "WFC MOC BUY 30sh (time_in_force: cls) 3:38 PM ET — HTTP 000 BLOCKED (82nd consecutive). Score 7.0 (threshold met). Macro 6/10 = risk-off day headwind, not a guardrail veto. EOD est. ~$87.50. If filled: stop ~$83.13 (−5%), target ~$100.63 (+15%, 3:1 R/R). Financials sector after GS+WFC = 7.09%. OPERATOR MANDATORY: Enter 30sh WFC limit current_ask×1.005 bracket GTC at Monday open."
+---
+```
+
+#### 5. MS — MOC BUY (20sh — Score 7.17, Day 2 Binding)
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED (82nd consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-17T19:39:45Z
+action: entry
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: MS Q2 2026 revenue +27% YoY; net income +60% YoY; EPS $3.46 vs $2.13. Near-ATH $232.25. Post-earnings continuation. MOC entry — Day 2 binding from July 17 Mid-Morning.
+size_pct: 4.63
+stop: 218.21
+target: 264.14
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "MS MOC BUY 20sh (time_in_force: cls) 3:38 PM ET — HTTP 000 BLOCKED (82nd consecutive). Score 7.17. Macro 6/10 — risk-off headwind, not a veto. EOD est. ~$228. If filled: stop ~$216.60 (−5%), target ~$262.20 (+15%, 3:1 R/R). Financials sector after GS+WFC+MS = 11.72% (under 25%). OPERATOR MANDATORY: Enter 20sh MS limit current_ask×1.005 bracket GTC at Monday open."
+---
+```
+
+---
+
+### EOD MARKET SUMMARY — July 17, 2026 (Friday Close)
+
+**Final Market Snapshot (estimated — API blocked, web search mid-morning prices used as EOD proxy):**
+| Asset | Est. EOD | Change | Note |
+|---|---|---|---|
+| S&P 500 | ~7,445 | −1.1% | AI capex reset + NFLX guidance miss |
+| Nasdaq | − | −1.7% | Chip/AI selloff persistent |
+| AMD | ~$468 | −7.0% | Stop $481.42 breached; 18sh naked overnight |
+| GS | ~$1,093 | flat | Financials insulated from chip selloff |
+| META | ~$663 | −0.2% | Relative strength vs market |
+| WFC | ~$87.50 | −0.5% | Post-Q2 beat holding |
+| MS | ~$228 | −0.5% | Near-ATH, mild pullback |
+
+**Week Summary (July 14–17):** CPI cool print + bank earnings blowouts (GS +7.7%, WFC +13% EPS beat, MS +60% net income) were the tailwinds. Friday's chip/AI selloff (AMD −7%, NFLX −9.9%) offset the rally. SPX net: est. −0.3% to flat for the week. No positions entered (API blocked).
+
+**Day trades closed:** None. No day trades were open.
+
+**Overnight positions after Market Close:**
+- AMD: 18sh — NAKED (no stop, stop level breached). **GUARDRAIL VIOLATION — MUST EXIT MONDAY PRE-MARKET.**
+
+**No new overnight positions entered** (all 4 entry MOC orders blocked).
+
+**Guardrail check:**
+- AMD 18sh × $468 est. = $8,424 = 8.5% equity — OVER 5% hard cap ❌
+- No stop order at Alpaca for AMD — GUARDRAIL VIOLATION ❌
+- All other guardrails maintained (cash floor 91.5% >> 5%, sector limits N/A, 1 position < 12)
+
+---
+
+### PORTFOLIO STATE — July 17, 2026 (Market Close)
+
+**PORTFOLIO STATE**
+Total Equity: ~$99,068 (est.)
+Cash: $90,644 (91.5%) — 5% floor: ✓ maintained
+Trading bucket: ~$8,424 (8.5%) — 1 position (AMD — naked, below stop) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+**Daily P&L:** ~−$593 (−0.60%) vs opening equity $99,661
+**SPX daily return (est.):** −1.1%
+**Relative to SPX today:** +0.5 pp (AMD held less bad than SPX, cash drag offset)
+**Cumulative portfolio return since May 1:** −0.93%
+**SPX cumulative since May 1 (7,200 → 7,445):** +3.40%
+**Benchmark gap: −4.33 pp** (slight improvement from −4.43 pp mid-morning as SPX gave back more than AMD)
+**20-Day underperformance flag:** ACTIVE (82+ consecutive sessions — API blockage root cause)
+**Circuit breaker (3% daily loss):** NOT TRIPPED (−0.60% today)
+
+**MONDAY JULY 20 BINDING COMMITMENTS (MANDATORY — no exemptions unless guardrail breach):**
+1. ⚠️⚠️⚠️ **AMD: SELL ALL 18sh AT MARKET — FIRST ORDER MONDAY** (stop $481.42 blown; re-enter only if AMD recovers above $481.42 with fresh score ≥ 7)
+2. **GS: BUY 4sh limit MOO or current_ask×1.005 bracket GTC** (score 7.83 — all 6 agents ≥ 7)
+3. **META: BUY 7sh limit MOO or current_ask×1.005 bracket GTC** (score 7.50 — all 6 agents ≥ 7)
+4. **WFC: BUY 30sh limit current_ask×1.005 bracket GTC** (score 7.0 — 5/6 agents ≥ 7)
+5. **MS: BUY 20sh limit current_ask×1.005 bracket GTC** (score 7.17 — 5/6 agents ≥ 7)
+6. **ASML: Full 6-agent score at Pre-Market** (Q2 July 15 results unconfirmed — chip selloff may create entry opportunity)
+
+**NEXT BINARY EVENT WINDOWS:**
+- IBM earnings July 22 — IBM excluded (never entered; −22% loss avoided)
+- TSLA earnings est. July 22 — Do NOT enter TSLA until post-print
+- AMD Advancing AI conf July 22-23 — NOT a binary event; exits/entries allowed
+- META earnings est. July 29-30 — Safe window through July 27
+
+---
+
 ## 2026-07-16 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 79th consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-16T15:10:44Z ✓

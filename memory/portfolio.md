@@ -1,7 +1,55 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-17 (Friday) — MARKET-CLOSE (3:38 PM ET / 19:38 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 82nd consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+
+**JULY 17 MARKET-CLOSE STATUS:** 4 of 5 predecessor routines silently failed (Pre-Market, Market-Open, Midday, Afternoon). Mid-Morning only predecessor to complete. Market-Close executed AFTERNOON CATCH-UP (close.md rule). All 5 MOC orders attempted and blocked: AMD SELL 18sh + GS BUY 4sh + META BUY 7sh + WFC BUY 30sh + MS BUY 20sh → all HTTP 000 (82nd consecutive). AMD stop $481.42 remains breached — position naked heading into weekend. No day trades were open. Circuit breaker NOT tripped (daily loss ~0.60%).
+
+**ORDERS ATTEMPTED AND BLOCKED (July 17 Market-Close — all HTTP 000):**
+- AMD SELL 18sh MOC (time_in_force: cls) → HTTP 000 (stop breached, mandatory exit)
+- GS: BUY 4sh MOC (cls) → HTTP 000 (score 7.83, Day 3 binding carry)
+- META: BUY 7sh MOC (cls) → HTTP 000 (score 7.50, Day 3 binding carry)
+- WFC: BUY 30sh MOC (cls) → HTTP 000 (score 7.0, Day 2 binding)
+- MS: BUY 20sh MOC (cls) → HTTP 000 (score 7.17, Day 2 binding)
+
+**PORTFOLIO STATE EST (July 17 Market-Close):**
+- Cash: $90,644 (91.5%)
+- AMD: 18sh × $468 est. = ~$8,424 (8.5%) — OVER 5% cap, below stop $481.42, NAKED
+- Total equity est.: ~$99,068
+- Daily P&L: ~−$593 (−0.60%) vs opening equity $99,661
+- SPX daily return est.: −1.1%
+- Cumulative portfolio return: −0.93% (May 1 baseline)
+- SPX cumulative since May 1 (7,200 → 7,445 est.): +3.40%
+- Benchmark gap: **−4.33 pp** (slight improvement from −4.43 pp mid-morning as SPX sold more)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (82+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Daily loss ~0.60% — NOT TRIPPED (3% threshold)
+
+**EOD MARKET SNAPSHOT (July 17 — estimated, API blocked):**
+- SPX: ~7,445 (−1.1%) | Nasdaq: ~−1.7% | AMD: ~$468 (−7%) | GS: ~$1,093 | META: ~$663 | WFC: ~$87.50 | MS: ~$228
+- Week summary: CPI cool + bank earnings rally (GS +7.7%, WFC/MS beats) offset by chip/NFLX selloff Friday
+- NFLX −9.9% to $67.02 (new 52-wk low) — Q3 guidance miss drove AI capex concerns
+
+**⚠️⚠️⚠️ MONDAY JULY 20 BINDING COMMITMENTS (MANDATORY — no exemptions unless guardrail breach):**
+1. **AMD: SELL ALL 18sh AT MARKET — FIRST ORDER MONDAY** (stop $481.42 blown; naked through weekend)
+2. **GS: BUY 4sh limit MOO or ask×1.005 bracket GTC** (score 7.83 — all 6 agents ≥ 7; Day 4 carry)
+3. **META: BUY 7sh limit MOO or ask×1.005 bracket GTC** (score 7.50 — all 6 agents ≥ 7; Day 4 carry)
+4. **WFC: BUY 30sh limit ask×1.005 bracket GTC** (score 7.0 — 5/6 ≥ 7; Day 3 carry)
+5. **MS: BUY 20sh limit ask×1.005 bracket GTC** (score 7.17 — 5/6 ≥ 7; Day 3 carry)
+6. **ASML: Full 6-agent score at Pre-Market** (Q2 July 15 results unconfirmed — chip selloff opportunity?)
+
+**NEXT BINARY EVENTS (48h rule):**
+- IBM earnings July 22 — IBM EXCLUDED (never entered; −22% loss avoided July 14)
+- TSLA earnings est. July 22 — DO NOT ENTER until post-print
+- AMD Advancing AI conf July 22-23 — NOT a binary event; entries/exits allowed
+- META earnings est. July 29-30 — SAFE window through July 27 (GTC orders ok)
+
+**GUARDRAIL STATUS (EOD Friday):**
+- AMD: 8.5% equity (OVER 5% cap ❌), NO stop at Alpaca ❌, stop level $481.42 BREACHED ❌
+- All other positions: None active
+- Cash floor: 91.5% >> 5% ✓
+- Sector exposure: AMD 8.5% (semiconductors) — over sector limit but only 1 position
+
+**Prior Last Updated (2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
 **JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
 
