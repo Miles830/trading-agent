@@ -1,7 +1,58 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-17 (Friday) — MIDDAY (12:30 PM ET / 16:36 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 82nd consecutive blocked session). MIDDAY ROUTINE ✅ RUNNING.**
+
+**JULY 17 MIDDAY STATUS (12:30 PM ET):** All prior attempts re-tried and blocked. AMD SELL re-attempted (blocked, stop still breached). GS/META/WFC/MS re-attempted (all blocked). NEW ENTRY: ASML scored 7.17 (EUV monopoly, Q2 beat confirmed) → attempted BUY 2sh, blocked. **META CONFIRMED +0.96% at midday vs SPX −0.66% — exceptional relative strength, thesis strongly reinforced.** MS price corrected: July 16 close $218.12 (not $228.55 ATH — better entry). ASML Q2 2026: EPS $8.69 vs $7.95 est (+9.3%), Rev $10.67B vs $10.29B est (+3.7%), FY guidance raised €43-45B. ASML down −1.9% on sector sympathy only (NOT fundamental). Motley Fool "Next Stop $3,000."
+
+**ORDERS ATTEMPTED AND BLOCKED (July 17 Midday — all HTTP 000):**
+- AMD SELL 18sh at market → HTTP 000 (stop level $481.42 still breached; est. $473 midday)
+- GS: BUY 4sh limit bracket GTC $1,097.46 / stop $1,042.59 / target $1,259.08 → HTTP 000
+- META: BUY 7sh limit bracket GTC $663.30 / stop $630.14 / target $762.80 → HTTP 000 (META confirmed +0.96%)
+- WFC: BUY 30sh limit bracket GTC $87.84 / stop $83.45 / target $101.02 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $219.09 / stop $208.14 / target $251.95 → HTTP 000 (CORRECTED price from $229.69)
+- ASML: BUY 2sh limit bracket GTC $1,758.75 / stop $1,670.81 / target $2,022.56 → HTTP 000 (NEW ENTRY)
+
+**MARKET CONDITIONS (July 17, 12:30 PM ET — WEB SEARCH CONFIRMED):**
+- SPX: 7,483.87 (−0.66%) at 12:39 PM EDT | Nasdaq: −1.5% | Driver: AI capex selloff + NFLX guidance miss
+- AMD: ~$473 est. (−5.5% recovery from −7% low) — still below stop $481.42 — EXIT MANDATORY
+- META: $663.01 (+0.96%) — CONFIRMED exceptional relative strength vs market
+- GS: $1,093.56 (flat/resilient)
+- WFC: ~$87.45 (resilient financials)
+- MS: ~$218.12 (July 16 confirmed close; pulled back 4.6% from ATH)
+- ASML: ~$1,750 est. (−1.9%; sector sympathy; Q2 beat + guidance raise intact)
+- PHLX Semiconductor: −3% (entering bear market)
+
+**ASML Q2 2026 CONFIRMED (July 15 earnings):**
+- EPS $8.69 vs $7.95 est (+9.3% beat). Revenue $10.67B vs $10.29B est (+3.7% beat).
+- Gross margin 54.0%. Operating margin 37.1%.
+- Q3 guidance: €11–12B revenue at 55–57% gross margin.
+- Full-year 2026 guidance RAISED to €43–45B (from prior range).
+- ASML is world's ONLY EUV lithography maker. Down today on chip sector sympathy — NOT fundamental.
+- Score 7.17 (Fundamentals 9, Technical 5, Sentiment 7, Macro 6, Risk 7, Tech Analyst 9). APPROVED.
+
+**MS PRICE CORRECTION (July 17 Midday):**
+- Prior mid-morning used $228.55 (ATH from July 15). CORRECTED: July 16 close confirmed $218.12.
+- ATH giveback of 4.6% on July 16 — market drag (Nasdaq down that day too), not MS-specific.
+- New entry parameters: limit $219.09, stop $208.14 (−5%), target $251.95 (+15%), R/R 3:1. Size 4.43% ✓.
+
+**PORTFOLIO STATE EST (July 17 Midday):**
+- Cash: $90,644 (91.4%)
+- AMD: 18sh × ~$473 est. = ~$8,514 (8.6%) — over cap, below stop, naked — EXIT MANDATORY
+- Total equity est.: ~$99,158
+- Performance vs SPX (May 1 baseline 7,200 → July 17 midday 7,484 = +3.94%): est. −0.84% → gap −4.78 pp (widening)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (82+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Daily loss ~$503 (0.50%) — NOT tripped
+
+**JULY 17 BINDING COMMITMENTS (carry to Afternoon routine — ALL BLOCKED SINCE JULY 14):**
+1. AMD: SELL 18sh AT MARKET — stop level breached, exit mandatory
+2. META: BUY 7sh limit $663.30 bracket GTC (stop $630, target $763) — score 7.50 — **HIGHEST PRIORITY** (confirmed +0.96% midday)
+3. GS: BUY 4sh limit $1,097.46 bracket GTC (stop $1,043, target $1,259) — score 7.83
+4. MS: BUY 20sh limit $219.09 bracket GTC (stop $208, target $252) — score 7.17 (CORRECTED PRICE)
+5. WFC: BUY 30sh limit $87.84 bracket GTC (stop $83, target $101) — score 7.0
+6. ASML: BUY 2sh limit $1,758.75 bracket GTC (stop $1,671, target $2,023) — score 7.17 (NEW — EUV monopoly)
+
+**PRIOR LAST UPDATED (2026-07-17 — MID-MORNING):** 2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
 **JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
 
