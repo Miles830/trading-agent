@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-16T18:08:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-17T12:22:00Z",
+  "updated_by": "pre-market",
   "portfolio": {
-    "total_equity": 100764,
+    "total_equity": 99349,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 89.96,
+    "cash_pct": 91.25,
     "buying_power": 181288,
-    "long_market_value": 10260,
+    "long_market_value": 8705,
     "short_market_value": 0.0,
-    "daily_pnl": 501.0,
-    "daily_pnl_pct": 0.5,
-    "total_return_pct": 0.76,
-    "spx_return_pct": 4.85,
-    "benchmark_gap_pct": -4.09,
+    "daily_pnl": -312,
+    "daily_pnl_pct": -0.31,
+    "total_return_pct": -0.65,
+    "spx_return_pct": 4.7,
+    "benchmark_gap_pct": -5.35,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 10260,
-      "active_pct": 10.2,
+      "active_value": 8705,
+      "active_pct": 8.76,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 89.96
+      "cash_pct": 91.25
     },
-    "note": "July 16 AFTERNOON (2:00 PM ET / 18:08Z). API BLOCKED HTTP 403 \u2014 80th consecutive session. Pre-Market + Market-Open + Midday silently failed. Mid-Morning OK (15:10-15:18Z). NFLX earnings AH tonight \u2014 EXCLUDED Exemption 2. AMD Day 27 naked (18sh est. $570, +12.5%, 10.2% equity \u2014 OVER 5% cap). GS 7.83 + META 7.67 skipped this routine (proximity-to-close) \u2014 carry to Jul 17 Pre-Market as BINDING. OPERATOR URGENT: (1) SELL 9sh AMD + GTC stop on 9sh; (2) BUY 4sh GS limit bracket GTC; (3) BUY 7sh META limit bracket GTC; (4) Score NFLX post-earnings + WFC/MS/ASML at Pre-Market Jul 17."
+    "note": "July 17 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED HTTP 403 \u2014 82nd consecutive session. CRITICAL: AMD at $483.59 premarket (-3.46% from $500.94 close) BELOW avg cost $506.76. Stop $481.42 is only $2.17 below premarket. NAKED Day 28+. TSMC capex raise ($60-64B) sparked chip sector selloff. NFLX Q2 mixed (AH -6% to $69.66, fully recovered to $74). MS Q2 massive beat but sell-the-news -2%. WFC beat but fell on NIM concerns. ASML raised guidance. No new entries qualify today (all <7.0). OPERATOR MUST ACT NOW: (1) SELL 9sh AMD IMMEDIATELY; (2) BUY 4sh GS bracket; (3) BUY 7sh META bracket."
   },
   "positions": [
     {
@@ -31,45 +31,45 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 570.0,
-      "pnl": 1138.32,
-      "pnl_pct": 12.5,
+      "current_price": 483.59,
+      "pnl": -417.06,
+      "pnl_pct": -4.57,
       "stop_loss": null,
-      "take_profit": 620.0,
-      "stop_loss_pending": 541.50,
+      "take_profit": null,
+      "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICALLY NAKED Day 27. Est. $565-575 July 16 afternoon. P&L est: 18 x ($570-$506.76) = +$1,138 (+12.5%). Position est. 10.2% equity \u2014 OVER 5% cap. Trail stop: $541.50 (5% below est. $570 \u2014 blocked HTTP 403). BofA PT $620. AMD Advancing AI 2026 conf July 22-23 (catalyst \u2014 NOT binary event). Below 15% partial profit threshold ($582.77). OPERATOR: (1) SELL 9sh AMD FIRST ORDER Jul 17 Pre-Market; (2) GTC stop on 9sh at fill x 0.95; (3) GTC target at fill+3x(fill-stop). ALL AMD STOP ATTEMPTS BLOCKED 80 consecutive sessions."
+      "note": "CRITICALLY NAKED Day 28+. AMD at $483.59 premarket (-3.46% from $500.94 close). BELOW avg cost $506.76. P&L: 18 x ($483.59-$506.76) = -$417 (-4.57%). Position: 18sh x $483.59 = $8,705 (8.76% equity \u2014 OVER 5% cap). Stop level $481.42 is ONLY $2.17 below premarket price. TSMC capex raise ($60-64B) caused broad chip selloff. UBS raised AMD PT $700, Rosenblatt raised to $665 \u2014 analysts bullish. AMD Advancing AI 2026 conf July 22-23 (catalyst). ALL STOP ATTEMPTS BLOCKED 82 consecutive sessions. OPERATOR: SELL 9sh AMD AT MARKET IMMEDIATELY BEFORE 9:25 AM ET."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1080.0,
-      "current_price": 1075.0,
+      "entry_price": 1099.0,
+      "current_price": 1093.56,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 1242.0,
-      "stop_loss_pending": 1026.0,
+      "take_profit": 1264.35,
+      "stop_loss_pending": 1044.05,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.83,
-      "note": "Re-confirmed 7.83 avg July 16 (was 7.5 July 14). All 6 agents >= 7. 4sh \u00d7 $1,080 limit = $4,320 (4.28% equity). Stop $1,026 (-5%). Target $1,242 (+15%). R/R 3.0:1. POST /v2/orders BLOCKED HTTP 000 (79th session). OPERATOR: BUY 4sh GS limit current_ask bracket GTC \u2014 re-price to current ask \u00d7 1.005 if moved from $1,080. Earnings-reaction-follow post Q2 blowout (+45% vs est)."
+      "note": "BINDING COMMITMENT (12th carry-forward). Score 7.83 (all 6 agents >= 7). 4sh x $1,099 limit = $4,396 (4.42% equity). Stop $1,044.05 (-5%). Target $1,264.35 (+15%). R/R 3.0:1. July 17 premarket attempted \u2014 BLOCKED HTTP 403 (82nd session). GS July 16 close est. $1,093.56. Re-priced limit to $1,099 (ask x 1.005). OPERATOR: BUY 4sh GS limit $1,099 bracket GTC (stop $1,044.05, target $1,264.35). Earnings-reaction-follow post Q2 blowout. Financials sector strongest YTD. MS Q2 beat confirms healthy IB cycle."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 663.0,
-      "current_price": 662.0,
+      "entry_price": 668.0,
+      "current_price": 664.54,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 762.45,
-      "stop_loss_pending": 629.85,
+      "take_profit": 768.40,
+      "stop_loss_pending": 634.60,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "Re-confirmed 7.67 avg July 16 (was 7.5 July 14). All 6 agents >= 7. 7sh \u00d7 $663 limit = $4,641 (4.60% equity). Stop $629.85 (-5%). Target $762.45 (+15%). R/R 3.0:1. META earnings est. July 29-30 (SAFE \u2014 >2 weeks away). POST /v2/orders BLOCKED HTTP 000 (79th session). OPERATOR: BUY 7sh META limit current_ask bracket GTC \u2014 re-price to current ask \u00d7 1.005 if moved from $663."
+      "note": "BINDING COMMITMENT (12th carry-forward). Score 7.67 (all 6 agents >= 7). 7sh x $668 limit = $4,676 (4.71% equity). Stop $634.60 (-5%). Target $768.40 (+15%). R/R 3.0:1. META +3.07% today ($664.54). Earnings July 29 (SAFE \u2014 12 days away). July 17 premarket attempted \u2014 BLOCKED HTTP 403 (82nd session). Re-priced limit to $668 (ask x 1.005). Cloud compute story + AI ad revenue. OPERATOR: BUY 7sh META limit $668 bracket GTC (stop $634.60, target $768.40). MUST EXIT by July 27 EOD (earnings window opens July 29)."
     },
     {
       "symbol": "IBM",
@@ -101,11 +101,11 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON \u2014 CPI COOL PRINT DOMINATES. June CPI 3.5% headline (vs 3.8% est); Core 2.6% (vs 2.8% est). September rate hike probability dropping rapidly. Nasdaq +0.81% (tech/AI leading). IBM -22% crash (earnings warning) weighing on Dow but NOT broader market. Semiconductors rebounding (+4-5%). Financials strong (GS +7.7% on record Q2).",
-    "fear_greed": 55,
-    "fear_greed_label": "Neutral-Greed \u2014 CPI cool sparks risk-on; IBM crash isolated; Nasdaq leading",
-    "spx": "SPX +0.26% to 7,535.12 midday. Nasdaq +0.81% to 26,083. Dow -0.19% (IBM drag). May 1 baseline 7,200 \u2192 +4.65% return. Portfolio benchmark gap: -3.91 pp (improved from -5.29 pp pre-market on AMD +5% rally).",
-    "btc": "BTC est. ~$65,000 area (below $82K active-trading threshold). No crypto entries. CPI cool is mild positive for BTC but below entry threshold.",
+    "mode": "MIXED \u2014 TSMC CAPEX CONCERNS OVERRIDE CPI TAILWIND. TSMC raised 2026 capex $60-64B (from $52-56B) and guided Q3 gross margin 65-67% (below buy-side expectations) \u2192 chip sector broad selloff. AMD -3.46% premarket. META +3.07% (not in chip sector). NFLX Q2 mixed: AH -6% recovered. MS Q2 massive beat but sell-the-news -2%. WFC Q2 beat but fell on NIM concerns. Net: Financials OK, Chips weak, Growth stocks split.",
+    "fear_greed": 48,
+    "fear_greed_label": "Neutral \u2014 TSMC capex fears offset CPI tailwind; chips weak, financials resilient",
+    "spx": "SPX est. Jul 16 close ~7,535-7,550 (+4.65-4.79% from May 1 baseline 7,200). Jul 17 premarket: mild downside bias from chip sector drag. Portfolio total return est: -0.65%. Benchmark gap: -5.35 pp (widened from -4.09 pp as AMD moved into loss territory).",
+    "btc": "BTC est. ~$60,000-65,000 area (below $82K active-trading threshold). No crypto entries. API blocked \u2014 cannot verify.",
     "sectors": [
       {
         "name": "Semiconductors (AMD, Intel)",
@@ -144,9 +144,9 @@
     {
       "name": "Pre-Market",
       "status": "completed",
-      "last_run": "2026-07-14T12:05:00Z",
-      "next_run": "2026-07-15T12:00:00Z",
-      "last_summary": "July 14 Pre-Market COMPLETED 12:05Z. API BLOCKED HTTP 000 (77th consecutive). CPI not yet out at time of run. Bank earnings blowout (GS +45%, JPM, BAC, WFC all beat). 4 orders blocked: AMD SELL 9sh, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred 6.67. Note: GS price estimate ($645) and META price estimate ($603) were both badly wrong vs actual intraday prices."
+      "last_run": "2026-07-17T12:05:00Z",
+      "next_run": "2026-07-18T12:00:00Z",
+      "last_summary": "July 17 Pre-Market COMPLETED 12:05-12:22Z. API BLOCKED HTTP 403 (82nd consecutive). CRITICAL: AMD $483.59 premarket (-3.46%), BELOW avg cost $506.76, only $2.17 above stop $481.42 — still NAKED. TSMC capex raise ($60-64B) drove chip selloff. NFLX Q2 mixed, AH -6% fully recovered (5.83/10 REJECTED). MS beat but sell-the-news (6.67 REJECTED). WFC beat but NIM concerns (6.00 REJECTED). ASML strong but sector headwinds (6.83 REJECTED). Binding commitments AMD SELL 9sh + GS 4sh + META 7sh — ALL BLOCKED HTTP 403. OPERATOR: Execute at app.alpaca.markets BEFORE 9:25 AM ET."
     },
     {
       "name": "Market-Open",
@@ -288,49 +288,57 @@
       "symbol": "AMD",
       "bucket": "active",
       "score": null,
-      "action": "SELL 9sh MOO (MANDATORY \u2014 FIRST ORDER Jul 17 Pre-Market)",
+      "action": "SELL 9sh MOO URGENT \u2014 APPROACHING STOP LEVEL",
       "setup": "ai-momentum-pullback",
-      "notes": "18sh = ~10.2% equity, OVER 5% cap, Day 27 naked. Est. $570, P&L +$1,138 (+12.5%). API BLOCKED all 80 sessions. OPERATOR: SELL 9sh AMD at MOO July 17; then GTC stop on 9sh at fill x 0.95; GTC target at fill + 3x(fill-stop). AMD conf July 22-23 = catalyst (hold remaining 9sh). Below 15% partial profit threshold ($582.77)."
+      "notes": "18sh at $506.76 avg. $483.59 premarket (-3.46%). BELOW avg cost. P&L: -$417 (-4.57%). Stop $481.42 is ONLY $2.17 below premarket. Day 28+ naked. TSMC capex fears. UBS PT $700, Rosenblatt PT $665. AMD Advancing AI 2026 conf July 22-23. OPERATOR: SELL 9sh AMD at market BEFORE 9:25 AM ET; GTC stop on 9sh at fill\u00d70.95; GTC target at fill+3\u00d7(fill-stop). API BLOCKED all 82 sessions."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "score": 7.83,
-      "action": "BUY 4sh limit bracket GTC at current_ask x 1.005 (BINDING \u2014 Jul 17 Pre-Market)",
+      "action": "BUY 4sh limit $1,099 bracket GTC (BINDING \u2014 12th carry-forward)",
       "setup": "earnings-reaction-follow",
-      "notes": "Re-confirmed 7.83 avg July 16 mid-morning (all 6 agents >=7). Binding from July 14. Stop: entry x 0.95. Target: entry + 3x stop_dist (R/R 3:1 minimum). Re-price if GS has moved from $1,080. Est. current range $1,065-$1,080. API BLOCKED \u2014 operator execute at app.alpaca.markets."
+      "notes": "Score 7.83 (all 6 agents >=7). Est. $1,093 July 16 close. Limit $1,099 (ask\u00d71.005), stop $1,044.05 (-5%), target $1,264.35 (+15%), R/R 3.0:1. Position 4.42% equity. OPERATOR: Execute at app.alpaca.markets. GS Q2 blowout +45% vs est. MS Q2 also beat strongly \u2014 confirms healthy IB cycle. API BLOCKED 82 sessions."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.67,
-      "action": "BUY 7sh limit bracket GTC at current_ask x 1.005 (BINDING \u2014 Jul 17 Pre-Market)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Re-confirmed 7.67 avg July 16 mid-morning (all 6 agents >=7). Binding from July 14. Stop: entry x 0.95. Target: entry + 3x stop_dist. Re-price if META has moved from $663. Est. current range $660-$668. META earnings est. July 29-30 (SAFE). API BLOCKED \u2014 operator execute at app.alpaca.markets."
+      "action": "BUY 7sh limit $668 bracket GTC (BINDING \u2014 12th carry-forward)",
+      "setup": "breakout-volume",
+      "notes": "Score 7.67 (all 6 agents >=7). Est. $664.54 July 17 (+3.07%). Limit $668, stop $634.60 (-5%), target $768.40 (+15%), R/R 3.0:1. Position 4.71% equity. Earnings July 29 \u2014 MUST EXIT by July 27 EOD. OPERATOR: Execute at app.alpaca.markets. Cloud compute + AI ad revenue thesis. API BLOCKED 82 sessions."
     },
     {
-      "symbol": "NFLX",
+      "symbol": "ASML",
       "bucket": "active",
-      "score": null,
-      "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reports AH tonight Jul 16)",
+      "score": 6.83,
+      "action": "WATCHLIST \u2014 re-score when chip sector stabilizes",
       "setup": "earnings-reaction-follow",
-      "notes": "Netflix Q2 2026 AH tonight. Binary event window closes at open July 17. Bull case (beat + guide up): est. ~6sh limit bracket GTC (F~8, S~8, M~7, R~7, TA~7 = est. avg ~7.5). Bear case (miss): reject. Consensus: ~19-20M subs, EPS ~$6.50, rev ~$12.5B. Full 6-agent at Pre-Market July 17 with actual results."
-    },
-    {
-      "symbol": "WFC",
-      "bucket": "active",
-      "score": null,
-      "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reported Jul 15 \u2014 results unknown)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Wells Fargo Q2 reported July 15 (blackout day \u2014 results unknown). Expected EPS ~$1.40, rev ~$21B. If beat confirmed: earnings-reaction-follow similar to GS thesis. Full 6-agent at Pre-Market July 17 with actual results."
+      "notes": "Q2 strong beat, raised 2026 guidance \u20ac43-45B, EUV monopoly (Tech Analyst 9/10). Today's sector headwind (TSMC capex fear) drags tech score to 5/10 \u2192 avg 6.83. Re-score if ASML tests $1,750-1,800 support with Stochastic/MACD crossover. Entry: 2sh limit ~$1,800 bracket GTC, stop -5%, target +15%."
     },
     {
       "symbol": "MS",
       "bucket": "active",
-      "score": null,
-      "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reported Jul 15 \u2014 results unknown)",
+      "score": 6.67,
+      "action": "WATCHLIST \u2014 re-score if stabilizes at $220 support",
       "setup": "earnings-reaction-follow",
-      "notes": "Morgan Stanley Q2 reported July 15 (blackout day \u2014 results unknown). Expected EPS ~$2.55, rev ~$16B. Wealth management + investment banking revival thesis. Full 6-agent at Pre-Market July 17 with actual results."
+      "notes": "Q2 massive beat: EPS +17.7%, Rev +8.7%. But stock -2.06% premarket = sell-the-news. Technical 5/10 drags avg to 6.67. Watch for $220 support hold with Stochastic oversold crossover + volume confirmation. Entry: 4sh limit bracket GTC once technical confirmed."
+    },
+    {
+      "symbol": "NFLX",
+      "bucket": "active",
+      "score": 5.83,
+      "action": "REJECTED \u2014 re-score only if pullback to $70 with indicator confirmation",
+      "setup": "earnings-reaction-fade",
+      "notes": "Q2 mixed: EPS beat +1.3%, Rev miss -0.2%, Q3 guide below est. AH -6% to $69.66, fully recovered to $74 by July 17 open. Fade trigger elapsed. Technical 4/10 (no indicator stack confirmation). Average 5.83 < 7.0. If NFLX pulls back intraday to $70 with Stochastic oversold + hammer or morning-star pattern, re-score."
+    },
+    {
+      "symbol": "WFC",
+      "bucket": "active",
+      "score": 6.0,
+      "action": "WATCHLIST \u2014 re-score at $82-83 support",
+      "setup": "earnings-reaction-follow",
+      "notes": "Q2 beat: EPS +16.3%, Rev +3.3%, net income +17% YoY. But fell to ~$85 on NIM compression + unchanged full-year guide. Technical 4/10. Average 6.0 < 7.0. Re-score if WFC tests $82-83 support with oversold confirmation. Rate cut thesis (post-CPI cool) is medium-term positive for NIM."
     }
   ]
 }

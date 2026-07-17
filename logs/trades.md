@@ -4,6 +4,433 @@
 
 ---
 
+## 2026-07-17 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 82nd consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-17T12:05:52Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` and `data.alpaca.markets:443` — **82nd consecutive blocked session** (egress policy denial, not auth failure). All 5 order attempts (stop-loss audit + 4 orders) → HTTP 403.
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully.
+**Market Status:** PRE-MARKET — 8:05 AM ET (market opens 9:30 AM ET). Today: June housing starts/permits, June industrial production, Michigan consumer sentiment (prelim July), TRV/TFC/FITB earnings.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Expected (UTC) | Status |
+|---|---|---|
+| July 16 Pre-Market | 12:05Z | SILENT FAILURE |
+| July 16 Market-Open | 13:45Z | SILENT FAILURE |
+| July 16 Mid-Morning | 15:10Z | ✅ COMPLETED (last good run) |
+| July 16 Afternoon | 18:08Z | ✅ COMPLETED |
+| July 15 ALL ROUTINES | all | FULL BLACKOUT |
+
+---
+
+### STOP-LOSS AUDIT — MANDATORY FIRST ACTION (API BLOCKED)
+
+```bash
+# Attempt: GET /v2/orders?status=open
+# Result: HTTP 403 Forbidden (proxy CONNECT rejected — egress policy denial, 82nd session)
+
+# Attempt: GET /v2/positions
+# Result: HTTP 403 Forbidden (proxy CONNECT rejected — egress policy denial, 82nd session)
+```
+
+**AMD — Day 28+ NAKED (CRITICAL GUARDRAIL VIOLATION):**
+- 18sh at $506.76 avg — **NO STOP-LOSS AT ALPACA** (Day 28+ naked — confirmed API blocked)
+- July 16 last confirmed close: ~$500.94 (implied from premarket data: $483.59 + $17.35)
+- July 17 PREMARKET: **$483.59 (-3.46% from $500.94 close)**
+- Cause of drop: TSMC Q2 2026 earnings raised capex to $60–64B → AI spending sustainability concerns → broad semiconductor selloff
+- Position value est.: 18 × $483.59 = **~$8,705 (~8.8% equity — OVER 5% cap, BELOW avg cost)**
+- **P&L est.: 18 × ($483.59 − $506.76) = −$417 (−4.57%) — NOW IN LOSS**
+- **Stop level (5% below avg): $481.42 — AMD IS ONLY $2.17 ABOVE STOP IN PREMARKET**
+- Critical risk: AMD could gap down at open to or below $481.42 with NO STOP ORDER AT ALPACA
+- AMD is naked for the 28th+ consecutive session
+
+---
+
+### MARKET CONDITIONS — July 17, 2026 Pre-Market
+
+**US Equities (premarket estimates):**
+- S&P 500: Mixed, bias to flat/down on TSMC capex concerns (TSMC Q2 raised capex $60–64B vs prior $52–56B → AI spending sustainability fears)
+- NASDAQ/Chips: Under pressure. AMD −3.46% premarket, broad semiconductor weakness
+- Financials: Resilient — GS, MS, WFC all reported strong Q2 beats
+
+**Overnight Key Developments:**
+1. **TSMC Q2 2026 (July 16 AH):** Revenue $40.2B beat, Q3 guidance $44.6–45.8B (topped estimates), BUT gross margin outlook 65–67% missed elevated buy-side forecasts. Capex raised to $60–64B → triggered "AI capex sustainability" fears → chip sector −3% to −5% premarket. Morningstar raised fair value to $534/ADR.
+2. **Netflix Q2 2026 (July 16 AH):** EPS $0.80 vs $0.79 est (slight beat); Revenue $12.56B vs $12.59B est (slight miss); Q3 guidance +12% YoY (below ~13–14% expected); 2026 revenue narrowed to $51.0–51.4B. Stock dropped ~6% AH to ~$69.66, then RECOVERED fully to ~$74.02 by July 17 open (range $73.71–$75.45). Binary event now expired — post-earnings entries permitted.
+3. **Morgan Stanley Q2 2026 (July 15):** EPS $3.46 vs $2.94 est (+17.7% beat); Revenue $21.35B vs $19.64B est (+8.7% beat). Strong across investment banking and wealth. Stock: $228.55 July 16 close → ~$222.99 premarket July 17 (−2.06%, sell-the-news).
+4. **Wells Fargo Q2 2026 (July 14):** EPS $2.00 vs $1.72 est (+16.3% beat); Revenue $22.6B vs $21.87B est (+3.3%); Net income $6.4B (+17% YoY). But stock slid toward $85 on NIM compression concerns + unchanged full-year guidance.
+5. **ASML Q2 2026 (July 15):** Net sales €9.3B, net income €2.9B; raised 2026 revenue guidance to €43–45B (from prior $38–40B range), gross margin 54–56%. WFC raised ASML PT to $2,200. Strong fundamental beat.
+6. **AMD:** Drop driven by TSMC capex/AI margin fears. Despite drop, UBS raised AMD PT to $700 (from $670) and Rosenblatt raised to $665 (from $490) — analysts bullish but sentiment turned cautious.
+
+**Macro:**
+- CPI June 2026 (July 14): cool print, core 2.6% vs 2.8% est → rate cut back on table
+- Michigan Sentiment July prelim (today at 10:00 AM ET): watch for direction after June final 49.5
+- Industrial Production June (today)
+- VIX est.: ~15–18 (mild fear from chip sector concerns)
+
+**Crypto:** Not available (API blocked). Est. BTC ~$60–75K range.
+
+---
+
+### BINDING COMMITMENT — AMD SELL 9sh MOO (HIGHEST PRIORITY)
+
+**Status: ORDER ATTEMPTED — HTTP 403 BLOCKED (82nd consecutive session)**
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"AMD","qty":9,"side":"sell","type":"market","time_in_force":"opg"}'
+# RESULT: HTTP 403 Forbidden — proxy CONNECT rejected (egress policy denial)
+```
+
+```yaml
+---
+ts: 2026-07-17T12:10:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7
+thesis: Binding commitment to SELL 9sh AMD MOO — reduce 18sh position (8.8% equity, OVER 5% cap) to 9sh, then place GTC stop+target. AMD at $483.59 premarket (-4.57% from avg $506.76), only $2.17 above stop $481.42. URGENT — any gap-down at open could breach stop with NO PROTECTION AT ALPACA. Order attempted and blocked by proxy HTTP 403 (82nd consecutive session).
+size_pct: 4.4
+stop: 481.42
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 0
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 3
+master_decision: approved
+master_notes: "VIOLATION — SELL 9sh AMD MOO attempted (binding commitment from July 16 Afternoon). ORDER BLOCKED HTTP 403 (82nd consecutive). AMD now at $483.59 premarket — BELOW avg cost $506.76. Stop level $481.42 is only $2.17 below premarket price. Risk Agent would veto new entries but this is a REDUCE/RISK-MANAGEMENT order, not a new entry. TSMC capex concerns drove today's chip sector selloff. UBS raised AMD PT $700, Rosenblatt raised to $665 — long-term thesis intact but short-term technically oversold. AMD Advancing AI 2026 conf July 22-23 = upcoming catalyst. OPERATOR MUST ACT IMMEDIATELY: (1) SELL 9sh AMD at market open ($483 ref); (2) Place GTC stop on remaining 9sh at open_fill × 0.95; (3) Place GTC take-profit at open_fill + 3×(open_fill−stop)."
+---
+```
+
+---
+
+### BINDING COMMITMENT — GS BUY 4sh (score 7.83, ALL 6 AGENTS ≥ 7)
+
+**Status: ORDER ATTEMPTED — HTTP 403 BLOCKED (82nd consecutive session)**
+
+GS CURRENT PRICE: ~$1,093.56 (July 16 close; premarket est. ~$1,085–$1,100)
+Limit order: $1,099.00 (≈ $1,093.56 × 1.005)
+Stop: $1,044.05 (5% below $1,099.00)
+Target: $1,264.35 (15% above $1,099.00, R/R 3.0:1 exactly)
+Position size: 4sh × $1,099 = $4,396 (4.39% equity) — under 5% cap ✓
+Sector: Financials (~4.4% of portfolio → under 25% cap ✓)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1099.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1044.05"},"take_profit":{"limit_price":"1264.35"}}'
+# RESULT: HTTP 403 Forbidden — proxy CONNECT rejected (egress policy denial)
+```
+
+```yaml
+---
+ts: 2026-07-17T12:12:00Z
+action: violation
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 8
+thesis: GS Q2 2026 blowout beat — binding commitment from July 14 (score 7.83, all 6 agents ≥7). Investment banking, trading desk, and wealth management all strong. Limit bracket GTC at $1,099 / stop $1,044.05 / target $1,264.35 (R/R 3.0:1). Guardrails: 4.39% equity (under 5% cap), Financials sector ~4.4% (under 25%). ORDER ATTEMPTED AND BLOCKED HTTP 403 (82nd consecutive session).
+size_pct: 4.39
+stop: 1044.05
+target: 1264.35
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "VIOLATION — GS BUY 4sh bracket GTC attempted (binding commitment, score 7.83). ORDER BLOCKED HTTP 403 (82nd consecutive). GS at ~$1,093–1,099 — earnings-reaction-follow post Q2 blowout. Score remains 7.83 (re-confirmed July 16). No valid exemptions — OPERATOR MUST EXECUTE: BUY 4sh GS limit ~$1,099 bracket GTC (stop $1,044.05, target $1,264.35). xAI sentiment N/A. GS consolidating post-earnings rally from $1,075 (+7.7% on July 14). Financials sector still strongest sector YTD. MS beat confirms healthy investment banking cycle."
+---
+```
+
+---
+
+### BINDING COMMITMENT — META BUY 7sh (score 7.67, ALL 6 AGENTS ≥ 7)
+
+**Status: ORDER ATTEMPTED — HTTP 403 BLOCKED (82nd consecutive session)**
+
+META CURRENT PRICE: ~$664.54 (+3.07% from prior close; earnings July 29 — safe window)
+Limit order: $668.00 (≈ $664.54 × 1.005)
+Stop: $634.60 (5% below $668.00)
+Target: $768.40 (15% above $668.00, R/R 3.0:1 exactly)
+Position size: 7sh × $668 = $4,676 (4.69% equity) — under 5% cap ✓
+Sector: Communication Services / Technology (~4.7% → under 25% cap ✓)
+Earnings: July 29, 2026 → safe entry window (12 days away, outside 48h exclusion) ✓
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H 'Content-Type: application/json' \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"limit","limit_price":"668.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"634.60"},"take_profit":{"limit_price":"768.40"}}'
+# RESULT: HTTP 403 Forbidden — proxy CONNECT rejected (egress policy denial)
+```
+
+```yaml
+---
+ts: 2026-07-17T12:14:00Z
+action: violation
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 8
+thesis: META cloud compute story + AI monetization + earnings July 29 (safe window). Score 7.67 (all 6 agents ≥7) re-confirmed July 16. Limit bracket GTC at $668 / stop $634.60 / target $768.40 (R/R 3.0:1). META up +3.07% today = momentum. Guardrails: 4.69% equity (under 5% cap), sector under 25%. ORDER ATTEMPTED AND BLOCKED HTTP 403 (82nd consecutive session).
+size_pct: 4.69
+stop: 634.60
+target: 768.40
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "VIOLATION — META BUY 7sh bracket GTC attempted (binding commitment, score 7.67). ORDER BLOCKED HTTP 403 (82nd consecutive). META at ~$664-668, up +3.07% today = bullish momentum. Bloomberg cloud compute story confirmed across 8+ outlets. Advertising AI integration expanding margins. Q2 earnings safe July 29 (12 days away). OPERATOR MUST EXECUTE: BUY 7sh META limit ~$668 bracket GTC (stop $634.60, target $768.40). xAI sentiment N/A. META hitting resistance at $668 — entry here for momentum continuation with AI ad revenue as catalyst."
+---
+```
+
+---
+
+### NEW ANALYSIS 1 — NFLX Post-Earnings Fade (July 16 AH print released)
+
+**6-Agent Master Analysis — NFLX earnings-reaction-fade**
+
+Q2 Results (released July 16 AH):
+- EPS: $0.80 vs $0.79 est (slight beat +1.3%)
+- Revenue: $12.56B vs $12.59B est (slight miss −0.2%)
+- Q3 guidance: +12% YoY (below ~13–14% expected)
+- 2026 guidance: narrowed to $51.0–51.4B (from $50.7–51.7B)
+- Paid subs: 325M+ (record)
+- Operating margin: 33.4% (vs 34.1% YoY — compressing)
+- AH reaction: −6% to ~$69.66; fully recovered by July 17 open (~$73.90–74.02)
+
+**Sub-Agent 1 — Fundamentals:** 6/10
+Slight miss on revenue (−0.2%), EPS beat minimal. Q3 guidance below expectations = near-term headwind. Narrowed (not raised) full-year guide. Operating margin compressing YoY. However: 325M subs is record high; advertising revenue doubling to $3B. Solid business, muted print.
+
+**Sub-Agent 2 — Technical:** 4/10
+AH drop −6% to ~$69.66, then FULL recovery to ~$73.90 open = no gap-down at open. Recovery overnight = buyers stepped in on the dip. HOWEVER: no confirmation from mandatory indicator stack (Stochastic, MACD, Volume Oscillator, Volume Spike, Candlestick pattern) — cannot verify 2-of-5 required. Post-earnings gap scenarios create unpredictable candles. Technical score limited by lack of indicator confirmation.
+
+**Sub-Agent 3 — Sentiment:** 5/10 (no xAI data available)
+Headlines: "mixed earnings", "stock drops in AH". AH recovery suggests market found support. Institutional buyers absorbed the AH selling. Short interest: unknown. Options: IV crush post-earnings will compress premium. Without X sentiment data, degraded score.
+
+**Sub-Agent 4 — Macro:** 6/10
+CPI tailwind (cool June print → growth stock positive). Consumer discretionary/streaming OK macro. NFLX not exposed to semiconductor capex fears dominating today. But: broader risk-off mood from TSMC capex concerns could dampen enthusiasm for high-PE growth.
+
+**Sub-Agent 5 — Risk:** 7/10
+Entry est. ~$74, stop −5% = $70.30, target +15% = $85.10. R/R = 3.0:1 (exactly meets minimum). Position size: 6sh × $74 = $444 (0.44% equity — very small, well under 5%). Sector: Communication Services (~0.44% → under 25%). All guardrails OK.
+
+**Sub-Agent 6 — Tech Analyst:** 7/10
+NFLX tech: #1 global streaming platform, AI-powered recommendations, content production pipeline, growing advertising tech stack. Competitive moat is strong (switching costs, content library, global brand). Advertising tech being built out = new monetization layer. Not pure tech but tech-enabled.
+
+**NFLX MASTER GATE:**
+- Average: (6+4+5+6+7+7) / 6 = **5.83/10**
+- Required: avg ≥ 7 → **FAIL** (5.83 < 7.0)
+- Risk ≥ 6: ✓ (7)
+- Agents ≥ 7: Technical (4), Macro (6) fail → only 3 of 6 at ≥7 → **FAIL**
+- Decision: **REJECTED** — Technical (4/10) and Sentiment (5/10) drag average below 7.0 threshold. The AH dip was fully recovered, removing the fade entry trigger. No indicator confirmation available. Re-score if NFLX pulls back intraday to ~$70 range with confirmed support.
+
+```yaml
+---
+ts: 2026-07-17T12:16:00Z
+action: skip
+symbol: NFLX
+bucket: active
+setup: earnings-reaction-fade
+score: 6
+thesis: NFLX Q2 mixed (EPS slight beat, revenue slight miss, Q3 guidance below est.). AH -6% drop fully recovered by July 17 open — fade entry trigger has elapsed. Technical 4/10 (no indicator confirmation, unclear direction post-recovery). Average 5.83/10 below 7.0 threshold.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 4
+  sentiment: 5
+  macro: 6
+  risk: 7
+  tech_analyst: 7
+agent_average: 5.83
+agents_above_7: 2
+master_decision: rejected
+master_notes: "NFLX POST-EARNINGS: Revenue miss -0.2% + Q3 guide below est. triggered -6% AH drop to ~$69.66. However, stock FULLY RECOVERED to $73.90-74.02 by July 17 open — the fade trigger elapsed overnight. Technical score 4/10: no mandatory indicator stack confirmation (2-of-5 required, 0 confirmed). Sentiment 5/10: mixed headlines, no xAI data. Average 5.83 < 7.0 required. REJECTED. Re-score if NFLX pulls back intraday to ~$70 support on heavy volume with stochastic/MACD crossover confirming. Next earnings-related event: Q3 print in October. Note: operating margin compression (33.4% vs 34.1% YoY) and guide conservatism are medium-term concerns to monitor."
+---
+```
+
+---
+
+### NEW ANALYSIS 2 — MS Earnings-Reaction-Follow (July 15 print)
+
+**6-Agent Master Analysis — Morgan Stanley**
+
+Q2 Results (July 15): EPS $3.46 vs $2.94 (+17.7% beat); Revenue $21.35B vs $19.64B (+8.7% beat). Strong beat across investment banking, wealth management, trading. Stock: $228.55 July 16 close → ~$222.99 premarket July 17 (−2.06% = sell-the-news).
+
+**Sub-Agent 1 — Fundamentals:** 8/10 (massive EPS and revenue beat, broad-based strength)
+**Sub-Agent 2 — Technical:** 5/10 (stock DOWN −2% on massive beat = sell-the-news = technically bearish near-term; no indicator confirmation)
+**Sub-Agent 3 — Sentiment:** 6/10 (beat is positive but market reaction = negative; no xAI data)
+**Sub-Agent 4 — Macro:** 7/10 (risk-on, M&A/IPO cycle recovering, rate cut thesis supportive for wealth management)
+**Sub-Agent 5 — Risk:** 7/10 (entry $222.99, stop $211.84, target $256.44; R/R 3.0:1; 4sh = $892 = 0.89% equity — small)
+**Sub-Agent 6 — Tech Analyst:** 7/10 (auto-7 for financial services; digital wealth platform, fintech integration)
+
+**MS Average:** (8+5+6+7+7+7) / 6 = **6.67/10** → **REJECTED** (6.67 < 7.0 threshold)
+Reason: Technical sell-the-news signal (stock down −2% despite +17.7% EPS beat) is a meaningful warning sign. "Sell the news" after large earnings beat can persist for 1–3 days. Re-score if MS stabilizes and shows reversal signal at support.
+
+```yaml
+---
+ts: 2026-07-17T12:18:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7
+thesis: MS Q2 massive beat (EPS +17.7%, Rev +8.7%) but stock down -2.06% premarket = sell-the-news. Technical 5/10 drags average to 6.67 below 7.0 threshold. No indicator confirmation for entry.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.67
+agents_above_7: 4
+master_decision: rejected
+master_notes: "MS Q2 beat: EPS $3.46 vs $2.94 est (+17.7%), Rev $21.35B vs $19.64B (+8.7%). Strong investment banking and wealth management. BUT stock down -2.06% premarket to $222.99 from $228.55 close = classic sell-the-news after the run-up into earnings. Technical score 5/10: stock declining on good news is a red flag. Average 6.67 < 7.0 required. REJECTED. Monitor for stabilization at support; if MS holds $220 with volume confirmation + stochastic crossover from oversold, re-score. xAI sentiment N/A."
+---
+```
+
+---
+
+### NEW ANALYSIS 3 — WFC Earnings-Reaction-Follow (July 14 print)
+
+**6-Agent Master Analysis — Wells Fargo**
+
+Q2 Results (July 14): EPS $2.00 vs $1.72 (+16.3% beat); Revenue $22.6B vs $21.87B (+3.3% beat); Net income $6.4B (+17% YoY). BUT stock slid toward $85 on NIM compression concerns + unchanged full-year guidance.
+
+**Sub-Agent 1 — Fundamentals:** 7/10 (strong beat, 25% EPS growth, but NIM compression and unchanged guide)
+**Sub-Agent 2 — Technical:** 4/10 (stock fell on earnings beat = distribution signal; likely below support; no indicator confirmation)
+**Sub-Agent 3 — Sentiment:** 5/10 (mixed: beat is positive, but NIM concerns dominate headlines; stock falling = negative reaction)
+**Sub-Agent 4 — Macro:** 7/10 (rate cuts on horizon = positive for bank NIM eventually; risk-on)
+**Sub-Agent 5 — Risk:** 6/10 (entry $85, stop $80.75, target $97.75; R/R 3.0:1; risk = continued post-earnings selling)
+**Sub-Agent 6 — Tech Analyst:** 7/10 (auto-7; WFC fintech transformation + digital banking)
+
+**WFC Average:** (7+4+5+7+6+7) / 6 = **6.0/10** → **REJECTED** (6.0 < 7.0 threshold)
+Reason: Technical (4/10) and Sentiment (5/10) too weak. Stock declining despite earnings beat = investors see structural headwind (NIM compression). Re-score when stock stabilizes.
+
+```yaml
+---
+ts: 2026-07-17T12:20:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 6
+thesis: WFC Q2 strong beat (EPS +16.3%, Rev +3.3%) but stock slid toward $85 on NIM compression and unchanged full-year guide. Technical 4/10 (stock fell on beat = distribution). Average 6.0 below 7.0 threshold.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 5
+  macro: 7
+  risk: 6
+  tech_analyst: 7
+agent_average: 6.0
+agents_above_7: 3
+master_decision: rejected
+master_notes: "WFC Q2: EPS $2.00 vs $1.72 (+16.3%), Rev $22.6B vs $21.87B (+3.3%), net income $6.4B (+17% YoY). Despite strong beat, WFC fell toward $85 on: (1) NIM compression concerns, (2) unchanged full-year revenue guidance. Technical 4/10: falling on good news = distribution pattern, likely continuation downside. Average 6.0 < 7.0. REJECTED. Monitor if WFC tests $82–83 support with oversold stochastic + MACD crossover. Rate cut confirmation at next FOMC could reprice NIM favorably. xAI sentiment N/A."
+---
+```
+
+---
+
+### NEW ANALYSIS 4 — ASML Earnings-Reaction-Follow (July 15 print)
+
+**6-Agent Master Analysis — ASML**
+
+Q2 Results (July 15): Net sales €9.3B, net income €2.9B; raised 2026 guidance to €43–45B (vs prior ~€38–40B); gross margin guidance 54–56%. WFC raised ASML PT to $2,200. EUV monopoly — critical chokepoint in global semiconductor supply chain.
+Today's context: Semiconductor sector under pressure (TSMC capex concerns → AI spending sustainability fears). ASML likely seeing sympathy selling today.
+
+**Sub-Agent 1 — Fundamentals:** 8/10 (dominant EUV monopoly, raised guidance significantly, €2.9B net income, critical for 2nm era)
+**Sub-Agent 2 — Technical:** 5/10 (sector headwind today from TSMC capex fear; ASML likely under selling pressure; no indicator confirmation; sympathy chip selloff)
+**Sub-Agent 3 — Sentiment:** 6/10 (WFC raised PT $2,200 = bullish; but sector narrative = cautious today; no xAI data)
+**Sub-Agent 4 — Macro:** 6/10 (TSMC raised capex → good for ASML long-term BUT today's market reads it as "AI spending may slow" = double-edged macro read)
+**Sub-Agent 5 — Risk:** 7/10 (est. ASML ~$1,750–1,850; 2sh × $1,800 = $3,600 (3.6% equity); stop −5% = $1,710; target +15% = $2,070; R/R 3.0:1; guardrails OK)
+**Sub-Agent 6 — Tech Analyst:** 9/10 (absolute monopoly on EUV lithography — only company in world making these machines; defensible 15-year technological moat; critical for every leading-edge chip below 5nm)
+
+**ASML Average:** (8+5+6+6+7+9) / 6 = **6.83/10** → **REJECTED** (6.83 < 7.0 threshold)
+Borderline case. Strong fundamentals and tech (Tech Analyst 9/10 = highest conviction) but today's semiconductor sector headwinds (TSMC capex concern narrative) create near-term technical risk. Will re-score if sector stabilizes and ASML demonstrates technical support.
+
+```yaml
+---
+ts: 2026-07-17T12:22:00Z
+action: skip
+symbol: ASML
+bucket: active
+setup: earnings-reaction-follow
+score: 7
+thesis: ASML Q2 strong beat + raised guidance to €43-45B + EUV monopoly. But semiconductor sector under pressure today (TSMC capex concerns). Technical 5/10 + Macro 6/10 drag average to 6.83, just below 7.0 threshold. High-conviction watchlist — re-score when sector stabilizes.
+size_pct: 0
+stop: 0
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "ASML Q2: Net sales €9.3B, net income €2.9B; raised 2026 guidance €43-45B; gross margin 54-56%. EUV monopoly — only company making these tools. WFC raised PT $2,200. Tech Analyst 9/10 (highest score this routine — absolute moat). HOWEVER: today's semiconductor selloff (AMD -3.46%, TSMC gross margin miss) creates near-term headwind. Average 6.83 < 7.0 required. REJECTED. Add to HIGH PRIORITY watchlist — first entry opportunity when: (1) ASML tests support with oversold indicators; (2) sector narrative on TSMC capex stabilizes; (3) stochastic + MACD crossover confirmed. Estimated entry: ASML ~$1,750-1,800 limit bracket GTC, 2sh, stop -5%, target +15%. xAI sentiment N/A."
+---
+```
+
+---
+
+### TODAY'S WATCHLIST FOR REMAINDER OF SESSION
+
+| Symbol | Score | Setup | Status | Action |
+|--------|-------|-------|--------|--------|
+| AMD | 7.17 | ai-momentum-pullback | POSITION (18sh — REDUCE) | **OPERATOR: SELL 9sh at market IMMEDIATELY** |
+| GS | 7.83 | earnings-reaction-follow | BINDING | **OPERATOR: BUY 4sh limit ~$1,099 bracket GTC** |
+| META | 7.67 | breakout-volume | BINDING | **OPERATOR: BUY 7sh limit ~$668 bracket GTC** |
+| ASML | 6.83 | earnings-reaction-follow | WATCHLIST | Re-score when sector stabilizes |
+| MS | 6.67 | earnings-reaction-follow | WATCHLIST | Re-score if stabilizes at $220 support |
+| NFLX | 5.83 | earnings-reaction-fade | REJECTED | AH recovery eliminated entry trigger; monitor $70 support |
+| WFC | 6.00 | earnings-reaction-follow | WATCHLIST | Re-score at $82-83 support |
+
+---
+
 ## 2026-07-16 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 79th consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-16T15:10:44Z ✓

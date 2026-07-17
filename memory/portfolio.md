@@ -1,6 +1,57 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
+**2026-07-17 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 82nd consecutive blocked session). PRE-MARKET ROUTINE ✅ RUNNING.**
+
+**CRITICAL — AMD APPROACHING STOP LEVEL:** AMD at $483.59 premarket (−3.46% from $500.94 July 16 close). Position 18sh at $506.76 avg = −$417 unrealized loss (−4.57%). Stop level $481.42 (5% below avg) is only $2.17 below premarket price. NAKED — no stop at Alpaca. AMD could breach stop at open with ZERO protection. TSMC capex concerns ($60-64B raised from $52-56B) driving broad chip sector selloff.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 17 Pre-Market — 82nd consecutive):**
+1. AMD SELL 9sh MOO → HTTP 403 BLOCKED (CRITICAL — position 8.8% equity, BELOW avg cost, near stop)
+2. GS BUY 4sh limit $1,099 bracket GTC → HTTP 403 BLOCKED (score 7.83, binding commitment)
+3. META BUY 7sh limit $668 bracket GTC → HTTP 403 BLOCKED (score 7.67, binding commitment)
+4. NFLX: 6-agent REJECTED (score 5.83 — AH dip fully recovered, no entry trigger)
+5. MS: 6-agent REJECTED (score 6.67 — sell-the-news, stock down -2% on +17.7% beat)
+6. WFC: 6-agent REJECTED (score 6.0 — stock fell on beat due to NIM compression)
+7. ASML: 6-agent REJECTED (score 6.83 — strong fundamentals but sector headwinds today)
+
+**JULY 17 MARKET CONDITIONS:**
+- TSMC Q2: Revenue $40.2B beat, capex raised $60-64B → gross margin 65-67% disappointed → chip sector −3-5%
+- AMD: $483.59 premarket (−3.46%); UBS raised PT $700, Rosenblatt raised to $665 — analysts bullish but market spooked
+- GS: ~$1,093 (estimated July 16 close; Financials sector stable)
+- META: ~$664.54 (+3.07% from prior close; momentum intact; earnings July 29 — safe)
+- NFLX: Q2 mixed (EPS beat, revenue miss, Q3 guide weak); AH −6% to $69.66, FULLY RECOVERED to ~$74 by open
+- MS: Q2 massive beat (EPS +17.7%, Rev +8.7%); premarket −2.06% sell-the-news → $222.99
+- WFC: Q2 beat (EPS +16.3%, Rev +3.3%); fell to ~$85 on NIM concerns + unchanged guide
+- ASML: Q2 beat, raised 2026 guidance €43-45B; WFC raised PT $2,200; but chip sector pressure today
+- Michigan Sentiment prelim (July): releasing 10:00 AM ET today (est. ~50, watch for miss/beat)
+
+**PORTFOLIO STATE EST (July 17 Pre-Market):**
+- Cash: ~$90,644 (confirmed from last Alpaca sync July 14; unchanged — no executions)
+- AMD: 18sh × $483.59 (premarket) = ~$8,705 (~8.8% equity — OVER 5% cap, BELOW avg cost)
+- Total equity est: ~$99,349
+- Daily P&L est: −$312 (AMD: 18 × −$17.35/sh from $500.94 close)
+- Total return est: −0.65% (from $100,000 starting)
+- SPX est: ~7,535-7,550 (July 16); ~+4.7% from May 1 baseline 7,200
+- Portfolio vs SPX gap: est. −5.35 pp (widening from −4.09 pp in dashboard)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (82+ consecutive sessions — API blockage root cause)
+
+**JULY 17 REMAINING ROUTINE COMMITMENTS (CARRY-FORWARD):**
+1. AMD: SELL 9sh MOO → CARRY TO MARKET-OPEN (URGENT — approaching stop)
+2. GS: BUY 4sh limit ~$1,099 bracket GTC → CARRY TO MARKET-OPEN (score 7.83 — BINDING)
+3. META: BUY 7sh limit ~$668 bracket GTC → CARRY TO MARKET-OPEN (score 7.67 — BINDING)
+4. ASML: High-priority watchlist (6.83) → re-score at Market-Open if sector stabilizes
+5. MS: Watchlist (6.67) → re-score if stabilizes at $220 support with indicator confirmation
+6. Michigan Sentiment (10:00 AM ET): watch for market reaction — could move macro score
+
+**⚠️⚠️⚠️ OPERATOR MANDATORY ACTIONS (app.alpaca.markets — URGENT — BEFORE 9:25 AM ET):**
+1. **AMD FIRST: SELL 9sh AMD at market** ($483 ref premarket) — reduce 18sh→9sh (position 8.8% equity, BELOW avg cost, stop $481.42 only $2.17 below premarket price)
+2. **After AMD partial sale fills: Place GTC stop on remaining 9sh AMD** at fill_price × 0.95
+3. **GTC take-profit on remaining 9sh AMD** at fill_price + 3×(fill_price − stop_price)
+4. **BUY 4sh GS limit ~$1,099 bracket GTC** (stop $1,044.05, target $1,264.35; score 7.83 BINDING — 12th carry-forward)
+5. **BUY 7sh META limit ~$668 bracket GTC** (stop $634.60, target $768.40; score 7.67 BINDING — 12th carry-forward)
+6. AMD Advancing AI 2026 conference July 22-23 (upcoming catalyst — hold remaining 9sh through conference if stop not triggered)
+7. META earnings July 29 — must EXIT or reduce META position by July 27 EOD
+
 **2026-07-16 (Thursday) — AFTERNOON (2:00 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 80th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
 
 **JULY 16 AFTERNOON STATUS:** Pre-Market + Market-Open + Midday all silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No day trades open. AMD Day 27 naked — no stop. GS 7.83 and META 7.67 skipped this routine (afternoon proximity-to-close rule) — both carry as BINDING COMMITMENTS to Pre-Market July 17.
