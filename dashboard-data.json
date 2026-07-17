@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-16T18:08:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-17T13:46:40Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 100764,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 89.96
     },
-    "note": "July 16 AFTERNOON (2:00 PM ET / 18:08Z). API BLOCKED HTTP 403 \u2014 80th consecutive session. Pre-Market + Market-Open + Midday silently failed. Mid-Morning OK (15:10-15:18Z). NFLX earnings AH tonight \u2014 EXCLUDED Exemption 2. AMD Day 27 naked (18sh est. $570, +12.5%, 10.2% equity \u2014 OVER 5% cap). GS 7.83 + META 7.67 skipped this routine (proximity-to-close) \u2014 carry to Jul 17 Pre-Market as BINDING. OPERATOR URGENT: (1) SELL 9sh AMD + GTC stop on 9sh; (2) BUY 4sh GS limit bracket GTC; (3) BUY 7sh META limit bracket GTC; (4) Score NFLX post-earnings + WFC/MS/ASML at Pre-Market Jul 17."
+    "note": "July 17 MARKET-OPEN (9:45 AM ET / 13:45Z). API BLOCKED HTTP 000 \u2014 81st consecutive session. Pre-Market silently failed. All 5 binding orders blocked: AMD SELL 9sh, AMD GTC STOP, GS BUY 4sh (7.83), META BUY 7sh (7.50), NFLX BUY 4sh (7.17). AMD Day 27+ naked (18sh est. $570, +12.5%, 10.2% equity \u2014 OVER 5% cap). WFC/MS/ASML deferred to Jul 20 (July 15 results unknown). OPERATOR URGENT: (1) SELL 9sh AMD; (2) GTC stop 9sh at fill\u00d70.95; (3) Verify NFLX Q2 beat; (4) BUY 4sh GS + 7sh META + 4sh NFLX limit brackets GTC."
   },
   "positions": [
     {

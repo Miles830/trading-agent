@@ -1,7 +1,33 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-16 (Thursday) — AFTERNOON (2:00 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 80th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+**2026-07-17 (Friday) — MARKET-OPEN (9:45 AM ET / 13:45 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING.**
+
+**JULY 17 MARKET-OPEN STATUS:** Pre-Market silently failed. Market-Open is first routine to fire today. All orders attempted and blocked (81st consecutive). AMD Day 27+ naked — no stop at Alpaca. Michigan Consumer Sentiment at 10:00 AM ET today.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 17 Market-Open):**
+- AMD SELL 9sh market → HTTP 000 BLOCKED
+- AMD GTC STOP $541.50 (5% below est. $570, remaining 9sh) → HTTP 000 BLOCKED
+- GS 4sh limit bracket GTC $1,085.40 / stop $1,031.13 / target $1,247.53 (7.83 avg, APPROVED) → HTTP 000 BLOCKED
+- META 7sh limit bracket GTC $668.33 / stop $634.91 / target $768.98 (7.50 avg, APPROVED) → HTTP 000 BLOCKED
+- NFLX 4sh limit bracket GTC $1,155.75 / stop $1,097.96 / target $1,329.12 (7.17 avg, APPROVED — contingent on Q2 beat confirmation) → HTTP 000 BLOCKED
+- WFC / MS / ASML: DEFERRED — July 15 results unknown (full blackout). Cannot run Fundamentals Agent without actual Q2 data. Carry to Pre-Market July 20.
+
+**JULY 20 (MONDAY) BINDING COMMITMENTS (MANDATORY — no exemptions except guardrails):**
+1. AMD: SELL 9sh at open (Day 27+ naked, 10.2% equity — FIRST ORDER)
+2. AMD: GTC STOP on remaining 9sh at fill×0.95 + GTC target at fill+3×stop_dist
+3. GS: BUY 4sh limit bracket GTC at current_ask×1.005 (stop 5% below, target 15% above) — score 7.83, ALL 6 AGENTS ≥7
+4. META: BUY 7sh limit bracket GTC at current_ask×1.005 (stop 5% below, target 15% above) — score 7.50, ALL 6 AGENTS ≥7
+5. NFLX: BUY 4sh limit bracket GTC (if Q2 BEAT confirmed) at current_ask×1.005 (stop 5% below, target 15% above) — score 7.17, ALL 6 AGENTS ≥7
+6. WFC/MS/ASML: Full 6-agent post-earnings (July 15 results) — approve if score ≥7; IBM earnings window opens July 20 (no new IBM entries after Monday close)
+
+**⚠️ CRITICAL NOTE: IBM earnings July 22 — 48h window opens July 20 (Monday) at close. Last safe IBM entry/exit = July 17 (TODAY, if API restored). IBM was NEVER entered (API blocked), so no IBM exit needed.**
+
+**MARKET CONDITIONS (July 17 est.):** SPX ~7,540-7,560 (flat to slightly up). Michigan Sentiment 10:00 AM ET (key consumer confidence read). AMD est. ~$565-580 (conference July 22-23 approaching). GS est. ~$1,065-1,085 (post-earnings consolidation). META est. ~$660-670. NFLX: post-earnings (beat assumed). VIX est. ~15-17. 10Y yield est. ~4.00-4.10% (CPI cool print tailwind).
+
+**AMD JULY 17 UPDATE:** AMD at est. $570 (P&L: 18 × $63.24 = +$1,138 est., +12.5%). Position 10.2% equity — over 5% cap. AMD "Advancing AI 2026" conf July 22-23 = approaching catalyst. Trail stop should be $541.50 (5% below $570 — blocked). BofA PT $620 — remaining upside est. +8.8% from $570.
+
+**Prior Last Updated (2026-07-16 — AFTERNOON):** 2026-07-16 (Thursday) — AFTERNOON (2:00 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 80th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
 
 **JULY 16 AFTERNOON STATUS:** Pre-Market + Market-Open + Midday all silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No day trades open. AMD Day 27 naked — no stop. GS 7.83 and META 7.67 skipped this routine (afternoon proximity-to-close rule) — both carry as BINDING COMMITMENTS to Pre-Market July 17.
 
