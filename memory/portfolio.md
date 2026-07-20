@@ -1,6 +1,87 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
+**2026-07-20 (Monday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 82nd consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+
+**JULY 20 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed (violations logged). Mid-Morning is first routine to fire today. AMD RECOVERED — AMD/Microsoft Helios partnership announced this morning ($513.21, +3.5–5%). All 7 order attempts blocked (82nd consecutive session). IBM 48h earnings window OPEN (earnings July 22 AH) — no IBM entries.
+
+**KEY DEVELOPMENT — AMD/MICROSOFT HELIOS (July 20, 2026):**
+- Microsoft announced it will deploy AMD's Helios Rackscale Solution (Instinct MI455X GPUs + EPYC Venice + Pensando DPUs + ROCm) for frontier model AI inference on Azure
+- Two new Azure VM series: HDv2 (agentic AI), HXv2 (semiconductor design) — powered by EPYC Venice
+- Helios ships H2 2026; Microsoft joins Meta, OpenAI, Oracle as Helios customers
+- AMD at ~$513.21 (+3.5–5%) — ABOVE avg entry cost $506.76 — stop-breach July 17 has fully recovered
+- AMD scored 8.50 (all 6 agents) — HOLD 9sh thesis confirmed; sell 9sh for cap compliance still mandatory
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Mid-Morning — all HTTP 000):**
+1. AMD SELL 9sh limit $510.00 DAY → HTTP 000 (cap compliance mandatory; 18sh=9.24% → must be 4.62%)
+2. AMD GTC STOP $487.55 (18sh, trailed from $481.42) → HTTP 000 (Day 29 naked)
+3. AMD GTC take-profit $590.19 (9sh) → HTTP 000
+4. GS: BUY 4sh limit bracket GTC $1,145.70 / stop $1,088.42 / target $1,317.56 → HTTP 000 (score 7.50 APPROVED)
+5. META: BUY 7sh limit bracket GTC $660.01 / stop $627.01 / target $759.01 → HTTP 000 (score 7.33 APPROVED)
+6. WFC: BUY 30sh limit bracket GTC $88.10 / stop $83.70 / target $101.32 → HTTP 000 (score 7.17 APPROVED)
+7. MS: BUY 20sh limit bracket GTC $230.00 / stop $218.50 / target $264.50 → HTTP 000 (score 7.67 APPROVED)
+8. IBM: SKIPPED — Exemption 2 (48h earnings window, earnings July 22 AH)
+
+**MARKET CONDITIONS (July 20, 11:10 AM ET — WEB SEARCH CONFIRMED):**
+- S&P 500: ~7,495 (+0.5%) | Nasdaq: +0.8% | Recovery after SOX chip index −10% last week
+- AMD: ~$513.21 (+3.5–5%) — Microsoft Helios deal catalyst
+- META: ~$656.73 (flat) — cloud compute service thesis intact; analysts PT $700
+- GS: ~$1,140 (+9% post Q2 blowout July 15; WF analyst PT $1,325)
+- WFC: ~$87.66 (flat, post Q2 beat EPS $1.96 vs $1.73 est.)
+- MS: ~$230 (near ATH; Q2 exceptional: EPS $3.46, revenue +27%, equities record $6.3B)
+- VIX: ~18.77 (elevated from chip selloff last week)
+- BTC: $64,378 (flat in low $64K range)
+
+**IBM STATUS (July 20 — CRITICAL WINDOW):**
+- IBM earnings July 22, 2026 AH (conference call 5:00 PM ET)
+- Preliminary results already released: Revenue $17.2B vs $17.86B est. (miss), EPS $2.93 vs $3.01 est. (miss)
+- Infrastructure segment: −7% (mainframe weakness); Software/consulting OK
+- 48h blackout window OPEN as of today July 20 → NO IBM entries/exits
+- IBM was never entered in prior sessions (API blocked) — no position to exit
+- Full results July 22 AH — SKIP all IBM activity until July 23 earliest
+
+**AMD STOP BREACH UPDATE (July 17 → July 20):**
+- July 17: AMD fell to $465.79, breaching $481.42 stop — mandatory exit attempted, blocked
+- July 20: AMD recovered to $513.21 (+10.2% from July 17 low) — above entry cost $506.76
+- Stop TRAILED UP to $487.55 (5% below current $513.21)
+- AMD Advancing AI 2026 conference July 22-23 (NOT binary event; NOT IBM; AMD entries eligible)
+- Lisa Su keynote expected July 23; MSFT CEO Satya Nadella expected to endorse at conference
+- AMD RE-SCORED 8.50 (all 6 agents) — HOLD 9sh after cap-compliance sell of 9sh
+
+**PORTFOLIO STATE EST (July 20 Mid-Morning):**
+- Cash: $90,644 (90.7%)
+- AMD: 18sh × $513.21 = ~$9,238 (9.2%) — over 5% cap — blocked
+- Total equity est.: ~$99,882
+- Performance vs SPX (May 1 baseline 7,200 → July 20 est. 7,495 = +4.10%): est. −0.12% → gap −4.22 pp
+- Gap narrowed from −4.43 pp (July 17) due to AMD recovery
+- 20-DAY UNDERPERFORMANCE FLAG: Active (82nd consecutive session — API blockage root cause)
+- Circuit breaker: Daily gain +$116 (AMD recovery) — NOT tripped ✓
+
+**JULY 20 BINDING COMMITMENTS (MANDATORY — carry to Midday/Afternoon):**
+1. AMD: SELL 9sh at limit (cap compliance: 9.24% → 4.62%) — MANDATORY, no valid exemptions
+2. AMD: GTC STOP $487.55 (trailed from $481.42) + GTC target $590.19 on remaining 9sh
+3. GS: BUY 4sh limit $1,145.70 bracket GTC (stop $1,088.42, target $1,317.56) — score 7.50 MANDATORY
+4. META: BUY 7sh limit $660.01 bracket GTC (stop $627.01, target $759.01) — score 7.33 MANDATORY
+5. WFC: BUY 30sh limit $88.10 bracket GTC (stop $83.70, target $101.32) — score 7.17 MANDATORY
+6. MS: BUY 20sh limit $230.00 bracket GTC (stop $218.50, target $264.50) — score 7.67 MANDATORY
+
+**OPERATOR MANDATORY (app.alpaca.markets — URGENT — DO BEFORE MARKET CLOSE):**
+⚠️⚠️⚠️ AMD: SELL 9sh at market IMMEDIATELY (18sh=9.24% equity — hard guardrail violation)
+         Then: GTC STOP $487.55 + GTC take-profit $590.19 on remaining 9sh
+⚠️ GS: BUY 4sh limit $1,145.70 bracket GTC (stop $1,088.42, target $1,317.56)
+⚠️ META: BUY 7sh limit $660.01 bracket GTC (stop $627.01, target $759.01)
+⚠️ WFC: BUY 30sh limit $88.10 bracket GTC (stop $83.70, target $101.32)
+⚠️ MS: BUY 20sh limit $230.00 bracket GTC (stop $218.50, target $264.50)
+❌ IBM: NO ENTRIES (48h earnings window active through July 22 close)
+
+**UPCOMING BINARY EVENTS (CLAUDE.md Exemption 2 applies):**
+- IBM: July 22 AH — 48h window OPEN NOW
+- GOOGL (Alphabet): Likely July 22 AH — verify before any GOOGL entries
+- INTC (Intel): Likely this week — verify before any INTC entries
+- TSLA (Tesla): Likely this week — verify before any TSLA entries
+- AMD: Advancing AI 2026 conf July 22-23 — NOT an earnings event → eligible
+
+## Last Updated (Previous)
 **2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
 **JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
