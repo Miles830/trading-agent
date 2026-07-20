@@ -1,7 +1,73 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-20 (Monday) — PRE-MARKET (8:06 AM ET / 12:06 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 82nd consecutive blocked session). PRE-MARKET ROUTINE ✅ RUNNING.**
+
+**JULY 20 PRE-MARKET STATUS:** AMD recovered from July 17 intraday low $465.79 to ~$510 premarket today (+2.87%). Stop NOT breached. AMD still at 9.20% equity (over 5% cap) — mandatory SELL 9sh MOO attempted (blocked). GS (7.83), META (7.50), MS (7.17), WFC (7.0) binding commitment entries re-attempted (all blocked). NEW: XLE (7.33) scored and attempted on Iran geopolitical energy catalyst (blocked). TSLA excluded (earnings July 22 AH — 48h window approaching). IBM excluded (earnings July 22 + preliminary results destroyed thesis).
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Pre-Market — all HTTP 403):**
+- AMD SELL 9sh MOO (reduce to within 5% cap) → HTTP 403 BLOCKED
+- GS BUY 4sh MOO (score 7.83, 8th session binding) → HTTP 403 BLOCKED
+- META BUY 7sh MOO (score 7.50, 8th session binding) → HTTP 403 BLOCKED
+- MS BUY 20sh limit bracket GTC $229.69/stop $218.21/target $264.14 (score 7.17) → HTTP 403 BLOCKED
+- WFC BUY 30sh limit bracket GTC $87.94/stop $83.54/target $101.13 (score 7.0) → HTTP 403 BLOCKED
+- XLE BUY 85sh limit bracket GTC $58.29/stop $55.38/target $67.03 (score 7.33, NEW) → HTTP 403 BLOCKED
+
+**MARKET CONDITIONS (July 20, 8:06 AM ET — WEB SEARCH CONFIRMED):**
+- S&P 500 Futures: +0.13% | Nasdaq Futures: +0.43% | Dow: +0.02% — mild risk-on
+- AMD: $510.00 (+2.87%) — above stop $481.42 — Advancing AI conf July 22-23 positioning
+- META: $663.01 (+0.96%) — relative strength
+- WFC: ~$87.50 (range $86.65-$87.84)
+- GS: ATH $1,152.07 July 15; est. ~$1,120-$1,150 today
+- MS: Near ATH $228.55
+- XLE: $57.28-$58.12 today (pre-market +2%+) — Iran energy bid
+- Brent crude: ~$90.15 (+2.33%) — 9th consecutive US airstrike on Iran
+- BTC: ~$63,788 (July 17 last confirmed) — no crypto entries
+
+**AMD STATUS (CRITICAL UPDATE July 20):**
+- AMD 18sh at avg $506.76. Premarket $510 (+0.64% from avg — small unrealized gain).
+- Stop level $481.42 (5% below avg): NOT BREACHED as of today ($510 > $481.42)
+- July 17 stop breach was INTRADAY only — AMD recovered to close ~$495.76 July 17
+- Position: 18sh × $510 = $9,180 = **9.20% equity → OVER 5% CAP**
+- **MANDATORY: SELL 9sh AMD — reduce to ≤5% cap (position cap violation)**
+- After 9sh sold: 9sh × $510 = $4,590 = ~4.60% ✓
+- Remaining 9sh thesis: AMD Advancing AI 2026 conference July 22-23 (Zen 6 Venice CPU launch, Citigroup "industry-shaking" note). NOT a binary event per CLAUDE.md.
+- New trailing stop for remaining 9sh (after fill): fill × 0.95 (Market Open routine responsibility)
+- BofA PT $620. Target: fill + 3×stop_dist (3:1 R/R)
+
+**JULY 20 EARNINGS CALENDAR (KEY EXCLUSIONS):**
+- TSLA: July 22 AH → 48h window opens July 20 ~4:30 PM ET → EXCLUDED from entry today (spirit of rule)
+- IBM: July 22 → 48h window opens today → EXCLUDED; preliminary results bad (-22% July 14)
+- GOOG/Alphabet: July 22 est. → same window → EXCLUDED
+- INTC: July 22 est. → same window → EXCLUDED
+
+**PORTFOLIO STATE EST (July 20 Pre-Market):**
+- Cash: $90,644 (90.8%)
+- AMD: 18sh × $510 = ~$9,180 (9.20%) — over cap, no stop
+- Total equity est.: ~$99,824
+- Performance vs SPX (May 1 baseline 7,200 → today est. 7,459 = +3.60%): est. −0.18% → gap **−3.78 pp** (improved from −4.43 pp as AMD recovered)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (82+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Weekend move +$257 (+0.26%) — NOT tripped
+
+**BINDING COMMITMENTS (carry to next routine if still blocked):**
+1. AMD: SELL 9sh MOO — MANDATORY (position cap violation 9.20%)
+2. GS: BUY 4sh MOO/limit bracket GTC ~$1,135 (score 7.83 — 8th consecutive session)
+3. META: BUY 7sh MOO/limit bracket GTC ~$663 (score 7.50 — 8th consecutive session)
+4. XLE: BUY 85sh limit bracket GTC $58.29/stop $55.38/target $67.03 (score 7.33 — NEW)
+5. MS: BUY 20sh limit bracket GTC $229.69/stop $218.21/target $264.14 (score 7.17)
+6. WFC: BUY 30sh limit bracket GTC $87.94/stop $83.54/target $101.13 (score 7.0)
+7. Market Open: After AMD SELL 9sh fills → place GTC stop on remaining 9sh at fill×0.95
+
+**OPERATOR MANDATORY ACTIONS (app.alpaca.markets):**
+1. ⚠️ SELL 9sh AMD at market (reduce from 9.20% to ~4.60%)
+2. Place GTC stop on remaining 9sh AMD at fill×0.95; GTC target at fill+3×stop_dist
+3. BUY 4sh GS at market (or limit ~$1,135) bracket GTC (stop fill×0.95, target fill+3×stop_dist)
+4. BUY 7sh META at market (or limit ~$663) bracket GTC (stop $629.85, target $762.45)
+5. BUY 85sh XLE limit $58.29 bracket GTC (stop $55.38, target $67.03) [NEW — Iran energy]
+6. BUY 20sh MS limit $229.69 bracket GTC (stop $218.21, target $264.14)
+7. BUY 30sh WFC limit $87.94 bracket GTC (stop $83.54, target $101.13)
+
+**Prior Last Updated (2026-07-17 — MID-MORNING):** 2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
 **JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
 
