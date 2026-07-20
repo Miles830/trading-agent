@@ -1,7 +1,86 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-20 (Monday) — MARKET CLOSE (3:38 PM ET / 19:38 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 88th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+**2026-07-20 (Monday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 89th+ consecutive blocked session). DAILY-REVIEW ROUTINE ✅ RUNNING.**
+
+**JULY 20 DAILY REVIEW SUMMARY:**
+- **AMD close: $508.51 (+2.57%)** — MSFT Azure deal + Rosenblatt PT raised to $655, UBS to $700. AMD intraday +5% but gave back gains on Iran late-day selloff. Close: $508.51 = $1.75 above avg cost ($506.76).
+- **SPX close: est. ~7,420 (−0.50%)** — Iran ceasefire cracking + US airstrikes drove tech selloff. XLC −2.4%, XLK −1.1%, XLY −1.6%. Energy led: XOM +4.44%, OXY +3.61%, CVX +3.12%, XLE +1.2%.
+- **Daily P&L: +$229.50 (+0.23%)** — AMD gain vs July 17 close ($495.76→$508.51).
+- **Daily gap vs SPX: +0.73 pp** (portfolio +0.23%; SPX −0.50%).
+- **Cumulative gap: −3.26 pp** (portfolio −0.20%; SPX +3.06% from May 1 baseline 7,200). Improved from −4.32 pp at Market-Close.
+- **AMD stop trail: $487.55 → $483.08** (5% below $508.51 close) — BLOCKED. OPERATOR MANDATORY.
+- **AMD Advancing AI conf July 22–23:** Lisa Su keynote, MI450/Zen6 debut, partners: Meta, OpenAI, xAI, MSFT, Oracle. This is NOT a binary event — AMD safe to hold.
+- **Binary events active (NO ENTRY):** GOOGL (Wed July 22 AH), TSLA (Wed July 22 AH), INTC (Thu July 23).
+- **Heartbeat failures today:** Pre-Market, Market-Open, Mid-Morning, Midday — all SILENT FAILURES. Only Afternoon + Market-Close + Daily-Review fired.
+- **Watchlist for July 21:** GS (7.83 MANDATORY), META (7.50 MANDATORY), XOM (~7.5 NEW), MS (7.17 MANDATORY), WFC (7.0 MANDATORY), OXY (~7.0 NEW), GOOGL/TSLA (score Thursday post-earnings).
+
+**JULY 20 EOD PORTFOLIO STATE:**
+- Cash: ~$90,644 (90.8%)
+- AMD: 18sh × $508.51 = $9,153 (9.17%) — OVER 5% cap — NAKED (no stop at Alpaca)
+- Total equity: ~$99,797 (−0.20% from $100,000)
+- AMD stop: $483.08 (trail updated; blocked)
+- AMD target: $582.78 (original; Rosenblatt PT $655 suggests further upside)
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Market-Close — all HTTP 000):**
+- GS: MOC BUY 4sh (time_in_force=cls) → HTTP 000 (6th consecutive block)
+- META: MOC BUY 7sh (time_in_force=cls) → HTTP 000 (6th consecutive block)
+- WFC: MOC BUY 30sh (time_in_force=cls) → HTTP 000 (6th consecutive block)
+- MS: MOC BUY 20sh (time_in_force=cls) → HTTP 000 (6th consecutive block)
+- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (updated trail to $483.08 per close)
+
+**JULY 21 MANDATORY ACTIONS (PRE-MARKET — 7th attempt for GS/META/WFC/MS):**
+1. AMD: GTC sell-stop 18sh at **$483.08** (updated; 5% below $508.51 close) — FIRST ACTION
+2. GS: BUY 4sh limit bracket GTC (limit = open_price × 1.005; stop −5%; target +15%) — score 7.83
+3. META: BUY 7sh limit bracket GTC (same formula) — score 7.50; earnings July 29 safe
+4. WFC: BUY 30sh limit bracket GTC (verify current price est. $88–92) — score 7.0
+5. MS: BUY 20sh limit bracket GTC (verify current price est. $228–240) — score 7.17
+6. XOM: Full 6-agent score at Pre-Market (est. 7.5 — Iran/oil macro-hedge)
+7. OXY: Full 6-agent score at Pre-Market (est. 7.0 — higher-leverage Iran oil play)
+8. DO NOT ENTER: GOOGL, TSLA (binary events), INTC (binary event)
+
+**SETUP PERFORMANCE TRACKER (cumulative — no completed trades since AMD fill June 23):**
+| Setup | Entries | Exits | Wins | Losses | Win Rate | Status |
+|---|---|---|---|---|---|---|
+| earnings-reaction-follow | 6 (blocked) | 0 | 0 | 0 | N/A | Pending |
+| breakout-volume | 2 (blocked) | 0 | 0 | 0 | N/A | Pending |
+| ai-momentum-pullback | 1 (AMD open) | 0 | 0 | 0 | N/A | Unrealized +0.35% |
+| macro-hedge | 0 | 0 | 0 | 0 | N/A | New type — adding XOM/OXY |
+| HALTED setups | (none) | — | — | — | — | No halts active |
+| BOOSTED setups | (none) | — | — | — | — | No boosts active |
+
+**AGENT CALIBRATION (cumulative — no closed trades):**
+All 6 agents have approved GS (7.83), META (7.50), MS (7.17), WFC (7.0) on 6+ occasions with no fills. Cannot compute calibration until trades close. Pending calibration debt: 4 approved, unexecuted entries.
+
+**LESSONS LEARNED — July 20, 2026:**
+1. AMD recovered strongly on MSFT Azure deal (+2.57%) — thesis intact. Conference catalyst (July 22) not priced in yet.
+2. Iran tensions drove energy sector +1.2% (XOM +4.44%). Missed this entirely due to Midday SILENT FAILURE. Tomorrow: score XOM/OXY at Pre-Market.
+3. AMD stop at $483.08 is the absolute #1 priority. No amount of research or watchlist planning matters if AMD gap-downs overnight with no stop.
+4. Pre-Market silent failure is the most operationally damaging issue. Entire MOO window is missed each day it fails.
+5. Portfolio is outperforming SPX on down days (cash buffer helps) but massively underperforming on up days (deployment gap). Need to get deployed.
+
+**TOMORROW'S WATCHLIST (JULY 21 — COMMITMENT FOR PRE-MARKET):**
+1. GS 7.83 — earnings-reaction-follow — 4sh limit bracket GTC
+2. META 7.50 — breakout-volume — 7sh limit bracket GTC
+3. XOM ~7.5 — macro-hedge — full 6-agent, BUY if ≥7 limit bracket GTC
+4. MS 7.17 — earnings-reaction-follow — 20sh limit bracket GTC
+5. WFC 7.0 — earnings-reaction-follow — 30sh limit bracket GTC
+6. OXY ~7.0 — macro-hedge — full 6-agent, BUY if ≥7 limit bracket GTC
+7. CVX ~6.5 — macro-hedge — full 6-agent, BUY if ≥7
+8. AMD STOP — trail to $483.08 (5% below $508.51 close) — NOT a new entry, mandatory stop
+9. GOOGL — SCORE THURSDAY PRE-MARKET POST-EARNINGS (earnings July 22 AH)
+10. TSLA — SCORE THURSDAY PRE-MARKET POST-EARNINGS (earnings July 22 AH)
+
+**KEY EARNINGS / BINARY EVENTS (Active):**
+| Company | Earnings | 48h Window | Status |
+|---|---|---|---|
+| GOOGL | Wed July 22 AH | Mon July 20 ~4 PM | **ACTIVE — no entry July 21 or 22** |
+| TSLA | Wed July 22 AH | Mon July 20 ~4 PM | **ACTIVE — no entry July 21 or 22** |
+| INTC | Thu July 23 | Sat July 18 | **ACTIVE — no entry** |
+| META | Wed July 29 AH | Mon July 27 | Safe through July 25 close |
+| AMD | Tue Aug 4 AH | Sun Aug 2 | Safe through Aug 1 |
+
+**PRIOR LAST UPDATED (2026-07-20 (Monday) — MARKET CLOSE (3:38 PM ET / 19:38 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 88th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
 
 **JULY 20 MARKET-CLOSE STATUS:** All 5 routines prior to Market-Close silently failed (Pre-Market, Market-Open, Mid-Morning, Midday all missed; Afternoon ✓ COMPLETED). AMD holds at ~$513.21 (+5% day, +1.27% vs avg cost). 4 MOC orders attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh — all HTTP 000 blocked, 6th consecutive block). AMD trail-stop $487.55 attempted → HTTP 000. GOOGL/TSLA binary event skip confirmed (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). SPX gap: −4.32 pp. Daily review due at 4:30 PM ET.
 

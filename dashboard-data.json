@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-20T19:40:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-07-20T20:45:00Z",
+  "updated_by": "daily-review",
   "portfolio": {
-    "total_equity": 99882,
+    "total_equity": 99797,
     "starting_equity": 100000.0,
     "cash": 90644,
     "cash_pct": 90.8,
     "buying_power": 181288,
-    "long_market_value": 9238,
+    "long_market_value": 9153,
     "short_market_value": 0.0,
-    "daily_pnl": 314,
-    "daily_pnl_pct": 0.32,
-    "total_return_pct": -0.12,
-    "spx_return_pct": 4.2,
-    "benchmark_gap_pct": -4.32,
+    "daily_pnl": 230,
+    "daily_pnl_pct": 0.23,
+    "total_return_pct": -0.20,
+    "spx_return_pct": 3.06,
+    "benchmark_gap_pct": -3.26,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9238,
-      "active_pct": 9.25,
+      "active_value": 9153,
+      "active_pct": 9.17,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
       "cash_pct": 90.8
     },
-    "note": "July 20 MARKET-CLOSE (3:38 PM ET / 19:38Z). API BLOCKED HTTP 000 — 88th+ consecutive session. EOD P&L: +$314.10 (+0.32%). AMD 18sh holds at ~$513.21 (+1.27% vs avg $506.76). 4 MOC entries attempted (GS/META/WFC/MS) → all HTTP 000 blocked (6th consecutive block). AMD trail-stop $487.55 → HTTP 000 blocked. GOOGL/TSLA binary event window opens ~4 PM today — NO entries tomorrow Pre-Market. SPX benchmark gap: -4.32 pp. Daily Review due 4:30 PM ET. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $487.55; (2) BUY 4sh GS limit ~$1,073×1.005 bracket GTC; (3) BUY 7sh META limit ~close×1.005 bracket GTC; (4) BUY 30sh WFC limit ~close×1.005 bracket GTC; (5) BUY 20sh MS limit ~close×1.005 bracket GTC."
+    "note": "July 20 DAILY REVIEW (4:30 PM ET / 20:45Z). API BLOCKED 89th+ session. AMD closed $508.51 (+2.57% on MSFT Azure deal; Rosenblatt PT $655, UBS PT $700). SPX est. -0.50% on Iran selloff (oil +5%, XOM +4.44%, OXY +3.61%). Daily P&L: +$229.50 (+0.23%). Benchmark gap improved to -3.26 pp (from -4.32 pp). AMD stop trail: $483.08 (5% below $508.51) — BLOCKED. OPERATOR MANDATORY: (1) GTC stop 18sh AMD $483.08; (2) GS 4sh bracket GTC; (3) META 7sh bracket GTC; (4) WFC 30sh bracket GTC; (5) MS 20sh bracket GTC; (6) Score XOM/OXY at Pre-Market (Iran/oil macro-hedge). DO NOT enter GOOGL/TSLA/INTC — binary event windows active."
   },
   "positions": [
     {
@@ -31,15 +31,15 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 513.21,
-      "pnl": 116.10,
-      "pnl_pct": 1.27,
+      "current_price": 508.51,
+      "pnl": 31.50,
+      "pnl_pct": 0.35,
       "stop_loss": null,
       "take_profit": 582.78,
-      "stop_loss_pending": 487.55,
+      "stop_loss_pending": 483.08,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "AMD RECOVERY. +1.27% vs avg cost $506.76. AMD+MSFT Azure AI deal announced today: Helios MI455X GPU (72 per rack, 31TB HBM4) + EPYC Venice CPUs for frontier AI inference on Azure. AMD +5% to $513.21. Stop TRAILED to $487.55 (5% below $513.21) — blocked HTTP 403. Advancing AI conf July 22-23 (NOT earnings — hold). Q2 earnings Aug 4 (safe). Re-score tomorrow Pre-Market (est. 8.0+ avg with MSFT deal catalyst). OPERATOR MANDATORY: place GTC sell-stop 18sh AMD at $487.55 at app.alpaca.markets TODAY."
+      "note": "AMD EOD July 20: $508.51 (+2.57% day; off +5% intraday high on Iran late-day selloff). MSFT Azure Helios deal (MI455X GPU rackscale + EPYC Venice CPUs). Analyst upgrades: Rosenblatt $655 (from $490), UBS $700 (from $670). Advancing AI conf July 22-23 — Lisa Su keynote, MI450/Zen6 debut, partners: Meta/OpenAI/xAI/MSFT/Oracle. AMD +0.35% vs avg cost $506.76 (18sh). Stop trail updated to $483.08 (5% below $508.51) — blocked. OPERATOR MANDATORY: GTC sell-stop 18sh AMD at $483.08 at app.alpaca.markets. Q2 earnings Aug 4 (safe through Aug 1)."
     },
     {
       "symbol": "GS",
@@ -103,34 +103,39 @@
     }
   ],
   "market": {
-    "mode": "RISK-ON — AMD+MSFT AI DEAL, BIG TECH EARNINGS WEEK. SPX +0.34%. Nasdaq +0.65%. AMD +5% (Helios Azure deal). Iran conflict escalating (oil $90) but markets shrugging. GOOGL/TSLA earnings Wednesday (48h window active ~4 PM today).",
-    "fear_greed": 58,
-    "fear_greed_label": "Neutral-Greed — recovery from July 17 chip selloff. MSFT-AMD deal confirms AI infrastructure cycle intact.",
-    "spx": "SPX est. ~7,500 (+0.34% intraday). Nasdaq +0.65%. May 1 baseline 7,200 → +4.2% return. Portfolio return -0.12% (AMD recovering). Benchmark gap: -4.32 pp (improved from -4.43 pp on AMD recovery +$314 today).",
-    "btc": "BTC est. unknown (API blocked). Iran geopolitical risk = crypto headwind. Likely $55-65K range. Below $82K active-trading threshold. No crypto entries.",
+    "mode": "MIXED CLOSE — CHIPS MODEST COMEBACK (+AMD +2.57%), BROADER MARKET DOWN ON IRAN. SPX est. -0.50% (Iran airstrikes derail afternoon rally). Energy sector led (+XLE +1.2%, XOM +4.44%, OXY +3.61%). Tech gave back gains (XLK -1.1%, XLC -2.4%). Big Tech earnings week: GOOGL/TSLA Wednesday AH, INTC Thursday.",
+    "fear_greed": 52,
+    "fear_greed_label": "Neutral — Iran tensions offset AMD/chip recovery. Big Tech earnings uncertainty adds caution.",
+    "spx": "SPX July 17 close 7,457.69. July 20 EOD est. ~7,420 (-0.50% on Iran selloff). May 1 baseline 7,200 → est. +3.06% return. Portfolio return -0.20%. Benchmark gap: -3.26 pp (improved from -4.32 pp — AMD +2.57% + SPX -0.50%).",
+    "btc": "BTC est. unknown (API blocked). Iran geopolitical risk + tech risk-off = crypto headwind. Likely $55-65K range. Below $82K active-trading threshold. No crypto entries.",
     "sectors": [
       {
-        "name": "Semiconductors (AMD)",
-        "change_pct": 5.0,
-        "note": "AMD +5% on MSFT Azure Helios deal (MI455X GPU + EPYC Venice). Recovery from July 17 -7% AI capex selloff. Advancing AI conf July 22-23. AI infrastructure thesis validated. AMD back above stop level ($487.55 new trail) and avg cost ($506.76)."
+        "name": "Energy (XOM, OXY, CVX)",
+        "change_pct": 1.2,
+        "note": "XLE +1.2%. XOM +4.44% ($145.04). OXY +3.61% ($54.80). CVX +3.12% ($181.88). Iran ceasefire cracking — US airstrikes on Iran. Oil +5% to $81+ WTI. Ukraine attack on Russian refineries adds supply pressure. Energy = macro-hedge opportunity. Scoring XOM/OXY tomorrow Pre-Market."
+      },
+      {
+        "name": "Semiconductors (AMD, SOX)",
+        "change_pct": 2.0,
+        "note": "AMD +2.57% ($508.51 close, off +5% intraday high). MSFT Azure deal: Helios MI455X GPU (72/rack, 31TB HBM4) + EPYC Venice CPUs for frontier AI inference. Analyst upgrades: Rosenblatt $655 (from $490), UBS $700 (from $670). Advancing AI conf July 22-23 upcoming catalyst. Late-day selloff on Iran risk."
       },
       {
         "name": "Financials (GS, WFC, MS)",
-        "change_pct": 0.3,
-        "note": "GS $1,073 (post-earnings consolidation, off $1,152 ATH). WFC/MS est. flat-to-up. All 3 carry forward as binding entries. Sector 0% deployed — should be ~11.7% if GS+WFC+MS all fill."
+        "change_pct": -0.3,
+        "note": "GS ATH $1,152 July 15, consolidating ~$1,070-1,080. WFC/MS estimated slight down on Iran risk-off. All 3 carry forward as MANDATORY entries (7th attempt). Sector 0% deployed — should be ~11.6% if all fill."
       },
       {
-        "name": "Communication Services (META)",
-        "change_pct": 0.9,
-        "note": "META +0.92% to $651.98. BofA reit. Buy, PT $835. Earnings July 29 AH (safe through July 26). META cloud compute + Llama AI thesis intact. Carry forward as binding entry."
+        "name": "Communication Services / Tech (META, GOOGL)",
+        "change_pct": -2.0,
+        "note": "XLC -2.4% (GOOGL/META heavy). META pulling back ~-1% est. (earnings July 29 AH safe through July 25). GOOGL binary event active — no entry until Thursday post-earnings. META partner at AMD Advancing AI conf (presenting with Lisa Su July 22-23)."
       },
       {
-        "name": "Binary Event Names (GOOGL, TSLA, INTC)",
-        "change_pct": 0.5,
-        "note": "GOOGL and TSLA earnings Wednesday July 22. 48h window opens ~4 PM today — NO new entries. INTC earnings Thursday July 23 — window already active. Post-earnings scoring: GOOGL Thursday, INTC Friday."
+        "name": "Consumer Discretionary (TSLA)",
+        "change_pct": -1.6,
+        "note": "XLY -1.6% (TSLA heavy). TSLA binary event active — earnings July 22 AH. 480K delivery beat already confirmed. Guidance/FSD commentary key. Score Thursday July 23 Pre-Market for post-earnings play."
       }
     ],
-    "macro_notes_md": "JULY 20 2026 AFTERNOON UPDATE: AMD+MSFT AZURE AI DEAL + BIG TECH EARNINGS WEEK. AMD+Microsoft Helios partnership: 72 MI455X GPUs per rack (31TB HBM4), EPYC Venice CPUs, Pensando networking, ROCm — deployed for frontier AI inference on Azure. AMD +5%. Iran conflict escalating (oil $90/bbl) — markets priced as contained. EARNINGS WEEK: GOOGL/TSLA Wednesday July 22 AH, INTC Thursday July 23 — ALL BINARY EVENT WINDOWS ACTIVE. META earnings July 29 (safe to trade through July 26). AMD earnings August 4 (safe). AMD Advancing AI conference July 22-23 (product conf, NOT earnings — continue holding AMD)."
+    "macro_notes_md": "JULY 20 2026 EOD (DAILY REVIEW): AMD+MSFT AZURE DEAL CONFIRMED (+2.57% AMD EOD vs +5% intraday peak). IRAN CEASEFIRE CRACKING — US airstrikes on Iran, Strait of Hormuz risk, oil +5% to $81+ WTI (was $90 Brent intraday), XOM +4.44% / OXY +3.61% / XLE +1.2%. SPX reversed from +0.34% intraday to est. -0.50% close on Iran late-day selloff. Tech gave back morning gains (XLK -1.1%, XLC -2.4%, XLY -1.6%). Chips had 'modest comeback' (TheStreet July 20). AMD ADVANCING AI CONF July 22-23: Lisa Su keynote, Instinct MI450, Zen6 EPYC Venice, ROCm, Helios next-gen; partners presenting: Meta/OpenAI/xAI/MSFT/Oracle/Red Hat — NOT a binary event, AMD safe to hold. EARNINGS WEEK: GOOGL/TSLA July 22 AH ($2.90 EPS/$116.9B rev and $0.52 EPS/$25.99B rev estimates respectively), INTC July 23 — ALL BINARY WINDOWS ACTIVE through Wednesday. META July 29 AH (safe through July 25). AMD Aug 4 AH (safe). Energy sector now a watchlist priority given Iran escalation."
   },
   "routines": [
     {
@@ -178,9 +183,9 @@
     {
       "name": "Daily-Review",
       "status": "completed",
-      "last_run": "2026-07-13T20:34:09Z",
-      "next_run": "2026-07-20T20:30:00Z",
-      "last_summary": "July 13 Daily Review last successful. July 20 Daily Review due tonight 4:30 PM ET / 20:30Z."
+      "last_run": "2026-07-20T20:45:00Z",
+      "next_run": "2026-07-21T20:30:00Z",
+      "last_summary": "July 20 Daily Review COMPLETED. AMD $508.51 (+2.57% on MSFT Azure deal). SPX est. -0.50% (Iran). Portfolio +0.23%, gap -3.26 pp (improved from -4.32 pp). Top issue: Pre-Market SILENTLY FAILED again (4 of 6 routines missed). XOM/OXY added to watchlist (Iran/oil macro-hedge). GOOGL/TSLA/INTC binary events active tomorrow."
     }
   ],
   "trades": [
@@ -232,50 +237,66 @@
   ],
   "watchlist": [
     {
-      "symbol": "AMD",
-      "bucket": "active",
-      "score": 8.0,
-      "action": "RE-SCORE + TRAIL STOP $487.55 (MANDATORY Pre-Market July 21)",
-      "setup": "ai-momentum-pullback",
-      "notes": "18sh held at avg $506.76. AMD $513.21 (+5% today). MSFT Azure AI Helios deal (MI455X GPU + EPYC Venice). Advancing AI conf July 22-23. Q2 Aug 4 (safe). Est. re-score 8.0+. Trail stop $487.55 mandatory first action. Consider adding if score confirms >= 8 and guardrails allow."
-    },
-    {
       "symbol": "GS",
       "bucket": "active",
       "score": 7.83,
-      "action": "BUY 4sh limit $1,078 bracket GTC (BINDING — 5th attempt — July 21 Pre-Market)",
+      "action": "BUY 4sh limit open×1.005 bracket GTC (MANDATORY — 7th attempt — July 21 Pre-Market)",
       "setup": "earnings-reaction-follow",
-      "notes": "All 6 agents >= 7. Q2 +45.7% EPS beat. GS at $1,073 — below updated limit $1,078 (=$1,073×1.005). Would fill immediately if placed. Stop $1,024 (-5%). Target $1,240 (+15%). R/R 3.0:1. Operator execute at app.alpaca.markets."
+      "notes": "All 6 agents >= 7. Q2 +45.7% EPS beat ($14.12 vs $9.72 est), revenue $18.3B (+39% YoY). ATH $1,152 July 15. GS consolidating ~$1,070-1,080. Stop fill×0.95. Target fill+3×stop_dist. R/R 3:1. OPERATOR: execute at app.alpaca.markets — 6 consecutive blocks."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.50,
-      "action": "BUY 7sh limit $655 bracket GTC (BINDING — 5th attempt — July 21 Pre-Market)",
+      "action": "BUY 7sh limit open×1.005 bracket GTC (MANDATORY — 7th attempt — July 21 Pre-Market)",
       "setup": "breakout-volume",
-      "notes": "All 6 agents >= 7. Cloud compute + Llama AI. META $651.98 — below limit $655 (=$651.98×1.005). Would fill if placed. Stop $622 (-5%). Target $754 (+15%). Earnings July 29 AH SAFE through July 26. Operator execute NOW."
+      "notes": "All 6 agents >= 7. Cloud compute launch, Llama AI, BofA PT $835. META partner at AMD Advancing AI conf (presenting with Lisa Su). Earnings July 29 AH SAFE through July 25 close. Stop fill×0.95. Target fill+3×stop_dist. OPERATOR: execute at app.alpaca.markets."
     },
     {
-      "symbol": "WFC",
+      "symbol": "XOM",
       "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 30sh limit current×1.005 bracket GTC (BINDING — 5th attempt — July 21 Pre-Market)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Q2 EPS +13% beat. Score 7.0. Verify current price at Pre-Market (est. $88-92). 30sh at $89 = $2,670 (2.67%). Stop current×0.95. Target current×1.15 (3:1 R/R)."
+      "score": 7.5,
+      "action": "Full 6-agent score at Pre-Market July 21; BUY if >=7 limit bracket GTC",
+      "setup": "macro-hedge",
+      "notes": "NEW July 20 — Iran ceasefire cracking, US airstrikes on Iran, oil +5% to $81+ WTI. XOM +4.44% today ($145.04). Energy sector leading. XOM: Q2 earnings solid, strong balance sheet, dividend. Iran/Ukraine dual supply shock. Size: verify at Pre-Market (est. 5sh × $145 = $725, 0.73%). Est. score 7.5 (Fundamentals 7, Technical 8, Sentiment 8, Macro 8, Risk 8, Tech 7)."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "score": 7.17,
-      "action": "BUY 20sh limit current×1.005 bracket GTC (BINDING — 5th attempt — July 21 Pre-Market)",
+      "action": "BUY 20sh limit open×1.005 bracket GTC (MANDATORY — 7th attempt — July 21 Pre-Market)",
       "setup": "earnings-reaction-follow",
-      "notes": "Q2 revenue +27% YoY, net income +60% YoY. Score 7.17. Verify current price at Pre-Market (est. $228-240). 20sh at $232 = $4,640 (4.64%). Stop current×0.95. Target current×1.15 (3:1 R/R)."
+      "notes": "Q2 revenue $21.3B (+27% YoY), net income $5.6B (+60% YoY), EPS $3.46. Near-ATH $232.25 (July 15). Score 7.17 all 6 agents. Stop fill×0.95. Target fill+3×stop_dist. OPERATOR: execute at app.alpaca.markets."
+    },
+    {
+      "symbol": "WFC",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "BUY 30sh limit open×1.005 bracket GTC (MANDATORY — 7th attempt — July 21 Pre-Market)",
+      "setup": "earnings-reaction-follow",
+      "notes": "Q2 EPS $1.96 vs $1.73 (+13% beat); Revenue $22.62B (+2.8% beat); Net income +17% YoY. Score 7.0. Verify current price at Pre-Market (est. $88-92). 30sh at $89 = $2,670 (2.67%). Stop fill×0.95. Target fill+3×stop_dist. OPERATOR: execute."
+    },
+    {
+      "symbol": "OXY",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "Full 6-agent score at Pre-Market July 21; BUY if >=7 limit bracket GTC",
+      "setup": "macro-hedge",
+      "notes": "NEW July 20 — OXY +3.61% today ($54.80). Highest operating leverage to oil price moves among majors. Buffett-backed (Berkshire Hathaway). Iran escalation = oil spike = OXY outperforms. Size: verify at Pre-Market (est. 15sh × $55 = $825, 0.83%). Est. score 7.0."
+    },
+    {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": 8.0,
+      "action": "HOLD + UPDATE STOP TO $483.08 (MANDATORY Pre-Market July 21)",
+      "setup": "ai-momentum-pullback",
+      "notes": "18sh held at avg $506.76. AMD closed $508.51 (+2.57%). Stop trail: $487.55 → $483.08 (5% below $508.51). Advancing AI conf July 22-23: Lisa Su keynote, MI450/Zen6, Meta/OpenAI/xAI/MSFT. Rosenblatt PT $655, UBS PT $700. AMD at $508.51 = 9.17% equity (OVER 5% cap — cannot add). Q2 earnings Aug 4 (safe). OPERATOR MANDATORY: place GTC sell-stop 18sh AMD $483.08 at app.alpaca.markets."
     },
     {
       "symbol": "GOOGL",
       "bucket": "active",
       "score": null,
-      "action": "BINARY EVENT — SKIP until Thursday July 23 Post-Earnings",
+      "action": "BINARY EVENT — SKIP July 21 + 22. SCORE Thursday July 23 Pre-Market post-earnings.",
       "setup": "earnings-reaction-follow",
       "notes": "GOOGL Q2 earnings Wednesday July 22 AH. Est. EPS $2.90 (+25.5% YoY), Revenue $116.9B (+21.3% YoY). 48h window active from today ~4 PM. Score Thursday July 23 Pre-Market (post-earnings follow-through or fade). Strong expectations — potential earnings-reaction-follow if beat."
     },
@@ -289,6 +310,6 @@
     }
   ],
   "history": [
-    {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32}
+    {"date": "2026-07-20", "portfolio_return_pct": -0.20, "spx_return_pct": 3.06, "daily_pnl_pct": 0.23, "benchmark_gap_pct": -3.26, "note": "AMD $508.51 close confirmed. SPX est. -0.50% on Iran selloff. Daily review confirmed close prices via web search."}
   ]
 }
