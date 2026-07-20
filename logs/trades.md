@@ -4,6 +4,358 @@
 
 ---
 
+## 2026-07-20 — Afternoon (2:00 PM ET / 18:11 UTC — API BLOCKED — 87th+ consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-20T18:08:47Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` — **87th+ consecutive blocked session** (egress policy denial per proxy status endpoint; host not in allowlist)
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded gracefully per CLAUDE.md.
+**Market Status:** OPEN — 2:11 PM ET. Monday July 20. SPX +0.34%, Nasdaq +0.65%. AMD +5% on MSFT Azure AI deal (Helios MI455X GPU rackscale deployment confirmed). Iran conflict escalating (oil touched $90/bbl). Big Tech earnings week: GOOGL/TSLA Wednesday, INTC Thursday.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 20, 2026
+
+```
+grep results from logs/heartbeats/2026-07-20.log:
+  18:08:47Z STARTED Afternoon  ← only entry present
+```
+
+| Routine | Expected (UTC) | Found | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC (8:05 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Market-Open | 13:45 UTC (9:45 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Mid-Morning | 15:10 UTC (11:10 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Midday | 16:30 UTC (12:30 PM ET) | NOT FOUND | **SILENT FAILURE** |
+| Afternoon | 18:00 UTC (2:00 PM ET) | STARTED ✓ | Running now |
+
+```yaml
+---
+ts: 2026-07-20T12:05:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 20 Pre-Market (8:05 AM ET) silently failed — not found in 2026-07-20.log. MOO re-confirmation of GS/META/WFC/MS binding watchlist missed. AMD stop backfill missed again.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. July 20 Pre-Market silently failed. MOO placement for binding watchlist (GS/META/WFC/MS from July 17) was the mandatory first action. AMD naked — stop never placed at Alpaca. Scheduler only fired the Afternoon routine today; all prior 4 routines missed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T13:45:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 20 Market-Open (9:45 AM ET) silently failed — AMD stop backfill missed a 4th consecutive morning.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. July 20 Market-Open silently failed. AMD stop backfill (GTC sell stop at $481.42 or trailed) mandatory first action — missed again. AMD recovered to ~$495.76 Friday close and is now $513.21 on MSFT deal (+5% today) — ABOVE stop level but still naked."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T15:10:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 20 Mid-Morning (11:00 AM ET) silently failed.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Mid-Morning silently failed July 20."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T16:30:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: July 20 Midday (12:30 PM ET) silently failed. AMD+MSFT deal announced during morning session — missed re-scoring opportunity.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. Midday silently failed July 20. AMD + Microsoft partnership announced (Helios MI455X GPU + EPYC Venice Azure deployment) — would have triggered immediate re-score and catch-up entry attempt. AMD surged ~5% from ~$495.76 to $513.21. Missed entry or trail-stop window."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED — 87th+ consecutive)
+
+```bash
+# Attempt: GET /v2/positions
+# Result: HTTP 403 (proxy CONNECT rejected — egress policy, paper-api.alpaca.markets:443)
+
+# Attempt: GET /v2/orders?status=open
+# Result: HTTP 403 (proxy CONNECT rejected)
+```
+
+**AMD — STOP BREACH RECOVERY (Day 30 Naked):**
+- **Position:** AMD 18sh at avg cost $506.76 (confirmed from prior log entries — API unable to verify)
+- **Required stop (5% below avg):** $481.42 (never placed — API blocked)
+- **July 17 morning low:** $465.79 (−7%, stop level breached) — logged as `stop_hit` July 17 15:11Z
+- **July 17 close (est.):** ~$495.76 (AMD recovered intraday from morning low)
+- **July 20 current price:** $513.21 (+5% today — AMD+Microsoft Azure AI deal announced this morning)
+- **STATUS REASSESSMENT:** AMD has RECOVERED ABOVE both: (a) the $481.42 stop level, and (b) the $506.76 average cost basis. The stop breach on July 17 was never executed (API blocked). AMD is now **+1.27% above avg cost** with a major fresh catalyst.
+- **Unrealized P&L (current):** 18 × ($513.21 − $506.76) = 18 × $6.45 = **+$116.10 (+1.27%)**
+- **DECISION:** HOLD AMD. The stop-breach event was a forced paper loss that was never realized. AMD's recovery above cost basis + MSFT deal + Advancing AI conf July 22-23 all validate holding. Trail stop to $487.55 (5% below $513.21).
+- **Trailing stop action:** ATTEMPT — BLOCKED (expected)
+
+```bash
+# Attempt: Trail AMD stop to $487.55 (5% below $513.21)
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}'
+# Result: HTTP 403 — BLOCKED (87th+ consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-20T18:11:00Z
+action: stop_hit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 0
+thesis: AMD trail-stop UPDATE attempt. Stop $481.42 was breached July 17 but never executed (API blocked). AMD RECOVERED to $513.21 today (+5% on MSFT Azure AI deal). Trail stop to $487.55. Attempt blocked HTTP 403. HOLDING position.
+size_pct: 9.25
+stop: 487.55
+target: 582.78
+result_pct: 1.27
+master_notes: "AMD stop-trail update. Recovery from July 17 $465.79 low to July 20 $513.21 (+10.2%). Stop level updated to $487.55 (5% below $513.21 — trailed up from original $481.42). AMD+MSFT Helios Azure deal is major catalyst: MI455X GPUs + EPYC Venice CPUs deployed for frontier AI inference. Advancing AI conference July 22-23 (2 days). Q2 earnings Aug 4 (outside 48h window). Hold 18sh. HTTP 403 blocked — trail-stop not placed at Alpaca. OPERATOR MANDATORY: place GTC sell-stop at $487.55 on 18sh AMD at app.alpaca.markets. xAI Grok: unavailable."
+---
+```
+
+**GS/META/WFC/MS — PRIOR GTC LIMIT ORDERS (still outstanding, all blocked):**
+All 4 orders from July 17 remain on the OPERATOR MANDATORY list. Price updates:
+- **GS:** Current $1,073.00 — prior limit $1,099.02 (current BELOW limit = would fill immediately if placed). Recommend reducing limit to $1,073 × 1.005 = $1,078.37 for Pre-Market tomorrow.
+- **META:** Current ~$651.98 — prior limit $667.86 (current BELOW limit = would fill at market ~$651.98). Reduce limit to $651.98 × 1.005 = $655.24 for Pre-Market tomorrow.
+- **WFC:** Price est. ~$88-92 (unconfirmed). Prior limit $87.96 — likely at or above limit range.
+- **MS:** Price est. ~$228-238 (unconfirmed). Prior limit $229.69 — likely near limit.
+
+---
+
+### MARKET CONDITIONS — July 20, 2026 (2:11 PM ET) — WEB SEARCH
+
+**Market Snapshot:**
+| Asset | Price | Change | Note |
+|---|---|---|---|
+| S&P 500 | ~+0.34% intraday | ~7,500 est. | Chip stocks & Big Tech leading into earnings week |
+| Nasdaq | ~+0.65% intraday | — | Outperforming on AMD+MSFT news |
+| AMD | $513.21 | **+5%** (+$17.45 from ~$495.76 close) | MSFT Azure AI Helios deal — MI455X GPU deployment |
+| GS | $1,073.00 | flat to slight decline | Post-earnings consolidation; ATH $1,152 July 15 |
+| META | ~$651.98 | ~+0.92% | Earnings July 29; BofA reit. Buy, PT $835 |
+
+**Key Events Today / This Week:**
+- **AMD + Microsoft Expanded Partnership:** Microsoft deploying Helios Rackscale Solution (AMD MI455X GPUs + EPYC Venice 6th Gen CPUs + Pensando networking + ROCm) for frontier AI inference on Azure. This confirms AMD as #2 AI GPU supplier behind NVIDIA. Multiple PT upgrades on AMD.
+- **AMD Advancing AI Conference:** July 22-23 (Tuesday-Wednesday). Product launches expected. NOT an earnings event — no 48h CLAUDE.md restriction. Continue holding AMD.
+- **GOOGL earnings:** Wednesday July 22 after close. **48h binary event window opens ~4 PM ET today.** Do NOT initiate new GOOGL positions in Pre-Market tomorrow (window active). Est. EPS $2.90 (+25.5% YoY), Revenue $116.9B (+21.3% YoY).
+- **TSLA earnings:** Wednesday July 22 after close. Same 48h window as GOOGL — active from ~4 PM today.
+- **INTC earnings:** Thursday July 23. 48h window already active since Saturday July 18 ~4 PM.
+- **Iran conflict:** Tit-for-tat attacks over weekend. Oil $90/bbl. Risk is escalation risk but markets +0.34% — suggests contained/priced-in.
+- **VZ earnings (today):** Verizon Q2 2026 reported today (Monday). Telecom not in our watchlist.
+
+**Circuit Breaker Check:**
+- Opening equity July 20 (est.): $90,644 (cash) + 18sh × $495.76 = **$99,567.68**
+- Current equity (2:11 PM): $90,644 + 18sh × $513.21 = **$99,881.78**
+- Daily change: +$314.10 (+0.32%)
+- 3% loss threshold: $99,567.68 × 0.03 = $2,987 (required loss)
+- **CIRCUIT BREAKER: NOT TRIPPED** — Portfolio UP +0.32% today. All new entries proceed normally.
+
+---
+
+### AFTERNOON DECISIONS
+
+#### DAY TRADES: NONE
+No open day trades. No MOC orders required.
+
+#### SWING POSITIONS:
+
+**AMD (18sh) — HOLD, trail stop**
+- Current: $513.21 (+1.27% vs avg cost $506.76)
+- Action: Trail stop from $481.42 → **$487.55** (5% below $513.21). Blocked.
+- No partial profit: AMD is only +1.27% — not near the +15% partial-profit threshold ($582.78 target).
+- Advancing AI conference July 22-23: Continue holding. Conference is a bullish catalyst — NOT an earnings binary event.
+
+**GS 4sh / META 7sh / WFC 30sh / MS 20sh — ALL UNEXECUTED, BINDING CARRY**
+- All 4 blocked since July 14/17. Still valid setups. Scores: GS 7.83, META 7.50, MS 7.17, WFC 7.0.
+- Current prices require limit REDUCTION: GS limit → $1,078.37; META limit → $655.24.
+- Pre-Market tomorrow MUST attempt these + AMD stop placement.
+
+#### ACTIVE-ENTRY CATCH-UP: SKIPPED (proximity-to-close rule)
+Per routines/afternoon.md: "Do NOT initiate new active-bucket entries this routine — too close to close." The 4 carry-forward names (GS/META/WFC/MS) are swing entries — documented here, execution deferred to Pre-Market July 21.
+
+#### BINARY EVENT SKIPS:
+
+```yaml
+---
+ts: 2026-07-20T18:13:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: other
+score: 0
+thesis: GOOGL earnings Wednesday July 22 AH. 48h binary event window opens ~4 PM ET today (July 20). Cannot initiate positions in Pre-Market tomorrow (window active). Skip until post-earnings Thursday July 23.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "BINARY EVENT SKIP (CLAUDE.md exemption #2). GOOGL earnings July 22 after close. 48h window = no entry from today ~4 PM through Wednesday July 22 AH print. Est. EPS $2.90 (+25.5% YoY), Revenue $116.9B (+21.3% YoY) — strong expectations. Post-earnings reaction (Wednesday AH / Thursday open) could be 'earnings-reaction-follow' or 'earnings-reaction-fade' opportunity — score Thursday July 23 Pre-Market. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T18:13:30Z
+action: skip
+symbol: INTC
+bucket: active
+setup: other
+score: 0
+thesis: INTC earnings Thursday July 23. 48h window active since Saturday July 18. Skip until post-earnings Friday July 24.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "BINARY EVENT SKIP. INTC earnings Thursday July 23. Prior watchlist score was 7.17 (June entry). 48h window active since Saturday July 18. INTC had been on prior mandatory watchlist. Est. EPS $0.22, Revenue $14.4B (+11.6% YoY). Post-earnings entry (Friday July 25) could qualify if print is clean beat with guide-up. xAI Grok: unavailable."
+---
+```
+
+---
+
+### TOMORROW'S PRE-MARKET WATCHLIST (July 21, 2026)
+
+**Priority order for Pre-Market routine:**
+
+| # | Symbol | Action | Score (est.) | Thesis | Limit | Stop | Target | Size% |
+|---|---|---|---|---|---|---|---|---|
+| 1 | **AMD** | RE-SCORE & ENTER/ADD STOP | 8.5 est. | MSFT Azure AI Helios deal (MI455X GPUs + EPYC Venice). Advancing AI conf July 22-23. Q2 Aug 4 (safe). Hold 18sh + place stop $487.55. | N/A (holding) | $487.55 | $582.78 | — |
+| 2 | **GS** | LIMIT BRACKET GTC | 7.83 | Q2 +45.7% EPS beat. M&A revival. Binding since July 14. Price $1,073 below prior limit $1,099. | $1,078.37 (=$1,073×1.005) | $1,024.45 | $1,240.13 | 4.34% |
+| 3 | **META** | LIMIT BRACKET GTC | 7.50 | Cloud compute launch confirmed. Llama AI. Earnings July 29 (safe through July 26). Price $652 below prior limit $668. | $655.24 (=$652×1.005) | $622.48 | $753.53 | 4.65% |
+| 4 | **WFC** | LIMIT BRACKET GTC | 7.0 | Q2 EPS beat +13%. Post-earnings follow. Verify current price. | $88×1.005 est. | $84.04 | $101.52 | 2.65% |
+| 5 | **MS** | LIMIT BRACKET GTC | 7.17 | Q2 revenue +27% YoY, net income +60% YoY. Near ATH. Verify current price. | $229×1.005 est. | $217.56 | $263.35 | 4.60% |
+| SKIP | GOOGL | Binary event — Wednesday earnings | — | — | — | — | — | — |
+| SKIP | INTC | Binary event — Thursday earnings | — | — | — | — | — | — |
+| SKIP | TSLA | Binary event — Wednesday earnings | — | — | — | — | — | — |
+| WATCH | GOOGL | POST-EARNINGS (Thursday July 23) | TBD | Analyst consensus strong. Post-earnings follow-through or fade. Score Thursday. | — | — | — | — |
+| WATCH | INTC | POST-EARNINGS (Friday July 25) | TBD | Prior score 7.17 before June. Score Friday post-print. | — | — | — | — |
+
+**AMD Re-Score Preview (full 6-agent needed at Pre-Market):**
+- Fundamentals (est. 9/10): MSFT Azure AI massive GPU deal = $B contract; Q1 revenue strong; AMD Data Center growing; analysts raising PTs post-deal.
+- Technical (est. 8/10): +5% today, breaking above prior $510-515 resistance; Advancing AI conf July 22-23 is known bullish catalyst; new high momentum post-MSFT.
+- Sentiment (est. 8/10): Overwhelmingly positive news; multiple PT upgrades today; MSFT deal confirmation = institutional buy signal. (xAI unavailable)
+- Macro (est. 7/10): AI capex cycle validated by MSFT deployment commitment; SPX green; semiconductor sector leading.
+- Risk (est. 7/10): 18sh held, stop $487.55, target $582.78. No new position size issue. Need to verify vs guardrails.
+- Tech Analyst (est. 9/10): AMD MI455X GPU competitive with NVIDIA H100; EPYC Venice CPU dominant in data center; Helios rackscale = infrastructure leadership; ROCm software moat building.
+- **Estimated Average: ~8.0/10 → CONFIRMED HOLD, seek add if stop allows**
+
+---
+
+### PORTFOLIO STATE — July 20, 2026 (2:11 PM ET)
+
+**PORTFOLIO STATE**
+Total Equity: ~$99,882 (est.)
+Cash: $90,644 (90.8%) — 5% floor maintained
+Trading bucket: ~$9,238 (9.25%) — 1 position (AMD 18sh at $513.21, +1.27% unrealized) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+**Deployment gap: ~$84,393 above the 5% floor.** 4 approved+blocked orders outstanding (GS/META/WFC/MS).
+
+**Benchmark:**
+- S&P 500 May 1 baseline: ~7,200. Est. July 20: ~7,500. SPX return: **~+4.2%**
+- Portfolio return: ($99,882 / $100,000) − 1 = **−0.12%**
+- **Performance gap: ~−4.3 pp** (improved from −4.43 pp on July 17 due to AMD recovery)
+
+**Sector exposure:**
+| Sector | Current $ | Current % | Cap |
+|---|---|---|---|
+| Technology/Semis (AMD) | $9,238 | 9.25% | 25% |
+| Cash | $90,644 | 90.8% | — |
+
+**OPERATOR MANDATORY ACTIONS — AT app.alpaca.markets:**
+1. **GTC sell-stop 18sh AMD at $487.55** (trail from $481.42 — AMD is $513 with fresh MSFT catalyst)
+2. **BUY 4sh GS limit $1,078 bracket GTC** (stop $1,024, target $1,240 — reduced from stale $1,099)
+3. **BUY 7sh META limit $655 bracket GTC** (stop $622, target $754 — safe through July 26)
+4. **BUY 30sh WFC limit current×1.005 bracket GTC** (score 7.0)
+5. **BUY 20sh MS limit current×1.005 bracket GTC** (score 7.17)
+6. **DO NOT ENTER: GOOGL, TSLA, INTC** — binary event windows active
+
+---
+
 ## 2026-07-17 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 81st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-17T15:10:47Z ✓
