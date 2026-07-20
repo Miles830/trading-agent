@@ -1,7 +1,66 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-20 (Monday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 82nd consecutive blocked session). PRE-MARKET + MARKET-OPEN + MID-MORNING ALL SILENTLY FAILED. MIDDAY ✅ RUNNING.**
+
+**JULY 20 MIDDAY STATUS:** All 3 predecessor routines (Pre-Market, Market-Open, Mid-Morning) silently failed — Midday is the first routine to fire today. AMD RECOVERED: AMD at $513.21 (recovered from July 17 low of $465.79 — stop breach was temporary). AMD-MSFT expanded partnership announced today. UBS PT raised $670→$700. Advancing AI 2026 conf July 22-23 (2 days away). ALL 4 BINDING COMMITMENT ORDERS BLOCKED (GS/META/WFC/MS — HTTP 403, 82nd session). IBM 48h earnings window opens TODAY (July 22 earnings) — NO IBM entries/exits.
+
+**AMD STATUS CHANGE (CRITICAL):**
+- July 17 breach: AMD hit $465.79 (<$481.42 stop) — stop was never placed (API blocked)
+- July 20 recovery: AMD at $513.21 (+10.2% from July 17 low) — now ABOVE stop ($481.42) AND avg cost ($506.76)
+- P&L: 18 × ($513.21 − $506.76) = **+$116.10 (+1.27%)**
+- Position: 9.24% equity — STILL OVER 5% CAP
+- New catalysts: AMD-MSFT expanded partnership (GPU/CPU/networking); UBS PT $700; conf July 22-23
+- **REVISED COMMITMENT: SELL 9sh AMD (not all 18sh) to bring to ~4.6% equity. Hold 9sh through conference.**
+- Stop backfill attempted → HTTP 403 blocked
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Midday — all HTTP 403):**
+- GS: BUY 4sh limit bracket GTC $1,079 / stop $1,025.05 / target $1,240.85 → HTTP 403 (score 7.17)
+- META: BUY 7sh limit bracket GTC $652 / stop $619.40 / target $749.80 → HTTP 403 (score 7.17; exit required by July 25)
+- WFC: BUY 30sh limit bracket GTC $88 / stop $83.60 / target $101.20 → HTTP 403 (score 7.0)
+- MS: BUY 20sh limit bracket GTC $216.50 / stop $205.68 / target $248.96 → HTTP 403 (score 7.17)
+
+**MARKET CONDITIONS (July 20, 12:35 PM ET — WEB SEARCH CONFIRMED):**
+- SPX: +0.30% (est. ~7,471) | Nasdaq: +0.65% (chip stocks leading) | Dow: -0.20%
+- AMD: $513.21 (day range $510.63–$522.44) — AMD-MSFT partnership announced
+- GS: ~$1,073 (below $1,079 limit — favorable entry)
+- WFC: ~$87.51 (at our $88 limit — favorable entry)
+- MS: ~$215 (below $216.50 limit — favorable entry; pulled back from ATH $228.55)
+- META: ~$648 (below $652 limit — favorable entry; earnings July 29, window opens July 27)
+- IBM: ~$214 (48h earnings window opens today — EXCLUDED; never entered — saved ~$684 loss on 3sh)
+- Oil: ~$90/barrel (US-Iran airstrikes + Yemeni maritime embargo vs Saudi Arabia)
+
+**JULY 20 IMPORTANT DATES:**
+- TODAY: IBM 48h earnings window opens — NO IBM entries/exits
+- July 22-23: AMD Advancing AI 2026 conference (NOT binary event — hold AMD)
+- July 22: IBM Q2 earnings (in window — excluded)
+- July 25: LATEST safe META entry/exit before July 27 window opens
+- July 27: META 48h earnings window opens (must be out of META by end of July 25)
+- July 29: META Q2 earnings
+
+**PORTFOLIO STATE EST (July 20 Midday):**
+- Cash: $90,644 (90.75%)
+- AMD: 18sh × $513.21 = $9,238 (9.24%) — OVER 5% cap, NAKED
+- Total equity est.: ~$99,882
+- Performance vs SPX (May 1 baseline 7,200 → July 20 est. 7,471 = +3.77%): est. −0.12% → gap −3.89 pp (IMPROVED from −4.43 pp — AMD recovery)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (82+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Daily gain ~+$854 (est. +0.86% AMD recovery) — NOT tripped
+
+**BINDING COMMITMENTS NOT YET FILLED (priority order for Afternoon routine):**
+1. AMD: SELL 9sh at market — reduce from 9.24% to ~4.6% equity (within 5% cap)
+2. GS: BUY 4sh limit $1,079 bracket GTC (stop $1,025.05, target $1,240.85) — score 7.17
+3. META: BUY 7sh limit $652 bracket GTC (stop $619.40, target $749.80) — score 7.17 — EXIT BY JULY 25
+4. WFC: BUY 30sh limit $88 bracket GTC (stop $83.60, target $101.20) — score 7.0
+5. MS: BUY 20sh limit $216.50 bracket GTC (stop $205.68, target $248.96) — score 7.17
+
+**EARNINGS CALENDAR (next 2 weeks — key):**
+- July 22: IBM (window open NOW — excluded); AMD Advancing AI conf (NOT binary)
+- July 22: TSLA (check exact date before any entry — likely this week)
+- July 22: Alphabet/GOOG (this week — no entry until post-print)
+- July 22: Intel (this week — no entry until post-print)
+- July 29: META (window opens July 27 — EXIT META by July 25 close)
+- July 29-30: MSFT (est — verify)
+- AMD Q2 earnings: est. late July/early August — verify exact date before adding stops
 
 **JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
 

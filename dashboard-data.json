@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-17T15:15:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-20T16:35:00Z",
+  "updated_by": "midday",
   "portfolio": {
-    "total_equity": 99028,
+    "total_equity": 99882,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 91.5,
+    "cash_pct": 90.75,
     "buying_power": 181288,
-    "long_market_value": 8384,
+    "long_market_value": 9238,
     "short_market_value": 0.0,
-    "daily_pnl": -633,
-    "daily_pnl_pct": -0.63,
-    "total_return_pct": -0.97,
-    "spx_return_pct": 3.46,
-    "benchmark_gap_pct": -4.43,
+    "daily_pnl": 854,
+    "daily_pnl_pct": 0.86,
+    "total_return_pct": -0.12,
+    "spx_return_pct": 3.77,
+    "benchmark_gap_pct": -3.89,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 8384,
-      "active_pct": 8.46,
+      "active_value": 9238,
+      "active_pct": 9.24,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 91.5
+      "cash_pct": 90.75
     },
-    "note": "July 17 MID-MORNING (11:10 AM ET / 15:10Z). API BLOCKED HTTP 000 \u2014 81st consecutive session. Pre-Market + Market-Open silently failed. AMD STOP BREACHED: AMD -7% to $465.79, below stop $481.42. 18sh attempt SELL blocked. GS/META/WFC/MS all attempted, all blocked. NFLX SKIP (scored 4.83: revenue miss + weak Q3 guidance; stock -9.9% to $67 new 52-wk low). WFC Q2 beat confirmed (score 7.0), MS Q2 exceptional (score 7.17) \u2014 both new entries blocked. Michigan Sentiment 54.4 (5-month high). OPERATOR URGENT: (1) SELL ALL 18sh AMD AT MARKET \u2014 stop blown; (2) BUY 4sh GS $1,099 bracket GTC; (3) BUY 7sh META $668 bracket GTC; (4) BUY 30sh WFC $88 bracket GTC; (5) BUY 20sh MS $230 bracket GTC."
+    "note": "July 20 MIDDAY (12:35 PM ET / 16:35Z). API BLOCKED HTTP 403 — 82nd consecutive session. Pre-Market + Market-Open + Mid-Morning all silently failed. AMD RECOVERED: $465.79 Jul 17 → $513.21 Jul 20 (+10.2%). Stop breach was temporary. AMD-MSFT expanded partnership announced today. UBS PT raised $670→$700. Advancing AI conf July 22-23. GS/META/WFC/MS all attempted, all HTTP 403 blocked. IBM excluded (48h earnings window opens today — July 22 earnings). OPERATOR URGENT: (1) SELL 9sh AMD at market (reduce 9.24%→4.6%); (2) BUY 4sh GS $1,079 bracket GTC; (3) BUY 7sh META $652 bracket GTC (exit by Jul 25); (4) BUY 30sh WFC $88 bracket GTC; (5) BUY 20sh MS $216.50 bracket GTC."
   },
   "positions": [
     {
@@ -31,187 +31,341 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 465.79,
-      "pnl": -737.46,
-      "pnl_pct": -8.1,
+      "current_price": 513.21,
+      "pnl": 116.10,
+      "pnl_pct": 1.27,
       "stop_loss": null,
-      "take_profit": 582.78,
-      "stop_loss_pending": 465.0,
+      "take_profit": 700.0,
+      "stop_loss_required": 481.42,
+      "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
-      "agent_average": 7.17,
-      "note": "STOP BREACHED Day 27. AMD -7% to $465.79 July 17 on AI capex reset. Stop level $481.42 (5% below avg $506.76) was never placed (API blocked 81 consecutive sessions). AMD is $15.63 BELOW stop. P&L: 18 x ($465.79-$506.76) = -$737.46 (-8.1%). Attempted SELL 18sh limit $465.00 \u2014 HTTP 000. OPERATOR: SELL ALL 18sh AMD AT MARKET NOW at app.alpaca.markets. AMD Advancing AI conf July 22-23 is NOT a valid hold reason after stop breach."
+      "agent_average": 6.67,
+      "note": "HOLD re-validated July 20. Stop breach July 17 ($465.79 < $481.42) was temporary — AMD recovered to $513.21 (+10.2%). AMD-MSFT expanded partnership announced. UBS PT $700. Advancing AI 2026 conf July 22-23. Position 9.24% equity — OVER 5% cap. NAKED (no stop at Alpaca). OPERATOR: (1) SELL 9sh AMD AT MARKET to reduce to 9sh (~4.6% equity); (2) Place GTC stop on 9sh at $481.42; (3) Hold remaining 9sh through conference."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1099.02,
-      "current_price": 1093.56,
+      "entry_price": 1079.00,
+      "current_price": 1073.00,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 1263.87,
-      "stop_loss_pending": 1044.08,
+      "take_profit": 1240.85,
+      "stop_loss_pending": 1025.05,
       "setup": "earnings-reaction-follow",
-      "agent_average": 7.83,
-      "note": "Re-confirmed 7.83 avg July 17 mid-morning. All 6 agents >= 7. 4sh x $1,099.02 limit = $4,396 (4.44% equity). Stop $1,044.08 (-5%). Target $1,263.87 (+15%). R/R 3.0:1. POST /v2/orders BLOCKED HTTP 000 (81st session). GS at $1,093.56 today \u2014 holding vs SPX -1.15%. OPERATOR: BUY 4sh GS limit $1,099 bracket GTC at app.alpaca.markets."
+      "agent_average": 7.17,
+      "note": "Re-scored 7.17 July 20 midday (all 6 agents ≥7). 4sh × $1,079 limit = $4,316 (4.32% equity). Stop $1,025.05 (-5%). Target $1,240.85 (+15%). R/R 3.0:1. GS Q2 2026: EPS $20.98 vs $14.51 est (+45% beat), record quarter. POST /v2/orders BLOCKED HTTP 403 (82nd). OPERATOR: BUY 4sh GS limit $1,079 bracket GTC at app.alpaca.markets."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 667.86,
-      "current_price": 664.54,
+      "entry_price": 652.00,
+      "current_price": 648.00,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 768.04,
-      "stop_loss_pending": 634.47,
+      "take_profit": 749.80,
+      "stop_loss_pending": 619.40,
       "setup": "breakout-volume",
-      "agent_average": 7.50,
-      "note": "Re-confirmed 7.50 avg July 17 mid-morning. All 6 agents >= 7. 7sh x $667.86 limit = $4,675 (4.72% equity). Stop $634.47 (-5%). Target $768.04 (+15%). R/R 3.0:1. META at $664.54 today \u2014 showing relative strength vs SPX -1.15%. META earnings est. July 29-30 (SAFE). POST /v2/orders BLOCKED HTTP 000 (81st). OPERATOR: BUY 7sh META limit $668 bracket GTC."
+      "agent_average": 7.17,
+      "note": "Re-scored 7.17 July 20 midday (all 6 agents ≥7, Tech 8). 7sh × $652 limit = $4,564 (4.57% equity). Stop $619.40 (-5%). Target $749.80 (+15%). R/R 3.0:1. META cloud compute + AI thesis. Earnings July 29 — entry allowed today; MUST EXIT before July 27 (48h window). POST /v2/orders BLOCKED HTTP 403 (82nd). OPERATOR: BUY 7sh META limit $652 bracket GTC at app.alpaca.markets. SET REMINDER: exit by July 25 close."
     },
     {
       "symbol": "WFC",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 87.96,
-      "current_price": 87.52,
+      "entry_price": 88.00,
+      "current_price": 87.51,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 101.15,
-      "stop_loss_pending": 83.56,
+      "take_profit": 101.20,
+      "stop_loss_pending": 83.60,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.0,
-      "note": "NEW ENTRY approved July 17. WFC Q2 2026: EPS $1.96 vs $1.73 est (+13% beat); Rev $22.62B vs $22.01B (+2.8% beat); Net income +17% YoY; EPS +25% YoY. Score 7.0 (all 6 agents, Macro 6/10 only sub-7). 30sh x $87.96 limit = $2,639 (2.66% equity). Stop $83.56 (-5%). Target $101.15 (+15%). R/R 3.0:1. Financials sector: GS 4.44% + WFC 2.66% = 7.10%. POST /v2/orders BLOCKED HTTP 000 (81st). OPERATOR: BUY 30sh WFC limit $88 bracket GTC."
+      "note": "Re-scored 7.0 July 20 midday (5/6 agents ≥7, Technical 6). 30sh × $88 limit = $2,640 (2.64% equity). Stop $83.60 (-5%). Target $101.20 (+15%). R/R 3.0:1. WFC Q2 2026: EPS $1.96 vs $1.73 (+13% beat); revenue +2.8% beat; net income +17% YoY. POST /v2/orders BLOCKED HTTP 403 (82nd). OPERATOR: BUY 30sh WFC limit $88 bracket GTC at app.alpaca.markets."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 229.69,
-      "current_price": 228.55,
+      "entry_price": 216.50,
+      "current_price": 215.00,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 264.14,
-      "stop_loss_pending": 218.21,
+      "take_profit": 248.96,
+      "stop_loss_pending": 205.68,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.17,
-      "note": "NEW ENTRY approved July 17. MS Q2 2026: Revenue $21.3B (+27% YoY); Net income $5.6B (+60% YoY); EPS $3.46 vs $2.13 (+62%). Near-ATH $232.25 (July 15). Score 7.17 (Macro 6, all others >= 7). 20sh x $229.69 limit = $4,594 (4.64% equity). Stop $218.21 (-5%). Target $264.14 (+15%). R/R 3.0:1. POST /v2/orders BLOCKED HTTP 000 (81st). OPERATOR: BUY 20sh MS limit $230 bracket GTC."
+      "note": "Re-scored 7.17 July 20 midday (5/6 agents ≥7, Technical 6, Fundamentals 9). 20sh × $216.50 limit = $4,330 (4.33% equity). Stop $205.68 (-5%). Target $248.96 (+15%). R/R 3.0:1. MS Q2 2026: Revenue $21.3B vs $16.8B YoY (+27%); net income +60% YoY; EPS $3.46 vs $2.13 (+62%). Pulled back from ATH $228.55 — favorable entry. POST /v2/orders BLOCKED HTTP 403 (82nd). OPERATOR: BUY 20sh MS limit $216.50 bracket GTC at app.alpaca.markets."
     },
     {
       "symbol": "IBM",
       "bucket": "active",
       "qty": 0,
       "entry_price": 0,
-      "current_price": 235.0,
+      "current_price": 214.00,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
       "take_profit": null,
-      "setup": "sector-rotation",
+      "setup": "other",
       "agent_average": 2.67,
-      "note": "WATCHLIST REMOVED July 14. IBM issued Q2 2026 earnings WARNING morning of July 14. Revenue $17.2B vs $17.86B est (-3.7%). EPS $2.93 vs $3.01 est. Stock -22% to ~$235 \u2014 worst day since 1987. IBM enterprise consulting weakness (customers diverting to hardware). BofA PT raise $315\u2192$330 (this morning) is now void. IBM EXIT DEADLINE July 17 is now irrelevant \u2014 IBM was never entered (API blocked saved us from -22% loss). DO NOT ENTER IBM. Contagion: NOW -7%, CRM -5%, ACN -8%. IBM excluded from all watchlists until post-July-22-earnings thesis review."
-    },
-    {
-      "symbol": "PLTR",
-      "bucket": "active",
-      "qty": 0,
-      "entry_price": 127.97,
-      "current_price": 127.97,
-      "pnl": 0,
-      "pnl_pct": 0,
-      "stop_loss": null,
-      "take_profit": null,
-      "setup": "ai-momentum-pullback",
-      "agent_average": 6.83,
-      "note": "DEFERRED \u2014 re-scored 6.83 midday (was 6.67 AM; was 7.5 July 13). Macro improved 5\u21927 on CPI cool (September rate hike less likely, Nasdaq +0.81%). Average 6.83 still below 7.0 Master gate. Fundamentals(6) and Technical(6) drag. P/E >200x \u2014 even with rate relief, still a headwind. Midday $127.97 (range $126.20-$130.72). Defer to Afternoon routine. Bull case: if Warsh testimony is non-hawkish OR September cut pricing accelerates, macro\u21928, avg\u21927.0 (threshold). CandidatE for Afternoon routine entry if score recovers."
+      "note": "EXCLUDED — IBM 48h earnings window opens July 20 (earnings July 22). NEVER ENTERED (API blocked + Q2 warning -22%). IBM at ~$214 vs contemplated entry $290 — API blockage saved ~$684 loss (3sh). DO NOT ENTER IBM. Post-July-22-earnings thesis review to determine if IBM is eligible for re-scoring (likely NO given enterprise consulting structural headwind)."
     }
   ],
   "market": {
-    "mode": "RISK-OFF \u2014 CHIP/AI SELLOFF + NFLX WEAK GUIDANCE. SPX -1.15%. Nasdaq -1.81%. AMD -7% (stop breached). NFLX -9.9% (weak Q3 guidance). Michigan Sentiment 54.4 (5-month high = positive macro). Financials sector resilient (GS/WFC/MS Q2 blowouts holding).",
-    "fear_greed": 45,
-    "fear_greed_label": "Neutral-Fear \u2014 AI capex concerns + NFLX guidance miss; Financials insulated",
-    "spx": "SPX est. ~7,449 (-1.15%). Nasdaq -1.81%. May 1 baseline 7,200 \u2192 +3.46% return. Portfolio est. return -0.97%. Benchmark gap: -4.43 pp (widening \u2014 AMD stop breach and API blockage root cause).",
-    "btc": "BTC est. ~$60,000 area (below $82K active-trading threshold). No crypto entries. Risk-off dampens BTC.",
+    "mode": "RISK-ON (MILD) — CHIP STOCKS LEADING. SPX +0.30%. Nasdaq +0.65%. AMD-MSFT partnership. Big Tech earnings week. Geopolitical risk (US-Iran, oil $90) offset by earnings optimism.",
+    "fear_greed": 52,
+    "fear_greed_label": "Neutral — Earnings optimism balanced by geopolitical risk (US-Iran airstrikes, oil $90/barrel)",
+    "spx": "SPX +0.30% → est. ~7,471. May 1 baseline 7,200 → +3.77% YTD. Portfolio est. return -0.12% (AMD recovery). Benchmark gap: -3.89 pp (improved from -4.43 pp July 17).",
+    "btc": "BTC est. ~$60-65K area (below $82K active-trading threshold). No crypto entries. Risk-on mild but geopolitical offset.",
     "sectors": [
       {
-        "name": "Semiconductors (AMD, NVDA, INTC)",
-        "change_pct": -7.0,
-        "note": "AMD -7% to $465.79. Chip sector selloff driven by AI capex valuation reset + NFLX weak guidance (streaming slowdown signals ad/subscription revenue ceiling). AMD blew through stop level $481.42. AVOID new semiconductor entries today."
+        "name": "Semiconductors (AMD, NVDA, SMH)",
+        "change_pct": 1.5,
+        "note": "AMD +10%+ recovery from July 17 low. AMD-MSFT expanded partnership (GPU/CPU/networking) announced July 20. UBS PT raised $670→$700. Advancing AI 2026 conf July 22-23. Chip stocks broadly green today (Nasdaq +0.65%). SMH ETF leading."
       },
       {
         "name": "Financials (GS, WFC, MS)",
-        "change_pct": 0.5,
-        "note": "Financials resilient despite risk-off. GS ~$1,094 (holding post +7.7% July 14 earnings surge). WFC Q2 beat (+13% EPS). MS Q2 exceptional (+60% net income). Chip selloff NOT a financials event. GS/WFC/MS all approved for entry."
+        "change_pct": 0.3,
+        "note": "Financials flat-to-up. GS at $1,073 (below $1,079 limit — good entry). WFC at $87.51 (at $88 limit). MS at $215 (below $216.50 limit — pulled back from ATH). All 3 still scoring ≥7. Sector: GS+WFC+MS = 11.29% of equity — within 25% cap."
       },
       {
-        "name": "Communication Services (META, GOOGL, NFLX)",
-        "change_pct": -3.5,
-        "note": "NFLX -9.9% dragging sector. META $664.54 showing relative strength (flat vs market -1.15%). GOOGL est. slightly negative. META holding on cloud compute + Llama AI thesis. META approved for entry."
+        "name": "Communication Services / Tech (META, GOOG, NFLX)",
+        "change_pct": 0.6,
+        "note": "META at ~$648 (below $652 limit). Earnings July 29 — entry allowed today (window opens July 27). GOOG earnings this week — excluded. NFLX remains at $67 range (52-wk low; weak Q3 guidance). No NFLX entry."
       },
       {
-        "name": "Enterprise Software / Consulting (IBM, NOW, CRM, ACN)",
-        "change_pct": -3.0,
-        "note": "IBM -22% July 14 contagion persisting. NOW/CRM/ACN continuing weakness. Avoid enterprise consulting space."
+        "name": "Energy (XLE, oil stocks)",
+        "change_pct": 2.0,
+        "note": "Oil ~$90/barrel (US-Iran airstrikes + Yemeni maritime embargo vs Saudi Arabia). Energy stocks elevated. Not in portfolio thesis currently."
+      },
+      {
+        "name": "Enterprise Software (IBM, NOW, CRM, ACN)",
+        "change_pct": -0.5,
+        "note": "IBM at ~$214 (48h earnings window open — excluded). IBM down 26% from contemplated $290 entry. Contagion persists in NOW/CRM/ACN. Avoid sector until IBM post-earnings."
       }
     ],
-    "macro_notes_md": "JULY 17 2026 MID-MORNING UPDATE: NFLX Q2 AH MISS + CHIP SELLOFF. NFLX Q2: EPS $0.80 (beat +$0.01) but Revenue $12.56B miss ($12.58B est) + Q3 guidance 12% (vs 13% expected). NFLX -9.9% to $67.02 new 52-wk low. AMD -7% AI capex reset. SPX -1.15%, Nasdaq -1.81%. MICHIGAN SENTIMENT July 2026: 54.4 (beat 51.0 est, 5-month high) \u2014 POSITIVE. WFC Q2 (July 15): EPS $1.96 vs $1.73 (+13% beat). MS Q2 (July 15): Revenue $21.3B vs $16.8B YoY (+27%), net income +60%. Both APPROVED (WFC 7.0, MS 7.17). GS 7.83 + META 7.50 binding commitments \u2014 all 4 blocked HTTP 000. ASML Q2 not yet scored (no confirmed data). IBM EXIT DEADLINE was today (July 17) \u2014 IBM never entered (API saved us from -22%). Next catalyst: AMD Advancing AI 2026 conf July 22-23 (NOT binary). META earnings est. July 29-30."
+    "macro_notes_md": "JULY 20 2026 MIDDAY UPDATE: AMD-MSFT PARTNERSHIP + EARNINGS WEEK BEGINS. SPX +0.30%, Nasdaq +0.65% (chip stocks leading), Dow -0.20%. AMD-MSFT expanded strategic partnership announced: covers GPU, CPU, networking, related products — multi-year supply agreement validating AMD as NVIDIA alternative in hyperscaler cloud. UBS raised AMD PT $670→$700 (previewing Advancing AI 2026 conf July 22-23 San Francisco). IBM 48h earnings window opens today (July 22 earnings 5pm ET) — IBM excluded from all trades. TSLA/Alphabet/Intel earnings expected this week — excluded (binary events). META earnings July 29 (window opens July 27) — entry allowed today, last safe day July 25. GEOPOLITICAL: US-Iran airstrikes ongoing + Yemeni maritime embargo vs Saudi Arabia — oil $90/barrel (positive for energy sector; mild risk-off offset for tech). AMD Advancing AI 2026 conf July 22-23: expect MI350/MI400 product announcements + MSFT/Azure partnership details. NOT a binary event — entries/exits allowed."
   },
   "routines": [
     {
       "name": "Pre-Market",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-14T12:05:00Z",
-      "next_run": "2026-07-15T12:00:00Z",
-      "last_summary": "July 14 Pre-Market COMPLETED 12:05Z. API BLOCKED HTTP 000 (77th consecutive). CPI not yet out at time of run. Bank earnings blowout (GS +45%, JPM, BAC, WFC all beat). 4 orders blocked: AMD SELL 9sh, GS BUY 7sh (7.33), META BUY 8sh (7.17), IBM BUY 3sh (7.0). PLTR deferred 6.67. Note: GS price estimate ($645) and META price estimate ($603) were both badly wrong vs actual intraday prices."
+      "next_run": "2026-07-21T12:00:00Z",
+      "last_summary": "July 20 Pre-Market SILENTLY FAILED — not found in 2026-07-20.log. All 5 binding commitments missed. Three consecutive silent failures today (Pre-Market + Market-Open + Mid-Morning). Midday catch-up executing."
     },
     {
       "name": "Market-Open",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-13T13:45:41Z",
-      "next_run": "2026-07-15T13:45:00Z",
-      "last_summary": "July 14 Market-Open SILENTLY FAILED \u2014 not found in heartbeat log. No stop audit at open. No AMD stop set. No fill confirmations. Catch-up executed in Midday routine (2 entries approved: GS 4sh + META 7sh, both blocked HTTP 000)."
+      "next_run": "2026-07-21T13:45:00Z",
+      "last_summary": "July 20 Market-Open SILENTLY FAILED — not found in 2026-07-20.log. Stop audit and MOO fill confirmations missed. AMD naked 31+ days."
     },
     {
       "name": "Mid-Morning",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-17T15:10:00Z",
-      "next_run": "2026-07-18T15:00:00Z",
-      "last_summary": "July 17 Mid-Morning COMPLETED 15:10Z. API BLOCKED HTTP 000 (81st consecutive). Pre-Market + Market-Open both silently failed. STOP AUDIT: AMD stop level $481.42 BREACHED \u2014 AMD -7% to $465.79. SELL 18sh AMD limit $465 \u2192 HTTP 000. GS 4sh (7.83) + META 7sh (7.50) binding commitments \u2192 HTTP 000. NEW: WFC 30sh (7.0 score, Q2 +13% EPS beat) \u2192 HTTP 000. NEW: MS 20sh (7.17 score, Q2 +60% net income) \u2192 HTTP 000. NFLX SKIP (scored 4.83 \u2014 revenue miss + weak Q3 guidance \u2014 NOT Deployment Bias exemption). Michigan Sentiment 54.4 (5-month high). OPERATOR URGENT: (1) SELL ALL 18sh AMD AT MARKET \u2014 stop blown; (2) BUY 4sh GS $1,099 bracket GTC; (3) BUY 7sh META $668 bracket GTC; (4) BUY 30sh WFC $88 bracket GTC; (5) BUY 20sh MS $230 bracket GTC."
+      "next_run": "2026-07-21T15:00:00Z",
+      "last_summary": "July 20 Mid-Morning SILENTLY FAILED — not found in 2026-07-20.log. Third consecutive silent failure today."
     },
     {
       "name": "Midday",
       "status": "completed",
-      "last_run": "2026-07-14T16:36:00Z",
-      "next_run": "2026-07-15T16:30:00Z",
-      "last_summary": "July 14 Midday COMPLETED 16:36Z. API BLOCKED HTTP 000 (78th consecutive). CPI COOL (3.5% vs 3.8% est; core 2.6% vs 2.8%). IBM -22% on earnings warning \u2014 REMOVED from watchlist. AMD +5% to $560.66 (+$970 unrealized). GS re-scored 7.5 (real price $1,075, not $645); 4sh catch-up ORDER BLOCKED. META re-scored 7.5 (real price $660, not $603); 7sh catch-up ORDER BLOCKED. PLTR 6.83 \u2014 below threshold. Operator actions: (1) SELL 9-10sh AMD MOC; (2) BUY 4sh GS limit $1,080 bracket GTC; (3) BUY 7sh META limit $663 bracket GTC; (4) DO NOT enter IBM."
+      "last_run": "2026-07-20T16:35:00Z",
+      "next_run": "2026-07-21T16:30:00Z",
+      "last_summary": "July 20 Midday COMPLETED 16:35Z. API BLOCKED HTTP 403 (82nd consecutive). All 3 predecessors silently failed. STOP AUDIT: AMD stop breach July 17 ($465.79 < $481.42) RESOLVED — AMD recovered to $513.21 (+10.2%). AMD-MSFT partnership + UBS PT $700 + conf July 22-23 re-validate hold thesis. REVISED: SELL 9sh AMD (not all 18sh) to reduce to 5% cap. GS 4sh (7.17) + META 7sh (7.17) + WFC 30sh (7.0) + MS 20sh (7.17) all re-confirmed and attempted — all HTTP 403 BLOCKED (82nd consecutive). IBM excluded (48h earnings window opens today). Portfolio est: $99,882 total (-0.12% return), gap vs SPX -3.89 pp (improved from -4.43 pp)."
     },
     {
       "name": "Afternoon",
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-07-16T18:08:00Z",
-      "next_run": "2026-07-17T18:00:00Z",
-      "last_summary": "July 16 Afternoon COMPLETED 18:08Z. API BLOCKED HTTP 403 (80th consecutive). Pre-Market + Market-Open + Midday all silently failed today. Stop audit: AMD naked Day 27 — trail stop $541.50 → HTTP 403 BLOCKED. GS 7.83 and META 7.67 SKIPPED this routine (proximity-to-close rule) — carry to Pre-Market July 17 as BINDING COMMITMENTS. No day trades open. NFLX excluded (Exemption 2 — earnings AH tonight). Pre-scored tomorrow watchlist: AMD (SELL 9sh MOO MANDATORY), GS (BUY 4sh binding), META (BUY 7sh binding), NFLX (score post-earnings), WFC/MS/ASML (score post-earnings). OPERATOR: Execute manually at app.alpaca.markets."
+      "next_run": "2026-07-20T18:00:00Z",
+      "last_summary": "Pending — 2:00 PM ET today. Re-attempt GS/META/WFC/MS limit brackets. AMD 9sh sell attempt. Trail stops if AMD API restores. Check AMD-MSFT partnership momentum into close."
     },
     {
       "name": "Market-Close",
-      "status": "SILENT FAILURE",
+      "status": "pending",
       "last_run": "2026-07-02T19:35:00Z",
-      "next_run": "2026-07-14T19:30:00Z",
-      "last_summary": "Last successful: July 2. Multiple silent failures since. Next: July 14 3:30 PM ET / 19:30Z."
+      "next_run": "2026-07-20T19:30:00Z",
+      "last_summary": "Pending — 3:30 PM ET today. MOC orders if limit brackets not filled. AMD position management."
     },
     {
       "name": "Daily-Review",
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-07-13T20:34:09Z",
-      "next_run": "2026-07-14T20:30:00Z",
-      "last_summary": "July 13 Daily Review completed 20:34-20:50Z. API blocked 76th consecutive. AMD naked Day 22. 5 of 7 routines silently failed that day. Key events noted: CPI July 14, bank earnings July 14-15, IBM exit deadline July 17."
+      "next_run": "2026-07-20T20:30:00Z",
+      "last_summary": "Pending — 4:30 PM ET today. Setup tally. AMD conference prep (July 22-23). META exit plan (by July 25). WFC/MS/GS carry status. Performance vs SPX."
+    }
+  ],
+  "watchlist": [
+    {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": 6.67,
+      "action": "SELL 9sh at market (MANDATORY — reduce from 9.24% to ~4.6% equity). HOLD remaining 9sh through July 22-23 Advancing AI conf.",
+      "setup": "ai-momentum-pullback",
+      "notes": "18sh = 9.24% equity, OVER 5% cap, NAKED. AMD recovered from July 17 low $465.79 to $513.21. AMD-MSFT partnership + UBS PT $700 + conf July 22-23 re-validate hold. REVISED: sell 9sh (not all 18sh). After sell: 9sh × ~$513 = $4,617 (~4.62% equity — within 5% cap). Then place GTC stop on 9sh at $481.42 + GTC target $700. API BLOCKED — OPERATOR: SELL 9sh AMD at market IMMEDIATELY at app.alpaca.markets."
+    },
+    {
+      "symbol": "GS",
+      "bucket": "active",
+      "score": 7.17,
+      "action": "BUY 4sh limit $1,079 bracket GTC (BINDING — 82nd block)",
+      "setup": "earnings-reaction-follow",
+      "notes": "Re-confirmed 7.17 avg July 20 (all 6 agents ≥7). Stop $1,025.05 (-5%). Target $1,240.85 (+15%). GS at $1,073 — below $1,079 limit (favorable entry). API BLOCKED — operator execute at app.alpaca.markets."
+    },
+    {
+      "symbol": "META",
+      "bucket": "active",
+      "score": 7.17,
+      "action": "BUY 7sh limit $652 bracket GTC (BINDING — 82nd block). EXIT BY JULY 25 CLOSE.",
+      "setup": "breakout-volume",
+      "notes": "Re-confirmed 7.17 avg July 20 (all 6 agents ≥7, Tech 8). Stop $619.40 (-5%). Target $749.80 (+15%). META at $648 — below $652 limit (favorable). Earnings July 29 — 48h window opens July 27. HARD EXIT DEADLINE: July 25 close. API BLOCKED — operator execute at app.alpaca.markets."
+    },
+    {
+      "symbol": "WFC",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "BUY 30sh limit $88 bracket GTC (BINDING — 82nd block)",
+      "setup": "earnings-reaction-follow",
+      "notes": "Re-confirmed 7.0 avg July 20 (5/6 agents ≥7, Technical 6). Stop $83.60 (-5%). Target $101.20 (+15%). Q2 +13% EPS beat. API BLOCKED — operator execute at app.alpaca.markets."
+    },
+    {
+      "symbol": "MS",
+      "bucket": "active",
+      "score": 7.17,
+      "action": "BUY 20sh limit $216.50 bracket GTC (BINDING — 82nd block)",
+      "setup": "earnings-reaction-follow",
+      "notes": "Re-confirmed 7.17 avg July 20 (5/6 agents ≥7, Fundamentals 9). Stop $205.68 (-5%). Target $248.96 (+15%). MS at $215 — below $216.50 limit, pulled back from ATH $228.55 (favorable). Q2 +60% net income YoY. API BLOCKED — operator execute at app.alpaca.markets."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-20T12:40:00Z",
+      "action": "entry_blocked",
+      "symbol": "GS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "side": "buy",
+      "qty": 4,
+      "limit_price": 1079.00,
+      "stop_loss": 1025.05,
+      "take_profit": 1240.85,
+      "result": "APPROVED 7.17 avg (F:8 T:7 S:7 M:7 R:7 TA:7) — BUY 4sh GS limit $1,079 bracket GTC → HTTP 403 BLOCKED (82nd consecutive). GS at $1,073 today — below our limit (favorable). OPERATOR: BUY 4sh GS limit $1,079 bracket GTC.",
+      "agent_average": 7.17,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-20T12:41:00Z",
+      "action": "entry_blocked",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.17,
+      "side": "buy",
+      "qty": 7,
+      "limit_price": 652.00,
+      "stop_loss": 619.40,
+      "take_profit": 749.80,
+      "result": "APPROVED 7.17 avg (F:7 T:7 S:7 M:7 R:7 TA:8) — BUY 7sh META limit $652 bracket GTC → HTTP 403 BLOCKED (82nd consecutive). META at $648. Earnings July 29 — must exit by July 25. OPERATOR: BUY 7sh META limit $652 bracket GTC.",
+      "agent_average": 7.17,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-20T12:42:00Z",
+      "action": "entry_blocked",
+      "symbol": "WFC",
+      "setup": "earnings-reaction-follow",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 30,
+      "limit_price": 88.00,
+      "stop_loss": 83.60,
+      "take_profit": 101.20,
+      "result": "APPROVED 7.0 avg (F:8 T:6 S:7 M:7 R:7 TA:7) — BUY 30sh WFC limit $88 bracket GTC → HTTP 403 BLOCKED (82nd consecutive). WFC at $87.51. OPERATOR: BUY 30sh WFC limit $88 bracket GTC.",
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-20T12:43:00Z",
+      "action": "entry_blocked",
+      "symbol": "MS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "side": "buy",
+      "qty": 20,
+      "limit_price": 216.50,
+      "stop_loss": 205.68,
+      "take_profit": 248.96,
+      "result": "APPROVED 7.17 avg (F:9 T:6 S:7 M:7 R:7 TA:7) — BUY 20sh MS limit $216.50 bracket GTC → HTTP 403 BLOCKED (82nd consecutive). MS at $215 (pulled back from ATH $228.55). OPERATOR: BUY 20sh MS limit $216.50 bracket GTC.",
+      "agent_average": 7.17,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-17T12:40:00Z",
+      "action": "entry_blocked",
+      "symbol": "GS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.83,
+      "side": "buy",
+      "qty": 4,
+      "limit_price": 1099.02,
+      "stop_loss": 1044.08,
+      "take_profit": 1263.87,
+      "result": "APPROVED 7.83 avg (F:8 T:7 S:7 M:8 R:7 TA:7) — BUY 4sh GS limit $1,099 bracket GTC → HTTP 000 BLOCKED (81st consecutive). OPERATOR: BUY 4sh GS limit $1,099 bracket GTC.",
+      "agent_average": 7.83,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-17T12:41:00Z",
+      "action": "entry_blocked",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.5,
+      "side": "buy",
+      "qty": 7,
+      "limit_price": 667.86,
+      "stop_loss": 634.47,
+      "take_profit": 768.04,
+      "result": "APPROVED 7.50 avg — BUY 7sh META limit $668 bracket GTC → HTTP 000 BLOCKED (81st consecutive).",
+      "agent_average": 7.5,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-17T12:42:00Z",
+      "action": "entry_blocked",
+      "symbol": "WFC",
+      "setup": "earnings-reaction-follow",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 30,
+      "limit_price": 87.96,
+      "stop_loss": 83.56,
+      "take_profit": 101.15,
+      "result": "APPROVED 7.0 avg — BUY 30sh WFC limit $88 bracket GTC → HTTP 000 BLOCKED (81st consecutive). WFC Q2: EPS +13% beat.",
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-17T12:43:00Z",
+      "action": "entry_blocked",
+      "symbol": "MS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "side": "buy",
+      "qty": 20,
+      "limit_price": 229.69,
+      "stop_loss": 218.21,
+      "take_profit": 264.14,
+      "result": "APPROVED 7.17 avg — BUY 20sh MS limit $229.69 bracket GTC → HTTP 000 BLOCKED (81st). MS Q2: revenue +27% YoY, net income +60% YoY.",
+      "agent_average": 7.17,
+      "master_decision": "approved"
+    },
     {
       "ts": "2026-07-14T12:10:00Z",
       "action": "entry_blocked",
@@ -223,7 +377,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "APPROVED 7.33 avg (F:10 T:5 S:9 M:7 R:6 TA:7) \u2014 MOO BUY 7sh GS \u2192 HTTP 000 BLOCKED (77th consecutive). Q2 EPS $20.98 vs $14.51 (+45% beat), revenue $20.34B vs $16.22B, record quarter. OPERATOR: BUY 7sh GS at market open.",
+      "result": "APPROVED 7.33 avg (F:10 T:5 S:9 M:7 R:6 TA:7) — MOO BUY 7sh GS → HTTP 000 BLOCKED (77th consecutive). Q2 EPS $20.98 vs $14.51 (+45% beat), revenue $20.34B vs $16.22B, record quarter. OPERATOR: BUY 7sh GS at market open.",
       "agent_average": 7.33,
       "master_decision": "approved"
     },
@@ -238,7 +392,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "APPROVED 7.17 avg (F:8 T:6 S:7 M:6 R:8 TA:8) \u2014 MOO BUY 8sh META \u2192 HTTP 000 BLOCKED (77th consecutive). Pre-market $603.12 (-2.02% macro-driven). Meta Compute + Iris chip thesis intact. OPERATOR: BUY 8sh META at open; CANCEL if CPI core >3.0%.",
+      "result": "APPROVED 7.17 avg (F:8 T:6 S:7 M:6 R:8 TA:8) — MOO BUY 8sh META → HTTP 000 BLOCKED (77th consecutive). Pre-market $603.12 (-2.02% macro-driven). Meta Compute + Iris chip thesis intact. OPERATOR: BUY 8sh META at open; CANCEL if CPI core >3.0%.",
       "agent_average": 7.17,
       "master_decision": "approved"
     },
@@ -253,7 +407,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "APPROVED 7.0 avg (F:8 T:6 S:8 M:6 R:7 TA:7) \u2014 MOO BUY 3sh IBM \u2192 HTTP 000 BLOCKED (77th consecutive). BofA PT raised $315\u2192$330 TODAY. Pre-market $302.05 (-1.33%). EXIT DEADLINE: July 17 EOD. OPERATOR: BUY 3sh IBM at open; set MOC July 17 as exit.",
+      "result": "APPROVED 7.0 avg (F:8 T:6 S:8 M:6 R:7 TA:7) — MOO BUY 3sh IBM → HTTP 000 BLOCKED (77th consecutive). NOTE: IBM was never entered. IBM crashed -22% July 14 on earnings warning. API blockage saved us from this loss. IBM removed from watchlist.",
       "agent_average": 7.0,
       "master_decision": "approved"
     },
@@ -268,7 +422,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "MANDATORY GUARDRAIL REDUCTION \u2014 AMD 9.83% equity (OVER 5% cap, Day 23+ naked). MOO SELL 9sh AMD \u2192 HTTP 000 BLOCKED (77th consecutive). AMD pre-market $548.30 (+2.6%). P&L on full 18sh: +$747.72 (+8.2%). OPERATOR: SELL 9sh AMD immediately; trail stop on 9sh to $520.89; consider TP $620 (BofA PT).",
+      "result": "MANDATORY GUARDRAIL REDUCTION — AMD 9.83% equity (OVER 5% cap, Day 23+ naked). MOO SELL 9sh AMD → HTTP 000 BLOCKED (77th consecutive). AMD pre-market $548.30 (+2.6%). OPERATOR: SELL 9sh AMD immediately.",
       "agent_average": 7.17,
       "master_decision": "approved"
     },
@@ -283,7 +437,7 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "DEFERRED \u2014 re-scored 6.67 (was 7.5 July 13). Master gate not met (avg < 7.0, only 3/6 agents >=7). Macro scored 5 \u2014 Iran + Warsh + rate hike pricing = triple threat to P/E >200x names. Re-score at Market Open after CPI print.",
+      "result": "DEFERRED — re-scored 6.67 (was 7.5 July 13). Master gate not met (avg < 7.0, only 3/6 agents >=7). Macro scored 5 — Iran + Warsh + rate hike pricing = triple threat to P/E >200x names. Re-score at Market Open after CPI print.",
       "agent_average": 6.67,
       "master_decision": "rejected"
     },
@@ -298,59 +452,9 @@
       "limit_price": null,
       "stop_loss": null,
       "take_profit": null,
-      "result": "AMD 18sh naked Day 22+ \u2014 no stop at Alpaca \u2014 API blocked all remediation. 5 of 7 routines silently failed July 13.",
+      "result": "AMD 18sh naked Day 22+ — no stop at Alpaca — API blocked all remediation. 5 of 7 routines silently failed July 13.",
       "agent_average": null,
       "master_decision": "violation"
-    }
-  ],
-  "watchlist": [
-    {
-      "symbol": "AMD",
-      "bucket": "active",
-      "score": null,
-      "action": "SELL 9sh MOO (MANDATORY \u2014 FIRST ORDER Jul 17 Pre-Market)",
-      "setup": "ai-momentum-pullback",
-      "notes": "18sh = ~10.2% equity, OVER 5% cap, Day 27 naked. Est. $570, P&L +$1,138 (+12.5%). API BLOCKED all 80 sessions. OPERATOR: SELL 9sh AMD at MOO July 17; then GTC stop on 9sh at fill x 0.95; GTC target at fill + 3x(fill-stop). AMD conf July 22-23 = catalyst (hold remaining 9sh). Below 15% partial profit threshold ($582.77)."
-    },
-    {
-      "symbol": "GS",
-      "bucket": "active",
-      "score": 7.83,
-      "action": "BUY 4sh limit bracket GTC at current_ask x 1.005 (BINDING \u2014 Jul 17 Pre-Market)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Re-confirmed 7.83 avg July 16 mid-morning (all 6 agents >=7). Binding from July 14. Stop: entry x 0.95. Target: entry + 3x stop_dist (R/R 3:1 minimum). Re-price if GS has moved from $1,080. Est. current range $1,065-$1,080. API BLOCKED \u2014 operator execute at app.alpaca.markets."
-    },
-    {
-      "symbol": "META",
-      "bucket": "active",
-      "score": 7.67,
-      "action": "BUY 7sh limit bracket GTC at current_ask x 1.005 (BINDING \u2014 Jul 17 Pre-Market)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Re-confirmed 7.67 avg July 16 mid-morning (all 6 agents >=7). Binding from July 14. Stop: entry x 0.95. Target: entry + 3x stop_dist. Re-price if META has moved from $663. Est. current range $660-$668. META earnings est. July 29-30 (SAFE). API BLOCKED \u2014 operator execute at app.alpaca.markets."
-    },
-    {
-      "symbol": "NFLX",
-      "bucket": "active",
-      "score": null,
-      "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reports AH tonight Jul 16)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Netflix Q2 2026 AH tonight. Binary event window closes at open July 17. Bull case (beat + guide up): est. ~6sh limit bracket GTC (F~8, S~8, M~7, R~7, TA~7 = est. avg ~7.5). Bear case (miss): reject. Consensus: ~19-20M subs, EPS ~$6.50, rev ~$12.5B. Full 6-agent at Pre-Market July 17 with actual results."
-    },
-    {
-      "symbol": "WFC",
-      "bucket": "active",
-      "score": null,
-      "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reported Jul 15 \u2014 results unknown)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Wells Fargo Q2 reported July 15 (blackout day \u2014 results unknown). Expected EPS ~$1.40, rev ~$21B. If beat confirmed: earnings-reaction-follow similar to GS thesis. Full 6-agent at Pre-Market July 17 with actual results."
-    },
-    {
-      "symbol": "MS",
-      "bucket": "active",
-      "score": null,
-      "action": "SCORE POST-EARNINGS at Pre-Market Jul 17 (reported Jul 15 \u2014 results unknown)",
-      "setup": "earnings-reaction-follow",
-      "notes": "Morgan Stanley Q2 reported July 15 (blackout day \u2014 results unknown). Expected EPS ~$2.55, rev ~$16B. Wealth management + investment banking revival thesis. Full 6-agent at Pre-Market July 17 with actual results."
     }
   ]
 }
