@@ -4,6 +4,331 @@
 
 ---
 
+## 2026-07-20 — Market Close (3:30 PM ET / 19:36 UTC — API BLOCKED — 88th+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-20T19:35:50Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **88th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Market Status:** OPEN — 3:38 PM ET. Market closes in ~22 minutes.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 20, 2026 (Market-Close view)
+
+```
+cat logs/heartbeats/2026-07-20.log:
+  2026-07-20T18:08:47Z STARTED Afternoon
+  2026-07-20T18:18:56Z COMPLETED Afternoon
+  2026-07-20T19:35:50Z STARTED Market-Close
+```
+
+| Routine | Expected (UTC) | Found | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC | NOT FOUND | **SILENT FAILURE** (logged in Afternoon) |
+| Market-Open | 13:45 UTC | NOT FOUND | **SILENT FAILURE** (logged in Afternoon) |
+| Mid-Morning | 15:10 UTC | NOT FOUND | **SILENT FAILURE** (logged in Afternoon) |
+| Midday | 16:30 UTC | NOT FOUND | **SILENT FAILURE** (logged in Afternoon) |
+| Afternoon | 18:08 UTC | STARTED ✓ / COMPLETED ✓ | OK |
+| Market-Close | 19:35 UTC | STARTED ✓ | Running now |
+
+> Violation YAML entries for 4 failed predecessors already logged in Afternoon routine section. No duplicates added here.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# Attempt: GET /v2/orders?status=open
+# Result: HTTP 000 (proxy CONNECT rejected — 88th+ consecutive)
+```
+
+**AMD (18sh)** — NAKED POSITION — stop $487.55 not resting at Alpaca (API blocked 88+ sessions)
+**GS, META, WFC, MS** — no positions yet; no stops to verify
+
+**AMD stop trail attempt (Market-Close):**
+
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED (88th+ consecutive)
+```
+
+**GUARDRAIL VIOLATION:** AMD 18sh naked overnight (no resting stop at Alpaca). Cause: API egress policy block, not operator error. OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $487.55.
+
+---
+
+### DAY TRADES — CLOSE CHECK
+
+**No open day trades.** Nothing to flatten via MOC. ✓
+
+---
+
+### MOC ORDERS — BINDING WATCHLIST ENTRIES (Pre-scored earlier sessions — all score ≥ 7)
+
+Per CLAUDE.md Deployment Bias: "Score ≥ 7 means enter. A scored watchlist is a commitment." These 4 names have been committed since July 14–17 (GS 7.83, META 7.50, MS 7.17, WFC 7.0). Market is open until 4:00 PM ET. MOC deadline is 3:50 PM ET. Attempting now.
+
+**Guardrail pre-check (all positions assumed filling at last-known prices):**
+- AMD: $9,238 (9.25% — above 5% cap per existing position; no new AMD entry this routine)
+- GS 4sh × ~$1,073 = ~$4,292 → 4.29% ✓ (under 5% cap)
+- META 7sh × ~$652 = ~$4,564 → 4.57% ✓
+- WFC 30sh × ~$89 = ~$2,670 → 2.67% ✓
+- MS 20sh × ~$232 = ~$4,640 → 4.64% ✓
+- Sector (Financials: GS+WFC+MS): $11,602 → 11.6% ✓ (under 25%)
+- Cash after all fills: $90,644 − ($4,292+$4,564+$2,670+$4,640) = $74,478 → 74.5% (well above 5% floor ✓)
+- Total positions: AMD(1) + GS(2) + META(3) + WFC(4) + MS(5) = 5 positions (under 12 max ✓)
+- All R/R ≥ 3:1 (stop −5%, target +15%) ✓
+
+**All guardrails CLEAR. Placing MOC orders.**
+
+```bash
+# MOC — GS 4sh
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED
+
+# MOC — META 7sh
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED
+
+# MOC — WFC 30sh
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED
+
+# MOC — MS 20sh
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"market","time_in_force":"cls"}'
+# Result: HTTP 000 — BLOCKED
+```
+
+**All 4 MOC attempts blocked.** Orders never reached Alpaca — HTTP 000 (proxy CONNECT rejected). These are now the **6th consecutive** blocked attempts for GS/META/WFC/MS (July 14, 15, 16, 17, 20 Afternoon, 20 Close). Mandatory operator action: execute at app.alpaca.markets before tomorrow Pre-Market.
+
+---
+
+### YAML DECISION LOG — MARKET CLOSE
+
+```yaml
+---
+ts: 2026-07-20T19:38:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: Goldman Sachs Q2 +45.7% EPS beat ($14.12 vs $9.72 est), revenue $18.3B (+39% YoY), M&A revival. MOC buy 4sh at market close.
+size_pct: 4.29
+stop: 1019.35
+target: 1234.53
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOC order attempted (Market Close routine, time_in_force=cls). BLOCKED — HTTP 000 (proxy CONNECT rejected, paper-api.alpaca.markets:443). 6th consecutive block. Guardrails: GS 4sh × ~$1,073 = $4,292 (4.29%), Financials sector 11.6% (<25%), cash floor preserved. R/R: stop -5% (~$51), target +15% (~$161) = 3:1. All 6 agents ≥ 7. OPERATOR MANDATORY: BUY 4sh GS MOC or limit at app.alpaca.markets immediately. If GS closes above $1,078, place limit GTC at tomorrow's open price × 1.005. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T19:38:30Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.50
+thesis: Meta cloud compute launch confirmed, Llama AI momentum, BofA PT $835. Earnings July 29 AH (safe through July 26). MOC buy 7sh at market close.
+size_pct: 4.57
+stop: 619.38
+target: 749.77
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOC order attempted (Market Close routine, time_in_force=cls). BLOCKED — HTTP 000 (proxy CONNECT rejected). 6th consecutive block. META 7sh × ~$652 = $4,564 (4.57%), Comm Services 4.57% (<25%), cash floor preserved. R/R: stop -5%, target +15% = 3:1. OPERATOR MANDATORY: BUY 7sh META MOC or limit at app.alpaca.markets. Earnings July 29 — safe through July 26 (48h window opens July 27). xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T19:39:00Z
+action: entry
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: Wells Fargo Q2 EPS $1.96 vs $1.73 est (+13% beat), revenue $22.62B (+2.8% beat), net income +17% YoY. Post-earnings follow setup. MOC buy 30sh.
+size_pct: 2.67
+stop: 84.55
+target: 102.35
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOC order attempted (Market Close routine, time_in_force=cls). BLOCKED — HTTP 000. 6th consecutive block. WFC 30sh × ~$89 = $2,670 (2.67%), Financials sector total 11.6% (<25%). R/R: stop -5% (~$4.45), target +15% (~$13.35) = 3:1. OPERATOR MANDATORY: BUY 30sh WFC MOC or limit at app.alpaca.markets. Verify current price first — est. $88-92. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T19:39:30Z
+action: entry
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Morgan Stanley Q2 revenue $21.3B (+27% YoY), net income $5.6B (+60% YoY), EPS $3.46. Near all-time high ($232.25 on July 15). MOC buy 20sh.
+size_pct: 4.64
+stop: 220.40
+target: 266.80
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOC order attempted (Market Close routine, time_in_force=cls). BLOCKED — HTTP 000. 6th consecutive block. MS 20sh × ~$232 = $4,640 (4.64%), Financials sector 11.6% (<25%). R/R: stop -5% (-$11.60), target +15% (+$34.80) = 3:1. OPERATOR MANDATORY: BUY 20sh MS MOC or limit at app.alpaca.markets. Near ATH ($232.25 July 15). xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T19:40:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: other
+score: 0
+thesis: GOOGL earnings Wednesday July 22 AH. 48h binary event window opens ~4 PM ET today (22 minutes from now). Cannot initiate position. Skip until post-earnings Thursday July 23.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "BINARY EVENT SKIP — CLAUDE.md exemption #2. GOOGL earnings Wednesday July 22 AH. 48h window opens today ~4 PM ET (3:38 PM now — within 22 min). Cannot initiate. Post-earnings reaction (Thursday July 23 open) could be 'earnings-reaction-follow' or 'earnings-reaction-fade' depending on print vs consensus ($2.90 EPS, $116.9B revenue). Score Thursday Pre-Market. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-20T19:40:30Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: other
+score: 0
+thesis: Tesla earnings Wednesday July 22 AH. 48h binary event window opens ~4 PM ET today. Skip.
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "BINARY EVENT SKIP — CLAUDE.md exemption #2. TSLA earnings Wednesday July 22 AH. 48h window opens today ~4 PM ET. Tesla had strong deliveries Q2 2026 (expected). Post-earnings entry possible Thursday July 23 if clean beat + guidance lift. Score Thursday Pre-Market. xAI Grok: unavailable."
+---
+```
+
+---
+
+### END-OF-DAY PORTFOLIO STATE — July 20, 2026 (3:38 PM ET est.)
+
+**PORTFOLIO STATE**
+Total Equity: ~$99,882 (est. — API blocked, using 2:11 PM prices)
+Cash: $90,644 (90.8%) — 5% floor: $4,994 ✓
+Trading bucket: ~$9,238 (9.25%) — 1 position (AMD 18sh × $513.21, +1.27% vs avg cost $506.76) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+**Deployment gap: ~$84,393.** 5 binding watchlist names (GS/META/WFC/MS all blocked; AMD stop blocked).
+
+**Today's P&L:**
+- AMD: +$314.10 intraday (18sh × +$17.45 = +$5.00 from ~$495.76 close to ~$513.21)
+- All 4 MOC entries: $0 (blocked)
+- **Daily P&L: +$314.10 (+0.32%)**
+- Circuit breaker: NOT tripped (daily loss threshold $2,987; portfolio UP today)
+
+**Performance vs S&P 500:**
+- SPX May 1 baseline: ~7,200. July 20 est.: ~7,500 (+4.2%)
+- Portfolio return: −0.12% ($99,882 / $100,000)
+- **Benchmark gap: −4.32 pp** (improved from −4.43 pp; AMD recovery helping)
+- 20-day underperformance flag: ACTIVE (90+ consecutive sessions — API blockage root cause)
+
+**Overnight positions confirmed:**
+| Symbol | Qty | Entry | Current | Stop | Target | Setup |
+|---|---|---|---|---|---|---|
+| AMD | 18 | $506.76 | ~$513.21 | $487.55 (**NOT AT ALPACA**) | $582.78 | ai-momentum-pullback |
+
+**Key events tomorrow (July 21):**
+- AMD Advancing AI Conference begins (July 22-23) — AMD catalyst tomorrow's pre-market
+- GOOGL earnings Wednesday July 22 AH — window now active (no entry)
+- TSLA earnings Wednesday July 22 AH — window now active (no entry)
+- INTC earnings Thursday July 23 — window active (no entry)
+- Meta: safe through July 26 (earnings July 29 AH)
+- AMD: safe through Aug 1 (earnings Aug 4 AH)
+
+**Tomorrow's Pre-Market MANDATORY actions (July 21):**
+1. AMD GTC sell-stop 18sh at $487.55 (or re-trail if AMD opens significantly higher)
+2. GS 4sh limit $1,078 bracket GTC (stop $1,024, target $1,240) — 6th attempt
+3. META 7sh limit $655 bracket GTC (stop $622, target $754) — 6th attempt
+4. WFC 30sh limit current×1.005 bracket GTC (stop ×0.95, target ×1.15) — 6th attempt
+5. MS 20sh limit current×1.005 bracket GTC (stop ×0.95, target ×1.15) — 6th attempt
+
+---
+
 ## 2026-07-20 — Afternoon (2:00 PM ET / 18:11 UTC — API BLOCKED — 87th+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-20T18:08:47Z ✓

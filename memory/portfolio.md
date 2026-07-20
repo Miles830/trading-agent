@@ -1,7 +1,16 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-20 (Monday) — AFTERNOON (2:11 PM ET / 18:11 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 87th+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+**2026-07-20 (Monday) — MARKET CLOSE (3:38 PM ET / 19:38 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 88th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+
+**JULY 20 MARKET-CLOSE STATUS:** All 5 routines prior to Market-Close silently failed (Pre-Market, Market-Open, Mid-Morning, Midday all missed; Afternoon ✓ COMPLETED). AMD holds at ~$513.21 (+5% day, +1.27% vs avg cost). 4 MOC orders attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh — all HTTP 000 blocked, 6th consecutive block). AMD trail-stop $487.55 attempted → HTTP 000. GOOGL/TSLA binary event skip confirmed (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). SPX gap: −4.32 pp. Daily review due at 4:30 PM ET.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Market-Close — all HTTP 000):**
+- GS: MOC BUY 4sh (time_in_force=cls) → HTTP 000
+- META: MOC BUY 7sh (time_in_force=cls) → HTTP 000
+- WFC: MOC BUY 30sh (time_in_force=cls) → HTTP 000
+- MS: MOC BUY 20sh (time_in_force=cls) → HTTP 000
+- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000
 
 **JULY 20 AFTERNOON STATUS:** 4 predecessor routines silently failed (Pre-Market, Market-Open, Mid-Morning, Midday). AMD RECOVERED to $513.21 (+5% today on AMD+Microsoft Azure AI Helios deal: MI455X GPUs + EPYC Venice CPUs for frontier AI inference). AMD now ABOVE avg cost $506.76 (+1.27% unrealized = +$116.10). Trail stop attempted $487.55 → HTTP 403 blocked. GS/META/WFC/MS limit orders still blocked (4 consecutive blocked sessions since July 14). Binary event windows: GOOGL/TSLA earnings Wednesday July 22 (48h window starts ~4 PM today — DO NOT ENTER tomorrow Pre-Market); INTC earnings Thursday July 23 (window active since Saturday). Advancing AI conference July 22-23 (AMD product conf, NOT earnings — safe to hold).
 

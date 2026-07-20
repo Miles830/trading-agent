@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-20T18:13:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-20T19:40:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99882,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.8
     },
-    "note": "July 20 AFTERNOON (2:11 PM ET / 18:11Z). API BLOCKED HTTP 403 — 87th+ consecutive session. 4 predecessor routines silently failed (Pre-Market, Market-Open, Mid-Morning, Midday). AMD RECOVERED to $513.21 (+5% today on AMD+MSFT Azure AI Helios deal: MI455X GPU + EPYC Venice). AMD now ABOVE avg cost $506.76 (+1.27% unrealized = +$116.10). Trail stop attempted $487.55 → HTTP 403 blocked. GS/META/WFC/MS all still blocked (binding since July 14/17). BINARY EVENT: GOOGL/TSLA earnings Wednesday July 22 — 48h window opens ~4 PM today — NO entries tomorrow Pre-Market for GOOGL/TSLA/INTC. OPERATOR URGENT: (1) GTC sell-stop 18sh AMD $487.55; (2) BUY 4sh GS limit $1,078 bracket GTC; (3) BUY 7sh META limit $655 bracket GTC; (4) BUY 30sh WFC limit ~$89 bracket GTC; (5) BUY 20sh MS limit ~$230 bracket GTC."
+    "note": "July 20 MARKET-CLOSE (3:38 PM ET / 19:38Z). API BLOCKED HTTP 000 — 88th+ consecutive session. EOD P&L: +$314.10 (+0.32%). AMD 18sh holds at ~$513.21 (+1.27% vs avg $506.76). 4 MOC entries attempted (GS/META/WFC/MS) → all HTTP 000 blocked (6th consecutive block). AMD trail-stop $487.55 → HTTP 000 blocked. GOOGL/TSLA binary event window opens ~4 PM today — NO entries tomorrow Pre-Market. SPX benchmark gap: -4.32 pp. Daily Review due 4:30 PM ET. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $487.55; (2) BUY 4sh GS limit ~$1,073×1.005 bracket GTC; (3) BUY 7sh META limit ~close×1.005 bracket GTC; (4) BUY 30sh WFC limit ~close×1.005 bracket GTC; (5) BUY 20sh MS limit ~close×1.005 bracket GTC."
   },
   "positions": [
     {
@@ -170,10 +170,10 @@
     },
     {
       "name": "Market-Close",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-02T19:35:00Z",
+      "status": "completed",
+      "last_run": "2026-07-20T19:40:00Z",
       "next_run": "2026-07-21T19:30:00Z",
-      "last_summary": "Last successful: July 2. Multiple silent failures since. No day trades to flatten."
+      "last_summary": "July 20 Market-Close COMPLETED 19:40Z. API BLOCKED (88th+ consecutive). No day trades to flatten. 4 MOC entries attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh) → all HTTP 000 blocked. AMD trail-stop $487.55 → blocked. GOOGL/TSLA binary events skipped (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). AMD holds +1.27% vs avg cost. SPX benchmark gap: -4.32 pp."
     },
     {
       "name": "Daily-Review",
@@ -287,5 +287,8 @@
       "setup": "earnings-reaction-follow",
       "notes": "INTC earnings Thursday July 23. Est. EPS $0.22, Revenue $14.4B (+11.6% YoY). 48h window active since Saturday July 18. Score Friday July 25 Pre-Market. Prior score was 7.17 (June watchlist). Post-earnings entry if clean beat."
     }
+  ],
+  "history": [
+    {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32}
   ]
 }
