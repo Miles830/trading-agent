@@ -1,9 +1,37 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-20 (Monday) — MARKET-OPEN (9:45 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 82nd+ consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING. Pre-Market silently failed.**
 
-**JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
+**JULY 20 MARKET-OPEN STATUS:** Pre-Market silently failed. Market-Open is first routine to fire today. AMD SELL 18sh, GS BUY 4sh, META BUY 7sh, WFC BUY 30sh, MS BUY 20sh — all attempted and blocked (HTTP 403). IBM 48-HOUR EARNINGS BLACKOUT BEGINS TODAY (IBM reports July 22). AMD Advancing AI conference July 22-23.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Market-Open — all HTTP 403):**
+- AMD SELL 18sh at market → HTTP 403 (stop breached July 17 at $465.79 < $481.42 stop — MANDATORY EXIT)
+- GS: BUY 4sh limit bracket GTC ~$1,099 / stop $1,044 / target $1,264 → HTTP 403
+- META: BUY 7sh limit bracket GTC ~$668 / stop $634 / target $768 → HTTP 403
+- WFC: BUY 30sh limit bracket GTC ~$88 / stop $84 / target $101 → HTTP 403
+- MS: BUY 20sh limit bracket GTC ~$230 / stop $218 / target $264 → HTTP 403
+
+**PORTFOLIO STATE EST (July 20 Market-Open — NO API DATA):**
+- Cash: ~$90,644 (91.5%)
+- AMD: 18sh × ~$465–475 est. = ~$8,370–8,550 (8.4–8.6%) — OVER 5% cap, below stop, naked
+- Total equity est.: ~$99,014–99,194
+- Performance vs SPX (May 1 baseline 7,200 → July 20 est. ~7,450–7,520 = ~+3.5–4.4%): est. −1.0% → gap −4.5 to −5.4 pp (WIDENING)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (82nd+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (AMD move from July 17 is prior day's loss)
+
+**IBM BLACKOUT (CRITICAL — TODAY):** IBM reports July 22. 48-hour blackout window OPENS TODAY July 20. No IBM entries or exits until after earnings print on July 22. Since IBM was never entered (all orders were blocked), this is moot for current positions.
+
+**AMD STOP BREACH STATUS (ONGOING):** AMD at $465.79 on July 17 — $15.63 BELOW stop $481.42. Stop was NEVER placed at Alpaca. AMD Advancing AI 2026 conf July 22-23 is NOT a reason to hold through a blown stop. SELL ALL 18sh MANDATORY.
+
+**JULY 20 BINDING COMMITMENTS NOT YET FILLED (carry to next routine):**
+1. AMD: SELL 18sh AT MARKET — stop level breached July 17, exit MANDATORY, no hold reasoning valid
+2. GS: BUY 4sh limit bracket GTC ~$1,099 (stop $1,044, target $1,264) — score 7.83
+3. META: BUY 7sh limit bracket GTC ~$668 (stop $634, target $768) — score 7.50
+4. WFC: BUY 30sh limit bracket GTC ~$88 (stop $84, target $101) — score 7.0
+5. MS: BUY 20sh limit bracket GTC ~$230 (stop $218, target $264) — score 7.17
+
+**PRIOR LAST UPDATED (2026-07-17 — MID-MORNING):** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
 
 **ORDERS ATTEMPTED AND BLOCKED (July 17 Mid-Morning — all HTTP 000):**
 - AMD SELL 18sh limit $465.00 → HTTP 000 (stop level $481.42 breached — exit mandatory)

@@ -4,6 +4,236 @@
 
 ---
 
+## 2026-07-20 — Market-Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 82nd+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-20T13:46:04Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 — `paper-api.alpaca.markets:443` blocked by egress policy — **82nd+ consecutive blocked session** (policy denial, not auth failure; confirmed via `/root/.ccr/README.md` and `/__agentproxy/status`)
+**xAI Grok API:** NOT AVAILABLE — `xai_api_key: NO`. Sentiment Agent degraded per CLAUDE.md.
+**Market Status:** Market open 9:30 AM ET. July 20 is a TRADING DAY (Monday). Market conditions UNKNOWN — no API access.
+**IBM Earnings Window:** IBM reports July 22 — 48-hour blackout window OPENS TODAY. No IBM entries allowed from this point.
+**AMD Conference:** AMD Advancing AI 2026 conference July 22-23 — positive catalyst, NOT a binary event.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+| Routine | Expected (UTC) | Found in 2026-07-20.log | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC (8:05 AM ET) | **NOT FOUND** | **SILENT FAILURE** |
+| Market-Open | 13:45 UTC (9:45 AM ET) | 13:46:04Z ✓ | Running now |
+
+**July 17, 2026:** Both Pre-Market and Market-Open silently failed. Mid-Morning (15:10Z) was the only routine that fired on July 17. AMD stop level ($481.42) was breached intraday (AMD fell to $465.79, −7%). July 18–19 = weekend (no routines). Today July 20 is the first trading session this week.
+
+---
+
+### PRE-MARKET SILENT FAILURE — VIOLATION LOG
+
+```yaml
+---
+ts: 2026-07-20T08:05:00Z
+action: violation
+symbol: SCHEDULER
+bucket: active
+setup: silent-failure
+score: 0
+thesis: "July 20 Pre-Market (8:05 AM ET) silently failed — not found in 2026-07-20.log. MOO orders for AMD SELL 18sh were mandatory binding commitments (stop breached July 17). Market-Open is catching up."
+size_pct: 0
+stop: 0
+target: 0
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "OPERATIONAL VIOLATION. July 20 Pre-Market silently failed. AMD SELL 18sh MOO was the top mandatory commitment (stop at $481.42 breached July 17 when AMD hit $465.79, -7%). GS (7.83), META (7.50), WFC (7.0), MS (7.17) limit bracket orders also missed. AMD Advancing AI conference July 22-23 does NOT override a blown stop. IBM 48-hour earnings blackout opens today — no IBM entries from this point. Market-Open is running catch-up."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED — 82nd+ consecutive)
+
+`GET /v2/orders?status=open` → **BLOCKED** — HTTP 403 proxy policy denial.
+`GET /v2/positions` → **BLOCKED** — HTTP 403 proxy policy denial.
+
+Cannot audit stop-loss coverage. AMD position remains naked per last known state (18sh at avg $506.76, stop $481.42 never placed, stop level breached July 17 at $465.79). All five binding commitments attempted below — all blocked.
+
+---
+
+### BINDING COMMITMENTS — ALL BLOCKED (API 403)
+
+#### 1. AMD — SELL 18sh (MANDATORY — Stop Breached)
+
+```yaml
+---
+ts: 2026-07-20T13:46:20Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: "AMD stop level $481.42 breached July 17 (AMD at $465.79, -7%). Mandatory exit of all 18sh. API blocked — cannot place SELL order."
+size_pct: 0
+stop: 481.42
+target: 0
+result_pct: null
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "GUARDRAIL VIOLATION ONGOING. AMD 18sh naked since June 20 (no stop ever placed at Alpaca). Stop $481.42 (5% below $506.76 avg) breached July 17 when AMD fell to $465.79 (-7%). Exit is MANDATORY — AMD Advancing AI conference July 22-23 is NOT a valid reason to hold through a blown stop (CLAUDE.md: 'The AMD Advancing AI 2026 conf July 22-23 is NOT a reason to hold through a blown stop'). SELL 18sh AMD at market ORDER ATTEMPTED — BLOCKED HTTP 403 (82nd consecutive session). OPERATOR MANDATORY: log into app.alpaca.markets and SELL ALL 18sh AMD at market IMMEDIATELY."
+---
+```
+
+#### 2. GS — BUY 4sh (Score 7.83 — BINDING)
+
+```yaml
+---
+ts: 2026-07-20T13:46:25Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: "GS Q2 2026 blowout earnings (July 14). Score 7.83 (all 6 agents). Limit bracket GTC order carried forward. API blocked — cannot place."
+size_pct: 4.27
+stop: 1044.08
+target: 1263.87
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "GS scored 7.83 with all 6 agents ≥7. Carry-forward binding commitment since July 14. Order attempted multiple times (July 14, 16, 17) — all blocked. July 20 attempt: BUY 4sh GS limit ~$1,099 bracket GTC (stop $1,044, target $1,264) → HTTP 403. CANNOT PLACE. Not a valid skip — API blockage is NOT one of the 3 CLAUDE.md exemptions. OPERATOR MANDATORY: place this order at app.alpaca.markets."
+---
+```
+
+#### 3. META — BUY 7sh (Score 7.50 — BINDING)
+
+```yaml
+---
+ts: 2026-07-20T13:46:28Z
+action: skip
+symbol: META
+bucket: active
+setup: sector-rotation
+score: 7.5
+thesis: "META cloud compute thesis + AI capex tailwind. Score 7.5 (all 6 agents ≥7). Limit bracket GTC carry-forward. API blocked."
+size_pct: 4.59
+stop: 634.47
+target: 768.04
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "META scored 7.50 with all 6 agents ≥7. Carry-forward binding since July 14/16. July 20 attempt: BUY 7sh META limit ~$668 bracket GTC (stop $634, target $768) → HTTP 403. NOT a valid skip. OPERATOR MANDATORY: place at app.alpaca.markets. Verify META earnings date before entry (~July 29-30 est. — safe, inside earnings window for entry today)."
+---
+```
+
+#### 4. WFC — BUY 30sh (Score 7.0 — BINDING)
+
+```yaml
+---
+ts: 2026-07-20T13:46:31Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: "WFC Q2 2026 EPS $1.96 vs $1.73 est. (+13% beat), revenue beat. Score 7.0. Limit bracket GTC carry-forward. API blocked."
+size_pct: 2.64
+stop: 83.56
+target: 101.15
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC scored 7.0. Carry-forward from July 17. July 20 attempt: BUY 30sh WFC limit ~$88 bracket GTC (stop $83.56, target $101.15) → HTTP 403. NOT a valid skip. OPERATOR MANDATORY: place at app.alpaca.markets."
+---
+```
+
+#### 5. MS — BUY 20sh (Score 7.17 — BINDING)
+
+```yaml
+---
+ts: 2026-07-20T13:46:34Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: "MS Q2 2026 revenue $21.3B (+27% YoY), net income +60% YoY, near-ATH. Score 7.17. Limit bracket GTC carry-forward. API blocked."
+size_pct: 4.6
+stop: 218.21
+target: 264.14
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "MS scored 7.17. Carry-forward from July 17. July 20 attempt: BUY 20sh MS limit ~$230 bracket GTC (stop $218.21, target $264.14) → HTTP 403. NOT a valid skip. OPERATOR MANDATORY: place at app.alpaca.markets."
+---
+```
+
+---
+
+### PORTFOLIO STATE (EST — API BLOCKED, NO FRESH DATA)
+
+| Item | Value | Notes |
+|---|---|---|
+| Cash | ~$90,644 (91.5%) | Unchanged — no fills possible |
+| AMD | 18sh × ~$465-475 est. | Last confirmed $465.79 July 17; conference July 22-23 may have supported pre-mkt |
+| Total equity est. | ~$99,014–99,194 | AMD below avg $506.76; unrealized loss est. −$574 to −$754 |
+| Open positions | 1 (AMD — naked, no stop) | Guardrail violation ongoing |
+| SPX baseline May 1 | 7,200 | |
+| SPX est. July 20 | ~7,450–7,520 est. | Unknown — no API |
+| Portfolio vs SPX | est. −4.5 to −5.5 pp gap | Widening — no deployment, AMD drag |
+
+---
+
+### MARKET-OPEN SUMMARY
+
+July 20 Market-Open: API blocked (82nd+ consecutive session). Pre-Market silently failed. Five binding commitments attempted and blocked: AMD SELL 18sh (mandatory exit — stop breached July 17), GS BUY 4sh (7.83), META BUY 7sh (7.50), WFC BUY 30sh (7.0), MS BUY 20sh (7.17). IBM 48-hour earnings window opens today — no new IBM entries. AMD Advancing AI conference July 22-23 is a positive catalyst but does NOT override a blown stop. **OPERATOR ACTION REQUIRED IMMEDIATELY at app.alpaca.markets.**
+
+---
+
 ## 2026-07-17 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 81st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-17T15:10:47Z ✓
