@@ -1,7 +1,47 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-21 (Tuesday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 90th+ consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-21 (Tuesday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 91st+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+
+**JULY 21 AFTERNOON STATUS:** Pre-Market SILENT FAILURE; Market-Open ✅ (13:46–13:53Z); Mid-Morning ✅ (15:09–15:21Z); Midday SILENT FAILURE; Afternoon ✅ (18:07Z running). AMD at $505.44 (intraday high $533.55, pulled back PM). AMD Advancing AI 2026 conference starts TOMORROW July 22–23, Moscone West, San Francisco — major AI product showcase (AWS, MSFT, Google Cloud, Dell, IBM, Oracle as sponsors). BofA: strong AI server demand, potential earnings beat Aug 4. HOLD AMD through conference. All 5 orders (AMD stop + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (91st+ consecutive). GOOGL + TSLA earnings AH TONIGHT (July 22) — 48h window ACTIVE, NO ENTRY.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 21 Afternoon — all HTTP 000):**
+- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (91st+ block)
+- GS: BUY 4sh limit bracket GTC $1,070.00 / stop $1,016.50 / target $1,230.50 → HTTP 000
+- META: BUY 7sh limit bracket GTC $651.43 / stop $618.86 / target $749.14 → HTTP 000
+- WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 → HTTP 000
+
+**PORTFOLIO STATE EST (July 21 Afternoon):**
+- Cash: ~$90,644 (90.9%)
+- AMD: 18sh × $505.44 est. = ~$9,098 (9.1%) — over 5% cap, naked (no stop), Day ~31 post-fill
+- Total equity est.: ~$99,742
+- P&L vs $100K initial: −$258 (−0.26%)
+- Performance vs SPX (May 1 baseline 7,200 → July 21 est. 7,493 = +4.07%): est. −0.26% → gap ~−4.33 pp
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (91+ consecutive sessions — API blockage root cause)
+- Circuit breaker: AMD −1.5% vs July 20 close; portfolio daily P&L est. −0.14% — NOT tripped
+
+**BINARY EVENT WINDOWS (Active July 21–22):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| GOOGL/GOOG | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
+| TSLA | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
+| INTC | Thu July 23 AH | Opened Sat July 18 | **ACTIVE — NO ENTRY** |
+| META | Wed July 29 AH | Opens Mon July 27 | Safe through July 25 |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+
+**AMD NOTE (July 21 Afternoon):** AMD at $505.44 (intraday high $533.55, pulling back from morning rally). Stop $487.55 (3.6% cushion). AMD Advancing AI 2026 conference July 22–23 starts TOMORROW — NOT a binary event (product showcase, not earnings). HOLD through conference. Reduce position from 18sh to ~9sh when API restored (9sh × $505 = $4,545 = ~4.5%, within 5% cap). BofA PT $620, WF PT $615, Goldman reset upward.
+
+**JULY 22 BINDING COMMITMENTS (Pre-Market July 22 MUST execute — no exemptions):**
+1. AMD: GTC SELL-STOP 18sh at $487.55 — MANDATORY FIRST ACTION
+2. GS: BUY 4sh limit bracket GTC $1,070.00 / stop $1,016.50 / target $1,230.50 — score 7.83 (6/6 ≥7)
+3. META: BUY 7sh limit bracket GTC $651.43 / stop $618.86 / target $749.14 — score 7.67
+4. WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 — score 7.0
+5. MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 — score 7.17
+- GOOGL/TSLA/INTC: NO ENTRY (binary event exemption — earnings active window)
+- Post-GOOGL/TSLA plays: score at Daily Review tonight after results AH July 22 (~5–6 PM ET); earliest entry Pre-Market July 23
+
+
 
 **JULY 21 MID-MORNING STATUS:** Pre-Market silently failed; Market-Open completed (13:46–13:53Z). Mid-Morning is running now. AMD est. ~$520 mid-morning (intraday range $502–$533.55; up on MSFT Helios deal). Advancing AI 2026 conference TOMORROW July 22–23 — Citigroup "industry-shaking announcements" note. GS/META/WFC/MS binding entries: all 5 orders (AMD stop + 4 entries) attempted at mid-morning prices → all HTTP 000 blocked (90th+ consecutive). Market: SPX +0.5% est., Nasdaq +0.65% — Iran ceasefire talks easing oil, chip stocks recovering. WF raised META PT to $767 (strong ad growth). GS at $1,065.22 (−2.76%), MS at $209.04 (−1.27%), WFC at $87.50 (+0.5% — strengthening). Binary event blocks: GOOGL + TSLA earnings July 22 AH (NO ENTRY), INTC earnings July 23 (NO ENTRY).
 
