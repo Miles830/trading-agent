@@ -1,7 +1,67 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-20 (Monday) — MARKET CLOSE (3:38 PM ET / 19:38 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 88th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+**2026-07-21 (Tuesday) — PRE-MARKET (8:07 AM ET / 12:07 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 90th consecutive blocked session). PRE-MARKET ROUTINE ✅ RUNNING.**
+
+**JULY 21 PRE-MARKET STATUS:** Pre-Market routine FIRING. Futures risk-on: S&P +0.45%, Nasdaq +1.3% (chip stock revival + Iran ceasefire talks). AMD +4.3% pre-market to ~$525.20 ahead of Advancing AI 2026 conference (July 22-23, Moscone SF — Zen 6 Venice EPYC + Helios rack-scale launch). 3 MOO orders attempted (GS 4sh, META 7sh, MS 20sh — all HTTP 000 blocked, 7th consecutive block for GS/META). AMD trail-stop $498.94 attempted → HTTP 000. TSM new score 7.5 (price hike +10% news, Q2 beat) → limit order for Market Open. WFC 30sh deferred to limit order (MOO cap hit). GOOGL/TSLA binary event window active (no entry). Next major catalyst: AMD Advancing AI 2026 July 22-23.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 21 Pre-Market — all HTTP 000):**
+- GS: MOO BUY 4sh (time_in_force=opg) → HTTP 000 (7th consecutive block)
+- META: MOO BUY 7sh (time_in_force=opg) → HTTP 000 (7th consecutive block)
+- MS: MOO BUY 20sh (time_in_force=opg) → HTTP 000 (6th consecutive block)
+- AMD: GTC SELL-STOP 18sh at $498.94 (trail from $487.55) → HTTP 000
+
+**PORTFOLIO STATE EST (July 21 Pre-Market):**
+- Cash: ~$90,644 (90.5%)
+- AMD: 18sh × ~$525.20 (pre-mkt) = ~$9,454 (9.45%) — OVER 5% CAP — NAKED (no stop at Alpaca) — Advancing AI 2026 conf tomorrow (NOT binary event — HOLD)
+- Total equity est.: ~$100,098
+- S&P 500 reference: ~7,500 (est.) → return gap est.: ~+0.10% vs SPX baseline
+- 20-DAY UNDERPERFORMANCE FLAG: Active (90+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Not tripped — AMD pre-mkt +4.3% = GAIN today
+
+**MARKET CONDITIONS (July 21, 8:07 AM ET — WEB SEARCH CONFIRMED):**
+- SPX Futures: +0.45% | Nasdaq-100 Futures: +1.3% | Dow Futures: +0.3% — RISK-ON
+- AMD: ~$525.20 (+4.3% pre-market) — Advancing AI 2026 conf July 22-23. GS PT $640, Citi PT $575, TD Cowen PT $675. AMD up ~160% YTD. Earnings Aug 4 (safe through Aug 1).
+- GS: ~$1,065 (post-record Q2) | META: ~$645 (Llama AI + cloud compute) | WFC: ~$87.51 | MS: ~$232 est.
+- BTC: ~$65,249 (+0.95%) | ETH: ~$1,907 (+1.98%)
+- Fear & Greed: 37 (FEAR) | VIX: ~18.65
+- Oil: ~$82-83 WTI (Iran ceasefire talks → pulling back from $84-85 peak)
+- FOMC: Next decision July 29
+
+**AMD ADVANCING AI 2026 (July 22-23 — Moscone Center West, SF):**
+- Zen 6 "Venice" EPYC server CPU launch (2nm node) — CONFIRMED by CTO Mark Papermaster
+- Helios Rack-Scale AI Platform (MI455X GPUs + Venice CPUs + Pensando networking)
+- Microsoft confirmed as Helios customer (announced July 20)
+- Expected: additional hyperscaler announcements, benchmark numbers, competitive positioning vs Nvidia Vera Rubin
+- NOT a binary event (product conference, not earnings) — HOLD AMD through this catalyst
+- Analyst consensus: revisit 52-week high $584.73 and beyond (PT range $575-$675)
+
+**EARNINGS BINARY EVENT WINDOWS (Active):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| GOOGL/GOOG | Wed July 22 AH | July 20 ~4 PM | **ACTIVE — no entry** |
+| TSLA | Wed July 22 AH | July 20 ~4 PM | **ACTIVE — no entry** |
+| INTC | ~Thu July 23-24 AH | ~July 21-22 | **ACTIVE — no entry** |
+| META | Wed July 29 AH | Mon July 27 | Safe through July 26 ✓ |
+| AMD | Tue Aug 4 AH | Sun Aug 2 | Safe through Aug 1 ✓ |
+
+**JULY 21 BINDING COMMITMENTS (carry to Market Open routine at 9:45 AM ET):**
+1. **AMD**: GTC SELL-STOP 18sh at $498.94 (trail from $487.55) — Advancing AI 2026 conf = hold catalyst
+2. **GS**: BUY 4sh limit bracket GTC at open × 1.005 (stop $1,011.75, target $1,224.75) — score 7.83 — ALL 6 AGENTS ≥ 7
+3. **META**: BUY 7sh limit bracket GTC at open × 1.005 (stop $612.75, target $741.75) — score 7.50 — ALL 6 AGENTS ≥ 7
+4. **MS**: BUY 20sh limit bracket GTC at open × 1.005 (stop $220.40, target $266.80) — score 7.17 — 4/6 AGENTS ≥ 7
+5. **WFC**: BUY 30sh limit bracket GTC at open × 1.005 (stop $83.13, target $100.64) — score 7.0 — ALL 6 AGENTS ≥ 7 (MOO cap exceeded, convert to limit)
+6. **TSM**: BUY 11sh limit bracket GTC at $408 × 1.005 = $410.04 (stop $387.60, target $469.20) — score 7.5 — NEW TODAY
+
+**TSM NEW SCORE (July 21 Pre-Market):**
+- Q2 revenue $40.2B (beat), gross margin 67.7% (beat), 2026 revenue growth outlook raised to ~40%, capex $18.75-20B
+- Price hike announcement: +10% chipmaking prices for 2027 customers — confirms pricing power
+- Pre-market +3% — constructive momentum ahead of AMD Advancing AI 2026 (TSM makes AMD chips)
+- Agent scores: Fundamentals 8, Technical 7, Sentiment 7, Macro 7, Risk 7, Tech Analyst 9 → avg 7.5
+- APPROVED: avg 7.5 ≥ 7, Risk 7 ≥ 6, 6/6 agents ≥ 7, Tech 9 ≥ 6
+- Size: 11sh × $408 = $4,488 (4.48%), stop $387.60 (−5%), target $469.20 (+15%), R/R 3:1
+
+---
 
 **JULY 20 MARKET-CLOSE STATUS:** All 5 routines prior to Market-Close silently failed (Pre-Market, Market-Open, Mid-Morning, Midday all missed; Afternoon ✓ COMPLETED). AMD holds at ~$513.21 (+5% day, +1.27% vs avg cost). 4 MOC orders attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh — all HTTP 000 blocked, 6th consecutive block). AMD trail-stop $487.55 attempted → HTTP 000. GOOGL/TSLA binary event skip confirmed (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). SPX gap: −4.32 pp. Daily review due at 4:30 PM ET.
 

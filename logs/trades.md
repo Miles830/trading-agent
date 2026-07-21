@@ -4,6 +4,286 @@
 
 ---
 
+## 2026-07-21 — Pre-Market (8:00 AM ET / 12:07 UTC — API BLOCKED — 90th consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-21T12:06:49Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **90th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Market Status:** PRE-MARKET — 8:07 AM ET. Regular session opens 9:30 AM ET.
+**User Suggestions (GitHub issues, label: user-suggestion):** 0 open — no action required.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# Attempt: GET /v2/orders?status=open
+# Result: HTTP 000 (proxy CONNECT rejected — 90th consecutive)
+```
+
+**AMD (18sh)** — NAKED POSITION — GTC sell-stop not resting at Alpaca (API blocked 90 sessions)
+AMD trail stop update attempt (from $487.55 → $498.94 on pre-market +4.3% to $525.20):
+```bash
+curl -X POST ".../v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"498.94","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED
+```
+**GUARDRAIL VIOLATION (ongoing):** AMD 18sh naked since June 20. Cause: API egress block. OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $498.94.
+
+---
+
+### MARKET CONDITIONS (8:07 AM ET — WEB SEARCH CONFIRMED)
+
+**US Futures:** S&P 500 +0.45% | Nasdaq-100 +1.3% | Dow +0.3% — risk-ON, chip stocks leading
+**AMD:** Pre-market ~$525.20 (+4.3%) — Advancing AI 2026 conf tomorrow (Moscone SF, Zen 6 Venice + Helios launch). GS PT $640, Citi PT $575, TD Cowen PT $675. AMD up ~160% YTD. Earnings Aug 4 (safe).
+**GS:** ~$1,065 | **META:** ~$645 | **WFC:** ~$87.51 | **MS:** ~$232 (est., post-Q2 +27% YoY)
+**BTC:** ~$65,249 (+0.95%) | **ETH:** ~$1,907 (+1.98%)
+**Fear & Greed:** 37 (FEAR) | **VIX:** ~18.65
+**Macro:** US-Iran conflict day 10+; ceasefire proposals in play → oil pulling back (~$82-83 WTI). Fresh US tariffs on Canada. Chip stock revival driving Nasdaq outperformance. Next FOMC: July 29.
+
+**Binary Event Windows (ACTIVE — no entry):**
+- GOOGL: Confirmed earnings July 22 AH → 48h window opened July 20 ~4 PM → NO ENTRY
+- TSLA: Confirmed earnings July 22 AH → 48h window active → NO ENTRY
+- INTC: Earnings ~July 23-24 AH → 48h window active → NO ENTRY
+
+**Today's Earnings (safe to trade — post-print):** NVS (Novartis), SCHW (Charles Schwab), ~68 others
+
+---
+
+### WATCHLIST — PRE-MARKET SCAN
+
+| # | Ticker | Setup | Score | Action |
+|---|---|---|---|---|
+| 1 | **GS** | earnings-reaction-follow | 7.83 | MOO BUY 4sh — BINDING COMMITMENT |
+| 2 | **META** | breakout-volume | 7.50 | MOO BUY 7sh — BINDING COMMITMENT |
+| 3 | **MS** | earnings-reaction-follow | 7.17 | MOO BUY 20sh — BINDING COMMITMENT |
+| 4 | **WFC** | earnings-reaction-follow | 7.0 | Limit BUY 30sh at Market Open (4th — MOO cap exceeded) |
+| 5 | **TSM** | breakout-volume | 7.5 | Limit BUY 11sh at Market Open (new score) |
+| 6 | **AMD** | ai-momentum-pullback | HOLD | Trail stop $498.94 (5% below $525.20 pre-mkt) |
+| — | **GOOGL** | — | SKIP | Exemption 2: earnings July 22 AH (48h window active) |
+| — | **TSLA** | — | SKIP | Exemption 2: earnings July 22 AH (48h window active) |
+| — | **INTC** | — | SKIP | Exemption 2: earnings ~July 23-24 AH (48h window active) |
+
+**TSM Quick 6-Agent Score (new entry today):**
+- Fundamentals: 8/10 — Q2 revenue $40.2B (beat), gross margin 67.7% (beat), 2026 growth outlook raised to ~40%, capex guidance raised to $18.75-20B for AI chip demand
+- Technical: 7/10 — pre-market +3% on price hike news (+10% chipmaking prices for 2027), post-Q2 consolidation breakout
+- Sentiment: 7/10 — analyst consensus bullish, price hike seen as pricing power signal; xAI unavailable
+- Macro: 7/10 — AI capex super-cycle intact; Iran risk minor negative (some TSMC customers in affected region)
+- Risk: 7/10 — 11sh × $408 = $4,488 (4.48% ✓), stop $387.60 (−5%), target $469.20 (+15%), R/R 3.0:1 ✓; Semiconductors sector: AMD($9,450) + TSM($4,488) = $13,938 = 13.9% (<25% ✓)
+- Tech Analyst: 9/10 — only foundry at 2nm/3nm node; indispensable for every major AI chip (NVDA, AMD, Apple); pricing power confirmed by 10% hike
+- **Average: 7.5 | Risk: 7 ≥ 6 ✓ | Agents ≥ 7: 6/6 ✓ | Tech: 9 ≥ 6 ✓ → APPROVED**
+- Carry to Market Open routine as limit order (GTC limit at $408 × 1.005 = $410.04)
+
+---
+
+### MOO ORDERS — BINDING COMMITMENTS (Pre-Market, 8:00 AM ET)
+
+3-MOO cap: GS (#1 score 7.83), META (#2 score 7.50), MS (#3 score 7.17)
+WFC (#4, score 7.0): Deferred to limit order at Market Open — not a skip; MOO cap is an order-type constraint.
+
+**Guardrail pre-check (all 3 MOO fills assumed at last known prices):**
+- AMD existing: 18sh × $525 = $9,450 (9.44% — over 5% cap; existing position, no new AMD today)
+- GS 4sh × $1,065 = $4,260 → 4.25% ✓
+- META 7sh × $645 = $4,515 → 4.51% ✓ (earnings July 29 AH — safe through July 26 ✓)
+- MS 20sh × $232 = $4,640 → 4.63% ✓
+- Financials sector (GS+MS): $8,900 → 8.9% (<25% ✓)
+- Tech/Comm sector (AMD+META): $13,965 → 13.9% (<25% ✓)
+- Cash after 3 fills: $90,644 − $13,415 = $77,229 → 77.2% (well above 5% floor ✓)
+- Total positions after: AMD(1)+GS(2)+META(3)+MS(4) = 4 (<12 ✓)
+- Trade risk GS: 4 × $53.25 = $213 (<$1,500 = 1.5% ✓)
+- Trade risk META: 7 × $32.25 = $226 (<$1,500 ✓)
+- Trade risk MS: 20 × $11.60 = $232 (<$1,500 ✓)
+- All R/R = 3.0:1 ✓
+
+**ALL GUARDRAILS CLEAR. Attempting MOO orders:**
+
+```bash
+# MOO 1 — GS 4sh
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"opg"}'
+# Result: HTTP 000 — BLOCKED (proxy CONNECT rejected — 90th consecutive)
+
+# MOO 2 — META 7sh
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"market","time_in_force":"opg"}'
+# Result: HTTP 000 — BLOCKED
+
+# MOO 3 — MS 20sh
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"market","time_in_force":"opg"}'
+# Result: HTTP 000 — BLOCKED
+```
+
+All 3 MOO attempts blocked. This is the 7th consecutive block for GS/META (July 14, 15, 16, 17, 20 Afternoon, 20 Close, 21 Pre-Market) and 6th for MS/WFC.
+**OPERATOR MANDATORY:** Execute GS 4sh, META 7sh, MS 20sh, WFC 30sh at app.alpaca.markets before open. Also place AMD GTC sell-stop 18sh at $498.94.
+
+---
+
+### YAML DECISION LOG — PRE-MARKET 2026-07-21
+
+```yaml
+---
+ts: 2026-07-21T12:10:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: Goldman Sachs record Q2 ($20.34B revenue +26% beat, $20.98 EPS +45% beat) — consolidating post-earnings at ~$1,065, 3% below July 14 high. MOO buy 4sh at open.
+size_pct: 4.25
+stop: 1011.75
+target: 1224.75
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOO order attempted (time_in_force=opg). BLOCKED — HTTP 000 (proxy CONNECT rejected, paper-api.alpaca.markets:443). 7th consecutive block for GS. Guardrails: 4sh × $1,065 = $4,260 (4.25%), Financials 8.9% (<25%), cash $77,229 (77.2% >5%), R/R 3:1 (stop -5% = $53.25, target +15% = $159.75). 6/6 agents ≥ 7. OPERATOR MANDATORY: BUY 4sh GS MOO or limit at app.alpaca.markets before open. Follow-up bracket GTC (stop $1,011.75, target $1,224.75) required at Market Open. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T12:11:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.50
+thesis: Meta AI momentum (Llama, cloud compute launch), Nasdaq +1.3% pre-market, earnings July 29 safe window. MOO buy 7sh at open.
+size_pct: 4.51
+stop: 612.75
+target: 741.75
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.50
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOO order attempted (time_in_force=opg). BLOCKED — HTTP 000. 7th consecutive block for META. Guardrails: 7sh × $645 = $4,515 (4.51%), Comm/Tech 13.9% (<25%), cash $77,229 (77.2%), R/R 3:1. Earnings July 29 AH — safe through July 26, 48h window opens July 27. 6/6 agents ≥ 7. OPERATOR MANDATORY: BUY 7sh META MOO or limit. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T12:12:00Z
+action: entry
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Morgan Stanley Q2 $21.3B revenue (+27% YoY), $3.46 EPS (+62% YoY) — record wealth management and investment banking. Post-earnings consolidation near ATH. MOO buy 20sh.
+size_pct: 4.63
+stop: 220.40
+target: 266.80
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "MOO order attempted (time_in_force=opg). BLOCKED — HTTP 000. 6th consecutive block for MS. Guardrails: 20sh × $232 = $4,640 (4.63%), Financials 8.9% (<25%), cash $77,229 (77.2%), R/R 3:1 (stop -5% = $11.60, target +15% = $34.80). 4/6 agents ≥ 7 (meets minimum). OPERATOR MANDATORY: BUY 20sh MS MOO or limit. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T12:13:00Z
+action: entry
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: Wells Fargo Q2 EPS $1.96 (+13% beat), revenue $22.62B (+2.8% beat). MOO cap of 3 reached; converting to GTC limit order at Market Open routine ($87.51 × 1.005 = $87.95 limit).
+size_pct: 2.63
+stop: 83.13
+target: 100.64
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MOO cap of 3/day reached (GS, META, MS consume slots). WFC converting to GTC limit order at Market Open routine. Guardrails: 30sh × $87.51 = $2,625 (2.62%), Financials 11.5% (<25%) if GS+MS+WFC all fill, R/R 3:1 (stop $83.13, target $100.64). 6/6 agents ≥ 7. OPERATOR MANDATORY: BUY 30sh WFC limit $87.95 GTC bracket (stop $83.13, target $100.64) at Market Open or via app.alpaca.markets. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T12:14:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: other
+score: 0
+thesis: No entry — 48-hour binary event window. Earnings confirmed July 22 AH.
+size_pct: 0
+stop:
+target:
+result_pct:
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Exemption 2: GOOGL/Alphabet earnings confirmed July 22 after-hours. 48-hour binary event window opened July 20 ~4 PM ET. No entry permitted. Window closes after print. Post-earnings reaction (fade or follow) eligible starting July 23."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T12:14:30Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: other
+score: 0
+thesis: No entry — 48-hour binary event window. Earnings confirmed July 22 AH.
+size_pct: 0
+stop:
+target:
+result_pct:
+agent_scores:
+  fundamentals: 0
+  technical: 0
+  sentiment: 0
+  macro: 0
+  risk: 0
+  tech_analyst: 0
+agent_average: 0
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Exemption 2: TSLA/Tesla earnings confirmed July 22 after-hours. 48-hour binary event window active. No entry permitted."
+---
+```
+
+---
+
 ## 2026-07-20 — Market Close (3:30 PM ET / 19:36 UTC — API BLOCKED — 88th+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-20T19:35:50Z ✓
