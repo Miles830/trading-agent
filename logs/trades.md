@@ -4,6 +4,259 @@
 
 ---
 
+## 2026-07-21 — Market Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 89th+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-21T13:46:17Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **89th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Market Status:** OPEN — 9:47 AM ET. S&P 500 +0.6%, Nasdaq +0.9%. Chip stocks recovering. Iran ceasefire talks easing oil. AMD Advancing AI 2026 conference TOMORROW July 22-23.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 21, 2026
+
+| Routine | Expected (UTC) | Found | Status |
+|---|---|---|---|
+| Pre-Market | 12:05 UTC | NOT FOUND | **SILENT FAILURE** |
+| Market-Open | 13:46 UTC | STARTED ✓ | Running now |
+
+---
+
+### PRICES CONFIRMED — July 21, 2026 (web search, ~9:47 AM ET)
+
+| Symbol | Price | Notes |
+|---|---|---|
+| AMD | ~$505.44 | Range $502–$533.55 today; -1.5% from July 20 close $513.21; stop $487.55 still holds |
+| GS | ~$1,064.88 | Pre-market; July 20 close $1,055.03; post-earnings consolidation |
+| META | ~$642.00 | Range $636.01–$653.30 today; earnings July 29 (safe) |
+| WFC | ~$86.27 | July 20 range $86.26–$88.57; confirmed below prior estimate |
+| MS | ~$210.47 | July 20 range $210.35–$219.74; pullback from ATH $228.55 (July 15) |
+| SPX | +0.6% | ~7,535–7,545 est. |
+
+**Market is up +0.6% — below +2% no-chase threshold. Normal position sizing applies.**
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD (18sh)** — NAKED POSITION — stop $487.55 not resting at Alpaca (API blocked 89+ sessions)
+AMD at ~$505.44 is $17.89 above stop $487.55 (3.6% cushion). Advancing AI conference tomorrow is a positive catalyst. Position still OVER 5% cap (9.1% equity).
+
+```bash
+# ATTEMPT: AMD GTC SELL-STOP 18sh at $487.55
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED (89th+ consecutive)
+```
+
+**GUARDRAIL VIOLATION:** AMD 18sh naked (no resting stop at Alpaca). Cause: egress policy block. OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $487.55.
+
+---
+
+### BINDING COMMITMENTS — LIMIT BRACKET ORDERS (Catch-up from Pre-Market + Market-Open)
+
+Per CLAUDE.md Deployment Bias: GS (score 7.83), META (7.67), WFC (7.0), MS (7.17) — all committed since July 14–17. Pre-Market silently failed. Market-Open executing catch-up. All 4 names re-confirmed at current prices.
+
+**Guardrail pre-check (at current prices):**
+- AMD existing: 18sh × $505.44 = $9,098 (9.1%) — over cap, existing position, no new AMD
+- GS 4sh × $1,070.21 = $4,281 (4.28% ✓ under 5%)
+- META 7sh × $645.21 = $4,516 (4.52% ✓)
+- WFC 30sh × $86.70 = $2,601 (2.60% ✓)
+- MS 20sh × $211.52 = $4,230 (4.23% ✓)
+- Financials (GS+WFC+MS): $4,281+$2,601+$4,230 = $11,112 (11.1% ✓ under 25%)
+- Cash after all fills: $90,644 − $15,628 = $75,016 (75.0% > 5% floor ✓)
+- Total positions: AMD(1)+GS(2)+META(3)+WFC(4)+MS(5) = 5 (≤ 12 ✓)
+- R/R: all −5% stop / +15% target = 3:1 ✓
+
+**All guardrails CLEAR. Placing limit bracket orders (GTC).**
+
+```bash
+# GS 4sh LIMIT BRACKET GTC — entry $1,070.21 / stop $1,016.70 / target $1,230.50
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1070.21","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1016.70"},"take_profit":{"limit_price":"1230.50"}}'
+# Result: HTTP 000 — BLOCKED (89th+ consecutive)
+
+# META 7sh LIMIT BRACKET GTC — entry $645.21 / stop $612.95 / target $741.75
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"limit","limit_price":"645.21","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"612.95"},"take_profit":{"limit_price":"741.75"}}'
+# Result: HTTP 000 — BLOCKED
+
+# WFC 30sh LIMIT BRACKET GTC — entry $86.70 / stop $82.37 / target $99.69
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"86.70","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"82.37"},"take_profit":{"limit_price":"99.69"}}'
+# Result: HTTP 000 — BLOCKED
+
+# MS 20sh LIMIT BRACKET GTC — entry $211.52 / stop $200.94 / target $243.26
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"211.52","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"200.94"},"take_profit":{"limit_price":"243.26"}}'
+# Result: HTTP 000 — BLOCKED
+```
+
+**All 4 limit bracket orders blocked.** 89th+ consecutive block. OPERATOR MANDATORY: execute at app.alpaca.markets before Mid-Morning routine.
+
+---
+
+### BINARY EVENT BLOCKS — July 21, 2026
+
+| Symbol | Event | Window | Action |
+|---|---|---|---|
+| GOOGL | Earnings July 22 AH | Opened July 20 ~4PM | NO ENTRY — Exemption 2 |
+| TSLA | Earnings July 22 AH | Opened July 20 ~4PM | NO ENTRY — Exemption 2 |
+| INTC | Earnings July 23 AH | Opened July 18 | NO ENTRY — Exemption 2 |
+
+---
+
+### YAML DECISION LOG — MARKET OPEN (July 21)
+
+```yaml
+---
+ts: 2026-07-21T13:47:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score:
+thesis: Pre-Market routine did not heartbeat today — running catch-up from Market Open
+size_pct:
+stop:
+target:
+result_pct:
+agent_scores:
+master_decision:
+master_notes: "Pre-Market 2026-07-21 SILENTLY FAILED — no heartbeat entry in logs/heartbeats/2026-07-21.log. Market-Open routine running full catch-up per routines/open.md. AMD stop and all 4 binding commitments attempted from Market-Open."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T13:47:30Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: Goldman Sachs Q2 +45.7% EPS beat ($14.12 vs $9.72), revenue $18.3B (+39% YoY), M&A revival. Price updated $1,065 (slight pullback from $1,073 July 20). Limit bracket GTC $1,070.21 / stop $1,016.70 / target $1,230.50.
+size_pct: 4.28
+stop: 1016.70
+target: 1230.50
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "Limit bracket GTC attempted (catch-up for Pre-Market silent failure). BLOCKED — HTTP 000 (proxy CONNECT rejected, paper-api.alpaca.markets:443). 89th+ consecutive block. Prices: GS $1,064.88 pre-mkt. Limit $1,070.21 (ask×1.005). Stop $1,016.70 (-5%). Target $1,230.50 (+15%, 3:1 R/R). Guardrails: 4.28% pos ✓, Financials 11.1% ✓, cash floor preserved ✓. OPERATOR MANDATORY: BUY 4sh GS limit bracket GTC at app.alpaca.markets. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T13:48:00Z
+action: entry
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: Meta cloud compute launch confirmed, Llama AI momentum, AMD+Meta 6GW GPU commitment (Advancing AI 2026). Earnings July 29 (safe through July 26). Price $642 today. Limit bracket GTC $645.21 / stop $612.95 / target $741.75.
+size_pct: 4.52
+stop: 612.95
+target: 741.75
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "Limit bracket GTC attempted (catch-up for Pre-Market silent failure). BLOCKED — HTTP 000 (proxy CONNECT rejected). 89th+ consecutive block. META $642 est. at open. Limit $645.21 (ask×1.005). Stop $612.95 (-5%). Target $741.75 (+15%, 3:1 R/R). Earnings July 29 AH — safe (48h window opens July 27). Meta-AMD 6GW deal reinforces thesis. 4.52% pos ✓. OPERATOR MANDATORY: BUY 7sh META limit bracket GTC at app.alpaca.markets. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T13:48:30Z
+action: entry
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: Wells Fargo Q2 EPS $1.96 vs $1.73 (+13% beat), revenue $22.62B (+2.8% beat), net income +17% YoY, EPS +25% YoY. Post-earnings follow. Price confirmed $86.27 (vs prior est. $88-89). Limit bracket GTC $86.70 / stop $82.37 / target $99.69.
+size_pct: 2.60
+stop: 82.37
+target: 99.69
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "Limit bracket GTC attempted (catch-up for Pre-Market silent failure). BLOCKED — HTTP 000 (proxy CONNECT rejected). 89th+ consecutive block. WFC confirmed $86.27 (July 20 range $86.26-$88.57). Limit $86.70 (ask×1.005). Stop $82.37 (-5%). Target $99.69 (+15%, 3:1 R/R). Price corrected from prior est. $88-89 to $86.27 — thesis unchanged (Q2 beat). 2.60% pos ✓. OPERATOR MANDATORY: BUY 30sh WFC limit bracket GTC at app.alpaca.markets. xAI Grok: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T13:49:00Z
+action: entry
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Morgan Stanley Q2 EPS $3.46 vs $2.94 (+17.7% beat), revenue $21.35B (+27% YoY), profit +58% YoY, record revenue. Price $210.47 — pulled back -7.9% from ATH $228.55 (July 15). Attractive entry. Limit bracket GTC $211.52 / stop $200.94 / target $243.26.
+size_pct: 4.23
+stop: 200.94
+target: 243.26
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "Limit bracket GTC attempted (catch-up for Pre-Market silent failure). BLOCKED — HTTP 000 (proxy CONNECT rejected). 89th+ consecutive block. MS $210.47 confirmed (July 20 range $210.35-$219.74). PRICE CORRECTION from prior est. $228-240 to confirmed $210.47 (ATH was $228.55 July 15; post-earnings pullback). Technical score 6 (down from 7 — -7.9% from ATH creates downward momentum concern) but avg still 7.17 ≥ 7.0, Risk 8 ≥ 6, 5-of-6 ≥ 7 ≥ 4 required. Limit $211.52. Stop $200.94 (-5%). Target $243.26 (+15%, 3:1 R/R). OPERATOR MANDATORY: BUY 20sh MS limit bracket GTC at app.alpaca.markets. xAI Grok: unavailable."
+---
+```
+
+---
+
 ## 2026-07-20 — Market Close (3:30 PM ET / 19:36 UTC — API BLOCKED — 88th+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-20T19:35:50Z ✓
