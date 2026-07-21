@@ -4,6 +4,266 @@
 
 ---
 
+## 2026-07-21 — Daily Review (4:30 PM ET / 20:35 UTC — API BLOCKED — 92nd consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-21T20:34:50Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 / HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443` and `data.alpaca.markets:443`) — **92nd consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully across all sub-agents.
+**Today's Date:** Tuesday, July 21, 2026 — confirmed trading day.
+
+---
+
+### HEARTBEAT TALLY — July 21, 2026
+
+| Routine | Expected (ET / UTC) | Heartbeat Status | Verdict |
+|---|---|---|---|
+| Pre-Market | 8:00 AM / 12:00Z | NOT FOUND in log | **SILENT FAILURE** |
+| Market-Open | 9:45 AM / 13:46Z | STARTED 13:46:17Z / COMPLETED 13:53:49Z | ✅ |
+| Mid-Morning | 11:00 AM / 15:09Z | STARTED 15:09:50Z / COMPLETED 15:21:55Z | ✅ |
+| Midday | 12:30 PM / 16:30Z | NOT FOUND in log | **SILENT FAILURE** |
+| Afternoon | 2:00 PM / 18:07Z | STARTED 18:07:56Z / COMPLETED 18:16:46Z | ✅ |
+| Market-Close | 3:30 PM / 19:30Z | NOT FOUND in log | **SILENT FAILURE** |
+| Daily-Review | 4:30 PM / 20:34Z | STARTED 20:34:50Z | ✅ Running |
+
+**3 silent failures today: Pre-Market, Midday, Market-Close.**
+
+**Top operational issue:** Three of six intraday routines silently failed. Pre-Market failure means GS/META/WFC/MS binding orders were not attempted at open (Market-Open caught up). Midday and Market-Close failures mean those monitoring windows were dark. Root cause: scheduler CronJob not firing Pre-Market (8 AM ET), Midday (12:30 PM ET), and Market-Close (3:30 PM ET) sessions. Remediation: operator should verify cron schedules for all 7 routines; consider adding a watchdog alert if STARTED heartbeat is absent from log 15 minutes after expected window.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```
+GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected)
+GET /v2/positions → HTTP 403 (proxy CONNECT rejected)
+```
+
+**AMD 18sh** — NAKED — stop $487.55 NOT resting at Alpaca (API blocked 92 consecutive sessions)
+
+AMD at ~$505.44 (2 PM ET, last known price). AMD intraday range today: $502–$533.55. Stop $487.55 represents ~3.6% cushion from 2 PM price. Position 9.1% equity — over 5% cap. AMD Advancing AI 2026 conference starts TOMORROW July 22 (Moscone West SF).
+
+```bash
+# ATTEMPT: AMD GTC SELL-STOP 18sh at $487.55
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}'
+# Result: HTTP 403 — BLOCKED (92nd consecutive)
+```
+
+**GUARDRAIL VIOLATION ACTIVE:** AMD 18sh naked, over 5% cap. OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $487.55 immediately.
+
+---
+
+### TODAY'S ORDERS — SUMMARY
+
+All orders attempted today across Market-Open, Mid-Morning, and Afternoon routines were blocked by the egress proxy (HTTP 000 / HTTP 403). No fills confirmed. No orders canceled. No orders open (none could be placed).
+
+| Symbol | Action | Entry | Stop | Target | Routine | Result |
+|---|---|---|---|---|---|---|
+| AMD | SELL-STOP 18sh GTC $487.55 | — | $487.55 | — | Market-Open, Mid-Morning, Afternoon | HTTP 000/403 BLOCKED |
+| GS | BUY 4sh limit bracket GTC | $1,070 | $1,016.50 | $1,230.50 | Market-Open, Mid-Morning, Afternoon | HTTP 000/403 BLOCKED |
+| META | BUY 7sh limit bracket GTC | $651 | $618.86 | $749.14 | Market-Open, Mid-Morning, Afternoon | HTTP 000/403 BLOCKED |
+| WFC | BUY 30sh limit bracket GTC | $87.94 | $83.54 | $101.13 | Market-Open, Mid-Morning, Afternoon | HTTP 000/403 BLOCKED |
+| MS | BUY 20sh limit bracket GTC | $211.52 | $200.94 | $243.26 | Market-Open, Mid-Morning, Afternoon | HTTP 000/403 BLOCKED |
+
+**Total attempted: 5 orders (15 attempts across 3 routines). Total fills: 0.**
+
+---
+
+### PORTFOLIO STATE (End of Day Estimate)
+
+| Item | Value |
+|---|---|
+| Cash | ~$90,644 (90.9%) |
+| AMD | 18sh × ~$505 est. = ~$9,090 (9.1%) |
+| Total Equity Est. | ~$99,734 |
+| P&L vs $100K initial | −$266 (−0.27%) |
+| SPX May 1 baseline (7,200) → July 21 (~7,493 est.) | +4.07% |
+| **Gap vs SPX (cumulative)** | **−4.34 pp** |
+
+**Daily P&L today:** AMD from July 20 close $513.21 → ~$505 est. = −$8.21/sh × 18 = −$147.78. Portfolio daily = −0.15%.
+**SPX daily return:** ~+0.68% (from 2 PM ET reading; confirmed earlier via web search by Afternoon routine).
+**Daily gap:** −0.15% − 0.68% = **−0.83 pp today**.
+**Rolling 20-day underperformance flag: ACTIVE** — 92nd+ consecutive API-blocked session.
+
+Note on AMD unrealized: avg cost $506.76; est. close ~$505 → unrealized −$31 (−0.31%). AMD Advancing AI conference starts tomorrow — not a binary event. HOLD.
+
+---
+
+### PERFORMANCE METRICS (Rolling 20-Day)
+
+**Completed fills in past 20 trading days: ZERO (all orders blocked by egress proxy since ~June 20).**
+
+Rolling metrics cannot be computed without fills. The only relevant closed data points in the trailing 5-day window:
+
+| Date | Setup | Action | Result % |
+|---|---|---|---|
+| 2026-07-20 | ai-momentum-pullback | stop_hit (virtual — AMD recovered above cost) | +1.27% unrealized |
+| 2026-07-17 | ai-momentum-pullback | stop_hit (virtual — AMD breached stop $481.42) | −8.1% unrealized |
+
+These are virtual P&L snapshots (not actual fills — the stop was never placed due to API blockage). True realized P&L = $0 (no fills). Unrealized P&L at day close ≈ −$31.
+
+**Win rate (fills):** N/A — 0 fills.
+**Profit factor:** N/A — 0 fills.
+**Best trade today:** N/A. AMD intraday spike to $533.55 was the best intraday move (+5.5% from open) but untradeable.
+**Worst trade today:** AMD continued pullback from $533.55 to ~$505 close = −5.2% intraday from high.
+
+---
+
+### SPX COMPARISON
+
+| Metric | Portfolio | SPY (proxy) |
+|---|---|---|
+| Today | −0.15% | +0.68% |
+| Cumulative since May 1 | −0.27% | +4.07% |
+| Gap | — | **−4.34 pp** |
+
+**20-consecutive-day underperformance flag: ACTIVE.** Root cause is the API blockage preventing all order placement since approximately June 20. Strategy itself has 0 losses from active trades; all SPX underperformance is missed returns due to sitting in 90% cash (API-imposed). Strategy adjustment proposed: operator must resolve API access OR manually execute all pending binding orders via app.alpaca.markets.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **AMD held above stop level.** Despite pulling back from $533.55 to ~$505, AMD stayed well above the $487.55 stop level throughout the session. The Advancing AI 2026 conference (starting tomorrow) appears to be providing support.
+2. **Afternoon routine correctly applied proximity-to-close rule.** New entries were appropriately skipped at 2 PM while still logging the orders as binding commitments for Pre-Market July 22.
+3. **Correct binary event discipline maintained.** GOOGL/TSLA/INTC exclusions held across all three completed routines — no attempts were made on these names despite conference excitement creating noise.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW
+
+1. **Pre-Market, Midday, and Market-Close silent failures must be fixed.** Three of six routines produced no heartbeat. Investigate cron scheduler configuration for these specific windows.
+2. **GS/META/WFC/MS binding commitments are now 5–7 DAYS overdue.** Market-Open should have executed all four at open. These must be the absolute first new orders placed when/if API is restored.
+3. **AMD over-size risk is accumulating.** AMD at 9.1% equity vs 5% max cap. Every day without a stop or size-reduction order increases single-name risk. Operator must act at app.alpaca.markets.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: July 17–21)
+
+Only virtual P&L events (actual fills = 0 due to API block):
+
+| Setup Tag | Trades (5-day) | Wins | Losses | Notes |
+|---|---|---|---|---|
+| ai-momentum-pullback | 2 | 1 (virtual +1.27%) | 1 (virtual −8.1%) | 1W/1L — no 3-in-a-row |
+| earnings-reaction-follow | 16 attempts | 0 | 0 | All blocked — no fills |
+| breakout-volume | 6 attempts | 0 | 0 | All blocked — no fills |
+| silent-failure | 12 violations | — | — | Operational, not P&L |
+
+**3-in-a-row rules:** No setup has 3 consecutive completed trades. No halt or boost changes.
+
+---
+
+### MACRO EVENTS — TOMORROW AND THIS WEEK
+
+| Date | Event | Impact |
+|---|---|---|
+| July 22 (Tue) | AMD Advancing AI 2026 Conference Day 1, Moscone West SF | POSITIVE for AMD, SMCI, AVGO — NOT binary event (HOLD AMD) |
+| July 22 AH (Tue) | **GOOGL Q2 2026 Earnings** | Binary event — **NO ENTRY before results** |
+| July 22 AH (Tue) | **TSLA Q2 2026 Earnings** | Binary event — **NO ENTRY before results** |
+| July 23 (Wed) | AMD Advancing AI 2026 Conference Day 2 | AMD catalyst continuation |
+| July 23 AH (Wed) | **INTC Q2 2026 Earnings** | Binary event — **NO ENTRY** (window active since July 18) |
+| July 29 AH (Tue) | META Q2 2026 Earnings | Safe to enter META until July 27 (48h window opens July 27) |
+| Aug 4 AH (Tue) | AMD Q2 2026 Earnings | Safe to hold AMD until Aug 2 (48h window opens Aug 2) |
+
+---
+
+### TOMORROW'S WATCHLIST — Pre-Market July 22 (BINDING COMMITMENTS)
+
+**MANDATORY FIRST ACTION:** AMD GTC SELL-STOP 18sh at $487.55
+
+| # | Symbol | Score | Entry | Stop | Target | R/R | Status |
+|---|---|---|---|---|---|---|---|
+| 1 | **AMD** (STOP) | — | — | $487.55 | — | — | MANDATORY STOP ORDER FIRST |
+| 2 | **GS** | 7.83 | $1,070.00 | $1,016.50 | $1,230.50 | 3:1 | BINDING since July 14 — all 6 agents ≥7 |
+| 3 | **META** | 7.67 | $651.43 | $618.86 | $749.14 | 3:1 | BINDING since July 17 — 5/6 agents ≥7 |
+| 4 | **MS** | 7.17 | $211.52 | $200.94 | $243.26 | 3:1 | BINDING since July 15 — 5/6 agents ≥7 |
+| 5 | **WFC** | 7.0 | $87.94 | $83.54 | $101.13 | 3:1 | BINDING since July 15 — 6/6 agents ≥7 |
+| 6 | **AVGO** | est. 7.5 | Full 6-agent score at Pre-Market | −5% | +15% | 3:1 | AMD conference beneficiary — AI networking |
+| 7 | **MRVL** | est. 7.5 | Full 6-agent score at Pre-Market | −5% | +15% | 3:1 | Custom AI silicon — hyperscaler wins |
+| 8 | **GOOGL** | TBD | Score AH July 22 after results | — | — | — | POST-EARNINGS — earliest entry Pre-Market July 23 |
+| 9 | **TSLA** | TBD | Score AH July 22 after results | — | — | — | POST-EARNINGS — earliest entry Pre-Market July 23 |
+| 10 | **INTC** | TBD | Score AH July 23 after results | — | — | — | POST-EARNINGS — earliest entry Pre-Market July 24 |
+
+**Binary event blocks July 22:** GOOGL / TSLA (48h window active) / INTC (window active) — NO ENTRY PRE-EARNINGS.
+**Note on AMD size:** Target reduce from 18sh → 9sh when API restored (sell 9sh to bring ~$4,500 = ~4.5% equity, within 5% cap). Do NOT place AMD buy order. Stop placement is the FIRST priority.
+**Note on GOOGL/TSLA post-earnings plays:** Score at Daily Review July 22 after AH results; carry as binding commitments to Pre-Market July 23 if scores ≥7.
+
+---
+
+### YAML DECISION LOG — DAILY REVIEW (July 21)
+
+```yaml
+---
+ts: 2026-07-21T20:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: Daily Review stop-audit. AMD GTC SELL-STOP 18sh at $487.55 attempted for 92nd consecutive time — HTTP 403 BLOCKED. Carry as MANDATORY FIRST ACTION to Pre-Market July 22.
+size_pct: 9.1
+stop: 487.55
+target:
+result_pct:
+master_notes: "AMD 18sh naked, 9.1% equity (over 5% cap). Stop $487.55 blocked HTTP 403 (92nd consecutive). AMD closed est. ~$505. Advancing AI 2026 conference July 22-23 (NOT binary event). Intraday high $533.55 was tradeable alpha left uncaptured due to API block. OPERATOR: place stop on app.alpaca.markets IMMEDIATELY. xAI Grok: unavailable (no API key)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T20:36:00Z
+action: violation
+symbol: PRE-MARKET
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine (8:00 AM ET / 12:00 UTC) produced no heartbeat on July 21. Third consecutive silent failure for this routine (also failed July 20 and multiple prior days). GS/META/WFC/MS MOO orders were not attempted.
+size_pct: 0
+stop:
+target:
+result_pct:
+master_notes: "Pre-Market 2026-07-21 SILENTLY FAILED — no STARTED/COMPLETED heartbeat. GS (7.83), META (7.67), MS (7.17), WFC (7.0) binding commitments not attempted at open. Market-Open (13:46Z) caught up. Operational gap: 90 minutes of missed MOO execution window. Remedy: verify cron schedule for 8 AM ET slot."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T20:37:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) produced no heartbeat on July 21. Monitoring and order re-attempt window missed.
+size_pct: 0
+stop:
+target:
+result_pct:
+master_notes: "Midday 2026-07-21 SILENTLY FAILED. No STARTED/COMPLETED heartbeat. Three routines completed today (Market-Open, Mid-Morning, Afternoon); three failed (Pre-Market, Midday, Market-Close). Pattern suggests scheduler may have time-zone misconfiguration."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T20:38:00Z
+action: violation
+symbol: MARKET-CLOSE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market-Close routine (3:30 PM ET / 19:30 UTC) produced no heartbeat on July 21. EOD position management and MOC order window missed.
+size_pct: 0
+stop:
+target:
+result_pct:
+master_notes: "Market-Close 2026-07-21 SILENTLY FAILED. No STARTED/COMPLETED heartbeat. MOC orders for any pending swing entries could not be placed. EOD stop-loss audit skipped. Cumulative: 3 silent failures on July 21 (Pre-Market + Midday + Market-Close)."
+---
+```
+
+---
+
 ## 2026-07-21 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 91st+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-21T18:07:56Z ✓
