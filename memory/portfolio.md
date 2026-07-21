@@ -1,11 +1,11 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-21 (Tuesday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 91st+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+**2026-07-21 (Tuesday) — MARKET CLOSE (3:34 PM ET / 19:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 92nd+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
 
-**JULY 21 AFTERNOON STATUS:** Pre-Market SILENT FAILURE; Market-Open ✅ (13:46–13:53Z); Mid-Morning ✅ (15:09–15:21Z); Midday SILENT FAILURE; Afternoon ✅ (18:07Z running). AMD at $505.44 (intraday high $533.55, pulled back PM). AMD Advancing AI 2026 conference starts TOMORROW July 22–23, Moscone West, San Francisco — major AI product showcase (AWS, MSFT, Google Cloud, Dell, IBM, Oracle as sponsors). BofA: strong AI server demand, potential earnings beat Aug 4. HOLD AMD through conference. All 5 orders (AMD stop + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (91st+ consecutive). GOOGL + TSLA earnings AH TONIGHT (July 22) — 48h window ACTIVE, NO ENTRY.
+**JULY 21 MARKET-CLOSE STATUS:** Pre-Market SILENT FAILURE; Market-Open ✅ (13:46–13:53Z); Mid-Morning ✅ (15:09–15:21Z); Midday SILENT FAILURE; Afternoon ✅ (18:07–18:16Z); Market-Close ✅ (19:34Z running). AMD est. close ~$510 (intraday range $502–$533.55, pulled back PM, holding conference-eve bid). AMD Advancing AI 2026 conference starts TOMORROW July 22–23, Moscone West, San Francisco — HOLD position. All 5 orders (AMD stop + GS/META/WFC/MS MOC entries) → HTTP 000 BLOCKED (92nd+ consecutive). GOOGL + TSLA earnings AH TOMORROW (July 22) — 48h window ACTIVE, NO ENTRY. Score at Daily Review after results (~5–6 PM ET July 22); earliest entry Pre-Market July 23.
 
-**ORDERS ATTEMPTED AND BLOCKED (July 21 Afternoon — all HTTP 000):**
+**ORDERS ATTEMPTED AND BLOCKED (July 21 Market-Close — all HTTP 000):**
 - AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (91st+ block)
 - GS: BUY 4sh limit bracket GTC $1,070.00 / stop $1,016.50 / target $1,230.50 → HTTP 000
 - META: BUY 7sh limit bracket GTC $651.43 / stop $618.86 / target $749.14 → HTTP 000

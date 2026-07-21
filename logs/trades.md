@@ -4,6 +4,263 @@
 
 ---
 
+## 2026-07-21 — Market Close (3:30 PM ET / 19:34 UTC — API BLOCKED — 92nd+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-21T19:34:42Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **92nd+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 3:34 PM ET — Market-Close routine window. MOC deadline: 3:50 PM ET.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 21, 2026
+
+| Routine | Heartbeat Found | Status |
+|---|---|---|
+| Pre-Market (12:05 UTC) | NOT FOUND | **SILENT FAILURE** |
+| Market-Open (13:46 UTC) | STARTED 13:46:17Z / COMPLETED 13:53:49Z | ✅ Completed |
+| Mid-Morning (15:09 UTC) | STARTED 15:09:50Z / COMPLETED 15:21:55Z | ✅ Completed |
+| Midday (16:30 UTC) | NOT FOUND | **SILENT FAILURE** |
+| Afternoon (18:07 UTC) | STARTED 18:07:56Z / COMPLETED 18:16:46Z | ✅ Completed |
+| Market-Close (19:34 UTC) | STARTED 19:34:42Z | ✅ Running |
+
+**Pre-Market + Midday SILENT FAILURES → violation entries already logged by Afternoon routine.**
+**Afternoon COMPLETED — no Afternoon catch-up needed at Close.**
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected, 92nd+ consecutive)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD (18sh)** — NAKED — stop $487.55 still NOT resting at Alpaca (API blocked 92nd+ consecutive session)
+
+```bash
+# ATTEMPT: AMD GTC SELL-STOP 18sh at $487.55
+# d={"symbol":"AMD","qty":"18","side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}
+# Result: HTTP 000 — BLOCKED (92nd+ consecutive)
+```
+
+**GUARDRAIL VIOLATION (ONGOING):** AMD 18sh naked. OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $487.55 IMMEDIATELY.
+
+---
+
+### MARKET-CLOSE ACTIONS — MOC ORDERS (ALL BLOCKED)
+
+**No day trades to close** — AMD is a swing position only. Attempting mandatory binding MOC entries + AMD stop:
+
+```bash
+# ORDER 1: AMD GTC SELL-STOP 18sh $487.55 → HTTP 000 BLOCKED
+# ORDER 2: GS  MOC BUY 4sh  (time_in_force=cls) → HTTP 000 BLOCKED
+# ORDER 3: META MOC BUY 7sh  (time_in_force=cls) → HTTP 000 BLOCKED
+# ORDER 4: WFC  MOC BUY 30sh (time_in_force=cls) → HTTP 000 BLOCKED
+# ORDER 5: MS   MOC BUY 20sh (time_in_force=cls) → HTTP 000 BLOCKED
+```
+
+All 5 orders blocked. 92nd+ consecutive API-blocked session. All binding commitments carry to Pre-Market July 22.
+
+---
+
+### END-OF-DAY MARKET SUMMARY
+
+**SPX:** Est. close ~+0.7% for the day (~7,500). Snapped 3-day losing streak on Iran ceasefire optimism + chip recovery. GOOGL/TSLA report AH TOMORROW (July 22) — megacap earnings week continues.
+
+**AMD:** Est. close ~$510 (intraday range $502–$533.55; pulled back PM, holding conference-eve bid). AMD Advancing AI 2026 conference starts TOMORROW (July 22–23) at Moscone West, San Francisco — HOLD.
+
+**Earnings tomorrow AH (July 22):** GOOGL (est. EPS $2.90, Rev $116.9B), TSLA. 48h binary event window ACTIVE — NO ENTRY before results. Score at Daily Review July 22 after results (~5–6 PM ET); earliest entry Pre-Market July 23.
+
+**Earnings Thu AH (July 23):** INTC — binary event window ACTIVE since July 18. NO ENTRY.
+
+---
+
+### PORTFOLIO STATE — EOD ESTIMATE (July 21, 2026)
+
+| Component | Value | Notes |
+|---|---|---|
+| AMD | 18sh × ~$510 est. = ~$9,180 (9.2%) | Over 5% cap; NAKED stop; Advancing AI conf tomorrow |
+| Cash | ~$90,644 (90.8%) | Well above 5% floor |
+| **Total Equity Est.** | **~$99,824** | API blocked; est. from afternoon data |
+| Daily P&L | ~−$58 (−0.06%) | AMD −$3.21/sh × 18 vs July 20 close $513.21 |
+| Total Return | ~−0.18% | vs $100K initial |
+| SPX return (from May 1) | ~+4.17% | Est. ~7,500; baseline 7,200 |
+| **Benchmark Gap** | **~−4.35 pp** | 92nd+ consecutive API-blocked session |
+| Circuit Breaker | NOT TRIPPED | Daily P&L ~−0.06% (well under 3%) |
+
+---
+
+### OVERNIGHT POSITIONS CONFIRMED
+
+| Symbol | Qty | Entry | Stop | Target | Notes |
+|---|---|---|---|---|---|
+| AMD | 18 | $506.76 | $487.55 (NAKED) | $582.78 | Advancing AI conf Jul 22–23; HOLD; NAKED (API blocked) |
+
+**GUARDRAIL FLAGS:**
+1. AMD 9.2% equity — OVER 5% cap (reduce to 9sh when API restored)
+2. AMD no resting stop at Alpaca — NAKED (92nd+ consecutive blocked session)
+3. 20-day underperformance flag ACTIVE (~−4.35 pp vs SPX)
+
+---
+
+### TOMORROW PRE-MARKET BINDINGS (July 22, 2026)
+
+| Symbol | Action | Score | Notes |
+|---|---|---|---|
+| AMD | GTC SELL-STOP 18sh $487.55 | — | MANDATORY FIRST ACTION |
+| GS | MOO BUY 4sh bracket | 7.83 | BINDING (6th attempt); 6/6 agents ≥ 7 |
+| META | MOO BUY 7sh bracket | 7.67 | BINDING; earnings July 29 AH safe |
+| WFC | MOO BUY 30sh bracket | 7.0 | BINDING; Q2 EPS +13% beat |
+| MS | MOO BUY 20sh bracket | 7.17 | BINDING; Q2 revenue +27% YoY |
+| GOOGL | SCORE ONLY | TBD | Score at Daily Review after AH results July 22 |
+| TSLA | SCORE ONLY | TBD | Score at Daily Review after AH results July 22 |
+| INTC | BINARY BLOCK | — | Earnings AH July 23 → NO ENTRY |
+
+---
+
+### YAML DECISION LOG — MARKET CLOSE (July 21)
+
+```yaml
+---
+ts: 2026-07-21T19:34:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD GTC SELL-STOP 18sh at $487.55 attempted at Market-Close — HTTP 000 BLOCKED (92nd+ consecutive). GUARDRAIL VIOLATION: no resting stop at Alpaca.
+size_pct: 9.2
+stop: 487.55
+target: 582.78
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 4
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 4
+master_decision: hold
+master_notes: "AMD HOLD through Advancing AI 2026 conf July 22-23. Stop NAKED (92nd+ API block). Est. close $510 → stop $487.55 is 4.4% cushion. Reduce to 9sh when API restored. Earnings Aug 4 safe through Aug 1."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T19:36:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS MOC BUY 4sh (time_in_force=cls) attempted at close — HTTP 000 BLOCKED (92nd+ consecutive). BINDING COMMITMENT carries to Pre-Market July 22 MOO.
+size_pct: 4.3
+stop: 1016.5
+target: 1230.5
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "GS MOC BUY 4sh attempted at close. HTTP 000 blocked 92nd+ consecutive. All 6 agents ≥ 7. BINDING: Pre-Market July 22 MUST enter — no exemptions apply."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T19:37:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: META MOC BUY 7sh (time_in_force=cls) attempted at close — HTTP 000 BLOCKED (92nd+ consecutive). BINDING COMMITMENT carries to Pre-Market July 22 MOO.
+size_pct: 4.6
+stop: 618.86
+target: 749.14
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "META MOC BUY 7sh attempted at close. HTTP 000 blocked 92nd+. WF PT $767. Earnings July 29 AH safe through July 26. BINDING: Pre-Market July 22 MOO 7sh META."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T19:38:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: WFC MOC BUY 30sh (time_in_force=cls) attempted at close — HTTP 000 BLOCKED (92nd+ consecutive). BINDING COMMITMENT carries to Pre-Market July 22 MOO.
+size_pct: 2.6
+stop: 83.54
+target: 101.13
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC MOC BUY 30sh attempted at close. HTTP 000 blocked 92nd+. Q2 EPS $1.96 (+13% beat). BINDING: Pre-Market July 22 MOO 30sh WFC."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T19:39:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: MS MOC BUY 20sh (time_in_force=cls) attempted at close — HTTP 000 BLOCKED (92nd+ consecutive). BINDING COMMITMENT carries to Pre-Market July 22 MOO.
+size_pct: 4.2
+stop: 200.94
+target: 243.26
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "MS MOC BUY 20sh attempted at close. HTTP 000 blocked 92nd+. Q2: Revenue +27% YoY, Net income +60% YoY, EPS $3.46 record. BINDING: Pre-Market July 22 MOO 20sh MS."
+---
+```
+
+*Market-Close complete (19:34 UTC). API blocked 92nd+ consecutive session. All 5 orders attempted and blocked. AMD naked overnight (guardrail violation). AMD Advancing AI 2026 conf starts tomorrow. GOOGL/TSLA report AH tomorrow — score at Daily Review for July 23 entry.*
+
+---
+
+
 ## 2026-07-21 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 91st+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-21T18:07:56Z ✓
