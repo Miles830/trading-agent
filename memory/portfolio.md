@@ -1,7 +1,44 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-20 (Monday) — MARKET CLOSE (3:38 PM ET / 19:38 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 88th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ RUNNING.**
+**2026-07-21 (Tuesday) — MARKET OPEN (9:45 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 89th+ consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING.**
+
+**JULY 21 MARKET-OPEN STATUS:** Pre-Market silently failed (no heartbeat). Market-Open running as catch-up. AMD at ~$505.44 (above stop $487.55; +0.7% cushion maintained). AMD Advancing AI 2026 conference TOMORROW July 22-23 (Zen 6 Venice commercial launch, MI455X GPU roadmap, Meta 6GW GPU commitment). GS/META/WFC/MS binding entries: all 4 limit bracket GTC orders attempted and blocked (89th+ consecutive). Binary event blocks: GOOGL + TSLA earnings July 22 AH (NO ENTRY), INTC earnings July 23 (NO ENTRY). Market: SPX +0.6%, Nasdaq +0.9% — chip recovery + Iran ceasefire talks. MS PRICE CORRECTION: confirmed $210.47 (not est. $228-240; pulled back from ATH $228.55 July 15 — post-earnings consolidation). WFC PRICE CORRECTION: confirmed $86.27 (not est. $88-89). All theses intact.
+
+**ORDERS ATTEMPTED AND BLOCKED (July 21 Market-Open — all HTTP 000):**
+- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (89th+ block)
+- GS: BUY 4sh limit bracket GTC $1,070.21 / stop $1,016.70 / target $1,230.50 → HTTP 000
+- META: BUY 7sh limit bracket GTC $645.21 / stop $612.95 / target $741.75 → HTTP 000
+- WFC: BUY 30sh limit bracket GTC $86.70 / stop $82.37 / target $99.69 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 → HTTP 000
+
+**PORTFOLIO STATE EST (July 21 Market-Open):**
+- Cash: ~$90,644 (90.9%)
+- AMD: 18sh × $505.44 = ~$9,098 (9.1%) — over 5% cap, naked (no stop), Day ~30 post-fill
+- Total equity est.: ~$99,742
+- Performance vs SPX (May 1 baseline 7,200 → July 21 est. 7,545 = +4.79%): est. −0.26% → gap −5.05 pp
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (89+ consecutive sessions — API blockage root cause)
+- Circuit breaker: AMD −1.5% from July 20 → NOT tripped (well under 3%)
+
+**BINARY EVENT WINDOWS (Active July 21):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| GOOGL/GOOG | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
+| TSLA | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
+| INTC | Thu July 23 AH | Opened Sat July 18 | **ACTIVE — NO ENTRY** |
+| META | Wed July 29 AH | Opens Mon July 27 | Safe through July 25 |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+
+**AMD NOTE (July 21):** AMD at $505.44 — stop $487.55 (3.6% cushion). Advancing AI 2026 conference July 22-23 (NOT binary event; entries allowed). Zen 6 Venice commercial launch, MI455X GPU roadmap, Meta 6GW commitment. Conference is a positive catalyst for AMD thesis. AMD earnings August 4 (safe through August 1). Position remains over 5% cap — reduce at next fill opportunity (when API is restored, sell 9sh to bring to ~4.5%).
+
+**JULY 21 BINDING COMMITMENTS (carry to Mid-Morning and beyond):**
+1. AMD: GTC SELL-STOP 18sh at $487.55 — MANDATORY
+2. GS: BUY 4sh limit bracket GTC $1,070.21 / stop $1,016.70 / target $1,230.50 — score 7.83
+3. META: BUY 7sh limit bracket GTC $645.21 / stop $612.95 / target $741.75 — score 7.67
+4. WFC: BUY 30sh limit bracket GTC $86.70 / stop $82.37 / target $99.69 — score 7.0
+5. MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 — score 7.17
+
+
 
 **JULY 20 MARKET-CLOSE STATUS:** All 5 routines prior to Market-Close silently failed (Pre-Market, Market-Open, Mid-Morning, Midday all missed; Afternoon ✓ COMPLETED). AMD holds at ~$513.21 (+5% day, +1.27% vs avg cost). 4 MOC orders attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh — all HTTP 000 blocked, 6th consecutive block). AMD trail-stop $487.55 attempted → HTTP 000. GOOGL/TSLA binary event skip confirmed (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). SPX gap: −4.32 pp. Daily review due at 4:30 PM ET.
 
