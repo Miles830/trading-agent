@@ -1,6 +1,67 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
+**2026-07-22 (Wednesday) — PRE-MARKET (8:10 AM ET / 12:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 92nd+ consecutive blocked session). PRE-MARKET ROUTINE ✅ RUNNING.**
+
+**JULY 22 PRE-MARKET STATUS:** No user suggestions found. AMD Advancing AI 2026 conference OPENED TODAY (MI450X/Zen6 Venice/Helios announced). Market risk-off: SPX futures -0.19%, Nasdaq -0.50%, oil $92/bbl (Iran strikes — 11th night). GOOGL/TSLA/IBM/TXN/NOW/CSX earnings AH tonight — massive binary event day. All 6 orders attempted → HTTP 000 BLOCKED (92nd+ consecutive).
+
+**ORDERS ATTEMPTED AND BLOCKED (July 22 Pre-Market — all HTTP 000):**
+- AMD: GTC SELL-STOP 18sh at $512.05 (updated trail from $487.55) → HTTP 000 (92nd+ block)
+- AMD: SELL 9sh LIMIT $537.00 GTC (5%-cap reduction) → HTTP 000 (92nd+ block)
+- GS: MOO BUY 4sh (time_in_force=opg) → HTTP 000
+- META: MOO BUY 7sh (time_in_force=opg) → HTTP 000
+- MS: MOO BUY 20sh (time_in_force=opg) → HTTP 000
+- WFC: Limit BUY 30sh bracket GTC $88.49/stop $84.07/target $101.63 → HTTP 000
+
+**PORTFOLIO STATE EST (July 22 Pre-Market):**
+- Cash: ~$90,644 (90.3%)
+- AMD: 18sh × $539 est. = ~$9,702 (9.7%) — OVER 5% CAP, NAKED (no stop), Day ~32 post-fill
+- Total equity est.: ~$100,346
+- AMD P&L: 18 × ($539 − $506.76) = +$580 (+6.4% unrealized)
+- Performance vs SPX (May 1 baseline 7,200 → July 22 est. 7,479 = +3.88%): portfolio +0.35% → gap ~−3.53 pp
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (92+ consecutive sessions — API blockage root cause)
+- Circuit breaker: AMD −0.7% from July 21 close; portfolio daily P&L est. −$124 (−0.12%) — NOT tripped
+
+**AMD NOTE (July 22 Pre-Market):** AMD Advancing AI 2026 conference opened TODAY with major announcements — EPYC Venice (Zen 6, 2nm TSMC), MI450X/MI455X CDNA5 GPUs, Helios rack (72 GPUs, 31TB HBM4). Azure+Meta+OpenAI confirmed as partners. AMD at $539 (up from $465.79 low on July 17 stop-breach, recovered on MSFT Helios deal). **STOP UPDATED: $512.05** (trailed from $487.55 to 5% below current $539 to protect conference gains). Position 9.7% equity — must reduce to ~9sh (~4.8%) when API restored. Conference is NOT a binary event — safe to hold through July 22–23.
+
+**BINARY EVENT WINDOWS (Active July 22–23):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| GOOGL/GOOG | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
+| TSLA | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
+| INTC | Thu July 23 AH | Opened Sat July 18 | **ACTIVE — NO ENTRY** |
+| TXN | Wed July 22 AH | Opened Mon July 20 | **ACTIVE — NO ENTRY** |
+| NOW | Wed July 22 AH | Opened Mon July 20 | **ACTIVE — NO ENTRY** |
+| META | Wed July 29 AH | Opens Mon July 27 | Safe through July 25 |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+
+**POST-GOOGL/TSLA PLAYS (score at Daily Review tonight July 22 AH — earliest entry Pre-Market July 23):**
+- GOOGL post-earnings: Expected EPS $2.89; AI monetization + cloud (Google Cloud) in focus; 48h window CLOSES after earnings print AH tonight
+- TSLA post-earnings: 480K deliveries Q2, EPS $0.54 est.; 7.6% implied options move; window closes AH tonight
+- If either beats significantly → POST-EARNINGS FOLLOW ENTRY at Pre-Market July 23 (score must reach ≥7)
+
+**JULY 22 BINDING COMMITMENTS (Market-Open July 22 MUST execute — carry from Pre-Market):**
+1. AMD: GTC SELL-STOP 18sh at $512.05 — MANDATORY FIRST ACTION (updated trail)
+2. AMD: SELL 9sh limit $537.00 GTC — position reduction to 5% cap compliance
+3. GS: Limit BUY 4sh bracket GTC — score 7.83 (entry ≤ ask×1.005)
+4. META: Limit BUY 7sh bracket GTC — score 7.67 (entry ≤ ask×1.005)
+5. MS: Limit BUY 20sh bracket GTC — score 7.17 (entry ≤ ask×1.005)
+6. WFC: Limit BUY 30sh bracket GTC $88.49/stop $84.07/target $101.63 — score 7.0
+
+**PRE-MARKET WATCHLIST — July 22 (for Daily Review scoring tonight):**
+| Symbol | Score | Action | Notes |
+|---|---|---|---|
+| GS | 7.83 | BUY 4sh | Binding commitment; Q2 blowout; rate tailwind |
+| META | 7.67 | BUY 7sh | Binding commitment; AI moat; safe earnings window |
+| MS | 7.17 | BUY 20sh | Binding commitment; record Q2 |
+| WFC | 7.0 | BUY 30sh | Binding commitment; Q2 beat |
+| GOOGL | TBD | Post-earnings | Score after AH print tonight |
+| TSLA | TBD | Post-earnings | Score after AH print tonight |
+| GLD | 6.5 | Watch | Oil/Iran macro hedge — below threshold |
+| XLE | 6.0 | Watch | Oil tailwind but rate risk caps upside |
+
+---
+
 **2026-07-21 (Tuesday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 91st+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
 
 **JULY 21 AFTERNOON STATUS:** Pre-Market SILENT FAILURE; Market-Open ✅ (13:46–13:53Z); Mid-Morning ✅ (15:09–15:21Z); Midday SILENT FAILURE; Afternoon ✅ (18:07Z running). AMD at $505.44 (intraday high $533.55, pulled back PM). AMD Advancing AI 2026 conference starts TOMORROW July 22–23, Moscone West, San Francisco — major AI product showcase (AWS, MSFT, Google Cloud, Dell, IBM, Oracle as sponsors). BofA: strong AI server demand, potential earnings beat Aug 4. HOLD AMD through conference. All 5 orders (AMD stop + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (91st+ consecutive). GOOGL + TSLA earnings AH TONIGHT (July 22) — 48h window ACTIVE, NO ENTRY.
