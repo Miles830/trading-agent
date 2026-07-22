@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-22T18:09:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-22T19:35:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 100260,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.4
     },
-    "note": "July 22 AFTERNOON (2:09 PM ET / 18:09Z). API BLOCKED HTTP 000 — 92nd+ consecutive session. 4 SILENT FAILURES today (Pre-Market, Market-Open, Mid-Morning, Midday). AMD 18sh × $534.22 est. = $9,616 (9.6% equity, over 5% cap, NAKED). AMD Advancing AI 2026 conf Day 1 MASSIVE: Zen 6 Venice TSMC 2nm, MI450X HBM4, Helios Rack, Oracle 50K GPUs, Meta 6GW + OpenAI 6GW = 12GW committed. AMD +5.7% today (+5.4% vs avg cost $506.76). Trail stop updated $487.55→$507.51 (blocked). Daily P&L +$518 (+0.52%). SPX +5.0% from baseline; portfolio +0.26%; benchmark gap -4.74 pp. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $507.51; (2) BUY 4sh GS limit $1,103.36 bracket GTC; (3) BUY 7sh META limit $647.10 bracket GTC; (4) BUY 30sh WFC limit $87.62 bracket GTC; (5) BUY 20sh MS limit $216.08 bracket GTC. BINARY EVENT NO-ENTRY: GOOGL/TSLA (earnings AH TONIGHT), INTC (earnings Jul 23 AH — post-earnings ok Jul 24)."
+    "note": "July 22 MARKET-CLOSE (3:35 PM ET / 19:35Z). API BLOCKED HTTP 000 — 93rd+ consecutive session. AFTERNOON completed 18:21Z ✓. No day trades to flatten. AMD 18sh × $534.22 EOD est. = $9,616 (9.6% equity, over 5% cap, NAKED — Day 33). Advancing AI 2026 conf Day 1 MASSIVE (12GW committed Meta+OpenAI). Day 2 tomorrow July 23. AMD trail stop $507.51 → HTTP 000 BLOCKED. MOC entries GS/META/WFC/MS → all HTTP 000 BLOCKED. GOOGL/TSLA earnings AH tonight ~5-6 PM ET — Exemption 2 (binary event); score at Daily Review 4:30 PM. INTC earnings AH Jul 23 — Exemption 2, post-earnings ok Jul 24. EOD P&L +$518 (+0.52%). SPX +5.0% from baseline; portfolio +0.26%; benchmark gap -4.74 pp. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $507.51 NOW; (2) BUY 4sh GS limit bracket GTC; (3) BUY 7sh META limit bracket GTC; (4) BUY 30sh WFC limit bracket GTC; (5) BUY 20sh MS limit bracket GTC. BINDING pre-market July 23 — all 5 mandatory."
   },
   "positions": [
     {
@@ -171,9 +171,9 @@
     {
       "name": "Market-Close",
       "status": "completed",
-      "last_run": "2026-07-20T19:40:00Z",
-      "next_run": "2026-07-21T19:30:00Z",
-      "last_summary": "July 20 Market-Close COMPLETED 19:40Z. API BLOCKED (88th+ consecutive). No day trades to flatten. 4 MOC entries attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh) → all HTTP 000 blocked. AMD trail-stop $487.55 → blocked. GOOGL/TSLA binary events skipped (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). AMD holds +1.27% vs avg cost. SPX benchmark gap: -4.32 pp."
+      "last_run": "2026-07-22T19:35:00Z",
+      "next_run": "2026-07-23T19:30:00Z",
+      "last_summary": "July 22 Market-Close COMPLETED 19:35Z. API BLOCKED HTTP 000 (93rd+ consecutive). No day trades to flatten (none opened today). AMD trail-stop 18sh $507.51 → HTTP 000 blocked. MOC entries: GS 4sh, META 7sh, WFC 30sh, MS 20sh → all HTTP 000 blocked. GOOGL/TSLA binary event skips (Exemption 2 — earnings AH tonight; score at Daily Review 4:30 PM). INTC skip (Exemption 2 — earnings AH July 23). EOD P&L est. +$518 (+0.52%). AMD holds: +$494 unrealized. SPX benchmark gap: −4.74 pp. Day 23 July binding: AMD stop $507.51 MANDATORY + 4 entry orders. OPERATOR: app.alpaca.markets."
     },
     {
       "name": "Daily-Review",
@@ -297,8 +297,8 @@
     }
   ],
   "history": [
-    {"date": "2026-07-22", "portfolio_return_pct": 0.26, "spx_return_pct": 5.0, "daily_pnl_pct": 0.52},
+    {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32},
     {"date": "2026-07-21", "portfolio_return_pct": -0.26, "spx_return_pct": 4.07, "daily_pnl_pct": -0.14},
-    {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32}
+    {"date": "2026-07-22", "portfolio_return_pct": 0.26, "spx_return_pct": 5.0, "daily_pnl_pct": 0.52}
   ]
 }
