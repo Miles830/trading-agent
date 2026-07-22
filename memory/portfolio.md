@@ -1,7 +1,33 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+**2026-07-20 (Monday) — AFTERNOON (2:11 PM ET / 18:11 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 87th+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+
+**JULY 20 AFTERNOON STATUS:** 4 predecessor routines silently failed (Pre-Market, Market-Open, Mid-Morning, Midday). AMD RECOVERED to $513.21 (+5% today on AMD+Microsoft Azure AI Helios deal: MI455X GPUs + EPYC Venice CPUs for frontier AI inference). AMD now ABOVE avg cost $506.76 (+1.27% unrealized = +$116.10). Trail stop attempted $487.55 → HTTP 403 blocked. GS/META/WFC/MS limit orders still blocked (4 consecutive blocked sessions since July 14). Binary event windows: GOOGL/TSLA earnings Wednesday July 22 (48h window starts ~4 PM today — DO NOT ENTER tomorrow Pre-Market); INTC earnings Thursday July 23 (window active since Saturday). Advancing AI conference July 22-23 (AMD product conf, NOT earnings — safe to hold).
+
+**ORDERS ATTEMPTED AND BLOCKED (July 20 Afternoon — all HTTP 403):**
+- AMD SELL-STOP GTC 18sh at $487.55 (trail from $481.42) → HTTP 403
+
+**MARKET CONDITIONS (July 20, 2:11 PM ET — WEB SEARCH CONFIRMED):**
+- SPX: ~+0.34% intraday (~7,500 est.) | Nasdaq: ~+0.65% | Driver: AMD+MSFT deal + Big Tech earnings anticipation
+- AMD: $513.21 (+5.00%) — ABOVE stop $481.42 — ABOVE avg cost $506.76 — MSFT Azure AI deal
+- GS: $1,073.00 (ATH $1,152 July 15; post-earnings consolidation)
+- META: ~$651.98 (+0.92%) — earnings July 29 (safe window through July 26)
+- WFC: est. ~$88-92 (unconfirmed today; Q2 beat confirmed July 14)
+- MS: est. ~$228-240 (unconfirmed today; Q2 beat confirmed July 15)
+- Oil: ~$90/bbl (Iran conflict escalating — macro headwind; markets pricing as contained)
+
+**AMD+MICROSOFT DEAL (July 20):**
+Microsoft deploying Helios Rackscale Solution — AMD Instinct MI455X GPUs (72 per rack, 31TB HBM4 memory), 6th Gen EPYC Venice CPUs, Pensando networking, ROCm software — for frontier AI inference across Azure services and enterprise workloads. Shipping H2 2026. CONFIRMS AMD as #2 AI GPU infrastructure supplier. Multiple analyst PT upgrades. AMD +5% on news. This is a MAJOR catalyst for AMD thesis.
+
+**EARNINGS BINARY EVENT WINDOWS (Active):**
+| Company | Earnings Date | 48h Window Opens | Status |
+|---|---|---|---|
+| GOOGL/GOOG | Wed July 22 AH | Mon July 20 ~4 PM | **ACTIVE — no entry from today 4 PM** |
+| TSLA | Wed July 22 AH | Mon July 20 ~4 PM | **ACTIVE — no entry** |
+| INTC | Thu July 23 | Sat July 18 | **ACTIVE — no entry** |
+| META | Wed July 29 AH | Mon July 27 | Safe through July 26 |
+| AMD | Tue Aug 4 AH | Sun Aug 2 | Safe through Aug 1 |
 
 **JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
 
