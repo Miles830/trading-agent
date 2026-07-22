@@ -1,45 +1,46 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-21 (Tuesday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 91st+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+**2026-07-22 (Wednesday) — MARKET OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 92nd+ consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING. Pre-Market SILENTLY FAILED — catch-up executed.**
 
-**JULY 21 AFTERNOON STATUS:** Pre-Market SILENT FAILURE; Market-Open ✅ (13:46–13:53Z); Mid-Morning ✅ (15:09–15:21Z); Midday SILENT FAILURE; Afternoon ✅ (18:07Z running). AMD at $505.44 (intraday high $533.55, pulled back PM). AMD Advancing AI 2026 conference starts TOMORROW July 22–23, Moscone West, San Francisco — major AI product showcase (AWS, MSFT, Google Cloud, Dell, IBM, Oracle as sponsors). BofA: strong AI server demand, potential earnings beat Aug 4. HOLD AMD through conference. All 5 orders (AMD stop + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (91st+ consecutive). GOOGL + TSLA earnings AH TONIGHT (July 22) — 48h window ACTIVE, NO ENTRY.
+**JULY 22 MARKET-OPEN STATUS:** Pre-Market SILENT FAILURE (catch-up running from Market-Open). AMD Advancing AI 2026 conference **ACTIVE TODAY** July 22–23, Moscone West SF. GOOGL + TSLA earnings AH TONIGHT (still in 48h window — NO ENTRY). INTC earnings AH July 23 — NO ENTRY. All 5 orders (AMD stop + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (92nd+ consecutive). AMD naked (no stop), est. position ~$487–$510 range based on yesterday's levels.
 
-**ORDERS ATTEMPTED AND BLOCKED (July 21 Afternoon — all HTTP 000):**
-- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (91st+ block)
+**ORDERS ATTEMPTED AND BLOCKED (July 22 Market-Open — all HTTP 000):**
+- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (92nd+ block)
 - GS: BUY 4sh limit bracket GTC $1,070.00 / stop $1,016.50 / target $1,230.50 → HTTP 000
 - META: BUY 7sh limit bracket GTC $651.43 / stop $618.86 / target $749.14 → HTTP 000
 - WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 → HTTP 000
 - MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 → HTTP 000
 
-**PORTFOLIO STATE EST (July 21 Afternoon):**
+**PORTFOLIO STATE EST (July 22 Market-Open):**
 - Cash: ~$90,644 (90.9%)
-- AMD: 18sh × $505.44 est. = ~$9,098 (9.1%) — over 5% cap, naked (no stop), Day ~31 post-fill
-- Total equity est.: ~$99,742
-- P&L vs $100K initial: −$258 (−0.26%)
-- Performance vs SPX (May 1 baseline 7,200 → July 21 est. 7,493 = +4.07%): est. −0.26% → gap ~−4.33 pp
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (91+ consecutive sessions — API blockage root cause)
-- Circuit breaker: AMD −1.5% vs July 20 close; portfolio daily P&L est. −0.14% — NOT tripped
+- AMD: 18sh × ~$505 est. = ~$9,090 (9.1%) — over 5% cap, naked (no stop), Day ~32 post-fill
+- Total equity est.: ~$99,734
+- P&L vs $100K initial: ~−$266 (−0.27%)
+- Performance vs SPX (May 1 baseline 7,200 → July 22 est.): monitoring
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (92+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped
 
-**BINARY EVENT WINDOWS (Active July 21–22):**
+**BINARY EVENT WINDOWS (Active July 22):**
 | Company | Earnings Date | 48h Window | Status |
 |---|---|---|---|
-| GOOGL/GOOG | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
-| TSLA | Wed July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY** |
-| INTC | Thu July 23 AH | Opened Sat July 18 | **ACTIVE — NO ENTRY** |
-| META | Wed July 29 AH | Opens Mon July 27 | Safe through July 25 |
-| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+| GOOGL/GOOG | **TODAY** July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY (post-earnings play TONIGHT after print)** |
+| TSLA | **TODAY** July 22 AH | Opened Mon July 20 ~4PM | **ACTIVE — NO ENTRY (post-earnings play TONIGHT after print)** |
+| INTC | Thu July 23 AH | Opened Tue July 21 | **ACTIVE — NO ENTRY** |
+| META | Wed July 29 AH | Opens Mon July 27 | Safe through July 25 — ENTRY ALLOWED |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 — HOLD ALLOWED |
 
 **AMD NOTE (July 21 Afternoon):** AMD at $505.44 (intraday high $533.55, pulling back from morning rally). Stop $487.55 (3.6% cushion). AMD Advancing AI 2026 conference July 22–23 starts TOMORROW — NOT a binary event (product showcase, not earnings). HOLD through conference. Reduce position from 18sh to ~9sh when API restored (9sh × $505 = $4,545 = ~4.5%, within 5% cap). BofA PT $620, WF PT $615, Goldman reset upward.
 
-**JULY 22 BINDING COMMITMENTS (Pre-Market July 22 MUST execute — no exemptions):**
-1. AMD: GTC SELL-STOP 18sh at $487.55 — MANDATORY FIRST ACTION
-2. GS: BUY 4sh limit bracket GTC $1,070.00 / stop $1,016.50 / target $1,230.50 — score 7.83 (6/6 ≥7)
-3. META: BUY 7sh limit bracket GTC $651.43 / stop $618.86 / target $749.14 — score 7.67
-4. WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 — score 7.0
-5. MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 — score 7.17
-- GOOGL/TSLA/INTC: NO ENTRY (binary event exemption — earnings active window)
-- Post-GOOGL/TSLA plays: score at Daily Review tonight after results AH July 22 (~5–6 PM ET); earliest entry Pre-Market July 23
+**JULY 22 REMAINING COMMITMENTS (Mid-Morning + subsequent routines MUST execute — all still blocked):**
+1. AMD: GTC SELL-STOP 18sh at $487.55 — MANDATORY (naked position — 92nd+ block) — OPERATOR MANUAL ACTION
+2. GS: BUY 4sh limit bracket GTC $1,070.00 / stop $1,016.50 / target $1,230.50 — score 7.83 (BLOCKED)
+3. META: BUY 7sh limit bracket GTC $651.43 / stop $618.86 / target $749.14 — score 7.67 (BLOCKED)
+4. WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 — score 7.0 (BLOCKED)
+5. MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 — score 7.17 (BLOCKED)
+- GOOGL/TSLA: NO ENTRY until after print tonight → post-earnings plays at Daily Review ~4:30 PM ET
+- INTC: NO ENTRY through July 23
+- Post-GOOGL/TSLA plays: score at Daily Review tonight after results AH (~5–6 PM ET); earliest entry Pre-Market July 23
 
 
 

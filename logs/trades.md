@@ -4,6 +4,286 @@
 
 ---
 
+## 2026-07-22 — Market Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 92nd+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-22T13:46:29Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **92nd+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 9:46 AM ET — Market Open routine window (9:45 AM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 22, 2026
+
+| Routine | Heartbeat Found | Status |
+|---|---|---|
+| Pre-Market (expected ~12:05 UTC) | NOT FOUND | **SILENT FAILURE** |
+| Market-Open (13:46 UTC) | STARTED 13:46:29Z | ✅ Running (catch-up) |
+
+**Pre-Market SILENT FAILURE → logging violation entry + running catch-up.**
+
+```yaml
+---
+ts: 2026-07-22T13:46:29Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine did not heartbeat today — running catch-up from Market Open
+master_notes: Pre-Market (8:00 AM ET / ~12:05 UTC) silently failed. No heartbeat found in logs/heartbeats/2026-07-22.log. Market-Open running full catch-up including watchlist execution and stop-loss backfill.
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 22, 2026 (~9:46 AM ET)
+
+| Symbol | Notes |
+|---|---|
+| AMD | AMD Advancing AI 2026 conference **TODAY** July 22–23, Moscone West SF. Major catalyst event (not earnings — HOLD/ENTER allowed). Stop $487.55 still naked (API blocked 92+ sessions). |
+| GOOGL | Earnings AH **tonight** July 22 — 48h window ACTIVE since July 20 4 PM → **NO ENTRY** |
+| TSLA | Earnings AH **tonight** July 22 — 48h window ACTIVE → **NO ENTRY** |
+| INTC | Earnings AH July 23 → **NO ENTRY** |
+| GS | Score 7.83 — BINDING COMMITMENT from yesterday's review |
+| META | Score 7.67 — BINDING COMMITMENT (earnings July 29 — SAFE through July 25) |
+| WFC | Score 7.0 — BINDING COMMITMENT |
+| MS | Score 7.17 — BINDING COMMITMENT |
+
+**Binary event blocks active:** GOOGL, TSLA (earnings tonight), INTC (earnings tomorrow)
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD (18sh)** — NAKED — stop $487.55 STILL not resting at Alpaca (API blocked 92+ sessions)
+
+```bash
+# ATTEMPT: AMD GTC SELL-STOP 18sh at $487.55
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":"18","side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED (92nd+ consecutive)
+```
+
+**GUARDRAIL VIOLATION (ONGOING):** AMD 18sh naked (no resting stop at Alpaca). Cause: egress policy block. OPERATOR ACTION REQUIRED: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $487.55.
+
+---
+
+### BINDING COMMITMENT ORDERS — ALL ATTEMPTED, ALL BLOCKED
+
+Per July 21 Daily Review commitments. Running catch-up for Pre-Market silent failure.
+
+```bash
+# GS 4sh LIMIT BRACKET GTC — entry $1,070.00 / stop $1,016.50 / target $1,230.50
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":"4","side":"buy","type":"limit","limit_price":"1070.00","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1016.50"},"take_profit":{"limit_price":"1230.50"}}'
+# Result: HTTP 000 — BLOCKED (92nd+ consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-22T13:47:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.83
+thesis: Goldman Sachs momentum in financial sector with strong M&A/dealmaking environment; technical breakout above $1,050 support on rising volume; analyst upgrades.
+size_pct: 4.3
+stop: 1016.50
+target: 1230.50
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "API BLOCKED (HTTP 000 — 92nd+ consecutive). Order attempted and rejected by egress proxy. All 6 agents ≥7. R/R: ($1,230.50-$1,070.00)/($1,070.00-$1,016.50) = $160.50/$53.50 = 3.0:1 (meets 3:1 minimum). OPERATOR: place manually via app.alpaca.markets. catch-up for Pre-Market silent failure."
+---
+```
+
+```bash
+# META 7sh LIMIT BRACKET GTC — entry $651.43 / stop $618.86 / target $749.14
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":"7","side":"buy","type":"limit","limit_price":"651.43","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"618.86"},"take_profit":{"limit_price":"749.14"}}'
+# Result: HTTP 000 — BLOCKED (92nd+ consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-22T13:47:05Z
+action: entry
+symbol: META
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: Meta AI infrastructure capex driving ad-revenue growth; WF raised PT to $767; earnings July 29 (safe window through July 25); pullback from highs into support.
+size_pct: 4.6
+stop: 618.86
+target: 749.14
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "API BLOCKED (HTTP 000 — 92nd+ consecutive). Order attempted and rejected by egress proxy. R/R: ($749.14-$651.43)/($651.43-$618.86) = $97.71/$32.57 = 3.0:1. Earnings July 29 AH — window opens July 27 — SAFE to enter now. OPERATOR: place manually. catch-up for Pre-Market silent failure."
+---
+```
+
+```bash
+# WFC 30sh LIMIT BRACKET GTC — entry $87.94 / stop $83.54 / target $101.13
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"WFC","qty":"30","side":"buy","type":"limit","limit_price":"87.94","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"83.54"},"take_profit":{"limit_price":"101.13"}}'
+# Result: HTTP 000 — BLOCKED (92nd+ consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-22T13:47:10Z
+action: entry
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Wells Fargo sector rotation into financials; rate environment supportive; technical support at $83; strong dividend yield underpins floor.
+size_pct: 2.6
+stop: 83.54
+target: 101.13
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "API BLOCKED (HTTP 000 — 92nd+ consecutive). Order attempted and rejected by egress proxy. R/R: ($101.13-$87.94)/($87.94-$83.54) = $13.19/$4.40 = 3.0:1. OPERATOR: place manually. catch-up for Pre-Market silent failure."
+---
+```
+
+```bash
+# MS 20sh LIMIT BRACKET GTC — entry $211.52 / stop $200.94 / target $243.26
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MS","qty":"20","side":"buy","type":"limit","limit_price":"211.52","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"200.94"},"take_profit":{"limit_price":"243.26"}}'
+# Result: HTTP 000 — BLOCKED (92nd+ consecutive)
+```
+
+```yaml
+---
+ts: 2026-07-22T13:47:15Z
+action: entry
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.17
+thesis: Morgan Stanley financials rotation; wealth management growth; M&A advisory pipeline; technical support at $200.
+size_pct: 4.2
+stop: 200.94
+target: 243.26
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "API BLOCKED (HTTP 000 — 92nd+ consecutive). Order attempted and rejected by egress proxy. R/R: ($243.26-$211.52)/($211.52-$200.94) = $31.74/$10.58 = 3.0:1. OPERATOR: place manually. catch-up for Pre-Market silent failure."
+---
+```
+
+---
+
+### SKIP DECISIONS — BINARY EVENT EXEMPTIONS
+
+```yaml
+---
+ts: 2026-07-22T13:47:20Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: earnings-reaction-follow
+score: N/A
+thesis: Earnings tonight AH July 22 — 48h pre-earnings window active since July 20 4 PM ET
+master_notes: "EXEMPTION (2): Binary event within 48h. GOOGL reports earnings after close TODAY July 22. Window opened July 20 ~4 PM ET. NO ENTRY. Post-earnings play allowed after print (~5-6 PM ET today). Score at Daily Review tonight."
+---
+```
+
+```yaml
+---
+ts: 2026-07-22T13:47:21Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: earnings-reaction-follow
+score: N/A
+thesis: Earnings tonight AH July 22 — 48h pre-earnings window active since July 20 4 PM ET
+master_notes: "EXEMPTION (2): Binary event within 48h. TSLA reports earnings after close TODAY July 22. Window opened July 20 ~4 PM ET. NO ENTRY. Post-earnings play allowed after print."
+---
+```
+
+```yaml
+---
+ts: 2026-07-22T13:47:22Z
+action: skip
+symbol: INTC
+bucket: active
+setup: earnings-reaction-follow
+score: N/A
+thesis: Earnings AH July 23 — 48h window active since July 21
+master_notes: "EXEMPTION (2): Binary event within 48h. INTC reports earnings AH July 23. Window active since July 21. NO ENTRY."
+---
+```
+
+---
+
+### SUMMARY
+
+**Orders attempted:** 5 (1 AMD stop + 4 bracket entries)
+**Orders filled:** 0 (all HTTP 000 — egress proxy blocks paper-api.alpaca.markets:443)
+**Skips logged:** 3 (GOOGL, TSLA, INTC — binary event exemption)
+**Consecutive blocked sessions:** 92+
+**OPERATOR ACTION REQUIRED:** Place all 5 orders manually at app.alpaca.markets
+
+---
+
 ## 2026-07-21 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 91st+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-21T18:07:56Z ✓
