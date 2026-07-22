@@ -1,6 +1,66 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
+**2026-07-17 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 81st consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
+
+**JULY 17 MID-MORNING STATUS:** Pre-Market + Market-Open both silently failed. Mid-Morning is first routine to fire today. AMD STOP LEVEL BREACHED — AMD fell −7% to $465.79 (below $481.42 stop, which was never placed). Attempted SELL 18sh AMD limit $465.00 → HTTP 000. GS/META binding commitments attempted (blocked). NEW entries WFC (score 7.0) and MS (score 7.17) attempted (blocked). NFLX SKIP — scored 4.83 (revenue miss + weak Q3 guidance). **CORRECTION: NFLX was never at $1,100-1,200 — price is $67.02 (52-week range $70.86–$127.75).**
+
+**ORDERS ATTEMPTED AND BLOCKED (July 17 Mid-Morning — all HTTP 000):**
+- AMD SELL 18sh limit $465.00 → HTTP 000 (stop level $481.42 breached — exit mandatory)
+- GS: BUY 4sh limit bracket GTC $1,099.02 / stop $1,044.08 / target $1,263.87 → HTTP 000
+- META: BUY 7sh limit bracket GTC $667.86 / stop $634.47 / target $768.04 → HTTP 000
+- WFC: BUY 30sh limit bracket GTC $87.96 / stop $83.56 / target $101.15 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $229.69 / stop $218.21 / target $264.14 → HTTP 000
+
+**MARKET CONDITIONS (July 17, 11:10 AM ET — WEB SEARCH CONFIRMED):**
+- SPX: ~7,449 (−1.15%) | Nasdaq: −1.81% | Driver: AI capex reset + NFLX weak guidance
+- AMD: $465.79 (−7.00%) — below stop $481.42 — STOP BREACH
+- NFLX: $67.02 (−9.86%) — new 52-week low ($70.86–$127.75 range) — weak Q3 guidance
+- GS: ~$1,093.56 (est. flat-to-up — financials resilient)
+- META: ~$664.54 (est. flat — relative strength vs market)
+- WFC: ~$87.52 | MS: ~$228.55 (near ATH $232.25 July 15)
+- Michigan Consumer Sentiment July 2026: 54.4 (beat 51.0 est., 5-month high) — POSITIVE
+
+**NFLX POST-EARNINGS RESULT (AH July 16):**
+- EPS $0.80 (+$0.01 beat). Revenue $12.56B (miss $12.58B). Q3 guided +12% (vs 13% prior).
+- Stock −9.86% to $67.02 — new 52-week low. Multiple analyst PT cuts (GS $110→$94, BofA $125→$105).
+- **SCORE 4.83 → REJECTED. No NFLX entry.**
+- **PRICE CORRECTION: Prior portfolio.md estimate "$1,100–$1,200" was incorrect. NFLX trades at ~$67.**
+
+**WFC Q2 2026 (July 15 — now confirmed):**
+- EPS $1.96 vs $1.73 est. (+13% beat). Revenue $22.62B vs $22.01B (+2.8% beat). Net income +17% YoY. EPS +25% YoY.
+- Score 7.0 (all 6 agents). APPROVED. Order blocked.
+
+**MS Q2 2026 (July 15 — now confirmed):**
+- Revenue $21.3B vs $16.8B Q2'25 (+27% YoY). Net income $5.6B (+60% YoY). EPS $3.46. Near-ATH.
+- Score 7.17 (all 6 agents). APPROVED. Order blocked.
+
+**AMD STOP BREACH (CRITICAL — July 17):**
+- AMD 18sh at avg $506.76. Stop should be $481.42 (5% below avg). AMD at $465.79 — $15.63 BELOW stop.
+- AMD blew through stop on day 27 of being naked (API blocked since June 20).
+- Total unrealized loss: 18 × ($465.79 − $506.76) = −$737.46 (−8.1% from avg).
+- The AMD "Advancing AI 2026" conf July 22-23 is NOT a reason to hold through a blown stop.
+- **OPERATOR MANDATORY: SELL ALL 18sh AMD AT MARKET on app.alpaca.markets NOW.**
+
+**PORTFOLIO STATE EST (July 17 Mid-Morning):**
+- Cash: $90,644 (91.5%)
+- AMD: 18sh × $465.79 = ~$8,384 (8.46%) — over cap, below stop, naked
+- Total equity est.: ~$99,028
+- Performance vs SPX (May 1 baseline 7,200 → July 17 est. 7,449 = +3.46%): est. −0.97% → gap −4.43 pp (WIDENING)
+- 20-DAY UNDERPERFORMANCE FLAG: Active (81+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Daily loss ~$633 (0.63%) — NOT tripped
+
+**JULY 17 BINDING COMMITMENTS NOT YET FILLED (carry to next routine):**
+1. AMD: SELL 18sh AT MARKET — stop level breached, exit mandatory (no hold reasoning valid)
+2. GS: BUY 4sh limit $1,099 bracket GTC (stop $1,044, target $1,264) — score 7.83
+3. META: BUY 7sh limit $668 bracket GTC (stop $634, target $768) — score 7.50
+4. WFC: BUY 30sh limit $88 bracket GTC (stop $84, target $101) — score 7.0 (NEW)
+5. MS: BUY 20sh limit $230 bracket GTC (stop $218, target $264) — score 7.17 (NEW)
+
+**ASML Q2 2026:** Not yet scored. ASML earnings July 15 — results unknown (no confirmed data found in web search). Score at Midday or Afternoon routine if chip selloff creates post-earnings opportunity.
+
+**PRIOR LAST UPDATED (2026-07-16 — AFTERNOON):** Pre-Market + Market-Open + Midday all silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No day trades open. AMD Day 27 naked — no stop. GS 7.83 and META 7.67 skipped this routine (afternoon proximity-to-close rule) — both carry as BINDING COMMITMENTS to Pre-Market July 17.
+
 **2026-07-16 (Thursday) — AFTERNOON (2:00 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 80th consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
 
 **JULY 16 AFTERNOON STATUS:** Pre-Market + Market-Open + Midday all silently failed. Mid-Morning (15:10-15:18Z) ✓. Afternoon (18:08Z) ✓ running now. NFLX Q2 earnings AH tonight — EXCLUDED (Exemption 2). No day trades open. AMD Day 27 naked — no stop. GS 7.83 and META 7.67 skipped this routine (afternoon proximity-to-close rule) — both carry as BINDING COMMITMENTS to Pre-Market July 17.
