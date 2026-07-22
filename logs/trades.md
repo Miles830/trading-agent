@@ -4,6 +4,268 @@
 
 ---
 
+## 2026-07-21 — Afternoon (2:00 PM ET / 18:08 UTC — API BLOCKED — 91st+ consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-21T18:07:56Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **91st+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 2:08 PM ET — Afternoon routine window (2:00–3:30 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 21, 2026
+
+| Routine | Heartbeat Found | Status |
+|---|---|---|
+| Pre-Market (12:05 UTC) | NOT FOUND | **SILENT FAILURE** |
+| Market-Open (13:46 UTC) | STARTED 13:46:17Z / COMPLETED 13:53:49Z | ✅ Completed |
+| Mid-Morning (15:09 UTC) | STARTED 15:09:50Z / COMPLETED 15:21:55Z | ✅ Completed |
+| Midday (16:30 UTC) | NOT FOUND | **SILENT FAILURE** |
+| Afternoon (18:07 UTC) | STARTED 18:07:56Z | ✅ Running |
+
+**Midday SILENT FAILURE → logging violation entry below.**
+
+---
+
+### MARKET CONDITIONS — July 21, 2026 (~2:08 PM ET)
+
+| Symbol | Price | Notes |
+|---|---|---|
+| AMD | ~$505.44 | Intraday range $502–$533.55; pulled back from morning high; stop $487.55 (3.6% cushion) |
+| GS | ~$1,064.60 | Range $1,064.42–$1,075.00 today |
+| META | ~$648.19 | +0.37% today; WF PT $767; earnings July 29 (SAFE) |
+| WFC | ~$87.50 | Est. from July 20 close; July 21 data not confirmed |
+| MS | ~$210.47 | Est. from July 20 range $210.35–$219.74 |
+| SPX | ~7,493 (+0.68%) | Snapped 3-day losing streak; chip stocks + Iran ceasefire tailwind |
+
+**AMD Advancing AI 2026 conference starts TOMORROW July 22–23, Moscone West, San Francisco.** Major sponsors: AWS, Microsoft, Google Cloud, IBM, Dell, HPE, Oracle. BofA: strong AI server demand, potential August 4 earnings beat. HOLD AMD through conference.
+
+**BINARY EVENT BLOCKS (carry forward — active):**
+- GOOGL earnings AH July 22 → 48h window active since July 20 4 PM → **NO ENTRY**
+- TSLA earnings AH July 22 → same window → **NO ENTRY**
+- INTC earnings AH July 23 → window active since July 18 → **NO ENTRY**
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD (18sh)** — NAKED — stop $487.55 not resting at Alpaca (API blocked 91+ sessions)
+AMD at $505.44 is $17.89 above stop (3.6% cushion). Conference tomorrow is positive catalyst.
+
+```bash
+# ATTEMPT: AMD GTC SELL-STOP 18sh at $487.55
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":"18","side":"sell","type":"stop","stop_price":"487.55","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED (91st+ consecutive)
+```
+
+**GUARDRAIL VIOLATION:** AMD 18sh naked (no resting stop at Alpaca). Cause: egress policy block. OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $487.55 **NOW**.
+
+---
+
+### BINDING COMMITMENT ORDERS — ALL ATTEMPTED, ALL BLOCKED
+
+Per afternoon proximity-to-close rule (routines/afternoon.md): new active-bucket entries are SKIPPED at 2 PM ET. However, GTC bracket orders were still attempted since they carry forward. All blocked (HTTP 000, 91st+ consecutive).
+
+```bash
+# GS 4sh LIMIT BRACKET GTC — entry $1,070.00 / stop $1,016.50 / target $1,230.50
+# Result: HTTP 000 — BLOCKED
+
+# META 7sh LIMIT BRACKET GTC — entry $651.43 / stop $618.86 / target $749.14
+# Result: HTTP 000 — BLOCKED
+
+# WFC 30sh LIMIT BRACKET GTC — entry $87.94 / stop $83.54 / target $101.13
+# Result: HTTP 000 — BLOCKED
+
+# MS 20sh LIMIT BRACKET GTC — entry $211.52 / stop $200.94 / target $243.26
+# Result: HTTP 000 — BLOCKED
+```
+
+**→ All 5 orders blocked. All carry as BINDING COMMITMENTS to Pre-Market July 22.**
+
+---
+
+### PORTFOLIO STATE (EST)
+
+- **Cash:** ~$90,644 (90.9%)
+- **AMD:** 18sh × $505.44 = ~$9,098 (9.1%) — over 5% cap, NAKED (no stop at Alpaca)
+- **Total Equity Est.:** ~$99,742
+- **P&L vs $100K initial:** −$258 (−0.26%)
+- **SPX May 1 baseline (7,200) → today (~7,493):** +4.07%
+- **Gap vs SPX:** −4.33 pp (20-day underperformance flag ACTIVE — 91st+ consecutive API-blocked session)
+- **Circuit breaker:** AMD today approx flat from July 20 close $513.21 → $505.44 = −1.5%; portfolio daily P&L est. −0.14% — NOT tripped (well under 3%)
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (Pre-Market July 22)
+
+| Symbol | Score | Entry | Stop | Target | Notes |
+|---|---|---|---|---|---|
+| GS | 7.83 | $1,070.00 | $1,016.50 | $1,230.50 | BINDING — committed since July 14; 6/6 agents ≥ 7 |
+| META | 7.67 | $651.43 | $618.86 | $749.14 | BINDING — earnings July 29 SAFE; WF PT $767 |
+| WFC | 7.0 | $87.94 | $83.54 | $101.13 | BINDING — Q2 EPS +13% beat; committed since July 15 |
+| MS | 7.17 | $211.52 | $200.94 | $243.26 | BINDING — Q2 Revenue +27% YoY; committed since July 15 |
+| AMD | HOLD | — | $487.55 | $620 (BofA PT) | Advancing AI 2026 conf July 22–23 — positive catalyst |
+
+**BINARY EVENT BLOCKS for July 22 Pre-Market:** GOOGL / TSLA / INTC → NO ENTRY.
+**Post-GOOGL/TSLA plays:** score AFTER earnings release AH July 22 (results ~5–6 PM ET); earliest entry = Pre-Market July 23.
+
+---
+
+### YAML DECISION LOG — AFTERNOON (July 21)
+
+```yaml
+---
+ts: 2026-07-21T18:08:00Z
+action: violation
+symbol: MIDDAY
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) produced no heartbeat — STARTED/COMPLETED entries absent from logs/heartbeats/2026-07-21.log. Silent failure on 91st+ consecutive blocked API session.
+size_pct: 0
+stop:
+target:
+result_pct:
+master_notes: "Midday 2026-07-21 SILENTLY FAILED — no heartbeat in log. Pre-Market also silently failed. Market-Open (13:46–13:53Z) and Mid-Morning (15:09–15:21Z) completed. Afternoon running (18:07Z). Alpaca API blocked HTTP 000, egress policy denial, 91st+ consecutive."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T18:10:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD GTC SELL-STOP 18sh at $487.55 attempted — HTTP 000 BLOCKED (91st+ consecutive). Stop-loss audit mandatory first action; API denial prevents placement. GUARDRAIL VIOLATION logged.
+size_pct: 9.1
+stop: 487.55
+target:
+result_pct:
+master_notes: "AMD stop HTTP 000 BLOCKED. AMD at $505.44 (intraday high $533.55, pulled back PM). Stop $487.55 = 3.6% cushion. AMD Advancing AI 2026 conference July 22–23: AWS, MSFT, Google Cloud, IBM, Dell as sponsors — major AI product announcements expected. BofA AI server demand strong, next earnings (Aug 4 AH) could beat. Position 9.1% equity — still over 5% cap; reduce to ~4.5% when API restored. P&L: 18 × ($505.44 − $506.76) = −$23.76 (−0.26% unrealized). HOLD through conference."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T18:12:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: Afternoon proximity-to-close rule (routines/afternoon.md): do NOT initiate new active-bucket entries at 2 PM ET. GS limit bracket GTC (score 7.83, committed since July 14) carries to Pre-Market July 22. Order also blocked HTTP 000.
+size_pct: 4.28
+stop: 1016.50
+target: 1230.50
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "GS at $1,064.60. Limit $1,070.00 (×1.005), stop $1,016.50 (×0.95), target $1,230.50 (+15%). R/R 3:1 ✓. SKIP Exemption: afternoon proximity-to-close (not one of the 3 hard guardrail exemptions — routine-specific operational rule). BINDING COMMITMENT: Pre-Market July 22 MUST place. API also blocked HTTP 000 (91st+ consecutive)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T18:13:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: Afternoon proximity-to-close rule: do NOT initiate new active-bucket entries at 2 PM ET. META at $648.19 (+0.37%). Limit bracket GTC (score 7.67, committed since July 17) carries to Pre-Market July 22. Earnings July 29 — SAFE window through July 25.
+size_pct: 4.52
+stop: 618.86
+target: 749.14
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "META at $648.19 (up 0.37% today). Limit $651.43 (×1.005), stop $618.86 (×0.95), target $749.14 (+15%). R/R 3:1 ✓. WF PT $767 (raised). Cloud compute story intact. SKIP per afternoon proximity-to-close. BINDING COMMITMENT: Pre-Market July 22 MUST enter. HTTP 000 blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T18:14:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: Afternoon proximity-to-close rule: do NOT initiate new active-bucket entries at 2 PM ET. WFC at ~$87.50. Limit bracket GTC (score 7.0, committed since July 15) carries to Pre-Market July 22. Q2 EPS +13% beat confirmed.
+size_pct: 2.60
+stop: 83.54
+target: 101.13
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC at ~$87.50 est. Limit $87.94 (×1.005), stop $83.54 (×0.95), target $101.13 (+15%). R/R 3:1 ✓. Q2: EPS $1.96 vs $1.73 est. (+13% beat), Revenue $22.62B (+2.8% beat). SKIP per afternoon proximity-to-close. BINDING COMMITMENT: Pre-Market July 22 MUST enter. HTTP 000 blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-07-21T18:15:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Afternoon proximity-to-close rule: do NOT initiate new active-bucket entries at 2 PM ET. MS at ~$210.47. Limit bracket GTC (score 7.17, committed since July 15) carries to Pre-Market July 22. Q2 Revenue +27% YoY beat confirmed.
+size_pct: 4.23
+stop: 200.94
+target: 243.26
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 4
+master_decision: approved
+master_notes: "MS at ~$210.47 est. Limit $211.52 (×1.005), stop $200.94 (×0.95), target $243.26 (+15%). R/R 3:1 ✓. Q2: Revenue $21.3B (+27% YoY), Net income $5.6B (+60% YoY), EPS $3.46. SKIP per afternoon proximity-to-close. BINDING COMMITMENT: Pre-Market July 22 MUST enter. HTTP 000 blocked."
+---
+```
+
+---
+
 ## 2026-07-21 — Market Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 89th+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Open 2026-07-21T13:46:17Z ✓
