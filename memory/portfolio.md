@@ -1,24 +1,25 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-21 (Tuesday) — MARKET OPEN (9:45 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 89th+ consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING.**
+**2026-07-21 (Tuesday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 90th+ consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
-**JULY 21 MARKET-OPEN STATUS:** Pre-Market silently failed (no heartbeat). Market-Open running as catch-up. AMD at ~$505.44 (above stop $487.55; +0.7% cushion maintained). AMD Advancing AI 2026 conference TOMORROW July 22-23 (Zen 6 Venice commercial launch, MI455X GPU roadmap, Meta 6GW GPU commitment). GS/META/WFC/MS binding entries: all 4 limit bracket GTC orders attempted and blocked (89th+ consecutive). Binary event blocks: GOOGL + TSLA earnings July 22 AH (NO ENTRY), INTC earnings July 23 (NO ENTRY). Market: SPX +0.6%, Nasdaq +0.9% — chip recovery + Iran ceasefire talks. MS PRICE CORRECTION: confirmed $210.47 (not est. $228-240; pulled back from ATH $228.55 July 15 — post-earnings consolidation). WFC PRICE CORRECTION: confirmed $86.27 (not est. $88-89). All theses intact.
+**JULY 21 MID-MORNING STATUS:** Pre-Market silently failed; Market-Open completed (13:46–13:53Z). Mid-Morning is running now. AMD est. ~$520 mid-morning (intraday range $502–$533.55; up on MSFT Helios deal). Advancing AI 2026 conference TOMORROW July 22–23 — Citigroup "industry-shaking announcements" note. GS/META/WFC/MS binding entries: all 5 orders (AMD stop + 4 entries) attempted at mid-morning prices → all HTTP 000 blocked (90th+ consecutive). Market: SPX +0.5% est., Nasdaq +0.65% — Iran ceasefire talks easing oil, chip stocks recovering. WF raised META PT to $767 (strong ad growth). GS at $1,065.22 (−2.76%), MS at $209.04 (−1.27%), WFC at $87.50 (+0.5% — strengthening). Binary event blocks: GOOGL + TSLA earnings July 22 AH (NO ENTRY), INTC earnings July 23 (NO ENTRY).
 
-**ORDERS ATTEMPTED AND BLOCKED (July 21 Market-Open — all HTTP 000):**
-- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (89th+ block)
-- GS: BUY 4sh limit bracket GTC $1,070.21 / stop $1,016.70 / target $1,230.50 → HTTP 000
-- META: BUY 7sh limit bracket GTC $645.21 / stop $612.95 / target $741.75 → HTTP 000
-- WFC: BUY 30sh limit bracket GTC $86.70 / stop $82.37 / target $99.69 → HTTP 000
-- MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 → HTTP 000
+**ORDERS ATTEMPTED AND BLOCKED (July 21 Mid-Morning — all HTTP 000):**
+- AMD: GTC SELL-STOP 18sh at $487.55 → HTTP 000 (90th+ block)
+- GS: BUY 4sh limit bracket GTC $1,070.55 / stop $1,017.02 / target $1,231.12 → HTTP 000
+- META: BUY 7sh limit bracket GTC $650.84 / stop $618.30 / target $748.46 → HTTP 000
+- WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $210.08 / stop $199.58 / target $241.59 → HTTP 000
 
-**PORTFOLIO STATE EST (July 21 Market-Open):**
-- Cash: ~$90,644 (90.9%)
-- AMD: 18sh × $505.44 = ~$9,098 (9.1%) — over 5% cap, naked (no stop), Day ~30 post-fill
-- Total equity est.: ~$99,742
-- Performance vs SPX (May 1 baseline 7,200 → July 21 est. 7,545 = +4.79%): est. −0.26% → gap −5.05 pp
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (89+ consecutive sessions — API blockage root cause)
-- Circuit breaker: AMD −1.5% from July 20 → NOT tripped (well under 3%)
+**PORTFOLIO STATE EST (July 21 Mid-Morning):**
+- Cash: ~$90,644 (90.6%)
+- AMD: 18sh × $520 est. = ~$9,360 (9.4%) — over 5% cap, naked (no stop), Day ~31 post-fill
+- Total equity est.: ~$100,004
+- Performance vs SPX (May 1 baseline 7,200 → July 21 est. 7,540 = +4.72%): est. +0.004% → gap ~−4.72 pp
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (90+ consecutive sessions — API blockage root cause)
+- Circuit breaker: AMD est. +1.3% mid-morning vs July 20 close — NOT tripped (well under 3%)
+- AMD P&L: 18 × ($520 − $506.76) = +$238 (+2.6% unrealized)
 
 **BINARY EVENT WINDOWS (Active July 21):**
 | Company | Earnings Date | 48h Window | Status |
@@ -29,14 +30,14 @@
 | META | Wed July 29 AH | Opens Mon July 27 | Safe through July 25 |
 | AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
 
-**AMD NOTE (July 21):** AMD at $505.44 — stop $487.55 (3.6% cushion). Advancing AI 2026 conference July 22-23 (NOT binary event; entries allowed). Zen 6 Venice commercial launch, MI455X GPU roadmap, Meta 6GW commitment. Conference is a positive catalyst for AMD thesis. AMD earnings August 4 (safe through August 1). Position remains over 5% cap — reduce at next fill opportunity (when API is restored, sell 9sh to bring to ~4.5%).
+**AMD NOTE (July 21 Mid-Morning):** AMD est. $520 — stop $487.55 (6.2% cushion). Advancing AI 2026 conference July 22–23 (NOT binary event; HOLD). Citigroup says "industry-shaking announcements" possible. MSFT Helios deal confirmed (MI455X + EPYC Venice CPUs). Analyst PTs: BofA $620, WF $615, Goldman Sachs (reset upward per TheStreet). Position over 5% cap — reduce when API restored (sell 9sh to bring to ~4.5%).
 
-**JULY 21 BINDING COMMITMENTS (carry to Mid-Morning and beyond):**
-1. AMD: GTC SELL-STOP 18sh at $487.55 — MANDATORY
-2. GS: BUY 4sh limit bracket GTC $1,070.21 / stop $1,016.70 / target $1,230.50 — score 7.83
-3. META: BUY 7sh limit bracket GTC $645.21 / stop $612.95 / target $741.75 — score 7.67
-4. WFC: BUY 30sh limit bracket GTC $86.70 / stop $82.37 / target $99.69 — score 7.0
-5. MS: BUY 20sh limit bracket GTC $211.52 / stop $200.94 / target $243.26 — score 7.17
+**JULY 21 BINDING COMMITMENTS (carry to Midday and beyond — UPDATED mid-morning prices):**
+1. AMD: GTC SELL-STOP 18sh at $487.55 — MANDATORY (90th+ block)
+2. GS: BUY 4sh limit bracket GTC $1,070.55 / stop $1,017.02 / target $1,231.12 — score 7.83
+3. META: BUY 7sh limit bracket GTC $650.84 / stop $618.30 / target $748.46 — score 7.67
+4. WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.54 / target $101.13 — score 7.0
+5. MS: BUY 20sh limit bracket GTC $210.08 / stop $199.58 / target $241.59 — score 7.17
 
 
 
