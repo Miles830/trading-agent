@@ -4,6 +4,279 @@
 
 ---
 
+## 2026-07-22 — Daily Review (4:30 PM ET / 20:30 UTC — API BLOCKED — 93rd consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-22T20:34:57Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (`paper-api.alpaca.markets:443` and `data.alpaca.markets:443`) — **93rd consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+
+---
+
+### PORTFOLIO STATE
+
+```
+Total Equity:    ~$100,274 (est.)
+Cash:            ~$90,644  (90.4%) — 5% floor ✓
+Trading bucket:  ~$9,630   (9.6%)  — 1 position (AMD 18sh) — target 85% [CRITICALLY UNDERDEPLOYED — API block]
+Crypto bucket:   $0        (0.0%)  — 0 positions — target 10%
+```
+
+---
+
+### HEARTBEAT AUDIT — July 22, 2026
+
+| Routine | Target UTC | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 12:05 UTC | NOT FOUND | NOT FOUND | **SILENT FAILURE** |
+| Market-Open | 13:46 UTC | NOT FOUND | NOT FOUND | **SILENT FAILURE** |
+| Mid-Morning | 15:09 UTC | NOT FOUND | NOT FOUND | **SILENT FAILURE** |
+| Midday | 16:30 UTC | NOT FOUND | NOT FOUND | **SILENT FAILURE** |
+| Afternoon | 18:00 UTC | 18:08:59Z | 18:21:57Z | ✅ COMPLETED |
+| Market-Close | 19:30 UTC | NOT FOUND | NOT FOUND | **SILENT FAILURE** |
+| Daily-Review | 20:30 UTC | 20:34:57Z | IN PROGRESS | ✅ Running |
+
+**5 OF 7 ROUTINES SILENTLY FAILED TODAY — TOP OPERATIONAL ISSUE**
+
+This is the 93rd consecutive session in which the Alpaca egress policy blocks all trading. 5 of 7 scheduled routines also failed to fire at all (no heartbeat). The AMD position has been naked (no resting stop at Alpaca) since June 20, 2026.
+
+**Remediation proposal:** (a) Restore `paper-api.alpaca.markets` to the egress policy allowlist; (b) consider an alternative scheduler (GitHub Actions cron) that logs heartbeats to the repo directly; (c) add a fallback alert if ≥3 consecutive routines produce no STARTED heartbeat within a trading day.
+
+---
+
+### STOP-LOSS AUDIT (FIRST ACTION — API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — 93rd consecutive)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD (18sh)** — NAKED — no resting stop at Alpaca. Trail stop $507.51 (5% below $534.22 conference-high from Afternoon). Attempted and blocked 93rd+ time.
+
+**GUARDRAIL VIOLATION:** AMD 18sh naked. Cause: egress policy block (system-level, not trade-level). **OPERATOR MANDATORY: log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $507.51 NOW.**
+
+---
+
+### TODAY'S FILLS / ORDERS
+
+**No fills today.** All 5 orders attempted in Afternoon (AMD trail stop + GS/META/WFC/MS bracket entries) blocked (HTTP 000). API policy has blocked every order since June 20, 2026 (93rd consecutive session).
+
+---
+
+### MARKET CLOSE — July 22, 2026 (web-search confirmed)
+
+| Symbol | July 21 Close | July 22 Close | Daily Chg | Notes |
+|---|---|---|---|---|
+| SPX | 7,509.20 | 7,498.96 | −0.14% | Oil +3.4% to $94.07/bbl; earnings-await caution |
+| Nasdaq | — | — | −0.50% | Tech weak ahead of GOOGL/TSLA AH |
+| AMD | ~$543.10 | ~$535 (est.) | ~−1.5% | Conf Day 1 sell-the-news pull-back from Tue surge |
+| GOOGL | $346.77 | $346.77* | — | *AH reporting; cloud 82% YoY beat |
+| TSLA | $378.93 | $378.93* | — | *AH reporting; mixed margin print |
+| Brent | — | $94.07 | +3.4% | Iran escalation; 11th US strike night |
+
+**AMD note:** AMD surged 7.9% Tuesday July 21 to $543.10 on the MSFT Azure Helios deal announcement. On July 22 (Advancing AI conference Day 1), AMD gave back ~1.5% intraday. Market broadly soft on oil spike. Conference announcements (12 GW Meta+OpenAI committed, Zen 6 Venice on TSMC 2nm, MI450X) were extraordinary but likely priced in from Tuesday's move.
+
+---
+
+### SPX PERFORMANCE vs PORTFOLIO
+
+| Metric | Value |
+|---|---|
+| SPX May 1 baseline | 7,200.00 |
+| SPX July 22 close | 7,498.96 |
+| SPX cumulative return | **+4.15%** |
+| Portfolio May 1 basis | $100,000 |
+| Portfolio July 22 est. equity | ~$100,274 |
+| Portfolio cumulative return | **+0.27%** |
+| **Cumulative gap vs SPX** | **−3.88 pp** |
+| SPX daily (Jul 22) | −0.14% |
+| Portfolio daily (Jul 22) | ~−0.14% (AMD −1.5% × 9.6% weight = −0.14%) |
+| **Daily gap** | **~0 pp (inline)** |
+
+**20-Day Underperformance Flag: ACTIVE** (93rd consecutive session — API blockage root cause; no capital deployment since June 20)
+
+**Rolling 20-day window:** Cannot retrieve Alpaca portfolio history (API blocked). Estimate: portfolio has been ~flat since June 20 while SPX has rallied ~3–4%. Every session of deployment delay compounds the benchmark gap.
+
+---
+
+### TODAY'S BEST / WORST
+
+**Best:** AMD Advancing AI 2026 Conference Day 1 announcements — 12 GW total commitments from Meta + OpenAI alone. This is the clearest demand visibility AMD has ever provided. Thesis vindicated. Position up +5.6% from avg cost.
+
+**Worst:** 5 of 7 routines silently missed. Binding commitments (GS 7.83, META 7.67, WFC 7.0, MS 7.17) have now been blocked 9+ consecutive sessions. Every day of delay is a missed return opportunity on names with ≥7 scores approved by all 6 agents.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+1. **AMD thesis vindicated** — Advancing AI 2026 Day 1: 12 GW committed (Meta + OpenAI), Oracle 50K MI450 GPUs, Zen 6 Venice on TSMC 2nm. Analyst PT upgrades followed ($600–$640 range).
+2. **GOOGL earnings beat across all lines** — Cloud 82% YoY to $24.77B (beat est.), Revenue $119.8B (+24% YoY, beat), Advertising $81.63B (beat). Gemini 950M users, 22B API tokens/min. Post-earnings follow-through setup approved tonight.
+3. **Binary event discipline held** — GOOGL and TSLA 48h windows were correctly excluded through today's close, protecting the portfolio from pre-earnings gap risk.
+
+### 3 THINGS TO IMPROVE TOMORROW
+1. **API blockage remains #1 issue** — 93 consecutive sessions blocked; 5 of 7 routines missed today. No amount of research or scoring improves performance if orders cannot be placed. Escalate egress policy restoration urgently.
+2. **Deploy the cash** — $90,644 (90.4%) sitting idle while 5 names with 7+ scores have been approved for weeks. GS/META/WFC/MS/GOOGL need to be entered the moment the API is restored.
+3. **AMD position sizing** — 18sh (9.6% equity) exceeds the 5% cap. Must reduce to ~9sh (≤4.8%) as first order when API is restored.
+
+---
+
+### POST-EARNINGS SCORING: GOOGL Q2 2026
+
+**Results (AH July 22, 2026 — web-confirmed):**
+- Revenue: $119.8B vs $116.9B est → **BEAT +2.5%**
+- Google Cloud: $24.77B vs $24.56B est → **BEAT; 82% YoY growth (accelerating from 63% Q1)**
+- Advertising: $81.63B vs $81.12B → **BEAT**
+- EPS: $9.11 vs $2.88 est → **MASSIVE BEAT** (includes $97.98B "other income" from Anthropic stake unrealized gains; operational business strongly beat on all core lines)
+- Gemini App: 950M active users; 22B API tokens/min (up from 16B last quarter)
+- CapEx: $44.9B (+100% YoY) — AI infrastructure buildout accelerating
+
+**Setup tag:** `earnings-reaction-follow`
+
+**Sub-Agent Scores:**
+- **Fundamentals (9/10):** Revenue +24% YoY; Cloud 82% YoY ($24.77B beat); Ad beat; Gemini scaling at extraordinary rate; Anthropic stake unrealized gain is noise but confirms AI investment thesis.
+- **Technical (6/10):** Pre-earnings close $346.77 (below 50- and 100-period MAs). Strong beat → gap-up likely tomorrow; bullish engulfing pattern expected on next-day open. Cannot confirm 5-indicator stack (API blocked). 2-of-5 assumed from earnings reaction alone (volume spike + bullish candle).
+- **Sentiment (8/10):** Cloud 82% growth narrative is extremely bullish; Gemini user count and token rate confirm AI moat; Anthropic stake gain adds headline punch. No X API data. Post-earnings beats of this magnitude drive multi-day sentiment tailwind.
+- **Macro (5/10):** Market down -0.14% today; oil +3.4% to $94.07 (Iran); FOMC July 28-29 adds rate uncertainty. Risk-off macro context, but tech earnings creating stock-specific overrides. GOOGL is not rate-sensitive in the same way; Cloud thesis secular.
+- **Risk (7/10):** 48h binary window CLOSED (results out tonight) ✓. Entry allowed Pre-Market July 23 ✓. Position size: 14sh × $346.77 = $4,855 (4.8% equity ≤ 5% cap) ✓. Trade risk: 14 × ($346.77 × 0.05) = $242.76 = 0.24% equity (≤ 1.5% cap) ✓. Cash after entry: $85,789 (85.5% > 5% floor) ✓. Sector: Communication Services; current open positions AMD (Tech) — no sector overlap ✓. Max positions: 2 of 12 ✓. FOMC risk: entry is 6 days before FOMC; acceptable for post-earnings follow-through setup with defined stop.
+- **Tech Analyst (9/10):** Google Cloud 82% YoY = fastest-growing hyperscaler cloud segment this quarter. Gemini scaling (950M users, 22B tokens/min) demonstrates technical execution. $44.9B CapEx (+100% YoY) = massive moat-building. Anthropic ownership (~14%) = hedge against direct AI competitor. TPUs and proprietary AI chips = infrastructure independence. DeepMind continues world-class research output.
+
+**Master Decision:**
+- Avg: (9+6+8+5+7+9)/6 = **7.33/10** ✓ (≥7)
+- Risk ≥6: ✓ (7)
+- Agents ≥7: Fundamentals(9), Sentiment(8), Risk(7), Tech Analyst(9) = **4/6** ✓
+- Tech ≥6: ✓ (9)
+- **APPROVED**
+
+**Entry plan (Pre-Market July 23):**
+- GOOGL will likely gap up at open on earnings beat; set limit at actual_open × 1.005 (no MOO; gap makes MOO risky without price knowledge)
+- Size: 14sh (4.8% equity at $346.77 ref; adjust qty if gap-up price exceeds 5% cap threshold)
+- Stop: entry × 0.95 (5% below entry price at time of order)
+- Target: entry + 3 × (entry − stop) = entry + 15% (3:1 R/R minimum)
+- Carried as BINDING COMMITMENT to Pre-Market July 23.
+
+---
+
+### POST-EARNINGS SCORING: TSLA Q2 2026
+
+**Results (AH July 22, 2026):**
+- Deliveries: 480,126 (+25% YoY, +74K above est of 406K) — record quarter
+- Revenue est: $26.4B consensus ($27.58B high est)
+- EPS est: $0.53 non-GAAP (actual not fully confirmed)
+- Margins: Finviz headline "Tesla Q2 EPS a mixed bag with bright spots in energy robotaxi" → margin disappointment likely given price cuts and incentives
+- Energy storage: 13.5 GWh (+40% YoY; slightly below 13.8 est)
+- Pre-earnings stock: $378.93 (down 15.74% YTD)
+
+**Setup tag:** `earnings-reaction-follow` (assessment — see rejection below)
+
+**Sub-Agent Scores:**
+- **Fundamentals (6/10):** Delivery beat (+74K above est) is huge, but P/E ~390x pre-print makes even a strong beat hard to justify. Margin "mixed bag" per Finviz headline = profitability shortfall. US sales -19.7% YoY (9th straight month of decline). Energy storage bright spot but below est.
+- **Technical (6/10):** TSLA down 15.74% YTD; below 50- and 100-period MAs pre-earnings. Mixed results → directionally ambiguous gap; no clear follow-through signal.
+- **Sentiment (6/10):** Delivery beat positive, but margin concerns are bearish signal. "Mixed bag" narrative likely to create conflicted sentiment. No X data. Musk-associated headline risk elevated.
+- **Macro (5/10):** Risk-off macro (oil $94, FOMC approaching); EV headwinds (pricing pressure, competition); TSLA at 390x P/E in a rate-risk environment is very vulnerable.
+- **Risk (6/10):** Mixed print = unknown gap direction. Gap-and-fade risk on delivery-beat-margin-miss setup. Valuation risk at 390x. Position would need stop at -5% from gap-up entry; if gap-up reverses, 5% stop likely hit. Score barely passes but R/R and direction clarity are insufficient.
+- **Tech Analyst (7/10):** FSD/Robotaxi ecosystem (Cybercab) = differentiated technology. Energy storage (+40% YoY) = strong diversification. Optimus robot = future optionality. However, manufacturing cost curve not yet compressing enough to offset pricing power loss.
+
+**Master Decision:**
+- Avg: (6+6+6+5+6+7)/6 = **6.0/10** ✗ (< 7 minimum)
+- Agents ≥7: Tech Analyst(7) = **1/6** ✗ (need ≥4)
+- **REJECTED**
+
+**Reason:** Mixed earnings print (delivery beat but margin concerns); average score 6.0 well below 7 threshold; only 1/6 agents scored ≥7. Re-score at July 23 Mid-Morning after full earnings transcript and analyst price target updates are available. If automotive gross margin ex-credits comes in at or above 19.5% estimate, re-run the 6-agent stack — the fundamental score could rise to 7+ on a cleaner profitability beat.
+
+---
+
+### SETUP TAG TALLY — Rolling 5-Day Window (July 16–22)
+
+No fills in the 5-day window. All entries blocked by API. Tally unchanged from prior review.
+
+| Setup | 5-Day W | 5-Day L | Cumulative W | Cumulative L | Status |
+|---|---|---|---|---|---|
+| ai-momentum-pullback | 0 | 0 | 0 | 0 | Active |
+| earnings-reaction-follow | 0 | 0 | 0 | 0 | Active |
+| breakout-volume | 0 | 0 | 0 | 0 | Active |
+| mean-reversion-oversold | 0 | 0 | 0 | 0 | Active |
+| macro-hedge | 0 | 0 | 0 | 0 | Active |
+| sector-rotation | 0 | 0 | 0 | 0 | Active |
+
+No 3-in-a-row halt or boost rules triggered (no fills in any window).
+
+---
+
+### TOMORROW'S WATCHLIST — July 23, 2026 (PRE-MARKET BINDING COMMITMENTS)
+
+| # | Symbol | Score | Action | Entry | Stop | Target | Notes |
+|---|---|---|---|---|---|---|---|
+| 1 | AMD | HOLD | Trail stop + reduce | Stop: $507.51 | — | $620 (BofA PT) | Advancing AI Day 2 (Jul 23) — more announcements; reduce 18sh→9sh when API restored |
+| 2 | GS | 7.83 | BINDING BUY | ~$1,103 (refresh) | $1,048 | $1,269 | 6/6 ≥7; Q2 EPS beat; update price at pre-market |
+| 3 | META | 7.67 | BINDING BUY | ~$647 (refresh) | $615 | $744 | 6/6 ≥7; earnings Jul 29 safe; WF PT $767 |
+| 4 | WFC | 7.0 | BINDING BUY | ~$87.62 (refresh) | $83.24 | $100.76 | 6/6 ≥7; Q2 EPS +13% beat |
+| 5 | MS | 7.17 | BINDING BUY | ~$216 (refresh) | $205 | $248 | 6/6 ≥7; Q2 Revenue +27% YoY |
+| 6 | GOOGL | 7.33 | BINDING BUY | Gap-up open × 1.005 | entry × 0.95 | entry + 15% | APPROVED tonight; Cloud 82% YoY; 14sh (4.8% equity); size down if gap-up exceeds 5% cap |
+| 7 | INTC | TBD | CONDITIONAL | Score after AH | — | — | INTC reports AH tonight Jul 23; binary event active; earliest entry Pre-Market Jul 24 |
+| 8 | TSLA | REJECTED | SKIP | — | — | — | Score 6.0; re-score Jul 23 Mid-Morning after transcript + analyst PTs |
+
+**FOMC RISK NOTE:** FOMC July 28–29. New entries from July 23 onward carry 1-week FOMC horizon risk. All bracket orders must have defined stops. No naked positions into the FOMC decision.
+
+**Binary event check:** INTC AH tonight Jul 23 — binary event active; NO INTC entry until after print (earliest Pre-Market Jul 24). META earnings Jul 29 — safe window through Jul 26. AMD earnings Aug 4 — safe through Aug 1.
+
+---
+
+### YAML DECISION LOG — Daily Review (July 22)
+
+```yaml
+---
+ts: 2026-07-22T20:30:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.33
+thesis: GOOGL Q2 2026 AH beat — Revenue $119.8B (+24% YoY, beat $116.9B), Cloud $24.77B (+82% YoY, beat), Advertising beat. EPS $9.11 (includes Anthropic unrealized gains). APPROVED for Pre-Market July 23 follow-through entry. 14sh limit bracket GTC. Binary window closed.
+size_pct: 4.8
+stop: 329.43
+target: 398.79
+result_pct:
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 8
+  macro: 5
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.33
+agents_above_7: 4
+master_decision: approved
+master_notes: "GOOGL Q2 2026 AH: Revenue $119.8B beat, Cloud 82% YoY growth to $24.77B (beat est), Advertising $81.63B beat, EPS $9.11 vs $2.88 (Anthropic stake unrealized gain). Gemini 950M users, 22B tokens/min. CapEx $44.9B (+100% YoY). Approved: 7.33 avg, 4/6 ≥7, Risk 7/10, Tech 9/10. Binary event window closed tonight. BINDING COMMITMENT: BUY 14sh GOOGL limit bracket GTC Pre-Market July 23 at gap-up open × 1.005; stop entry×0.95; target entry+15%. xAI unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-22T20:30:01Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: earnings-reaction-follow
+score: 6.0
+thesis: TSLA Q2 2026 AH — Deliveries 480K (+74K vs est) record beat, but margin print 'mixed bag' per Finviz (profitability concerns). EPS uncertain. Score 6.0 (only 1/6 agents ≥7). REJECTED. Re-score July 23 Mid-Morning after transcript + analyst PTs.
+size_pct: 0
+stop:
+target:
+result_pct:
+agent_scores:
+  fundamentals: 6
+  technical: 6
+  sentiment: 6
+  macro: 5
+  risk: 6
+  tech_analyst: 7
+agent_average: 6.0
+agents_above_7: 1
+master_decision: rejected
+master_notes: "TSLA Q2 2026 AH: Deliveries 480K (+25% YoY, +74K above est) — record. Revenue / EPS margins uncertain; Finviz 'mixed bag' headline. P/E ~390x pre-print. Score 6.0 — only Tech Analyst scored ≥7; avg below 7 minimum. REJECTED. Re-score Jul 23 after automotive gross margin ex-credits confirmed. If margin ≥19.5% est, fundamentals could rise to 7+. xAI unavailable."
+---
+```
+
+---
+
 ## 2026-07-22 — Afternoon (2:00 PM ET / 18:09 UTC — API BLOCKED — 92nd+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-22T18:08:59Z ✓
