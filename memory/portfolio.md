@@ -1,9 +1,16 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-23 (Thursday) — MARKET-OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 93rd+ consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING.**
+**2026-07-23 (Thursday) — MID-MORNING (11:12 AM ET / 15:12 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 94th+ consecutive blocked session). MID-MORNING ROUTINE ✅ RUNNING.**
 
-**JULY 23 MARKET-OPEN STATUS:** Pre-Market silently failed (no heartbeat). Market-Open catch-up running. AMD at $553 (+3.5%; Lisa Su Day 2 keynote at 12:30 PM ET — MI500 roadmap preview). All 5 binding orders (AMD stop trail + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (93rd+). GOOGL scored 6.5/10 — REJECTED (below 7 threshold, 3/6 agents ≥7). TSLA scored 3.83/10 — REJECTED (Risk veto + avg <7). INTC binary event block (earnings AH tonight). **OPERATOR MANDATORY: place all 5 blocked orders via app.alpaca.markets (AMD stop $525.35, GS bracket $1,103/stop $1,043/target $1,263, META bracket $630/stop $596/target $721, WFC bracket $87.94/stop $83.13/target $100.63, MS bracket $216/stop $205/target $248).**
+**JULY 23 MID-MORNING STATUS (11:12 AM ET):** Pre-Market silently failed (violation logged by Market-Open). Market-Open ✓ completed. AMD at $553 est. (+3.5%; Lisa Su Day 2 keynote at 12:30 PM ET — MI500 roadmap — NOT YET OCCURRED). All 5 binding orders re-attempted and blocked → HTTP 000 (94th+ consecutive). GOOGL scored 6.5/10 — REJECTED (below 7, re-score at Midday if stochastic reversal). TSLA scored 3.83/10 — REJECTED (Risk veto). INTC binary event block (earnings AH tonight — score at Daily Review). No new GitHub user suggestions. **OPERATOR MANDATORY: place all 5 blocked orders via app.alpaca.markets (AMD stop $525.35, GS bracket $1,103/stop $1,043/target $1,263, META bracket $630/stop $596/target $721, WFC bracket $87.94/stop $83.13/target $100.63, MS bracket $216/stop $205/target $248).**
+
+**ORDERS ATTEMPTED AND BLOCKED (July 23 Mid-Morning — all HTTP 000, 94th+):**
+- AMD: GTC SELL-STOP trail 18sh $525.35 (5% below $553 Day 2 est.) → HTTP 000 (94th+ block)
+- GS: BUY 4sh limit bracket GTC $1,103.49 / stop $1,043.10 / target $1,262.70 → HTTP 000
+- META: BUY 7sh limit bracket GTC $630.14 / stop $595.65 / target $721.05 → HTTP 000
+- WFC: BUY 30sh limit bracket GTC $87.94 / stop $83.13 / target $100.63 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $216.08 / stop $205.28 / target $248.49 → HTTP 000
 
 **ORDERS ATTEMPTED AND BLOCKED (July 23 Market-Open — all HTTP 000):**
 - AMD: GTC SELL-STOP trail 18sh $525.35 (5% below $553 conference Day 2) → HTTP 000 (93rd+ block)
@@ -16,15 +23,16 @@
 - GOOGL: score 6.5/10 (avg < 7, 3/6 agents ≥7) → REJECTED. Revisit Midday if stochastic oversold reversal.
 - TSLA: score 3.83/10 (Risk veto, avg far below 7) → REJECTED. EPS miss −25%, op profit −57% = justified re-rate not a fade opportunity. Pass entirely.
 
-**PORTFOLIO STATE EST (July 23 Market-Open):**
+**PORTFOLIO STATE EST (July 23 Mid-Morning 11:12 AM ET):**
 - Cash: ~$90,644 (90.1%)
 - AMD: 18sh × $553 est. = ~$9,954 (9.9%) — over 5% cap, naked (no stop), Day ~33 post-fill
 - Total equity est.: ~$100,598
 - P&L vs $100K initial: +$598 (+0.60%)
 - AMD unrealized: 18 × ($553 − $506.76) = +$832 (+9.1%)
+- AMD daily P&L est.: 18 × ($553 − $534.22) = +$338 (+0.34% daily)
 - Performance vs SPX (May 1 baseline 7,200 → July 23 est. 7,489 = +4.01%): est. +0.60% → gap ~−3.41 pp
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (93+ consecutive sessions — API blockage root cause)
-- Circuit breaker: NOT tripped (AMD +3.5% today; portfolio daily P&L est. +$498 = +0.50%)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (94+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (AMD est. +0.34% daily; portfolio far from −3% trigger)
 
 **BINARY EVENT WINDOWS (July 23–24):**
 | Company | Earnings Date | 48h Window | Status |
