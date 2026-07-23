@@ -423,6 +423,357 @@ Crypto bucket: $0 (0%) — 0 positions — target 10%
 
 ---
 
+## 2026-07-23 — Midday (12:35 PM ET / 16:35 UTC — API BLOCKED — 94th+ consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-23T16:35:07Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **94th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 12:35 PM ET — Midday routine window (12:30 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT — July 23, 2026
+
+| Routine | Heartbeat Found | Status |
+|---|---|---|
+| Pre-Market (12:00 UTC / 8:00 AM ET) | NOT FOUND | **SILENT FAILURE** |
+| Market-Open (13:46 UTC / 9:46 AM ET) | STARTED 13:46:26Z / COMPLETED 13:54:36Z | **COMPLETED ✓** |
+| Mid-Morning (15:00 UTC / 11:00 AM ET) | NOT FOUND | **SILENT FAILURE** |
+
+**Market-Open DID run** — all 5 binding orders attempted and blocked (AMD stop $525.35, GS/META/WFC/MS brackets). All watchlist names already carry YAML skip entries from Market-Open. This Midday routine re-attempts all blocked orders.
+
+---
+
+### MID-MORNING SILENT FAILURE — VIOLATION LOG
+
+```yaml
+---
+ts: 2026-07-23T15:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: >
+  Mid-Morning silent failure on July 23. 5 binding orders remained open (AMD stop $525.35,
+  GS/META/WFC/MS brackets). AMD Lisa Su Day 2 keynote started at 12:30 PM ET — Mid-Morning
+  would have trailed the stop further if AMD moved above $553. All orders carry to Midday.
+  94th+ consecutive API-blocked session; API blockage is root cause.
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected — 94th+ consecutive)
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected — 94th+ consecutive)
+```
+
+**AUDIT RESULT (from memory):**
+- AMD 18sh — NAKED — no resting stop at Alpaca (API blocked 94+ sessions)
+- AMD est. midday: ~$553–$560 (Lisa Su keynote MI500 roadmap live at 12:30 PM ET)
+- Trail stop update: $553 × 0.95 = **$525.35** (if AMD unchanged from open); if AMD pushed above $553 during keynote → stop should trail to new_high × 0.95
+
+**GUARDRAIL VIOLATION (ONGOING):** AMD naked — no stop at Alpaca. OPERATOR MANDATORY: immediate GTC sell-stop 18sh AMD at **$525.35** via app.alpaca.markets.
+
+---
+
+### MIDDAY ORDER ATTEMPTS — ALL BLOCKED (HTTP 000, 94th+ consecutive)
+
+**Order 1: AMD GTC SELL-STOP 18sh at $525.35 (trail — 5% below $553 market-open)**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..." \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":"18","side":"sell","type":"stop","stop_price":"525.35","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED (94th+ consecutive)
+```
+
+**Order 2: GS BUY 4sh BRACKET GTC — limit $1,103.49 / stop $1,043.10 / target $1,262.70**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ... \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1103.49","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1043.10"},"take_profit":{"limit_price":"1262.70"}}'
+# Result: HTTP 000 — BLOCKED (94th+ consecutive)
+```
+
+**Order 3: META BUY 7sh BRACKET GTC — limit $630.14 / stop $595.65 / target $721.05**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ... \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"limit","limit_price":"630.14","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"595.65"},"take_profit":{"limit_price":"721.05"}}'
+# Result: HTTP 000 — BLOCKED (94th+ consecutive)
+```
+
+**Order 4: WFC BUY 30sh BRACKET GTC — limit $87.94 / stop $83.13 / target $100.63**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ... \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"87.94","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"83.13"},"take_profit":{"limit_price":"100.63"}}'
+# Result: HTTP 000 — BLOCKED (94th+ consecutive)
+```
+
+**Order 5: MS BUY 20sh BRACKET GTC — limit $216.08 / stop $205.28 / target $248.49**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" ... \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"216.08","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"205.28"},"take_profit":{"limit_price":"248.49"}}'
+# Result: HTTP 000 — BLOCKED (94th+ consecutive)
+```
+
+---
+
+### MANDATORY OUTPUT CONTRACT — MIDDAY YAML LOG ENTRIES
+
+#### GS — SKIP (API BLOCKED — 94th+, order attempted)
+
+```yaml
+---
+ts: 2026-07-23T16:38:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.83
+thesis: GS financials sector leader; bracket entry limit $1,103.49 / stop $1,043.10 / target $1,262.70 (3:1 R/R). Attempted Midday — HTTP 000 proxy block (94th+).
+size_pct: 4.4
+stop: 1043.10
+target: 1262.70
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 agents ≥7. Score 7.83 — approved. Carried from July 14 daily review through 94+ blocked
+  sessions. Midday attempt blocked HTTP 000. No CLAUDE.md exemption applies. CARRY to Afternoon.
+  OPERATOR MANDATORY: BUY 4sh GS limit ~$1,103 bracket GTC via app.alpaca.markets.
+---
+```
+
+#### META — SKIP (API BLOCKED — 94th+)
+
+```yaml
+---
+ts: 2026-07-23T16:38:30Z
+action: skip
+symbol: META
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: Meta AI capex leader (6GW AMD commitment); bracket limit $630.14 / stop $595.65 / target $721.05. Attempted Midday — HTTP 000 proxy block.
+size_pct: 4.4
+stop: 595.65
+target: 721.05
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 agents ≥7. Midday entry attempt blocked HTTP 000 (94th+). META ~$627 at open (down from
+  $647 July 22 open — slight pullback into support strengthens entry thesis). Earnings July 29
+  safe window through July 26. CARRY to Afternoon. No CLAUDE.md exemption.
+  OPERATOR: BUY 7sh META limit ~$630 bracket GTC via app.alpaca.markets.
+---
+```
+
+#### WFC — SKIP (API BLOCKED — 94th+)
+
+```yaml
+---
+ts: 2026-07-23T16:39:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC financials rotation; bracket limit $87.94 / stop $83.13 / target $100.63. Attempted Midday — HTTP 000 proxy block.
+size_pct: 2.6
+stop: 83.13
+target: 100.63
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 at 7. Minimum pass. Midday attempt blocked HTTP 000 (94th+). CARRY to Afternoon.
+  No CLAUDE.md exemption applies. OPERATOR: BUY 30sh WFC limit ~$87.94 bracket GTC.
+---
+```
+
+#### MS — SKIP (API BLOCKED — 94th+)
+
+```yaml
+---
+ts: 2026-07-23T16:39:30Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.17
+thesis: Morgan Stanley financials; bracket limit $216.08 / stop $205.28 / target $248.49. Attempted Midday — HTTP 000 proxy block.
+size_pct: 4.3
+stop: 205.28
+target: 248.49
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 ≥7. Midday attempt blocked HTTP 000 (94th+). CARRY to Afternoon.
+  OPERATOR: BUY 20sh MS limit ~$216 bracket GTC via app.alpaca.markets.
+---
+```
+
+---
+
+### GOOGL MIDDAY RE-EVALUATION
+
+Market-Open routine noted: "Revisit at Midday if stochastic oversold reversal observed."
+
+**Re-evaluation basis (no live data — API blocked):**
+- GOOGL scored 6.5/10 at Market-Open (avg < 7, only 3/6 agents ≥7)
+- Technical score was 6/10 with only 2/5 mandatory indicators confirmed (stochastic oversold + volume spike on gap-down)
+- Without live price/indicator data, cannot confirm a new stochastic reversal or MACD crossover since open
+- Cannot improve the 6/10 technical score without live 5-min chart confirmation
+- Macro remains 5/10 (FOMC July 28-29 + oil $92+ headwinds unchanged)
+- Sentiment remains 5/10 (capex concern narrative dominant in absence of fresh data)
+
+**Result: GOOGL score remains 6.5/10 — REJECTED. Carry to Afternoon/Daily Review.**
+
+```yaml
+---
+ts: 2026-07-23T16:40:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: earnings-reaction-fade
+score: 6.5
+thesis: GOOGL Q2 beat ($119.8B rev, +24%; Cloud +82%) but −5% on capex hike. Score 6.5 at Market-Open; Midday re-eval cannot confirm stochastic reversal without live data — score unchanged.
+size_pct: 0
+stop: 310.65
+target: 376.05
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 5
+  macro: 5
+  risk: 7
+  tech_analyst: 9
+agent_average: 6.5
+agents_above_7: 3
+master_decision: rejected
+master_notes: >
+  Score gate rejection (avg 6.5 < 7.0; only 3/6 agents ≥7). Midday re-eval: API blocked —
+  cannot confirm stochastic reversal on 5-min chart (mandatory for technical re-score).
+  Macro (5) and Sentiment (5) scores unchanged: FOMC July 28-29 + oil $92+ + capex anxiety.
+  CARRY to Afternoon/Daily Review. If stochastic oversold reversal confirms + macro shifts
+  (oil pulls back, FOMC pricing eases), re-score. Minimum needed: Technical to 7 + Sentiment to 7.
+---
+```
+
+---
+
+### AMD MIDDAY ANALYSIS — Conference Day 2 (Lisa Su Keynote 12:30 PM ET)
+
+- AMD market-open: ~$553 (+3.5% from yesterday; +9.2% above avg cost $506.76)
+- **Lisa Su Day 2 keynote: LIVE at 12:30 PM ET (Midday window opening)** — MI500-series roadmap (target: 1000× performance beyond MI300X by 2027), Helios deployment timelines, ROCm ecosystem progress
+- Day 1 summary (confirmed July 22): 12GW committed (Meta 6GW + OpenAI 6GW), Oracle 50K GPUs, Zen 6 Venice TSMC 2nm, MI450X HBM4
+- Unrealized P&L est.: 18 × ($553 − $506.76) = **+$832** (+9.2%)
+- 15% partial-profit trigger: $582.77 (AMD at $553 is still ~5.4% below trigger)
+- **Trail stop: $525.35** (5% below $553 — unchanged from Market-Open; blocked, not at Alpaca)
+- If AMD moves above $553 during keynote → operator should update stop to new_high × 0.95
+
+**DECISION: HOLD AMD. Keynote catalyst in progress. Thesis fully intact.**
+
+---
+
+### BINARY EVENT AUDIT — July 23 Midday
+
+| Symbol | Event | Status | Action |
+|---|---|---|---|
+| INTC | Earnings AH tonight July 23 | **ACTIVE 48h window** | **NO ENTRY** (Exemption 2) |
+| AMD | Earnings Aug 4 AH | Safe through Aug 1 | HOLD |
+| META | Earnings July 29 AH | Safe through July 26 | Carry entry order |
+| GOOGL | Earnings AH July 22 — CLEARED | Post-earnings eligible | Score below 7 — rejected |
+| TSLA | Earnings AH July 22 — CLEARED | Post-earnings eligible | Scored 3.83 — pass entirely |
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+| Symbol | Action | Rationale |
+|---|---|---|
+| AMD 18sh | **HOLD** | MI500 keynote catalyst ongoing; +9.2% unrealized; 15% trigger not yet hit; earnings Aug 4 safe |
+| GS (no fill) | **Carry entry** | Limit order GTC — will execute if/when API unblocked |
+| META (no fill) | **Carry entry** | Limit order GTC — safe through July 26 earnings window |
+| WFC (no fill) | **Carry entry** | Limit order GTC |
+| MS (no fill) | **Carry entry** | Limit order GTC |
+
+**No day trades open** — no positions to flatten at close today.
+
+**INTC post-earnings play:** Score INTC at Daily Review (4:30 PM ET) after AH print. Entry eligible Pre-Market July 24 if score ≥ 7.
+
+---
+
+### PORTFOLIO STATE — July 23, 2026 (Midday 12:35 PM ET)
+
+```
+PORTFOLIO STATE
+Total Equity: ~$100,598 (est.)
+Cash: ~$90,644 (90.1%) — well above 5% floor
+Trading bucket: ~$9,954 (9.9%) — 1 position (AMD 18sh) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+```
+
+**ROUTINE: Midday (12:35 PM ET ET / 16:35 UTC)**
+
+- API blocked: All 5 standing orders (AMD stop, GS/META/WFC/MS entries) attempted and blocked HTTP 000 (94th+)
+- AMD: HOLD through Lisa Su Day 2 keynote; trail stop $525.35 naked at Alpaca
+- No day trades to close; no positions declining
+- Daily P&L est.: AMD at $553 → +$832 unrealized (+0.83% portfolio)
+- Performance vs SPX (est. +4.0% from May 1 baseline 7,200): portfolio +0.60% → gap **~−3.4 pp**
+- 20-day underperformance flag: **ACTIVE** (94th+ consecutive — API blockage root cause)
+- Circuit breaker: NOT tripped (+0.83% daily est., far from −3% trigger)
+- INTC binary event: active through tonight AH — score at Daily Review
+- **OPERATOR MANDATORY ACTION (app.alpaca.markets):**
+  1. GTC SELL-STOP 18sh AMD at **$525.35** (trail if AMD above $553 during/after keynote)
+  2. BUY 4sh GS bracket GTC: limit **$1,103.49** / stop **$1,043.10** / target **$1,262.70**
+  3. BUY 7sh META bracket GTC: limit **$630.14** / stop **$595.65** / target **$721.05**
+  4. BUY 30sh WFC bracket GTC: limit **$87.94** / stop **$83.13** / target **$100.63**
+  5. BUY 20sh MS bracket GTC: limit **$216.08** / stop **$205.28** / target **$248.49**
+
+---
+
 ## 2026-07-22 — Afternoon (2:00 PM ET / 18:09 UTC — API BLOCKED — 92nd+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-22T18:08:59Z ✓
