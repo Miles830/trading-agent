@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-22T18:09:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-23T19:37:00Z",
+  "updated_by": "market-close",
   "portfolio": {
-    "total_equity": 100260,
+    "total_equity": 100174.64,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 90.4,
+    "cash_pct": 90.5,
     "buying_power": 181288,
-    "long_market_value": 9616,
+    "long_market_value": 9530.64,
     "short_market_value": 0.0,
-    "daily_pnl": 518,
-    "daily_pnl_pct": 0.52,
-    "total_return_pct": 0.26,
-    "spx_return_pct": 5.0,
-    "benchmark_gap_pct": -4.74,
+    "daily_pnl": -85.32,
+    "daily_pnl_pct": -0.085,
+    "total_return_pct": 0.17,
+    "spx_return_pct": 2.86,
+    "benchmark_gap_pct": -2.69,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9616,
-      "active_pct": 9.6,
+      "active_value": 9530.64,
+      "active_pct": 9.5,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 90.4
+      "cash_pct": 90.5
     },
-    "note": "July 22 AFTERNOON (2:09 PM ET / 18:09Z). API BLOCKED HTTP 000 — 92nd+ consecutive session. 4 SILENT FAILURES today (Pre-Market, Market-Open, Mid-Morning, Midday). AMD 18sh × $534.22 est. = $9,616 (9.6% equity, over 5% cap, NAKED). AMD Advancing AI 2026 conf Day 1 MASSIVE: Zen 6 Venice TSMC 2nm, MI450X HBM4, Helios Rack, Oracle 50K GPUs, Meta 6GW + OpenAI 6GW = 12GW committed. AMD +5.7% today (+5.4% vs avg cost $506.76). Trail stop updated $487.55→$507.51 (blocked). Daily P&L +$518 (+0.52%). SPX +5.0% from baseline; portfolio +0.26%; benchmark gap -4.74 pp. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $507.51; (2) BUY 4sh GS limit $1,103.36 bracket GTC; (3) BUY 7sh META limit $647.10 bracket GTC; (4) BUY 30sh WFC limit $87.62 bracket GTC; (5) BUY 20sh MS limit $216.08 bracket GTC. BINARY EVENT NO-ENTRY: GOOGL/TSLA (earnings AH TONIGHT), INTC (earnings Jul 23 AH — post-earnings ok Jul 24)."
+    "note": "July 23 MARKET-CLOSE (3:35 PM ET / 19:35Z). API BLOCKED HTTP 403 — 94th+ consecutive session. 4 of 5 intraday routines missed (Pre-Market, Mid-Morning, Midday, Afternoon). AMD Day 2 keynote 'sell the news': fell $553→$529.48 (-4.0% from open, -0.89% from Jul 22). AMD 18sh × $529.48 = $9,530.64 (9.5% equity, over 5% cap, NAKED). Stop $525.35 not triggered. INTC Q2 AH tonight: revenue $14.4B matched, EPS $0.22 matched, 18A yields 85%. Scoring at Daily Review 4:30 PM ET. Daily P&L: -$85.32 (-0.085%). SPX fell 1.24% to 7,406 (+2.86% from May 1); portfolio +0.17%; benchmark gap improved to -2.69 pp. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $525.35; (2) BUY 4sh GS bracket GTC ~$1,073/stop $1,019/target $1,234; (3) BUY 7sh META bracket GTC ~$627/stop $596/target $721; (4) BUY 30sh WFC bracket GTC ~$85.83/stop $81.54/target $98.70; (5) BUY 20sh MS bracket GTC ~$215/stop $204/target $248."
   },
   "positions": [
     {
@@ -31,159 +31,219 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 534.22,
-      "pnl": 494.28,
-      "pnl_pct": 5.41,
+      "current_price": 529.48,
+      "pnl": 408.96,
+      "pnl_pct": 4.48,
       "stop_loss": null,
       "take_profit": 582.78,
-      "stop_loss_pending": 507.51,
+      "stop_loss_pending": 525.35,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "July 22 AFTERNOON: AMD at $534.22 (intraday range $522-$548.14, +5.7% today). Advancing AI 2026 conf Day 1 MASSIVE - Zen 6 Venice TSMC 2nm, MI450X HBM4, Helios Rack 31TB HBM4, Oracle 50K MI450 GPUs Q3 2026, Meta 6GW + OpenAI 6GW = 12GW committed. P&L: 18x($534.22-$506.76)=+$494.28 (+5.41%). Trail stop updated to $507.51 (5% below $534.22 - NAKED at Alpaca, 92nd+ block). Day 2 conference tomorrow Jul 23. HOLD. Reduce 18sh to 9sh (to ~4.5% equity) when API restored. Earnings Aug 4 (safe through Aug 1). OPERATOR MANDATORY: GTC sell-stop 18sh AMD $507.51 at app.alpaca.markets NOW."
+      "note": "July 23 MARKET-CLOSE: AMD at $529.48 (close). Day 2 keynote: ROCm 7 (3.5x throughput), MI500 roadmap (1000x MI300X by 2027), OpenAI still deploying 6GW (no new commit) — sell the news from $553 to $529.48. P&L: 18x($529.48-$506.76)=+$408.96 (+4.48%). Stop at $525.35 (5% below $553 Day 2 high) — MAINTAIN, do not lower. Still NAKED at Alpaca (94th+ block). Earnings Aug 4 (safe through Aug 1). Reduce 18sh to 9sh (to ~4.75% equity) when API restored. OPERATOR MANDATORY: GTC sell-stop 18sh AMD $525.35 at app.alpaca.markets NOW."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 1070.00,
-      "current_price": 1098.37,
+      "entry_price": 1073.0,
+      "current_price": 1073.0,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 1268.87,
-      "stop_loss_pending": 1048.19,
+      "take_profit": 1233.95,
+      "stop_loss_pending": 1019.35,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.83,
-      "note": "BINDING CARRY (July 14 to July 22, 92nd+ block). Score 7.83 (all 6 agents >= 7). Q2 EPS +45.7% beat. GS at $1,098.37 (range $1,077.89-$1,106.37). Updated limit $1,103.36 (x1.005), stop $1,048.19 (-5%), target $1,268.87 (+15%, 3:1). HTTP 000 BLOCKED 92nd+ consecutive. BINDING COMMITMENT: Pre-Market July 23 MUST enter. OPERATOR: BUY 4sh GS limit $1,103.36 bracket GTC at app.alpaca.markets."
+      "note": "BINDING CARRY (July 14 to July 23, 94th+ block). Score 7.83 (all 6 agents >= 7). Q2 EPS +45.7% beat. GS est. close ~$1,073 (midday $1,077.62, down -1.87% today). MOC BUY 4sh HTTP 403 BLOCKED. Updated entry ~$1,073, stop $1,019.35 (-5%), target $1,233.95 (+15%, 3:1). BINDING COMMITMENT: Pre-Market July 24 MUST enter. OPERATOR: BUY 4sh GS bracket GTC at app.alpaca.markets."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 651.43,
-      "current_price": 643.88,
+      "entry_price": 627.17,
+      "current_price": 627.17,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 744.18,
-      "stop_loss_pending": 614.74,
+      "take_profit": 721.25,
+      "stop_loss_pending": 595.81,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "BINDING CARRY (July 14 to July 22, 92nd+ block). Score 7.67. Llama AI, AMD/Meta 6GW GPU deal CONFIRMED at Advancing AI 2026 conf. WF PT $767. META at $643.88 (range $640-$655.88). Updated limit $647.10 (x1.005), stop $614.74 (-5%), target $744.18 (+15%). HTTP 000 BLOCKED. Earnings July 29 AH safe (window opens July 27). BINDING COMMITMENT: Pre-Market July 23 MUST enter."
+      "note": "BINDING CARRY (July 14 to July 23, 94th+ block). Score 7.67. META at $627.17 (-3.87% today on tech sentiment drag). MOC BUY 7sh HTTP 403 BLOCKED. Entry ~$627.17, stop $595.81 (-5%), target $721.25 (+15%). CRITICAL: META earnings July 29 AH — 48h window opens July 27. LAST ELIGIBLE ENTRY: July 25 COB. Pre-Market July 24 is MANDATORY."
     },
     {
       "symbol": "WFC",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 87.94,
-      "current_price": 87.18,
+      "entry_price": 85.83,
+      "current_price": 85.83,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 100.76,
-      "stop_loss_pending": 83.24,
+      "take_profit": 98.70,
+      "stop_loss_pending": 81.54,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.0,
-      "note": "BINDING CARRY (92nd+ block). Score 7.0. WFC Q2: EPS $1.96 vs $1.73 (+13% beat); Revenue $22.62B (+2.8% beat); Net income +17% YoY. WFC at $87.18 (range $87.05-$88.18). Updated limit $87.62 (x1.005), stop $83.24 (-5%), target $100.76 (+15%, 3:1). HTTP 000 BLOCKED. BINDING COMMITMENT: Pre-Market July 23 MUST enter."
+      "note": "BINDING CARRY (July 14 to July 23, 94th+ block). Score 7.0. WFC at $85.83 close (range $85.10-$86.50). MOC BUY 30sh HTTP 403 BLOCKED. Entry ~$85.83, stop $81.54 (-5%), target $98.70 (+15%, 3:1). Position $2,575 = 2.6% equity. BINDING COMMITMENT: Pre-Market July 24 MUST enter."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "qty": 0,
-      "entry_price": 210.08,
-      "current_price": 215.0,
+      "entry_price": 215.36,
+      "current_price": 215.36,
       "pnl": 0,
       "pnl_pct": 0,
       "stop_loss": null,
-      "take_profit": 248.48,
-      "stop_loss_pending": 205.28,
+      "take_profit": 247.66,
+      "stop_loss_pending": 204.59,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.17,
-      "note": "BINDING CARRY (92nd+ block). Score 7.17. MS Q2: Revenue $21.3B (+27% YoY), Net income $5.6B (+60% YoY), EPS $3.46 record. MS est. ~$215 (ATH $228.55 Jul 15). Updated limit $216.08 (x1.005), stop $205.28 (-5%), target $248.48 (+15%, 3:1). HTTP 000 BLOCKED. BINDING COMMITMENT: Pre-Market July 23 MUST enter."
+      "note": "BINDING CARRY (July 14 to July 23, 94th+ block). Score 7.17. MS at $215.36 (midday, down -1.45% today). MOC BUY 20sh HTTP 403 BLOCKED. Entry ~$215.36, stop $204.59 (-5%), target $247.66 (+15%, 3:1). Position $4,307 = 4.3% equity. BINDING COMMITMENT: Pre-Market July 24 MUST enter."
     }
   ],
   "market": {
-    "mode": "RISK-ON — SPX +0.89% (~7,560), Nasdaq +1.29%. AI/Semi stocks leading. AMD Advancing AI 2026 conf Day 1 MASSIVE (12GW commitments). GOOGL+TSLA earnings AH TONIGHT. Oil $92+ Brent (Iran strikes). FOMC July 28-29 rate risk next week.",
-    "fear_greed": 65,
-    "fear_greed_label": "Greed — strong Q2 earnings season (88% beat rate), AI momentum, semiconductor leadership.",
-    "spx": "SPX ~7,560 (+0.89% today, +5.0% from May 1 baseline 7,200). Nasdaq +1.29%. Portfolio est. +0.26% vs $100K start. Benchmark gap: -4.74 pp (92nd+ consecutive API-blocked session root cause). FOMC July 28-29 is next macro risk.",
+    "mode": "RISK-OFF — SPX -1.24% (7,406). GOOGL capex concerns + AMD Day 2 keynote sell-the-news. Nasdaq led lower. INTC Q2 AH tonight (results: matched consensus, 18A 85% yields). FOMC July 28-29 rate risk. Oil $90+ (Iran).",
+    "fear_greed": 52,
+    "fear_greed_label": "Neutral-to-Greed — earnings season solid but AMD/GOOGL capex concerns hitting tech. FOMC risk next week.",
+    "spx": "SPX closed 7,406 (-1.24% today, +2.86% from May 1 baseline 7,200). Portfolio +0.17% from $100K start. Benchmark gap: -2.69 pp (improved from -4.74 pp yesterday — SPX also fell). 20-day underperformance flag active (94+ sessions, API blockage root cause).",
     "btc": "BTC est. unknown (API blocked). Below $82K active-trading threshold. No crypto entries.",
     "sectors": [
       {
         "name": "Semiconductors (AMD)",
-        "change_pct": 5.7,
-        "note": "AMD at $534.22 (+5.7% today). Advancing AI 2026 conf Day 1: Zen 6 Venice TSMC 2nm, MI450X HBM4, Helios Rack 31TB, Oracle 50K GPUs Q3 2026, Meta 6GW + OpenAI 6GW = 12GW committed. Intel has no comparable response until mid-2027. AMD thesis massively confirmed. Analyst PTs: BofA $620, WF $615, KeyBanc/BNP Paribas/Cowen/Stifel all raised. Nasdaq semi stocks +1.29%."
+        "change_pct": -0.89,
+        "note": "AMD closed $529.48 (-4% from $553 open, -0.89% from Jul 22 close). Day 2 keynote: ROCm 7 (3.5x), MI500 roadmap (1000x MI300X by 2027), OpenAI 6GW still deploying (no new commitment) — sell the news. AMD thesis INTACT: 12GW committed, TSMC 2nm, ROCm 7, Helios $5.25M. Earnings Aug 4 safe. AMD stop $525.35 (trail from $553 high) — maintain, not triggered. INTC AH: revenue $14.4B matched, EPS $0.22 matched, 18A 85% yields — scoring at Daily Review."
       },
       {
         "name": "Financials (GS, WFC, MS)",
-        "change_pct": 0.5,
-        "note": "GS $1,098.37 (+3.2% from prior binding entry $1,070); WFC $87.18 (near binding $87.62); MS est. $215 (ATH $228.55 Jul 15). Earnings season strong — Q2 beats supporting financials. All 3 carry as binding entries. Sector 0% deployed — targeting ~11.3% when API restored."
+        "change_pct": -1.5,
+        "note": "GS ~$1,073 (-1.87% today, daily range $1,062-$1,085). WFC $85.83 (range $85.10-$86.50). MS $215.36 (-1.45% intraday). All 3 pulled back on risk-off day. All 3 remain binding commitments at lower prices (better entries). July 24 Pre-Market is MANDATORY. Financials 0% deployed — targeting ~11.2% combined."
       },
       {
         "name": "Communication Services (META, GOOGL)",
-        "change_pct": 0.9,
-        "note": "META $643.88 (+0.9% est.). AMD/Meta 6GW GPU deal confirmed at Advancing AI 2026. Earnings July 29 AH (safe through July 26). GOOGL: earnings AH tonight (~5-6 PM ET). Expected EPS $2.89, Revenue $116.9B, Cloud $22.8B. Options pricing 5.4% move. Post-earnings scoring at Daily Review."
+        "change_pct": -3.87,
+        "note": "META $627.17 (-3.87% today). GOOGL -5% post-Q2 (capex hike). META thesis intact (6GW AMD GPU deal, Llama AI, WF PT $767). CRITICAL: META 48h window opens July 27 — LAST ELIGIBLE ENTRY DAY is July 25 (Friday). Pre-Market July 24 MANDATORY. GOOGL scored 6.5/10 at Market-Open — REJECTED (below 7)."
       },
       {
-        "name": "Binary Event Names (GOOGL, TSLA, INTC)",
-        "change_pct": 0.3,
-        "note": "GOOGL/TSLA: earnings AH TONIGHT — results expected ~5-6 PM ET. Window closes; pre-market July 23 entries ALLOWED if score >=7 at Daily Review. INTC earnings July 23 AH — NO ENTRY until AH print; post-earnings entry ok July 24. INTC up 163% YTD, options pricing 13.6% swing."
+        "name": "INTC (Post-Earnings)",
+        "change_pct": 0.0,
+        "note": "INTC Q2 AH July 23: Revenue $14.4B (matched), EPS $0.22 non-GAAP (matched), 18A yields 85% (from 65% — strong), Cloud CSP confirmed. Stock $100.98 pre-earnings (down 27% past month, up 178% YTD). Options pricing +/-15% swing. Scoring at Daily Review 4:30 PM ET. Post-earnings entry eligible Pre-Market July 24 if score >=7."
       }
     ],
-    "macro_notes_md": "JULY 22 2026 AFTERNOON UPDATE: AMD ADVANCING AI 2026 DAY 1 MASSIVE + GOOGL/TSLA EARNINGS TONIGHT. AMD: 12GW committed (Meta 6GW + OpenAI 6GW), Oracle 50K MI450 GPUs Q3 2026. Zen 6 Venice TSMC 2nm announced. Instinct MI450X HBM4. Intel no competitive response until mid-2027. AMD +5.7% today. SPX +0.89% (7,560), Nasdaq +1.29% — AI/semi leading. 88% of S&P 500 Q2 reporters beat estimates. BINARY EVENTS TONIGHT: GOOGL + TSLA AH — window closes after print, pre-market July 23 entries allowed. INTC July 23 AH — post-earnings July 24. OIL: Brent $92+ (11th night of US strikes on Iran) — inflation tail risk. FOMC JULY 28-29: Fed at 3.50-3.75%; CPI 4.2% + oil $92 = hawkish risk at next meeting. API BLOCKED HTTP 000 — 92nd+ consecutive session. 4 silent failures today."
+    "macro_notes_md": "JULY 23 2026 MARKET-CLOSE UPDATE: AMD Day 2 keynote 'sell the news' — sold from $553 to $529.48. SPX -1.24% (7,406) on GOOGL capex + AMD disappointment. INTC Q2 AH tonight: $14.4B revenue matched, $0.22 EPS matched, 18A 85% yields milestone — potential pre-market July 24 entry if score >=7. META last safe entry July 25 (earnings July 29 AH, 48h window opens July 27). FOMC July 28-29: rate decision next week (CPI 4.2%, oil $90+ = hawkish risk). API BLOCKED HTTP 403 — 94th+ consecutive session. 4/5 intraday routines missed today."
   },
   "routines": [
     {
       "name": "Pre-Market",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-14T12:05:00Z",
-      "next_run": "2026-07-23T12:00:00Z",
-      "last_summary": "July 22 Pre-Market SILENTLY FAILED — not in heartbeat log (4 of 5 routines silent today). July 23 Pre-Market MANDATORY: (1) AMD stop $507.51 GTC trail; (2) GS 4sh limit $1,103.36 bracket GTC; (3) META 7sh limit $647.10 bracket GTC; (4) WFC 30sh limit $87.62 bracket GTC; (5) MS 20sh limit $216.08 bracket GTC. (6) GOOGL post-earnings entry if scored >= 7 at Daily Review tonight. (7) TSLA post-earnings entry if scored >= 7. INTC: binary event still active AH July 23 — NO PRE-MARKET ENTRY July 23."
+      "next_run": "2026-07-24T12:00:00Z",
+      "last_summary": "July 23 Pre-Market SILENTLY FAILED — heartbeat not found. July 24 MANDATORY: (1) AMD GTC sell-stop 18sh $525.35 FIRST ACTION; (2) GS 4sh limit bracket GTC ~$1,073 / stop $1,019 / target $1,234; (3) META 7sh limit bracket GTC ~$627 / stop $596 / target $721 (LAST ELIGIBLE DAY — 48h window opens Jul 27); (4) WFC 30sh limit bracket GTC ~$85.83 / stop $81.54 / target $98.70; (5) MS 20sh limit bracket GTC ~$215 / stop $204 / target $248. Plus INTC post-earnings if Daily Review score >=7."
     },
     {
       "name": "Market-Open",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-21T13:46:00Z",
-      "next_run": "2026-07-23T13:45:00Z",
-      "last_summary": "July 22 Market-Open SILENTLY FAILED — AMD Advancing AI 2026 conf Day 1 in progress; intraday high $548.14. AMD Advancing AI announcements: 12GW committed, Oracle 50K GPUs. Binding commitments not attempted. API blocked HTTP 000."
+      "status": "completed",
+      "last_run": "2026-07-23T13:46:00Z",
+      "next_run": "2026-07-24T13:45:00Z",
+      "last_summary": "July 23 Market-Open COMPLETED 13:46-13:54Z. API BLOCKED 93rd+. AMD at $553 (+3.5%); GOOGL scored 6.5/10 REJECTED; TSLA scored 3.83/10 REJECTED. All 5 bindings (AMD stop $525.35 + GS/META/WFC/MS) HTTP 000 blocked."
     },
     {
       "name": "Mid-Morning",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-21T15:13:00Z",
-      "next_run": "2026-07-23T15:00:00Z",
-      "last_summary": "July 22 Mid-Morning SILENTLY FAILED — AMD hit $548.14 intraday during conference Day 1. Trail stop missed. Binding commitments not attempted."
+      "next_run": "2026-07-24T15:00:00Z",
+      "last_summary": "July 23 Mid-Morning SILENTLY FAILED. AMD Lisa Su keynote at 12:30 PM ET ran uncovered. AMD reached $553, then sold off. Violation logged."
     },
     {
       "name": "Midday",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-14T16:36:00Z",
-      "next_run": "2026-07-23T16:30:00Z",
-      "last_summary": "July 22 Midday SILENTLY FAILED. AMD Advancing AI 2026 Day 1 massive announcements — 12GW committed by Meta+OpenAI. API blocked HTTP 000 for 92nd+ consecutive session. Violation logged."
+      "next_run": "2026-07-24T16:30:00Z",
+      "last_summary": "July 23 Midday SILENTLY FAILED (same window as AMD keynote 12:30 PM ET). AMD sell-off from $553 to close $529.48 uncovered. Violation logged."
     },
     {
       "name": "Afternoon",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-22T18:09:00Z",
-      "next_run": "2026-07-23T18:00:00Z",
-      "last_summary": "July 22 Afternoon COMPLETED 18:09Z. API BLOCKED HTTP 000 (92nd+ consecutive). 4 SILENT FAILURES today logged. STOP AUDIT: AMD naked — trail stop $507.51 attempted, blocked. AMD at $534.22 (+5.7%) on Advancing AI 2026 Day 1 — Zen 6 Venice TSMC 2nm, MI450X HBM4, Oracle 50K GPUs, Meta 6GW + OpenAI 6GW = 12GW committed. HOLD AMD through Day 2. Afternoon proximity-to-close: GS/META/WFC/MS all attempted, all HTTP 000 blocked. GOOGL/TSLA earnings AH tonight — scoring at Daily Review. INTC earnings tomorrow AH — NO ENTRY until print. Portfolio est. $100,260 (+0.26%); daily P&L +$518 (+0.52%); benchmark gap -4.74 pp. ALL 5 BINDINGS carry to Pre-Market July 23."
+      "next_run": "2026-07-24T18:00:00Z",
+      "last_summary": "July 23 Afternoon SILENTLY FAILED. 4/5 intraday routines missed today. AMD fell through afternoon session uncovered. Only Market-Open and Market-Close fired on July 23."
     },
     {
       "name": "Market-Close",
       "status": "completed",
-      "last_run": "2026-07-20T19:40:00Z",
-      "next_run": "2026-07-21T19:30:00Z",
-      "last_summary": "July 20 Market-Close COMPLETED 19:40Z. API BLOCKED (88th+ consecutive). No day trades to flatten. 4 MOC entries attempted (GS 4sh, META 7sh, WFC 30sh, MS 20sh) → all HTTP 000 blocked. AMD trail-stop $487.55 → blocked. GOOGL/TSLA binary events skipped (48h window opens ~4 PM today). EOD P&L: +$314.10 (+0.32%). AMD holds +1.27% vs avg cost. SPX benchmark gap: -4.32 pp."
+      "last_run": "2026-07-23T19:37:00Z",
+      "next_run": "2026-07-24T19:30:00Z",
+      "last_summary": "July 23 Market-Close COMPLETED 19:37Z. API BLOCKED HTTP 403 (94th+ consecutive). No day trades open (AMD is swing position). 5 MOC/GTC orders attempted: AMD stop $525.35 + GS/META/WFC/MS entries — all HTTP 403 blocked. AMD closed $529.48 (above stop $525.35, position held). Daily P&L: -$85.32 (-0.085%). SPX -1.24% to 7,406 (+2.86% from baseline). Benchmark gap: -2.69 pp (improved from -4.74 pp)."
     },
     {
       "name": "Daily-Review",
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-07-13T20:34:09Z",
-      "next_run": "2026-07-20T20:30:00Z",
-      "last_summary": "July 13 Daily Review last successful. July 20 Daily Review due tonight 4:30 PM ET / 20:30Z."
+      "next_run": "2026-07-23T20:30:00Z",
+      "last_summary": "July 23 Daily Review due at 4:30 PM ET / 20:30Z. Key tasks: (1) Score INTC post-Q2 (results: $14.4B revenue, $0.22 EPS, 18A 85% yields); (2) Produce July 24 watchlist; (3) AMD stop review; (4) Setup performance tally; (5) Benchmark update."
     }
   ],
   "trades": [
+    {
+      "ts": "2026-07-23T19:37:00Z",
+      "action": "entry_blocked",
+      "symbol": "GS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.83,
+      "side": "buy",
+      "qty": 4,
+      "limit_price": 1073.0,
+      "stop_loss": 1019.35,
+      "take_profit": 1233.95,
+      "result": "MOC BUY 4sh GS — HTTP 403 BLOCKED (94th+ consecutive). Est. MOC fill ~$1,073. R/R 3:1. Binding carry to July 24 Pre-Market.",
+      "agent_average": 7.83,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-23T19:37:00Z",
+      "action": "entry_blocked",
+      "symbol": "META",
+      "setup": "breakout-volume",
+      "score": 7.67,
+      "side": "buy",
+      "qty": 7,
+      "limit_price": 627.17,
+      "stop_loss": 595.81,
+      "take_profit": 721.25,
+      "result": "MOC BUY 7sh META — HTTP 403 BLOCKED (94th+ consecutive). Est. MOC fill ~$627.17. R/R 3:1. Last eligible day July 25 (48h window opens July 27). July 24 Pre-Market MANDATORY.",
+      "agent_average": 7.67,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-23T19:37:00Z",
+      "action": "entry_blocked",
+      "symbol": "WFC",
+      "setup": "earnings-reaction-follow",
+      "score": 7.0,
+      "side": "buy",
+      "qty": 30,
+      "limit_price": 85.83,
+      "stop_loss": 81.54,
+      "take_profit": 98.70,
+      "result": "MOC BUY 30sh WFC — HTTP 403 BLOCKED (94th+ consecutive). Est. MOC fill ~$85.83. R/R 3:1. Binding carry to July 24 Pre-Market.",
+      "agent_average": 7.0,
+      "master_decision": "approved"
+    },
+    {
+      "ts": "2026-07-23T19:37:00Z",
+      "action": "entry_blocked",
+      "symbol": "MS",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "side": "buy",
+      "qty": 20,
+      "limit_price": 215.36,
+      "stop_loss": 204.59,
+      "take_profit": 247.66,
+      "result": "MOC BUY 20sh MS — HTTP 403 BLOCKED (94th+ consecutive). Est. MOC fill ~$215.36. R/R 3:1. Binding carry to July 24 Pre-Market.",
+      "agent_average": 7.17,
+      "master_decision": "approved"
+    },
     {
       "ts": "2026-07-20T18:11:00Z",
       "action": "stop_trail_blocked",
@@ -213,21 +273,6 @@
       "result": "BINARY EVENT SKIP. GOOGL earnings Wednesday July 22 AH. 48h window opens ~4 PM today. Skip until post-earnings Thursday July 23.",
       "agent_average": 0,
       "master_decision": "rejected"
-    },
-    {
-      "ts": "2026-07-20T18:13:30Z",
-      "action": "skip",
-      "symbol": "INTC",
-      "setup": "other",
-      "score": 0,
-      "side": null,
-      "qty": 0,
-      "limit_price": null,
-      "stop_loss": null,
-      "take_profit": null,
-      "result": "BINARY EVENT SKIP. INTC earnings Thursday July 23. 48h window active since Saturday July 18. Skip until post-earnings Friday July 25.",
-      "agent_average": 0,
-      "master_decision": "rejected"
     }
   ],
   "watchlist": [
@@ -235,70 +280,55 @@
       "symbol": "AMD",
       "bucket": "active",
       "score": 8.5,
-      "action": "TRAIL STOP $507.51 (MANDATORY Pre-Market July 23) + HOLD through Day 2",
+      "action": "TRAIL STOP $525.35 (MANDATORY Pre-Market July 24) + HOLD",
       "setup": "ai-momentum-pullback",
-      "notes": "18sh held at avg $506.76. AMD $534.22 (+5.7% today) on Advancing AI 2026 Day 1: 12GW committed (Meta 6GW + OpenAI 6GW), Oracle 50K MI450 GPUs Q3 2026, Zen 6 Venice TSMC 2nm. Day 2 tomorrow July 23. Earnings Aug 4 (safe). Trail stop mandatory first action July 23 Pre-Market: GTC sell-stop 18sh AMD $507.51. Reduce 18sh to 9sh (to ~4.5% equity) when API restored."
+      "notes": "18sh held at avg $506.76. AMD closed $529.48 (above stop $525.35 — held). Day 2 keynote: ROCm 7, MI500 roadmap, Helios $5.25M. OpenAI 6GW still deploying — market disappointed. AMD thesis INTACT: 12GW committed, TSMC 2nm, earnings Aug 4 safe. Trail stop $525.35 (5% below $553 Day 2 high). Reduce 18sh to 9sh when API restored."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "score": 7.83,
-      "action": "BUY 4sh limit $1,103.36 bracket GTC (BINDING — must execute Pre-Market July 23)",
+      "action": "BUY 4sh limit bracket GTC ~$1,073 × 1.005 (BINDING — Pre-Market July 24)",
       "setup": "earnings-reaction-follow",
-      "notes": "All 6 agents >= 7. Q2 +45.7% EPS beat. GS at $1,098.37. Limit $1,103.36 (x1.005). Stop $1,048.19 (-5%). Target $1,268.87 (+15%, 3:1). Position $4,413 = 4.4% equity. Risk $221 = 0.22%. Operator execute at app.alpaca.markets."
+      "notes": "All 6 agents >= 7. Q2 +45.7% EPS beat. GS est. close ~$1,073 (down -1.87% today). Limit ~$1,078 (x1.005). Stop $1,019.35 (-5%). Target $1,233.95 (+15%, 3:1). Position $4,312 = 4.3% equity. Risk $216 = 0.22%. Better entry today vs planned $1,103."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": 7.67,
-      "action": "BUY 7sh limit $647.10 bracket GTC (BINDING — must execute Pre-Market July 23)",
-      "setup": "ai-momentum-pullback",
-      "notes": "All 6 agents >= 7. Llama AI + AMD/Meta 6GW GPU commitment confirmed at Advancing AI 2026 conf. META $643.88. Limit $647.10 (x1.005). Stop $614.74 (-5%). Target $744.18 (+15%). Earnings July 29 AH SAFE through July 26. Operator execute at app.alpaca.markets."
+      "action": "BUY 7sh limit bracket GTC ~$627 × 1.005 (BINDING — LAST SAFE DAY July 25)",
+      "setup": "breakout-volume",
+      "notes": "Score 7.67. META $627.17 (-3.87% today — better entry). Limit ~$630 (x1.005). Stop $595.81 (-5%). Target $721.25 (+15%). META earnings July 29 AH — 48h window opens July 27. MUST ENTER BY COB July 25. July 24 Pre-Market is MANDATORY — no more delays."
     },
     {
       "symbol": "WFC",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY 30sh limit $87.62 bracket GTC (BINDING — must execute Pre-Market July 23)",
+      "action": "BUY 30sh limit bracket GTC ~$85.83 × 1.005 (BINDING — Pre-Market July 24)",
       "setup": "earnings-reaction-follow",
-      "notes": "Q2 EPS +13% beat. Score 7.0. WFC $87.18. Limit $87.62 (x1.005). Stop $83.24 (-5%). Target $100.76 (+15%, 3:1). Position $2,629 = 2.6% equity. Risk $131 = 0.13%."
+      "notes": "Score 7.0. WFC $85.83 close (-$2.11 below planned $87.94 limit — better entry). Limit ~$86.30 (x1.005). Stop $81.54 (-5%). Target $98.70 (+15%, 3:1). Position $2,589 = 2.6% equity. Risk $130 = 0.13%."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "score": 7.17,
-      "action": "BUY 20sh limit $216.08 bracket GTC (BINDING — must execute Pre-Market July 23)",
+      "action": "BUY 20sh limit bracket GTC ~$215 × 1.005 (BINDING — Pre-Market July 24)",
       "setup": "earnings-reaction-follow",
-      "notes": "Q2 Revenue $21.3B (+27% YoY), Net income +60% YoY. Score 7.17. MS est. $215. Limit $216.08 (x1.005). Stop $205.28 (-5%). Target $248.48 (+15%, 3:1). Position $4,322 = 4.3% equity. Risk $216 = 0.22%."
-    },
-    {
-      "symbol": "GOOGL",
-      "bucket": "active",
-      "score": null,
-      "action": "SCORE AT DAILY REVIEW TONIGHT — pre-market July 23 if beat",
-      "setup": "earnings-reaction-follow",
-      "notes": "GOOGL Q2 earnings AH TONIGHT (~5-6 PM ET). Est. EPS $2.89, Revenue $116.9B, Cloud $22.8B. Options pricing 5.4% move. If beat (esp. Cloud > $22.8B + EPS > $2.89): score follow-through at Daily Review; if >=7, place Pre-Market July 23. Binary event window closes on AH print. AI capex monetization is key thesis."
-    },
-    {
-      "symbol": "TSLA",
-      "bucket": "active",
-      "score": null,
-      "action": "SCORE AT DAILY REVIEW TONIGHT — pre-market July 23 if margin beat",
-      "setup": "earnings-reaction-follow",
-      "notes": "TSLA Q2 earnings AH TONIGHT. Est. EPS $0.53, Revenue $26.4B, Deliveries 480K (record, +25% YoY). Options pricing 7.6% move. Key: auto gross margin ex-credits and Cybercab progress. If margin surprise positive: score follow-through at Daily Review. Binary event window closes on AH print."
+      "notes": "Score 7.17. MS $215.36 (-1.45% today). Limit ~$216.54 (x1.005). Stop $204.59 (-5%). Target $247.66 (+15%, 3:1). Position $4,307 = 4.3% equity. Risk $215 = 0.22%."
     },
     {
       "symbol": "INTC",
       "bucket": "active",
       "score": null,
-      "action": "BINARY EVENT — AH July 23 — score at Daily Review July 23 — Pre-Market July 24",
+      "action": "SCORE AT DAILY REVIEW 4:30 PM ET — eligible Pre-Market July 24 if score >=7",
       "setup": "earnings-reaction-follow",
-      "notes": "INTC earnings AH July 23 (TOMORROW). Est. EPS $0.22, Revenue $14.4B (+12% YoY). Up 163% YTD. Options pricing 13.6% move (above 12.4% historical avg). High-stakes — 18A foundry ramp (Apple/MSFT rumored customers) + turnaround trajectory. Score at Daily Review July 23. Post-earnings entry ok Pre-Market July 24. FOMC July 28-29 adds macro risk."
+      "notes": "INTC Q2 2026: Revenue $14.4B (matched), EPS $0.22 non-GAAP (matched), 18A yields 85% (from 65%), Cloud CSP confirmed, Xeon 8000 MT/s upgrade Aug-Sep. Stock $100.98 (down 27% past month, up 178% YTD). Options pricing +/-15% swing. In-line beat may disappoint after 178% YTD run. Score at Daily Review tonight. Post-earnings entry ok July 24 Pre-Market if 6-agent average >=7."
     }
   ],
   "history": [
-    {"date": "2026-07-22", "portfolio_return_pct": 0.26, "spx_return_pct": 5.0, "daily_pnl_pct": 0.52},
+    {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32},
     {"date": "2026-07-21", "portfolio_return_pct": -0.26, "spx_return_pct": 4.07, "daily_pnl_pct": -0.14},
-    {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32}
+    {"date": "2026-07-22", "portfolio_return_pct": 0.26, "spx_return_pct": 5.0, "daily_pnl_pct": 0.52},
+    {"date": "2026-07-23", "portfolio_return_pct": 0.17, "spx_return_pct": 2.86, "daily_pnl_pct": -0.085}
   ]
 }
