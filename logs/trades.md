@@ -4,6 +4,434 @@
 
 ---
 
+## 2026-07-23 — Pre-Market (8:00 AM ET / 12:06 UTC — API BLOCKED — 93rd+ consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-23T12:06:26Z ✓  
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **93rd+ consecutive blocked session**  
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.  
+**Time (ET):** 8:06 AM ET — Pre-Market routine window (8:00–9:25 AM ET)
+
+---
+
+### PREDECESSOR AUDIT — July 23, 2026
+
+| Routine | Heartbeat | Status |
+|---|---|---|
+| Afternoon (Jul 22 18:08Z) | ✅ FOUND | Completed — 5 orders all HTTP 000 |
+| Daily Review (Jul 22 20:30Z) | NOT FOUND | **SILENT FAILURE** |
+
+---
+
+### USER SUGGESTION INBOX
+
+GitHub issues check: `GET /repos/Miles830/trading-agent/issues?labels=user-suggestion&state=open` → **0 open suggestions.** No operator-submitted ideas to process this routine.
+
+---
+
+### MARKET CONDITIONS — July 23, 2026 (~8:06 AM ET pre-market — web search)
+
+| Symbol | Pre-Mkt Price | Change | Notes |
+|---|---|---|---|
+| AMD | ~$525.19 | −4.29% | GOOGL/TSLA capex-fear contagion; Day 2 keynote 12:30 PM ET (Lisa Su) |
+| GOOGL | ~$327 est. | −4.5% | Post-earnings capex hike fear; cloud +82% but $195-205B capex 2026 |
+| TSLA | ~$371 est. | −6.0% | Q2 EPS $0.33 (miss $0.53 est.); operating margin 1.4%; FCF −$1.09B |
+| SPX | — | — | July 22 close: 7,498.96 (−0.14%); Nasdaq −0.57% to 25,690.90 |
+| GS | ~$1,098 est. | flat/dn | Risk-off headwind but financials resilient post Q2 beat |
+| META | ~$644 est. | flat/dn | Earnings Jul 29 SAFE (window opens Jul 27); cloud ad story intact |
+| WFC | ~$87 est. | flat/dn | Q2 EPS +13% beat (Jul 14); financials resilient |
+| MS | ~$215 est. | flat/dn | Q2 Revenue +27% YoY (Jul 15); financials resilient |
+| BTC | ~$60K est. | — | Below $82K crypto threshold; no crypto entry |
+| Brent Oil | $94.07 | +3.4% | 11th consecutive night US strikes on Iran — inflation tail risk |
+
+**MACRO (pre-market July 23):**
+- SPX July 22 close 7,498.96 (−0.14%). Nasdaq −0.57%. Risk-off bias persisting.
+- Oil Brent $94.07 (+3.4%) — Iran strikes continuing; stagflation risk elevated.
+- FOMC July 28-29 next week — no new rate action expected but tone matters.
+- Earnings season: 88% S&P 500 beat rate — strong fundamental backdrop despite today's AI capex fears.
+- INTC reports AH tonight (~5 PM ET) — binary event still active; post-earnings ok July 24.
+- AMD Advancing AI 2026 Day 2: Lisa Su keynote 9:30 AM PT / 12:30 PM ET — Helios timelines, ROCm, MI500 roadmap preview.
+
+**POST-EARNINGS RESULTS (AH July 22 — binary events now CLOSED; post-earnings entries eligible):**
+
+**GOOGL Q2 2026:**
+- Revenue: $119.8B (+24.2% YoY) — BEAT
+- Google Cloud: +82% YoY to $24.8B; backlog $514B — extraordinary
+- EPS: $9.11 (beat $2.88 est. — includes some non-recurring items)
+- CapEx guidance: $195-205B 2026 (raised from $190B) — INVESTOR CONCERN
+- Stock AH: $337-$350 range; pre-market est. −4.5% to ~$327
+
+**TSLA Q2 2026:**
+- Revenue: $28.24B (+26% YoY) — BEAT ($25.71B est.)
+- Deliveries: 480,126 (+25% YoY; vs 406K consensus = +18.2% beat)
+- EPS non-GAAP: $0.33 (MISS vs $0.53 est.; −37.7% shortfall)
+- GAAP EPS: $0.32 (net income $1.11B, −5% YoY)
+- Operating income: $398M (−57% YoY); operating margin 1.4%
+- CapEx: $5.79B (+142% YoY); FCF: −$1.09B (negative flip from +$1.44B in Q1 2026)
+- Pre-market est. −6.0%
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected — 93rd+ consecutive)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD (18sh)** — NAKED — no resting stop at Alpaca (93rd+ consecutive API blockage)  
+AMD premarket ~$525.19 (−4.29% from Jul 22 close $534.22; GOOGL/TSLA capex contagion).  
+Trail stop: $507.51 (5% below Jul 22 high $534.22). AMD still ABOVE stop ($525.19 > $507.51 ✓).
+
+```bash
+# ATTEMPT: AMD GTC SELL-STOP 18sh at $507.51
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":"18","side":"sell","type":"stop","stop_price":"507.51","time_in_force":"gtc"}'
+# Result: HTTP 000 — BLOCKED (93rd+ consecutive)
+```
+
+**GUARDRAIL VIOLATION:** AMD 18sh naked (no resting stop at Alpaca). 93rd consecutive block.  
+**OPERATOR MANDATORY: log into app.alpaca.markets → GTC sell-stop 18sh AMD at $507.51 NOW.**
+
+---
+
+### AMD POSITION REVIEW
+
+AMD at ~$525.19 premarket (−$9.03 from Jul 22 close $534.22):
+- **Unrealized P&L:** 18 × ($525.19 − $506.76) = **+$331.74 (+3.63%)**
+- **Position value:** 18 × $525.19 = **$9,453.42 (9.4% of equity — over 5% cap, legacy)**
+- Conference Day 2: Lisa Su keynote 12:30 PM ET — Helios deployment, ROCm, MI500 roadmap
+- Premarket drop is GOOGL/TSLA contagion — NOT AMD-specific
+- AMD thesis intact: 12 GW committed (Meta+OpenAI), Oracle 50K GPUs, Zen 6 EPYC
+- Trail stop $507.51 — AMD currently $17.68 ABOVE stop (3.5% cushion) ✓
+- **DECISION: HOLD through Day 2 keynote. Reduce 18→9sh when API restored.**
+- Earnings Aug 4 — safe window through Aug 1
+
+---
+
+### BINDING COMMITMENT ORDERS — ALL ATTEMPTED, ALL BLOCKED (93rd+ consecutive)
+
+Per CLAUDE.md Deployment Bias: all 4 entries (GS/META/WFC/MS) scored ≥7 from prior sessions — MANDATORY execution. All 5 curl commands attempted; all HTTP 000 (egress policy denial).
+
+```bash
+# 1. GS 4sh LIMIT BRACKET GTC — entry $1,103.36 / stop $1,048.19 / target $1,268.87 (R/R 3:1)
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1103.36","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1048.19"},"take_profit":{"limit_price":"1268.87"}}'
+# Result: HTTP 000 — BLOCKED (93rd+ consecutive)
+
+# 2. META 7sh LIMIT BRACKET GTC — entry $647.10 / stop $614.74 / target $744.18 (R/R 3:1)
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"META","qty":7,"side":"buy","type":"limit","limit_price":"647.10","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"614.74"},"take_profit":{"limit_price":"744.18"}}'
+# Result: HTTP 000 — BLOCKED
+
+# 3. WFC 30sh LIMIT BRACKET GTC — entry $87.62 / stop $83.24 / target $100.76 (R/R 3:1)
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"87.62","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"83.24"},"take_profit":{"limit_price":"100.76"}}'
+# Result: HTTP 000 — BLOCKED
+
+# 4. MS 20sh LIMIT BRACKET GTC — entry $216.08 / stop $205.28 / target $248.48 (R/R 3:1)
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"216.08","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"205.28"},"take_profit":{"limit_price":"248.48"}}'
+# Result: HTTP 000 — BLOCKED
+```
+
+**→ All 5 orders blocked. MANDATORY OUTPUT CONTRACT (A): POST calls attempted; HTTP 000 (not 200). Carry all as BINDING COMMITMENTS to Market-Open July 23 or restored API.**
+
+---
+
+### POST-EARNINGS SCORING — GOOGL (6-Agent Analysis)
+
+**Setup candidate:** `earnings-reaction-follow` (buying post-earnings dip on strong cloud results)
+
+**Sub-Agent 1 — Fundamentals:** Revenue $119.8B (+24.2%), Google Cloud +82% to $24.8B (backlog $514B), EPS beat. Extraordinary cloud acceleration. BUT: CapEx $195-205B = margin pressure and FCF risk near-term. P/E elevated but cloud backlog supports growth premium. **Score: 7/10**
+
+**Sub-Agent 2 — Technical:** Pre-market gap −4.5% to ~$327. Breaking below July 22 close $342. Cannot confirm 2-of-5 mandatory indicator stack (API blocked). No stochastic, MACD, volume oscillator, or volume spike data available. Bearish gap-down — does not meet 2-of-5 confirmation rule. **Score: 4/10** (confirmation stack FAILED — 0 of 5 confirmable)
+
+**Sub-Agent 3 — Sentiment:** CNBC headline: "Tesla, Alphabet stock falls as AI spending concerns spook investors." Capex fear narrative dominating financial media. No X sentiment (xAI API unavailable). Base score 5; modifier −1 (mildly bearish confirmed by multiple outlets) → clamped. **Score: 4/10**
+
+**Sub-Agent 4 — Macro:** Oil Brent $94.07 (+3.4%), Iran strikes escalating. FOMC July 28-29 next week. Nasdaq −0.57% July 22. Risk-off environment. Dollar strength hurts GOOGL international revenue. **Score: 4/10**
+
+**Sub-Agent 5 — Risk:** Entry ~$327, stop $310.65 (−5%), target $376.05 (+15%) — R/R 3:1 ✓. Position 4sh × $327 = $1,308 = 1.3% equity ✓ (<5%). Communication Services sector: no other holdings, well under 25% cap ✓. Cash floor intact ✓. **Score: 7/10**
+
+**Sub-Agent 6 — Tech Analyst:** Cloud +82%, $514B backlog, Gemini Ultra, DeepMind, Google TPU infrastructure. CapEx increase = investing in AI leadership. Strongest AI search + cloud infrastructure alongside AWS/Azure. **Score: 8/10**
+
+| Agent | Score |
+|---|---|
+| Fundamentals | 7/10 |
+| Technical | 4/10 |
+| Sentiment | 4/10 |
+| Macro | 4/10 |
+| Risk | 7/10 |
+| Tech Analyst | 8/10 |
+| **Average** | **5.67/10** |
+
+**Master Agent Decision: REJECTED**
+- Average 5.67 < 7 threshold ✗
+- Agents ≥7: Fundamentals, Risk, Tech Analyst = 3 of 6 (need 4 of 6) ✗
+- Technical fails 2-of-5 confirmation stack (0 indicators confirmable with API blocked)
+- Macro (4) and Sentiment (4) too weak in risk-off environment
+
+---
+
+### POST-EARNINGS SCORING — TSLA (6-Agent Analysis)
+
+**Sub-Agent 1 — Fundamentals:** Revenue $28.24B (+26%, BEAT) on deliveries. But: EPS $0.33 (MISS $0.53 est. by −37.7%), operating income −57% YoY, operating margin 1.4%, FCF −$1.09B (negative flip). P/E ~$370/ann. EPS = ~280x. Margins collapsing. **Score: 3/10**
+
+**Sub-Agent 2 — Technical:** Pre-market gap −6%. Bearish continuation. Cannot confirm indicators. **Score: 3/10**
+
+**Sub-Agent 3 — Sentiment:** Revenue beat headline overshadowed by profit collapse narrative. FCF negative headline is extremely bearish. Mildly bearish modifier −1. **Score: 2/10**
+
+**Sub-Agent 4 — Macro:** Risk-off. EV sector faces price war + margin pressure. No macro tailwind for TSLA. **Score: 3/10**
+
+**Sub-Agent 5 — Risk:** Even if price drops to $370, R/R is fine (stop $351.50, target $425.50). BUT fundamental thesis is deteriorating — stop will likely be hit given earnings quality. **Score: 3/10**
+
+**Sub-Agent 6 — Tech Analyst:** Optimus, FSD V13, energy storage (+40% YoY) are bright spots. But auto execution failing and FCF negative means less cash for R&D. **Score: 5/10**
+
+| Agent | Score |
+|---|---|
+| Fundamentals | 3/10 |
+| Technical | 3/10 |
+| Sentiment | 2/10 |
+| Macro | 3/10 |
+| Risk | 3/10 |
+| Tech Analyst | 5/10 |
+| **Average** | **3.17/10** |
+
+**Master Agent Decision: STRONGLY REJECTED**
+- Average 3.17 — not investable
+- Agents ≥7: none = 0 of 6 ✗
+- Risk agent 3/10 < 6 = AUTO-VETO ✗
+- Deteriorating profitability (FCF −$1.09B, operating margin 1.4%) — no thesis
+
+---
+
+### INTC SKIP — BINARY EVENT EXEMPTION 2
+
+**Intel Q2 2026 earnings: reports AH tonight (~5 PM ET)**  
+48h window opened July 21; active through July 24 pre-market. **Exemption 2 applies — no entry until post-print July 24 Pre-Market.**  
+Options imply 15% move. INTC +186% YTD. Consensus: revenue $14.4B, EPS $0.22 non-GAAP.  
+**ACTION: Defer to Daily Review July 23 for post-earnings scoring → Pre-Market July 24 entry if approved.**
+
+---
+
+### PORTFOLIO STATE — Pre-Market July 23, 2026
+
+| Item | Value |
+|---|---|
+| **Total Equity (est.)** | ~$100,097 |
+| **Cash** | ~$90,644 (90.5%) — 5% floor ✓ |
+| **AMD** | 18sh × $525.19 = $9,453 (9.4%) — over 5% cap, NAKED |
+| **P&L vs $100K initial** | +$97 (+0.10%) |
+| **SPX May 1 baseline → Jul 22 close** | 7,200 → 7,498.96 = +4.15% |
+| **Portfolio vs SPX gap** | −4.05 pp (widening) |
+| **20-day underperform flag** | ACTIVE (93rd+ session) |
+| **Daily P&L** | AMD: 18 × ($525.19−$534.22) = −$162.54 (−0.16%) |
+| **Circuit breaker** | −0.16% today — NOT tripped (far from −3%) |
+
+---
+
+### JULY 23 BINDING COMMITMENTS — CARRY FORWARD (ALL BLOCKED)
+
+| Priority | Action | Symbol | Details | Score | Status |
+|---|---|---|---|---|---|
+| 1 (MANDATORY) | SELL-STOP | AMD | 18sh GTC stop $507.51 (trail) | — | HTTP 000 — 93rd block |
+| 2 | BUY | GS | 4sh limit bracket GTC $1,103.36/$1,048.19/$1,268.87 | 7.83 | HTTP 000 — 93rd block |
+| 3 | BUY | META | 7sh limit bracket GTC $647.10/$614.74/$744.18 | 7.67 | HTTP 000 — 93rd block |
+| 4 | BUY | WFC | 30sh limit bracket GTC $87.62/$83.24/$100.76 | 7.0 | HTTP 000 — 93rd block |
+| 5 | BUY | MS | 20sh limit bracket GTC $216.08/$205.28/$248.48 | 7.17 | HTTP 000 — 93rd block |
+| 6 | DEFER | INTC | Post-earnings at Daily Review tonight (AH Jul 23) | TBD | Exemption 2 active |
+
+**GOOGL:** REJECTED (avg 5.67 — technical 4/10, sentiment 4/10, macro 4/10; only 3/6 agents ≥7).  
+**TSLA:** STRONGLY REJECTED (avg 3.17 — FCF negative, operating margin 1.4%, EPS miss −37.7%).
+
+---
+
+### YAML DECISION LOG — PRE-MARKET (July 23)
+
+```yaml
+---
+ts: 2026-07-23T12:06:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: AMD GTC SELL-STOP 18sh at $507.51 trail (5% below Jul 22 high $534.22) attempted → HTTP 000 BLOCKED (93rd+). AMD naked (no resting stop at Alpaca).
+size_pct: 9.4
+stop: 507.51
+target:
+result_pct:
+master_notes: "Proxy CONNECT rejected HTTP 000 — 93rd+ consecutive. AMD 18sh naked since June 20. OPERATOR MANDATORY: place GTC sell-stop 18sh AMD at $507.51 on app.alpaca.markets immediately."
+---
+ts: 2026-07-23T12:06:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS Q2 2026 beat (Jul 14; EPS $10.90 vs $8.73 est.); limit bracket GTC at $1,103.36 / stop $1,048.19 / target $1,268.87 attempted → HTTP 000 BLOCKED (93rd+).
+size_pct: 4.4
+stop: 1048.19
+target: 1268.87
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "Score 7.83 — all 6 agents ≥7. Order attempted, HTTP 000 (proxy block, 93rd+ consecutive). Carry as BINDING COMMITMENT to Jul 24 Pre-Market."
+---
+ts: 2026-07-23T12:06:00Z
+action: entry
+symbol: META
+bucket: active
+setup: sector-rotation
+score: 7.67
+thesis: META cloud ad revenue story + WF PT $767; limit bracket GTC $647.10 / stop $614.74 / target $744.18 attempted → HTTP 000 BLOCKED (93rd+). Earnings Jul 29 — safe window through Jul 26.
+size_pct: 4.5
+stop: 614.74
+target: 744.18
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "Score 7.67 — all 6 agents ≥7. Order attempted, HTTP 000 (proxy block, 93rd+). Earnings window opens Jul 27 — LAST ENTRY DAY IS JUL 26. Carry to Jul 24."
+---
+ts: 2026-07-23T12:06:00Z
+action: entry
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: WFC Q2 2026 EPS $1.96 (+13% beat Jul 14); limit bracket GTC $87.62 / stop $83.24 / target $100.76 attempted → HTTP 000 BLOCKED (93rd+).
+size_pct: 2.6
+stop: 83.24
+target: 100.76
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "Score 7.0 — all 6 agents ≥7. Order attempted, HTTP 000 (proxy block, 93rd+). Carry to Jul 24."
+---
+ts: 2026-07-23T12:06:00Z
+action: entry
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: MS Q2 2026 Revenue $21.3B (+27% YoY Jul 15); limit bracket GTC $216.08 / stop $205.28 / target $248.48 attempted → HTTP 000 BLOCKED (93rd+).
+size_pct: 4.3
+stop: 205.28
+target: 248.48
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "Score 7.17 — all 6 agents ≥7. Order attempted, HTTP 000 (proxy block, 93rd+). Carry to Jul 24."
+---
+ts: 2026-07-23T12:06:00Z
+action: skip
+symbol: GOOGL
+bucket: active
+setup: earnings-reaction-follow
+score: 5.67
+thesis: Post-earnings dip play rejected. Cloud +82% extraordinary but capex fear ($195-205B) + risk-off macro + technical gap-down −4.5% = only 3/6 agents ≥7.
+size_pct: 0
+stop:
+target:
+result_pct:
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 4
+  macro: 4
+  risk: 7
+  tech_analyst: 8
+agent_average: 5.67
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED: average 5.67 < 7. Technical 4 (0-of-5 indicator stack confirmable — API blocked), Sentiment 4 (capex fear dominant), Macro 4 (oil $94, FOMC next week). Only Fundamentals/Risk/Tech ≥7 = 3/6 agents (need 4). Not an exemption — score failure. xAI API unavailable (degraded gracefully). Re-score if macro clears or technical reversal confirms."
+---
+ts: 2026-07-23T12:06:00Z
+action: skip
+symbol: TSLA
+bucket: active
+setup: earnings-reaction-fade
+score: 3.17
+thesis: TSLA Q2 2026 massive earnings miss: EPS $0.33 (vs $0.53 est.), operating margin 1.4%, FCF −$1.09B, operating income −57% YoY. STRONGLY REJECTED.
+size_pct: 0
+stop:
+target:
+result_pct:
+agent_scores:
+  fundamentals: 3
+  technical: 3
+  sentiment: 2
+  macro: 3
+  risk: 3
+  tech_analyst: 5
+agent_average: 3.17
+agents_above_7: 0
+master_decision: rejected
+master_notes: "STRONGLY REJECTED: average 3.17. Risk Agent AUTO-VETO (3 < 6). EPS miss −37.7% vs estimate, FCF negative for first time since Q1 2025, operating income −57% YoY, operating margin 1.4%. Revenue beat on deliveries insufficient to offset profit collapse. P/E ~280x on current annualized earnings. No thesis for long entry."
+---
+ts: 2026-07-23T12:06:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: other
+score: 0
+thesis: INTC earnings AH tonight Jul 23 — binary event exemption 2 active. 48h window opened Jul 21; active through Jul 24 pre-market.
+size_pct: 0
+stop:
+target:
+result_pct:
+master_notes: "EXEMPTION 2: INTC reports after-hours tonight ~5 PM ET. Options imply 15% move. Post-earnings scoring at Daily Review tonight. Entry allowed starting Jul 24 Pre-Market if approved."
+---
+```
+
+---
+
 ## 2026-07-22 — Afternoon (2:00 PM ET / 18:09 UTC — API BLOCKED — 92nd+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-22T18:08:59Z ✓
