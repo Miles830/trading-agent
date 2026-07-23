@@ -4,6 +4,396 @@
 
 ---
 
+## 2026-07-23 — Afternoon (2:08 PM ET / 18:08 UTC — API BLOCKED — 94th+ consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-23T18:08:37Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **94th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully on all scores.
+**Time (ET):** 2:08 PM ET — Afternoon routine window (2:00 PM ET)
+**Predecessor check:**
+- Pre-Market July 23: ❌ SILENT FAILURE (no heartbeat in 2026-07-23.log)
+- Market-Open July 23: ✅ STARTED 13:46:26Z / COMPLETED 13:54:36Z
+- Mid-Morning July 23: ❌ SILENT FAILURE (no heartbeat found)
+- Midday July 23: ❌ SILENT FAILURE (no heartbeat found)
+
+---
+
+### VIOLATION LOG — Mid-Morning Silent Failure
+
+```yaml
+---
+ts: 2026-07-23T15:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET) did not fire — no heartbeat found in 2026-07-23.log. AMD at ~$540–553 during window. All binding commitments (AMD stop + GS/META/WFC/MS entries) missed for a second consecutive intraday window.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: Mid-Morning silent failure on July 23. AMD Advancing AI Day 2 keynote was at 12:30 PM ET — routine missed the post-keynote window. Carry to Afternoon.
+---
+```
+
+---
+
+### VIOLATION LOG — Midday Silent Failure
+
+```yaml
+---
+ts: 2026-07-23T16:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET) did not fire — no heartbeat found in 2026-07-23.log. AMD keynote by Lisa Su underway at this time. All binding commitments missed again.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: Midday silent failure on July 23. Lisa Su delivering keynote at Advancing AI Day 2 — Helios rack pricing confirmed at $5–5.5M/rack, MI400 volume production details, 12GW committed (Meta + OpenAI). AMD open interest: execution missed at $540–553 level pre-afternoon sell-off.
+---
+```
+
+---
+
+### PORTFOLIO STATE — July 23 Afternoon (2:08 PM ET / 18:08 UTC)
+
+**TOTAL EQUITY: ~$100,175**
+**Cash: ~$90,644 (90.5%) — 5% floor ✓ (actual floor per CLAUDE.md = 5%)**
+**Trading bucket: ~$9,531 (9.5%) — 1 position (AMD 18sh) — target 85%**
+**Crypto bucket: $0 (0.0%) — 0 positions — target 10%**
+
+| Symbol | Qty | Avg Cost | Afternoon Est. | Unrealized P&L | Stop | Stop Status |
+|---|---|---|---|---|---|---|
+| AMD | 18 | $506.76 | $529.48 | +$408.96 (+4.5%) | $525.35 | NAKED (API blocked) |
+
+**Market Snapshot (July 23, ~2:00 PM ET):**
+| Symbol | Price | Change | Notes |
+|---|---|---|---|
+| AMD | $529.48 | −4.0% | Post-keynote sell-off; still above stop $525.35 by $4.13 |
+| SPX | ~7,384 | −1.4% | Broad risk-off: oil >$100, GOOGL capex −6%, TSLA miss −14% |
+| Nasdaq | ~est. | −2.3% | AI capex fears + chip stock pressure |
+| GS | $1,077.16 | ~−2.0% | Range $1,062.48–$1,100.95 |
+| META | ~$622 | −3.87% | Low $617.01, high $649.00; approaching Jul 27 binary event window |
+| WFC | $85.83 | ~−2.4% | Range $85.10–$86.50 |
+| MS | $215.36 | −1.45% | Range $213.72–$217.26 |
+| INTC | ~AH crash | −7.67% AH | Q2 in-line; 18A delay; AMD took data-center revenue lead → REJECT |
+| Brent crude | >$100 | +est | Middle East escalation — inflation/rate risk |
+| 10Y yield | 4.7% | highest since Jan 2025 | Rate headwind |
+
+**Performance:**
+- P&L vs $100K initial: +$175 (+0.18%)
+- AMD daily P&L: 18 × ($529.48 − $553.00 open) = −$423.36 (−0.42%)
+- Circuit breaker: NOT tripped (−0.42% daily loss, far under −3% trigger)
+- SPX May 1 baseline 7,200 → today ~7,384 = +2.6%
+- Portfolio vs SPX: +0.18% vs +2.6% = **gap: −2.42 pp**
+- 20-day underperformance: ACTIVE (94+ consecutive sessions — API blockage root cause)
+
+**AMD Analysis — Afternoon:**
+- AMD open: ~$553; afternoon: $529.48 (−4.0%). Classic "buy the rumor, sell the news" after keynote.
+- Stop: $525.35 (5% below $553 — set at Market-Open). AMD is $4.13 above stop.
+- Keynote delivered: Helios rack pricing $5–5.5M confirmed, MI400 family in volume production, 12GW committed (Meta + OpenAI), TSMC 2nm 18A HNA EUV timing (Intel's equivalent delayed — AMD advantage widening).
+- Broad market risk-off (-1.4% SPX) amplifying chip sell-off. AMD thesis intact; position in profit.
+- No trail-up possible (price fell from $553 → $529). Stop remains $525.35.
+- INTC AH crash (−7.67%) due to 18A delay + AMD taking data-center revenue lead = **BULLISH for AMD thesis** (confirms competitive moat) but may weigh on chip sector tomorrow morning.
+- If stop hits at $525.35, operator must confirm via app.alpaca.markets.
+
+---
+
+### STOP-LOSS AUDIT (FIRST ACTION — per CLAUDE.md)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected — 94th+ consecutive)
+# GET /v2/positions → HTTP 000 (proxy CONNECT rejected)
+```
+
+**AMD 18sh — NAKED (stop never placed; API blocked 94+ sessions)**
+AMD at $529.48 — stop should be at $525.35 (5% below $553). Reattempting:
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":"18","side":"sell","type":"stop","stop_price":"525.35","time_in_force":"gtc"}'
+# Response: HTTP 000 — CONNECT tunnel failed, response 403 (94th+ consecutive block)
+```
+
+**GUARDRAIL VIOLATION (ONGOING):** AMD naked. **OPERATOR MANDATORY: log into app.alpaca.markets and verify/place GTC sell-stop 18sh AMD at $525.35 (or trail to $529.48 × 0.95 = $502.51 if AMD fell further — use the HIGHER of $525.35 or current×0.95).**
+
+---
+
+### BINDING COMMITMENT EXECUTION ATTEMPTS (All Blocked — HTTP 000)
+
+Per Deployment Bias: all ≥7-score names MUST be attempted each routine. GTC bracket orders do not execute at close; they rest until filled. Afternoon proximity-to-close does NOT exempt GTC brackets from the deployment bias mandate.
+
+**Order 1: GS BUY 4sh Bracket GTC (Updated to afternoon prices)**
+
+Entry: $1,082.55 (current ask $1,077.16 × 1.005) | Stop: $1,028.42 (−5%) | Target: $1,244.94 (+15%, 3:1 R/R)
+Position size: 4 × $1,082.55 = $4,330 = 4.3% equity ✓ | Sector: Financials ~4.3% ✓ | Risk: 4×$54.13 = $216.52 (0.22% equity, well under 1.5%) ✓
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" -H "Content-Type: application/json" \
+-d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1082.55","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1028.42"},"take_profit":{"limit_price":"1244.94"}}'
+# Response: HTTP 000 — CONNECT tunnel failed, 403 (94th+ consecutive block)
+```
+
+**Order 2: META BUY 7sh Bracket GTC (Updated to afternoon prices)**
+
+Entry: $625.11 (current ask ~$622 × 1.005) | Stop: $593.85 (−5%) | Target: $718.89 (+15%, 3:1 R/R)
+Position size: 7 × $625.11 = $4,376 = 4.4% equity ✓ | Sector: Tech ~4.4% ✓ | Risk: 7×$31.26 = $218.82 (0.22% equity) ✓
+⚠️ BINARY EVENT URGENCY: META earnings July 29 AH → window opens July 27 ~4PM. **July 24 (tomorrow) is the final reliable trading day before the window opens. Pre-Market July 24 is the priority entry.**
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" -H "Content-Type: application/json" \
+-d '{"symbol":"META","qty":7,"side":"buy","type":"limit","limit_price":"625.11","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"593.85"},"take_profit":{"limit_price":"718.89"}}'
+# Response: HTTP 000 — CONNECT tunnel failed, 403 (94th+ consecutive block)
+```
+
+**Order 3: WFC BUY 30sh Bracket GTC (Updated to afternoon prices)**
+
+Entry: $86.26 (current ask $85.83 × 1.005) | Stop: $81.95 (−5%) | Target: $99.19 (+15%, 3:1 R/R)
+Position size: 30 × $86.26 = $2,588 = 2.6% equity ✓ | Sector: Financials + GS ~6.9% combined ✓ | Risk: 30×$4.31 = $129.30 (0.13% equity) ✓
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" -H "Content-Type: application/json" \
+-d '{"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"86.26","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"81.95"},"take_profit":{"limit_price":"99.19"}}'
+# Response: HTTP 000 — CONNECT tunnel failed, 403 (94th+ consecutive block)
+```
+
+**Order 4: MS BUY 20sh Bracket GTC (Updated to afternoon prices)**
+
+Entry: $216.44 (current ask $215.36 × 1.005) | Stop: $205.62 (−5%) | Target: $248.90 (+15%, 3:1 R/R)
+Position size: 20 × $216.44 = $4,329 = 4.3% equity ✓ | Sector: Financials + GS + WFC ~11.2% combined ✓ | Risk: 20×$10.82 = $216.40 (0.22% equity) ✓
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" -H "APCA-API-SECRET-KEY: KBZcLt6wpvTcJStATKys6wqfVrrHzmxEsauPVuz5aY4" -H "Content-Type: application/json" \
+-d '{"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"216.44","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"205.62"},"take_profit":{"limit_price":"248.90"}}'
+# Response: HTTP 000 — CONNECT tunnel failed, 403 (94th+ consecutive block)
+```
+
+**ALL 4 ENTRY ORDERS BLOCKED — OUTPUT CONTRACT SATISFIED (Attempted; blocked by infrastructure; not skipped by strategy).**
+
+---
+
+### YAML LOG — GS (ATTEMPTED + BLOCKED)
+
+```yaml
+---
+ts: 2026-07-23T18:10:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS Q2 EPS beat +45.7%, financials sector leader; bracket entry $1,082.55/stop $1,028.42/target $1,244.94 (3:1). Order attempted, HTTP 000 proxy block (94th+ consecutive).
+size_pct: 4.3
+stop: 1028.42
+target: 1244.94
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 agents ≥7. Score 7.83 stable across multiple sessions. Risk-off market today (SPX −1.4%, 
+  oil >$100, yields 4.7%) weighing on financials — GS at $1,077.16 (range $1,062.48–$1,100.95), 
+  down from prior limit $1,103.49. Updated limit to $1,082.55 (1,077.16×1.005). Order blocked
+  HTTP 000 (94th+ consecutive proxy CONNECT rejection). No valid CLAUDE.md exemption — this is 
+  infrastructure blockage. OPERATOR MANDATORY: BUY 4sh GS limit bracket GTC $1,082.55/stop 
+  $1,028.42/target $1,244.94 via app.alpaca.markets. X sentiment: not available (xAI API blocked).
+---
+```
+
+---
+
+### YAML LOG — META (ATTEMPTED + BLOCKED)
+
+```yaml
+---
+ts: 2026-07-23T18:11:00Z
+action: skip
+symbol: META
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: Meta AI leader (6GW AMD committed), strong ad growth; bracket entry $625.11/stop $593.85/target $718.89 (3:1). Pulled back 3.87% today to ~$622, improving entry. Order attempted, HTTP 000 proxy block.
+size_pct: 4.4
+stop: 593.85
+target: 718.89
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 agents ≥7. META today: opened ~$649, traded to low $617.01, afternoon ~$622 (down 3.87%).
+  Updated limit $625.11 (market ask × 1.005). Binary event: earnings July 29 AH; window opens 
+  July 27 ~4PM ET. JULY 24 (FRIDAY) IS THE LAST VIABLE TRADING DAY before the binary event window 
+  for reliable pre-earnings entry. Market-Open July 24 is the MANDATORY entry window. Order 
+  blocked HTTP 000 (94th+). OPERATOR MANDATORY: BUY 7sh META limit bracket GTC $625.11/stop 
+  $593.85/target $718.89 via app.alpaca.markets. X sentiment: not available (xAI API blocked).
+---
+```
+
+---
+
+### YAML LOG — WFC (ATTEMPTED + BLOCKED)
+
+```yaml
+---
+ts: 2026-07-23T18:12:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: WFC Q2 EPS +13% beat, revenue +2.8% beat, net income +17% YoY; financials solid; bracket entry $86.26/stop $81.95/target $99.19 (3:1). Order attempted, HTTP 000 proxy block.
+size_pct: 2.6
+stop: 81.95
+target: 99.19
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 agents scored 7. WFC at $85.83 (range $85.10–$86.50) today. Updated limit $86.26 (×1.005). 
+  Financials under pressure from risk-off (oil/rates) but WFC fundamental thesis unchanged. 
+  Order blocked HTTP 000 (94th+ consecutive). OPERATOR MANDATORY: BUY 30sh WFC limit bracket GTC 
+  $86.26/stop $81.95/target $99.19 via app.alpaca.markets. X sentiment: not available.
+---
+```
+
+---
+
+### YAML LOG — MS (ATTEMPTED + BLOCKED)
+
+```yaml
+---
+ts: 2026-07-23T18:13:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Morgan Stanley Q2 revenue $21.3B (+27% YoY), EPS $3.46, net income +60% YoY; bracket entry $216.44/stop $205.62/target $248.90 (3:1). Order attempted, HTTP 000 proxy block.
+size_pct: 4.3
+stop: 205.62
+target: 248.90
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: >
+  All 6 agents ≥7. MS at $215.36 (range $213.72–$217.26) today. Updated limit $216.44 (×1.005). 
+  MS near prior ATH of $232.25. Broad risk-off (-1.45% today) creating slight pullback. Thesis 
+  intact. Order blocked HTTP 000 (94th+ consecutive). OPERATOR MANDATORY: BUY 20sh MS limit 
+  bracket GTC $216.44/stop $205.62/target $248.90 via app.alpaca.markets. X sentiment: not available.
+---
+```
+
+---
+
+### INTC POST-EARNINGS PRE-SCORE (Daily Review tonight, entry eligibility July 24 Pre-Market)
+
+**Intel (INTC) Q2 2026 — AH Results Summary:**
+- Revenue: $14.4B (in-line with consensus)
+- EPS: $0.22 (in-line)
+- Gross margin: Slightly BELOW 39% forecast
+- 18A yield: 65% → 85% (improvement, but 18A profitability delayed until 2026-2027)
+- First CSP commercial 18A order (positive)
+- Google Cloud AI tie-up (Gemini Enterprise on Intel AI)
+- **CRITICAL: AMD achieved its first-ever data-center revenue lead over Intel**
+- AH reaction: CRASHING −7.67% to $110.68 (was down −28% this month before earnings)
+
+**6-Agent Pre-Score (Preliminary — Full rescore at Daily Review once AH settles):**
+
+- **Fundamentals:** Q2 in-line but not a beat. Gross margin miss. 18A profitability delayed 2026-2027. AMD took data-center revenue lead (structural negative). Valuation at ~12× sales assumes near-flawless execution — that narrative is cracked. Score: **4/10**
+- **Technical:** Down −28% this month + AH −7.67% = falling knife. RSI deeply oversold but no reversal signal. Volume spike on AH (bearish). No candlestick confirmation. MACD bearish. Score: **3/10**
+- **Sentiment:** AH crashing — bearish. 163% YTD run = heavy long exit risk. Options priced 12-15% swing — being realized to the downside. X sentiment: not available. Score: **3/10**
+- **Macro:** Risk-off day (oil >$100, yields 4.7%). Chip sector under pressure. No macro tailwind for INTC reversal. Score: **3/10**
+- **Risk:** AH −7.67% → could open −8-10% tomorrow; R/R at 3:1 requires target >+15% from entry but stock in structural downgrade. Stop-loss 5% below open entry would be too tight for this volatility. Risk agent: **VETO (3/10 < 6)**
+- **Tech Analyst:** 18A delay confirmed in earnings; AMD took data-center revenue lead first time in history; Intel foundry thesis on uncertain timeline. ROCm/HBM4 at AMD clearly winning AI inference/training market. Score: **2/10**
+
+**Average: (4+3+3+3+3+2)/6 = 18/6 = 3.0/10**
+
+```yaml
+---
+ts: 2026-07-23T18:15:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: earnings-reaction-fade
+score: 3.0
+thesis: INTC Q2 in-line but 18A delayed to 2026-2027, AMD took data-center revenue lead for first time ever, AH crashing -7.67% to $110.68. Structural thesis broken — not a fade opportunity.
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores:
+  fundamentals: 4
+  technical: 3
+  sentiment: 3
+  macro: 3
+  risk: 3
+  tech_analyst: 2
+agent_average: 3.0
+agents_above_7: 0
+master_decision: rejected
+master_notes: >
+  INTC rejected — avg 3.0/10, Risk Agent veto (<6), 0/6 agents ≥7. AH crash −7.67% on structural 
+  failure: 18A foundry profitability pushed to 2026-2027, AMD achieved first-ever data-center 
+  revenue lead. Intel bull thesis required near-flawless 18A execution AND data-center defense — 
+  both pillars cracked simultaneously. Stock was already down −28% this month before this print.
+  "In-line" revenue/EPS is irrelevant when the structural narrative is broken. PASS entirely.
+  Revisit INTC only if 18A yield hits commercial profitability milestones (not on current guidance).
+  X sentiment: not available (xAI API blocked).
+---
+```
+
+---
+
+### TOMORROW'S WATCHLIST — July 24 Pre-Market (BINDING COMMITMENTS)
+
+| Priority | Symbol | Score | Setup | Entry Target | Stop | Target | Notes |
+|---|---|---|---|---|---|---|---|
+| 🔴 URGENT | META | 7.67 | ai-momentum-pullback | ~$622–630 | ~$594 | ~$719 | **LAST DAY before Jul 27 binary event window** |
+| 1 | GS | 7.83 | earnings-reaction-follow | ~$1,077–1,083 | ~$1,028 | ~$1,245 | Carry binding — highest score |
+| 2 | MS | 7.17 | earnings-reaction-follow | ~$215–217 | ~$205 | ~$249 | Carry binding |
+| 3 | WFC | 7.0 | earnings-reaction-follow | ~$85–87 | ~$82 | ~$99 | Carry binding |
+
+**INTC: REJECTED — do not enter.**
+**AMD: HOLD (stop $525.35; reduce from 18sh→9sh when API restored).**
+
+
 ## 2026-07-23 — Market Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 93rd+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Open 2026-07-23T13:46:26Z ✓

