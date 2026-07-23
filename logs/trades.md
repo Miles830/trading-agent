@@ -4,6 +4,342 @@
 
 ---
 
+## 2026-07-23 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 94th+ consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-23T20:34:23Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **94th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded on all tickers.
+**Time (ET):** 4:34 PM ET — Daily Review window (4:30 PM ET)
+
+---
+
+### HEARTBEAT TALLY — July 23, 2026
+
+| Routine | STARTED | COMPLETED | Status |
+|---|---|---|---|
+| Pre-Market (8:00 AM ET) | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Market-Open (9:45 AM ET) | ✓ 13:46Z | ✓ 13:54Z | ✅ COMPLETED |
+| Mid-Morning (11:00 AM ET) | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Midday (12:30 PM ET) | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Afternoon (2:00 PM ET) | ✗ MISSING | ✗ MISSING | **SILENT FAILURE** |
+| Market-Close (3:30 PM ET) | ✓ 19:35Z | ✓ 19:47Z | ✅ COMPLETED |
+| Daily-Review (4:30 PM ET) | ✓ 20:34Z | in progress | ✅ RUNNING |
+
+**TOP OPERATIONAL ISSUE:** 4 of 7 routines silent-failed today (Pre-Market, Mid-Morning, Midday, Afternoon). AMD held 18sh naked through the entire AMD Advancing AI Day 2 keynote sell-off ($553 → $529.48, −4.0% from open) with zero routine coverage and no resting stop at Alpaca. The scheduled task system is only reliably firing 2 of 7 windows — this is a systemic scheduler failure.
+
+**Remediation:**
+1. OPERATOR MANUAL: Verify all 7 cron triggers are active in the Claude Code schedule config
+2. Alternatively, confirm that Market-Open and Market-Close scheduled tasks are being substituted as the primary coverage while others fail
+3. Highest priority: Pre-Market silent failure is the most damaging — MOO orders cannot be placed without Pre-Market routine firing
+4. The Market-Open catch-up routine (when it fires) successfully covered missed Pre-Market actions — this pattern should be formalized as a fallback
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+Attempted `GET /v2/orders?status=open` → HTTP 403 blocked (94th+ session).
+Attempted `GET /v2/positions` → HTTP 403 blocked.
+
+**Positions (from memory — cannot verify at Alpaca):**
+
+| Symbol | Qty | Avg Cost | EOD Close | Unrlzd P&L | Stop Level | Stop Status |
+|---|---|---|---|---|---|---|
+| AMD | 18sh | $506.76 | $529.48 | +$408.96 (+4.48%) | $525.35 (trail, 5% below $553 Day 2 high) | NAKED — no stop at Alpaca |
+
+**GUARDRAIL VIOLATION (ONGOING):** AMD naked at Alpaca, position 9.5% of equity (over 5% cap). OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $525.35 on app.alpaca.markets before market opens July 24.
+
+---
+
+### PORTFOLIO P&L — JULY 23, 2026
+
+**PORTFOLIO STATE**
+Total Equity: ~$100,174.64
+Cash: ~$90,644 (90.5%) — 5% floor ✓
+Trading bucket: ~$9,530.64 (9.5%) — 1 position — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+**Today's P&L:**
+- AMD daily return: 18 × ($529.48 − $534.22) = −$85.32 (−0.089% portfolio)
+- Portfolio daily return: −0.085%
+- SPX daily return: −1.24% (close 7,406)
+- **Daily alpha: +1.155 pp** (portfolio outperformed SPX today — SPX fell harder)
+
+**Cumulative Performance (vs May 1, 2026 baseline):**
+- Portfolio: +$174.64 (+0.17%) since $100K baseline
+- SPX: 7,406 vs 7,200 baseline = +2.86%
+- **Benchmark gap: −2.69 pp** (improved from −4.74 pp July 22 as SPX fell -1.24%)
+- **20-day underperformance flag: ACTIVE** (94+ consecutive sessions — root cause: API blockage, not strategy failure)
+- Circuit breaker: NOT tripped (−0.085% << −3% threshold)
+
+**Rolling 20-Day Window:**
+- Cannot pull portfolio/history endpoint (API blocked)
+- Estimated 20-day window (July 3 – July 23, 2026):
+  - SPX July 3 → July 23: from ~7,350 → 7,406 = +0.76%
+  - Portfolio July 3 → July 23: AMD only; ~$100K → $100,174 = +0.17%
+  - 20-day gap: ~−0.59 pp (relatively close; SPX also range-bound in this window)
+- Win rate (20-day): N/A — no fills due to API blockage (0 completed trades)
+- Avg win: N/A | Avg loss: N/A | Profit factor: N/A
+
+---
+
+### TODAY'S ORDERS (ALL HTTP 403 BLOCKED)
+
+All 5 attempted orders blocked for 94th+ consecutive session (both as HTTP 000 and HTTP 403):
+1. AMD GTC SELL-STOP 18sh $525.35 → BLOCKED
+2. GS MOC BUY 4sh → BLOCKED
+3. META MOC BUY 7sh → BLOCKED
+4. WFC MOC BUY 30sh → BLOCKED
+5. MS MOC BUY 20sh → BLOCKED
+
+**Best trade today:** AMD held above stop $525.35 (close $529.48 = +$4.13 cushion). Thesis intact despite "sell the news" keynote sell-off.
+**Worst outcome today:** 4 routine silent-failures left AMD naked through the most volatile window of the conference (Lisa Su keynote 12:30 PM ET; AMD peak $553 → close $529.48).
+
+---
+
+### INTEL (INTC) Q2 2026 — POST-EARNINGS MULTI-AGENT SCORING
+
+**Context:** INTC reported Q2 AH on July 23, 2026. Revenue $14.4B (matched), EPS $0.22 non-GAAP (matched), 18A foundry yields 85% (vs 65% prior = major improvement). Cloud CSP commitments confirmed. Stock $100.98 pre-earnings (up 178% YTD, down 27% from peak). Options pricing ±15% swing.
+
+**Sub-Agent 1 — Fundamentals:**
+- Revenue $14.4B — consensus match, no upside beat; stabilization not growth
+- EPS $0.22 — matched; not a beat on a stock up 178% YTD
+- 18A yield 85% (vs 65%): genuinely significant; 20 pp improvement = foundry milestone
+- Cloud CSP confirmed (MSFT Maia, AWS, Google): demand validated but not new
+- Xeon 8000 MT/s (Aug-Sep 2026): +20% BW, +25% speed = meaningful server upgrade
+- P/E elevated given only moderate current earnings vs 178% YTD run
+- Revenue trajectory: stable, not accelerating
+- 178% YTD = most recovery already priced in; matched ≠ beat at this valuation
+Score: **6/10**
+
+**Sub-Agent 2 — Technical:**
+- 27% drawdown from peak (~$138 → $100.98): pulling back within large YTD uptrend
+- "Sell the news" pattern active today: AMD fell -4% on equally positive conference news
+- Stochastic: oversold from 27% drawdown = potential bounce signal
+- MACD: likely bearish crossover given 27% from peak
+- Candlestick: post-earnings gap unknown without AH data; likely flat-to-gap-down given matched (not beat) results
+- Volume oscillator: earnings night = elevated volume; direction unclear
+- Volume spike: confirmed (earnings = always high volume) — 1 of 5 confirmed
+- RSI: ~35-40 from pullback = near oversold (tiebreaker only)
+- 2-of-5 minimum NOT met (only volume spike fires; direction unclear pre-gap)
+Score: **4/10** — sector drag + "sell the news" risk; <2 of 5 confirmed
+
+**Sub-Agent 3 — Sentiment:**
+- xAI Grok: NOT AVAILABLE (key not configured) — degraded to non-X analysis only
+- AMD -4% today = negative semiconductor sentiment contagion
+- INTC 178% YTD = crowded trade; profit-taking pressure on match (not beat)
+- Options ±15%: high uncertainty, no directional lean
+- Short interest: historically elevated (Intel had years of struggles)
+- News sentiment: mixed — 18A yield positive, matched EPS negative vs elevated expectations
+- Post-AMD precedent today: "sell the news" in AI hardware = bearish signal for INTC
+- X sentiment: N/A (key not configured; noted in master_notes)
+Score: **5/10** (base analysis only; X modifier unavailable — flagged as missing data)
+
+**Sub-Agent 4 — Macro:**
+- SPX -1.24% today = risk-off environment going into July 24
+- FOMC July 28-29 (next week): pre-FOMC caution = headwind for tech entries
+- CPI 4.2% + oil $90+: inflation risk = rate-cut uncertainty
+- Semiconductor sector: AMD -4% today (sector under pressure)
+- AI infrastructure spending: strong macro tailwind (CSP commitments confirmed)
+- Geopolitical (Iran): risk-off overlay
+- Net: risk-off day with FOMC week ahead unfavorable for new tech entry
+Score: **5/10**
+
+**Sub-Agent 5 — Risk:**
+- Entry est. ~$95-105 (AH reaction unknown; matched earnings = flat-to-down AH likely)
+- Stop -5% from entry: $90.25–$99.75; target +15%: $109.25–$120.75 → R/R 3:1 ✓
+- Position size: 5% cap = ~$5,009 max → ~50sh at $100 = $5,000 (4.99%) ✓
+- Sector concentration: AMD 9.5% + INTC 5.0% = 14.5% Semiconductor (within 25% cap ✓)
+- Cash after: $90,644 − $5,000 = $85,644 (85.4%, well above 5% floor ✓)
+- Trade risk: 50sh × $5 = $250 (<1.5% of $100,174 = $1,503 ✓)
+- Concern: AMD already over 5% cap; adding INTC increases semiconductor concentration
+- Matched earnings with ±15% implied volatility = entry timing risky (gap direction unclear)
+- R/R 3:1 technically met; but entering blind to AH reaction increases effective risk
+Score: **6/10** — no technical veto; R/R met; but concentration and direction risk elevated
+
+**Sub-Agent 6 — Tech Analyst:**
+- 18A process: 85% yield = world-class manufacturing; comparable to TSMC N2 in yield
+- Microsoft Azure Maia (custom AI ASIC) on Intel 18A: confirmed hyperscaler foundry client
+- Xeon 8000 MT/s: meaningful server CPU upgrade; +20% BW, +25% speed, -6% latency
+- AI accelerator: Intel Gaudi 3 still materially behind NVIDIA H100/B200 and AMD MI450X
+- Foundry revenue: still small fraction of total; 18A is 2-3 year growth story
+- R&D intensity: high; but execution has been inconsistent historically
+- Developer adoption: Intel oneAPI gaining but CUDA/ROCm dominate AI workloads
+- Technical moats: Xeon installed base (enterprises), 18A IP, own fabs, US foundry supply chain
+- Competitive risk: AMD EPYC eating Xeon server share; AI accelerator share going to NVDA/AMD
+- 18A breakthrough is genuine competitive achievement; changes the foundry landscape
+Score: **7/10** — 18A yield is a real competitive milestone; Xeon upgrade positive; AI accelerator weakness capped score
+
+**INTC Master Agent Decision:**
+
+| Agent | Score |
+|---|---|
+| Fundamentals | 6/10 |
+| Technical | 4/10 |
+| Sentiment | 5/10 |
+| Macro | 5/10 |
+| Risk | 6/10 |
+| Tech Analyst | 7/10 |
+| **Average** | **5.5/10** |
+
+- Average ≥ 7: ❌ FAILS (5.5)
+- Risk Agent ≥ 6: ✓ (6 — no veto)
+- 4 of 6 agents ≥ 7: ❌ FAILS (only Tech Analyst scored ≥7; 1 of 6)
+- Tech Analyst ≥ 6: ✓ (7)
+
+**Decision: REJECTED** — Average 5.5/10; only 1 of 6 agents scored ≥7. Matched earnings with no beat on a 178% YTD stock in a risk-off "sell the news" environment = insufficient setup. Do not add INTC to July 24 Pre-Market list. Re-score at Pre-Market if AH reaction is significantly positive (gap >5% up = reconsider).
+
+```yaml
+---
+ts: 2026-07-23T20:45:00Z
+action: skip
+symbol: INTC
+bucket: active
+setup: earnings-reaction-follow
+score: 5.5
+thesis: INTC Q2 matched ($14.4B revenue, $0.22 EPS); 18A yield 85% positive but priced in at 178% YTD; "sell the news" risk; avg 5.5/10 (below 7 threshold)
+size_pct: 0
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores:
+  fundamentals: 6
+  technical: 4
+  sentiment: 5
+  macro: 5
+  risk: 6
+  tech_analyst: 7
+agent_average: 5.5
+agents_above_7: 1
+master_decision: rejected
+master_notes: INTC Q2 matched consensus (no beat) on revenue and EPS. 18A yield 85% (vs 65%) is a genuine foundry milestone confirmed by MSFT Azure Maia client. However: 178% YTD run means no beat = effectively a miss vs market expectations. AMD -4% today on equally positive news = "sell the news" pattern active in semis. Technical: 27% drawdown + sector drag = <2 of 5 indicators confirmed. Sentiment degraded (xAI key missing; degraded to non-X analysis). Risk met (6/10, no veto; R/R 3:1 ✓) but only 1 of 6 agents scored ≥7 (Tech Analyst). REJECTED. Re-score at Pre-Market July 24 if AH gap is strongly positive (>+5%). xAI sentiment: NOT AVAILABLE (key not configured — noted for calibration).
+---
+```
+
+---
+
+### SETUP PERFORMANCE TALLY — 5-Day Rolling Window (July 17–23)
+
+**Tagged setups from July 17–23 trades.md:**
+
+| Setup Tag | 5-Day Entries | Wins | Losses | Pending (API blocked) | Status |
+|---|---|---|---|---|---|
+| `earnings-reaction-follow` | GS, WFC, MS (3 entries approved) | 0 | 0 | 3 (all blocked) | No fills |
+| `breakout-volume` | META (1 entry approved) | 0 | 0 | 1 (blocked) | No fills |
+| `earnings-reaction-fade` | GOOGL skip (6.5), TSLA skip (3.83), NFLX skip (4.83), INTC skip (5.5) | N/A | N/A | N/A | All rejected |
+| `ai-momentum-pullback` | AMD (entered ~May 20) | 0 fills | — | Open position | Unrealized +4.48% |
+| `silent-failure` | 4+ violations today | — | — | — | Ongoing operational issue |
+
+**3-in-a-Row Rules:**
+- **Halt rule (3 losses):** N/A — no fills, no completed trades
+- **Boost rule (3 wins):** N/A — no fills, no completed trades
+- Note: Cannot apply setup performance rules until API is restored and trades execute
+
+**Per-Agent Calibration (rolling — no completed trades):**
+- All agent scores based on pending/rejected decisions; no actual outcome calibration possible
+- Sentiment Agent: consistently scoring 5-8/10 with degraded analysis (no xAI data)
+- Technical Agent: appropriately cautious on "sell the news" patterns (AMD Day 2, NFLX, TSLA)
+- Risk Agent: correctly identifying R/R compliance (all pending entries meet 3:1)
+
+---
+
+### 3 THINGS THAT WORKED / 3 THINGS TO IMPROVE
+
+**WORKED:**
+1. **AMD held above stop despite -4% sell-off.** Close $529.48 > trail stop $525.35 (cushion $4.13). Position thesis intact: 12GW committed, ROCm 7, TSMC 2nm, earnings Aug 4 safe.
+2. **Portfolio outperformed SPX today.** AMD -0.089% portfolio drag vs SPX -1.24% = +1.155 pp daily alpha. Cash-heavy positioning (90.5% cash) buffered the down market.
+3. **INTC correctly rejected at 5.5/10.** "Sell the news" risk (AMD precedent today), matched results on 178% YTD stock = good discipline. Avoided potentially entering a stock that could gap down on AH matched print.
+
+**TO IMPROVE:**
+1. **CRITICAL: 4 of 7 routines silent-failed.** AMD was naked through the entire Lisa Su keynote (12:30–3:30 PM ET) with no routine coverage. Market-Open and Market-Close are the only reliably-firing routines. The scheduler needs immediate investigation and remediation.
+2. **GS/META/WFC/MS entries 94th+ day blocked.** These are high-conviction approved setups (7.0–7.83 average) that have been pending since July 14. The operator MUST place these manually via app.alpaca.markets. META's last safe window closes Friday July 25.
+3. **AMD position cap violation unresolved.** 9.5% equity (vs 5% max cap) + naked (no stop). Two simultaneous guardrail violations on the same position, ongoing for 30+ days. Operator must: (a) place stop $525.35, (b) sell 9sh to bring to ~4.75% equity. Every day this goes unresolved is compounding risk.
+
+---
+
+### MACRO CALENDAR — THIS WEEK & NEXT
+
+**July 24, 2026 (Friday):**
+- INTC post-earnings reaction at market open (AH matched = likely flat-to-down gap)
+- No major earnings confirmed
+- Pre-FOMC week = reduced risk appetite expected
+
+**July 27, 2026 (Monday):**
+- META 48h earnings window OPENS (July 29 AH) — **NO NEW META ENTRY FROM THIS DATE**
+- Pre-FOMC positioning starts
+
+**July 28–29, 2026 (Monday–Tuesday):**
+- FOMC Meeting Days 1–2
+
+**July 29, 2026 (Tuesday):**
+- META Q2 earnings (AH) — 48h window open since July 27
+
+**July 30, 2026 (Wednesday):**
+- FOMC Rate Decision (2:00 PM ET) — market-moving event
+- CPI context: 4.2%; Fed likely on hold; hawkish tone risk
+
+**Week of Aug 4, 2026:**
+- AMD Q2 earnings (Tuesday Aug 4 AH) — 48h window opens Sunday Aug 2
+
+---
+
+### TOMORROW'S WATCHLIST — JULY 24, 2026 (FRIDAY PRE-MARKET)
+
+**BINDING COMMITMENTS (must execute, no exemptions per CLAUDE.md Deployment Bias):**
+
+| Rank | Symbol | Score | Setup | Entry Level | Stop | Target | R/R | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 0 | AMD STOP | — | — | — | $525.35 | — | — | **FIRST ACTION — GTC SELL-STOP 18sh** (trail from $553 Day 2 high) |
+| 1 | GS | 7.83 | earnings-reaction-follow | ~$1,073 limit ×1.005 | $1,019.35 (−5%) | $1,233.95 (+15%) | 3:1 | Q2 EPS +45.7% beat; 6/6 agents ≥7; bracket GTC |
+| 2 | META | 7.67 | breakout-volume | ~$627 limit ×1.005 | $595.81 (−5%) | $721.25 (+15%) | 3:1 | **⚠️ LAST SAFE WINDOW: must enter by COB Friday July 25** (48h window opens July 27) |
+| 3 | MS | 7.17 | earnings-reaction-follow | ~$215 limit ×1.005 | $204.59 (−5%) | $247.66 (+15%) | 3:1 | Q2 revenue $21.3B (+27% YoY); bracket GTC |
+| 4 | WFC | 7.0 | earnings-reaction-follow | ~$85.83 limit ×1.005 | $81.54 (−5%) | $98.70 (+15%) | 3:1 | Q2 EPS $1.96 (+13% beat); bracket GTC |
+
+**FRESH SCAN — Additional Candidates (score at Pre-Market):**
+
+| Rank | Symbol | Est. Score | Setup | Thesis | Action |
+|---|---|---|---|---|---|
+| 5 | NVDA | ~7+ (re-score) | ai-momentum-pullback | AI GPU market leader; any pull-back in today's risk-off creates entry; AMD conference confirms AI capex intact | Score fresh at Pre-Market |
+| 6 | MSFT | ~7+ (re-score) | ai-momentum-pullback | Azure AI + Helios AMD deal; sold off today with SPX; earnings July 30 AH (48h window starts July 28) — must enter by COB Friday July 25 | Score at Pre-Market; **LAST SAFE ENTRY DAY: Friday July 25** |
+| 7 | XLE | ~6-7 (re-score) | macro-hedge | Oil $90+, Iran tensions; SPX risk-off day = energy/defensive hedge | Score at Pre-Market if risk-off continues |
+| 8 | INTC | 5.5 (rejected) | earnings-reaction-follow | 18A yield 85% positive; but matched/no beat on 178% YTD stock; re-score ONLY if AH gap >+5% | Re-score at Pre-Market based on AH close |
+| 9 | GOOGL | ~6.5 (re-score) | earnings-reaction-follow | Q2 results July 22 AH; previously scored 6.5 (just below threshold); re-score if pulled back further today | Re-score at Pre-Market |
+| 10 | JPM | ~7 (estimate) | earnings-reaction-follow | Q2 2026 strong (confirmed earlier); financial sector leadership; sold off today | Score fresh at Pre-Market |
+
+**MOO Order Protocol (3 max):** If API is restored by Pre-Market, place MOO orders on top 3 binding commitments (GS, META, MS) and limit on WFC. If API still blocked, carry all 5 as mandatory manual orders via app.alpaca.markets.
+
+---
+
+### DAILY REVIEW YAML
+
+```yaml
+---
+ts: 2026-07-23T20:34:00Z
+action: daily-review
+symbol: PORTFOLIO
+bucket: active
+setup: other
+score: N/A
+thesis: Daily Review July 23 — AMD -0.089% vs SPX -1.24%; 4 of 7 routines silent-failed; INTC rejected 5.5/10; all 5 orders blocked 94th+ session; gap to SPX -2.69 pp (improved from -4.74 pp as SPX also fell)
+size_pct: N/A
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: N/A
+master_notes: INTC Q2 scored 5.5/10 (REJECTED). 94th+ consecutive API block. 4/7 routines silent-failed (Pre-Market, Mid-Morning, Midday, Afternoon). AMD naked at Alpaca — operator MUST place $525.35 stop and reduce 18sh → 9sh manually. GS/META/WFC/MS binding entries still unexecuted. META window closes Monday July 27 — last safe entry day Friday July 25. FOMC July 28-29 adds macro uncertainty next week. Portfolio outperformed SPX today (+1.155 pp daily alpha) but 94-session cumulative underperformance continues. 20-day flag active.
+---
+```
+
+---
+
 ## 2026-07-23 — Market Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 94th+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Close 2026-07-23T19:35:04Z ✓

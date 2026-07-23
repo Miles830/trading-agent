@@ -1,7 +1,97 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-23 (Thursday) — MARKET-CLOSE (3:35 PM ET / 19:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 94th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ COMPLETED.**
+**2026-07-23 (Thursday) — DAILY REVIEW (4:34 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 94th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED.**
+
+---
+
+## DAILY REVIEW SUMMARY — July 23, 2026
+
+**PORTFOLIO STATE**
+Total Equity: ~$100,174.64
+Cash: ~$90,644 (90.5%) — 5% floor ✓
+Trading bucket: ~$9,530.64 (9.5%) — 1 position — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+**Performance:**
+- Portfolio daily return: −0.085% (AMD: 18sh × (−$4.74) = −$85.32)
+- SPX daily return: −1.24% (close 7,406)
+- Daily alpha: +1.155 pp (portfolio outperformed SPX)
+- Portfolio since $100K baseline: +0.17%
+- SPX since May 1 baseline (7,200): +2.86%
+- Benchmark gap: **−2.69 pp** (improved from −4.74 pp yesterday)
+- 20-day underperformance flag: ACTIVE (94+ sessions — API blockage root cause)
+- Circuit breaker: NOT tripped
+
+**Heartbeat Status (July 23):**
+- ✓ Market-Open COMPLETED (13:46–13:54Z)
+- ✓ Market-Close COMPLETED (19:35–19:47Z)
+- ✓ Daily-Review COMPLETED (20:34Z+)
+- ✗ Pre-Market: SILENT FAILURE
+- ✗ Mid-Morning: SILENT FAILURE
+- ✗ Midday: SILENT FAILURE
+- ✗ Afternoon: SILENT FAILURE
+- **4 of 7 routines failed — AMD naked through entire keynote sell-off ($553→$529.48)**
+
+**INTC Q2 Post-Earnings Score: 5.5/10 → REJECTED**
+- Revenue $14.4B (matched), EPS $0.22 (matched), 18A yield 85% (+positive)
+- Insufficient: matched (not beat) on 178% YTD stock + AMD "sell the news" precedent today
+- Only 1 of 6 agents scored ≥7 (Tech Analyst: 7); average 5.5 far below 7 threshold
+- Do NOT enter INTC on July 24 Pre-Market; re-score if AH gap >+5%
+
+**Key Events — AMD Day 2 Keynote (Lisa Su, 12:30 PM ET):**
+- ROCm 7: 3.5× throughput vs ROCm 6 — major SW stack upgrade
+- MI500 roadmap: 1,000× MI300X performance by 2027
+- OpenAI 6GW: "still deploying" prior commitment (no new announcement) → market disappointed
+- AMD fell from $553 open high to $529.48 close (−4.0% from open; −0.89% from July 22)
+- Stop $525.35 NOT triggered (close above stop by $4.13 cushion)
+- AMD thesis intact: 12GW committed, TSMC 2nm, ROCm 7, earnings Aug 4 safe
+
+**Lessons Learned:**
+1. "Sell the news" is a consistent pattern in AI hardware stocks — AMD Day 2 confirms AMD Day 1 precedent. Apply to all conference/product-showcase events going forward.
+2. Matched earnings on a 178% YTD stock is effectively a miss vs. elevated expectations. The bar for post-earnings entries is a BEAT, not a match.
+3. Pre-Market silent failure is the most costly routine failure — today's AMD naked overnight AND no MOO capacity because Pre-Market didn't fire.
+
+**Operational Issue (Top Priority):**
+The scheduled task system fires only 2 of 7 daily windows reliably (Market-Open, Market-Close). Remaining 5 windows (Pre-Market, Mid-Morning, Midday, Afternoon, sometimes Daily-Review) are silent-failing. This leaves AMD naked for 6+ hours between routine checks. Operator must investigate Claude Code scheduler configuration.
+
+---
+
+## JULY 24 BINDING COMMITMENTS (Pre-Market — MANDATORY, no exemptions)
+
+1. **AMD: GTC SELL-STOP 18sh at $525.35 — FIRST ACTION** (trail from $553 Day 2 high; do NOT lower)
+2. **GS: BUY 4sh limit bracket GTC** ~$1,073 × 1.005 / stop $1,019.35 (−5%) / target $1,233.95 (+15%) — score 7.83 (6/6 ≥7)
+3. **META: BUY 7sh limit bracket GTC** ~$627 × 1.005 / stop $595.81 (−5%) / target $721.25 (+15%) — score 7.67 — ⚠️ **LAST SAFE WINDOW: must enter by COB Friday July 25** (48h window opens July 27 for July 29 earnings)
+4. **MS: BUY 20sh limit bracket GTC** ~$215 × 1.005 / stop $204.59 (−5%) / target $247.66 (+15%) — score 7.17
+5. **WFC: BUY 30sh limit bracket GTC** ~$85.83 × 1.005 / stop $81.54 (−5%) / target $98.70 (+15%) — score 7.0
+6. INTC: **REJECTED** (score 5.5/10) — do not enter; re-score at Pre-Market if AH gap >+5%
+
+**Fresh scan at Pre-Market July 24:**
+- NVDA (~7+ est.): ai-momentum-pullback — AI GPU leader, pulled back with market today
+- MSFT (~7+ est.): ai-momentum-pullback — Azure Helios deal confirmed; **LAST SAFE ENTRY: Friday July 25** (48h window opens July 28 for July 30 earnings)
+- XLE (~6-7 est.): macro-hedge — oil $90+, Iran, risk-off
+- JPM (~7 est.): earnings-reaction-follow — Q2 beat, financial leadership
+- GOOGL (~6.5 re-score): post-earnings fade; marginal; only if pulled back further
+
+**OPERATOR MANDATORY ACTIONS (before July 24 market open — via app.alpaca.markets):**
+1. SELL-STOP GTC 18sh AMD at $525.35
+2. BUY 4sh GS bracket GTC: limit ~$1,073/stop $1,019.35/target $1,233.95
+3. BUY 7sh META bracket GTC: limit ~$627/stop $595.81/target $721.25
+4. BUY 20sh MS bracket GTC: limit ~$215/stop $204.59/target $247.66
+5. BUY 30sh WFC bracket GTC: limit ~$85.83/stop $81.54/target $98.70
+
+---
+
+## BINARY EVENT WINDOWS (Updated July 23, 2026)
+
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| INTC | Thu July 23 AH ✓ | **CLOSED** (results out) | Post-earnings eligible; scored 5.5 → REJECTED |
+| META | Wed July 29 AH | Opens Mon July 27 | **SAFE ONLY THROUGH FRIDAY JULY 25** |
+| MSFT | Wed July 30 AH (est.) | Opens Mon July 28 | **SAFE ONLY THROUGH FRIDAY JULY 25** |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+
+---
 
 **JULY 23 MARKET-CLOSE EOD STATUS:** Market-Open completed (13:46–13:54Z); Mid-Morning/Midday/Afternoon all silently failed (4/5 intraday routines missed). AMD Lisa Su Day 2 keynote at 12:30 PM ET — MI500 roadmap (1000×), ROCm 7 (3.5× throughput), OpenAI still deploying 6GW (no NEW commitment) → "sell the news" reaction. AMD fell from $553 open high to $529.48 close (−4% from open; −0.89% from Jul 22 close). Stop at $525.35 NOT triggered (close above stop). All 5 orders (AMD stop $525.35 + GS/META/WFC/MS MOC entries) → HTTP 403 BLOCKED (94th+). INTC Q2 reports AH at 4:00 PM ET (results: revenue $14.4B matched, EPS $0.22 matched, 18A yields 85%) — scoring at Daily Review 4:30 PM ET; post-earnings entry eligible July 24 Pre-Market if score ≥7. **OPERATOR MANDATORY: place all 5 orders via app.alpaca.markets (AMD stop $525.35, GS BUY 4sh bracket $1,073/stop $1,019/target $1,234, META BUY 7sh bracket $627/stop $596/target $721, WFC BUY 30sh bracket $85.83/stop $81.54/target $98.70, MS BUY 20sh bracket $215/stop $204/target $248).**
 
