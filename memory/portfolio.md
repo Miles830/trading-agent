@@ -1,23 +1,23 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-24 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 95th+ consecutive blocked session). MID-MORNING ROUTINE ✅ COMPLETED.**
+**2026-07-24 (Friday) — AFTERNOON (2:08 PM ET / 18:08 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 96th consecutive blocked session). AFTERNOON ROUTINE ✅ COMPLETED.**
 
-**JULY 24 MID-MORNING STATUS:** Pre-Market and Market-Open BOTH SILENTLY FAILED (no heartbeats). Mid-Morning is first routine to fire today. AMD at $539.69 (+1.93% from July 23 close $529.48) — range $525.00–$556.49; **AMD DIPPED TO $525.00 INTRADAY — BELOW stop $525.35 — position is naked and survived on luck.** Trail stop updated to $528.67 (5% below today's intraday high $556.49). INTC beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B) but stock reversed from $110 to $103 → SCORED 6.17/10 → REJECTED. All 5 binding orders (AMD stop + GS/META/WFC/MS brackets) → HTTP 403 BLOCKED (95th+ consecutive). **TODAY IS LAST SAFE ENTRY DAY FOR META** (earnings July 29 AH; 48h window opens Monday July 27). **OPERATOR MANDATORY: Place all 5 orders on app.alpaca.markets BEFORE 3:50 PM ET TODAY.**
+**JULY 24 AFTERNOON STATUS:** Midday routine SILENTLY FAILED (3rd intraday silent failure today: Pre-Market, Market-Open, Midday all missed; only Mid-Morning and Afternoon fired). AMD est. ~$535 (morning $539.69, range $525–$556.49). Stop trail $528.67 still NOT resting at Alpaca (96th block). **⚠️ CRITICAL: META 48h binary-event window opens Monday July 27 (earnings July 29 AH). Afternoon attempted MOC BUY 7sh META → HTTP 403 BLOCKED. META entry PERMANENTLY MISSED for this earnings cycle — off-limits until post-earnings re-score (July 30+ earliest).** All other binding orders (AMD stop, GS, WFC, MS) → HTTP 403 BLOCKED or deferred per afternoon.md playbook. **OPERATOR MANDATORY: 4 actions remaining before close (3:50 PM ET): (1) AMD GTC sell-stop 18sh $528.67 IMMEDIATE; (2) META MOC 7sh BUY (last chance before 3:50 PM ET — 48h window open from Monday); (3) Reduce AMD to 9sh if at Alpaca (over 5% cap); (4) GS/WFC/MS binding entries deferred to Monday Pre-Market per afternoon.md playbook.**
 
-**PORTFOLIO STATE (July 24, 2026 — 11:10 AM ET):**
-- Cash: ~$90,644 (90.3%)
-- AMD: 18sh × $539.69 = ~$9,714 (9.7%) — over 5% cap, naked (no stop), Day ~35 post-fill
-- Total equity est.: ~$100,358
-- P&L vs $100K initial: +$358 (+0.36%)
-- AMD unrealized: 18 × ($539.69 − $506.76) = +$592.74 (+6.5%)
-- AMD daily P&L: 18 × ($539.69 − $529.48) = +$183.78 (+0.18%)
-- Portfolio daily P&L: +$183.78 (+0.18%)
-- SPX July 23 close: 7,406. Today July 24 est. +0.13% = ~7,416; SPX since May 1 baseline 7,200: **+3.0%**
-- Portfolio since $100K baseline: **+0.36%**
-- **Benchmark gap: −2.64 pp** (improved from −2.69 pp yesterday)
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (95th+ consecutive sessions — API blockage root cause)
-- Circuit breaker: NOT tripped (+0.18% daily well below −3% threshold)
+**PORTFOLIO STATE (July 24, 2026 — 2:08 PM ET / Afternoon est.):**
+- Cash: ~$90,644 (90.6%) — well above 5% floor
+- AMD: 18sh × est. $535 = ~$9,630 (9.6%) — over 5% cap, NAKED (no stop at Alpaca), Day ~35 post-fill
+- Total equity est.: ~$100,274
+- P&L vs $100K initial: +$274 (+0.27%)
+- AMD unrealized: 18 × ($535 − $506.76) = +$507.96 (+5.6%)
+- AMD daily P&L: 18 × ($535 − $529.48) = +$99.36 (+0.10%)
+- Portfolio daily P&L: +$99.36 (+0.10%)
+- SPX July 24 est. (2 PM): ~7,420 est. (recovery from −1.24%; FOMC weight capping upside); SPX since May 1 baseline 7,200: **+3.1% est.**
+- Portfolio since $100K baseline: **+0.27% est.**
+- **Benchmark gap: ~−2.83 pp est.** (SPX +3.1% vs portfolio +0.27%)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (96th consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (+0.10% daily well below −3% threshold)
 
 **INTC Q2 2026 ACTUAL RESULTS (AH July 23 — MAJOR UPSIDE SURPRISE):**
 - Revenue: $16.13B (+25% YoY) vs consensus $14.42B → **BEAT by +11.9%**
@@ -30,24 +30,26 @@
 
 **AMD NOTE (July 24 Mid-Morning):** AMD at $539.69. CRITICAL: Today's low $525.00 BREACHED stop $525.35 — if stop had been resting at Alpaca, position exits at ~$525.35. AMD RECOVERED to $539.69. New trail stop: $528.67 (5% below today's $556.49 intraday high). AMD thesis intact: Advancing AI 2026 complete (12GW committed), TSMC 2nm, ROCm 7, earnings Aug 4 safe. Reduce 18sh → 9sh (to ~4.5% equity) when API restored. OPERATOR: Place AMD stop at $528.67 immediately.
 
-**BINARY EVENT WINDOWS (July 24–28):**
+**BINARY EVENT WINDOWS (July 24–30):**
 | Company | Earnings Date | 48h Window | Status |
 |---|---|---|---|
-| META | Wed July 29 AH | Opens Mon July 27 | **LAST SAFE ENTRY TODAY (July 24) — MUST enter before 3:50 PM ET or skip** |
+| META | Wed July 29 AH | Opens Mon July 27 | **⛔ DEADLINE PASSED (Afternoon MOC attempt blocked HTTP 403). OFF-LIMITS until post-earnings July 30+ re-score.** |
 | AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
-| FOMC | Mon-Tue July 28-29 | N/A | Rate decision — macro risk next week |
+| FOMC | Tue July 29 2PM ET | N/A | Rate decision — macro risk Monday–Tuesday |
 
-**ORDERS ATTEMPTED AND BLOCKED (July 24 Mid-Morning — all HTTP 403):**
-- AMD: GTC SELL-STOP trail 18sh $528.67 (5% below today's $556.49 high) → HTTP 403 (95th+ block)
-- GS: BUY 4sh limit bracket GTC $1,083.19 / stop $1,029.03 / target $1,245.67 → HTTP 403
-- META: BUY 7sh limit bracket GTC $630.14 / stop $598.63 / target $724.66 → HTTP 403 (**LAST SAFE DAY**)
-- WFC: BUY 30sh limit bracket GTC $86.56 / stop $82.23 / target $99.54 → HTTP 403
-- MS: BUY 20sh limit bracket GTC $217.08 / stop $206.23 / target $249.64 → HTTP 403
+**ORDERS ATTEMPTED AND BLOCKED (July 24 Afternoon — all HTTP 403, 96th consecutive):**
+- AMD: GTC SELL-STOP trail 18sh $528.67 → HTTP 403 (96th block — NAKED)
+- META: MOC BUY 7sh (cls) → HTTP 403 (**PERMANENTLY MISSED — deadline today**)
+- GS: DEFERRED per afternoon.md playbook (proximity to close → Monday Pre-Market)
+- WFC: DEFERRED per afternoon.md playbook (proximity to close → Monday Pre-Market)
+- MS: DEFERRED per afternoon.md playbook (proximity to close → Monday Pre-Market)
 
-**JULY 24 REMAINING BINDING COMMITMENTS (Afternoon/Close MUST retry):**
-1. AMD: GTC SELL-STOP 18sh at $528.67 — MANDATORY FIRST ACTION (trail updated today)
-2. GS: BUY 4sh limit bracket GTC $1,083.19 / stop $1,029.03 / target $1,245.67 — score 7.83
-3. META: BUY 7sh limit bracket GTC $630.14 / stop $598.63 / target $724.66 — score 7.67 (**LAST SAFE DAY — ENTER BY 3:50 PM ET TODAY OR META OFF-LIMITS UNTIL AFTER EARNINGS**)
+**MONDAY JULY 28 BINDING COMMITMENTS (Pre-Market MANDATORY):**
+1. AMD: GTC SELL-STOP 18sh at $528.67 — MANDATORY FIRST ACTION (naked — 96th blocked session)
+   - Also: Reduce AMD to 9sh to get under 5% cap (sell 9sh at market open)
+2. GS: BUY 4sh limit bracket GTC ~$1,076 × 1.005 (re-price Monday morning) / stop -5% / target +15% — score 7.83. Re-score vs FOMC before entry.
+3. WFC: BUY 30sh limit bracket GTC ~$86 × 1.005 (re-price Monday morning) / stop -5% / target +15% — score 7.0. Re-score vs FOMC before entry.
+4. MS: BUY 20sh limit bracket GTC ~$217 × 1.005 (re-price Monday morning) / stop -5% / target +15% — score 7.17. Re-score vs FOMC before entry.
 4. WFC: BUY 30sh limit bracket GTC $86.56 / stop $82.23 / target $99.54 — score 7.0
 5. MS: BUY 20sh limit bracket GTC $217.08 / stop $206.23 / target $249.64 — score 7.17
 
