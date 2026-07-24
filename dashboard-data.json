@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-23T19:37:00Z",
-  "updated_by": "market-close",
+  "last_updated": "2026-07-24T15:12:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 100174.64,
+    "total_equity": 100358.42,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 90.5,
+    "cash_pct": 90.3,
     "buying_power": 181288,
-    "long_market_value": 9530.64,
+    "long_market_value": 9714.42,
     "short_market_value": 0.0,
-    "daily_pnl": -85.32,
-    "daily_pnl_pct": -0.085,
-    "total_return_pct": 0.17,
-    "spx_return_pct": 2.86,
-    "benchmark_gap_pct": -2.69,
+    "daily_pnl": 183.78,
+    "daily_pnl_pct": 0.18,
+    "total_return_pct": 0.36,
+    "spx_return_pct": 3.0,
+    "benchmark_gap_pct": -2.64,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9530.64,
-      "active_pct": 9.5,
+      "active_value": 9714.42,
+      "active_pct": 9.7,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 90.5
+      "cash_pct": 90.3
     },
-    "note": "July 23 MARKET-CLOSE (3:35 PM ET / 19:35Z). API BLOCKED HTTP 403 — 94th+ consecutive session. 4 of 5 intraday routines missed (Pre-Market, Mid-Morning, Midday, Afternoon). AMD Day 2 keynote 'sell the news': fell $553→$529.48 (-4.0% from open, -0.89% from Jul 22). AMD 18sh × $529.48 = $9,530.64 (9.5% equity, over 5% cap, NAKED). Stop $525.35 not triggered. INTC Q2 AH tonight: revenue $14.4B matched, EPS $0.22 matched, 18A yields 85%. Scoring at Daily Review 4:30 PM ET. Daily P&L: -$85.32 (-0.085%). SPX fell 1.24% to 7,406 (+2.86% from May 1); portfolio +0.17%; benchmark gap improved to -2.69 pp. OPERATOR MANDATORY: (1) GTC sell-stop 18sh AMD $525.35; (2) BUY 4sh GS bracket GTC ~$1,073/stop $1,019/target $1,234; (3) BUY 7sh META bracket GTC ~$627/stop $596/target $721; (4) BUY 30sh WFC bracket GTC ~$85.83/stop $81.54/target $98.70; (5) BUY 20sh MS bracket GTC ~$215/stop $204/target $248."
+    "note": "July 24 MID-MORNING (11:10 AM ET / 15:12Z). API BLOCKED HTTP 403 — 95th+ consecutive session. Pre-Market + Market-Open BOTH silent failures today. AMD at $539.69 (+1.93% from $529.48 close) — range $525.00-$556.49. CRITICAL: AMD dipped to $525.00 (BELOW stop $525.35) — naked position survived on luck. Trail stop updated $525.35 → $528.67 (5% below today intraday high $556.49). INTC Q2 beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B, Data Center +59%) but stock reversed $110→$103 — SCORED 6.17/10 REJECTED. All 5 binding orders blocked HTTP 403. TODAY IS LAST SAFE ENTRY DAY FOR META (earnings July 29 AH; 48h window opens Monday July 27). OPERATOR MANDATORY BEFORE 3:50 PM ET TODAY: (1) AMD stop $528.67; (2) META bracket $630.14/stop $598.63/target $724.66; (3) GS bracket $1,083.19/stop $1,029.03/target $1,245.67; (4) WFC bracket $86.56/stop $82.23/target $99.54; (5) MS bracket $217.08/stop $206.23/target $249.64."
   },
   "positions": [
     {
@@ -31,15 +31,15 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 529.48,
-      "pnl": 408.96,
-      "pnl_pct": 4.48,
+      "current_price": 539.69,
+      "pnl": 592.74,
+      "pnl_pct": 6.5,
       "stop_loss": null,
       "take_profit": 582.78,
-      "stop_loss_pending": 525.35,
+      "stop_loss_pending": 528.67,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "July 23 MARKET-CLOSE: AMD at $529.48 (close). Day 2 keynote: ROCm 7 (3.5x throughput), MI500 roadmap (1000x MI300X by 2027), OpenAI still deploying 6GW (no new commit) — sell the news from $553 to $529.48. P&L: 18x($529.48-$506.76)=+$408.96 (+4.48%). Stop at $525.35 (5% below $553 Day 2 high) — MAINTAIN, do not lower. Still NAKED at Alpaca (94th+ block). Earnings Aug 4 (safe through Aug 1). Reduce 18sh to 9sh (to ~4.75% equity) when API restored. OPERATOR MANDATORY: GTC sell-stop 18sh AMD $525.35 at app.alpaca.markets NOW."
+      "note": "July 24 MID-MORNING: AMD at $539.69 (+1.93% from $529.48 close). Range $525.00-$556.49. CRITICAL: Intraday low $525.00 BREACHED stop $525.35 — naked position survived on luck. Trail stop updated to $528.67 (5% below today high $556.49). P&L: 18x($539.69-$506.76)=+$592.74 (+6.5%). NAKED at Alpaca (95th+ block). Earnings Aug 4 safe through Aug 1. Reduce 18sh to 9sh when API restored. OPERATOR MANDATORY: GTC sell-stop 18sh AMD $528.67 immediately."
     },
     {
       "symbol": "GS",
