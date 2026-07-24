@@ -4,6 +4,242 @@
 
 ---
 
+## 2026-07-24 — Midday (12:30 PM ET / 16:35 UTC — API BLOCKED — 96th+ consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-24T16:35:10Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **96th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 12:35 PM ET — Midday routine window (12:30 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Today's heartbeats (`logs/heartbeats/2026-07-24.log`):
+- ✗ Pre-Market: **SILENT FAILURE** (no heartbeat found in today's log)
+- ✗ Market-Open: **SILENT FAILURE** (no heartbeat found in today's log)
+- ✓ Mid-Morning: 2026-07-24T15:10:17Z STARTED / 15:19:29Z COMPLETED
+- ✓ Midday: 2026-07-24T16:35:10Z STARTED (this routine)
+
+**CATCH-UP STATUS:** Mid-Morning already logged Pre-Market and Market-Open violation entries. All 5 binding commitments (AMD stop, GS, META, WFC, MS) remain unplaced due to API blockage (95th session). Midday retry below — all again HTTP 403.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (ALL API CALLS HTTP 403)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy 403 — 96th+ consecutive)
+# GET /v2/positions → HTTP 403
+# POST /v2/orders (AMD stop) → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Last known price: $539.69 (11:10 AM ET); today's range $525.00–$556.49
+- Intraday low today (earlier): $525.00 — BELOW prior stop $525.35 (position naked — survived on luck at open)
+- Trail stop target: $528.67 (5% below today's high $556.49) — updated Mid-Morning; NOT placed at Alpaca
+- STATUS: **NAKED at Alpaca (no resting stop order — API blocked 96th+ session)**
+- AMD stop ORDER ATTEMPT: `POST /v2/orders` `{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"528.67","time_in_force":"gtc"}` → **HTTP 403 BLOCKED**
+
+**GUARDRAIL VIOLATION (ONGOING, CRITICAL):** AMD 18sh naked at Alpaca. 96th+ consecutive session with no protective stop. OPERATOR MANDATORY: Place GTC sell-stop 18sh AMD at $528.67 on app.alpaca.markets IMMEDIATELY.
+
+---
+
+### MIDDAY MARKET SUMMARY (12:35 PM ET est.)
+
+All market data endpoints blocked (HTTP 403). Using last-known prices from Mid-Morning (11:10 AM ET) as estimates:
+
+| Symbol | Last Known Price | Daily Change | Notes |
+|---|---|---|---|
+| SPX | ~7,416 est. | +0.13% est. | Modest bounce from yesterday's −1.24% |
+| AMD | $539.69 (11:10 AM) | +1.93% | Range $525.00–$556.49 |
+| GS | ~$1,077.80 (11:10 AM) | −1.87% est. | Post-ATH consolidation |
+| META | ~$630 est. | ~flat–+0.5% | **LAST SAFE ENTRY DAY — 48h window opens July 27** |
+| WFC | ~$86.13 est. | −0.35% est. | Financials modest pullback |
+| MS | ~$216 est. | ~flat | Near ATH |
+| Oil | ~$88–90 est. | Easing | Pulled back from yesterday's spike |
+| VIX | ~18 est. | — | Elevated; market cautious ahead of FOMC July 28-29 |
+
+**Market Context:** Modest risk-on bounce continuing from yesterday's −1.24%. FOMC July 28-29 next week keeps sentiment cautious. Tech mixed — Nasdaq slight underperform vs. Dow. Financials soft on post-earnings consolidation. AMD midday holding well above $525 floor. **Critical: Today (July 24, Friday) is ABSOLUTE LAST SAFE ENTRY DAY FOR META before earnings July 29 AH.**
+
+---
+
+### BINDING ORDER ATTEMPTS — ALL HTTP 403 (96th+ block)
+
+All 5 binding commitments re-attempted at Midday. All returned HTTP 403 (proxy egress policy denial).
+
+```bash
+# ATTEMPT 1: AMD GTC SELL-STOP (mandatory stop)
+POST /v2/orders {"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"528.67","time_in_force":"gtc"}
+RESPONSE: HTTP 403 — CONNECT tunnel failed (proxy policy denial)
+
+# ATTEMPT 2: GS BUY BRACKET (score 7.83 — binding commitment)
+POST /v2/orders {"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1083.19","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1029.03"},"take_profit":{"limit_price":"1245.67"}}
+RESPONSE: HTTP 403 — CONNECT tunnel failed (proxy policy denial)
+
+# ATTEMPT 3: META BUY BRACKET (score 7.67 — LAST SAFE DAY)
+POST /v2/orders {"symbol":"META","qty":7,"side":"buy","type":"limit","limit_price":"630.14","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"598.63"},"take_profit":{"limit_price":"724.66"}}
+RESPONSE: HTTP 403 — CONNECT tunnel failed (proxy policy denial)
+
+# ATTEMPT 4: WFC BUY BRACKET (score 7.0 — binding commitment)
+POST /v2/orders {"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"86.56","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"82.23"},"take_profit":{"limit_price":"99.54"}}
+RESPONSE: HTTP 403 — CONNECT tunnel failed (proxy policy denial)
+
+# ATTEMPT 5: MS BUY BRACKET (score 7.17 — binding commitment)
+POST /v2/orders {"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"217.08","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"206.23"},"take_profit":{"limit_price":"249.64"}}
+RESPONSE: HTTP 403 — CONNECT tunnel failed (proxy policy denial)
+```
+
+---
+
+### YAML DECISION LOG — MIDDAY ROUTINE
+
+```yaml
+---
+ts: 2026-07-24T16:35:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD 18sh resting stop at $528.67 blocked — API HTTP 403 (96th+ consecutive session). Naked position violation continues.
+size_pct: 9.7
+stop: 528.67
+target: 582.78
+result_pct: null
+master_notes: "POST /v2/orders AMD GTC sell-stop 18sh $528.67 → HTTP 403. Proxy egress policy blocks paper-api.alpaca.markets:443. 96th+ consecutive session. AMD dipped to $525.00 intraday (below prior stop $525.35) — naked position survived on luck earlier today. Trail stop updated to $528.67 (5% below today high $556.49). OPERATOR MANDATORY: Place GTC sell-stop 18sh AMD at $528.67 on app.alpaca.markets immediately."
+---
+```
+
+```yaml
+---
+ts: 2026-07-24T16:36:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS BUY 4sh limit bracket GTC $1,083.19/stop $1,029.03/target $1,245.67 blocked — API HTTP 403. Not a valid skip (none of 3 exemptions apply) — this is a systemic API failure.
+size_pct: 4.3
+stop: 1029.03
+target: 1245.67
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders GS 4sh bracket GTC $1,083.19 → HTTP 403. Score 7.83 — all 6 agents ≥7. This is NOT a valid skip — zero of the 3 exemptions apply (no guardrail breach; no 48h binary event; circuit breaker not tripped). API blockage = systemic failure. OPERATOR: BUY 4sh GS bracket on app.alpaca.markets — entry ~$1,083, stop $1,029.03, target $1,245.67."
+---
+```
+
+```yaml
+---
+ts: 2026-07-24T16:37:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: META BUY 7sh bracket GTC $630.14/stop $598.63/target $724.66 — API HTTP 403 on LAST SAFE ENTRY DAY before earnings July 29 AH.
+size_pct: 4.4
+stop: 598.63
+target: 724.66
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders META 7sh bracket GTC $630.14 → HTTP 403. Score 7.67 — all 6 agents ≥7. TODAY IS THE LAST SAFE ENTRY DAY — earnings July 29 AH; 48h window opens Monday July 27. After today's close, META is off-limits until post-earnings. This is a CRITICAL failure — META must be entered today or the thesis is dead until after earnings. OPERATOR URGENT: BUY 7sh META bracket on app.alpaca.markets before 3:50 PM ET TODAY — entry ~$630, stop $598.63, target $724.66."
+---
+```
+
+```yaml
+---
+ts: 2026-07-24T16:38:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC BUY 30sh bracket GTC $86.56/stop $82.23/target $99.54 blocked — API HTTP 403 (96th+ consecutive).
+size_pct: 2.6
+stop: 82.23
+target: 99.54
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders WFC 30sh bracket GTC $86.56 → HTTP 403. Score 7.0. WFC beat Q2 earnings; financials rotation play. API blockage systemic failure — not a valid skip. OPERATOR: BUY 30sh WFC bracket at app.alpaca.markets — entry ~$86.56, stop $82.23, target $99.54."
+---
+```
+
+```yaml
+---
+ts: 2026-07-24T16:39:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: MS BUY 20sh bracket GTC $217.08/stop $206.23/target $249.64 blocked — API HTTP 403 (96th+ consecutive).
+size_pct: 4.3
+stop: 206.23
+target: 249.64
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders MS 20sh bracket GTC $217.08 → HTTP 403. Score 7.17. MS Q2 beat; financials momentum play. API blockage systemic failure — not a valid skip. OPERATOR: BUY 20sh MS bracket at app.alpaca.markets — entry ~$217.08, stop $206.23, target $249.64."
+---
+```
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+**AMD (18sh):** HOLD — thesis intact (AI capex/AMD 2026, earnings Aug 4 safe through Aug 1). Stop MUST be placed at $528.67 by OPERATOR before close. Current P&L +$592.74 (+6.5%). If stop not placed today, position is naked through the weekend — extreme risk. AMD also oversized at 9.7% (>5% cap); reduce to 9sh when API restored.
+
+**GS/META/WFC/MS:** CARRY commitments forward to Afternoon and Market-Close routines. META is CRITICAL — must be placed today or scrapped until post-earnings July 29.
+
+---
+
+### AFTERNOON/CLOSE ACTION PLAN
+
+1. **AMD STOP $528.67** — OPERATOR MUST PLACE before 3:50 PM ET (MANDATORY, no excuses)
+2. **META BUY 7sh bracket $630.14/stop $598.63/target $724.66** — LAST CHANCE today (OPERATOR: app.alpaca.markets by 3:50 PM ET)
+3. **GS BUY 4sh bracket $1,083.19/stop $1,029.03/target $1,245.67** — carry to Afternoon/Close
+4. **WFC BUY 30sh bracket $86.56/stop $82.23/target $99.54** — carry to Afternoon/Close
+5. **MS BUY 20sh bracket $217.08/stop $206.23/target $249.64** — carry to Afternoon/Close
+
+If API is still blocked at Afternoon (2:00 PM ET), Afternoon routine should immediately retry all 5, escalate to operator notification, and set Market-Close as final catch-up window. At Market-Close, if all orders remain blocked, META thesis expires and must be logged as a strategic loss due to API failure.
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓

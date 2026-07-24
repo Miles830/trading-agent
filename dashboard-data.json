@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-24T15:12:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-24T16:35:00Z",
+  "updated_by": "midday",
   "portfolio": {
     "total_equity": 100358.42,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.3
     },
-    "note": "July 24 MID-MORNING (11:10 AM ET / 15:12Z). API BLOCKED HTTP 403 — 95th+ consecutive session. Pre-Market + Market-Open BOTH silent failures today. AMD at $539.69 (+1.93% from $529.48 close) — range $525.00-$556.49. CRITICAL: AMD dipped to $525.00 (BELOW stop $525.35) — naked position survived on luck. Trail stop updated $525.35 → $528.67 (5% below today intraday high $556.49). INTC Q2 beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B, Data Center +59%) but stock reversed $110→$103 — SCORED 6.17/10 REJECTED. All 5 binding orders blocked HTTP 403. TODAY IS LAST SAFE ENTRY DAY FOR META (earnings July 29 AH; 48h window opens Monday July 27). OPERATOR MANDATORY BEFORE 3:50 PM ET TODAY: (1) AMD stop $528.67; (2) META bracket $630.14/stop $598.63/target $724.66; (3) GS bracket $1,083.19/stop $1,029.03/target $1,245.67; (4) WFC bracket $86.56/stop $82.23/target $99.54; (5) MS bracket $217.08/stop $206.23/target $249.64."
+    "note": "July 24 MIDDAY (12:35 PM ET / 16:35Z). API BLOCKED HTTP 403 — 96th+ consecutive session. Pre-Market + Market-Open BOTH silent failures today. Mid-Morning completed 15:10-15:19Z. AMD last known $539.69 (11:10 AM ET) — range $525.00-$556.49. AMD trail stop $528.67 NOT placed at Alpaca (HTTP 403). All 5 binding orders retried at Midday — all HTTP 403. META CRITICAL: TODAY IS LAST SAFE ENTRY DAY before earnings July 29 AH (48h window opens Monday July 27). If not entered by 3:50 PM ET today, META thesis expires. OPERATOR URGENT BEFORE 3:50 PM ET: (1) AMD stop $528.67; (2) META 7sh bracket $630.14/stop $598.63/target $724.66 — LAST CHANCE; (3) GS 4sh bracket $1,083.19/stop $1,029.03/target $1,245.67; (4) WFC 30sh bracket $86.56/stop $82.23/target $99.54; (5) MS 20sh bracket $217.08/stop $206.23/target $249.64."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 528.67,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "July 24 MID-MORNING: AMD at $539.69 (+1.93% from $529.48 close). Range $525.00-$556.49. CRITICAL: Intraday low $525.00 BREACHED stop $525.35 — naked position survived on luck. Trail stop updated to $528.67 (5% below today high $556.49). P&L: 18x($539.69-$506.76)=+$592.74 (+6.5%). NAKED at Alpaca (95th+ block). Earnings Aug 4 safe through Aug 1. Reduce 18sh to 9sh when API restored. OPERATOR MANDATORY: GTC sell-stop 18sh AMD $528.67 immediately."
+      "note": "July 24 MIDDAY: AMD last known $539.69 (11:10 AM ET); midday est. ~$535-542. Range $525.00-$556.49. Intraday low $525.00 BREACHED prior stop $525.35 — position survived naked. Trail stop $528.67 (5% below today high $556.49) — NOT placed at Alpaca (96th+ block). P&L est.: 18x($539.69-$506.76)=+$592.74 (+6.5%). NAKED at Alpaca. Earnings Aug 4 safe through Aug 1. Reduce 18sh to 9sh when API restored. OPERATOR URGENT: GTC sell-stop 18sh AMD $528.67 — place NOW on app.alpaca.markets."
     },
     {
       "symbol": "GS",
@@ -54,7 +54,7 @@
       "stop_loss_pending": 1019.35,
       "setup": "earnings-reaction-follow",
       "agent_average": 7.83,
-      "note": "BINDING CARRY (July 14 to July 23, 94th+ block). Score 7.83 (all 6 agents >= 7). Q2 EPS +45.7% beat. GS est. close ~$1,073 (midday $1,077.62, down -1.87% today). MOC BUY 4sh HTTP 403 BLOCKED. Updated entry ~$1,073, stop $1,019.35 (-5%), target $1,233.95 (+15%, 3:1). BINDING COMMITMENT: Pre-Market July 24 MUST enter. OPERATOR: BUY 4sh GS bracket GTC at app.alpaca.markets."
+      "note": "BINDING CARRY (July 14 to July 24, 96th+ block). Score 7.83 (all 6 agents >= 7). Q2 EPS +45.7% beat. GS midday est. ~$1,083 (updated entry per Mid-Morning). All Midday retry → HTTP 403. Updated entry $1,083.19, stop $1,029.03 (-5%), target $1,245.67 (+15%, 3:1). OPERATOR: BUY 4sh GS bracket GTC at app.alpaca.markets."
     },
     {
       "symbol": "META",
@@ -69,7 +69,7 @@
       "stop_loss_pending": 595.81,
       "setup": "breakout-volume",
       "agent_average": 7.67,
-      "note": "BINDING CARRY (July 14 to July 23, 94th+ block). Score 7.67. META at $627.17 (-3.87% today on tech sentiment drag). MOC BUY 7sh HTTP 403 BLOCKED. Entry ~$627.17, stop $595.81 (-5%), target $721.25 (+15%). CRITICAL: META earnings July 29 AH — 48h window opens July 27. LAST ELIGIBLE ENTRY: July 25 COB. Pre-Market July 24 is MANDATORY."
+      "note": "BINDING CARRY (July 14 to July 24, 96th+ block). Score 7.67. META midday est. ~$630. All retries HTTP 403. Entry $630.14, stop $598.63 (-5%), target $724.66 (+15%). CRITICAL: TODAY IS LAST SAFE ENTRY DAY — earnings July 29 AH; 48h window opens July 27. If not placed by 3:50 PM ET today, META thesis EXPIRES. OPERATOR URGENT: BUY 7sh META bracket GTC app.alpaca.markets IMMEDIATELY."
     },
     {
       "symbol": "WFC",
@@ -156,10 +156,10 @@
     },
     {
       "name": "Midday",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-14T16:36:00Z",
-      "next_run": "2026-07-24T16:30:00Z",
-      "last_summary": "July 23 Midday SILENTLY FAILED (same window as AMD keynote 12:30 PM ET). AMD sell-off from $553 to close $529.48 uncovered. Violation logged."
+      "status": "completed",
+      "last_run": "2026-07-24T16:35:00Z",
+      "next_run": "2026-07-25T16:30:00Z",
+      "last_summary": "July 24 Midday COMPLETED 16:35Z. API BLOCKED HTTP 403 (96th+ consecutive). Predecessor check: Pre-Market + Market-Open both silent failures; Mid-Morning completed 15:19Z. Stop-loss audit: AMD naked (no stop — HTTP 403). Retried all 5 binding orders (AMD stop + GS/META/WFC/MS) — ALL HTTP 403. META LAST SAFE DAY expires at today's close. No day trades to close. AMD hold overnight with operator-placed stop mandatory. Afternoon/Market-Close to retry all 5 orders."
     },
     {
       "name": "Afternoon",
