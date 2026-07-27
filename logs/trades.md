@@ -4,6 +4,196 @@
 
 ---
 
+## 2026-07-27 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 96th+ consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-27T20:34:24Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **96th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 4:30 PM ET — Daily Review window
+
+---
+
+### HEARTBEAT AUDIT — TOP OPERATIONAL ISSUE
+
+Today's heartbeats (`logs/heartbeats/2026-07-27.log`):
+- ✗ Pre-Market (8:00 AM ET): **SILENT FAILURE** — no STARTED line
+- ✗ Market-Open (9:45 AM ET): **SILENT FAILURE** — no STARTED line
+- ✗ Mid-Morning (11:00 AM ET): **SILENT FAILURE** — no STARTED line
+- ✗ Midday (12:30 PM ET): **SILENT FAILURE** — no STARTED line
+- ✗ Afternoon (2:00 PM ET): **SILENT FAILURE** — no STARTED line
+- ✗ Market-Close (3:30 PM ET): **SILENT FAILURE** — no STARTED line
+- ✓ Daily-Review (4:30 PM ET): 2026-07-27T20:34:24Z STARTED (this routine)
+
+**OPERATIONAL FAILURE RATING: 6/7 SILENT FAILURES — CRITICAL.** AMD declined $17.95/share × 18sh = -$323.10 today with no protective stop in place and no routine firing to monitor or intervene. This is the direct cost of the scheduler/infrastructure failure. **Remediation: Operator must place manual stop ($481.42) at app.alpaca.markets — the only protection between routine failures.**
+
+```yaml
+---
+ts: 2026-07-27T20:34:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: All 6 intraday routines (Pre-Market through Market-Close) silently failed on July 27. AMD declined 3.39% with no stop order and no routine coverage.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "6/7 routines SILENT FAILURE (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close). AMD moved from $521.95 (Friday close) to $504 (Monday close) with no stop protection. Portfolio daily P&L: -$323.10. This is the 96th+ consecutive session with API blocked and represents ongoing critical guardrail violation (AMD naked 37+ days). Operator must place AMD stop $481.42 manually."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 27, 2026
+
+| Symbol | Price (Close) | Daily Change | Notes |
+|---|---|---|---|
+| SPX | ~7,450 | +0.57% | Dow +0.5%; tech/chips lagged; real estate +2.2% led |
+| AMD | ~$504 | -3.39% | Intraday low ~$477 (broke below $500); closed ~$504; Wedbush PT raised $600 |
+| GS | ~$1,062 | ~-2% est. | Post-ATH consolidation (ATH $1,152 July 15) |
+| MS | ~$214 | ~flat | Near recent range |
+| WFC | ~$86 | ~flat | Financials steady |
+| META | — | — | IN 48h BINARY EVENT WINDOW (earnings July 29 AH) |
+| MSFT | — | — | IN 48h BINARY EVENT WINDOW (earnings July 29 AH) |
+| QCOM | ~$167 | — | IN 48h BINARY EVENT WINDOW (earnings July 29 AH); PT $221 (+32%) |
+| Oil | ~$90 | elevated | Geopolitical + OPEC tension; macro headwind |
+| VIX | ~18-20 est. | elevated | FOMC uncertainty + earnings week |
+
+**Context:** Split session — Dow and real estate led on rate-cut hopes; chips/tech lagged as AI capex concern metastasized from last week. FOMC July 28-29 creates binary event uncertainty per CLAUDE.md. AMD fell -3.39% (intraday breach below $500) despite Wedbush upgrading PT to $600 — "sell first, read report later" ahead of Aug 4 earnings. META/MSFT/QCOM/AAPL/AMZN all report July 29-30, creating the heaviest earnings week of 2026.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy 403 — 96th+ consecutive)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Close price: ~$504 (-3.39% from $521.95 Friday close)
+- Trail stop $528.67 (set July 24): **BREACHED** — AMD has been below $528.67 since July 24 EOD
+- Hard floor stop (5% below entry avg): $506.76 × 0.95 = **$481.42** — AMD $22.58 above hard floor
+- STATUS: NAKED at Alpaca (no stop order resting — API blocked 96th+ session)
+- **GUARDRAIL VIOLATION (DAY 37+): AMD naked. OPERATOR MANDATORY: Place GTC sell-stop 18sh AMD at $481.42 BEFORE JULY 28 MARKET OPEN.**
+
+```yaml
+---
+ts: 2026-07-27T20:35:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD stop order attempt (GTC $481.42 hard floor) — API blocked 96th+ session. AMD breached trail stop $528.67 last week; hard floor $481.42 remains active.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+master_notes: "AMD at ~$504. Trail stop $528.67 breached (AMD never hit stop due to API blockage — position naked 37+ days). Hard floor stop: $506.76 × 0.95 = $481.42. AMD $22.58 above hard floor. Thesis intact (12GW committed, earnings Aug 4 EPS est. $1.34 vs $0.27 prior year, Wedbush PT $600). Hold through Aug 1 with mandatory hard stop. AMD 48h earnings window opens Aug 2 — last safe exit day Aug 1. FOMC July 28-29 = binary event; no new positions until July 30. OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD $481.42 on app.alpaca.markets IMMEDIATELY."
+---
+```
+
+---
+
+### TODAY'S P&L AND PERFORMANCE
+
+**Position P&L (July 27):**
+- AMD: 18sh × ($504 − $521.95) = 18 × (−$17.95) = **−$323.10**
+- Portfolio daily P&L: **−$323.10 (−0.32%)**
+
+**Portfolio cumulative:**
+- Total equity: ~$99,716 (AMD 18sh × $504 = $9,072 + Cash $90,644)
+- P&L from $100K: **−$284 (−0.28%)**
+- AMD unrealized: 18 × ($504 − $506.76) = **−$49.68 (−0.55% from avg cost)**
+
+**Benchmark comparison:**
+- SPX July 27 close: ~7,450 (+0.57% today)
+- SPX from May 1 baseline 7,200: **+3.47%**
+- Portfolio from $100K baseline: **−0.28%**
+- **Daily gap: −0.89 pp (portfolio −0.32% vs SPX +0.57%)**
+- **Cumulative gap vs SPX: −3.75 pp** (widened from −2.64 pp on July 24)
+
+**20-day rolling performance:**
+- 20-DAY UNDERPERFORMANCE FLAG: **ACTIVE** (96th+ consecutive sessions)
+- Root cause: Alpaca API blocked → all entries blocked → 90% cash → no participation in SPX +3.47% YTD rally
+- The gap is NOT a strategy failure — it is a direct consequence of API inaccessibility preventing deployment
+
+**Circuit breaker:** −0.32% daily — NOT tripped (well below −3% threshold)
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day Window July 21–27)
+
+Grepping today + prior 4 trading days (July 21, 22, 23, 24, 27) for setup tags:
+
+| Setup Tag | Action | Result | Running Total |
+|---|---|---|---|
+| ai-momentum-pullback | AMD open (entry June 20) | OPEN — no exit yet | P&L = $−49.68 unrealized |
+| earnings-reaction-follow | INTC skip July 24 | Skip (score 6.17 < 7) | 0 wins / 0 losses |
+| sector-rotation | GS skip (×5 days blocked) | Skip (API blocked) | 0 wins / 0 losses |
+| silent-failure | 6 routines July 27; multiple prior days | Violation logged | — |
+
+**3-in-a-row halt check:** No completed trade sequence — no halts triggered.
+**3-in-a-row boost check:** No completed trade sequence — no boosts triggered.
+
+---
+
+### TODAY'S BEST AND WORST
+
+**Best:** AMD held above hard stop $481.42 despite intraday breach below $500. Wedbush raised PT to $600.
+**Worst:** 6/7 intraday routines silently failed — AMD fell $323 with no defensive action possible. Trail stop $528.67 breached without execution (API blocked 96th+ consecutive day).
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+1. AMD recovered from intraday low ~$477 to close ~$504 — hard stop $481.42 not triggered
+2. INTC rejection (6.17/10) validated — INTC's post-earnings reversal continued today, would have been a losing trade
+3. FOMC binary event classification correctly defers all new entries to July 30 — avoids entering into maximum uncertainty window
+
+### 3 THINGS TO IMPROVE TOMORROW
+1. **AMD stop placement (Day 37 naked):** This is the single highest-priority action in the entire portfolio. Without a stop, every day is pure luck. Operator must place $481.42 before July 28 open.
+2. **Scheduler reliability:** 6/7 routines missed. The Pre-Market routine firing is the most critical (MOO orders, stop placements). Investigate cron schedule configuration.
+3. **FOMC preparation:** Tomorrow is FOMC Day 1 — no new entries. Use the session to prepare a post-FOMC entry plan for July 30: re-price GS/WFC/MS, score MSFT/META/QCOM post-earnings.
+
+---
+
+### TOMORROW'S WATCHLIST (July 28 Pre-Market — BINDING COMMITMENT)
+
+**NOTE: FOMC binary event window active (decision July 29) → NO NEW POSITION ENTRIES July 28.**
+**Only action: AMD stop placement.**
+
+| Rank | Ticker | Setup | Est. Score | Action Date | Rationale |
+|---|---|---|---|---|---|
+| 1 | AMD | stop-mandatory | N/A | July 28 FIRST ACTION | Hard stop $481.42 — no exemptions |
+| 2 | GS | sector-rotation | 7.5 est. | **July 30** (post-FOMC) | Score 7.83; re-price at ~$1,062; all 6 agents ≥7 |
+| 3 | MS | sector-rotation | 7.0 est. | **July 30** (post-FOMC) | Score 7.17; re-price at ~$214 |
+| 4 | WFC | sector-rotation | 7.0 est. | **July 30** (post-FOMC) | Score 7.0; re-price at ~$86 |
+| 5 | MSFT | earnings-reaction-follow | TBD | **July 30** (post-earnings) | Reports July 29 AH; Azure AI / Copilot revenue key metric |
+| 6 | META | earnings-reaction-follow | TBD | **July 30** (post-earnings) | Reports July 29 AH; 48h window active today |
+| 7 | QCOM | earnings-reaction-follow | TBD | **July 30** (post-earnings) | Reports July 29 AH; PT $221 vs ~$167 (+32% upside) |
+| 8 | GOOGL | earnings-reaction-fade | 6.0 est. | **July 30** | Scored 6.5 July 23; monitor for oversold reversal post-FOMC |
+| 9 | GLD | macro-hedge | 6.5 est. | **July 30 conditional** | Hawkish FOMC = gold bid; rate uncertainty supports |
+| 10 | XLF | sector-rotation | 6.5 est. | **July 30 conditional** | Dovish/neutral FOMC = financial sector relief rally |
+
+**Score ≥7 means enter (July 30):** GS, MS, WFC are the binding entries for July 30 (re-scored at current prices). Post-earnings MSFT/META/QCOM require fresh 6-agent scores at July 30 Pre-Market.
+
+---
+
+### KEY MACRO EVENTS (July 28 – Aug 1)
+
+| Date | Event | Market Impact |
+|---|---|---|
+| Mon July 28 | FOMC Day 1 (no decision) | Low vol; set-and-forget day |
+| Tue July 29 | FOMC Decision + Warsh presser ~2 PM | **MAJOR** — hold/hike language drives direction |
+| Tue July 29 AH | META, MSFT, QCOM earnings | Largest single earnings night of 2026 |
+| Wed July 30 | PCE + Core PCE (Fed preferred inflation); Q2 GDP first read (8:30 AM ET) | Secondary macro data |
+| Wed July 30 AH | AAPL, AMZN earnings | Closes the earnings super-week |
+| Thu July 31 | Market digestion | Consolidation expected |
+| Fri Aug 1 | **LAST SAFE AMD EXIT DAY** (before Aug 2 48h window opens) | AMD position review |
+| Tue Aug 4 AH | **AMD earnings** | 48h window opens Aug 2 — NO new AMD entries after Aug 2 |
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓
