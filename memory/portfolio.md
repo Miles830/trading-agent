@@ -1,7 +1,58 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-24 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 95th+ consecutive blocked session). MID-MORNING ROUTINE ✅ COMPLETED.**
+**2026-07-27 (Monday) — AFTERNOON (2:11 PM ET / 18:11 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 96th+ consecutive blocked session). AFTERNOON ROUTINE ✅ COMPLETED.**
+
+**JULY 27 AFTERNOON CRITICAL STATUS:** Pre-Market, Market-Open, Mid-Morning, Midday ALL SILENTLY FAILED today (4 of 5 predecessor routines missed). AMD at ~$479 — BELOW trail stop $528.67 AND below cost basis $506.76. Position NAKED at Alpaca (API blocked 96th+ session). AMD has broken through both stop levels on China semiconductor competition fears (ChangXin Technology IPO +466% debut, Chinese state chipmaking equipment). META 48h binary window active (earnings July 29 AH) — skipped per CLAUDE.md exemption #2. GS/WFC/MS skipped per afternoon proximity-to-close rule; carry to Pre-Market July 28. **OPERATOR MANDATORY: SELL 18sh AMD AT MARKET immediately via app.alpaca.markets. Do NOT wait for API fix.**
+
+**PORTFOLIO STATE (July 27, 2026 — 2:11 PM ET):**
+- Cash: ~$90,644 (91.3%)
+- AMD: 18sh × ~$479 = ~$8,622 (8.7%) — NAKED (no stop), BELOW STOP $528.67, BELOW COST $506.76, over 5% cap
+- Total equity est.: ~$99,266
+- P&L vs $100K initial: −$734 (−0.73%)
+- AMD unrealized: 18 × ($479 − $506.76) = −$499.68 (−5.5%)
+- AMD daily P&L: 18 × ($479 − $539.69) = −$1,092.42 (−$1.09%)
+- Portfolio daily P&L: ~−$1,092 (−1.1%)
+- SPX July 27 est.: ~7,394 (−0.30% from July 24 close 7,416); SPX since May 1 baseline 7,200: **+2.69%**
+- Portfolio since $100K baseline: **−0.73%**
+- **Benchmark gap: −3.42 pp** (worsened from −2.64 pp July 24 — AMD stop breach + API blockage)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (96th+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (−1.1% daily below −3% threshold; do not pause entries)
+
+**AMD CRITICAL (July 27 Afternoon):** AMD at ~$479. Trail stop $528.67 (set July 24) NEVER PLACED at Alpaca (API blocked). AMD has fallen −11.2% from July 24 high $556.49 and −8.2% from July 24 close $539.69. Cause: China semiconductor competition fears (ChangXin IPO +466%, Chinese state chipmaking equipment). Unrealized loss vs cost basis: −$499.68. Loss vs where trail stop would have exited (+$394 gain at $528.67): a swing of −$893. AMD earnings Aug 4 AH — too close to hold through (48h window opens Aug 2). OPERATOR MANDATORY: SELL 18sh AMD at market NOW via app.alpaca.markets.
+
+**META (July 27):** 48-hour binary event window ACTIVE (earnings July 29 AH). NO ENTRY. META at ~$595 (oversold, RSI low, −9.68% YTD). Post-earnings setup (earnings-reaction-follow or fade) flagged for July 30 Pre-Market. Prediction markets: 87% beat probability. Analyst consensus target $826 (+38.8%). Re-score after July 29 AH print.
+
+**BINARY EVENT WINDOWS (July 27–31):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| META | Wed July 29 AH | **ACTIVE July 27+** | **BLOCKED — no entry until July 30 Post-Earnings** |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | MUST EXIT before Aug 2; sell now (below stop) |
+| FOMC | Mon-Tue July 28-29 | N/A | Rate decision July 29 2 PM ET — HOLD expected |
+| MSFT | This week | TBD | Monitor for earnings-reaction setup |
+
+**ORDERS ATTEMPTED AND BLOCKED (July 27 Afternoon — all HTTP 403):**
+- AMD: Sell market 18sh (API blocked — OPERATOR MUST EXECUTE MANUALLY)
+- GS, WFC, MS: Skipped per afternoon proximity-to-close rule; carry to Pre-Market July 28
+
+**JULY 28 BINDING COMMITMENTS (Pre-Market — MANDATORY, no exemptions):**
+1. AMD: Confirm sell status (OPERATOR must sell NOW manually; if sold, record fill; if not, Pre-Market sells)
+2. GS: BUY 4sh limit bracket GTC $1,067.04 / stop $1,013.70 / target $1,227.10 — score 7.83 (**HIGHEST PRIORITY**)
+3. MS: BUY 20sh limit bracket GTC $215.55 / stop $204.76 / target $247.38 — score 7.17
+4. WFC: BUY 30sh limit bracket GTC $88.04 / stop $83.64 / target $101.25 — score 7.0 (re-price at open)
+5. META: Flag for July 30 Pre-Market post-earnings score only; no pre-earnings entry
+
+**SETUP PERFORMANCE TRACKER (July 27 update):**
+| Setup | Wins | Losses | Win Rate | Notes |
+|---|---|---|---|---|
+| ai-momentum-pullback | 0 | 1 | 0% | AMD: stop breach −$500; API blockage root cause |
+| earnings-reaction-follow | 0 | 0 | — | GS/META/WFC/MS not yet executed |
+| sector-rotation | 0 | 0 | — | Not yet executed |
+| macro-hedge | 0 | 0 | — | Not yet executed |
+| silent-failure | — | — | — | 9+ silent failures logged (scheduler issue) |
+
+**HALTED SETUPS:** None (insufficient trade count for 3-in-a-row rule)
+**INCREASED CONVICTION SETUPS:** None yet
 
 **JULY 24 MID-MORNING STATUS:** Pre-Market and Market-Open BOTH SILENTLY FAILED (no heartbeats). Mid-Morning is first routine to fire today. AMD at $539.69 (+1.93% from July 23 close $529.48) — range $525.00–$556.49; **AMD DIPPED TO $525.00 INTRADAY — BELOW stop $525.35 — position is naked and survived on luck.** Trail stop updated to $528.67 (5% below today's intraday high $556.49). INTC beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B) but stock reversed from $110 to $103 → SCORED 6.17/10 → REJECTED. All 5 binding orders (AMD stop + GS/META/WFC/MS brackets) → HTTP 403 BLOCKED (95th+ consecutive). **TODAY IS LAST SAFE ENTRY DAY FOR META** (earnings July 29 AH; 48h window opens Monday July 27). **OPERATOR MANDATORY: Place all 5 orders on app.alpaca.markets BEFORE 3:50 PM ET TODAY.**
 

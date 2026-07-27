@@ -4,6 +4,289 @@
 
 ---
 
+## 2026-07-27 — Afternoon (2:00 PM ET / 18:10 UTC — API BLOCKED — 96th+ consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-27T18:10:47Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **96th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 2:11 PM ET — Afternoon routine window (2:00 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Today's heartbeats (`logs/heartbeats/2026-07-27.log`):
+- ✗ Pre-Market: **SILENT FAILURE** (no heartbeat found)
+- ✗ Market-Open: **SILENT FAILURE** (no heartbeat found)
+- ✗ Mid-Morning: **SILENT FAILURE** (no heartbeat found)
+- ✗ Midday: **SILENT FAILURE** (no heartbeat found)
+- ✓ Afternoon: 2026-07-27T18:10:47Z STARTED (this routine)
+
+```yaml
+---
+ts: 2026-07-27T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET) did not fire on July 27 — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Binding commitments from July 24: AMD stop $528.67 UNPLACED (naked), GS bracket 4sh score 7.83, WFC bracket 30sh score 7.0, MS bracket 20sh score 7.17. META binary event window opened today (July 27) making July 25 the last safe entry day — window missed. No MOO orders placed. AMD has since fallen to ~$479, well below trail stop $528.67, resulting in unrealized loss rather than a gain exit."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET) did not fire on July 27 — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "No MOO fill confirmation. No post-MOO stop placement. AMD trail stop $528.67 still unplaced at Alpaca. AMD opened lower this morning as China semiconductor fears (ChangXin IPO +466%, state chipmaking equipment) hit the sector. No stop catch-up performed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T11:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET) did not fire on July 27 — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD continuing to fall intraday. No stop-loss audit performed. No catch-up entries. All binding commitments (AMD stop, GS, WFC, MS) remain unexecuted. Four consecutive silent failures today represent a systematic scheduler issue."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T12:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET) did not fire on July 27 — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Afternoon is first routine to fire today. AMD at ~$479 intraday, far below trail stop $528.67. FOMC meeting starts tomorrow July 28 — rate decision July 29. META earnings July 29 AH. Semiconductor sector under broad pressure from Chinese competition narrative."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 27, 2026 (2:11 PM ET)
+
+| Symbol | Price (est.) | Daily Change | Notes |
+|---|---|---|---|
+| SPX | ~7,394 | −0.30% | Early gains erased by chip stock selloff; Nasdaq worse at −0.66% |
+| NDX | — | −0.66% | Semiconductor-led decline; Philly Semi index third consecutive down session |
+| AMD | ~$479 | −3.4% to −8.2% | Range ~$477–$538; BELOW trail stop $528.67 AND cost basis $506.76 |
+| GS | ~$1,061.73 | ~−2% | Below our prior limit $1,083.19; range $1,052–$1,086 |
+| META | ~$595 | ~−1% | Oversold (RSI); 48h binary window ACTIVE (earnings July 29 AH) |
+| WFC | ~$87.60 | ~+0.5% | ABOVE our prior limit $86.56 — old bracket would not fill |
+| MS | ~$214.48 | ~flat | Below our prior limit $217.08 |
+| VIX | ~17.76 | −4.4% | Moderate fear; pullback from 18.96 open — sector-specific not systemic |
+| OIL | ~−3% | pullback | Iran conflict pause; oil retreating from last week's spike |
+
+**Context:** Semiconductor stocks leading declines on China competition narrative — ChangXin Technology IPO'd today surging +466% on debut, reigniting fears of Chinese chip disruption. AMD, NVDA, INTC, MU all under pressure. FOMC meeting begins tomorrow (July 28–29); decision expected HOLD at 3.5–3.75% under new Fed Chair Warsh. Mega-cap tech earnings week: META July 29 AH, MSFT this week, AMZN, AAPL.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy 403 — 96th+ consecutive block)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Current price: ~$479 (BELOW cost basis −5.5%; BELOW trail stop $528.67 by −9.4%)
+- Trail stop last set: $528.67 (5% below July 24 intraday high $556.49)
+- Original 5% stop from cost basis: $481.42 ($506.76 × 0.95)
+- AMD at $479 is BELOW BOTH stop levels
+- STATUS: NAKED at Alpaca — no stop order resting. Position should have been stopped out at $528.67.
+
+**GUARDRAIL VIOLATION (CRITICAL):** AMD 18sh has blown through trail stop $528.67 and is now at ~$479. Unrealized loss: 18 × ($479 − $506.76) = −$499.68. If stop had been resting at $528.67, position would have exited with +$394 gain (18 × ($528.67 − $506.76)). **OPERATOR MANDATORY: SELL 18sh AMD at MARKET immediately via app.alpaca.markets. Do NOT wait for API fix.**
+
+```yaml
+---
+ts: 2026-07-27T14:00:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 7.17
+thesis: AMD trail stop $528.67 (set July 24) breached — price at ~$479 is 9.4% below the trail stop and 5.5% below cost basis $506.76. Position is naked at Alpaca (API blocked 96th+ session).
+size_pct: 8.7
+stop: 528.67
+target: 582.78
+result_pct: -5.5
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 4
+master_decision: violation
+master_notes: "AMD at ~$479 (July 27 afternoon). Trail stop $528.67 placed in logs July 24 but NEVER RESTING AT ALPACA (API blocked 96th+ session). AMD fell -8.2% from July 24 close $539.69 on China semiconductor competition: ChangXin Technology IPO +466% debut, Chinese state-backed entity mass-producing chip equipment. AMD intraday range $477-$538. Unrealized: 18x($479-$506.76)=-$499.68 (-5.5%). Had stop been placed at $528.67: exit +$394 gain. Position also over 5% cap (18sh x $479 = $8,622 / $99,266 total = 8.7%). FOMC July 28-29 adds macro overhang; AMD earnings Aug 4 (safe through Aug 1). OPERATOR MANDATORY: SELL 18sh AMD at market app.alpaca.markets NOW. Record fill price, log as stop_hit."
+---
+```
+
+---
+
+### DECISION LOG
+
+#### META — SKIP (Binary Event Exemption)
+
+```yaml
+---
+ts: 2026-07-27T14:05:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: META 48-hour binary event window is ACTIVE — earnings July 29 AH. CLAUDE.md exemption #2 applies. No entry permitted regardless of score.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.67
+agents_above_7: 6
+master_decision: rejected
+master_notes: "META at ~$595 today. Score 7.67 all 6 agents >=7 but binary event exemption is non-negotiable. Earnings July 29 AH — 48h window opened July 27. xAI sentiment unavailable (no API key). Consensus Q2 EPS $7.18 on Revenue $60.22B; prediction markets 87% beat probability; analyst target $826 (+38.8% implied upside). META is in oversold territory (RSI low, down 9.68% YTD). POST-EARNINGS SETUP: flag earnings-reaction-follow for July 30 Pre-Market — if META beats and gaps up, enter on the continuation. If META misses, evaluate earnings-reaction-fade. Re-score after July 29 AH print."
+---
+```
+
+#### GS — SKIP (Afternoon Proximity-to-Close)
+
+```yaml
+---
+ts: 2026-07-27T14:06:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: Afternoon proximity-to-close per routine playbook — no new active-bucket entries at 2 PM ET. Defer to tomorrow Pre-Market. Also: FOMC meeting tomorrow (July 28–29) adds macro uncertainty; re-price entry at Pre-Market.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.83
+agents_above_7: 6
+master_decision: rejected
+master_notes: "GS at $1,061.73 (range $1,052–$1,086 today). Prior limit was $1,083.19 — GS has since FALLEN BELOW that level. Updated entry for Pre-Market: limit $1,067.04 ($1,061.73 x 1.005), stop $1,013.70 (-5%), target $1,227.10 (+15%, 3:1 R/R). 4sh bracket = $4,268 = 4.3% equity (within 5% cap). Score remains 7.83. FOMC hold expected July 29 — if Warsh signals September cut dovishly, financials (GS) rally; if hawkish, further pressure. Pre-Market July 28 must attempt entry unless circuit breaker tripped. Exemption from afternoon proximity-to-close rule cited."
+---
+```
+
+#### WFC — SKIP (Afternoon Proximity-to-Close + Above Entry Limit)
+
+```yaml
+---
+ts: 2026-07-27T14:07:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Afternoon proximity-to-close per routine playbook. Also: WFC at $87.60 is ABOVE our prior limit $86.56 — old bracket would not fill at current price. Re-price at Pre-Market.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "WFC at $87.60 (range $86.80–$87.83 today). Prior limit was $86.56 — WFC has moved UP above our entry level. Updated entry for Pre-Market: limit $88.04 ($87.60 x 1.005), stop $83.64 (-5%), target $101.25 (+15%, 3:1 R/R). 30sh = $2,641 = 2.66% equity (within 5% cap). Score 7.0 — marginal. FOMC tomorrow is key catalyst for financials (rate-sensitive). If HOLD confirmed with September cut signal, WFC benefits. Pre-Market July 28 re-score with updated prices."
+---
+```
+
+#### MS — SKIP (Afternoon Proximity-to-Close)
+
+```yaml
+---
+ts: 2026-07-27T14:08:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.17
+thesis: Afternoon proximity-to-close per routine playbook. MS at $214.48, below prior limit $217.08. Defer to Pre-Market July 28 with updated pricing.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 5
+master_decision: rejected
+master_notes: "MS at ~$214.48. Prior limit was $217.08. Updated entry for Pre-Market: limit $215.55 ($214.48 x 1.005), stop $204.76 (-5%), target $247.38 (+15%, 3:1 R/R). 20sh = $4,310 = 4.34% equity (within 5% cap). Score 7.17. FOMC tomorrow — financials sector risk. MS wealth management less rate-sensitive than pure lending banks. Pre-Market July 28 re-score with updated prices. Combined GS+MS+WFC sector exposure: 4.3% + 2.66% + 4.34% = 11.3% financials (well within 25% sector cap)."
+---
+```
+
+---
+
+### TOMORROW'S PRE-MARKET WATCHLIST (July 28, 2026)
+
+| Rank | Symbol | Setup | Pre-Score | Entry | Stop | Target | R/R | Notes |
+|---|---|---|---|---|---|---|---|---|
+| 1 | GS | earnings-reaction-follow | 7.83 | $1,067.04 | $1,013.70 | $1,227.10 | 3:1 | FOMC catalyst; 4sh bracket |
+| 2 | MS | sector-rotation | 7.17 | $215.55 | $204.76 | $247.38 | 3:1 | Financials; 20sh bracket |
+| 3 | WFC | sector-rotation | 7.0 | $88.04 | $83.64 | $101.25 | 3:1 | Re-price needed; 30sh bracket |
+| 4 | META | earnings-reaction-follow | TBD | TBD | TBD | TBD | TBD | SCORE AFTER July 29 AH print; flag for July 30 Pre-Market |
+| HOLD | AMD | — | — | SELL MARKET | — | — | — | OPERATOR: SELL 18sh at market NOW |
+
+**FOMC NOTE (July 28–29):** Rate decision July 29. Pre-Market July 28 routine should place GS/MS/WFC entries BEFORE FOMC announcement (decision announced 2 PM ET July 29 — not tomorrow morning). Financials typically rally on HOLD + dovish forward guidance. If Warsh signals September cut, GS/MS/WFC setup improves dramatically.
+
+**MANDATORY PRE-MARKET JULY 28 ACTIONS:**
+1. AMD: Confirm sell or log current status (naked position below stop — operator must act NOW)
+2. GS: BUY 4sh limit bracket GTC $1,067.04 / stop $1,013.70 / target $1,227.10
+3. MS: BUY 20sh limit bracket GTC $215.55 / stop $204.76 / target $247.38
+4. WFC: BUY 30sh limit bracket GTC $88.04 / stop $83.64 / target $101.25 (re-price at open)
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓
