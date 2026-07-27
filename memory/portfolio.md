@@ -1,7 +1,73 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-24 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 95th+ consecutive blocked session). MID-MORNING ROUTINE ✅ COMPLETED.**
+**2026-07-27 (Monday) — MARKET-CLOSE (3:35 PM ET / 19:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 97th+ consecutive blocked session). MARKET-CLOSE ROUTINE ✅ COMPLETED. 5 OF 7 ROUTINES SILENTLY FAILED TODAY (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon).**
+
+**JULY 27 MARKET-CLOSE STATUS:** All 5 intraday routines silently failed — Market-Close is first and only routine today. AMD fell sharply: –3.39% to est. $504.24 close; intraday low $479.24 breached both trail stop $528.67 AND original entry stop $481.42. AMD is now below avg cost $506.76. **ALL SKIP DECISIONS TODAY HAVE VALID EXEMPTION 2 REASONS:** META (earnings July 29 AH — 48h window active), GS/WFC/MS (FOMC July 28–29 — 36% rate hike probability, 48h window active). FOMC decision Wednesday July 29 at ~2 PM ET. Re-evaluate all financial entries post-FOMC July 30 pre-market. **OPERATOR MANDATORY: Exit 18sh AMD at market via app.alpaca.markets or place GTC stop $481.42 BEFORE pre-market July 28.** API BLOCKED 97th+ consecutive session — all orders blocked HTTP 403.
+
+**PORTFOLIO STATE (July 27, 2026 — 3:35 PM ET EOD EST.):**
+- Cash: ~$90,644 (90.9%)
+- AMD: 18sh × $504.24 est. = ~$9,076.32 (9.1%) — BELOW avg cost $506.76 — BELOW trail stop $528.67 — naked (no stop)
+- Total equity est.: ~$99,720.32
+- P&L vs $100K initial: –$279.68 (–0.28%)
+- AMD unrealized: 18 × ($504.24 − $506.76) = –$45.36 (–0.5%)
+- AMD daily P&L: 18 × ($504.24 − $521.95) = –$318.78 (–3.39%)
+- Portfolio daily P&L: –$318.78 (–0.32%)
+- SPX July 27 close est.: ~7,423 (+0.1% today); SPX from May 1 baseline 7,200: **+3.10%**
+- Portfolio since $100K baseline: **–0.28%**
+- **Benchmark gap: –3.38 pp** (worsened from –2.64 pp on July 24)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (97th+ consecutive sessions — API blockage root cause)
+- Circuit breaker: –0.32% daily (AMD pre-earnings selloff) — NOT tripped (< –3% threshold)
+
+**AMD CRITICAL STATUS (July 27):**
+- Trail stop $528.67 BREACHED (AMD $24.43 below trail stop)
+- Intraday low $479.24 also breached original entry stop $481.42 by $2.18
+- AMD closed est. $504.24 — recovered from intraday low but remains below trail stop
+- Position is NAKED (no stop at Alpaca — 97th+ block)
+- Chip sector: Pre-earnings anxiety, AI capex concerns, AMD –3.39% today
+- FX Leaders headline: "AMD Stock Heads to $450 after Breaking $500 as Pre-Earnings Chip Sector Weakness Intensifies"
+- AMD earnings Aug 4 AH — 48h window opens Aug 2. Safe to hold through Aug 1.
+- **OPERATOR MANDATORY DECISION: (1) EXIT 18sh AMD at market NOW on app.alpaca.markets, OR (2) Place GTC stop $481.42 (original entry-based stop) accepting trail stop breach — AMD thesis still intact (12GW committed, TSMC 2nm, ROCm 7, earnings Aug 4)**
+
+**VALID SKIPS TODAY — ALL EXEMPTION 2 (Binary Events):**
+| Symbol | Score | Skip Reason | Exemption |
+|---|---|---|---|
+| META | 7.67 | Earnings July 29 AH — 48h window OPEN | Exemption 2 |
+| GS | 7.83 | FOMC July 28–29 — 36% rate hike probability | Exemption 2 |
+| WFC | 7.0 | FOMC July 28–29 — 36% rate hike probability | Exemption 2 |
+| MS | 7.17 | FOMC July 28–29 — 36% rate hike probability | Exemption 2 |
+
+**FOMC CONTEXT (July 28–29 Meeting):**
+- CME FedWatch: 36% rate hike probability (up from 16% one week ago) — substantially elevated
+- Markets expect hold at 3.50–3.75% but rate hike tail risk is significant
+- Decision: Wednesday July 29 at ~2 PM ET
+- Financial stocks (GS, WFC, MS) face direct rate sensitivity — entering 48h before FOMC with 36% hike probability violates the Exemption 2 spirit
+- **Post-FOMC re-entry window: July 30 pre-market — re-price and re-enter GS/WFC/MS at that time**
+
+**BINARY EVENT WINDOWS (July 27–31):**
+| Company | Event | 48h Window | Status |
+|---|---|---|---|
+| FOMC | July 28–29 decision | Active NOW | **NO financial stock entries until after July 29 ~2PM ET** |
+| META | July 29 AH earnings | Active NOW | **NO ENTRY — binary event active** |
+| MSFT | July 29 AH earnings | Active NOW | **NO ENTRY** |
+| AAPL | July 30 AH earnings | Opens July 28 | **NO ENTRY starting July 28** |
+| AMZN | July 30 AH earnings | Opens July 28 | **NO ENTRY starting July 28** |
+| AMD | Aug 4 AH earnings | Opens Aug 2 | Safe through Aug 1 |
+
+**JULY 28 BINDING COMMITMENTS:**
+1. AMD: EXIT 18sh at market (MANDATORY — trail stop $528.67 breached) OR place GTC stop $481.42. Operator must decide via app.alpaca.markets BEFORE pre-market July 28.
+2. GS/WFC/MS: HOLD — FOMC binary event. Re-enter July 30 pre-market post-FOMC.
+3. META: HOLD — earnings binary event. Re-score post-earnings July 30.
+4. AAPL/AMZN: NO ENTRY (48h earnings window opens July 28).
+
+**ORDERS ATTEMPTED AND BLOCKED (July 27 Market-Close — all HTTP 403):**
+- AMD: MOC EXIT 18sh (time_in_force=cls) → HTTP 403 (97th+ consecutive block)
+- META: SKIP (Exemption 2 — earnings binary event)
+- GS: SKIP (Exemption 2 — FOMC binary event)
+- WFC: SKIP (Exemption 2 — FOMC binary event)
+- MS: SKIP (Exemption 2 — FOMC binary event)
+
+---
 
 **JULY 24 MID-MORNING STATUS:** Pre-Market and Market-Open BOTH SILENTLY FAILED (no heartbeats). Mid-Morning is first routine to fire today. AMD at $539.69 (+1.93% from July 23 close $529.48) — range $525.00–$556.49; **AMD DIPPED TO $525.00 INTRADAY — BELOW stop $525.35 — position is naked and survived on luck.** Trail stop updated to $528.67 (5% below today's intraday high $556.49). INTC beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B) but stock reversed from $110 to $103 → SCORED 6.17/10 → REJECTED. All 5 binding orders (AMD stop + GS/META/WFC/MS brackets) → HTTP 403 BLOCKED (95th+ consecutive). **TODAY IS LAST SAFE ENTRY DAY FOR META** (earnings July 29 AH; 48h window opens Monday July 27). **OPERATOR MANDATORY: Place all 5 orders on app.alpaca.markets BEFORE 3:50 PM ET TODAY.**
 

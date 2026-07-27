@@ -4,6 +4,337 @@
 
 ---
 
+## 2026-07-27 — Market-Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 97th+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-27T19:34:53Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **97th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 3:35 PM ET — Market-Close routine window (3:30 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Today's heartbeats (`logs/heartbeats/2026-07-27.log`):
+- ✗ Pre-Market: **SILENT FAILURE** (no heartbeat found)
+- ✗ Market-Open: **SILENT FAILURE** (no heartbeat found)
+- ✗ Mid-Morning: **SILENT FAILURE** (no heartbeat found)
+- ✗ Midday: **SILENT FAILURE** (no heartbeat found)
+- ✗ Afternoon: **SILENT FAILURE** (no heartbeat found)
+- ✓ Market-Close: 2026-07-27T19:34:53Z STARTED (this routine)
+
+**5 of 7 routines silently failed today.** Only Market-Close fired. No intraday monitoring of AMD or market action.
+
+```yaml
+---
+ts: 2026-07-27T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET) did not fire on July 27 — no heartbeat found.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "July 24 binding commitments (AMD stop $528.67, GS 7.83, WFC 7.0, MS 7.17) were not executed at Pre-Market. META 48h earnings window opened today (July 27 ~9:30 AM ET) — last safe entry window missed on July 24/25 due to API blockage. FOMC July 28-29 also opens today."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET) did not fire on July 27 — no heartbeat found.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD opened below trail stop $528.67 today (est. open ~$518+). No stop-backfill check at Market-Open. AMD MOO entry/exit check missed. AMD intraday low est. $479.24 — below original entry-based stop $481.42."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T15:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET) did not fire on July 27 — no heartbeat found.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD continued pre-earnings chip sector selloff through mid-morning. GS/WFC/MS entries still unplaced. FOMC proximity monitoring missed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T16:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Midday routine (12:30 PM ET) did not fire on July 27 — no heartbeat found.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD broke below $500 intraday (est. low $479.24 — below entry-cost stop $481.42). No intraday monitoring. FOMC 48h window entered during Midday window."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T18:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Afternoon routine (2:00 PM ET) did not fire on July 27 — no heartbeat found.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD heading into close below trail stop with no monitoring. 5 of 5 intraday routines missed today. Market-Close is sole coverage."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy 403 — 97th+ consecutive)
+# GET /v2/positions → HTTP 403
+# POST /v2/orders (MOC exit AMD 18sh) → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- July 24 close est.: $521.95
+- July 27 close est.: $504.24 (–3.39% per web data)
+- July 27 intraday low est.: $479.24 (–8.2% from July 24 close)
+- Trail stop level: **$528.67** (5% below July 24 intraday high $556.49)
+- AMD at close **$504.24 — $24.43 BELOW trail stop $528.67**
+- Intraday low $479.24 also breached original entry-cost stop $481.42 (by $2.18)
+- Status: NAKED — no stop resting at Alpaca. Position survived intraday $479 touch on luck.
+- AMD unrealized P&L: 18 × ($504.24 − $506.76) = –$45.36 (–0.5%) — now at a small loss
+
+**GUARDRAIL VIOLATION (CRITICAL): AMD trail stop $528.67 breached. Position is $24.43 below trail stop, $2.52 below avg cost. No stop order resting at Alpaca (97th+ block). AMD intraday low $479.24 also breached original entry stop $481.42. OPERATOR MANDATORY: Exit 18sh AMD at market on app.alpaca.markets NOW. Alternative: place GTC stop at $481.42 (original entry-based level) if choosing to hold through earnings catalyst (Aug 4 — safe window through Aug 1), accepting that today's close below trail stop is a strategy violation.**
+
+```yaml
+---
+ts: 2026-07-27T19:35:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: AMD trail stop $528.67 breached — closed at est. $504.24 (trail stop breach $24.43). Intraday low $479.24 also breached original entry stop $481.42. No stop-loss resting at Alpaca (97th+ API block).
+size_pct: 9.1
+stop: 528.67
+target: N/A
+result_pct: N/A
+master_notes: "AMD -3.39% today (est. $504.24 close) on pre-earnings chip sector anxiety. Intraday low $479.24 — briefly below $481.42 original stop level. Trail stop $528.67 (5% below July 24 high $556.49) was structurally breached. AMD earnings Aug 4 AH (safe window through Aug 1). Thesis intact but discipline violated. MOC exit attempt: HTTP 403 BLOCKED. OPERATOR MANDATORY: Exit 18sh AMD at market on app.alpaca.markets or place GTC stop $481.42. Chip sector weakness: AMD, NVDA, other semis down on pre-earnings de-risking and AI capex concerns. FX Leaders article: 'AMD Stock Heads to $450 after Breaking $500 as Pre-Earnings Chip Sector Weakness Intensifies.'"
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 27, 2026 (3:30 PM ET / EOD)
+
+| Symbol | Price Est. | Daily Change | Notes |
+|---|---|---|---|
+| SPX | ~7,423 | +0.1% | Real estate +2.2%, tech worst sector -1.4%. Oil sank on U.S.–Iran war pause. Risk-off in tech. |
+| Nasdaq | ~flat | −0.1% | Tech weakness offset by defensive sectors |
+| Dow | ~flat | +0.4% | Non-tech resilience |
+| AMD | ~$504.24 | −3.39% | Pre-earnings chip de-risking. Intraday low $479.24. Broke below $500 intraday. |
+| GS | ~$1,056 | est. −2% | FOMC 48h window. Rate hike probability rose to 36% from 16% a week ago. |
+| WFC | ~$87.31 | est. flat | Range July 27: $86.80–$87.83 |
+| MS | ~$213 | est. −1% | FOMC proximity drag on financials |
+| META | binary event | OFF-LIMITS | Earnings July 29 AH — 48h window OPEN |
+| Oil | −3% est. | — | U.S.–Iran war pause sending oil lower |
+| VIX | ~18 est. | — | Elevated ahead of FOMC + Big Tech earnings week |
+
+**FOMC Context:** The Federal Reserve's July 28–29 meeting is tomorrow. CME FedWatch shows 36% probability of a RATE HIKE (up from 16% a week ago) — substantially elevated binary event risk. Markets expect a hold at 3.50–3.75%, but the 36% hike probability means financial stocks face meaningful event risk. Entering GS/WFC/MS into the 48h FOMC window would violate the spirit of Exemption 2.
+
+**Mega-cap earnings this week:** META (July 29 AH), MSFT (July 29 AH), AAPL (July 30 AH), AMZN (July 30 AH). Busiest earnings week of Q2 season combined with FOMC.
+
+---
+
+### DECISIONS — ALL PENDING ≥7 ENTRIES
+
+**META (score 7.67) — SKIP — Exemption 2:**
+META earnings July 29 AH. The 48h binary event window opened today (July 27 ~9:30 AM ET). Per CLAUDE.md: "Do not initiate any position inside the 48-hour window before a scheduled earnings release." META is OFF-LIMITS until post-earnings July 30 or later. This entry window expired July 25 COB.
+
+```yaml
+---
+ts: 2026-07-27T19:35:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: META scored 7.67 (Jul 14–23 binding carry). 48h earnings binary event window OPEN as of today — earnings July 29 AH. Cannot enter.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2: META earnings July 29 AH — 48h binary event window opened July 27. CLAUDE.md explicitly prohibits new positions inside 48h earnings window. Last eligible entry was July 25 COB. Entry window missed due to 94th+ consecutive API blockage. Will re-score post-earnings (July 30 or later) for follow-through or fade opportunity. Original thesis (cloud compute story, 6GW AMD deal, AI monetization) still valid but now under earnings review. Re-evaluate July 30 pre-market after print."
+---
+```
+
+**GS (score 7.83) — SKIP — Exemption 2:**
+FOMC decision July 29 at ~2 PM ET. The 48h window from a Fed decision day falls squarely on July 27. CME FedWatch shows 36% rate hike probability — materially elevated binary event risk for financial stocks. Entering GS 48h before an FOMC with a 36% hike probability is explicitly counter-strategy.
+
+```yaml
+---
+ts: 2026-07-27T19:35:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS scored 7.83 (all 6 agents ≥7). FOMC binary event window — Fed decision July 29 (~48h from now). 36% rate hike probability (up from 16% one week ago). Cannot enter financial stocks 48h before FOMC.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2: FOMC Fed decision day July 29 — within 48h window. CME FedWatch: 36% hike probability (elevated from 16% one week ago). Pre-positioning GS before an FOMC with this level of rate uncertainty has no edge — financials are the most rate-sensitive sector. Additionally, API BLOCKED (97th+ consecutive session) prevents order placement. Re-evaluate GS post-FOMC July 30 pre-market. Original score 7.83 still valid; re-confirm pricing at that time."
+---
+```
+
+**WFC (score 7.0) — SKIP — Exemption 2:**
+
+```yaml
+---
+ts: 2026-07-27T19:35:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: WFC scored 7.0. FOMC binary event July 29 — 48h window active. 36% rate hike probability. Financial stocks face direct rate risk.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2: FOMC Fed decision day July 29 — within 48h window. Rate hike probability 36%. WFC is a rate-sensitive bank — a surprise hike would benefit NIM but crush market sentiment short-term. API BLOCKED (97th+ consecutive). Re-evaluate WFC post-FOMC July 30. Original Q2 beat thesis (EPS +13%, Revenue +2.8%) still valid — hold for post-FOMC window."
+---
+```
+
+**MS (score 7.17) — SKIP — Exemption 2:**
+
+```yaml
+---
+ts: 2026-07-27T19:35:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: MS scored 7.17. FOMC binary event July 29 — 48h window active. 36% rate hike probability. Financial stocks face direct rate risk.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.17
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2: FOMC Fed decision day July 29 — within 48h window. Rate hike probability 36%. MS wealth management and investment banking revenues are sensitive to rate path outlook. API BLOCKED (97th+ consecutive). Re-evaluate MS post-FOMC July 30. Q2 revenue +27% YoY thesis still valid."
+---
+```
+
+---
+
+### OVERNIGHT POSITION REVIEW
+
+**AMD (18sh, avg cost $506.76):**
+- Current est. close: $504.24 (−0.5% unrealized loss)
+- Trail stop BREACHED: $528.67 — AMD $24.43 below trail stop
+- Intraday low $479.24 also touched below original entry stop $481.42
+- No stop resting at Alpaca (97th+ block)
+- Earnings Aug 4 AH — safe window through Aug 1
+- **Status: GUARDRAIL VIOLATION — naked position below trail stop.**
+- FOMC tomorrow (July 28–29) adds macro risk to overnight hold
+- AMD thesis still intact (12GW committed, TSMC 2nm, earnings Aug 4) but trail stop was violated
+- **OPERATOR MANDATORY: Exit 18sh AMD at market via app.alpaca.markets at next available opportunity (pre-market July 28 or market open). Or place GTC stop at $481.42 (original entry-based stop) to restore protection, accepting trail stop discipline violation.**
+
+**All other positions (GS, WFC, MS, META):** No entry. No overnight exposure.
+
+---
+
+### TODAY'S P&L (July 27, 2026 EST.)
+
+| Metric | Value |
+|---|---|
+| AMD daily P&L | 18 × ($504.24 − $521.95) = **–$318.78** |
+| Portfolio daily P&L | **–$318.78 (–0.32%)** |
+| AMD unrealized (vs. $506.76 avg) | 18 × ($504.24 − $506.76) = **–$45.36 (–0.5%)** |
+| Total equity (est.) | **$99,720.32** |
+| Total return vs. $100K | **–0.28%** |
+| SPX July 27 | ~7,423 (+0.1% today; **+3.10% from May 1 baseline 7,200**) |
+| **Benchmark gap** | **–3.38 pp** (worsened from –2.64 pp July 24) |
+
+**Circuit breaker:** –0.32% daily loss < –3% threshold. **NOT TRIPPED.**
+**20-day underperformance flag:** ACTIVE (97th+ consecutive sessions — API blockage root cause).
+
+---
+
+### TOMORROW'S WATCH (July 28, 2026)
+
+| Event | Time ET | Impact |
+|---|---|---|
+| FOMC Meeting Day 1 | All day | Rate decision tomorrow (July 29) |
+| FOMC Decision | July 29 ~2 PM ET | 36% hike probability — HIGH IMPACT |
+| META earnings | July 29 AH | 48h window ACTIVE — no entry |
+| MSFT earnings | July 29 AH | Mega-cap tech — market mover |
+| AMD pre-earnings | Pre-earnings | Aug 4 window opens Aug 2 |
+
+**Post-FOMC re-entry candidates (July 30):** GS, WFC, MS (all scored ≥7, FOMC binary event clears July 29 evening). Re-price at July 30 pre-market using post-FOMC prices before placing orders.
+
+**AMD:** Decision required — exit at market or place GTC stop $481.42. API blocked prevents automated action. OPERATOR MANDATORY before pre-market July 28.
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓
