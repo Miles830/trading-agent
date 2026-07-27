@@ -1,7 +1,71 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-24 (Friday) — MID-MORNING (11:10 AM ET / 15:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 95th+ consecutive blocked session). MID-MORNING ROUTINE ✅ COMPLETED.**
+**2026-07-27 (Monday) — PRE-MARKET (8:07 AM ET / 12:07 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 97th+ consecutive blocked session). PRE-MARKET ROUTINE ✅ COMPLETED.**
+
+**JULY 27 PRE-MARKET STATUS:** FOMC week + Big Tech earnings week. S&P 500 futures +0.96%, Nasdaq +1.62%, Dow +1.01% — risk-ON driven by Iran-US ceasefire (oil -7%, Brent below $90). MU +3% (AI memory). META 48h binary event window OPEN (earnings July 29 AH) → META OFF-LIMITS. MSFT also off-limits (earnings July 28 AH). All 4 binding orders (AMD sell 9sh + GS/WFC/MS MOO entries) → HTTP 000 BLOCKED (97th+ consecutive). MU scored 7.83 → APPROVED but 3-MOO cap full (GS/WFC/MS) → BINDING for Market Open limit order. AMD Friday close $521.95 breached trailing stop $528.67 — position still naked Day 37. AMD premarket recovery to $535.02. **OPERATOR MANDATORY: place all 6 actions on app.alpaca.markets BEFORE 9:25 AM ET (see trades.md).**
+
+**PORTFOLIO STATE (July 27, 2026 — 8:07 AM ET PRE-MARKET):**
+- Cash: ~$90,644 (90.3%)
+- AMD: 18sh at avg $506.76; Friday close $521.95; premarket $535.02 → est. $9,630 (9.6%) — OVER 5% cap, naked (no stop), Day 37 post-fill
+- Total equity est.: ~$100,274 (premarket)
+- P&L vs $100K initial: +$274 (+0.27%)
+- AMD unrealized (premarket): 18 × ($535.02 − $506.76) = +$508.68 (+5.58%)
+- Portfolio daily P&L (vs Friday close): 18 × ($535.02 − $521.95) = +$235.26 (+0.23%) premarket
+- SPX July 24 close est. ~7,416; today premarket +0.96% → ~7,487
+- SPX from May 1 baseline 7,200: ~+4.0%
+- Portfolio from $100K baseline: +0.27%
+- **Benchmark gap: ~−3.73 pp** (widening — need deployment)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (97th+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (premarket +0.23% daily — well below −3% threshold)
+
+**BINARY EVENT WINDOWS (July 27–29):**
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| META | Wed July 29 AH | **Opens Mon July 27** | **OFF-LIMITS — Exemption 2 ACTIVE** |
+| MSFT | Tue July 28 AH | Opened Sun July 25 | **OFF-LIMITS — Exemption 2 ACTIVE** |
+| AAPL | Thu July 30 AH | Opens Tue July 28 | Safe today |
+| AMZN | Thu July 30 AH | Opens Tue July 28 | Safe today |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | Safe through Aug 1 |
+| FOMC | Wed July 29 | N/A | Fed decision day = no entries Wed July 29 only |
+
+**ORDERS ATTEMPTED AND BLOCKED (July 27 Pre-Market — all HTTP 000):**
+- AMD: SELL 9sh MOO → HTTP 000 (97th+ block)
+- GS: BUY 4sh MOO bracket → HTTP 000
+- WFC: BUY 30sh MOO bracket → HTTP 000
+- MS: BUY 20sh MOO bracket → HTTP 000
+
+**JULY 27 BINDING COMMITMENTS (Market Open 9:45 AM ET MUST execute):**
+1. AMD: SELL 9sh at open — MANDATORY (position at 9.6% equity, over cap, stop breached Friday)
+2. AMD: GTC SELL-STOP 9sh (remaining) at open fill × 0.95 — MANDATORY post-fill
+3. GS: BUY 4sh MOO (if not filled at open, limit at ask×1.005) — score 7.33, all 6 ≥7
+4. WFC: BUY 30sh MOO (if not filled, limit at ask×1.005) — score 7.0
+5. MS: BUY 20sh MOO (if not filled, limit at ask×1.005) — score 7.33
+6. MU: BUY 5sh limit bracket GTC ask×1.005 / stop -5% / target +15% — score 7.83 (after MOO fills confirmed)
+
+**NEW WATCHLIST (July 27 scored):**
+| Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|
+| GS | 7.33/10 | breakout-volume | MOO BUY 4sh | ATH pullback -7.8%; risk-on day; M&A pipeline |
+| WFC | 7.0/10 | sector-rotation | MOO BUY 30sh | Q2 beat; financials rotation |
+| MS | 7.33/10 | sector-rotation | MOO BUY 20sh | Q2 +27% revenue; RBC PT $243 |
+| MU | 7.83/10 | ai-momentum-pullback | Limit BUY 5sh (Market Open) | HBM4 monopoly; Citi $1,400 PT; +3% premarket |
+| AAPL | PENDING | — | Score at Market Open | Earnings Thu July 30 (safe today only) |
+| AMZN | PENDING | — | Score at Market Open | Earnings Thu July 30 (safe today only) |
+| META | 7.67 | — | OFF-LIMITS | 48h earnings window active |
+
+**AMD NOTE (July 27 Pre-Market):** AMD at $535.02 premarket. Friday close $521.95 BREACHED trailing stop $528.67 — stop should have triggered Friday afternoon. AMD recovered overnight on risk-on. Reducing 18sh → 9sh at MOO (mandatory). After sell: 9sh × $535 = $4,815 ≈ 4.8% equity (within 5% cap). New stop on remaining 9sh: open fill × 0.95. Earnings Aug 4 — safe through Aug 1.
+
+**SECTOR EXPOSURE (projected after all fills):**
+- Active/Tech (AMD): 9sh × $535 = $4,815 = 4.8%
+- Financials (GS+WFC+MS): $4,284 + $2,618 + $4,330 = $11,232 = 11.2% (well under 25% cap ✓)
+- Memory/Semi (MU): $4,740 = 4.7%
+- Total deployed projected: ~$20,787 = 20.7%
+- Cash projected: ~$79,487 (79.3%) — significantly above 5% floor
+
+**MU NOTE (July 27):** MU scored 7.83, all-time high HBM4 demand ($1B+ revenue in first production run), Citi $1,400 PT. Approved for entry but 3-MOO cap filled (GS/WFC/MS). Market Open routine MUST place 5sh MU limit bracket. Technical agent 6/10 (bouncing from ATH pullback — need 2-of-5 confirmation at open before filling). If stochastic crosses from oversold and volume spike confirms at open, execute.
+
+
 
 **JULY 24 MID-MORNING STATUS:** Pre-Market and Market-Open BOTH SILENTLY FAILED (no heartbeats). Mid-Morning is first routine to fire today. AMD at $539.69 (+1.93% from July 23 close $529.48) — range $525.00–$556.49; **AMD DIPPED TO $525.00 INTRADAY — BELOW stop $525.35 — position is naked and survived on luck.** Trail stop updated to $528.67 (5% below today's intraday high $556.49). INTC beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B) but stock reversed from $110 to $103 → SCORED 6.17/10 → REJECTED. All 5 binding orders (AMD stop + GS/META/WFC/MS brackets) → HTTP 403 BLOCKED (95th+ consecutive). **TODAY IS LAST SAFE ENTRY DAY FOR META** (earnings July 29 AH; 48h window opens Monday July 27). **OPERATOR MANDATORY: Place all 5 orders on app.alpaca.markets BEFORE 3:50 PM ET TODAY.**
 
