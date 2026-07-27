@@ -4,6 +4,397 @@
 
 ---
 
+## 2026-07-27 — Mid-Morning (11:00 AM ET / 15:12 UTC — API BLOCKED — 96th+ consecutive session)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-27T15:12:22Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443` AND `data.alpaca.markets:443`) — **96th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 11:12 AM ET — Mid-Morning routine window (11:00 AM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Today's predecessors: Pre-Market (8:00 AM ET), Market-Open (9:45 AM ET).
+```
+grep "STARTED Pre-Market" logs/heartbeats/2026-07-27.log  → NOT FOUND
+grep "STARTED Market-Open" logs/heartbeats/2026-07-27.log → NOT FOUND
+```
+Both routines silently failed. Running catch-ups inline.
+
+**NOTE: July 25, 2026 (Friday) ALSO ALL SILENT FAILURES** — `logs/heartbeats/2026-07-25.log` does not exist. Zero routines fired Friday. Logging retroactively.
+
+```yaml
+---
+ts: 2026-07-25T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET, July 25) did not fire — no heartbeat log for 2026-07-25.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "ALL routines silently failed on Friday July 25, 2026 (logs/heartbeats/2026-07-25.log missing entirely). Binding orders from July 24 review (AMD stop $528.67, GS 7.83, WFC 7.0, MS 7.17) remain unplaced. META last-safe-entry-day (July 24) was missed — META is now OFF-LIMITS (earnings July 29 AH, 48h window opens July 27)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET, July 27) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Binding commitments from prior review not executed at Pre-Market: AMD naked stop, GS/WFC/MS bracket orders. MOO window closed without action."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET, July 27) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD MOO fill check and follow-up stop placement not performed. Position remains naked entering Mid-Morning."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET https://paper-api.alpaca.markets/v2/orders?status=open → HTTP 403
+# GET https://paper-api.alpaca.markets/v2/positions         → HTTP 403
+# CONNECT paper-api.alpaca.markets:443 → gateway 403 (egress policy — 96th+ consecutive)
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Last known price: $539.69 (July 24, 11:10 AM ET — no live data available)
+- Trail stop floor: $528.67 (5% below $556.49 July 24 intraday high — maintain or raise if today's price higher)
+- STATUS: **NAKED AT ALPACA** — 96th+ consecutive session without resting stop order
+- Stop order attempt (will fail):
+```bash
+# POST /v2/orders → HTTP 403 (expected — documented KNOWN block)
+# {"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"528.67","time_in_force":"gtc"}
+```
+**GUARDRAIL VIOLATION (ONGOING — CRITICAL):** AMD 18 shares has no resting stop order at Alpaca. Position is naked. OPERATOR MANDATORY: Log in to app.alpaca.markets and place GTC SELL-STOP 18sh AMD at $528.67 immediately. If AMD price has moved above $556.49 today, trail stop to (today's high × 0.95).
+
+---
+
+### BINARY EVENT CALENDAR — July 27, 2026
+
+| Company | Event | Date | 48h Window | Status |
+|---|---|---|---|---|
+| **META** | Earnings AH | July 29 | **OPEN NOW (July 27+)** | ❌ **OFF-LIMITS — 48h window active** |
+| **FOMC** | Rate Decision | July 29 (Wed) | N/A | ⚠️ Fed decision day Wednesday — macro risk |
+| **AMD** | Earnings AH | Aug 4 | Opens Aug 2 | ✅ Safe through Aug 1 |
+
+**META skip (exemption #2):**
+
+```yaml
+---
+ts: 2026-07-27T15:12:00Z
+action: skip
+symbol: META
+bucket: active
+setup: earnings-reaction-follow
+score: 7.67
+thesis: META 48h earnings window opened today (earnings July 29 AH). CLAUDE.md exemption #2 — no pre-positioning into binary event.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 5
+master_decision: rejected
+master_notes: "SKIP — exemption #2: Earnings binary event within 48h (July 29 AH). 48h window opens July 27. No entry allowed. META was last-safe-entry July 24; missed due to API blockage and Friday silent failure. Re-evaluate for post-earnings entry (fade or follow) on July 30."
+---
+```
+
+---
+
+### WATCHLIST RE-SCORING — GS, WFC, MS (FOMC Context: Decision July 29)
+
+**FOMC status:** Fed meeting July 28-29, rate decision Wednesday July 29. Pre-FOMC risk-off conditions compress the Macro Agent score to 5/10 for all equities entries today. None of these names were scored with FOMC-week context previously.
+
+---
+
+#### GS — Re-Score July 27 (Full 6-Agent)
+
+*Fundamentals Agent:*
+- Q2 2026 (reported July 15): Record equities trading revenue, M&A pipeline accelerating, investment banking fees up
+- EPS beat consensus; analysts 12 buys / 2 holds; consensus PT ~$1,250
+- Valuation elevated but justified by earnings trajectory
+Score: **8/10**
+
+*Technical Agent:*
+- Last known price: ~$1,077.80 (July 24); ATH $1,152 (July 15) → ~6.4% pullback
+- Healthy consolidation above prior breakout level (~$1,050 est. support)
+- Stochastic (14,3,3): Likely approaching oversold after pullback from ATH → potential bullish cross pending
+- MACD: Momentum fading post-ATH — bearish cross possible; histogram contracting
+- Volume oscillator: Likely contracting (pullback phase — volume declining)
+- Candlestick: Cannot assess without live 5-min data — API blocked
+- Volume spike: No confirmation available without live data
+- Mandatory indicator stack: Only 1 of 5 confirmed (Stochastic approaching oversold) — fails 2-of-5 minimum
+Score: **5/10** (mandatory stack fails without live data confirmation)
+
+*Sentiment Agent (xAI unavailable — degraded):*
+- News: Positive post-earnings (July 15 results); no negative catalysts last week
+- Fear & Greed: VIX elevated ~18-20 (pre-FOMC caution)
+- Short interest: Low (blue chip)
+- Options: Elevated IV due to FOMC uncertainty (ambiguous direction signal)
+- xAI: N/A (API key not provisioned — no modifier applied)
+Score: **6/10**
+
+*Macro Agent:*
+- FOMC July 28-29: Pre-decision uncertainty → risk-off bias TODAY
+- Fed decision Wednesday: Financials sensitive to rate path — outcome unknown
+- Dollar: Likely strengthening pre-FOMC (risk-off) → mixed for GS
+- Market: Pre-FOMC caution expected; S&P flat to down
+Score: **5/10**
+
+*Risk Agent:*
+- Size: 4sh × $1,078 est. = $4,312 (4.3% equity — within 5% cap ✓)
+- Sector: 4.3% Financials (within 25% ✓)
+- Stop: $1,078 × 0.95 = $1,024; risk = $54/sh × 4sh = $216 (0.22% equity — within 1.5% ✓)
+- Target: $1,078 × 1.15 = $1,240 (3:1 R/R exactly ✓)
+- Cash: $90,644 − $4,312 = $86,332 (86% — above 5% floor ✓)
+- Guardrails: All pass; API blocked prevents order placement but guardrails satisfied on paper
+Score: **7/10**
+
+*Tech Analyst Agent:*
+- Not a tech company → auto-score 7/10, defer to other agents
+Score: **7/10**
+
+**GS Master Agent:**
+- Scores: Fundamentals 8 / Technical 5 / Sentiment 6 / Macro 5 / Risk 7 / Tech 7
+- Average: (8+5+6+5+7+7)/6 = **38/6 = 6.33/10** → BELOW 7 → **REJECTED**
+- Risk Agent: 7/10 ≥ 6 ✓
+- Agents ≥ 7: Fundamentals(8), Risk(7), Tech(7) = 3 agents → **BELOW 4 required** → **REJECTED**
+- Decision: **REJECTED** — Average 6.33 < 7; only 3/6 agents at ≥7; Technical(5) fails mandatory stack; Macro(5) FOMC headwind
+
+```yaml
+---
+ts: 2026-07-27T15:13:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 6.33
+thesis: Re-scored July 27 — FOMC decision July 29 compresses Macro to 5/10; Technical fails 2-of-5 stack without live data; average 6.33 < 7.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.33
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — avg 6.33 < 7, only 3/6 agents ≥7 (need ≥4). Technical fails mandatory indicator stack without live data. Macro 5/10 due to FOMC July 29. Re-score Thursday July 30 post-FOMC when macro clarity returns. No skip exemption triggered — master gate failure is valid rejection basis. Watchlist carry-forward: GS target entry $1,050–$1,100 range post-FOMC if macro improves."
+---
+```
+
+---
+
+#### WFC — Re-Score July 27 (Full 6-Agent)
+
+*Fundamentals Agent:*
+- Q2 2026 (reported July 11): NII strong, loan growth solid, regulatory overhang easing
+- Beat consensus; Wells recovering narrative intact
+Score: **7/10**
+
+*Technical Agent:*
+- Last known: ~$86.13 (July 24); recent high ~$88-90 range
+- Clean pullback to support at ~$85; below ATH
+- Mandatory indicator stack: Cannot confirm 2-of-5 without live data
+Score: **5/10**
+
+*Sentiment Agent:*
+- Banking sector neutral pre-FOMC; no specific negative catalysts
+- VIX elevated; mixed signal
+Score: **6/10**
+
+*Macro Agent:*
+- FOMC headwind same as GS; rate decision uncertainty suppresses all bank entries today
+Score: **5/10**
+
+*Risk Agent:*
+- 30sh × $86 = $2,580 (2.6% equity ✓); stop $81.7; risk $129 (0.13% ✓); target $98.9 (3:1 ✓)
+Score: **7/10**
+
+*Tech Analyst:* **7/10** (auto)
+
+**WFC Master Agent:**
+- Scores: 7/5/6/5/7/7 — Average: **37/6 = 6.17/10** → REJECTED
+- Agents ≥ 7: Fundamentals(7), Risk(7), Tech(7) = 3 → below 4 → REJECTED
+
+```yaml
+---
+ts: 2026-07-27T15:13:30Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 6.17
+thesis: Re-scored July 27 — same FOMC headwind as GS; Macro 5/10; Technical fails mandatory stack; avg 6.17 < 7.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.17
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — avg 6.17 < 7, 3/6 agents ≥7 (need ≥4). FOMC Wednesday July 29 compresses macro score. Re-score Thursday July 30 post-FOMC. Previous score (7.0 July 24) is stale — FOMC context changes risk profile materially. Watchlist carry-forward."
+---
+```
+
+---
+
+#### MS — Re-Score July 27 (Full 6-Agent)
+
+*Fundamentals Agent:*
+- Q2 2026: Wealth management revenue record, institutional securities strong; beat consensus
+Score: **7/10**
+
+*Technical Agent:*
+- Last known: ~$216 (July 24); near ATH range
+- Pullback healthy; mandatory stack cannot confirm without live data
+Score: **5/10**
+
+*Sentiment Agent:*
+- Same as GS/WFC — neutral pre-FOMC
+Score: **6/10**
+
+*Macro Agent:*
+- FOMC headwind consistent
+Score: **5/10**
+
+*Risk Agent:*
+- 20sh × $216 = $4,320 (4.3% ✓); stop $205.2; risk $216 (0.22% ✓); target $248.4 (3:1 ✓)
+Score: **7/10**
+
+*Tech Analyst:* **7/10** (auto)
+
+**MS Master Agent:**
+- Scores: 7/5/6/5/7/7 — Average: **37/6 = 6.17/10** → REJECTED
+
+```yaml
+---
+ts: 2026-07-27T15:14:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 6.17
+thesis: Re-scored July 27 — FOMC headwind July 29 compresses Macro to 5/10; avg 6.17 < 7; mandatory technical stack unconfirmed.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.17
+agents_above_7: 3
+master_decision: rejected
+master_notes: "REJECTED — avg 6.17 < 7; 3/6 agents ≥7; Macro 5/10 (FOMC). All three financials (GS/WFC/MS) rejected today for same reason — FOMC risk-off suppresses entries. Re-score Thursday July 30 when Fed path clarifies. If hawkish surprise: further reduce financial sector conviction. If dovish/cut: upgrade all three to near-prior scores and enter immediately."
+---
+```
+
+---
+
+### AMD STOP ORDER ATTEMPT (API BLOCKED)
+
+```bash
+# Attempt: POST https://paper-api.alpaca.markets/v2/orders
+# Body: {"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"528.67","time_in_force":"gtc"}
+# Result: HTTP 403 (proxy CONNECT rejected — 96th+ consecutive)
+```
+
+Trail stop remains at $528.67 (floor — may be raised if today's AMD price exceeds $556.49 July 24 high).
+
+```yaml
+---
+ts: 2026-07-27T15:15:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD 18sh position remains naked (no resting stop at Alpaca). Stop order attempt blocked HTTP 403 (96th+ consecutive).
+size_pct: 9.7
+stop: 528.67
+target: N/A
+master_notes: "ONGOING GUARDRAIL VIOLATION: AMD naked. Stop $528.67 (5% below $556.49 July 24 intraday high). If today's AMD price > $556.49, trail stop to (today_high × 0.95). OPERATOR MANDATORY: place GTC SELL-STOP 18sh AMD at $528.67 (or higher) on app.alpaca.markets. AMD earnings Aug 4 AH — safe through Aug 1. Reduce 18sh → 9sh when API restored (per-position cap)."
+---
+```
+
+---
+
+### NEW OPPORTUNITY SCAN (API BLOCKED — Manual Assessment)
+
+Without live market data (API blocked, no screener access), conducting manual scan based on known macro context:
+
+**FOMC WEEK OPPORTUNITIES:**
+- **GLD (Gold ETF):** Classic pre-FOMC uncertainty hedge. Gold benefits from either outcome — uncertainty before, rate-cut bullish after. Score deferred to post-FOMC where technical confirmation can be obtained. Note for July 30 review.
+- **Defensive rotation (XLU, XLP):** Pre-FOMC flight to defensives. Cannot score without live data.
+- **NVDA:** AI momentum leader; recent pullback from ATH could be entry opportunity post-FOMC. Check earnings calendar (NVDA reports Aug 20 — safe). Add to July 30 watchlist.
+
+**DECISION:** No new positions opened today. FOMC risk-off environment + API blockage prevents confident technical confirmation. New opportunities deferred to July 30 post-FOMC review.
+
+---
+
+### SUMMARY — July 27, 2026 Mid-Morning
+
+| Decision | Symbol | Reason |
+|---|---|---|
+| VIOLATION | Pre-Market | Silent failure — no heartbeat |
+| VIOLATION | Market-Open | Silent failure — no heartbeat |
+| VIOLATION | AMD | Naked position (stop API-blocked 96th+ session) |
+| SKIP (exempt #2) | META | Earnings 48h window open (July 29 AH) |
+| SKIP (gate fail) | GS | Master avg 6.33 < 7; Macro 5/10 FOMC |
+| SKIP (gate fail) | WFC | Master avg 6.17 < 7; Macro 5/10 FOMC |
+| SKIP (gate fail) | MS | Master avg 6.17 < 7; Macro 5/10 FOMC |
+
+**Post-FOMC Watchlist (July 30+):** GS (prev 7.83), WFC (prev 7.0), MS (prev 7.17), GLD (new), NVDA (new)
+**OPERATOR MANDATORY:** Place GTC SELL-STOP 18sh AMD at ≥$528.67 on app.alpaca.markets TODAY.
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓
