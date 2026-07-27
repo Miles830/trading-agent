@@ -4,6 +4,282 @@
 
 ---
 
+## 2026-07-27 — Midday (12:35 PM ET / 16:35 UTC — API BLOCKED — 96th+ consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-27T16:35:19Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **96th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 12:35 PM ET — Midday routine window (12:30 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Today's heartbeats (`logs/heartbeats/2026-07-27.log`):
+- ✗ Pre-Market: **SILENT FAILURE** (no heartbeat found)
+- ✗ Market-Open: **SILENT FAILURE** (no heartbeat found)
+- ✗ Mid-Morning: **SILENT FAILURE** (no heartbeat found)
+- ✓ Midday: 2026-07-27T16:35:19Z STARTED (this routine — first routine to fire today)
+
+```yaml
+---
+ts: 2026-07-27T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Binding commitments from July 24 (AMD stop $528.67, GS 7.83, WFC 7.0, MS 7.17 — all API-blocked) were not re-attempted at Pre-Market. META entry window closed at midnight (earnings July 29 AH; 48h binary event opened today July 27)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "AMD naked position (18sh, no stop at Alpaca) entered Day 3+ post-July-24. No MOO fill check. Stop backfill missed again. AMD earnings Aug 4 — 48h window opens Aug 2; position still safe to hold but unprotected."
+---
+```
+
+```yaml
+---
+ts: 2026-07-27T15:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "3rd consecutive intraday silent failure (Pre-Market + Market-Open + Mid-Morning). Midday is first routine to fire July 27. AMD naked for 96th+ session. All July 24 binding commitments unexecuted."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — 96th+ consecutive)
+# GET /v2/positions        → HTTP 403
+curl -s "${APCA_API_BASE_URL}/v2/orders?status=open" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY"
+# Result: CONNECT tunnel failed (403) — paper-api.alpaca.markets:443 denied by egress policy
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Last confirmed price: $539.69 (July 24 mid-morning — STALE, 3 trading days old)
+- Trail stop due: **$528.67** (5% below July 24 intraday high $556.49)
+- Current Alpaca stop: **NONE** — naked since Day 1 of position (96th+ consecutive API block)
+- Status: **GUARDRAIL VIOLATION ONGOING** — stop never placed due to API blockage
+
+**OPERATOR MANDATORY:** Place GTC sell-stop 18sh AMD at **$528.67** on app.alpaca.markets IMMEDIATELY.
+
+---
+
+### BINARY EVENT AUDIT — JULY 27 (CRITICAL)
+
+| Name | Event | Window | Status Today |
+|---|---|---|---|
+| **META** | Earnings July 29 AH | 48h opened **July 27** | **CLOSED — NO ENTRY** |
+| **FOMC** | Rate decision July 29, 2 PM ET | 48h opened **July 27** | **ACTIVE — Exemption 2 applies to all rate-sensitive new entries** |
+| AMD | Earnings Aug 4 AH | 48h opens Aug 2 | Safe through Aug 1 |
+| GS | — | — | Rate-sensitive (financials) — FOMC exemption applies |
+| WFC | — | — | Rate-sensitive (financials) — FOMC exemption applies |
+| MS | — | — | Rate-sensitive (financials) — FOMC exemption applies |
+
+**META:** Earnings July 29 AH. 48-hour window opened today July 27 at market open. **META is OFF-LIMITS for new entries through after-earnings (July 30 Pre-Market earliest eligible for post-earnings play).** July 24 was the last safe entry day — the binding commitment from July 24 was blocked by API; META opportunity window is now closed until post-earnings.
+
+**FOMC:** Rate decision announced July 29, 2:00 PM ET. 48h window = July 27, 2:00 PM ET. Current time 12:35 PM ET is within 47.4 hours of decision. Per CLAUDE.md Exemption 2: "Setup is into a binary event within 48h (earnings, FDA, Fed) explicitly excluded by CLAUDE.md — where pre-positioning has no edge." FOMC constitutes a Fed binary event. **All new entries in rate-sensitive sectors (Financials: GS, WFC, MS) are suspended under Exemption 2 today.**
+
+---
+
+### MARKET CONDITIONS — July 27, 2026 (ESTIMATED — NO API DATA)
+
+Last confirmed data points (July 24 mid-morning — STALE):
+- SPX: ~7,416 est. (July 24 estimate)
+- AMD: $539.69 (July 24; stale)
+- FOMC: Begins July 28 (Mon) — rate decision July 29 (Tue) 2:00 PM ET
+- Sector posture: Risk-off bias expected with FOMC looming; Financials cautious; Tech uncertain
+- Oil: ~$90 (elevated; geopolitical headwind)
+- VIX: 18.70 (July 23 close — elevated; cautious market)
+
+**Cannot provide live market conditions — Alpaca data API blocked (96th+ session). All price estimates are stale by 3+ trading days.**
+
+---
+
+### BINDING COMMITMENT DECISIONS — July 27 Midday
+
+**1. AMD GTC SELL-STOP 18sh at $528.67**
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" \
+  -H "APCA-API-KEY-ID: $APCA_API_KEY_ID" \
+  -H "APCA-API-SECRET-KEY: $APCA_API_SECRET_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"528.67","time_in_force":"gtc"}'
+# Result: HTTP 403 — CONNECT tunnel failed (96th+ consecutive block)
+```
+- Decision: BLOCKED by API — not an exemption skip, an infrastructure failure
+- Operator action still mandatory: place on app.alpaca.markets
+
+```yaml
+---
+ts: 2026-07-27T16:35:45Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD GTC sell-stop $528.67 attempted — HTTP 403 API block (96th+ consecutive). Not an exemption; infrastructure failure.
+size_pct: N/A
+stop: 528.67
+target: N/A
+master_notes: "Stop-loss order POST /v2/orders HTTP 403. Trail stop $528.67 (5% below July 24 intraday high $556.49). AMD naked at Alpaca — ongoing guardrail violation. OPERATOR MANDATORY: Place immediately on app.alpaca.markets."
+---
+```
+
+**2. META 7sh limit bracket GTC (score 7.67)**
+
+```yaml
+---
+ts: 2026-07-27T16:36:00Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: META binary event window opened today July 27 — earnings July 29 AH. Exemption 2 applies; 48h window active.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: rejected
+master_notes: "EXEMPTION 2 — Binary event within 48h. META earnings July 29 AH; 48-hour window opened July 27 market open. July 24 was last safe entry day — binding commitment was blocked by API. META off-limits until after-earnings print (earliest eligibility: July 30 Pre-Market for post-earnings fade/follow play). Score 7.67 carries forward as post-earnings reference — re-score after results with actual Q2 data."
+---
+```
+
+**3. GS 4sh limit bracket GTC (score 7.83)**
+
+```yaml
+---
+ts: 2026-07-27T16:36:15Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: FOMC rate decision July 29 2PM ET within 48h — Exemption 2 applies to rate-sensitive financial entry.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: rejected
+master_notes: "EXEMPTION 2 — FOMC binary event within 48h. Rate decision July 29, 2:00 PM ET; 48h window active as of ~2:00 PM ET July 27. GS is a rate-sensitive financial — pre-positioning into FOMC has no edge per strategy. Score 7.83 carries; re-attempt entry July 30 Pre-Market if FOMC outcome is rate-neutral or bullish and technical setup still valid. Reference entry $1,083.19, stop $1,029.03, target $1,245.67."
+---
+```
+
+**4. WFC 30sh limit bracket GTC (score 7.0)**
+
+```yaml
+---
+ts: 2026-07-27T16:36:30Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: FOMC rate decision July 29 2PM ET within 48h — Exemption 2 applies to rate-sensitive financial entry.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "EXEMPTION 2 — FOMC binary event within 48h. Same rationale as GS. WFC highly rate-sensitive; FOMC outcome (potential cut vs hold) directly impacts net interest margin and forward guidance. Reference entry $86.56, stop $82.23, target $99.54. Re-attempt July 30 Pre-Market."
+---
+```
+
+**5. MS 20sh limit bracket GTC (score 7.17)**
+
+```yaml
+---
+ts: 2026-07-27T16:36:45Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: FOMC rate decision July 29 2PM ET within 48h — Exemption 2 applies to rate-sensitive financial entry.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: rejected
+master_notes: "EXEMPTION 2 — FOMC binary event within 48h. Morgan Stanley has significant fixed-income and rates exposure; pre-positioning into FOMC decision is a known no-edge setup. Reference entry $217.08, stop $206.23, target $249.64. Re-attempt July 30 Pre-Market. Note: score at 7.17 is solid — this remains a priority entry post-FOMC."
+---
+```
+
+---
+
+### AFTERNOON / MARKET-CLOSE PLAN
+
+**FOMC Day 1 (July 28):** No new entries — FOMC in session.
+**FOMC Rate Decision (July 29, 2:00 PM ET):** Monitor reaction.
+**Post-FOMC (July 30):**
+- If rate cut or hold (dovish): Re-enter GS, WFC, MS with updated bracket prices. Boost macro scores by +1.
+- If rate hike (hawkish): Re-score with reduced macro score. May drop WFC below 7.0 threshold.
+
+**META Post-Earnings (July 30 Pre-Market):** Score META Q2 results. If beat + strong guide → earnings-reaction-follow entry. If miss → skip.
+**AMD (hold):** Earnings Aug 4 AH — safe through Aug 1. Hold 18sh; reduce to 9sh when API restored. Maintain trail stop at $528.67 (resting at Alpaca pending operator action).
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓
