@@ -4,6 +4,276 @@
 
 ---
 
+## 2026-07-27 — Market-Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 100th+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-27T13:46:35Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **100th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 9:46 AM ET — Market-Open routine window (9:45 AM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+Today's heartbeats (`logs/heartbeats/2026-07-27.log`):
+- ✗ Pre-Market: **SILENT FAILURE** (no heartbeat found — `grep "STARTED Pre-Market" logs/heartbeats/2026-07-27.log` returned nothing)
+- ✓ Market-Open: 2026-07-27T13:46:35Z STARTED (this routine)
+
+```yaml
+---
+ts: 2026-07-27T12:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET) did not fire — no heartbeat found in today's log.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Binding commitments from July 24 Mid-Morning (AMD stop $528.67, GS 7.83, WFC 7.0, MS 7.17) were not executed at Pre-Market. META is now EXCLUDED — 48h binary event window opened today (earnings July 29 AH). GS/WFC/MS remain mandatory binding entries. FOMC July 28-29 adds macro risk but does not qualify as Exemption 2 for individual financial stock entries. This is violation #100+ due to API blockage root cause."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+Per CLAUDE.md: every routine MUST verify open positions have resting stop orders via `GET /v2/orders?status=open` FIRST. All API calls returning HTTP 000 (proxy CONNECT rejected — 100th+ consecutive):
+
+```bash
+# GET /v2/account → HTTP 000 (proxy CONNECT rejected)
+# GET /v2/positions → HTTP 000
+# GET /v2/orders?status=open → HTTP 000
+```
+
+**AUDIT RESULT (from memory):** AMD 18sh — NO resting stop at Alpaca. Last confirmed trail stop: $528.67 (5% below July 24 intraday high $556.49). AMD remains naked at Alpaca due to 100th+ consecutive API blockage. GUARDRAIL VIOLATION ONGOING.
+
+---
+
+### BINARY EVENT CHECK — July 27, 2026
+
+| Company | Earnings Date | 48h Window | Status |
+|---|---|---|---|
+| **META** | **Wed July 29 AH** | **OPENED TODAY July 27** | **⛔ EXCLUDED — Exemption 2 active** |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 | ✅ Safe through Aug 1 |
+| FOMC | Tue July 29 decision | Meeting July 28-29 | ⚠️ Macro risk — not a stock-level binary event blocker |
+
+**META exclusion effective immediately:** 48h window to July 29 AH earnings opened at market open today July 27. META may not be entered until after the July 29 AH earnings print. This is a valid Exemption 2 skip.
+
+---
+
+### ORDER ATTEMPTS — Market-Open July 27, 2026
+
+#### ACTION 1: AMD SELL-STOP TRAIL (MANDATORY — STOP BACKFILL)
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"stop","stop_price":"528.67","time_in_force":"gtc"}'
+# Response: HTTP 000 (proxy CONNECT rejected — 100th+ consecutive block)
+```
+
+```yaml
+---
+ts: 2026-07-27T13:47:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: 8.5
+thesis: GTC sell-stop 18sh at $528.67 (5% below July 24 intraday high $556.49) — mandatory stop backfill for naked position.
+size_pct: 9.7
+stop: 528.67
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 7
+  macro: 8
+  risk: 9
+  tech_analyst: 9
+agent_average: 8.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "AMD trail-stop placement MANDATORY. POST /v2/orders returned HTTP 000 — proxy CONNECT rejected (100th+ consecutive egress policy block). AMD 18sh remains naked at Alpaca. Day 37+ post-fill without resting stop. Trail stop $528.67 (5% below $556.49 July 24 intraday high). AMD earnings Aug 4 AH — 48h window opens Aug 2, safe through Aug 1. OPERATOR MANDATORY: place GTC sell-stop 18sh AMD at $528.67 on app.alpaca.markets NOW."
+---
+```
+
+---
+
+#### ACTION 2: META — BINARY EVENT SKIP (Exemption 2)
+
+```yaml
+---
+ts: 2026-07-27T13:47:30Z
+action: skip
+symbol: META
+bucket: active
+setup: breakout-volume
+score: 7.67
+thesis: META 48h binary event window opened today (earnings July 29 AH). Cannot pre-position per CLAUDE.md Exemption 2.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 8
+  macro: 7
+  risk: 8
+  tech_analyst: 8
+agent_average: 7.67
+agents_above_7: 6
+master_decision: rejected
+master_notes: "EXEMPTION 2 APPLIES: META earnings July 29 AH — 48h binary event window opened today July 27 at market open. Pre-positioning has no edge per CLAUDE.md. July 24 was the LAST safe entry day (July 24 Mid-Morning noted this). API was blocked all day July 24 (95th+ consecutive). META now OFF-LIMITS until post-earnings July 30 morning. Will re-score post-earnings for a follow-through or fade opportunity. This is a valid and documented skip — not a deployment-bias violation."
+---
+```
+
+---
+
+#### ACTION 3: GS BUY 4sh — BINDING COMMITMENT ATTEMPT (HTTP 000)
+
+Score 7.83/10 (all 6 agents ≥7). Binding since July 14. Last known price ~$1,077.80 (July 24). Using July 24 limit price $1,083.19 as reference (1.005× last known).
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1083.19","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"1029.03"},"take_profit":{"limit_price":"1245.67"}}'
+# Response: HTTP 000 (proxy CONNECT rejected — 100th+ consecutive block)
+```
+
+```yaml
+---
+ts: 2026-07-27T13:48:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.83
+thesis: GS Q2 2026 EPS +45.7% beat ($14.12 vs $9.69 est.), Revenue +14% YoY. 4sh limit bracket GTC ~$1,083 / stop $1,029.03 (-5%) / target $1,245.67 (+15%, R/R 3:1). Position $4,333 = 4.3% equity.
+size_pct: 4.3
+stop: 1029.03
+target: 1245.67
+agent_scores:
+  fundamentals: 8
+  technical: 8
+  sentiment: 8
+  macro: 8
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders returned HTTP 000 — proxy CONNECT rejected (100th+ consecutive egress policy block). Order NOT placed at Alpaca. Binding commitment carried from July 14. No valid exemptions: (1) No guardrail breach at 4.3% equity; (2) GS has no earnings within 48h; (3) Circuit breaker not tripped. FOMC July 28-29 is a macro risk but GS benefits from higher-for-longer rates — not a binary event blocker for this ticker. OPERATOR MANDATORY: BUY 4sh GS limit bracket GTC $1,083 / stop $1,029 / target $1,246 at app.alpaca.markets NOW. Score 7.83 remains valid. Note: re-price to current ask × 1.005 when placing manually."
+---
+```
+
+---
+
+#### ACTION 4: WFC BUY 30sh — BINDING COMMITMENT ATTEMPT (HTTP 000)
+
+Score 7.0/10 (all 6 agents ≥7). Binding since July 14. Last known price ~$86.13 (July 24). Using July 24 limit price $86.56 as reference.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"86.56","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"82.23"},"take_profit":{"limit_price":"99.54"}}'
+# Response: HTTP 000 (proxy CONNECT rejected — 100th+ consecutive block)
+```
+
+```yaml
+---
+ts: 2026-07-27T13:48:30Z
+action: skip
+symbol: WFC
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: WFC Q2 2026 EPS $1.96 vs $1.73 est. (+13% beat), Revenue $22.62B vs $22.01B (+2.8% beat), Net income +17% YoY. 30sh limit bracket GTC ~$86.56 / stop $82.23 (-5%) / target $99.54 (+15%, R/R 3:1). Position $2,597 = 2.6% equity.
+size_pct: 2.6
+stop: 82.23
+target: 99.54
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders returned HTTP 000 — proxy CONNECT rejected (100th+ consecutive egress policy block). Order NOT placed at Alpaca. Binding commitment carried from July 14. No valid exemptions: (1) No guardrail breach at 2.6% equity; (2) WFC has no earnings within 48h; (3) Circuit breaker not tripped. FOMC may cause short-term rate volatility but financials sector allocation remains 0% deployed — well within 25% cap. OPERATOR MANDATORY: BUY 30sh WFC limit bracket GTC $86.56 / stop $82.23 / target $99.54 at app.alpaca.markets. Re-price to current ask × 1.005."
+---
+```
+
+---
+
+#### ACTION 5: MS BUY 20sh — BINDING COMMITMENT ATTEMPT (HTTP 000)
+
+Score 7.17/10 (all 6 agents ≥7). Binding since July 15. Last known price ~$216 est. (July 24). Using July 24 limit price $217.08 as reference.
+
+```bash
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" "${AUTH[@]}" -H 'Content-Type: application/json' \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"217.08","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"206.23"},"take_profit":{"limit_price":"249.64"}}'
+# Response: HTTP 000 (proxy CONNECT rejected — 100th+ consecutive block)
+```
+
+```yaml
+---
+ts: 2026-07-27T13:49:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: MS Q2 2026 Revenue $21.3B vs $16.8B (+27% YoY), Net income $5.6B (+60% YoY), EPS $3.46. 20sh limit bracket GTC ~$217.08 / stop $206.23 (-5%) / target $249.64 (+15%, R/R 3:1). Position $4,342 = 4.3% equity.
+size_pct: 4.3
+stop: 206.23
+target: 249.64
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: approved
+master_notes: "POST /v2/orders returned HTTP 000 — proxy CONNECT rejected (100th+ consecutive egress policy block). Order NOT placed at Alpaca. Binding commitment carried from July 15. No valid exemptions: (1) No guardrail breach at 4.3% equity; (2) MS has no earnings within 48h; (3) Circuit breaker not tripped. OPERATOR MANDATORY: BUY 20sh MS limit bracket GTC $217.08 / stop $206.23 / target $249.64 at app.alpaca.markets. Re-price to current ask × 1.005."
+---
+```
+
+---
+
+### PORTFOLIO STATE — July 27, 2026 (Market-Open, ~9:46 AM ET)
+
+_All prices estimated from last known (July 24). API blocked — no live data available._
+
+| Item | Value | Notes |
+|---|---|---|
+| Cash | ~$90,644 (90.3%) | Unchanged — no orders executed |
+| AMD | 18sh × ~$540 est. = ~$9,720 (9.7%) | Over 5% cap, NAKED (no stop), Day ~37 post-fill |
+| Total Equity | ~$100,364 est. | AMD P&L: +$596 est. |
+| P&L vs $100K | +$364 (+0.36%) | |
+| SPX (last known) | 7,406 (July 23 close) | |
+| Portfolio vs SPX | +0.36% vs est. +2.86% | Benchmark gap: ~−2.5 pp est. |
+| 20-day flag | ACTIVE | 100th+ consecutive sessions — API blockage root cause |
+| Circuit breaker | NOT tripped | |
+
+**BINARY EVENTS ACTIVE:**
+- META earnings July 29 AH — 48h window OPEN (no entry until July 30+)
+- FOMC July 28-29 — macro risk factor (not a stock-level binary event blocker)
+- AMD earnings Aug 4 AH — 48h window opens Aug 2 (safe through Aug 1)
+
+**BINDING COMMITMENTS (MANDATORY at next operator app.alpaca.markets session):**
+1. AMD: GTC SELL-STOP 18sh at $528.67 — MANDATORY FIRST ACTION
+2. GS: BUY 4sh limit bracket GTC at ask×1.005 / stop -5% / target +15% — score 7.83
+3. WFC: BUY 30sh limit bracket GTC at ask×1.005 / stop -5% / target +15% — score 7.0
+4. MS: BUY 20sh limit bracket GTC at ask×1.005 / stop -5% / target +15% — score 7.17
+5. ~~META~~: EXCLUDED until post-earnings July 30+ (Exemption 2)
+
+---
+
 ## 2026-07-24 — Mid-Morning (11:00 AM ET / 15:10 UTC — API BLOCKED — 95th+ consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-24T15:10:17Z ✓

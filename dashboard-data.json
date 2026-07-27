@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-24T15:12:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-27T13:49:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 100358.42,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.3
     },
-    "note": "July 24 MID-MORNING (11:10 AM ET / 15:12Z). API BLOCKED HTTP 403 — 95th+ consecutive session. Pre-Market + Market-Open BOTH silent failures today. AMD at $539.69 (+1.93% from $529.48 close) — range $525.00-$556.49. CRITICAL: AMD dipped to $525.00 (BELOW stop $525.35) — naked position survived on luck. Trail stop updated $525.35 → $528.67 (5% below today intraday high $556.49). INTC Q2 beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B, Data Center +59%) but stock reversed $110→$103 — SCORED 6.17/10 REJECTED. All 5 binding orders blocked HTTP 403. TODAY IS LAST SAFE ENTRY DAY FOR META (earnings July 29 AH; 48h window opens Monday July 27). OPERATOR MANDATORY BEFORE 3:50 PM ET TODAY: (1) AMD stop $528.67; (2) META bracket $630.14/stop $598.63/target $724.66; (3) GS bracket $1,083.19/stop $1,029.03/target $1,245.67; (4) WFC bracket $86.56/stop $82.23/target $99.54; (5) MS bracket $217.08/stop $206.23/target $249.64."
+    "note": "July 27 MARKET-OPEN (9:46 AM ET / 13:49Z). API BLOCKED HTTP 000 — 100th+ consecutive session. Pre-Market SILENT FAILURE. META 48h binary event window OPEN (earnings July 29 AH) — META EXCLUDED until July 30+. All 4 binding orders attempted and blocked HTTP 000: (1) AMD stop $528.67; (2) GS bracket $1,083.19/stop $1,029.03/target $1,245.67; (3) WFC bracket $86.56/stop $82.23/target $99.54; (4) MS bracket $217.08/stop $206.23/target $249.64. FOMC July 28-29 adds macro risk. OPERATOR MANDATORY: (1) AMD GTC sell-stop 18sh $528.67 FIRST; (2) GS BUY 4sh bracket GTC at ask×1.005/stop -5%/target +15%; (3) WFC BUY 30sh bracket GTC at ask×1.005; (4) MS BUY 20sh bracket GTC at ask×1.005."
   },
   "positions": [
     {
@@ -137,15 +137,15 @@
       "name": "Pre-Market",
       "status": "SILENT FAILURE",
       "last_run": "2026-07-14T12:05:00Z",
-      "next_run": "2026-07-24T12:00:00Z",
-      "last_summary": "July 23 Pre-Market SILENTLY FAILED — heartbeat not found. July 24 MANDATORY: (1) AMD GTC sell-stop 18sh $525.35 FIRST ACTION; (2) GS 4sh limit bracket GTC ~$1,073 / stop $1,019 / target $1,234; (3) META 7sh limit bracket GTC ~$627 / stop $596 / target $721 (LAST ELIGIBLE DAY — 48h window opens Jul 27); (4) WFC 30sh limit bracket GTC ~$85.83 / stop $81.54 / target $98.70; (5) MS 20sh limit bracket GTC ~$215 / stop $204 / target $248. Plus INTC post-earnings if Daily Review score >=7."
+      "next_run": "2026-07-28T12:00:00Z",
+      "last_summary": "July 27 Pre-Market SILENTLY FAILED — heartbeat not found. July 27 Market-Open running catch-up. MANDATORY BINDINGS (GS/WFC/MS all blocked again). META now EXCLUDED (48h binary event window opened July 27). OPERATOR: (1) AMD GTC sell-stop 18sh $528.67; (2) GS BUY 4sh bracket GTC ask×1.005; (3) WFC BUY 30sh bracket GTC ask×1.005; (4) MS BUY 20sh bracket GTC ask×1.005."
     },
     {
       "name": "Market-Open",
       "status": "completed",
-      "last_run": "2026-07-23T13:46:00Z",
-      "next_run": "2026-07-24T13:45:00Z",
-      "last_summary": "July 23 Market-Open COMPLETED 13:46-13:54Z. API BLOCKED 93rd+. AMD at $553 (+3.5%); GOOGL scored 6.5/10 REJECTED; TSLA scored 3.83/10 REJECTED. All 5 bindings (AMD stop $525.35 + GS/META/WFC/MS) HTTP 000 blocked."
+      "last_run": "2026-07-27T13:46:00Z",
+      "next_run": "2026-07-28T13:45:00Z",
+      "last_summary": "July 27 Market-Open COMPLETED 13:46-13:49Z. API BLOCKED HTTP 000 (100th+ consecutive). Pre-Market silent failure catch-up run. META excluded via Exemption 2 (earnings July 29 AH — 48h window open). AMD stop $528.67 attempt blocked HTTP 000. GS/WFC/MS bracket entries all blocked HTTP 000. 0 orders placed. FOMC July 28-29 macro risk noted. OPERATOR: place all 4 mandatory orders via app.alpaca.markets."
     },
     {
       "name": "Mid-Morning",
@@ -296,9 +296,9 @@
       "symbol": "META",
       "bucket": "active",
       "score": 7.67,
-      "action": "BUY 7sh limit bracket GTC ~$627 × 1.005 (BINDING — LAST SAFE DAY July 25)",
+      "action": "⛔ EXCLUDED — Exemption 2 active (earnings July 29 AH; 48h window OPEN July 27). Re-score July 30 for post-earnings fade/follow opportunity.",
       "setup": "breakout-volume",
-      "notes": "Score 7.67. META $627.17 (-3.87% today — better entry). Limit ~$630 (x1.005). Stop $595.81 (-5%). Target $721.25 (+15%). META earnings July 29 AH — 48h window opens July 27. MUST ENTER BY COB July 25. July 24 Pre-Market is MANDATORY — no more delays."
+      "notes": "Score 7.67 (still valid). META earnings July 29 AH — 48h binary event window opened July 27 at market open. Per CLAUDE.md Exemption 2: 'setup is into a binary event explicitly excluded by the strategy — where pre-positioning has no edge.' META OFF-LIMITS until July 30 (post-earnings). Will re-score at July 30 Pre-Market for earnings-reaction-follow or earnings-reaction-fade opportunity. API was blocked July 24 (last safe entry day) — July 24 Mid-Morning was the last chance and all 5 orders were blocked HTTP 403."
     },
     {
       "symbol": "WFC",
@@ -329,6 +329,8 @@
     {"date": "2026-07-20", "portfolio_return_pct": -0.12, "spx_return_pct": 4.2, "daily_pnl_pct": 0.32},
     {"date": "2026-07-21", "portfolio_return_pct": -0.26, "spx_return_pct": 4.07, "daily_pnl_pct": -0.14},
     {"date": "2026-07-22", "portfolio_return_pct": 0.26, "spx_return_pct": 5.0, "daily_pnl_pct": 0.52},
-    {"date": "2026-07-23", "portfolio_return_pct": 0.17, "spx_return_pct": 2.86, "daily_pnl_pct": -0.085}
+    {"date": "2026-07-23", "portfolio_return_pct": 0.17, "spx_return_pct": 2.86, "daily_pnl_pct": -0.085},
+    {"date": "2026-07-24", "portfolio_return_pct": 0.36, "spx_return_pct": 3.0, "daily_pnl_pct": 0.18},
+    {"date": "2026-07-27", "portfolio_return_pct": 0.36, "spx_return_pct": null, "daily_pnl_pct": null, "note": "API blocked — no live data. Pre-market silent failure. META 48h binary event window open. GS/WFC/MS attempts all HTTP 000."}
   ]
 }
