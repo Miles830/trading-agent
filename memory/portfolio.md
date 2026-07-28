@@ -1,16 +1,18 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-28 (Tuesday) — AFTERNOON (2:10 PM ET / 18:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 98th+ consecutive blocked session). AFTERNOON ✅ COMPLETED (FOMC Day 1 — all new entries suspended).**
+**2026-07-28 (Tuesday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 99th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED.**
 
-**JULY 28 AFTERNOON STATUS:** Midday silently failed (no heartbeat). Afternoon fired 18:09Z. Alpaca API blocked 98th+ consecutive session. FOMC Day 1 of 2 (July 28-29) = binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today or July 29.** GS/WFC/MS remain deferred to July 30. AMD naked stop still unresolved (API blocked). AMD current price unknown (API blocked); last known $504 (July 27 close). AAPL/AMZN 48h windows opened ~4 PM ET today (earnings July 30 AH) — confirm no entry. META/MSFT/QCOM report AH TOMORROW (July 29) — scoring AH for July 30 Pre-Market. **OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY — AMD is day 39+ naked with Aug 2 earnings window approaching.**
+**JULY 28 DAILY REVIEW SUMMARY:** 4 of 6 intraday routines silently failed (Pre-Market, Market-Open, Midday, Market-Close). Only Mid-Morning (15:14-15:17Z) and Afternoon (18:09-18:17Z) completed. Alpaca API blocked 99th+ consecutive session. FOMC Day 1 of 2 — no new entries (binary event exemption). AMD day 40+ naked (hard floor $481.42 unplaced — API blocked). Last known AMD price: ~$504 (July 27 close). Portfolio est. −$284 (−0.28%) vs $100K. SPX est. +3.47% from May 1 baseline. Benchmark gap: ~−3.75 pp. **JULY 30 IS THE MANDATORY FIRST DEPLOYMENT WINDOW** for GS/WFC/MS + post-earnings META/MSFT/QCOM scoring. **OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets — Day 40+ naked, only 3 trading days until Aug 1 last-safe-exit before Aug 2 48h window.**
 
-**HEARTBEAT AUDIT (July 28 — as of Afternoon):**
+**HEARTBEAT AUDIT (July 28 — Final):**
 - ✗ Pre-Market: SILENT FAILURE (violation logged by Mid-Morning)
 - ✗ Market-Open: SILENT FAILURE (violation logged by Mid-Morning)
 - ✓ Mid-Morning: COMPLETED 15:14-15:17Z ✓
 - ✗ Midday: SILENT FAILURE (violation logged by Afternoon)
-- ✓ Afternoon: STARTED 18:09Z (this routine) ✓
+- ✓ Afternoon: COMPLETED 18:09-18:17Z ✓
+- ✗ Market-Close: SILENT FAILURE (violation logged by Daily Review)
+- ✓ Daily-Review: STARTED 20:34Z ✓
 
 **JULY 28 MID-MORNING STATUS:** Pre-Market and Market-Open both silently failed (no heartbeats). Mid-Morning fired at 15:14 UTC. Alpaca API blocked 97th+ consecutive session. FOMC Day 1 of 2 (July 28-29) = binary event per CLAUDE.md ("Fed decision day") → **NO NEW POSITION ENTRIES today or July 29.** GS/WFC/MS skip entries logged citing FOMC exemption (2). AMD naked stop still unresolved. AMD current price unknown (API blocked); last known $504 (July 27 close). AMD 48h earnings window opens ~Aug 2 — last safe exit day Aug 1. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY.**
 

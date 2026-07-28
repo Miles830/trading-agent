@@ -4,6 +4,245 @@
 
 ---
 
+## 2026-07-28 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 99th+ consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-28T20:34:07Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443` AND `data.alpaca.markets:443`) — **99th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+
+---
+
+### PORTFOLIO STATE
+
+```
+PORTFOLIO STATE
+Total Equity: ~$99,716 est.
+Cash: ~$90,644 (90.9%) — above 5% floor ✓
+Trading bucket: ~$9,072 est. (9.1%) — 1 position (AMD) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+Note: AMD price unknown (API blocked all day). Last known $504 (July 27 close).
+Using $504 × 18sh = $9,072 est.
+Deployment gap: 85.9 pp below trading target. FOMC exemption July 28-29.
+First deployment window: July 30 Pre-Market post-FOMC.
+```
+
+**P&L vs $100K baseline: −$284 (−0.28%) est.**
+**SPX July 27 close: ~7,450 (+3.47% from May 1 baseline 7,200). Today FOMC Day 1 unknown (API blocked).**
+**Benchmark gap: ~−3.75 pp est. — widening due to API blockage**
+**20-day underperformance flag: ACTIVE (99th+ consecutive session — API blockage root cause)**
+
+---
+
+### HEARTBEAT TALLY — July 28, 2026
+
+| Routine | Time (ET) | STARTED | COMPLETED | Status |
+|---|---|---|---|---|
+| Pre-Market | 8:00 AM | ✗ | ✗ | **SILENT FAILURE** — violation logged by Mid-Morning |
+| Market-Open | 9:45 AM | ✗ | ✗ | **SILENT FAILURE** — violation logged by Mid-Morning |
+| Mid-Morning | 11:00 AM | ✓ 15:14Z | ✓ 15:17Z | COMPLETED ✓ |
+| Midday | 12:30 PM | ✗ | ✗ | **SILENT FAILURE** — violation logged by Afternoon |
+| Afternoon | 2:00 PM | ✓ 18:09Z | ✓ 18:17Z | COMPLETED ✓ |
+| Market-Close | 3:30 PM | ✗ | ✗ | **SILENT FAILURE** — logging violation now |
+| Daily-Review | 4:30 PM | ✓ 20:34Z | — | IN PROGRESS |
+
+**4 of 6 trading routines silently failed today. TOP OPERATIONAL ISSUE.**
+
+```yaml
+---
+ts: 2026-07-28T19:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Market-Close routine did not heartbeat on 2026-07-28 — silent failure detected by Daily Review.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Market-Close SILENT FAILURE 2026-07-28. No STARTED line in logs/heartbeats/2026-07-28.log as of 20:34Z Daily Review audit. Market-Close was responsible for: (1) final stop-loss audit for AMD naked position, (2) MOC order placement if any, (3) day-trade flatten check. All moot due to API blocked (HTTP 403), but the coverage gap is a guardrail violation regardless. AMD still naked (day 40+, hard floor $481.42 unplaced). Catch-up: Daily Review performing equivalent end-of-day audit now. Remediation: operator MUST place AMD GTC SELL-STOP 18sh at $481.42 on app.alpaca.markets — this is now the only protection mechanism between routine failures."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — egress policy denial)
+# GET /v2/positions → HTTP 403
+# data.alpaca.markets/v2/stocks/snapshots → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Last known price: ~$504 (July 27 close)
+- Today FOMC Day 1: market likely consolidating; AMD range est. $492-$515 (±2-3% FOMC Day 1)
+- Hard floor stop (5% below avg $506.76): **$481.42**
+- STATUS: **NAKED at Alpaca (99th+ consecutive session — Day 40+ post-fill)**
+- **GUARDRAIL VIOLATION (DAY 40+): OPERATOR MANDATORY STOP $481.42 NOT PLACED**
+
+```yaml
+---
+ts: 2026-07-28T20:34:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD GTC stop placement attempt (hard floor $481.42) — API blocked 99th+ consecutive session.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 3
+  tech_analyst: 7
+agent_average: 6.67
+agents_above_7: 4
+master_decision: hold
+master_notes: "AMD end-of-day audit: stop placement BLOCKED HTTP 403 (99th+ session). Price today unknown (API blocked); last known $504 (July 27 close). Hard floor $481.42 = 5% below avg cost $506.76. AMD is day 40+ naked. Risk score 3/10 due to no stop + position over 5% cap (9.1% equity). Thesis still intact: Wedbush PT $600, 12GW AI compute committed, TSMC 2nm, ROCm 7, strong Aug 4 earnings expected. CRITICAL: only 3 trading days left before Aug 1 last-safe-exit before Aug 2 48h window (earnings Aug 4 AH). Decision tree: if API restored July 30 and AMD > $506.76 avg → hold with stop; if AMD < $481.42 (stop breached) → exit; if AMD in $481-$506 range → operator discretion (hold is conviction play). OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY."
+---
+```
+
+---
+
+### TODAY'S P&L vs SPX (API BLOCKED — ESTIMATES ONLY)
+
+| Metric | Value | Notes |
+|---|---|---|
+| AMD today | Unknown | API blocked; last known $504 (Jul 27 close) |
+| AMD daily P&L est. | ~$0 | FOMC Day 1 = range-bound; AMD likely $495-$510 est. |
+| Portfolio daily P&L | ~$0 est. | AMD is only position; no other activity |
+| SPX today est. | +0.2-0.5% | FOMC Day 1 historically mild; big tech pre-earnings bid |
+| SPX daily P&L | Unknown | API blocked |
+| Today's benchmark gap | ~−0.3 pp est. | Portfolio flat; SPX slight gain |
+| Cumulative gap | ~−3.75 pp | vs $100K baseline; API block prevents exact calc |
+
+**Rolling 20-day (July 1-28):** No meaningful trade data available — all intraday routines blocked. 0 completed trades in window. Win rate: N/A. Profit factor: N/A.
+
+---
+
+### BEST & WORST OF THE DAY
+
+**Best action today:** Mid-Morning and Afternoon routines both fired and completed, catching the FOMC binary event exemption and logging violations. No capital was deployed into a bad trade.
+
+**Worst outcome today:** 4 of 6 routines silently failed. Market-Close (3:30 PM ET) missed — no final stop audit, no MOC protection window used. AMD spent another full day naked.
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **FOMC binary event discipline held.** No new entries were placed on FOMC Day 1 — this is correct per CLAUDE.md. The two routines that fired (Mid-Morning, Afternoon) both correctly identified and enforced the exemption.
+2. **AMD thesis correctly held.** With AMD at ~$504 (last known) vs hard stop $481.42, there is no fundamental reason to close — Wedbush $600 PT, 12GW committed, strong earnings expected Aug 4. Patience here is right.
+3. **Violation logging is systematic.** Even without API access, each failed routine is now being logged as a YAML `action: violation` entry, providing an audit trail for the heartbeat tally.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW
+
+1. **AMD stop MUST be placed by July 30 Pre-Market.** With only 3 trading days (Jul 29, 30, 31) before the Aug 1 last-safe-exit window, the naked AMD position is increasingly dangerous. If API is still blocked July 30, operator MUST place the stop manually via app.alpaca.markets.
+2. **Market-Close routine fires only 1 of 7 times in recent history.** This routine consistently silently fails. Root cause unknown. Priority escalation: operator should investigate why only Mid-Morning and Afternoon routines run reliably while Pre-Market, Market-Open, Market-Close, and sometimes Midday fail.
+3. **July 30 must be a full deployment day.** GS/WFC/MS have been deferred for 7+ trading days due to FOMC + API blocking. Once API is restored AND FOMC binary event window closes (July 30 pre-announcement), these 3 positions must enter immediately — they are MANDATORY commitments.
+
+---
+
+### SETUP PERFORMANCE TALLY (Rolling 5-Day Window: July 22-28)
+
+Grepping trades.md for `setup:` tags in this window:
+
+| Setup Tag | Entries | Exits | Wins | Losses | Notes |
+|---|---|---|---|---|---|
+| ai-momentum-pullback | 1 (AMD open) | 0 | 0 | 0 | AMD day 40+; no exit yet |
+| sector-rotation | 3 skips | 0 | 0 | 0 | GS/WFC/MS all API-blocked |
+| earnings-reaction-follow | 1 skip | 0 | 0 | 0 | GS/MS/WFC blocked |
+| other | 2 | 0 | 0 | 0 | AMD stop placements blocked |
+| silent-failure | 20+ violations | — | — | — | Systemic operational issue |
+
+**No 3-in-a-row halts triggered.** No 3-in-a-row boosts triggered. All setups have 0 completed trades — halt/boost rules cannot fire on zero data.
+
+---
+
+### AGENT CALIBRATION UPDATE
+
+No closed trades this period — agent calibration cannot be updated with P&L data. Running tally remains:
+- AMD entry (June 20, 2026): still open. Avg agent score 7.17/10 (5 of 6 agents ≥7, Risk 5/10 at entry — now Risk 3/10 due to naked position).
+- No exits or stop-hits logged. Agent vs reality calibration deferred until first completed trade.
+
+---
+
+### TOMORROW'S TOP-10 WATCHLIST — July 29, 2026
+
+**NOTE: July 29 is STILL a binary event day until FOMC decision ~2 PM ET. No new entries pre-announcement. Post-FOMC entries eligible after ~2 PM ET July 29 if FOMC resolves cleanly. July 30 Pre-Market is the mandatory first full deployment window.**
+
+**Tonight's key events (July 29 AH):** META earnings AH, MSFT earnings AH, QCOM earnings AH → score for July 30 Pre-Market entry.
+
+| Rank | Ticker | Setup | Score | Action | Thesis |
+|---|---|---|---|---|---|
+| 1 | **AMD** | stop-placement | N/A | MANDATORY stop $481.42 FIRST ACTION July 30 | Day 41 naked; last safe exit Aug 1 before Aug 2 48h window |
+| 2 | **GS** | sector-rotation | **7.83** | MANDATORY BUY 4sh limit bracket GTC ~$1,062 ref | Q2 +45.7% EPS beat; post-FOMC rate clarity = financials catalyst; re-price at July 30 open |
+| 3 | **MS** | sector-rotation | **7.17** | MANDATORY BUY 20sh limit bracket GTC ~$214 ref | Strong earnings; financial sector rotation post-FOMC; re-price July 30 |
+| 4 | **WFC** | sector-rotation | **7.0** | MANDATORY BUY 30sh limit bracket GTC ~$86 ref | Q2 EPS $1.96 vs $1.73 (+13%); value financials play; re-price July 30 |
+| 5 | **META** | earnings-reaction-follow | TBD after AH | Score after tonight's print; entry July 30 if ≥7 | AI capex story; Reality Labs momentum; Llama 4 deployment; consensus expects big beat |
+| 6 | **MSFT** | earnings-reaction-follow | TBD after AH | Score after tonight's print; entry July 30 if ≥7 | Azure AI growth; Copilot revenue ramping; consensus strong |
+| 7 | **QCOM** | earnings-reaction-follow | TBD after AH | Score after tonight's print; entry July 30 if ≥7 | Analyst PT $221 vs ~$167 (+32%); mobile AI Snapdragon X Elite; automotive design wins |
+| 8 | **NVDA** | ai-momentum-pullback | 7.0 est. | Buy on FOMC-driven pullback if support holds; re-score July 30 | AI infra capex confirmation from META AH; H100/B200 demand intact; support ~$750-$800 est. |
+| 9 | **XLF** | sector-rotation | 6.8 est. | FOMC clarity catalyst for financials ETF; entry July 30 if ≥7 | Financials sector outperforms on rate certainty; if FOMC cuts = yield curve steepens |
+| 10 | **GLD** | macro-hedge | 6.5 est. | If FOMC hawkish (hold) → gold bid as rates-stay-high hedge | Rates uncertainty; dollar dynamics; PCE inflation data July 30 |
+
+**MANDATORY July 30 Pre-Market execution order:**
+1. AMD: GTC SELL-STOP 18sh at $481.42 — place BEFORE any other action
+2. Score META/MSFT/QCOM from tonight's AH results
+3. GS: BUY 4sh limit bracket GTC (re-price at open)
+4. MS: BUY 20sh limit bracket GTC (re-price at open)
+5. WFC: BUY 30sh limit bracket GTC (re-price at open)
+6. If META/MSFT/QCOM score ≥7: add to July 30 entries (subject to guardrails — max 3 MOO orders)
+
+---
+
+### KEY MACRO EVENTS — July 29-31, 2026
+
+| Date | Event | Impact |
+|---|---|---|
+| **Tue July 29** | FOMC Rate Decision ~2 PM ET + Powell Press Conf | BINARY EVENT — market-moving; 25bps cut expected by ~60% of market; hold possible |
+| **Tue July 29 AH** | META, MSFT, QCOM earnings | Mega-cap tech catalyst; score for July 30 Pre-Market |
+| **Wed July 30 8:30 AM ET** | PCE/Core Inflation + Q2 GDP (first read) | MAJOR — PCE is Fed's preferred inflation gauge; GDP Q2 sets macro tone |
+| **Wed July 30 AH** | AAPL, AMZN earnings | Mega-cap consumer/cloud; 48h windows active (no entry) |
+| **Thu July 31** | Market digestion day | Post-earnings + post-FOMC + post-GDP positioning |
+| **Tue Aug 4 AH** | AMD earnings | Our sole open position; 48h window opens Aug 2; last safe exit Aug 1 |
+
+**FOMC decision scenarios:**
+- **25bps cut (dovish):** Banks neutral/slightly negative short-term; AMD/tech positive; rotate from growth to cyclicals; GLD could pull back
+- **Hold (hawkish):** Banks positive (net interest margin sustained); AMD/tech flat-to-negative; GLD bid; dollar strengthens
+- **50bps cut (very dovish, low probability):** Risk-on rally across board; strong AMD/tech; GS/WFC/MS benefit from activity
+
+---
+
+### AMD DECISION FRAMEWORK (July 30 — last safe exit window planning)
+
+With AMD earnings Aug 4 AH and 48h window opening ~Aug 2:
+- **Last safe entry date:** Aug 1 (COB)
+- **Must decide by Aug 1 EOD:** hold through earnings (conviction) or exit (risk management)
+
+Current AMD status:
+- Avg cost: $506.76
+- Last known price: ~$504 (−0.55% unrealized)
+- Hard stop: $481.42 (still naked, day 40+)
+- Thesis: Wedbush PT $600, 12GW AI compute committed (Advancing AI 2026), TSMC 2nm, ROCm 7, Q2 2026 earnings expected +396% EPS YoY
+
+**Decision criteria (assess July 30-31):**
+1. If AMD restores above $506.76 (at profit) + FOMC dovish → **hold** with tight GTC stop at $481.42 and plan to exit by Aug 1 EOD if sub-$495
+2. If AMD below $481.42 (stop breached) → **exit immediately** (stop rule: no averaging down, no holding through breach)
+3. If AMD in $481-$506 range + API still blocked → **operator manual decision required**; bias toward exit to avoid binary event on naked position
+
+---
+
+```
+
+---
+
 ## 2026-07-28 — Afternoon Routine (2:00 PM ET / 18:10 UTC — API BLOCKED — 98th+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-28T18:09:56Z ✓

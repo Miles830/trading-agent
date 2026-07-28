@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-28T18:10:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-28T20:34:00Z",
+  "updated_by": "daily-review",
   "portfolio": {
     "total_equity": 99716,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 90.9
     },
-    "note": "July 28 AFTERNOON (2:10 PM ET / 18:10Z). API BLOCKED HTTP 403 — 98th+ consecutive session. FOMC Day 1 of 2 (July 28-29). NO NEW ENTRIES until July 30 post-FOMC. Midday silently failed (3 of 4 predecessor routines today). AMD price unknown today; using $504 (July 27 close) × 18sh = $9,072 est. AMD naked (no stop, day 39+). GS/WFC/MS deferred to July 30. META/MSFT/QCOM report AH July 29 — scoring for July 30 Pre-Market. AAPL/AMZN 48h windows opened ~4 PM today. OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY."
+    "note": "July 28 DAILY REVIEW (4:30 PM ET / 20:34Z). API BLOCKED HTTP 403 — 99th+ consecutive session. FOMC Day 1 complete. 4 of 6 routines silently failed. AMD price unknown today; using $504 (July 27 close) × 18sh = $9,072 est. AMD day 40+ naked (hard floor $481.42 unplaced). GS/WFC/MS MANDATORY deployment July 30. META/MSFT/QCOM score AH tonight (July 29); entry July 30 if ≥7. AAPL/AMZN 48h windows active (no entry). AMD last safe exit Aug 1 (earnings Aug 4 AH; 48h window Aug 2). OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 528.67,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "July 28 AFTERNOON: AMD price unknown today (API blocked). Last known $504 (July 27 close). Hard floor stop $481.42 (5% below avg $506.76). NAKED at Alpaca (98th+ block — day 39+). Earnings Aug 4 AH; 48h window opens Aug 2; last safe exit Aug 1. Wedbush PT $600; 12GW committed. FOMC Day 1 — market consolidating. P&L est: 18x($504-$506.76)=-$49.68 (-0.55% unrealized). OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD $481.42 immediately."
+      "note": "July 28 DAILY REVIEW EOD: AMD price unknown (API blocked all day). Last known $504 (July 27 close). Hard floor stop $481.42 (5% below avg $506.76). NAKED at Alpaca (99th+ block — DAY 40+). Earnings Aug 4 AH; 48h window opens Aug 2; last safe exit Aug 1 COB — only 3 trading days remain. Wedbush PT $600; 12GW AI compute committed; ROCm 7; TSMC 2nm. FOMC Day 1 complete (decision July 29 ~2 PM ET). P&L est: 18×($504−$506.76)=−$49.68 (−0.55%). Decision: HOLD with stop — operator place GTC SELL-STOP 18sh AMD $481.42 IMMEDIATELY on app.alpaca.markets."
     },
     {
       "symbol": "GS",
@@ -165,17 +165,17 @@
     },
     {
       "name": "Market-Close",
-      "status": "completed",
+      "status": "SILENT FAILURE",
       "last_run": "2026-07-23T19:37:00Z",
-      "next_run": "2026-07-24T19:30:00Z",
-      "last_summary": "July 23 Market-Close COMPLETED 19:37Z. API BLOCKED HTTP 403 (94th+ consecutive). No day trades open (AMD is swing position). 5 MOC/GTC orders attempted: AMD stop $525.35 + GS/META/WFC/MS entries — all HTTP 403 blocked. AMD closed $529.48 (above stop $525.35, position held). Daily P&L: -$85.32 (-0.085%). SPX -1.24% to 7,406 (+2.86% from baseline). Benchmark gap: -2.69 pp (improved from -4.74 pp)."
+      "next_run": "2026-07-29T19:30:00Z",
+      "last_summary": "July 28 Market-Close SILENTLY FAILED (no heartbeat). Violation logged by Daily Review. API blocked (99th+ session) so no orders could execute regardless. AMD still naked (day 40+). July 29 Market-Close: check AMD after FOMC decision; if API restored place stop $481.42 immediately."
     },
     {
       "name": "Daily-Review",
-      "status": "pending",
-      "last_run": "2026-07-13T20:34:09Z",
-      "next_run": "2026-07-23T20:30:00Z",
-      "last_summary": "July 23 Daily Review due at 4:30 PM ET / 20:30Z. Key tasks: (1) Score INTC post-Q2 (results: $14.4B revenue, $0.22 EPS, 18A 85% yields); (2) Produce July 24 watchlist; (3) AMD stop review; (4) Setup performance tally; (5) Benchmark update."
+      "status": "completed",
+      "last_run": "2026-07-28T20:34:07Z",
+      "next_run": "2026-07-29T20:30:00Z",
+      "last_summary": "July 28 Daily Review COMPLETED. API BLOCKED HTTP 403 (99th+ session). 4/6 routines silently failed (Pre-Market, Market-Open, Midday, Market-Close). Market-Close violation logged. AMD day 40+ naked (hard floor $481.42 unplaced). Portfolio est: −$284 (−0.28%) vs $100K; benchmark gap ~−3.75 pp (SPX +3.47% from baseline). FOMC Day 1 complete; decision July 29 ~2 PM ET. July 30 = first deployment window: AMD stop + GS/WFC/MS mandatory entries + post-earnings META/MSFT/QCOM. AMD last safe exit Aug 1 (earnings Aug 4 AH)."
     }
   ],
   "trades": [
@@ -277,7 +277,7 @@
       "score": null,
       "action": "MANDATORY STOP $481.42 (FIRST ACTION July 30 Pre-Market) + HOLD",
       "setup": "ai-momentum-pullback",
-      "notes": "18sh at avg $506.76. Last price $504 (July 27 close; today unknown). Hard floor stop $481.42 (5% below avg). NAKED day 39+ — operator mandatory: GTC SELL-STOP 18sh $481.42 on app.alpaca.markets. Earnings Aug 4 AH; 48h window opens Aug 2; last safe exit Aug 1. Wedbush PT $600. Thesis intact."
+      "notes": "18sh at avg $506.76. Last price $504 (July 27 close; today unknown — API blocked). Hard floor stop $481.42 (5% below avg). NAKED DAY 40+ — operator mandatory: GTC SELL-STOP 18sh $481.42 on app.alpaca.markets IMMEDIATELY. Earnings Aug 4 AH; 48h window opens Aug 2; LAST SAFE EXIT AUG 1 COB — only 3 trading days remain (Jul 29, 30, 31). Wedbush PT $600. Thesis intact. Decision framework: if AMD>$506.76 at July 30 open AND API restored = hold with stop; if AMD<$481.42 = exit immediately (stop rule); if API still blocked July 30 = operator manual decision required."
     },
     {
       "symbol": "GS",
