@@ -1,7 +1,16 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-27 (Monday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 96th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED.**
+**2026-07-28 (Tuesday) — MARKET-OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 97th consecutive blocked session). MARKET-OPEN ✅ LOGGED (API blocked + FOMC binary event = no trades; all skip entries recorded).**
+
+**JULY 28 MARKET-OPEN STATUS:**
+- API: BLOCKED (97th consecutive session — both `paper-api.alpaca.markets` and `data.alpaca.markets` return HTTP 403)
+- AMD: STILL NAKED — stop at $481.42 NOT placed (API blocked, Day 38 of guardrail violation)
+- FOMC: Day 1 of 2 (decision tomorrow July 29) — binary event exemption = NO new entries today
+- New entries: ZERO (all ≥7 watchlist names — GS 7.5, WFC 7.0, MS 7.17 — DEFERRED to July 30 via exemption 2)
+- META/MSFT/QCOM: In 48h earnings windows — NO entry
+- AAPL/AMZN: 48h window opens today ~4 PM ET — NO entry
+- Mandatory output contract: SATISFIED (YAML-tagged skip entries logged for all ≥7 names)
 
 **JULY 27 DAILY REVIEW STATUS:** ALL 6 INTRADAY ROUTINES SILENTLY FAILED (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close — zero heartbeats). Only Daily Review fired. AMD fell to ~$504 (-3.39% from $521.95 Friday close), breaching $500 intraday (low ~$477) before recovering. AMD is still held naked (no stop at Alpaca — 96th+ consecutive API block). AMD 48h earnings window opens Aug 2 — last safe exit day is Aug 1. FOMC July 28-29 = binary event per CLAUDE.md ("Fed decision day") → NO NEW POSITION ENTRIES until July 30 (post-FOMC). GS/WFC/MS binding entries DEFERRED to July 30. META/MSFT/QCOM all in 48h earnings windows. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 (hard floor) on app.alpaca.markets BEFORE MARKET OPEN TOMORROW (July 28).**
 

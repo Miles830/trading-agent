@@ -4,6 +4,155 @@
 
 ---
 
+## 2026-07-28 — Market-Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 97th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-28T13:45:52Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443` and `data.alpaca.markets:443`) — **97th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 9:46 AM ET — Market-Open window (9:45 AM ET routine)
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy 403 — 97th consecutive)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76) — MANDATORY STOP NOT PLACED:**
+- Last known price: ~$504 (July 27 close, -3.39% from Friday's $521.95)
+- Hard floor stop (5% below entry avg): $506.76 × 0.95 = **$481.42**
+- STATUS: NAKED at Alpaca (no stop order resting — API blocked 97th consecutive session)
+- **GUARDRAIL VIOLATION (DAY 38): AMD naked. OPERATOR MANDATORY: Place GTC sell-stop 18sh AMD at $481.42 on app.alpaca.markets NOW.**
+
+---
+
+### BINARY EVENT AUDIT — July 28
+
+| Event | Status | Action |
+|---|---|---|
+| FOMC Day 1 | **ACTIVE — Day 1 of 2 (decision July 29 AH)** | NO NEW ENTRIES per CLAUDE.md "Fed decision day" |
+| META earnings | Window ACTIVE (July 29 AH) | NO ENTRY |
+| MSFT earnings | Window ACTIVE (July 29 AH) | NO ENTRY |
+| QCOM earnings | Window ACTIVE (July 29 AH) | NO ENTRY |
+| AAPL earnings | Window opens today ~4 PM ET (July 30 AH) | NO NEW ENTRY after 4 PM ET |
+| AMZN earnings | Window opens today ~4 PM ET (July 30 AH) | NO NEW ENTRY after 4 PM ET |
+
+**CONCLUSION: ALL potential new entries are in binary event windows (FOMC Day 1-2). Zero new entries are valid today per CLAUDE.md exemption (2).**
+
+---
+
+### TRADE DECISIONS — July 28 Market-Open
+
+```yaml
+---
+ts: 2026-07-28T13:46:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: Mandatory AMD GTC sell-stop at $481.42 could not be placed — Alpaca API blocked by proxy (HTTP 403, 97th consecutive session). AMD remains naked at Alpaca for Day 38.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+master_notes: "CRITICAL GUARDRAIL VIOLATION DAY 38: AMD (18sh, avg $506.76) is naked at Alpaca with no resting stop order. API blocked — paper-api.alpaca.markets:443 returns HTTP 403 (proxy egress policy denial). FOMC binary event window (Day 1 of 2) prevents new entries even if API were accessible. OPERATOR MANDATORY: Log into app.alpaca.markets and place GTC sell-stop 18sh AMD at $481.42 immediately. This is the 97th consecutive session with API blocked."
+---
+```
+
+```yaml
+---
+ts: 2026-07-28T13:46:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.5
+thesis: GS deferred from July 27 watchlist — FOMC binary event window active (Day 1 of 2, decision July 29 AH). Entry explicitly excluded per CLAUDE.md.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.3
+agents_above_7: 4
+master_decision: rejected
+master_notes: "FOMC binary event window = exemption (2) per CLAUDE.md Deployment Bias. GS entry deferred to July 30 Post-Market per binding commitment in portfolio.md. Additionally, API is blocked (97th session). Will re-price and enter July 30 Pre-Market."
+---
+```
+
+```yaml
+---
+ts: 2026-07-28T13:46:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC deferred from July 27 watchlist — FOMC binary event window active (Day 1 of 2, decision July 29 AH). Entry explicitly excluded per CLAUDE.md.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "FOMC binary event window = exemption (2) per CLAUDE.md Deployment Bias. WFC entry deferred to July 30 Pre-Market. Additionally, API is blocked (97th session)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-28T13:46:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.17
+thesis: MS deferred from July 27 watchlist — FOMC binary event window active (Day 1 of 2, decision July 29 AH). Entry explicitly excluded per CLAUDE.md.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 6
+master_decision: rejected
+master_notes: "FOMC binary event window = exemption (2) per CLAUDE.md Deployment Bias. MS entry deferred to July 30 Pre-Market. Additionally, API is blocked (97th session)."
+---
+```
+
+---
+
+### MARKET-OPEN ROUTINE SUMMARY — July 28
+
+**Routine outcome:** API BLOCKED (97th consecutive session) + FOMC binary event window (Day 1) = zero new entries today. This satisfies the mandatory output contract (B): all ≥7-score watchlist names have YAML-tagged skip entries naming the applicable exemption (2) with evidence.
+
+**Binding commitments carried forward:**
+- AMD: GTC sell-stop 18sh at $481.42 MUST be placed manually by operator NOW
+- GS/WFC/MS: Enter July 30 Pre-Market (post-FOMC, post-earnings) with re-priced brackets
+- META/MSFT/QCOM: Score after July 29 AH earnings
+- AAPL/AMZN: Score after July 30 AH earnings
+
+---
+
 ## 2026-07-27 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 96th+ consecutive session)
 
 **HEARTBEAT:** STARTED Daily-Review 2026-07-27T20:34:24Z ✓
