@@ -1,23 +1,22 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-27 (Monday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 96th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED.**
+**2026-07-28 (Tuesday) — MID-MORNING (11:15 AM ET / 15:14 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 97th+ consecutive blocked session). MID-MORNING ✅ COMPLETED (FOMC Day 1 — all new entries suspended).**
 
-**JULY 27 DAILY REVIEW STATUS:** ALL 6 INTRADAY ROUTINES SILENTLY FAILED (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close — zero heartbeats). Only Daily Review fired. AMD fell to ~$504 (-3.39% from $521.95 Friday close), breaching $500 intraday (low ~$477) before recovering. AMD is still held naked (no stop at Alpaca — 96th+ consecutive API block). AMD 48h earnings window opens Aug 2 — last safe exit day is Aug 1. FOMC July 28-29 = binary event per CLAUDE.md ("Fed decision day") → NO NEW POSITION ENTRIES until July 30 (post-FOMC). GS/WFC/MS binding entries DEFERRED to July 30. META/MSFT/QCOM all in 48h earnings windows. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 (hard floor) on app.alpaca.markets BEFORE MARKET OPEN TOMORROW (July 28).**
+**JULY 28 MID-MORNING STATUS:** Pre-Market and Market-Open both silently failed (no heartbeats). Mid-Morning fired at 15:14 UTC. Alpaca API blocked 97th+ consecutive session. FOMC Day 1 of 2 (July 28-29) = binary event per CLAUDE.md ("Fed decision day") → **NO NEW POSITION ENTRIES today or July 29.** GS/WFC/MS skip entries logged citing FOMC exemption (2). AMD naked stop still unresolved. AMD current price unknown (API blocked); last known $504 (July 27 close). AMD 48h earnings window opens ~Aug 2 — last safe exit day Aug 1. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY.**
 
-**PORTFOLIO STATE (July 27, 2026 — CLOSE):**
-- Cash: ~$90,644 (90.9%)
-- AMD: 18sh × $504 = ~$9,072 (9.1%) — over 5% cap, naked (no stop), Day 37+ post-fill
+**PORTFOLIO STATE (July 28, 2026 — Mid-Morning ~11:15 AM ET):**
+- Cash: ~$90,644 (90.9%) — last known; API blocked
+- AMD: 18sh × ~$504 est. = ~$9,072 (9.1%) — over 5% cap, naked (no stop), Day 38+ post-fill
 - Total equity est.: ~$99,716
-- P&L vs $100K initial: -$284 (-0.28%)
-- AMD unrealized: 18 × ($504 − $506.76) = -$49.68 (-0.55% from avg cost)
-- AMD daily P&L: 18 × ($504 − $521.95) = -$323.10 (-0.32% portfolio)
-- Portfolio daily P&L: -$323.10 (-0.32%)
-- SPX July 27 close: ~7,450 (+0.57% today). SPX from May 1 baseline 7,200: **+3.47%**
-- Portfolio since $100K baseline: **-0.28%**
-- **Benchmark gap: -3.75 pp** (widened from -2.64 pp on July 24 — AMD fell while SPX gained)
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (96th+ consecutive sessions — API blockage root cause)
-- Circuit breaker: -0.32% daily — NOT tripped (well below -3% threshold)
+- P&L vs $100K initial: -$284 (-0.28%) est.
+- AMD unrealized: 18 × ($504 − $506.76) = -$49.68 (-0.55% from avg cost) — price unknown today
+- FOMC Day 1 circuit breaker check: unknown (API blocked; today's AMD move unknown)
+- SPX July 27 close: ~7,450. SPX from May 1 baseline 7,200: **+3.47%** (est.)
+- Portfolio since $100K baseline: **-0.28%** est.
+- **Benchmark gap: ~-3.75 pp** (estimate; SPX July 28 move unknown due to API block)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (97th+ consecutive sessions — API blockage root cause)
+- Circuit breaker: Today AMD P&L unknown; last known -0.32% (July 27) — NOT tripped
 
 **AMD CURRENT STATUS (July 27 close):**
 - AMD at $504 — trail stop $528.67 has been BREACHED (set July 24 at 5% below $556.49 intraday high)

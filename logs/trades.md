@@ -4,6 +4,180 @@
 
 ---
 
+## 2026-07-28 — Mid-Morning Routine (11:00 AM ET / 15:14 UTC — API BLOCKED — 97th+ consecutive session)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-28T15:14:26Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **97th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Day 1 of 2 (July 28-29). Binary event per CLAUDE.md → **NO NEW POSITION ENTRIES until July 30.**
+**Time (ET):** 11:15 AM ET — Mid-Morning window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+Checking today's heartbeat log (`logs/heartbeats/2026-07-28.log`):
+- ✗ Pre-Market (8:00 AM ET): **SILENT FAILURE** — no STARTED line
+- ✗ Market-Open (9:45 AM ET): **SILENT FAILURE** — no STARTED line
+- ✓ Mid-Morning (11:00 AM ET): 2026-07-28T15:14:26Z STARTED (this routine)
+
+**2 predecessor routines silently failed.** Logging violations below.
+
+```yaml
+---
+ts: 2026-07-28T08:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine did not heartbeat on 2026-07-28 — silent failure detected by Mid-Morning.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Pre-Market SILENT FAILURE 2026-07-28. No STARTED line in logs/heartbeats/2026-07-28.log as of Mid-Morning audit. Catch-up performed below (MOO scan skipped — FOMC Day 1 binary event, no new entries permitted). AMD naked stop issue persists — API blocked 97th+ session. Operator mandatory stop $481.42 at app.alpaca.markets URGENT."
+---
+```
+
+```yaml
+---
+ts: 2026-07-28T09:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine did not heartbeat on 2026-07-28 — silent failure detected by Mid-Morning.
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "Market-Open SILENT FAILURE 2026-07-28. No STARTED line in logs/heartbeats/2026-07-28.log as of Mid-Morning audit. AMD MOO fills (if any from Pre-Market) not confirmed — API blocked 97th+ session. No MOO orders were queued by Pre-Market (Pre-Market also silently failed), so no follow-up stop needed. FOMC Day 1 = binary event; all new entries suspended."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial)
+# GET /v2/positions → HTTP 403
+# data.alpaca.markets snapshots → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Last known price: ~$504 (July 27 close, -3.39% from $521.95 Fri close)
+- FOMC Day 1 intraday: unknown (API blocked). AMD may be volatile ±2-5% on FOMC uncertainty.
+- Trail stop $528.67 (set July 24): **BREACHED LONG AGO** — AMD has been below $528.67 since ~July 21
+- Hard floor stop (5% below avg cost $506.76): **$481.42**
+- STATUS: **NAKED at Alpaca (97th+ consecutive session — no stop order resting)**
+- **GUARDRAIL VIOLATION (DAY 38+): OPERATOR MANDATORY STOP $481.42 STILL UNCONFIRMED**
+
+```yaml
+---
+ts: 2026-07-28T15:15:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD stop placement attempt — API blocked 97th+ session. FOMC Day 1 = no new position actions available.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+master_notes: "AMD at ~$504 est. (last known July 27 close; today price unknown due to API block). Hard floor stop $481.42 (5% below avg cost $506.76). API blocked 97th+ consecutive session — stop order cannot be placed programmatically. FOMC Day 1 of 2 (July 28-29) = binary event per CLAUDE.md; no new entries or position changes until July 30. AMD earnings window opens ~Aug 2 (48h before ~Aug 4 report). Last safe exit day Aug 1. OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY — this is the only protection between routine failures."
+---
+```
+
+---
+
+### WATCHLIST CATCH-UP — PRE-MARKET & MARKET-OPEN MISSED
+
+Per routines/midmorning.md: "For each watchlist name with score ≥ 7 — skip if already a position OR has a today-dated `action: skip` entry citing a valid CLAUDE.md exemption."
+
+**CLAUDE.md Exemption Applied: FOMC July 28-29 = "Fed decision day" binary event.**
+
+All watchlist entries (GS, WFC, MS deferred from July 27 daily review) are **suspended** until July 30 per CLAUDE.md binary event rule. This is exemption (2) of the 3 valid skip reasons — no order placement is permitted on FOMC days regardless of score.
+
+```yaml
+---
+ts: 2026-07-28T15:16:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7
+thesis: GS scored ≥7 in July 27 watchlist — skipped today (FOMC binary event, Day 1 of 2; exemption 2 per CLAUDE.md).
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "GS watchlist score ≥7 (sector-rotation — financials leadership post-ATH). FOMC July 28-29 = binary event per CLAUDE.md 'Fed decision day where pre-positioning has no edge.' Valid exemption (2) from Deployment Bias. Will re-score July 30 post-FOMC. GS ~$1,062 last known (ATH was $1,152 on July 15). No API access to confirm current price. Also: API blocked 97th+ session."
+---
+```
+
+```yaml
+---
+ts: 2026-07-28T15:16:30Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7
+thesis: WFC scored ≥7 in July 27 watchlist — skipped today (FOMC binary event, Day 1 of 2; exemption 2 per CLAUDE.md).
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "WFC watchlist score ≥7 (sector-rotation — regional bank value play). FOMC July 28-29 = binary event per CLAUDE.md. Valid exemption (2). Will re-score July 30 post-FOMC. WFC ~$86 last known. API blocked 97th+ session."
+---
+```
+
+```yaml
+---
+ts: 2026-07-28T15:17:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7
+thesis: MS scored ≥7 in July 27 watchlist — skipped today (FOMC binary event, Day 1 of 2; exemption 2 per CLAUDE.md).
+size_pct: 0
+stop: N/A
+target: N/A
+master_notes: "MS watchlist score ≥7 (sector-rotation — financials leadership). FOMC July 28-29 = binary event per CLAUDE.md. Valid exemption (2). Will re-score July 30 post-FOMC. MS ~$214 last known. API blocked 97th+ session."
+---
+```
+
+---
+
+### MARKET CONTEXT — July 28, 2026 (FOMC Day 1)
+
+| Factor | Status | Notes |
+|---|---|---|
+| FOMC | Day 1 of 2 (July 28-29) | Rate decision July 29; elevated uncertainty |
+| VIX | Elevated est. ~18-22 | FOMC + heaviest earnings week of 2026 |
+| Earnings | META, MSFT, QCOM today AH | Major binary events — no entries in those names |
+| AMD | ~$504 est. | Earnings Aug 4; 48h window opens Aug 2 |
+| GS/WFC/MS | Deferred to July 30 | Post-FOMC re-entry window |
+| Macro | Risk-off bias on FOMC day | Typical pattern: sell before Fed, buy after |
+
+**All new position entries SUSPENDED per CLAUDE.md FOMC binary event rule until July 30.**
+
+---
+
+### PORTFOLIO STATE (Mid-Morning, July 28, 2026)
+
+```
+PORTFOLIO STATE
+Total Equity: ~$99,716 est. (AMD price unknown — last known $504 × 18sh = $9,072 + $90,644 cash)
+Cash: ~$90,644 (90.9%) — above 5% floor ✓
+Trading bucket: ~$9,072 (9.1%) — 1 position — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+```
+
+**Deployment gap: 85.9 pp below trading target.** FOMC exemption applies today — deployment will resume July 30 post-FOMC with GS/WFC/MS re-scoring + fresh market scan.
+
+---
+
 ## 2026-07-27 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 96th+ consecutive session)
 
 **HEARTBEAT:** STARTED Daily-Review 2026-07-27T20:34:24Z ✓
