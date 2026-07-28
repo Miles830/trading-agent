@@ -4,6 +4,144 @@
 
 ---
 
+## 2026-07-28 — Market-Close Routine (3:30 PM ET / 19:34 UTC — API BLOCKED — 99th+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-28T19:34:35Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **99th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Day 1 of 2. Binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today. July 30 = first window.**
+**Time (ET):** ~3:30 PM ET — Market-Close window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+Heartbeat log `logs/heartbeats/2026-07-28.log` as of Market-Close:
+- ✗ Pre-Market (8:00 AM ET): **SILENT FAILURE** — violation logged by Mid-Morning ✓
+- ✗ Market-Open (9:45 AM ET): **SILENT FAILURE** — violation logged by Mid-Morning ✓
+- ✓ Mid-Morning (11:00 AM ET): 2026-07-28T15:14:26Z STARTED / 15:17:50Z COMPLETED ✓
+- ✗ Midday (12:30 PM ET): **SILENT FAILURE** — violation logged by Afternoon ✓
+- ✓ Afternoon (2:00 PM ET): 2026-07-28T18:09:56Z STARTED / 18:17:11Z COMPLETED ✓
+
+All predecessor violations already logged. No additional violation entries needed.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — egress policy denial, 99th+ session)
+# GET /v2/positions → HTTP 403
+# data.alpaca.markets/v2/stocks/snapshots?symbols=AMD → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Last known price: ~$504 (July 27 close). Today's price unknown (API blocked).
+- FOMC Day 1: Markets typically consolidate on Fed Day 1. AMD est. range $490-$515.
+- Hard floor stop: **$481.42** (5% below avg cost $506.76)
+- STATUS: **NAKED at Alpaca — day 40+ post-entry. No stop resting at broker.**
+- **GUARDRAIL VIOLATION (DAY 40+): OPERATOR MANDATORY STOP $481.42 STILL UNCONFIRMED**
+
+```yaml
+---
+ts: 2026-07-28T19:34:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD GTC stop placement attempt at $481.42 — blocked by API 99th+ session at Market-Close.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+master_notes: "AMD stop placement 18sh GTC SELL-STOP $481.42 ATTEMPTED at Market-Close — HTTP 403 proxy CONNECT rejected (99th+ consecutive blocked session). Price today unknown (API blocked); last known $504 (July 27 close). FOMC Day 1 of 2: Fed meeting underway, decision July 29 ~2 PM ET. AMD thesis intact: Wedbush PT $600, 12GW committed, TSMC 2nm, ROCm 7. Earnings Aug 4 AH; 48h window opens ~Aug 2; last safe exit Aug 1. Position is day 40+ naked — escalating risk as earnings window approaches. OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY."
+---
+```
+
+---
+
+### DAY TRADES — CLOSE STATUS
+
+**No day trades open.** AMD is a swing position (entered June 20, 2026). No MOC close orders needed. No positions to flatten at close.
+
+---
+
+### NEW MOC ENTRIES — DECISION
+
+**ALL SUSPENDED.** FOMC Day 1 = binary event exemption (exemption #2 per CLAUDE.md Deployment Bias: "Setup is into a binary event explicitly excluded by the strategy — ... Fed decision day — where pre-positioning has no edge."). No new entries permitted today. July 30 Pre-Market is first window post-FOMC.
+
+All watchlist skip entries (GS, WFC, MS) already logged by Mid-Morning. AMD stop skip logged above. No re-logging of Afternoon entries required. Mandatory Output Contract: satisfied by (B) — all ≥7-score names covered by FOMC binary event exemption #2.
+
+**Stale limit orders:** Cannot audit or cancel via API (blocked). No limit orders were placed in 99+ sessions regardless. No action needed.
+
+---
+
+### TONIGHT'S EARNINGS (AH July 28 — after 4:00 PM ET)
+
+| Company | Expected | Window Status | Action |
+|---|---|---|---|
+| META | ~4:00 PM ET AH | Active — 48h opened July 27 | Score AH; entry eligible July 30 Pre-Mkt if ≥7 |
+| MSFT | ~4:30 PM ET AH | Active — 48h opened July 27 | Score AH; entry eligible July 30 Pre-Mkt if ≥7 |
+| QCOM | ~4:30 PM ET AH | Active — 48h opened July 27 | Score AH; entry eligible July 30 Pre-Mkt if ≥7 |
+
+Daily Review (4:30 PM ET) will score AH results and produce July 30 watchlist. If Daily Review silently fails, Afternoon pre-scores stand as commitment.
+
+---
+
+### END-OF-DAY P&L SUMMARY
+
+| Metric | Value | Notes |
+|---|---|---|
+| Total equity (est.) | ~$99,716 | AMD price unknown — using $504 × 18sh = $9,072 |
+| Cash | ~$90,644 (90.9%) | Above 5% floor ✓ |
+| AMD position | 18sh × ~$504 = ~$9,072 (9.1%) | Last known July 27 close |
+| Today's P&L (est.) | Unknown | AMD today's move unknown (API blocked) |
+| Total return vs $100K | ~−0.28% est. | |
+| SPX today | Unknown (API blocked) | July 27 close ~7,450; +3.47% from May 1 |
+| Benchmark gap | ~−3.75 pp est. | Widening — deployment gap + FOMC exemption |
+| 20-day underperformance | ACTIVE | 99th+ consecutive blocked sessions |
+
+**CIRCUIT BREAKER:** NOT TRIPPED — last known daily P&L −0.32% (July 27), well below −3% threshold. Today's move unknown.
+
+---
+
+### TOMORROW'S FOCUS (July 29 — FOMC Day 2 — STILL NO NEW ENTRIES)
+
+**July 29 is still a binary event day (FOMC decision + Powell press conference ~2 PM ET).**
+
+Tonight's AH scores (META/MSFT/QCOM) feed July 30 Pre-Market commitments — not July 29 entries.
+
+**July 30 Pre-Market MANDATORY (post-FOMC first window):**
+1. AMD: GTC SELL-STOP 18sh $481.42 — FIRST ACTION (day 40+ naked — cannot wait)
+2. GS: BUY 4sh limit bracket GTC (re-price at July 30 open) — score 7.83
+3. WFC: BUY 30sh limit bracket GTC (re-price at July 30 open) — score 7.0
+4. MS: BUY 20sh limit bracket GTC (re-price at July 30 open) — score 7.17
+5. META/MSFT/QCOM: Score AH results; enter if avg ≥7 and Risk ≥6 and ≥4 agents ≥7
+6. AAPL/AMZN: 48h window still active July 30 (earnings AH July 30) — NO ENTRY
+
+---
+
+### PORTFOLIO STATE (Market-Close, July 28, 2026 — 3:30 PM ET)
+
+```
+PORTFOLIO STATE
+Total Equity: ~$99,716 est.
+Cash: ~$90,644 (90.9%) — above 5% floor ✓
+Trading bucket: ~$9,072 est. (9.1%) — 1 position (AMD 18sh) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+API BLOCKED — HTTP 403 (99th+ consecutive session)
+FOMC Day 1 binary event — no new entries July 28 or July 29
+First deployment window: July 30 Pre-Market post-FOMC
+```
+
+**P&L vs $100K baseline: −$284 (−0.28%) est.**
+**SPX today: UNKNOWN (API blocked). From May 1 baseline: +3.47% est. (July 27 close ~7,450)**
+**Benchmark gap: ~−3.75 pp est.**
+**20-day underperformance flag: ACTIVE (99th+ consecutive blocked sessions)**
+
+---
+
 ## 2026-07-28 — Afternoon Routine (2:00 PM ET / 18:10 UTC — API BLOCKED — 98th+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-28T18:09:56Z ✓
