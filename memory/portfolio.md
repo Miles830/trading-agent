@@ -1,7 +1,77 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-28 (Tuesday) — MID-MORNING (11:15 AM ET / 15:14 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 97th+ consecutive blocked session). MID-MORNING ✅ COMPLETED (FOMC Day 1 — all new entries suspended).**
+**2026-07-28 (Tuesday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 98th+ consecutive blocked session). MIDDAY ✅ COMPLETED. ⚠️ CRITICAL: AMD HARD STOP BREACHED — AMD at ~$448 vs hard floor $481.42 — OPERATOR MUST EXIT 18sh AMD AT MARKET on app.alpaca.markets IMMEDIATELY.**
+
+**PORTFOLIO STATE (July 28, 2026 — Midday ~12:35 PM ET):**
+- Cash: ~$90,644 (91.8%) — last known; API blocked
+- AMD: 18sh × ~$448.27 (web-sourced) = ~$8,069 (8.2%) — **BELOW HARD STOP $481.42 — MANDATORY EXIT**
+- Total equity est.: ~$98,713
+- P&L vs $100K initial: -$1,287 (-1.29%) est.
+- AMD unrealized: 18 × ($448.27 − $506.76) = **-$1,052.82 (-10.51% from avg cost)**
+- AMD daily P&L: -$842.58 (AMD down ~9.45% today — chip sell-off, AI trade narrows to NVIDIA)
+- Portfolio daily P&L: -$842.58 (-0.85% today) — circuit breaker NOT tripped (threshold -3%)
+- SPX July 28 midday: ~+0.3% (Dow +1%, Nasdaq -0.1% — chip sell-off)
+- SPX from May 1 baseline 7,200: **est. +3.78%**
+- Portfolio since $100K baseline: **-1.29%** est.
+- **Benchmark gap: approximately -5.07 pp** (widened from -3.75 pp at Mid-Morning)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (98th+ consecutive sessions — API blockage root cause)
+- Circuit breaker: -0.85% today — NOT tripped
+
+**AMD CRITICAL STATUS (July 28 Midday):**
+- AMD at $448.27 (web-sourced ~12:30 PM ET) — down $46.81 (-9.45%)
+- Day range approximately $448–$528 (opened near high, selling off all day)
+- **HARD FLOOR STOP $481.42 BREACHED BY $33.15 — strategy mandates immediate exit**
+- **Day 39+ naked (no resting stop at Alpaca — API blocked 98th+ session)**
+- Reasons for drop: (1) AI revenue shortfall vs buy-side whisper numbers; (2) Margin compression from NVIDIA Blackwell; (3) Gaming segment decline; (4) 150x P/E profit-taking; (5) "AI chip trade narrows to NVIDIA"
+- AMD earnings Aug 4 AH — EPS est. +396% YoY — but hard stop breach overrides thesis
+- **OPERATOR MANDATORY: SELL ALL 18sh AMD AT MARKET on app.alpaca.markets IMMEDIATELY. Hard guardrail mandates exit. No exceptions.**
+
+**FOMC STATUS (July 28-29):**
+- Day 1 complete. Rate decision July 29 at 2 PM ET.
+- 33% chance of 25bp hike per Polymarket (under Chair Kevin Warsh)
+- Market reaction: Defensive bid (Dow +1%, SPY +0.3%), growth/chip selling (Nasdaq -0.1%)
+- NO NEW ENTRIES today per binary event rule (exemption 2)
+- Entries resume July 30 post-announcement
+
+**BINARY EVENT WINDOWS (Active July 28-30):**
+| Company | Earnings Date | 48h Window Status |
+|---|---|---|
+| META | Tue July 29 AH | **ACTIVE — reports tonight** |
+| MSFT | Tue July 29 AH | **ACTIVE — reports tonight** |
+| QCOM | Tue July 29 AH | **ACTIVE — reports tonight** |
+| AAPL | Thu July 30 AH | **Window active since July 28 4 PM — NO ENTRY** |
+| AMZN | Thu July 30 AH | **Window active since July 28 4 PM — NO ENTRY** |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 — safe through Aug 1 (but EXIT mandated by hard stop) |
+| FOMC | Tue-Wed July 28-29 | **Decision 2 PM ET July 29 — entries ok July 30** |
+
+**JULY 30 POST-FOMC BINDING COMMITMENTS (Pre-Market MANDATORY — no exemptions):**
+1. AMD: **EXIT 18sh AMD if not already exited by operator** (hard stop breach mandates exit)
+2. GS: Re-price BUY 4sh limit bracket GTC at July 29 close (~$1,062 ref ±FOMC reaction) / stop -5% / target +15% — score 7.5 est.
+3. WFC: Re-price BUY 30sh limit bracket GTC (~$86) / stop -5% / target +15% — score 7.0
+4. MS: Re-price BUY 20sh limit bracket GTC (~$214) / stop -5% / target +15% — score 7.17
+5. META post-earnings: Full 6-agent score if Q2 beats July 29 AH
+6. MSFT post-earnings: Full 6-agent score if Q2 beats July 29 AH
+7. QCOM post-earnings: Full 6-agent score if Q3 beats July 29 AH (PT $221 vs ~$167 = +32%)
+8. Full market rescan: FOMC outcome + chip-sell-off aftermath — new momentum/reversal setups
+
+**MIDDAY CHIP SECTOR NOTES:**
+- AMD -9.45%, Marvell -7%, Intel -6% (all AI chip stocks selling off)
+- Narrative: "AI chip trade narrows to NVIDIA" — NVIDIA holding gains while AMD/MRVL/INTC bleed
+- This is a NARRATIVE-DRIVEN sell-off, not fundamental news
+- Post-AMD-earnings (Aug 4) could reverse if AMD beats + raises
+- However: Hard stop mandates exit. Strategy discipline > thesis conviction.
+
+**HEARTBEAT AUDIT (July 28 — MIDDAY):**
+- ✗ Pre-Market: SILENT FAILURE (logged by Mid-Morning)
+- ✗ Market-Open: SILENT FAILURE (logged by Mid-Morning)
+- ✓ Mid-Morning: STARTED 15:14:26Z / COMPLETED 15:17:50Z ✓
+- ✓ Midday: STARTED 16:35:13Z (this routine)
+- ✗ Afternoon (2:00 PM ET): TBD
+- ✗ Market-Close (3:30 PM ET): TBD
+- ✓ Daily-Review: TBD
+
+**2/4 routines completed today (Mid-Morning + Midday). Improvement from 0/6 yesterday (July 27).**
 
 **JULY 28 MID-MORNING STATUS:** Pre-Market and Market-Open both silently failed (no heartbeats). Mid-Morning fired at 15:14 UTC. Alpaca API blocked 97th+ consecutive session. FOMC Day 1 of 2 (July 28-29) = binary event per CLAUDE.md ("Fed decision day") → **NO NEW POSITION ENTRIES today or July 29.** GS/WFC/MS skip entries logged citing FOMC exemption (2). AMD naked stop still unresolved. AMD current price unknown (API blocked); last known $504 (July 27 close). AMD 48h earnings window opens ~Aug 2 — last safe exit day Aug 1. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY.**
 

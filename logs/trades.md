@@ -178,6 +178,158 @@ Crypto bucket: $0 (0%) — 0 positions — target 10%
 
 ---
 
+## MIDDAY ROUTINE (12:30 PM ET / 16:35 UTC — 2026-07-28 — API BLOCKED — 98th+ consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-28T16:35:13Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **98th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 12:35 PM ET — Midday window
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+
+Checking today's heartbeat log (`logs/heartbeats/2026-07-28.log`):
+- ✗ Pre-Market (8:00 AM ET): **SILENT FAILURE** — already logged as `action: violation` by Mid-Morning
+- ✗ Market-Open (9:45 AM ET): **SILENT FAILURE** — already logged as `action: violation` by Mid-Morning
+- ✓ Mid-Morning (11:00 AM ET): STARTED 15:14:26Z / COMPLETED 15:17:50Z ✓
+
+**Mid-Morning completed normally. No new violations to log for predecessor routines.**
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED — CRITICAL STATUS)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial)
+# GET /v2/positions → HTTP 403
+# data.alpaca.markets snapshots → HTTP 403
+```
+
+**AMD (18sh, avg cost $506.76) — CRITICAL STOP BREACH:**
+- Web-sourced price (12:30 PM ET approx): **$448.27** (down $46.81, -9.45% vs prior close)
+- Source: multiple financial outlets (TradingKey, 247WallSt, Benzinga — July 28, 2026)
+- Hard floor stop (5% below avg $506.76): **$481.42**
+- **BREACH: AMD at $448.27 is $33.15 BELOW the hard floor stop $481.42**
+- **Day 39+ NAKED position — stop never placed (API blocked 98th+ consecutive session)**
+- Unrealized P&L: 18 × ($448.27 − $506.76) = **−$1,052.82**
+
+```yaml
+---
+ts: 2026-07-28T16:36:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: AMD hard floor stop $481.42 BREACHED — AMD at $448.27 (-9.45%) — stop cannot be placed (API blocked 98th+ session).
+size_pct: 8.1
+stop: 481.42
+target: N/A
+master_notes: "CRITICAL STOP BREACH. AMD at $448.27 as of ~12:30 PM ET (web-sourced: TradingKey, 247WallSt). Hard floor stop $481.42 (5% below avg cost $506.76) is $33.15 ABOVE current price — position should have been stopped out. API blocked 98th+ session prevents programmatic exit. FOMC binary event (exemption 2) applies to NEW ENTRIES only — exits/stops are NOT restricted by the FOMC rule. OPERATOR MANDATORY: SELL ALL 18sh AMD AT MARKET on app.alpaca.markets IMMEDIATELY. Do not wait for August earnings. Hard guardrail breached — no discretionary holding allowed below the hard floor stop. Reasons for AMD sell-off: (1) AI revenue shortfall vs whisper numbers; (2) Margin compression from NVIDIA Blackwell competition; (3) Gaming segment decline; (4) Valuation (150x P/E) profit-taking; (5) 'AI chip trade narrows to NVIDIA' narrative from 247WallSt."
+---
+```
+
+---
+
+### MARKET RESEARCH — MIDDAY JULY 28, 2026 (WEB-SOURCED)
+
+| Symbol | Price (Midday) | Daily Change | Notes |
+|---|---|---|---|
+| SPX | +0.3% | +0.3% | 9/11 sectors higher; Consumer Staples +3.7%, Healthcare +3%, Materials +2.2% |
+| DJIA | +1.0% | +1.0% | Defensive/value bid on FOMC uncertainty + chip sell-off |
+| Nasdaq | -0.1% | -0.1% | Chip stocks dragging; pared worst losses |
+| AMD | ~$448.27 | -9.45% | AI revenue shortfall concern; NVIDIA thesis dominating |
+| MRVL | est. ~-7% | ~-7% | AI chip trade narrows to NVIDIA |
+| INTC | est. ~-6% | ~-6% | Caught in chip sector sell-off |
+| GS | ~$1,062 est. | est. flat-to-up | Dow leader; FOMC optimism |
+| WFC | ~$86 est. | est. flat | Financials steady |
+| MS | ~$214 est. | est. flat | Financials resilient |
+| Oil | ~$90 est. | est. flat | Iran/OPEC tension; contained |
+| VIX | ~18-22 est. | elevated | FOMC Day 1 + earnings week |
+
+**Key macro drivers today:**
+1. **FOMC Day 1 (July 28-29):** No rate decision until July 29 2 PM ET. 33% chance of 25bp hike per Polymarket. Markets defensive — buying Dow/defensives, selling growth/chips.
+2. **Chip sector sell-off:** AMD -9.45%, Marvell -7%, Intel -6%. Narrative: "AI chip trade narrows to NVIDIA." AMD-specific concerns: AI accelerator revenue shortfall vs buy-side whisper numbers; margin compression from Blackwell competition; gaming segment weakness; 150x P/E vulnerable to profit-taking.
+3. **META, MSFT, QCOM report AH today:** Markets pre-positioning. All in 48h binary event windows per portfolio.md — NO ENTRIES permitted.
+4. **S&P resilience:** Broad market holding up on defensive rotation — Consumer Staples, Healthcare, Materials leading. This is NOT a market-wide crisis — just chip-specific rotation.
+
+**FOMC Day 1 assessment:** Markets expect no change (67%) or 25bp hike (33%). Elevated uncertainty = no new tech/growth entries justified even apart from the binary event rule.
+
+---
+
+### WATCHLIST STATUS — FOMC BINARY EVENT (All Deferred)
+
+| Ticker | Score | Status | Reason |
+|---|---|---|---|
+| GS | 7.5 est. | **SKIP — already logged by Mid-Morning** | FOMC binary event exemption (2) |
+| WFC | 7.0 est. | **SKIP — already logged by Mid-Morning** | FOMC binary event exemption (2) |
+| MS | 7.17 est. | **SKIP — already logged by Mid-Morning** | FOMC binary event exemption (2) |
+| META | IN BINARY WINDOW | **SKIP** | Earnings July 29 AH — 48h window active |
+| MSFT | IN BINARY WINDOW | **SKIP** | Earnings July 29 AH — 48h window active |
+| QCOM | IN BINARY WINDOW | **SKIP** | Earnings July 29 AH — 48h window active |
+
+All skip entries were logged by Mid-Morning routine. No duplicate skip entries needed.
+
+**Midday catch-up entries: 0** (all ≥7 names already have valid FOMC exemption (2) skip entries from Mid-Morning).
+
+---
+
+### AFTERNOON SETUP SCAN
+
+No new afternoon setups identified due to:
+1. FOMC binary event — no new entries until July 30
+2. AMD critical breach requiring exit action (not entry)
+3. API blocked — cannot scan Alpaca market data
+4. Chip sector in broad sell-off — sector not favorable for new entries
+
+**Post-market watchlist building (for July 30 Pre-Market):**
+- GS: Re-price tomorrow at July 29 close after FOMC announcement (2 PM ET)
+- WFC: Same as GS — financial sector reaction to rate decision
+- MS: Same as GS/WFC
+- **META post-earnings** (reports AH July 29): Full 6-agent score pre-open July 30 if beats
+- **MSFT post-earnings** (reports AH July 29): Full 6-agent score pre-open July 30 if beats
+- **QCOM post-earnings** (reports AH July 29): Full 6-agent score pre-open July 30; PT $221 vs ~$167 (+32%)
+- **AMD**: Operator must decide — exit NOW per hard stop breach, OR hold through Aug 4 earnings. Hard guardrail mandates exit.
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+**AMD (18sh):** STRATEGY MANDATES EXIT per hard stop breach ($481.42). AMD at $448.27 = $33.15 below stop. However, API is blocked. If operator has not exited by market close (4 PM ET), position will go overnight naked AGAIN — Day 39+ naked.
+
+Decision: AMD is in MANDATORY EXIT status per hard guardrails. No discretionary override permitted.
+
+---
+
+### PORTFOLIO STATE (Midday, July 28, 2026)
+
+```
+PORTFOLIO STATE
+Total Equity: ~$98,713 est.
+  AMD: 18sh × $448.27 = $8,068.86 (8.2%) — BELOW HARD STOP $481.42 — MANDATORY EXIT
+  Cash: ~$90,644 (91.8%) — above 5% floor ✓
+Trading bucket: ~$8,069 (8.2%) — 1 position — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+
+AMD unrealized P&L: 18 × ($448.27 − $506.76) = −$1,052.82 (−10.51% from avg cost)
+AMD daily P&L: 18 × ($448.27 − $495.08 est.) = −$842.58 (−9.45% today)
+Portfolio daily P&L: −$842.58 (−0.85% today — well above −3% circuit breaker)
+Portfolio total P&L vs $100K: −$1,287 (−1.29%)
+SPX July 28 midday: ~7,472 est. (+0.30% today; +3.78% from May 1 baseline 7,200)
+Benchmark gap: approximately −5.07 pp (−1.29% portfolio vs +3.78% SPX)
+Circuit breaker: −0.85% daily — NOT tripped (threshold is −3%)
+```
+
+**MANDATORY OPERATOR ACTION:**
+> SELL ALL 18 SHARES AMD AT MARKET on app.alpaca.markets IMMEDIATELY.
+> AMD is $33.15 below the hard floor stop of $481.42.
+> The hard stop is a non-negotiable guardrail per CLAUDE.md.
+> Do not wait for August 4 earnings. Exit now. Take the loss.
+> Next available P&L check will confirm exit once API is restored.
+
+---
+
 ## 2026-07-27 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 96th+ consecutive session)
 
 **HEARTBEAT:** STARTED Daily-Review 2026-07-27T20:34:24Z ✓

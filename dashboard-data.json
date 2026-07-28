@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-24T15:12:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-28T16:35:13Z",
+  "updated_by": "midday",
   "portfolio": {
-    "total_equity": 100358.42,
+    "total_equity": 98713.0,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 90.3,
+    "cash_pct": 91.8,
     "buying_power": 181288,
-    "long_market_value": 9714.42,
+    "long_market_value": 8068.86,
     "short_market_value": 0.0,
-    "daily_pnl": 183.78,
-    "daily_pnl_pct": 0.18,
-    "total_return_pct": 0.36,
-    "spx_return_pct": 3.0,
-    "benchmark_gap_pct": -2.64,
+    "daily_pnl": -842.58,
+    "daily_pnl_pct": -0.85,
+    "total_return_pct": -1.29,
+    "spx_return_pct": 3.78,
+    "benchmark_gap_pct": -5.07,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9714.42,
-      "active_pct": 9.7,
+      "active_value": 8068.86,
+      "active_pct": 8.2,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 90.3
+      "cash_pct": 91.8
     },
-    "note": "July 24 MID-MORNING (11:10 AM ET / 15:12Z). API BLOCKED HTTP 403 — 95th+ consecutive session. Pre-Market + Market-Open BOTH silent failures today. AMD at $539.69 (+1.93% from $529.48 close) — range $525.00-$556.49. CRITICAL: AMD dipped to $525.00 (BELOW stop $525.35) — naked position survived on luck. Trail stop updated $525.35 → $528.67 (5% below today intraday high $556.49). INTC Q2 beat massively (EPS $0.42 vs $0.21, Revenue $16.13B vs $14.42B, Data Center +59%) but stock reversed $110→$103 — SCORED 6.17/10 REJECTED. All 5 binding orders blocked HTTP 403. TODAY IS LAST SAFE ENTRY DAY FOR META (earnings July 29 AH; 48h window opens Monday July 27). OPERATOR MANDATORY BEFORE 3:50 PM ET TODAY: (1) AMD stop $528.67; (2) META bracket $630.14/stop $598.63/target $724.66; (3) GS bracket $1,083.19/stop $1,029.03/target $1,245.67; (4) WFC bracket $86.56/stop $82.23/target $99.54; (5) MS bracket $217.08/stop $206.23/target $249.64."
+    "note": "July 28 MIDDAY (12:35 PM ET / 16:35Z). API BLOCKED HTTP 403 — 98th+ consecutive session. FOMC Day 1 of 2 (decision July 29 2 PM ET; 33% hike probability). CRITICAL: AMD at ~$448.27 (-9.45% today) — HARD FLOOR STOP $481.42 BREACHED by $33.15. AMD unrealized P&L: -$1,052.82 (-10.51% from avg $506.76). Chip sell-off: AMD -9.45%, Marvell -7%, Intel -6% ('AI chip trade narrows to NVIDIA' narrative). Market: SPX +0.3%, Dow +1%, Nasdaq -0.1% (defensive rotation). FOMC binary event = no new entries today. OPERATOR MANDATORY: SELL ALL 18sh AMD AT MARKET on app.alpaca.markets IMMEDIATELY — hard stop $481.42 breached, strategy mandates exit. Post-FOMC July 30: re-score GS/WFC/MS + META/MSFT/QCOM post-earnings reactions."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 528.67,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "July 24 MID-MORNING: AMD at $539.69 (+1.93% from $529.48 close). Range $525.00-$556.49. CRITICAL: Intraday low $525.00 BREACHED stop $525.35 — naked position survived on luck. Trail stop updated to $528.67 (5% below today high $556.49). P&L: 18x($539.69-$506.76)=+$592.74 (+6.5%). NAKED at Alpaca (95th+ block). Earnings Aug 4 safe through Aug 1. Reduce 18sh to 9sh when API restored. OPERATOR MANDATORY: GTC sell-stop 18sh AMD $528.67 immediately."
+      "note": "July 28 MIDDAY: AMD at $448.27 (-9.45% today). HARD FLOOR STOP $481.42 BREACHED by $33.15. Unrealized P&L: 18x($448.27-$506.76)=-$1,052.82 (-10.51%). Chip sell-off: AI chip trade narrative narrows to NVIDIA; AMD-specific concerns: AI revenue shortfall vs whisper numbers, margin compression from Blackwell competition, gaming decline, 150x P/E profit-taking. NAKED at Alpaca (98th+ consecutive block). OPERATOR MANDATORY: SELL ALL 18sh AMD AT MARKET on app.alpaca.markets IMMEDIATELY. Hard guardrail breached — no discretionary hold. Earnings Aug 4 AH but hard stop rule is non-negotiable."
     },
     {
       "symbol": "GS",
@@ -103,10 +103,10 @@
     }
   ],
   "market": {
-    "mode": "RISK-OFF — SPX -1.24% (7,406). GOOGL capex concerns + AMD Day 2 keynote sell-the-news. Nasdaq led lower. INTC Q2 AH tonight (results: matched consensus, 18A 85% yields). FOMC July 28-29 rate risk. Oil $90+ (Iran).",
-    "fear_greed": 52,
-    "fear_greed_label": "Neutral-to-Greed — earnings season solid but AMD/GOOGL capex concerns hitting tech. FOMC risk next week.",
-    "spx": "SPX closed 7,406 (-1.24% today, +2.86% from May 1 baseline 7,200). Portfolio +0.17% from $100K start. Benchmark gap: -2.69 pp (improved from -4.74 pp yesterday — SPX also fell). 20-day underperformance flag active (94+ sessions, API blockage root cause).",
+    "mode": "MIXED — Defensive rotation. SPX +0.3%, Dow +1%, Nasdaq -0.1%. Chip stocks selling off hard (AMD -9.45%, MRVL -7%, INTC -6%). 9/11 sectors higher. FOMC Day 1 (decision July 29 2 PM ET). META/MSFT/QCOM report AH tonight.",
+    "fear_greed": 45,
+    "fear_greed_label": "Neutral-to-Fear — chip sell-off + FOMC uncertainty dragging tech. Defensive sectors bid. Earnings optimism partially offsetting.",
+    "spx": "SPX +0.3% midday July 28 (~7,472 est., +3.78% from May 1 baseline 7,200). Portfolio -1.29% from $100K start. Benchmark gap: -5.07 pp (widened from -3.75 pp yesterday). 20-day underperformance flag active (98+ sessions, API blockage root cause).",
     "btc": "BTC est. unknown (API blocked). Below $82K active-trading threshold. No crypto entries.",
     "sectors": [
       {
@@ -149,17 +149,17 @@
     },
     {
       "name": "Mid-Morning",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-21T15:13:00Z",
-      "next_run": "2026-07-24T15:00:00Z",
-      "last_summary": "July 23 Mid-Morning SILENTLY FAILED. AMD Lisa Su keynote at 12:30 PM ET ran uncovered. AMD reached $553, then sold off. Violation logged."
+      "status": "completed",
+      "last_run": "2026-07-28T15:14:26Z",
+      "next_run": "2026-07-29T15:00:00Z",
+      "last_summary": "July 28 Mid-Morning COMPLETED (11:14 AM ET / 15:14Z). API BLOCKED 97th+ session. FOMC Day 1 — binary event exemption. No new entries. AMD naked stop persists. GS/WFC/MS skip entries logged (FOMC exemption). Predecessor violations logged for Pre-Market and Market-Open. AMD price unknown at time (now confirmed $448.27 at Midday — critical breach)."
     },
     {
       "name": "Midday",
-      "status": "SILENT FAILURE",
-      "last_run": "2026-07-14T16:36:00Z",
-      "next_run": "2026-07-24T16:30:00Z",
-      "last_summary": "July 23 Midday SILENTLY FAILED (same window as AMD keynote 12:30 PM ET). AMD sell-off from $553 to close $529.48 uncovered. Violation logged."
+      "status": "completed",
+      "last_run": "2026-07-28T16:35:13Z",
+      "next_run": "2026-07-29T16:30:00Z",
+      "last_summary": "July 28 MIDDAY COMPLETED (12:35 PM ET / 16:35Z). API BLOCKED 98th+ session. FOMC Day 1 binary event — no new entries. CRITICAL: AMD at $448.27 (-9.45%) — hard floor stop $481.42 BREACHED by $33.15. Mandatory exit logged; operator must sell 18sh AMD at market on app.alpaca.markets. Chip sell-off: Marvell -7%, Intel -6%, AMD -9.45% ('AI chip narrows to NVIDIA'). Market: SPX +0.3%, Dow +1%, Nasdaq -0.1% (defensive rotation). GS/WFC/MS all deferred to July 30 post-FOMC (skip entries from Mid-Morning still valid). Daily P&L: -$842.58 (-0.85% — circuit breaker not tripped). Portfolio total: $98,713 est. Benchmark gap: -5.07 pp."
     },
     {
       "name": "Afternoon",
