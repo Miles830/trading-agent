@@ -4,6 +4,206 @@
 
 ---
 
+## 2026-07-28 — Pre-Market (8:00 AM ET / 12:06 UTC — API BLOCKED — 97th+ consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-28T12:06:19Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **97th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** 8:06 AM ET — Pre-Market window
+**Trading Day:** YES — Tuesday July 28, 2026 is a regular trading day (market open 9:30 AM ET)
+
+---
+
+### USER SUGGESTION INBOX
+
+Checked GitHub Issues (Miles830/trading-agent, label: user-suggestion, state: open): **0 open suggestions.** No action required.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (MANDATORY)
+
+```bash
+# Attempted: POST /v2/orders AMD GTC stop $481.42
+# Result: HTTP 403 (proxy CONNECT rejected — 97th+ consecutive)
+```
+
+**AMD (18sh, avg cost $506.76):**
+- Close July 27: ~$504
+- Pre-market July 28: ~+2-3% (Anthropic GPU partnership; SK Hynix/Samsung chip sell-off could weigh)
+- Hard floor stop (5% below entry): $506.76 × 0.95 = **$481.42** — AMD ~$22+ above hard floor
+- STATUS: **NAKED at Alpaca** (no stop resting — API blocked 97th+ consecutive session)
+- Stop order attempt BLOCKED: HTTP 403 proxy policy denial
+
+```yaml
+---
+ts: 2026-07-28T12:08:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: other
+score: N/A
+thesis: Mandatory AMD stop-loss order attempt (GTC $481.42, 18sh) blocked HTTP 403 — 97th+ consecutive API block. AMD pre-market +2-3% on Anthropic GPU partnership; global chip sell-off (SK Hynix -14.65%, Samsung -13%) is headwind.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+master_notes: "AMD stop order BLOCKED HTTP 403 (proxy policy denial — 97th+ consecutive). Attempted POST /v2/orders {symbol:AMD, qty:18, side:sell, type:stop, stop_price:481.42, time_in_force:gtc}. AMD at ~$504 (July 27 close); pre-market up ~2-3% on Anthropic $5B GPU deal. Hard floor: $506.76 × 0.95 = $481.42. AMD $22+ above hard floor. Thesis intact: Wedbush PT $600, earnings Aug 4 AH (safe through Aug 1; 48h window opens Aug 2). AMD holds into FOMC (tomorrow July 29). OPERATOR MANDATORY: Place GTC sell-stop 18sh AMD $481.42 on app.alpaca.markets IMMEDIATELY."
+---
+```
+
+---
+
+### MARKET CONDITIONS — July 28, 2026 (Pre-Market ~8:06 AM ET)
+
+| Symbol | Price / Level | Change | Notes |
+|---|---|---|---|
+| S&P 500 Futures | ~7,435 | -0.1 to -0.2% | Slight risk-off |
+| Nasdaq 100 Futures | — | ~-1.0% | Risk-OFF — global chip sell-off |
+| Dow Futures | — | +0.6% | Risk-ON — financials/cyclicals bid |
+| AMD | ~$504 close / +2-3% PM | PM upside | Anthropic GPU deal; but sector headwind |
+| SK Hynix | -14.65% | Korean close | AI financing concern / CXMT competition |
+| Samsung | -13%+ | Korean close | Circuit breakers triggered |
+| BTC | $63,173 | -2.82% | Risk-off |
+| ETH | $1,872 | -3.52% | Risk-off |
+| WTI Oil | ~$83.40 | Recovering | Iran ceasefire news; Strait of Hormuz talks |
+| 10Y Treasury | ~4.64% | — | FOMC hold priced in; 33% hike tail risk |
+
+**Global chip sell-off catalyst:** Nvidia's reported $250B OpenAI financing backstop raised "AI circular financing" concerns; simultaneous news of China's CXMT memory chip maker listing spooked competition narratives. SK Hynix and Samsung both hit circuit breakers in Korea. This is a sector-level risk-off signal for semis/AI infrastructure.
+
+**FOMC:** Day 1 of 2-day meeting. Decision Wednesday July 29 at 2:00 PM ET (Chair Kevin Warsh press conference 2:30 PM ET). Base case: hold at 3.75% (5th consecutive). Tail risk: ~33% hike probability based on Fed funds futures. Per CLAUDE.md binary event rule: **NO NEW ENTRIES today** (pre-positioning before Fed decision has no edge).
+
+---
+
+### BINARY EVENT STATUS — ALL ENTRIES BLOCKED
+
+| Trigger | Exemption | Active? |
+|---|---|---|
+| FOMC decision July 29 2 PM ET | Exemption #2 (binary event — Fed decision day) | **YES — NO NEW ENTRIES JULY 28** |
+| META earnings July 29 AH | Exemption #2 (48h window) | YES |
+| MSFT earnings July 29 AH | Exemption #2 (48h window) | YES |
+| QCOM earnings July 29 AH | Exemption #2 (48h window) | YES |
+| AAPL earnings July 30 AH | Exemption #2 (48h window opens today) | YES |
+| AMZN earnings July 30 AH | Exemption #2 (48h window opens today) | YES |
+
+All GS/WFC/MS entries are **valid skips today under Exemption #2 (FOMC binary event)** — deferred to July 30 post-FOMC per July 27 Daily Review binding commitment.
+
+---
+
+### SKIP LOG — GS (FOMC Deferral)
+
+```yaml
+---
+ts: 2026-07-28T12:09:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.83
+thesis: FOMC binary event window active July 28-29 (decision July 29 2 PM ET) — skip per Exemption #2. Deferred to July 30 post-FOMC pre-market per July 27 Daily Review binding commitment.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 9
+  risk: 8
+  tech_analyst: 7
+agent_average: 7.83
+agents_above_7: 6
+master_decision: deferred
+master_notes: "FOMC binary event Exemption #2 (CLAUDE.md: Fed decision day — no pre-positioning). FOMC Day 1/2; decision July 29 2 PM ET. GS score 7.83 — passes all Master gates (avg 7.83 ≥7, Risk 8 ≥6, all 6 agents ≥7). Skip is valid under Exemption #2 only. BINDING: Enter GS limit-bracket GTC (re-price at July 30 pre-market levels) at July 30 Pre-Market routine. GS Q2 record EPS (SpaceX IPO fees, Cerebras deal); up 20%+ YTD; financials rotation thesis."
+---
+```
+
+---
+
+### SKIP LOG — WFC (FOMC Deferral)
+
+```yaml
+---
+ts: 2026-07-28T12:09:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: FOMC binary event window active — deferred to July 30 per Exemption #2 and July 27 Daily Review binding commitment.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: deferred
+master_notes: "FOMC binary event Exemption #2. WFC score 7.0 — all 6 agents ≥7, Risk 7 ≥6. Skip valid under Exemption #2. BINDING: Enter WFC limit-bracket GTC (re-price at July 30 levels, est. ~$86) at July 30 Pre-Market routine. WFC down 6.5% YTD (laggard vs peers); potential catch-up trade. Q2 already reported; financials rotation thesis."
+---
+```
+
+---
+
+### SKIP LOG — MS (FOMC Deferral)
+
+```yaml
+---
+ts: 2026-07-28T12:09:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.17
+thesis: FOMC binary event window active — deferred to July 30 per Exemption #2. Note: MS ex-dividend July 31 ($1.15/share) — factor into July 30 entry thesis.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 5
+master_decision: deferred
+master_notes: "FOMC binary event Exemption #2. MS score 7.17 — 5/6 agents ≥7, Risk 7 ≥6, avg 7.17 ≥7. Skip valid. BINDING: Enter MS limit-bracket GTC (re-price at July 30 levels, est. ~$214-217) at July 30 Pre-Market. IMPORTANT: MS ex-div July 31 ($1.15/share cash dividend) — account for dividend in thesis; holding through ex-div adds income to the trade. MS up 20%+ YTD with Q2 beat. Financials rotation thesis."
+---
+```
+
+---
+
+### WATCHLIST — POST-FOMC JULY 30 MANDATORY ENTRIES
+
+| Ticker | Setup | Prior Score | Action | Notes |
+|---|---|---|---|---|
+| GS | sector-rotation | 7.83 | ENTER July 30 PM | Re-price at open levels; all 6 agents ≥7 |
+| WFC | sector-rotation | 7.0 | ENTER July 30 PM | Re-price; WFC down YTD (laggard catch-up) |
+| MS | sector-rotation | 7.17 | ENTER July 30 PM | Re-price; ex-div July 31 (+$1.15/sh income) |
+| META | earnings-reaction-follow | TBD | Score July 30 AH + print | EST: EPS $7.23 vs $60.26B rev; capex $125-145B key |
+| MSFT | earnings-reaction-follow | TBD | Score July 30 after print | Azure 39-40% CC guided; "bogey" is 36% |
+| QCOM | earnings-reaction-follow | TBD | Score July 30 after print | PT $221 vs ~$167 (+32%); Microsoft + Meta AI chip deals |
+| AMD | ai-momentum-pullback | HOLD | Monitor; consider trimming | Pre-market bounce; sector headwind from chip sell-off |
+
+**Post-FOMC scoring priorities:** META/MSFT/QCOM print July 29 AH → full 6-agent score at July 30 pre-market. GDP Q2 advance (Thursday July 30 8:30 AM ET) is second key catalyst.
+
+---
+
+### KEY RISKS TO WATCH TODAY
+
+1. **FOMC tail risk:** ~33% probability of hike (not base case but real). If Warsh signals hike tomorrow, tech/growth sell hard — AMD position at risk.
+2. **Chip sector contagion:** SK Hynix -14.65%, Samsung -13%+ in Korea could drag AMD further at open despite AMD-specific positive (Anthropic deal). Watch AMD open; if falls below $500 again, stop at $481.42 is ~4% away.
+3. **Consumer Confidence (10 AM ET today):** Weakness could amplify risk-off; strength could support rotation.
+4. **Iran/Strait of Hormuz:** Oman negotiations fragile — any breakdown spikes oil and VIX.
+5. **AMD naked position (37+ days):** AMD remains unprotected. Hard stop floor $481.42. OPERATOR must place manually.
+
+---
+
 ## 2026-07-27 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 96th+ consecutive session)
 
 **HEARTBEAT:** STARTED Daily-Review 2026-07-27T20:34:24Z ✓

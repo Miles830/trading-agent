@@ -1,50 +1,53 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-27 (Monday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 96th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED.**
+**2026-07-28 (Tuesday) — PRE-MARKET (8:06 AM ET / 12:06 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 97th+ consecutive blocked session). PRE-MARKET ✅ COMPLETED.**
 
-**JULY 27 DAILY REVIEW STATUS:** ALL 6 INTRADAY ROUTINES SILENTLY FAILED (Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close — zero heartbeats). Only Daily Review fired. AMD fell to ~$504 (-3.39% from $521.95 Friday close), breaching $500 intraday (low ~$477) before recovering. AMD is still held naked (no stop at Alpaca — 96th+ consecutive API block). AMD 48h earnings window opens Aug 2 — last safe exit day is Aug 1. FOMC July 28-29 = binary event per CLAUDE.md ("Fed decision day") → NO NEW POSITION ENTRIES until July 30 (post-FOMC). GS/WFC/MS binding entries DEFERRED to July 30. META/MSFT/QCOM all in 48h earnings windows. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 (hard floor) on app.alpaca.markets BEFORE MARKET OPEN TOMORROW (July 28).**
+**JULY 28 PRE-MARKET STATUS:** FOMC Day 1 (decision July 29 2 PM ET) — NO NEW ENTRIES today (Exemption #2: binary macro event). All mega-cap earnings (META/MSFT/QCOM July 29 AH; AAPL/AMZN July 30 AH) in 48h blackout windows. GS/WFC/MS entries DEFERRED to July 30 per FOMC binary event exemption. AMD stop attempt BLOCKED (HTTP 403, 97th+ session). AMD pre-market +2-3% on Anthropic GPU deal; global chip sell-off (SK Hynix -14.65%, Samsung -13%) is sector headwind. **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY.** 0 user suggestions processed (none open).
 
-**PORTFOLIO STATE (July 27, 2026 — CLOSE):**
-- Cash: ~$90,644 (90.9%)
-- AMD: 18sh × $504 = ~$9,072 (9.1%) — over 5% cap, naked (no stop), Day 37+ post-fill
-- Total equity est.: ~$99,716
-- P&L vs $100K initial: -$284 (-0.28%)
-- AMD unrealized: 18 × ($504 − $506.76) = -$49.68 (-0.55% from avg cost)
-- AMD daily P&L: 18 × ($504 − $521.95) = -$323.10 (-0.32% portfolio)
-- Portfolio daily P&L: -$323.10 (-0.32%)
-- SPX July 27 close: ~7,450 (+0.57% today). SPX from May 1 baseline 7,200: **+3.47%**
-- Portfolio since $100K baseline: **-0.28%**
-- **Benchmark gap: -3.75 pp** (widened from -2.64 pp on July 24 — AMD fell while SPX gained)
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (96th+ consecutive sessions — API blockage root cause)
-- Circuit breaker: -0.32% daily — NOT tripped (well below -3% threshold)
+**PORTFOLIO STATE (July 28, 2026 — PRE-MARKET 8:06 AM ET):**
+- Cash: ~$90,644 (91.0%)
+- AMD: 18sh × $504 (July 27 close; PM est. ~$520+) = ~$9,072–$9,360 (9.1–9.4%) — over 5% cap, naked (no stop), Day 38 post-fill
+- Total equity est.: ~$99,716–$100,004 (depends on AMD open)
+- P&L vs $100K initial: -$284 to ~+$4 (AMD pre-market direction)
+- AMD unrealized (at $504): 18 × ($504 − $506.76) = -$49.68 (-0.55% from avg cost)
+- AMD pre-market: +2-3% on Anthropic $5B GPU partnership; global chip sell-off (SK Hynix -14.65%) is offsetting headwind
+- Portfolio pre-market daily P&L: AMD +2% = ~+$181 (not confirmed until open)
+- SPX July 27 close: ~7,450 (+0.57%). SPX from May 1 baseline 7,200: **+3.47%**
+- S&P futures July 28 pre-market: -0.1% (chip sell-off weighing)
+- Portfolio since $100K baseline: **~-0.28%** (at July 27 close prices)
+- **Benchmark gap: ~-3.75 pp** (AMD fell while SPX gained July 27)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (97th+ consecutive sessions — API blockage root cause)
+- Circuit breaker: NOT tripped (AMD pre-market up; portfolio not down 3% today)
 
-**AMD CURRENT STATUS (July 27 close):**
-- AMD at $504 — trail stop $528.67 has been BREACHED (set July 24 at 5% below $556.49 intraday high)
-- Hard floor stop (5% below entry avg $506.76): $481.42 — AMD is $22.58 above hard floor
-- AMD intraday: High ~$537, Low ~$477 (broke below $500 but recovered)
-- Wedbush raised AMD PT to $600 today (from $450) — thesis intact
+**AMD CURRENT STATUS (July 28 pre-market 8:06 AM ET):**
+- AMD July 27 close: ~$504; pre-market July 28: ~+2-3% (est. $514-$520 range)
+- Trail stop $528.67 (set July 24 at 5% below $556.49 intraday high): **BREACHED** (AMD fell below it; position survived because API is blocked and no stop was ever resting at Alpaca)
+- Hard floor stop (5% below entry avg $506.76): $481.42 — AMD ~$22-40 above hard floor
+- AMD intraday July 27: High ~$537, Low ~$477 (broke below $500 but recovered to $504)
+- AMD catalyst July 28: Anthropic $5B GPU partnership announced — positive for AI demand thesis
+- AMD headwind: Global chip sell-off (SK Hynix -14.65%, Samsung -13%) — sector risk
+- Wedbush PT: $600 (raised from $450 on July 27) — thesis intact
 - AMD earnings Aug 4 AH: EPS est. +396% YoY ($1.34 vs $0.27 prior year)
 - 48h earnings window opens Aug 2 → last safe exit day is Aug 1
-- Action: HOLD (thesis intact, above hard stop $481.42) — update trail stop to $478.80 (5% below today's close $504 × 0.95)
-- **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY**
+- Action: HOLD through FOMC. Re-assess July 29 post-FOMC / July 30 in light of sector headwinds. AMD above hard floor — no forced exit.
+- **OPERATOR MANDATORY: Place GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY (38th day naked)**
 
-**BINARY EVENT WINDOWS (Active July 27–31):**
+**BINARY EVENT WINDOWS (Active July 28–31):**
 | Company | Earnings Date | 48h Window Status |
 |---|---|---|
-| META | Wed July 29 AH | **ACTIVE — NO ENTRY (window opened Mon July 27)** |
-| MSFT | Wed July 29 AH | **ACTIVE — NO ENTRY (window opened Mon July 27)** |
-| AAPL | Thu July 30 AH | **Opens Tue July 28 ~4 PM ET — NO ENTRY** |
-| AMZN | Thu July 30 AH | **Opens Tue July 28 ~4 PM ET — NO ENTRY** |
-| QCOM | Wed July 29 AH | **ACTIVE — NO ENTRY (window opened Mon July 27)** |
+| META | Wed July 29 AH | **ACTIVE — NO ENTRY** |
+| MSFT | Wed July 29 AH | **ACTIVE — NO ENTRY** |
+| QCOM | Wed July 29 AH | **ACTIVE — NO ENTRY** |
+| AAPL | Thu July 30 AH | **ACTIVE (window opened today July 28) — NO ENTRY** |
+| AMZN | Thu July 30 AH | **ACTIVE (window opened today July 28) — NO ENTRY** |
 | AMD | Tue Aug 4 AH | Opens Sun Aug 2 — safe through Aug 1 |
-| FOMC | Tue-Wed July 28-29 | **BINARY EVENT (per CLAUDE.md "Fed decision day") — NO NEW ENTRIES July 28; entries ok July 30 post-announcement** |
+| FOMC | Tue-Wed July 28-29 | **BINARY EVENT — NO NEW ENTRIES TODAY (July 28); entries ok July 30 post-announcement (decision 2 PM ET July 29)** |
 
-**JULY 28 BINDING COMMITMENTS (MANDATORY — no exemptions):**
-1. AMD: GTC SELL-STOP 18sh at $481.42 — MANDATORY FIRST ACTION (hard floor from entry avg $506.76 × 0.95)
-   - NOTE: Trail stop $528.67 was breached. New trail = $478.80 (5% below today's close $504). Use hard floor $481.42 for now.
-2. GS, WFC, MS entries: **DEFERRED to July 30** (FOMC binary event window active July 28-29)
-3. META/MSFT/QCOM/AAPL/AMZN: ALL IN 48h BINARY EVENT WINDOWS — NO ENTRY
+**JULY 28 BINDING COMMITMENTS — STATUS UPDATE:**
+1. AMD: GTC SELL-STOP 18sh at $481.42 — ATTEMPTED (HTTP 403 blocked, 97th+ session). AMD REMAINS NAKED. **OPERATOR MANDATORY: Place manually at app.alpaca.markets IMMEDIATELY.**
+2. GS, WFC, MS entries: **DEFERRED to July 30** (FOMC binary event Exemption #2 — valid skip logged in trades.md)
+3. META/MSFT/QCOM/AAPL/AMZN: ALL IN 48h BINARY EVENT WINDOWS — NO ENTRY (logged)
 
 **POST-FOMC BINDING COMMITMENTS (July 30 Pre-Market MANDATORY):**
 1. GS: Re-price BUY 4sh limit bracket GTC (~$1,062 ref) / stop -5% / target +15% — score 7.83 (6/6 ≥7)
@@ -83,27 +86,32 @@
 
 No setup halts triggered (no 3-in-a-row losses). No setup boosts triggered (no 3-in-a-row wins). All activity is API-blocked skips.
 
-**TOMORROW'S WATCHLIST (July 28 Pre-Market — FOMC binary event = no new entries; AMD stop only):**
+**JULY 30 PRE-MARKET WATCHLIST (POST-FOMC — MANDATORY ENTRIES):**
 
-| Ticker | Setup | Preliminary Score | Action | Notes |
+| Ticker | Setup | Prior Score | Action | Notes |
 |---|---|---|---|---|
-| AMD | stop-placement | N/A | MANDATORY STOP $481.42 | Hard floor — DO NOT skip |
-| GS | sector-rotation | 7.5 est. | DEFER to July 30 | FOMC window active |
-| MS | sector-rotation | 7.0 est. | DEFER to July 30 | FOMC window active |
-| WFC | sector-rotation | 7.0 est. | DEFER to July 30 | FOMC window active |
-| MSFT | earnings-reaction-follow | TBD | Score July 30 after AH | Earnings July 29 AH |
-| META | earnings-reaction-follow | TBD | Score July 30 after AH | Earnings July 29 AH |
-| QCOM | earnings-reaction-follow | TBD | Score July 30 after AH | PT $221 vs price $167 (+32%) |
-| GOOGL | earnings-reaction-fade | 6.0 est. | Monitor for oversold | Scored 6.5 July 23; may improve post-FOMC |
-| GLD | macro-hedge | 6.5 est. | Consider July 30 if FOMC hawkish | Rates uncertainty = gold bid |
-| XLF | sector-rotation | 6.5 est. | Consider July 30 if FOMC dovish | Banks benefit from rate clarity |
+| AMD | ai-momentum-pullback | HOLD | Monitor; consider trim to 9sh | Pre-market +2-3% (Anthropic deal); sector headwind; hold through FOMC; 48h window Aug 2 |
+| GS | sector-rotation | 7.83 | **ENTER — re-price at July 30 levels** | All 6 agents ≥7; Q2 record; up 20%+ YTD |
+| WFC | sector-rotation | 7.0 | **ENTER — re-price at July 30 levels** | All 6 agents ≥7; down 6.5% YTD (laggard) |
+| MS | sector-rotation | 7.17 | **ENTER — re-price at July 30 levels** | 5/6 agents ≥7; ex-div July 31 ($1.15/sh income) |
+| META | earnings-reaction-follow | TBD | Full 6-agent score after July 29 AH print | EPS est. $7.23; capex $125-145B FY2026 key |
+| MSFT | earnings-reaction-follow | TBD | Full 6-agent score after July 29 AH print | Azure "bogey" 36% CC growth; guided 39-40% |
+| QCOM | earnings-reaction-follow | TBD | Full 6-agent score after July 29 AH print | PT $221 vs ~$167 (+32%); MSFT+META chip deals |
+| AMZN | earnings-reaction-follow | TBD | Full 6-agent score after July 30 AH print | AWS +31-33% YoY est.; EPS $1.82 est. |
+| GLD | macro-hedge | 6.5 est. | Consider if FOMC hawkish | Rate hike signal = gold/defensive bid |
+| XLF | sector-rotation | 6.5 est. | Consider if FOMC dovish | Rate clarity = financials catch-up |
 
-**KEY MACRO EVENTS THIS WEEK (July 28-31):**
-- Mon July 28: FOMC Day 1 (no action day — macro uncertainty)
-- Tue July 29: FOMC Decision + Press Conference (~2 PM ET); META + MSFT earnings AH; QCOM earnings AH
-- Wed July 30: PCE/Core inflation + Q2 GDP first read (8:30 AM ET); AAPL + AMZN earnings AH
-- Thu July 31: Market digestion of mega-cap earnings
-- AMD earnings: Aug 4 AH (48h window opens Aug 2; last safe exit Aug 1)
+**KEY MACRO EVENTS THIS WEEK (UPDATED July 28 Pre-Market):**
+- Tue July 28 (TODAY): FOMC Day 1; Consumer Confidence 10 AM ET; S&P/Case-Shiller 9 AM ET; Richmond Fed 10 AM ET
+- Wed July 29: **FOMC Decision 2 PM ET (Chair Warsh)** — 33% hike probability; META + MSFT + QCOM earnings AH
+- Thu July 30: **Q2 GDP Advance Estimate 8:30 AM ET** (major mover); AAPL + AMZN earnings AH; PCE/Income 8:30 AM ET
+- Fri July 31: Market digestion; weekly strategy review
+- AMD earnings: Aug 4 AH (48h window opens Aug 2; last safe exit day Aug 1)
+
+**FOMC SCENARIOS (July 29):**
+- Hold (base case ~67%): Tone is key; hawkish hold → tech down, banks flat; dovish hold → tech rally, banks +
+- Hike 25bps (tail ~33%): Tech/growth/crypto sell off hard; AMD at risk; GLD bid
+- Action: NO pre-positioning either way; score GS/WFC/MS and new opportunities after 2 PM ET announcement
 
 ---
 
