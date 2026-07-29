@@ -4,6 +4,393 @@
 
 ---
 
+## 2026-07-29 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 103rd consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-29T20:34:10Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — 103rd consecutive blocked session. Market data sourced via WebSearch.
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully throughout all routines today.
+
+---
+
+### HEARTBEAT TALLY — JULY 29, 2026
+
+| Routine | Expected (UTC) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 12:00Z | 12:05:09Z ✓ | 12:14:25Z ✓ | PASS |
+| Market-Open | 13:45Z | 13:46:12Z ✓ | 13:50:11Z ✓ | PASS |
+| Mid-Morning | 15:00Z | 15:11:06Z ✓ | 15:14:07Z ✓ | PASS |
+| Midday | 16:30Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Afternoon | 18:00Z | 18:09:16Z ✓ | 18:13:29Z ✓ | PASS |
+| Market-Close | 19:30Z | MISSING ✗ | MISSING ✗ | **SILENT FAILURE** |
+| Daily-Review | 20:30Z | 20:34:10Z ✓ | (this run) | IN PROGRESS |
+
+**Result: 5/7 routines passed. 2 SILENT FAILURES: Midday (16:30Z) and Market-Close (19:30Z).**
+
+**TOP OPERATIONAL ISSUE:** Market-Close (3:30 PM ET) is a newly confirmed silent failure — not caught by any prior routine today. This routine would have placed MOC orders to close day trades and done final stop-loss audit before market close. Its absence means the AMD naked position had no coverage from 18:13Z (Afternoon COMPLETE) through market close at 20:00Z — an ~1h47m unmonitored window straddling market close.
+
+**Remediation proposal:** The Market-Close 19:30Z slot is failing before the scheduler triggers the Daily-Review at 20:30Z — same 1-hour gap that also contains Midday failures. Operator should verify whether the 16:30Z and 19:30Z cron schedule entries are correctly configured in the scheduling system. These two slots show the highest silent-failure rate across the rolling week.
+
+---
+
+### PORTFOLIO STATE — JULY 29 CLOSE
+
+**AMD close (sourced via WebSearch):** $437.61 (previous close July 28: $454.62; today: -3.74%)
+**AMD unrealized:** 18sh × ($437.61 − $506.76 entry) = 18 × (−$69.15) = **−$1,244.70 (−13.64% from entry)**
+**Cash:** $90,644 (last known; unchanged — API blocked, no orders executed)
+**Total equity est.:** $90,644 + 18 × $437.61 = $90,644 + $7,876.98 = **$98,520.98**
+**P&L vs $100K initial:** **−$1,479.02 (−1.48%)**
+
+**Daily portfolio return:** Equity $98,521 vs yesterday est. $98,827 → **−0.31%**
+**S&P 500 close:** 7,316.15 (−1.52%) per TheStreet / Yahoo Finance closing reports
+**Daily gap vs SPY:** Portfolio −0.31% vs SPY −1.52% → **+1.21 pp outperformance today** (due to underdeployment — only AMD exposed; cash shielded the portfolio from the FOMC selloff)
+**Cumulative gap vs SPY (May 1 baseline):** Portfolio −1.48% vs SPY (7,316.15/7,200 −1 = +1.61%) → **benchmark gap −3.09 pp**
+**20-DAY UNDERPERFORMANCE FLAG:** ACTIVE (103rd consecutive sessions; root cause: API blockage preventing deployment)
+
+**Circuit breaker:** NOT TRIPPED (portfolio −0.31% today; threshold −3%)
+
+---
+
+### ORDERS PULLED / FILLS TODAY
+
+**Total fills: ZERO** (API blocked 103rd consecutive session, all order attempts return HTTP 403)
+
+| Time | Symbol | Action | Reason |
+|------|--------|--------|--------|
+| Pre-Market 12:05Z | AMD | EXIT skip | API blocked; market not yet open |
+| Pre-Market 12:05Z | GS/WFC/MS | BUY skip | FOMC Day 2 binary event (Rule 2) |
+| Pre-Market 12:05Z | META/MSFT/QCOM | BUY skip | 48h earnings window (Rule 2) |
+| Market-Open | AMD stop | NAKED | API blocked; cannot place stop order |
+| Mid-Morning | All | HOLD | FOMC binary event + API blocked |
+| Midday | SILENT FAILURE | — | No routine fired |
+| Afternoon | GS/WFC/MS | BUY skip | Proximity-to-close + post-FOMC volatility |
+| Market-Close | SILENT FAILURE | — | No routine fired |
+
+---
+
+### MARKET CONDITIONS — CLOSE JULY 29, 2026
+
+**FOMC Decision (sourced WebSearch — CNBC, Fox Business, Advisor Perspectives):**
+- VOTE: 9-3 HOLD at 3.50%–3.75% (5th consecutive hold)
+- DISSENTERS: Hammack (Cleveland), Kashkari (Minneapolis), Logan (Dallas) — all voted for a 25 bp HIKE
+- STATEMENT: "Economic activity expanding at solid pace; inflation remains above 2% target, partly due to energy supply shocks"
+- WARSH: Hawkish tone; "Fed won't hesitate to stop inflation." Bond market skeptical.
+- MARKET REACTION: Yields spiked. Dow −1,153 pts (−2.19%); S&P 500 −1.52% to 7,316.15; Nasdaq −1.74% to 24,442.94 — worst day for the Dow since April 2025. Markets now pricing 2 hikes in 2026.
+
+**Semiconductor sector (sourced WebSearch — TipRanks, eciks.org):**
+- SMH (Semiconductor ETF): −4.06% (1-month decline now −9.33%)
+- AMD intraday: −8.31% at lows; closed at $437.61 (−3.74% from July 28 close of $454.62)
+- China chip technology breakthrough news continued to overhang the entire sector
+- AMD is now **−13.64%** from entry of $506.76; **−9.1%** below hard stop floor of $481.42
+
+**Financials (sourced WebSearch — Yahoo Finance quotes):**
+- GS: $988.03 (−$6.50, −0.65%)
+- WFC: $75.91 (−$1.61, −2.08%)
+- MS: $199.88 (−$1.88, −0.93%)
+- All three significantly below prior reference prices ($1,062–1,073 / $86 / $214)
+
+**AH Earnings (sourced WebSearch — CNBC, StockTitan, 24/7 Wall St.):**
+
+*Microsoft (MSFT):*
+- EPS: $4.74 adj. vs $4.24 est. → **BEAT +11.8%**
+- Revenue: $90.01B vs $87.62B est. → **BEAT +2.7%**
+- Azure: +43% YoY; Azure annual run-rate crossed $100B for first time
+- AH reaction: +1%
+- Status: **STRONG BEAT — scoring for July 30 entry**
+
+*Meta Platforms (META):*
+- EPS: $6.18 vs $7.22 est. → **MISS −14.4%**
+- Revenue: $60.80B vs $60.17B est. → beat +1.0%
+- Net income: $15.8B, DOWN 13% YoY; costs +55%; operating margin fell from 43% → 31%
+- Q3 guidance midpoint: $62.5B vs $63.15B est. → light
+- AH reaction: −7%
+- Status: **EPS MISS — REJECTED for entry**
+
+*Qualcomm (QCOM):*
+- Results: In-line with estimates but net income $2B, DOWN 25% YoY (from $2.66B)
+- Q4 guidance: EPS $2.05–$2.25 on revenue $9.7–$10.5B → LIGHT (memory supply crunch)
+- Status: **LIGHT GUIDANCE / DECLINING NET INCOME — REJECTED for entry**
+
+---
+
+### 6-AGENT SCORING — POST-EARNINGS NAMES
+
+```yaml
+---
+ts: 2026-07-29T20:34:00Z
+action: skip
+symbol: MSFT
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: MSFT Q4 FY2026 blowout — EPS +11.8% beat, Azure +43% (crossed $100B milestone), AH +1%. Entry at July 30 Pre-Market open.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 7
+  macro: 6
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "5/6 agents ≥7 (Fundamentals 9: EPS beat +11.8%, Azure crossed $100B, 30M+ Copilot paid seats; Technical 7: AH +1% follow-through, needs candlestick confirmation at July 30 open; Sentiment 7: clear beat narrative, broad coverage; Macro 6: hawkish FOMC headwind for all growth stocks, Nasdaq correction ongoing; Risk 7: ~5sh at ~$404 = $2,020 = 2% equity, stop at $383.80 (-5%), target at $464.60 (+15%), R/R = 3:1; Tech Analyst 9: Azure +43% YoY acceleration, $100B milestone, 365 Copilot 30M+ paid seats, best-in-class cloud growth). Macro scored 6 (below 7) but 5/6 ≥7 satisfies the ≥4/6 requirement. Average 7.5 ≥ 7. APPROVED for July 30 Pre-Market entry. Binding commitment: BUY ~5sh MSFT limit bracket GTC at ~$404 ask +0.5%, stop −5% ~$383.80, target +15% ~$464.60."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T20:34:00Z
+action: skip
+symbol: META
+bucket: active
+setup: earnings-reaction-follow
+score: 4.8
+thesis: META Q2 EPS MISS −14.4% ($6.18 vs $7.22 est.); costs +55%, margin 31% (from 43%); AH −7%. REJECT.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 3
+  sentiment: 4
+  macro: 5
+  risk: 5
+  tech_analyst: 7
+agent_average: 4.8
+agents_above_7: 1
+master_decision: rejected
+master_notes: "Only 1/6 agents ≥7 (Tech Analyst 7: Meta AI, Llama, AR/VR investment pipeline intact). Fundamentals 5: revenue beat but EPS miss −14.4%, net income DOWN 13%, massive cost expansion kills profitability near-term. Technical 3: AH −7%, stock in 9-day losing streak entering earnings, bearish engulfing pattern in AH. Sentiment 4: EPS miss narrative dominates; light guidance ($62.5B vs $63.15B est.). Macro 5: hawkish FOMC + high-capex growth stock = double headwind. Risk 5: AH gap down makes entry difficult; R/R ambiguous with −7% gap. Average 4.8 far below 7 minimum. REJECTED. Do not enter META until AH selloff stabilizes and technical setup improves."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T20:34:00Z
+action: skip
+symbol: QCOM
+bucket: active
+setup: earnings-reaction-follow
+score: 5.3
+thesis: QCOM Q3 FY2026 in-line results but net income DOWN 25% YoY; light Q4 guidance; memory supply crunch headwind. REJECT.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 5
+  sentiment: 5
+  macro: 5
+  risk: 6
+  tech_analyst: 6
+agent_average: 5.3
+agents_above_7: 0
+master_decision: rejected
+master_notes: "0/6 agents ≥7. Fundamentals 5: net income $2B, down 25% YoY; results in-line but quality declining; IoT +9% weak; no upside surprise. Technical 5: stock down 5% YTD, in-line results with light guidance rarely catalyze breakouts; semiconductor sector in correction. Sentiment 5: 90% beat probability was met on headline but guidance disappointed; supply crunch overhang. Macro 5: hawkish FOMC + China chip competition + semiconductor correction = triple headwind. Risk 6: position math works but thesis weak. Tech Analyst 6: Modular acquisition interesting but unproven AI software strategy; Snapdragon AI ecosystem early stage. Average 5.3 far below 7. REJECTED."
+---
+```
+
+---
+
+### POST-FOMC RE-SCORE — FINANCIAL SECTOR (GS, WFC, MS)
+
+**Context:** FOMC voted 9-3 to hold with hawkish commentary. 3 dissenters voted for a hike. Market now pricing 2 hikes in 2026. Bond yields spiked. This materially changes the macro backdrop for bank stocks — higher-for-longer with hike risk → credit quality concerns, loan growth pressure. Prior scores of 7.0 used July 14 Q2 data with a neutral FOMC assumption. Rescoring with July 29 actuals:
+
+```yaml
+---
+ts: 2026-07-29T20:34:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 6.2
+thesis: GS Q2 blowout thesis intact but hawkish FOMC hold (3 dissenters) changes macro backdrop; GS at $988 (−7% from $1,062 ref); rescored below 7.0 average. DEFER pending macro clarity.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 6
+  tech_analyst: 7
+agent_average: 6.2
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Rescored post-FOMC hawkish hold. Fundamentals 8: Q2 revenue beat, M&A pipeline, trading desk strength — unchanged. Technical 5: GS at $988 vs prior $1,062–1,073 entry ref; price has declined −7% since scoring, broken through prior support levels on heavy FOMC-day volume; no bullish candlestick confirmation. Sentiment 6: hawkish Fed is mixed for banks — rate clarity is good for earnings but hike risk is bad for credit; market sold financials −0.65% to −2.08%. Macro 5: 3-dissenter hawkish hold = higher-for-longer = credit quality risk, potential loan growth slowdown; yield curve steepening hurts duration risk. Risk 6: at $988 stop $938.60 target $1,135.20 R/R = 3.1:1 marginally OK; but macro deterioration makes entry premature. Tech Analyst 7: default (non-tech). Average 6.2 below 7. REJECTED — watchlist hold, rescore when macro settles."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T20:34:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 5.5
+thesis: WFC at $75.91 (−$10.09 from $86 ref = −11.7%); hawkish FOMC worst-case for consumer bank; rescored well below 7.0. REMOVE from immediate watchlist.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 5
+  macro: 4
+  risk: 6
+  tech_analyst: 7
+agent_average: 5.5
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Rescored post-FOMC. Fundamentals 7: Q2 EPS +16.3% beat — unchanged. Technical 4: WFC at $75.91 vs $86 ref = −11.7% price deterioration since scoring; clear downtrend; no reversal signals; below prior support. Sentiment 5: hawkish Fed is decidedly negative for consumer banks — WFC's large consumer loan book faces credit stress if rates stay high or rise; −2.08% today worst of the 3 financials. Macro 4: WFC is the most rate-sensitive consumer bank in the group; hawkish hold with hike risk = worst macro outcome for WFC specifically. Risk 6: at $75.91 stop $72.11 target $87.30 R/R = 3.2:1 (OK math); but entering a name that's already −11.7% from our research price is poor thesis hygiene. Tech Analyst 7: default. Average 5.5 well below 7. REJECTED — remove from binding commitment list; rescore when hawkish overhang clears."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T20:34:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 6.2
+thesis: MS at $199.88 (−$14.12 from $214 ref = −6.6%); hawkish FOMC changes macro; rescored below 7.0. DEFER.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 6
+  macro: 5
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.2
+agents_above_7: 3
+master_decision: rejected
+master_notes: "Rescored post-FOMC. Fundamentals 7: strong Q2 — unchanged. Technical 5: at $199.88 vs $214 ref, −6.6% from last price reference; broken below $200 psychological support level; FOMC selloff day = poor entry timing. Sentiment 6: Morgan Stanley's wealth management + investment banking = more diversified than WFC; crypto ETP exposure could be tailwind if crypto recovers. Macro 5: same hawkish headwind as GS. Risk 7: at $199.88 stop $189.89 target $229.86 R/R = 3.0:1 (meets 3:1 minimum); 20sh = $3,997 = 4% equity (within 5% cap). Tech Analyst 7: default. Average 6.2 below 7. REJECTED — keep on 5-day watchlist; rescore Friday or when financial sector stabilizes."
+---
+```
+
+**FINANCIAL SECTOR BINDING COMMITMENT STATUS:**
+The prior binding commitments (GS/WFC/MS BUY July 30) are **rescinded** based on post-FOMC data. The trigger for cancellation: all three names now score below 7.0 average due to macro deterioration. This is NOT a guardrail violation — CLAUDE.md's "only acceptable reasons to skip ≥7" applies only when the score remains ≥7. The score has changed; the commitment lapses automatically.
+
+---
+
+### TODAY'S BEST & WORST TRADES
+
+**Best:** N/A — no fills executed today (API blocked + valid binary event exemptions)
+
+**Worst:** AMD (ongoing). AMD closed at $437.61 — a new multi-week low. Daily loss −$306.18. Cumulative unrealized loss −$1,244.70 (−13.64% from entry). The AMD position is now:
+- **−9.1% below the hard stop floor of $481.42**
+- **Day 42+** since entry (far exceeding the "2-week" re-scoring threshold)
+- **Naked** — no stop order resting at Alpaca for 103 consecutive sessions
+- **Earnings window opens Aug 2** — last safe exit is Aug 1 (2 trading days away)
+
+---
+
+### 3 THINGS THAT WORKED TODAY
+
+1. **FOMC binary event exemption held firm.** All ≥7 watchlist names (GS/WFC/MS) were correctly skipped with Exemption 2 citations. The FOMC turned out hawkish — entries at pre-announcement prices would have been underwater immediately. The exemption saved ~$16,000 in deployed capital from a −1% to −2% FOMC-day drawdown.
+
+2. **5 of 7 routines fired.** Pre-Market, Market-Open, Mid-Morning, Afternoon, and Daily-Review all executed. Improvement from July 27's 0/6 intraday failure rate.
+
+3. **Underdeployment protected the portfolio on a −1.52% SPY day.** Portfolio fell only −0.31% vs SPY −1.52% = +1.21 pp daily outperformance. The 91% cash position acted as an inadvertent hedge on the worst Dow day since April 2025.
+
+---
+
+### 3 THINGS TO IMPROVE TOMORROW
+
+1. **Exit AMD immediately.** AMD closed at $437.61 — $43.81 below the hard stop of $481.42. Every day it remains open widens the guardrail violation. The Aug 2 earnings window makes July 30 the absolute last actionable trading day. Operator MUST execute 18sh AMD SELL AT MARKET via app.alpaca.markets first thing July 30 if API remains blocked.
+
+2. **Fix Midday and Market-Close silent failures.** Both 16:30Z and 19:30Z slots failed today (Midday again, Market-Close newly confirmed). The scheduler is dropping these two slots. Operator must audit the cron/scheduler configuration for these specific time slots. A Market-Close silent failure means no end-of-day stop audit — AMD was naked and unmonitored for the final 1h47m of the trading session.
+
+3. **Deploy capital post-FOMC with disciplined re-scoring.** With the FOMC resolved, July 30 opens with a fresh opportunity to scan for setups in the aftermath. MSFT is approved for entry. Energy and defense sectors should be scanned (FOMC hawkish + oil elevated + Iran tensions). The 91% cash position is the primary drag on performance vs SPY over the 12-18 month horizon — every trading day without ≥7-score deployments is a compounding miss.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day Window: July 25–29, 2026)
+
+| Setup | Trades | Wins | Losses | Result | Status |
+|-------|--------|------|--------|--------|--------|
+| ai-momentum-pullback | 1 open (AMD) | 0 | 0 (open, −13.64%) | Pending exit | Watching |
+| earnings-reaction-follow | 4 skip (MSFT approved; META/QCOM/INTC rejected) | 0 | 0 | No fills | — |
+| sector-rotation | 6 skip (GS/WFC/MS × 2 days) | 0 | 0 | No fills | — |
+| silent-failure | 4 violations | — | — | Operational | HALT flag |
+| other | — | — | — | — | — |
+
+**3-in-a-row halt check:** No setup has 3 consecutive losses. AMD open position not yet closed.
+**3-in-a-row boost check:** No setup has 3 consecutive wins.
+**Silent-failure count:** 4th consecutive Midday failure this week = OPERATIONAL HALT FLAG on Midday reliability. Operator must address scheduler configuration.
+
+---
+
+### SPY 20-DAY ROLLING PERFORMANCE
+
+| Metric | Value |
+|--------|-------|
+| Portfolio equity (today) | $98,521 |
+| Portfolio return from $100K | −1.48% |
+| SPY return from May 1 baseline (7,200→7,316) | +1.61% |
+| Benchmark gap (cumulative) | **−3.09 pp** |
+| 20-day underperformance flag | ACTIVE (103rd consecutive session) |
+| Daily SPY return (July 29) | −1.52% |
+| Daily portfolio return | −0.31% |
+| Daily gap | +1.21 pp (outperformed — but due to underdeployment, not skill) |
+
+**20-day strategy review note:** The underperformance is NOT due to bad trades — it's due to zero trades. The API blockage has prevented 103 consecutive sessions of order placement. The root cause is the proxy egress policy blocking `paper-api.alpaca.markets:443`. The human-visible system of record (app.alpaca.markets) remains available for manual operations. Until API is restored or operator places trades manually, the portfolio will continue underperforming on risk-on days and (accidentally) outperforming on risk-off days like today.
+
+**No strategy adjustments proposed** (the guardrail violations, not the strategy, are the problem).
+
+---
+
+### TOMORROW'S WATCHLIST — JULY 30, 2026 PRE-MARKET (BINDING COMMITMENTS)
+
+| Rank | Symbol | Setup | Score | Action | Key Data |
+|------|--------|-------|-------|--------|----------|
+| 1 | **AMD** | ai-momentum-pullback | N/A | **EXIT 18sh MARKET — FIRST ACTION** | Day 42+, $437.61 close, −13.64% from entry, naked, earnings window opens Aug 2 |
+| 2 | **MSFT** | earnings-reaction-follow | **7.5 APPROVED** | BUY ~5sh bracket GTC | EPS +11.8% beat, Azure +43%, AH +1%. Stop −5% ~$383.80, Target +15% ~$464.60. 3:1 R/R ✓ |
+| 3 | GLD | macro-hedge | TBD (score pre-market) | Consider if FOMC hawkish + yields elevated | Hawkish hold + 3 dissenters + inflation persistence = gold bid; score 6 agents July 30 |
+| 4 | XOM/CVX | sector-rotation | TBD (score pre-market) | Consider energy long | Oil elevated (Iran tensions + FOMC higher-for-longer); run 6-agent score at open |
+| 5 | LMT/RTX | sector-rotation | TBD (score pre-market) | Consider defense | Middle East conflict escalation; defense a FOMC-immune sector |
+| 6 | GS | sector-rotation | 6.2 (below 7) | RESCORE if financials stabilize | Prior binding commitment RESCINDED; hawkish FOMC changed thesis. Score again Friday or when macro settles. |
+| 7 | MS | sector-rotation | 6.2 (below 7) | RESCORE if financials stabilize | Same as GS. Crypto ETP exposure a potential differentiator. |
+| 8 | WFC | sector-rotation | 5.5 (well below 7) | REMOVE until macro improves | Worst of the 3 banks in a hawkish environment. Consumer credit risk elevated. |
+| 9 | AAPL | earnings-reaction-follow | TBD | **48h BINARY EVENT ACTIVE July 30** — score at July 31 Pre-Market | AAPL reports AH July 30 |
+| 10 | AMZN | earnings-reaction-follow | TBD | **48h BINARY EVENT ACTIVE July 30** — score at July 31 Pre-Market | AMZN reports AH July 30 |
+
+**July 30 mandatory pre-market scan additions:**
+- FOMC-day reaction movers: names that gapped down >5% on FOMC hawkish surprise but have strong fundamentals (mean-reversion-oversold candidates)
+- Energy sector leadership: XLE ETF + individual names (XOM, CVX, SLB)
+- Defense sector: LMT, RTX (geopolitical premium + FOMC-immune revenue)
+- META: AH −7% creates potential mean-reversion setup in 1–3 days if support holds; score again July 31
+
+**KEY MACRO EVENTS — JULY 30–31, 2026:**
+- **July 30:** PCE Core inflation + Q2 GDP first read (8:30 AM ET) — CRITICAL: confirms/denies FOMC's inflation concern
+- **July 30 AH:** AAPL earnings (EPS est. TBD) — 48h window active; score at July 31
+- **July 30 AH:** AMZN earnings — same
+- **July 31:** Market digests mega-cap earnings wave (META/MSFT/QCOM/AAPL/AMZN)
+- **Aug 1:** Last safe exit day for AMD before Aug 2 earnings window opens
+- **Aug 4 AH:** AMD earnings — if still open after Aug 1, position must be closed
+
+---
+
+### DAILY REVIEW SUMMARY
+
+Alpaca API blocked (103rd consecutive session). Today was one of the worst market days of 2026 — the FOMC hawkish hold with 3 dissenters sparked a bond yield spike and equity selloff (Dow −2.19%, S&P −1.52%, Nasdaq −1.74%). Portfolio fell only −0.31% due to underdeployment, inadvertently outperforming SPY by +1.21 pp today. AMD closed at $437.61, now −13.64% from entry and −9.1% below the hard stop floor of $481.42. Two silent failures today: Midday (16:30Z) and Market-Close (19:30Z). Financial sector thesis for GS/WFC/MS rescored below 7.0 on hawkish FOMC — all three binding commitments rescinded. MSFT AH earnings beat approved for July 30 entry (score 7.5). META and QCOM rejected on weak EPS/guidance. July 30 is the final actionable day to exit AMD before Aug 2 earnings window. Operator must place AMD sell order manually on app.alpaca.markets if API remains blocked.
+
+---
+
 ## 2026-07-29 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 102nd consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-29T18:09:16Z ✓
