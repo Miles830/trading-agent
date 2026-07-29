@@ -4,6 +4,201 @@
 
 ---
 
+## 2026-07-29 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 102nd consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-29T18:09:16Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **102nd consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Decision announced at 2:00 PM ET (18:00 UTC) — 9 minutes ago. Decision content UNKNOWN (API/data blocked). Binary event now resolved, but post-FOMC volatility window active. Afternoon proximity-to-close rule independently blocks new active entries.
+**Time (ET):** ~2:09 PM ET — Afternoon window
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market STARTED: 2026-07-29T12:05:09Z ✓ / COMPLETED 12:14:25Z ✓
+- Market-Open STARTED: 2026-07-29T13:46:12Z ✓ / COMPLETED 13:50:11Z ✓
+- Mid-Morning STARTED: 2026-07-29T15:11:06Z ✓ / COMPLETED 15:14:07Z ✓
+- Midday (12:30 PM ET / 16:30 UTC): **SILENT FAILURE — no STARTED heartbeat in logs/heartbeats/2026-07-29.log**
+
+---
+
+```yaml
+---
+ts: 2026-07-29T18:09:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) produced no heartbeat — silent failure, 4th silent predecessor this week.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Midday 2026-07-29. Expected 2026-07-29T16:30Z. Discovered by Afternoon routine at 18:09Z. Stop-loss audit and watchlist checks for Midday window were not executed. AMD naked position unmonitored from 15:14Z (Mid-Morning complete) to 18:09Z (~2h55m gap). Midday silent failure logged as guardrail violation."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial, 102nd session)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD naked position (Day 41+ post-fill):**
+- Entry avg cost: $506.76 | Hard stop floor (5% below entry): **$481.42**
+- Last known price est.: ~$465 (from morning pre-market data; actual current price UNKNOWN — API blocked)
+- FOMC decision announced at 2:00 PM ET — semiconductor reaction unknown (API blocked)
+- Stop order status: **NAKED — no resting stop at Alpaca (102nd consecutive session)**
+- API blocked = cannot place stop programmatically
+- **GUARDRAIL VIOLATION ACTIVE: DAY 41+ NAKED POSITION**
+- **OPERATOR ACTION REQUIRED: EXIT 18sh AMD at MARKET on app.alpaca.markets IMMEDIATELY. Do NOT wait — market closes in ~90 minutes.**
+
+---
+
+### WATCHLIST EXECUTION — AFTERNOON ROUTINE
+
+Per `routines/afternoon.md` (operator-mandated playbook): *"Active-trading catch-up: do NOT initiate new active-bucket entries this routine — too close to close."*
+
+Additionally, FOMC post-announcement volatility window is active (decision just out at 2:00 PM ET, 9 min ago). Initiating swing entries into a post-FOMC whipsaw with 90 min to close would violate risk discipline.
+
+API blocked independently prevents any order placement.
+
+```yaml
+---
+ts: 2026-07-29T18:09:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Goldman Sachs Q2 blowout, financials showing leadership. Afternoon proximity-to-close per routine playbook + post-FOMC volatility = deferred to July 30 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Exemption: afternoon proximity-to-close (routine playbook). Binding commitment to BUY July 30 Pre-Market stands. FOMC post-announcement volatility additionally supports deferral. API also blocked. Score 7.0 valid — entry binding at July 30 Pre-Market absent new disqualifying conditions."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T18:09:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Wells Fargo Q2 EPS +16.3% beat, financials rotation. Afternoon proximity-to-close per routine playbook + post-FOMC volatility = deferred to July 30 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Exemption: afternoon proximity-to-close (routine playbook). Binding commitment to BUY July 30 Pre-Market stands. FOMC post-announcement volatility additionally supports deferral. API also blocked. Score 7.0 valid — entry binding at July 30 Pre-Market."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T18:09:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Morgan Stanley strong Q2, crypto ETP exposure. Afternoon proximity-to-close per routine playbook + post-FOMC volatility = deferred to July 30 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Exemption: afternoon proximity-to-close (routine playbook). Binding commitment to BUY July 30 Pre-Market stands. FOMC post-announcement volatility additionally supports deferral. API also blocked. Score 7.0 valid — entry binding at July 30 Pre-Market."
+---
+```
+
+---
+
+### MARKET CONDITIONS (2:09 PM ET, July 29, 2026 — estimated/last-known)
+
+- **FOMC Decision:** Announced 2:00 PM ET — content UNKNOWN (API blocked). Pre-FOMC consensus: hold (64%), hike (30%). Chair Warsh hawkish stance on resurgent inflation + energy.
+- **Semis:** AMD under continued pressure from China chip breakthrough; intraday price unknown (API blocked)
+- **AH Tonight (earnings):** META (EPS $7.23 est., 7% swing), MSFT (EPS $4.21 est., Azure cloud), QCOM (EPS $2.22 est., 9.34% swing, 90.5% beat prob) — scoring at July 30 Pre-Market
+- **Day trades:** None open. No positions to close by 3:30 PM ET except AMD (swing, held 41+ days — not a day trade).
+- **Crypto:** BTC ~$64,423 / ETH ~$1,916 last-known — crypto bucket at 0% (underweight vs 10% target). No entries this routine (proximity-to-close).
+- **Circuit breaker:** Not tripped (last known portfolio -$986 from $100K = -0.99%; far from -3% threshold)
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (July 30, 2026 — Pre-Market BINDING COMMITMENTS)
+
+| Rank | Symbol | Score | Action | Notes |
+|------|--------|-------|--------|-------|
+| 1 | AMD | EXIT | Sell 18sh market FIRST | Day 41+, below stop $481.42, naked. Exit before Aug 2 earnings window. |
+| 2 | GS | 7.2 | BUY 4sh bracket GTC | Q2 blowout, financials leadership. $1,062–1,073 ref. Stop -5% / Target +15% |
+| 3 | WFC | 7.0 | BUY 30sh bracket GTC | Q2 EPS +16.3% beat. ~$86 ref. Stop -5% / Target +15% |
+| 4 | MS | 7.0 | BUY 20sh bracket GTC | Strong Q2, crypto ETPs. ~$214 ref. Stop -5% / Target +15% |
+| 5 | META | TBD | SCORE after AH tonight | EPS $7.23 est. 7% swing. Score at Pre-Market if beat; enter if ≥7. |
+| 6 | MSFT | TBD | SCORE after AH tonight | EPS $4.21 est. Azure cloud. Score at Pre-Market if beat; enter if ≥7. |
+| 7 | QCOM | TBD | SCORE after AH tonight | EPS $2.22 est. 9.34% swing. PT $221 (+32%). Score at Pre-Market. |
+
+**AAPL / AMZN:** Report AH July 30 — 48h window still ACTIVE July 30. Score at July 31 Pre-Market post-release.
+
+**Post-FOMC sector scan (July 30 Pre-Market MUST add):** FOMC decision announced at 2 PM ET today; run full sector scan pre-open July 30 for rate-sensitive beneficiaries (Financials, Real Estate, Utilities) or losers (if hike) depending on actual decision.
+
+---
+
+### CIRCUIT BREAKER CHECK
+
+- Portfolio daily P&L: Unknown (API blocked; AMD intraday price unknown)
+- Last known total equity: ~$99,014 (from Mid-Morning est.)
+- 3% circuit breaker threshold: -$2,970 from ~$99,014 = ~$96,044 minimum
+- Status: **NOT TRIPPED** — even at AMD $0 the cash position ($90,644) keeps equity well above threshold
+
+---
+
+### AFTERNOON SUMMARY
+
+Alpaca API blocked (102nd consecutive session). FOMC decision announced at 2:00 PM ET (9 min before this routine fired) — decision content unknown (API blocked). Afternoon proximity-to-close rule + post-FOMC volatility independently block all new active entries. GS/WFC/MS carry YAML skip entries (afternoon proximity-to-close). Midday silently failed — violation logged. AMD remains sole open position: 18sh, entry $506.76, below hard stop $481.42, naked Day 41+. Operator must exit manually on app.alpaca.markets. July 30 Pre-Market has binding commitments: EXIT AMD, BUY GS/WFC/MS brackets, score META/MSFT/QCOM post-AH. Heartbeat COMPLETE to follow.
+
+---
+
 ## 2026-07-29 — Mid-Morning Routine (11:00 AM ET / 15:11 UTC — API BLOCKED — 101st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-29T15:11:06Z ✓

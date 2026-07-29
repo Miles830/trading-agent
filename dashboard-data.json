@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-29T15:11:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-29T18:09:00Z",
+  "updated_by": "afternoon",
   "portfolio": {
     "total_equity": 99014,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 91.5
     },
-    "note": "July 29 MID-MORNING (11:11 AM ET / 15:11Z). API BLOCKED HTTP 403 \u2014 101st consecutive session. FOMC Decision at 2 PM ET (NOT YET ANNOUNCED) = binary event \u2192 NO NEW ENTRIES. AMD ~$465 est., BELOW hard stop $481.42 \u2014 OPERATOR MUST EXIT 18sh on app.alpaca.markets. GS/WFC/MS/META/MSFT/QCOM/AAPL/AMZN all deferred to July 30."
+    "note": "July 29 AFTERNOON (2:09 PM ET / 18:09Z). API BLOCKED HTTP 403 — 102nd consecutive session. FOMC announced 2:00 PM ET — content unknown (API blocked). Post-FOMC volatility + proximity-to-close = NO NEW ENTRIES. Midday SILENT FAILURE (violation logged). AMD last known ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh on app.alpaca.markets BEFORE 4:00 PM ET CLOSE. July 30 BINDING: EXIT AMD, BUY GS/WFC/MS brackets, score META/MSFT/QCOM AH results."
   },
   "positions": [
     {
@@ -39,65 +39,65 @@
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICAL: AMD ~$465 est. at market open (-8.24%+ from entry $506.76). BELOW hard floor stop $481.42. Position NAKED day 40+ (API blocked 100th+ session). China chip news driving semis lower. OPERATOR MUST EXIT 18sh at market on app.alpaca.markets IMMEDIATELY. Earnings Aug 4 AH."
+      "note": "CRITICAL: AMD last known ~$465 est. (-8.24%+ from entry $506.76). BELOW hard floor stop $481.42. Position NAKED day 41+ (API blocked 102nd session). China chip news + FOMC unknown = risk elevated. OPERATOR MUST EXIT 18sh at market on app.alpaca.markets BEFORE 4:00 PM ET CLOSE. Earnings Aug 4 AH — window opens Aug 2."
     }
   ],
   "market": {
-    "mode": "wait-and-see",
+    "mode": "post-fomc-unknown",
     "spx": 7465,
     "btc": 64423,
     "eth": 1916,
-    "macro_notes_md": "Pre-FOMC holding pattern. Fed decision at 2:00 PM ET \u2014 hold expected (64% prob), hike 30% prob. Chair Warsh hawkish. Iran attack lifted oil (energy outperforming). China chip breakthrough keeping semis under pressure (AMD ~-8% from prior close). Triple AH tonight: META (EPS $7.23 est.), MSFT (EPS $4.21 est.), QCOM (EPS $2.22 est.). BTC ~$64,423 / ETH ~$1,916. S&P ~+0.2%, Nasdaq ~+0.3% vs prior close."
+    "macro_notes_md": "FOMC decision announced at 2:00 PM ET — content UNKNOWN (API blocked). Pre-FOMC consensus: hold (64%), hike (30%). Chair Warsh hawkish. Iran attack lifted oil. China chip breakthrough pressuring semis (AMD). Triple AH tonight: META (EPS $7.23 est.), MSFT (EPS $4.21 est.), QCOM (EPS $2.22 est.) — scoring July 30 Pre-Market. AAPL/AMZN report AH July 30 — scoring July 31 Pre-Market. BTC ~$64,423 / ETH ~$1,916 last-known."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": "EXIT",
-      "action": "EXIT operator manual",
-      "notes": "Below hard stop $481.42. Day 40+ naked. Exit before Aug 2 earnings window."
+      "action": "EXIT operator manual — URGENT before 4PM ET",
+      "notes": "Day 41+, below stop $481.42, naked. FOMC unknown = added risk. Exit before market close today OR Aug 2 earnings window at latest."
     },
     {
       "symbol": "GS",
       "bucket": "active",
-      "score": 7.0,
-      "action": "BUY July 30 binding",
-      "notes": "Deferred FOMC today. Q2 blowout. 4sh bracket GTC July 30."
+      "score": 7.2,
+      "action": "BUY July 30 Pre-Market BINDING",
+      "notes": "Q2 blowout, financials leadership. 4sh limit bracket GTC. ~$1,062–1,073 ref. Stop -5% / Target +15%. Post-FOMC rate environment determines final sizing."
     },
     {
       "symbol": "WFC",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY July 30 binding",
-      "notes": "Deferred FOMC today. Q2 EPS +16.3% beat. 30sh bracket GTC July 30."
+      "action": "BUY July 30 Pre-Market BINDING",
+      "notes": "Q2 EPS +16.3% beat. 30sh limit bracket GTC. ~$86 ref. Stop -5% / Target +15%. Post-FOMC rate environment determines final sizing."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY July 30 binding",
-      "notes": "Deferred FOMC today. Strong Q2, crypto ETPs. 20sh bracket GTC July 30."
+      "action": "BUY July 30 Pre-Market BINDING",
+      "notes": "Strong Q2, crypto ETPs. 20sh limit bracket GTC. ~$214 ref. Stop -5% / Target +15%."
     },
     {
       "symbol": "META",
       "bucket": "active",
       "score": "TBD",
-      "action": "SCORE July 30 after AH",
-      "notes": "EPS $7.23 est. 7% swing expected. Reports AH tonight."
+      "action": "SCORE July 30 Pre-Market after AH tonight",
+      "notes": "EPS $7.23 est. 7% swing expected. Reports AH tonight July 29. If beat, likely score 7+; enter July 30."
     },
     {
       "symbol": "MSFT",
       "bucket": "active",
       "score": "TBD",
-      "action": "SCORE July 30 after AH",
-      "notes": "EPS $4.21 est. Azure cloud key. Reports AH tonight."
+      "action": "SCORE July 30 Pre-Market after AH tonight",
+      "notes": "EPS $4.21 est. Azure cloud key metric. Reports AH tonight July 29. Score based on beat/miss + guidance."
     },
     {
       "symbol": "QCOM",
       "bucket": "active",
       "score": "TBD",
-      "action": "SCORE July 30 after AH",
-      "notes": "PT $221 vs $167 (+32%). 9.34% swing expected. 90.5% beat prob. Reports AH tonight."
+      "action": "SCORE July 30 Pre-Market after AH tonight",
+      "notes": "EPS $2.22 est. 9.34% swing. PT $221 (+32% upside). 90.5% beat prob. Reports AH tonight July 29."
     }
   ],
   "routines": {
@@ -105,19 +105,31 @@
       "status": "completed",
       "last_run": "2026-07-29T12:05:00Z",
       "next_run": "2026-07-30T12:00:00Z",
-      "last_summary": "FOMC Day 2 + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 BELOW hard stop $481.42 \u2014 CRITICAL push notification sent 12:05Z. GS/WFC/MS deferred to July 30. API blocked 99th+ session."
+      "last_summary": "FOMC Day 2 + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 BELOW hard stop $481.42 — CRITICAL push notification sent 12:05Z. GS/WFC/MS deferred to July 30. API blocked 99th+ session."
     },
     "market-open": {
       "status": "completed",
       "last_run": "2026-07-29T13:46:00Z",
       "next_run": "2026-07-30T13:45:00Z",
-      "last_summary": "API BLOCKED 100th+ session. FOMC Day 2 + earnings windows = no new entries. No MOO fills to backfill (none placed Pre-Market). AMD naked stop remains critical \u2014 operator must exit manually on app.alpaca.markets. GS/WFC/MS deferred to July 30."
+      "last_summary": "API BLOCKED 100th+ session. FOMC Day 2 + earnings windows = no new entries. No MOO fills to backfill. AMD naked stop remains critical. GS/WFC/MS deferred to July 30."
     },
     "mid-morning": {
       "status": "completed",
       "last_run": "2026-07-29T15:11:00Z",
       "next_run": "2026-07-30T15:00:00Z",
-      "last_summary": "API BLOCKED 101st session. FOMC binary event = no new entries. Both predecessors (Pre-Market + Market-Open) confirmed fired. AMD naked stop day 41+ \u2014 operator must exit on app.alpaca.markets. 0 user suggestions. All watchlist names carry valid Rule 2 skip entries."
+      "last_summary": "API BLOCKED 101st session. FOMC binary event = no new entries. Both predecessors confirmed fired. AMD naked stop day 41+. 0 user suggestions. All watchlist names carry valid Rule 2 skip entries."
+    },
+    "midday": {
+      "status": "silent-failure",
+      "last_run": null,
+      "next_run": "2026-07-30T16:30:00Z",
+      "last_summary": "SILENT FAILURE — no heartbeat fired for Midday 2026-07-29 (expected 16:30Z). Violation logged by Afternoon routine. AMD unmonitored 15:14Z–18:09Z (~2h55m)."
+    },
+    "afternoon": {
+      "status": "running",
+      "last_run": "2026-07-29T18:09:00Z",
+      "next_run": "2026-07-30T18:00:00Z",
+      "last_summary": "API BLOCKED 102nd session. FOMC announced 2:00 PM ET (content unknown). Post-FOMC volatility + proximity-to-close = no new entries. GS/WFC/MS skip entries logged. Midday violation logged. AMD naked day 41+, operator must exit before 4 PM ET close. July 30 watchlist: AMD exit + GS/WFC/MS entries + META/MSFT/QCOM scoring."
     }
   },
   "trades": [],

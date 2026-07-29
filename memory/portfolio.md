@@ -1,13 +1,18 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-29 (Wednesday) — MID-MORNING (11:11 AM ET / 15:11 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 101st consecutive blocked session). MID-MORNING ✅ COMPLETED. ⚠️ AMD CRITICAL: ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market is OPEN). FOMC Decision at 2 PM ET (NOT YET ANNOUNCED) = binary event → NO NEW ENTRIES today. All three financials (GS/WFC/MS) + META/MSFT/QCOM/AAPL/AMZN deferred to July 30 Pre-Market. No user suggestions in inbox.**
+**2026-07-29 (Wednesday) — AFTERNOON (2:09 PM ET / 18:09 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 102nd consecutive blocked session). AFTERNOON ✅ COMPLETED. ⚠️ AMD CRITICAL: last known ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market closes in ~90 min). FOMC Decision announced at 2:00 PM ET — content UNKNOWN (API blocked). Post-FOMC volatility + proximity-to-close = NO NEW ENTRIES. GS/WFC/MS BINDING for July 30 Pre-Market. META/MSFT/QCOM reporting AH tonight — score at July 30 Pre-Market. Midday silently failed (violation logged). Market closes ~4:00 PM ET.**
+
+**JULY 29 AFTERNOON STATUS (2:09 PM ET):** API blocked 102nd session. Midday SILENT FAILURE (violation logged). FOMC announced 2:00 PM ET — content unknown. Post-FOMC volatility + proximity-to-close = NO NEW ENTRIES. GS/WFC/MS YAML skips logged. AMD naked, below stop $481.42, Day 41+ — OPERATOR EXIT REQUIRED before 4:00 PM ET close. July 30 Pre-Market: EXIT AMD first, then BUY GS/WFC/MS brackets, then score META/MSFT/QCOM AH results.
 
 **JULY 29 MARKET-OPEN STATUS:** Alpaca API blocked 100th+ consecutive session. Pre-Market fired normally (12:05Z–12:14Z); no catch-up needed. FOMC Decision Day at 2 PM ET = binary event per CLAUDE.md → NO NEW POSITION ENTRIES. No MOO orders placed Pre-Market (API blocked); no fills to backfill. AMD naked stop remains critical — market is NOW OPEN, operator must act. Stop-loss audit: 1 open position (AMD), NAKED, API blocked = cannot place programmatically. All watchlist names (GS/WFC/MS) carry valid Rule 2 skip entries from Pre-Market.
 
-**JULY 29 HEARTBEAT AUDIT (as of Market-Open 13:46Z):**
+**JULY 29 HEARTBEAT AUDIT (as of Afternoon 18:09Z):**
 - ✓ Pre-Market: STARTED 2026-07-29T12:05:09Z / COMPLETED 2026-07-29T12:14:25Z ✓
-- ✓ Market-Open: STARTED 2026-07-29T13:46:12Z ✓ (this routine)
+- ✓ Market-Open: STARTED 2026-07-29T13:46:12Z / COMPLETED 2026-07-29T13:50:11Z ✓
+- ✓ Mid-Morning: STARTED 2026-07-29T15:11:06Z / COMPLETED 2026-07-29T15:14:07Z ✓
+- ✗ Midday (16:30Z expected): SILENT FAILURE — violation logged by Afternoon
+- ✓ Afternoon: STARTED 2026-07-29T18:09:16Z ✓ (this routine)
 - July 28 summary: Pre-Market + Market-Open + Midday silently failed; Mid-Morning + Afternoon completed
 
 **PORTFOLIO STATE (July 29, 2026 — Pre-Market 8:05 AM ET):**
