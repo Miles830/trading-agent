@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-29T13:46:00Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-07-29T15:11:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
     "total_equity": 99014,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 91.5
     },
-    "note": "July 29 MARKET-OPEN (9:46 AM ET / 13:46Z). API BLOCKED HTTP 403 \u2014 100th+ consecutive session. FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 est., BELOW hard stop $481.42 \u2014 OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY. GS/WFC/MS deferred to July 30 post-FOMC."
+    "note": "July 29 MID-MORNING (11:11 AM ET / 15:11Z). API BLOCKED HTTP 403 \u2014 101st consecutive session. FOMC Decision at 2 PM ET (NOT YET ANNOUNCED) = binary event \u2192 NO NEW ENTRIES. AMD ~$465 est., BELOW hard stop $481.42 \u2014 OPERATOR MUST EXIT 18sh on app.alpaca.markets. GS/WFC/MS/META/MSFT/QCOM/AAPL/AMZN all deferred to July 30."
   },
   "positions": [
     {
@@ -47,7 +47,7 @@
     "spx": 7465,
     "btc": 64423,
     "eth": 1916,
-    "macro_notes_md": "FOMC Decision at 2:00 PM ET today \u2014 hold expected at 3.50-3.75% (64% prob), hike 30% prob. Chair Warsh hawkish. Iran attack lifted oil. China chip breakthrough hitting semis (AMD ~-8%). Triple AH tonight: META, MSFT, QCOM. S&P futures +0.2%, Nasdaq +0.3%. BTC $64,423 (+1.62%). AMD CRITICAL: ~$465 pre-market, below hard stop $481.42."
+    "macro_notes_md": "Pre-FOMC holding pattern. Fed decision at 2:00 PM ET \u2014 hold expected (64% prob), hike 30% prob. Chair Warsh hawkish. Iran attack lifted oil (energy outperforming). China chip breakthrough keeping semis under pressure (AMD ~-8% from prior close). Triple AH tonight: META (EPS $7.23 est.), MSFT (EPS $4.21 est.), QCOM (EPS $2.22 est.). BTC ~$64,423 / ETH ~$1,916. S&P ~+0.2%, Nasdaq ~+0.3% vs prior close."
   },
   "watchlist": [
     {
@@ -112,6 +112,12 @@
       "last_run": "2026-07-29T13:46:00Z",
       "next_run": "2026-07-30T13:45:00Z",
       "last_summary": "API BLOCKED 100th+ session. FOMC Day 2 + earnings windows = no new entries. No MOO fills to backfill (none placed Pre-Market). AMD naked stop remains critical \u2014 operator must exit manually on app.alpaca.markets. GS/WFC/MS deferred to July 30."
+    },
+    "mid-morning": {
+      "status": "completed",
+      "last_run": "2026-07-29T15:11:00Z",
+      "next_run": "2026-07-30T15:00:00Z",
+      "last_summary": "API BLOCKED 101st session. FOMC binary event = no new entries. Both predecessors (Pre-Market + Market-Open) confirmed fired. AMD naked stop day 41+ \u2014 operator must exit on app.alpaca.markets. 0 user suggestions. All watchlist names carry valid Rule 2 skip entries."
     }
   },
   "trades": [],

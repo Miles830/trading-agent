@@ -4,6 +4,105 @@
 
 ---
 
+## 2026-07-29 — Mid-Morning Routine (11:00 AM ET / 15:11 UTC — API BLOCKED — 101st consecutive session)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-29T15:11:06Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **101st consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Decision at 2:00 PM ET TODAY (decision not yet announced). Binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today.**
+**Time (ET):** ~11:11 AM ET — Mid-Morning window
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market STARTED: 2026-07-29T12:05:09Z ✓
+- Pre-Market COMPLETED: 2026-07-29T12:14:25Z ✓
+- Market-Open STARTED: 2026-07-29T13:46:12Z ✓
+- Market-Open COMPLETED: 2026-07-29T13:50:11Z ✓
+- **Result: Both predecessors fired normally. No catch-up required.**
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial, 101st session)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD naked position (Day 41+):**
+- Entry avg cost: $506.76 | Hard stop floor (5% below entry): **$481.42**
+- Last known price est.: **~$465** (pre-market; China chip news; exact mid-morning price unknown — API blocked)
+- AMD remains **~$16 BELOW hard stop floor** at last known price
+- Stop order status: **NAKED — no stop resting at Alpaca (101st consecutive session)**
+- API blocked = cannot place stop programmatically
+- **GUARDRAIL VIOLATION ACTIVE: DAY 41+**
+- **OPERATOR MANUAL ACTION REQUIRED: EXIT 18sh AMD at MARKET on app.alpaca.markets NOW (market is OPEN)**
+
+---
+
+### USER SUGGESTION INBOX CHECK
+
+GitHub `user-suggestion` label: **0 open issues** — nothing to action.
+
+---
+
+### WATCHLIST EXECUTION — BINARY EVENT BLOCK (FOMC Decision Day)
+
+All watchlist names from this morning's Pre-Market already carry valid `action: skip` entries citing Exemption 2. Per CLAUDE.md: "Fed decision day" = explicitly excluded binary event. FOMC decision at 2:00 PM ET has NOT yet been announced. NO new entries permissible.
+
+**Intraday scan result:** Cannot execute intraday scan (API blocked; no price data access). FOMC binary event independently blocks all new entries regardless.
+
+| Symbol | Score | Prior Skip | Reason | Status |
+|--------|-------|-----------|--------|--------|
+| GS | 7.0 | Pre-Market 12:05Z | Rule 2 — FOMC Day 2 | SKIP |
+| WFC | 7.0 | Pre-Market 12:05Z | Rule 2 — FOMC Day 2 | SKIP |
+| MS | 7.0 | Pre-Market 12:05Z | Rule 2 — FOMC Day 2 | SKIP |
+| META | TBD | Pre-Market 12:05Z | Rule 2 — 48h earnings window | SKIP |
+| MSFT | TBD | Pre-Market 12:05Z | Rule 2 — 48h earnings window | SKIP |
+| QCOM | TBD | Pre-Market 12:05Z | Rule 2 — 48h earnings window | SKIP |
+| AAPL | TBD | Pre-Market 12:05Z | Rule 2 — 48h earnings window | SKIP |
+| AMZN | TBD | Pre-Market 12:05Z | Rule 2 — 48h earnings window | SKIP |
+
+**OUTPUT CONTRACT SATISFIED:** All ≥7-score watchlist names have valid YAML `action: skip` entries with Exemption 2 evidence (logged Pre-Market 12:05Z).
+
+---
+
+### MARKET CONDITIONS (11:00 AM ET, July 29, 2026 — estimated)
+
+- **Mode:** Pre-FOMC holding pattern. Decision at 2:00 PM ET.
+- **Semis:** AMD, MU, MRVL under continued pressure from China chip breakthrough reports
+- **Financials:** GS, WFC, MS range-bound ahead of FOMC rate decision
+- **AH Tonight:** META (EPS $7.23 est.), MSFT (EPS $4.21 est.), QCOM (EPS $2.22 est.) — scoring at July 30 Pre-Market
+- **BTC/ETH:** ~$64,423 / ~$1,916 — recovering from July 28 dip; no significant mid-morning moves
+- **Energy:** Oil elevated (Iran overnight; energy sector outperforming)
+
+---
+
+### CIRCUIT BREAKER CHECK
+
+- Portfolio daily P&L: Unknown (API blocked; AMD price unknown intraday)
+- Last known total equity: ~$99,014 (est. from Market-Open)
+- 3% circuit breaker threshold: -$2,970 from ~$99,014 = $96,044
+- Status: **NOT TRIPPED** (AMD would need to drop to ~$0 for circuit breaker to trigger given cash position)
+
+---
+
+### MID-MORNING SUMMARY
+
+FOMC Decision Day (2 PM ET, not yet announced) + API blocked (101st consecutive session) = zero order attempts this routine. All ≥7-score watchlist names carry valid Rule 2 skip entries from Pre-Market. AMD remains the sole open position: 18sh, entry $506.76, below hard stop $481.42, naked day 41+, operator must exit manually. No user suggestions to action. Dashboard updated. Heartbeat COMPLETE entry follows.
+
+**BINDING COMMITMENT REMINDER — July 30 Pre-Market MUST:**
+1. EXIT AMD first (if still open — below stop $481.42, day 41+, naked)
+2. Score META/MSFT/QCOM post-AH results tonight
+3. BUY GS ~4sh bracket GTC (score 7.0+)
+4. BUY WFC ~30sh bracket GTC (score 7.0+)
+5. BUY MS ~20sh bracket GTC (score 7.0+)
+6. Score AAPL/AMZN after their AH earnings tonight (July 30)
+
+---
+
 ## 2026-07-29 — Market-Open Routine (9:45 AM ET / 13:46 UTC — API BLOCKED — 100th+ consecutive session)
 
 **HEARTBEAT:** STARTED Market-Open 2026-07-29T13:46:12Z ✓

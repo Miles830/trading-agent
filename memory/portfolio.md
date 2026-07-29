@@ -1,7 +1,7 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-29 (Wednesday) — MARKET-OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 100th+ consecutive blocked session). MARKET-OPEN ✅ COMPLETED. ⚠️ AMD CRITICAL: ~$465 est. at open, BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market is OPEN NOW). FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES today. All three financials (GS/WFC/MS) deferred to July 30 Pre-Market.**
+**2026-07-29 (Wednesday) — MID-MORNING (11:11 AM ET / 15:11 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 101st consecutive blocked session). MID-MORNING ✅ COMPLETED. ⚠️ AMD CRITICAL: ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market is OPEN). FOMC Decision at 2 PM ET (NOT YET ANNOUNCED) = binary event → NO NEW ENTRIES today. All three financials (GS/WFC/MS) + META/MSFT/QCOM/AAPL/AMZN deferred to July 30 Pre-Market. No user suggestions in inbox.**
 
 **JULY 29 MARKET-OPEN STATUS:** Alpaca API blocked 100th+ consecutive session. Pre-Market fired normally (12:05Z–12:14Z); no catch-up needed. FOMC Decision Day at 2 PM ET = binary event per CLAUDE.md → NO NEW POSITION ENTRIES. No MOO orders placed Pre-Market (API blocked); no fills to backfill. AMD naked stop remains critical — market is NOW OPEN, operator must act. Stop-loss audit: 1 open position (AMD), NAKED, API blocked = cannot place programmatically. All watchlist names (GS/WFC/MS) carry valid Rule 2 skip entries from Pre-Market.
 
