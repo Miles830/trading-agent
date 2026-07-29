@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-29T15:11:00Z",
-  "updated_by": "mid-morning",
+  "last_updated": "2026-07-29T16:35:00Z",
+  "updated_by": "midday",
   "portfolio": {
-    "total_equity": 99014,
+    "total_equity": 98942,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 91.5,
+    "cash_pct": 91.6,
     "buying_power": 181288,
-    "long_market_value": 8370,
+    "long_market_value": 8298,
     "short_market_value": 0.0,
-    "daily_pnl": null,
-    "daily_pnl_pct": null,
-    "total_return_pct": -0.99,
-    "spx_return_pct": 3.67,
-    "benchmark_gap_pct": -4.66,
+    "daily_pnl": -72,
+    "daily_pnl_pct": -0.07,
+    "total_return_pct": -1.06,
+    "spx_return_pct": 3.13,
+    "benchmark_gap_pct": -4.19,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 8370,
-      "active_pct": 8.5,
+      "active_value": 8298,
+      "active_pct": 8.4,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 91.5
+      "cash_pct": 91.6
     },
-    "note": "July 29 MID-MORNING (11:11 AM ET / 15:11Z). API BLOCKED HTTP 403 \u2014 101st consecutive session. FOMC Decision at 2 PM ET (NOT YET ANNOUNCED) = binary event \u2192 NO NEW ENTRIES. AMD ~$465 est., BELOW hard stop $481.42 \u2014 OPERATOR MUST EXIT 18sh on app.alpaca.markets. GS/WFC/MS/META/MSFT/QCOM/AAPL/AMZN all deferred to July 30."
+    "note": "July 29 MIDDAY (12:35 PM ET / 16:35Z). API BLOCKED HTTP 403 \u2014 102nd consecutive session. FOMC Decision at 2 PM ET (NOT YET ANNOUNCED) = binary event \u2192 NO NEW ENTRIES. AMD ~$461 est. (-9.03% from entry), BELOW hard stop $481.42 by ~$20 \u2014 OPERATOR MUST EXIT 18sh on app.alpaca.markets BEFORE 4 PM ET. S&P 500 ~7,425 (-0.05%). Defensives leading. GS/WFC/MS deferred to July 30 post-FOMC. META/MSFT/QCOM AH tonight \u2014 scoring at Daily Review."
   },
   "positions": [
     {
@@ -31,23 +31,27 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 465.0,
-      "pnl": -752.08,
-      "pnl_pct": -8.24,
+      "current_price": 461.0,
+      "pnl": -823.68,
+      "pnl_pct": -9.03,
       "stop_loss": null,
       "take_profit": 582.78,
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICAL: AMD ~$465 est. at market open (-8.24%+ from entry $506.76). BELOW hard floor stop $481.42. Position NAKED day 40+ (API blocked 100th+ session). China chip news driving semis lower. OPERATOR MUST EXIT 18sh at market on app.alpaca.markets IMMEDIATELY. Earnings Aug 4 AH."
+      "note": "CRITICAL: AMD ~$461 est. midday (-9.03% from entry $506.76). BELOW hard floor stop $481.42 by ~$20. Position NAKED day 42+ (API blocked 102nd session). China DUV/CXMT semi competition + CRWV overspending concerns. AMD gaining slightly on day (Benzinga: gaining Wednesday) but still well below stop. OPERATOR MUST EXIT 18sh at MARKET on app.alpaca.markets BEFORE 4 PM ET. Earnings Aug 4 AH; window opens Aug 2; 3 sessions to forced exit."
     }
   ],
   "market": {
-    "mode": "wait-and-see",
-    "spx": 7465,
+    "mode": "risk-off-pre-fomc",
+    "spx": 7425,
     "btc": 64423,
     "eth": 1916,
-    "macro_notes_md": "Pre-FOMC holding pattern. Fed decision at 2:00 PM ET \u2014 hold expected (64% prob), hike 30% prob. Chair Warsh hawkish. Iran attack lifted oil (energy outperforming). China chip breakthrough keeping semis under pressure (AMD ~-8% from prior close). Triple AH tonight: META (EPS $7.23 est.), MSFT (EPS $4.21 est.), QCOM (EPS $2.22 est.). BTC ~$64,423 / ETH ~$1,916. S&P ~+0.2%, Nasdaq ~+0.3% vs prior close."
+    "macro_notes_md": "Pre-FOMC holding pattern \u2014 decision at 2:00 PM ET not yet announced. CME FedWatch 64% hold at 3.5%-3.75%. Chair Warsh presser 2:30 PM ET. Updated projections hawkish (inflation 4.2%, median dot higher). Iran attack on US forces overnight \u2192 Brent crude >$90. Risk-off tone. Defensives leading: XLV ATH, XLP +2%, XLC +2%, XLB +2%. Semis (AMD, MU, MRVL) under continued China DUV/CXMT competitive pressure. Triple AH tonight: META (EPS $7.18-$7.24 est.), MSFT (EPS $4.22-$4.24 est., Rev $87.5B+), QCOM (EPS $2.22 est.).",
+    "sectors": {
+      "leading": ["XLV (Healthcare - ATH)", "XLP (Consumer Staples +2%)", "XLC (Communications +2%)", "XLB (Materials +2%)", "XLE (Energy - Iran/oil)"],
+      "lagging": ["SMH (Semis - China chip)", "AMD (-9% from entry)", "MU (China chip)", "MRVL (China chip)"]
+    }
   },
   "watchlist": [
     {
@@ -118,6 +122,12 @@
       "last_run": "2026-07-29T15:11:00Z",
       "next_run": "2026-07-30T15:00:00Z",
       "last_summary": "API BLOCKED 101st session. FOMC binary event = no new entries. Both predecessors (Pre-Market + Market-Open) confirmed fired. AMD naked stop day 41+ \u2014 operator must exit on app.alpaca.markets. 0 user suggestions. All watchlist names carry valid Rule 2 skip entries."
+    },
+    "midday": {
+      "status": "completed",
+      "last_run": "2026-07-29T16:35:00Z",
+      "next_run": "2026-07-30T16:30:00Z",
+      "last_summary": "API BLOCKED 102nd session. FOMC at 2 PM ET not yet announced \u2014 binary event blocks all entries. All predecessors confirmed fired (Pre-Market, Market-Open, Mid-Morning all completed). AMD ~$461 est., BELOW hard stop $481.42 by ~$20, naked day 42+. Market: S&P 500 ~7,425 (-0.05%), defensives leading, semis weak, oil >$90 (Iran). No closes, no trail adjustments (API blocked). Overnight: AMD must exit (operator manual). GS/WFC/MS enter July 30 post-FOMC. META/MSFT/QCOM scoring at Daily Review after AH tonight."
     }
   },
   "trades": [],

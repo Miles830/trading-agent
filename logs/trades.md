@@ -4,6 +4,180 @@
 
 ---
 
+## 2026-07-29 — Midday Routine (12:30 PM ET / 16:35 UTC — API BLOCKED — 102nd consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-07-29T16:35:11Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **102nd consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Decision at 2:00 PM ET TODAY (decision not yet announced as of this routine). Binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today.**
+**Time (ET):** ~12:35 PM ET — Midday window
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market STARTED: 2026-07-29T12:05:09Z ✓ / COMPLETED 2026-07-29T12:14:25Z ✓
+- Market-Open STARTED: 2026-07-29T13:46:12Z ✓ / COMPLETED 2026-07-29T13:50:11Z ✓
+- Mid-Morning STARTED: 2026-07-29T15:11:06Z ✓ / COMPLETED 2026-07-29T15:14:07Z ✓
+- **Result: All three predecessors fired normally today. No catch-up required.**
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial, 102nd session)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD naked position (Day 42+):**
+- Entry avg cost: $506.76 | Hard stop floor (5% below entry): **$481.42**
+- Midday price est.: **~$461** (Benzinga: "AMD Stock Is Gaining Wednesday" — up from ~$450 July 28 low; earlier at $461.13)
+- AMD remains **~$20 BELOW hard stop floor** at midday estimate
+- AMD full day range (est.): $450–$465 based on search data; Wedbush PT $600 intact
+- China DUV/CXMT competitive overhang weighing on entire semi sector
+- Stop order status: **NAKED — no stop resting at Alpaca (102nd consecutive session)**
+- API blocked = cannot place stop programmatically
+- **GUARDRAIL VIOLATION ACTIVE: DAY 42+**
+- **OPERATOR MANUAL ACTION REQUIRED: EXIT 18sh AMD at MARKET on app.alpaca.markets (market still open through 4 PM ET)**
+
+---
+
+### MARKET CONDITIONS (12:30 PM ET, July 29, 2026 — web-sourced)
+
+- **S&P 500:** ~7,425 (−0.05% from prior close 7,428.78). Pre-FOMC holding pattern.
+- **Mode:** Risk-off skew. Iran attack on US forces overnight → oil spiking; defensives leading.
+- **Brent crude:** >$90 — energy sector outperforming, inflation concern re-emerging.
+- **Sector rotation:** XLV (Healthcare) — fresh ATH. XLP (Consumer Staples) +2%. XLC, XLB +~2%. Semis (SMH, AMD, MU, MRVL) under continued China chip pressure.
+- **FOMC:** Decision at 2:00 PM ET. CME FedWatch: 64% hold at 3.5%–3.75%. Chair Warsh presser at 2:30 PM ET. June projections already hawkish (inflation 4.2%, median dot higher). Market braced for hold-with-hawkish-tone outcome.
+- **AH Earnings today (July 29):** META (EPS $7.18–$7.24 est.), MSFT (EPS $4.22–$4.24 est., Revenue $87.5B+), QCOM (EPS $2.22 est.) — ALL IN 48h BINARY WINDOWS, all scoring at Daily Review / July 30 Pre-Market.
+- **BTC/ETH:** ~$64,423 / ~$1,916 (pre-market est. from portfolio.md; no midday API data). Crypto steady pre-FOMC.
+- **AMD specific:** +1%–2% intraday recovery attempt from $450 July 28 low. Still well below $481.42 hard stop floor. China DUV/CXMT competitive threat ongoing.
+
+---
+
+### WATCHLIST EXECUTION CHECK — BINARY EVENT BLOCK
+
+All watchlist names carry valid `action: skip` entries from Pre-Market (12:05Z). All three named exemptions in CLAUDE.md active simultaneously for this routine:
+
+| Symbol | Score | Exemption # | Reason | Evidence |
+|--------|-------|-------------|--------|----------|
+| GS | 7.0 | Rule 2 | FOMC Decision Day (binary event) | FOMC at 2 PM ET, not yet announced |
+| WFC | 7.0 | Rule 2 | FOMC Decision Day (binary event) | FOMC at 2 PM ET, not yet announced |
+| MS | 7.0 | Rule 2 | FOMC Decision Day (binary event) | FOMC at 2 PM ET, not yet announced |
+| META | TBD | Rule 2 | 48h earnings window (reports AH today) | Earnings call 4:30 PM ET tonight |
+| MSFT | TBD | Rule 2 | 48h earnings window (reports AH today) | Earnings call 2:30 PM PT / 5:30 PM ET tonight |
+| QCOM | TBD | Rule 2 | 48h earnings window (reports AH today) | Earnings week July 26–Aug 1 |
+| AAPL | TBD | Rule 2 | 48h earnings window (reports AH July 30) | Window opened July 28 ~4 PM ET |
+| AMZN | TBD | Rule 2 | 48h earnings window (reports AH July 30) | Window opened July 28 ~4 PM ET |
+
+**Intraday scan:** Cannot execute (API blocked; no price/scanner data). FOMC binary event independently blocks all new entries regardless of scan results.
+**Circuit breaker:** Daily P&L est. ~-$72 (AMD -$4/sh × 18sh vs $465 pre-market open). -0.07% — NOT TRIPPED (threshold -3%).
+**OUTPUT CONTRACT SATISFIED (B):** All ≥7-score watchlist names have valid Rule 2 skip entries (logged Pre-Market 12:05Z; confirmed/re-logged here).
+
+---
+
+### YAML DECISION LOG
+
+```yaml
+---
+ts: 2026-07-29T16:35:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Financial sector rotation play; post-FOMC entry deferred to July 30
+size_pct: 0.0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2 — FOMC Decision Day binary event. Decision at 2 PM ET not yet announced. Entry deferred to July 30 Pre-Market. Entry will be re-priced at that time per binding commitments."
+---
+ts: 2026-07-29T16:35:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Financial sector rotation play; post-FOMC entry deferred to July 30
+size_pct: 0.0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2 — FOMC Decision Day binary event. Decision at 2 PM ET not yet announced. Entry deferred to July 30 Pre-Market."
+---
+ts: 2026-07-29T16:35:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Financial sector rotation play; post-FOMC entry deferred to July 30
+size_pct: 0.0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "Exemption 2 — FOMC Decision Day binary event. Decision at 2 PM ET not yet announced. Entry deferred to July 30 Pre-Market."
+---
+```
+
+---
+
+### POSITION PERFORMANCE UPDATE
+
+| Symbol | Bucket | Shares | Avg Cost | Est. Price | Est. P&L | Stop Floor | Status |
+|--------|--------|--------|----------|-----------|----------|-----------|--------|
+| AMD | active | 18 | $506.76 | ~$461 | -$823.68 (-9.03%) | $481.42 | NAKED ❌ BELOW STOP |
+
+**Total unrealized: ~-$823.68**
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+- **AMD:** Operator must exit at market on app.alpaca.markets before close (4 PM ET). If not exited today, position remains naked overnight with Aug 4 earnings window opening Aug 2 (3 sessions away). Daily Review (4:30 PM ET) will score META/MSFT/QCOM post-AH for July 30 entry and will provide final AMD status.
+- **GS/WFC/MS:** Enter at July 30 Pre-Market (post-FOMC; post-META/MSFT/QCOM AH tonight). Macro picture clears significantly after 4:30 PM ET tonight.
+- **New positions to hold overnight:** None. All new entries blocked today (FOMC + 5 earnings windows active).
+
+---
+
+### MIDDAY SUMMARY
+
+FOMC Decision Day (announcement at 2 PM ET, not yet out) + API blocked (102nd consecutive session) = zero order attempts this routine. All ≥7-score watchlist names carry valid Rule 2 FOMC/earnings-window skip entries confirmed at this routine. AMD (18sh, -9.03%, below hard stop $481.42 by ~$20) remains naked — operator must exit manually on app.alpaca.markets before market close. No intraday scan possible (API blocked). Circuit breaker not tripped (daily P&L ~-0.07%). Post-FOMC plan remains GS/WFC/MS bracket-GTC entries at July 30 Pre-Market.
+
+---
+
 ## 2026-07-29 — Mid-Morning Routine (11:00 AM ET / 15:11 UTC — API BLOCKED — 101st consecutive session)
 
 **HEARTBEAT:** STARTED Mid-Morning 2026-07-29T15:11:06Z ✓
