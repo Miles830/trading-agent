@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-29T12:05:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-07-29T13:46:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99014,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 91.5
     },
-    "note": "July 29 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED HTTP 403 — 99th+ consecutive session. FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 pre-market, BELOW hard stop $481.42. OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets. GS/WFC/MS deferred to July 30 post-FOMC."
+    "note": "July 29 MARKET-OPEN (9:46 AM ET / 13:46Z). API BLOCKED HTTP 403 \u2014 100th+ consecutive session. FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 est., BELOW hard stop $481.42 \u2014 OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY. GS/WFC/MS deferred to July 30 post-FOMC."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICAL: AMD ~$465 pre-market (-8.24% from entry $506.76). BELOW hard floor stop $481.42. Position NAKED day 40+ (API blocked 99th+ session). China chip news driving semis lower. OPERATOR MUST EXIT 18sh at market on app.alpaca.markets IMMEDIATELY. Earnings Aug 4 AH."
+      "note": "CRITICAL: AMD ~$465 est. at market open (-8.24%+ from entry $506.76). BELOW hard floor stop $481.42. Position NAKED day 40+ (API blocked 100th+ session). China chip news driving semis lower. OPERATOR MUST EXIT 18sh at market on app.alpaca.markets IMMEDIATELY. Earnings Aug 4 AH."
     }
   ],
   "market": {
@@ -47,23 +47,71 @@
     "spx": 7465,
     "btc": 64423,
     "eth": 1916,
-    "macro_notes_md": "FOMC Decision Day (July 29, 2 PM ET) — hold expected at 3.50-3.75% (64% prob), hike 30% prob. Chair Warsh hawkish. Iran attack lifted oil. China chip breakthrough hitting semis (AMD -8%). Triple AH: META, MSFT, QCOM. S&P +0.2%, Nasdaq +0.3%, Dow -0.2%. BTC $64,423 (+1.62%)."
+    "macro_notes_md": "FOMC Decision at 2:00 PM ET today \u2014 hold expected at 3.50-3.75% (64% prob), hike 30% prob. Chair Warsh hawkish. Iran attack lifted oil. China chip breakthrough hitting semis (AMD ~-8%). Triple AH tonight: META, MSFT, QCOM. S&P futures +0.2%, Nasdaq +0.3%. BTC $64,423 (+1.62%). AMD CRITICAL: ~$465 pre-market, below hard stop $481.42."
   },
   "watchlist": [
-    {"symbol": "AMD", "bucket": "active", "score": "EXIT", "action": "EXIT operator manual", "notes": "Below hard stop $481.42. Day 40+ naked. Exit before Aug 2 earnings window."},
-    {"symbol": "GS", "bucket": "active", "score": 7.0, "action": "BUY July 30 binding", "notes": "Deferred FOMC today. Q2 blowout. 4sh bracket GTC July 30."},
-    {"symbol": "WFC", "bucket": "active", "score": 7.0, "action": "BUY July 30 binding", "notes": "Deferred FOMC today. Q2 EPS +16.3% beat. 30sh bracket GTC July 30."},
-    {"symbol": "MS", "bucket": "active", "score": 7.0, "action": "BUY July 30 binding", "notes": "Deferred FOMC today. Strong Q2, crypto ETPs. 20sh bracket GTC July 30."},
-    {"symbol": "META", "bucket": "active", "score": "TBD", "action": "SCORE July 30 after AH", "notes": "EPS $7.23 est. 7% swing expected. Reports AH tonight."},
-    {"symbol": "MSFT", "bucket": "active", "score": "TBD", "action": "SCORE July 30 after AH", "notes": "EPS $4.21 est. Azure cloud key. Reports AH tonight."},
-    {"symbol": "QCOM", "bucket": "active", "score": "TBD", "action": "SCORE July 30 after AH", "notes": "PT $221 vs $167 (+32%). 9.34% swing expected. 90.5% beat prob. Reports AH tonight."}
+    {
+      "symbol": "AMD",
+      "bucket": "active",
+      "score": "EXIT",
+      "action": "EXIT operator manual",
+      "notes": "Below hard stop $481.42. Day 40+ naked. Exit before Aug 2 earnings window."
+    },
+    {
+      "symbol": "GS",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "BUY July 30 binding",
+      "notes": "Deferred FOMC today. Q2 blowout. 4sh bracket GTC July 30."
+    },
+    {
+      "symbol": "WFC",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "BUY July 30 binding",
+      "notes": "Deferred FOMC today. Q2 EPS +16.3% beat. 30sh bracket GTC July 30."
+    },
+    {
+      "symbol": "MS",
+      "bucket": "active",
+      "score": 7.0,
+      "action": "BUY July 30 binding",
+      "notes": "Deferred FOMC today. Strong Q2, crypto ETPs. 20sh bracket GTC July 30."
+    },
+    {
+      "symbol": "META",
+      "bucket": "active",
+      "score": "TBD",
+      "action": "SCORE July 30 after AH",
+      "notes": "EPS $7.23 est. 7% swing expected. Reports AH tonight."
+    },
+    {
+      "symbol": "MSFT",
+      "bucket": "active",
+      "score": "TBD",
+      "action": "SCORE July 30 after AH",
+      "notes": "EPS $4.21 est. Azure cloud key. Reports AH tonight."
+    },
+    {
+      "symbol": "QCOM",
+      "bucket": "active",
+      "score": "TBD",
+      "action": "SCORE July 30 after AH",
+      "notes": "PT $221 vs $167 (+32%). 9.34% swing expected. 90.5% beat prob. Reports AH tonight."
+    }
   ],
   "routines": {
     "pre-market": {
       "status": "completed",
       "last_run": "2026-07-29T12:05:00Z",
       "next_run": "2026-07-30T12:00:00Z",
-      "last_summary": "FOMC Day 2 + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 BELOW hard stop $481.42 — CRITICAL push notification sent 12:05Z. GS/WFC/MS deferred to July 30. API blocked 99th+ session."
+      "last_summary": "FOMC Day 2 + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 BELOW hard stop $481.42 \u2014 CRITICAL push notification sent 12:05Z. GS/WFC/MS deferred to July 30. API blocked 99th+ session."
+    },
+    "market-open": {
+      "status": "completed",
+      "last_run": "2026-07-29T13:46:00Z",
+      "next_run": "2026-07-30T13:45:00Z",
+      "last_summary": "API BLOCKED 100th+ session. FOMC Day 2 + earnings windows = no new entries. No MOO fills to backfill (none placed Pre-Market). AMD naked stop remains critical \u2014 operator must exit manually on app.alpaca.markets. GS/WFC/MS deferred to July 30."
     }
   },
   "trades": [],

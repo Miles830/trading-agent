@@ -1,13 +1,13 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-29 (Wednesday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 99th+ consecutive blocked session). PRE-MARKET ✅ COMPLETED. ⚠️ AMD CRITICAL: ~$465 pre-market, BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY at market open (9:30 AM ET). FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES today. All three financials (GS/WFC/MS) deferred to July 30 Pre-Market.**
+**2026-07-29 (Wednesday) — MARKET-OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 100th+ consecutive blocked session). MARKET-OPEN ✅ COMPLETED. ⚠️ AMD CRITICAL: ~$465 est. at open, BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market is OPEN NOW). FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES today. All three financials (GS/WFC/MS) deferred to July 30 Pre-Market.**
 
-**JULY 29 PRE-MARKET STATUS:** Alpaca API blocked 99th+ consecutive session. FOMC Decision Day (July 29, 2 PM ET) = binary event per CLAUDE.md → NO NEW POSITION ENTRIES. META/MSFT/QCOM earnings AH tonight (48h windows opened July 27). AAPL/AMZN earnings AH July 30 (48h windows opened July 28). GS/WFC/MS skipped again citing FOMC exemption — BINDING COMMITMENT: July 30 Pre-Market MUST enter. **AMD CRITICAL: Pre-market ~$465, down ~8.24% from entry $506.76 — BELOW hard floor stop $481.42 by ~$16. Push notification sent to operator at 12:05Z. Operator MUST exit 18sh AMD at market open TODAY.**
+**JULY 29 MARKET-OPEN STATUS:** Alpaca API blocked 100th+ consecutive session. Pre-Market fired normally (12:05Z–12:14Z); no catch-up needed. FOMC Decision Day at 2 PM ET = binary event per CLAUDE.md → NO NEW POSITION ENTRIES. No MOO orders placed Pre-Market (API blocked); no fills to backfill. AMD naked stop remains critical — market is NOW OPEN, operator must act. Stop-loss audit: 1 open position (AMD), NAKED, API blocked = cannot place programmatically. All watchlist names (GS/WFC/MS) carry valid Rule 2 skip entries from Pre-Market.
 
-**JULY 29 HEARTBEAT AUDIT (as of Pre-Market 12:05Z):**
-- ✓ Pre-Market: STARTED 2026-07-29T12:05:09Z ✓
-- ✗ Market-Open: Not yet (9:30 AM ET)
+**JULY 29 HEARTBEAT AUDIT (as of Market-Open 13:46Z):**
+- ✓ Pre-Market: STARTED 2026-07-29T12:05:09Z / COMPLETED 2026-07-29T12:14:25Z ✓
+- ✓ Market-Open: STARTED 2026-07-29T13:46:12Z ✓ (this routine)
 - July 28 summary: Pre-Market + Market-Open + Midday silently failed; Mid-Morning + Afternoon completed
 
 **PORTFOLIO STATE (July 29, 2026 — Pre-Market 8:05 AM ET):**

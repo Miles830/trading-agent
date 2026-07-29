@@ -4,6 +4,65 @@
 
 ---
 
+## 2026-07-29 — Market-Open Routine (9:45 AM ET / 13:46 UTC — API BLOCKED — 100th+ consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-29T13:46:12Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443` and `data.alpaca.markets:443`) — **100th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Day 2 of 2 — Decision at 2:00 PM ET today. Binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today.**
+**Time (ET):** ~9:46 AM ET — Market-Open window
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market STARTED: 2026-07-29T12:05:09Z ✓
+- Pre-Market COMPLETED: 2026-07-29T12:14:25Z ✓
+- **Result: Pre-Market fired successfully. No catch-up required.**
+
+---
+
+### STOP-LOSS BACKFILL — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial, 100th+ session)
+# GET /v2/positions → HTTP 403
+```
+
+**No MOO orders were placed Pre-Market** (API blocked; no fills to backfill).
+
+**AMD naked position:** Entry $506.76, hard stop $481.42, estimated current price ~$465–$475 (pre-market ~$465; market may have moved at open). Position remains NAKED — no stop resting at Alpaca. API blocked = cannot place stop programmatically. Operator manual action required.
+
+**Stop-loss audit result: 1 position (AMD) — NAKED. Stop CANNOT be placed this session (API blocked). ⚠️ GUARDRAIL VIOLATION CONTINUES — day 40+.**
+
+---
+
+### WATCHLIST EXECUTION — BINARY EVENT BLOCK (FOMC Day 2)
+
+All ≥7-score watchlist names from Pre-Market already carry valid `action: skip` entries citing Exemption 2 (binary event). No re-scoring required by Market Open playbook when Pre-Market fired normally.
+
+- **GS** (score 7.0): Pre-Market skip logged at 12:05Z — FOMC binary event. No action.
+- **WFC** (score 7.0): Pre-Market skip logged at 12:05Z — FOMC binary event. No action.
+- **MS** (score 7.0): Pre-Market skip logged at 12:05Z — FOMC binary event. No action.
+- **META/MSFT/QCOM/AAPL/AMZN**: 48h earnings windows active. No action.
+
+**Market Open adds no new skip entries** — all already documented by Pre-Market.
+
+---
+
+### MARKET OPEN SUMMARY
+
+FOMC Day 2 + triple AH earnings tonight (META/MSFT/QCOM) = no new entries per Rule 2 binary event. No MOO fills to backfill (none placed Pre-Market). AMD naked stop remains the sole open issue — API blockage prevents resolution. All ≥7-score watchlist names deferred to July 30 Post-FOMC as committed. Monitoring only.
+
+**BINDING COMMITMENT REMINDER — July 30 Pre-Market MUST (per prior routine commitments):**
+1. EXIT AMD first (below stop $481.42, day 40+ naked, earnings Aug 4)
+2. BUY GS ~4sh bracket GTC
+3. BUY WFC ~30sh bracket GTC
+4. BUY MS ~20sh bracket GTC
+5. Score META/MSFT/QCOM post-AH results (from tonight)
+
+---
+
 ## 2026-07-29 — Pre-Market Routine (8:00 AM ET / 12:05 UTC — API BLOCKED — 99th+ consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-29T12:05:09Z ✓
