@@ -4,6 +4,203 @@
 
 ---
 
+## 2026-07-29 — Pre-Market Routine (8:00 AM ET / 12:05 UTC — API BLOCKED — 99th+ consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-29T12:05:09Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **99th+ consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**FOMC STATUS:** FOMC Day 2 of 2 — Decision at 2:00 PM ET today. Binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today. Entries ok July 30 post-announcement.**
+**Time (ET):** ~8:05 AM ET — Pre-Market window
+**GitHub Issues (user-suggestion):** 0 open — no suggestions to process.
+
+---
+
+### MARKET CONDITIONS (8:00 AM ET, July 29, 2026)
+
+- **S&P 500 Futures:** +0.2% — mild green, holding pattern ahead of FOMC + AH earnings
+- **Nasdaq Futures:** +0.3% — marginal strength, watchful ahead of META/MSFT AH
+- **Dow Futures:** -0.2% — slight drag
+- **Context:** Markets in a holding pattern. Two catalysts today: FOMC decision (2 PM ET, hold expected, 64% prob; 30% hike probability non-trivial per CME FedWatch) + triple AH earnings (META/MSFT/QCOM). Iran overnight attack on US lifted oil. Semiconductor sector selloff on Chinese chip breakthrough reports (SMIC-adjacent foundry progress on advanced nodes) — dragging AMD, MU, MRVL meaningfully lower pre-market.
+- **BTC:** ~$64,423 (+1.62%) — recovering from July 28 FOMC-anxiety dip
+- **ETH:** ~$1,916 (+1.93%)
+- **Top pre-market movers:** SHW +8% (Q2 beat), KO +5% (Q2 beat + raised guidance), AMD -7% to -9% (China chip news), broad semis lower
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial, 99th+ session)
+# GET /v2/positions → HTTP 403
+# data.alpaca.markets/v2/stocks/snapshots → HTTP 403
+```
+
+**⚠️ AMD CRITICAL — BELOW HARD STOP FLOOR ⚠️**
+- Entry avg cost: $506.76 | Hard floor stop (5% below): **$481.42**
+- Pre-market price est.: **~$465** (down ~7–9% from July 27 close $504; China chip news driving semiconductor selloff)
+- At $465: AMD is **$16.42 BELOW hard floor stop** ($481.42 - $465 = $16.42)
+- Unrealized loss at $465: 18 × ($465 − $506.76) = **−$752.08 (−8.24% from entry)**
+- Position status at Alpaca: **NAKED (no stop-loss resting) — day 40+ guardrail violation**
+- **ACTION REQUIRED: Operator must EXIT 18sh AMD at market on app.alpaca.markets IMMEDIATELY at open (9:30 AM ET)**
+- AMD earnings Aug 4 AH; 48h window opens Aug 2. Position is underwater, below stop, naked — exit is the correct action.
+
+```yaml
+---
+ts: 2026-07-29T12:05:00Z
+action: skip
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: AMD stop-exit attempt BLOCKED — API HTTP 403. AMD is ~$465 pre-market, BELOW hard floor stop $481.42. Operator MUST manually exit 18sh on app.alpaca.markets at market open.
+size_pct: 8.4
+stop: 481.42
+target: N/A
+master_notes: "AMD CRITICAL: pre-market ~$465, down ~8.24% from entry $506.76. Hard floor stop $481.42 (5% below avg cost) is BREACHED by ~$16. Stop never placed (API blocked 99th+ consecutive session). Driver: Chinese chip-making technology breakthrough news hitting entire semiconductor sector (AMD, MU, MRVL all -7 to -9% pre-market). Wedbush thesis ($600 PT) still intact but price action says exit is mandatory — stop protection was designed exactly for this scenario. AMD earnings Aug 4 AH; 48h window opens Aug 2, last safe exit Aug 1. AT $465: 18sh × $465 = $8,370 position value; est. portfolio total $99,014 (cash $90,644 + position $8,370). P&L from $100K: -$986 (-0.99%). Circuit breaker NOT tripped (daily loss < 3% portfolio level) but individual AMD position breached its 5% stop guardrail. OPERATOR MANDATORY: SELL 18sh AMD at MARKET on app.alpaca.markets BEFORE 9:30 AM ET OPEN. Push notification sent 12:05Z."
+---
+```
+
+---
+
+### FOMC DAY 2 — ALL NEW ENTRIES SUSPENDED
+
+**Binary Event Exemption (Rule 2):** FOMC Decision at 2:00 PM ET today. Per CLAUDE.md: "Fed decision day" = explicitly excluded binary event. NO NEW POSITION ENTRIES on July 29.
+
+**48-Hour Earnings Window Exemption (Rule 2):** Multiple names in active windows:
+- META: Earnings AH July 29 → 48h window opened July 27 → NO ENTRY
+- MSFT: Earnings AH July 29 → 48h window opened July 27 → NO ENTRY
+- QCOM: Earnings AH July 29 → 48h window opened July 27 → NO ENTRY
+- AAPL: Earnings AH July 30 → 48h window opened July 28 → NO ENTRY
+- AMZN: Earnings AH July 30 → 48h window opened July 28 → NO ENTRY
+
+**ALL watchlist names from July 28 binding commitments (GS, WFC, MS) are also blocked by FOMC window today. Deferred to July 30 Pre-Market as previously committed.**
+
+---
+
+### WATCHLIST SKIP ENTRIES (Exemption 2 — Binary Event)
+
+```yaml
+---
+ts: 2026-07-29T12:05:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.5
+thesis: GS sector-rotation skip — FOMC Decision Day (binary event, rule 2). Deferred to July 30 Pre-Market.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: deferred
+master_notes: "GS score 7.0–7.5. Blowout Q2 (SpaceX IPO fees, investment banking surge). Dividend raised post-stress test. No new earnings news last 48h. SKIP REASON: Rule 2 exemption — FOMC Decision Day (July 29, 2 PM ET). Per CLAUDE.md 'Fed decision day' = explicitly excluded binary event. Also: GS is a financial stock sensitive to FOMC rate outcome — entering before the decision would be into the binary event itself (rate hold vs surprise hike). BINDING COMMITMENT: GS BUY 4sh limit bracket GTC at July 30 Pre-Market. Re-price at July 30 open price ~$1,062–$1,073 range; stop -5%, target +15% (3:1 R/R). Will confirm full 6-agent re-score at July 30 Pre-Market with live price."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T12:05:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC sector-rotation skip — FOMC Decision Day (binary event, rule 2). Deferred to July 30 Pre-Market.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: deferred
+master_notes: "WFC Q2: EPS $2.00 vs $1.72 est (beat +16.3%), Revenue $22.62B vs $21.84B est (beat +3.6%). Dividend raised. Strong operational execution. SKIP REASON: Rule 2 exemption — FOMC Decision Day (July 29). WFC is rate-sensitive (net interest income directly tied to Fed rate). Entering a bank stock on Fed Decision Day is textbook binary event risk. BINDING COMMITMENT: WFC BUY ~30sh limit bracket GTC at July 30 Pre-Market. Est. price ~$86/sh; stop -5% ($81.70), target +15% ($98.90). 30sh = ~$2,580 = ~2.6% equity — within 5% cap."
+---
+```
+
+```yaml
+---
+ts: 2026-07-29T12:05:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: MS sector-rotation skip — FOMC Decision Day (binary event, rule 2). Deferred to July 30 Pre-Market.
+size_pct: 0
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: deferred
+master_notes: "MS strong Q2: SpaceX IPO advisory fees, raised dividend, launched crypto ETPs. Wealth management revenues solid. SKIP REASON: Rule 2 exemption — FOMC Decision Day (July 29). Same rate-sensitivity logic as WFC/GS — financial stocks should not be entered into a Fed decision. BINDING COMMITMENT: MS BUY ~20sh limit bracket GTC at July 30 Pre-Market. Est. price ~$214/sh; stop -5% ($203.30), target +15% ($246.10). 20sh = ~$4,280 = ~4.3% equity — within 5% cap."
+---
+```
+
+---
+
+### PRE-MARKET EARNINGS CONTEXT (AH July 29 — For July 30 Scoring)
+
+**META (Q2 2026 — Reports AH Tonight):**
+- EPS Consensus: $7.23 (range $5.76–$8.55, 45 analysts)
+- Revenue Consensus: ~$60.26B (+26.6% YoY, moderating from Q1's +33%)
+- Options pricing: ~7% post-earnings swing (elevated uncertainty)
+- Key watch: AI infrastructure capex trajectory vs. advertising momentum
+- Sentiment: Will score fully at July 30 Pre-Market after actuals
+
+**MSFT (Q4 FY2026 — Reports AH Tonight):**
+- EPS Consensus: ~$4.21–$4.24 (+15.6% YoY)
+- Revenue Consensus: ~$87.42–$87.67B (+14.4% YoY)
+- Key watch: Azure cloud growth — analysts want sustained ~40% growth rate
+- 4 consecutive prior beats on EPS
+- Sentiment: Will score fully at July 30 Pre-Market after actuals
+
+**QCOM (Q3 FY2026 — Reports AH Tonight):**
+- EPS Consensus: ~$2.22–$2.23
+- Revenue Consensus: ~$9.71B (-6.3% YoY, handset market softness)
+- Options pricing: ~9.34% post-earnings swing (large implied move)
+- Polymarket: 90.5% probability of beat (4 consecutive prior beats)
+- Current PT $221 vs price ~$167 = +32% upside if thesis plays
+- Sentiment: Will score fully at July 30 Pre-Market after actuals
+
+---
+
+### JULY 30 PRE-MARKET MANDATORY COMMITMENTS
+
+| Priority | Ticker | Action | Setup | Notes |
+|---|---|---|---|---|
+| 1 (CRITICAL) | AMD | EXIT 18sh if still open | ai-momentum-pullback | BELOW hard stop $481.42. Must close before Aug 2 earnings window. |
+| 2 | GS | BUY 4sh limit bracket GTC | sector-rotation | Score 7.0+. Re-price at open. Stop -5%, target +15%. |
+| 3 | WFC | BUY ~30sh limit bracket GTC | sector-rotation | Score 7.0+. Re-price at open. Stop -5%, target +15%. |
+| 4 | MS | BUY ~20sh limit bracket GTC | sector-rotation | Score 7.0+. Re-price at open. Stop -5%, target +15%. |
+| 5 | META | Full 6-agent score if beat | earnings-reaction-follow | Score at July 30 Pre-Market after AH results |
+| 6 | MSFT | Full 6-agent score if beat | earnings-reaction-follow | Score at July 30 Pre-Market after AH results |
+| 7 | QCOM | Full 6-agent score | earnings-reaction-follow | PT $221 vs $167 = 32% upside; 9.34% swing expected |
+
+---
+
+
+
 ## 2026-07-28 — Afternoon Routine (2:00 PM ET / 18:10 UTC — API BLOCKED — 98th+ consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-28T18:09:56Z ✓

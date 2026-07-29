@@ -1,7 +1,82 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-28 (Tuesday) — AFTERNOON (2:10 PM ET / 18:10 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 98th+ consecutive blocked session). AFTERNOON ✅ COMPLETED (FOMC Day 1 — all new entries suspended).**
+**2026-07-29 (Wednesday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 99th+ consecutive blocked session). PRE-MARKET ✅ COMPLETED. ⚠️ AMD CRITICAL: ~$465 pre-market, BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY at market open (9:30 AM ET). FOMC Day 2 (decision 2 PM ET) + META/MSFT/QCOM AH earnings = NO NEW ENTRIES today. All three financials (GS/WFC/MS) deferred to July 30 Pre-Market.**
+
+**JULY 29 PRE-MARKET STATUS:** Alpaca API blocked 99th+ consecutive session. FOMC Decision Day (July 29, 2 PM ET) = binary event per CLAUDE.md → NO NEW POSITION ENTRIES. META/MSFT/QCOM earnings AH tonight (48h windows opened July 27). AAPL/AMZN earnings AH July 30 (48h windows opened July 28). GS/WFC/MS skipped again citing FOMC exemption — BINDING COMMITMENT: July 30 Pre-Market MUST enter. **AMD CRITICAL: Pre-market ~$465, down ~8.24% from entry $506.76 — BELOW hard floor stop $481.42 by ~$16. Push notification sent to operator at 12:05Z. Operator MUST exit 18sh AMD at market open TODAY.**
+
+**JULY 29 HEARTBEAT AUDIT (as of Pre-Market 12:05Z):**
+- ✓ Pre-Market: STARTED 2026-07-29T12:05:09Z ✓
+- ✗ Market-Open: Not yet (9:30 AM ET)
+- July 28 summary: Pre-Market + Market-Open + Midday silently failed; Mid-Morning + Afternoon completed
+
+**PORTFOLIO STATE (July 29, 2026 — Pre-Market 8:05 AM ET):**
+- Cash: ~$90,644 (91.5% est.) — last known; API blocked
+- AMD: 18sh × ~$465 est. = ~$8,370 (8.5% est.) — over 5% cap, naked (no stop), BELOW HARD STOP FLOOR, Day 40+ post-fill
+- Total equity est.: ~$99,014
+- P&L vs $100K initial: -$986 (-0.99%) est.
+- AMD unrealized at $465: 18 × ($465 − $506.76) = **-$752.08 (-8.24%)** — BELOW 5% STOP
+- AMD hard floor stop $481.42 BREACHED by ~$16 in pre-market (China chip news)
+- Circuit breaker check: -$986 / $99,716 = -0.99% daily est. — NOT tripped (threshold -3%)
+- SPX July 28 close: ~7,450 est. SPX futures +0.2% pre-market → est. 7,465. From May 1 baseline 7,200: **+3.67%** (est.)
+- Portfolio since $100K baseline: **-0.99%** est. (deteriorated on AMD move)
+- **Benchmark gap: ~-4.66 pp** (estimate; worsened on AMD sector selloff)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (99th+ consecutive sessions — API blockage + AMD drawdown)
+- Circuit breaker: NOT tripped (portfolio -0.99% vs -3% threshold)
+
+**AMD CRITICAL STATUS (July 29 Pre-Market):**
+- AMD pre-market: ~$465 (down ~$39 from $504 July 27 close = -7.7%)
+- DRIVER: Chinese chip-making technology breakthrough news hitting entire semiconductor sector (AMD, MU, MRVL all -7% to -9% pre-market)
+- Hard floor stop (5% below entry avg $506.76): **$481.42** — AMD is ~$16 BELOW this floor
+- STATUS: **NAKED at Alpaca (99th+ consecutive session — no stop order resting) — day 40+**
+- **AMD HARD STOP FLOOR BREACHED** — The 5% stop guardrail has been violated because the stop was never placed
+- Wedbush PT $600 thesis intact, but price action + stop breach = MANDATORY EXIT per guardrails
+- AMD earnings Aug 4 AH: 48h window opens Aug 2; last safe exit Aug 1
+- **OPERATOR MANDATORY: EXIT 18sh AMD at MARKET on app.alpaca.markets BEFORE 9:30 AM ET OPEN. IF MARKET IS ALREADY OPEN, SELL IMMEDIATELY AT MARKET. Do NOT wait for API restoration.**
+- Push notification sent to operator at 2026-07-29T12:05Z
+
+**BINARY EVENT WINDOWS (Active July 27–31):**
+| Company | Earnings Date | 48h Window Status |
+|---|---|---|
+| META | Wed July 29 AH | **ACTIVE — NO ENTRY (window opened Mon July 27)** — scoring AH tonight |
+| MSFT | Wed July 29 AH | **ACTIVE — NO ENTRY (window opened Mon July 27)** — scoring AH tonight |
+| QCOM | Wed July 29 AH | **ACTIVE — NO ENTRY (window opened Mon July 27)** — scoring AH tonight |
+| AAPL | Thu July 30 AH | **ACTIVE — NO ENTRY (48h window opened July 28 ~4 PM ET)** |
+| AMZN | Thu July 30 AH | **ACTIVE — NO ENTRY (48h window opened July 28 ~4 PM ET)** |
+| AMD | Tue Aug 4 AH | Opens Sun Aug 2 — EXIT before Aug 2 (below stop floor now) |
+| FOMC | Tue-Wed July 28-29 | **BINARY EVENT — Decision 2 PM ET today; entries ok July 30 post-FOMC** |
+
+**MARKET CONDITIONS (July 29 Pre-Market):**
+- S&P 500 futures: +0.2% — holding pattern ahead of FOMC + earnings
+- Nasdaq futures: +0.3% — marginally green
+- Dow futures: -0.2% — mild drag
+- Sector rotation: Financials resilient, Semis hit hard (China chip news), Energy up (Iran attack on US overnight)
+- BTC: ~$64,423 (+1.62%), ETH: ~$1,916 (+1.93%) — crypto recovering after July 28 dip
+- Key movers: SHW +8%, KO +5%, AMD -7% to -9%
+- FOMC: Hold widely expected (64% prob CME FedWatch); 30% hike probability non-trivial. Chair Warsh hawkish stance on resurgent inflation + energy prices.
+
+**JULY 29 BINDING COMMITMENTS (MANDATORY — no exemptions on FOMC Day 2):**
+1. AMD: EXIT 18sh at market ASAP — BELOW hard stop, naked position, operator must act on app.alpaca.markets
+2. GS/WFC/MS: **DEFERRED to July 30** (FOMC binary event active today)
+3. META/MSFT/QCOM/AAPL/AMZN: ALL IN BINARY EVENT WINDOWS — NO ENTRY
+
+**POST-FOMC + POST-EARNINGS BINDING COMMITMENTS (July 30 Pre-Market MANDATORY):**
+1. AMD: If still open → EXIT first action before any new entries (below stop, day 40+)
+2. GS: BUY 4sh limit bracket GTC (~$1,062–1,073 ref) / stop -5% / target +15% — score 7.0+ (6/6 agents ≥7 with July 14 data)
+3. WFC: BUY ~30sh limit bracket GTC (~$86 ref) / stop -5% / target +15% — score 7.0
+4. MS: BUY ~20sh limit bracket GTC (~$214 ref) / stop -5% / target +15% — score 7.0
+5. META: Full 6-agent score after AH results tonight (EPS $7.23 est; 7% swing expected)
+6. MSFT: Full 6-agent score after AH results tonight (EPS $4.21–$4.24 est; Azure cloud key)
+7. QCOM: Full 6-agent score after AH results tonight (EPS $2.22 est; 9.34% swing; PT $221 vs $167 = 32% upside)
+8. AAPL: Score July 31 Pre-Market (reports AH July 30)
+9. AMZN: Score July 31 Pre-Market (reports AH July 30)
+
+**SECTOR EXPOSURE (est.):**
+- Technology/Semis: AMD ~8.4% (over 5% cap, flagged)
+- Financial: 0% (GS/WFC/MS pending July 30 entry)
+- Total deployed: ~8.5% (vs 95% target = 86.5 pp gap — critical underdeployment)
+
+
 
 **JULY 28 AFTERNOON STATUS:** Midday silently failed (no heartbeat). Afternoon fired 18:09Z. Alpaca API blocked 98th+ consecutive session. FOMC Day 1 of 2 (July 28-29) = binary event per CLAUDE.md → **NO NEW POSITION ENTRIES today or July 29.** GS/WFC/MS remain deferred to July 30. AMD naked stop still unresolved (API blocked). AMD current price unknown (API blocked); last known $504 (July 27 close). AAPL/AMZN 48h windows opened ~4 PM ET today (earnings July 30 AH) — confirm no entry. META/MSFT/QCOM report AH TOMORROW (July 29) — scoring AH for July 30 Pre-Market. **OPERATOR MANDATORY: GTC SELL-STOP 18sh AMD at $481.42 on app.alpaca.markets IMMEDIATELY — AMD is day 39+ naked with Aug 2 earnings window approaching.**
 
