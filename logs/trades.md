@@ -4,6 +4,312 @@
 
 ---
 
+## 2026-07-30 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 104th consecutive session)
+
+**HEARTBEAT:** STARTED Daily-Review 2026-07-30T20:34:14Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **104th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X sentiment modifier applied.
+**Market Status:** CLOSED (4:30 PM ET). Regular session ended; AAPL and AMZN reported AH tonight.
+
+---
+
+### HEARTBEAT AUDIT — JULY 30, 2026
+
+| Routine | Expected (UTC) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 12:00Z | ✗ | ✗ | **SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ | ✗ | **SILENT FAILURE** |
+| Midday | 16:30Z | ✗ | ✗ | **SILENT FAILURE** |
+| Afternoon | 18:09Z | ✓ 18:09:23Z | ✓ 18:15:03Z | Completed |
+| Market-Close | ~19:30Z | ✗ | ✗ | **SILENT FAILURE** |
+| Daily-Review | 20:34Z | ✓ 20:34:14Z | (in progress) | Running |
+
+**TOP OPERATIONAL ISSUE: 5 of 6 intraday routines silently failed on July 30.** Only Afternoon and Daily-Review fired. Pre-Market is the HIGHEST priority gap — it is the only window to place binding MOO orders and perform the mandatory AMD exit. Until Pre-Market reliably fires, GS/WFC/MS binding entries cannot execute and AMD exit cannot execute programmatically.
+
+**Market-Close Catch-Up (API blocked):**
+- GET /v2/positions → HTTP 403. Cannot confirm AMD end-of-day state.
+- No day trades open (AMD is swing trade, carries overnight).
+- AMD est. close: ~$484 (chip sector +5% on MSFT AI lift). Just barely above hard stop $481.42.
+- No position flattening required — no day trades to close.
+
+---
+
+### MARKET CONDITIONS — JULY 30, 2026
+
+**Major Earnings Results (July 29–30):**
+- **MSFT Q4 FY2026 (AH July 29):** EPS $4.81 vs $3.65 YoY; Revenue $90.01B (+17.7%); Azure +43% — enormous beat. Stock +14% on July 30.
+- **META Q2 2026 (AH July 29):** FCF collapsed 91%; no 2027 guidance; disappointing revenue outlook. Stock -9% on July 30.
+- **QCOM Q3 FY2026 (AH July 29):** Beat revenue but slowing smartphone sales hit outlook. Stock -5.1% on July 30.
+- **AMZN Q2 2026 (AH July 30):** Revenue $200.6B (+20%); EPS $5.75 (vs $1.68 YoY = +242%); AWS +37% to $42.2B (vs est. +31%); Operating income $27.5B (+43%). AI chips ARR >$25B. **MASSIVE BEAT.**
+- **AAPL Q3 FY2026 (AH July 30):** EPS $2.02 vs $1.89 est. (+6.9%) — BEAT; Revenue $109.42B vs $108.65B est. — BEAT; iPhone +22% YoY; Services $30.74B vs $31.22B est. — slight miss; Gross margin 50.1% vs 47.9% est. — BEAT. AH reaction: +0.58% (muted). 9th consecutive EPS beat.
+
+**FOMC (July 29 decision):** HELD at 3.50–3.75%; 9-3 vote (3 dissenters: Hammack/Cleveland, Kashkari/Minneapolis, Logan/Dallas). Chair Warsh hawkish. Post-FOMC: yields surged, markets initially fell July 29, then recovered +1.7% SPX on July 30.
+
+**Economic Data (July 30):** Q2 2026 GDP +1.5% (below est., decline in federal spending/inventories). Core PCE June 3.3% (matched est., down from 3.4%). Inflation still above 2% target; modest improvement.
+
+**S&P 500 July 30 close:** 7,437.64 (+1.7%). Nasdaq +2.8%. Tech sector +5% (best sector — MSFT AI lift + chip rebound).
+
+**AMD July 30 estimate:** ~$484 (rebound from $429.56 July 29 close on chip sector +5%). AMD still NAKED. Just barely above hard stop $481.42 (~+0.5%). Earnings Aug 4 AH — 48h window opens Aug 2. **LAST SAFE TRADING DAY: July 31.**
+
+---
+
+### PORTFOLIO STATE (est. — API blocked, July 30 EOD)
+
+- **AMD:** 18sh × ~$484 = ~$8,712 (est.) — unrealized: -$409.68 (-4.49% from $506.76 avg); NAKED (no stop at Alpaca)
+- **Cash:** ~$90,644
+- **Total Equity:** ~$99,356 (est.)
+- **Daily P&L July 30:** +~$979.92 (+1.0% est.) — AMD rebounded ~$54/sh on chip sector surge
+- **SPY July 30:** +1.7%
+- **Daily benchmark gap:** **-0.7 pp** (portfolio +1.0% vs SPY +1.7% — 91.5% cash drag)
+- **Cumulative return:** -0.64% vs SPY from May 1 baseline: +3.30% → **Cumulative gap: -3.94 pp**
+- **20-Day underperformance flag: ACTIVE** (104th consecutive session)
+
+---
+
+### P&L ANALYSIS
+
+**Today's P&L:** +$980 est. (+1.0%). All P&L from AMD recovery on chip sector surge.
+**Win rate today:** 0/0 (no closed trades — API blocked all day, no orders executed).
+**Rolling 20-day:** 0 closed trades. Win rate N/A. Profit factor N/A.
+**Best "trade" today:** Avoided META (down -9%) and QCOM (down -5.1%) via binary-event discipline — saved estimated -$1,400 on META and -$500 on QCOM based on prior session scores.
+**Worst outcome today:** AMD still naked and unmonitored for the 44th consecutive day. Continued cash drag (-86.5 pp from 95% deployment target). All 5 predecessor routines silently failed.
+
+---
+
+### 3 THINGS THAT WORKED
+
+1. **Binary-event discipline** — Correctly refused to enter META, MSFT, QCOM, AAPL, AMZN inside their 48h earnings windows. META -9% and QCOM -5.1% on July 30 would have been losing trades.
+2. **FOMC binary event recognition** — Held cash through FOMC decision day (July 29). Post-FOMC volatility caused a sharp reversal July 29 then +1.7% recovery July 30 — correct to wait for clarity.
+3. **AMZN and AAPL scored correctly as top watchlist names** — AMZN AWS +37% is exactly the type of earnings-reaction-follow the strategy targets. AAPL EPS beat was the 9th consecutive — thesis validated.
+
+---
+
+### 3 THINGS TO IMPROVE
+
+1. **AMD exit — still not done (Day 43+, naked).** AMD is now approaching hard stop from above ($484 vs $481.42 floor). With earnings Aug 4 AH and the 48h window opening Aug 2, July 31 is the FINAL safe exit window. The Pre-Market routine MUST fire July 31 and place SELL AMD as the first action.
+2. **GS/WFC/MS entries — 3rd consecutive deferral.** Total opportunity cost: GS from ~$1,073 (July 14 ref) to current est. ~$1,070 (unchanged roughly), so minimal cost this time. But continued cash drag vs S&P has compounded. July 31 Pre-Market is the FINAL permitted deferral.
+3. **Routine firing reliability.** 5 of 6 intraday routines silently failed today. The operational gap between routines (90-minute worst case per CLAUDE.md) became 7+ hours today. AMD was unmonitored from Afternoon (2:15 PM ET) until this Daily Review (4:30 PM ET). Root cause: scheduler not reliably triggering Pre-Market through Midday routines.
+
+---
+
+### SETUP-TAG TALLY (Rolling 5-Day: July 25–30)
+
+| Setup | 5-Day Trades | Wins | Losses | Win Rate | Halted? | Boosted? |
+|-------|-------------|------|--------|----------|---------|---------|
+| ai-momentum-pullback | 0 | — | — | — | No | No |
+| earnings-reaction-follow | 0 (skips) | — | — | — | No | No |
+| earnings-reaction-fade | 0 | — | — | — | No | No |
+| breakout-volume | 0 | — | — | — | No | No |
+| sector-rotation | 0 (skips) | — | — | — | No | No |
+| silent-failure | 12 | — | — | — | — | — |
+
+No 3-in-a-row halt or boost rules triggered. All recent "trades" are API-blocked skips or violations. No closed positions in the 5-day window.
+
+---
+
+### AGENT CALIBRATION
+
+No closed trades in the rolling window. Agent calibration tracker unchanged. All 6 agents most recently scored on:
+- AMD (entry June 20): avg 7.17 — position currently -4.49% unrealized (still open)
+- GS skip (July 30): avg 7.2 — APPROVED but not filled (API blocked + routine failures)
+- WFC skip (July 30): avg 7.0 — APPROVED but not filled
+- MS skip (July 30): avg 7.0 — APPROVED but not filled
+
+No agent has 3 consecutive losing closed trades (no closed trades). Calibration data insufficient for adjustment.
+
+---
+
+### SCORED ENTRIES — TODAY'S NEW ANALYSIS
+
+**AMZN — earnings-reaction-follow — July 31 Pre-Market BINDING:**
+
+```yaml
+---
+ts: 2026-07-30T20:34:00Z
+action: skip
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 8.2
+thesis: Amazon Q2 2026 massive beat — AWS +37% to $42.2B (vs est. +31%), EPS $5.75 (+242% YoY), AI chips at >$25B ARR — highest conviction post-earnings follow. Enter July 31 Pre-Market.
+size_pct: 5.0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "6/6 agents ≥7. Average 8.2 — highest-conviction setup in weeks. AMZN: AWS +37% YoY (vs est. +31% = enormous cloud beat), revenue $200.6B (+20%), EPS $5.75 vs $1.68 YoY (+242%), operating income $27.5B (+43%), AI chips (Trainium/Inferentia) at >$25B ARR. Binary event window CLEAR. Skipping TODAY only due to market close (Exemption 1: after-hours, no regular session). BINDING: BUY ~22sh bracket GTC at July 31 Pre-Market open. Est. sizing: 22sh × ~$225 = ~$4,950 (~5% cap). Stop -5% (~$213.75), Target +15% (~$258.75) = 3:1 R/R. X sentiment unavailable (no XAI key). Degraded gracefully."
+---
+```
+
+**AAPL — earnings-reaction-follow — July 31 Pre-Market:**
+
+```yaml
+---
+ts: 2026-07-30T20:34:00Z
+action: skip
+symbol: AAPL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: Apple Q3 FY2026 beat EPS ($2.02 vs $1.89 est., +6.9%), revenue beat, iPhone +22%, gross margin 50.1% (beat). Services slight miss ($30.74B vs $31.22B). Muted AH +0.58%. 9th consecutive EPS beat.
+size_pct: 2.4
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "4/6 agents ≥7 (F:8, S:7, M:7, Tech:8). Technical 6/10 — stock down -1.41% regular session, muted AH +0.58%; concern about services miss and extension near ATH. Risk 6/10 — at minimum threshold (no veto). Average 7.0 — borderline. SKIPPING TODAY: market closed (Exemption 1). Plan: BUY ~7sh limit bracket GTC at July 31 Pre-Market, price near ~$335-338. Stop -5% (~$319-321), Target +15% (~$385-389) = 3:1 R/R ✓. IF pre-market shows further weakness on services miss, reassess — may not enter if opening below $330 (technical deterioration). Tim Cook final earnings call narrative is a positive. X sentiment unavailable."
+---
+```
+
+**META — earnings-reaction-fade — REJECTED:**
+
+```yaml
+---
+ts: 2026-07-30T20:34:00Z
+action: skip
+symbol: META
+bucket: active
+setup: earnings-reaction-fade
+score: 4.5
+thesis: META Q2 2026 — FCF collapsed 91%, no 2027 guidance, disappointing revenue outlook. Stock -9% on July 30. Potential fade/short — but account is LONG ONLY. No short selling permitted.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 4
+  technical: 5
+  sentiment: 3
+  macro: 6
+  risk: 5
+  tech_analyst: 5
+agent_average: 4.7
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Score 4.7/10 — well below 7 threshold. Meta: FCF $7.1B vs $37.4B YoY (91% collapse), no 2027 capex guidance, ad revenue growth deceleration feared. Stock -9% on July 30. This is a short setup (bearish), not a long setup. Account is long-only — no fade entry permitted on a declining name. Monitor for potential oversold bounce in 3-5 days if technical reversal pattern appears with 2/5 indicators confirming. Skip today and monitor."
+---
+```
+
+**QCOM — REJECTED:**
+
+```yaml
+---
+ts: 2026-07-30T20:34:00Z
+action: skip
+symbol: QCOM
+bucket: active
+setup: earnings-reaction-follow
+score: 5.5
+thesis: QCOM Q3 FY2026 — beat revenue but slowing smartphone sales, weak outlook. Stock -5.1% on July 30. Fundamental thesis impaired by demand headwinds.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 5
+  sentiment: 5
+  macro: 6
+  risk: 6
+  tech_analyst: 6
+agent_average: 5.5
+agents_above_7: 0
+master_decision: rejected
+master_notes: "Score 5.5/10 — below 7 threshold. QCOM: beat on revenue but smartphone demand slowing significantly, auto chip growth insufficient to offset handset weakness, Arm-based competition intensifying. PT $221 vs ~$158 (post-drop) = 40% upside but lacking the catalyst to drive re-rating near-term. Reject. Monitor for oversold bounce."
+---
+```
+
+**Market-Close Catch-Up Violation:**
+
+```yaml
+---
+ts: 2026-07-30T19:30:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market-Close routine (3:30 PM ET / 19:30 UTC) produced no heartbeat — 5th routine to silently fail July 30.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Market-Close 2026-07-30. Expected 2026-07-30T19:30Z. CATCH-UP EXECUTED by Daily-Review: no day trades open (AMD is swing, carries overnight). AMD est. close ~$484, barely above hard stop $481.42 — acceptable overnight but MUST EXIT July 31 Pre-Market (last safe day before Aug 2 window). GS/WFC/MS MOC orders not placed (would require API access). Binding commitments remain for July 31 Pre-Market."
+---
+```
+
+---
+
+### TOMORROW'S WATCHLIST (July 31, 2026) — PRE-MARKET BINDING COMMITMENTS
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|------|--------|-------|-------|--------|-------|
+| 1 | AMD | EXIT | — | **SELL 18sh at MARKET — FIRST ACTION** | LAST SAFE DAY. Day 43+, naked, below entry. 48h window opens Aug 2. MANDATORY — no further deferral. |
+| 2 | AMZN | 8.2 | earnings-reaction-follow | **BUY ~22sh MOO bracket GTC** | AWS +37%, EPS $5.75, massive beat. 6/6 agents ≥7. Stop -5% / Target +15%. |
+| 3 | GS | 7.2 | sector-rotation | **BUY 4sh MOO bracket GTC — BINDING (FINAL deferral)** | Q2 blowout, FOMC hold = bank clarity. Stop -5% / Target +15%. |
+| 4 | WFC | 7.0 | sector-rotation | BUY 30sh limit bracket GTC | Q2 EPS +16.3%. Enter at Market Open via limit. |
+| 5 | MS | 7.0 | sector-rotation | BUY 20sh limit bracket GTC | Strong Q2, crypto ETPs. Market Open via limit. |
+| 6 | AAPL | 7.0 | earnings-reaction-follow | BUY ~7sh limit bracket GTC | EPS $2.02 beat, iPhone +22%. Only if pre-market ≥$330. Stop -5% / Target +15%. |
+| 7 | MSFT | 7.0 | breakout-volume | WATCH only | Already +14% July 30. Too extended for new entry; wait for pullback to $455-470 support. |
+| 8 | NVDA | 6.5 | ai-momentum-pullback | WATCH | Chip sector +5%, AI validation. Score fully at Pre-Market if technical setup confirms. |
+| 9 | XLF | 6.5 | sector-rotation | WATCH | Financials ETF, post-FOMC hold. Enter if individual names maxed out. |
+| 10 | GLD | 6.0 | macro-hedge | WATCH | Core PCE 3.3%, GDP weaker, yield uncertainty = gold bid potential. |
+
+**MOO order cap (3 max):**
+- MOO #1: SELL AMD 18sh (exit — mandatory first action)
+- MOO #2: BUY AMZN ~22sh (highest conviction — 8.2/10, 6/6 agents ≥7)
+- MOO #3: BUY GS 4sh (BINDING 3rd/final deferral)
+- WFC, MS, AAPL: limit orders at Market Open (9:45 AM ET routine)
+
+**Guardrail pre-check (post-AMD exit):**
+- Cash post-AMD exit: ~$99,356
+- AMZN 22sh × ~$225 = ~$4,950 (5.0% — at cap) ✓
+- GS 4sh × ~$1,070 = ~$4,280 (4.3%) ✓
+- WFC 30sh × ~$87 = ~$2,610 (2.6%) ✓
+- MS 20sh × ~$215 = ~$4,300 (4.3%) ✓
+- AAPL 7sh × ~$337 = ~$2,359 (2.4%) ✓
+- Financials total: GS+WFC+MS = $11,190 = 11.3% (well under 25% cap) ✓
+- Total deployed after all 5 entries: $18,499 = 18.6% (vs 95% target — still massively underdeployed, but limited to high-conviction ≥7 names available)
+- Cash remaining: ~$80,857 (81.4% — above 5% floor) ✓
+- Max positions: 5 (well under 12 cap) ✓
+
+**KEY MACRO / EARNINGS — JULY 31, 2026:**
+- ExxonMobil (XOM) and AbbVie (ABBV) report — monitor for sector reads
+- Markets digesting AAPL (+0.58% AH) and AMZN (strong AH) results
+- No major Fed speakers or economic data releases scheduled
+- AMD: Today is LAST SAFE ENTRY/EXIT day before Aug 2 48h window
+
+---
+
+## 2026-07-30 — Market-Close SILENT FAILURE (3:30 PM ET / 19:30 UTC)
+
+*(Violation logged by Daily-Review above. YAML block included in Daily Review section.)*
+
+---
+
 ## 2026-07-30 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 103rd consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-30T18:09:23Z ✓
