@@ -1,21 +1,43 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-29 (Wednesday) — AFTERNOON (2:09 PM ET / 18:09 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 102nd consecutive blocked session). AFTERNOON ✅ COMPLETED. ⚠️ AMD CRITICAL: last known ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market closes in ~90 min). FOMC Decision announced at 2:00 PM ET — content UNKNOWN (API blocked). Post-FOMC volatility + proximity-to-close = NO NEW ENTRIES. GS/WFC/MS BINDING for July 30 Pre-Market. META/MSFT/QCOM reporting AH tonight — score at July 30 Pre-Market. Midday silently failed (violation logged). Market closes ~4:00 PM ET.**
+**2026-07-30 (Thursday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 103rd consecutive blocked session). MIDDAY ✅ COMPLETED. ⚠️ AMD CRITICAL: last known ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets IMMEDIATELY (market still open). Pre-Market/Market-Open/Mid-Morning ALL silently failed today (3 violations logged). GS/WFC/MS binding commitments UNEXECUTED (3 violation entries). META/MSFT/QCOM AH results from July 29 unknown (API blocked) — carry to July 31 Pre-Market. AAPL/AMZN in 48h binary window (report AH today July 30). GS/WFC/MS FINAL opportunity at July 30 Afternoon/Market-Close.**
 
-**JULY 29 AFTERNOON STATUS (2:09 PM ET):** API blocked 102nd session. Midday SILENT FAILURE (violation logged). FOMC announced 2:00 PM ET — content unknown. Post-FOMC volatility + proximity-to-close = NO NEW ENTRIES. GS/WFC/MS YAML skips logged. AMD naked, below stop $481.42, Day 41+ — OPERATOR EXIT REQUIRED before 4:00 PM ET close. July 30 Pre-Market: EXIT AMD first, then BUY GS/WFC/MS brackets, then score META/MSFT/QCOM AH results.
+**JULY 30 MIDDAY STATUS (12:35 PM ET):** API blocked 103rd session. Pre-Market + Market-Open + Mid-Morning ALL silently failed today (first routine = Midday at 16:35Z). Stop-loss audit: AMD naked Day 42+, below stop floor $481.42, last known ~$465. GS/WFC/MS binding commitments unexecuted (violation entries logged — API blocked, not a valid deployment bias exemption). META/MSFT/QCOM AH results unknown. AAPL/AMZN report AH tonight — 48h windows active. July 30 Afternoon is next opportunity window.
 
 **JULY 29 MARKET-OPEN STATUS:** Alpaca API blocked 100th+ consecutive session. Pre-Market fired normally (12:05Z–12:14Z); no catch-up needed. FOMC Decision Day at 2 PM ET = binary event per CLAUDE.md → NO NEW POSITION ENTRIES. No MOO orders placed Pre-Market (API blocked); no fills to backfill. AMD naked stop remains critical — market is NOW OPEN, operator must act. Stop-loss audit: 1 open position (AMD), NAKED, API blocked = cannot place programmatically. All watchlist names (GS/WFC/MS) carry valid Rule 2 skip entries from Pre-Market.
 
-**JULY 29 HEARTBEAT AUDIT (as of Afternoon 18:09Z):**
+**JULY 30 HEARTBEAT AUDIT (as of Midday 16:35Z):**
+- ✗ Pre-Market (12:00Z expected): SILENT FAILURE — violation logged by Midday
+- ✗ Market-Open (13:45Z expected): SILENT FAILURE — violation logged by Midday
+- ✗ Mid-Morning (15:00Z expected): SILENT FAILURE — violation logged by Midday
+- ✓ Midday: STARTED 2026-07-30T16:35:19Z ✓ (this routine)
+- Afternoon/Market-Close/Daily-Review: PENDING
+
+**JULY 29 HEARTBEAT AUDIT (final):**
 - ✓ Pre-Market: STARTED 2026-07-29T12:05:09Z / COMPLETED 2026-07-29T12:14:25Z ✓
 - ✓ Market-Open: STARTED 2026-07-29T13:46:12Z / COMPLETED 2026-07-29T13:50:11Z ✓
 - ✓ Mid-Morning: STARTED 2026-07-29T15:11:06Z / COMPLETED 2026-07-29T15:14:07Z ✓
 - ✗ Midday (16:30Z expected): SILENT FAILURE — violation logged by Afternoon
-- ✓ Afternoon: STARTED 2026-07-29T18:09:16Z ✓ (this routine)
-- July 28 summary: Pre-Market + Market-Open + Midday silently failed; Mid-Morning + Afternoon completed
+- ✓ Afternoon: STARTED 2026-07-29T18:09:16Z / COMPLETED (heartbeat) ✓
 
-**PORTFOLIO STATE (July 29, 2026 — Pre-Market 8:05 AM ET):**
+**PORTFOLIO STATE (July 30, 2026 — Midday 12:35 PM ET):**
+- Cash: ~$90,644 (91.5% est.) — last known; API blocked
+- AMD: 18sh × ~$465 est. = ~$8,370 (8.5% est.) — over 5% cap, naked (no stop), BELOW HARD STOP FLOOR, Day 42+ post-fill
+- Total equity est.: ~$99,014
+- P&L vs $100K initial: -$986 (-0.99%) est. (AMD current price unknown — API blocked)
+- AMD unrealized at last known $465: 18 × ($465 − $506.76) = **-$752.08 (-8.24%)** — BELOW 5% STOP
+- AMD hard floor stop $481.42 BREACHED at last known ~$465
+- Circuit breaker: -$986 / $99,716 = -0.99% est. — NOT tripped (threshold -3%)
+- SPX: last known ~7,465 (July 29 est.). From May 1 baseline 7,200: **~+3.67%** est.
+- Portfolio since $100K baseline: **-0.99%** est.
+- **Benchmark gap: ~-4.66 pp** est.
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (103rd+ consecutive sessions — API blockage + AMD drawdown)
+- GS/WFC/MS: Binding entries UNEXECUTED (API blocked, 103rd session — violation entries logged)
+- META/MSFT/QCOM: AH results from July 29 — unknown (API blocked). Carry to July 31 Pre-Market.
+- AAPL/AMZN: Report AH TODAY — binary event windows active; score July 31 Pre-Market.
+
+**PORTFOLIO STATE (July 29, 2026 — Pre-Market 8:05 AM ET) [ARCHIVED]:**
 - Cash: ~$90,644 (91.5% est.) — last known; API blocked
 - AMD: 18sh × ~$465 est. = ~$8,370 (8.5% est.) — over 5% cap, naked (no stop), BELOW HARD STOP FLOOR, Day 40+ post-fill
 - Total equity est.: ~$99,014
@@ -65,16 +87,23 @@
 2. GS/WFC/MS: **DEFERRED to July 30** (FOMC binary event active today)
 3. META/MSFT/QCOM/AAPL/AMZN: ALL IN BINARY EVENT WINDOWS — NO ENTRY
 
-**POST-FOMC + POST-EARNINGS BINDING COMMITMENTS (July 30 Pre-Market MANDATORY):**
-1. AMD: If still open → EXIT first action before any new entries (below stop, day 40+)
-2. GS: BUY 4sh limit bracket GTC (~$1,062–1,073 ref) / stop -5% / target +15% — score 7.0+ (6/6 agents ≥7 with July 14 data)
+**BINDING COMMITMENTS (July 30 Afternoon/Market-Close — LAST CHANCE TODAY):**
+1. AMD: EXIT 18sh at market FIRST — Day 42+, below stop $481.42, naked. Aug 2 earnings window approaching.
+2. GS: BUY 4sh limit bracket GTC (~ref price, re-price at current ask) / stop -5% / target +15% — score 7.2
 3. WFC: BUY ~30sh limit bracket GTC (~$86 ref) / stop -5% / target +15% — score 7.0
 4. MS: BUY ~20sh limit bracket GTC (~$214 ref) / stop -5% / target +15% — score 7.0
-5. META: Full 6-agent score after AH results tonight (EPS $7.23 est; 7% swing expected)
-6. MSFT: Full 6-agent score after AH results tonight (EPS $4.21–$4.24 est; Azure cloud key)
-7. QCOM: Full 6-agent score after AH results tonight (EPS $2.22 est; 9.34% swing; PT $221 vs $167 = 32% upside)
-8. AAPL: Score July 31 Pre-Market (reports AH July 30)
-9. AMZN: Score July 31 Pre-Market (reports AH July 30)
+5. META/MSFT/QCOM: Carry to July 31 Pre-Market (AH results from July 29 inaccessible, API blocked)
+6. AAPL: Score July 31 Pre-Market (reports AH today July 30)
+7. AMZN: Score July 31 Pre-Market (reports AH today July 30)
+
+**POST-FOMC + POST-EARNINGS BINDING COMMITMENTS (July 30 Pre-Market) [MISSED — ALL 3 SILENT FAILURES]:**
+1. AMD: If still open → EXIT first action before any new entries (below stop, day 40+) ← UNEXECUTED
+2. GS: BUY 4sh limit bracket GTC (~$1,062–1,073 ref) / stop -5% / target +15% — score 7.0+ ← UNEXECUTED (violation logged)
+3. WFC: BUY ~30sh limit bracket GTC (~$86 ref) / stop -5% / target +15% — score 7.0 ← UNEXECUTED (violation logged)
+4. MS: BUY ~20sh limit bracket GTC (~$214 ref) / stop -5% / target +15% — score 7.0 ← UNEXECUTED (violation logged)
+5. META: Full 6-agent score after AH results (EPS $7.23 est; 7% swing) ← UNEXECUTED (API blocked)
+6. MSFT: Full 6-agent score after AH results (EPS $4.21 est; Azure cloud) ← UNEXECUTED (API blocked)
+7. QCOM: Full 6-agent score after AH results (EPS $2.22 est; 9.34% swing; PT $221) ← UNEXECUTED (API blocked)
 
 **SECTOR EXPOSURE (est.):**
 - Technology/Semis: AMD ~8.4% (over 5% cap, flagged)
