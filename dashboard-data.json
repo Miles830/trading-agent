@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-30T18:09:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-30T19:34:00Z",
+  "updated_by": "market-close",
   "portfolio": {
     "total_equity": 99014,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 91.5
     },
-    "note": "July 30 AFTERNOON (2:09 PM ET / 18:09Z). API BLOCKED HTTP 403 — 103rd consecutive session. ALL 4 predecessor routines SILENTLY FAILED today (Pre-Market, Market-Open, Mid-Morning, Midday) — 4 violations logged. AMD last known ~$465 est. (July 29), BELOW hard stop $481.42, Day 42+, NAKED — OPERATOR MUST EXIT 18sh on app.alpaca.markets BEFORE 4:00 PM ET CLOSE TODAY. GS/WFC/MS deferred AGAIN to July 31 Pre-Market (3rd deferral — FINAL). AAPL+AMZN binary event windows active tonight. META/MSFT/QCOM AH July 29 results unknown — score July 31."
+    "note": "July 30 MARKET-CLOSE (3:34 PM ET / 19:34Z). API BLOCKED HTTP 403 — 104th consecutive session. MOC deadline 3:50 PM ET — AMD MOC close CANNOT be placed (API blocked). OPERATOR: EXIT 18sh AMD on app.alpaca.markets NOW before 3:50 PM ET. GS/WFC/MS 4th deferral — BINDING July 31 Pre-Market (FINAL, no further deferral). AAPL/AMZN binary windows active AH tonight. META/MSFT/QCOM: score July 31 Pre-Market. Zero orders placed today."
   },
   "positions": [
     {
@@ -140,12 +140,25 @@
       "last_summary": "SILENT FAILURE July 30 — no heartbeat fired. 4th silent predecessor today. AMD unmonitored all day July 30. Violation logged by Afternoon."
     },
     "afternoon": {
-      "status": "running",
+      "status": "completed",
       "last_run": "2026-07-30T18:09:00Z",
       "next_run": "2026-07-31T18:00:00Z",
       "last_summary": "API BLOCKED 103rd session. All 4 predecessors silently failed — 4 violations logged. GS/WFC/MS deferred 3rd time to July 31 Pre-Market (FINAL deferral). AMD naked day 42+ below stop $481.42, operator must exit today before 4PM ET. AAPL/AMZN binary event tonight. META/MSFT/QCOM scoring deferred to July 31. No orders placed (API blocked + proximity-to-close)."
+    },
+    "market-close": {
+      "status": "completed",
+      "last_run": "2026-07-30T19:34:00Z",
+      "next_run": "2026-07-31T19:30:00Z",
+      "last_summary": "API BLOCKED 104th session. MOC deadline 3:50 PM ET — AMD MOC close CANNOT be placed (API blocked). Zero orders placed. AMD naked Day 42+, below stop $481.42, OPERATOR MUST EXIT MANUALLY on app.alpaca.markets before 4 PM ET. GS/WFC/MS 4th deferral — BINDING July 31. AAPL/AMZN AH binary windows active. 5 violations logged today."
     }
   },
   "trades": [],
-  "history": []
+  "history": [
+    {
+      "date": "2026-07-30",
+      "portfolio_return_pct": -0.99,
+      "spx_return_pct": 3.67,
+      "daily_pnl_pct": null
+    }
+  ]
 }

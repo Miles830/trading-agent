@@ -4,6 +4,234 @@
 
 ---
 
+## 2026-07-30 — Market-Close Routine (3:30 PM ET / 19:34 UTC — API BLOCKED — 104th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-07-30T19:34:30Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **104th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** ~3:34 PM ET — MOC deadline 3:50 PM ET (16 min), Market close 4:00 PM ET (26 min)
+**Today's Binary Events:** AAPL + AMZN reporting AH tonight (July 30) — binary event windows ACTIVE (48h window opened July 28 ~4 PM ET)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+```bash
+grep "STARTED\|COMPLETED" logs/heartbeats/2026-07-30.log
+# 2026-07-30T18:09:23Z STARTED Afternoon
+# 2026-07-30T18:15:03Z COMPLETED Afternoon
+# 2026-07-30T19:34:30Z STARTED Market-Close
+```
+
+| Routine | Expected | Status |
+|---|---|---|
+| Pre-Market (8:00 AM ET / 12:00Z) | 2026-07-30T12:00Z | **SILENT FAILURE** — violation logged by Afternoon |
+| Market-Open (9:45 AM ET / 13:45Z) | 2026-07-30T13:45Z | **SILENT FAILURE** — violation logged by Afternoon |
+| Mid-Morning (11:00 AM ET / 15:00Z) | 2026-07-30T15:00Z | **SILENT FAILURE** — violation logged by Afternoon |
+| Midday (12:30 PM ET / 16:30Z) | 2026-07-30T16:30Z | **SILENT FAILURE** — violation logged by Afternoon |
+| Afternoon (2:00 PM ET / 18:09Z) | 2026-07-30T18:09Z | ✓ COMPLETED 18:15Z |
+| Market-Close (3:30 PM ET / 19:30Z) | 2026-07-30T19:30Z | ✓ This routine |
+
+Four predecessor violations already logged by Afternoon (18:09Z). No additional violation entries needed for predecessors.
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# MANDATORY FIRST ACTION per CLAUDE.md: GET /v2/orders?status=open
+curl -H "APCA-API-KEY-ID: ..." -H "APCA-API-SECRET-KEY: ..." \
+  https://paper-api.alpaca.markets/v2/orders?status=open
+# Result: HTTP 403 — proxy CONNECT rejected (egress policy denial)
+# paper-api.alpaca.markets:443 blocked — 104th consecutive session
+
+# GET /v2/positions → HTTP 403 (same block)
+```
+
+**NAKED POSITION STATUS:**
+| Symbol | Qty | Entry Avg | Hard Stop | Last Known Price | Stop at Alpaca | Status |
+|---|---|---|---|---|---|---|
+| AMD | 18sh | $506.76 | $481.42 | ~$465 est. (July 29 PM) | NONE | **GUARDRAIL VIOLATION — NAKED DAY 42+** |
+
+**AMD Critical:** Last known ~$465 est. is **$16.42 below** the hard floor stop of $481.42. The 5% stop guardrail has been violated because the stop was never placed (API blocked all 104 sessions). Position is naked with no protection. Cannot place stop programmatically — API blocked.
+
+**OPERATOR ACTION REQUIRED — URGENT (3:34 PM ET — 16 min to MOC deadline):**
+- Go to **app.alpaca.markets** immediately
+- Place a MARKET SELL order for **18 shares of AMD**
+- If possible, use MOC (market-on-close) — must submit before 3:50 PM ET
+- If after 3:50 PM ET, place a market sell NOW before 4:00 PM ET close
+- Do NOT hold AMD overnight into earnings window (Aug 4 AH — 48h window opens Aug 2)
+
+```yaml
+---
+ts: 2026-07-30T19:34:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: other
+score: 0
+thesis: "AMD naked position Day 42+, below hard stop $481.42, API blocked — cannot place MOC close order programmatically. GUARDRAIL VIOLATION: stop never placed (104th consecutive blocked session)."
+size_pct: 8.5
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Market Close routine attempted to place MOC sell for 18sh AMD but Alpaca API blocked HTTP 403 (104th session). Cannot close position programmatically. AMD price unknown today (all routines blocked). Last known ~$465 est. (July 29), hard stop floor $481.42, entry avg $506.76. Unrealized loss est. -$752 (-8.24%). Earnings window opens Aug 2. OPERATOR MUST MANUALLY EXIT on app.alpaca.markets before 4:00 PM ET today (3:50 PM MOC deadline). AMD has been below its 5% stop since July 29 pre-market — this constitutes a multi-day guardrail breach."
+---
+```
+
+---
+
+### DAY TRADES — CLOSE ALL (Close Routine Rule: flatten all intraday positions)
+
+No intraday positions were opened today (all order-placing routines either silently failed or deferred due to API blockage). Zero day trades to close.
+
+---
+
+### WATCHLIST EXECUTION — MOC SWING ENTRIES
+
+Per `routines/close.md`: "do NOT initiate new active-bucket entries — the Close routine's job is to flatten and protect... with the narrow exception of MOC swing entries that were pre-scored earlier in the day."
+
+**GS (Goldman Sachs):** Pre-scored 7.2 (July 14 data). API blocked — MOC order cannot be placed. Rolls to July 31 Pre-Market (4th consecutive deferral — CRITICAL: this is a repeat violation).
+
+```yaml
+---
+ts: 2026-07-30T19:34:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: "Q2 EPS blowout, financials sector leadership, post-FOMC rate environment. Score 7.2 — entry qualified."
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP — Alpaca API blocked HTTP 403 (104th consecutive session). Cannot place MOC order programmatically. This is the 4th consecutive deferral of a score-7.2 binding commitment (July 27→28→29→30→31 PM). EXEMPTION: API network blockage prevents execution — not a valid CLAUDE.md exemption but an infrastructure failure. Rolls BINDING to July 31 Pre-Market. Close routine rule (no new active entries at close) also applies — MOC swing entry would be acceptable only if pre-scored same day, which GS qualifies for. Infrastructure failure is the blocking reason."
+---
+```
+
+**WFC (Wells Fargo):** Pre-scored 7.0. API blocked — MOC order cannot be placed. Rolls to July 31 Pre-Market (4th consecutive deferral).
+
+```yaml
+---
+ts: 2026-07-30T19:34:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Q2 EPS +16.3% beat, financials leadership, clean technical setup. Score 7.0 — entry qualified."
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP — Alpaca API blocked HTTP 403 (104th consecutive session). Cannot place MOC order. 4th consecutive deferral. Rolls BINDING to July 31 Pre-Market. Same infrastructure failure as GS."
+---
+```
+
+**MS (Morgan Stanley):** Pre-scored 7.0. API blocked — MOC order cannot be placed. Rolls to July 31 Pre-Market (4th consecutive deferral).
+
+```yaml
+---
+ts: 2026-07-30T19:34:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "Strong Q2, crypto ETP revenue expansion, financials sector momentum. Score 7.0 — entry qualified."
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP — Alpaca API blocked HTTP 403 (104th consecutive session). Cannot place MOC order. 4th consecutive deferral. Rolls BINDING to July 31 Pre-Market. Same infrastructure failure as GS/WFC."
+---
+```
+
+---
+
+### BINARY EVENT WINDOWS — NO ENTRY (EXEMPTION 2)
+
+**AAPL:** Reporting AH tonight (July 30). 48h window opened July 28 ~4 PM ET. NO ENTRY today — binary event exemption (CLAUDE.md Deployment Bias rule 2). Score July 31 Pre-Market after AH results.
+
+**AMZN:** Reporting AH tonight (July 30). 48h window opened July 28 ~4 PM ET. NO ENTRY today — binary event exemption. Score July 31 Pre-Market after AH results.
+
+**META / MSFT / QCOM:** Reported AH July 29. Results unknown (API blocked all day July 30). Score July 31 Pre-Market using AH July 29 results. 48h windows now closed — entry possible July 31 if scores qualify.
+
+---
+
+### END-OF-DAY P&L SUMMARY (July 30, 2026)
+
+**API blocked — all prices estimated from July 29 last-known values. No live data available.**
+
+| Item | Value |
+|---|---|
+| Total equity (est.) | ~$99,014 |
+| Cash | ~$90,644 (91.5% est.) |
+| AMD 18sh (est. $465) | ~$8,370 (8.5% est.) |
+| Daily P&L | **UNKNOWN** — API blocked all day |
+| Total P&L vs $100K | **~-$986 (-0.99%)** est. |
+| SPX (est.) | ~7,465 (post-FOMC direction unknown) |
+| SPX return vs May 1 baseline ($7,200) | **+3.67%** est. |
+| Benchmark gap | **~-4.66 pp** est. |
+| Circuit breaker (>-3% daily) | NOT tripped (daily P&L unknown; last known -0.99% total, not daily) |
+
+**TODAY'S TRADE SUMMARY:**
+- Orders placed: 0 (API blocked)
+- Positions opened: 0
+- Positions closed: 0 (AMD exit attempted — API blocked — OPERATOR MUST ACT MANUALLY)
+- Violations logged today: 5 (Pre-Market + Market-Open + Mid-Morning + Midday + AMD naked close failure)
+- Total violations this API blockage streak: 104+ sessions
+
+**TOMORROW'S PRIORITY LIST (July 31 Pre-Market — BINDING, no further deferral):**
+1. AMD: If still open — EXIT 18sh FIRST action before any new entries
+2. GS: BUY 4sh limit bracket GTC (stop -5%, target +15%, 3:1 R/R) — 4th deferral, execute July 31 regardless
+3. WFC: BUY ~30sh limit bracket GTC — same as GS
+4. MS: BUY ~20sh limit bracket GTC — same as GS
+5. META: Full 6-agent score using AH July 29 results — if ≥7, enter July 31
+6. MSFT: Full 6-agent score using AH July 29 results — if ≥7, enter July 31
+7. QCOM: Full 6-agent score using AH July 29 results — if ≥7, enter July 31
+8. AAPL: Full 6-agent score using AH July 30 results (tonight) — if ≥7, enter July 31
+9. AMZN: Full 6-agent score using AH July 30 results (tonight) — if ≥7, enter July 31
+
+**DEPLOYMENT GAP:** ~$95 target deployment vs ~$8.4 actual = **$86.6K underdeployed** (86.6 pp gap). This is critical underperformance vs the 95% deployment target. July 31 Pre-Market MUST deploy aggressively into qualifying names (GS/WFC/MS + any qualifying earnings plays).
+
+---
+
 ## 2026-07-30 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 103rd consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-30T18:09:23Z ✓

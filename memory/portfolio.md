@@ -1,7 +1,17 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-30 (Thursday) — AFTERNOON (2:09 PM ET / 18:09 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 103rd consecutive blocked session). AFTERNOON ✅ COMPLETED. ⚠️ AMD CRITICAL: last known ~$465 est. (July 29), BELOW hard stop $481.42, Day 42+, NAKED — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets TODAY before 4:00 PM ET close. ALL 4 predecessor routines SILENTLY FAILED today (Pre-Market, Market-Open, Mid-Morning, Midday) — 4 violations logged. GS/WFC/MS BINDING for July 31 Pre-Market (3rd consecutive deferral — NO FURTHER DEFERRAL ACCEPTABLE). AAPL + AMZN report AH tonight (July 30) — binary windows active. META/MSFT/QCOM AH July 29 results UNKNOWN — score July 31 Pre-Market.**
+**2026-07-30 (Thursday) — MARKET-CLOSE (3:34 PM ET / 19:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 104th consecutive blocked session). MARKET-CLOSE ✅ COMPLETED. ⚠️ AMD CRITICAL: last known ~$465 est. (July 29), BELOW hard stop $481.42, Day 42+, NAKED — OPERATOR MUST EXIT 18sh AMD on app.alpaca.markets BEFORE 4:00 PM ET CLOSE (26 min remaining as of routine start). ALL 4 predecessor routines SILENTLY FAILED today (violations logged by Afternoon). GS/WFC/MS BINDING for July 31 Pre-Market (4th consecutive deferral — ABSOLUTE FINAL — execute regardless of any other condition except API restored). AAPL + AMZN reported AH tonight (July 30) — score July 31. META/MSFT/QCOM AH July 29 results UNKNOWN — score July 31 Pre-Market.**
+
+**JULY 30 MARKET-CLOSE STATUS (3:34 PM ET / 19:34 UTC):** API blocked 104th session. MOC deadline 3:50 PM ET. Cannot place any orders programmatically. AMD naked Day 42+, below stop $481.42, last known ~$465 — OPERATOR MUST EXIT VIA app.alpaca.markets IMMEDIATELY (MOC deadline 3:50 PM ET = 16 min). GS/WFC/MS 4th deferral logged (API blocked infrastructure failure — not a valid CLAUDE.md exemption). AAPL/AMZN binary windows active, no entry tonight. META/MSFT/QCOM AH July 29 results unknown — score July 31 Pre-Market. FOMC decision content still unknown (API blocked). Zero orders placed today (all 6 routines blocked or skipped by API failure).
+
+**JULY 30 HEARTBEAT AUDIT (final):**
+- ✗ Pre-Market (12:00Z expected): SILENT FAILURE — violation logged
+- ✗ Market-Open (13:45Z expected): SILENT FAILURE — violation logged
+- ✗ Mid-Morning (15:00Z expected): SILENT FAILURE — violation logged
+- ✗ Midday (16:30Z expected): SILENT FAILURE — violation logged
+- ✓ Afternoon: STARTED 2026-07-30T18:09:23Z / COMPLETED 2026-07-30T18:15:03Z ✓
+- ✓ Market-Close: STARTED 2026-07-30T19:34:30Z ✓ (this routine)
 
 **JULY 30 AFTERNOON STATUS (2:09 PM ET):** API blocked 103rd session. ALL 4 predecessor routines SILENTLY FAILED today — violations logged. GS/WFC/MS binding entries deferred AGAIN to July 31 Pre-Market (3rd consecutive deferral — must execute July 31 regardless). AMD naked Day 42+, below stop $481.42, last known ~$465 — OPERATOR MUST EXIT TODAY before 4:00 PM ET close. AAPL + AMZN report AH tonight — binary event windows active, no entry. META/MSFT/QCOM AH results (July 29) UNKNOWN (API blocked) — defer scoring to July 31 Pre-Market. Market data: FOMC decision July 29 content unknown (API blocked); post-FOMC environment unknown.
 
