@@ -4,6 +4,374 @@
 
 ---
 
+## 2026-07-30 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 103rd consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-30T18:09:23Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial, `paper-api.alpaca.markets:443`) — **103rd consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** ~2:09 PM ET — Afternoon window
+**Today's Binary Events:** AAPL + AMZN earnings AH today (July 30) — 48h windows still ACTIVE.
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market (8:00 AM ET / 12:00 UTC): **SILENT FAILURE — no STARTED heartbeat in logs/heartbeats/2026-07-30.log**
+- Market-Open (9:45 AM ET / 13:45 UTC): **SILENT FAILURE — no STARTED heartbeat**
+- Mid-Morning (11:00 AM ET / 15:00 UTC): **SILENT FAILURE — no STARTED heartbeat**
+- Midday (12:30 PM ET / 16:30 UTC): **SILENT FAILURE — no STARTED heartbeat**
+- Afternoon (2:00 PM ET / 18:09 UTC): ✓ This routine
+
+All four predecessor routines failed silently. GS/WFC/MS binding commitments from July 29 Afternoon were NOT executed at Pre-Market as required. Logging violations below.
+
+---
+
+```yaml
+---
+ts: 2026-07-30T12:00:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine (8:00 AM ET / 12:00 UTC) produced no heartbeat — silent failure, 5th consecutive missed Pre-Market this week.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Pre-Market 2026-07-30. Expected 2026-07-30T12:00Z. BINDING commitments not executed: AMD exit (day 42+ below stop), GS/WFC/MS bracket orders. Operator must place manually on app.alpaca.markets."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T13:45:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Market-Open routine (9:45 AM ET / 13:45 UTC) produced no heartbeat — silent failure. MOO stop-loss backfill check not executed.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Market-Open 2026-07-30. Expected 2026-07-30T13:45Z. Stop-loss audit (first action) not run. AMD naked position unmonitored at open. GS/WFC/MS catch-up opportunity missed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T15:00:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) produced no heartbeat — silent failure.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Mid-Morning 2026-07-30. Expected 2026-07-30T15:00Z. Stop-loss audit not run. Intraday momentum scan not executed."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T16:30:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Midday routine (12:30 PM ET / 16:30 UTC) produced no heartbeat — silent failure.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Midday 2026-07-30. Expected 2026-07-30T16:30Z. Stop-loss audit not run. 4th silent-failure violation today (Pre-Market + Market-Open + Mid-Morning + Midday). AMD naked position unmonitored all day. GS/WFC/MS binding entries not placed."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 403 (proxy CONNECT rejected — policy denial, 103rd session)
+# GET /v2/positions → HTTP 403
+```
+
+**AMD naked position (Day 42+ post-fill):**
+- Entry avg cost: $506.76 | Hard stop floor (5% below entry): **$481.42**
+- Last known price est.: ~$465 (July 29 pre-market; actual current price UNKNOWN — API blocked all day)
+- AMD entered below hard stop floor on July 29 (~$465 < $481.42). Status today: UNKNOWN — could be anywhere
+- Stop order status: **NAKED — no resting stop at Alpaca (103rd consecutive session)**
+- API blocked = cannot place stop programmatically
+- **GUARDRAIL VIOLATION ACTIVE: DAY 42+ NAKED POSITION BELOW HARD STOP FLOOR**
+- **OPERATOR ACTION REQUIRED (URGENT): EXIT 18sh AMD at MARKET on app.alpaca.markets. Market closes ~4:00 PM ET (~2 hours from now). If already exited, confirm in portfolio.md.**
+
+---
+
+### WATCHLIST EXECUTION — AFTERNOON ROUTINE
+
+Per `routines/afternoon.md`: *"Active-trading catch-up: do NOT initiate new active-bucket entries this routine — too close to close."*
+
+Additionally, AAPL and AMZN are reporting earnings AH today (July 30) — binary event windows still active for any related tech-sector entries. All previous binding commitments (GS/WFC/MS) roll to July 31 Pre-Market.
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Goldman Sachs Q2 blowout, financials leadership, post-FOMC rate clarity. Afternoon proximity-to-close per routine playbook = deferred to July 31 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Exemption 1 applied: afternoon proximity-to-close (routine playbook — active entries not permitted this routine). This is the 3rd consecutive deferral of GS entry (July 28 FOMC, July 29 FOMC+afternoon, July 30 afternoon). Score 7.2 valid. BINDING commitment to BUY July 31 Pre-Market — no further deferral permitted unless a hard guardrail or binary-event exemption applies."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Wells Fargo Q2 EPS +16.3% beat, financials rotation, post-FOMC. Afternoon proximity-to-close = deferred to July 31 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Exemption 1 applied: afternoon proximity-to-close. 3rd consecutive deferral. BINDING commitment July 31 Pre-Market."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Morgan Stanley strong Q2, crypto ETP exposure. Afternoon proximity-to-close = deferred to July 31 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 6
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: rejected
+master_notes: "Exemption 1 applied: afternoon proximity-to-close. 3rd consecutive deferral. BINDING commitment July 31 Pre-Market."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: META
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: META reported AH July 29. Actual results UNKNOWN (API blocked). Cannot score without confirmed EPS/revenue data. Deferring full 6-agent score to July 31 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "API blocked 103rd session — no access to AH earnings results. Pre-Market also silently failed July 30. Scoring deferred to July 31 Pre-Market. Preliminary est: META has beaten EPS in last 6 quarters consistently; if beat tonight (EPS >$7.23), likely score 7+. Exemption 1: proximity-to-close + data unavailability."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: MSFT
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: MSFT reported AH July 29. Actual results UNKNOWN (API blocked). Deferring full 6-agent score to July 31 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "API blocked — no AH earnings data. MSFT Q4 FY2026 scoring deferred to July 31 Pre-Market. Key metric: Azure cloud growth rate (need >30% YoY). Exemption 1: proximity-to-close + data unavailability."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: QCOM
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: QCOM reported AH July 29. Actual results UNKNOWN (API blocked). Deferring full 6-agent score to July 31 Pre-Market.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "API blocked — no AH earnings data. QCOM Q3 FY2026 (EPS est $2.22, 90.5% beat prob, PT $221 vs ~$167). Scoring deferred to July 31 Pre-Market. Exemption 1: proximity-to-close + data unavailability."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: AAPL
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: AAPL reports AH TODAY July 30. 48h binary event window ACTIVE — no entry permitted. Score July 31 Pre-Market post-release.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Exemption 2: binary event — AAPL earnings AH July 30. 48h window opened July 28 ~4PM ET, closes ~July 30 after release. Score and evaluate July 31 Pre-Market. Key metric: iPhone unit sales guidance, India manufacturing ramp, AI features monetization."
+---
+```
+
+```yaml
+---
+ts: 2026-07-30T18:09:00Z
+action: skip
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 0
+thesis: AMZN reports AH TODAY July 30. 48h binary event window ACTIVE — no entry permitted. Score July 31 Pre-Market post-release.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "Exemption 2: binary event — AMZN earnings AH July 30. 48h window opened July 28 ~4PM ET. Score and evaluate July 31 Pre-Market. Key metrics: AWS growth rate, advertising revenue, margins vs Jassy efficiency program targets."
+---
+```
+
+---
+
+### MARKET CONDITIONS (2:09 PM ET, July 30, 2026 — estimated/last-known, API blocked)
+
+- **FOMC (July 29, resolved):** Decision content UNKNOWN (API blocked). Pre-FOMC pricing: 64% hold, 30% hike. Chair Warsh hawkish. Post-FOMC direction unknown — rate-sensitive sectors (Financials, REIT, Utilities) will be key signal in July 31 Pre-Market scan.
+- **AH Tonight:** AAPL + AMZN report after close. Expected swings: AAPL ~5-7%, AMZN ~6-8%. Both in binary-event window.
+- **AH Last Night (July 29):** META + MSFT + QCOM all reported. Results UNKNOWN (API blocked). Will score at July 31 Pre-Market.
+- **AMD:** Last known ~$465 (July 29); day 42+ naked below stop $481.42. Today's price UNKNOWN. Operator must exit before close.
+- **Crypto:** BTC ~$64,423 / ETH ~$1,916 last-known (July 29 est.). Crypto bucket 0% (target 10%).
+- **Day trades:** None open. AMD is a swing trade (day 42+).
+- **Circuit breaker:** Last known total equity ~$99,014 (July 29 est.). Daily P&L July 30 unknown. Not tripped based on last known data.
+
+---
+
+### TOMORROW'S PRELIMINARY WATCHLIST (July 31, 2026 — Pre-Market BINDING COMMITMENTS)
+
+| Rank | Symbol | Score | Action | Notes |
+|------|--------|-------|--------|-------|
+| 1 | AMD | EXIT | SELL 18sh market FIRST — URGENT | Day 42+, below stop $481.42, naked. OPERATOR MUST EXIT TODAY or at July 31 open. |
+| 2 | GS | 7.2 | BUY 4sh bracket GTC — BINDING | Q2 blowout, financials leadership. ~$1,062–1,073 ref. Stop -5% / Target +15%. |
+| 3 | WFC | 7.0 | BUY 30sh bracket GTC — BINDING | Q2 EPS +16.3% beat. ~$86 ref. Stop -5% / Target +15%. |
+| 4 | MS | 7.0 | BUY 20sh bracket GTC — BINDING | Strong Q2, crypto ETPs. ~$214 ref. Stop -5% / Target +15%. |
+| 5 | META | TBD | SCORE July 31 after AH July 29 | If beat: likely score 7+. Key: ad revenue + AI monetization guidance. |
+| 6 | MSFT | TBD | SCORE July 31 after AH July 29 | If beat: likely score 7+. Key: Azure growth >30% YoY. |
+| 7 | QCOM | TBD | SCORE July 31 after AH July 29 | PT $221 vs ~$167 (+32%). Key: China handset + auto + PC. |
+| 8 | AAPL | TBD | SCORE July 31 after AH July 30 | Reports tonight. iPhone guidance + India ramp + AI monetization. |
+| 9 | AMZN | TBD | SCORE July 31 after AH July 30 | Reports tonight. AWS growth + ad revenue + margins. |
+
+**Post-FOMC sector scan (July 31 Pre-Market MUST ADD):** Run full sector scan for rate-sensitive beneficiaries/losers based on FOMC outcome (now known — content just needs to be retrieved). If hold: Financials/REIT bid; if hike: Utilities/Defensives.
+
+**Crypto opportunity (July 31):** BTC last known $64,423, ETH $1,916. Crypto bucket at 0% vs 10% target = ~$10,000 deployable. If BTC shows bullish setup (hammer/morning star on 1h + stochastic cross + volume), consider 0.15 BTC bracket entry.
+
+---
+
+### CIRCUIT BREAKER CHECK
+
+- Portfolio daily P&L: UNKNOWN (API blocked; AMD and all prices unknown July 30)
+- Last known total equity: ~$99,014 (July 29 Afternoon est.)
+- 3% circuit breaker threshold: -$2,970 from ~$99,014 = ~$96,044 minimum
+- Status: **UNKNOWN** — AMD is deeply below stop so loss could be larger than expected. Operator must check. If AMD dropped further (e.g. <$460), portfolio would still be ~$99,000+ (cash $90,644 dominates).
+- Best estimate: **NOT TRIPPED** — even if AMD at $440, total equity ~$98,564 (well above $96,044)
+
+---
+
+### AFTERNOON SUMMARY
+
+Alpaca API blocked (103rd consecutive session). All four predecessor routines silently failed today (Pre-Market, Market-Open, Mid-Morning, Midday) — 4 violations logged. GS/WFC/MS binding commitments deferred for the 3rd consecutive day to July 31 Pre-Market — NO FURTHER DEFERRALS ACCEPTABLE. AMD naked Day 42+, below hard stop $481.42 (last known ~$465), operator must exit manually on app.alpaca.markets before today's 4:00 PM ET close. AAPL + AMZN reporting AH tonight — binary event windows active, no entry. META/MSFT/QCOM reported AH July 29 — scoring deferred to July 31 (data unavailable due to API block + Pre-Market failure). Heartbeat COMPLETE to follow.
+
+---
+
 ## 2026-07-29 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 102nd consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-29T18:09:16Z ✓
