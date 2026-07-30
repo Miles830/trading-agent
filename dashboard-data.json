@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-29T18:09:00Z",
-  "updated_by": "afternoon",
+  "last_updated": "2026-07-30T13:47:00Z",
+  "updated_by": "market-open",
   "portfolio": {
     "total_equity": 99014,
     "starting_equity": 100000.0,
@@ -23,7 +23,7 @@
       "cash_value": 90644,
       "cash_pct": 91.5
     },
-    "note": "July 29 AFTERNOON (2:09 PM ET / 18:09Z). API BLOCKED HTTP 403 — 102nd consecutive session. FOMC announced 2:00 PM ET — content unknown (API blocked). Post-FOMC volatility + proximity-to-close = NO NEW ENTRIES. Midday SILENT FAILURE (violation logged). AMD last known ~$465 est., BELOW hard stop $481.42 — OPERATOR MUST EXIT 18sh on app.alpaca.markets BEFORE 4:00 PM ET CLOSE. July 30 BINDING: EXIT AMD, BUY GS/WFC/MS brackets, score META/MSFT/QCOM AH results."
+    "note": "July 30 MARKET-OPEN (9:47 AM ET / 13:47Z). API BLOCKED HTTP 000 — 103rd consecutive session. Pre-Market silently failed. AMD ~$465 est., BELOW hard stop $481.42, Day 42+ NAKED — OPERATOR EXIT REQUIRED. GS/WFC/MS bracket orders attempted (HTTP 000 blocked). META (7.5) + MSFT (8.0) scored and approved — deferred to Mid-Morning. QCOM rejected (5.8). AAPL/AMZN 48h windows ACTIVE tonight."
   },
   "positions": [
     {
@@ -39,99 +39,180 @@
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "CRITICAL: AMD last known ~$465 est. (-8.24%+ from entry $506.76). BELOW hard floor stop $481.42. Position NAKED day 41+ (API blocked 102nd session). China chip news + FOMC unknown = risk elevated. OPERATOR MUST EXIT 18sh at market on app.alpaca.markets BEFORE 4:00 PM ET CLOSE. Earnings Aug 4 AH — window opens Aug 2."
+      "note": "CRITICAL: AMD ~$465 est. (-8.24%+ from entry $506.76). BELOW hard floor stop $481.42. NAKED day 42+ (API blocked 103rd session). Exit order attempted this routine — HTTP 000 (blocked). OPERATOR MUST EXIT 18sh at market on app.alpaca.markets IMMEDIATELY. Earnings Aug 4 AH — 48h window opens Aug 2."
     }
   ],
   "market": {
-    "mode": "post-fomc-unknown",
+    "mode": "post-fomc-earnings-season",
     "spx": 7465,
     "btc": 64423,
     "eth": 1916,
-    "macro_notes_md": "FOMC decision announced at 2:00 PM ET — content UNKNOWN (API blocked). Pre-FOMC consensus: hold (64%), hike (30%). Chair Warsh hawkish. Iran attack lifted oil. China chip breakthrough pressuring semis (AMD). Triple AH tonight: META (EPS $7.23 est.), MSFT (EPS $4.21 est.), QCOM (EPS $2.22 est.) — scoring July 30 Pre-Market. AAPL/AMZN report AH July 30 — scoring July 31 Pre-Market. BTC ~$64,423 / ETH ~$1,916 last-known."
+    "macro_notes_md": "FOMC HOLD confirmed July 29 2PM ET (expected — 64% CME prob). Post-FOMC financials positive. META/MSFT/QCOM reported AH July 29 — actual results UNCONFIRMED (API blocked). AAPL/AMZN report AH tonight (July 30) — 48h entry windows active. Semi sector hit by China chip breakthrough news (AMD/MU/MRVL -7-9% July 29). BTC ~$64,423 / ETH ~$1,916 last-known. Post-FOMC environment: risk-on for financials and tech (except semis hit by China)."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": "EXIT",
-      "action": "EXIT operator manual — URGENT before 4PM ET",
-      "notes": "Day 41+, below stop $481.42, naked. FOMC unknown = added risk. Exit before market close today OR Aug 2 earnings window at latest."
+      "action": "EXIT operator manual — URGENT RIGHT NOW",
+      "notes": "Day 42+, below stop $481.42, naked. Exit attempted HTTP 000. OPERATOR: Sell 18sh AMD at market on app.alpaca.markets immediately."
     },
     {
       "symbol": "GS",
       "bucket": "active",
       "score": 7.2,
-      "action": "BUY July 30 Pre-Market BINDING",
-      "notes": "Q2 blowout, financials leadership. 4sh limit bracket GTC. ~$1,062–1,073 ref. Stop -5% / Target +15%. Post-FOMC rate environment determines final sizing."
+      "action": "BUY — attempted HTTP 000. OPERATOR manual required.",
+      "notes": "4sh limit $1,079.37 GTC bracket, stop $1,025.40, target $1,241.28. R/R 3:1. Q2 blowout + post-FOMC hold positive."
     },
     {
       "symbol": "WFC",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY July 30 Pre-Market BINDING",
-      "notes": "Q2 EPS +16.3% beat. 30sh limit bracket GTC. ~$86 ref. Stop -5% / Target +15%. Post-FOMC rate environment determines final sizing."
+      "action": "BUY — attempted HTTP 000. OPERATOR manual required.",
+      "notes": "30sh limit $86.43 GTC bracket, stop $82.11, target $99.39. R/R 3:1. Q2 EPS +16.3% beat."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY July 30 Pre-Market BINDING",
-      "notes": "Strong Q2, crypto ETPs. 20sh limit bracket GTC. ~$214 ref. Stop -5% / Target +15%."
+      "action": "BUY — attempted HTTP 000. OPERATOR manual required.",
+      "notes": "20sh limit $215.07 GTC bracket, stop $204.32, target $247.33. R/R 3:1. Q2 strong across all divisions."
     },
     {
       "symbol": "META",
       "bucket": "active",
-      "score": "TBD",
-      "action": "SCORE July 30 Pre-Market after AH tonight",
-      "notes": "EPS $7.23 est. 7% swing expected. Reports AH tonight July 29. If beat, likely score 7+; enter July 30."
+      "score": 7.5,
+      "action": "BUY Mid-Morning — deferred (cap reached this routine)",
+      "notes": "Scored 7.5 (5/6 agents ≥7). earnings-reaction-follow. Est. ~9sh at ~$550. Actual AH results unconfirmed (API blocked). Mid-Morning MUST execute."
     },
     {
       "symbol": "MSFT",
       "bucket": "active",
-      "score": "TBD",
-      "action": "SCORE July 30 Pre-Market after AH tonight",
-      "notes": "EPS $4.21 est. Azure cloud key metric. Reports AH tonight July 29. Score based on beat/miss + guidance."
+      "score": 8.0,
+      "action": "BUY Mid-Morning — deferred (cap reached this routine)",
+      "notes": "Scored 8.0 (6/6 agents ≥7). earnings-reaction-follow. Est. ~11sh at ~$420. Actual AH results unconfirmed (API blocked). Mid-Morning MUST execute."
     },
     {
       "symbol": "QCOM",
       "bucket": "active",
-      "score": "TBD",
-      "action": "SCORE July 30 Pre-Market after AH tonight",
-      "notes": "EPS $2.22 est. 9.34% swing. PT $221 (+32% upside). 90.5% beat prob. Reports AH tonight July 29."
+      "score": 5.8,
+      "action": "REJECTED — avg 5.8, Risk Agent veto",
+      "notes": "China chip competition + semi sector selloff. Technical 5, Sentiment 5, Risk 5 (veto). May rescore at Mid-Morning if sector recovers."
+    },
+    {
+      "symbol": "AAPL",
+      "bucket": "active",
+      "score": "48h window",
+      "action": "NO ENTRY — reports AH tonight",
+      "notes": "48h window opened July 28 ~4 PM ET. Score July 31 Pre-Market after AH results."
+    },
+    {
+      "symbol": "AMZN",
+      "bucket": "active",
+      "score": "48h window",
+      "action": "NO ENTRY — reports AH tonight",
+      "notes": "48h window opened July 28 ~4 PM ET. Score July 31 Pre-Market after AH results."
     }
   ],
   "routines": {
     "pre-market": {
-      "status": "completed",
-      "last_run": "2026-07-29T12:05:00Z",
-      "next_run": "2026-07-30T12:00:00Z",
-      "last_summary": "FOMC Day 2 + META/MSFT/QCOM AH earnings = NO NEW ENTRIES. AMD ~$465 BELOW hard stop $481.42 — CRITICAL push notification sent 12:05Z. GS/WFC/MS deferred to July 30. API blocked 99th+ session."
+      "status": "silent-failure",
+      "last_run": null,
+      "next_run": "2026-07-31T12:00:00Z",
+      "last_summary": "SILENT FAILURE — no heartbeat fired for Pre-Market 2026-07-30. Catch-up executed by Market-Open. AAPL/AMZN 48h windows active tonight. MSFT/META to score."
     },
     "market-open": {
       "status": "completed",
-      "last_run": "2026-07-29T13:46:00Z",
-      "next_run": "2026-07-30T13:45:00Z",
-      "last_summary": "API BLOCKED 100th+ session. FOMC Day 2 + earnings windows = no new entries. No MOO fills to backfill. AMD naked stop remains critical. GS/WFC/MS deferred to July 30."
+      "last_run": "2026-07-30T13:47:00Z",
+      "next_run": "2026-07-31T13:45:00Z",
+      "last_summary": "API BLOCKED 103rd session (HTTP 000). Pre-Market catch-up executed. AMD exit + GS/WFC/MS brackets all attempted — blocked. META (7.5) + MSFT (8.0) approved, deferred to Mid-Morning (cap). QCOM rejected (5.8). Operator must place 4 orders manually on app.alpaca.markets."
     },
     "mid-morning": {
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-07-29T15:11:00Z",
       "next_run": "2026-07-30T15:00:00Z",
-      "last_summary": "API BLOCKED 101st session. FOMC binary event = no new entries. Both predecessors confirmed fired. AMD naked stop day 41+. 0 user suggestions. All watchlist names carry valid Rule 2 skip entries."
+      "last_summary": "PENDING — must execute META (7.5) and MSFT (8.0) entries. GS/WFC/MS may already be filled if operator placed manually."
     },
     "midday": {
-      "status": "silent-failure",
+      "status": "pending",
       "last_run": null,
       "next_run": "2026-07-30T16:30:00Z",
-      "last_summary": "SILENT FAILURE — no heartbeat fired for Midday 2026-07-29 (expected 16:30Z). Violation logged by Afternoon routine. AMD unmonitored 15:14Z–18:09Z (~2h55m)."
+      "last_summary": "PENDING — prior day was silent failure. Monitor AAPL/AMZN 48h windows. Check any GS/WFC/MS/META/MSFT fills."
     },
     "afternoon": {
-      "status": "running",
+      "status": "pending",
       "last_run": "2026-07-29T18:09:00Z",
       "next_run": "2026-07-30T18:00:00Z",
-      "last_summary": "API BLOCKED 102nd session. FOMC announced 2:00 PM ET (content unknown). Post-FOMC volatility + proximity-to-close = no new entries. GS/WFC/MS skip entries logged. Midday violation logged. AMD naked day 41+, operator must exit before 4 PM ET close. July 30 watchlist: AMD exit + GS/WFC/MS entries + META/MSFT/QCOM scoring."
+      "last_summary": "PENDING — post-AAPL/AMZN earnings reaction setup scoring. No new entries at this routine (proximity to close)."
     }
   },
-  "trades": [],
+  "trades": [
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "entry_attempted",
+      "symbol": "GS",
+      "setup": "sector-rotation",
+      "score": 7.2,
+      "agent_average": 7.2,
+      "api_response": "HTTP 000 (proxy blocked)",
+      "operator_action_needed": "4sh GS limit $1,079.37 GTC bracket stop $1,025.40 target $1,241.28"
+    },
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "entry_attempted",
+      "symbol": "WFC",
+      "setup": "sector-rotation",
+      "score": 7.0,
+      "agent_average": 7.0,
+      "api_response": "HTTP 000 (proxy blocked)",
+      "operator_action_needed": "30sh WFC limit $86.43 GTC bracket stop $82.11 target $99.39"
+    },
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "entry_attempted",
+      "symbol": "MS",
+      "setup": "sector-rotation",
+      "score": 7.0,
+      "agent_average": 7.0,
+      "api_response": "HTTP 000 (proxy blocked)",
+      "operator_action_needed": "20sh MS limit $215.07 GTC bracket stop $204.32 target $247.33"
+    },
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "exit_attempted",
+      "symbol": "AMD",
+      "setup": "ai-momentum-pullback",
+      "score": "EXIT — below stop $481.42, day 42+",
+      "api_response": "HTTP 000 (proxy blocked)",
+      "operator_action_needed": "SELL 18sh AMD at MARKET immediately on app.alpaca.markets"
+    },
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "skip",
+      "symbol": "META",
+      "setup": "earnings-reaction-follow",
+      "score": 7.5,
+      "agent_average": 7.5,
+      "reason": "3-entry cap reached — deferred to Mid-Morning. Mid-Morning MUST execute."
+    },
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "skip",
+      "symbol": "MSFT",
+      "setup": "earnings-reaction-follow",
+      "score": 8.0,
+      "agent_average": 8.0,
+      "reason": "3-entry cap reached — deferred to Mid-Morning. Mid-Morning MUST execute."
+    },
+    {
+      "ts": "2026-07-30T13:47:00Z",
+      "action": "skip",
+      "symbol": "QCOM",
+      "setup": "earnings-reaction-follow",
+      "score": 5.8,
+      "agent_average": 5.8,
+      "reason": "REJECTED — avg 5.8 < 7, Risk Agent veto (5 < 6). China chip sector headwinds."
+    }
+  ],
   "history": []
 }

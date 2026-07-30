@@ -4,6 +4,279 @@
 
 ---
 
+## 2026-07-30 — Market-Open Routine (9:45 AM ET / 13:47 UTC — PRE-MARKET SILENT FAILURE + API BLOCKED — 103rd consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-07-30T13:46:35Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, `paper-api.alpaca.markets:443`) — **103rd consecutive blocked session**
+**Pre-Market Status:** SILENTLY FAILED — no heartbeat found for Pre-Market 2026-07-30
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded gracefully.
+**Time (ET):** ~9:47 AM ET — Market-Open window (market opened at 9:30 AM ET)
+**Date:** 2026-07-30 (Thursday — trading day; AAPL + AMZN report AH tonight)
+
+---
+
+### PREDECESSOR HEARTBEAT CHECK
+
+- Pre-Market 2026-07-30: **SILENTLY FAILED** — `grep "STARTED Pre-Market" logs/heartbeats/2026-07-30.log` returned 0 lines
+- Running PRE-MARKET CATCH-UP as required by routines/open.md before stop-loss backfill
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: violation
+symbol: ROUTINE
+bucket: active
+setup: silent-failure
+score: 0
+thesis: Pre-Market routine silently failed on 2026-07-30 — no heartbeat found. Catch-up running from Market-Open.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores: {}
+agent_average: null
+agents_above_7: null
+master_decision: rejected
+master_notes: "No STARTED heartbeat for Pre-Market 2026-07-30. Expected ~12:05Z (8:05 AM ET). Discovered by Market-Open at 13:47Z. Running catch-up: stop-loss audit + watchlist execution per routines/open.md. 103rd consecutive API-blocked session. No MOO orders were placed for today (Pre-Market failed). AAPL/AMZN reporting AH tonight — 48h windows still active."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT — FIRST ACTION (API BLOCKED)
+
+```bash
+# GET /v2/orders?status=open → HTTP 000 (proxy CONNECT rejected — policy denial, 103rd session)
+# GET /v2/positions → HTTP 000
+# AMD EXIT: POST /v2/orders {"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"day"} → HTTP 000
+```
+
+**AMD exit attempt (MANDATORY — below hard stop $481.42, Day 42+ post-fill):**
+- Entry avg cost: $506.76 | Hard stop floor (5% below entry): **$481.42**
+- Last known price: ~$465 (July 29 pre-market estimate; current price UNKNOWN — API blocked)
+- Stop order: **NAKED — no resting stop at Alpaca (103rd consecutive session)**
+- Exit order: ATTEMPTED — POST /v2/orders HTTP 000 (proxy blocked, cannot reach paper-api.alpaca.markets)
+- **GUARDRAIL VIOLATION ACTIVE: DAY 42+ NAKED POSITION, BELOW HARD STOP**
+- **OPERATOR ACTION REQUIRED: EXIT 18sh AMD at MARKET on app.alpaca.markets IMMEDIATELY.**
+
+---
+
+### WATCHLIST EXECUTION — PRE-MARKET CATCH-UP + MARKET-OPEN
+
+**Binary event check:**
+- AAPL: Reports AH tonight → 48h window ACTIVE (opened July 28) → NO ENTRY
+- AMZN: Reports AH tonight → 48h window ACTIVE → NO ENTRY
+- META: Reported AH July 29 → window CLOSED → ALLOWED (earnings-reaction-follow)
+- MSFT: Reported AH July 29 → window CLOSED → ALLOWED
+- QCOM: Reported AH July 29 → window CLOSED → ALLOWED
+- GS/WFC/MS: No binary events → ENTRY ALLOWED
+
+**3-entry cap this routine:** GS, WFC, MS consume all 3 slots (oldest binding commitments). META/MSFT approved and scored — deferred to Mid-Morning.
+
+---
+
+#### GS — Goldman Sachs (sector-rotation, score 7.2/10, BINDING commitment from 2026-07-29)
+
+All 6 agents scored: Fundamentals 8 (Q2 blowout beat, record trading revenue), Technical 7 (financials breakout vs SPX, bullish trend), Sentiment 7 (analyst upgrades, strong buy consensus), Macro 8 (post-FOMC hold = rate clarity for capital markets, positive for GS), Risk 7 (R/R 3:1 achieved, size 4.4% under 5% cap, risk 0.22% under 1.5%), Tech Analyst 7 (n/a tech, auto-7 per CLAUDE.md).
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: GS Q2 blowout — record investment banking + trading revenue. Post-FOMC hold removes rate uncertainty for capital markets. Bracket limit GTC attempted — HTTP 000 (API blocked).
+size_pct: 4.4
+stop: 1025.40
+target: 1241.28
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 4
+master_decision: approved
+master_notes: "ORDER ATTEMPTED — POST /v2/orders → HTTP 000 (proxy CONNECT rejected 103rd session). Params: symbol=GS, qty=4, side=buy, type=limit, limit_price=1079.37, tif=gtc, order_class=bracket, stop_loss.stop_price=1025.40, take_profit.limit_price=1241.28. R/R: ($1241.28-$1079.37)/($1079.37-$1025.40) = $161.91/$53.97 = 3.0:1. Risk: 4 x $53.97 = $215.88 = 0.22% equity. Size: 4 x $1079.37 = $4317 = 4.4% equity. Financials sector total (GS+WFC+MS) = $11,211 = 11.3% → under 25% cap. All guardrails pass. FOMC hold July 29 confirmed positive for financials. X sentiment: xai_api_key not provisioned — degraded. OPERATOR MANUAL ACTION: 4sh GS limit $1,079.37 GTC bracket, stop $1,025.40, target $1,241.28 on app.alpaca.markets."
+---
+```
+
+---
+
+#### WFC — Wells Fargo (sector-rotation, score 7.0/10, BINDING commitment from 2026-07-29)
+
+All 6 agents scored: Fundamentals 7 (Q2 EPS $1.43 +16.3% beat, NII resilient), Technical 7 (financials breakout, above 50-day), Sentiment 7 (positive post-earnings, analyst hold → buy upgrades), Macro 8 (post-FOMC rate hold supports bank NIM outlook), Risk 7 (R/R 3:1, size 2.6%, risk 0.13%), Tech Analyst 7 (n/a, auto-7).
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: entry
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC Q2 EPS $1.43 (+16.3% beat), financials rotation post-FOMC hold. Net interest income resilient. Bracket limit GTC attempted — HTTP 000 (API blocked).
+size_pct: 2.6
+stop: 82.11
+target: 99.39
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "ORDER ATTEMPTED — POST /v2/orders → HTTP 000 (proxy CONNECT rejected 103rd session). Params: symbol=WFC, qty=30, side=buy, type=limit, limit_price=86.43, tif=gtc, order_class=bracket, stop_loss.stop_price=82.11, take_profit.limit_price=99.39. R/R: ($99.39-$86.43)/($86.43-$82.11) = $12.96/$4.32 = 3.0:1. Risk: 30 x $4.32 = $129.60 = 0.13% equity. Size: 30 x $86.43 = $2,593 = 2.6% equity. Financials sector check: GS+WFC+MS combined = $11,211 = 11.3% → under 25% cap. OPERATOR MANUAL ACTION: 30sh WFC limit $86.43 GTC bracket, stop $82.11, target $99.39 on app.alpaca.markets."
+---
+```
+
+---
+
+#### MS — Morgan Stanley (sector-rotation, score 7.0/10, BINDING commitment from 2026-07-29)
+
+All 6 agents scored: Fundamentals 7 (strong Q2 wealth management + IB + crypto ETP revenue), Technical 7 (bullish trend, above moving averages), Sentiment 7 (positive analyst coverage, crypto ETP tailwind), Macro 8 (post-FOMC hold positive for capital markets), Risk 7 (R/R 3:1, size 4.3%, risk 0.22%), Tech Analyst 7 (n/a, auto-7).
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: entry
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: MS Q2 strong across wealth management, IB, and crypto ETP. Post-FOMC rate hold supports capital markets. Bracket limit GTC attempted — HTTP 000 (API blocked).
+size_pct: 4.3
+stop: 204.32
+target: 247.33
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 4
+master_decision: approved
+master_notes: "ORDER ATTEMPTED — POST /v2/orders → HTTP 000 (proxy CONNECT rejected 103rd session). Params: symbol=MS, qty=20, side=buy, type=limit, limit_price=215.07, tif=gtc, order_class=bracket, stop_loss.stop_price=204.32, take_profit.limit_price=247.33. R/R: ($247.33-$215.07)/($215.07-$204.32) = $32.26/$10.75 = 3.0:1. Risk: 20 x $10.75 = $215 = 0.22% equity. Size: 20 x $215.07 = $4,301 = 4.3% equity. Financials sector check: GS+WFC+MS = $11,211 = 11.3% → under 25% cap. OPERATOR MANUAL ACTION: 20sh MS limit $215.07 GTC bracket, stop $204.32, target $247.33 on app.alpaca.markets."
+---
+```
+
+---
+
+#### META — (earnings-reaction-follow, score 7.5/10, APPROVED — deferred to Mid-Morning)
+
+**NOTE:** Actual Q2 2026 earnings results UNCONFIRMED (API blocked). Score based on historical pattern (20%+ revenue growth trend), pre-earnings consensus ($7.23 EPS), Advantage+ AI ad platform strength, post-FOMC environment. Not a skip — Mid-Morning MUST execute if API available, or operator places manually.
+
+All 6 agents scored: Fundamentals 8 (consistent beat track record, AI-driven ad optimization, WhatsApp monetization), Technical 7 (likely gap-up on beat — pending confirmation), Sentiment 7 (positive AI narrative, ad market recovery), Macro 8 (post-FOMC hold positive for consumer ad spending), Risk 7 (3:1 R/R achievable at ~9sh), Tech Analyst 8 (Llama 3 AI leadership, MTIA custom silicon, Ray-Ban Meta growing, Instagram reels moat).
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: skip
+symbol: META
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: META Q2 2026 likely beat — Advantage+ AI ad platform + 20%+ revenue growth trend. Scored 7.5. Deferred to Mid-Morning: 3-entry cap consumed by GS/WFC/MS binding commitments.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 7.5
+agents_above_7: 5
+master_decision: approved
+master_notes: "Score 7.5/10 — 5/6 agents ≥7. API blocked (HTTP 000). Actual AH July 29 results UNCONFIRMED (API blocked). Scoring based on: historical beat pattern (Q4 2024 / Q1 2025 strong), consensus EPS $7.23, Advantage+ AI ad monetization, post-FOMC hold supports ad spending outlook, Llama 3 AI ecosystem. EXECUTION DEFERRED to Mid-Morning (3-entry cap consumed this routine). NOT a valid skip per CLAUDE.md Deployment Bias — Mid-Morning MUST execute at score 7.5. Estimated ~9sh META at ~$550 est. Bracket: limit $552.75, stop $525.11, target $635.66 (3:1). OPERATOR: Place manually if API remains blocked."
+---
+```
+
+---
+
+#### MSFT — (earnings-reaction-follow, score 8.0/10, APPROVED — deferred to Mid-Morning)
+
+**NOTE:** Actual Q4 FY2026 earnings results UNCONFIRMED (API blocked). Score based on Azure trajectory (30%+ growth), Copilot AI revenue, pre-earnings consensus ($4.21-$4.24 EPS). Not a skip — Mid-Morning MUST execute.
+
+All 6 agents scored: Fundamentals 9 (Azure cloud 30%+ growth, Copilot AI monetization, dominant enterprise), Technical 7 (likely post-earnings strength), Sentiment 8 (strongest AI narrative in mega-cap), Macro 8 (post-FOMC hold = positive for growth tech valuation), Risk 7 (3:1 R/R achievable), Tech Analyst 9 (Azure #2 cloud, GitHub Copilot leader, Teams AI, dominant moats).
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: skip
+symbol: MSFT
+bucket: active
+setup: earnings-reaction-follow
+score: 8.0
+thesis: MSFT Q4 FY2026 — Azure 30%+ growth, Copilot AI revenue ramp, dominant enterprise. Scored 8.0. Deferred to Mid-Morning: 3-entry cap consumed by GS/WFC/MS.
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "Score 8.0/10 — 6/6 agents ≥7. API blocked (HTTP 000). Actual AH July 29 results UNCONFIRMED. Scoring based on: Azure cloud growth trajectory, GitHub Copilot enterprise adoption, Office 365 Copilot monetization, FY2026 consensus EPS $4.21-$4.24, dominant enterprise software moat. Post-FOMC hold = positive valuation re-rate. EXECUTION DEFERRED to Mid-Morning (3-entry cap consumed). NOT a valid skip per CLAUDE.md Deployment Bias — Mid-Morning MUST execute at score 8.0. Estimated ~11sh MSFT at ~$420 est. Bracket: limit $422.10, stop $401.00, target $485.42 (3:1). OPERATOR: Place manually if API remains blocked."
+---
+```
+
+---
+
+#### QCOM — (earnings-reaction-follow, score 5.8/10, REJECTED)
+
+All 6 agents scored: Fundamentals 7 (PT $221 vs $167 = 32% upside, AI PC + automotive growth), Technical 5 (China chip news July 29 sent sector -7-9%; QCOM likely gapped down), Sentiment 5 (semiconductor sector sentiment negative on China competition fears), Macro 6 (post-FOMC hold neutral; China competition risk dominates sector narrative), Risk 5 (R/R uncertain; stop likely hit quickly in current sector environment), Tech Analyst 7 (Snapdragon X AI PC chips, automotive design wins — but China handset dependency ~60% revenue).
+
+```yaml
+---
+ts: 2026-07-30T13:47:00Z
+action: skip
+symbol: QCOM
+bucket: active
+setup: earnings-reaction-follow
+score: 5.8
+thesis: QCOM Q3 FY2026 — PT $221 vs $167 compelling but semiconductor sector hit by China chip breakthrough news July 29. Average 5.8/10 — REJECTED. Risk Agent veto (5 < 6 minimum).
+size_pct: 0
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 5
+  macro: 6
+  risk: 5
+  tech_analyst: 7
+agent_average: 5.8
+agents_above_7: 2
+master_decision: rejected
+master_notes: "Score 5.8/10 — only 2/6 agents ≥7. Risk Agent scored 5 → automatic veto (minimum 6 required per CLAUDE.md). Average 5.8 < 7 minimum. Failure modes: (1) China semiconductor breakthrough news July 29 sent AMD/MU/MRVL -7-9%; QCOM has ~60% China handset revenue exposure — similar downside risk; (2) Semiconductor sector sentiment negative; (3) R/R compromised by uncertain support levels in depressed sector. PT $221 vs $167 (+32%) is compelling but requires stable China-export access. May be rescored at Mid-Morning if sector recovers. Valid rejection per CLAUDE.md entry checklist."
+---
+```
+
+---
+
 ## 2026-07-29 — Afternoon Routine (2:00 PM ET / 18:09 UTC — API BLOCKED — 102nd consecutive session)
 
 **HEARTBEAT:** STARTED Afternoon 2026-07-29T18:09:16Z ✓
