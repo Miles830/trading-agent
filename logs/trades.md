@@ -4,6 +4,282 @@
 
 ---
 
+
+## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-07-31T12:05:14Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **105th consecutive blocked session** (paper-api.alpaca.markets and data.alpaca.markets both unreachable; curl exit code 56, HTTP 000)
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X modifier applied.
+**Market Status:** PRE-MARKET (8:05 AM ET). Regular session opens 9:30 AM ET.
+**GitHub User Suggestions:** CHECKED — 0 open user-suggestion issues.
+
+---
+
+### PORTFOLIO STATE (Pre-Market July 31, 2026 — API BLOCKED, prices from web research)
+
+**AMD pre-market:** ~$443-452 (up +3-5% from July 29 close $429.56; Core Scientific $14B deal bullish; still BELOW hard stop $481.42 by ~$30-38)
+**Cash:** ~$90,644 (90.2% at AMD $443 pre-market)
+**AMD position:** 18sh × $443 = ~$7,974 (8.1% est.) — NAKED (no stop at Alpaca)
+**Total Equity:** ~$98,618 (AMD valued at pre-market $443; LOWER than $99,356 yesterday's estimate at $484)
+**Daily P&L (pre-market):** ~-$738 (AMD down from est. $484 EOD July 30 to $443 pre-market)
+**SPX pre-market:** ~7,473 (+0.47% futures) — from May 1 baseline 7,200: **+3.79%**
+**Portfolio return vs $100K:** ($98,618 / $100,000 - 1) = **-1.38%**
+**Cumulative benchmark gap:** -1.38% - 3.79% = **-5.17 pp** (worsening — AMD drawdown + cash drag)
+**20-Day underperformance flag: ACTIVE** (105th consecutive session)
+**Open positions: 1** (AMD — NAKED, below hard stop, Day 44+, exit MANDATORY today)
+**Circuit breaker: NOT TRIPPED** (-1.38% total return vs -3% daily threshold)
+
+---
+
+### MARKET CONDITIONS — JULY 31, 2026 (Pre-Market)
+
+**US Futures (8:05 AM ET):** S&P 500 +0.47% to 7,507.75 | Nasdaq +1.11% to 28,552 — **RISK-ON** (94% Polymarket probability of higher open)
+**Drivers:** AMZN massive Q2 beat (+12% pre-market surge) driving Nasdaq; tech/AI optimism ("investors pick AI winners" per CNBC)
+**AAPL drag:** -7.36% pre-market to $308.88 — supply constraint guidance, China miss ($18.8B vs $19.5B), Services miss ($30.74B vs $31.22B), EPS beat partially tariff-refund inflated, Q4 revenue guide +9-11% vs est. +12%+ — partially offsets Nasdaq strength
+**Today's earnings calendar (pre-market):** XOM (84.5% probability beat, Q2 ~$5B higher vs Q1), CVX, ABBV, LIN, ETN, MRNA, TROW, CBOE
+**Crypto:** BTC ~$64,000 | ETH ~$1,910 (risk-on, Fed hold supportive)
+**Key macro:** No Fed speakers today. Digesting GDP +1.5% (Q2, below est.) and Core PCE 3.3% (June, improving). Consumer Sentiment due.
+**AMD catalyst:** Core Scientific $14B AI infrastructure deal announced July 28 — 15-year, 2.5GW capacity. Bullish long-term but doesn't change stop-breach guardrail.
+**NVDA:** Trading ~$195-210 range in July. Watch for AI validation trade.
+
+---
+
+### BINDING ACTIONS — JULY 31 (ALL FROM PRIOR DAILY REVIEW)
+
+**STOP-LOSS AUDIT (MANDATORY FIRST ACTION):**
+API BLOCKED — cannot execute `GET /v2/orders?status=open`. Based on last known state: AMD position NAKED (no stop at Alpaca — 105th consecutive session). All other positions: none open. Stop gap: AMD requires immediate stop at $481.42 (or immediate EXIT).
+
+**DECISION: AMD is BELOW $481.42 hard stop ($443-452 pre-market). EXIT > STOP.**
+
+---
+
+### ORDER ATTEMPTS (ALL FAILED — API BLOCKED)
+
+**ORDER 1 — AMD EXIT (SELL 18sh MARKET OPG):**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"opg"}'
+RESULT: curl exit code 56, HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial)
+```
+
+**ORDER 2 — AMZN BUY MOO (BUY 21sh MARKET OPG):**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMZN","qty":21,"side":"buy","type":"market","time_in_force":"opg"}'
+RESULT: curl exit code 56, HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial)
+```
+
+**ORDER 3 — GS BUY MOO (BUY 4sh MARKET OPG):**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"opg"}'
+RESULT: curl exit code 56, HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial)
+```
+
+**API BLOCKAGE NOTE:** The Alpaca API has been blocked by the organization's egress proxy policy for 105 consecutive sessions. This is documented in the project's root cause analysis (memory/project_routine_github_auth_root_cause.md). All three intended MOO orders (AMD exit + AMZN entry + GS entry) were attempted and failed. Orders are NOT executing at Alpaca — this is an unresolved operational gap that only the operator can remedy on app.alpaca.markets.
+
+---
+
+### SCORED DECISIONS — JULY 31 PRE-MARKET
+
+```yaml
+---
+ts: 2026-07-31T12:05:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: MANDATORY EXIT — AMD at ~$443-452 pre-market, ~8% below hard stop $481.42, Day 44+, NAKED (105th session no stop at Alpaca), Aug 2 48h window opens (Aug 4 AH earnings). Last safe exit day. API blocked — order not placed.
+size_pct: 8.1
+stop: null
+target: null
+result_pct: null
+master_decision: exit
+master_notes: "API ATTEMPT: SELL 18sh AMD MARKET OPG. curl exit code 56, HTTP 000 — proxy egress policy 403 CONNECT rejection (105th consecutive session). ORDER NOT PLACED AT ALPACA. AMD pre-market ~$443-452 vs hard stop $481.42 = $28-38 below floor. Core Scientific $14B 15-year AI deal announced July 28 is bullish long-term but does not change guardrail breach. 18sh × $443 = $7,974 vs cost basis 18 × $506.76 = $9,121.68 = -$1,147.68 realized loss (-12.58%) if exit fills at $443. Earnings Aug 4 AH: 48h binary event window opens Aug 2 — TODAY is the final permitted exit day per CLAUDE.md binary event rules. OPERATOR MANDATORY: SELL 18sh AMD at MARKET on app.alpaca.markets BEFORE 9:30 AM ET — this is the FINAL safe day. If AMD is not exited today, it becomes a binary event hold (forbidden by strategy) or must be exited blind inside the 48h window."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T12:06:00Z
+action: entry
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 8.2
+thesis: Amazon Q2 2026 massive beat — AWS +37% to $42.2B (vs est. +31%), EPS $5.75 (+242% YoY), AI chips >$25B ARR. Pre-market +12% to ~$234. MOO: 21sh ~$234 = ~$4,914 (~4.99% of equity post-AMD-exit). Stop -5% (~$222.30), Target +15% (~$269.10), R/R 3:1. API blocked — order not placed.
+size_pct: 4.99
+stop: 222.30
+target: 269.10
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "API ATTEMPT: BUY 21sh AMZN MARKET OPG. curl exit code 56, HTTP 000 — proxy egress policy 403 CONNECT rejection (105th consecutive session). ORDER NOT PLACED AT ALPACA. AMZN pre-market ~$234.20 (surged ~12% from July 30 regular session close ~$209 on Q2 massive beat). Adjusted from July 30 plan (22sh × $225 = $4,950) to 21sh × $234 = $4,914 = 4.99% of $98,618 post-AMD-exit equity — within 5% cap. Score 8.2/10 unchanged. 6/6 agents ≥7. CNBC: 'Apple drops 7%, Amazon surges 12% as investors pick AI winners after earnings.' No binary event active (earnings already printed July 30 AH). Nasdaq futures +1.11% (strong risk-on). R/R: stop $222.30 (-5%), target $269.10 (+15%) = 3:1 ✓. BINDING ENTRY. OPERATOR: BUY 21sh AMZN at MARKET OPG before 9:25 AM ET on app.alpaca.markets. Then at 9:45 AM Market-Open routine: place bracket stop $222.30 / target $269.10 GTC after confirming fill price. X sentiment: unavailable (no XAI key) — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T12:07:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Goldman Sachs Q2 blowout beat; FOMC held 3.50-3.75% (rate clarity for banks); financials sector FOMC tailwind. MOO: 4sh ~$1,020 est. = ~$4,080 (~4.14% of equity). Stop -5% (~$969), Target +15% (~$1,173), R/R 3:1. API blocked — order not placed.
+size_pct: 4.14
+stop: 969.00
+target: 1173.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "API ATTEMPT: BUY 4sh GS MARKET OPG. curl exit code 56, HTTP 000 — proxy egress policy 403 CONNECT rejection (105th consecutive session). ORDER NOT PLACED AT ALPACA. THIRD AND FINAL CONSECUTIVE DEFERRAL on GS — any further deferral is a guardrail violation. GS ATH $1,152.07 on July 15; est. current ~$1,009-$1,050 (pulled back from ATH). FOMC hold 3.50-3.75% (July 29) removes rate uncertainty for bank NIM. Q2 blowout confirmed. 6/6 agents ≥7. 4sh × $1,020 = $4,080 = 4.14% of equity ✓. R/R: stop $969 (-5%), target $1,173 (+15%) = 3:1 ✓. Financials sector after GS+WFC+MS: ~11.1% — below 25% cap ✓. BINDING — OPERATOR: BUY 4sh GS at MARKET before 9:25 AM ET on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T12:08:00Z
+action: skip
+symbol: AAPL
+bucket: active
+setup: earnings-reaction-follow
+score: 4.83
+thesis: AAPL pre-market $308.88 (-7.36%) — entry condition (≥$330) NOT met. Score REVISED from 7.0 to 4.83 on materially changed thesis post-earnings: weak Q4 guide (+9-11% vs est. +12%+), supply constraints, China miss ($18.8B vs $19.5B), Services miss ($30.74B vs $31.22B), EPS partially tariff-refund inflated. REJECTED — not one of the 3 valid guardrail exemptions but thesis has changed materially below 7.0 threshold.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 5
+  technical: 3
+  sentiment: 3
+  macro: 7
+  risk: 5
+  tech_analyst: 6
+agent_average: 4.83
+agents_above_7: 1
+master_decision: rejected
+master_notes: "AAPL July 31 Pre-Market: Score revised to 4.83/10 — master gate FAILS (needs ≥7.0 average, ≥4 agents ≥7; only 1/6 agents ≥7). Pre-market condition '$330' not met ($308.88 < $330). Thesis materially changed post-earnings: (1) Q4 revenue guidance +9-11% vs est. +12%+ — guidance miss signals slower growth; (2) Supply constraints worsening in Q4 per Cook's call; (3) China revenue $18.8B vs $19.5B est. — miss in key market; (4) Services $30.74B vs $31.22B — miss in high-margin segment; (5) EPS $2.02 beat partially inflated by tariff refund (not organic growth). Bloomberg: 'Apple's Sales Disappoint in China Unit, Services Business.' CNBC: 'Apple drops 7%, Amazon surges 12% — investors pick AI winners.' Benzinga: wiped $390B in market cap. This is not a valid guardrail exemption skip — the thesis itself has changed below entry threshold. Will monitor $300-$310 support zone for potential mean-reversion entry at later routine. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T12:09:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC score 7.0 — limit bracket GTC deferred to Market-Open routine (MOO cap exhausted: AMD exit + AMZN + GS = 3 MOO slots). BINDING Market-Open entry at limit price ~$88-90. Q2 EPS +16.3% beat, FOMC hold tailwind.
+size_pct: 2.65
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC deferred to Market-Open routine — MOO cap used (AMD exit + AMZN + GS = 3 per-day MOO limit). NOT a skip exemption — this is standard playbook sequencing. BINDING Market-Open limit bracket GTC: ~30sh × ~$88-90 = ~$2,640-2,700 (~2.7% of equity). Stop -5%, target +15%, R/R 3:1 ✓. Sector check post-GS+WFC: ~6.9% financials — below 25% cap ✓. Analyst PT $100.82 (consensus Moderate Buy). OPERATOR: if API blocked at Market-Open, place 30sh WFC limit bracket GTC on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T12:10:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: MS score 7.0 — limit bracket GTC deferred to Market-Open routine (MOO cap exhausted). BINDING Market-Open entry at limit price ~$210-215. Strong Q2, crypto ETP. Ex-dividend July 31 ($1.15/sh). MS ATH $228.55 July 15.
+size_pct: 4.26
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MS deferred to Market-Open routine — MOO cap used. BINDING Market-Open limit bracket GTC: ~20sh × ~$210-215 = ~$4,200-4,300 (~4.3% of equity). Stop -5%, target +15%, R/R 3:1 ✓. NOTE: MS ex-dividend July 31 ($1.15/sh) — buyers today receive the dividend. Sector check post-GS+WFC+MS: ~11.2% financials — below 25% cap ✓. ATH $228.55 on July 15; current ~$210-215 = ~8-9% off ATH. Strong Q2 results; crypto ETP exposure (AUM growing). OPERATOR: if API blocked at Market-Open, place 20sh MS limit bracket GTC on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+---
+
+### WATCHLIST — JULY 31 PRE-MARKET (Updated Scores)
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | ai-momentum-pullback | SELL 18sh MARKET OPG — **ATTEMPTED, API BLOCKED** | Day 44+, naked, $443 pre-mkt vs $481.42 hard stop. Last safe day. |
+| 2 | AMZN | 8.2 | earnings-reaction-follow | BUY 21sh MOO — **ATTEMPTED, API BLOCKED** | AWS +37%, EPS $5.75. $234 pre-mkt. 6/6 ≥7. BINDING. |
+| 3 | GS | 7.2 | sector-rotation | BUY 4sh MOO — **ATTEMPTED, API BLOCKED** | Q2 blowout, FOMC clarity. BINDING 3rd/FINAL deferral. |
+| 4 | WFC | 7.0 | sector-rotation | BUY 30sh limit bracket GTC — **DEFERRED TO MARKET-OPEN** | MOO cap exhausted. Q2 EPS +16.3%. BINDING. |
+| 5 | MS | 7.0 | sector-rotation | BUY 20sh limit bracket GTC — **DEFERRED TO MARKET-OPEN** | MOO cap exhausted. Ex-div today. BINDING. |
+| 6 | AAPL | 4.83 | earnings-reaction-follow | **REJECTED** — score 4.83, pre-mkt $308.88 < $330 condition | Weak Q4 guide, supply constraints, China miss. Watch $300-310 support. |
+| 7 | MSFT | 7.0 | breakout-volume | WATCH — wait for pullback to $455-470 | +14% July 30 — too extended. Azure +43% thesis intact. |
+| 8 | NVDA | 6.5 | ai-momentum-pullback | WATCH — AMZN AWS +37% validates AI capex | Pre-mkt ~$195-210. Need 2/5 indicator stack at Mid-Morning. |
+| 9 | XOM | 6.0 | earnings-reaction-follow | WATCH — reporting pre-market today | 84.5% probability beat. Oil/Energy sector read. |
+| 10 | ABBV | 6.0 | earnings-reaction-follow | WATCH — reporting today | Biopharma defensive. Post-Humira rebuild story. |
+
+---
+
+### OPERATOR URGENT NOTICE (API BLOCKED — 105th SESSION)
+
+**THE FOLLOWING ORDERS MUST BE PLACED MANUALLY on app.alpaca.markets BEFORE 9:30 AM ET TODAY:**
+
+1. **SELL 18sh AMD MARKET** (symbol: AMD, qty: 18, side: sell, type: market) — LAST SAFE DAY to exit before Aug 2 binary event window
+2. **BUY 21sh AMZN MARKET OPG** (symbol: AMZN, qty: 21, side: buy, type: market, time_in_force: opg) — score 8.2, AWS +37% beat
+3. **BUY 4sh GS MARKET OPG** (symbol: GS, qty: 4, side: buy, type: market, time_in_force: opg) — score 7.2, 3rd/FINAL deferral
+
+**AFTER 9:45 AM ET (Market-Open routine):**
+4. **BUY 30sh WFC LIMIT bracket GTC** at ~$88-90 — score 7.0
+5. **BUY 20sh MS LIMIT bracket GTC** at ~$210-215 — score 7.0
+
+**AAPL: DO NOT ENTER** — score 4.83, pre-market $308.88 < $330, weak guidance.
+
+
+---
+
 ## 2026-07-30 — Daily Review (4:30 PM ET / 20:34 UTC — API BLOCKED — 104th consecutive session)
 
 **HEARTBEAT:** STARTED Daily-Review 2026-07-30T20:34:14Z ✓

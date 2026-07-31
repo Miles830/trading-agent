@@ -1,7 +1,7 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-30 (Thursday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 104th consecutive blocked session). DAILY REVIEW ✅ COMPLETED. ⚠️ AMD CRITICAL: est. ~$484 July 30 close (barely above hard stop $481.42), Day 43+, NAKED — JULY 31 IS THE FINAL SAFE EXIT DAY (48h window opens Aug 2 for Aug 4 earnings). GS/WFC/MS BINDING July 31 Pre-Market — ABSOLUTE FINAL DEFERRAL. AMZN MASSIVE BEAT (AWS +37%, EPS $5.75) = BINDING July 31 Pre-Market entry. AAPL beat (EPS $2.02 vs $1.89) = approved July 31 entry. 5 of 6 intraday routines silently failed July 30.**
+**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
