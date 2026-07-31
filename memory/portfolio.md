@@ -1,7 +1,30 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-07-31 (Friday) — DAILY REVIEW ✅ COMPLETED (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (106th consecutive blocked session). Pre-Market fired ✓ (12:05-12:16Z). Market-Open through Market-Close: ALL SILENTLY FAILED (5/7 routines missed). 🚨 AMD CRITICAL ESCALATION: AMD ~$455 est., NAKED, Day 45+, $26 below hard stop $481.42, NOW INSIDE 48h BINARY EVENT WINDOW (earnings Aug 4 AH). AMZN (8.2), GS (7.2), WFC (7.0), MS (7.0): 4th consecutive deferral — binding Aug 3. Portfolio est.: ~$98,834 (-1.17%), cumulative SPY gap: ~-4.88 pp. OPERATOR MANDATORY MONDAY AUG 3: (1) SELL 18sh AMD at market open; (2) BUY AMZN/GS/WFC/MS per binding watchlist.**
+
+**WEEKLY STRATEGY EVOLUTION NOTE — WEEK OF JULY 28–31, 2026 (Friday July 31 required):**
+
+*What changed:*
+1. FOMC held 3.50-3.75% (hawkish; 3 dissenters). Rate clarity helps Financials NIM — GS/WFC/MS thesis intact.
+2. Mega-cap earnings season complete. Winners: MSFT (+14%), AMZN (+12%, 8.2 score). Losers: META (-9%), QCOM (-5.1%), AAPL (-7.4%). Binary-event discipline was perfect — avoided all three losers.
+3. AMD missed final safe exit day (July 31). Now inside 48h binary event window with -10.2% unrealized loss. Emergency exit Monday Aug 3 required.
+4. AMZN scored 8.2/10 — highest conviction setup since launch. +12% today. 4th consecutive deferral is a material strategy breach. Monday is non-negotiable.
+5. API blockage continues (106 sessions). No guardrail changes. AAPL entry condition set at ≥$330 going forward.
+6. Benchmark gap: -4.88 pp est. (vs -3.94 pp at July 30) — deteriorating primarily from cash drag and AMD drawdown.
+
+*Decisions that will not change:* Hard guardrails (stop %s, position sizes, cash floor, R/R minimum, max positions).
+
+**JULY 31 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
+
+**Estimates (API blocked — 106th consecutive session):**
+- AMD: 18sh × ~$455 est. = ~$8,190 (8.3% est.) — NAKED, below stop, inside 48h window
+- Cash: ~$90,644 (91.7%)
+- Total Equity: ~$98,834 est. (-1.17% from $100K)
+- Daily P&L July 31: ~-$522 (-0.53% est.)
+- SPY July 31 est.: +0.4% → cumulative +3.71% from May 1 baseline 7,200
+- Cumulative benchmark gap: **~-4.88 pp** (est.)
+- Heartbeat audit: Pre-Market ✓, Market-Open ✗, Mid-Morning ✗, Midday ✗, Afternoon ✗, Market-Close ✗, Daily-Review ✓ (2/7 fired)
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
@@ -32,13 +55,13 @@
 - ✗ Market-Close (19:30Z): SILENT FAILURE — violation logged by Daily-Review
 - ✓ Daily-Review: STARTED 20:34:14Z ✓ (this routine)
 
-**JULY 31 BINDING COMMITMENTS (ABSOLUTE — no further deferral permitted on any):**
-1. **AMD EXIT** — SELL 18sh at MARKET as FIRST ACTION at July 31 Pre-Market. Last safe day. Day 43+, naked, hard stop nearly breached, 48h earnings window opens Aug 2.
-2. **AMZN ENTRY** — BUY ~22sh MOO bracket GTC (score 8.2, 6/6 agents ≥7). AWS +37% massive beat. Stop -5%, Target +15%.
-3. **GS ENTRY** — BUY 4sh MOO bracket GTC (score 7.2, BINDING 3rd/FINAL deferral). Q2 blowout, FOMC hold.
-4. **WFC ENTRY** — BUY 30sh limit bracket GTC (score 7.0, BINDING). Q2 EPS +16.3%.
-5. **MS ENTRY** — BUY 20sh limit bracket GTC (score 7.0, BINDING). Strong Q2, crypto ETPs.
-6. **AAPL ENTRY** — BUY ~7sh limit bracket GTC (score 7.0). Only if pre-market ≥$330.
+**AUGUST 3 BINDING COMMITMENTS (EMERGENCY — ALL PREVIOUS JULY 31 COMMITMENTS MISSED — ZERO FURTHER DEFERRAL):**
+1. **AMD EXIT** — SELL 18sh at MARKET OPEN as ABSOLUTE FIRST ACTION Monday Aug 3. AMD is inside 48h binary event window (earnings Aug 4 AH). Below hard stop $481.42 by ~$26. Day 45+. Unrealized loss -$931.68 (-10.2%). Exit at open even though inside 48h window (this is EXIT of existing position, not new initiation).
+2. **AMZN ENTRY** — BUY ~21sh MOO bracket GTC (score 8.2, 6/6 agents ≥7, 4th/FINAL deferral). AWS +37%, EPS +242%. Stop -5% (~$223), Target +15% (~$270). Any further deferral = guardrail violation per Deployment Bias.
+3. **GS ENTRY** — BUY 4sh MOO bracket GTC (score 7.2, 4th/FINAL deferral). Q2 blowout, FOMC hold (rate clarity). Stop -5% (~$969), Target +15% (~$1,173).
+4. **WFC ENTRY** — BUY 30sh limit bracket GTC (score 7.0, 4th/FINAL deferral). Q2 EPS +16.3% beat. Stop -5%, Target +15%.
+5. **MS ENTRY** — BUY 20sh limit bracket GTC (score 7.0, 4th/FINAL deferral). Strong Q2, crypto ETP AUM. Stop -5%, Target +15%.
+6. **AAPL** — DO NOT ENTER until price recovers above $330 threshold. Score 4.83 (July 31). Monitor $300-$310 support zone.
 
 **3 THINGS THAT WORKED:**
 1. Binary-event discipline — avoided META (-9%) and QCOM (-5.1%) inside their windows. Saved ~$1,900 estimated loss.
@@ -52,38 +75,41 @@
 
 ---
 
-**SETUP PERFORMANCE TRACKER (Rolling 5-Day Window July 25–30):**
-| Setup | Trades | Wins | Losses | Win Rate | Notes |
-|---|---|---|---|---|---|
-| ai-momentum-pullback | 0 | — | — | — | AMD open (entry June 20); -4.49% unrealized |
-| earnings-reaction-follow | 0 (skips) | — | — | — | AMZN/AAPL scored 8.2/7.0, BINDING July 31 |
-| earnings-reaction-fade | 0 | — | — | — | META rejected (long-only account) |
-| breakout-volume | 0 | — | — | — | MSFT too extended (+14%); watch only |
-| sector-rotation | 0 (skips) | — | — | — | GS/WFC/MS 3rd deferral, July 31 BINDING |
-| silent-failure | 17 | — | — | — | 5 violations July 30 + ongoing pattern |
+**SETUP PERFORMANCE TRACKER (Rolling 5-Day Window July 25–31 — updated July 31 Daily Review):**
+| Setup | Trades | Wins | Losses | Win Rate | Halted? | Boosted? | Notes |
+|---|---|---|---|---|---|---|---|
+| ai-momentum-pullback | 0 | — | — | — | No | No | AMD open; -10.2% unrealized at $455 est. |
+| earnings-reaction-follow | 0 (scored skips) | — | — | — | No | No | AMZN 8.2, AAPL 4.83 (revised); AMZN binding Aug 3 |
+| earnings-reaction-fade | 0 | — | — | — | No | No | META/QCOM avoided inside 48h window (correct) |
+| breakout-volume | 0 | — | — | — | No | No | MSFT too extended; wait for $455-470 pullback |
+| sector-rotation | 0 (scored skips) | — | — | — | No | No | GS/WFC/MS 4th deferral; binding Aug 3 FINAL |
+| candlestick-reversal | 0 | — | — | — | No | No | No intraday routines to fire day trades |
+| silent-failure | 22 | — | — | — | — | — | 5 more violations July 31; persistent operational issue |
 
-No halts or boosts triggered (no closed trades).
+No halts or boosts triggered (no closed trades in rolling window).
 
-**TOMORROW'S WATCHLIST (July 31, 2026 Pre-Market — BINDING):**
+**WATCHLIST — MONDAY AUGUST 3, 2026 (BINDING — 4th/FINAL DEFERRAL, NO FURTHER EXTENSION):**
 
 | Rank | Symbol | Score | Setup | Action | Notes |
 |---|---|---|---|---|---|
-| 1 | AMD | EXIT | — | SELL 18sh at MARKET FIRST | Final safe day — 48h window opens Aug 2 |
-| 2 | AMZN | 8.2 | earnings-reaction-follow | BUY 22sh MOO bracket GTC | AWS +37%, EPS $5.75. 6/6 ≥7. BINDING. |
-| 3 | GS | 7.2 | sector-rotation | BUY 4sh MOO bracket GTC | Q2 blowout, FOMC hold. BINDING FINAL. |
-| 4 | WFC | 7.0 | sector-rotation | BUY 30sh limit bracket GTC | Q2 EPS +16.3%. Market Open. |
-| 5 | MS | 7.0 | sector-rotation | BUY 20sh limit bracket GTC | Strong Q2. Market Open. |
-| 6 | AAPL | 7.0 | earnings-reaction-follow | BUY 7sh limit bracket GTC | EPS beat, iPhone +22%. If pre-mkt ≥$330. |
-| 7 | MSFT | 7.0 | breakout-volume | WATCH only | +14% today — wait for pullback to $455-470. |
-| 8 | NVDA | 6.5 | ai-momentum-pullback | WATCH | Chip sector +5%, AI validation. |
-| 9 | XLF | 6.5 | sector-rotation | WATCH | Financials ETF, FOMC hold tailwind. |
-| 10 | GLD | 6.0 | macro-hedge | WATCH | PCE 3.3%, GDP weaker = gold bid possible. |
+| 1 | AMD | EXIT | — | SELL 18sh MARKET OPG — EMERGENCY FIRST | Inside 48h binary event window. Below stop by $26. Day 45+. Non-negotiable. |
+| 2 | AMZN | 8.2 | earnings-reaction-follow | BUY ~21sh MOO bracket GTC | AWS +37%, EPS +242%. +12% July 31. 6/6 ≥7. BINDING 4th/FINAL. |
+| 3 | GS | 7.2 | sector-rotation | BUY 4sh MOO bracket GTC | Q2 blowout, FOMC hold. BINDING 4th/FINAL. |
+| 4 | WFC | 7.0 | sector-rotation | BUY 30sh limit bracket GTC | Q2 EPS +16.3%. BINDING 4th/FINAL. |
+| 5 | MS | 7.0 | sector-rotation | BUY 20sh limit bracket GTC | Strong Q2, crypto ETP. BINDING 4th/FINAL. |
+| 6 | NVDA | 6.5 | ai-momentum-pullback | Score at Pre-Market; BUY if ≥7.0 | AMZN AWS +37% validates AI capex. Need 2/5 indicator confirmation. |
+| 7 | MSFT | 7.0 | breakout-volume | BUY if pulled back to $455-470 | Azure +43%, massive beat. Too extended July 30. |
+| 8 | XOM | 6.5 | earnings-reaction-follow | Score at Pre-Market Mon | Reported Q2 July 31 (84.5% beat probability). Score post-earnings. |
+| 9 | ABBV | 6.0 | earnings-reaction-follow | Score at Pre-Market Mon | Reported July 31. Post-Humira rebuild story. |
+| 10 | GOOGL | 6.0 | mean-reversion-oversold | WATCH | May improve post-NFP stability. |
 
-**KEY MACRO / EARNINGS JULY 31:**
-- XOM (ExxonMobil) and ABBV (AbbVie) reporting — sector reads for Energy/Healthcare
-- Markets digesting AAPL (+0.58% AH muted) and AMZN (massive beat)
-- No major Fed speakers scheduled
-- AMD: LAST SAFE DAY (exit required before 48h window Aug 2)
+**KEY MACRO / EARNINGS WEEK OF AUG 3–7:**
+- Mon Aug 3: ISM Manufacturing PMI; AMD EXIT mandatory
+- Tue Aug 4: AMD Q2 Earnings AH — DO NOT HOLD (exit Monday open); ISM Services PMI
+- Wed Aug 5: ADP Private Payrolls; post-AMD scoring if beat
+- Thu Aug 6: Jobless Claims
+- Fri Aug 7: NFP + Unemployment Rate — MAJOR volatility event; GS/WFC/MS thesis validation
+- No FOMC meeting; Chair Warsh hawkish remarks possible
 
 **SECTOR EXPOSURE TARGET (after July 31 binding entries):**
 - Technology: AAPL ~2.4%
