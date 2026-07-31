@@ -1,7 +1,7 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-07-31 (Friday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th consecutive blocked session). MIDDAY ✅ COMPLETED (research + orders attempted). 🚨 AMD DRAMATIC RECOVERY: pre-market estimate $443-452 was WRONG (stale data — July 29 close used as baseline); actual July 30 close ~$484 (+13% surge); July 31 midday ~$515 = ABOVE hard stop $481.42 AND above cost basis $506.76. Unrealized gain: +$148 (+1.6%). EXIT STILL BINDING (naked 106 sessions, 48h window opens Aug 2). 3 orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (18sh limit $272, score 8.2), GS BUY (4sh limit $931, score 7.2). WFC + MS deferred to Market-Close routine. AAPL SKIPPED ($307.89 < $330 pre-set condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
@@ -14,6 +14,15 @@
 
 **Market July 30:** S&P 500 +1.7% to 7,437.64. Nasdaq +2.8%. Tech sector +5% (best sector). FOMC held 3.50-3.75% (9-3 vote; Warsh hawkish). GDP Q2 +1.5% (below est.). Core PCE June 3.3% (as est., down from 3.4%).
 
+**Portfolio July 31 MIDDAY (est., API blocked):**
+- Cash: ~$90,644 (90.7% est.)
+- AMD: 18sh × ~$515 est. = ~$9,270 (9.3% est.) — ABOVE hard stop $481.42 ✓; NAKED; Day 44+; +1.6% unrealized
+- Total equity est.: ~$99,914 (-0.09% vs $100K — near breakeven!)
+- Daily P&L July 31 (vs July 30 est.): +~$558 (+0.56%) — AMD recovery driving gains
+- SPX July 31 midday: +0.67% → Daily gap: **-0.11 pp**
+- Cumulative: Portfolio -0.09% vs SPX May 1 (7,200) to ~7,487 (+3.98%) → **Cumulative gap: -4.07 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (106th consecutive session)
+
 **Portfolio July 30 EOD (est., API blocked):**
 - Cash: ~$90,644 (91.2% est.)
 - AMD: 18sh × ~$484 est. = ~$8,712 (8.8% est.) — barely above hard stop $481.42; NAKED; Day 43+
@@ -22,6 +31,15 @@
 - SPY July 30: +1.7% → Daily gap: **-0.7 pp**
 - Cumulative: Portfolio -0.64% vs SPY from May 1 (7,200) to 7,437.64 (+3.30%) → **Cumulative gap: -3.94 pp**
 - 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (104th consecutive session)
+
+**HEARTBEAT AUDIT JULY 31 (as of Midday 16:35Z):**
+- ✓ Pre-Market: STARTED 2026-07-31T12:05:14Z / COMPLETED 2026-07-31T12:16:01Z ✓
+- ✗ Market-Open (13:45Z expected): SILENT FAILURE — violation logged by Midday
+- ✗ Mid-Morning (15:00Z expected): SILENT FAILURE — violation logged by Midday
+- ✓ Midday: STARTED 2026-07-31T16:35:19Z ✓ (this routine — in progress)
+- ⏳ Afternoon (18:09Z expected): PENDING
+- ⏳ Market-Close (19:30Z expected): PENDING — WFC/MS entries deferred here
+- ⏳ Daily-Review (20:34Z expected): PENDING
 
 **HEARTBEAT AUDIT JULY 30:**
 - ✗ Pre-Market (12:00Z): SILENT FAILURE — violation logged
@@ -32,13 +50,13 @@
 - ✗ Market-Close (19:30Z): SILENT FAILURE — violation logged by Daily-Review
 - ✓ Daily-Review: STARTED 20:34:14Z ✓ (this routine)
 
-**JULY 31 BINDING COMMITMENTS (ABSOLUTE — no further deferral permitted on any):**
-1. **AMD EXIT** — SELL 18sh at MARKET as FIRST ACTION at July 31 Pre-Market. Last safe day. Day 43+, naked, hard stop nearly breached, 48h earnings window opens Aug 2.
-2. **AMZN ENTRY** — BUY ~22sh MOO bracket GTC (score 8.2, 6/6 agents ≥7). AWS +37% massive beat. Stop -5%, Target +15%.
-3. **GS ENTRY** — BUY 4sh MOO bracket GTC (score 7.2, BINDING 3rd/FINAL deferral). Q2 blowout, FOMC hold.
-4. **WFC ENTRY** — BUY 30sh limit bracket GTC (score 7.0, BINDING). Q2 EPS +16.3%.
-5. **MS ENTRY** — BUY 20sh limit bracket GTC (score 7.0, BINDING). Strong Q2, crypto ETPs.
-6. **AAPL ENTRY** — BUY ~7sh limit bracket GTC (score 7.0). Only if pre-market ≥$330.
+**JULY 31 BINDING COMMITMENTS — MIDDAY STATUS:**
+1. **AMD EXIT** — ✗ FAILED (API blocked × 3 attempts). AMD RECOVERED to ~$515 midday (+1.6% above cost basis, above hard stop). EXIT STILL MANDATORY — naked 106 sessions, 48h window opens Aug 2. **OPERATOR: SELL 18sh AMD at MARKET on app.alpaca.markets NOW.**
+2. **AMZN ENTRY** — ✗ FAILED (API blocked). Catch-up attempted: LIMIT $272 GTC bracket (18sh, stop $258.40, target $312.80, score 8.2). Deferred to Market-Close if unfilled. **OPERATOR: BUY 18sh AMZN limit $272 GTC on app.alpaca.markets.**
+3. **GS ENTRY** — ✗ FAILED (API blocked). Catch-up attempted: LIMIT $931 GTC bracket (4sh, stop $884.45, target $1,070.65, score 7.2). Deferred to Market-Close if unfilled. **OPERATOR: BUY 4sh GS limit $931 GTC on app.alpaca.markets.**
+4. **WFC ENTRY** — ⏳ DEFERRED to Market-Close (midday 2-entry cap hit). Action plan: BUY 30sh limit $82 GTC bracket (stop $77.90, target $94.30, score 7.2).
+5. **MS ENTRY** — ⏳ DEFERRED to Market-Close (midday 2-entry cap hit). Ex-div today ($1.15). Action plan: BUY 20sh limit $211 GTC bracket (stop $200.45, target $242.65, score 7.2).
+6. **AAPL ENTRY** — ✗ SKIPPED — AAPL at $307.89 < $330 pre-set condition. Condition still not met. No action.
 
 **3 THINGS THAT WORKED:**
 1. Binary-event discipline — avoided META (-9%) and QCOM (-5.1%) inside their windows. Saved ~$1,900 estimated loss.
