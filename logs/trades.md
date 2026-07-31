@@ -5,6 +5,280 @@
 ---
 
 
+## 2026-07-31 — Afternoon (2:09 PM ET / 18:09Z — API BLOCKED — 106th consecutive session)
+
+**HEARTBEAT:** STARTED Afternoon 2026-07-31T18:09:28Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **106th consecutive blocked session** (paper-api.alpaca.markets unreachable)
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X modifier applied.
+**Market Status:** REGULAR SESSION ACTIVE (2:09 PM ET / 18:09Z). Close at 4:00 PM ET / 20:00Z.
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT (July 31)
+
+| Routine | Expected | Status |
+|---|---|---|
+| Pre-Market | 12:05Z | ✓ COMPLETED 12:16Z |
+| Market-Open | 13:45Z | ✗ SILENT FAILURE — violation logged below |
+| Mid-Morning | 15:00Z | ✗ SILENT FAILURE — violation logged below |
+| Midday | 16:30Z | ✗ SILENT FAILURE — violation logged below |
+| Afternoon | 18:09Z | ✓ STARTED (this routine) |
+
+**3 VIOLATIONS logged. Running total silent-failure violations: 107+ sessions.**
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+API BLOCKED — cannot run `GET /v2/orders?status=open`. Last known: AMD 18sh NAKED (no stop at Alpaca, 106th consecutive session). Pre-Market attempted AMD SELL 18sh MARKET OPG — FAILED (API blocked). **Web research (watcher.guru "AMD Stock Price Reclaims $500"; 24/7 Wall St. "AMD Stock Is Up Big" July 31) confirms AMD recovered intraday to ~$500 — price is now ABOVE the $481.42 hard stop floor.** Position no longer in hard-stop breach, but remains NAKED and today is the LAST SAFE DAY before the Aug 2 48h binary event window.
+
+---
+
+### PORTFOLIO STATE (July 31 Afternoon — API BLOCKED, prices from web research)
+
+| | Scenario A (AMD still held 18sh × ~$500) | Scenario B (AMD sold at open ~$480) |
+|---|---|---|
+| AMD | ~$9,000 (9.0%) | $0 (exited) |
+| Cash | $90,644 (91.0%) | ~$99,284 (100%) |
+| Total Equity | ~$99,644 | ~$99,284 |
+| Return vs $100K | **-0.36%** | **-0.72%** |
+| SPX July 31 (est.) | ~7,487 (+0.67% from 7,437.64 close) | same |
+| SPX from May 1 (7,200) | +3.99% | +3.99% |
+| Benchmark gap | **-4.35 pp** | **-4.71 pp** |
+
+**Improved from -5.17 pp at pre-market regardless of AMD exit scenario. Circuit breaker: NOT TRIPPED. 20-Day underperformance flag: ACTIVE (106th session).**
+
+---
+
+### MARKET CONDITIONS — JULY 31 AFTERNOON
+
+- **S&P 500:** +0.67% | Nasdaq +1.32% | Dow +0.38% | Russell 2000 +1.37% — positive close to July
+- **AMZN:** +15% to ~$270.87 (day range $259.10–$272.04) — AWS +37% Q2 beat drives Nasdaq
+- **AAPL:** -10% to ~$309 — Q4 guide miss, supply constraints, China miss ($18.8B vs $19.5B)
+- **MSFT:** +3% | GOOGL: +6% — AI spending validates capex thesis
+- **AMD:** ~$500 est. (watcher.guru "Reclaims $500"; 24/7 Wall St. "Stock Is Up Big" July 31) — chip sector rally on AMZN AI capex validation + Core Scientific $14B deal
+- **GS:** $1,028.58 (+4.88%) | **MS:** $210.13 (+3.45%) | **WFC:** $85.34 (+1.75%)
+- **10Y Treasury:** 4.737% (highest since Jan 2025) — yield pressure but equities resilient
+- **30Y Treasury:** ~5.22% — highest since 2007
+- **BTC:** ~$64,000 | ETH: ~$1,910 — crypto risk-on
+- **Macro:** Last trading day of July. No Fed speakers. Bond yields elevated. Consumer Sentiment released.
+
+---
+
+### VIOLATIONS
+
+```yaml
+---
+ts: 2026-07-31T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET / 13:45Z) silently failed — no STARTED heartbeat. Critical missed actions: (1) Confirm AMD SELL 18sh MOO fill and place follow-up GTC stop at 95% of fill price. (2) Place WFC 30sh limit bracket GTC at ~$88-90. (3) Place MS 20sh limit bracket GTC at ~$210-215. WFC and MS were BINDING Market-Open entries.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: rejected
+master_notes: "Market-Open silent failure on July 31. 4th consecutive session with Market-Open failure (July 28, 29, 30, 31). WFC and MS binding entries missed. WFC now at $85.34 (planned limit $88-90 — market was below our limit all day = favorable for Monday entry). MS at $210.13 (within planned $210-215 range — would have filled). AMD exit status unknown to agent (API blocked)."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T15:00:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine (11:00 AM ET / 15:00Z) silently failed — no STARTED heartbeat. Mid-Morning would have observed AMZN at ~$265-270 (vs planned $234 MOO), assessed overextension, confirmed AMD recovery above $481.42 hard stop, and run 2-of-5 indicator checks on watchlist names.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: rejected
+master_notes: "Mid-Morning silent failure July 31. AMZN gap-up to $270 missed — could have flagged changed R/R and either accepted higher-priced entry or deferred to Monday. AMD recovering through $480-500+ zone — a running Mid-Morning could have placed a GTC stop at $481.42 to protect the recovered position and eliminated the naked-position guardrail violation for the remainder of the day."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T16:30:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Midday routine (12:30 PM ET / 16:30Z) silently failed — no STARTED heartbeat. Critical missed: position monitoring, AMD stop placement above $481.42, potential AMD MOC exit order to honor last-safe-day mandate.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: rejected
+master_notes: "Midday silent failure July 31. AMD was likely at $490-500+ at midday — running Midday could have (1) placed GTC stop at $481.42 protecting the recovered position, (2) evaluated holding vs exit (today is last safe day before 48h window), (3) placed MOC SELL 18sh AMD to honor the Daily Review mandate if exit decision confirmed. Missed opportunity to convert naked-mandatory-exit into managed-stop situation."
+---
+```
+
+---
+
+### AFTERNOON DECISIONS
+
+#### AMD — EXIT MANDATE STATUS (LAST SAFE DAY — API BLOCKED)
+
+AMD recovered intraday to ~$500 (above $481.42 hard stop). The mandatory exit from the Daily Review remains: today is the LAST SAFE DAY before the Aug 2 48h binary event window (AMD earnings Aug 4 AH). Hard-stop breach is now resolved. However: position remains NAKED. API is blocked — agent cannot place orders.
+
+**Operator paths (before 4:00 PM ET / 20:00Z — app.alpaca.markets):**
+1. **EXIT NOW (RECOMMENDED):** SELL 18sh AMD MARKET. Honors Daily Review mandate, eliminates binary event risk. Realized loss at $500: 18 × ($500 − $506.76) = **-$121.68 (-1.33%)** — far better than pre-market $452 scenario (-$985.68).
+2. **HOLD WITH STOP:** If electing to hold through AMD earnings Aug 4 AH, PLACE GTC SELL STOP 18sh AMD at $481.42 IMMEDIATELY (minimum protection). Strategy exception — binary event risk accepted. NOT recommended per Daily Review mandate.
+
+```yaml
+---
+ts: 2026-07-31T18:09:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: MANDATORY EXIT attempt — last safe day before Aug 2 48h window (AMD earnings Aug 4 AH). AMD recovered to ~$500 est. (above $481.42 hard stop). API blocked — order not placed. Operator must act on app.alpaca.markets before 4:00 PM ET.
+size_pct: 9.0
+stop: null
+target: null
+result_pct: null
+master_decision: exit
+master_notes: "API ATTEMPT: SELL 18sh AMD MARKET. curl exit code 56, HTTP 000 — proxy 403 CONNECT rejection (106th session). ORDER NOT PLACED. AMD intraday recovery to ~$500 (watcher.guru 'Reclaims $500'; 24/7 Wall St 'AMD Stock Is Up Big' July 31; Benzinga 'AMD Stock Is Gaining Friday') — ABOVE hard stop $481.42. Context: July 29 close $429.56 → July 30 +13% to $483.55 → July 31 recovering to ~$500. Core Scientific $14B deal + AMZN AWS +37% validates AI capex thesis. AMD still NAKED (no stop at Alpaca). TODAY is last safe day per CLAUDE.md binary event rule (AMD earnings Aug 4 AH, 48h window opens Aug 2). Recommended exit: SELL 18sh MARKET before close. Best-case realized loss at $500: -$121.68 (-1.33%). If operator holds: PLACE GTC STOP at $481.42 before close. X sentiment: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T18:10:00Z
+action: skip
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 7.5
+thesis: AMZN surged 15% to $270.87 (day range $259.10–$272.04). Planned entry was 21sh at $234 MOO. Price is 15.7% above plan. Afternoon rule: no new active-bucket entries. Defer to Monday Pre-Market with consolidation watch.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 6
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 4
+master_decision: rejected
+master_notes: "AFTERNOON SKIP — Rule: no new active-bucket entries this routine. AMZN at $270.87 vs $234 planned entry = 15.7% gap-up chase risk. Technical downgraded to 6 (overbought post +15% surge; needs consolidation). Risk downgraded to 6 (entry 15% above plan narrows practical R/R; daily low $259 = only 4.0% below entry vs -5% stop = stop nearly clipped). Master score 7.67 still above gate but Technical + Risk both at 6. Monday Re-entry: wait for $255-265 consolidation zone. Full re-score required Monday. If AMZN gaps down Monday to $255-265, entry thesis remains strong (AWS +37%, EPS +242% YoY). X sentiment: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T18:11:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: GS at $1,028.58 (+4.88% today). Planned MOO was ~$1,020. Afternoon rule: no new active-bucket entries. Score 7.2 carries forward. 4th/FINAL deferral — BINDING MONDAY.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: rejected
+master_notes: "AFTERNOON SKIP — proximity-to-close rule. GS at $1,028.58 — +0.84% above planned $1,020 MOO = minimal price drift. Monday Pre-Market: 4sh × $1,028 = $4,112 = 4.11% equity ✓ (within 5% cap). Stop: $976.65 (-5%), Target: $1,182.17 (+15%), R/R 3:1 ✓. Score 7.2 unchanged. This is the 4th consecutive deferral — ANY further deferral is a systemic violation, not just a single skip. BINDING MANDATORY Monday Pre-Market MOO. X sentiment: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T18:12:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC at $85.34 (+1.75% today). Planned limit was $88-90. Current price BELOW planned limit = better entry if filled Monday. Afternoon rule: no new active-bucket entries. 5th/BINDING deferral.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "AFTERNOON SKIP — proximity-to-close rule. WFC at $85.34 — BELOW planned $88-90 limit. A limit BUY at $88 would have filled at $85.34 (lower = more favorable). Monday: 30sh × $85.34 = $2,560 = 2.56% equity ✓ (within 5% cap, better than $88-90 plan). Stop: $81.07 (-5%), Target: $98.14 (+15%), R/R 3:1 ✓. Score 7.0 unchanged. BINDING MANDATORY Monday Pre-Market limit bracket. X sentiment: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T18:13:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: MS at $210.13 (+3.45% today). Ex-dividend $1.15/sh was today (July 31) — buyers today received dividend; Monday buyers will not. Afternoon rule: no new active-bucket entries. Price in planned range. 4th/BINDING deferral.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: rejected
+master_notes: "AFTERNOON SKIP — proximity-to-close rule. MS at $210.13 — within planned $210-215 range. Ex-div $1.15/sh passed July 31 = Monday buyers get no dividend. Adjusted Monday plan: 20sh × $210 = $4,200 = 4.2% equity ✓ (within 5% cap). Stop: $199.50 (-5%), Target: $241.50 (+15%), R/R 3:1 ✓. Score 7.0 unchanged. BINDING MANDATORY Monday Pre-Market limit bracket. X sentiment: unavailable."
+---
+```
+
+---
+
+### WATCHLIST — MONDAY AUG 3, 2026 PRE-MARKET (BINDING)
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | ⚠️ BINARY EVENT | — | **NO NEW ENTRY** — 48h window active Aug 2–4 | AMD earnings Aug 4 AH. If still held: EXIT or place GTC stop $481.42. Score post-earnings Aug 5. |
+| 2 | GS | 7.2 | sector-rotation | BUY 4sh MOO bracket GTC | $1,028 today. **4th/BINDING FINAL** deferral. Q2 blowout, FOMC hold. |
+| 3 | WFC | 7.0 | sector-rotation | BUY 30sh limit bracket GTC | $85.34 today (below plan — better entry). **5th/BINDING** deferral. |
+| 4 | MS | 7.0 | sector-rotation | BUY 20sh limit bracket GTC | $210.13 today (in range). Ex-div passed. **4th/BINDING** deferral. |
+| 5 | AMZN | 7.5 (re-score) | earnings-reaction-follow | WAIT — consolidation $255–265 | $270 today — overbought post +15%. Wait for pullback before re-entry. |
+| 6 | AAPL | WATCH 4.83 | — | Monitor $300–310 support | -10% today. Potential mean-reversion bounce entry if support holds. Re-score Monday. |
+| 7 | MSFT | 7.0 | breakout-volume | WATCH — wait for $455–470 | +3% today (+17% this week). Extended — wait for pullback. |
+| 8 | AMD post-earnings | TBD | earnings-reaction-follow | Score Aug 5 Pre-Market | Full 6-agent score after Aug 4 AH earnings print. Entry Aug 5 if score ≥7. |
+
+**CRITICAL NOTE MONDAY:** AMD 48h binary event window ACTIVE (opens Aug 2 Sunday). NO new AMD entries Monday. If AMD still held, operator must place GTC stop $481.42 OR exit at Monday open.
+
+---
+
+
 ## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-31T12:05:14Z ✓
