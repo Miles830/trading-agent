@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-31T12:10:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-07-31T13:50:00Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 98618,
+    "total_equity": 98644,
     "starting_equity": 100000.0,
     "cash": 90644,
     "cash_pct": 91.9,
     "buying_power": 181288,
-    "long_market_value": 7974,
+    "long_market_value": 8064,
     "short_market_value": 0.0,
-    "daily_pnl": -738,
-    "daily_pnl_pct": -0.74,
-    "total_return_pct": -1.38,
-    "spx_return_pct": 3.79,
-    "benchmark_gap_pct": -5.17,
+    "daily_pnl": -712,
+    "daily_pnl_pct": -0.71,
+    "total_return_pct": -1.36,
+    "spx_return_pct": 3.84,
+    "benchmark_gap_pct": -5.20,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 7974,
-      "active_pct": 8.1,
+      "active_value": 8064,
+      "active_pct": 8.2,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
       "cash_pct": 91.9
     },
-    "note": "July 31 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED 105th consecutive session. AMD pre-mkt ~$443 (below $481.42 hard stop, Day 44+, NAKED, LAST SAFE EXIT DAY). 3 MOO orders ATTEMPTED & FAILED: AMD SELL 18sh, AMZN BUY 21sh (score 8.2), GS BUY 4sh (score 7.2). AAPL REJECTED (score 4.83, $308.88 pre-mkt vs $330 condition, weak Q4 guide). WFC + MS deferred to Market-Open limit brackets. S&P futures +0.47%, Nasdaq +1.11% (AMZN surges 12%, AAPL -7.36%). Operator must execute AMD/AMZN/GS manually on app.alpaca.markets BEFORE 9:30 AM ET."
+    "note": "July 31 MARKET-OPEN (9:46 AM ET / 13:46Z). API BLOCKED 106th consecutive session. AMD open ~$448 (still below $481.42 hard stop, Day 44+, NAKED, LAST SAFE EXIT DAY). 4 orders ATTEMPTED & FAILED: AMD SELL 18sh (market), AMZN BUY 21sh limit bracket $237 (score 8.2), WFC BUY 30sh limit bracket $90.00 (score 7.0), MS BUY 20sh limit bracket $213.00 (score 7.0). GS deferred to Mid-Morning. AAPL REJECTED (score 4.83). S&P +0.5% at open (AMZN +12%, AAPL -7%). OPERATOR: execute AMD exit + AMZN/WFC/MS/GS entries IMMEDIATELY on app.alpaca.markets."
   },
   "positions": [
     {
@@ -39,7 +39,7 @@
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "AMD pre-market ~$443-452 (July 29 close $429.56, up +3-5% on Core Scientific $14B deal). Still NAKED \u2014 no stop at Alpaca. Hard stop $481.42 BREACHED by ~$30-38. Day 44+. MANDATORY EXIT: SELL 18sh at MARKET OPG TODAY (last safe day before Aug 2 48h earnings window). API blocked 105th session. Order ATTEMPTED & FAILED. OPERATOR: SELL 18sh AMD at MARKET on app.alpaca.markets before 9:30 AM ET."
+      "note": "AMD market-open ~$443-455 (Day 44+, NAKED, no stop at Alpaca). Hard stop $481.42 BREACHED by ~$26-38. Last safe exit day (Aug 2 48h window opens tomorrow for Aug 4 AH earnings). MANDATORY EXIT. API blocked 106th session. SELL order ATTEMPTED & FAILED x2 (pre-mkt + market-open). OPERATOR: SELL 18sh AMD at MARKET on app.alpaca.markets IMMEDIATELY \u2014 final opportunity before binary event window."
     }
   ],
   "market": {
@@ -62,8 +62,8 @@
       "symbol": "AMZN",
       "bucket": "active",
       "score": 8.2,
-      "action": "BUY 21sh MOO \u2014 ATTEMPTED, API BLOCKED \u2014 OPERATOR: BUY MANUALLY BEFORE 9:25 AM",
-      "notes": "Score 8.2, 6/6\u22657. AWS +37%, EPS $5.75 (+242% YoY). Pre-mkt $234.20 (+12%). 21sh\u00d7$234=$4,914=4.99% equity post-AMD-exit. Stop $222.30, Target $269.10."
+      "action": "BUY 21sh LIMIT bracket GTC $237 \u2014 ATTEMPTED (Market-Open), API BLOCKED \u2014 OPERATOR: BUY 20-21sh LIMIT at market NOW",
+      "notes": "Score 8.2, 6/6\u22657. AWS +37%, EPS $5.75 (+242% YoY). Open ~$232-238. Limit $237, Stop $225.15, Target $272.55. Confirm \u2264$234 for 21sh (5% cap); else 20sh."
     },
     {
       "symbol": "GS",
@@ -76,15 +76,15 @@
       "symbol": "WFC",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY 30sh LIMIT bracket GTC \u2014 DEFERRED TO MARKET-OPEN (MOO cap used) \u2014 BINDING",
-      "notes": "Score 7.0. Q2 EPS +16.3%. FOMC hold. ~30sh\u00d7$88-90=$2,640-2,700=2.7% equity. Stop -5%, Target +15%."
+      "action": "BUY 30sh LIMIT bracket GTC $90.00 \u2014 ATTEMPTED (Market-Open), API BLOCKED \u2014 OPERATOR: PLACE NOW",
+      "notes": "Score 7.0. Q2 EPS +16.3%. FOMC hold. 30sh\u00d7$90=$2,700=2.7% equity. Stop $85.50 (-5%), Target $103.50 (+15%), R/R 3:1."
     },
     {
       "symbol": "MS",
       "bucket": "active",
       "score": 7.0,
-      "action": "BUY 20sh LIMIT bracket GTC \u2014 DEFERRED TO MARKET-OPEN (MOO cap used) \u2014 BINDING. Ex-div today ($1.15)",
-      "notes": "Score 7.0. Strong Q2, crypto ETP. ATH $228.55 July 15. Ex-div July 31. ~20sh\u00d7$210-215=$4,200-4,300=4.3% equity."
+      "action": "BUY 20sh LIMIT bracket GTC $213.00 \u2014 ATTEMPTED (Market-Open), API BLOCKED \u2014 OPERATOR: PLACE NOW",
+      "notes": "Score 7.0. Strong Q2, crypto ETP. Ex-div today ($1.15/sh). 20sh\u00d7$213=$4,260=4.3% equity. Stop $202.35 (-5%), Target $244.95 (+15%), R/R 3:1."
     },
     {
       "symbol": "AAPL",
@@ -130,10 +130,10 @@
       "last_summary": "July 31 Pre-Market: Futures risk-on (S&P +0.47%, Nasdaq +1.11%). AMZN surges 12%, AAPL -7.36%. 3 MOO orders attempted (AMD exit, AMZN 21sh, GS 4sh) \u2014 ALL FAILED (API 403 blocked, 105th session). AAPL rejected (score 4.83; $308.88<$330; weak guide). WFC+MS deferred to Market-Open. OPERATOR: execute AMD/AMZN/GS manually on app.alpaca.markets BEFORE 9:30 AM ET."
     },
     "market-open": {
-      "status": "silent-failure",
-      "last_run": "2026-07-29T13:46:00Z",
-      "next_run": "2026-07-31T13:45:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. Stop-loss audit missed. AMD unmonitored at open."
+      "status": "completed",
+      "last_run": "2026-07-31T13:46:00Z",
+      "next_run": "2026-08-03T13:45:00Z",
+      "last_summary": "July 31 Market-Open: API blocked (106th session). Pre-Market confirmed fired. MOO fills unverifiable (API blocked; AMD/AMZN/GS MOOs not placed per pre-mkt log). Stop audit: AMD naked (no stop, below $481.42 hard stop). 4 orders attempted/failed: AMD SELL market, AMZN BUY 21sh limit bracket $237 (score 8.2), WFC BUY 30sh limit bracket $90.00 (score 7.0), MS BUY 20sh limit bracket $213.00 (score 7.0). GS deferred to Mid-Morning. OPERATOR must execute manually on app.alpaca.markets."
     },
     "mid-morning": {
       "status": "silent-failure",

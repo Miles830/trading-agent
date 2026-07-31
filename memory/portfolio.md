@@ -1,7 +1,7 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-07-31 (Friday) — MARKET-OPEN (9:46 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th consecutive blocked session). MARKET-OPEN COMPLETED (all orders attempted, all API-blocked). ⚠️ AMD CRITICAL: open ~$443-455 (STILL below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2 TOMORROW). 4 orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL (market), AMZN BUY (21sh limit bracket $237, score 8.2), WFC BUY (30sh limit bracket $90.00, score 7.0), MS BUY (20sh limit bracket $213.00, score 7.0). GS MOO failed pre-mkt — defer to Mid-Morning limit bracket. AAPL REJECTED (score 4.83). OPERATOR MUST ACT MANUALLY on app.alpaca.markets IMMEDIATELY — market is open now.**
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
@@ -23,6 +23,15 @@
 - Cumulative: Portfolio -0.64% vs SPY from May 1 (7,200) to 7,437.64 (+3.30%) → **Cumulative gap: -3.94 pp**
 - 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (104th consecutive session)
 
+**HEARTBEAT AUDIT JULY 31 (running):**
+- ✓ Pre-Market (12:05Z): STARTED 12:05:14Z ✓ (API blocked, all MOOs attempted/failed)
+- ✓ Market-Open (13:46Z): STARTED 13:46:13Z ✓ (API blocked, all limit orders attempted/failed)
+- ✗ Mid-Morning (15:00Z): PENDING
+- ✗ Midday (16:30Z): PENDING
+- ✗ Afternoon (18:00Z): PENDING
+- ✗ Market-Close (19:30Z): PENDING
+- ✗ Daily-Review (20:30Z): PENDING
+
 **HEARTBEAT AUDIT JULY 30:**
 - ✗ Pre-Market (12:00Z): SILENT FAILURE — violation logged
 - ✗ Market-Open (13:45Z): SILENT FAILURE — violation logged
@@ -30,7 +39,7 @@
 - ✗ Midday (16:30Z): SILENT FAILURE — violation logged
 - ✓ Afternoon: STARTED 18:09:23Z / COMPLETED 18:15:03Z
 - ✗ Market-Close (19:30Z): SILENT FAILURE — violation logged by Daily-Review
-- ✓ Daily-Review: STARTED 20:34:14Z ✓ (this routine)
+- ✓ Daily-Review: STARTED 20:34:14Z ✓
 
 **JULY 31 BINDING COMMITMENTS (ABSOLUTE — no further deferral permitted on any):**
 1. **AMD EXIT** — SELL 18sh at MARKET as FIRST ACTION at July 31 Pre-Market. Last safe day. Day 43+, naked, hard stop nearly breached, 48h earnings window opens Aug 2.
