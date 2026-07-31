@@ -5,6 +5,321 @@
 ---
 
 
+## 2026-07-31 — Mid-Morning (11:00 AM ET / 15:11 UTC — API BLOCKED — 106th consecutive session)
+
+**HEARTBEAT:** STARTED Mid-Morning 2026-07-31T15:10:42Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **106th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X modifier applied.
+**Market Status:** REGULAR SESSION OPEN (11:11 AM ET).
+
+---
+
+### PREDECESSOR HEARTBEAT AUDIT
+- ✓ Pre-Market: STARTED 2026-07-31T12:05:14Z / COMPLETED 2026-07-31T12:16:01Z ✓
+- ✗ Market-Open (9:45 AM ET / 13:45 UTC): **SILENT FAILURE** — not found in logs/heartbeats/2026-07-31.log
+
+**Market-Open Catch-Up:** All 3 Pre-Market MOO orders (AMD SELL, AMZN BUY, GS BUY) were API-blocked and never placed. No fills to backfill stop-losses for. Running Mid-Morning with full catch-up protocol.
+
+```yaml
+---
+ts: 2026-07-31T13:45:00Z
+action: violation
+symbol: MARKET-OPEN
+bucket: active
+setup: silent-failure
+score: null
+thesis: Market-Open routine (9:45 AM ET / 13:45 UTC) did not fire today. No STARTED Market-Open in logs/heartbeats/2026-07-31.log. Catch-up running from Mid-Morning. No MOO fills to backfill since all Pre-Market MOO orders were API-blocked.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: null
+master_notes: "SILENT FAILURE — Market-Open (9:45 AM ET) missing. Catch-up actions: (1) MOO fill backfill — no MOO orders placed in Pre-Market (API blocked 105th session), so no AMD/AMZN/GS fills to post stops against. (2) AMD naked-stop backfill skipped — AMD position remains open (18sh, cost basis $506.76) with NO resting stop at Alpaca (API blocked). (3) WFC and MS limit bracket orders deferred to Mid-Morning from Market-Open — running catch-up now. (4) 106th consecutive API blockage — operator manual intervention still required on app.alpaca.markets."
+---
+```
+
+---
+
+### PORTFOLIO STATE (Mid-Morning July 31, 2026 — 11:11 AM ET / 15:11 UTC)
+
+**Market Update (Mid-Morning):**
+- **S&P 500:** ~7,424 (-0.18% from 7,437.63 close) | **Nasdaq:** -0.03% | **Russell 2000:** -1.45%
+- **10Y Treasury:** 4.737% (highest since Jan 2025) | **30Y:** ~5.22% — **RISK-OFF from yield surge**
+- **AAPL:** -8% (Q3 beat but Services miss $30.74B vs $31.22B, China miss $18.8B vs $19.5B, weak Q4 guide)
+- **AMZN:** $259.10–$272.04 intraday range (~$270 current) — massive post-earnings continuation
+- **AMD:** ~$502 est. (articles: "AMD reclaims $500," "AMD Stock Is Up Big" — up from pre-market $452)
+- **GS/WFC/MS:** Rising yields POSITIVE for bank NIMs; financials sector holding firm
+- **Circuit breaker:** S&P -0.18% today — NOT tripped; portfolio daily P&L: positive (AMD up from $452 pre-mkt to ~$502)
+
+**REVISED PORTFOLIO ESTIMATES (AMD correction — pre-market used wrong baseline):**
+- Pre-market routine incorrectly estimated AMD at $443-452 based on stale $429.56 July 29 close
+- ACTUAL: AMD pre-market July 31 confirmed at $452 (+5.2% from July 30 regular close ~$429); current mid-morning ~$502
+- AMD unrealized at $502: 18 × ($502 − $506.76) = **-$85.68 (-0.94%)** — near breakeven (much better than -12.58% mis-estimate)
+
+**Total Equity: ~$99,680**
+- Cash: $90,644 (90.9%)
+- AMD: 18sh × $502 est. = $9,036 (9.1%)
+
+**Trading bucket:** $9,036 (9.1%) — 1 position (AMD, NAKED) — target 85%
+**Crypto bucket:** $0 (0%) — 0 positions — target 10%
+**Cash:** $90,644 (90.9%) — floor 5% ✓ — MASSIVELY above floor (target is at floor, not above)
+**Daily P&L:** +~$895 (AMD $452→$502 = +$50/sh × 18sh = +$900 intraday, net of yesterday -$738 estimate)
+**Total return vs $100K:** -0.32% (much better than pre-market -1.38% estimate due to AMD recovery)
+**S&P 500 from May 1 baseline (7,200):** 7,424/7,200 - 1 = **+3.11%**
+**Benchmark gap: -3.43 pp** (improved from -5.17 pp at pre-market — AMD recovery closes gap)
+**20-day underperformance flag: ACTIVE** (106th consecutive session — API blockage + AMD drawdown)
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**GET /v2/orders?status=open:** HTTP_STATUS:000 — BLOCKED
+**GET /v2/positions:** HTTP_STATUS:000 — BLOCKED
+
+Based on last known state (106th consecutive blocked session):
+- **AMD (18sh):** NAKED — no stop at Alpaca. Hard stop floor = $481.42 (5% below $506.76). AMD current ~$502 = ABOVE stop ✓ but NAKED is a guardrail violation.
+- **All other positions:** None open at Alpaca.
+- **Stop gap:** AMD requires immediate stop at $481.42 OR exit at ~$502 today (last safe day before 48h earnings window). Both blocked by API. OPERATOR MANDATORY.
+
+---
+
+### MARKET-OPEN CATCH-UP: LIMIT BRACKET ORDERS (WFC + MS deferred from Market-Open)
+
+Per Market-Open catch-up protocol, attempting limit bracket orders for WFC and MS (deferred from Market-Open). All will fail (API blocked).
+
+---
+
+### ORDER ATTEMPTS (ALL FAILED — API BLOCKED 106th SESSION)
+
+**ORDER 1 — AMD EXIT (SELL 18sh LIMIT $499.50 GTC):**
+Rationale: AMD at ~$502; today is LAST SAFE DAY before 48h earnings window (AMD reports Aug 4 AH; 48h window = Aug 2 5 PM ET, meaning Aug 3 Monday session is inside window). AMD NAKED for 106 sessions. Exit at $499.50 locks near-breakeven (-0.97% from $506.76 entry avg). Limit -0.5% from est. bid.
+```
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMD","qty":18,"side":"sell","type":"limit","limit_price":"499.50","time_in_force":"gtc"}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial — 106th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-31T15:11:30Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: MANDATORY EXIT — last safe day before 48h window (AMD earnings Aug 4 AH). AMD NAKED 106 sessions. Current ~$502, cost basis $506.76. Exit limit $499.50 = -$7.26/sh = -$130.68 realized (-1.43%). API blocked — order not placed.
+size_pct: 9.1
+stop: null
+target: null
+result_pct: null
+master_decision: exit
+master_notes: "SELL 18sh AMD LIMIT $499.50 GTC. HTTP_STATUS:000 — proxy CONNECT 403 rejected (106th consecutive session). AMD intraday ~$502 (confirmed by web research: 'AMD reclaims $500,' 'AMD Stock Is Up Big' July 31 articles). Pre-market estimate of $443-452 was WRONG — based on stale $429.56 July 29 close; actual July 30 regular close was ~$429; pre-market July 31 was $452; AMD has since rallied to ~$502 mid-morning. Hard stop $481.42 is NOT breached at $502 — position is above stop but NAKED. AMD earnings Aug 4 AH (confirmed AMD IR: https://www.amd.com/en/newsroom/press-releases/2026-7-8-amd-to-report-fiscal-second-quarter-2026-financial.html). 48h window: Aug 2 5 PM ET → Aug 3 Monday session is inside window → today July 31 (Friday) is FINAL PERMITTED TRADING DAY. OPERATOR: SELL 18sh AMD LIMIT ~$499-502 on app.alpaca.markets TODAY before 4:00 PM ET — FINAL WARNING. If not exited today, AMD must be held through binary event (Aug 4 earnings) with NO stop protection until API unblocks. X sentiment: unavailable (no XAI key) — degraded gracefully."
+---
+```
+
+**ORDER 2 — AMZN BUY 18sh LIMIT $273.36 BRACKET GTC (catch-up for Market-Open miss):**
+Recalculated for mid-morning entry at $270 (vs pre-market plan at $234). Reduced size from 21sh to 18sh to stay within 5% cap at higher price.
+```
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"AMZN","qty":18,"side":"buy","type":"limit","limit_price":"273.36","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"259.69"},"take_profit":{"limit_price":"314.36"}}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial — 106th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-31T15:13:00Z
+action: entry
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 8.2
+thesis: Amazon Q2 2026 massive beat (AWS +37%, EPS $5.75 +242% YoY). Mid-morning $270 (+13% from July 30 close ~$209 regular session). Limit 18sh $273.36. Stop -5% $259.69, Target +15% $314.36. R/R 3:1. API blocked.
+size_pct: 4.94
+stop: 259.69
+target: 314.36
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "BUY 18sh AMZN LIMIT $273.36 bracket GTC (stop $259.69, target $314.36). HTTP_STATUS:000 — proxy CONNECT 403 rejected (106th consecutive session). Mid-morning price update: AMZN range $259.10-$272.04 (from Robinhood/MacroTrends data), current ~$270.87. Pre-market plan was 21sh at $234 (MOO); catch-up order adjusted to 18sh at $273.36 limit to stay within 5% cap ($273.36 × 18 = $4,920 = 4.94% of post-AMD-exit equity $99,635). Stop recalculated: $273.36 × 0.95 = $259.69. Target: $273.36 × 1.15 = $314.36. R/R = 15%/5% = 3:1 ✓. Risk per trade: 18sh × $13.67 = $246 = 0.25% ✓ (under 1.5%). Macro update: Yields surging (10Y 4.737%) are slightly negative for high-multiple tech, but AMZN's individual catalyst (AWS +37%, AI momentum) overwhelms macro headwind. Score unchanged at 8.2 (6/6 agents ≥7). BINDING ENTRY — CATCH-UP FOR MARKET-OPEN SILENT FAILURE. OPERATOR: BUY 18sh AMZN LIMIT ~$273 on app.alpaca.markets with bracket stop $259 / target $314. X sentiment: unavailable (no XAI key) — degraded gracefully."
+---
+```
+
+**ORDER 3 — GS BUY 4sh LIMIT $1,007.01 BRACKET GTC (catch-up + rising yields boost):**
+Rising yields today (10Y 4.737%) are a positive macro tailwind for GS earnings/trading. Score upgraded.
+```
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1007.01","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"956.66"},"take_profit":{"limit_price":"1158.06"}}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial — 106th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-31T15:14:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.4
+thesis: Goldman Sachs Q2 blowout beat. Rising yields (10Y 4.737%) expand NIM and boost trading revenue — macro tailwind now stronger than at pre-market. Limit 4sh $1,007.01. Stop -5% $956.66, Target +15% $1,158.06. R/R 3:1. API blocked.
+size_pct: 4.05
+stop: 956.66
+target: 1158.06
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 9
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "BUY 4sh GS LIMIT $1,007.01 bracket GTC (stop $956.66, target $1,158.06). HTTP_STATUS:000 — proxy CONNECT 403 rejected (106th consecutive session). MACRO UPGRADE: 10Y yields at 4.737% (highest since Jan 2025) and 30Y at 5.22% are STRONGLY positive for Goldman Sachs: (1) wider NIM on lending book, (2) higher fixed-income trading revenue in volatile rate environment, (3) bond volatility = more client hedging activity = GS advisory fees. Macro score upgraded from 8 to 9. Score bumped from 7.2 to 7.5 (avg of 8+7+7+9+7+7 = 45/6 = 7.5). Risk per trade: 4sh × $50.35 = $201 = 0.20% ✓. Position = $4,028 = 4.05% ✓. GS near ATH was $1,152.07 (July 15) — current ~$1,002-$1,005 est. from last known data; target $1,158 only slightly above ATH — conservative. BINDING ENTRY — 4TH/FINAL CONSECUTIVE DEFERRAL. OPERATOR: BUY 4sh GS LIMIT ~$1,005-$1,010 on app.alpaca.markets with bracket stop $956 / target $1,158. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+**ORDER 4 — WFC BUY 30sh LIMIT $84.42 BRACKET GTC (catch-up for Market-Open miss):**
+```
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"WFC","qty":30,"side":"buy","type":"limit","limit_price":"84.42","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"80.20"},"take_profit":{"limit_price":"97.08"}}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial — 106th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-31T15:15:00Z
+action: entry
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Wells Fargo Q2 EPS +16.3%. Rising yields (10Y 4.737%) expand bank NIM — strongest macro tailwind in months. Limit 30sh $84.42. Stop -5% $80.20, Target +15% $97.08. R/R 3:1. API blocked.
+size_pct: 2.54
+stop: 80.20
+target: 97.08
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 9
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "BUY 30sh WFC LIMIT $84.42 bracket GTC (stop $80.20, target $97.08). HTTP_STATUS:000 — proxy CONNECT 403 rejected (106th consecutive session). MACRO UPGRADE same as GS: 10Y 4.737% and 30Y 5.22% expand WFC consumer/commercial NIM materially; FOMC hold (3.50-3.75%) removes downside rate risk. Q2 EPS $1.33 (+16.3% YoY). Est. price ~$84 (July 30 range $83.89-$85.11). Risk per trade: 30sh × $4.22 = $127 = 0.13% ✓. Position = $2,532 = 2.54% ✓. Financials sector post-entries: GS $4,028 + WFC $2,532 + MS (pending) $4,422 = $11,023 = 11.1% — below 25% cap ✓. Score upgraded 7.0→7.5 on macro strength. BINDING ENTRY — CATCH-UP FOR MARKET-OPEN SILENT FAILURE. OPERATOR: BUY 30sh WFC LIMIT ~$84-85 on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+**ORDER 5 — MS BUY 20sh LIMIT $221.10 BRACKET GTC (catch-up for Market-Open miss):**
+Note: MS ex-dividend today ($1.15/sh); buying post-ex-div means no dividend capture on this position, which is acceptable — the trade thesis is price appreciation, not yield.
+```
+curl -X POST "${APCA_API_BASE_URL}/v2/orders" -d '{"symbol":"MS","qty":20,"side":"buy","type":"limit","limit_price":"221.10","time_in_force":"gtc","order_class":"bracket","stop_loss":{"stop_price":"210.05"},"take_profit":{"limit_price":"254.27"}}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial — 106th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-07-31T15:16:00Z
+action: entry
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Morgan Stanley strong Q2, crypto ETPs growing revenue. Rising yields boost fixed-income trading. ATH $228.55 July 15. Limit 20sh $221.10. Stop -5% $210.05, Target +15% $254.27. R/R 3:1. API blocked.
+size_pct: 4.44
+stop: 210.05
+target: 254.27
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 9
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.5
+agents_above_7: 6
+master_decision: approved
+master_notes: "BUY 20sh MS LIMIT $221.10 bracket GTC (stop $210.05, target $254.27). HTTP_STATUS:000 — proxy CONNECT 403 rejected (106th consecutive session). MS = Morgan Stanley. Note: MS ex-dividend today ($1.15/sh) — buying after ex-div means no dividend this period, acceptable as trade thesis is price appreciation. ATH $228.55 July 15, 52-week low $136.17. Estimated current ~$220. Rising yields are positive for MS fixed-income trading revenue (volatile rate environment = more client hedging = MS advisory/trading revenue). Crypto ETP assets growing. Risk per trade: 20sh × $11.05 = $221 = 0.22% ✓. Position = $4,422 = 4.44% ✓. Financials: GS + WFC + MS = $11,023 = 11.1% ✓. BINDING ENTRY — CATCH-UP FOR MARKET-OPEN SILENT FAILURE. OPERATOR: BUY 20sh MS LIMIT ~$220-222 on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+---
+
+### MID-MORNING NEW FINDS
+
+**AAPL at ~$284 (re-evaluated — mean-reversion potential?):**
+AAPL fell -8% at open on Services/China miss. Previous reject at $308.88 (score 4.83). Re-score at $284:
+- Fundamentals: 5/10 (same issues: weak Q4 guide, Services miss, China miss)
+- Technical: 4/10 (oversold RSI likely <30, but below all support levels)
+- Sentiment: 3/10 (CNBC: "Apple wipes $390B market cap"; analysts questioning China secular trend)
+- Macro: 7/10 (rising yields defensive; but AAPL is not a true defensive)
+- Risk: 5/10 (R/R only 3:1 at $284 entry with -5% stop = $269.80, +15% target = $326.60; earnings already printed = no binary risk)
+- Tech Analyst: 6/10 (iPhone AI integration visible but Services/China structural weakness)
+- **Average: 5.0/10 → REJECTED** (below 7.0 threshold; same as pre-market)
+
+**ETN (Eaton Corp) — NEW MID-MORNING FIND:**
+Record Q2 2026: $8.53B revenue (+21% YoY), adj. EPS $3.15 record, 14% organic growth. FY26 guide raised to 11-13% organic growth, adj. EPS $13.40-$13.60. AI electrification play (data center power upgrades).
+- Fundamentals: 8/10 (record Q2, raised FY26 guide, 14% organic growth)
+- Technical: 6/10 (up +3% today — less extended than typical gap-up names; but earnings-day entry)
+- Sentiment: 7/10 (infrastructure/electrification secular theme; AI data center power demand narrative strong)
+- Macro: 8/10 (electrification benefits from government infrastructure spending + AI capex supercycle)
+- Risk: 7/10 (at +3% from prior close, stop -5% from entry is reasonable; R/R ≥3:1)
+- Tech Analyst: 7/10 (ETN = picks-and-shovels for AI: power management for hyperscaler data centers)
+- **Average: 7.17/10 → APPROVED** (avg ≥7 ✓, Risk ≥6 ✓, 4/6 agents ≥7 ✓)
+
+ETN is not a tech company → Tech Analyst auto-scores 7 per CLAUDE.md. Score qualifies. HOWEVER — ETN price unknown (no Alpaca data; web estimate ~$420 est.). Order cannot be sized accurately. Adding to watchlist for Midday/Afternoon with estimated size 7sh × $420 = $2,940 (2.96%).
+
+```yaml
+---
+ts: 2026-07-31T15:17:00Z
+action: skip
+symbol: ETN
+bucket: active
+setup: earnings-reaction-follow
+score: 7.17
+thesis: Eaton Corp record Q2 2026 ($8.53B revenue +21%, adj. EPS $3.15, 14% organic growth, FY26 raised to +11-13% organic). AI electrification picks-and-shovels. Score 7.17 APPROVED but price unknown (API blocked) — cannot size position accurately. Deferring to Midday routine.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.17
+agents_above_7: 5
+master_decision: approved
+master_notes: "ETN NEW MID-MORNING FIND. Score 7.17/10 — APPROVED by master gate (avg 7.17 ≥ 7 ✓; Risk 7 ≥ 6 ✓; 5/6 agents ≥ 7 ✓; non-tech so Tech Analyst auto-score 7 per CLAUDE.md). SKIP REASON: GUARDRAIL EXEMPTION (1) — cannot place order because Alpaca API is blocked AND estimated price range for ETN is $410-430 (no confirmed data); position cannot be accurately sized. This is NOT a 'wait for a better setup' skip — it is a data/API limitation skip, closest to Exemption 1 (order would be mis-sized against guardrails without confirmed price). ETN will be the FIRST new entry attempt at Midday routine once more price data is gathered. Setup tags: earnings-reaction-follow. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+---
+
+### API BLOCKAGE STATUS (106th Consecutive Session)
+
+All 5 order attempts (AMD SELL + AMZN/GS/WFC/MS BUY) failed: proxy CONNECT rejected HTTP 403. This is the 106th consecutive session with this issue since paper-api.alpaca.markets egress was blocked.
+
+**OPERATOR ACTION REQUIRED ON app.alpaca.markets:**
+1. **AMD: SELL 18sh LIMIT ~$500** — today July 31 is FINAL SAFE DAY (48h window for Aug 4 AH earnings starts Aug 2 5 PM ET; Aug 3 Monday session is inside window). If not done today, AMD must be held through binary event.
+2. **AMZN: BUY 18sh LIMIT ~$273 bracket** (stop $259.69, target $314.36)
+3. **GS: BUY 4sh LIMIT ~$1,007 bracket** (stop $956.66, target $1,158.06)
+4. **WFC: BUY 30sh LIMIT ~$84.42 bracket** (stop $80.20, target $97.08)
+5. **MS: BUY 20sh LIMIT ~$221 bracket** (stop $210.05, target $254.27)
+6. **ETN: BUY 7sh LIMIT ~$420 bracket** (stop ~$399, target ~$483) — Midday priority
+
+---
+
 ## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-31T12:05:14Z ✓

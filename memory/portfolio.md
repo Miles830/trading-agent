@@ -1,7 +1,7 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-07-31 (Friday) — MID-MORNING (11:11 AM ET / 15:11 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th consecutive blocked session). MID-MORNING ✅ COMPLETED. Market-Open SILENT FAILURE logged (violation). AMD REVISED: pre-market estimate $443-452 was WRONG (based on stale $429.56 baseline) — actual AMD mid-morning ~$502, ABOVE hard stop $481.42, but STILL NAKED. Portfolio revised from -1.38% to -0.32%. Benchmark gap revised from -5.17 pp to -3.43 pp. 5 orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY 18sh, GS BUY 4sh, WFC BUY 30sh, MS BUY 20sh. ETN APPROVED (score 7.17) — deferred to Midday (price unknown). TODAY IS AMD'S ABSOLUTE FINAL EXIT DAY — Aug 3 Monday session is inside 48h window for Aug 4 AH earnings. OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 

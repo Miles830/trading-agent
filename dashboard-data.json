@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-31T12:10:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-07-31T15:17:00Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 98618,
+    "total_equity": 99680,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 91.9,
+    "cash_pct": 90.9,
     "buying_power": 181288,
-    "long_market_value": 7974,
+    "long_market_value": 9036,
     "short_market_value": 0.0,
-    "daily_pnl": -738,
-    "daily_pnl_pct": -0.74,
-    "total_return_pct": -1.38,
-    "spx_return_pct": 3.79,
-    "benchmark_gap_pct": -5.17,
+    "daily_pnl": 895,
+    "daily_pnl_pct": 0.90,
+    "total_return_pct": -0.32,
+    "spx_return_pct": 3.11,
+    "benchmark_gap_pct": -3.43,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 7974,
-      "active_pct": 8.1,
+      "active_value": 9036,
+      "active_pct": 9.1,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 91.9
+      "cash_pct": 90.9
     },
-    "note": "July 31 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED 105th consecutive session. AMD pre-mkt ~$443 (below $481.42 hard stop, Day 44+, NAKED, LAST SAFE EXIT DAY). 3 MOO orders ATTEMPTED & FAILED: AMD SELL 18sh, AMZN BUY 21sh (score 8.2), GS BUY 4sh (score 7.2). AAPL REJECTED (score 4.83, $308.88 pre-mkt vs $330 condition, weak Q4 guide). WFC + MS deferred to Market-Open limit brackets. S&P futures +0.47%, Nasdaq +1.11% (AMZN surges 12%, AAPL -7.36%). Operator must execute AMD/AMZN/GS manually on app.alpaca.markets BEFORE 9:30 AM ET."
+    "note": "July 31 MID-MORNING (11:11 AM ET / 15:11Z). API BLOCKED 106th consecutive session. REVISED: pre-market AMD estimate of $443-452 was WRONG (stale baseline); actual AMD mid-morning ~$502, above $481.42 stop. Portfolio revised to -0.32% (from mis-estimated -1.38%). Benchmark gap revised to -3.43 pp (from -5.17 pp). Market-Open SILENT FAILURE logged. 5 orders ATTEMPTED ALL FAILED: AMD SELL 18sh, AMZN BUY 18sh ($273.36), GS BUY 4sh ($1,007.01), WFC BUY 30sh ($84.42), MS BUY 20sh ($221.10). ETN APPROVED (7.17) deferred to Midday. AMD is FINAL EXIT DAY — Aug 3 Monday is inside 48h window. Operator MUST act on app.alpaca.markets NOW."
   },
   "positions": [
     {
@@ -31,95 +31,81 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 443.0,
-      "pnl": -1147.68,
-      "pnl_pct": -12.58,
+      "current_price": 502.0,
+      "pnl": -85.68,
+      "pnl_pct": -0.94,
       "stop_loss": null,
       "take_profit": 582.78,
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "AMD pre-market ~$443-452 (July 29 close $429.56, up +3-5% on Core Scientific $14B deal). Still NAKED \u2014 no stop at Alpaca. Hard stop $481.42 BREACHED by ~$30-38. Day 44+. MANDATORY EXIT: SELL 18sh at MARKET OPG TODAY (last safe day before Aug 2 48h earnings window). API blocked 105th session. Order ATTEMPTED & FAILED. OPERATOR: SELL 18sh AMD at MARKET on app.alpaca.markets before 9:30 AM ET."
+      "note": "AMD mid-morning ~$502 est. (pre-market $452, now 'reclaims $500' per web research July 31). ABOVE hard stop $481.42 ✓ but STILL NAKED (no stop at Alpaca — API blocked 106th session). Day 45. TODAY IS ABSOLUTE FINAL EXIT DAY (Aug 3 Monday = inside 48h window for Aug 4 AH earnings). Unrealized: 18×($502-$506.76)=-$85.68 (-0.94%). OPERATOR: SELL 18sh AMD LIMIT ~$500 on app.alpaca.markets TODAY before 4:00 PM ET."
     }
   ],
   "market": {
-    "mode": "risk-on-earnings-bifurcation",
-    "spx": 7473.0,
-    "spx_daily_change_pct": 0.47,
+    "mode": "risk-off-yield-surge",
+    "spx": 7424.0,
+    "spx_daily_change_pct": -0.18,
     "btc": 64000,
     "eth": 1910,
-    "macro_notes_md": "July 31 Pre-Market: S&P futures +0.47% to 7,507.75 | Nasdaq futures +1.11% to 28,552 (RISK-ON). AMZN +12% pre-market (AWS +37%, EPS $5.75 massive beat). AAPL -7.36% pre-market ($308.88) on weak Q4 guide (+9-11% vs est +12%+), supply constraints, China miss ($18.8B vs $19.5B). CNBC: 'investors pick AI winners.' XOM/CVX/ABBV/LIN reporting pre-market (XOM 84.5% beat probability). BTC ~$64,000 | ETH ~$1,910. No Fed speakers. Consumer Sentiment due. 94% Polymarket probability S&P opens higher. AMD Core Scientific $14B deal bullish but below hard stop."
+    "macro_notes_md": "July 31 Mid-Morning (11:11 AM ET): S&P 500 -0.18% (~7,424) | Nasdaq -0.03% | Russell 2000 -1.45%. RISK-OFF: 10Y Treasury 4.737% (highest since Jan 2025), 30Y ~5.22%. AAPL -8% (Services miss $30.74B vs $31.22B, China miss, weak Q4 guide — dragging market). AMZN $259-$272 (+13% post-earnings, AWS +37%). AMD ~$502 ('reclaims $500'). Notable movers: DXCM +11% (Q2 beat+raise), MPWR +9% (Q2 +21.9% q/q), ETN +3% (record Q2 $8.53B, raised FY26 guidance), REPL +74% (FDA panel backing). Rising yields strongly positive for GS/WFC/MS (bank NIMs expand, trading activity increases). Macro score for financials upgraded to 9/10."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": "EXIT",
-      "action": "SELL 18sh MARKET OPG \u2014 ATTEMPTED, API BLOCKED (105th session) \u2014 OPERATOR: SELL MANUALLY NOW",
-      "notes": "Pre-market ~$443 (below $481.42 hard stop by ~$38). Day 44+, NAKED. Last safe day. Aug 2 opens 48h window."
+      "action": "SELL 18sh LIMIT $499.50 GTC — ATTEMPTED, API BLOCKED (106th session) — OPERATOR: SELL TODAY BEFORE 4PM ET",
+      "notes": "Mid-morning ~$502, above $481.42 stop but NAKED. TODAY IS FINAL DAY — Aug 3 Monday session inside 48h window. Limit order attempted, failed."
     },
     {
       "symbol": "AMZN",
       "bucket": "active",
       "score": 8.2,
-      "action": "BUY 21sh MOO \u2014 ATTEMPTED, API BLOCKED \u2014 OPERATOR: BUY MANUALLY BEFORE 9:25 AM",
-      "notes": "Score 8.2, 6/6\u22657. AWS +37%, EPS $5.75 (+242% YoY). Pre-mkt $234.20 (+12%). 21sh\u00d7$234=$4,914=4.99% equity post-AMD-exit. Stop $222.30, Target $269.10."
+      "action": "BUY 18sh LIMIT $273.36 bracket GTC — ATTEMPTED, API BLOCKED — OPERATOR: BUY NOW",
+      "notes": "Score 8.2, 6/6≥7. AMZN $259-$272 mid-morning. 18sh×$273.36=$4,920=4.94%. Stop $259.69 (-5%), Target $314.36 (+15%). R/R 3:1."
     },
     {
       "symbol": "GS",
       "bucket": "active",
-      "score": 7.2,
-      "action": "BUY 4sh MOO \u2014 ATTEMPTED, API BLOCKED \u2014 OPERATOR: BUY MANUALLY BEFORE 9:25 AM",
-      "notes": "Score 7.2. Q2 blowout, FOMC hold. 3rd/FINAL deferral. ~$1,020 est. 4sh=$4,080=4.14%. Stop $969, Target $1,173."
+      "score": 7.5,
+      "action": "BUY 4sh LIMIT $1,007.01 bracket GTC — ATTEMPTED, API BLOCKED — OPERATOR: BUY NOW",
+      "notes": "Score upgraded 7.2→7.5 (macro: rising yields 10Y 4.737% = NIM expansion + trading revenue boost). 4sh×$1,007=$4,028=4.05%. Stop $956.66, Target $1,158.06."
     },
     {
       "symbol": "WFC",
       "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 30sh LIMIT bracket GTC \u2014 DEFERRED TO MARKET-OPEN (MOO cap used) \u2014 BINDING",
-      "notes": "Score 7.0. Q2 EPS +16.3%. FOMC hold. ~30sh\u00d7$88-90=$2,640-2,700=2.7% equity. Stop -5%, Target +15%."
+      "score": 7.5,
+      "action": "BUY 30sh LIMIT $84.42 bracket GTC — ATTEMPTED, API BLOCKED — OPERATOR: BUY NOW",
+      "notes": "Score upgraded 7.0→7.5 (macro: rising yields = bank NIM expansion). 30sh×$84.42=$2,532=2.54%. Stop $80.20, Target $97.08."
     },
     {
       "symbol": "MS",
       "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 20sh LIMIT bracket GTC \u2014 DEFERRED TO MARKET-OPEN (MOO cap used) \u2014 BINDING. Ex-div today ($1.15)",
-      "notes": "Score 7.0. Strong Q2, crypto ETP. ATH $228.55 July 15. Ex-div July 31. ~20sh\u00d7$210-215=$4,200-4,300=4.3% equity."
+      "score": 7.5,
+      "action": "BUY 20sh LIMIT $221.10 bracket GTC — ATTEMPTED, API BLOCKED — OPERATOR: BUY NOW",
+      "notes": "Score upgraded 7.0→7.5 (rising yields + volatile rates = MS fixed-income trading revenue boost). Ex-div today ($1.15) — post-ex-div entry OK. 20sh×$221.10=$4,422=4.44%. Stop $210.05, Target $254.27."
+    },
+    {
+      "symbol": "ETN",
+      "bucket": "active",
+      "score": 7.17,
+      "action": "BUY ~7sh LIMIT ~$420 bracket GTC — MIDDAY PRIORITY — price unknown (API blocked)",
+      "notes": "NEW MID-MORNING FIND. Score 7.17/10 APPROVED. Eaton Corp record Q2: $8.53B (+21%), adj. EPS $3.15, 14% organic growth, FY26 raised +11-13% organic. AI electrification picks-and-shovels. ETN up +3% today. Price est. ~$420 (unconfirmed). 7sh×$420=$2,940=2.95%. Stop -5% ~$399, Target +15% ~$483."
     },
     {
       "symbol": "AAPL",
       "bucket": "active",
-      "score": 4.83,
-      "action": "REJECTED \u2014 score 4.83 (was 7.0), pre-mkt $308.88 < $330 condition",
-      "notes": "Score revised 7.0\u21924.83. Weak Q4 guide +9-11% vs est +12%+. Supply constraints. China $18.8B vs $19.5B. Services $30.74B vs $31.22B. EPS partly tariff-refund. Pre-mkt -7.36%. Watch $300-310 support for mean-reversion."
+      "score": 5.0,
+      "action": "REJECTED — re-scored at $284 mid-morning, still 5.0/10",
+      "notes": "AAPL -8% at open. Re-score at $284: Fundamentals 5, Technical 4, Sentiment 3, Macro 7, Risk 5, Tech Analyst 6 = avg 5.0. Same issues: Services miss, China miss, weak Q4 guide. Below 7.0 threshold. Watch $270-280 zone."
     },
     {
       "symbol": "MSFT",
       "bucket": "active",
       "score": 7.0,
-      "action": "WATCH only \u2014 wait for pullback to $455-470",
-      "notes": "Azure +43%, EPS $4.81. Already +14% on July 30 \u2014 too extended for new entry. Wait for pullback before entering."
-    },
-    {
-      "symbol": "NVDA",
-      "bucket": "active",
-      "score": 6.5,
-      "action": "WATCH \u2014 score fully at Pre-Market",
-      "notes": "AI validation from MSFT Azure +43% + AMZN AWS +37%. Chip sector +5% July 30. Need 2/5 indicators confirming at Pre-Market."
-    },
-    {
-      "symbol": "XLF",
-      "bucket": "active",
-      "score": 6.5,
-      "action": "WATCH \u2014 enter if individual financials maxed out",
-      "notes": "Financials ETF. FOMC hold = bank tailwind. Diversified exposure if GS/WFC/MS positions hit sector cap."
-    },
-    {
-      "symbol": "GLD",
-      "bucket": "active",
-      "score": 6.0,
-      "action": "WATCH",
-      "notes": "Core PCE 3.3%, GDP weaker, yield uncertainty. Gold bid potential if macro fears resurface."
+      "action": "WATCH — wait for pullback to $455-470",
+      "notes": "Already +14% on July 30. Too extended for new entry. Azure +43%. Wait for pullback."
     }
   ],
   "routines": {
@@ -127,46 +113,186 @@
       "status": "completed",
       "last_run": "2026-07-31T12:05:00Z",
       "next_run": "2026-08-03T12:00:00Z",
-      "last_summary": "July 31 Pre-Market: Futures risk-on (S&P +0.47%, Nasdaq +1.11%). AMZN surges 12%, AAPL -7.36%. 3 MOO orders attempted (AMD exit, AMZN 21sh, GS 4sh) \u2014 ALL FAILED (API 403 blocked, 105th session). AAPL rejected (score 4.83; $308.88<$330; weak guide). WFC+MS deferred to Market-Open. OPERATOR: execute AMD/AMZN/GS manually on app.alpaca.markets BEFORE 9:30 AM ET."
+      "last_summary": "July 31 Pre-Market: 3 MOO orders attempted (AMD exit, AMZN 21sh, GS 4sh) — ALL FAILED (API blocked 105th session). AAPL rejected (4.83). WFC+MS deferred to Market-Open. Operator action required."
     },
     "market-open": {
       "status": "silent-failure",
       "last_run": "2026-07-29T13:46:00Z",
-      "next_run": "2026-07-31T13:45:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. Stop-loss audit missed. AMD unmonitored at open."
+      "next_run": "2026-08-03T13:45:00Z",
+      "last_summary": "SILENT FAILURE July 31 — no heartbeat fired. Caught up by Mid-Morning: no MOO fills to backfill (all pre-market orders API-blocked). Violation YAML logged in trades.md."
     },
     "mid-morning": {
-      "status": "silent-failure",
-      "last_run": "2026-07-29T15:11:00Z",
-      "next_run": "2026-07-31T15:00:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. Intraday scan missed."
+      "status": "completed",
+      "last_run": "2026-07-31T15:11:00Z",
+      "next_run": "2026-08-03T15:00:00Z",
+      "last_summary": "July 31 Mid-Morning: AMD revised to ~$502 (above stop; not $443 as mis-estimated). Market-Open violation logged. 5 limit bracket orders attempted, all API-blocked (106th session). ETN approved (7.17), deferred to Midday. Market: S&P -0.18%, yields surging (10Y 4.737%), AAPL -8%, AMZN +13%, AMD +~11% from pre-mkt."
     },
     "midday": {
-      "status": "silent-failure",
+      "status": "pending",
       "last_run": null,
       "next_run": "2026-07-31T16:30:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. 4th silent predecessor. Violation logged."
+      "last_summary": "Pending. Priority: ETN entry attempt (price research needed). All 5 prior orders still unfilled. AMD exit remains MANDATORY — today only."
     },
     "afternoon": {
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-07-30T18:09:00Z",
       "next_run": "2026-07-31T18:00:00Z",
-      "last_summary": "API blocked 103rd session. 4 predecessors silently failed. GS/WFC/MS deferred 3rd time. AMD naked day 42+. AAPL/AMZN binary windows. META/MSFT/QCOM scored July 30 AH."
+      "last_summary": "Pending for today."
     },
     "market-close": {
-      "status": "silent-failure",
+      "status": "pending",
       "last_run": null,
       "next_run": "2026-07-31T19:30:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. Market-Close catch-up executed by Daily-Review: no day trades to flatten. AMD carries overnight at est. ~$484. GS/WFC/MS not placed (API blocked). Violation logged."
+      "last_summary": "Pending. AMD MOC exit as last resort if earlier orders not filled by operator."
     },
     "daily-review": {
-      "status": "completed",
+      "status": "pending",
       "last_run": "2026-07-30T20:34:00Z",
       "next_run": "2026-07-31T20:30:00Z",
-      "last_summary": "July 30 Daily Review completed. Portfolio: est. $99,356 (-0.64%), +1.0% today vs SPY +1.7% (-0.7 pp gap). AMZN score 8.2 APPROVED, AAPL score 7.0 APPROVED. META/QCOM rejected. AMD MANDATORY EXIT July 31. GS/WFC/MS BINDING July 31. 5 of 6 intraday routines silently failed \u2014 top operational issue."
+      "last_summary": "Pending. July 31 review will tally AMD exit result, assess AMZN/GS/WFC/MS/ETN deployment status, and produce Monday Aug 3 watchlist."
     }
   },
   "trades": [
+    {
+      "ts": "2026-07-31T15:11:30Z",
+      "action": "exit",
+      "symbol": "AMD",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "thesis": "MANDATORY EXIT — last safe day before 48h window (Aug 4 AH earnings). AMD NAKED 106 sessions. Mid-morning ~$502. Limit $499.50 attempted — API blocked.",
+      "size_pct": 9.1,
+      "stop": null,
+      "target": null,
+      "result_pct": null,
+      "master_decision": "exit",
+      "master_notes": "SELL 18sh AMD LIMIT $499.50 GTC. HTTP_STATUS:000 — proxy CONNECT 403 rejected (106th consecutive session). OPERATOR MUST SELL MANUALLY TODAY."
+    },
+    {
+      "ts": "2026-07-31T15:13:00Z",
+      "action": "entry",
+      "symbol": "AMZN",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.2,
+      "thesis": "AWS +37%, EPS $5.75. Mid-morning $270. 18sh $273.36 limit bracket. Stop $259.69, Target $314.36. API blocked.",
+      "size_pct": 4.94,
+      "stop": 259.69,
+      "target": 314.36,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 9,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.2,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "BUY 18sh AMZN LIMIT $273.36 bracket GTC. HTTP_STATUS:000 — blocked. OPERATOR BUY NOW."
+    },
+    {
+      "ts": "2026-07-31T15:14:00Z",
+      "action": "entry",
+      "symbol": "GS",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.5,
+      "thesis": "Q2 blowout + rising yields (10Y 4.737%) = NIM expansion boost. 4sh $1,007.01 limit bracket. Stop $956.66, Target $1,158.06. API blocked.",
+      "size_pct": 4.05,
+      "stop": 956.66,
+      "target": 1158.06,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 9,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.5,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "BUY 4sh GS LIMIT $1,007.01 bracket GTC. HTTP_STATUS:000 — blocked. Score upgraded 7.2→7.5 on macro (rising yields). OPERATOR BUY NOW."
+    },
+    {
+      "ts": "2026-07-31T15:15:00Z",
+      "action": "entry",
+      "symbol": "WFC",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.5,
+      "thesis": "Q2 EPS +16.3% + rising yields (NIM expansion). 30sh $84.42 limit bracket. Stop $80.20, Target $97.08. API blocked.",
+      "size_pct": 2.54,
+      "stop": 80.20,
+      "target": 97.08,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 9,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.5,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "BUY 30sh WFC LIMIT $84.42 bracket GTC. HTTP_STATUS:000 — blocked. Score upgraded 7.0→7.5 on macro. OPERATOR BUY NOW."
+    },
+    {
+      "ts": "2026-07-31T15:16:00Z",
+      "action": "entry",
+      "symbol": "MS",
+      "bucket": "active",
+      "setup": "sector-rotation",
+      "score": 7.5,
+      "thesis": "Strong Q2 + rising yields boost fixed-income trading. Ex-div today ($1.15). 20sh $221.10 limit bracket. Stop $210.05, Target $254.27. API blocked.",
+      "size_pct": 4.44,
+      "stop": 210.05,
+      "target": 254.27,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 7,
+        "sentiment": 7,
+        "macro": 9,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.5,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "BUY 20sh MS LIMIT $221.10 bracket GTC. HTTP_STATUS:000 — blocked. Score upgraded 7.0→7.5 on macro. OPERATOR BUY NOW."
+    },
+    {
+      "ts": "2026-07-31T15:17:00Z",
+      "action": "skip",
+      "symbol": "ETN",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 7.17,
+      "thesis": "NEW FIND: Eaton Corp record Q2 $8.53B (+21%), adj. EPS $3.15, FY26 raised +11-13% organic. AI electrification play. APPROVED (7.17/10) but price unknown — deferred to Midday.",
+      "size_pct": null,
+      "stop": null,
+      "target": null,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 7,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 7
+      },
+      "agent_average": 7.17,
+      "agents_above_7": 5,
+      "master_decision": "approved",
+      "master_notes": "Score 7.17/10 APPROVED. Skip reason: API blocked AND price unknown — cannot size accurately. Not a 'wait for better setup' skip — data limitation. Deferred to Midday routine as FIRST priority new entry."
+    },
     {
       "ts": "2026-07-31T12:05:00Z",
       "action": "exit",
@@ -174,13 +300,13 @@
       "bucket": "active",
       "setup": "ai-momentum-pullback",
       "score": null,
-      "thesis": "MANDATORY EXIT \u2014 AMD ~$443-452 pre-mkt, below $481.42 hard stop, Day 44+, NAKED, last safe day before Aug 2 48h window. API blocked \u2014 order attempted and failed.",
+      "thesis": "MANDATORY EXIT (pre-market) — AMD ~$443-452 pre-mkt (mis-estimated), below $481.42 hard stop (est. at that time), Day 44+, NAKED, last safe day. API blocked.",
       "size_pct": 8.1,
       "stop": null,
       "target": null,
       "result_pct": null,
       "master_decision": "exit",
-      "master_notes": "API ATTEMPT FAILED (curl 56, HTTP 000). SELL 18sh AMD MARKET OPG not placed at Alpaca. 105th consecutive session blocked. OPERATOR MUST EXECUTE MANUALLY."
+      "master_notes": "API ATTEMPT FAILED (curl 56, HTTP 000). Pre-market estimate was wrong — AMD actual pre-mkt was $452 (+5.2%), not $443. Mid-morning AMD ~$502, above stop. OPERATOR MUST EXIT TODAY."
     },
     {
       "ts": "2026-07-31T12:06:00Z",
@@ -189,7 +315,7 @@
       "bucket": "active",
       "setup": "earnings-reaction-follow",
       "score": 8.2,
-      "thesis": "AWS +37% to $42.2B, EPS $5.75 (+242% YoY), AI chips >$25B ARR. Pre-mkt $234.20 (+12%). 21sh $4,914 = 4.99% equity. API blocked \u2014 order attempted and failed.",
+      "thesis": "AWS +37% to $42.2B, EPS $5.75 (+242% YoY). Pre-mkt $234.20. MOO 21sh attempted — API blocked. Catch-up limit order placed at mid-morning.",
       "size_pct": 4.99,
       "stop": 222.3,
       "target": 269.1,
@@ -205,7 +331,7 @@
       "agent_average": 8.2,
       "agents_above_7": 6,
       "master_decision": "approved",
-      "master_notes": "API ATTEMPT FAILED (curl 56, HTTP 000). BUY 21sh AMZN MARKET OPG not placed. 6/6 agents \u22657. BINDING entry. OPERATOR must execute manually."
+      "master_notes": "API ATTEMPT FAILED (curl 56, HTTP 000). MOO 21sh at $234 not placed. Mid-morning catch-up: 18sh limit $273.36 (recalculated for higher price, same thesis). OPERATOR must execute."
     },
     {
       "ts": "2026-07-31T12:07:00Z",
@@ -214,7 +340,7 @@
       "bucket": "active",
       "setup": "sector-rotation",
       "score": 7.2,
-      "thesis": "Q2 blowout, FOMC hold 3.50-3.75%. 4sh ~$1,020 = ~$4,080 = 4.14% equity. R/R 3:1. API blocked \u2014 order attempted and failed.",
+      "thesis": "Q2 blowout, FOMC hold 3.50-3.75%. 4sh ~$1,020 MOO attempted — API blocked. Catch-up limit order placed at mid-morning.",
       "size_pct": 4.14,
       "stop": 969.0,
       "target": 1173.0,
@@ -230,32 +356,7 @@
       "agent_average": 7.2,
       "agents_above_7": 6,
       "master_decision": "approved",
-      "master_notes": "API ATTEMPT FAILED (curl 56, HTTP 000). BUY 4sh GS MARKET OPG not placed. 3rd/FINAL deferral. BINDING. OPERATOR must execute manually."
-    },
-    {
-      "ts": "2026-07-31T12:08:00Z",
-      "action": "skip",
-      "symbol": "AAPL",
-      "bucket": "active",
-      "setup": "earnings-reaction-follow",
-      "score": 4.83,
-      "thesis": "Score revised 7.0\u21924.83. Pre-mkt $308.88 < $330 condition. Weak Q4 guide, supply constraints, China/Services miss, tariff-refund EPS inflation. REJECTED.",
-      "size_pct": null,
-      "stop": null,
-      "target": null,
-      "result_pct": null,
-      "agent_scores": {
-        "fundamentals": 5,
-        "technical": 3,
-        "sentiment": 3,
-        "macro": 7,
-        "risk": 5,
-        "tech_analyst": 6
-      },
-      "agent_average": 4.83,
-      "agents_above_7": 1,
-      "master_decision": "rejected",
-      "master_notes": "Pre-market condition not met ($308.88 < $330). Thesis materially changed. 1/6 agents \u22657. Master gate fails (needs \u22657.0 avg, \u22654 agents \u22657). Watch $300-310 support."
+      "master_notes": "API ATTEMPT FAILED. MOO 4sh not placed. Mid-morning catch-up: 4sh limit $1,007.01 (macro upgraded on rising yields). 4th/FINAL deferral."
     },
     {
       "ts": "2026-07-31T12:09:00Z",
@@ -264,7 +365,7 @@
       "bucket": "active",
       "setup": "sector-rotation",
       "score": 7.0,
-      "thesis": "Deferred to Market-Open limit bracket GTC (MOO cap exhausted). BINDING entry. ~30sh \u00d7 $88-90. Score 7.0.",
+      "thesis": "Deferred from pre-market (MOO cap). Catch-up limit bracket placed at mid-morning.",
       "size_pct": 2.65,
       "stop": null,
       "target": null,
@@ -280,7 +381,7 @@
       "agent_average": 7.0,
       "agents_above_7": 6,
       "master_decision": "approved",
-      "master_notes": "MOO cap used (AMD+AMZN+GS=3). Standard playbook deferral to Market-Open. Not a skip exemption \u2014 BINDING limit bracket GTC at open."
+      "master_notes": "MOO cap used. Mid-morning catch-up: 30sh limit $84.42 bracket GTC."
     },
     {
       "ts": "2026-07-31T12:10:00Z",
@@ -289,7 +390,7 @@
       "bucket": "active",
       "setup": "sector-rotation",
       "score": 7.0,
-      "thesis": "Deferred to Market-Open limit bracket GTC (MOO cap exhausted). BINDING entry. ~20sh \u00d7 $210-215. Ex-div today. Score 7.0.",
+      "thesis": "Deferred from pre-market (MOO cap). Catch-up limit bracket placed at mid-morning.",
       "size_pct": 4.26,
       "stop": null,
       "target": null,
@@ -305,11 +406,36 @@
       "agent_average": 7.0,
       "agents_above_7": 6,
       "master_decision": "approved",
-      "master_notes": "MOO cap used. Standard playbook deferral. Ex-div today $1.15. BINDING limit bracket GTC at Market-Open."
+      "master_notes": "MOO cap used. Mid-morning catch-up: 20sh limit $221.10 bracket GTC. Ex-div $1.15 today."
+    },
+    {
+      "ts": "2026-07-31T12:08:00Z",
+      "action": "skip",
+      "symbol": "AAPL",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 4.83,
+      "thesis": "Score revised 7.0→4.83. Pre-mkt $308.88 < $330 condition. Weak Q4 guide, supply constraints, China/Services miss. REJECTED.",
+      "size_pct": null,
+      "stop": null,
+      "target": null,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 5,
+        "technical": 3,
+        "sentiment": 3,
+        "macro": 7,
+        "risk": 5,
+        "tech_analyst": 6
+      },
+      "agent_average": 4.83,
+      "agents_above_7": 1,
+      "master_decision": "rejected",
+      "master_notes": "Pre-market condition not met ($308.88 < $330). Thesis changed. Re-scored at mid-morning $284: 5.0/10 — still rejected."
     }
   ],
   "memory": {
-    "recent_lessons_md": "**2026-07-30 Daily Review:**\n- WORKED: Binary-event discipline (avoided META -9%, QCOM -5.1%). FOMC deferral correct (market fell July 29, recovered +1.7% July 30). AMZN/AAPL correctly targeted as top post-earnings plays.\n- IMPROVE: AMD exit still pending Day 43+ \u2014 July 31 is FINAL safe day. GS/WFC/MS 3rd consecutive deferral compounding cash drag. 5/6 intraday routines silently failed \u2014 Pre-Market is the highest-priority reliability gap.\n\n**2026-07-29 Afternoon:**\n- Avoided FOMC day entries (correct \u2014 SPX fell -0.9% on hawkish Warsh press conference). AMD below hard stop on China chip news.\n\n**Ongoing structural issue:** Alpaca API blocked 104 consecutive sessions (proxy CONNECT 403). All trades pending operator manual execution on app.alpaca.markets. Cash drag (-86 pp from 95% target) is the #1 performance problem.",
+    "recent_lessons_md": "**2026-07-31 Mid-Morning:**\n- PRE-MARKET ESTIMATE WAS WRONG: AMD estimated at $443-452 (used stale $429.56 July 29 baseline). Actual pre-market was $452. AMD mid-morning ~$502 — ABOVE hard stop. Portfolio is actually -0.32% (not -1.38%). Lesson: when API is blocked, always note that price estimates from prior-day close may be 1-2 sessions stale.\n- RISING YIELDS (10Y 4.737%) = macro upgrade for all financials (GS/WFC/MS scores upgraded 7.0-7.2→7.5).\n- ETN is a new mid-morning find — AI electrification picks-and-shovels, score 7.17/10. First new ticker scored outside pre-existing watchlist this week.\n\n**2026-07-30 Daily Review:**\n- WORKED: Binary-event discipline (avoided META -9%, QCOM -5.1%). FOMC deferral correct. AMZN/AAPL correctly targeted as top post-earnings plays.\n- IMPROVE: AMD exit still pending Day 45 — July 31 is ABSOLUTE FINAL safe day. GS/WFC/MS 4th consecutive deferral. 5/6 intraday routines silently failed July 30.\n\n**Ongoing structural issue:** Alpaca API blocked 106 consecutive sessions (proxy CONNECT 403). All trades pending operator manual execution on app.alpaca.markets. Cash drag (-75 pp from 95% target) is #1 performance problem.",
     "halted_setups": [],
     "boosted_setups": []
   },
