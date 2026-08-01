@@ -1904,12 +1904,11 @@
         <div class="card-title">Portfolio Allocation</div>
         <div class="md">
           <ul>
-            <li><strong>55% — Long-term Investing.</strong> High-conviction individual stocks held 2 months to 1.5 years.</li>
-            <li><strong>30% — Active Trading.</strong> Short-term trades on momentum and catalysts.</li>
-            <li><strong>5% — Crypto.</strong> BTC, ETH, and high-conviction altcoins.</li>
-            <li><strong>10% — Cash Reserve.</strong> Floor — never deployed below this level.</li>
+            <li><strong>85% — Active Trading (US equities).</strong> Short-term trades — momentum, catalysts, candlestick reversals, breakouts. Holding period hours to a few days.</li>
+            <li><strong>10% — Crypto.</strong> Bitcoin, Ethereum, and high-conviction altcoins; traded with the same setup/score discipline as equities — not buy-and-hold.</li>
+            <li><strong>5% — Cash Reserve.</strong> Hard floor — never deployed below this level. Acts as dry powder for the next high-score setup.</li>
           </ul>
-          <p>Default state is invested up to bucket targets with cash held at the 10% floor — not above. Action is the default; inaction requires a specific named reason.</p>
+          <p><strong>Long-term investing has been retired from this account as of 2026-05-17.</strong> Default state is invested up to bucket targets (85% active + 10% crypto = up to 95% deployed) with cash held at the 5% floor — not above. Action is the default; inaction requires a specific named reason.</p>
         </div>
       </div>
 
@@ -1921,7 +1920,7 @@
             <li><strong>Clear technical setup</strong> — 0 to 2 pts</li>
             <li><strong>Identifiable catalyst</strong> — 0 to 2 pts</li>
             <li><strong>Macro / sector tailwind</strong> — 0 to 2 pts</li>
-            <li><strong>Favorable risk / reward (min 2:1)</strong> — 0 to 2 pts</li>
+            <li><strong>Favorable risk / reward (min 3:1)</strong> — 0 to 2 pts</li>
           </ul>
           <blockquote>A confirmed candlestick pattern can add up to 2 bonus points (capped together with "technical setup" at 2 pts total). With a strong candle signal, a base score of 5 can qualify — see Candlestick Patterns below.</blockquote>
         </div>
@@ -1946,12 +1945,19 @@
             <li><strong>Gravestone Doji</strong> — open and close at bottom, long upper wick; seller strength.</li>
             <li><strong>Three Black Crows</strong> — three red candles with lower closes; downtrend confirmation.</li>
           </ul>
-          <h3>Confirmation rules</h3>
+          <h3>Confirmation rules — mandatory indicator stack</h3>
+          <p>Every candlestick-based entry must show confirmation from <strong>at least 2 of the following 5 indicators</strong>:</p>
+          <ol>
+            <li><strong>Stochastic oscillator (14,3,3)</strong> — %K crossing above %D from oversold (&lt;20) for longs; crossing below %D from overbought (&gt;80) for shorts/exits.</li>
+            <li><strong>Candlestick pattern</strong> — confirmed on the 5-min chart and aligned with 1-hour trend.</li>
+            <li><strong>Volume oscillator (5,20)</strong> — turning positive (rising volume) for entries; turning negative for exits. Above +20% vs long-MA is strong confirmation.</li>
+            <li><strong>MACD</strong> — bullish crossover for longs; bearish crossover for exits. Histogram expansion in trade direction adds conviction.</li>
+            <li><strong>Volume spike</strong> — current bar volume ≥ 2× the 20-bar average (independent of the volume oscillator; can co-fire).</li>
+          </ol>
           <ul>
-            <li>Never trade a candlestick pattern in isolation.</li>
-            <li>Always confirm with at least one of: volume spike, RSI divergence, or MACD crossover.</li>
             <li>5-minute chart for entry timing; 1-hour chart for trend direction.</li>
             <li>Only trade patterns aligned with the overall daily trend; skip if signal conflicts with macro.</li>
+            <li>RSI (overbought &gt;70 / oversold &lt;30) is a useful filter but is <strong>NOT</strong> one of the 2-of-5 mandatory confirmations — use it as a tiebreaker only.</li>
           </ul>
           <h3>Scoring</h3>
           <p>Up to <strong>+2 bonus points</strong> on the entry checklist for a confirmed candlestick pattern. <strong>No double-counting</strong>: combined contribution from "Clear technical setup" and the candlestick bonus is capped at 2 pts. Bonus rescues a weak technical score; it does not stack on top of a strong one.</p>
@@ -1961,7 +1967,7 @@
       <div class="card">
         <div class="card-title">Setup Taxonomy (trade-log tags)</div>
         <div class="md">
-          <p>Every entry / exit / skip in <code>logs/trades.md</code> carries a <code>setup:</code> tag. The Weekly Review tallies wins and losses per tag and applies the 3-in-a-row halt / boost rules.</p>
+          <p>Every entry / exit / skip in <code>logs/trades.md</code> carries a <code>setup:</code> tag. The Daily Review tallies wins and losses per tag and applies the 3-in-a-row halt / boost rules.</p>
           <ul>
             <li><code>ai-momentum-pullback</code> — AI capex theme name pulling back into support.</li>
             <li><code>earnings-reaction-fade</code> — fading post-earnings overreaction.</li>
@@ -2012,11 +2018,11 @@
           </ul>
           <h3>Stop-loss percentages (mandatory, broker-placed)</h3>
           <ul>
-            <li><strong>Long-term:</strong> 12% below entry</li>
             <li><strong>Active trades:</strong> 5% below entry</li>
             <li><strong>Crypto:</strong> 18% below entry</li>
+            <li>Take-profit target: at least 3× the stop distance (3:1 R/R minimum). For a -5% active stop, take-profit must be ≥ +15%.</li>
           </ul>
-          <blockquote>A position without a resting stop-loss order at Alpaca is a guardrail violation. Mid-Morning routine audits this first thing every day.</blockquote>
+          <blockquote>A position without a resting stop-loss order at Alpaca is a guardrail violation. <strong>Every routine</strong> (Pre-Market, Market Open, Mid-Morning, Midday, Afternoon, Market Close, Daily Review) must verify all open positions have a resting stop order as its first action before researching or placing new trades.</blockquote>
         </div>
       </div>
 
@@ -2028,7 +2034,7 @@
             <li>Maximum <strong>25%</strong> of portfolio in any single sector.</li>
             <li>Never risk more than <strong>1.5%</strong> of total equity on a single trade.</li>
             <li>Every position has a hard stop-loss set at entry.</li>
-            <li>Cash floor: <strong>10%</strong> of total equity, always.</li>
+            <li>Cash floor: <strong>5%</strong> of total equity, never deployed below this level.</li>
             <li>Maximum <strong>12</strong> open positions at any time.</li>
             <li>Daily-loss circuit breaker: portfolio down <strong>3%</strong> in a day → all new entries paused.</li>
             <li>Never average down into a losing position more than once.</li>
