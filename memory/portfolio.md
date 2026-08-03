@@ -1,7 +1,102 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-08-03 (Monday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED (research + log updated). ⚠️⚠️ AMD CRITICAL ESCALATION: AMD ~$479 est., below hard stop $481.42, Day 51+, NAKED, INSIDE 48H BINARY EVENT WINDOW (AMD earns AH TOMORROW August 4). 6 of 7 routines silently failed today — AMD unmonitored all day. OPERATOR MUST EXIT AMD TONIGHT (AH) OR FIRST THING AUGUST 4 MORNING. S&P +1.5% today; portfolio +0.05% (pure cash drag). Cumulative gap vs SPY: -5.58 pp.**
+
+**AUGUST 3 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
+
+**Portfolio August 3 EOD (est., API blocked):**
+- Cash: ~$90,644 (91.3% est.)
+- AMD: 18sh × ~$479 est. = ~$8,622 (8.7% est.) — NAKED, below hard stop $481.42, Day 51+
+- Total equity est.: ~$99,266 (-0.73% vs $100K)
+- Daily P&L August 3: +~$54 (+0.05%) — AMD marginally higher (market +1.5%, cash drag -1.45 pp gap)
+- SPY August 3: +1.5% (Nasdaq +2.1%, Dow record +1.3% on Iran diplomacy + oil -5%)
+- Daily gap: **-1.45 pp**
+- Cumulative: Portfolio -0.73% vs SPY from May 1 (7,200) to 7,549 (+4.85%) → **Cumulative gap: -5.58 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (106th+ consecutive session)
+
+**HEARTBEAT AUDIT AUGUST 3:**
+- ✗ Pre-Market (12:00Z): SILENT FAILURE — violation logged
+- ✗ Market-Open (13:45Z): SILENT FAILURE — violation logged
+- ✗ Mid-Morning (15:00Z): SILENT FAILURE — violation logged
+- ✗ Midday (16:30Z): SILENT FAILURE — violation logged
+- ✗ Afternoon (18:09Z): SILENT FAILURE — violation logged
+- ✗ Market-Close (~19:30Z): SILENT FAILURE — violation logged
+- ✓ Daily-Review: STARTED 20:34:46Z ✓ (this routine)
+
+**HEARTBEAT AUDIT JULY 31 (retroactive):**
+- ✓ Pre-Market: STARTED 12:05:14Z / COMPLETED 12:16:01Z ✓
+- ✗ Market-Open (13:45Z): SILENT FAILURE
+- ✗ Mid-Morning (15:00Z): SILENT FAILURE
+- ✗ Midday (16:30Z): SILENT FAILURE
+- ✗ Afternoon (18:09Z): SILENT FAILURE
+- ✗ Market-Close (19:30Z): SILENT FAILURE
+- ✗ Daily-Review: SILENT FAILURE (no trades.md entry for July 31 Daily Review)
+
+**MISSED OPPORTUNITY ANALYSIS (API-blocked, July 31 entries not placed):**
+- AMZN: Planned 21sh MOO Jul 31 at ~$234 → Aug 3 close $286.16 = +$52/sh × 21 = **+$1,095 unrealized gain missed**
+- GS: Planned 4sh MOO Jul 31 at ~$1,020 → Aug 3 est. $1,047 = +$27/sh × 4 = **+$108 gain missed**
+- WFC: Planned 30sh limit Jul 31 at ~$88 → Aug 3 $80.58 = STOP HIT at $83.60 = -$132 loss (avoided)
+- MS: Planned 20sh limit Jul 31 at ~$212 → Aug 3 $191.05 = STOP HIT at $201.40 = -$212 loss (avoided)
+- Net counterfactual: +$859 vs current -$734 = **$1,593 swing attributable to API blockage**
+
+**AUGUST 4 BINDING COMMITMENTS (ABSOLUTE — AMD EARNINGS AH TOMORROW):**
+1. **AMD EXIT** — SELL 18sh at MARKET as ABSOLUTE FIRST ACTION at Aug 4 Pre-Market (or AH tonight). Day 51+, naked, below hard stop $481.42, binary event window ACTIVE. AMD earnings AH Aug 4 ±12% expected move.
+2. **GS ENTRY** — BUY 4sh limit bracket GTC at ~$1,047. Stop $994.65 (-5%), Target $1,204 (+15%). 5th and FINAL deferral — no further deferrals permitted. Score 7.2, 6/6 agents ≥7.
+3. **Post-AMD earnings play** — Score Aug 5 Pre-Market: If AMD beats → consider ai-momentum-pullback follow on AMD rebound. If AMD misses → observe 3-5 days for oversold bounce. No new AMD positions inside binary event window.
+4. **SPY/QQQ allocation** — If no second qualifying setup scores ≥7 by Aug 4 Market-Open, deploy 10-15% into SPY to reduce -5.58 pp benchmark gap. Cash at 91.3% is indefensible at this gap level.
+
+**3 THINGS THAT WORKED:**
+1. Iran diplomacy and oil -5% — correctly identified risk-on macro environment benefiting broad market
+2. AAPL rejection maintained — July 31 rejection ($308 < $330, score 4.83) correct; no recovery above $330
+3. No new AMD purchases inside binary event window — discipline preserved despite pre-earnings optimism
+
+**3 THINGS TO IMPROVE:**
+1. AMD exit still not done (Day 51+) — absolute final escalation: exit AH tonight or Aug 4 morning
+2. 6/7 routine silent failures today — worst operational day since July 27; Pre-Market is the critical gap
+3. GS entry deferred 5+ times — MUST execute August 4 regardless of API or routine status
+
+---
+
+**SETUP PERFORMANCE TRACKER (Rolling 5-Day Window July 29–Aug 3):**
+| Setup | Trades | Wins | Losses | Win Rate | Notes |
+|---|---|---|---|---|---|
+| ai-momentum-pullback | 0 | — | — | — | AMD open (entry June 20); ~-6.2% unrealized |
+| earnings-reaction-follow | 0 (skips) | — | — | — | AMZN missed +22%, BABA watch |
+| earnings-reaction-fade | 0 | — | — | — | — |
+| breakout-volume | 0 | — | — | — | BABA watch (score 6.5) |
+| sector-rotation | 0 (skips) | — | — | — | GS 5th deferral, BINDING Aug 4 |
+| silent-failure | 13 | — | — | — | 6 violations Aug 3 + 6 violations Jul 31 |
+
+No halts or boosts triggered (no closed trades).
+
+**TOMORROW'S WATCHLIST (August 4, 2026 Pre-Market — BINDING):**
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh at MARKET FIRST | Day 51+, naked, below stop, inside binary event window. AH earnings tonight. |
+| 2 | GS | 7.2 | sector-rotation | BUY 4sh limit bracket GTC | FOMC clarity, Q2 blowout. Stop $994.65, target $1,204. 5th/FINAL deferral. |
+| 3 | NVDA | TBD | ai-momentum-pullback | Full 6-agent score | AI capex validation from AMZN AWS, AMD earnings catalyst |
+| 4 | META | TBD | earnings-reaction-fade | Full 6-agent score | +6% recovery Aug 3. Oversold bounce or reappraisal? |
+| 5 | AMZN | 7.7 | earnings-reaction-follow | WATCH pullback $265-270 | Extended +22% from entry. Re-enter on support retest. |
+| 6 | BABA | 6.5 | breakout-volume | WATCH — rescore | Qwen 3.8-Max AI model catalyst. Needs 7+ to enter. |
+| 7 | SPY/QQQ | TBD | sector-rotation | Consider 10-15% allocation | Cash drag -5.58 pp gap. Deploy into index if no single-name qualifies. |
+| 8 | Post-AMD (Aug 5) | TBD | earnings-reaction-follow | Score Aug 5 Pre-Market | AMD ±12% implied. Beat → follow; miss → watch for oversold in 3-5 days. |
+
+**KEY MACRO / EARNINGS AUGUST 4:**
+- **AMD Q2 2026 AH** — ±12% options-implied move. EPS est. $1.61, Rev $11.31B (+46% YoY)
+- Iran diplomacy: Oil -5% Monday, continued watchlist for geopolitical developments
+- No major Fed speakers scheduled
+- Markets digesting: AMZN AWS +37%, oil declines, tech sector leadership
+
+**SECTOR EXPOSURE CURRENT (post AMD exit, pre new entries):**
+- After AMD exit: 0% deployed, 100% cash (~$99,266)
+- After GS entry (~$4,188): 4.2% Financials
+- After NVDA/META if scored ≥7: Variable
+- Target: 85% active deployed — currently massively underdeployed
+- Cash floor check: Well above 5% minimum ✓
+
+---
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
