@@ -5,6 +5,290 @@
 ---
 
 
+## 2026-08-03 — Midday (12:30 PM ET / 16:35 UTC — API BLOCKED — 107th consecutive session)
+
+**HEARTBEAT:** STARTED Midday 2026-08-03T16:35:37Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy 403 — paper-api.alpaca.markets AND data.alpaca.markets unreachable) — **107th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded.
+**Market Status:** MARKET OPEN (12:35 PM ET). AMD EARNINGS TOMORROW Aug 4 AH — **INSIDE 48h BINARY EVENT WINDOW. AMD EXIT MANDATORY TODAY.**
+
+---
+
+### HEARTBEAT AUDIT — AUGUST 3, 2026 (PRE-MIDDAY)
+
+| Routine | Expected (UTC) | STARTED | COMPLETED | Status |
+|---------|---------------|---------|-----------|--------|
+| Pre-Market | 12:00Z | ✗ | ✗ | **SILENT FAILURE** |
+| Market-Open | 13:45Z | ✗ | ✗ | **SILENT FAILURE** |
+| Mid-Morning | 15:00Z | ✗ | ✗ | **SILENT FAILURE** |
+| Midday | 16:35Z | ✓ 16:35:37Z | (in progress) | Running |
+
+**PRIOR SESSION VIOLATIONS (UNLOGGED):**
+- July 31: Market-Open, Mid-Morning, Midday, Afternoon, Market-Close, Daily-Review = **6 silent failures** (only Pre-Market ran)
+- August 1 (Friday trading day): Pre-Market, Market-Open, Mid-Morning, Midday, Afternoon, Market-Close, Daily-Review = **7 silent failures** (no heartbeat log exists for Aug 1)
+- August 3: Pre-Market, Market-Open, Mid-Morning = **3 silent failures**
+- **Total unlogged violations since July 31 Pre-Market: 16 consecutive silent failures**
+
+---
+
+### PORTFOLIO STATE (August 3, 2026 — Midday — estimates from web research, API blocked)
+
+```
+PORTFOLIO STATE
+Total Equity: ~$99,215 (est.)
+Cash: ~$90,644 (91.4%) — ABOVE 5% floor ✓ (massively overweight cash — strategy violation)
+Trading bucket: ~$8,571 (8.6%) — 1 position (AMD NAKED) — target 85%
+Crypto bucket: $0 (0%) — 0 positions — target 10%
+```
+
+**Key positions (estimated from web research):**
+- **AMD:** 18sh × $476.15 (est.) = ~$8,570 — **NAKED (no stop at Alpaca), BELOW $481.42 hard stop by $5.27, Day 47+, MANDATORY EXIT TODAY before close**
+- Cash: $90,644 (unchanged — no trades executed in 107 sessions)
+- Total equity est.: ~$99,214 (-$786 from $100K start = **-0.79%**)
+
+**Benchmark:**
+- S&P 500 Aug 3 midday: ~7,620 (est.) = **+5.83% from May 1 baseline 7,200**
+- Portfolio: -0.79%
+- **Cumulative benchmark gap: -6.62 pp** (CRITICAL — worsening daily due to cash drag)
+- 20-Day underperformance flag: **ACTIVE** (107th consecutive session)
+
+**MISSED GAIN — AMZN:** AMZN was approved at $234 (July 31 pre-market, score 8.2). Today $285.79 (new ATH). 
+Missed gain: 17sh × ($285.79 - $234) = **+$880 unrealized gain MISSED** due to API blockage.
+
+---
+
+### MARKET CONDITIONS — AUGUST 3, 2026 (Midday)
+
+**S&P 500:** +1.1% (strong open, mega-cap tech lifting Nasdaq >1%)
+**Nasdaq:** +1%+ (AMZN leading with new ATH, Big Tech strength — META, MSFT, GOOGL, ORCL all rebounding)
+**SOX (Philadelphia Semiconductor Index):** **-1.9%** — chip sector WEAK (MU, AVGO retreating)
+**AMD specific:** $476.15 (-1.3% est. — chip weakness; below $481.42 hard stop; earnings tomorrow Aug 4 AH)
+**AMZN:** $285.79 (new ATH $287.20 — joined $3T market cap club, finalizing $50B OpenAI investment; analyst PT raised to $325 by Roth Capital)
+**WFC:** ~$80.58 (+1.15%)
+**MS:** ~$191.05 (+0.92%)
+**GS:** ~$1,050 (est. — banks reporting strong Q2; GS +46% over 12 months; dividend raised to $5.00/sh Q3)
+**BTC/ETH:** ~$64,000 / ~$1,910 (stable risk-on)
+**Macro:** Risk-on start to August; earnings season strong. No Fed speakers. Labor data due Friday (Aug 7). Geopolitical calm.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — API BLOCKED)
+
+**GET /v2/orders?status=open → HTTP 000 (blocked)**
+**GET /v2/positions → HTTP 000 (blocked)**
+
+Based on last known state (July 31 Pre-Market):
+- **AMD: NAKED** — no stop-loss at Alpaca (107 consecutive sessions unprotected). Hard stop $481.42. Current ~$476.15 = BREACHED. **EXIT MANDATORY TODAY.**
+- All other positions: None open.
+
+**Stop gap status: CRITICAL — AMD has been naked for 107 sessions. Exit attempt below.**
+
+---
+
+### ORDER ATTEMPTS (ALL FAILED — API BLOCKED)
+
+**ORDER 1 — AMD EXIT (SELL 18sh MARKET DAY — MANDATORY):**
+```
+POST https://paper-api.alpaca.markets/v2/orders
+{"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"day"}
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (egress policy 403, 107th consecutive session)
+```
+
+**ORDER 2 — AMZN CATCH-UP ENTRY (BUY 17sh LIMIT bracket GTC):**
+```
+POST https://paper-api.alpaca.markets/v2/orders
+{"symbol":"AMZN","qty":17,"side":"buy","type":"limit","limit_price":"287.22","time_in_force":"gtc",
+ "order_class":"bracket","stop_loss":{"stop_price":"272.86"},"take_profit":{"limit_price":"330.30"}}
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (egress policy 403, 107th consecutive session)
+```
+
+**ORDER 3 — GS CATCH-UP ENTRY (BUY 4sh LIMIT bracket GTC):**
+```
+POST https://paper-api.alpaca.markets/v2/orders
+{"symbol":"GS","qty":4,"side":"buy","type":"limit","limit_price":"1050.00","time_in_force":"gtc",
+ "order_class":"bracket","stop_loss":{"stop_price":"997.50"},"take_profit":{"limit_price":"1207.50"}}
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (egress policy 403, 107th consecutive session)
+```
+
+**API BLOCKAGE NOTE:** paper-api.alpaca.markets has been blocked by organizational egress policy for 107 consecutive sessions (since approximately May 1, 2026). All orders — AMD exit, new entries, stops — are blocked. This is a critical operational failure. The Alpaca paper account remains the system of record; this agent cannot interact with it. Only operator action on app.alpaca.markets can remedy this.
+
+---
+
+### SCORED DECISIONS — AUGUST 3 MIDDAY
+
+```yaml
+---
+ts: 2026-08-03T16:35:37Z
+action: violation
+symbol: AMD
+bucket: active
+setup: silent-failure
+score: null
+thesis: "August 3 Midday: 3 predecessor routines today (Pre-Market 12:00Z, Market-Open 13:45Z, Mid-Morning 15:00Z) SILENTLY FAILED. Plus 6 violations July 31 + 7 violations August 1 = 16 total unlogged silent failures since last completed routine (July 31 Pre-Market). AMD has been naked and below hard stop for 107 consecutive sessions. AMZN/GS/WFC/MS entries remain unexecuted despite scores ≥7. Systematic API blockage is the root cause."
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: violation
+master_notes: "16 consecutive silent failures since July 31 Pre-Market COMPLETED 12:16Z. July 31 missed: Market-Open, Mid-Morning, Midday, Afternoon, Market-Close, Daily-Review. August 1 (Friday): ALL 7 routines missed (no heartbeat log created). August 3: Pre-Market, Market-Open, Mid-Morning all missed before this Midday fired. Root cause: cloud runner scheduling / session availability issue combined with permanent API blockage. OPERATOR ACTION REQUIRED: (1) Fix routine scheduling reliability; (2) Unblock paper-api.alpaca.markets egress policy; (3) Execute all pending orders manually on app.alpaca.markets immediately."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T16:36:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: "MANDATORY EXIT — AMD at ~$476.15 (est.), Day 47+, NAKED (107 sessions). Hard stop $481.42 BREACHED. Earnings TOMORROW Aug 4 AH — inside 48h binary event window. Last permitted trading day for exit. API blocked — order not placed. Operator MUST exit."
+size_pct: 8.6
+stop: null
+target: null
+result_pct: -6.04
+master_decision: exit
+master_notes: "API ATTEMPT: SELL 18sh AMD MARKET DAY. HTTP_STATUS:000 — proxy CONNECT rejected (egress policy 403, 107th consecutive session). ORDER NOT PLACED AT ALPACA. AMD est. $476.15 vs entry $506.76 = -$30.61/sh = -6.04% unrealized loss. 18sh × -$30.61 = -$550.98 total unrealized loss. Hard stop $481.42 (5% below entry) BREACHED by ~$5.27. Core Scientific $14B AI deal bullish long-term but does not override guardrail. Chip sector (SOX) -1.9% today — headwind. AMD earnings Aug 4 AH: 10% swing expected (options market). We are INSIDE the 48h binary event window. ABSOLUTE FINAL EXIT DAY. OPERATOR CRITICAL: SELL 18sh AMD MARKET on app.alpaca.markets IMMEDIATELY before today's 4:00 PM ET close. If AMD not exited today, position becomes a FORBIDDEN binary event hold — catastrophic risk if AMD misses earnings. xAI sentiment: unavailable (no XAI key) — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T16:37:00Z
+action: entry
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 8.2
+thesis: "CATCH-UP ENTRY (missed July 31 Pre-Market/Market-Open/Aug 1 due to API blockage). AMZN at new ATH $285.79 (joined $3T club, $50B OpenAI investment). AWS +37% thesis FULLY INTACT and accelerating. Roth PT raised to $325. 17sh × $287.22 = ~$4,883 (~4.92% equity). Stop -5% ($272.86), Target +15% ($330.30), R/R 3:1. API blocked — bracket order not placed."
+size_pct: 4.92
+stop: 272.86
+target: 330.30
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 9
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "CATCH-UP for Pre-Market/Market-Open/Mid-Morning/Aug 1 silent failures. API ATTEMPT: BUY 17sh AMZN limit $287.22 bracket GTC (stop $272.86, target $330.30). HTTP_STATUS:000 — proxy CONNECT rejected (egress policy 403, 107th consecutive session). ORDER NOT PLACED AT ALPACA. AMZN update since July 31 plan ($234): Surged +15.3% on Aug 1 (Friday) after Q2 massive beat. Today $285.79 (new ATH $287.20), $3T market cap, $50B OpenAI deal finalizing. Score maintained at 8.2 — thesis STRONGER at ATH. Entry raised from 21sh@$234 to 17sh@$287.22 to maintain ~5% position cap. Stop raised proportionally: $272.86 (-5%). Target $330.30 (+15%). R/R: 3:1 ✓. 6/6 agents ≥7. Analyst PT $325 (Roth). Entry at ATH has higher reversal risk but deployment bias mandates action. Cap check: 4.92% < 5% ✓. xAI sentiment: unavailable (no XAI key) — degraded gracefully. master_notes: catch-up for Pre-Market/Market-Open/Mid-Morning/Aug-1 silent failures."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T16:38:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: "CATCH-UP ENTRY (missed July 31-Aug 1 due to API blockage). GS Q2 blowout (53% YoY surge in Global Banking and Markets), FOMC hold, dividend raised to $5.00/sh Q3. Banks strong Aug 3. 4sh × $1,050 = $4,200 (~4.23% equity). Stop -5% ($997.50), Target +15% ($1,207.50), R/R 3:1. API blocked — bracket order not placed."
+size_pct: 4.23
+stop: 997.50
+target: 1207.50
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "CATCH-UP for July 31 Market-Open + Aug 1 silent failures (4th consecutive deferral — guardrail violation compound). API ATTEMPT: BUY 4sh GS limit $1,050 bracket GTC (stop $997.50, target $1,207.50). HTTP_STATUS:000 — proxy CONNECT rejected (egress policy 403, 107th consecutive session). ORDER NOT PLACED AT ALPACA. GS update: 46% gain over prior 12 months; dividend raised to $5.00/sh Q3; Q2 Global Banking +53% YoY (record quarter). Financials sector holding up well in risk-on environment. Entry price est. $1,050 (ATH was $1,152.07 on July 15 — GS ~9% off ATH = reasonable pullback). 4sh = $4,200 = 4.23% equity ✓. Sector check: GS 4.23% only = below 25% sector cap ✓. GS + WFC ($2,417) + MS ($3,821) = $10,438 = 10.5% financials sector total (if all 3 entered) — below 25% cap ✓. R/R: $1,207.50/$997.50 = 3:1 ✓. Risk agent: 7/10 (no guardrail breach). xAI sentiment: unavailable — degraded. master_notes: catch-up for Market-Open/Aug-1 silent failures."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T16:39:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "WFC score 7.0 — Midday routine allows max 2 catch-up entries (AMZN + GS consumed cap). Deferred to Afternoon routine (mandatory catch-up). WFC $80.58 (+1.15%) — lower than original $88-90 est., which improves R/R. Stop -5% ($76.55), Target +15% ($92.67). BINDING Afternoon entry."
+size_pct: 2.42
+stop: 76.55
+target: 92.67
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC deferred per midday routine 2-catch-up cap (AMZN + GS used both slots). NOT a valid exemption skip — this is routine sequencing. BINDING Afternoon routine entry: 30sh × $80.58 = $2,417 = 2.43% equity. Stop $76.55 (-5%), Target $92.67 (+15%), R/R 3:1 ✓. Note: WFC price $80.58 is LOWER than original July 31 estimate ($88-90), providing a better entry point. Q2 EPS +16.3% beat thesis unchanged. Dividend raised to $0.50/sh Q3 (stress test pass). FOMC hold: positive for bank NIM. xAI sentiment: unavailable — degraded. If Afternoon routine fires but API still blocked, operator MUST place manually."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T16:40:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: "MS score 7.0 — Midday routine cap exhausted (2 catch-up entries used). MS at $191.05 (+0.92%) — below original $210-215 est., improving R/R. Stop -5% ($181.50), Target +15% ($219.71). BINDING Afternoon entry."
+size_pct: 3.84
+stop: 181.50
+target: 219.71
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MS deferred per midday 2-catch-up cap. BINDING Afternoon entry: 20sh × $191.05 = $3,821 = 3.85% equity ✓. Stop $181.50 (-5%), Target $219.71 (+15%), R/R 3:1 ✓. Note: MS at $191.05 is BELOW original $210-215 estimate — better entry. Dividend raised to $1.15/sh Q3 (stress test pass, paying dividend). Strong Q2, crypto ETP AUM growing. xAI sentiment: unavailable — degraded."
+---
+```
+
+---
+
+### WATCHLIST — AUGUST 3 MIDDAY (BINDING AFTERNOON ACTIONS)
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | ai-momentum-pullback | **SELL 18sh MARKET — ATTEMPTED, API BLOCKED. OPERATOR: EXIT NOW** | $476.15, below $481.42 stop. Day 47+, NAKED. Earnings Aug 4 AH. LAST DAY. |
+| 2 | AMZN | 8.2 | earnings-reaction-follow | **BUY 17sh limit $287.22 bracket GTC — ATTEMPTED, API BLOCKED** | ATH $287.20, $3T, OpenAI deal. Score intact. Operator: buy manually. |
+| 3 | GS | 7.2 | sector-rotation | **BUY 4sh limit $1,050 bracket GTC — ATTEMPTED, API BLOCKED** | Q2 +53% banking, dividend $5. Operator: buy manually. |
+| 4 | WFC | 7.0 | sector-rotation | **BUY 30sh limit ~$80.58 bracket GTC — DEFERRED TO AFTERNOON** | $80.58 (+1.15%). Better entry than $88-90 original. BINDING. |
+| 5 | MS | 7.0 | sector-rotation | **BUY 20sh limit ~$191.05 bracket GTC — DEFERRED TO AFTERNOON** | $191.05 (+0.92%). Better entry than $210-215 original. BINDING. |
+| 6 | NVDA | 6.5 | ai-momentum-pullback | WATCH — SOX -1.9% is headwind; AI capex validation intact | Could score ≥7 if SOX recovers intraday. |
+
+---
+
+### OPERATOR URGENT NOTICE (API BLOCKED — 107TH SESSION)
+
+**ALL ORDERS MUST BE PLACED MANUALLY on app.alpaca.markets IMMEDIATELY:**
+
+1. **SELL 18sh AMD MARKET** — TODAY, BEFORE 4:00 PM ET. AMD earnings Aug 4 AH. LAST DAY.
+2. **BUY 17sh AMZN LIMIT $287.22, bracket GTC** (stop $272.86, target $330.30) — score 8.2
+3. **BUY 4sh GS LIMIT $1,050, bracket GTC** (stop $997.50, target $1,207.50) — score 7.2
+4. **BUY 30sh WFC LIMIT ~$80.58, bracket GTC** (stop $76.55, target $92.67) — score 7.0
+5. **BUY 20sh MS LIMIT ~$191.05, bracket GTC** (stop $181.50, target $219.71) — score 7.0
+
+**BRACKET ORDER REMINDER:** All bracket orders MUST use `time_in_force: "gtc"` (NOT "day") per CLAUDE.md mandatory bracket GTC rule.
+
+---
+
 ## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-31T12:05:14Z ✓

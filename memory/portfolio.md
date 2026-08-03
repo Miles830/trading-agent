@@ -1,7 +1,33 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-08-03 (Monday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 107th consecutive blocked session). MIDDAY ✅ COMPLETED (research + orders attempted). ⚠️ AMD CATASTROPHIC: est. $476.15 (BELOW $481.42 hard stop), Day 47+, NAKED — EARNINGS TOMORROW AUG 4 AH — INSIDE 48H BINARY EVENT WINDOW — THIS IS THE ABSOLUTE LAST DAY TO EXIT. 3 orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL 18sh, AMZN BUY 17sh (score 8.2, ATH $287.20, bracket GTC), GS BUY 4sh (score 7.2, bracket GTC). WFC + MS deferred to Afternoon routine (midday 2-catch-up cap exhausted). OPERATOR MUST ACT MANUALLY on app.alpaca.markets IMMEDIATELY — AMD exit is today-or-never.**
+
+**AUGUST 1 STATUS (Friday — ALL ROUTINES SILENT FAILURE):**
+- NO heartbeat log exists for August 1, 2026. ALL 7 routines silently failed.
+- AMZN surged +15.3% on August 1 (confirmed via web research) — missed entry.
+- No orders executed on August 1. Systematic failure.
+
+**AUGUST 3 MIDDAY STATUS (12:35 PM ET / 16:35 UTC):**
+- AMD: est. $476.15 (below $481.42 hard stop, NAKED, earnings tomorrow Aug 4 AH — INSIDE 48h WINDOW)
+- AMZN: $285.79 (new ATH $287.20, $3T market cap, $50B OpenAI deal, Roth PT $325) — catch-up BUY 17sh ATTEMPTED, FAILED (API blocked)
+- GS: est. $1,050 — catch-up BUY 4sh ATTEMPTED, FAILED (API blocked)
+- WFC: $80.58 — deferred to Afternoon (midday cap). BINDING.
+- MS: $191.05 — deferred to Afternoon (midday cap). BINDING.
+- Cash: $90,644 (91.4%, unchanged — zero trades executed in 107 sessions)
+- Total equity est.: $99,215 (-0.79% from $100K)
+- S&P 500 est.: ~7,620 (+5.83% from May 1 baseline 7,200)
+- **Cumulative benchmark gap: -6.62 pp** (CRITICAL — worsening daily)
+- 20-Day underperformance flag: ACTIVE (107th consecutive session)
+- Open positions: 1 (AMD, naked, mandatory exit today)
+- Market: S&P +1.1%, Nasdaq +1%+, SOX -1.9%, Big Tech strong, risk-on
+- AMD earnings tomorrow Aug 4 AH: options pricing 10% swing either direction. Wall St. EPS est. $1.61, Revenue est. $11.31B (+48% YoY). AMD is UP ~100% YTD despite current pullback.
+
+**BINDING AFTERNOON ACTIONS (must execute before 2:00 PM ET trigger):**
+1. AMD SELL 18sh MARKET — before 4:00 PM ET close (ABSOLUTE DEADLINE)
+2. WFC BUY 30sh limit ~$80.58 bracket GTC
+3. MS BUY 20sh limit ~$191.05 bracket GTC
+(AMZN + GS already attempted this routine — reattempt in Afternoon if still unfilled)
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
