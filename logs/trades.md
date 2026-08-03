@@ -5,6 +5,440 @@
 ---
 
 
+## 2026-08-03 — Market-Close (3:30 PM ET / 19:35 UTC — API BLOCKED — 108th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Close 2026-08-03T19:34:57Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **108th consecutive blocked session** (paper-api.alpaca.markets unreachable; curl exit code 56, gateway 403 on CONNECT)
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X modifier applied.
+**Market Status:** MARKET-CLOSE (3:35 PM ET). Regular session ends 4:00 PM ET. MOC deadline 3:50 PM ET.
+**Session gap:** July 31 Pre-Market was the last completed routine. Aug 1–2 (weekend). Aug 3 = 1st trading day of August. NO TRADING OCCURRED July 31–Aug 2 (weekend + API blocked). AMD has been held naked since June 20 (~Day 44+).
+
+---
+
+### SILENT FAILURE VIOLATIONS — JULY 31 (Post Pre-Market)
+
+July 31 Pre-Market was the only completed routine (12:05–12:16Z). All subsequent routines silently failed.
+
+```yaml
+---
+ts: 2026-07-31T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Market-Open routine silently failed. No heartbeat found in logs/heartbeats/2026-07-31.log. Expected 13:45Z. Stop-loss audit not run. WFC/MS catch-up limit brackets not placed. AMD naked position unmonitored at open.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Market-Open 2026-07-31. Expected 2026-07-31T13:45Z. AMD naked (no stop at Alpaca). WFC/MS Market-Open limit brackets (BINDING from pre-market) not placed. GS/WFC/MS/AMD remain unexecuted — API blocked 106th session. AMD at ~$443 pre-market; July 31 open price unknown (no API access). 48h binary event window for AMD opens Aug 2."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine silently failed. No heartbeat found in logs/heartbeats/2026-07-31.log. Expected 15:00Z.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Mid-Morning 2026-07-31. Expected 2026-07-31T15:00Z. AMD naked 107th session. Intraday scan not executed. Binding entries (WFC/MS/GS) still unplaced."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Midday routine silently failed. No heartbeat found in logs/heartbeats/2026-07-31.log. Expected 16:30Z.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Midday 2026-07-31. Expected 2026-07-31T16:30Z. 3rd consecutive intraday failure July 31. AMD naked, hard stop $481.42 breached."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T18:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Afternoon routine silently failed. No heartbeat found in logs/heartbeats/2026-07-31.log. Expected 18:00Z. AMD and binding entries unresolved.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Afternoon 2026-07-31. Expected 2026-07-31T18:00Z. AMD day 44+ naked; MOC orders for AMD exit + GS + WFC + MS not placed. All binding entries from daily review remain unexecuted."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T19:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Market-Close routine silently failed. No heartbeat found in logs/heartbeats/2026-07-31.log. Expected 19:30Z. MOC orders for AMD exit, GS, WFC, MS not placed. AMD enters weekend naked and inside 48h earnings window (Aug 2 window open; Aug 4 AH earnings).
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Market-Close 2026-07-31. Expected 2026-07-31T19:30Z. CRITICAL: AMD 48h binary event window opened Aug 2. AMD held naked across weekend with earnings Aug 4 AH — direct violation of binary event rule (no positions inside 48h window). AMD price July 31 close: ~$476.15 est. (recovered from $443 pre-market on AI chip sentiment). GS/WFC/MS MOC entries not attempted. Dashboard not updated. OPERATOR: AMD MUST BE EXITED AUG 3 (first available trading day) AS EMERGENCY ACTION."
+---
+```
+
+```yaml
+---
+ts: 2026-07-31T20:34:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Daily-Review routine silently failed. No heartbeat found in logs/heartbeats/2026-07-31.log. Expected 20:34Z. No watchlist produced for Aug 3. Setup tracker not updated.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Daily-Review 2026-07-31. Expected 2026-07-31T20:34Z. 6th consecutive silent failure after Pre-Market on July 31. No daily review produced. Aug 3 watchlist not formally scored. GS/WFC/MS carry over as binding BINDING commitments (scored 7.0–7.2, all 6 agents ≥7). AMD carry over as MANDATORY EXIT first action Aug 3."
+---
+```
+
+---
+
+### SILENT FAILURE VIOLATIONS — AUGUST 3 (Before Market-Close)
+
+Aug 3 is the first trading day of August. All routines silently failed before this Market-Close.
+
+```yaml
+---
+ts: 2026-08-03T12:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Pre-Market routine silently failed. No heartbeat found in logs/heartbeats/2026-08-03.log before 19:34Z. Expected 12:00Z. AMD still held naked inside 48h earnings window (Aug 4 AH) — emergency exit MOO not placed.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Pre-Market 2026-08-03. Expected 2026-08-03T12:00Z. AMD binary event window (Aug 4 AH earnings) has been open since Aug 2. Today is the LAST opportunity to exit AMD before a naked binary event hold through earnings. AMD pre-market est. ~$475-480 (recovering toward $481.42 stop). MOO sell not placed. GS/WFC/MS MOO entries not placed. 108th consecutive API-blocked session."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T13:45:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Market-Open routine silently failed. No heartbeat in log. Expected 13:45Z. Stop-loss audit not run. AMD naked at open.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Market-Open 2026-08-03. Expected 2026-08-03T13:45Z. AMD naked open; no stop-loss audit. GS/WFC/MS catch-up limit brackets not placed. S&P 500 opened strong (+0.9%). AMZN surged ~22% from July 31 pre-market to $286 — missed entry window."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T15:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Mid-Morning routine silently failed. No heartbeat in log. Expected 15:00Z.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Mid-Morning 2026-08-03. Expected 2026-08-03T15:00Z. AMD inside 48h window, naked, no intraday stop review executed."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T16:30:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Midday routine silently failed. No heartbeat in log. Expected 16:30Z.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Midday 2026-08-03. Expected 2026-08-03T16:30Z. AMD naked, GS/WFC/MS unplaced."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T18:00:00Z
+action: violation
+symbol: null
+bucket: null
+setup: silent-failure
+score: null
+thesis: Afternoon routine silently failed. No heartbeat in log. Expected 18:00Z. Final chance before Market-Close to scan and place MOC orders — missed by this silent failure.
+master_decision: rejected
+master_notes: "No STARTED or COMPLETED heartbeat for Afternoon 2026-08-03. Expected 2026-08-03T18:00Z. AMD inside 48h window, unexited all day. GS/WFC/MS binding entries remain unplaced. Market-Close is now the LAST window to place MOC orders before today's 4:00 PM ET close."
+---
+```
+
+---
+
+### PORTFOLIO STATE — MARKET CLOSE August 3, 2026
+
+**Market data (web research — API blocked):**
+- AMD: $472.15 close (range $472–$515 intraday; -2.19% day; BELOW $481.42 hard stop; earnings Aug 4 AH — INSIDE 48h window)
+- AMZN: $286.16 (+5.37% today; surged from $234 July 31 pre-mkt; now ABOVE original take-profit $269.10 — missed entry)
+- GS: $1,027.25 (near planned entry ~$1,020; still valid)
+- WFC: $86.45 (near planned entry $88-90; slightly below = better entry price)
+- MS: $211.12 (in planned entry range $210-215; valid)
+- SPX: ~7,605 (+1.54% today; July 31 close 7,489.72)
+- BTC: ~$65,000 est. | ETH: ~$1,950 est.
+
+```
+PORTFOLIO STATE
+Total Equity: ~$99,143 (-0.86% from $100K)
+Cash: ~$90,644 (91.4%) — 5% floor [OK, well above floor]
+Trading bucket: AMD 18sh × $472.15 = ~$8,499 (8.6%) — 1 position — MANDATORY EXIT TODAY
+Crypto bucket: $0 (0%) — 0 positions
+
+P&L Today (vs July 31 pre-market baseline of $98,618):
+  AMD: $443.00 → $472.15 = +$524.70 unrealized recovery (+0.53%)
+  Cash: unchanged = $90,644
+  Total: $99,143 vs $98,618 = +$525 (+0.53% daily)
+
+P&L vs Cost Basis (AMD entered $506.76):
+  AMD unrealized loss: 18 × ($472.15 - $506.76) = -$622.98 (-6.83%)
+  Total return from $100K: -$857 (-0.857%)
+
+Benchmark:
+  SPX May 1 baseline: 7,200
+  SPX Aug 3 est. close: 7,605 (+5.63% from baseline)
+  Portfolio vs SPX gap: -0.857% - 5.63% = -6.49 pp (WIDENING — cash drag + AMD drawdown)
+  20-Day underperformance flag: ACTIVE (108th+ consecutive session)
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+API BLOCKED — cannot execute GET /v2/orders?status=open.
+Known state: AMD position NAKED (no stop at Alpaca since entry ~June 20, 2026 — 109th consecutive session naked).
+All other positions: none.
+**GUARDRAIL VIOLATION:** AMD has been naked for 109 consecutive routines. AMD is also below its hard stop ($472 vs $481.42) and inside the 48h binary event window for Aug 4 AH earnings. EXIT IS MANDATORY.
+
+---
+
+### ORDER ATTEMPTS — MARKET CLOSE (MOC, time_in_force: "cls")
+
+**ORDER 1 — AMD SELL 18sh MOC (MANDATORY EXIT — INSIDE 48h BINARY EVENT WINDOW + BELOW STOP)**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"cls"}'
+RESULT: proxy CONNECT rejected — gateway 403 egress policy denial — HTTP_STATUS: FAILED (curl exit code 56)
+Timestamp: 2026-08-03T19:39:13Z
+```
+
+**ORDER 2 — GS BUY 4sh MOC bracket GTC (score 7.2, BINDING from July 31)**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"cls","order_class":"bracket","stop_loss":{"stop_price":"975.89"},"take_profit":{"limit_price":"1181.34"}}'
+RESULT: proxy CONNECT rejected — gateway 403 egress policy denial — HTTP_STATUS: FAILED
+```
+
+**ORDER 3 — WFC BUY 30sh MOC bracket GTC (score 7.0, BINDING from July 31)**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"WFC","qty":30,"side":"buy","type":"market","time_in_force":"cls","order_class":"bracket","stop_loss":{"stop_price":"82.13"},"take_profit":{"limit_price":"99.42"}}'
+RESULT: proxy CONNECT rejected — gateway 403 egress policy denial — HTTP_STATUS: FAILED
+```
+
+**ORDER 4 — MS BUY 20sh MOC bracket GTC (score 7.0, BINDING from July 31)**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"MS","qty":20,"side":"buy","type":"market","time_in_force":"cls","order_class":"bracket","stop_loss":{"stop_price":"200.56"},"take_profit":{"limit_price":"242.79"}}'
+RESULT: proxy CONNECT rejected — gateway 403 egress policy denial — HTTP_STATUS: FAILED
+```
+
+**ALL 4 ORDERS FAILED — API BLOCKED (108th consecutive session)**
+
+---
+
+### SCORED DECISIONS — AUGUST 3 MARKET CLOSE
+
+```yaml
+---
+ts: 2026-08-03T19:35:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: MANDATORY EXIT — AMD at $472.15, below hard stop $481.42 ($9.27 breach), inside 48h binary event window (AMD earnings Aug 4 AH). Day 44+ hold, NAKED position for 109 consecutive sessions. MOC SELL 18sh attempted, API BLOCKED. OPERATOR: SELL 18sh AMD at MARKET NOW on app.alpaca.markets before 3:50 PM ET MOC deadline.
+size_pct: 8.6
+stop: 481.42
+target: null
+result_pct: null
+master_decision: exit
+master_notes: "MANDATORY EXIT — three simultaneous violations: (1) AMD $472.15 < $481.42 hard stop (5% below $506.76 entry); (2) inside 48h binary event window for Aug 4 AH earnings; (3) position naked (no stop at Alpaca) for 109 consecutive sessions. Binary event rule forbids holding pre-positioning through an upcoming earnings window — AMD must be exited or it becomes an unauthorized binary event bet. MOC SELL 18sh attempted at 19:39:13Z. RESULT: proxy CONNECT rejected 403 — API blocked 108th consecutive session. ORDER NOT PLACED. If filled at $472.15: realized loss = 18 × ($472.15 - $506.76) = -$622.98 (-6.83%). OPERATOR MANDATORY: app.alpaca.markets — SELL 18sh AMD MARKET before 3:50 PM ET. X sentiment: unavailable (no XAI key) — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T19:36:00Z
+action: skip
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 6.5
+thesis: AMZN MISSED — price $286.16 has surged 22% above July 31 pre-market entry price of $234.20. Current price is ABOVE our original take-profit target of $269.10. Entering at $286 would set a 3:1 R/R target of $329 (+15%) against a stop of $271.75 (-5%) — at current price this is speculative extension, not the earnings-reaction-follow setup. Thesis momentum partially exhausted. SKIP.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 5
+  sentiment: 8
+  macro: 8
+  risk: 5
+  tech_analyst: 9
+agent_average: 7.3
+agents_above_7: 4
+master_decision: rejected
+master_notes: "AMZN skip: price $286.16 vs July 31 planned entry $234.20 (+22% gap). Our original take-profit target was $269.10 — we're already $17 above it. Entering at $286 creates a new thesis that is more 'continuation momentum' than the earnings-reaction-follow setup we scored at 8.2. At $286: stop -5% = $271.75, target +15% = $329.08 (R/R 3:1 still OK technically). BUT: Technical agent scores only 5 (extended, MACD overbought, Stochastic >80 zone) and Risk scores only 5 (position is extended, limited upside vs downside in near term with earnings still unpriced for some peers). Average drops to 7.3 but risk agent at 5 is near-veto (needs ≥6). REJECT pending reset to better entry on pullback. Score revised from 8.2 to 6.5 given changed technical setup. NOT one of the 3 valid guardrail exemptions — thesis changed materially. X sentiment: unavailable (no XAI key)."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T19:37:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Goldman Sachs Q2 blowout beat (BINDING since July 31). Price $1,027.25 near planned entry ~$1,020. FOMC held 3.50-3.75% = rate clarity for bank NIM. S&P 500 +1.54% today — risk-on environment confirms financials rotation thesis. MOC BUY 4sh attempted. API BLOCKED.
+size_pct: 4.15
+stop: 975.89
+target: 1181.34
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "GS BINDING ENTRY — 4th consecutive session attempted. MOC BUY 4sh at ~$1,027.25 bracket GTC. Stop: $1,027.25 × 0.95 = $975.89 (-5%). Target: $1,027.25 × 1.15 = $1,181.34 (+15%). R/R: 3:1 ✓. Position size: 4sh × $1,027.25 = $4,109 = 4.14% of equity ✓ (below 5% cap). Financials sector post-GS: 4.14% (below 25% cap ✓). S&P +1.54% today confirms risk-on. Q2 EPS blowout; FOMC hold clear. 6/6 agents ≥7. ORDER RESULT: proxy CONNECT rejected 403 — API blocked 108th consecutive session. ORDER NOT PLACED. OPERATOR: BUY 4sh GS at MARKET on app.alpaca.markets IMMEDIATELY. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T19:38:00Z
+action: entry
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Wells Fargo Q2 EPS +16.3% beat (BINDING since July 31). Price $86.45 slightly below planned entry $88-90 — BETTER entry. FOMC hold tailwind. Risk-on day. MOC BUY 30sh attempted. API BLOCKED.
+size_pct: 2.61
+stop: 82.13
+target: 99.42
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC BINDING ENTRY. MOC BUY 30sh at ~$86.45 bracket GTC. Stop: $86.45 × 0.95 = $82.13 (-5%). Target: $86.45 × 1.15 = $99.42 (+15%). R/R: 3:1 ✓. Position size: 30sh × $86.45 = $2,593.50 = 2.61% of equity ✓. Financials sector post-GS+WFC: ~6.76% (below 25% ✓). Entry price $86.45 is BELOW planned $88-90 — slightly better entry. Q2 EPS +16.3% beat unchanged thesis. ORDER RESULT: proxy CONNECT rejected 403 — API blocked 108th consecutive session. ORDER NOT PLACED. OPERATOR: BUY 30sh WFC at MARKET on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T19:39:00Z
+action: entry
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Morgan Stanley Q2 strong beat (BINDING since July 31). Price $211.12 in planned entry range $210-215. FOMC hold, risk-on day (+1.54% SPX). MOC BUY 20sh attempted. API BLOCKED.
+size_pct: 4.22
+stop: 200.56
+target: 242.79
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "MS BINDING ENTRY. MOC BUY 20sh at ~$211.12 bracket GTC. Stop: $211.12 × 0.95 = $200.56 (-5%). Target: $211.12 × 1.15 = $242.79 (+15%). R/R: 3:1 ✓. Position size: 20sh × $211.12 = $4,222.40 = 4.26% of equity ✓. Financials sector post-GS+WFC+MS: ~11.02% (below 25% ✓). MS at $211.12 is in planned range; ex-dividend July 31 already settled. ORDER RESULT: proxy CONNECT rejected 403 — API blocked 108th consecutive session. ORDER NOT PLACED. OPERATOR: BUY 20sh MS at MARKET on app.alpaca.markets. X sentiment: unavailable — degraded gracefully."
+---
+```
+
+---
+
+### END-OF-DAY SUMMARY — AUGUST 3, 2026
+
+**Market Close P&L:**
+- AMD: held 18sh × $472.15 = $8,498.70 (cost $506.76 = -$622.98 unrealized, -6.83%)
+- Cash: $90,644 (unchanged — no trades executed, API blocked)
+- Total Equity: **~$99,142.70** (-0.86% from $100K)
+- Daily P&L: +$524.70 (+0.53%) — AMD recovered from $443 pre-mkt baseline to $472.15
+
+**Benchmark:**
+- SPX Aug 3 est. close: ~7,605 (+1.54% today)
+- SPX from May 1 baseline 7,200: **+5.63%**
+- Portfolio cumulative: **-0.86%**
+- **Benchmark gap: -6.49 pp (WIDENING — 108th consecutive session of underperformance)**
+
+**CRITICAL OVERNIGHT RISK:**
+- AMD held NAKED inside 48h binary event window (earnings AUG 4 AH)
+- This is a **DIRECT VIOLATION** of the binary event rule (no positions inside 48h window)
+- AMD earnings implied move: ±8.5% (options pricing per Seeking Alpha, Aug 3)
+- If AMD beats and runs +8.5%: +$724 gain (manageable)
+- If AMD misses and drops -8.5%: -$724 loss + naked exposure overnight
+- OPERATOR MUST EXIT AMD on app.alpaca.markets before 4:00 PM ET TODAY
+
+**TOMORROW'S KEY EVENTS (August 4, 2026):**
+- AMD earnings AH (Aug 4) — binary event; if AMD not exited today, hold through earnings is a strategy violation
+- NVDA also reports Aug 4 AH — do NOT enter NVDA (inside 48h window)
+- No major Fed speakers
+
+**BINDING COMMITMENTS FOR AUG 4 PRE-MARKET:**
+1. AMD: If not exited today by operator, EXIT at first Pre-Market opportunity (note: this is day-of-earnings, forbidden by binary event rule — operator MUST act manually today)
+2. GS: BUY 4sh MOO bracket GTC (score 7.2, BINDING — 4th deferral)
+3. WFC: BUY 30sh MOO bracket GTC (score 7.0, BINDING)
+4. MS: BUY 20sh MOO bracket GTC (score 7.0, BINDING)
+5. AMZN: WATCH for pullback to $265-275 zone for potential re-entry on the thesis (score may rebuild)
+
+---
+
 ## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-31T12:05:14Z ✓
