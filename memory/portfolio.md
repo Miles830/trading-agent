@@ -1,7 +1,78 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-08-03 (Monday) — PRE-MARKET (8:07 AM ET / 12:07 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 106th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: est. ~$470-475 (STILL below hard stop $481.42, Day 47+, NAKED, BINARY EVENT WINDOW ACTIVE — AMD earnings AUG 4 AH). TODAY IS THE ABSOLUTE FINAL EXIT DAY (holding into earnings on a below-stop naked position = double guardrail violation). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (18sh reduced from 21sh per 5% cap at $270, score 8.0), GS BUY (4sh, score 7.2). WFC + MS + NVDA deferred to Market-Open limit brackets. Iran de-escalation RISK-ON (oil -5.2%, S&P futures +0.6%). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+
+---
+
+**AUG 3, 2026 — PRE-MARKET STATUS (8:07 AM ET / 12:07 UTC):**
+
+**Macro catalyst:** Trump called off planned Iran military strike over the weekend; nuclear deal talks resume Aug 3; Strait of Hormuz reopening "imminent." → Oil -5.2% (Brent $83.39, WTI $79.45) | S&P futures +0.6% | Dow futures +0.8% | Nasdaq futures +0.4% | 10yr yield -6bps to 4.68% → **RISK-ON (geopolitical relief trade)**
+
+**Portfolio Aug 3 (est. — API blocked):**
+- Cash: ~$90,644 (91.4% est.)
+- AMD: 18sh × ~$472 est. = ~$8,496 (8.6% est.) — NAKED, below hard stop $481.42 by ~$9.42, Day 47+
+- Total equity est.: ~$99,140
+- Daily P&L est.: ~+$522 (AMD recovered from $443 July 31 pre-mkt to ~$472)
+- P&L vs $100K initial: **-$860 (-0.86%)** est.
+- SPX est. pre-market: ~7,510-7,530 (+0.6% from ~7,490 July 31 close est.) | May 1 baseline 7,200: **+4.3%** est.
+- **Cumulative benchmark gap: -5.16 pp** est.
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (106th consecutive session)
+- Circuit breaker: NOT tripped (-0.86% total return vs -3% daily threshold)
+
+**AMD CRITICAL — AUG 3 (ABSOLUTE FINAL EXIT DAY):**
+- AMD ~$472 est. pre-market (closed ~$472.12 July 31)
+- Hard stop $481.42 BREACHED by ~$9.42 — still below floor
+- 48h binary event window: ACTIVE (opened Aug 2 Saturday; AMD earnings Aug 4 AH)
+- Status: NAKED (106th consecutive session, no stop at Alpaca)
+- **MANDATORY EXIT** — exiting an existing below-stop losing position inside the binary event window is guardrail enforcement, not binary event initiation. The binary event rule prohibits INITIATING new positions; it does NOT prevent exiting losers.
+- SELL ORDER ATTEMPTED: SELL 18sh AMD MARKET OPG → HTTP_STATUS:000 → ORDER NOT PLACED
+- **OPERATOR: SELL 18sh AMD MARKET on app.alpaca.markets BEFORE MARKET OPEN TODAY. This is the absolute final exit day. Tomorrow the earnings print makes this a binary event with extreme gap risk.**
+
+**AUG 3 ORDER ATTEMPTS (ALL FAILED — API blocked 106th session):**
+1. AMD SELL 18sh MARKET OPG → HTTP_STATUS:000 → NOT PLACED
+2. AMZN BUY 18sh MARKET OPG (score 8.0, $270 est.) → HTTP_STATUS:000 → NOT PLACED
+3. GS BUY 4sh MARKET OPG (score 7.2, $1,018 est.) → HTTP_STATUS:000 → NOT PLACED
+4. WFC 30sh limit bracket GTC (score 7.2, $87 est.) → deferred Market-Open
+5. MS 20sh limit bracket GTC (score 7.2, $211 est.) → deferred Market-Open
+6. NVDA 24sh limit bracket GTC (score 7.67, ~$205 est.) → deferred Market-Open (technical confirmation needed)
+
+**HEARTBEAT AUDIT AUG 3 (so far):**
+- ✓ Pre-Market: STARTED 2026-08-03T12:07:54Z ✓ (this routine — ongoing)
+
+**AUG 3 BINDING COMMITMENTS (must execute at Market-Open if Pre-Market orders not placed by operator):**
+1. AMD: SELL 18sh at MARKET — FINAL EXIT DAY
+2. AMZN: BUY 18sh limit bracket GTC at ~$270 (stop $256.50, target $310.50) — 5th consecutive binding deferral if skipped
+3. GS: BUY 4sh limit bracket GTC at ~$1,018 (stop $967, target $1,171) — 5th consecutive binding deferral if skipped
+4. WFC: BUY 30sh limit bracket GTC at ~$87 (stop $82.65, target $100.05) — ex-div Aug 7 ($0.50/sh)
+5. MS: BUY 20sh limit bracket GTC at ~$211 (stop $200.45, target $242.65)
+6. NVDA: BUY 24sh limit bracket GTC at ~$205 (stop $194.75, target $235.75) — if technicals confirm ≥2/5 indicators
+
+**SETUP PERFORMANCE TRACKER (Rolling 5-Day Window July 28–Aug 3):**
+| Setup | Trades | Wins | Losses | Win Rate | Notes |
+|---|---|---|---|---|---|
+| ai-momentum-pullback | 0 | — | — | — | AMD still open (Day 47+, below stop, exiting today) |
+| earnings-reaction-follow | 0 (skips) | — | — | — | AMZN 8.0, binding Aug 3 |
+| sector-rotation | 0 (skips) | — | — | — | GS/WFC/MS 4th consecutive deferral, BINDING Aug 3 |
+| ai-momentum-pullback | 0 (pending) | — | — | — | NVDA 7.67, Market-Open |
+| silent-failure | 0 (Aug 3 Pre-Market fired ✓) | — | — | — | Pre-Market completed this session |
+
+No setup halts triggered. No setup boosts triggered. All activity remains API-blocked attempts.
+
+**AUG 3 WATCHLIST (BINDING — next Market-Open routine must execute if operator hasn't placed manually):**
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | ai-momentum-pullback | SELL 18sh MARKET — BINDING | Day 47+, naked, below stop, binary event window active. Final day. |
+| 2 | AMZN | 8.0 | earnings-reaction-follow | BUY 18sh MOO bracket GTC | $270 est. 18sh=4.91%. Stop $256.50, Target $310.50. |
+| 3 | GS | 7.2 | sector-rotation | BUY 4sh MOO bracket GTC | $1,018 est. Q2 blowout. Stop $967, Target $1,171. |
+| 4 | WFC | 7.2 | sector-rotation | BUY 30sh limit bracket GTC | $87 est. Ex-div Aug 7. Stop $82.65, Target $100.05. |
+| 5 | MS | 7.2 | sector-rotation | BUY 20sh limit bracket GTC | $211 est. Q2 strong. Stop $200.45, Target $242.65. |
+| 6 | NVDA | 7.67 | ai-momentum-pullback | BUY 24sh limit bracket GTC (if technicals confirm) | $205 est. AI capex validated. Stop $194.75, Target $235.75. |
+| 7 | AAPL | 4.83 | — | WATCH ($300-310 mean reversion) | Below 7 threshold. Weak Q4 guide. |
+| 8 | MSFT | 7.0 | breakout-volume | WATCH — pullback to $455-470 | Azure +43%. Too extended currently. |
+| 9 | AAL | 6.5 | sector-rotation | WATCH — oil -5.2% fuel savings | Airlines = Iran relief direct beneficiary. Sub-7 score. |
+| 10 | BRK.B | 6.0 | earnings-reaction-follow | WATCH — reporting after close today | Binary window opens today — no entry before print. |
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 

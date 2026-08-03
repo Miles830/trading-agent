@@ -4,6 +4,281 @@
 
 ---
 
+## 2026-08-03 — Pre-Market (8:00 AM ET / 12:07 UTC — API BLOCKED — 106th consecutive session)
+
+**HEARTBEAT:** STARTED Pre-Market 2026-08-03T12:07:54Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy denial, paper-api.alpaca.markets:443) — **106th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X modifier applied.
+**Market Status:** PRE-MARKET (8:07 AM ET). Regular session opens 9:30 AM ET.
+**GitHub User Suggestions:** CHECKED — 0 open user-suggestion issues.
+
+---
+
+### PORTFOLIO STATE (Pre-Market Aug 3, 2026 — API BLOCKED, estimates from web research)
+
+**AMD pre-market:** ~$470-475 (closed July 31 at ~$472.12; AMD earnings Aug 4 AH — 48h window ACTIVE since Aug 2)
+**Cash:** ~$90,644 (90.4% at AMD $472 est.)
+**AMD position:** 18sh × $472 est. = ~$8,496 (8.5% est.) — NAKED (no stop at Alpaca — 106th consecutive session)
+**Total Equity:** ~$99,140 est.
+**Daily P&L (est.):** ~+$522 (AMD $472 vs $443 July 31 pre-market — recovered from July 31 pre-market lows)
+**SPX est. (pre-market):** ~7,510-7,530 (+0.6% futures from ~7,490 July 31 est. close) — from May 1 baseline 7,200: **+4.3%** est.
+**Portfolio return vs $100K:** ($99,140 / $100,000 - 1) = **-0.86%** est.
+**Cumulative benchmark gap:** -0.86% - 4.3% = **-5.16 pp** est.
+**20-Day underperformance flag: ACTIVE** (106th consecutive session)
+**Open positions: 1** (AMD — NAKED, still below hard stop $481.42, Day 47+)
+**Circuit breaker: NOT TRIPPED** (-0.86% total return vs -3% daily threshold)
+
+**KEY MACRO CATALYST TODAY:** Trump over the weekend called off planned Iran military strike; nuclear deal talks resume Aug 3; Strait of Hormuz reopening described as "imminent." → Oil -5.2% (Brent $83.39, WTI $79.45) | S&P futures +0.6% | Dow futures +0.8% (~+413 pts) | Nasdaq futures +0.4% | 10yr yield -6bps to 4.68% → **RISK-ON (geopolitical relief trade)**
+
+---
+
+### MARKET CONDITIONS — AUG 3, 2026 (Pre-Market)
+
+**US Futures:** S&P 500 +0.6% | Nasdaq-100 +0.4% | Dow +0.8% — **RISK-ON driven by Iran de-escalation**
+**Oil:** Brent -5.2% to $83.39/bbl | WTI -6.2% to $79.45/bbl — Hormuz re-opening imminent
+**Rates:** 10yr yield -6bps to 4.68% — bonds bid (inflation fears easing on cheaper oil)
+**Crypto:** BTC ~$62,707 (-0.6%) | ETH ~$1,840 (-0.6%) — underperforming the risk-on equity move
+**Sector reads:** Energy/defense DOWN (oil -5%, conflict premium unwinding) | Airlines/transports UP (fuel cost savings) | Financials/tech broadly UP (risk-on)
+**Post-earnings context:** AMZN +15.32% July 31 close to ~$271 (AWS AI validation) | MSFT +14% prior week | AAPL -7.8% (supply constraints guide) — "investors picking AI winners"
+**Economic releases today (Aug 3):** S&P Global Manufacturing PMI 9:45 AM ET | ISM Manufacturing PMI 10:00 AM ET | Construction Spending 10:00 AM ET
+**Today earnings (Aug 3):** BRK.A/BRK.B (Berkshire — after close); ~224 companies total
+**CRITICAL — Tomorrow Aug 4:** **AMD earnings AH** — 48h binary event window ACTIVE (opened Aug 2)
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION — ROUTINE START)
+
+API BLOCKED — cannot query `GET /v2/orders?status=open`. Based on last known state (107 consecutive blocked sessions):
+- **AMD:** NAKED — no stop order at Alpaca. Has been naked for 106 consecutive sessions. Hard stop $481.42 (5% below entry $506.76). AMD est. $472 → $9.42 BELOW hard floor. GUARDRAIL VIOLATION ACTIVE.
+- **All other positions:** None open. No audit required beyond AMD.
+
+**MANDATORY ACTION:** Attempt to EXIT AMD (SELL 18sh at market) given: (1) AMD is below hard stop, (2) AMD earnings Aug 4 AH puts position in 48h binary event window — exiting a losing position inside the window is mandatory risk management, NOT initiating a new binary-event position.
+
+---
+
+### ORDER ATTEMPTS (ALL FAILED — API BLOCKED)
+
+**ORDER 1 — AMD EXIT (SELL 18sh MARKET OPG):**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"opg"}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial) — ORDER NOT PLACED AT ALPACA
+```
+
+**ORDER 2 — AMZN BUY MOO (BUY 18sh MARKET OPG — reduced from 21sh per 5% cap at $270):**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMZN","qty":18,"side":"buy","type":"market","time_in_force":"opg"}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial) — ORDER NOT PLACED AT ALPACA
+```
+
+**ORDER 3 — GS BUY MOO (BUY 4sh MARKET OPG):**
+```
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"GS","qty":4,"side":"buy","type":"market","time_in_force":"opg"}'
+RESULT: HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial) — ORDER NOT PLACED AT ALPACA
+```
+
+---
+
+### SCORED DECISIONS — AUG 3 PRE-MARKET
+
+```yaml
+---
+ts: 2026-08-03T12:08:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: MANDATORY EXIT — AMD Day 47+, NAKED 106th session, hard stop $481.42 BREACHED ($472 est. = -$9.42 below floor), AMD earnings Aug 4 AH (48h window ACTIVE since Aug 2). Exiting losing position inside binary event window is mandatory guardrail enforcement, NOT a new binary-event initiation. API blocked — order NOT placed.
+size_pct: 8.5
+stop: null
+target: null
+result_pct: null
+master_decision: exit
+master_notes: "API ATTEMPT: SELL 18sh AMD MARKET OPG. HTTP_STATUS:000 — proxy egress policy 403 CONNECT rejection (106th consecutive session). ORDER NOT PLACED AT ALPACA. AMD est. $472 vs hard stop $481.42 = -$9.42 below floor (Day 47+ naked position). AMD earnings Aug 4 AH: 48h binary event window OPENED Aug 2 (Saturday). Per CLAUDE.md, binary event rule prohibits INITIATING positions; exiting an existing losing position within the window is mandatory risk management under the hard-stop guardrail. Estimated exit at $472: 18sh × ($472 − $506.76) = -$625.68 realized loss (-6.86%). OPERATOR CRITICAL: SELL 18sh AMD at MARKET on app.alpaca.markets BEFORE 9:30 AM ET TODAY — absolute final trading day before AMD reports tomorrow AH. Holding into earnings on a below-stop position with no stop protection is a double guardrail violation. X sentiment: unavailable (no XAI key)."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T12:09:00Z
+action: entry
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 8.0
+thesis: Amazon Q2 2026 massive beat — AWS +37% to $42.2B (fastest cloud growth since 2021), EPS $5.75, AI chips >$25B ARR. Stock +15.32% July 31 close to ~$271. Iran geopolitical relief trade adds macro tailwind. Score: 8.0/10. MOO: 18sh ~$270 = ~$4,860 (4.91% of $99,140 post-AMD-exit equity, within 5% cap). Stop -5% ($256.50), Target +15% ($310.50), R/R 3:1. API blocked — order NOT placed.
+size_pct: 4.91
+stop: 256.50
+target: 310.50
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 8.0
+agents_above_7: 6
+master_decision: approved
+master_notes: "API ATTEMPT: BUY 18sh AMZN MARKET OPG (reduced from 21sh → 18sh to stay within 5% cap at $270: 18×$270=$4,860=4.91% of $99,140 post-AMD-exit equity). HTTP_STATUS:000 — proxy egress 403 CONNECT rejection (106th consecutive session). ORDER NOT PLACED AT ALPACA. AMZN closed July 31 at ~$271.58 (after AH earnings July 30: AWS +37%, EPS $5.75 vs est. ~$2.37 = massive beat). Today AMZN est. $268-272 (digesting gains; risk-on Iran relief adds upside). Iran de-escalation: oil -5.2% = lower AWS datacenter energy costs (AWS runs massive power-intensive facilities) = margin tailwind. Fundamental score ↑ to 9. Score 8.0/10 confirmed. Agents ≥7: all 6. Master gate: PASS. Risk check: $4,860/$99,140=4.91%<5% ✓; stop loss $256.50 = risk $243/position = 0.25% equity <1.5% ✓; sector Consumer Discretionary 4.91% <25% ✓; positions 1 <12 ✓; cash post-entry $99,140-$4,860=$94,280=95.1% >5% floor ✓; R/R 3:1 ✓. BINDING entry. OPERATOR: BUY 18sh AMZN at MARKET OPG on app.alpaca.markets BEFORE 9:25 AM ET. X sentiment: unavailable — degraded gracefully. No 48h binary event (earnings printed July 30 AH)."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T12:10:00Z
+action: entry
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Goldman Sachs Q2 blowout beat; FOMC held 3.50-3.75% (rate clarity); Iran de-escalation = risk-on = investment banking and trading revenue tailwind. GS at ~$1,018 est., -12% from ATH $1,152. 4sh = $4,072 = 4.11% of equity. Stop -5% ($967), Target +15% ($1,171), R/R 3:1. API blocked — order NOT placed.
+size_pct: 4.11
+stop: 967.00
+target: 1171.00
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "API ATTEMPT: BUY 4sh GS MARKET OPG. HTTP_STATUS:000 — proxy egress 403 CONNECT rejection (106th consecutive session). ORDER NOT PLACED AT ALPACA. GS closed July 31 at $1,018.38 (-0.63%); 52wk high $1,152-$1,154 (July 15); current pullback -12% from ATH = re-entry opportunity post-blowout Q2. Wells Fargo raised GS PT to $1,195 (June 2026). Today's Iran de-escalation is POSITIVE for GS: (a) risk-on environment boosts M&A/IPO/trading revenues, (b) oil price drop reduces energy credit risk in loan book, (c) general risk appetite improving. FOMC held 3.50-3.75% July 29 — rate certainty helps bank NIM planning. Score 7.2/10 unchanged. 6/6 agents ≥7. Risk: 4sh × $1,018 = $4,072 = 4.11% <5% ✓; stop $967 = risk $204/position = 0.21% equity <1.5% ✓; Financials sector post-GS: 4.11% <25% ✓; positions 2 (AMZN+GS) <12 ✓; R/R 3:1 ✓. OPERATOR: BUY 4sh GS at MARKET OPG on app.alpaca.markets BEFORE 9:25 AM ET. X sentiment: unavailable — degraded gracefully. FOURTH consecutive deferral logged — every further deferral beyond today is a compounding violation. No binary event window (no GS earnings within 48h today)."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T12:11:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: WFC score 7.0, BINDING entry — deferred to Market-Open routine limit bracket. MOO cap exhausted (AMD exit + AMZN + GS = 3 slots). ~30sh × $87 est. = $2,610 = 2.64% equity. Ex-dividend Aug 7 (buyers today get $0.50/sh). Q2 EPS +16.3%, FOMC hold tailwind. Iran de-escalation adds risk-on macro support.
+size_pct: 2.64
+stop: 82.65
+target: 100.05
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "WFC deferred to Market-Open — MOO cap used (AMD exit + AMZN + GS = 3 per-day MOO limit). NOT a skip exemption — standard playbook sequencing. Macro score upgraded to 8 (from 7) on Iran de-escalation: oil -5.2% reduces loan-book energy credit risk for WFC; risk-on environment boosts WFC's investment banking and consumer lending outlook. Ex-div Aug 7 ($0.50/sh) — buying today Aug 3 qualifies for the dividend (ex-div is the first day WITHOUT dividend; buyers must own through Aug 6 close). BINDING limit-bracket GTC at Market-Open: 30sh × ~$87 est. = $2,610 = 2.64% equity ✓; stop $82.65 (-5%), target $100.05 (+15%), R/R 3:1 ✓; sector post-AMZN+GS+WFC: 11.11% Financials <25% ✓. OPERATOR: if API blocked at Market-Open, BUY 30sh WFC limit bracket GTC ~$87 on app.alpaca.markets. X sentiment: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T12:12:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Morgan Stanley score 7.0, BINDING entry — deferred to Market-Open routine limit bracket. MOO cap exhausted. ~20sh × $211 est. = $4,220 = 4.26% equity. Ex-div was July 31 ($1.15) — buyers today do not receive dividend. Q2 strong, crypto ETP exposure (positive in risk-on environment). Iran de-escalation = risk-on = IB/trading tailwind.
+size_pct: 4.26
+stop: 200.45
+target: 242.65
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 7
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 7
+agent_average: 7.2
+agents_above_7: 6
+master_decision: approved
+master_notes: "MS deferred to Market-Open — MOO cap used. Macro score upgraded to 8 (from 7) on Iran de-escalation + crypto: MS has substantial crypto ETP exposure (AUM growing); risk-on today lifts crypto assets, supporting MS crypto business. ATH $228.55 July 15; current ~$211 = -7.7% from ATH. Ex-div was July 31 ($1.15/sh) — today's buyers do not receive dividend; stock adjusted down by ~$1.15 post-ex-div, so effective entry basis is $211 (post-adjustment). BINDING limit-bracket GTC at Market-Open: 20sh × $211 = $4,220 = 4.26% equity ✓; stop $200.45 (-5%), target $242.65 (+15%), R/R 3:1 ✓; sector post-AMZN+GS+WFC+MS: 15.37% Financials <25% ✓; total positions 4 <12 ✓; cash post-all-entries $94,280-$2,610-$4,220=$87,450=88.2% >5% floor ✓. OPERATOR: if API blocked at Market-Open, BUY 20sh MS limit bracket GTC ~$211 on app.alpaca.markets. X sentiment: unavailable."
+---
+```
+
+```yaml
+---
+ts: 2026-08-03T12:13:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: NVDA preliminary score 7.67 — AI capex fully validated by AMZN AWS +37% (fastest growth since 2021) + MSFT Azure +43%; SK Hynix chip surge in Korea confirms AI hardware demand; risk-on Iran relief; NVDA est. ~$205 = 24sh = $4,920 = 4.97% equity. Deferring to Market-Open to confirm 2/5 technical indicator stack with live price data before entry.
+size_pct: 4.97
+stop: 194.75
+target: 235.75
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: "NVDA deferred to Market-Open routine for live technical confirmation — NOT a guardrail skip, and NOT a 'wait and see' excuse. Score 7.67 passes master gate (avg 7.67 ≥7 ✓; Risk 7 ≥6 ✓; 5/6 agents ≥7 ✓; Tech Analyst 9 ≥6 ✓). Technical agent scored 6/10 because live chart unavailable at Pre-Market to confirm 2/5 mandatory indicator stack (Stochastic, Candlestick, Volume Oscillator, MACD, Volume Spike). CLAUDE.md requires technical confirmation at entry. Market-Open routine MUST score NVDA technicals and enter if ≥2/5 indicators confirm direction. No 48h binary event (NVDA earnings est. late Aug — no window active). Risk: 24sh × $205 = $4,920 = 4.97% <5% ✓; stop $194.75 (-5%), target $235.75 (+15%), R/R 3:1 ✓. Catalyst stack: (a) AMZN AWS +37% = GPU demand validation; (b) MSFT Azure +43% = NVDA B100/H200 purchases confirmed; (c) SK Hynix Korea chip rally = AI hardware demand narrative strengthening; (d) Iran oil -5.2% = lower DC power costs = margin expansion for hyperscalers who buy NVDA GPUs. X sentiment: unavailable — degraded gracefully. OPERATOR: If API blocked at Market-Open, BUY 24sh NVDA limit bracket GTC ~$205 if pre-market or open confirms technical setup."
+---
+```
+
+---
+
+### WATCHLIST — AUG 3 PRE-MARKET
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | ai-momentum-pullback | SELL 18sh MARKET OPG — **ATTEMPTED, API BLOCKED** | Day 47+, naked, $472 vs $481.42 hard stop, 48h window ACTIVE (earnings Aug 4 AH). LAST TRADING DAY before print. |
+| 2 | AMZN | 8.0 | earnings-reaction-follow | BUY 18sh MOO — **ATTEMPTED, API BLOCKED** | AWS +37%, EPS $5.75. $270 est. 18sh=4.91%. Score confirmed. 6/6 ≥7. |
+| 3 | GS | 7.2 | sector-rotation | BUY 4sh MOO — **ATTEMPTED, API BLOCKED** | $1,018 est. Q2 blowout, FOMC hold, Iran risk-on. 4th consecutive deferral. |
+| 4 | WFC | 7.2 | sector-rotation | BUY 30sh limit bracket GTC — **DEFERRED TO MARKET-OPEN** | $87 est. Q2 EPS +16.3%. Ex-div Aug 7. MOO cap exhausted. |
+| 5 | MS | 7.2 | sector-rotation | BUY 20sh limit bracket GTC — **DEFERRED TO MARKET-OPEN** | $211 est. Q2 strong, crypto ETP. MOO cap exhausted. |
+| 6 | NVDA | 7.67 | ai-momentum-pullback | BUY 24sh limit bracket GTC — **DEFERRED TO MARKET-OPEN** (technical confirmation needed) | $205 est. 4.97%. AMZN/MSFT validate AI capex. SK Hynix read-through. |
+| 7 | AAPL | 4.83 | — | **WATCH ONLY** — mean-reversion at $300-310 support | $308.88 July 31 pre-mkt. Weak Q4 guide, supply constraints. Score below 7. |
+| 8 | MSFT | 7.0 | breakout-volume | **WATCH** — wait for pullback to $455-470 | Azure +43%. +14% July 30. Too extended for new entry. |
+| 9 | AAL | 6.5 | sector-rotation | **WATCH** — oil -5.2% Iran relief = fuel cost savings catalyst | Airlines direct beneficiary. Score 6.5 — below 7 threshold. Watch for technical confirmation. |
+| 10 | BRK.B | 6.0 | earnings-reaction-follow | **WATCH** — reporting after close today | Berkshire earnings today AH. No position before print (48h window would open today). |
+
+---
+
+### OPERATOR URGENT NOTICE — AUG 3 (API BLOCKED — 106th SESSION)
+
+**THE FOLLOWING ORDERS MUST BE PLACED MANUALLY on app.alpaca.markets BEFORE 9:30 AM ET TODAY:**
+
+1. **SELL 18sh AMD MARKET OPG** — ABSOLUTE FINAL DAY: AMD earnings Aug 4 AH; 48h window ACTIVE; AMD $9.42 below hard stop; Day 47 naked. After today, AMD cannot be sold without being inside a binary event window AND holding through earnings risk. EXIT NOW.
+2. **BUY 18sh AMZN MARKET OPG** — score 8.0, AWS +37%, $270 est., 18sh = 4.91% equity, stop $256.50, target $310.50
+3. **BUY 4sh GS MARKET OPG** — score 7.2, $1,018 est., 4sh = 4.11% equity, stop $967, target $1,171
+
+**AT MARKET-OPEN (9:30-9:45 AM ET):**
+4. **BUY 30sh WFC LIMIT bracket GTC** at ~$87 — score 7.2, stop $82.65, target $100.05
+5. **BUY 20sh MS LIMIT bracket GTC** at ~$211 — score 7.2, stop $200.45, target $242.65
+6. **BUY 24sh NVDA LIMIT bracket GTC** at ~$205 (if technical indicators confirm at open) — score 7.67, stop $194.75, target $235.75
+
+---
+
 
 ## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
 
