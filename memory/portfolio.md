@@ -1,7 +1,41 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-08-03 (Monday) — MID-MORNING (11:15 AM ET / 15:15 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th consecutive blocked session). ⚠️ AMD CRITICAL: ~$476.15 intraday, STILL BELOW hard stop $481.42, Day 45+, NAKED — INSIDE 48h EARNINGS WINDOW (Aug 4 AH). 3 LIMIT BRACKET orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (17sh @ $285.84, score 8.0), GS BUY (4sh @ $1,025.10, score 7.2). Pre-Market AND Market-Open BOTH silently failed today — violations logged. OPERATOR MUST ACT MANUALLY on app.alpaca.markets IMMEDIATELY: SELL 18sh AMD + BUY 17sh AMZN + BUY 4sh GS.**
+
+---
+
+## AUG 3 MID-MORNING SNAPSHOT (11:15 AM ET / 15:15 UTC)
+
+**Alpaca API:** BLOCKED (106th consecutive session — proxy 403 CONNECT rejection)
+**Market:** S&P 500 +1.1% | Nasdaq +1.7% | RISK-ON (Iran diplomatic breakthrough, oil falling, Big Tech leading)
+**AMD:** ~$476.15 intraday (range $472-$516), prev close $485.39 — BELOW hard stop $481.42 — INSIDE 48h earnings window (Aug 4 AH)
+**AMZN:** $284.41 (+4.72%) — $3T market cap milestone — Q2 beat sustained momentum
+**NVDA:** $206.31 (+2.77%) — AI sector bid
+**GS:** Est. ~$1,020-1,050 (web search no specific print) — financials sector positive (risk-on, FOMC hold)
+
+**Portfolio State:**
+- AMD: 18sh × $476.15 = $8,571 est. | Cost basis $9,121.68 | Unrealized P&L: -$550.68 (-6.04%)
+- Cash: ~$90,644 (91.4%)
+- Total Equity est.: **$99,215**
+- Portfolio return: **−0.79%**
+- S&P 500 total return (from May 1 baseline 7,200): **+4.43%**
+- Cumulative benchmark gap: **−5.22 pp** (widening)
+- 20-Day underperformance flag: **ACTIVE** (106th consecutive session)
+- Open positions: 1 (AMD — NAKED, below stop, inside earnings window)
+- Daily circuit breaker: NOT TRIPPED
+
+**Orders Attempted (ALL FAILED — API BLOCKED):**
+1. SELL 18sh AMD LIMIT $476.00 GTC → HTTP_STATUS:000 (proxy 403)
+2. BUY 17sh AMZN LIMIT $285.84 bracket GTC (stop $270.19, target $327.07) → HTTP_STATUS:000
+3. BUY 4sh GS LIMIT $1,025.10 bracket GTC (stop $973.85, target $1,178.87) → HTTP_STATUS:000
+
+**OPERATOR MANDATORY ACTIONS (app.alpaca.markets):**
+1. SELL 18sh AMD at MARKET NOW — below stop + inside earnings window = dual breach
+2. BUY 17sh AMZN LIMIT $285-286 bracket GTC (stop $270.19, target $327.07) — score 8.0, all 6 agents ≥7
+3. BUY 4sh GS LIMIT $1,025 bracket GTC (stop $973.85, target $1,178.87) — score 7.2, 4th deferral
+
+---
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
