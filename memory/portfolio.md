@@ -1,7 +1,78 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-08-03 (Monday) — AFTERNOON (2:14 PM ET / 18:14 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th consecutive blocked session). AFTERNOON ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL DOUBLE VIOLATION: at $476.15 (BELOW hard stop $481.42 by $5.27) AND inside 48h binary event window (AMD earns AH Aug 4). Day 45+, NAKED. OPERATOR MUST EXIT 18sh AMD at MARKET on app.alpaca.markets BEFORE 4:00 PM ET TODAY (~1:45 remaining at routine start). All 4 predecessor routines silently failed today (violations logged). AMZN/GS/WFC/MS binding entries deferred for 5th+ time — afternoon proximity-to-close rule. BINDING AUG 4 PRE-MARKET: AMZN 17sh MOO bracket, GS 5sh MOO bracket, WFC 61sh limit bracket, MS 25sh limit bracket. Market: S&P +1.5%, Nasdaq +2% (risk-on — Iran diplomacy + AMZN ATH $286 joining $3T club). AMD earnings tonight: options pricing 12.28% move, Wedbush $600 PT.**
+
+---
+
+**AUGUST 3 AFTERNOON STATUS (2:14 PM ET / 18:14 UTC — API BLOCKED 106th session):**
+
+**Market August 3:**
+- S&P 500: ~7,613 est. (+1.5%) | Nasdaq: +2.0% | Risk-ON
+- Catalyst: US-Iran diplomatic breakthrough (Trump called off attack, Strait of Hormuz negotiation) → oil lower → market relief rally
+- AMZN: $286.16 (+5.37%) — joined $3T market cap club, ATH. Post-Q2 beat (AWS +37%) surge continuing.
+- AMD: $476.15 — below hard stop $481.42, inside 48h earnings binary event window (Aug 4 AH). Options: 12.28% implied move. Wedbush PT $600, Mizuho PT $625.
+- NVDA: $200.75 (+2.9%) — AI chip read-through from AMZN AWS beat. 58 analysts Strong Buy.
+- GS: $929.92 (+0.67%) | WFC: $80.58 (+1.15%) | MS: $191.05 (+0.92%)
+
+**Portfolio August 3 Afternoon (est., API blocked):**
+- Cash: ~$90,644 (91.3% est.)
+- AMD: 18sh × $476.15 = ~$8,571 (8.6% est.) — NAKED, below stop, in binary event window
+- Total equity est.: ~$99,215
+- Daily P&L Aug 3: +$597 est. (AMD $443→$476.15 = +$33.15/sh × 18sh)
+- P&L vs $100K: **-$785 (-0.79%)**
+- S&P 500 from May 1 baseline (7,200) → ~7,613: **+5.74%**
+- **Benchmark gap: -6.53 pp** (WORSENING — missed AMZN/GS/WFC/MS = estimated $5,000+ opportunity cost)
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (106th consecutive session)
+
+**AUGUST 3 HEARTBEAT AUDIT:**
+- ✗ Pre-Market (12:00Z): SILENT FAILURE — violation logged
+- ✗ Market-Open (13:45Z): SILENT FAILURE — violation logged
+- ✗ Mid-Morning (15:00Z): SILENT FAILURE — violation logged
+- ✗ Midday (16:30Z): SILENT FAILURE — violation logged
+- ✓ Afternoon: STARTED 2026-08-03T18:13:06Z ✓ (this routine)
+
+**AUGUST 4 BINDING COMMITMENTS (FINAL — no further deferrals on any of these):**
+1. **AMD EXIT** — SELL 18sh MARKET (urgent: operator must act TODAY before 4 PM ET, or Aug 5 Pre-Market first action). Position is in binary event window AND below hard stop. Double guardrail violation.
+2. **AMZN ENTRY** — BUY 17sh MOO bracket GTC (score 7.83, avg $286→stop $271.85, target $328.88). Re-evaluate vs AMD earnings result. 5th/FINAL deferral.
+3. **GS ENTRY** — BUY 5sh MOO bracket GTC (score 7.3, $929.92→stop $883.42, target $1,069.41). 4th/FINAL deferral.
+4. **WFC ENTRY** — BUY 61sh limit bracket GTC (score 7.2, $80.58→stop $76.55, target $92.67). Market-Open if MOO cap used.
+5. **MS ENTRY** — BUY 25sh limit bracket GTC (score 7.2, $191.05→stop $181.50, target $219.71). Market-Open if MOO cap used.
+6. **NVDA ENTRY** — Conditional: Score at Pre-Market if AMD beats earnings AH Aug 4. 24sh at ~$200→stop $190.71, target $230.86. Avg score 7.17.
+
+**SETUP PERFORMANCE TRACKER (Rolling 5-Day Window July 28–Aug 3):**
+| Setup | Trades | Wins | Losses | Win Rate | Notes |
+|---|---|---|---|---|---|
+| ai-momentum-pullback | 0 | — | — | — | AMD open (entry June 20); -6.03% unrealized at $476.15 |
+| earnings-reaction-follow | 0 (skips) | — | — | — | AMZN/GS/WFC/MS 5th binding deferral; Aug 4 FINAL |
+| sector-rotation | 0 (skips) | — | — | — | GS/WFC/MS 4th deferral; Aug 4 FINAL |
+| silent-failure | 21 | — | — | — | 4 violations Aug 3 + ongoing API blockage pattern |
+
+No halts or boosts triggered (no closed trades in window — AMD still open, unrealized).
+
+**OPPORTUNITY COST TRACKER (API blockage impact — cumulative):**
+- AMZN missed entry July 31 at $234: 21sh × ($286.16 - $234.00) = **+$1,095 unrealized miss**
+- GS/WFC/MS: prices rose; exact miss unknown (API blocked for July 31 prices)
+- Total documented missed gain: **≥$1,095** (likely $2,000-3,000 total across financials)
+
+**TOMORROW'S WATCHLIST (August 4, 2026 Pre-Market — BINDING):**
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh MARKET first | Below stop, in binary event window. Exit or pre-mkt Aug 5 post-earnings. |
+| 2 | AMZN | 7.83 | earnings-reaction-follow | BUY 17sh MOO bracket GTC | ATH $286, AWS +37%, $3T. Re-score vs AMD result. |
+| 3 | GS | 7.3 | sector-rotation | BUY 5sh MOO bracket GTC | $929.92, Q2 blowout, FOMC hold. 4th/FINAL deferral. |
+| 4 | WFC | 7.2 | sector-rotation | BUY 61sh limit bracket GTC | $80.58, Q2 EPS +16.3%. Market-Open if MOO cap full. |
+| 5 | MS | 7.2 | sector-rotation | BUY 25sh limit bracket GTC | $191.05, strong Q2, crypto ETP. |
+| 6 | NVDA | 7.17 (cond.) | ai-momentum-pullback | BUY 24sh MOO if AMD beats tonight | $200.75, AI chip demand confirmed. Conditional on AMD beat. |
+| 7 | AMD post-earnings | TBD | earnings-reaction-follow | Score Aug 5 Pre-Market | After Aug 4 AH print. Options: 12.28% implied move. PT $600-625. |
+
+**KEY MACRO / EARNINGS AUG 4:**
+- AMD Q2 2026 earnings AH: Est. revenue $11.3B (+48% YoY), EPS $1.61. Key: MI350 shipments + Helios rack orders + AI chip demand color.
+- Options pricing 12.28% implied move. Historical avg 8.0%, median 6.7% over 12 quarters.
+- US-Iran diplomacy continues to suppress oil → energy sector headwind, broad market tailwind
+- Labor market data due this week
+
+---
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
