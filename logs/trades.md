@@ -5,6 +5,302 @@
 ---
 
 
+## 2026-08-03 — Market Open (9:45 AM ET / 13:45 UTC — API BLOCKED — 106th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-08-03T13:45:47Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 000 (egress policy 403 — paper-api.alpaca.markets unreachable) — **106th consecutive blocked session**
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded.
+**Pre-Market predecessor:** SILENTLY FAILED — no `STARTED Pre-Market` heartbeat in logs/heartbeats/2026-08-03.log. Catch-up running from Market Open.
+
+---
+
+### PORTFOLIO STATE (Market Open Aug 3, 2026 — est. from web research; API blocked)
+
+**AMD:** $476.15 (18sh × $476.15 = $8,570.70; unrealized P&L: 18 × ($476.15 − $506.76) = **−$550.98** / −6.0%); still below hard stop $481.42; inside 48h binary event window (earnings Aug 4 AH); NAKED (no stop at Alpaca, 106th consecutive session)
+**Cash:** ~$90,644 (91.4% of total equity est.)
+**Total Equity est.:** ~$99,215
+**Daily P&L est.:** AMD +$476.15 vs yesterday ~$443 est. = +$33.15/sh × 18 = +$596.70 (+0.60%) — rough estimate from July 31 pre-market; exact unknown
+**SPX Aug 3 open:** 7,462.13; session +0.67% → est. 7,512. From May 1 baseline 7,200: **+4.33%**
+**Portfolio return vs $100K:** ($99,215 / $100,000 − 1) = **−0.79%**
+**Cumulative benchmark gap:** −0.79% − 4.33% = **−5.12 pp** (worsening)
+**20-Day underperformance flag: ACTIVE** (106th consecutive session)
+**Open positions: 1** (AMD — NAKED, below stop, inside 48h binary event window — EXIT CRITICAL)
+**Circuit breaker: NOT TRIPPED** (daily P&L est. +0.60% — well above −3% threshold)
+**Market open condition:** +0.67% — below +2% chasing threshold. No restriction on new entries from open condition.
+
+```
+Trading bucket: $8,571 (8.6%) — 1 position — target 85%
+Crypto bucket:  $0 (0%)     — 0 positions — target 10%
+Cash:           ~$90,644 (91.4%) — 5% floor = $4,961 (well above floor)
+```
+
+---
+
+### PRE-MARKET CATCH-UP (predecessor silently failed)
+
+```yaml
+---
+ts: 2026-08-03T13:45:00Z
+action: violation
+symbol: N/A
+bucket: N/A
+setup: silent-failure
+score: null
+thesis: Pre-Market routine (due 12:05Z) did not heartbeat on 2026-08-03. Running catch-up from Market Open per routines/open.md. This is the 106th consecutive session with full or partial routine failure.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: N/A
+master_notes: "No STARTED Pre-Market entry found in logs/heartbeats/2026-08-03.log. Cause: scheduler did not fire Pre-Market routine. Market-Open routine executing catch-up covering: (1) stop-loss audit, (2) AMD mandatory exit, (3) full watchlist re-evaluation with fresh market data."
+---
+```
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED** — cannot execute `GET /v2/orders?status=open` (proxy CONNECT rejected HTTP 000). Based on last known state and 106 consecutive API-blocked sessions:
+- **AMD (18sh):** NAKED — no stop order at Alpaca. Hard stop should be $481.42 (5% below $506.76 entry avg). AMD now at $476.15 = $5.27 **below** the hard stop floor. Stop backfill is moot — AMD must be EXITED (below stop + inside 48h earnings window).
+- All other positions: none (cash 91.4%).
+
+---
+
+### MARKET CONDITIONS — AUGUST 3, 2026 (9:45 AM ET)
+
+**Macro:** S&P 500 futures +0.67% → opened 7,462.13; Nasdaq up ~0.2%. Oil falling after Trump called off Iran attack — new talks beginning Monday. Risk-on sentiment driven by Iran de-escalation + strong earnings season (85% of S&P 500 reporters beating, aggregate +47% profit growth).
+**Earnings this week:** PLTR (today Aug 3 AH, rev est. +80% YoY to $1.81B), AMD (Aug 4 AH, est. $11.3B rev / $1.61 EPS), DIS, MCD
+**Semiconductor note:** MU and Sandisk retreating slightly. AMD pre-earnings caution.
+**Sector:** Financials and consumer discretionary leading. Energy softening on oil decline.
+
+---
+
+### DECISION 1 — AMD EXIT (MANDATORY)
+
+AMD: $476.15 (below hard stop $481.42 by $5.27; inside 48h earnings window; NAKED; Day 46+). **EXIT IS MANDATORY** — stop breached AND binary event active. No valid reason to delay.
+
+**ORDER ATTEMPT — AMD SELL 18sh MARKET:**
+```bash
+curl -X POST "https://paper-api.alpaca.markets/v2/orders" \
+  -H "APCA-API-KEY-ID: PKWR6RSMZOLOFLTIOQYIHGB7LZ" \
+  -H "APCA-API-SECRET-KEY: [redacted]" \
+  -H "Content-Type: application/json" \
+  -d '{"symbol":"AMD","qty":18,"side":"sell","type":"market","time_in_force":"day"}'
+RESULT: curl exit code 1, HTTP_STATUS:000 — proxy CONNECT rejected (403 egress policy denial, 106th consecutive session)
+```
+
+```yaml
+---
+ts: 2026-08-03T13:46:00Z
+action: exit
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: null
+thesis: MANDATORY EXIT — AMD at $476.15 (below hard stop $481.42 by $5.27); inside 48h binary event window (earnings Aug 4 AH); NAKED (no stop at Alpaca, 106 consecutive sessions). Day 46+ since entry $506.76. Unrealized loss: 18 × ($476.15 − $506.76) = −$550.98 (−6.0%). API blocked — order NOT placed.
+size_pct: 8.6
+stop: null
+target: null
+result_pct: null
+master_decision: exit
+master_notes: "MANDATORY EXIT per CLAUDE.md guardrails: (1) stop floor $481.42 breached (AMD at $476.15), (2) 48h binary event window active (AMD earnings Aug 4 AH). BOTH conditions independently mandate exit. AMD July 31 pre-market ~$443-452; recovered to ~$476.15 today — still below stop. ORDER ATTEMPT: sell 18sh AMD market. RESULT: curl exit code 1, HTTP_STATUS:000 — proxy egress policy 403 (106th consecutive blocked session). ORDER NOT PLACED. OPERATOR CRITICAL: SELL 18sh AMD at MARKET on app.alpaca.markets BEFORE 4:00 PM ET TODAY. Do NOT hold through Aug 4 AH earnings — binary event hold is a strategy violation. If AMD reports blowout and gaps +20%, holding is fine by luck but violates process. Exit is mandatory regardless of conviction."
+---
+```
+
+---
+
+### DECISIONS 2-6 — PRIOR WATCHLIST RE-EVALUATION (CATCH-UP)
+
+**AMZN (score 8.2 from July 31):**
+AMZN at ~$271.58 (Aug 2 close; was $235.50 post-earnings July 31 close). Our original take-profit target was $269.10 (+15% from $234 entry). AMZN has already **exceeded our original take-profit** by $2.48. The Q2 earnings catalyst (AWS +37%, EPS $5.75) has been fully priced in over the 3 business days since earnings. Entering now at $271 would mean buying a name that has already delivered our full target return — at a moment when the easy upside is gone. This is a **SETUP EXPIRY** skip, not a "wait for pullback" skip.
+
+```yaml
+---
+ts: 2026-08-03T13:47:00Z
+action: skip
+symbol: AMZN
+bucket: active
+setup: earnings-reaction-follow
+score: 8.2
+thesis: Setup expired — AMZN at $271.58 exceeds original take-profit target of $269.10. The earnings-reaction catalyst (Q2 massive beat July 30 AH) has been fully priced in over 3 trading sessions. New entry at $271 would offer minimal upside vs the established momentum.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 9
+  technical: 4
+  sentiment: 7
+  macro: 7
+  risk: 3
+  tech_analyst: 9
+agent_average: 6.5
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP REASON: Setup expired — valid CLAUDE.md exemption. AMZN $271.58 > original take-profit $269.10. Risk Agent scores 3/10: entering at $271 with stop $257.45 (-5%) and target $311.65 (+15%) requires 3:1 R/R — while arithmetic R/R nominally passes, the catalyst is fully priced in and the technical setup is poor (buying into a 3-session +15% run with no pullback). Risk score 3 = automatic veto. Technical score 4: buying at the top of the earnings gap with no pattern confirmation (overbought; RSI likely >70). Sentiment: no X modifier (XAI unavailable). Decision: REJECTED. Note: missed $271 - $234 = $37/sh × 21sh = $777 unrealized gain due to API blockage on July 31. This is the core consequence of the ongoing proxy blockage."
+---
+```
+
+**GS (score 7.2 from July 31):**
+GS at ~$1,153.99 (Aug 3). Original entry target ~$1,020, stop $969, take-profit $1,173. GS is now at 98.4% of our original take-profit. Entering now at $1,154 leaves only $19 of upside vs our original $153 reward. R/R collapses to essentially 0. **SETUP EXPIRED.**
+
+```yaml
+---
+ts: 2026-08-03T13:48:00Z
+action: skip
+symbol: GS
+bucket: active
+setup: sector-rotation
+score: 7.2
+thesis: Setup expired — GS at $1,153.99 is 98.4% of original take-profit target ($1,173). Entry at $1,154 leaves $19 remaining upside vs $57.70 stop risk (5% below $1,154 = $1,096.30). R/R collapses to 0.33:1 — far below 3:1 minimum.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 8
+  technical: 4
+  sentiment: 7
+  macro: 7
+  risk: 2
+  tech_analyst: 7
+agent_average: 5.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP REASON: Guardrail violation (Rule 1) — R/R 0.33:1 fails the 3:1 minimum hard floor. Risk Agent scores 2/10 = automatic veto. GS has run from ~$1,020 to $1,153.99 (+13.1%) since July 31 planned entry. Opportunity missed entirely due to API blockage. Note: missed 4sh × ($1,153.99 - $1,020) = $535.96 unrealized gain. Will watch for pullback to $1,050-1,080 range for re-entry if financial sector thesis remains intact."
+---
+```
+
+**WFC (score 7.0 from July 31):**
+WFC at $86.45 (Aug 3). Q2 beat ($1.96 EPS, $22.62B revenue). Analyst consensus target $97.64. Entry $86.45, limit $86.88 (+0.5%), stop $82.54 (-5%), analyst target $97.64 = R/R: ($97.64−$86.88)/($86.88−$82.54) = $10.76/$4.34 = **2.48:1 — FAILS 3:1 minimum.** Risk Agent auto-veto.
+
+```yaml
+---
+ts: 2026-08-03T13:49:00Z
+action: skip
+symbol: WFC
+bucket: active
+setup: sector-rotation
+score: 7.0
+thesis: Wells Fargo fails 3:1 R/R requirement. At $86.45 with analyst consensus target $97.64: R/R = ($97.64-$86.88)/($86.88-$82.54) = 2.48:1 — below the 3:1 hard minimum. Valid guardrail skip.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 6
+  sentiment: 6
+  macro: 7
+  risk: 2
+  tech_analyst: 7
+agent_average: 5.83
+agents_above_7: 3
+master_decision: rejected
+master_notes: "SKIP REASON: Guardrail violation (Rule 1) — R/R 2.48:1 fails the 3:1 minimum hard floor. Risk Agent scores 2/10 = automatic veto. Entry limit $86.88, stop $82.54 (-5%), analyst target $97.64. Reward $10.76, Risk $4.34, R/R 2.48:1 < 3:1. For valid entry, target would need to be $99.90+ (above consensus $97.64). Regulatory concerns noted in recent press also weigh on upside thesis. Will revisit if WFC pulls back or analyst targets are raised. Note: WFC also down from August forecast beginning $97.68 — stock appears to have corrected, reducing near-term catalyst."
+---
+```
+
+**AAPL (score 7.0 from July 31 — conditional on pre-market ≥ $330):**
+AAPL at $308.91 today. July 31 condition was pre-market ≥ $330 (reflecting July 30 AH −7.36% gap to $308.88). AAPL remains at $308.91 — **condition not met.** Skip.
+
+```yaml
+---
+ts: 2026-08-03T13:50:00Z
+action: skip
+symbol: AAPL
+bucket: active
+setup: earnings-reaction-follow
+score: 7.0
+thesis: Condition not met — AAPL at $308.91 below $330 threshold set at July 30 daily review. AAPL dropped -7.36% post-earnings (supply constraints, China miss $18.8B vs $19.5B, Services $30.74B vs $31.22B). Has not recovered.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 6
+  technical: 5
+  sentiment: 6
+  macro: 7
+  risk: 6
+  tech_analyst: 8
+agent_average: 6.33
+agents_above_7: 2
+master_decision: rejected
+master_notes: "SKIP REASON: Guardrail exemption (Rule 1 — risk/reward insufficient) AND condition-not-met. AAPL at $308.91 vs $330 threshold. Even without the price condition: agents_above_7=2 fails the ≥4/6 minimum. Fundamentals score 6 (Q3 FY2026 beat but China miss and Services miss cloud the picture; supply constraints = headwind). Technical score 5 (no pattern confirmation; stock in downtrend from $344 52-week high to $308 = -10.5%). Sentiment 6 (muted AH reaction +0.58% post-earnings; weak X momentum). Risk 6 (R/R marginal: entry $311 limit, stop $295.45, target $346.65 = +11.4%/$15.55 reward vs $15.55 risk = barely 3:1 if target achievable — but analyst target only $323.28 = 2.0:1 R/R at analyst consensus). Master: REJECTED — both on scores and R/R vs consensus."
+---
+```
+
+**MS (score 7.0 from July 31):**
+MS at $210.42. Q2 2026 was strong (cited in July 30 daily review). Running fresh 6-agent score from available data. Without full Q2 data and with no X sentiment (XAI blocked), Technical agent can only score 5 (no candlestick confirmation in uptrend; possible extended run). Average falls short.
+
+```yaml
+---
+ts: 2026-08-03T13:51:00Z
+action: skip
+symbol: MS
+bucket: active
+setup: sector-rotation
+score: 6.3
+thesis: Morgan Stanley scores 6.3/10 average across 6 agents — below 7.0 minimum. Insufficient data on Q2 results to confirm fundamentals score above 7; no X sentiment available; technical confirmation unclear without candlestick data.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+agent_scores:
+  fundamentals: 7
+  technical: 5
+  sentiment: 5
+  macro: 7
+  risk: 7
+  tech_analyst: 7
+agent_average: 6.33
+agents_above_7: 4
+master_decision: rejected
+master_notes: "SKIP REASON: Average score 6.33 < 7.0 minimum. While 4/6 agents score 7+ (Fundamentals, Macro, Risk, Tech-Analyst), Technical=5 and Sentiment=5 drag average below threshold. Technical: MS at $210.42 — without current chart data, cannot confirm any of the 5-indicator stack (Stochastic, Candlestick, Volume Oscillator, MACD, Volume Spike). Only 0 of 5 indicators confirmed = Technical must score ≤5. Sentiment: no X data (XAI unavailable, degraded gracefully); base sentiment 5 (risk-on +1 modifier blocked). R/R: entry $211.47 limit, stop $200.90 (-5%), target $243.18 (+15%) = 3:1 ✓. Risk=7. But average=6.33 fails overall gate. Will re-score at Mid-Morning with additional technical data."
+---
+```
+
+---
+
+### FRESH SCAN — AUGUST 3, 2026
+
+**PLTR (Palantir):** Reports earnings TODAY Aug 3 AH. Score from sources: $127.79, +4.02% session, 8 consecutive beats, rev est. +80% YoY to $1.81B. Options pricing 12% swing. **SKIP — inside 48h binary event window (earnings today AH).** Rule 2 exemption.
+
+```yaml
+---
+ts: 2026-08-03T13:52:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: earnings-reaction-follow
+score: null
+thesis: PLTR reports Q2 2026 AH today (Aug 3). Inside 48h binary event window — no entry permitted per CLAUDE.md. Post-earnings follow entry eligible Aug 4 Market Open if results strong.
+size_pct: null
+stop: null
+target: null
+result_pct: null
+master_decision: rejected
+master_notes: "SKIP REASON: Rule 2 binary event exemption — earnings Aug 3 AH = inside 48h window. PLTR pre-earnings data: $127.79 (+4.02% today), 8 consecutive beats, consensus $1.81B revenue (+80% YoY), $0.34 EPS. Options pricing 12% swing. Strong thesis but timing excludes entry. Plan: score PLTR at Aug 4 Pre-Market after seeing AH results. Baird PT $200 (Outperform). If beat with raised guidance, target entry ~$130-145, score expected 7.5-8.5. No agent scores run (pre-earnings scoring premature)."
+---
+```
+
+**No other names scored ≥ 7 on fresh scan.** Oil-decline beneficiaries (airlines, consumer): insufficient catalyst specificity. Semiconductor pullback (MU, Sandisk): inside broad semiconductor choppiness ahead of AMD earnings — not a clean setup.
+
+---
+
+### UPDATED WATCHLIST — AUG 4 PRE-MARKET (BINDING)
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh MARKET | MANDATORY — below stop, 48h window. OPERATOR must act manually TODAY before 4 PM ET. |
+| 2 | PLTR | TBD | earnings-reaction-follow | Score at Pre-Market after AH results | Strong beat likely. Baird PT $200. If beat, target 21sh ~$130-145 bracket GTC. |
+| 3 | AMD | — | — | Do NOT enter post-earnings | After exit, wait for post-earnings dust to settle (next scan Aug 5+). |
+| 4 | WFC | 7.0 | sector-rotation | Watch — needs pullback to $80-82 for 3:1 R/R | Current $86.45 fails R/R. Re-entry if drops to $80 range (analyst target $97.64 = 3:1 from $80). |
+| 5 | MS | 6.3 | sector-rotation | Re-score at Mid-Morning with technical data | Close to threshold — needs candlestick confirmation on 5-min chart. |
+
+---
+
 ## 2026-07-31 — Pre-Market (8:00 AM ET / 12:05 UTC — API BLOCKED — 105th consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-07-31T12:05:14Z ✓

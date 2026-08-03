@@ -1,7 +1,39 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-07-31 (Friday) — PRE-MARKET (8:05 AM ET / 12:05 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 105th consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + orders attempted). ⚠️ AMD CRITICAL: pre-market ~$443-452 (below hard stop $481.42), Day 44+, NAKED — TODAY IS THE ABSOLUTE FINAL EXIT DAY (48h window opens Aug 2). 3 MOO orders ATTEMPTED, ALL FAILED (API blocked): AMD SELL, AMZN BUY (21sh, score 8.2), GS BUY (4sh, score 7.2). WFC + MS deferred to Market-Open limit brackets. AAPL REJECTED (score 4.83 — weak Q4 guide, supply constraints, $308.88 pre-market < $330 condition). OPERATOR MUST ACT MANUALLY on app.alpaca.markets NOW.**
+**2026-08-03 (Monday) — MARKET-OPEN (9:45 AM ET / 13:45 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 000 — 106th consecutive blocked session). Pre-Market silently failed today. Market-Open catch-up completed. AMD at $476.15 — below hard stop $481.42, Day 46+, NAKED, inside 48h binary event window (earnings Aug 4 AH). AMD exit ATTEMPTED — API blocked. OPERATOR MUST SELL 18sh AMD at MARKET on app.alpaca.markets BEFORE 4 PM ET TODAY — this is the ABSOLUTE FINAL opportunity before binary event lock. All prior watchlist entries (AMZN, GS) setup-expired; WFC/AAPL fail R/R or conditions; MS scored 6.3 < 7. PLTR scored for tomorrow Pre-Market (earnings tonight AH).**
+
+**AUG 3 MARKET-OPEN STATUS (9:45 AM ET / 13:45 UTC — 106th blocked session):**
+
+**Portfolio State (est. — API blocked):**
+- Cash: ~$90,644 (91.4% of equity est.)
+- AMD: 18sh × $476.15 = $8,570.70 (8.64% est.) — NAKED, BELOW stop $481.42 by $5.27, Day 46+, 48h binary event window ACTIVE (earnings Aug 4 AH)
+- Total equity est.: ~$99,215 (−0.79% vs $100K)
+- AMD unrealized P&L: 18 × ($476.15 − $506.76) = **−$550.98 (−6.0%)**
+- S&P 500 Aug 3: opened 7,462.13, +0.67% session. From May 1 baseline 7,200: **+4.33%**
+- Portfolio return: **−0.79%**. Benchmark gap: **−5.12 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (106th session)
+- Circuit breaker: NOT TRIPPED
+
+**AUG 3 HEARTBEAT AUDIT:**
+- ✗ Pre-Market (12:05Z expected): SILENT FAILURE — violation logged in Market-Open catch-up
+- ✓ Market-Open: STARTED 2026-08-03T13:45:47Z ✓ (this routine — catch-up running)
+
+**AUG 3 KEY DECISIONS:**
+- AMD EXIT ATTEMPTED — API blocked (HTTP 000, 106th session). OPERATOR MUST ACT MANUALLY.
+- AMZN: SETUP EXPIRED ($271.58 > take-profit target $269.10) → SKIP
+- GS: SETUP EXPIRED ($1,153.99 ≈ 98% of take-profit $1,173) → SKIP
+- WFC: FAILS 3:1 R/R (2.48:1 at consensus target $97.64) → RISK VETO
+- AAPL: CONDITION NOT MET ($308.91 < $330 threshold) → SKIP
+- MS: SCORED 6.33 < 7.0 minimum → REJECTED (Technical=5, Sentiment=5)
+- PLTR: 48h BINARY EVENT (reports AH today) → SKIP, score Aug 4 Pre-Market
+
+**MISSED OPPORTUNITY ACCOUNTING (due to API blockage July 31):**
+- AMZN: missed 21sh × ($271.58 − $234.00) = **+$788.82** unrealized gain (if entered July 31 MOO ~$234)
+- GS: missed 4sh × ($1,153.99 − $1,020.00) = **+$535.96** unrealized gain
+- Total opportunity cost from API blockage (Jul 31 only): **~$1,324.78**
+
+---
 
 **JULY 30 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
@@ -64,24 +96,24 @@
 
 No halts or boosts triggered (no closed trades).
 
-**TOMORROW'S WATCHLIST (July 31, 2026 Pre-Market — BINDING):**
+**TOMORROW'S WATCHLIST (Aug 4, 2026 Pre-Market — BINDING):**
 
 | Rank | Symbol | Score | Setup | Action | Notes |
 |---|---|---|---|---|---|
-| 1 | AMD | EXIT | — | SELL 18sh at MARKET FIRST | Final safe day — 48h window opens Aug 2 |
-| 2 | AMZN | 8.2 | earnings-reaction-follow | BUY 22sh MOO bracket GTC | AWS +37%, EPS $5.75. 6/6 ≥7. BINDING. |
-| 3 | GS | 7.2 | sector-rotation | BUY 4sh MOO bracket GTC | Q2 blowout, FOMC hold. BINDING FINAL. |
-| 4 | WFC | 7.0 | sector-rotation | BUY 30sh limit bracket GTC | Q2 EPS +16.3%. Market Open. |
-| 5 | MS | 7.0 | sector-rotation | BUY 20sh limit bracket GTC | Strong Q2. Market Open. |
-| 6 | AAPL | 7.0 | earnings-reaction-follow | BUY 7sh limit bracket GTC | EPS beat, iPhone +22%. If pre-mkt ≥$330. |
-| 7 | MSFT | 7.0 | breakout-volume | WATCH only | +14% today — wait for pullback to $455-470. |
-| 8 | NVDA | 6.5 | ai-momentum-pullback | WATCH | Chip sector +5%, AI validation. |
-| 9 | XLF | 6.5 | sector-rotation | WATCH | Financials ETF, FOMC hold tailwind. |
-| 10 | GLD | 6.0 | macro-hedge | WATCH | PCE 3.3%, GDP weaker = gold bid possible. |
+| 1 | AMD | MANDATORY EXIT | — | SELL 18sh MARKET — OPERATOR MUST ACT TODAY | Below stop, Day 46+, NAKED, 48h window. If not exited today, strategy violation. |
+| 2 | PLTR | TBD | earnings-reaction-follow | Score at Aug 4 Pre-Market after Aug 3 AH results | Baird PT $200, 8 consecutive beats, rev est. +80% YoY $1.81B, 12% options swing. If beat+guidance: target 22sh ~$130-145 bracket GTC. |
+| 3 | WFC | 7.0 | sector-rotation | WATCH — needs pullback to ~$80 for valid 3:1 R/R | At $86.45, R/R only 2.48:1 vs consensus. Valid entry ≤ $81 (target $97.64 = 3:1). |
+| 4 | MS | 6.3→? | sector-rotation | Re-score at Mid-Morning with technical confirmation | Needs 2/5 indicator confirmation (Stochastic/MACD/Volume) to lift Technical above 5. |
+| 5 | MSFT | 7.0 | breakout-volume | WATCH — pullback to $455-475 range | Was $455-470 target from July review. Check current price. |
+| 6 | NVDA | 6.5 | ai-momentum-pullback | WATCH — AMD earnings read-through | If AMD beats AH Aug 4, NVDA likely gaps up → score for breakout entry Aug 5. |
 
-**KEY MACRO / EARNINGS JULY 31:**
-- XOM (ExxonMobil) and ABBV (AbbVie) reporting — sector reads for Energy/Healthcare
-- Markets digesting AAPL (+0.58% AH muted) and AMZN (massive beat)
+**KEY MACRO / EARNINGS WEEK AUG 3-7:**
+- PLTR: Aug 3 AH (today) — consensus $1.81B rev (+80% YoY), $0.34 EPS. 12% options swing.
+- AMD: Aug 4 AH — consensus $11.3B rev (+48% YoY), $1.61 EPS. 10% options swing.
+- DIS: TBD this week
+- MCD: TBD this week
+- Macro: Iran peace talks → oil falling → consumer tailwind. S&P +0.67% today, risk-on.
+- Jobs report Friday Aug 7 — key macro data.
 - No major Fed speakers scheduled
 - AMD: LAST SAFE DAY (exit required before 48h window Aug 2)
 
