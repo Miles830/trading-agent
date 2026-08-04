@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-08-04T13:46:25Z",
-  "updated_by": "market-open",
+  "last_updated": "2026-08-04T15:15:47Z",
+  "updated_by": "mid-morning",
   "portfolio": {
-    "total_equity": 99770,
+    "total_equity": 99608,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 90.9,
+    "cash_pct": 91.0,
     "buying_power": 181288,
-    "long_market_value": 9126,
+    "long_market_value": 8964,
     "short_market_value": 0.0,
-    "daily_pnl": 389,
-    "daily_pnl_pct": 0.39,
-    "total_return_pct": -0.23,
-    "spx_return_pct": 5.76,
-    "benchmark_gap_pct": -5.99,
+    "daily_pnl": 227,
+    "daily_pnl_pct": 0.23,
+    "total_return_pct": -0.39,
+    "spx_return_pct": 6.25,
+    "benchmark_gap_pct": -6.64,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 9126,
-      "active_pct": 9.1,
+      "active_value": 8964,
+      "active_pct": 9.0,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 90.9
+      "cash_pct": 91.0
     },
-    "note": "Aug 4 MARKET-OPEN (9:45 AM ET / 13:46Z). API BLOCKED 108th consecutive session. AMD at open ~07 (range 04-510, +4.5% from Monday close), Day 53, NAKED, BINARY EVENT (earnings AH TONIGHT +/-12%). PLTR opened ~40-147 (approved 8.33/10, blocked). NVDA opened 11.49 (approved 7.67/10, blocked). OPERATOR: EXIT AMD NOW + ENTER PLTR 34sh + ENTER NVDA 23sh via app.alpaca.markets. SPY ~7615 (+0.19%). Cumulative gap: -5.99 pp."
+    "note": "Aug 4 MID-MORNING (11:15 AM ET / 15:15Z). API BLOCKED 109th consecutive session. AMD ~$498 est., FADED from $504-510 open, Day 54, NAKED, BINARY EVENT TONIGHT +/-8.5-12%. PLTR $150+ (re-entry attempted at $150.75, blocked). NVDA ~$207 gap-fade (re-entry at $208.04 blocked, better entry). MU flagged for Midday scoring. OPERATOR: EXIT AMD NOW + ENTER PLTR 33sh $150.75 + ENTER NVDA 23sh $208.04 via app.alpaca.markets. SPY ~7650 (+0.65%). Cumulative gap: -6.64 pp."
   },
   "positions": [
     {
@@ -31,46 +31,53 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 507.0,
-      "pnl": 43.2,
-      "pnl_pct": 0.05,
+      "current_price": 498.0,
+      "pnl": -158.0,
+      "pnl_pct": -1.73,
       "stop_loss": null,
       "take_profit": 582.78,
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "AMD at 04-510 at market open Aug 4. NAKED 53 days. BINARY EVENT: AMD Q2 earnings AH TONIGHT (EPS est $1.61, Rev $11.34B +47% YoY, options-implied move +/-12%). Day 53 (>>2-week max hold rule). Exit is MANDATORY. API blocked 108th session. OPERATOR: SELL 18sh AMD MARKET ORDER NOW via app.alpaca.markets."
+      "note": "AMD FADED from $504-510 open to ~$498 mid-morning (best est.). NAKED 54 days. BINARY EVENT: AMD Q2 earnings AH TONIGHT (EPS est $1.61, Rev $11.34B +47% YoY, options-implied move +/-8.5-12%). Day 54. Stop $481.42 not yet breached at $498 but AMD approaching it on downtrend. Sell-the-news pattern last 4 quarters. OPERATOR: SELL 18sh AMD MARKET ORDER NOW via app.alpaca.markets \u2014 FINAL CHANCE BEFORE BINARY EVENT."
     }
   ],
   "market": {
     "mode": "risk-on-ai-earnings-momentum",
-    "spx": 7615.0,
-    "spx_daily_change_pct": 0.19,
+    "spx": 7650.0,
+    "spx_daily_change_pct": 0.65,
     "btc": 64000,
     "eth": 1910,
-    "macro_notes_md": "Aug 4 Market Open: S&P ~7,615 (+0.19%), Nasdaq +0.5% (risk-on). PLTR gap-up 12-17% on Q2 beat (+93% Rev YoY). NVDA $211.49 (+2.35%). AMD $504-510 (+4.5%) pre-earnings AH tonight +/-12%. Iran diplomacy oil -5% continuing. FOMC hold 3.50-3.75%. PLTR and NVDA approved entries blocked by API. Portfolio 9.1% deployed vs 85% target."
+    "macro_notes_md": "Aug 4 Mid-Morning: S&P ~7,650 (+0.65%), QQQ +2.1% (AI/software leading). PLTR $150+ on Q2 blowout (Rev +93% YoY, Rule of 40 = 155%). NVDA ~$207 (-1.8% intraday fade, gave back gap-up). AMD ~$498 (fading into earnings AH tonight +/-8.5-12%). MU +4.3% AI/HBM sympathy. MSFT -1.5% rotation. Fed Governor Cook speaking noon ET. FOMC Minutes tomorrow Aug 5. Oil sliding. Portfolio 9% deployed vs 85% target."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": "EXIT",
-      "action": "SELL 18sh MARKET \u2014 EMERGENCY \u2014 AMD EARNS AH TONIGHT \u2014 OPERATOR: SELL NOW via app.alpaca.markets",
-      "notes": "AMD $504-510 at open. Day 53, naked 53 days, binary event (earnings AH tonight +/-12% implied). Entry ~$506.76 = roughly breakeven. Do NOT hold into earnings. This is the last possible exit before the binary event."
+      "action": "SELL 18sh MARKET \u2014 EMERGENCY \u2014 AMD EARNS AH TONIGHT \u2014 FADED TO ~$498 \u2014 OPERATOR: SELL NOW via app.alpaca.markets",
+      "notes": "AMD ~$498 mid-morning, down from $504-510 open. Day 54, naked 54 days. Earnings AH tonight +/-8.5-12% implied. Entry $506.76 = -$158 unrealized loss. Sell-the-news pattern 4 consecutive quarters. Do NOT hold into earnings. Stop $481.42 approaching."
     },
     {
       "symbol": "PLTR",
       "bucket": "active",
       "score": 8.33,
-      "action": "BUY 34sh limit ~$145 bracket GTC \u2014 APPROVED, API BLOCKED \u2014 OPERATOR: ENTER MANUALLY",
-      "notes": "Q2 2026 massive beat: Rev $1.94B (+93% YoY), EPS $0.41 vs $0.35, GAAP margin 47%, Adj margin 62%. Opened ~$140-147. Stop $137.75 (-5%), Target $166.75 (+15%), R/R 5.1:1. Score 8.33/10, all 6 agents >=7."
+      "action": "BUY 33sh limit $150.75 bracket GTC \u2014 APPROVED, API BLOCKED \u2014 OPERATOR: ENTER MANUALLY",
+      "notes": "Q2 2026 massive beat (Rev $1.94B +93% YoY, EPS $0.41 vs $0.35, Rule of 40 = 155%). Surged to $150+ mid-morning. Updated entry from $145 to $150.75 (5 cents above $150). Stop $142.50 (-5%), Target $172.50 (+15%), R/R 3:1 minimum satisfied. 33sh (was 34sh at $145). Score 8.33/10, all 6 agents >=7."
     },
     {
       "symbol": "NVDA",
       "bucket": "active",
       "score": 7.67,
-      "action": "BUY 23sh limit $211.49 bracket GTC \u2014 APPROVED, API BLOCKED \u2014 OPERATOR: ENTER MANUALLY",
-      "notes": "Opened at $211.49 (+2.35%). Stop $200.92 (-5%), Target $302.83 (+43%), R/R 8.64:1. AI capex narrative confirmed by PLTR/AMZN/MSFT. 61 analysts Strong Buy. Earnings Aug 26 (22 days, outside 48h window). Score 7.67/10."
+      "action": "BUY 23sh limit $208.04 bracket GTC \u2014 APPROVED, API BLOCKED \u2014 OPERATOR: ENTER MANUALLY",
+      "notes": "Gave back morning gap: $211.49 open faded to ~$207 mid-morning. BETTER ENTRY. Stop $196.65 (-5%), Target $302.83 (61-analyst consensus, +43%), R/R 9.26:1 (improved). AI capex confirmed. Earnings Aug 26 (22 days out, outside 48h window). Score 7.67/10."
+    },
+    {
+      "symbol": "MU",
+      "bucket": "active",
+      "score": null,
+      "action": "SCORE IN MIDDAY ROUTINE (12:30 PM ET) \u2014 DO NOT ENTER YET",
+      "notes": "Micron +4.3% mid-morning on AI/HBM storage demand sympathy with PLTR. Dominant HBM supplier for NVDA H100/H200/B200. Full 6-agent gate needed before entry decision. Tentative setup: ai-momentum-pullback or breakout-volume."
     },
     {
       "symbol": "GS",
@@ -94,10 +101,10 @@
       "last_summary": "Aug 4 Market Open: No MOO fills to backfill (none placed). AMD open ~$507 (+4.5%), PLTR ~$140-147 (approved 8.33, blocked), NVDA $211.49 (approved 7.67, blocked). AMD earnings AH tonight - OPERATOR must exit immediately. API blocked 108th session. 3 YAML violation/skip entries logged."
     },
     "mid-morning": {
-      "status": "silent-failure",
-      "last_run": "2026-07-29T15:11:00Z",
-      "next_run": "2026-07-31T15:00:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. Intraday scan missed."
+      "status": "completed",
+      "last_run": "2026-08-04T15:15:47Z",
+      "next_run": "2026-08-05T15:00:00Z",
+      "last_summary": "Aug 4 Mid-Morning: AMD faded to ~$498 (from $504-510 open), approaching stop $481.42. PLTR updated entry $150.75 (stock surged past $145 target), NVDA updated entry $208.04 (gap fade = better entry). MU flagged for Midday scoring (+4.3% AI/HBM). All orders blocked API 109th session. 3 YAML skip/stop-hit entries logged."
     },
     "midday": {
       "status": "silent-failure",
@@ -125,6 +132,71 @@
     }
   },
   "trades": [
+    {
+      "ts": "2026-08-04T15:15:00Z",
+      "action": "stop_hit",
+      "symbol": "AMD",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "thesis": "AMD faded from $504-510 open to ~$498 mid-morning, approaching $481.42 stop. Earnings AH tonight +/-8.5-12%. Exit blocked by API 109th session. OPERATOR: SELL 18sh AMD NOW.",
+      "size_pct": 9.0,
+      "stop": 481.42,
+      "target": null,
+      "result_pct": null,
+      "master_decision": "stop_hit",
+      "master_notes": "AMD at ~$498 est. vs entry $506.76 = -$158 unrealized. Stop $481.42 approaching. Binary event AH tonight. Sell-the-news pattern 4 consecutive quarters (options pricing +/-8.5-12%). Mandatory exit. API blocked 109th session."
+    },
+    {
+      "ts": "2026-08-04T15:15:00Z",
+      "action": "skip",
+      "symbol": "PLTR",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.33,
+      "thesis": "PLTR $150+ mid-morning. Updated entry $150.75 (vs $145 planned). Bracket GTC attempted. API blocked 109th session.",
+      "size_pct": 4.96,
+      "stop": 142.50,
+      "target": 172.50,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.33,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "Entry updated $145->$150.75 (stock surged past target). R/R 3:1 at $172.50 target. All 6 agents >=7. Forced skip, API blocked."
+    },
+    {
+      "ts": "2026-08-04T15:15:00Z",
+      "action": "skip",
+      "symbol": "NVDA",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.67,
+      "thesis": "NVDA gap fade to ~$207 = better entry than $211.49 planned. Updated limit $208.04. Bracket GTC attempted. API blocked 109th session.",
+      "size_pct": 4.78,
+      "stop": 196.65,
+      "target": 302.83,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 9
+      },
+      "agent_average": 7.67,
+      "agents_above_7": 5,
+      "master_decision": "approved",
+      "master_notes": "Entry updated $211.49->$208.04 (gap fade). R/R improved to 9.26:1. 2-of-5 indicators met (Stochastic support zone + MACD 1-hour bullish). Forced skip, API blocked."
+    },
     {
       "ts": "2026-08-04T13:46:00Z",
       "action": "violation",

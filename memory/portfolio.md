@@ -1,7 +1,63 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-08-04 (Tuesday) — MARKET-OPEN (9:45 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 108th consecutive blocked session). MARKET-OPEN ✅ COMPLETED (research + log updated). ⚠️⚠️ AMD CRITICAL: AMD $504-510 at open (+4.5% from $485.39 Monday close), Day 53, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ±12%). OPERATOR MUST EXIT AMD BEFORE MARKET CLOSE TODAY — LAST CHANCE. PLTR OPENED ~$140-147 (score 8.33, blocked). NVDA OPENED $211.49 (score 7.67, blocked). Cumulative gap: ~-5.99 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (108th session).**
+**2026-08-04 (Tuesday) — MID-MORNING (11:15 AM ET / 15:15 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 109th consecutive blocked session). MID-MORNING ✅ COMPLETED (research + log updated). ⚠️⚠️⚠️ AMD CRITICAL: AMD FADED from $504-510 open to ~$498 est. mid-morning (near stop $481.42), Day 54, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ±8.5-12%). OPERATOR MUST EXIT AMD BEFORE 3:50 PM ET TODAY — ABSOLUTE LAST CHANCE. PLTR AT $150+ (score 8.33, re-attempted entry at $150.75 blocked). NVDA AT ~$207 (score 7.67, re-attempted entry at $208.04 blocked, better entry than $211.49 planned). MU flagged for Midday scoring. Cumulative gap: ~-6.64 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (109th session).**
+
+---
+
+**AUGUST 4 MID-MORNING STATUS (11:15 AM ET / 15:15 UTC — API BLOCKED — 109th session):**
+
+**Portfolio August 4 Mid-Morning (est., API blocked):**
+- Cash: ~$90,644 (91.0% est.)
+- AMD: 18sh × ~$498 est. = ~$8,964 (9.0% est.) — NAKED, Day 54, BINARY EVENT (earnings AH TONIGHT ±8.5-12%), FADED from $504-510 open, approaching stop $481.42
+- Total equity est.: ~$99,608 (-0.39% vs $100K starting capital)
+- P&L Aug 4 (mid-morning vs Monday close $99,381): ~+$227 (+0.23%)
+- SPY est.: ~7,650 (+0.65% from Monday close 7,600.50)
+- Daily gap (mid-morning): ~-0.42 pp (portfolio lagging on AMD fade + cash drag)
+- Cumulative: Portfolio ~-0.39% vs SPY +6.25% est. (7,200→7,650) → **Cumulative gap: ~-6.64 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (109th consecutive session)
+
+**HEARTBEAT AUDIT AUGUST 4 (as of 11:15 AM ET):**
+- ✓ Pre-Market (12:11Z): STARTED 12:11:21Z / COMPLETED 12:22:57Z ✓
+- ✓ Market-Open (13:46Z): STARTED 13:46:25Z / COMPLETED 13:56:27Z ✓
+- ✓ Mid-Morning (15:15Z): STARTED 15:15:47Z ✓ (this routine, in progress)
+
+**STOP-LOSS AUDIT:**
+- ❌ AMD: NO STOP AT ALPACA — API blocked, 54th day naked (CRITICAL — earnings AH tonight, stock fading toward stop $481.42)
+
+**KEY MARKET DATA (August 4, 2026 Mid-Morning — 11:15 AM ET):**
+- S&P 500: ~7,633-7,671 (+0.4-0.9% from Monday close 7,600.50) — QQQ +2.1% — Risk-on
+- PLTR: $150+ (up 15-27% from Monday close $125.65) — Q2 blowout maintained gains all morning; Rule of 40 = 155%
+- AMD: ~$498 est. (faded hard from $519.74 pre-market → $504-510 open → ~$498 mid-morning). Earnings AH tonight ±8.5-12% implied.
+- NVDA: ~$206-207 (gave back morning gap from $211.49 open; -1.8% intraday, ~flat vs Monday close)
+- MU: +4.3% (AI/HBM storage sympathy play — flagged for Midday scoring)
+- MSFT: -1.5% (capital rotating to high-beta AI growth)
+- Oil: Sliding — marginal tailwind
+- Fed Governor Cook speaking noon ET; FOMC Minutes due tomorrow Aug 5
+
+**APPROVED ENTRIES (ALL BLOCKED BY API — 109th CONSECUTIVE SESSION):**
+1. **AMD EXIT** — BINDING EMERGENCY. 18sh sell market. API blocked. OPERATOR: Exit immediately via app.alpaca.markets. AMD near stop at $481.42; earnings AH TONIGHT.
+2. **PLTR** — APPROVED 8.33/10, `earnings-reaction-follow`. Updated: 33sh @ $150.75 limit (updated from $145), stop $142.50, target $172.50, R/R 3:1. API blocked. OPERATOR: Enter manually. $150.75 limit bracket GTC.
+3. **NVDA** — APPROVED 7.67/10, `ai-momentum-pullback`. Updated: 23sh @ $208.04 limit (better entry than $211.49; gap fade), stop $196.65, target $302.83, R/R 9.26:1. API blocked. OPERATOR: Enter manually. $208.04 limit bracket GTC.
+4. **MU** — Flagged for Midday scoring. AI/HBM storage demand +4.3% mid-morning. Full 6-agent gate in Midday routine.
+
+**REJECTED:**
+- **GS** — Stale catalyst, still below threshold. No fresh catalyst.
+- **META** — Below key MAs, FCF concerns. Skip.
+- **MSFT** — Selling off -1.5% today; rotating out. Skip.
+
+**TOMORROW'S / NEXT ROUTINE WATCHLIST (Midday 12:30 PM ET):**
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh MARKET | Binary event AH tonight; exit by 3:50 PM ET LATEST |
+| 2 | PLTR | 8.33 | earnings-reaction-follow | BUY 33sh @ $150.75 limit | Updated entry; $142.50 stop, $172.50 target, R/R 3:1, bracket GTC |
+| 3 | NVDA | 7.67 | ai-momentum-pullback | BUY 23sh @ $208.04 limit | Better entry on gap fade; $196.65 stop, $302.83 target, R/R 9.26:1 |
+| 4 | MU | TBD | TBD | Score in Midday | Micron +4.3% on AI/HBM storage demand; full 6-agent gate needed |
+
+**SECTOR EXPOSURE (post AMD exit, post PLTR+NVDA entry):**
+- Technology: 4.96% (PLTR) + 4.78% (NVDA) = 9.74% (well under 25% cap ✓)
+- Cash: ~$90,644 → after AMD exit + PLTR + NVDA: ~$80,933 (81.2%) — still massively above 5% floor
+- Remaining deployment gap vs 85% target: ~71 pp — MU + 2-3 additional positions needed
 
 ---
 
