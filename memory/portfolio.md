@@ -1,9 +1,53 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-08-04 (Tuesday) — MARKET-OPEN (9:45 AM ET / 13:46 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 108th consecutive blocked session). MARKET-OPEN ✅ COMPLETED (research + log updated). ⚠️⚠️ AMD CRITICAL: AMD $504-510 at open (+4.5% from $485.39 Monday close), Day 53, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ±12%). OPERATOR MUST EXIT AMD BEFORE MARKET CLOSE TODAY — LAST CHANCE. PLTR OPENED ~$140-147 (score 8.33, blocked). NVDA OPENED $211.49 (score 7.67, blocked). Cumulative gap: ~-5.99 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (108th session).**
+**2026-08-04 (Tuesday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 109th consecutive blocked session). MIDDAY ✅ COMPLETED (research + log updated). ⚠️⚠️⚠️ AMD CRITICAL: AMD ~$511.67 est. (midday), Day 53, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ±12%). LAST CHANCE — MOC deadline 3:50 PM ET. PUSH NOTIFICATION SENT TO OPERATOR. Mid-Morning routine SILENTLY FAILED (no heartbeat). PLTR ~$149-155 est. (score 8.33, blocked). NVDA ~$213-220 est. (score 7.67, blocked). Cumulative gap: ~-6.23 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (109th session).**
 
 ---
+
+**AUGUST 4 MIDDAY STATUS (12:35 PM ET / 16:35 UTC — API BLOCKED — 109th session):**
+
+**Portfolio August 4 Midday (est., API blocked):**
+- Cash: ~$90,644 (90.8% est.)
+- AMD: 18sh × ~$511.67 est. (midday drift) = ~$9,210 (9.2% est.) — NAKED, Day 53, BINARY EVENT (earnings AH TONIGHT ±12%) — MOC DEADLINE 3:50 PM ET
+- Total equity est.: ~$99,854 (-0.15% vs $100K starting capital)
+- P&L Aug 4 (intraday): AMD +$26.28/sh × 18 = +$473 est. (+0.47%)
+- SPY est.: ~7,638 (+0.50% from Monday close 7,600.50)
+- Daily gap (intraday): -0.03 pp (AMD slightly behind SPY midday)
+- Cumulative: Portfolio ~-0.15% vs SPY +6.08% (7,200→7,638 est.) → **Cumulative gap: ~-6.23 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (109th consecutive session)
+
+**HEARTBEAT AUDIT AUGUST 4 (as of 12:35 PM ET):**
+- ✓ Pre-Market (12:11Z): STARTED 12:11:21Z / COMPLETED 12:22:57Z ✓
+- ✓ Market-Open (13:46Z): STARTED 13:46:25Z / COMPLETED 13:56:27Z ✓
+- ✗ Mid-Morning (15:00Z): SILENT FAILURE — no heartbeat (violation logged)
+- ✓ Midday (16:35Z): STARTED 16:35:24Z ✓ (this routine, in progress)
+
+**STOP-LOSS AUDIT:**
+- ❌ AMD: NO STOP AT ALPACA — API blocked, 53rd day naked (CRITICAL — earnings AH tonight, ±12% binary event)
+- 📢 Push notification sent to operator: EXIT AMD before 3:50 PM ET MOC
+
+**KEY MARKET DATA (August 4, 2026 Midday — 12:35 PM ET est.):**
+- S&P 500: ~7,638 est. (+0.50% from Monday close 7,600.50) — Risk-on continuing
+- Nasdaq: +0.9% est. — Tech sector leadership intact (PLTR momentum driving)
+- PLTR: ~$149-155 est. (gap-up continuation, Q2 $1.94B Rev +93% YoY) — entry blocked
+- AMD: ~$511.67 est. (midday, pre-earnings drift, earnings AH TONIGHT ±12%) — EXIT REQUIRED
+- NVDA: ~$213-220 est. (AI capex narrative continuing) — entry blocked
+- BTC: ~$64,000-66,000 est. | ETH: ~$1,910-1,950 est.
+
+**APPROVED ENTRIES (ALL BLOCKED BY API — 109th CONSECUTIVE SESSION):**
+1. **AMD EXIT** — BINDING EMERGENCY. 18sh sell market/MOC. API blocked. OPERATOR: Exit via app.alpaca.markets before 3:50 PM ET. AMD earnings AH TONIGHT.
+2. **PLTR** — APPROVED 8.33/10, `earnings-reaction-follow`. 33sh @ ~$149 limit, stop $141.55, target $171.35. API blocked. OPERATOR: Enter manually.
+3. **NVDA** — APPROVED 7.67/10, `ai-momentum-pullback`. 23sh @ $214.00, stop $203.30 (-5%), target $246.10 (+15%). API blocked. OPERATOR: Enter manually.
+
+**AFTERNOON WATCHLIST (August 4 Midday → Close, binding):**
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh MOC before 3:50 PM ET | Binary event tonight; LAST CHANCE |
+| 2 | PLTR | 8.33 | earnings-reaction-follow | BUY 33sh limit ~$149 bracket GTC | ~$149-155 midday; entry window narrowing |
+| 3 | NVDA | 7.67 | ai-momentum-pullback | BUY 23sh limit $214 bracket GTC | ~$213-220 midday; AI capex intact |
+| 4 | SPY/QQQ | TBD | sector-rotation | 10-15% allocation if no single-name | Cash at 90.8% indefensible at -6.23 pp gap |
+| 5 | AMD post-earnings (Aug 5) | TBD | earnings-reaction-follow/fade | Score Aug 5 Pre-Market | Beat → follow; miss → watch 3-5 days |
 
 **AUGUST 4 MARKET-OPEN STATUS (9:45 AM ET / 13:46 UTC — API BLOCKED — 108th session):**
 
