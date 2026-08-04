@@ -1,7 +1,72 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-08-03 (Monday) — DAILY REVIEW (4:30 PM ET / 20:34 UTC). Alpaca API STILL BLOCKED (proxy CONNECT rejected HTTP 403 — 106th+ consecutive blocked session). DAILY REVIEW ✅ COMPLETED (research + log updated). ⚠️⚠️ AMD CRITICAL ESCALATION: AMD ~$479 est., below hard stop $481.42, Day 51+, NAKED, INSIDE 48H BINARY EVENT WINDOW (AMD earns AH TOMORROW August 4). 6 of 7 routines silently failed today — AMD unmonitored all day. OPERATOR MUST EXIT AMD TONIGHT (AH) OR FIRST THING AUGUST 4 MORNING. S&P +1.5% today; portfolio +0.05% (pure cash drag). Cumulative gap vs SPY: -5.58 pp.**
+**2026-08-04 (Tuesday) — PRE-MARKET (8:00 AM ET / 12:12 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 107th+ consecutive blocked session). PRE-MARKET ✅ COMPLETED (research + log updated). ⚠️⚠️ AMD CRITICAL: AMD $519.74 pre-market (+7.21%), Day 52, NAKED, INSIDE BINARY EVENT WINDOW (EARNINGS AH TONIGHT). OPERATOR MUST EXIT AMD MANUALLY BEFORE OPEN. NEW OPPORTUNITIES: PLTR APPROVED 8.33/10 (earnings-reaction-follow, +16% pre-market on 93% revenue beat); NVDA APPROVED 7.67/10 (ai-momentum-pullback). GS REJECTED 6.67/10 (fresh score below 7.0). SPY baseline 7,600.50; cumulative gap ~-5.6 pp.**
+
+---
+
+**AUGUST 4 PRE-MARKET STATUS (8:00 AM ET / 12:12 UTC — API BLOCKED — 107th+ session):**
+
+**Portfolio August 4 Pre-Market (est., API blocked):**
+- Cash: ~$90,644 (90.6% est.)
+- AMD: 18sh × $519.74 pre-market = ~$9,355 (9.4% est.) — NAKED, Day 52, BINARY EVENT (earnings AH tonight)
+- Total equity est.: ~$99,999 (flat vs $100K)
+- Pre-market P&L Aug 4: AMD +$34.35/sh × 18 = +$618 unrealized (+0.62%)
+- SPY Monday Aug 3 close: 7,600.50; futures Aug 4: +0.21%
+- Daily gap (so far): ~0.41% behind (SPY +0.21% futures vs flat portfolio)
+- Cumulative: Portfolio ~0.0% vs SPY +5.56% (7,200→7,600.50) → **Cumulative gap: ~-5.6 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (107th+ consecutive session)
+
+**HEARTBEAT AUDIT AUGUST 4 (as of 8:12 AM ET):**
+- ✓ Pre-Market (12:11Z): STARTED 12:11:21Z ✓ (this routine, in progress)
+
+**STOP-LOSS AUDIT:**
+- ❌ AMD: NO STOP AT ALPACA — API blocked, 52nd day naked
+
+**KEY MARKET DATA (August 4, 2026 Pre-Market):**
+- S&P 500 Futures: +0.21% (7,600.50 Monday close)
+- Risk-on: Iran diplomacy holding, AI earnings momentum (AMZN +37% AWS, MSFT +43% Azure, PLTR +93% Rev)
+- PLTR: ~$145.60 pre-market (+16%) — Q2 Rev $1.94B (+93% YoY), EPS $0.41 vs $0.35 (+18.5% beat)
+- AMD: $519.74 pre-market (+7.21%) — Earnings AH TONIGHT (EPS est $1.61, Rev $11.34B +47%, ±12% options move)
+- NVDA: $208.55 pre-market (+0.92%) — AI capex confirmed; Earnings Aug 26
+- CAT: +6% pre-market (Q2 earnings beat before open)
+- GS: ~$1,027-1,036 (no fresh catalyst)
+
+**APPROVED ENTRIES (ALL BLOCKED BY API):**
+1. **AMD EXIT** — BINDING. 18sh sell market. API blocked. OPERATOR: Exit manually now.
+2. **PLTR** — APPROVED 8.33/10, `earnings-reaction-follow`. 34sh @ $145, stop $137.75, target $166.75. API blocked. OPERATOR: Enter manually.
+3. **NVDA** — APPROVED 7.67/10, `ai-momentum-pullback`. 23sh @ $208.55, stop $198.12, target $302.83. API blocked. Verify technical indicators at open first.
+
+**REJECTED:**
+- **GS** — REJECTED 6.67/10 (fresh score below 7.0; Technical+Sentiment degraded). 6th deferral.
+- **META** — Estimate 6.2/10. Below all key MAs, FCF concerns. Skip.
+
+**TOMORROW'S WATCHLIST (August 4 post-session / August 5 Pre-Market — BINDING):**
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh MARKET | Binary event tonight; exit AH or Aug 5 AM if not done today |
+| 2 | PLTR | 8.33 | earnings-reaction-follow | BUY 34sh @ ~$145 | Highest conviction; +16% pre-market on 93% Rev beat |
+| 3 | NVDA | 7.67 | ai-momentum-pullback | BUY 23sh @ ~$208 | Verify technical indicators at open; earnings Aug 26 |
+| 4 | AMD post-earnings | TBD | earnings-reaction-follow or fade | Score Aug 5 Pre-Market | AMD ±12% tonight; beat→follow, miss→observe 3-5 days |
+| 5 | SPY/QQQ | TBD | sector-rotation | 10-15% allocation | Still >90% cash — indefensible at -5.6 pp cumulative gap |
+
+**SECTOR EXPOSURE (post AMD exit, post PLTR+NVDA entry):**
+- Financials: 0%
+- Technology: 4.93% (PLTR) + 4.8% (NVDA) = 9.73% (well under 25% cap ✓)
+- Semiconductors: 4.8% (NVDA only)
+- Cash: ~$90,644 → after PLTR+NVDA: ~$80,917 (80.9%) — still massively above 5% floor
+
+**SETUP PERFORMANCE TRACKER (Rolling 5-Day: July 31 — August 4):**
+| Setup | 5-Day Trades | Wins | Losses | Win Rate | Halted? |
+|-------|-------------|------|--------|----------|---------|
+| ai-momentum-pullback | 0 closed | — | — | — | No |
+| earnings-reaction-follow | 0 closed | — | — | — | No |
+| earnings-reaction-fade | 0 | — | — | — | No |
+| breakout-volume | 0 | — | — | — | No |
+| sector-rotation | 0 | — | — | — | No |
+| silent-failure/violation | 4 (Aug 4 pre-mkt) | — | — | — | — |
+
+---
 
 **AUGUST 3 DAILY REVIEW STATUS (4:30 PM ET / 20:34 UTC):**
 
