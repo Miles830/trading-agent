@@ -4,6 +4,207 @@
 
 ---
 
+## 2026-08-04 — Market Open (9:45 AM ET / 13:46 UTC — API BLOCKED — 108th consecutive session)
+
+**HEARTBEAT:** STARTED Market-Open 2026-08-04T13:46:25Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **108th consecutive blocked session** (paper-api.alpaca.markets unreachable via HTTPS_PROXY)
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X sentiment modifier.
+**Market Status:** OPEN (9:46 AM ET). Regular session in progress. AMD earnings AH tonight.
+
+---
+
+### PORTFOLIO STATE (August 4, 2026 — Market Open — API BLOCKED, prices from web research)
+
+**Total Equity: ~$99,770 est.**
+**Cash: ~$90,644 (90.9%) — 5% floor**
+**Trading bucket: ~$9,126 (9.1%) — 1 position (AMD 18sh × ~$507 est.) — target 85%**
+**Crypto bucket: $0 (0%) — 0 positions — target 10%**
+
+- **AMD:** 18sh × ~$507 est. (range $504-510, +4.5% from $485.39 Monday close) = ~$9,126 — **NAKED, Day 53, binary event (earnings AH tonight), BELOW pre-market high $519.74**
+- **PLTR:** Not held. Approved 8.33/10, opened ~$142-147 (post-earnings gap). Entry blocked by API.
+- **NVDA:** Not held. Approved 7.67/10, opened at $211.49 (+2.35% from $206.64 Monday close). Entry blocked.
+
+**Market Open Summary:**
+- S&P 500: ~7,615 est. (+0.19% from Monday close 7,600.50). Risk-on continues.
+- Nasdaq: Rising ~0.5%. Tech sector leadership intact.
+- AMD: $504-510 (faded from pre-market $519.74 as earnings anticipation normalizes). Earnings AH tonight — ±12% implied move. BINARY EVENT WINDOW ACTIVE.
+- PLTR: Opened ~$140-147 on massive Q2 beat (+93% Rev YoY). Gap-up day, strong volume.
+- NVDA: $211.49 (+2.35%). AI capex narrative continuing on PLTR/AMZN/MSFT beat validation.
+- SPY: ~$760-762.
+
+**P&L vs Monday Close:** AMD: +$21.61/sh × 18 = +$389 est. (+0.39%)
+**SPY daily change (est.):** +0.19%
+**Daily gap (est.):** +0.20 pp (portfolio slightly ahead on AMD's early strength)
+**Cumulative portfolio return:** ~-0.23% (equity ~$99,770 vs $100K starting capital)
+**Cumulative SPY return (May 1 baseline 7,200 → 7,615 est.):** +5.76%
+**Cumulative benchmark gap: ~-5.99 pp (20-DAY UNDERPERFORMANCE FLAG: ACTIVE — 108th session)**
+
+---
+
+### PREDECESSOR CHECK
+
+Pre-Market heartbeat: STARTED 2026-08-04T12:11:21Z / COMPLETED 2026-08-04T12:22:57Z ✓
+**NO CATCH-UP REQUIRED** — Pre-Market fired and completed within its window. Watchlist from Pre-Market (PLTR 8.33, NVDA 7.67) are the active outstanding commitments.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+❌ **AMD: NO STOP ORDER AT ALPACA** — API blocked (HTTP 403). Cannot access GET /v2/orders?status=open or GET /v2/positions. AMD has been naked since entry June 14, 2026 — **53 consecutive days** without a resting stop. AMD is inside its binary event window (earnings AH tonight, ±12% implied).
+
+**Status: ONGOING GUARDRAIL VIOLATION** — Cannot be remediated while API is blocked.
+
+---
+
+### MOO BACKFILL
+
+No MOO orders were placed in the Pre-Market routine (API blocked in Pre-Market). No fills to confirm or backfill stops for.
+
+---
+
+### WATCHLIST EXECUTION
+
+**Pre-Market produced 2 approved entries with scores ≥7:**
+
+| Symbol | Score | Setup | Status |
+|--------|-------|-------|--------|
+| PLTR | 8.33 | earnings-reaction-follow | OUTSTANDING — API blocked |
+| NVDA | 7.67 | ai-momentum-pullback | OUTSTANDING — API blocked |
+
+Both entries remain unexecuted. Per CLAUDE.md Deployment Bias: "A scored watchlist is a commitment, not a suggestion." No valid exemption applies — API blockage is not one of the 3 permitted skip reasons. These are **forced violations** attributable to infrastructure, not strategy failure.
+
+---
+
+### MARKET OPEN ANALYSIS
+
+**AMD (HOLD/EXIT CRITICAL):**
+AMD faded from pre-market $519.74 to $504-510 at open — still up ~4-5% from Monday close ($485.39). The AMD position is holding unrealized gains but is entering a dangerous window: earnings AH tonight with ±12% options-implied move. AMD has been held 53 days (well past the 2-week max hold rule). Exit before close is mandatory per:
+1. Binary event rule (earnings within 48h — actually within hours)
+2. Day 53 hold (>2-week max, requires fresh re-score which has not been done)
+3. Position naked (no stop for 53 days)
+
+Current AMD position: 18sh × ~$507 = $9,126 (9.1%). Entry estimated at ~$506.76 (reverse from stop $481.42 at -5%). AMD is ~+$0.24/sh from entry = essentially breakeven. Exit now captures ~$0 net gain but avoids ±$54-63/sh overnight event risk.
+
+**PLTR (ENTRY BLOCKED):**
+PLTR opened strongly on its Q2 beat (+93% Rev YoY). Pre-market showed $145-146 level but actual open is in the $140-147 range with strong volume. This is an 8.33/10 approved entry that remains unplaced due to API blockage. Each hour this trade is missed at current levels, the entry deteriorates (price moving away from our $145 limit target).
+
+**NVDA (ENTRY BLOCKED):**
+NVDA opened at $211.49 (our analysis used $208.55 pre-market as reference). Updated parameters at open price:
+- Entry: $211.49 (current open)
+- Stop: $200.92 (-5% from $211.49)
+- Target: $302.83 (analyst consensus PT, +43%)
+- R/R: ($302.83 - $211.49) / ($211.49 - $200.92) = $91.34 / $10.57 = **8.64:1 ✓**
+- Size: 23sh × $211.49 = $4,864 (4.86%) ≤ 5% cap ✓
+- Still approved — NVDA earnings Aug 26, 22 days away, well outside 48h window
+
+---
+
+### DECISIONS
+
+**DECISION 1: AMD EXIT — CRITICAL BINDING COMMITMENT (53rd day, Binary Event, Earnings AH Tonight)**
+
+Action attempted: SELL 18sh AMD market order. **BLOCKED — Alpaca API HTTP 403 (108th consecutive session).**
+
+⚠️ **OPERATOR EMERGENCY ACTION REQUIRED:** AMD reports earnings AH TONIGHT. This is the last opportunity to exit before ±12% earnings risk. Exit via app.alpaca.markets immediately. Current price ~$505-510. This is essentially breakeven vs entry (~$506.76). Do NOT hold into earnings — the binary event rule and naked position rule are both violated.
+
+```yaml
+---
+ts: 2026-08-04T13:46:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: AMD exit STILL UNEXECUTED at Market Open. Day 53, naked since June 14, binary event window ACTIVE (earnings AH tonight ±12% options-implied move). Sell order attempted and blocked by Alpaca API HTTP 403 (108th consecutive session). OPERATOR MUST EXIT VIA app.alpaca.markets BEFORE MARKET CLOSE TODAY.
+size_pct: 9.1
+stop: 481.42
+target: N/A
+result_pct:
+agent_scores:
+master_notes: AMD at ~$505-510 at open. Entry ~$506.76 (estimated from stop $481.42 at -5%). Position ~breakeven. Holding into earnings AH risks -12% drawdown ($505 × 0.88 = $444 worst case = -$1,126 loss on position). Binary event rule and 2-week hold rule both violated. Exit is NOT optional — it is a binding commitment for the 4th consecutive routine. Cumulative API-blocked sessions: 108.
+---
+```
+
+**DECISION 2: PLTR LIMIT BRACKET ORDER — OUTSTANDING COMMITMENT (Score 8.33/10, earnings-reaction-follow)**
+
+Action attempted: BUY 34sh PLTR limit $145, stop $137.75 (-5%), target $166.75 (+15%), `order_class: bracket`, `time_in_force: gtc`. **BLOCKED — Alpaca API HTTP 403 (108th consecutive session).**
+
+⚠️ **OPERATOR ACTION REQUIRED:** PLTR opened strongly on massive Q2 beat. Enter 34sh PLTR via app.alpaca.markets. Limit ~$145 (or current ask), stop $137.75, target $166.75.
+
+```yaml
+---
+ts: 2026-08-04T13:46:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: earnings-reaction-follow
+score: 8.33
+thesis: PLTR approved 8.33/10 Pre-Market. Q2 2026 massive beat (Rev $1.94B +93% YoY, EPS $0.41 vs $0.35). Opened ~$140-147 post-earnings. Limit bracket order attempted — BLOCKED by Alpaca API HTTP 403 (108th session). No valid CLAUDE.md skip exemption applies.
+size_pct: 4.93
+stop: 137.75
+target: 166.75
+result_pct:
+agent_scores:
+  fundamentals: 9
+  technical: 7
+  sentiment: 8
+  macro: 8
+  risk: 9
+  tech_analyst: 9
+agent_average: 8.33
+agents_above_7: 6
+master_decision: approved
+master_notes: Forced skip — API infrastructure failure, not a valid strategy exemption. PLTR post-earnings gap-up with "otherworldly AI demand" thesis. Missing 8.33/10 entry compounds benchmark gap now at -5.99 pp. Operator must manually enter: 34sh PLTR limit ~$145, stop $137.75 (-5%), target $166.75 (+15%), bracket GTC at app.alpaca.markets.
+---
+```
+
+**DECISION 3: NVDA LIMIT BRACKET ORDER — OUTSTANDING COMMITMENT (Score 7.67/10, ai-momentum-pullback)**
+
+Action attempted: BUY 23sh NVDA limit $211.49, stop $200.92 (-5%), target $302.83 (+43%), `order_class: bracket`, `time_in_force: gtc`. **BLOCKED — Alpaca API HTTP 403 (108th consecutive session).**
+
+⚠️ **OPERATOR ACTION REQUIRED:** NVDA opened at $211.49. Enter 23sh NVDA via app.alpaca.markets. Limit ~$211.49, stop $200.92, target $302.83.
+
+```yaml
+---
+ts: 2026-08-04T13:46:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 7.67
+thesis: NVDA approved 7.67/10 Pre-Market. Opened at $211.49 (+2.35% from $206.64 Monday close). AI capex narrative confirmed by PLTR/AMZN/MSFT. 61 analysts Strong Buy, avg PT $302.83. Earnings Aug 26 (22 days, outside 48h window). Limit bracket order attempted — BLOCKED by Alpaca API HTTP 403 (108th session).
+size_pct: 4.86
+stop: 200.92
+target: 302.83
+result_pct:
+agent_scores:
+  fundamentals: 8
+  technical: 6
+  sentiment: 8
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.67
+agents_above_7: 5
+master_decision: approved
+master_notes: Entry updated to actual open price $211.49 (vs pre-market $208.55). Stop $200.92 (-5%), Target $302.83 (+43%), R/R = 8.64:1 well above 3:1 minimum. Forced skip — API infrastructure failure. Operator must manually enter: 23sh NVDA limit $211.49, stop $200.92, target $302.83, bracket GTC at app.alpaca.markets.
+---
+```
+
+---
+
+### VIOLATION LOG — AUGUST 4, 2026 MARKET OPEN
+
+1. **AMD exit still not executed (CRITICAL):** Day 53, naked, binary event window. Earnings AH tonight. Operator must exit immediately. API blocked 108th session.
+2. **PLTR entry blocked:** Score 8.33/10. 34sh limit bracket order blocked by API. No valid exemption.
+3. **NVDA entry blocked:** Score 7.67/10. 23sh limit bracket order blocked by API. No valid exemption.
+4. **Stop-loss audit blocked:** Cannot verify or place AMD stop via API. 53rd consecutive day naked.
+
+**Cumulative API-blocked sessions: 108**
+**Cumulative benchmark gap: ~-5.99 pp and widening**
+
+---
+
 ## 2026-08-04 — Pre-Market (8:00 AM ET / 12:12 UTC — API BLOCKED — 107th+ consecutive session)
 
 **HEARTBEAT:** STARTED Pre-Market 2026-08-04T12:11:21Z ✓

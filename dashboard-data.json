@@ -1,29 +1,29 @@
 {
-  "last_updated": "2026-07-31T12:10:00Z",
-  "updated_by": "pre-market",
+  "last_updated": "2026-08-04T13:46:25Z",
+  "updated_by": "market-open",
   "portfolio": {
-    "total_equity": 98618,
+    "total_equity": 99770,
     "starting_equity": 100000.0,
     "cash": 90644,
-    "cash_pct": 91.9,
+    "cash_pct": 90.9,
     "buying_power": 181288,
-    "long_market_value": 7974,
+    "long_market_value": 9126,
     "short_market_value": 0.0,
-    "daily_pnl": -738,
-    "daily_pnl_pct": -0.74,
-    "total_return_pct": -1.38,
-    "spx_return_pct": 3.79,
-    "benchmark_gap_pct": -5.17,
+    "daily_pnl": 389,
+    "daily_pnl_pct": 0.39,
+    "total_return_pct": -0.23,
+    "spx_return_pct": 5.76,
+    "benchmark_gap_pct": -5.99,
     "open_positions_count": 1,
     "buckets": {
-      "active_value": 7974,
-      "active_pct": 8.1,
+      "active_value": 9126,
+      "active_pct": 9.1,
       "crypto_value": 0,
       "crypto_pct": 0.0,
       "cash_value": 90644,
-      "cash_pct": 91.9
+      "cash_pct": 90.9
     },
-    "note": "July 31 PRE-MARKET (8:05 AM ET / 12:05Z). API BLOCKED 105th consecutive session. AMD pre-mkt ~$443 (below $481.42 hard stop, Day 44+, NAKED, LAST SAFE EXIT DAY). 3 MOO orders ATTEMPTED & FAILED: AMD SELL 18sh, AMZN BUY 21sh (score 8.2), GS BUY 4sh (score 7.2). AAPL REJECTED (score 4.83, $308.88 pre-mkt vs $330 condition, weak Q4 guide). WFC + MS deferred to Market-Open limit brackets. S&P futures +0.47%, Nasdaq +1.11% (AMZN surges 12%, AAPL -7.36%). Operator must execute AMD/AMZN/GS manually on app.alpaca.markets BEFORE 9:30 AM ET."
+    "note": "Aug 4 MARKET-OPEN (9:45 AM ET / 13:46Z). API BLOCKED 108th consecutive session. AMD at open ~07 (range 04-510, +4.5% from Monday close), Day 53, NAKED, BINARY EVENT (earnings AH TONIGHT +/-12%). PLTR opened ~40-147 (approved 8.33/10, blocked). NVDA opened 11.49 (approved 7.67/10, blocked). OPERATOR: EXIT AMD NOW + ENTER PLTR 34sh + ENTER NVDA 23sh via app.alpaca.markets. SPY ~7615 (+0.19%). Cumulative gap: -5.99 pp."
   },
   "positions": [
     {
@@ -31,109 +31,67 @@
       "bucket": "active",
       "qty": 18,
       "entry_price": 506.76,
-      "current_price": 443.0,
-      "pnl": -1147.68,
-      "pnl_pct": -12.58,
+      "current_price": 507.0,
+      "pnl": 43.2,
+      "pnl_pct": 0.05,
       "stop_loss": null,
       "take_profit": 582.78,
       "stop_loss_pending": 481.42,
       "setup": "ai-momentum-pullback",
       "agent_average": 7.17,
-      "note": "AMD pre-market ~$443-452 (July 29 close $429.56, up +3-5% on Core Scientific $14B deal). Still NAKED \u2014 no stop at Alpaca. Hard stop $481.42 BREACHED by ~$30-38. Day 44+. MANDATORY EXIT: SELL 18sh at MARKET OPG TODAY (last safe day before Aug 2 48h earnings window). API blocked 105th session. Order ATTEMPTED & FAILED. OPERATOR: SELL 18sh AMD at MARKET on app.alpaca.markets before 9:30 AM ET."
+      "note": "AMD at 04-510 at market open Aug 4. NAKED 53 days. BINARY EVENT: AMD Q2 earnings AH TONIGHT (EPS est $1.61, Rev $11.34B +47% YoY, options-implied move +/-12%). Day 53 (>>2-week max hold rule). Exit is MANDATORY. API blocked 108th session. OPERATOR: SELL 18sh AMD MARKET ORDER NOW via app.alpaca.markets."
     }
   ],
   "market": {
-    "mode": "risk-on-earnings-bifurcation",
-    "spx": 7473.0,
-    "spx_daily_change_pct": 0.47,
+    "mode": "risk-on-ai-earnings-momentum",
+    "spx": 7615.0,
+    "spx_daily_change_pct": 0.19,
     "btc": 64000,
     "eth": 1910,
-    "macro_notes_md": "July 31 Pre-Market: S&P futures +0.47% to 7,507.75 | Nasdaq futures +1.11% to 28,552 (RISK-ON). AMZN +12% pre-market (AWS +37%, EPS $5.75 massive beat). AAPL -7.36% pre-market ($308.88) on weak Q4 guide (+9-11% vs est +12%+), supply constraints, China miss ($18.8B vs $19.5B). CNBC: 'investors pick AI winners.' XOM/CVX/ABBV/LIN reporting pre-market (XOM 84.5% beat probability). BTC ~$64,000 | ETH ~$1,910. No Fed speakers. Consumer Sentiment due. 94% Polymarket probability S&P opens higher. AMD Core Scientific $14B deal bullish but below hard stop."
+    "macro_notes_md": "Aug 4 Market Open: S&P ~7,615 (+0.19%), Nasdaq +0.5% (risk-on). PLTR gap-up 12-17% on Q2 beat (+93% Rev YoY). NVDA $211.49 (+2.35%). AMD $504-510 (+4.5%) pre-earnings AH tonight +/-12%. Iran diplomacy oil -5% continuing. FOMC hold 3.50-3.75%. PLTR and NVDA approved entries blocked by API. Portfolio 9.1% deployed vs 85% target."
   },
   "watchlist": [
     {
       "symbol": "AMD",
       "bucket": "active",
       "score": "EXIT",
-      "action": "SELL 18sh MARKET OPG \u2014 ATTEMPTED, API BLOCKED (105th session) \u2014 OPERATOR: SELL MANUALLY NOW",
-      "notes": "Pre-market ~$443 (below $481.42 hard stop by ~$38). Day 44+, NAKED. Last safe day. Aug 2 opens 48h window."
+      "action": "SELL 18sh MARKET \u2014 EMERGENCY \u2014 AMD EARNS AH TONIGHT \u2014 OPERATOR: SELL NOW via app.alpaca.markets",
+      "notes": "AMD $504-510 at open. Day 53, naked 53 days, binary event (earnings AH tonight +/-12% implied). Entry ~$506.76 = roughly breakeven. Do NOT hold into earnings. This is the last possible exit before the binary event."
     },
     {
-      "symbol": "AMZN",
+      "symbol": "PLTR",
       "bucket": "active",
-      "score": 8.2,
-      "action": "BUY 21sh MOO \u2014 ATTEMPTED, API BLOCKED \u2014 OPERATOR: BUY MANUALLY BEFORE 9:25 AM",
-      "notes": "Score 8.2, 6/6\u22657. AWS +37%, EPS $5.75 (+242% YoY). Pre-mkt $234.20 (+12%). 21sh\u00d7$234=$4,914=4.99% equity post-AMD-exit. Stop $222.30, Target $269.10."
-    },
-    {
-      "symbol": "GS",
-      "bucket": "active",
-      "score": 7.2,
-      "action": "BUY 4sh MOO \u2014 ATTEMPTED, API BLOCKED \u2014 OPERATOR: BUY MANUALLY BEFORE 9:25 AM",
-      "notes": "Score 7.2. Q2 blowout, FOMC hold. 3rd/FINAL deferral. ~$1,020 est. 4sh=$4,080=4.14%. Stop $969, Target $1,173."
-    },
-    {
-      "symbol": "WFC",
-      "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 30sh LIMIT bracket GTC \u2014 DEFERRED TO MARKET-OPEN (MOO cap used) \u2014 BINDING",
-      "notes": "Score 7.0. Q2 EPS +16.3%. FOMC hold. ~30sh\u00d7$88-90=$2,640-2,700=2.7% equity. Stop -5%, Target +15%."
-    },
-    {
-      "symbol": "MS",
-      "bucket": "active",
-      "score": 7.0,
-      "action": "BUY 20sh LIMIT bracket GTC \u2014 DEFERRED TO MARKET-OPEN (MOO cap used) \u2014 BINDING. Ex-div today ($1.15)",
-      "notes": "Score 7.0. Strong Q2, crypto ETP. ATH $228.55 July 15. Ex-div July 31. ~20sh\u00d7$210-215=$4,200-4,300=4.3% equity."
-    },
-    {
-      "symbol": "AAPL",
-      "bucket": "active",
-      "score": 4.83,
-      "action": "REJECTED \u2014 score 4.83 (was 7.0), pre-mkt $308.88 < $330 condition",
-      "notes": "Score revised 7.0\u21924.83. Weak Q4 guide +9-11% vs est +12%+. Supply constraints. China $18.8B vs $19.5B. Services $30.74B vs $31.22B. EPS partly tariff-refund. Pre-mkt -7.36%. Watch $300-310 support for mean-reversion."
-    },
-    {
-      "symbol": "MSFT",
-      "bucket": "active",
-      "score": 7.0,
-      "action": "WATCH only \u2014 wait for pullback to $455-470",
-      "notes": "Azure +43%, EPS $4.81. Already +14% on July 30 \u2014 too extended for new entry. Wait for pullback before entering."
+      "score": 8.33,
+      "action": "BUY 34sh limit ~$145 bracket GTC \u2014 APPROVED, API BLOCKED \u2014 OPERATOR: ENTER MANUALLY",
+      "notes": "Q2 2026 massive beat: Rev $1.94B (+93% YoY), EPS $0.41 vs $0.35, GAAP margin 47%, Adj margin 62%. Opened ~$140-147. Stop $137.75 (-5%), Target $166.75 (+15%), R/R 5.1:1. Score 8.33/10, all 6 agents >=7."
     },
     {
       "symbol": "NVDA",
       "bucket": "active",
-      "score": 6.5,
-      "action": "WATCH \u2014 score fully at Pre-Market",
-      "notes": "AI validation from MSFT Azure +43% + AMZN AWS +37%. Chip sector +5% July 30. Need 2/5 indicators confirming at Pre-Market."
+      "score": 7.67,
+      "action": "BUY 23sh limit $211.49 bracket GTC \u2014 APPROVED, API BLOCKED \u2014 OPERATOR: ENTER MANUALLY",
+      "notes": "Opened at $211.49 (+2.35%). Stop $200.92 (-5%), Target $302.83 (+43%), R/R 8.64:1. AI capex narrative confirmed by PLTR/AMZN/MSFT. 61 analysts Strong Buy. Earnings Aug 26 (22 days, outside 48h window). Score 7.67/10."
     },
     {
-      "symbol": "XLF",
+      "symbol": "GS",
       "bucket": "active",
-      "score": 6.5,
-      "action": "WATCH \u2014 enter if individual financials maxed out",
-      "notes": "Financials ETF. FOMC hold = bank tailwind. Diversified exposure if GS/WFC/MS positions hit sector cap."
-    },
-    {
-      "symbol": "GLD",
-      "bucket": "active",
-      "score": 6.0,
-      "action": "WATCH",
-      "notes": "Core PCE 3.3%, GDP weaker, yield uncertainty. Gold bid potential if macro fears resurface."
+      "score": 6.67,
+      "action": "REJECTED \u2014 score 6.67 below 7.0 threshold (fresh re-score Aug 4)",
+      "notes": "Q2 catalyst now 3+ weeks stale. Hold consensus (25 analysts). Technical indicators not confirming. Re-add if analyst upgrade or breakout above $1,050 on >2x volume."
     }
   ],
   "routines": {
     "pre-market": {
       "status": "completed",
-      "last_run": "2026-07-31T12:05:00Z",
-      "next_run": "2026-08-03T12:00:00Z",
-      "last_summary": "July 31 Pre-Market: Futures risk-on (S&P +0.47%, Nasdaq +1.11%). AMZN surges 12%, AAPL -7.36%. 3 MOO orders attempted (AMD exit, AMZN 21sh, GS 4sh) \u2014 ALL FAILED (API 403 blocked, 105th session). AAPL rejected (score 4.83; $308.88<$330; weak guide). WFC+MS deferred to Market-Open. OPERATOR: execute AMD/AMZN/GS manually on app.alpaca.markets BEFORE 9:30 AM ET."
+      "last_run": "2026-08-04T12:11:21Z",
+      "next_run": "2026-08-05T12:00:00Z",
+      "last_summary": "Aug 4 Pre-Market: PLTR approved 8.33/10 (earnings-reaction-follow, +16% pm on Q2 +93% Rev beat). NVDA approved 7.67/10 (ai-momentum-pullback). AMD exit binding (Day 52, naked, binary event AH tonight). GS rejected 6.67/10. ALL BLOCKED by API HTTP 403 (107th session)."
     },
     "market-open": {
-      "status": "silent-failure",
-      "last_run": "2026-07-29T13:46:00Z",
-      "next_run": "2026-07-31T13:45:00Z",
-      "last_summary": "SILENT FAILURE July 30 \u2014 no heartbeat fired. Stop-loss audit missed. AMD unmonitored at open."
+      "status": "completed",
+      "last_run": "2026-08-04T13:46:25Z",
+      "next_run": "2026-08-05T13:45:00Z",
+      "last_summary": "Aug 4 Market Open: No MOO fills to backfill (none placed). AMD open ~$507 (+4.5%), PLTR ~$140-147 (approved 8.33, blocked), NVDA $211.49 (approved 7.67, blocked). AMD earnings AH tonight - OPERATOR must exit immediately. API blocked 108th session. 3 YAML violation/skip entries logged."
     },
     "mid-morning": {
       "status": "silent-failure",
@@ -167,6 +125,71 @@
     }
   },
   "trades": [
+    {
+      "ts": "2026-08-04T13:46:00Z",
+      "action": "violation",
+      "symbol": "AMD",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": null,
+      "thesis": "AMD exit STILL UNEXECUTED at Market Open. Day 53, naked, binary event AH tonight +/-12%.",
+      "size_pct": 9.1,
+      "stop": null,
+      "target": null,
+      "result_pct": null,
+      "master_decision": "violation",
+      "master_notes": "AMD at ~$507 at open. Entry ~$506.76. Roughly breakeven. Exit blocked by API 108th session. OPERATOR MUST EXIT VIA app.alpaca.markets BEFORE MARKET CLOSE TODAY."
+    },
+    {
+      "ts": "2026-08-04T13:46:00Z",
+      "action": "skip",
+      "symbol": "PLTR",
+      "bucket": "active",
+      "setup": "earnings-reaction-follow",
+      "score": 8.33,
+      "thesis": "PLTR approved 8.33/10. Opened ~$140-147 on Q2 beat. API blocked 108th session.",
+      "size_pct": 4.93,
+      "stop": 137.75,
+      "target": 166.75,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 9,
+        "technical": 7,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 9,
+        "tech_analyst": 9
+      },
+      "agent_average": 8.33,
+      "agents_above_7": 6,
+      "master_decision": "approved",
+      "master_notes": "Forced skip \u2014 API infrastructure failure. No valid CLAUDE.md exemption applies. Operator must enter manually."
+    },
+    {
+      "ts": "2026-08-04T13:46:00Z",
+      "action": "skip",
+      "symbol": "NVDA",
+      "bucket": "active",
+      "setup": "ai-momentum-pullback",
+      "score": 7.67,
+      "thesis": "NVDA approved 7.67/10. Opened at $211.49. API blocked 108th session.",
+      "size_pct": 4.86,
+      "stop": 200.92,
+      "target": 302.83,
+      "result_pct": null,
+      "agent_scores": {
+        "fundamentals": 8,
+        "technical": 6,
+        "sentiment": 8,
+        "macro": 8,
+        "risk": 7,
+        "tech_analyst": 9
+      },
+      "agent_average": 7.67,
+      "agents_above_7": 5,
+      "master_decision": "approved",
+      "master_notes": "Forced skip \u2014 API infrastructure failure. Entry updated to open price $211.49. Stop $200.92, Target $302.83, R/R 8.64:1. Operator must enter manually."
+    },
     {
       "ts": "2026-07-31T12:05:00Z",
       "action": "exit",
