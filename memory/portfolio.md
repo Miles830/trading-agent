@@ -1,44 +1,47 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-08-04 (Tuesday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 109th consecutive blocked session). MIDDAY ✅ COMPLETED (research + log updated). ⚠️⚠️⚠️ AMD CRITICAL: AMD ~$511.67 est. (midday), Day 53, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ±12%). LAST CHANCE — MOC deadline 3:50 PM ET. PUSH NOTIFICATION SENT TO OPERATOR. Mid-Morning routine SILENTLY FAILED (no heartbeat). PLTR ~$149-155 est. (score 8.33, blocked). NVDA ~$213-220 est. (score 7.67, blocked). Cumulative gap: ~-6.23 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (109th session).**
+**2026-08-04 (Tuesday) — AFTERNOON (2:14 PM ET / 18:14 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 110th consecutive blocked session). AFTERNOON ✅ COMPLETED (research + log updated). ⚠️⚠️⚠️ AMD CRITICAL: AMD ~$513 est. (afternoon, up +7.7-8% today), Day 53, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ~4:15 PM ET, ±8.5-12.3%). MOC deadline 3:50 PM ET — 96 MINUTES REMAINING. PUSH NOTIFICATION SENT. PLTR ~$152-160 est. (score 8.0 re-scored, +27-30% today — overbought, skip to tomorrow). NVDA ~$208-210 est. (score 8.0 re-scored, BETTER entry than $214 planned). S&P 500 ~7,700 est. (+1.65% today). Cumulative gap: ~-7.06 pp (worsening — missed PLTR +27-30% entirely). 20-DAY UNDERPERFORMANCE FLAG ACTIVE (110th session). TOMORROW: NVDA 23sh + PLTR 32sh + SPY 13sh binding Pre-Market MOO (3-order cap).**
 
 ---
 
-**AUGUST 4 MIDDAY STATUS (12:35 PM ET / 16:35 UTC — API BLOCKED — 109th session):**
+**AUGUST 4 AFTERNOON STATUS (2:14 PM ET / 18:14 UTC — API BLOCKED — 110th session):**
 
-**Portfolio August 4 Midday (est., API blocked):**
+**Portfolio August 4 Afternoon (est., API blocked):**
 - Cash: ~$90,644 (90.8% est.)
-- AMD: 18sh × ~$511.67 est. (midday drift) = ~$9,210 (9.2% est.) — NAKED, Day 53, BINARY EVENT (earnings AH TONIGHT ±12%) — MOC DEADLINE 3:50 PM ET
-- Total equity est.: ~$99,854 (-0.15% vs $100K starting capital)
-- P&L Aug 4 (intraday): AMD +$26.28/sh × 18 = +$473 est. (+0.47%)
-- SPY est.: ~7,638 (+0.50% from Monday close 7,600.50)
-- Daily gap (intraday): -0.03 pp (AMD slightly behind SPY midday)
-- Cumulative: Portfolio ~-0.15% vs SPY +6.08% (7,200→7,638 est.) → **Cumulative gap: ~-6.23 pp**
-- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (109th consecutive session)
+- AMD: 18sh × ~$513 est. (up +7.7-8% intraday) = ~$9,234 (9.2% est.) — NAKED, Day 53, BINARY EVENT (earnings AH TONIGHT ~4:15 PM ET, ±8.5-12.3%) — MOC DEADLINE 3:50 PM ET (96 MIN REMAINING)
+- Total equity est.: ~$99,878 (-0.12% vs $100K starting capital)
+- P&L Aug 4 (intraday): AMD +$6.24/sh × 18 = +$112 est. (+0.11%) — missing PLTR +27-30% = massive opportunity cost
+- SPY est.: ~$770 (+1.65% from Monday close ~$760); S&P 500 ~7,700 est.
+- Daily gap: -1.54 pp (portfolio +0.11% vs SPY +1.65% today)
+- Cumulative: Portfolio ~-0.12% vs SPY +6.94% (7,200→7,700 est.) → **Cumulative gap: ~-7.06 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (110th consecutive session)
 
-**HEARTBEAT AUDIT AUGUST 4 (as of 12:35 PM ET):**
+**HEARTBEAT AUDIT AUGUST 4 (as of 2:14 PM ET):**
 - ✓ Pre-Market (12:11Z): STARTED 12:11:21Z / COMPLETED 12:22:57Z ✓
 - ✓ Market-Open (13:46Z): STARTED 13:46:25Z / COMPLETED 13:56:27Z ✓
-- ✗ Mid-Morning (15:00Z): SILENT FAILURE — no heartbeat (violation logged)
-- ✓ Midday (16:35Z): STARTED 16:35:24Z ✓ (this routine, in progress)
+- ✗ Mid-Morning (15:00Z): SILENT FAILURE — violation logged at Midday
+- ✓ Midday (16:35Z): STARTED 16:35:24Z / COMPLETED 16:41:54Z ✓
+- ✓ Afternoon (18:13Z): STARTED 18:13:23Z ✓ (this routine, in progress)
 
 **STOP-LOSS AUDIT:**
-- ❌ AMD: NO STOP AT ALPACA — API blocked, 53rd day naked (CRITICAL — earnings AH tonight, ±12% binary event)
-- 📢 Push notification sent to operator: EXIT AMD before 3:50 PM ET MOC
+- ❌ AMD: NO STOP AT ALPACA — API blocked, 53rd day naked (CRITICAL — earnings AH tonight, ±12% binary event, MOC deadline 96 minutes away)
+- 📢 Push notification being sent to operator: EXIT AMD before 3:50 PM ET MOC
 
-**KEY MARKET DATA (August 4, 2026 Midday — 12:35 PM ET est.):**
-- S&P 500: ~7,638 est. (+0.50% from Monday close 7,600.50) — Risk-on continuing
-- Nasdaq: +0.9% est. — Tech sector leadership intact (PLTR momentum driving)
-- PLTR: ~$149-155 est. (gap-up continuation, Q2 $1.94B Rev +93% YoY) — entry blocked
-- AMD: ~$511.67 est. (midday, pre-earnings drift, earnings AH TONIGHT ±12%) — EXIT REQUIRED
-- NVDA: ~$213-220 est. (AI capex narrative continuing) — entry blocked
+**KEY MARKET DATA (August 4, 2026 Afternoon — 2:14 PM ET est.):**
+- S&P 500: ~7,700 est. (SPY ~$770, +1.65% from Monday close ~$760) — Record high territory, risk-on
+- Nasdaq: +2.5-3% est. — PLTR +27-30% driving AI/Tech sector to new highs
+- PLTR: ~$152-160 est. (gap-up continuation on Q2 $1.94B Rev +93% YoY, raised guidance) — overbought, skip to tomorrow
+- AMD: ~$513 est. (up +7.7-8% today, earnings AH TONIGHT ~4:15 PM ET) — EXIT REQUIRED before 3:50 PM ET
+- NVDA: ~$208-210 est. (AI capex narrative validated by PLTR/sector) — BETTER entry than $214 planned
+- Oil (WTI): ~$76 (-5.3%) — Iran Hormuz deal hopes, deflationary tailwind
+- VIX: ~15.79 (risk-on confirmed, low fear)
 - BTC: ~$64,000-66,000 est. | ETH: ~$1,910-1,950 est.
 
-**APPROVED ENTRIES (ALL BLOCKED BY API — 109th CONSECUTIVE SESSION):**
-1. **AMD EXIT** — BINDING EMERGENCY. 18sh sell market/MOC. API blocked. OPERATOR: Exit via app.alpaca.markets before 3:50 PM ET. AMD earnings AH TONIGHT.
-2. **PLTR** — APPROVED 8.33/10, `earnings-reaction-follow`. 33sh @ ~$149 limit, stop $141.55, target $171.35. API blocked. OPERATOR: Enter manually.
-3. **NVDA** — APPROVED 7.67/10, `ai-momentum-pullback`. 23sh @ $214.00, stop $203.30 (-5%), target $246.10 (+15%). API blocked. OPERATOR: Enter manually.
+**AFTERNOON DECISIONS (ALL BLOCKED BY API — 110th CONSECUTIVE SESSION):**
+1. **AMD EXIT** — BINDING EMERGENCY. 18sh sell MOC (time_in_force=cls). API blocked. OPERATOR: SELL 18sh AMD via app.alpaca.markets before 3:50 PM ET. AMD earnings AH ~4:15 PM ET. ±12% binary event. Violation #110 logged.
+2. **PLTR** — SKIP per afternoon proximity-to-close rule (afternoon.md). Score 8.0/10 re-scored (vs 8.33 this morning). Price moved to ~$155-160 — overbought RSI. Pre-Market tomorrow: re-enter if pulls back to $148-155. Parameters: 32sh, stop $147.25, target $178.25.
+3. **NVDA** — SKIP per afternoon proximity-to-close rule. Score 8.0/10 re-scored at $208 (BETTER entry than $214 planned). Pre-Market tomorrow: 23sh @ ~$208, stop $197.60, target $239.20. BINDING.
 
 **AFTERNOON WATCHLIST (August 4 Midday → Close, binding):**
 | Rank | Symbol | Score | Setup | Action | Notes |
