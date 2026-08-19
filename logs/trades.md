@@ -4,6 +4,345 @@
 
 ---
 
+## 2026-08-19 — Midday (12:30 PM ET / 16:35 UTC — API BLOCKED — ~120th consecutive session est.)
+
+**HEARTBEAT:** STARTED Midday 2026-08-19T16:35:34Z ✓
+**Alpaca API Status:** BLOCKED — proxy CONNECT rejected HTTP 403 (egress policy denial) — **~120th consecutive blocked session** (paper-api.alpaca.markets unreachable via HTTPS_PROXY; 11 trading days since last log entry Aug 4)
+**xAI Grok API:** NOT AVAILABLE (`xai_api_key: NO`). Sentiment Agent degraded — no X sentiment modifier.
+**Market Status:** OPEN (12:35 PM ET). Risk-on day: S&P +0.43%, Nasdaq +0.40%. Key drivers: US Treasury long-dated buybacks announced (30-yr yield -9bps to 5.19%), Trump paused Canadian tariffs, MRNA +121% (Phase 3 melanoma vaccine success with Merck).
+
+---
+
+### PORTFOLIO STATE (August 19, 2026 — Midday — API BLOCKED, prices from web research)
+
+**Total Equity: ~$99,048 est.**
+**Cash: ~$90,644 (91.5%) — 5% floor ✓**
+**Trading bucket: ~$8,405 est. (8.5%) — 1 position (AMD 18sh × ~$466.93) — target 85%**
+**Crypto bucket: $0 (0%) — 0 positions — target 10%**
+
+- **AMD:** 18sh × $466.93 = $8,404.74 — **NAKED, PAST STOP (-7.85% vs -5% stop at $481.42), earnings already reported Aug 4 AH, position should have been stopped out weeks ago. EXIT REQUIRED IMMEDIATELY.**
+- **PLTR:** Not held. Scored 8.33/10 on Aug 4 at entry $145-149; now ~$174 (+38% in 2 weeks). FRESH SCORE TODAY: 6.83/10 → REJECTED (overbought after +38% run; Technical 4/10).
+- **NVDA:** Not held. Scored 7.67/10 on Aug 4 at entry $211.49; now ~$221. FRESH SCORE TODAY: 7.33/10 → APPROVED. API blocked. Earnings Aug 26 (7 days — outside 48h window but binary event approaching).
+- **MRNA:** +121% today on Phase 3 melanoma vaccine (Moderna+Merck). Scored today: 6.17/10 → REJECTED (avg <7, Risk <6, Technical 3/10 — overbought extreme).
+
+**P&L vs Entry (AMD entry $506.76):** -$39.83/sh × 18 = -$716.94 (position down 7.85% — PAST 5% STOP)
+**Cumulative portfolio return:** ~-0.95% (equity ~$99,048 vs $100K)
+**Cumulative SPY return (May 1 baseline ~7,200 → ~7,690 est.):** +6.81%
+**Cumulative benchmark gap: ~-7.76 pp (20-DAY UNDERPERFORMANCE FLAG: ACTIVE — ~120th session)**
+
+---
+
+### PREDECESSOR CHECK (Aug 19)
+
+- **Pre-Market (12:00Z / 8:00 AM ET): NO HEARTBEAT — SILENT FAILURE ✗**
+- **Market-Open (13:45Z / 9:45 AM ET): NO HEARTBEAT — SILENT FAILURE ✗**
+- **Mid-Morning (15:00Z / 11:00 AM ET): NO HEARTBEAT — SILENT FAILURE ✗**
+
+All three predecessor routines silently failed today. AMD naked position went unmonitored all morning. Gap since last log entry: 11 trading days (Aug 4 → Aug 19). Aug 14 heartbeat file exists but is empty (silent failure). Aug 5–13, Aug 15, Aug 18 have no heartbeat files.
+
+---
+
+### STOP-LOSS AUDIT (MANDATORY FIRST ACTION)
+
+**API BLOCKED — Cannot access GET /v2/orders or GET /v2/positions.**
+
+❌ **AMD: NO STOP ORDER AT ALPACA** — 64+ consecutive days naked. AMD is at $466.93 which is BELOW the intended stop of $481.42 (-5% from $506.76 entry). The position has blown through its stop by an additional -2.85% (-$14.49/sh). Had the stop been in place, the position would have been closed weeks ago with a manageable -5% loss instead of the current -7.85% loss.
+
+**OPERATOR ALERT: AMD must be exited immediately.** Current loss: -$716.94. Additional delay increases losses.
+
+---
+
+### VIOLATIONS TO LOG
+
+```yaml
+---
+ts: 2026-08-19T12:00:00Z
+action: violation
+symbol: PRE-MARKET-ROUTINE
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Pre-Market routine (8:00 AM ET / 12:00 UTC) produced no STARTED heartbeat on Aug 19 — silent failure. AMD naked past stop, not monitored at open. NVDA (7.33/10 fresh) and watchlist review missed.
+size_pct: N/A
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: rejected
+master_notes: "Infrastructure silent failure — scheduler did not fire Pre-Market routine Aug 19. AMD has been naked and past its stop since at least Aug 5 (post-earnings drop -7.5% AH). No heartbeat found in logs/heartbeats/2026-08-19.log for this routine."
+---
+```
+
+```yaml
+---
+ts: 2026-08-19T13:45:00Z
+action: violation
+symbol: MARKET-OPEN-ROUTINE
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Market-Open routine (9:45 AM ET / 13:45 UTC) produced no STARTED heartbeat on Aug 19 — silent failure. AMD stop-loss follow-up and NVDA entry missed.
+size_pct: N/A
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: rejected
+master_notes: "Infrastructure silent failure — scheduler did not fire Market-Open routine Aug 19. AMD naked and past stop (-7.85%). No heartbeat found."
+---
+```
+
+```yaml
+---
+ts: 2026-08-19T15:00:00Z
+action: violation
+symbol: MID-MORNING-ROUTINE
+bucket: active
+setup: silent-failure
+score: N/A
+thesis: Mid-Morning routine (11:00 AM ET / 15:00 UTC) produced no STARTED heartbeat on Aug 19 — silent failure. Three predecessor failures today; AMD unmonitored all morning while MRNA +121% catalyst erupted.
+size_pct: N/A
+stop: N/A
+target: N/A
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: rejected
+master_notes: "Infrastructure silent failure — scheduler did not fire Mid-Morning routine Aug 19. Three consecutive silent failures today (Pre-Market, Market-Open, Mid-Morning). MRNA Phase 3 melanoma vaccine success announced AH Aug 18 / pre-market Aug 19 — would have been scoreable at mid-morning. By midday MRNA already up +121% making technical entry infeasible."
+---
+```
+
+---
+
+### MIDDAY MARKET ANALYSIS (Aug 19, 2026 — data from web research)
+
+**Market Direction (12:35 PM ET):**
+- S&P 500: ~7,690 est. (+0.43% today). Treasury buyback announcement + Canada tariff pause driving rally.
+- Nasdaq: +0.40% est. Growth/tech positive; bond rally supports higher valuations.
+- 30-yr Treasury yield: 5.19% (-9bps) — bond rally is meaningful.
+- Russell 2000: -1.30% — small caps underperforming; risk appetite selective (large-cap quality).
+- MRNA: +121% (Moderna/Merck Phase 3 melanoma vaccine success — largest single-stock catalyst today).
+- AMD: $466.93 (-5.58%) — semiconductor weakness, post-earnings hangover continuing.
+- NVDA: ~$221 (+0.95%) — AI capex narrative intact; Deutsche Bank raised PT to $220 (today).
+- PLTR: ~$174 (+38% since Aug 4 earnings gap).
+- VIX: Likely ~14-16 est. (risk-on day, low fear).
+
+**Sector Leadership:**
+- Healthcare/Biotech: MRNA dragging entire sector up; IBB likely +5-10%.
+- Tech (large cap): Modest green; Nasdaq +0.40%.
+- Defensives (Utilities, REITs): Bond rally helping rate-sensitives.
+- Energy, Small Caps: Underperforming.
+
+**AMD (12:35 PM ET — $466.93):**
+AMD fell -5.58% today. Post-earnings (Q2 beat: EPS $1.66 vs $1.61, Rev $11.5B vs $11.31B est.) initial drop -7.5% AH Aug 4, recovered to $514 by Aug 14, now retreating again to $466.93. The initial "leave investors unimpressed" reaction has continued into a broader pullback. DATA CENTER was 107% YoY growth — strong, but market had priced in perfection. AMD is now -7.85% from our entry ($506.76), well past the 5% hard stop that was never placed.
+
+**MRNA (12:35 PM ET — +121%):**
+Moderna and Merck announced Phase 3 success of mRNA-based personalized cancer vaccine (INTerpath-001 trial, n=1,137 high-risk melanoma patients). Met primary endpoint (RFS extension vs Keytruda alone) and key secondary (reduced distant metastasis). Analysts estimate $6B+ annual sales potential in melanoma alone. Stock more than doubled. Entry at this level is infeasible — stock has already gapped past any reasonable R/R framework.
+
+---
+
+### 6-AGENT ANALYSIS
+
+#### MRNA — Quick Score (Entry feasibility: post-121% gap)
+
+| Agent | Score | Rationale |
+|---|---|---|
+| Fundamentals | 6/10 | Phase 3 success is massive catalyst; pre-announcement fundamentals were declining (post-COVID revenue erosion). TAM is large ($6B+ melanoma, potentially $50B+ multi-cancer). But no approved product yet. |
+| Technical | 3/10 | +121% gap; RSI >90; massively overbought. No candlestick confirmation signals; mandatory indicator stack (Stochastic, MACD) all in overbought extreme. Cannot get 2/5 confirmations. |
+| Sentiment | 8/10 | Extremely bullish. Viral news cycle; institutional attention. No X modifier (API unavailable). |
+| Macro | 7/10 | Risk-on day, biotech tailwind, bond rally supports speculative biotech. |
+| Risk | 5/10 | R/R cannot meet 3:1 minimum at current price (stock already moved 121%; stop placement at -5% could easily be breached in volatile reversal; target at +15% from current is unrealistically close to profit-taking zone). **AUTO-VETO: R/R <3:1.** |
+| Tech Analyst | 8/10 | mRNA platform technology is defensible; Moderna has foundational IP; Merck partnership leverages Keytruda blockbuster. |
+| **Average** | **6.17/10** | **REJECTED** |
+
+**Master Decision: REJECTED** — Average 6.17 < 7.0 required. Risk Agent auto-veto (score 5, R/R cannot meet 3:1 minimum after 121% gap). Technical 3/10 (cannot confirm mandatory 2/5 indicator stack on extreme overbought). Agents above 7: Sentiment ✓, Macro ✓, Tech ✓ = 3/6 (minimum 4 required — fails).
+
+```yaml
+---
+ts: 2026-08-19T16:38:00Z
+action: skip
+symbol: MRNA
+bucket: active
+setup: other
+score: 6.17
+thesis: Moderna +121% on Phase 3 melanoma vaccine (INTerpath-001) success with Merck. Entry infeasible post-gap — cannot meet 3:1 R/R minimum; stock already moved 121% before this routine fired. Exemption (1): R/R <3:1 (Risk Agent auto-veto).
+size_pct: N/A
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores:
+  fundamentals: 6
+  technical: 3
+  sentiment: 8
+  macro: 7
+  risk: 5
+  tech_analyst: 8
+agent_average: 6.17
+agents_above_7: 3
+master_decision: rejected
+master_notes: "MRNA +121% post-Phase 3 announcement. Rejected: avg 6.17 (<7 threshold), Risk 5 (<6 auto-veto, R/R cannot meet 3:1 post-gap), Technical 3 (mandatory indicator stack not confirmable at extreme overbought). Skip is valid per Exemption (1) — order would breach 3:1 R/R hard guardrail. Agents above threshold: Sentiment, Macro, Tech Analyst (3/6, minimum 4 required). xAI API unavailable; no X sentiment modifier applied."
+---
+```
+
+---
+
+#### NVDA — Fresh Score (Entry ~$221-222, Earnings Aug 26 in 7 days)
+
+| Agent | Score | Rationale |
+|---|---|---|
+| Fundamentals | 8/10 | Q1 2026: $44.1B revenue (+114% YoY), EPS $0.78. Blackwell architecture driving enterprise upgrade cycle. Gross margins ~74-75%. Analyst consensus PT $220-250. Deutsche Bank raised to $220 today. Data center demand from all hyperscalers intact. |
+| Technical | 5/10 | Uptrend from $211 (Aug 4) to $221 today (+4.5%). 52-week range $164.07-$236.54 — not at highs. Support ~$211-215. Without real-time Alpaca data, cannot confirm 2/5 mandatory indicator stack. Earnings Aug 26 creates binary event risk — limits technical score. |
+| Sentiment | 7/10 | AI capex narrative intact; PLTR/AMD Q2 beats validate enterprise AI demand; Deutsche Bank PT raise today. No X modifier (API unavailable). |
+| Macro | 8/10 | Risk-on, Nasdaq +0.40%, bond rally (lower rates = growth multiple expansion), Canada tariff pause = reduced uncertainty. |
+| Risk | 7/10 | Entry $222.10 (limit × 1.005), Stop $211.00 (-5%), Target $255.41 (+15%, 3:1). Size: 22sh × $222.10 = $4,886 (4.9%) ✓. Risk: 22sh × $11.10 = $244.20 (0.25%) ✓. Sector: AMD (8.5%) + NVDA (4.9%) = 13.4% tech (<25% ✓). Cash floor: $90,644 - $4,886 = $85,758 (86.6%) >> 5% ✓. **NOTE: Exit required before Aug 24 open (48h pre-earnings cutoff).** |
+| Tech Analyst | 9/10 | Dominant AI accelerator with ~80% GPU market share. CUDA ecosystem moat (3M+ developers, deep switching costs). Blackwell 2.5× H100 performance. Hyperscaler multi-billion commitments. R&D 12% of revenue. |
+| **Average** | **7.33/10** | **APPROVED** |
+
+**Master Decision: APPROVED 7.33/10** — Average 7.33 ✓, Risk 7 ✓, Agents ≥7: Fundamentals ✓, Sentiment ✓, Macro ✓, Risk ✓, Tech ✓ = 5/6 ✓, Tech Analyst 9 ✓.
+**ACTION:** BUY 22sh NVDA limit $222.10 bracket GTC. Stop $211.00 (-5%), Target $255.41 (+15%). **MANDATORY EXIT BEFORE AUG 24 OPEN** (48h earnings window cutoff).
+**BLOCKED: API HTTP 403** → Skip logged as infrastructure block.
+
+```yaml
+---
+ts: 2026-08-19T16:39:00Z
+action: skip
+symbol: NVDA
+bucket: active
+setup: ai-momentum-pullback
+score: 7.33
+thesis: NVDA approved 7.33/10 — AI capex narrative intact (PLTR/AMD Q2 beats), Blackwell cycle driving enterprise upgrades, Deutsche Bank PT raised to $220 today. Entry $222.10 limit, stop $211.00 (-5%), target $255.41 (+15%). Must exit before Aug 24 open (48h pre-earnings cutoff — NVDA Q2 earnings Aug 26).
+size_pct: 4.9
+stop: 211.00
+target: 255.41
+result_pct: N/A
+agent_scores:
+  fundamentals: 8
+  technical: 5
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 9
+agent_average: 7.33
+agents_above_7: 5
+master_decision: approved
+master_notes: "APPROVED 7.33/10. Agents agreeing (≥7): Fundamentals, Sentiment, Macro, Risk, Tech Analyst (5/6). Agent disagreeing: Technical (5/10 — cannot confirm mandatory 2/5 indicator stack without Alpaca data; earnings binary event in 7 days). ORDER BLOCKED: Alpaca API HTTP 403 (~120th consecutive session). This is Exemption (1) infrastructure failure — not a strategic skip. OPERATOR: Enter manually via app.alpaca.markets: BUY 22sh NVDA limit $222.10, stop $211.00, target $255.41, time_in_force=gtc. MANDATORY EXIT before Aug 24 open. xAI API unavailable; no X modifier applied."
+---
+```
+
+---
+
+#### PLTR — Fresh Score (~$174, +38% since Aug 4 gap-up)
+
+| Agent | Score | Rationale |
+|---|---|---|
+| Fundamentals | 7/10 | Q2 2026 beat: $1.94B Rev (+93% YoY), GAAP profitable, guidance raised. Strong. But at $174/share valuation is very stretched (~50-60× revenue). |
+| Technical | 4/10 | Stock is +38% from pre-earnings close in 2 weeks. Massively overbought by any measure. Stochastic %K/%D likely >80. Entry at $174 is chasing the top of an extreme move. |
+| Sentiment | 7/10 | Bullish institutional flow, earnings beat driving momentum. No X modifier. |
+| Macro | 8/10 | Risk-on, Nasdaq up, AI theme intact. |
+| Risk | 7/10 | Entry $174.87 (limit), stop $166.13 (-5%), target $200.10 (+15%, 3:1). Size 28sh × $174.87 = $4,896 (4.9%) ✓. Risk: 28sh × $8.74 = $244.72 (0.25%) ✓. No binary event. |
+| Tech Analyst | 8/10 | AI data analytics platform, government/commercial AI leader, defensible moat. |
+| **Average** | **6.83/10** | **REJECTED** |
+
+**Master Decision: REJECTED 6.83/10** — Average 6.83 < 7.0 required. Technical 4/10 (stock overbought after +38% run; entering now is chasing). Entry at $145 was the approved setup; $174 is a different, worse technical setup.
+
+```yaml
+---
+ts: 2026-08-19T16:40:00Z
+action: skip
+symbol: PLTR
+bucket: active
+setup: earnings-reaction-follow
+score: 6.83
+thesis: PLTR fresh score 6.83/10 at $174 — rejected. Originally approved 8.33/10 at $145 on Aug 4. +38% move in 2 weeks makes current entry overbought (Technical 4/10). Entry at $145 was the setup; $174 is chasing the top.
+size_pct: N/A
+stop: N/A
+target: N/A
+result_pct: N/A
+agent_scores:
+  fundamentals: 7
+  technical: 4
+  sentiment: 7
+  macro: 8
+  risk: 7
+  tech_analyst: 8
+agent_average: 6.83
+agents_above_7: 4
+master_decision: rejected
+master_notes: "PLTR REJECTED at $174 — average 6.83 below 7.0 threshold. Technical score 4/10 (stock is +38% from pre-earnings close $125.65 in 2 weeks; massively overbought; entry now is chasing an extreme move). Original Aug 4 score (8.33/10 at $145) was valid but execution was blocked by API. At $174 the technical setup has deteriorated. Will revisit if PLTR pulls back to $158-165 (post-earnings gap zone support) where technical score could recover to 6-7. xAI API unavailable; no X modifier applied."
+---
+```
+
+---
+
+### AMD STOP VIOLATION LOG
+
+```yaml
+---
+ts: 2026-08-19T16:41:00Z
+action: violation
+symbol: AMD
+bucket: active
+setup: ai-momentum-pullback
+score: N/A
+thesis: AMD at $466.93 (-5.58% today), -7.85% from entry $506.76. HARD STOP at $481.42 (-5%) was NEVER PLACED (Alpaca API blocked since Day 1). Position has blown through stop by -$14.49/sh additional. AMD Q2 earnings AH Aug 4 (beat: EPS $1.66 vs $1.61, Rev $11.5B vs $11.31B) caused initial -7.5% AH drop, recovered to $514 by Aug 14, now retreating again. Exit attempted — BLOCKED by API. Push notification sent to operator.
+size_pct: 8.5
+stop: 481.42
+target: N/A
+result_pct: -7.85
+agent_scores:
+  fundamentals: N/A
+  technical: N/A
+  sentiment: N/A
+  macro: N/A
+  risk: N/A
+  tech_analyst: N/A
+agent_average: N/A
+agents_above_7: N/A
+master_decision: rejected
+master_notes: "AMD EXIT STILL UNEXECUTED as of Aug 19 Midday. Position entered Day 1 of binary event window Aug 4, operator was notified to exit before MOC, API was blocked. AMD reported Q2 beat AH Aug 4 but fell -7.5% AH. Current price $466.93 is -7.85% from entry and -$14.49/sh past the intended stop of $481.42. 64+ consecutive days naked with no resting stop at Alpaca. API blocked HTTP 403 (~120th consecutive session). OPERATOR MUST EXIT AMD IMMEDIATELY via app.alpaca.markets — SELL 18sh AMD at market. Current loss: -$716.94 (-0.72% portfolio). Stop is meaningless without execution. Each additional day held increases loss beyond the 5% guardrail breach already in effect."
+---
+```
+
+---
+
+### OVERNIGHT HOLD PLAN
+
+- **AMD:** SELL IMMEDIATELY at market. Do not hold overnight. API blocked — OPERATOR ACTION REQUIRED. If operator cannot exit today, AMD will continue to drift below stop with no protection.
+- **NVDA:** ENTRY BLOCKED. If operator enters manually at $222.10 limit, plan holds until Aug 23 close (MANDATORY EXIT before Aug 24 open — 48h earnings window). Stop $211.00, target $255.41.
+- **Cash (91.5%):** Undeployed capital represents ~$83,000 above the 10% target deployment level. This is a chronic underperformance driver. Primary blocker is API infrastructure, not strategy.
+
+### WATCHLIST FOR AFTERNOON/NEXT ROUTINE
+
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh market NOW | Past stop, naked, further losses mounting |
+| 2 | NVDA | 7.33 | ai-momentum-pullback | BUY 22sh $222.10 bracket GTC; exit before Aug 24 | APPROVED, API blocked — operator action |
+| 3 | MRNA | WATCH | — | Score if pulls back to $40-50 range | Entry infeasible at +121% gap; wait for stabilization |
+| 4 | XHB | TBD | macro-hedge | Score for Afternoon routine | Bond rally + Canada tariff pause = homebuilder tailwind |
+| 5 | PLTR | WAIT | — | Re-score if pulls back to $158-165 | Overbought at $174; rejected today |
+
+---
+
 ## 2026-08-04 — Midday (12:30 PM ET / 16:35 UTC — API BLOCKED — 109th consecutive session)
 
 **HEARTBEAT:** STARTED Midday 2026-08-04T16:35:24Z ✓

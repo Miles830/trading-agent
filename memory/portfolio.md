@@ -1,7 +1,61 @@
 # Opus Trader — Portfolio Memory
 
 ## Last Updated
-**2026-08-04 (Tuesday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — 109th consecutive blocked session). MIDDAY ✅ COMPLETED (research + log updated). ⚠️⚠️⚠️ AMD CRITICAL: AMD ~$511.67 est. (midday), Day 53, NAKED, BINARY EVENT (EARNINGS AH TONIGHT ±12%). LAST CHANCE — MOC deadline 3:50 PM ET. PUSH NOTIFICATION SENT TO OPERATOR. Mid-Morning routine SILENTLY FAILED (no heartbeat). PLTR ~$149-155 est. (score 8.33, blocked). NVDA ~$213-220 est. (score 7.67, blocked). Cumulative gap: ~-6.23 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (109th session).**
+**2026-08-19 (Wednesday) — MIDDAY (12:35 PM ET / 16:35 UTC). Alpaca API STILL BLOCKED (proxy HTTP 403 — ~120th consecutive blocked session). MIDDAY ✅ COMPLETED. ⚠️⚠️⚠️ AMD CRITICAL: AMD $466.93 (-5.58% today), past stop (-7.85% vs -5% hard stop at $481.42). NAKED for 64+ days. Current loss -$716.94. OPERATOR: SELL 18sh AMD at market NOW via app.alpaca.markets. NVDA APPROVED 7.33/10 — entry blocked. PLTR rejected 6.83/10 (overbought at $174 after +38% run). MRNA rejected 6.17/10 (121% gap, R/R infeasible). Cumulative gap: ~-7.76 pp. 20-DAY UNDERPERFORMANCE FLAG ACTIVE (~120th session). Three predecessor routines (Pre-Market, Market-Open, Mid-Morning) silently failed today.**
+
+---
+
+**AUGUST 19 MIDDAY STATUS (12:35 PM ET / 16:35 UTC — API BLOCKED — ~120th session):**
+
+**Portfolio August 19 Midday (est., API blocked — prices from web research):**
+- Cash: ~$90,644 (91.5% est.)
+- AMD: 18sh × $466.93 = $8,404.74 (8.5% est.) — NAKED, Day 64+, PAST STOP (-7.85% from entry $506.76; stop $481.42 never placed), OPERATOR EXIT REQUIRED NOW
+- Total equity est.: ~$99,048 (-0.95% vs $100K starting capital)
+- P&L Aug 19 (AMD position): -$39.83/sh × 18 = -$716.94 (-0.72% portfolio)
+- SPY est.: ~$768.70 (+0.43% today), S&P 500 ~7,690 est. (+6.81% from May 1 baseline 7,200)
+- Daily gap: AMD -5.58% vs market +0.43% → AMD dragging portfolio -0.06% vs SPY today
+- Cumulative: Portfolio ~-0.95% vs SPY +6.81% (7,200→7,690 est.) → **Cumulative gap: ~-7.76 pp**
+- 20-DAY UNDERPERFORMANCE FLAG: ACTIVE (~120th consecutive session)
+
+**HEARTBEAT AUDIT AUGUST 19 (as of 12:35 PM ET):**
+- ✗ Pre-Market (12:00Z): SILENT FAILURE — no heartbeat (violation logged)
+- ✗ Market-Open (13:45Z): SILENT FAILURE — no heartbeat (violation logged)
+- ✗ Mid-Morning (15:00Z): SILENT FAILURE — no heartbeat (violation logged)
+- ✓ Midday (16:35Z): STARTED 16:35:34Z ✓ (this routine)
+
+**GAP SINCE LAST LOG (Aug 4 → Aug 19 = 11 trading days):**
+- Aug 14 heartbeat file exists but empty (session fired but produced no routine output)
+- Aug 5, 6, 7, 8, 11, 12, 13, 15, 18: No heartbeat files (routine scheduler failures)
+- AMD sat naked for 11 trading days through: Q2 earnings (beat but -7.5% AH), recovery to $514, now pullback to $466.93
+
+**STOP-LOSS AUDIT:**
+- ❌ AMD: NO STOP AT ALPACA — API blocked, 64+ consecutive days naked. Position is -7.85% from entry ($466.93 < $481.42 intended stop). PAST GUARDRAIL.
+
+**KEY MARKET DATA (August 19, 2026 Midday — 12:35 PM ET):**
+- S&P 500: ~7,690 est. (+0.43% today) — US Treasury buyback announcement + Canada tariff pause
+- Nasdaq: +0.40% est. — Growth/tech positive; bond rally supports higher valuations
+- 30-yr Treasury yield: 5.19% (-9bps) — significant bond rally
+- Russell 2000: -1.30% — small caps underperforming (selective risk-on)
+- MRNA: +121% — Phase 3 melanoma vaccine success (Moderna/Merck INTerpath-001 trial) — REJECTED 6.17/10
+- AMD: $466.93 (-5.58%) — Past stop, continuing post-earnings hangover — EXIT REQUIRED
+- NVDA: ~$221 (+0.95%) — AI capex intact; Deutsche Bank PT raised to $220 — APPROVED 7.33/10 (API blocked)
+- PLTR: ~$174 (+38% since Aug 4) — REJECTED 6.83/10 (overbought, chasing +38% move)
+- BTC: ~$64,000-68,000 est. | ETH: ~$1,900-2,100 est. (no material catalyst)
+
+**SCORED OPPORTUNITIES (August 19 Midday):**
+1. **AMD EXIT** — BINDING EMERGENCY. 18sh sell market. API blocked. OPERATOR: Exit immediately via app.alpaca.markets. Current loss -$716.94.
+2. **NVDA** — APPROVED 7.33/10, `ai-momentum-pullback`. 22sh @ $222.10 limit bracket GTC, stop $211.00 (-5%), target $255.41 (+15%). Earnings Aug 26 (7 days). **MANDATORY EXIT before Aug 24 open.** API blocked. OPERATOR: Enter manually.
+3. **MRNA** — REJECTED 6.17/10. +121% gap; R/R cannot meet 3:1 minimum (Risk auto-veto); Technical 3/10 (extreme overbought).
+4. **PLTR** — REJECTED 6.83/10. Overbought at $174 after +38% run since Aug 4. Technical 4/10. Wait for pullback to $158-165 range.
+
+**AFTERNOON WATCHLIST (August 19, binding for Afternoon 2:00 PM ET routine):**
+| Rank | Symbol | Score | Setup | Action | Notes |
+|---|---|---|---|---|---|
+| 1 | AMD | EXIT | — | SELL 18sh market NOW | Past stop, naked, worsening; API blocked |
+| 2 | NVDA | 7.33 | ai-momentum-pullback | BUY 22sh limit $222.10 bracket GTC | APPROVED; API blocked; exit before Aug 24 |
+| 3 | MRNA | WATCH | — | Re-score if pulls back to $40-50 | Entry infeasible at +121%; monitor for stabilization |
+| 4 | XHB | TBD | macro-hedge | Score at Afternoon routine | Bond rally + tariff pause = homebuilder tailwind |
+| 5 | PLTR | WAIT | — | Re-score at $158-165 support | Overbought at $174; rejected today |
 
 ---
 
